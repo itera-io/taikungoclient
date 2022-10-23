@@ -26,7 +26,7 @@ type OrganizationDetailsDto struct {
 	BillingEmail string `json:"billingEmail,omitempty"`
 
 	// bound rules
-	BoundRules []*PrometheusEntity `json:"boundRules"`
+	BoundRules []*OrganizationDetailsDtoBoundRulesItems0 `json:"boundRules"`
 
 	// city
 	City string `json:"city,omitempty"`
@@ -65,7 +65,7 @@ type OrganizationDetailsDto struct {
 	Name string `json:"name,omitempty"`
 
 	// partner
-	Partner *PartnerDetailsDto `json:"partner,omitempty"`
+	Partner *OrganizationDetailsDtoPartner `json:"partner,omitempty"`
 
 	// partner Id
 	PartnerID int32 `json:"partnerId,omitempty"`
@@ -217,6 +217,329 @@ func (m *OrganizationDetailsDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *OrganizationDetailsDto) UnmarshalBinary(b []byte) error {
 	var res OrganizationDetailsDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// OrganizationDetailsDtoBoundRulesItems0 organization details dto bound rules items0
+//
+// swagger:model OrganizationDetailsDtoBoundRulesItems0
+type OrganizationDetailsDtoBoundRulesItems0 struct {
+
+	// prometheus rule Id
+	PrometheusRuleID int32 `json:"prometheusRuleId,omitempty"`
+
+	// prometheus rule name
+	PrometheusRuleName string `json:"prometheusRuleName,omitempty"`
+
+	// rule discount rate
+	RuleDiscountRate float64 `json:"ruleDiscountRate"`
+}
+
+// Validate validates this organization details dto bound rules items0
+func (m *OrganizationDetailsDtoBoundRulesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organization details dto bound rules items0 based on context it is used
+func (m *OrganizationDetailsDtoBoundRulesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *OrganizationDetailsDtoBoundRulesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *OrganizationDetailsDtoBoundRulesItems0) UnmarshalBinary(b []byte) error {
+	var res OrganizationDetailsDtoBoundRulesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// OrganizationDetailsDtoPartner organization details dto partner
+//
+// swagger:model OrganizationDetailsDtoPartner
+type OrganizationDetailsDtoPartner struct {
+
+	// address
+	Address string `json:"address,omitempty"`
+
+	// allow registration
+	AllowRegistration bool `json:"allowRegistration"`
+
+	// city
+	City string `json:"city,omitempty"`
+
+	// country
+	Country string `json:"country,omitempty"`
+
+	// domain
+	Domain string `json:"domain,omitempty"`
+
+	// email
+	Email string `json:"email,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// link
+	Link string `json:"link,omitempty"`
+
+	// logo
+	Logo string `json:"logo,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organizations
+	Organizations []*OrganizationDetailsDtoPartnerOrganizationsItems0 `json:"organizations"`
+
+	// payment enabled
+	PaymentEnabled bool `json:"paymentEnabled"`
+
+	// phone
+	Phone string `json:"phone,omitempty"`
+
+	// required user approval
+	RequiredUserApproval bool `json:"requiredUserApproval"`
+
+	// vat number
+	VatNumber string `json:"vatNumber,omitempty"`
+
+	// white list domains
+	WhiteListDomains []*OrganizationDetailsDtoPartnerWhiteListDomainsItems0 `json:"whiteListDomains"`
+}
+
+// Validate validates this organization details dto partner
+func (m *OrganizationDetailsDtoPartner) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateOrganizations(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateWhiteListDomains(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *OrganizationDetailsDtoPartner) validateOrganizations(formats strfmt.Registry) error {
+	if swag.IsZero(m.Organizations) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Organizations); i++ {
+		if swag.IsZero(m.Organizations[i]) { // not required
+			continue
+		}
+
+		if m.Organizations[i] != nil {
+			if err := m.Organizations[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("partner" + "." + "organizations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("partner" + "." + "organizations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *OrganizationDetailsDtoPartner) validateWhiteListDomains(formats strfmt.Registry) error {
+	if swag.IsZero(m.WhiteListDomains) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.WhiteListDomains); i++ {
+		if swag.IsZero(m.WhiteListDomains[i]) { // not required
+			continue
+		}
+
+		if m.WhiteListDomains[i] != nil {
+			if err := m.WhiteListDomains[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("partner" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("partner" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this organization details dto partner based on the context it is used
+func (m *OrganizationDetailsDtoPartner) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateOrganizations(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateWhiteListDomains(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *OrganizationDetailsDtoPartner) contextValidateOrganizations(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Organizations); i++ {
+
+		if m.Organizations[i] != nil {
+			if err := m.Organizations[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("partner" + "." + "organizations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("partner" + "." + "organizations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *OrganizationDetailsDtoPartner) contextValidateWhiteListDomains(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.WhiteListDomains); i++ {
+
+		if m.WhiteListDomains[i] != nil {
+			if err := m.WhiteListDomains[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("partner" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("partner" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *OrganizationDetailsDtoPartner) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *OrganizationDetailsDtoPartner) UnmarshalBinary(b []byte) error {
+	var res OrganizationDetailsDtoPartner
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// OrganizationDetailsDtoPartnerOrganizationsItems0 organization details dto partner organizations items0
+//
+// swagger:model OrganizationDetailsDtoPartnerOrganizationsItems0
+type OrganizationDetailsDtoPartnerOrganizationsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this organization details dto partner organizations items0
+func (m *OrganizationDetailsDtoPartnerOrganizationsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organization details dto partner organizations items0 based on context it is used
+func (m *OrganizationDetailsDtoPartnerOrganizationsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *OrganizationDetailsDtoPartnerOrganizationsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *OrganizationDetailsDtoPartnerOrganizationsItems0) UnmarshalBinary(b []byte) error {
+	var res OrganizationDetailsDtoPartnerOrganizationsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// OrganizationDetailsDtoPartnerWhiteListDomainsItems0 organization details dto partner white list domains items0
+//
+// swagger:model OrganizationDetailsDtoPartnerWhiteListDomainsItems0
+type OrganizationDetailsDtoPartnerWhiteListDomainsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this organization details dto partner white list domains items0
+func (m *OrganizationDetailsDtoPartnerWhiteListDomainsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organization details dto partner white list domains items0 based on context it is used
+func (m *OrganizationDetailsDtoPartnerWhiteListDomainsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *OrganizationDetailsDtoPartnerWhiteListDomainsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *OrganizationDetailsDtoPartnerWhiteListDomainsItems0) UnmarshalBinary(b []byte) error {
+	var res OrganizationDetailsDtoPartnerWhiteListDomainsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesRestartDaemonSetParams creates a new KubernetesRestartDaemonSetParams object,
@@ -64,7 +62,7 @@ KubernetesRestartDaemonSetParams contains all the parameters to send to the API 
 type KubernetesRestartDaemonSetParams struct {
 
 	// Body.
-	Body *models.RestartDaemonSetCommand
+	Body KubernetesRestartDaemonSetBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *KubernetesRestartDaemonSetParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the kubernetes restart daemon set params
-func (o *KubernetesRestartDaemonSetParams) WithBody(body *models.RestartDaemonSetCommand) *KubernetesRestartDaemonSetParams {
+func (o *KubernetesRestartDaemonSetParams) WithBody(body KubernetesRestartDaemonSetBody) *KubernetesRestartDaemonSetParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes restart daemon set params
-func (o *KubernetesRestartDaemonSetParams) SetBody(body *models.RestartDaemonSetCommand) {
+func (o *KubernetesRestartDaemonSetParams) SetBody(body KubernetesRestartDaemonSetBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *KubernetesRestartDaemonSetParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

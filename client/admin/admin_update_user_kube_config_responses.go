@@ -6,13 +6,13 @@ package admin
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AdminUpdateUserKubeConfigReader is a Reader for the AdminUpdateUserKubeConfig structure.
@@ -75,7 +75,7 @@ AdminUpdateUserKubeConfigOK describes a response with status code 200, with defa
 Success
 */
 type AdminUpdateUserKubeConfigOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin update user kube config o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AdminUpdateUserKubeConfigOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/userkube][%d] adminUpdateUserKubeConfigOK  %+v", 200, o.Payload)
 }
 
-func (o *AdminUpdateUserKubeConfigOK) GetPayload() models.Unit {
+func (o *AdminUpdateUserKubeConfigOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AdminUpdateUserKubeConfigBadRequest describes a response with status code 400, w
 Bad Request
 */
 type AdminUpdateUserKubeConfigBadRequest struct {
-	Payload []*models.Error
+	Payload []*AdminUpdateUserKubeConfigBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this admin update user kube config bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminUpdateUserKubeConfigBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/userkube][%d] adminUpdateUserKubeConfigBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminUpdateUserKubeConfigBadRequest) GetPayload() []*models.Error {
+func (o *AdminUpdateUserKubeConfigBadRequest) GetPayload() []*AdminUpdateUserKubeConfigBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AdminUpdateUserKubeConfigUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type AdminUpdateUserKubeConfigUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AdminUpdateUserKubeConfigUnauthorizedBody
 }
 
 // IsSuccess returns true when this admin update user kube config unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AdminUpdateUserKubeConfigUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/userkube][%d] adminUpdateUserKubeConfigUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminUpdateUserKubeConfigUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AdminUpdateUserKubeConfigUnauthorized) GetPayload() *AdminUpdateUserKubeConfigUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserKubeConfigUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AdminUpdateUserKubeConfigUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AdminUpdateUserKubeConfigForbidden describes a response with status code 403, wi
 Forbidden
 */
 type AdminUpdateUserKubeConfigForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AdminUpdateUserKubeConfigForbiddenBody
 }
 
 // IsSuccess returns true when this admin update user kube config forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AdminUpdateUserKubeConfigForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/userkube][%d] adminUpdateUserKubeConfigForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminUpdateUserKubeConfigForbidden) GetPayload() *models.ProblemDetails {
+func (o *AdminUpdateUserKubeConfigForbidden) GetPayload() *AdminUpdateUserKubeConfigForbiddenBody {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserKubeConfigForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AdminUpdateUserKubeConfigForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AdminUpdateUserKubeConfigNotFound describes a response with status code 404, wit
 Not Found
 */
 type AdminUpdateUserKubeConfigNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AdminUpdateUserKubeConfigNotFoundBody
 }
 
 // IsSuccess returns true when this admin update user kube config not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AdminUpdateUserKubeConfigNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/userkube][%d] adminUpdateUserKubeConfigNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminUpdateUserKubeConfigNotFound) GetPayload() *models.ProblemDetails {
+func (o *AdminUpdateUserKubeConfigNotFound) GetPayload() *AdminUpdateUserKubeConfigNotFoundBody {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserKubeConfigNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AdminUpdateUserKubeConfigNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *AdminUpdateUserKubeConfigInternalServerError) String() string {
 
 func (o *AdminUpdateUserKubeConfigInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AdminUpdateUserKubeConfigBadRequestBodyItems0 admin update user kube config bad request body items0
+swagger:model AdminUpdateUserKubeConfigBadRequestBodyItems0
+*/
+type AdminUpdateUserKubeConfigBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this admin update user kube config bad request body items0
+func (o *AdminUpdateUserKubeConfigBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin update user kube config bad request body items0 based on context it is used
+func (o *AdminUpdateUserKubeConfigBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminUpdateUserKubeConfigBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminUpdateUserKubeConfigBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AdminUpdateUserKubeConfigBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminUpdateUserKubeConfigBody admin update user kube config body
+swagger:model AdminUpdateUserKubeConfigBody
+*/
+type AdminUpdateUserKubeConfigBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this admin update user kube config body
+func (o *AdminUpdateUserKubeConfigBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin update user kube config body based on context it is used
+func (o *AdminUpdateUserKubeConfigBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminUpdateUserKubeConfigBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminUpdateUserKubeConfigBody) UnmarshalBinary(b []byte) error {
+	var res AdminUpdateUserKubeConfigBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminUpdateUserKubeConfigForbiddenBody admin update user kube config forbidden body
+swagger:model AdminUpdateUserKubeConfigForbiddenBody
+*/
+type AdminUpdateUserKubeConfigForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this admin update user kube config forbidden body
+func (o *AdminUpdateUserKubeConfigForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin update user kube config forbidden body based on context it is used
+func (o *AdminUpdateUserKubeConfigForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminUpdateUserKubeConfigForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminUpdateUserKubeConfigForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AdminUpdateUserKubeConfigForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminUpdateUserKubeConfigNotFoundBody admin update user kube config not found body
+swagger:model AdminUpdateUserKubeConfigNotFoundBody
+*/
+type AdminUpdateUserKubeConfigNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this admin update user kube config not found body
+func (o *AdminUpdateUserKubeConfigNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin update user kube config not found body based on context it is used
+func (o *AdminUpdateUserKubeConfigNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminUpdateUserKubeConfigNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminUpdateUserKubeConfigNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AdminUpdateUserKubeConfigNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminUpdateUserKubeConfigUnauthorizedBody admin update user kube config unauthorized body
+swagger:model AdminUpdateUserKubeConfigUnauthorizedBody
+*/
+type AdminUpdateUserKubeConfigUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this admin update user kube config unauthorized body
+func (o *AdminUpdateUserKubeConfigUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin update user kube config unauthorized body based on context it is used
+func (o *AdminUpdateUserKubeConfigUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminUpdateUserKubeConfigUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminUpdateUserKubeConfigUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AdminUpdateUserKubeConfigUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

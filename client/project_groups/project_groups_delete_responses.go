@@ -6,13 +6,13 @@ package project_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ProjectGroupsDeleteReader is a Reader for the ProjectGroupsDelete structure.
@@ -81,7 +81,7 @@ ProjectGroupsDeleteOK describes a response with status code 200, with default he
 Success
 */
 type ProjectGroupsDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project groups delete o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *ProjectGroupsDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectGroupsDeleteOK) GetPayload() models.Unit {
+func (o *ProjectGroupsDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ ProjectGroupsDeleteBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type ProjectGroupsDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectGroupsDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this project groups delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *ProjectGroupsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectGroupsDeleteBadRequest) GetPayload() []*models.Error {
+func (o *ProjectGroupsDeleteBadRequest) GetPayload() []*ProjectGroupsDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ ProjectGroupsDeleteUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ProjectGroupsDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectGroupsDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this project groups delete unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *ProjectGroupsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectGroupsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsDeleteUnauthorized) GetPayload() *ProjectGroupsDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectGroupsDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectGroupsDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ ProjectGroupsDeleteForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ProjectGroupsDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectGroupsDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this project groups delete forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *ProjectGroupsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectGroupsDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsDeleteForbidden) GetPayload() *ProjectGroupsDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectGroupsDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectGroupsDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ ProjectGroupsDeleteNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ProjectGroupsDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectGroupsDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this project groups delete not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *ProjectGroupsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectGroupsDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsDeleteNotFound) GetPayload() *ProjectGroupsDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectGroupsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectGroupsDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,5 +480,196 @@ func (o *ProjectGroupsDeleteInternalServerError) String() string {
 
 func (o *ProjectGroupsDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectGroupsDeleteBadRequestBodyItems0 project groups delete bad request body items0
+swagger:model ProjectGroupsDeleteBadRequestBodyItems0
+*/
+type ProjectGroupsDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this project groups delete bad request body items0
+func (o *ProjectGroupsDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups delete bad request body items0 based on context it is used
+func (o *ProjectGroupsDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsDeleteForbiddenBody project groups delete forbidden body
+swagger:model ProjectGroupsDeleteForbiddenBody
+*/
+type ProjectGroupsDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project groups delete forbidden body
+func (o *ProjectGroupsDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups delete forbidden body based on context it is used
+func (o *ProjectGroupsDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsDeleteNotFoundBody project groups delete not found body
+swagger:model ProjectGroupsDeleteNotFoundBody
+*/
+type ProjectGroupsDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project groups delete not found body
+func (o *ProjectGroupsDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups delete not found body based on context it is used
+func (o *ProjectGroupsDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsDeleteUnauthorizedBody project groups delete unauthorized body
+swagger:model ProjectGroupsDeleteUnauthorizedBody
+*/
+type ProjectGroupsDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project groups delete unauthorized body
+func (o *ProjectGroupsDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups delete unauthorized body based on context it is used
+func (o *ProjectGroupsDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

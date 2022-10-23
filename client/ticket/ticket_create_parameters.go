@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewTicketCreateParams creates a new TicketCreateParams object,
@@ -64,7 +62,7 @@ TicketCreateParams contains all the parameters to send to the API endpoint
 type TicketCreateParams struct {
 
 	// Body.
-	Body *models.CreateTicketCommand
+	Body TicketCreateBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *TicketCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the ticket create params
-func (o *TicketCreateParams) WithBody(body *models.CreateTicketCommand) *TicketCreateParams {
+func (o *TicketCreateParams) WithBody(body TicketCreateBody) *TicketCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the ticket create params
-func (o *TicketCreateParams) SetBody(body *models.CreateTicketCommand) {
+func (o *TicketCreateParams) SetBody(body TicketCreateBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *TicketCreateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

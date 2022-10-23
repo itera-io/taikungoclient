@@ -6,13 +6,13 @@ package stand_alone_actions
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // StandAloneActionsShelveReader is a Reader for the StandAloneActionsShelve structure.
@@ -75,7 +75,7 @@ StandAloneActionsShelveOK describes a response with status code 200, with defaul
 Success
 */
 type StandAloneActionsShelveOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions shelve o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneActionsShelveOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/shelve][%d] standAloneActionsShelveOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneActionsShelveOK) GetPayload() models.Unit {
+func (o *StandAloneActionsShelveOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneActionsShelveBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneActionsShelveBadRequest struct {
-	Payload []*models.Error
+	Payload []*StandAloneActionsShelveBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this stand alone actions shelve bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneActionsShelveBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/shelve][%d] standAloneActionsShelveBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsShelveBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneActionsShelveBadRequest) GetPayload() []*StandAloneActionsShelveBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneActionsShelveUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneActionsShelveUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneActionsShelveUnauthorizedBody
 }
 
 // IsSuccess returns true when this stand alone actions shelve unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneActionsShelveUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/shelve][%d] standAloneActionsShelveUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsShelveUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsShelveUnauthorized) GetPayload() *StandAloneActionsShelveUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *StandAloneActionsShelveUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneActionsShelveUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneActionsShelveForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneActionsShelveForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneActionsShelveForbiddenBody
 }
 
 // IsSuccess returns true when this stand alone actions shelve forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneActionsShelveForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/shelve][%d] standAloneActionsShelveForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsShelveForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsShelveForbidden) GetPayload() *StandAloneActionsShelveForbiddenBody {
 	return o.Payload
 }
 
 func (o *StandAloneActionsShelveForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneActionsShelveForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneActionsShelveNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneActionsShelveNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneActionsShelveNotFoundBody
 }
 
 // IsSuccess returns true when this stand alone actions shelve not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneActionsShelveNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/shelve][%d] standAloneActionsShelveNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsShelveNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsShelveNotFound) GetPayload() *StandAloneActionsShelveNotFoundBody {
 	return o.Payload
 }
 
 func (o *StandAloneActionsShelveNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneActionsShelveNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *StandAloneActionsShelveInternalServerError) String() string {
 
 func (o *StandAloneActionsShelveInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+StandAloneActionsShelveBadRequestBodyItems0 stand alone actions shelve bad request body items0
+swagger:model StandAloneActionsShelveBadRequestBodyItems0
+*/
+type StandAloneActionsShelveBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this stand alone actions shelve bad request body items0
+func (o *StandAloneActionsShelveBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone actions shelve bad request body items0 based on context it is used
+func (o *StandAloneActionsShelveBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneActionsShelveBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneActionsShelveBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneActionsShelveBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneActionsShelveBody stand alone actions shelve body
+swagger:model StandAloneActionsShelveBody
+*/
+type StandAloneActionsShelveBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this stand alone actions shelve body
+func (o *StandAloneActionsShelveBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone actions shelve body based on context it is used
+func (o *StandAloneActionsShelveBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneActionsShelveBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneActionsShelveBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneActionsShelveBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneActionsShelveForbiddenBody stand alone actions shelve forbidden body
+swagger:model StandAloneActionsShelveForbiddenBody
+*/
+type StandAloneActionsShelveForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone actions shelve forbidden body
+func (o *StandAloneActionsShelveForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone actions shelve forbidden body based on context it is used
+func (o *StandAloneActionsShelveForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneActionsShelveForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneActionsShelveForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneActionsShelveForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneActionsShelveNotFoundBody stand alone actions shelve not found body
+swagger:model StandAloneActionsShelveNotFoundBody
+*/
+type StandAloneActionsShelveNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone actions shelve not found body
+func (o *StandAloneActionsShelveNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone actions shelve not found body based on context it is used
+func (o *StandAloneActionsShelveNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneActionsShelveNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneActionsShelveNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneActionsShelveNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneActionsShelveUnauthorizedBody stand alone actions shelve unauthorized body
+swagger:model StandAloneActionsShelveUnauthorizedBody
+*/
+type StandAloneActionsShelveUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone actions shelve unauthorized body
+func (o *StandAloneActionsShelveUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone actions shelve unauthorized body based on context it is used
+func (o *StandAloneActionsShelveUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneActionsShelveUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneActionsShelveUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneActionsShelveUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

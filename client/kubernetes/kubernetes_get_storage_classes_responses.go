@@ -6,13 +6,15 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesGetStorageClassesReader is a Reader for the KubernetesGetStorageClasses structure.
@@ -75,7 +77,7 @@ KubernetesGetStorageClassesOK describes a response with status code 200, with de
 Success
 */
 type KubernetesGetStorageClassesOK struct {
-	Payload *models.StorageClasses
+	Payload *KubernetesGetStorageClassesOKBody
 }
 
 // IsSuccess returns true when this kubernetes get storage classes o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *KubernetesGetStorageClassesOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesGetStorageClassesOK) GetPayload() *models.StorageClasses {
+func (o *KubernetesGetStorageClassesOK) GetPayload() *KubernetesGetStorageClassesOKBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetStorageClassesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.StorageClasses)
+	o.Payload = new(KubernetesGetStorageClassesOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ KubernetesGetStorageClassesBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesGetStorageClassesBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesGetStorageClassesBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes get storage classes bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *KubernetesGetStorageClassesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetStorageClassesBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetStorageClassesBadRequest) GetPayload() []*KubernetesGetStorageClassesBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ KubernetesGetStorageClassesUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesGetStorageClassesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetStorageClassesUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes get storage classes unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *KubernetesGetStorageClassesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetStorageClassesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetStorageClassesUnauthorized) GetPayload() *KubernetesGetStorageClassesUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetStorageClassesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetStorageClassesUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ KubernetesGetStorageClassesForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesGetStorageClassesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetStorageClassesForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes get storage classes forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *KubernetesGetStorageClassesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetStorageClassesForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetStorageClassesForbidden) GetPayload() *KubernetesGetStorageClassesForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetStorageClassesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetStorageClassesForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ KubernetesGetStorageClassesNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesGetStorageClassesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetStorageClassesNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes get storage classes not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *KubernetesGetStorageClassesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetStorageClassesNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetStorageClassesNotFound) GetPayload() *KubernetesGetStorageClassesNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetStorageClassesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetStorageClassesNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,354 @@ func (o *KubernetesGetStorageClassesInternalServerError) String() string {
 
 func (o *KubernetesGetStorageClassesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesGetStorageClassesBadRequestBodyItems0 kubernetes get storage classes bad request body items0
+swagger:model KubernetesGetStorageClassesBadRequestBodyItems0
+*/
+type KubernetesGetStorageClassesBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes get storage classes bad request body items0
+func (o *KubernetesGetStorageClassesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get storage classes bad request body items0 based on context it is used
+func (o *KubernetesGetStorageClassesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetStorageClassesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetStorageClassesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetStorageClassesBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetStorageClassesForbiddenBody kubernetes get storage classes forbidden body
+swagger:model KubernetesGetStorageClassesForbiddenBody
+*/
+type KubernetesGetStorageClassesForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get storage classes forbidden body
+func (o *KubernetesGetStorageClassesForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get storage classes forbidden body based on context it is used
+func (o *KubernetesGetStorageClassesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetStorageClassesForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetStorageClassesForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetStorageClassesForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetStorageClassesNotFoundBody kubernetes get storage classes not found body
+swagger:model KubernetesGetStorageClassesNotFoundBody
+*/
+type KubernetesGetStorageClassesNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get storage classes not found body
+func (o *KubernetesGetStorageClassesNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get storage classes not found body based on context it is used
+func (o *KubernetesGetStorageClassesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetStorageClassesNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetStorageClassesNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetStorageClassesNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetStorageClassesOKBody kubernetes get storage classes o k body
+swagger:model KubernetesGetStorageClassesOKBody
+*/
+type KubernetesGetStorageClassesOKBody struct {
+
+	// data
+	Data []*KubernetesGetStorageClassesOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this kubernetes get storage classes o k body
+func (o *KubernetesGetStorageClassesOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetStorageClassesOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesGetStorageClassesOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesGetStorageClassesOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this kubernetes get storage classes o k body based on the context it is used
+func (o *KubernetesGetStorageClassesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetStorageClassesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesGetStorageClassesOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesGetStorageClassesOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetStorageClassesOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetStorageClassesOKBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetStorageClassesOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetStorageClassesOKBodyDataItems0 kubernetes get storage classes o k body data items0
+swagger:model KubernetesGetStorageClassesOKBodyDataItems0
+*/
+type KubernetesGetStorageClassesOKBodyDataItems0 struct {
+
+	// age
+	Age string `json:"age,omitempty"`
+
+	// allow volume expansion
+	AllowVolumeExpansion bool `json:"allowVolumeExpansion"`
+
+	// metadata name
+	MetadataName string `json:"metadataName,omitempty"`
+
+	// provisioner
+	Provisioner string `json:"provisioner,omitempty"`
+
+	// reclaim policy
+	ReclaimPolicy string `json:"reclaimPolicy,omitempty"`
+
+	// volume binding mode
+	VolumeBindingMode string `json:"volumeBindingMode,omitempty"`
+}
+
+// Validate validates this kubernetes get storage classes o k body data items0
+func (o *KubernetesGetStorageClassesOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get storage classes o k body data items0 based on context it is used
+func (o *KubernetesGetStorageClassesOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetStorageClassesOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetStorageClassesOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetStorageClassesOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetStorageClassesUnauthorizedBody kubernetes get storage classes unauthorized body
+swagger:model KubernetesGetStorageClassesUnauthorizedBody
+*/
+type KubernetesGetStorageClassesUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get storage classes unauthorized body
+func (o *KubernetesGetStorageClassesUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get storage classes unauthorized body based on context it is used
+func (o *KubernetesGetStorageClassesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetStorageClassesUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetStorageClassesUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetStorageClassesUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

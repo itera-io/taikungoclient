@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewShowbackRulesDeleteAllParams creates a new ShowbackRulesDeleteAllParams object,
@@ -64,7 +62,7 @@ ShowbackRulesDeleteAllParams contains all the parameters to send to the API endp
 type ShowbackRulesDeleteAllParams struct {
 
 	// Body.
-	Body *models.DeleteRulesCommand
+	Body ShowbackRulesDeleteAllBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *ShowbackRulesDeleteAllParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the showback rules delete all params
-func (o *ShowbackRulesDeleteAllParams) WithBody(body *models.DeleteRulesCommand) *ShowbackRulesDeleteAllParams {
+func (o *ShowbackRulesDeleteAllParams) WithBody(body ShowbackRulesDeleteAllBody) *ShowbackRulesDeleteAllParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the showback rules delete all params
-func (o *ShowbackRulesDeleteAllParams) SetBody(body *models.DeleteRulesCommand) {
+func (o *ShowbackRulesDeleteAllParams) SetBody(body ShowbackRulesDeleteAllBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *ShowbackRulesDeleteAllParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

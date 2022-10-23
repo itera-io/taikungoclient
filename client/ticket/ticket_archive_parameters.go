@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewTicketArchiveParams creates a new TicketArchiveParams object,
@@ -64,7 +62,7 @@ TicketArchiveParams contains all the parameters to send to the API endpoint
 type TicketArchiveParams struct {
 
 	// Body.
-	Body *models.ArchiveTicketCommand
+	Body TicketArchiveBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *TicketArchiveParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the ticket archive params
-func (o *TicketArchiveParams) WithBody(body *models.ArchiveTicketCommand) *TicketArchiveParams {
+func (o *TicketArchiveParams) WithBody(body TicketArchiveBody) *TicketArchiveParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the ticket archive params
-func (o *TicketArchiveParams) SetBody(body *models.ArchiveTicketCommand) {
+func (o *TicketArchiveParams) SetBody(body TicketArchiveBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *TicketArchiveParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

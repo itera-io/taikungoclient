@@ -20,7 +20,7 @@ import (
 type ProjectAppList struct {
 
 	// data
-	Data []*ProjectAppListDto `json:"data"`
+	Data []*ProjectAppListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,91 @@ func (m *ProjectAppList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ProjectAppList) UnmarshalBinary(b []byte) error {
 	var res ProjectAppList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectAppListDataItems0 project app list data items0
+//
+// swagger:model ProjectAppListDataItems0
+type ProjectAppListDataItems0 struct {
+
+	// app repo name
+	AppRepoName string `json:"appRepoName,omitempty"`
+
+	// auto sync
+	AutoSync bool `json:"autoSync"`
+
+	// catalog app name
+	CatalogAppName string `json:"catalogAppName,omitempty"`
+
+	// catalog Id
+	CatalogID int32 `json:"catalogId,omitempty"`
+
+	// catalog name
+	CatalogName string `json:"catalogName,omitempty"`
+
+	// created
+	Created string `json:"created,omitempty"`
+
+	// created by
+	CreatedBy string `json:"createdBy,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// last modified
+	LastModified string `json:"lastModified,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// logo
+	Logo string `json:"logo,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// version
+	Version string `json:"version,omitempty"`
+}
+
+// Validate validates this project app list data items0
+func (m *ProjectAppListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app list data items0 based on context it is used
+func (m *ProjectAppListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectAppListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectAppListDataItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectAppListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

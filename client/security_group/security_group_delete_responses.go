@@ -6,13 +6,13 @@ package security_group
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SecurityGroupDeleteReader is a Reader for the SecurityGroupDelete structure.
@@ -75,7 +75,7 @@ SecurityGroupDeleteOK describes a response with status code 200, with default he
 Success
 */
 type SecurityGroupDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this security group delete o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *SecurityGroupDeleteOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *SecurityGroupDeleteOK) GetPayload() models.Unit {
+func (o *SecurityGroupDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ SecurityGroupDeleteBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type SecurityGroupDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*SecurityGroupDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this security group delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SecurityGroupDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SecurityGroupDeleteBadRequest) GetPayload() []*models.Error {
+func (o *SecurityGroupDeleteBadRequest) GetPayload() []*SecurityGroupDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ SecurityGroupDeleteUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type SecurityGroupDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SecurityGroupDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this security group delete unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *SecurityGroupDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SecurityGroupDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupDeleteUnauthorized) GetPayload() *SecurityGroupDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SecurityGroupDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SecurityGroupDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ SecurityGroupDeleteForbidden describes a response with status code 403, with def
 Forbidden
 */
 type SecurityGroupDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SecurityGroupDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this security group delete forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *SecurityGroupDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SecurityGroupDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupDeleteForbidden) GetPayload() *SecurityGroupDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *SecurityGroupDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SecurityGroupDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ SecurityGroupDeleteNotFound describes a response with status code 404, with defa
 Not Found
 */
 type SecurityGroupDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SecurityGroupDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this security group delete not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *SecurityGroupDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SecurityGroupDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupDeleteNotFound) GetPayload() *SecurityGroupDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *SecurityGroupDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SecurityGroupDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *SecurityGroupDeleteInternalServerError) String() string {
 
 func (o *SecurityGroupDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SecurityGroupDeleteBadRequestBodyItems0 security group delete bad request body items0
+swagger:model SecurityGroupDeleteBadRequestBodyItems0
+*/
+type SecurityGroupDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this security group delete bad request body items0
+func (o *SecurityGroupDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group delete bad request body items0 based on context it is used
+func (o *SecurityGroupDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupDeleteBody security group delete body
+swagger:model SecurityGroupDeleteBody
+*/
+type SecurityGroupDeleteBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this security group delete body
+func (o *SecurityGroupDeleteBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group delete body based on context it is used
+func (o *SecurityGroupDeleteBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupDeleteBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupDeleteBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupDeleteBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupDeleteForbiddenBody security group delete forbidden body
+swagger:model SecurityGroupDeleteForbiddenBody
+*/
+type SecurityGroupDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this security group delete forbidden body
+func (o *SecurityGroupDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group delete forbidden body based on context it is used
+func (o *SecurityGroupDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupDeleteNotFoundBody security group delete not found body
+swagger:model SecurityGroupDeleteNotFoundBody
+*/
+type SecurityGroupDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this security group delete not found body
+func (o *SecurityGroupDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group delete not found body based on context it is used
+func (o *SecurityGroupDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupDeleteUnauthorizedBody security group delete unauthorized body
+swagger:model SecurityGroupDeleteUnauthorizedBody
+*/
+type SecurityGroupDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this security group delete unauthorized body
+func (o *SecurityGroupDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group delete unauthorized body based on context it is used
+func (o *SecurityGroupDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package aws
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AwsUpdateReader is a Reader for the AwsUpdate structure.
@@ -75,7 +75,7 @@ AwsUpdateOK describes a response with status code 200, with default header value
 Success
 */
 type AwsUpdateOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws update o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AwsUpdateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *AwsUpdateOK) GetPayload() models.Unit {
+func (o *AwsUpdateOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AwsUpdateBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AwsUpdateBadRequest struct {
-	Payload []*models.Error
+	Payload []*AwsUpdateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this aws update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AwsUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsUpdateBadRequest) GetPayload() []*models.Error {
+func (o *AwsUpdateBadRequest) GetPayload() []*AwsUpdateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AwsUpdateUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type AwsUpdateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AwsUpdateUnauthorizedBody
 }
 
 // IsSuccess returns true when this aws update unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AwsUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsUpdateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AwsUpdateUnauthorized) GetPayload() *AwsUpdateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AwsUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AwsUpdateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AwsUpdateForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type AwsUpdateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AwsUpdateForbiddenBody
 }
 
 // IsSuccess returns true when this aws update forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AwsUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsUpdateForbidden) GetPayload() *models.ProblemDetails {
+func (o *AwsUpdateForbidden) GetPayload() *AwsUpdateForbiddenBody {
 	return o.Payload
 }
 
 func (o *AwsUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AwsUpdateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AwsUpdateNotFound describes a response with status code 404, with default header
 Not Found
 */
 type AwsUpdateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AwsUpdateNotFoundBody
 }
 
 // IsSuccess returns true when this aws update not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AwsUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsUpdateNotFound) GetPayload() *models.ProblemDetails {
+func (o *AwsUpdateNotFound) GetPayload() *AwsUpdateNotFoundBody {
 	return o.Payload
 }
 
 func (o *AwsUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AwsUpdateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,243 @@ func (o *AwsUpdateInternalServerError) String() string {
 
 func (o *AwsUpdateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AwsUpdateBadRequestBodyItems0 aws update bad request body items0
+swagger:model AwsUpdateBadRequestBodyItems0
+*/
+type AwsUpdateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this aws update bad request body items0
+func (o *AwsUpdateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws update bad request body items0 based on context it is used
+func (o *AwsUpdateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsUpdateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsUpdateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AwsUpdateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AwsUpdateBody aws update body
+swagger:model AwsUpdateBody
+*/
+type AwsUpdateBody struct {
+
+	// aws access key Id
+	AwsAccessKeyID string `json:"awsAccessKeyId,omitempty"`
+
+	// aws secret access key
+	AwsSecretAccessKey string `json:"awsSecretAccessKey,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this aws update body
+func (o *AwsUpdateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws update body based on context it is used
+func (o *AwsUpdateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsUpdateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsUpdateBody) UnmarshalBinary(b []byte) error {
+	var res AwsUpdateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AwsUpdateForbiddenBody aws update forbidden body
+swagger:model AwsUpdateForbiddenBody
+*/
+type AwsUpdateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this aws update forbidden body
+func (o *AwsUpdateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws update forbidden body based on context it is used
+func (o *AwsUpdateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsUpdateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsUpdateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AwsUpdateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AwsUpdateNotFoundBody aws update not found body
+swagger:model AwsUpdateNotFoundBody
+*/
+type AwsUpdateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this aws update not found body
+func (o *AwsUpdateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws update not found body based on context it is used
+func (o *AwsUpdateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsUpdateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsUpdateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AwsUpdateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AwsUpdateUnauthorizedBody aws update unauthorized body
+swagger:model AwsUpdateUnauthorizedBody
+*/
+type AwsUpdateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this aws update unauthorized body
+func (o *AwsUpdateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws update unauthorized body based on context it is used
+func (o *AwsUpdateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsUpdateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsUpdateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AwsUpdateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

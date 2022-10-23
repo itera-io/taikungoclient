@@ -6,13 +6,15 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesGetIngressesReader is a Reader for the KubernetesGetIngresses structure.
@@ -75,7 +77,7 @@ KubernetesGetIngressesOK describes a response with status code 200, with default
 Success
 */
 type KubernetesGetIngressesOK struct {
-	Payload *models.Ingresses
+	Payload *KubernetesGetIngressesOKBody
 }
 
 // IsSuccess returns true when this kubernetes get ingresses o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *KubernetesGetIngressesOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/ingress][%d] kubernetesGetIngressesOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesGetIngressesOK) GetPayload() *models.Ingresses {
+func (o *KubernetesGetIngressesOK) GetPayload() *KubernetesGetIngressesOKBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetIngressesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Ingresses)
+	o.Payload = new(KubernetesGetIngressesOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ KubernetesGetIngressesBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesGetIngressesBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesGetIngressesBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes get ingresses bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *KubernetesGetIngressesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/ingress][%d] kubernetesGetIngressesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetIngressesBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetIngressesBadRequest) GetPayload() []*KubernetesGetIngressesBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ KubernetesGetIngressesUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesGetIngressesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetIngressesUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes get ingresses unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *KubernetesGetIngressesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/ingress][%d] kubernetesGetIngressesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetIngressesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetIngressesUnauthorized) GetPayload() *KubernetesGetIngressesUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetIngressesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetIngressesUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ KubernetesGetIngressesForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesGetIngressesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetIngressesForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes get ingresses forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *KubernetesGetIngressesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/ingress][%d] kubernetesGetIngressesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetIngressesForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetIngressesForbidden) GetPayload() *KubernetesGetIngressesForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetIngressesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetIngressesForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ KubernetesGetIngressesNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesGetIngressesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetIngressesNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes get ingresses not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *KubernetesGetIngressesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/ingress][%d] kubernetesGetIngressesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetIngressesNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetIngressesNotFound) GetPayload() *KubernetesGetIngressesNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetIngressesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetIngressesNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,348 @@ func (o *KubernetesGetIngressesInternalServerError) String() string {
 
 func (o *KubernetesGetIngressesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesGetIngressesBadRequestBodyItems0 kubernetes get ingresses bad request body items0
+swagger:model KubernetesGetIngressesBadRequestBodyItems0
+*/
+type KubernetesGetIngressesBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes get ingresses bad request body items0
+func (o *KubernetesGetIngressesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get ingresses bad request body items0 based on context it is used
+func (o *KubernetesGetIngressesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetIngressesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetIngressesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetIngressesBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetIngressesForbiddenBody kubernetes get ingresses forbidden body
+swagger:model KubernetesGetIngressesForbiddenBody
+*/
+type KubernetesGetIngressesForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get ingresses forbidden body
+func (o *KubernetesGetIngressesForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get ingresses forbidden body based on context it is used
+func (o *KubernetesGetIngressesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetIngressesForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetIngressesForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetIngressesForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetIngressesNotFoundBody kubernetes get ingresses not found body
+swagger:model KubernetesGetIngressesNotFoundBody
+*/
+type KubernetesGetIngressesNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get ingresses not found body
+func (o *KubernetesGetIngressesNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get ingresses not found body based on context it is used
+func (o *KubernetesGetIngressesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetIngressesNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetIngressesNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetIngressesNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetIngressesOKBody kubernetes get ingresses o k body
+swagger:model KubernetesGetIngressesOKBody
+*/
+type KubernetesGetIngressesOKBody struct {
+
+	// data
+	Data []*KubernetesGetIngressesOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this kubernetes get ingresses o k body
+func (o *KubernetesGetIngressesOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetIngressesOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesGetIngressesOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesGetIngressesOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this kubernetes get ingresses o k body based on the context it is used
+func (o *KubernetesGetIngressesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetIngressesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesGetIngressesOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesGetIngressesOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetIngressesOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetIngressesOKBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetIngressesOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetIngressesOKBodyDataItems0 kubernetes get ingresses o k body data items0
+swagger:model KubernetesGetIngressesOKBodyDataItems0
+*/
+type KubernetesGetIngressesOKBodyDataItems0 struct {
+
+	// age
+	Age string `json:"age,omitempty"`
+
+	// hosts
+	Hosts string `json:"hosts,omitempty"`
+
+	// metadata name
+	MetadataName string `json:"metadataName,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+}
+
+// Validate validates this kubernetes get ingresses o k body data items0
+func (o *KubernetesGetIngressesOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get ingresses o k body data items0 based on context it is used
+func (o *KubernetesGetIngressesOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetIngressesOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetIngressesOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetIngressesOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetIngressesUnauthorizedBody kubernetes get ingresses unauthorized body
+swagger:model KubernetesGetIngressesUnauthorizedBody
+*/
+type KubernetesGetIngressesUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get ingresses unauthorized body
+func (o *KubernetesGetIngressesUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get ingresses unauthorized body based on context it is used
+func (o *KubernetesGetIngressesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetIngressesUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetIngressesUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetIngressesUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

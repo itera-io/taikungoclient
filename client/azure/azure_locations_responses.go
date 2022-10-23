@@ -6,13 +6,13 @@ package azure
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AzureLocationsReader is a Reader for the AzureLocations structure.
@@ -136,7 +136,7 @@ AzureLocationsBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AzureLocationsBadRequest struct {
-	Payload []*models.Error
+	Payload []*AzureLocationsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this azure locations bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AzureLocationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureLocationsBadRequest) GetPayload() []*models.Error {
+func (o *AzureLocationsBadRequest) GetPayload() []*AzureLocationsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AzureLocationsUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type AzureLocationsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AzureLocationsUnauthorizedBody
 }
 
 // IsSuccess returns true when this azure locations unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AzureLocationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureLocationsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AzureLocationsUnauthorized) GetPayload() *AzureLocationsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AzureLocationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AzureLocationsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AzureLocationsForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type AzureLocationsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AzureLocationsForbiddenBody
 }
 
 // IsSuccess returns true when this azure locations forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AzureLocationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureLocationsForbidden) GetPayload() *models.ProblemDetails {
+func (o *AzureLocationsForbidden) GetPayload() *AzureLocationsForbiddenBody {
 	return o.Payload
 }
 
 func (o *AzureLocationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AzureLocationsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AzureLocationsNotFound describes a response with status code 404, with default h
 Not Found
 */
 type AzureLocationsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AzureLocationsNotFoundBody
 }
 
 // IsSuccess returns true when this azure locations not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AzureLocationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureLocationsNotFound) GetPayload() *models.ProblemDetails {
+func (o *AzureLocationsNotFound) GetPayload() *AzureLocationsNotFoundBody {
 	return o.Payload
 }
 
 func (o *AzureLocationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AzureLocationsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,243 @@ func (o *AzureLocationsInternalServerError) String() string {
 
 func (o *AzureLocationsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AzureLocationsBadRequestBodyItems0 azure locations bad request body items0
+swagger:model AzureLocationsBadRequestBodyItems0
+*/
+type AzureLocationsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this azure locations bad request body items0
+func (o *AzureLocationsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure locations bad request body items0 based on context it is used
+func (o *AzureLocationsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureLocationsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureLocationsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AzureLocationsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureLocationsBody azure locations body
+swagger:model AzureLocationsBody
+*/
+type AzureLocationsBody struct {
+
+	// azure client Id
+	AzureClientID string `json:"azureClientId,omitempty"`
+
+	// azure client secret
+	AzureClientSecret string `json:"azureClientSecret,omitempty"`
+
+	// azure subscription Id
+	AzureSubscriptionID string `json:"azureSubscriptionId,omitempty"`
+
+	// azure tenant Id
+	AzureTenantID string `json:"azureTenantId,omitempty"`
+}
+
+// Validate validates this azure locations body
+func (o *AzureLocationsBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure locations body based on context it is used
+func (o *AzureLocationsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureLocationsBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureLocationsBody) UnmarshalBinary(b []byte) error {
+	var res AzureLocationsBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureLocationsForbiddenBody azure locations forbidden body
+swagger:model AzureLocationsForbiddenBody
+*/
+type AzureLocationsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this azure locations forbidden body
+func (o *AzureLocationsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure locations forbidden body based on context it is used
+func (o *AzureLocationsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureLocationsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureLocationsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AzureLocationsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureLocationsNotFoundBody azure locations not found body
+swagger:model AzureLocationsNotFoundBody
+*/
+type AzureLocationsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this azure locations not found body
+func (o *AzureLocationsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure locations not found body based on context it is used
+func (o *AzureLocationsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureLocationsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureLocationsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AzureLocationsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureLocationsUnauthorizedBody azure locations unauthorized body
+swagger:model AzureLocationsUnauthorizedBody
+*/
+type AzureLocationsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this azure locations unauthorized body
+func (o *AzureLocationsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure locations unauthorized body based on context it is used
+func (o *AzureLocationsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureLocationsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureLocationsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AzureLocationsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

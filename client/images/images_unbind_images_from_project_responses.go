@@ -6,13 +6,13 @@ package images
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ImagesUnbindImagesFromProjectReader is a Reader for the ImagesUnbindImagesFromProject structure.
@@ -75,7 +75,7 @@ ImagesUnbindImagesFromProjectOK describes a response with status code 200, with 
 Success
 */
 type ImagesUnbindImagesFromProjectOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images unbind images from project o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ImagesUnbindImagesFromProjectOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectOK  %+v", 200, o.Payload)
 }
 
-func (o *ImagesUnbindImagesFromProjectOK) GetPayload() models.Unit {
+func (o *ImagesUnbindImagesFromProjectOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ImagesUnbindImagesFromProjectBadRequest describes a response with status code 40
 Bad Request
 */
 type ImagesUnbindImagesFromProjectBadRequest struct {
-	Payload []*models.Error
+	Payload []*ImagesUnbindImagesFromProjectBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this images unbind images from project bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ImagesUnbindImagesFromProjectBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesUnbindImagesFromProjectBadRequest) GetPayload() []*models.Error {
+func (o *ImagesUnbindImagesFromProjectBadRequest) GetPayload() []*ImagesUnbindImagesFromProjectBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ImagesUnbindImagesFromProjectUnauthorized describes a response with status code 
 Unauthorized
 */
 type ImagesUnbindImagesFromProjectUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesUnbindImagesFromProjectUnauthorizedBody
 }
 
 // IsSuccess returns true when this images unbind images from project unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ImagesUnbindImagesFromProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesUnbindImagesFromProjectUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ImagesUnbindImagesFromProjectUnauthorized) GetPayload() *ImagesUnbindImagesFromProjectUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ImagesUnbindImagesFromProjectUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesUnbindImagesFromProjectUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ImagesUnbindImagesFromProjectForbidden describes a response with status code 403
 Forbidden
 */
 type ImagesUnbindImagesFromProjectForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesUnbindImagesFromProjectForbiddenBody
 }
 
 // IsSuccess returns true when this images unbind images from project forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ImagesUnbindImagesFromProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesUnbindImagesFromProjectForbidden) GetPayload() *models.ProblemDetails {
+func (o *ImagesUnbindImagesFromProjectForbidden) GetPayload() *ImagesUnbindImagesFromProjectForbiddenBody {
 	return o.Payload
 }
 
 func (o *ImagesUnbindImagesFromProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesUnbindImagesFromProjectForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ImagesUnbindImagesFromProjectNotFound describes a response with status code 404,
 Not Found
 */
 type ImagesUnbindImagesFromProjectNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesUnbindImagesFromProjectNotFoundBody
 }
 
 // IsSuccess returns true when this images unbind images from project not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ImagesUnbindImagesFromProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesUnbindImagesFromProjectNotFound) GetPayload() *models.ProblemDetails {
+func (o *ImagesUnbindImagesFromProjectNotFound) GetPayload() *ImagesUnbindImagesFromProjectNotFoundBody {
 	return o.Payload
 }
 
 func (o *ImagesUnbindImagesFromProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesUnbindImagesFromProjectNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *ImagesUnbindImagesFromProjectInternalServerError) String() string {
 
 func (o *ImagesUnbindImagesFromProjectInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ImagesUnbindImagesFromProjectBadRequestBodyItems0 images unbind images from project bad request body items0
+swagger:model ImagesUnbindImagesFromProjectBadRequestBodyItems0
+*/
+type ImagesUnbindImagesFromProjectBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this images unbind images from project bad request body items0
+func (o *ImagesUnbindImagesFromProjectBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images unbind images from project bad request body items0 based on context it is used
+func (o *ImagesUnbindImagesFromProjectBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesUnbindImagesFromProjectBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesUnbindImagesFromProjectBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ImagesUnbindImagesFromProjectBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesUnbindImagesFromProjectBody images unbind images from project body
+swagger:model ImagesUnbindImagesFromProjectBody
+*/
+type ImagesUnbindImagesFromProjectBody struct {
+
+	// ids
+	Ids []int32 `json:"ids"`
+}
+
+// Validate validates this images unbind images from project body
+func (o *ImagesUnbindImagesFromProjectBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images unbind images from project body based on context it is used
+func (o *ImagesUnbindImagesFromProjectBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesUnbindImagesFromProjectBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesUnbindImagesFromProjectBody) UnmarshalBinary(b []byte) error {
+	var res ImagesUnbindImagesFromProjectBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesUnbindImagesFromProjectForbiddenBody images unbind images from project forbidden body
+swagger:model ImagesUnbindImagesFromProjectForbiddenBody
+*/
+type ImagesUnbindImagesFromProjectForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images unbind images from project forbidden body
+func (o *ImagesUnbindImagesFromProjectForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images unbind images from project forbidden body based on context it is used
+func (o *ImagesUnbindImagesFromProjectForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesUnbindImagesFromProjectForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesUnbindImagesFromProjectForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ImagesUnbindImagesFromProjectForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesUnbindImagesFromProjectNotFoundBody images unbind images from project not found body
+swagger:model ImagesUnbindImagesFromProjectNotFoundBody
+*/
+type ImagesUnbindImagesFromProjectNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images unbind images from project not found body
+func (o *ImagesUnbindImagesFromProjectNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images unbind images from project not found body based on context it is used
+func (o *ImagesUnbindImagesFromProjectNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesUnbindImagesFromProjectNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesUnbindImagesFromProjectNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ImagesUnbindImagesFromProjectNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesUnbindImagesFromProjectUnauthorizedBody images unbind images from project unauthorized body
+swagger:model ImagesUnbindImagesFromProjectUnauthorizedBody
+*/
+type ImagesUnbindImagesFromProjectUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images unbind images from project unauthorized body
+func (o *ImagesUnbindImagesFromProjectUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images unbind images from project unauthorized body based on context it is used
+func (o *ImagesUnbindImagesFromProjectUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesUnbindImagesFromProjectUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesUnbindImagesFromProjectUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ImagesUnbindImagesFromProjectUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

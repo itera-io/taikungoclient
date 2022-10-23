@@ -6,13 +6,15 @@ package project_app
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ProjectAppEditParamsReader is a Reader for the ProjectAppEditParams structure.
@@ -75,7 +77,7 @@ ProjectAppEditParamsOK describes a response with status code 200, with default h
 Success
 */
 type ProjectAppEditParamsOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project app edit params o k response has a 2xx status code
@@ -111,7 +113,7 @@ func (o *ProjectAppEditParamsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectAppEditParamsOK) GetPayload() models.Unit {
+func (o *ProjectAppEditParamsOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +138,7 @@ ProjectAppEditParamsBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type ProjectAppEditParamsBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectAppEditParamsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this project app edit params bad request response has a 2xx status code
@@ -172,7 +174,7 @@ func (o *ProjectAppEditParamsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectAppEditParamsBadRequest) GetPayload() []*models.Error {
+func (o *ProjectAppEditParamsBadRequest) GetPayload() []*ProjectAppEditParamsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +199,7 @@ ProjectAppEditParamsUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type ProjectAppEditParamsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectAppEditParamsUnauthorizedBody
 }
 
 // IsSuccess returns true when this project app edit params unauthorized response has a 2xx status code
@@ -233,13 +235,13 @@ func (o *ProjectAppEditParamsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppEditParamsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppEditParamsUnauthorized) GetPayload() *ProjectAppEditParamsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectAppEditParamsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectAppEditParamsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +262,7 @@ ProjectAppEditParamsForbidden describes a response with status code 403, with de
 Forbidden
 */
 type ProjectAppEditParamsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectAppEditParamsForbiddenBody
 }
 
 // IsSuccess returns true when this project app edit params forbidden response has a 2xx status code
@@ -296,13 +298,13 @@ func (o *ProjectAppEditParamsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppEditParamsForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppEditParamsForbidden) GetPayload() *ProjectAppEditParamsForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectAppEditParamsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectAppEditParamsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +325,7 @@ ProjectAppEditParamsNotFound describes a response with status code 404, with def
 Not Found
 */
 type ProjectAppEditParamsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectAppEditParamsNotFoundBody
 }
 
 // IsSuccess returns true when this project app edit params not found response has a 2xx status code
@@ -359,13 +361,13 @@ func (o *ProjectAppEditParamsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppEditParamsNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppEditParamsNotFound) GetPayload() *ProjectAppEditParamsNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectAppEditParamsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectAppEditParamsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +425,348 @@ func (o *ProjectAppEditParamsInternalServerError) String() string {
 
 func (o *ProjectAppEditParamsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectAppEditParamsBadRequestBodyItems0 project app edit params bad request body items0
+swagger:model ProjectAppEditParamsBadRequestBodyItems0
+*/
+type ProjectAppEditParamsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this project app edit params bad request body items0
+func (o *ProjectAppEditParamsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app edit params bad request body items0 based on context it is used
+func (o *ProjectAppEditParamsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppEditParamsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppEditParamsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectAppEditParamsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppEditParamsBody project app edit params body
+swagger:model ProjectAppEditParamsBody
+*/
+type ProjectAppEditParamsBody struct {
+
+	// parameters
+	Parameters []*ProjectAppEditParamsParamsBodyParametersItems0 `json:"parameters"`
+
+	// project app Id
+	ProjectAppID int32 `json:"projectAppId,omitempty"`
+}
+
+// Validate validates this project app edit params body
+func (o *ProjectAppEditParamsBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateParameters(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectAppEditParamsBody) validateParameters(formats strfmt.Registry) error {
+	if swag.IsZero(o.Parameters) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Parameters); i++ {
+		if swag.IsZero(o.Parameters[i]) { // not required
+			continue
+		}
+
+		if o.Parameters[i] != nil {
+			if err := o.Parameters[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this project app edit params body based on the context it is used
+func (o *ProjectAppEditParamsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateParameters(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectAppEditParamsBody) contextValidateParameters(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Parameters); i++ {
+
+		if o.Parameters[i] != nil {
+			if err := o.Parameters[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppEditParamsBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppEditParamsBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppEditParamsBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppEditParamsForbiddenBody project app edit params forbidden body
+swagger:model ProjectAppEditParamsForbiddenBody
+*/
+type ProjectAppEditParamsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project app edit params forbidden body
+func (o *ProjectAppEditParamsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app edit params forbidden body based on context it is used
+func (o *ProjectAppEditParamsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppEditParamsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppEditParamsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppEditParamsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppEditParamsNotFoundBody project app edit params not found body
+swagger:model ProjectAppEditParamsNotFoundBody
+*/
+type ProjectAppEditParamsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project app edit params not found body
+func (o *ProjectAppEditParamsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app edit params not found body based on context it is used
+func (o *ProjectAppEditParamsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppEditParamsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppEditParamsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppEditParamsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppEditParamsParamsBodyParametersItems0 project app edit params params body parameters items0
+swagger:model ProjectAppEditParamsParamsBodyParametersItems0
+*/
+type ProjectAppEditParamsParamsBodyParametersItems0 struct {
+
+	// is changeable
+	IsChangeable bool `json:"isChangeable"`
+
+	// is readonly
+	IsReadonly bool `json:"isReadonly"`
+
+	// key
+	Key string `json:"key,omitempty"`
+
+	// value
+	Value string `json:"value,omitempty"`
+}
+
+// Validate validates this project app edit params params body parameters items0
+func (o *ProjectAppEditParamsParamsBodyParametersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app edit params params body parameters items0 based on context it is used
+func (o *ProjectAppEditParamsParamsBodyParametersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppEditParamsParamsBodyParametersItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppEditParamsParamsBodyParametersItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectAppEditParamsParamsBodyParametersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppEditParamsUnauthorizedBody project app edit params unauthorized body
+swagger:model ProjectAppEditParamsUnauthorizedBody
+*/
+type ProjectAppEditParamsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project app edit params unauthorized body
+func (o *ProjectAppEditParamsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app edit params unauthorized body based on context it is used
+func (o *ProjectAppEditParamsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppEditParamsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppEditParamsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppEditParamsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

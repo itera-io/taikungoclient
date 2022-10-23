@@ -6,13 +6,13 @@ package s3_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // S3CredentialsUpdateReader is a Reader for the S3CredentialsUpdate structure.
@@ -75,7 +75,7 @@ S3CredentialsUpdateOK describes a response with status code 200, with default he
 Success
 */
 type S3CredentialsUpdateOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this s3 credentials update o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *S3CredentialsUpdateOK) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *S3CredentialsUpdateOK) GetPayload() models.Unit {
+func (o *S3CredentialsUpdateOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ S3CredentialsUpdateBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type S3CredentialsUpdateBadRequest struct {
-	Payload []*models.Error
+	Payload []*S3CredentialsUpdateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this s3 credentials update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *S3CredentialsUpdateBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsUpdateBadRequest) GetPayload() []*models.Error {
+func (o *S3CredentialsUpdateBadRequest) GetPayload() []*S3CredentialsUpdateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ S3CredentialsUpdateUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type S3CredentialsUpdateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *S3CredentialsUpdateUnauthorizedBody
 }
 
 // IsSuccess returns true when this s3 credentials update unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *S3CredentialsUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *S3CredentialsUpdateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsUpdateUnauthorized) GetPayload() *S3CredentialsUpdateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *S3CredentialsUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(S3CredentialsUpdateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ S3CredentialsUpdateForbidden describes a response with status code 403, with def
 Forbidden
 */
 type S3CredentialsUpdateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *S3CredentialsUpdateForbiddenBody
 }
 
 // IsSuccess returns true when this s3 credentials update forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *S3CredentialsUpdateForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *S3CredentialsUpdateForbidden) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsUpdateForbidden) GetPayload() *S3CredentialsUpdateForbiddenBody {
 	return o.Payload
 }
 
 func (o *S3CredentialsUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(S3CredentialsUpdateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ S3CredentialsUpdateNotFound describes a response with status code 404, with defa
 Not Found
 */
 type S3CredentialsUpdateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *S3CredentialsUpdateNotFoundBody
 }
 
 // IsSuccess returns true when this s3 credentials update not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *S3CredentialsUpdateNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *S3CredentialsUpdateNotFound) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsUpdateNotFound) GetPayload() *S3CredentialsUpdateNotFoundBody {
 	return o.Payload
 }
 
 func (o *S3CredentialsUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(S3CredentialsUpdateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,243 @@ func (o *S3CredentialsUpdateInternalServerError) String() string {
 
 func (o *S3CredentialsUpdateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+S3CredentialsUpdateBadRequestBodyItems0 s3 credentials update bad request body items0
+swagger:model S3CredentialsUpdateBadRequestBodyItems0
+*/
+type S3CredentialsUpdateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this s3 credentials update bad request body items0
+func (o *S3CredentialsUpdateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this s3 credentials update bad request body items0 based on context it is used
+func (o *S3CredentialsUpdateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsUpdateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsUpdateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsUpdateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+S3CredentialsUpdateBody s3 credentials update body
+swagger:model S3CredentialsUpdateBody
+*/
+type S3CredentialsUpdateBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// s3 access key Id
+	S3AccessKeyID string `json:"s3AccessKeyId,omitempty"`
+
+	// s3 name
+	S3Name string `json:"s3Name,omitempty"`
+
+	// s3 secret key
+	S3SecretKey string `json:"s3SecretKey,omitempty"`
+}
+
+// Validate validates this s3 credentials update body
+func (o *S3CredentialsUpdateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this s3 credentials update body based on context it is used
+func (o *S3CredentialsUpdateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsUpdateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsUpdateBody) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsUpdateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+S3CredentialsUpdateForbiddenBody s3 credentials update forbidden body
+swagger:model S3CredentialsUpdateForbiddenBody
+*/
+type S3CredentialsUpdateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this s3 credentials update forbidden body
+func (o *S3CredentialsUpdateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this s3 credentials update forbidden body based on context it is used
+func (o *S3CredentialsUpdateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsUpdateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsUpdateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsUpdateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+S3CredentialsUpdateNotFoundBody s3 credentials update not found body
+swagger:model S3CredentialsUpdateNotFoundBody
+*/
+type S3CredentialsUpdateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this s3 credentials update not found body
+func (o *S3CredentialsUpdateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this s3 credentials update not found body based on context it is used
+func (o *S3CredentialsUpdateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsUpdateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsUpdateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsUpdateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+S3CredentialsUpdateUnauthorizedBody s3 credentials update unauthorized body
+swagger:model S3CredentialsUpdateUnauthorizedBody
+*/
+type S3CredentialsUpdateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this s3 credentials update unauthorized body
+func (o *S3CredentialsUpdateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this s3 credentials update unauthorized body based on context it is used
+func (o *S3CredentialsUpdateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsUpdateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsUpdateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsUpdateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -20,7 +20,7 @@ import (
 type BindPrometheusOrganizationsCommand struct {
 
 	// organizations
-	Organizations []*BindOrganizationsToRuleDto `json:"organizations"`
+	Organizations []*BindPrometheusOrganizationsCommandOrganizationsItems0 `json:"organizations"`
 
 	// prometheus rule Id
 	PrometheusRuleID int32 `json:"prometheusRuleId,omitempty"`
@@ -111,6 +111,52 @@ func (m *BindPrometheusOrganizationsCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BindPrometheusOrganizationsCommand) UnmarshalBinary(b []byte) error {
 	var res BindPrometheusOrganizationsCommand
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// BindPrometheusOrganizationsCommandOrganizationsItems0 bind prometheus organizations command organizations items0
+//
+// swagger:model BindPrometheusOrganizationsCommandOrganizationsItems0
+type BindPrometheusOrganizationsCommandOrganizationsItems0 struct {
+
+	// is bound
+	IsBound bool `json:"isBound"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// rule discount rate
+	RuleDiscountRate float64 `json:"ruleDiscountRate"`
+}
+
+// Validate validates this bind prometheus organizations command organizations items0
+func (m *BindPrometheusOrganizationsCommandOrganizationsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this bind prometheus organizations command organizations items0 based on context it is used
+func (m *BindPrometheusOrganizationsCommandOrganizationsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *BindPrometheusOrganizationsCommandOrganizationsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *BindPrometheusOrganizationsCommandOrganizationsItems0) UnmarshalBinary(b []byte) error {
+	var res BindPrometheusOrganizationsCommandOrganizationsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

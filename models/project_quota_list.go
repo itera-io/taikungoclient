@@ -20,7 +20,7 @@ import (
 type ProjectQuotaList struct {
 
 	// data
-	Data []*ProjectQuotaListDto `json:"data"`
+	Data []*ProjectQuotaListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,64 @@ func (m *ProjectQuotaList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ProjectQuotaList) UnmarshalBinary(b []byte) error {
 	var res ProjectQuotaList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectQuotaListDataItems0 project quota list data items0
+//
+// swagger:model ProjectQuotaListDataItems0
+type ProjectQuotaListDataItems0 struct {
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// server Cpu
+	ServerCPU int64 `json:"serverCpu,omitempty"`
+
+	// server disk size
+	ServerDiskSize int64 `json:"serverDiskSize,omitempty"`
+
+	// server Ram
+	ServerRAM int64 `json:"serverRam,omitempty"`
+
+	// vm Cpu
+	VMCPU int64 `json:"vmCpu,omitempty"`
+
+	// vm Ram
+	VMRAM int64 `json:"vmRam,omitempty"`
+
+	// vm volume size
+	VMVolumeSize int64 `json:"vmVolumeSize,omitempty"`
+}
+
+// Validate validates this project quota list data items0
+func (m *ProjectQuotaListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project quota list data items0 based on context it is used
+func (m *ProjectQuotaListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectQuotaListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectQuotaListDataItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectQuotaListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

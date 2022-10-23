@@ -6,13 +6,13 @@ package dns_servers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // DNSServersCreateReader is a Reader for the DNSServersCreate structure.
@@ -75,7 +75,7 @@ DNSServersCreateOK describes a response with status code 200, with default heade
 Success
 */
 type DNSServersCreateOK struct {
-	Payload *models.APIResponse
+	Payload *DNSServersCreateOKBody
 }
 
 // IsSuccess returns true when this dns servers create o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *DNSServersCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/DnsServers/create][%d] dnsServersCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *DNSServersCreateOK) GetPayload() *models.APIResponse {
+func (o *DNSServersCreateOK) GetPayload() *DNSServersCreateOKBody {
 	return o.Payload
 }
 
 func (o *DNSServersCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(DNSServersCreateOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ DNSServersCreateBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type DNSServersCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*DNSServersCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this dns servers create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *DNSServersCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/DnsServers/create][%d] dnsServersCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *DNSServersCreateBadRequest) GetPayload() []*models.Error {
+func (o *DNSServersCreateBadRequest) GetPayload() []*DNSServersCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ DNSServersCreateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type DNSServersCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *DNSServersCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this dns servers create unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *DNSServersCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/DnsServers/create][%d] dnsServersCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *DNSServersCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *DNSServersCreateUnauthorized) GetPayload() *DNSServersCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *DNSServersCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(DNSServersCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ DNSServersCreateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type DNSServersCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *DNSServersCreateForbiddenBody
 }
 
 // IsSuccess returns true when this dns servers create forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *DNSServersCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/DnsServers/create][%d] dnsServersCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *DNSServersCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *DNSServersCreateForbidden) GetPayload() *DNSServersCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *DNSServersCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(DNSServersCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ DNSServersCreateNotFound describes a response with status code 404, with default
 Not Found
 */
 type DNSServersCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *DNSServersCreateNotFoundBody
 }
 
 // IsSuccess returns true when this dns servers create not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *DNSServersCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/DnsServers/create][%d] dnsServersCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *DNSServersCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *DNSServersCreateNotFound) GetPayload() *DNSServersCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *DNSServersCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(DNSServersCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +425,287 @@ func (o *DNSServersCreateInternalServerError) String() string {
 
 func (o *DNSServersCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+DNSServersCreateBadRequestBodyItems0 DNS servers create bad request body items0
+swagger:model DNSServersCreateBadRequestBodyItems0
+*/
+type DNSServersCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this DNS servers create bad request body items0
+func (o *DNSServersCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this DNS servers create bad request body items0 based on context it is used
+func (o *DNSServersCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DNSServersCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DNSServersCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res DNSServersCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DNSServersCreateBody DNS servers create body
+swagger:model DNSServersCreateBody
+*/
+type DNSServersCreateBody struct {
+
+	// access profile Id
+	AccessProfileID int32 `json:"accessProfileId,omitempty"`
+
+	// address
+	Address string `json:"address,omitempty"`
+}
+
+// Validate validates this DNS servers create body
+func (o *DNSServersCreateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this DNS servers create body based on context it is used
+func (o *DNSServersCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DNSServersCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DNSServersCreateBody) UnmarshalBinary(b []byte) error {
+	var res DNSServersCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DNSServersCreateForbiddenBody DNS servers create forbidden body
+swagger:model DNSServersCreateForbiddenBody
+*/
+type DNSServersCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this DNS servers create forbidden body
+func (o *DNSServersCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this DNS servers create forbidden body based on context it is used
+func (o *DNSServersCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DNSServersCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DNSServersCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res DNSServersCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DNSServersCreateNotFoundBody DNS servers create not found body
+swagger:model DNSServersCreateNotFoundBody
+*/
+type DNSServersCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this DNS servers create not found body
+func (o *DNSServersCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this DNS servers create not found body based on context it is used
+func (o *DNSServersCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DNSServersCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DNSServersCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res DNSServersCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DNSServersCreateOKBody DNS servers create o k body
+swagger:model DNSServersCreateOKBody
+*/
+type DNSServersCreateOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this DNS servers create o k body
+func (o *DNSServersCreateOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this DNS servers create o k body based on context it is used
+func (o *DNSServersCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DNSServersCreateOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DNSServersCreateOKBody) UnmarshalBinary(b []byte) error {
+	var res DNSServersCreateOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DNSServersCreateUnauthorizedBody DNS servers create unauthorized body
+swagger:model DNSServersCreateUnauthorizedBody
+*/
+type DNSServersCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this DNS servers create unauthorized body
+func (o *DNSServersCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this DNS servers create unauthorized body based on context it is used
+func (o *DNSServersCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DNSServersCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DNSServersCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res DNSServersCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewServersResetParams creates a new ServersResetParams object,
@@ -64,7 +62,7 @@ ServersResetParams contains all the parameters to send to the API endpoint
 type ServersResetParams struct {
 
 	// Body.
-	Body *models.ResetServerStatusCommand
+	Body ServersResetBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *ServersResetParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the servers reset params
-func (o *ServersResetParams) WithBody(body *models.ResetServerStatusCommand) *ServersResetParams {
+func (o *ServersResetParams) WithBody(body ServersResetBody) *ServersResetParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the servers reset params
-func (o *ServersResetParams) SetBody(body *models.ResetServerStatusCommand) {
+func (o *ServersResetParams) SetBody(body ServersResetBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *ServersResetParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

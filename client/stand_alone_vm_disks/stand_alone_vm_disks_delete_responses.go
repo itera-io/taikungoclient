@@ -6,13 +6,13 @@ package stand_alone_vm_disks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // StandAloneVMDisksDeleteReader is a Reader for the StandAloneVMDisksDelete structure.
@@ -75,7 +75,7 @@ StandAloneVMDisksDeleteOK describes a response with status code 200, with defaul
 Success
 */
 type StandAloneVMDisksDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks delete o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneVMDisksDeleteOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneVMDisksDeleteOK) GetPayload() models.Unit {
+func (o *StandAloneVMDisksDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneVMDisksDeleteBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneVMDisksDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*StandAloneVMDisksDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this stand alone Vm disks delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneVMDisksDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneVMDisksDeleteBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneVMDisksDeleteBadRequest) GetPayload() []*StandAloneVMDisksDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneVMDisksDeleteUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneVMDisksDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneVMDisksDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this stand alone Vm disks delete unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneVMDisksDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksDeleteUnauthorized) GetPayload() *StandAloneVMDisksDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneVMDisksDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneVMDisksDeleteForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneVMDisksDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneVMDisksDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this stand alone Vm disks delete forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneVMDisksDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksDeleteForbidden) GetPayload() *StandAloneVMDisksDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneVMDisksDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneVMDisksDeleteNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneVMDisksDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneVMDisksDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this stand alone Vm disks delete not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneVMDisksDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksDeleteNotFound) GetPayload() *StandAloneVMDisksDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneVMDisksDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *StandAloneVMDisksDeleteInternalServerError) String() string {
 
 func (o *StandAloneVMDisksDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+StandAloneVMDisksDeleteBadRequestBodyItems0 stand alone VM disks delete bad request body items0
+swagger:model StandAloneVMDisksDeleteBadRequestBodyItems0
+*/
+type StandAloneVMDisksDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this stand alone VM disks delete bad request body items0
+func (o *StandAloneVMDisksDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks delete bad request body items0 based on context it is used
+func (o *StandAloneVMDisksDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneVMDisksDeleteBody stand alone VM disks delete body
+swagger:model StandAloneVMDisksDeleteBody
+*/
+type StandAloneVMDisksDeleteBody struct {
+
+	// standalone Vm Id
+	StandaloneVMID int32 `json:"standaloneVmId,omitempty"`
+
+	// vm disk ids
+	VMDiskIds []int32 `json:"vmDiskIds"`
+}
+
+// Validate validates this stand alone VM disks delete body
+func (o *StandAloneVMDisksDeleteBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks delete body based on context it is used
+func (o *StandAloneVMDisksDeleteBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksDeleteBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksDeleteBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksDeleteBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneVMDisksDeleteForbiddenBody stand alone VM disks delete forbidden body
+swagger:model StandAloneVMDisksDeleteForbiddenBody
+*/
+type StandAloneVMDisksDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone VM disks delete forbidden body
+func (o *StandAloneVMDisksDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks delete forbidden body based on context it is used
+func (o *StandAloneVMDisksDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneVMDisksDeleteNotFoundBody stand alone VM disks delete not found body
+swagger:model StandAloneVMDisksDeleteNotFoundBody
+*/
+type StandAloneVMDisksDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone VM disks delete not found body
+func (o *StandAloneVMDisksDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks delete not found body based on context it is used
+func (o *StandAloneVMDisksDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneVMDisksDeleteUnauthorizedBody stand alone VM disks delete unauthorized body
+swagger:model StandAloneVMDisksDeleteUnauthorizedBody
+*/
+type StandAloneVMDisksDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone VM disks delete unauthorized body
+func (o *StandAloneVMDisksDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks delete unauthorized body based on context it is used
+func (o *StandAloneVMDisksDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

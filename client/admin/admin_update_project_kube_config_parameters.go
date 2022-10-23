@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAdminUpdateProjectKubeConfigParams creates a new AdminUpdateProjectKubeConfigParams object,
@@ -64,7 +62,7 @@ AdminUpdateProjectKubeConfigParams contains all the parameters to send to the AP
 type AdminUpdateProjectKubeConfigParams struct {
 
 	// Body.
-	Body *models.AdminUpdateProjectKubeConfigCommand
+	Body AdminUpdateProjectKubeConfigBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *AdminUpdateProjectKubeConfigParams) SetHTTPClient(client *http.Client) 
 }
 
 // WithBody adds the body to the admin update project kube config params
-func (o *AdminUpdateProjectKubeConfigParams) WithBody(body *models.AdminUpdateProjectKubeConfigCommand) *AdminUpdateProjectKubeConfigParams {
+func (o *AdminUpdateProjectKubeConfigParams) WithBody(body AdminUpdateProjectKubeConfigBody) *AdminUpdateProjectKubeConfigParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the admin update project kube config params
-func (o *AdminUpdateProjectKubeConfigParams) SetBody(body *models.AdminUpdateProjectKubeConfigCommand) {
+func (o *AdminUpdateProjectKubeConfigParams) SetBody(body AdminUpdateProjectKubeConfigBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *AdminUpdateProjectKubeConfigParams) WriteToRequest(r runtime.ClientRequ
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

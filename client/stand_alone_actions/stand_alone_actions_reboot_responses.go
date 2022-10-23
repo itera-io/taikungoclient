@@ -6,13 +6,13 @@ package stand_alone_actions
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // StandAloneActionsRebootReader is a Reader for the StandAloneActionsReboot structure.
@@ -75,7 +75,7 @@ StandAloneActionsRebootOK describes a response with status code 200, with defaul
 Success
 */
 type StandAloneActionsRebootOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions reboot o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneActionsRebootOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneActionsRebootOK) GetPayload() models.Unit {
+func (o *StandAloneActionsRebootOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneActionsRebootBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneActionsRebootBadRequest struct {
-	Payload []*models.Error
+	Payload []*StandAloneActionsRebootBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this stand alone actions reboot bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneActionsRebootBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsRebootBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneActionsRebootBadRequest) GetPayload() []*StandAloneActionsRebootBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneActionsRebootUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneActionsRebootUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneActionsRebootUnauthorizedBody
 }
 
 // IsSuccess returns true when this stand alone actions reboot unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneActionsRebootUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsRebootUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsRebootUnauthorized) GetPayload() *StandAloneActionsRebootUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *StandAloneActionsRebootUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneActionsRebootUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneActionsRebootForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneActionsRebootForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneActionsRebootForbiddenBody
 }
 
 // IsSuccess returns true when this stand alone actions reboot forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneActionsRebootForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsRebootForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsRebootForbidden) GetPayload() *StandAloneActionsRebootForbiddenBody {
 	return o.Payload
 }
 
 func (o *StandAloneActionsRebootForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneActionsRebootForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneActionsRebootNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneActionsRebootNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneActionsRebootNotFoundBody
 }
 
 // IsSuccess returns true when this stand alone actions reboot not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneActionsRebootNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsRebootNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsRebootNotFound) GetPayload() *StandAloneActionsRebootNotFoundBody {
 	return o.Payload
 }
 
 func (o *StandAloneActionsRebootNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneActionsRebootNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *StandAloneActionsRebootInternalServerError) String() string {
 
 func (o *StandAloneActionsRebootInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+StandAloneActionsRebootBadRequestBodyItems0 stand alone actions reboot bad request body items0
+swagger:model StandAloneActionsRebootBadRequestBodyItems0
+*/
+type StandAloneActionsRebootBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this stand alone actions reboot bad request body items0
+func (o *StandAloneActionsRebootBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone actions reboot bad request body items0 based on context it is used
+func (o *StandAloneActionsRebootBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneActionsRebootBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneActionsRebootBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneActionsRebootBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneActionsRebootBody stand alone actions reboot body
+swagger:model StandAloneActionsRebootBody
+*/
+type StandAloneActionsRebootBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone actions reboot body
+func (o *StandAloneActionsRebootBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone actions reboot body based on context it is used
+func (o *StandAloneActionsRebootBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneActionsRebootBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneActionsRebootBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneActionsRebootBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneActionsRebootForbiddenBody stand alone actions reboot forbidden body
+swagger:model StandAloneActionsRebootForbiddenBody
+*/
+type StandAloneActionsRebootForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone actions reboot forbidden body
+func (o *StandAloneActionsRebootForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone actions reboot forbidden body based on context it is used
+func (o *StandAloneActionsRebootForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneActionsRebootForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneActionsRebootForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneActionsRebootForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneActionsRebootNotFoundBody stand alone actions reboot not found body
+swagger:model StandAloneActionsRebootNotFoundBody
+*/
+type StandAloneActionsRebootNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone actions reboot not found body
+func (o *StandAloneActionsRebootNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone actions reboot not found body based on context it is used
+func (o *StandAloneActionsRebootNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneActionsRebootNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneActionsRebootNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneActionsRebootNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneActionsRebootUnauthorizedBody stand alone actions reboot unauthorized body
+swagger:model StandAloneActionsRebootUnauthorizedBody
+*/
+type StandAloneActionsRebootUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone actions reboot unauthorized body
+func (o *StandAloneActionsRebootUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone actions reboot unauthorized body based on context it is used
+func (o *StandAloneActionsRebootUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneActionsRebootUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneActionsRebootUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneActionsRebootUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -20,7 +20,7 @@ import (
 type NodesSearchList struct {
 
 	// data
-	Data []*NodeSearchResponseData `json:"data"`
+	Data []*NodesSearchListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,55 @@ func (m *NodesSearchList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *NodesSearchList) UnmarshalBinary(b []byte) error {
 	var res NodesSearchList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// NodesSearchListDataItems0 nodes search list data items0
+//
+// swagger:model NodesSearchListDataItems0
+type NodesSearchListDataItems0 struct {
+
+	// metadata name
+	MetadataName string `json:"metadataName,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this nodes search list data items0
+func (m *NodesSearchListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this nodes search list data items0 based on context it is used
+func (m *NodesSearchListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *NodesSearchListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *NodesSearchListDataItems0) UnmarshalBinary(b []byte) error {
+	var res NodesSearchListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

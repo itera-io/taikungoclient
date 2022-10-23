@@ -6,13 +6,13 @@ package images
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ImagesGetImageDetailsByIDReader is a Reader for the ImagesGetImageDetailsByID structure.
@@ -136,7 +136,7 @@ ImagesGetImageDetailsByIDBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ImagesGetImageDetailsByIDBadRequest struct {
-	Payload []*models.Error
+	Payload []*ImagesGetImageDetailsByIDBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this images get image details by Id bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ImagesGetImageDetailsByIDBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesGetImageDetailsByIDBadRequest) GetPayload() []*models.Error {
+func (o *ImagesGetImageDetailsByIDBadRequest) GetPayload() []*ImagesGetImageDetailsByIDBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ImagesGetImageDetailsByIDUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ImagesGetImageDetailsByIDUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesGetImageDetailsByIDUnauthorizedBody
 }
 
 // IsSuccess returns true when this images get image details by Id unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ImagesGetImageDetailsByIDUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesGetImageDetailsByIDUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ImagesGetImageDetailsByIDUnauthorized) GetPayload() *ImagesGetImageDetailsByIDUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ImagesGetImageDetailsByIDUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesGetImageDetailsByIDUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ImagesGetImageDetailsByIDForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ImagesGetImageDetailsByIDForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesGetImageDetailsByIDForbiddenBody
 }
 
 // IsSuccess returns true when this images get image details by Id forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ImagesGetImageDetailsByIDForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesGetImageDetailsByIDForbidden) GetPayload() *models.ProblemDetails {
+func (o *ImagesGetImageDetailsByIDForbidden) GetPayload() *ImagesGetImageDetailsByIDForbiddenBody {
 	return o.Payload
 }
 
 func (o *ImagesGetImageDetailsByIDForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesGetImageDetailsByIDForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ImagesGetImageDetailsByIDNotFound describes a response with status code 404, wit
 Not Found
 */
 type ImagesGetImageDetailsByIDNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesGetImageDetailsByIDNotFoundBody
 }
 
 // IsSuccess returns true when this images get image details by Id not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ImagesGetImageDetailsByIDNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesGetImageDetailsByIDNotFound) GetPayload() *models.ProblemDetails {
+func (o *ImagesGetImageDetailsByIDNotFound) GetPayload() *ImagesGetImageDetailsByIDNotFoundBody {
 	return o.Payload
 }
 
 func (o *ImagesGetImageDetailsByIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesGetImageDetailsByIDNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *ImagesGetImageDetailsByIDInternalServerError) String() string {
 
 func (o *ImagesGetImageDetailsByIDInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ImagesGetImageDetailsByIDBadRequestBodyItems0 images get image details by ID bad request body items0
+swagger:model ImagesGetImageDetailsByIDBadRequestBodyItems0
+*/
+type ImagesGetImageDetailsByIDBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this images get image details by ID bad request body items0
+func (o *ImagesGetImageDetailsByIDBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images get image details by ID bad request body items0 based on context it is used
+func (o *ImagesGetImageDetailsByIDBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesGetImageDetailsByIDBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesGetImageDetailsByIDBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ImagesGetImageDetailsByIDBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesGetImageDetailsByIDBody images get image details by ID body
+swagger:model ImagesGetImageDetailsByIDBody
+*/
+type ImagesGetImageDetailsByIDBody struct {
+
+	// cloud Id
+	CloudID int32 `json:"cloudId,omitempty"`
+
+	// image Id
+	ImageID string `json:"imageId,omitempty"`
+}
+
+// Validate validates this images get image details by ID body
+func (o *ImagesGetImageDetailsByIDBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images get image details by ID body based on context it is used
+func (o *ImagesGetImageDetailsByIDBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesGetImageDetailsByIDBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesGetImageDetailsByIDBody) UnmarshalBinary(b []byte) error {
+	var res ImagesGetImageDetailsByIDBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesGetImageDetailsByIDForbiddenBody images get image details by ID forbidden body
+swagger:model ImagesGetImageDetailsByIDForbiddenBody
+*/
+type ImagesGetImageDetailsByIDForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images get image details by ID forbidden body
+func (o *ImagesGetImageDetailsByIDForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images get image details by ID forbidden body based on context it is used
+func (o *ImagesGetImageDetailsByIDForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesGetImageDetailsByIDForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesGetImageDetailsByIDForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ImagesGetImageDetailsByIDForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesGetImageDetailsByIDNotFoundBody images get image details by ID not found body
+swagger:model ImagesGetImageDetailsByIDNotFoundBody
+*/
+type ImagesGetImageDetailsByIDNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images get image details by ID not found body
+func (o *ImagesGetImageDetailsByIDNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images get image details by ID not found body based on context it is used
+func (o *ImagesGetImageDetailsByIDNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesGetImageDetailsByIDNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesGetImageDetailsByIDNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ImagesGetImageDetailsByIDNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesGetImageDetailsByIDUnauthorizedBody images get image details by ID unauthorized body
+swagger:model ImagesGetImageDetailsByIDUnauthorizedBody
+*/
+type ImagesGetImageDetailsByIDUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images get image details by ID unauthorized body
+func (o *ImagesGetImageDetailsByIDUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images get image details by ID unauthorized body based on context it is used
+func (o *ImagesGetImageDetailsByIDUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesGetImageDetailsByIDUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesGetImageDetailsByIDUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ImagesGetImageDetailsByIDUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

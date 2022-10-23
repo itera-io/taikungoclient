@@ -7,11 +7,13 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // StandAloneProfileCreateCommand stand alone profile create command
@@ -29,7 +31,7 @@ type StandAloneProfileCreateCommand struct {
 	PublicKey string `json:"publicKey,omitempty"`
 
 	// security groups
-	SecurityGroups []*StandAloneProfileSecurityGroupDto `json:"securityGroups"`
+	SecurityGroups []*StandAloneProfileCreateCommandSecurityGroupsItems0 `json:"securityGroups"`
 }
 
 // Validate validates this stand alone profile create command
@@ -117,6 +119,98 @@ func (m *StandAloneProfileCreateCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *StandAloneProfileCreateCommand) UnmarshalBinary(b []byte) error {
 	var res StandAloneProfileCreateCommand
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// StandAloneProfileCreateCommandSecurityGroupsItems0 stand alone profile create command security groups items0
+//
+// swagger:model StandAloneProfileCreateCommandSecurityGroupsItems0
+type StandAloneProfileCreateCommandSecurityGroupsItems0 struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// port max range
+	PortMaxRange int32 `json:"portMaxRange,omitempty"`
+
+	// port min range
+	PortMinRange int32 `json:"portMinRange,omitempty"`
+
+	// protocol
+	// Enum: [100 200 300]
+	Protocol int32 `json:"protocol,omitempty"`
+
+	// remote Ip prefix
+	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
+}
+
+// Validate validates this stand alone profile create command security groups items0
+func (m *StandAloneProfileCreateCommandSecurityGroupsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateProtocol(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var standAloneProfileCreateCommandSecurityGroupsItems0TypeProtocolPropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200,300]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		standAloneProfileCreateCommandSecurityGroupsItems0TypeProtocolPropEnum = append(standAloneProfileCreateCommandSecurityGroupsItems0TypeProtocolPropEnum, v)
+	}
+}
+
+// prop value enum
+func (m *StandAloneProfileCreateCommandSecurityGroupsItems0) validateProtocolEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, standAloneProfileCreateCommandSecurityGroupsItems0TypeProtocolPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *StandAloneProfileCreateCommandSecurityGroupsItems0) validateProtocol(formats strfmt.Registry) error {
+	if swag.IsZero(m.Protocol) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateProtocolEnum("protocol", "body", m.Protocol); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this stand alone profile create command security groups items0 based on context it is used
+func (m *StandAloneProfileCreateCommandSecurityGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *StandAloneProfileCreateCommandSecurityGroupsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *StandAloneProfileCreateCommandSecurityGroupsItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileCreateCommandSecurityGroupsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

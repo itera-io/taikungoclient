@@ -50,7 +50,7 @@ type PartnerDetailsDto struct {
 	Name string `json:"name,omitempty"`
 
 	// organizations
-	Organizations []*CommonDropdownDto `json:"organizations"`
+	Organizations []*PartnerDetailsDtoOrganizationsItems0 `json:"organizations"`
 
 	// payment enabled
 	PaymentEnabled bool `json:"paymentEnabled"`
@@ -65,7 +65,7 @@ type PartnerDetailsDto struct {
 	VatNumber string `json:"vatNumber,omitempty"`
 
 	// white list domains
-	WhiteListDomains []*WhiteListDomainDto `json:"whiteListDomains"`
+	WhiteListDomains []*PartnerDetailsDtoWhiteListDomainsItems0 `json:"whiteListDomains"`
 }
 
 // Validate validates this partner details dto
@@ -207,6 +207,86 @@ func (m *PartnerDetailsDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PartnerDetailsDto) UnmarshalBinary(b []byte) error {
 	var res PartnerDetailsDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PartnerDetailsDtoOrganizationsItems0 partner details dto organizations items0
+//
+// swagger:model PartnerDetailsDtoOrganizationsItems0
+type PartnerDetailsDtoOrganizationsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this partner details dto organizations items0
+func (m *PartnerDetailsDtoOrganizationsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this partner details dto organizations items0 based on context it is used
+func (m *PartnerDetailsDtoOrganizationsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PartnerDetailsDtoOrganizationsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PartnerDetailsDtoOrganizationsItems0) UnmarshalBinary(b []byte) error {
+	var res PartnerDetailsDtoOrganizationsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PartnerDetailsDtoWhiteListDomainsItems0 partner details dto white list domains items0
+//
+// swagger:model PartnerDetailsDtoWhiteListDomainsItems0
+type PartnerDetailsDtoWhiteListDomainsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this partner details dto white list domains items0
+func (m *PartnerDetailsDtoWhiteListDomainsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this partner details dto white list domains items0 based on context it is used
+func (m *PartnerDetailsDtoWhiteListDomainsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PartnerDetailsDtoWhiteListDomainsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PartnerDetailsDtoWhiteListDomainsItems0) UnmarshalBinary(b []byte) error {
+	var res PartnerDetailsDtoWhiteListDomainsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

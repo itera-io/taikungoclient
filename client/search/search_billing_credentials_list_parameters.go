@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSearchBillingCredentialsListParams creates a new SearchBillingCredentialsListParams object,
@@ -64,7 +62,7 @@ SearchBillingCredentialsListParams contains all the parameters to send to the AP
 type SearchBillingCredentialsListParams struct {
 
 	// Body.
-	Body *models.BillingCredentialsSearchCommand
+	Body SearchBillingCredentialsListBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *SearchBillingCredentialsListParams) SetHTTPClient(client *http.Client) 
 }
 
 // WithBody adds the body to the search billing credentials list params
-func (o *SearchBillingCredentialsListParams) WithBody(body *models.BillingCredentialsSearchCommand) *SearchBillingCredentialsListParams {
+func (o *SearchBillingCredentialsListParams) WithBody(body SearchBillingCredentialsListBody) *SearchBillingCredentialsListParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the search billing credentials list params
-func (o *SearchBillingCredentialsListParams) SetBody(body *models.BillingCredentialsSearchCommand) {
+func (o *SearchBillingCredentialsListParams) SetBody(body SearchBillingCredentialsListBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *SearchBillingCredentialsListParams) WriteToRequest(r runtime.ClientRequ
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

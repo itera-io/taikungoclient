@@ -27,7 +27,7 @@ type ProjectFullListDto struct {
 	AccessProfileRevision int32 `json:"accessProfileRevision,omitempty"`
 
 	// access profiles
-	AccessProfiles *AccessProfilesForProjectListDto `json:"accessProfiles,omitempty"`
+	AccessProfiles *ProjectFullListDtoAccessProfiles `json:"accessProfiles,omitempty"`
 
 	// cidr
 	Cidr string `json:"cidr,omitempty"`
@@ -96,7 +96,7 @@ type ProjectFullListDto struct {
 	PublicIP string `json:"publicIp,omitempty"`
 
 	// standalone vms
-	StandaloneVms []*StandAloneVMFullDto `json:"standaloneVms"`
+	StandaloneVms []*ProjectFullListDtoStandaloneVmsItems0 `json:"standaloneVms"`
 
 	// status
 	Status string `json:"status,omitempty"`
@@ -259,6 +259,904 @@ func (m *ProjectFullListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ProjectFullListDto) UnmarshalBinary(b []byte) error {
 	var res ProjectFullListDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectFullListDtoAccessProfiles project full list dto access profiles
+//
+// swagger:model ProjectFullListDtoAccessProfiles
+type ProjectFullListDtoAccessProfiles struct {
+
+	// allowed hosts
+	AllowedHosts []*ProjectFullListDtoAccessProfilesAllowedHostsItems0 `json:"allowedHosts"`
+
+	// dns servers
+	DNSServers []*ProjectFullListDtoAccessProfilesDNSServersItems0 `json:"dnsServers"`
+
+	// http proxy
+	HTTPProxy string `json:"httpProxy,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// ntp servers
+	NtpServers []*ProjectFullListDtoAccessProfilesNtpServersItems0 `json:"ntpServers"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// revision
+	Revision int32 `json:"revision,omitempty"`
+
+	// ssh users
+	SSHUsers []*ProjectFullListDtoAccessProfilesSSHUsersItems0 `json:"sshUsers"`
+}
+
+// Validate validates this project full list dto access profiles
+func (m *ProjectFullListDtoAccessProfiles) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAllowedHosts(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDNSServers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNtpServers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSSHUsers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ProjectFullListDtoAccessProfiles) validateAllowedHosts(formats strfmt.Registry) error {
+	if swag.IsZero(m.AllowedHosts) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.AllowedHosts); i++ {
+		if swag.IsZero(m.AllowedHosts[i]) { // not required
+			continue
+		}
+
+		if m.AllowedHosts[i] != nil {
+			if err := m.AllowedHosts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("accessProfiles" + "." + "allowedHosts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("accessProfiles" + "." + "allowedHosts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ProjectFullListDtoAccessProfiles) validateDNSServers(formats strfmt.Registry) error {
+	if swag.IsZero(m.DNSServers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.DNSServers); i++ {
+		if swag.IsZero(m.DNSServers[i]) { // not required
+			continue
+		}
+
+		if m.DNSServers[i] != nil {
+			if err := m.DNSServers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("accessProfiles" + "." + "dnsServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("accessProfiles" + "." + "dnsServers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ProjectFullListDtoAccessProfiles) validateNtpServers(formats strfmt.Registry) error {
+	if swag.IsZero(m.NtpServers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.NtpServers); i++ {
+		if swag.IsZero(m.NtpServers[i]) { // not required
+			continue
+		}
+
+		if m.NtpServers[i] != nil {
+			if err := m.NtpServers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("accessProfiles" + "." + "ntpServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("accessProfiles" + "." + "ntpServers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ProjectFullListDtoAccessProfiles) validateSSHUsers(formats strfmt.Registry) error {
+	if swag.IsZero(m.SSHUsers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.SSHUsers); i++ {
+		if swag.IsZero(m.SSHUsers[i]) { // not required
+			continue
+		}
+
+		if m.SSHUsers[i] != nil {
+			if err := m.SSHUsers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("accessProfiles" + "." + "sshUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("accessProfiles" + "." + "sshUsers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this project full list dto access profiles based on the context it is used
+func (m *ProjectFullListDtoAccessProfiles) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAllowedHosts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDNSServers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateNtpServers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSSHUsers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ProjectFullListDtoAccessProfiles) contextValidateAllowedHosts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AllowedHosts); i++ {
+
+		if m.AllowedHosts[i] != nil {
+			if err := m.AllowedHosts[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("accessProfiles" + "." + "allowedHosts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("accessProfiles" + "." + "allowedHosts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ProjectFullListDtoAccessProfiles) contextValidateDNSServers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.DNSServers); i++ {
+
+		if m.DNSServers[i] != nil {
+			if err := m.DNSServers[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("accessProfiles" + "." + "dnsServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("accessProfiles" + "." + "dnsServers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ProjectFullListDtoAccessProfiles) contextValidateNtpServers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.NtpServers); i++ {
+
+		if m.NtpServers[i] != nil {
+			if err := m.NtpServers[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("accessProfiles" + "." + "ntpServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("accessProfiles" + "." + "ntpServers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ProjectFullListDtoAccessProfiles) contextValidateSSHUsers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.SSHUsers); i++ {
+
+		if m.SSHUsers[i] != nil {
+			if err := m.SSHUsers[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("accessProfiles" + "." + "sshUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("accessProfiles" + "." + "sshUsers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectFullListDtoAccessProfiles) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectFullListDtoAccessProfiles) UnmarshalBinary(b []byte) error {
+	var res ProjectFullListDtoAccessProfiles
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectFullListDtoAccessProfilesAllowedHostsItems0 project full list dto access profiles allowed hosts items0
+//
+// swagger:model ProjectFullListDtoAccessProfilesAllowedHostsItems0
+type ProjectFullListDtoAccessProfilesAllowedHostsItems0 struct {
+
+	// access profile Id
+	AccessProfileID int32 `json:"accessProfileId,omitempty"`
+
+	// access profile name
+	AccessProfileName string `json:"accessProfileName,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// ip address
+	IPAddress string `json:"ipAddress,omitempty"`
+
+	// mask bits
+	MaskBits int32 `json:"maskBits,omitempty"`
+}
+
+// Validate validates this project full list dto access profiles allowed hosts items0
+func (m *ProjectFullListDtoAccessProfilesAllowedHostsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project full list dto access profiles allowed hosts items0 based on context it is used
+func (m *ProjectFullListDtoAccessProfilesAllowedHostsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectFullListDtoAccessProfilesAllowedHostsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectFullListDtoAccessProfilesAllowedHostsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectFullListDtoAccessProfilesAllowedHostsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectFullListDtoAccessProfilesDNSServersItems0 project full list dto access profiles DNS servers items0
+//
+// swagger:model ProjectFullListDtoAccessProfilesDNSServersItems0
+type ProjectFullListDtoAccessProfilesDNSServersItems0 struct {
+
+	// address
+	Address string `json:"address,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this project full list dto access profiles DNS servers items0
+func (m *ProjectFullListDtoAccessProfilesDNSServersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project full list dto access profiles DNS servers items0 based on context it is used
+func (m *ProjectFullListDtoAccessProfilesDNSServersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectFullListDtoAccessProfilesDNSServersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectFullListDtoAccessProfilesDNSServersItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectFullListDtoAccessProfilesDNSServersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectFullListDtoAccessProfilesNtpServersItems0 project full list dto access profiles ntp servers items0
+//
+// swagger:model ProjectFullListDtoAccessProfilesNtpServersItems0
+type ProjectFullListDtoAccessProfilesNtpServersItems0 struct {
+
+	// address
+	Address string `json:"address,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this project full list dto access profiles ntp servers items0
+func (m *ProjectFullListDtoAccessProfilesNtpServersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project full list dto access profiles ntp servers items0 based on context it is used
+func (m *ProjectFullListDtoAccessProfilesNtpServersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectFullListDtoAccessProfilesNtpServersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectFullListDtoAccessProfilesNtpServersItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectFullListDtoAccessProfilesNtpServersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectFullListDtoAccessProfilesSSHUsersItems0 project full list dto access profiles SSH users items0
+//
+// swagger:model ProjectFullListDtoAccessProfilesSSHUsersItems0
+type ProjectFullListDtoAccessProfilesSSHUsersItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is deleted
+	IsDeleted bool `json:"isDeleted"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// ssh public key
+	SSHPublicKey string `json:"sshPublicKey,omitempty"`
+}
+
+// Validate validates this project full list dto access profiles SSH users items0
+func (m *ProjectFullListDtoAccessProfilesSSHUsersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project full list dto access profiles SSH users items0 based on context it is used
+func (m *ProjectFullListDtoAccessProfilesSSHUsersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectFullListDtoAccessProfilesSSHUsersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectFullListDtoAccessProfilesSSHUsersItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectFullListDtoAccessProfilesSSHUsersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectFullListDtoStandaloneVmsItems0 project full list dto standalone vms items0
+//
+// swagger:model ProjectFullListDtoStandaloneVmsItems0
+type ProjectFullListDtoStandaloneVmsItems0 struct {
+
+	// availability zone
+	AvailabilityZone string `json:"availabilityZone,omitempty"`
+
+	// cloud init
+	CloudInit string `json:"cloudInit,omitempty"`
+
+	// cpu
+	CPU int32 `json:"cpu,omitempty"`
+
+	// flavor Id
+	FlavorID string `json:"flavorId,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// image
+	Image string `json:"image,omitempty"`
+
+	// is windows
+	IsWindows bool `json:"isWindows"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// password
+	Password string `json:"password,omitempty"`
+
+	// public Ip enabled
+	PublicIPEnabled bool `json:"publicIpEnabled"`
+
+	// ram
+	RAM int64 `json:"ram,omitempty"`
+
+	// revision
+	Revision int32 `json:"revision,omitempty"`
+
+	// shut off
+	ShutOff bool `json:"shutOff"`
+
+	// spot instance
+	SpotInstance bool `json:"spotInstance"`
+
+	// spot price
+	SpotPrice string `json:"spotPrice,omitempty"`
+
+	// ssh public key
+	SSHPublicKey string `json:"sshPublicKey,omitempty"`
+
+	// stand alone profile
+	StandAloneProfile *ProjectFullListDtoStandaloneVmsItems0StandAloneProfile `json:"standAloneProfile,omitempty"`
+
+	// stand alone Vm disks
+	StandAloneVMDisks []*ProjectFullListDtoStandaloneVmsItems0StandAloneVMDisksItems0 `json:"standAloneVmDisks"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// username
+	Username string `json:"username,omitempty"`
+
+	// volume size
+	VolumeSize int64 `json:"volumeSize,omitempty"`
+
+	// volume type
+	VolumeType string `json:"volumeType,omitempty"`
+}
+
+// Validate validates this project full list dto standalone vms items0
+func (m *ProjectFullListDtoStandaloneVmsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateStandAloneProfile(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStandAloneVMDisks(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ProjectFullListDtoStandaloneVmsItems0) validateStandAloneProfile(formats strfmt.Registry) error {
+	if swag.IsZero(m.StandAloneProfile) { // not required
+		return nil
+	}
+
+	if m.StandAloneProfile != nil {
+		if err := m.StandAloneProfile.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("standAloneProfile")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("standAloneProfile")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ProjectFullListDtoStandaloneVmsItems0) validateStandAloneVMDisks(formats strfmt.Registry) error {
+	if swag.IsZero(m.StandAloneVMDisks) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.StandAloneVMDisks); i++ {
+		if swag.IsZero(m.StandAloneVMDisks[i]) { // not required
+			continue
+		}
+
+		if m.StandAloneVMDisks[i] != nil {
+			if err := m.StandAloneVMDisks[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this project full list dto standalone vms items0 based on the context it is used
+func (m *ProjectFullListDtoStandaloneVmsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateStandAloneProfile(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStandAloneVMDisks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ProjectFullListDtoStandaloneVmsItems0) contextValidateStandAloneProfile(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StandAloneProfile != nil {
+		if err := m.StandAloneProfile.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("standAloneProfile")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("standAloneProfile")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ProjectFullListDtoStandaloneVmsItems0) contextValidateStandAloneVMDisks(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.StandAloneVMDisks); i++ {
+
+		if m.StandAloneVMDisks[i] != nil {
+			if err := m.StandAloneVMDisks[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectFullListDtoStandaloneVmsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectFullListDtoStandaloneVmsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectFullListDtoStandaloneVmsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectFullListDtoStandaloneVmsItems0StandAloneProfile project full list dto standalone vms items0 stand alone profile
+//
+// swagger:model ProjectFullListDtoStandaloneVmsItems0StandAloneProfile
+type ProjectFullListDtoStandaloneVmsItems0StandAloneProfile struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// public key
+	PublicKey string `json:"publicKey,omitempty"`
+
+	// revision
+	Revision int32 `json:"revision,omitempty"`
+
+	// stand alone profile security groups
+	StandAloneProfileSecurityGroups []*ProjectFullListDtoStandaloneVmsItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0 `json:"standAloneProfileSecurityGroups"`
+}
+
+// Validate validates this project full list dto standalone vms items0 stand alone profile
+func (m *ProjectFullListDtoStandaloneVmsItems0StandAloneProfile) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateStandAloneProfileSecurityGroups(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ProjectFullListDtoStandaloneVmsItems0StandAloneProfile) validateStandAloneProfileSecurityGroups(formats strfmt.Registry) error {
+	if swag.IsZero(m.StandAloneProfileSecurityGroups) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.StandAloneProfileSecurityGroups); i++ {
+		if swag.IsZero(m.StandAloneProfileSecurityGroups[i]) { // not required
+			continue
+		}
+
+		if m.StandAloneProfileSecurityGroups[i] != nil {
+			if err := m.StandAloneProfileSecurityGroups[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this project full list dto standalone vms items0 stand alone profile based on the context it is used
+func (m *ProjectFullListDtoStandaloneVmsItems0StandAloneProfile) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateStandAloneProfileSecurityGroups(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ProjectFullListDtoStandaloneVmsItems0StandAloneProfile) contextValidateStandAloneProfileSecurityGroups(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.StandAloneProfileSecurityGroups); i++ {
+
+		if m.StandAloneProfileSecurityGroups[i] != nil {
+			if err := m.StandAloneProfileSecurityGroups[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectFullListDtoStandaloneVmsItems0StandAloneProfile) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectFullListDtoStandaloneVmsItems0StandAloneProfile) UnmarshalBinary(b []byte) error {
+	var res ProjectFullListDtoStandaloneVmsItems0StandAloneProfile
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectFullListDtoStandaloneVmsItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0 project full list dto standalone vms items0 stand alone profile stand alone profile security groups items0
+//
+// swagger:model ProjectFullListDtoStandaloneVmsItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0
+type ProjectFullListDtoStandaloneVmsItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// port max range
+	PortMaxRange int32 `json:"portMaxRange,omitempty"`
+
+	// port min range
+	PortMinRange int32 `json:"portMinRange,omitempty"`
+
+	// priority
+	Priority int32 `json:"priority,omitempty"`
+
+	// protocol
+	Protocol string `json:"protocol,omitempty"`
+
+	// remote Ip prefix
+	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
+}
+
+// Validate validates this project full list dto standalone vms items0 stand alone profile stand alone profile security groups items0
+func (m *ProjectFullListDtoStandaloneVmsItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project full list dto standalone vms items0 stand alone profile stand alone profile security groups items0 based on context it is used
+func (m *ProjectFullListDtoStandaloneVmsItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectFullListDtoStandaloneVmsItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectFullListDtoStandaloneVmsItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectFullListDtoStandaloneVmsItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectFullListDtoStandaloneVmsItems0StandAloneVMDisksItems0 project full list dto standalone vms items0 stand alone VM disks items0
+//
+// swagger:model ProjectFullListDtoStandaloneVmsItems0StandAloneVMDisksItems0
+type ProjectFullListDtoStandaloneVmsItems0StandAloneVMDisksItems0 struct {
+
+	// device name
+	DeviceName string `json:"deviceName,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// lun Id
+	LunID string `json:"lunId,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// size
+	Size int64 `json:"size,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// volume type
+	VolumeType string `json:"volumeType,omitempty"`
+}
+
+// Validate validates this project full list dto standalone vms items0 stand alone VM disks items0
+func (m *ProjectFullListDtoStandaloneVmsItems0StandAloneVMDisksItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project full list dto standalone vms items0 stand alone VM disks items0 based on context it is used
+func (m *ProjectFullListDtoStandaloneVmsItems0StandAloneVMDisksItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectFullListDtoStandaloneVmsItems0StandAloneVMDisksItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectFullListDtoStandaloneVmsItems0StandAloneVMDisksItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectFullListDtoStandaloneVmsItems0StandAloneVMDisksItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

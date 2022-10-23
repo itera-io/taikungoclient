@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOpenstackProjectsParams creates a new OpenstackProjectsParams object,
@@ -64,7 +62,7 @@ OpenstackProjectsParams contains all the parameters to send to the API endpoint
 type OpenstackProjectsParams struct {
 
 	// Body.
-	Body *models.OpenStackProjectListQuery
+	Body OpenstackProjectsBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *OpenstackProjectsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the openstack projects params
-func (o *OpenstackProjectsParams) WithBody(body *models.OpenStackProjectListQuery) *OpenstackProjectsParams {
+func (o *OpenstackProjectsParams) WithBody(body OpenstackProjectsBody) *OpenstackProjectsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the openstack projects params
-func (o *OpenstackProjectsParams) SetBody(body *models.OpenStackProjectListQuery) {
+func (o *OpenstackProjectsParams) SetBody(body OpenstackProjectsBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *OpenstackProjectsParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // Subresource subresource
@@ -20,13 +21,13 @@ import (
 type Subresource struct {
 
 	// cost components
-	CostComponents []*CostComponent `json:"costComponents"`
+	CostComponents []*SubresourceCostComponentsItems0 `json:"costComponents"`
 
 	// hourly cost
 	HourlyCost string `json:"hourlyCost,omitempty"`
 
 	// metadata
-	Metadata *Metadata `json:"metadata,omitempty"`
+	Metadata *SubresourceMetadata `json:"metadata,omitempty"`
 
 	// monthly cost
 	MonthlyCost string `json:"monthlyCost,omitempty"`
@@ -163,6 +164,150 @@ func (m *Subresource) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *Subresource) UnmarshalBinary(b []byte) error {
 	var res Subresource
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// SubresourceCostComponentsItems0 subresource cost components items0
+//
+// swagger:model SubresourceCostComponentsItems0
+type SubresourceCostComponentsItems0 struct {
+
+	// hourly cost
+	HourlyCost string `json:"hourlyCost,omitempty"`
+
+	// hourly quantity
+	HourlyQuantity string `json:"hourlyQuantity,omitempty"`
+
+	// monthly cost
+	MonthlyCost string `json:"monthlyCost,omitempty"`
+
+	// monthly quantity
+	MonthlyQuantity string `json:"monthlyQuantity,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// price
+	Price string `json:"price,omitempty"`
+
+	// unit
+	Unit string `json:"unit,omitempty"`
+}
+
+// Validate validates this subresource cost components items0
+func (m *SubresourceCostComponentsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subresource cost components items0 based on context it is used
+func (m *SubresourceCostComponentsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *SubresourceCostComponentsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *SubresourceCostComponentsItems0) UnmarshalBinary(b []byte) error {
+	var res SubresourceCostComponentsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// SubresourceMetadata subresource metadata
+//
+// swagger:model SubresourceMetadata
+type SubresourceMetadata struct {
+
+	// infracost command
+	InfracostCommand string `json:"infracostCommand,omitempty"`
+
+	// path
+	Path string `json:"path,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+
+	// vcs branch
+	VcsBranch string `json:"vcsBranch,omitempty"`
+
+	// vcs commit author email
+	VcsCommitAuthorEmail string `json:"vcsCommitAuthorEmail,omitempty"`
+
+	// vcs commit author name
+	VcsCommitAuthorName string `json:"vcsCommitAuthorName,omitempty"`
+
+	// vcs commit message
+	VcsCommitMessage string `json:"vcsCommitMessage,omitempty"`
+
+	// vcs commit sha
+	VcsCommitSha string `json:"vcsCommitSha,omitempty"`
+
+	// vcs commit timestamp
+	// Format: date-time
+	VcsCommitTimestamp *strfmt.DateTime `json:"vcsCommitTimestamp,omitempty"`
+
+	// vcs repository Url
+	VcsRepositoryURL string `json:"vcsRepositoryUrl,omitempty"`
+
+	// vcs sub path
+	VcsSubPath string `json:"vcsSubPath,omitempty"`
+}
+
+// Validate validates this subresource metadata
+func (m *SubresourceMetadata) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateVcsCommitTimestamp(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *SubresourceMetadata) validateVcsCommitTimestamp(formats strfmt.Registry) error {
+	if swag.IsZero(m.VcsCommitTimestamp) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("metadata"+"."+"vcsCommitTimestamp", "body", "date-time", m.VcsCommitTimestamp.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this subresource metadata based on context it is used
+func (m *SubresourceMetadata) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *SubresourceMetadata) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *SubresourceMetadata) UnmarshalBinary(b []byte) error {
+	var res SubresourceMetadata
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

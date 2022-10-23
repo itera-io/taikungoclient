@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesPatchPodParams creates a new KubernetesPatchPodParams object,
@@ -64,7 +62,7 @@ KubernetesPatchPodParams contains all the parameters to send to the API endpoint
 type KubernetesPatchPodParams struct {
 
 	// Body.
-	Body *models.PatchPodCommand
+	Body KubernetesPatchPodBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *KubernetesPatchPodParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the kubernetes patch pod params
-func (o *KubernetesPatchPodParams) WithBody(body *models.PatchPodCommand) *KubernetesPatchPodParams {
+func (o *KubernetesPatchPodParams) WithBody(body KubernetesPatchPodBody) *KubernetesPatchPodParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes patch pod params
-func (o *KubernetesPatchPodParams) SetBody(body *models.PatchPodCommand) {
+func (o *KubernetesPatchPodParams) SetBody(body KubernetesPatchPodBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *KubernetesPatchPodParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

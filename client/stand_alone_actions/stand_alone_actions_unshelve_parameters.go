@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneActionsUnshelveParams creates a new StandAloneActionsUnshelveParams object,
@@ -64,7 +62,7 @@ StandAloneActionsUnshelveParams contains all the parameters to send to the API e
 type StandAloneActionsUnshelveParams struct {
 
 	// Body.
-	Body *models.UnshelveStandaloneVMCommand
+	Body StandAloneActionsUnshelveBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *StandAloneActionsUnshelveParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone actions unshelve params
-func (o *StandAloneActionsUnshelveParams) WithBody(body *models.UnshelveStandaloneVMCommand) *StandAloneActionsUnshelveParams {
+func (o *StandAloneActionsUnshelveParams) WithBody(body StandAloneActionsUnshelveBody) *StandAloneActionsUnshelveParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone actions unshelve params
-func (o *StandAloneActionsUnshelveParams) SetBody(body *models.UnshelveStandaloneVMCommand) {
+func (o *StandAloneActionsUnshelveParams) SetBody(body StandAloneActionsUnshelveBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *StandAloneActionsUnshelveParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

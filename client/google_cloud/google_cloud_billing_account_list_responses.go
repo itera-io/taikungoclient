@@ -6,13 +6,13 @@ package google_cloud
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // GoogleCloudBillingAccountListReader is a Reader for the GoogleCloudBillingAccountList structure.
@@ -75,7 +75,7 @@ GoogleCloudBillingAccountListOK describes a response with status code 200, with 
 Success
 */
 type GoogleCloudBillingAccountListOK struct {
-	Payload []*models.CommonStringBasedDropdownDto
+	Payload []*GoogleCloudBillingAccountListOKBodyItems0
 }
 
 // IsSuccess returns true when this google cloud billing account list o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *GoogleCloudBillingAccountListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListOK  %+v", 200, o.Payload)
 }
 
-func (o *GoogleCloudBillingAccountListOK) GetPayload() []*models.CommonStringBasedDropdownDto {
+func (o *GoogleCloudBillingAccountListOK) GetPayload() []*GoogleCloudBillingAccountListOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ GoogleCloudBillingAccountListBadRequest describes a response with status code 40
 Bad Request
 */
 type GoogleCloudBillingAccountListBadRequest struct {
-	Payload []*models.Error
+	Payload []*GoogleCloudBillingAccountListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this google cloud billing account list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *GoogleCloudBillingAccountListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GoogleCloudBillingAccountListBadRequest) GetPayload() []*models.Error {
+func (o *GoogleCloudBillingAccountListBadRequest) GetPayload() []*GoogleCloudBillingAccountListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ GoogleCloudBillingAccountListUnauthorized describes a response with status code 
 Unauthorized
 */
 type GoogleCloudBillingAccountListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *GoogleCloudBillingAccountListUnauthorizedBody
 }
 
 // IsSuccess returns true when this google cloud billing account list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *GoogleCloudBillingAccountListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GoogleCloudBillingAccountListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudBillingAccountListUnauthorized) GetPayload() *GoogleCloudBillingAccountListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *GoogleCloudBillingAccountListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(GoogleCloudBillingAccountListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ GoogleCloudBillingAccountListForbidden describes a response with status code 403
 Forbidden
 */
 type GoogleCloudBillingAccountListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *GoogleCloudBillingAccountListForbiddenBody
 }
 
 // IsSuccess returns true when this google cloud billing account list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *GoogleCloudBillingAccountListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GoogleCloudBillingAccountListForbidden) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudBillingAccountListForbidden) GetPayload() *GoogleCloudBillingAccountListForbiddenBody {
 	return o.Payload
 }
 
 func (o *GoogleCloudBillingAccountListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(GoogleCloudBillingAccountListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ GoogleCloudBillingAccountListNotFound describes a response with status code 404,
 Not Found
 */
 type GoogleCloudBillingAccountListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *GoogleCloudBillingAccountListNotFoundBody
 }
 
 // IsSuccess returns true when this google cloud billing account list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *GoogleCloudBillingAccountListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GoogleCloudBillingAccountListNotFound) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudBillingAccountListNotFound) GetPayload() *GoogleCloudBillingAccountListNotFoundBody {
 	return o.Payload
 }
 
 func (o *GoogleCloudBillingAccountListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(GoogleCloudBillingAccountListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *GoogleCloudBillingAccountListInternalServerError) String() string {
 
 func (o *GoogleCloudBillingAccountListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+GoogleCloudBillingAccountListBadRequestBodyItems0 google cloud billing account list bad request body items0
+swagger:model GoogleCloudBillingAccountListBadRequestBodyItems0
+*/
+type GoogleCloudBillingAccountListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this google cloud billing account list bad request body items0
+func (o *GoogleCloudBillingAccountListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud billing account list bad request body items0 based on context it is used
+func (o *GoogleCloudBillingAccountListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudBillingAccountListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudBillingAccountListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudBillingAccountListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudBillingAccountListForbiddenBody google cloud billing account list forbidden body
+swagger:model GoogleCloudBillingAccountListForbiddenBody
+*/
+type GoogleCloudBillingAccountListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this google cloud billing account list forbidden body
+func (o *GoogleCloudBillingAccountListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud billing account list forbidden body based on context it is used
+func (o *GoogleCloudBillingAccountListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudBillingAccountListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudBillingAccountListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudBillingAccountListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudBillingAccountListNotFoundBody google cloud billing account list not found body
+swagger:model GoogleCloudBillingAccountListNotFoundBody
+*/
+type GoogleCloudBillingAccountListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this google cloud billing account list not found body
+func (o *GoogleCloudBillingAccountListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud billing account list not found body based on context it is used
+func (o *GoogleCloudBillingAccountListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudBillingAccountListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudBillingAccountListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudBillingAccountListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudBillingAccountListOKBodyItems0 google cloud billing account list o k body items0
+swagger:model GoogleCloudBillingAccountListOKBodyItems0
+*/
+type GoogleCloudBillingAccountListOKBodyItems0 struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this google cloud billing account list o k body items0
+func (o *GoogleCloudBillingAccountListOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud billing account list o k body items0 based on context it is used
+func (o *GoogleCloudBillingAccountListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudBillingAccountListOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudBillingAccountListOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudBillingAccountListOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudBillingAccountListUnauthorizedBody google cloud billing account list unauthorized body
+swagger:model GoogleCloudBillingAccountListUnauthorizedBody
+*/
+type GoogleCloudBillingAccountListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this google cloud billing account list unauthorized body
+func (o *GoogleCloudBillingAccountListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud billing account list unauthorized body based on context it is used
+func (o *GoogleCloudBillingAccountListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudBillingAccountListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudBillingAccountListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudBillingAccountListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

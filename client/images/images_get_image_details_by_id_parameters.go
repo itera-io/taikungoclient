@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewImagesGetImageDetailsByIDParams creates a new ImagesGetImageDetailsByIDParams object,
@@ -64,7 +62,7 @@ ImagesGetImageDetailsByIDParams contains all the parameters to send to the API e
 type ImagesGetImageDetailsByIDParams struct {
 
 	// Body.
-	Body *models.ImageByIDCommand
+	Body ImagesGetImageDetailsByIDBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *ImagesGetImageDetailsByIDParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the images get image details by Id params
-func (o *ImagesGetImageDetailsByIDParams) WithBody(body *models.ImageByIDCommand) *ImagesGetImageDetailsByIDParams {
+func (o *ImagesGetImageDetailsByIDParams) WithBody(body ImagesGetImageDetailsByIDBody) *ImagesGetImageDetailsByIDParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the images get image details by Id params
-func (o *ImagesGetImageDetailsByIDParams) SetBody(body *models.ImageByIDCommand) {
+func (o *ImagesGetImageDetailsByIDParams) SetBody(body ImagesGetImageDetailsByIDBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *ImagesGetImageDetailsByIDParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

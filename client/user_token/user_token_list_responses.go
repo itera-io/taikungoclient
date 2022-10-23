@@ -6,13 +6,13 @@ package user_token
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // UserTokenListReader is a Reader for the UserTokenList structure.
@@ -75,7 +75,7 @@ UserTokenListOK describes a response with status code 200, with default header v
 Success
 */
 type UserTokenListOK struct {
-	Payload []*models.UserTokensListDto
+	Payload []*UserTokenListOKBodyItems0
 }
 
 // IsSuccess returns true when this user token list o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *UserTokenListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListOK  %+v", 200, o.Payload)
 }
 
-func (o *UserTokenListOK) GetPayload() []*models.UserTokensListDto {
+func (o *UserTokenListOK) GetPayload() []*UserTokenListOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ UserTokenListBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type UserTokenListBadRequest struct {
-	Payload []*models.Error
+	Payload []*UserTokenListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this user token list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UserTokenListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserTokenListBadRequest) GetPayload() []*models.Error {
+func (o *UserTokenListBadRequest) GetPayload() []*UserTokenListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ UserTokenListUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type UserTokenListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *UserTokenListUnauthorizedBody
 }
 
 // IsSuccess returns true when this user token list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *UserTokenListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserTokenListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UserTokenListUnauthorized) GetPayload() *UserTokenListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *UserTokenListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UserTokenListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ UserTokenListForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type UserTokenListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *UserTokenListForbiddenBody
 }
 
 // IsSuccess returns true when this user token list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *UserTokenListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserTokenListForbidden) GetPayload() *models.ProblemDetails {
+func (o *UserTokenListForbidden) GetPayload() *UserTokenListForbiddenBody {
 	return o.Payload
 }
 
 func (o *UserTokenListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UserTokenListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ UserTokenListNotFound describes a response with status code 404, with default he
 Not Found
 */
 type UserTokenListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *UserTokenListNotFoundBody
 }
 
 // IsSuccess returns true when this user token list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *UserTokenListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserTokenListNotFound) GetPayload() *models.ProblemDetails {
+func (o *UserTokenListNotFound) GetPayload() *UserTokenListNotFoundBody {
 	return o.Payload
 }
 
 func (o *UserTokenListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UserTokenListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,249 @@ func (o *UserTokenListInternalServerError) String() string {
 
 func (o *UserTokenListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+UserTokenListBadRequestBodyItems0 user token list bad request body items0
+swagger:model UserTokenListBadRequestBodyItems0
+*/
+type UserTokenListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this user token list bad request body items0
+func (o *UserTokenListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user token list bad request body items0 based on context it is used
+func (o *UserTokenListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UserTokenListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UserTokenListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res UserTokenListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UserTokenListForbiddenBody user token list forbidden body
+swagger:model UserTokenListForbiddenBody
+*/
+type UserTokenListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this user token list forbidden body
+func (o *UserTokenListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user token list forbidden body based on context it is used
+func (o *UserTokenListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UserTokenListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UserTokenListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res UserTokenListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UserTokenListNotFoundBody user token list not found body
+swagger:model UserTokenListNotFoundBody
+*/
+type UserTokenListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this user token list not found body
+func (o *UserTokenListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user token list not found body based on context it is used
+func (o *UserTokenListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UserTokenListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UserTokenListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res UserTokenListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UserTokenListOKBodyItems0 user token list o k body items0
+swagger:model UserTokenListOKBodyItems0
+*/
+type UserTokenListOKBodyItems0 struct {
+
+	// access key
+	AccessKey string `json:"accessKey,omitempty"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// expire date
+	ExpireDate string `json:"expireDate,omitempty"`
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is readonly
+	IsReadonly bool `json:"isReadonly"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this user token list o k body items0
+func (o *UserTokenListOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user token list o k body items0 based on context it is used
+func (o *UserTokenListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UserTokenListOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UserTokenListOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res UserTokenListOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UserTokenListUnauthorizedBody user token list unauthorized body
+swagger:model UserTokenListUnauthorizedBody
+*/
+type UserTokenListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this user token list unauthorized body
+func (o *UserTokenListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user token list unauthorized body based on context it is used
+func (o *UserTokenListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UserTokenListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UserTokenListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res UserTokenListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -15,8 +15,6 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesUpdateKubernetesAlertParams creates a new KubernetesUpdateKubernetesAlertParams object,
@@ -70,7 +68,7 @@ type KubernetesUpdateKubernetesAlertParams struct {
 	AlertID int32
 
 	// Body.
-	Body *models.UpdateKubernetesAlertDto
+	Body KubernetesUpdateKubernetesAlertBody
 
 	// V.
 	V string
@@ -140,13 +138,13 @@ func (o *KubernetesUpdateKubernetesAlertParams) SetAlertID(alertID int32) {
 }
 
 // WithBody adds the body to the kubernetes update kubernetes alert params
-func (o *KubernetesUpdateKubernetesAlertParams) WithBody(body *models.UpdateKubernetesAlertDto) *KubernetesUpdateKubernetesAlertParams {
+func (o *KubernetesUpdateKubernetesAlertParams) WithBody(body KubernetesUpdateKubernetesAlertBody) *KubernetesUpdateKubernetesAlertParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes update kubernetes alert params
-func (o *KubernetesUpdateKubernetesAlertParams) SetBody(body *models.UpdateKubernetesAlertDto) {
+func (o *KubernetesUpdateKubernetesAlertParams) SetBody(body KubernetesUpdateKubernetesAlertBody) {
 	o.Body = body
 }
 
@@ -173,10 +171,8 @@ func (o *KubernetesUpdateKubernetesAlertParams) WriteToRequest(r runtime.ClientR
 	if err := r.SetPathParam("alertId", swag.FormatInt32(o.AlertID)); err != nil {
 		return err
 	}
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

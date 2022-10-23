@@ -6,13 +6,14 @@ package images
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ImagesCommonAzureImagesReader is a Reader for the ImagesCommonAzureImages structure.
@@ -75,7 +76,7 @@ ImagesCommonAzureImagesOK describes a response with status code 200, with defaul
 Success
 */
 type ImagesCommonAzureImagesOK struct {
-	Payload []*models.AzurePublisherDetails
+	Payload []*ImagesCommonAzureImagesOKBodyItems0
 }
 
 // IsSuccess returns true when this images common azure images o k response has a 2xx status code
@@ -111,7 +112,7 @@ func (o *ImagesCommonAzureImagesOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/common/{cloudId}][%d] imagesCommonAzureImagesOK  %+v", 200, o.Payload)
 }
 
-func (o *ImagesCommonAzureImagesOK) GetPayload() []*models.AzurePublisherDetails {
+func (o *ImagesCommonAzureImagesOK) GetPayload() []*ImagesCommonAzureImagesOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +137,7 @@ ImagesCommonAzureImagesBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type ImagesCommonAzureImagesBadRequest struct {
-	Payload []*models.Error
+	Payload []*ImagesCommonAzureImagesBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this images common azure images bad request response has a 2xx status code
@@ -172,7 +173,7 @@ func (o *ImagesCommonAzureImagesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/common/{cloudId}][%d] imagesCommonAzureImagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesCommonAzureImagesBadRequest) GetPayload() []*models.Error {
+func (o *ImagesCommonAzureImagesBadRequest) GetPayload() []*ImagesCommonAzureImagesBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +198,7 @@ ImagesCommonAzureImagesUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type ImagesCommonAzureImagesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesCommonAzureImagesUnauthorizedBody
 }
 
 // IsSuccess returns true when this images common azure images unauthorized response has a 2xx status code
@@ -233,13 +234,13 @@ func (o *ImagesCommonAzureImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/common/{cloudId}][%d] imagesCommonAzureImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesCommonAzureImagesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ImagesCommonAzureImagesUnauthorized) GetPayload() *ImagesCommonAzureImagesUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ImagesCommonAzureImagesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesCommonAzureImagesUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +261,7 @@ ImagesCommonAzureImagesForbidden describes a response with status code 403, with
 Forbidden
 */
 type ImagesCommonAzureImagesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesCommonAzureImagesForbiddenBody
 }
 
 // IsSuccess returns true when this images common azure images forbidden response has a 2xx status code
@@ -296,13 +297,13 @@ func (o *ImagesCommonAzureImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/common/{cloudId}][%d] imagesCommonAzureImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesCommonAzureImagesForbidden) GetPayload() *models.ProblemDetails {
+func (o *ImagesCommonAzureImagesForbidden) GetPayload() *ImagesCommonAzureImagesForbiddenBody {
 	return o.Payload
 }
 
 func (o *ImagesCommonAzureImagesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesCommonAzureImagesForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +324,7 @@ ImagesCommonAzureImagesNotFound describes a response with status code 404, with 
 Not Found
 */
 type ImagesCommonAzureImagesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesCommonAzureImagesNotFoundBody
 }
 
 // IsSuccess returns true when this images common azure images not found response has a 2xx status code
@@ -359,13 +360,13 @@ func (o *ImagesCommonAzureImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/common/{cloudId}][%d] imagesCommonAzureImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesCommonAzureImagesNotFound) GetPayload() *models.ProblemDetails {
+func (o *ImagesCommonAzureImagesNotFound) GetPayload() *ImagesCommonAzureImagesNotFoundBody {
 	return o.Payload
 }
 
 func (o *ImagesCommonAzureImagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesCommonAzureImagesNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +424,334 @@ func (o *ImagesCommonAzureImagesInternalServerError) String() string {
 
 func (o *ImagesCommonAzureImagesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ImagesCommonAzureImagesBadRequestBodyItems0 images common azure images bad request body items0
+swagger:model ImagesCommonAzureImagesBadRequestBodyItems0
+*/
+type ImagesCommonAzureImagesBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this images common azure images bad request body items0
+func (o *ImagesCommonAzureImagesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images common azure images bad request body items0 based on context it is used
+func (o *ImagesCommonAzureImagesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesCommonAzureImagesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesCommonAzureImagesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ImagesCommonAzureImagesBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesCommonAzureImagesForbiddenBody images common azure images forbidden body
+swagger:model ImagesCommonAzureImagesForbiddenBody
+*/
+type ImagesCommonAzureImagesForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images common azure images forbidden body
+func (o *ImagesCommonAzureImagesForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images common azure images forbidden body based on context it is used
+func (o *ImagesCommonAzureImagesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesCommonAzureImagesForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesCommonAzureImagesForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ImagesCommonAzureImagesForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesCommonAzureImagesNotFoundBody images common azure images not found body
+swagger:model ImagesCommonAzureImagesNotFoundBody
+*/
+type ImagesCommonAzureImagesNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images common azure images not found body
+func (o *ImagesCommonAzureImagesNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images common azure images not found body based on context it is used
+func (o *ImagesCommonAzureImagesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesCommonAzureImagesNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesCommonAzureImagesNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ImagesCommonAzureImagesNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesCommonAzureImagesOKBodyItems0 images common azure images o k body items0
+swagger:model ImagesCommonAzureImagesOKBodyItems0
+*/
+type ImagesCommonAzureImagesOKBodyItems0 struct {
+
+	// image
+	Image *ImagesCommonAzureImagesOKBodyItems0Image `json:"image,omitempty"`
+
+	// publisher
+	Publisher string `json:"publisher,omitempty"`
+}
+
+// Validate validates this images common azure images o k body items0
+func (o *ImagesCommonAzureImagesOKBodyItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateImage(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ImagesCommonAzureImagesOKBodyItems0) validateImage(formats strfmt.Registry) error {
+	if swag.IsZero(o.Image) { // not required
+		return nil
+	}
+
+	if o.Image != nil {
+		if err := o.Image.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("image")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("image")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this images common azure images o k body items0 based on the context it is used
+func (o *ImagesCommonAzureImagesOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateImage(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ImagesCommonAzureImagesOKBodyItems0) contextValidateImage(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Image != nil {
+		if err := o.Image.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("image")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("image")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesCommonAzureImagesOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesCommonAzureImagesOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ImagesCommonAzureImagesOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesCommonAzureImagesOKBodyItems0Image images common azure images o k body items0 image
+swagger:model ImagesCommonAzureImagesOKBodyItems0Image
+*/
+type ImagesCommonAzureImagesOKBodyItems0Image struct {
+
+	// display name
+	DisplayName string `json:"displayName"`
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this images common azure images o k body items0 image
+func (o *ImagesCommonAzureImagesOKBodyItems0Image) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images common azure images o k body items0 image based on context it is used
+func (o *ImagesCommonAzureImagesOKBodyItems0Image) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesCommonAzureImagesOKBodyItems0Image) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesCommonAzureImagesOKBodyItems0Image) UnmarshalBinary(b []byte) error {
+	var res ImagesCommonAzureImagesOKBodyItems0Image
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesCommonAzureImagesUnauthorizedBody images common azure images unauthorized body
+swagger:model ImagesCommonAzureImagesUnauthorizedBody
+*/
+type ImagesCommonAzureImagesUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images common azure images unauthorized body
+func (o *ImagesCommonAzureImagesUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images common azure images unauthorized body based on context it is used
+func (o *ImagesCommonAzureImagesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesCommonAzureImagesUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesCommonAzureImagesUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ImagesCommonAzureImagesUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

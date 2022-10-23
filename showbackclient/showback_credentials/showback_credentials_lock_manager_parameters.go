@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewShowbackCredentialsLockManagerParams creates a new ShowbackCredentialsLockManagerParams object,
@@ -64,7 +62,7 @@ ShowbackCredentialsLockManagerParams contains all the parameters to send to the 
 type ShowbackCredentialsLockManagerParams struct {
 
 	// Body.
-	Body *models.ShowbackCredentialLockCommand
+	Body ShowbackCredentialsLockManagerBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *ShowbackCredentialsLockManagerParams) SetHTTPClient(client *http.Client
 }
 
 // WithBody adds the body to the showback credentials lock manager params
-func (o *ShowbackCredentialsLockManagerParams) WithBody(body *models.ShowbackCredentialLockCommand) *ShowbackCredentialsLockManagerParams {
+func (o *ShowbackCredentialsLockManagerParams) WithBody(body ShowbackCredentialsLockManagerBody) *ShowbackCredentialsLockManagerParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the showback credentials lock manager params
-func (o *ShowbackCredentialsLockManagerParams) SetBody(body *models.ShowbackCredentialLockCommand) {
+func (o *ShowbackCredentialsLockManagerParams) SetBody(body ShowbackCredentialsLockManagerBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *ShowbackCredentialsLockManagerParams) WriteToRequest(r runtime.ClientRe
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

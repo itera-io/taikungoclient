@@ -32,7 +32,7 @@ type CloudCredentialsForOrganizationEntity struct {
 	IsDefault bool `json:"isDefault"`
 
 	// projects
-	Projects []*CommonDropdownDto `json:"projects"`
+	Projects []*CloudCredentialsForOrganizationEntityProjectsItems0 `json:"projects"`
 }
 
 // Validate validates this cloud credentials for organization entity
@@ -120,6 +120,46 @@ func (m *CloudCredentialsForOrganizationEntity) MarshalBinary() ([]byte, error) 
 // UnmarshalBinary interface implementation
 func (m *CloudCredentialsForOrganizationEntity) UnmarshalBinary(b []byte) error {
 	var res CloudCredentialsForOrganizationEntity
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CloudCredentialsForOrganizationEntityProjectsItems0 cloud credentials for organization entity projects items0
+//
+// swagger:model CloudCredentialsForOrganizationEntityProjectsItems0
+type CloudCredentialsForOrganizationEntityProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this cloud credentials for organization entity projects items0
+func (m *CloudCredentialsForOrganizationEntityProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials for organization entity projects items0 based on context it is used
+func (m *CloudCredentialsForOrganizationEntityProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CloudCredentialsForOrganizationEntityProjectsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CloudCredentialsForOrganizationEntityProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsForOrganizationEntityProjectsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

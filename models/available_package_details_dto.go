@@ -32,7 +32,7 @@ type AvailablePackageDetailsDto struct {
 	AppVersion string `json:"appVersion,omitempty"`
 
 	// bound catalogs
-	BoundCatalogs []*CommonDropdownDto `json:"boundCatalogs"`
+	BoundCatalogs []*AvailablePackageDetailsDtoBoundCatalogsItems0 `json:"boundCatalogs"`
 
 	// description
 	Description string `json:"description,omitempty"`
@@ -53,7 +53,7 @@ type AvailablePackageDetailsDto struct {
 	Readme string `json:"readme,omitempty"`
 
 	// security report
-	SecurityReport *SecurityReportSummariesDto `json:"securityReport,omitempty"`
+	SecurityReport *AvailablePackageDetailsDtoSecurityReport `json:"securityReport,omitempty"`
 
 	// stars
 	Stars int32 `json:"stars,omitempty"`
@@ -190,6 +190,95 @@ func (m *AvailablePackageDetailsDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AvailablePackageDetailsDto) UnmarshalBinary(b []byte) error {
 	var res AvailablePackageDetailsDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AvailablePackageDetailsDtoBoundCatalogsItems0 available package details dto bound catalogs items0
+//
+// swagger:model AvailablePackageDetailsDtoBoundCatalogsItems0
+type AvailablePackageDetailsDtoBoundCatalogsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this available package details dto bound catalogs items0
+func (m *AvailablePackageDetailsDtoBoundCatalogsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this available package details dto bound catalogs items0 based on context it is used
+func (m *AvailablePackageDetailsDtoBoundCatalogsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AvailablePackageDetailsDtoBoundCatalogsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AvailablePackageDetailsDtoBoundCatalogsItems0) UnmarshalBinary(b []byte) error {
+	var res AvailablePackageDetailsDtoBoundCatalogsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AvailablePackageDetailsDtoSecurityReport available package details dto security report
+//
+// swagger:model AvailablePackageDetailsDtoSecurityReport
+type AvailablePackageDetailsDtoSecurityReport struct {
+
+	// critical
+	Critical int64 `json:"critical,omitempty"`
+
+	// high
+	High int64 `json:"high,omitempty"`
+
+	// low
+	Low int64 `json:"low,omitempty"`
+
+	// medium
+	Medium int64 `json:"medium,omitempty"`
+
+	// unknown
+	Unknown int64 `json:"unknown,omitempty"`
+}
+
+// Validate validates this available package details dto security report
+func (m *AvailablePackageDetailsDtoSecurityReport) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this available package details dto security report based on context it is used
+func (m *AvailablePackageDetailsDtoSecurityReport) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AvailablePackageDetailsDtoSecurityReport) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AvailablePackageDetailsDtoSecurityReport) UnmarshalBinary(b []byte) error {
+	var res AvailablePackageDetailsDtoSecurityReport
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

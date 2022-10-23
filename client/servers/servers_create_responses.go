@@ -6,13 +6,17 @@ package servers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ServersCreateReader is a Reader for the ServersCreate structure.
@@ -75,7 +79,7 @@ ServersCreateOK describes a response with status code 200, with default header v
 Success
 */
 type ServersCreateOK struct {
-	Payload *models.APIResponse
+	Payload *ServersCreateOKBody
 }
 
 // IsSuccess returns true when this servers create o k response has a 2xx status code
@@ -111,13 +115,13 @@ func (o *ServersCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers][%d] serversCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *ServersCreateOK) GetPayload() *models.APIResponse {
+func (o *ServersCreateOK) GetPayload() *ServersCreateOKBody {
 	return o.Payload
 }
 
 func (o *ServersCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(ServersCreateOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +142,7 @@ ServersCreateBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type ServersCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*ServersCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this servers create bad request response has a 2xx status code
@@ -174,7 +178,7 @@ func (o *ServersCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers][%d] serversCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersCreateBadRequest) GetPayload() []*models.Error {
+func (o *ServersCreateBadRequest) GetPayload() []*ServersCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +203,7 @@ ServersCreateUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type ServersCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ServersCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this servers create unauthorized response has a 2xx status code
@@ -235,13 +239,13 @@ func (o *ServersCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers][%d] serversCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ServersCreateUnauthorized) GetPayload() *ServersCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ServersCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ServersCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +266,7 @@ ServersCreateForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type ServersCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ServersCreateForbiddenBody
 }
 
 // IsSuccess returns true when this servers create forbidden response has a 2xx status code
@@ -298,13 +302,13 @@ func (o *ServersCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers][%d] serversCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *ServersCreateForbidden) GetPayload() *ServersCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *ServersCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ServersCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +329,7 @@ ServersCreateNotFound describes a response with status code 404, with default he
 Not Found
 */
 type ServersCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ServersCreateNotFoundBody
 }
 
 // IsSuccess returns true when this servers create not found response has a 2xx status code
@@ -361,13 +365,13 @@ func (o *ServersCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers][%d] serversCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *ServersCreateNotFound) GetPayload() *ServersCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *ServersCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ServersCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +429,457 @@ func (o *ServersCreateInternalServerError) String() string {
 
 func (o *ServersCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ServersCreateBadRequestBodyItems0 servers create bad request body items0
+swagger:model ServersCreateBadRequestBodyItems0
+*/
+type ServersCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this servers create bad request body items0
+func (o *ServersCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this servers create bad request body items0 based on context it is used
+func (o *ServersCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ServersCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ServersCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ServersCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ServersCreateBody servers create body
+swagger:model ServersCreateBody
+*/
+type ServersCreateBody struct {
+
+	// autoscaling group
+	AutoscalingGroup string `json:"autoscalingGroup,omitempty"`
+
+	// availability zone
+	AvailabilityZone string `json:"availabilityZone,omitempty"`
+
+	// count
+	Count int32 `json:"count,omitempty"`
+
+	// disk size
+	DiskSize int64 `json:"diskSize,omitempty"`
+
+	// flavor
+	Flavor string `json:"flavor,omitempty"`
+
+	// kubernetes node labels
+	KubernetesNodeLabels []*ServersCreateParamsBodyKubernetesNodeLabelsItems0 `json:"kubernetesNodeLabels"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// role
+	// Enum: [100 200 300 400]
+	Role int32 `json:"role,omitempty"`
+
+	// spot instance
+	SpotInstance bool `json:"spotInstance"`
+
+	// spot price
+	SpotPrice float64 `json:"spotPrice,omitempty"`
+}
+
+// Validate validates this servers create body
+func (o *ServersCreateBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateKubernetesNodeLabels(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateRole(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ServersCreateBody) validateKubernetesNodeLabels(formats strfmt.Registry) error {
+	if swag.IsZero(o.KubernetesNodeLabels) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.KubernetesNodeLabels); i++ {
+		if swag.IsZero(o.KubernetesNodeLabels[i]) { // not required
+			continue
+		}
+
+		if o.KubernetesNodeLabels[i] != nil {
+			if err := o.KubernetesNodeLabels[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("body" + "." + "kubernetesNodeLabels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("body" + "." + "kubernetesNodeLabels" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+var serversCreateBodyTypeRolePropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200,300,400]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		serversCreateBodyTypeRolePropEnum = append(serversCreateBodyTypeRolePropEnum, v)
+	}
+}
+
+// prop value enum
+func (o *ServersCreateBody) validateRoleEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, serversCreateBodyTypeRolePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ServersCreateBody) validateRole(formats strfmt.Registry) error {
+	if swag.IsZero(o.Role) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := o.validateRoleEnum("body"+"."+"role", "body", o.Role); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this servers create body based on the context it is used
+func (o *ServersCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateKubernetesNodeLabels(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ServersCreateBody) contextValidateKubernetesNodeLabels(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.KubernetesNodeLabels); i++ {
+
+		if o.KubernetesNodeLabels[i] != nil {
+			if err := o.KubernetesNodeLabels[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("body" + "." + "kubernetesNodeLabels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("body" + "." + "kubernetesNodeLabels" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ServersCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ServersCreateBody) UnmarshalBinary(b []byte) error {
+	var res ServersCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ServersCreateForbiddenBody servers create forbidden body
+swagger:model ServersCreateForbiddenBody
+*/
+type ServersCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this servers create forbidden body
+func (o *ServersCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this servers create forbidden body based on context it is used
+func (o *ServersCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ServersCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ServersCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ServersCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ServersCreateNotFoundBody servers create not found body
+swagger:model ServersCreateNotFoundBody
+*/
+type ServersCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this servers create not found body
+func (o *ServersCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this servers create not found body based on context it is used
+func (o *ServersCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ServersCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ServersCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ServersCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ServersCreateOKBody servers create o k body
+swagger:model ServersCreateOKBody
+*/
+type ServersCreateOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this servers create o k body
+func (o *ServersCreateOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this servers create o k body based on context it is used
+func (o *ServersCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ServersCreateOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ServersCreateOKBody) UnmarshalBinary(b []byte) error {
+	var res ServersCreateOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ServersCreateParamsBodyKubernetesNodeLabelsItems0 servers create params body kubernetes node labels items0
+swagger:model ServersCreateParamsBodyKubernetesNodeLabelsItems0
+*/
+type ServersCreateParamsBodyKubernetesNodeLabelsItems0 struct {
+
+	// key
+	Key string `json:"key,omitempty"`
+
+	// value
+	Value string `json:"value,omitempty"`
+}
+
+// Validate validates this servers create params body kubernetes node labels items0
+func (o *ServersCreateParamsBodyKubernetesNodeLabelsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this servers create params body kubernetes node labels items0 based on context it is used
+func (o *ServersCreateParamsBodyKubernetesNodeLabelsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ServersCreateParamsBodyKubernetesNodeLabelsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ServersCreateParamsBodyKubernetesNodeLabelsItems0) UnmarshalBinary(b []byte) error {
+	var res ServersCreateParamsBodyKubernetesNodeLabelsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ServersCreateUnauthorizedBody servers create unauthorized body
+swagger:model ServersCreateUnauthorizedBody
+*/
+type ServersCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this servers create unauthorized body
+func (o *ServersCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this servers create unauthorized body based on context it is used
+func (o *ServersCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ServersCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ServersCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ServersCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

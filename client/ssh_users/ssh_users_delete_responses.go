@@ -6,13 +6,13 @@ package ssh_users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SSHUsersDeleteReader is a Reader for the SSHUsersDelete structure.
@@ -75,7 +75,7 @@ SSHUsersDeleteOK describes a response with status code 200, with default header 
 Success
 */
 type SSHUsersDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ssh users delete o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *SSHUsersDeleteOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *SSHUsersDeleteOK) GetPayload() models.Unit {
+func (o *SSHUsersDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ SSHUsersDeleteBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type SSHUsersDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*SSHUsersDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this ssh users delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SSHUsersDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SSHUsersDeleteBadRequest) GetPayload() []*models.Error {
+func (o *SSHUsersDeleteBadRequest) GetPayload() []*SSHUsersDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ SSHUsersDeleteUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type SSHUsersDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SSHUsersDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this ssh users delete unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *SSHUsersDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SSHUsersDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersDeleteUnauthorized) GetPayload() *SSHUsersDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SSHUsersDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SSHUsersDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ SSHUsersDeleteForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type SSHUsersDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SSHUsersDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this ssh users delete forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *SSHUsersDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SSHUsersDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersDeleteForbidden) GetPayload() *SSHUsersDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *SSHUsersDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SSHUsersDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ SSHUsersDeleteNotFound describes a response with status code 404, with default h
 Not Found
 */
 type SSHUsersDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SSHUsersDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this ssh users delete not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *SSHUsersDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SSHUsersDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersDeleteNotFound) GetPayload() *SSHUsersDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *SSHUsersDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SSHUsersDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *SSHUsersDeleteInternalServerError) String() string {
 
 func (o *SSHUsersDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SSHUsersDeleteBadRequestBodyItems0 SSH users delete bad request body items0
+swagger:model SSHUsersDeleteBadRequestBodyItems0
+*/
+type SSHUsersDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this SSH users delete bad request body items0
+func (o *SSHUsersDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users delete bad request body items0 based on context it is used
+func (o *SSHUsersDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SSHUsersDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SSHUsersDeleteBody SSH users delete body
+swagger:model SSHUsersDeleteBody
+*/
+type SSHUsersDeleteBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this SSH users delete body
+func (o *SSHUsersDeleteBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users delete body based on context it is used
+func (o *SSHUsersDeleteBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersDeleteBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersDeleteBody) UnmarshalBinary(b []byte) error {
+	var res SSHUsersDeleteBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SSHUsersDeleteForbiddenBody SSH users delete forbidden body
+swagger:model SSHUsersDeleteForbiddenBody
+*/
+type SSHUsersDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this SSH users delete forbidden body
+func (o *SSHUsersDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users delete forbidden body based on context it is used
+func (o *SSHUsersDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SSHUsersDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SSHUsersDeleteNotFoundBody SSH users delete not found body
+swagger:model SSHUsersDeleteNotFoundBody
+*/
+type SSHUsersDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this SSH users delete not found body
+func (o *SSHUsersDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users delete not found body based on context it is used
+func (o *SSHUsersDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SSHUsersDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SSHUsersDeleteUnauthorizedBody SSH users delete unauthorized body
+swagger:model SSHUsersDeleteUnauthorizedBody
+*/
+type SSHUsersDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this SSH users delete unauthorized body
+func (o *SSHUsersDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users delete unauthorized body based on context it is used
+func (o *SSHUsersDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SSHUsersDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

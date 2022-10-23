@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // Resource resource
@@ -20,13 +21,13 @@ import (
 type Resource struct {
 
 	// cost components
-	CostComponents []*CostComponent `json:"costComponents"`
+	CostComponents []*ResourceCostComponentsItems0 `json:"costComponents"`
 
 	// hourly cost
 	HourlyCost string `json:"hourlyCost,omitempty"`
 
 	// metadata
-	Metadata *Metadata `json:"metadata,omitempty"`
+	Metadata *ResourceMetadata `json:"metadata,omitempty"`
 
 	// monthly cost
 	MonthlyCost string `json:"monthlyCost,omitempty"`
@@ -35,7 +36,7 @@ type Resource struct {
 	Name string `json:"name,omitempty"`
 
 	// subresources
-	Subresources []*Subresource `json:"subresources"`
+	Subresources []*ResourceSubresourcesItems0 `json:"subresources"`
 }
 
 // Validate validates this resource
@@ -220,6 +221,450 @@ func (m *Resource) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *Resource) UnmarshalBinary(b []byte) error {
 	var res Resource
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResourceCostComponentsItems0 resource cost components items0
+//
+// swagger:model ResourceCostComponentsItems0
+type ResourceCostComponentsItems0 struct {
+
+	// hourly cost
+	HourlyCost string `json:"hourlyCost,omitempty"`
+
+	// hourly quantity
+	HourlyQuantity string `json:"hourlyQuantity,omitempty"`
+
+	// monthly cost
+	MonthlyCost string `json:"monthlyCost,omitempty"`
+
+	// monthly quantity
+	MonthlyQuantity string `json:"monthlyQuantity,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// price
+	Price string `json:"price,omitempty"`
+
+	// unit
+	Unit string `json:"unit,omitempty"`
+}
+
+// Validate validates this resource cost components items0
+func (m *ResourceCostComponentsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this resource cost components items0 based on context it is used
+func (m *ResourceCostComponentsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResourceCostComponentsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResourceCostComponentsItems0) UnmarshalBinary(b []byte) error {
+	var res ResourceCostComponentsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResourceMetadata resource metadata
+//
+// swagger:model ResourceMetadata
+type ResourceMetadata struct {
+
+	// infracost command
+	InfracostCommand string `json:"infracostCommand,omitempty"`
+
+	// path
+	Path string `json:"path,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+
+	// vcs branch
+	VcsBranch string `json:"vcsBranch,omitempty"`
+
+	// vcs commit author email
+	VcsCommitAuthorEmail string `json:"vcsCommitAuthorEmail,omitempty"`
+
+	// vcs commit author name
+	VcsCommitAuthorName string `json:"vcsCommitAuthorName,omitempty"`
+
+	// vcs commit message
+	VcsCommitMessage string `json:"vcsCommitMessage,omitempty"`
+
+	// vcs commit sha
+	VcsCommitSha string `json:"vcsCommitSha,omitempty"`
+
+	// vcs commit timestamp
+	// Format: date-time
+	VcsCommitTimestamp *strfmt.DateTime `json:"vcsCommitTimestamp,omitempty"`
+
+	// vcs repository Url
+	VcsRepositoryURL string `json:"vcsRepositoryUrl,omitempty"`
+
+	// vcs sub path
+	VcsSubPath string `json:"vcsSubPath,omitempty"`
+}
+
+// Validate validates this resource metadata
+func (m *ResourceMetadata) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateVcsCommitTimestamp(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResourceMetadata) validateVcsCommitTimestamp(formats strfmt.Registry) error {
+	if swag.IsZero(m.VcsCommitTimestamp) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("metadata"+"."+"vcsCommitTimestamp", "body", "date-time", m.VcsCommitTimestamp.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this resource metadata based on context it is used
+func (m *ResourceMetadata) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResourceMetadata) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResourceMetadata) UnmarshalBinary(b []byte) error {
+	var res ResourceMetadata
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResourceSubresourcesItems0 resource subresources items0
+//
+// swagger:model ResourceSubresourcesItems0
+type ResourceSubresourcesItems0 struct {
+
+	// cost components
+	CostComponents []*ResourceSubresourcesItems0CostComponentsItems0 `json:"costComponents"`
+
+	// hourly cost
+	HourlyCost string `json:"hourlyCost,omitempty"`
+
+	// metadata
+	Metadata *ResourceSubresourcesItems0Metadata `json:"metadata,omitempty"`
+
+	// monthly cost
+	MonthlyCost string `json:"monthlyCost,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this resource subresources items0
+func (m *ResourceSubresourcesItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateCostComponents(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMetadata(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResourceSubresourcesItems0) validateCostComponents(formats strfmt.Registry) error {
+	if swag.IsZero(m.CostComponents) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.CostComponents); i++ {
+		if swag.IsZero(m.CostComponents[i]) { // not required
+			continue
+		}
+
+		if m.CostComponents[i] != nil {
+			if err := m.CostComponents[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("costComponents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("costComponents" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ResourceSubresourcesItems0) validateMetadata(formats strfmt.Registry) error {
+	if swag.IsZero(m.Metadata) { // not required
+		return nil
+	}
+
+	if m.Metadata != nil {
+		if err := m.Metadata.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("metadata")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("metadata")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this resource subresources items0 based on the context it is used
+func (m *ResourceSubresourcesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCostComponents(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMetadata(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResourceSubresourcesItems0) contextValidateCostComponents(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.CostComponents); i++ {
+
+		if m.CostComponents[i] != nil {
+			if err := m.CostComponents[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("costComponents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("costComponents" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ResourceSubresourcesItems0) contextValidateMetadata(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Metadata != nil {
+		if err := m.Metadata.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("metadata")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("metadata")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResourceSubresourcesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResourceSubresourcesItems0) UnmarshalBinary(b []byte) error {
+	var res ResourceSubresourcesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResourceSubresourcesItems0CostComponentsItems0 resource subresources items0 cost components items0
+//
+// swagger:model ResourceSubresourcesItems0CostComponentsItems0
+type ResourceSubresourcesItems0CostComponentsItems0 struct {
+
+	// hourly cost
+	HourlyCost string `json:"hourlyCost,omitempty"`
+
+	// hourly quantity
+	HourlyQuantity string `json:"hourlyQuantity,omitempty"`
+
+	// monthly cost
+	MonthlyCost string `json:"monthlyCost,omitempty"`
+
+	// monthly quantity
+	MonthlyQuantity string `json:"monthlyQuantity,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// price
+	Price string `json:"price,omitempty"`
+
+	// unit
+	Unit string `json:"unit,omitempty"`
+}
+
+// Validate validates this resource subresources items0 cost components items0
+func (m *ResourceSubresourcesItems0CostComponentsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this resource subresources items0 cost components items0 based on context it is used
+func (m *ResourceSubresourcesItems0CostComponentsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResourceSubresourcesItems0CostComponentsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResourceSubresourcesItems0CostComponentsItems0) UnmarshalBinary(b []byte) error {
+	var res ResourceSubresourcesItems0CostComponentsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ResourceSubresourcesItems0Metadata resource subresources items0 metadata
+//
+// swagger:model ResourceSubresourcesItems0Metadata
+type ResourceSubresourcesItems0Metadata struct {
+
+	// infracost command
+	InfracostCommand string `json:"infracostCommand,omitempty"`
+
+	// path
+	Path string `json:"path,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+
+	// vcs branch
+	VcsBranch string `json:"vcsBranch,omitempty"`
+
+	// vcs commit author email
+	VcsCommitAuthorEmail string `json:"vcsCommitAuthorEmail,omitempty"`
+
+	// vcs commit author name
+	VcsCommitAuthorName string `json:"vcsCommitAuthorName,omitempty"`
+
+	// vcs commit message
+	VcsCommitMessage string `json:"vcsCommitMessage,omitempty"`
+
+	// vcs commit sha
+	VcsCommitSha string `json:"vcsCommitSha,omitempty"`
+
+	// vcs commit timestamp
+	// Format: date-time
+	VcsCommitTimestamp *strfmt.DateTime `json:"vcsCommitTimestamp,omitempty"`
+
+	// vcs repository Url
+	VcsRepositoryURL string `json:"vcsRepositoryUrl,omitempty"`
+
+	// vcs sub path
+	VcsSubPath string `json:"vcsSubPath,omitempty"`
+}
+
+// Validate validates this resource subresources items0 metadata
+func (m *ResourceSubresourcesItems0Metadata) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateVcsCommitTimestamp(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResourceSubresourcesItems0Metadata) validateVcsCommitTimestamp(formats strfmt.Registry) error {
+	if swag.IsZero(m.VcsCommitTimestamp) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("metadata"+"."+"vcsCommitTimestamp", "body", "date-time", m.VcsCommitTimestamp.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this resource subresources items0 metadata based on context it is used
+func (m *ResourceSubresourcesItems0Metadata) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ResourceSubresourcesItems0Metadata) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ResourceSubresourcesItems0Metadata) UnmarshalBinary(b []byte) error {
+	var res ResourceSubresourcesItems0Metadata
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAccessProfilesCreateParams creates a new AccessProfilesCreateParams object,
@@ -64,7 +62,7 @@ AccessProfilesCreateParams contains all the parameters to send to the API endpoi
 type AccessProfilesCreateParams struct {
 
 	// Body.
-	Body *models.CreateAccessProfileCommand
+	Body AccessProfilesCreateBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *AccessProfilesCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the access profiles create params
-func (o *AccessProfilesCreateParams) WithBody(body *models.CreateAccessProfileCommand) *AccessProfilesCreateParams {
+func (o *AccessProfilesCreateParams) WithBody(body AccessProfilesCreateBody) *AccessProfilesCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the access profiles create params
-func (o *AccessProfilesCreateParams) SetBody(body *models.CreateAccessProfileCommand) {
+func (o *AccessProfilesCreateParams) SetBody(body AccessProfilesCreateBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *AccessProfilesCreateParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

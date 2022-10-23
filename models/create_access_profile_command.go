@@ -20,10 +20,10 @@ import (
 type CreateAccessProfileCommand struct {
 
 	// allowed hosts
-	AllowedHosts []*AllowedHostCreateDto `json:"allowedHosts"`
+	AllowedHosts []*CreateAccessProfileCommandAllowedHostsItems0 `json:"allowedHosts"`
 
 	// dns servers
-	DNSServers []*DNSServerCreateDto `json:"dnsServers"`
+	DNSServers []*CreateAccessProfileCommandDNSServersItems0 `json:"dnsServers"`
 
 	// http proxy
 	HTTPProxy string `json:"httpProxy,omitempty"`
@@ -32,13 +32,13 @@ type CreateAccessProfileCommand struct {
 	Name string `json:"name,omitempty"`
 
 	// ntp servers
-	NtpServers []*NtpServerCreateDto `json:"ntpServers"`
+	NtpServers []*CreateAccessProfileCommandNtpServersItems0 `json:"ntpServers"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
 	// ssh users
-	SSHUsers []*SSHUserCreateDto `json:"sshUsers"`
+	SSHUsers []*CreateAccessProfileCommandSSHUsersItems0 `json:"sshUsers"`
 }
 
 // Validate validates this create access profile command
@@ -288,6 +288,163 @@ func (m *CreateAccessProfileCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *CreateAccessProfileCommand) UnmarshalBinary(b []byte) error {
 	var res CreateAccessProfileCommand
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CreateAccessProfileCommandAllowedHostsItems0 create access profile command allowed hosts items0
+//
+// swagger:model CreateAccessProfileCommandAllowedHostsItems0
+type CreateAccessProfileCommandAllowedHostsItems0 struct {
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// ip address
+	IPAddress string `json:"ipAddress,omitempty"`
+
+	// mask bits
+	MaskBits int32 `json:"maskBits,omitempty"`
+}
+
+// Validate validates this create access profile command allowed hosts items0
+func (m *CreateAccessProfileCommandAllowedHostsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this create access profile command allowed hosts items0 based on context it is used
+func (m *CreateAccessProfileCommandAllowedHostsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CreateAccessProfileCommandAllowedHostsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CreateAccessProfileCommandAllowedHostsItems0) UnmarshalBinary(b []byte) error {
+	var res CreateAccessProfileCommandAllowedHostsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CreateAccessProfileCommandDNSServersItems0 create access profile command DNS servers items0
+//
+// swagger:model CreateAccessProfileCommandDNSServersItems0
+type CreateAccessProfileCommandDNSServersItems0 struct {
+
+	// address
+	Address string `json:"address,omitempty"`
+}
+
+// Validate validates this create access profile command DNS servers items0
+func (m *CreateAccessProfileCommandDNSServersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this create access profile command DNS servers items0 based on context it is used
+func (m *CreateAccessProfileCommandDNSServersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CreateAccessProfileCommandDNSServersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CreateAccessProfileCommandDNSServersItems0) UnmarshalBinary(b []byte) error {
+	var res CreateAccessProfileCommandDNSServersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CreateAccessProfileCommandNtpServersItems0 create access profile command ntp servers items0
+//
+// swagger:model CreateAccessProfileCommandNtpServersItems0
+type CreateAccessProfileCommandNtpServersItems0 struct {
+
+	// address
+	Address string `json:"address,omitempty"`
+}
+
+// Validate validates this create access profile command ntp servers items0
+func (m *CreateAccessProfileCommandNtpServersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this create access profile command ntp servers items0 based on context it is used
+func (m *CreateAccessProfileCommandNtpServersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CreateAccessProfileCommandNtpServersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CreateAccessProfileCommandNtpServersItems0) UnmarshalBinary(b []byte) error {
+	var res CreateAccessProfileCommandNtpServersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CreateAccessProfileCommandSSHUsersItems0 create access profile command SSH users items0
+//
+// swagger:model CreateAccessProfileCommandSSHUsersItems0
+type CreateAccessProfileCommandSSHUsersItems0 struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// ssh public key
+	SSHPublicKey string `json:"sshPublicKey,omitempty"`
+}
+
+// Validate validates this create access profile command SSH users items0
+func (m *CreateAccessProfileCommandSSHUsersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this create access profile command SSH users items0 based on context it is used
+func (m *CreateAccessProfileCommandSSHUsersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CreateAccessProfileCommandSSHUsersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CreateAccessProfileCommandSSHUsersItems0) UnmarshalBinary(b []byte) error {
+	var res CreateAccessProfileCommandSSHUsersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

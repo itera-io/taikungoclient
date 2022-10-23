@@ -6,13 +6,15 @@ package showback_summaries
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ShowbackSummariesGroupedByProjectListReader is a Reader for the ShowbackSummariesGroupedByProjectList structure.
@@ -75,7 +77,7 @@ ShowbackSummariesGroupedByProjectListOK describes a response with status code 20
 Success
 */
 type ShowbackSummariesGroupedByProjectListOK struct {
-	Payload *models.GroupedShowbackByProjectList
+	Payload *ShowbackSummariesGroupedByProjectListOKBody
 }
 
 // IsSuccess returns true when this showback summaries grouped by project list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *ShowbackSummariesGroupedByProjectListOK) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byProject][%d] showbackSummariesGroupedByProjectListOK  %+v", 200, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByProjectListOK) GetPayload() *models.GroupedShowbackByProjectList {
+func (o *ShowbackSummariesGroupedByProjectListOK) GetPayload() *ShowbackSummariesGroupedByProjectListOKBody {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedByProjectListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GroupedShowbackByProjectList)
+	o.Payload = new(ShowbackSummariesGroupedByProjectListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ ShowbackSummariesGroupedByProjectListBadRequest describes a response with status
 Bad Request
 */
 type ShowbackSummariesGroupedByProjectListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *ShowbackSummariesGroupedByProjectListBadRequestBody
 }
 
 // IsSuccess returns true when this showback summaries grouped by project list bad request response has a 2xx status code
@@ -174,13 +176,13 @@ func (o *ShowbackSummariesGroupedByProjectListBadRequest) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byProject][%d] showbackSummariesGroupedByProjectListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByProjectListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ShowbackSummariesGroupedByProjectListBadRequest) GetPayload() *ShowbackSummariesGroupedByProjectListBadRequestBody {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedByProjectListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(ShowbackSummariesGroupedByProjectListBadRequestBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -201,7 +203,7 @@ ShowbackSummariesGroupedByProjectListUnauthorized describes a response with stat
 Unauthorized
 */
 type ShowbackSummariesGroupedByProjectListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackSummariesGroupedByProjectListUnauthorizedBody
 }
 
 // IsSuccess returns true when this showback summaries grouped by project list unauthorized response has a 2xx status code
@@ -237,13 +239,13 @@ func (o *ShowbackSummariesGroupedByProjectListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byProject][%d] showbackSummariesGroupedByProjectListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByProjectListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesGroupedByProjectListUnauthorized) GetPayload() *ShowbackSummariesGroupedByProjectListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedByProjectListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackSummariesGroupedByProjectListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +266,7 @@ ShowbackSummariesGroupedByProjectListForbidden describes a response with status 
 Forbidden
 */
 type ShowbackSummariesGroupedByProjectListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackSummariesGroupedByProjectListForbiddenBody
 }
 
 // IsSuccess returns true when this showback summaries grouped by project list forbidden response has a 2xx status code
@@ -300,13 +302,13 @@ func (o *ShowbackSummariesGroupedByProjectListForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byProject][%d] showbackSummariesGroupedByProjectListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByProjectListForbidden) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesGroupedByProjectListForbidden) GetPayload() *ShowbackSummariesGroupedByProjectListForbiddenBody {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedByProjectListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackSummariesGroupedByProjectListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +329,7 @@ ShowbackSummariesGroupedByProjectListNotFound describes a response with status c
 Not Found
 */
 type ShowbackSummariesGroupedByProjectListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackSummariesGroupedByProjectListNotFoundBody
 }
 
 // IsSuccess returns true when this showback summaries grouped by project list not found response has a 2xx status code
@@ -363,13 +365,13 @@ func (o *ShowbackSummariesGroupedByProjectListNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byProject][%d] showbackSummariesGroupedByProjectListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByProjectListNotFound) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesGroupedByProjectListNotFound) GetPayload() *ShowbackSummariesGroupedByProjectListNotFoundBody {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedByProjectListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackSummariesGroupedByProjectListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,5 +429,477 @@ func (o *ShowbackSummariesGroupedByProjectListInternalServerError) String() stri
 
 func (o *ShowbackSummariesGroupedByProjectListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedByProjectListBadRequestBody showback summaries grouped by project list bad request body
+swagger:model ShowbackSummariesGroupedByProjectListBadRequestBody
+*/
+type ShowbackSummariesGroupedByProjectListBadRequestBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// errors
+	// Read Only: true
+	Errors map[string][]string `json:"errors,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback summaries grouped by project list bad request body
+func (o *ShowbackSummariesGroupedByProjectListBadRequestBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validate this showback summaries grouped by project list bad request body based on the context it is used
+func (o *ShowbackSummariesGroupedByProjectListBadRequestBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateErrors(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedByProjectListBadRequestBody) contextValidateErrors(ctx context.Context, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedByProjectListBadRequestBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedByProjectListBadRequestBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedByProjectListBadRequestBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedByProjectListForbiddenBody showback summaries grouped by project list forbidden body
+swagger:model ShowbackSummariesGroupedByProjectListForbiddenBody
+*/
+type ShowbackSummariesGroupedByProjectListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback summaries grouped by project list forbidden body
+func (o *ShowbackSummariesGroupedByProjectListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback summaries grouped by project list forbidden body based on context it is used
+func (o *ShowbackSummariesGroupedByProjectListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedByProjectListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedByProjectListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedByProjectListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedByProjectListNotFoundBody showback summaries grouped by project list not found body
+swagger:model ShowbackSummariesGroupedByProjectListNotFoundBody
+*/
+type ShowbackSummariesGroupedByProjectListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback summaries grouped by project list not found body
+func (o *ShowbackSummariesGroupedByProjectListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback summaries grouped by project list not found body based on context it is used
+func (o *ShowbackSummariesGroupedByProjectListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedByProjectListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedByProjectListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedByProjectListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedByProjectListOKBody showback summaries grouped by project list o k body
+swagger:model ShowbackSummariesGroupedByProjectListOKBody
+*/
+type ShowbackSummariesGroupedByProjectListOKBody struct {
+
+	// by projects
+	ByProjects []*ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0 `json:"byProjects"`
+}
+
+// Validate validates this showback summaries grouped by project list o k body
+func (o *ShowbackSummariesGroupedByProjectListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateByProjects(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedByProjectListOKBody) validateByProjects(formats strfmt.Registry) error {
+	if swag.IsZero(o.ByProjects) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.ByProjects); i++ {
+		if swag.IsZero(o.ByProjects[i]) { // not required
+			continue
+		}
+
+		if o.ByProjects[i] != nil {
+			if err := o.ByProjects[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("showbackSummariesGroupedByProjectListOK" + "." + "byProjects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("showbackSummariesGroupedByProjectListOK" + "." + "byProjects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this showback summaries grouped by project list o k body based on the context it is used
+func (o *ShowbackSummariesGroupedByProjectListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateByProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedByProjectListOKBody) contextValidateByProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.ByProjects); i++ {
+
+		if o.ByProjects[i] != nil {
+			if err := o.ByProjects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("showbackSummariesGroupedByProjectListOK" + "." + "byProjects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("showbackSummariesGroupedByProjectListOK" + "." + "byProjects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedByProjectListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedByProjectListOKBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedByProjectListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0 showback summaries grouped by project list o k body by projects items0
+swagger:model ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0
+*/
+type ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0 struct {
+
+	// credential name
+	CredentialName string `json:"credentialName,omitempty"`
+
+	// data
+	Data []*ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0DataItems0 `json:"data"`
+
+	// rule name
+	RuleName string `json:"ruleName,omitempty"`
+
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
+}
+
+// Validate validates this showback summaries grouped by project list o k body by projects items0
+func (o *ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this showback summaries grouped by project list o k body by projects items0 based on the context it is used
+func (o *ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0DataItems0 showback summaries grouped by project list o k body by projects items0 data items0
+swagger:model ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0DataItems0
+*/
+type ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0DataItems0 struct {
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
+}
+
+// Validate validates this showback summaries grouped by project list o k body by projects items0 data items0
+func (o *ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0DataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback summaries grouped by project list o k body by projects items0 data items0 based on context it is used
+func (o *ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0DataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0DataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0DataItems0) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedByProjectListOKBodyByProjectsItems0DataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedByProjectListUnauthorizedBody showback summaries grouped by project list unauthorized body
+swagger:model ShowbackSummariesGroupedByProjectListUnauthorizedBody
+*/
+type ShowbackSummariesGroupedByProjectListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback summaries grouped by project list unauthorized body
+func (o *ShowbackSummariesGroupedByProjectListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback summaries grouped by project list unauthorized body based on context it is used
+func (o *ShowbackSummariesGroupedByProjectListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedByProjectListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedByProjectListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedByProjectListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

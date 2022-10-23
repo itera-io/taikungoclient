@@ -6,13 +6,13 @@ package flavors
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // FlavorsBindToProjectReader is a Reader for the FlavorsBindToProject structure.
@@ -75,7 +75,7 @@ FlavorsBindToProjectOK describes a response with status code 200, with default h
 Success
 */
 type FlavorsBindToProjectOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors bind to project o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *FlavorsBindToProjectOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectOK  %+v", 200, o.Payload)
 }
 
-func (o *FlavorsBindToProjectOK) GetPayload() models.Unit {
+func (o *FlavorsBindToProjectOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ FlavorsBindToProjectBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type FlavorsBindToProjectBadRequest struct {
-	Payload []*models.Error
+	Payload []*FlavorsBindToProjectBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this flavors bind to project bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *FlavorsBindToProjectBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsBindToProjectBadRequest) GetPayload() []*models.Error {
+func (o *FlavorsBindToProjectBadRequest) GetPayload() []*FlavorsBindToProjectBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ FlavorsBindToProjectUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type FlavorsBindToProjectUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *FlavorsBindToProjectUnauthorizedBody
 }
 
 // IsSuccess returns true when this flavors bind to project unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *FlavorsBindToProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsBindToProjectUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *FlavorsBindToProjectUnauthorized) GetPayload() *FlavorsBindToProjectUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *FlavorsBindToProjectUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(FlavorsBindToProjectUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ FlavorsBindToProjectForbidden describes a response with status code 403, with de
 Forbidden
 */
 type FlavorsBindToProjectForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *FlavorsBindToProjectForbiddenBody
 }
 
 // IsSuccess returns true when this flavors bind to project forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *FlavorsBindToProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsBindToProjectForbidden) GetPayload() *models.ProblemDetails {
+func (o *FlavorsBindToProjectForbidden) GetPayload() *FlavorsBindToProjectForbiddenBody {
 	return o.Payload
 }
 
 func (o *FlavorsBindToProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(FlavorsBindToProjectForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ FlavorsBindToProjectNotFound describes a response with status code 404, with def
 Not Found
 */
 type FlavorsBindToProjectNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *FlavorsBindToProjectNotFoundBody
 }
 
 // IsSuccess returns true when this flavors bind to project not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *FlavorsBindToProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsBindToProjectNotFound) GetPayload() *models.ProblemDetails {
+func (o *FlavorsBindToProjectNotFound) GetPayload() *FlavorsBindToProjectNotFoundBody {
 	return o.Payload
 }
 
 func (o *FlavorsBindToProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(FlavorsBindToProjectNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *FlavorsBindToProjectInternalServerError) String() string {
 
 func (o *FlavorsBindToProjectInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+FlavorsBindToProjectBadRequestBodyItems0 flavors bind to project bad request body items0
+swagger:model FlavorsBindToProjectBadRequestBodyItems0
+*/
+type FlavorsBindToProjectBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this flavors bind to project bad request body items0
+func (o *FlavorsBindToProjectBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this flavors bind to project bad request body items0 based on context it is used
+func (o *FlavorsBindToProjectBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *FlavorsBindToProjectBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *FlavorsBindToProjectBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res FlavorsBindToProjectBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+FlavorsBindToProjectBody flavors bind to project body
+swagger:model FlavorsBindToProjectBody
+*/
+type FlavorsBindToProjectBody struct {
+
+	// flavors
+	Flavors []string `json:"flavors"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this flavors bind to project body
+func (o *FlavorsBindToProjectBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this flavors bind to project body based on context it is used
+func (o *FlavorsBindToProjectBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *FlavorsBindToProjectBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *FlavorsBindToProjectBody) UnmarshalBinary(b []byte) error {
+	var res FlavorsBindToProjectBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+FlavorsBindToProjectForbiddenBody flavors bind to project forbidden body
+swagger:model FlavorsBindToProjectForbiddenBody
+*/
+type FlavorsBindToProjectForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this flavors bind to project forbidden body
+func (o *FlavorsBindToProjectForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this flavors bind to project forbidden body based on context it is used
+func (o *FlavorsBindToProjectForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *FlavorsBindToProjectForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *FlavorsBindToProjectForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res FlavorsBindToProjectForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+FlavorsBindToProjectNotFoundBody flavors bind to project not found body
+swagger:model FlavorsBindToProjectNotFoundBody
+*/
+type FlavorsBindToProjectNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this flavors bind to project not found body
+func (o *FlavorsBindToProjectNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this flavors bind to project not found body based on context it is used
+func (o *FlavorsBindToProjectNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *FlavorsBindToProjectNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *FlavorsBindToProjectNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res FlavorsBindToProjectNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+FlavorsBindToProjectUnauthorizedBody flavors bind to project unauthorized body
+swagger:model FlavorsBindToProjectUnauthorizedBody
+*/
+type FlavorsBindToProjectUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this flavors bind to project unauthorized body
+func (o *FlavorsBindToProjectUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this flavors bind to project unauthorized body based on context it is used
+func (o *FlavorsBindToProjectUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *FlavorsBindToProjectUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *FlavorsBindToProjectUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res FlavorsBindToProjectUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

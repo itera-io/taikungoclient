@@ -6,13 +6,13 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ProjectsPurgeReader is a Reader for the ProjectsPurge structure.
@@ -75,7 +75,7 @@ ProjectsPurgeOK describes a response with status code 200, with default header v
 Success
 */
 type ProjectsPurgeOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects purge o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectsPurgeOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsPurgeOK) GetPayload() models.Unit {
+func (o *ProjectsPurgeOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectsPurgeBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type ProjectsPurgeBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectsPurgeBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this projects purge bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsPurgeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsPurgeBadRequest) GetPayload() []*models.Error {
+func (o *ProjectsPurgeBadRequest) GetPayload() []*ProjectsPurgeBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectsPurgeUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type ProjectsPurgeUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsPurgeUnauthorizedBody
 }
 
 // IsSuccess returns true when this projects purge unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectsPurgeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsPurgeUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsPurgeUnauthorized) GetPayload() *ProjectsPurgeUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectsPurgeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsPurgeUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectsPurgeForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type ProjectsPurgeForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsPurgeForbiddenBody
 }
 
 // IsSuccess returns true when this projects purge forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectsPurgeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsPurgeForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsPurgeForbidden) GetPayload() *ProjectsPurgeForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectsPurgeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsPurgeForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectsPurgeNotFound describes a response with status code 404, with default he
 Not Found
 */
 type ProjectsPurgeNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsPurgeNotFoundBody
 }
 
 // IsSuccess returns true when this projects purge not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectsPurgeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsPurgeNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsPurgeNotFound) GetPayload() *ProjectsPurgeNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectsPurgeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsPurgeNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *ProjectsPurgeInternalServerError) String() string {
 
 func (o *ProjectsPurgeInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectsPurgeBadRequestBodyItems0 projects purge bad request body items0
+swagger:model ProjectsPurgeBadRequestBodyItems0
+*/
+type ProjectsPurgeBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this projects purge bad request body items0
+func (o *ProjectsPurgeBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects purge bad request body items0 based on context it is used
+func (o *ProjectsPurgeBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsPurgeBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsPurgeBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsPurgeBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsPurgeBody projects purge body
+swagger:model ProjectsPurgeBody
+*/
+type ProjectsPurgeBody struct {
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// server ids
+	ServerIds []int32 `json:"serverIds"`
+}
+
+// Validate validates this projects purge body
+func (o *ProjectsPurgeBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects purge body based on context it is used
+func (o *ProjectsPurgeBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsPurgeBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsPurgeBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsPurgeBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsPurgeForbiddenBody projects purge forbidden body
+swagger:model ProjectsPurgeForbiddenBody
+*/
+type ProjectsPurgeForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects purge forbidden body
+func (o *ProjectsPurgeForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects purge forbidden body based on context it is used
+func (o *ProjectsPurgeForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsPurgeForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsPurgeForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsPurgeForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsPurgeNotFoundBody projects purge not found body
+swagger:model ProjectsPurgeNotFoundBody
+*/
+type ProjectsPurgeNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects purge not found body
+func (o *ProjectsPurgeNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects purge not found body based on context it is used
+func (o *ProjectsPurgeNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsPurgeNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsPurgeNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsPurgeNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsPurgeUnauthorizedBody projects purge unauthorized body
+swagger:model ProjectsPurgeUnauthorizedBody
+*/
+type ProjectsPurgeUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects purge unauthorized body
+func (o *ProjectsPurgeUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects purge unauthorized body based on context it is used
+func (o *ProjectsPurgeUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsPurgeUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsPurgeUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsPurgeUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

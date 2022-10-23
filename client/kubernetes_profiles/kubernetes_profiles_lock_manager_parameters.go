@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesProfilesLockManagerParams creates a new KubernetesProfilesLockManagerParams object,
@@ -64,7 +62,7 @@ KubernetesProfilesLockManagerParams contains all the parameters to send to the A
 type KubernetesProfilesLockManagerParams struct {
 
 	// Body.
-	Body *models.KubernetesProfilesLockManagerCommand
+	Body KubernetesProfilesLockManagerBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *KubernetesProfilesLockManagerParams) SetHTTPClient(client *http.Client)
 }
 
 // WithBody adds the body to the kubernetes profiles lock manager params
-func (o *KubernetesProfilesLockManagerParams) WithBody(body *models.KubernetesProfilesLockManagerCommand) *KubernetesProfilesLockManagerParams {
+func (o *KubernetesProfilesLockManagerParams) WithBody(body KubernetesProfilesLockManagerBody) *KubernetesProfilesLockManagerParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes profiles lock manager params
-func (o *KubernetesProfilesLockManagerParams) SetBody(body *models.KubernetesProfilesLockManagerCommand) {
+func (o *KubernetesProfilesLockManagerParams) SetBody(body KubernetesProfilesLockManagerBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *KubernetesProfilesLockManagerParams) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

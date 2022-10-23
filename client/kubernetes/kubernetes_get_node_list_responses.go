@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesGetNodeListReader is a Reader for the KubernetesGetNodeList structure.
@@ -136,7 +136,7 @@ KubernetesGetNodeListBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesGetNodeListBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesGetNodeListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes get node list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesGetNodeListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetNodeListBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetNodeListBadRequest) GetPayload() []*KubernetesGetNodeListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesGetNodeListUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesGetNodeListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetNodeListUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes get node list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesGetNodeListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetNodeListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetNodeListUnauthorized) GetPayload() *KubernetesGetNodeListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetNodeListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetNodeListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesGetNodeListForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesGetNodeListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetNodeListForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes get node list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesGetNodeListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetNodeListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetNodeListForbidden) GetPayload() *KubernetesGetNodeListForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetNodeListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetNodeListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesGetNodeListNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesGetNodeListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetNodeListNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes get node list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesGetNodeListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetNodeListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetNodeListNotFound) GetPayload() *KubernetesGetNodeListNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetNodeListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetNodeListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *KubernetesGetNodeListInternalServerError) String() string {
 
 func (o *KubernetesGetNodeListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesGetNodeListBadRequestBodyItems0 kubernetes get node list bad request body items0
+swagger:model KubernetesGetNodeListBadRequestBodyItems0
+*/
+type KubernetesGetNodeListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes get node list bad request body items0
+func (o *KubernetesGetNodeListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get node list bad request body items0 based on context it is used
+func (o *KubernetesGetNodeListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetNodeListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetNodeListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetNodeListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetNodeListForbiddenBody kubernetes get node list forbidden body
+swagger:model KubernetesGetNodeListForbiddenBody
+*/
+type KubernetesGetNodeListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get node list forbidden body
+func (o *KubernetesGetNodeListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get node list forbidden body based on context it is used
+func (o *KubernetesGetNodeListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetNodeListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetNodeListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetNodeListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetNodeListNotFoundBody kubernetes get node list not found body
+swagger:model KubernetesGetNodeListNotFoundBody
+*/
+type KubernetesGetNodeListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get node list not found body
+func (o *KubernetesGetNodeListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get node list not found body based on context it is used
+func (o *KubernetesGetNodeListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetNodeListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetNodeListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetNodeListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetNodeListUnauthorizedBody kubernetes get node list unauthorized body
+swagger:model KubernetesGetNodeListUnauthorizedBody
+*/
+type KubernetesGetNodeListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get node list unauthorized body
+func (o *KubernetesGetNodeListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get node list unauthorized body based on context it is used
+func (o *KubernetesGetNodeListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetNodeListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetNodeListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetNodeListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -20,10 +20,10 @@ import (
 type GroupedShowbackSummaryListDto struct {
 
 	// credential
-	Credential *GroupedCredentialForShowbackSummary `json:"credential,omitempty"`
+	Credential *GroupedShowbackSummaryListDtoCredential `json:"credential,omitempty"`
 
 	// projects
-	Projects []*GroupedProjectForShowbackSummary `json:"projects"`
+	Projects []*GroupedShowbackSummaryListDtoProjectsItems0 `json:"projects"`
 
 	// rule Id
 	RuleID int32 `json:"ruleId,omitempty"`
@@ -163,6 +163,95 @@ func (m *GroupedShowbackSummaryListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *GroupedShowbackSummaryListDto) UnmarshalBinary(b []byte) error {
 	var res GroupedShowbackSummaryListDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// GroupedShowbackSummaryListDtoCredential grouped showback summary list dto credential
+//
+// swagger:model GroupedShowbackSummaryListDtoCredential
+type GroupedShowbackSummaryListDtoCredential struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this grouped showback summary list dto credential
+func (m *GroupedShowbackSummaryListDtoCredential) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this grouped showback summary list dto credential based on context it is used
+func (m *GroupedShowbackSummaryListDtoCredential) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *GroupedShowbackSummaryListDtoCredential) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *GroupedShowbackSummaryListDtoCredential) UnmarshalBinary(b []byte) error {
+	var res GroupedShowbackSummaryListDtoCredential
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// GroupedShowbackSummaryListDtoProjectsItems0 grouped showback summary list dto projects items0
+//
+// swagger:model GroupedShowbackSummaryListDtoProjectsItems0
+type GroupedShowbackSummaryListDtoProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is deleted
+	IsDeleted bool `json:"isDeleted"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
+}
+
+// Validate validates this grouped showback summary list dto projects items0
+func (m *GroupedShowbackSummaryListDtoProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this grouped showback summary list dto projects items0 based on context it is used
+func (m *GroupedShowbackSummaryListDtoProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *GroupedShowbackSummaryListDtoProjectsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *GroupedShowbackSummaryListDtoProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res GroupedShowbackSummaryListDtoProjectsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

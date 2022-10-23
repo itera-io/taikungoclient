@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesPatchIngressReader is a Reader for the KubernetesPatchIngress structure.
@@ -75,7 +75,7 @@ KubernetesPatchIngressOK describes a response with status code 200, with default
 Success
 */
 type KubernetesPatchIngressOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch ingress o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KubernetesPatchIngressOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/ingress][%d] kubernetesPatchIngressOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesPatchIngressOK) GetPayload() models.Unit {
+func (o *KubernetesPatchIngressOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KubernetesPatchIngressBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesPatchIngressBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesPatchIngressBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes patch ingress bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesPatchIngressBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/ingress][%d] kubernetesPatchIngressBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchIngressBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesPatchIngressBadRequest) GetPayload() []*KubernetesPatchIngressBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesPatchIngressUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesPatchIngressUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesPatchIngressUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes patch ingress unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesPatchIngressUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/ingress][%d] kubernetesPatchIngressUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchIngressUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchIngressUnauthorized) GetPayload() *KubernetesPatchIngressUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesPatchIngressUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesPatchIngressUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesPatchIngressForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesPatchIngressForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesPatchIngressForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes patch ingress forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesPatchIngressForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/ingress][%d] kubernetesPatchIngressForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchIngressForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchIngressForbidden) GetPayload() *KubernetesPatchIngressForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesPatchIngressForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesPatchIngressForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesPatchIngressNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesPatchIngressNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesPatchIngressNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes patch ingress not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesPatchIngressNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/ingress][%d] kubernetesPatchIngressNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchIngressNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchIngressNotFound) GetPayload() *KubernetesPatchIngressNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesPatchIngressNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesPatchIngressNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,243 @@ func (o *KubernetesPatchIngressInternalServerError) String() string {
 
 func (o *KubernetesPatchIngressInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesPatchIngressBadRequestBodyItems0 kubernetes patch ingress bad request body items0
+swagger:model KubernetesPatchIngressBadRequestBodyItems0
+*/
+type KubernetesPatchIngressBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes patch ingress bad request body items0
+func (o *KubernetesPatchIngressBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch ingress bad request body items0 based on context it is used
+func (o *KubernetesPatchIngressBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchIngressBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchIngressBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchIngressBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchIngressBody kubernetes patch ingress body
+swagger:model KubernetesPatchIngressBody
+*/
+type KubernetesPatchIngressBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// yaml
+	Yaml string `json:"yaml,omitempty"`
+}
+
+// Validate validates this kubernetes patch ingress body
+func (o *KubernetesPatchIngressBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch ingress body based on context it is used
+func (o *KubernetesPatchIngressBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchIngressBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchIngressBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchIngressBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchIngressForbiddenBody kubernetes patch ingress forbidden body
+swagger:model KubernetesPatchIngressForbiddenBody
+*/
+type KubernetesPatchIngressForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes patch ingress forbidden body
+func (o *KubernetesPatchIngressForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch ingress forbidden body based on context it is used
+func (o *KubernetesPatchIngressForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchIngressForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchIngressForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchIngressForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchIngressNotFoundBody kubernetes patch ingress not found body
+swagger:model KubernetesPatchIngressNotFoundBody
+*/
+type KubernetesPatchIngressNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes patch ingress not found body
+func (o *KubernetesPatchIngressNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch ingress not found body based on context it is used
+func (o *KubernetesPatchIngressNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchIngressNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchIngressNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchIngressNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchIngressUnauthorizedBody kubernetes patch ingress unauthorized body
+swagger:model KubernetesPatchIngressUnauthorizedBody
+*/
+type KubernetesPatchIngressUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes patch ingress unauthorized body
+func (o *KubernetesPatchIngressUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch ingress unauthorized body based on context it is used
+func (o *KubernetesPatchIngressUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchIngressUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchIngressUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchIngressUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package prometheus
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // PrometheusExportCsvReader is a Reader for the PrometheusExportCsv structure.
@@ -126,7 +126,7 @@ PrometheusExportCsvBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type PrometheusExportCsvBadRequest struct {
-	Payload []*models.Error
+	Payload []*PrometheusExportCsvBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this prometheus export csv bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *PrometheusExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusExportCsvBadRequest) GetPayload() []*models.Error {
+func (o *PrometheusExportCsvBadRequest) GetPayload() []*PrometheusExportCsvBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -187,7 +187,7 @@ PrometheusExportCsvUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type PrometheusExportCsvUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *PrometheusExportCsvUnauthorizedBody
 }
 
 // IsSuccess returns true when this prometheus export csv unauthorized response has a 2xx status code
@@ -223,13 +223,13 @@ func (o *PrometheusExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PrometheusExportCsvUnauthorized) GetPayload() *PrometheusExportCsvUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *PrometheusExportCsvUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PrometheusExportCsvUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -250,7 +250,7 @@ PrometheusExportCsvForbidden describes a response with status code 403, with def
 Forbidden
 */
 type PrometheusExportCsvForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *PrometheusExportCsvForbiddenBody
 }
 
 // IsSuccess returns true when this prometheus export csv forbidden response has a 2xx status code
@@ -286,13 +286,13 @@ func (o *PrometheusExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusExportCsvForbidden) GetPayload() *models.ProblemDetails {
+func (o *PrometheusExportCsvForbidden) GetPayload() *PrometheusExportCsvForbiddenBody {
 	return o.Payload
 }
 
 func (o *PrometheusExportCsvForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PrometheusExportCsvForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -313,7 +313,7 @@ PrometheusExportCsvNotFound describes a response with status code 404, with defa
 Not Found
 */
 type PrometheusExportCsvNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *PrometheusExportCsvNotFoundBody
 }
 
 // IsSuccess returns true when this prometheus export csv not found response has a 2xx status code
@@ -349,13 +349,13 @@ func (o *PrometheusExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusExportCsvNotFound) GetPayload() *models.ProblemDetails {
+func (o *PrometheusExportCsvNotFound) GetPayload() *PrometheusExportCsvNotFoundBody {
 	return o.Payload
 }
 
 func (o *PrometheusExportCsvNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PrometheusExportCsvNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -413,5 +413,196 @@ func (o *PrometheusExportCsvInternalServerError) String() string {
 
 func (o *PrometheusExportCsvInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+PrometheusExportCsvBadRequestBodyItems0 prometheus export csv bad request body items0
+swagger:model PrometheusExportCsvBadRequestBodyItems0
+*/
+type PrometheusExportCsvBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this prometheus export csv bad request body items0
+func (o *PrometheusExportCsvBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus export csv bad request body items0 based on context it is used
+func (o *PrometheusExportCsvBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PrometheusExportCsvBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PrometheusExportCsvBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res PrometheusExportCsvBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PrometheusExportCsvForbiddenBody prometheus export csv forbidden body
+swagger:model PrometheusExportCsvForbiddenBody
+*/
+type PrometheusExportCsvForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this prometheus export csv forbidden body
+func (o *PrometheusExportCsvForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus export csv forbidden body based on context it is used
+func (o *PrometheusExportCsvForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PrometheusExportCsvForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PrometheusExportCsvForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res PrometheusExportCsvForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PrometheusExportCsvNotFoundBody prometheus export csv not found body
+swagger:model PrometheusExportCsvNotFoundBody
+*/
+type PrometheusExportCsvNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this prometheus export csv not found body
+func (o *PrometheusExportCsvNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus export csv not found body based on context it is used
+func (o *PrometheusExportCsvNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PrometheusExportCsvNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PrometheusExportCsvNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res PrometheusExportCsvNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PrometheusExportCsvUnauthorizedBody prometheus export csv unauthorized body
+swagger:model PrometheusExportCsvUnauthorizedBody
+*/
+type PrometheusExportCsvUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this prometheus export csv unauthorized body
+func (o *PrometheusExportCsvUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus export csv unauthorized body based on context it is used
+func (o *PrometheusExportCsvUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PrometheusExportCsvUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PrometheusExportCsvUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res PrometheusExportCsvUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

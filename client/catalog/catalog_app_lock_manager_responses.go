@@ -6,13 +6,13 @@ package catalog
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CatalogAppLockManagerReader is a Reader for the CatalogAppLockManager structure.
@@ -75,7 +75,7 @@ CatalogAppLockManagerOK describes a response with status code 200, with default 
 Success
 */
 type CatalogAppLockManagerOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog app lock manager o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CatalogAppLockManagerOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerOK  %+v", 200, o.Payload)
 }
 
-func (o *CatalogAppLockManagerOK) GetPayload() models.Unit {
+func (o *CatalogAppLockManagerOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CatalogAppLockManagerBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type CatalogAppLockManagerBadRequest struct {
-	Payload []*models.Error
+	Payload []*CatalogAppLockManagerBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this catalog app lock manager bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CatalogAppLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogAppLockManagerBadRequest) GetPayload() []*models.Error {
+func (o *CatalogAppLockManagerBadRequest) GetPayload() []*CatalogAppLockManagerBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CatalogAppLockManagerUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type CatalogAppLockManagerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogAppLockManagerUnauthorizedBody
 }
 
 // IsSuccess returns true when this catalog app lock manager unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CatalogAppLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogAppLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogAppLockManagerUnauthorized) GetPayload() *CatalogAppLockManagerUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CatalogAppLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogAppLockManagerUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CatalogAppLockManagerForbidden describes a response with status code 403, with d
 Forbidden
 */
 type CatalogAppLockManagerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogAppLockManagerForbiddenBody
 }
 
 // IsSuccess returns true when this catalog app lock manager forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CatalogAppLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogAppLockManagerForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogAppLockManagerForbidden) GetPayload() *CatalogAppLockManagerForbiddenBody {
 	return o.Payload
 }
 
 func (o *CatalogAppLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogAppLockManagerForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CatalogAppLockManagerNotFound describes a response with status code 404, with de
 Not Found
 */
 type CatalogAppLockManagerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogAppLockManagerNotFoundBody
 }
 
 // IsSuccess returns true when this catalog app lock manager not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CatalogAppLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogAppLockManagerNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogAppLockManagerNotFound) GetPayload() *CatalogAppLockManagerNotFoundBody {
 	return o.Payload
 }
 
 func (o *CatalogAppLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogAppLockManagerNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *CatalogAppLockManagerInternalServerError) String() string {
 
 func (o *CatalogAppLockManagerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CatalogAppLockManagerBadRequestBodyItems0 catalog app lock manager bad request body items0
+swagger:model CatalogAppLockManagerBadRequestBodyItems0
+*/
+type CatalogAppLockManagerBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this catalog app lock manager bad request body items0
+func (o *CatalogAppLockManagerBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog app lock manager bad request body items0 based on context it is used
+func (o *CatalogAppLockManagerBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogAppLockManagerBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogAppLockManagerBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CatalogAppLockManagerBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogAppLockManagerBody catalog app lock manager body
+swagger:model CatalogAppLockManagerBody
+*/
+type CatalogAppLockManagerBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// mode
+	Mode string `json:"mode,omitempty"`
+}
+
+// Validate validates this catalog app lock manager body
+func (o *CatalogAppLockManagerBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog app lock manager body based on context it is used
+func (o *CatalogAppLockManagerBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogAppLockManagerBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogAppLockManagerBody) UnmarshalBinary(b []byte) error {
+	var res CatalogAppLockManagerBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogAppLockManagerForbiddenBody catalog app lock manager forbidden body
+swagger:model CatalogAppLockManagerForbiddenBody
+*/
+type CatalogAppLockManagerForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog app lock manager forbidden body
+func (o *CatalogAppLockManagerForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog app lock manager forbidden body based on context it is used
+func (o *CatalogAppLockManagerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogAppLockManagerForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogAppLockManagerForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CatalogAppLockManagerForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogAppLockManagerNotFoundBody catalog app lock manager not found body
+swagger:model CatalogAppLockManagerNotFoundBody
+*/
+type CatalogAppLockManagerNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog app lock manager not found body
+func (o *CatalogAppLockManagerNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog app lock manager not found body based on context it is used
+func (o *CatalogAppLockManagerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogAppLockManagerNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogAppLockManagerNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CatalogAppLockManagerNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogAppLockManagerUnauthorizedBody catalog app lock manager unauthorized body
+swagger:model CatalogAppLockManagerUnauthorizedBody
+*/
+type CatalogAppLockManagerUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog app lock manager unauthorized body
+func (o *CatalogAppLockManagerUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog app lock manager unauthorized body based on context it is used
+func (o *CatalogAppLockManagerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogAppLockManagerUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogAppLockManagerUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CatalogAppLockManagerUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -20,7 +20,7 @@ import (
 type BillingCredentialsSearchList struct {
 
 	// data
-	Data []*CommonSearchResponseData `json:"data"`
+	Data []*BillingCredentialsSearchListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,52 @@ func (m *BillingCredentialsSearchList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BillingCredentialsSearchList) UnmarshalBinary(b []byte) error {
 	var res BillingCredentialsSearchList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// BillingCredentialsSearchListDataItems0 billing credentials search list data items0
+//
+// swagger:model BillingCredentialsSearchListDataItems0
+type BillingCredentialsSearchListDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+}
+
+// Validate validates this billing credentials search list data items0
+func (m *BillingCredentialsSearchListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this billing credentials search list data items0 based on context it is used
+func (m *BillingCredentialsSearchListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *BillingCredentialsSearchListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *BillingCredentialsSearchListDataItems0) UnmarshalBinary(b []byte) error {
+	var res BillingCredentialsSearchListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

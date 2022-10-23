@@ -6,13 +6,13 @@ package openstack
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // OpenstackUpdateReader is a Reader for the OpenstackUpdate structure.
@@ -75,7 +75,7 @@ OpenstackUpdateOK describes a response with status code 200, with default header
 Success
 */
 type OpenstackUpdateOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack update o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OpenstackUpdateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/update][%d] openstackUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *OpenstackUpdateOK) GetPayload() models.Unit {
+func (o *OpenstackUpdateOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OpenstackUpdateBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type OpenstackUpdateBadRequest struct {
-	Payload []*models.Error
+	Payload []*OpenstackUpdateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this openstack update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpenstackUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/update][%d] openstackUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackUpdateBadRequest) GetPayload() []*models.Error {
+func (o *OpenstackUpdateBadRequest) GetPayload() []*OpenstackUpdateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OpenstackUpdateUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type OpenstackUpdateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *OpenstackUpdateUnauthorizedBody
 }
 
 // IsSuccess returns true when this openstack update unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OpenstackUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/update][%d] openstackUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackUpdateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpenstackUpdateUnauthorized) GetPayload() *OpenstackUpdateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *OpenstackUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpenstackUpdateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OpenstackUpdateForbidden describes a response with status code 403, with default
 Forbidden
 */
 type OpenstackUpdateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *OpenstackUpdateForbiddenBody
 }
 
 // IsSuccess returns true when this openstack update forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OpenstackUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/update][%d] openstackUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackUpdateForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpenstackUpdateForbidden) GetPayload() *OpenstackUpdateForbiddenBody {
 	return o.Payload
 }
 
 func (o *OpenstackUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpenstackUpdateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OpenstackUpdateNotFound describes a response with status code 404, with default 
 Not Found
 */
 type OpenstackUpdateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *OpenstackUpdateNotFoundBody
 }
 
 // IsSuccess returns true when this openstack update not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OpenstackUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/update][%d] openstackUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackUpdateNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpenstackUpdateNotFound) GetPayload() *OpenstackUpdateNotFoundBody {
 	return o.Payload
 }
 
 func (o *OpenstackUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpenstackUpdateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,243 @@ func (o *OpenstackUpdateInternalServerError) String() string {
 
 func (o *OpenstackUpdateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+OpenstackUpdateBadRequestBodyItems0 openstack update bad request body items0
+swagger:model OpenstackUpdateBadRequestBodyItems0
+*/
+type OpenstackUpdateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this openstack update bad request body items0
+func (o *OpenstackUpdateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack update bad request body items0 based on context it is used
+func (o *OpenstackUpdateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackUpdateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackUpdateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OpenstackUpdateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpenstackUpdateBody openstack update body
+swagger:model OpenstackUpdateBody
+*/
+type OpenstackUpdateBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// open stack password
+	OpenStackPassword string `json:"openStackPassword,omitempty"`
+
+	// open stack user
+	OpenStackUser string `json:"openStackUser,omitempty"`
+}
+
+// Validate validates this openstack update body
+func (o *OpenstackUpdateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack update body based on context it is used
+func (o *OpenstackUpdateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackUpdateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackUpdateBody) UnmarshalBinary(b []byte) error {
+	var res OpenstackUpdateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpenstackUpdateForbiddenBody openstack update forbidden body
+swagger:model OpenstackUpdateForbiddenBody
+*/
+type OpenstackUpdateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this openstack update forbidden body
+func (o *OpenstackUpdateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack update forbidden body based on context it is used
+func (o *OpenstackUpdateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackUpdateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackUpdateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res OpenstackUpdateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpenstackUpdateNotFoundBody openstack update not found body
+swagger:model OpenstackUpdateNotFoundBody
+*/
+type OpenstackUpdateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this openstack update not found body
+func (o *OpenstackUpdateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack update not found body based on context it is used
+func (o *OpenstackUpdateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackUpdateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackUpdateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res OpenstackUpdateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpenstackUpdateUnauthorizedBody openstack update unauthorized body
+swagger:model OpenstackUpdateUnauthorizedBody
+*/
+type OpenstackUpdateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this openstack update unauthorized body
+func (o *OpenstackUpdateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack update unauthorized body based on context it is used
+func (o *OpenstackUpdateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackUpdateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackUpdateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res OpenstackUpdateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

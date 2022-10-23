@@ -6,13 +6,13 @@ package checker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CheckerAzureReader is a Reader for the CheckerAzure structure.
@@ -75,7 +75,7 @@ CheckerAzureOK describes a response with status code 200, with default header va
 Success
 */
 type CheckerAzureOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker azure o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CheckerAzureOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureOK  %+v", 200, o.Payload)
 }
 
-func (o *CheckerAzureOK) GetPayload() models.Unit {
+func (o *CheckerAzureOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CheckerAzureBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type CheckerAzureBadRequest struct {
-	Payload []*models.Error
+	Payload []*CheckerAzureBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this checker azure bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerAzureBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerAzureBadRequest) GetPayload() []*models.Error {
+func (o *CheckerAzureBadRequest) GetPayload() []*CheckerAzureBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CheckerAzureUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type CheckerAzureUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerAzureUnauthorizedBody
 }
 
 // IsSuccess returns true when this checker azure unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CheckerAzureUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerAzureUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerAzureUnauthorized) GetPayload() *CheckerAzureUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CheckerAzureUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerAzureUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CheckerAzureForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type CheckerAzureForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerAzureForbiddenBody
 }
 
 // IsSuccess returns true when this checker azure forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CheckerAzureForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerAzureForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerAzureForbidden) GetPayload() *CheckerAzureForbiddenBody {
 	return o.Payload
 }
 
 func (o *CheckerAzureForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerAzureForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CheckerAzureNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type CheckerAzureNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerAzureNotFoundBody
 }
 
 // IsSuccess returns true when this checker azure not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CheckerAzureNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerAzureNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerAzureNotFound) GetPayload() *CheckerAzureNotFoundBody {
 	return o.Payload
 }
 
 func (o *CheckerAzureNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerAzureNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *CheckerAzureInternalServerError) String() string {
 
 func (o *CheckerAzureInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CheckerAzureBadRequestBodyItems0 checker azure bad request body items0
+swagger:model CheckerAzureBadRequestBodyItems0
+*/
+type CheckerAzureBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this checker azure bad request body items0
+func (o *CheckerAzureBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker azure bad request body items0 based on context it is used
+func (o *CheckerAzureBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerAzureBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerAzureBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CheckerAzureBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerAzureBody checker azure body
+swagger:model CheckerAzureBody
+*/
+type CheckerAzureBody struct {
+
+	// azure client Id
+	AzureClientID string `json:"azureClientId,omitempty"`
+
+	// azure client secret
+	AzureClientSecret string `json:"azureClientSecret,omitempty"`
+
+	// azure tenant Id
+	AzureTenantID string `json:"azureTenantId,omitempty"`
+}
+
+// Validate validates this checker azure body
+func (o *CheckerAzureBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker azure body based on context it is used
+func (o *CheckerAzureBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerAzureBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerAzureBody) UnmarshalBinary(b []byte) error {
+	var res CheckerAzureBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerAzureForbiddenBody checker azure forbidden body
+swagger:model CheckerAzureForbiddenBody
+*/
+type CheckerAzureForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker azure forbidden body
+func (o *CheckerAzureForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker azure forbidden body based on context it is used
+func (o *CheckerAzureForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerAzureForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerAzureForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CheckerAzureForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerAzureNotFoundBody checker azure not found body
+swagger:model CheckerAzureNotFoundBody
+*/
+type CheckerAzureNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker azure not found body
+func (o *CheckerAzureNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker azure not found body based on context it is used
+func (o *CheckerAzureNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerAzureNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerAzureNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CheckerAzureNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerAzureUnauthorizedBody checker azure unauthorized body
+swagger:model CheckerAzureUnauthorizedBody
+*/
+type CheckerAzureUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker azure unauthorized body
+func (o *CheckerAzureUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker azure unauthorized body based on context it is used
+func (o *CheckerAzureUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerAzureUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerAzureUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CheckerAzureUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

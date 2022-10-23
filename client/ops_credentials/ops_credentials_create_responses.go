@@ -6,13 +6,13 @@ package ops_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // OpsCredentialsCreateReader is a Reader for the OpsCredentialsCreate structure.
@@ -75,7 +75,7 @@ OpsCredentialsCreateOK describes a response with status code 200, with default h
 Success
 */
 type OpsCredentialsCreateOK struct {
-	Payload *models.APIResponse
+	Payload *OpsCredentialsCreateOKBody
 }
 
 // IsSuccess returns true when this ops credentials create o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *OpsCredentialsCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials][%d] opsCredentialsCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *OpsCredentialsCreateOK) GetPayload() *models.APIResponse {
+func (o *OpsCredentialsCreateOK) GetPayload() *OpsCredentialsCreateOKBody {
 	return o.Payload
 }
 
 func (o *OpsCredentialsCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(OpsCredentialsCreateOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ OpsCredentialsCreateBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type OpsCredentialsCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*OpsCredentialsCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this ops credentials create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *OpsCredentialsCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials][%d] opsCredentialsCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsCreateBadRequest) GetPayload() []*models.Error {
+func (o *OpsCredentialsCreateBadRequest) GetPayload() []*OpsCredentialsCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ OpsCredentialsCreateUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type OpsCredentialsCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *OpsCredentialsCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this ops credentials create unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *OpsCredentialsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials][%d] opsCredentialsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpsCredentialsCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsCreateUnauthorized) GetPayload() *OpsCredentialsCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *OpsCredentialsCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpsCredentialsCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ OpsCredentialsCreateForbidden describes a response with status code 403, with de
 Forbidden
 */
 type OpsCredentialsCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *OpsCredentialsCreateForbiddenBody
 }
 
 // IsSuccess returns true when this ops credentials create forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *OpsCredentialsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials][%d] opsCredentialsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpsCredentialsCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsCreateForbidden) GetPayload() *OpsCredentialsCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *OpsCredentialsCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpsCredentialsCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ OpsCredentialsCreateNotFound describes a response with status code 404, with def
 Not Found
 */
 type OpsCredentialsCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *OpsCredentialsCreateNotFoundBody
 }
 
 // IsSuccess returns true when this ops credentials create not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *OpsCredentialsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials][%d] opsCredentialsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpsCredentialsCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsCreateNotFound) GetPayload() *OpsCredentialsCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *OpsCredentialsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpsCredentialsCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +425,296 @@ func (o *OpsCredentialsCreateInternalServerError) String() string {
 
 func (o *OpsCredentialsCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+OpsCredentialsCreateBadRequestBodyItems0 ops credentials create bad request body items0
+swagger:model OpsCredentialsCreateBadRequestBodyItems0
+*/
+type OpsCredentialsCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this ops credentials create bad request body items0
+func (o *OpsCredentialsCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ops credentials create bad request body items0 based on context it is used
+func (o *OpsCredentialsCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpsCredentialsCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpsCredentialsCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OpsCredentialsCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpsCredentialsCreateBody ops credentials create body
+swagger:model OpsCredentialsCreateBody
+*/
+type OpsCredentialsCreateBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// prometheus password
+	PrometheusPassword string `json:"prometheusPassword,omitempty"`
+
+	// prometheus Url
+	PrometheusURL string `json:"prometheusUrl,omitempty"`
+
+	// prometheus username
+	PrometheusUsername string `json:"prometheusUsername,omitempty"`
+}
+
+// Validate validates this ops credentials create body
+func (o *OpsCredentialsCreateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ops credentials create body based on context it is used
+func (o *OpsCredentialsCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpsCredentialsCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpsCredentialsCreateBody) UnmarshalBinary(b []byte) error {
+	var res OpsCredentialsCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpsCredentialsCreateForbiddenBody ops credentials create forbidden body
+swagger:model OpsCredentialsCreateForbiddenBody
+*/
+type OpsCredentialsCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ops credentials create forbidden body
+func (o *OpsCredentialsCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ops credentials create forbidden body based on context it is used
+func (o *OpsCredentialsCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpsCredentialsCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpsCredentialsCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res OpsCredentialsCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpsCredentialsCreateNotFoundBody ops credentials create not found body
+swagger:model OpsCredentialsCreateNotFoundBody
+*/
+type OpsCredentialsCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ops credentials create not found body
+func (o *OpsCredentialsCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ops credentials create not found body based on context it is used
+func (o *OpsCredentialsCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpsCredentialsCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpsCredentialsCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res OpsCredentialsCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpsCredentialsCreateOKBody ops credentials create o k body
+swagger:model OpsCredentialsCreateOKBody
+*/
+type OpsCredentialsCreateOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this ops credentials create o k body
+func (o *OpsCredentialsCreateOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ops credentials create o k body based on context it is used
+func (o *OpsCredentialsCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpsCredentialsCreateOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpsCredentialsCreateOKBody) UnmarshalBinary(b []byte) error {
+	var res OpsCredentialsCreateOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpsCredentialsCreateUnauthorizedBody ops credentials create unauthorized body
+swagger:model OpsCredentialsCreateUnauthorizedBody
+*/
+type OpsCredentialsCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ops credentials create unauthorized body
+func (o *OpsCredentialsCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ops credentials create unauthorized body based on context it is used
+func (o *OpsCredentialsCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpsCredentialsCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpsCredentialsCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res OpsCredentialsCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

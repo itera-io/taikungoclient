@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesRestartDaemonSetReader is a Reader for the KubernetesRestartDaemonSet structure.
@@ -75,7 +75,7 @@ KubernetesRestartDaemonSetOK describes a response with status code 200, with def
 Success
 */
 type KubernetesRestartDaemonSetOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes restart daemon set o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KubernetesRestartDaemonSetOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesRestartDaemonSetOK) GetPayload() models.Unit {
+func (o *KubernetesRestartDaemonSetOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KubernetesRestartDaemonSetBadRequest describes a response with status code 400, 
 Bad Request
 */
 type KubernetesRestartDaemonSetBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesRestartDaemonSetBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes restart daemon set bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesRestartDaemonSetBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesRestartDaemonSetBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesRestartDaemonSetBadRequest) GetPayload() []*KubernetesRestartDaemonSetBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesRestartDaemonSetUnauthorized describes a response with status code 401
 Unauthorized
 */
 type KubernetesRestartDaemonSetUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesRestartDaemonSetUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes restart daemon set unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesRestartDaemonSetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesRestartDaemonSetUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartDaemonSetUnauthorized) GetPayload() *KubernetesRestartDaemonSetUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesRestartDaemonSetUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesRestartDaemonSetUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesRestartDaemonSetForbidden describes a response with status code 403, w
 Forbidden
 */
 type KubernetesRestartDaemonSetForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesRestartDaemonSetForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes restart daemon set forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesRestartDaemonSetForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesRestartDaemonSetForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartDaemonSetForbidden) GetPayload() *KubernetesRestartDaemonSetForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesRestartDaemonSetForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesRestartDaemonSetForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesRestartDaemonSetNotFound describes a response with status code 404, wi
 Not Found
 */
 type KubernetesRestartDaemonSetNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesRestartDaemonSetNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes restart daemon set not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesRestartDaemonSetNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesRestartDaemonSetNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartDaemonSetNotFound) GetPayload() *KubernetesRestartDaemonSetNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesRestartDaemonSetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesRestartDaemonSetNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *KubernetesRestartDaemonSetInternalServerError) String() string {
 
 func (o *KubernetesRestartDaemonSetInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesRestartDaemonSetBadRequestBodyItems0 kubernetes restart daemon set bad request body items0
+swagger:model KubernetesRestartDaemonSetBadRequestBodyItems0
+*/
+type KubernetesRestartDaemonSetBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes restart daemon set bad request body items0
+func (o *KubernetesRestartDaemonSetBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes restart daemon set bad request body items0 based on context it is used
+func (o *KubernetesRestartDaemonSetBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesRestartDaemonSetBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesRestartDaemonSetBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesRestartDaemonSetBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesRestartDaemonSetBody kubernetes restart daemon set body
+swagger:model KubernetesRestartDaemonSetBody
+*/
+type KubernetesRestartDaemonSetBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this kubernetes restart daemon set body
+func (o *KubernetesRestartDaemonSetBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes restart daemon set body based on context it is used
+func (o *KubernetesRestartDaemonSetBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesRestartDaemonSetBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesRestartDaemonSetBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesRestartDaemonSetBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesRestartDaemonSetForbiddenBody kubernetes restart daemon set forbidden body
+swagger:model KubernetesRestartDaemonSetForbiddenBody
+*/
+type KubernetesRestartDaemonSetForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes restart daemon set forbidden body
+func (o *KubernetesRestartDaemonSetForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes restart daemon set forbidden body based on context it is used
+func (o *KubernetesRestartDaemonSetForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesRestartDaemonSetForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesRestartDaemonSetForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesRestartDaemonSetForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesRestartDaemonSetNotFoundBody kubernetes restart daemon set not found body
+swagger:model KubernetesRestartDaemonSetNotFoundBody
+*/
+type KubernetesRestartDaemonSetNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes restart daemon set not found body
+func (o *KubernetesRestartDaemonSetNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes restart daemon set not found body based on context it is used
+func (o *KubernetesRestartDaemonSetNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesRestartDaemonSetNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesRestartDaemonSetNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesRestartDaemonSetNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesRestartDaemonSetUnauthorizedBody kubernetes restart daemon set unauthorized body
+swagger:model KubernetesRestartDaemonSetUnauthorizedBody
+*/
+type KubernetesRestartDaemonSetUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes restart daemon set unauthorized body
+func (o *KubernetesRestartDaemonSetUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes restart daemon set unauthorized body based on context it is used
+func (o *KubernetesRestartDaemonSetUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesRestartDaemonSetUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesRestartDaemonSetUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesRestartDaemonSetUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

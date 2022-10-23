@@ -25,7 +25,7 @@ type ChartSpec struct {
 	Interval string `json:"interval,omitempty"`
 
 	// source ref
-	SourceRef *SourceRef `json:"sourceRef,omitempty"`
+	SourceRef *ChartSpecSourceRef `json:"sourceRef,omitempty"`
 
 	// version
 	Version string `json:"version,omitempty"`
@@ -105,6 +105,46 @@ func (m *ChartSpec) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ChartSpec) UnmarshalBinary(b []byte) error {
 	var res ChartSpec
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ChartSpecSourceRef chart spec source ref
+//
+// swagger:model ChartSpecSourceRef
+type ChartSpecSourceRef struct {
+
+	// kind
+	Kind string `json:"kind,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this chart spec source ref
+func (m *ChartSpecSourceRef) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this chart spec source ref based on context it is used
+func (m *ChartSpecSourceRef) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ChartSpecSourceRef) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ChartSpecSourceRef) UnmarshalBinary(b []byte) error {
+	var res ChartSpecSourceRef
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSlackVerifySlackCredentialsParams creates a new SlackVerifySlackCredentialsParams object,
@@ -64,7 +62,7 @@ SlackVerifySlackCredentialsParams contains all the parameters to send to the API
 type SlackVerifySlackCredentialsParams struct {
 
 	// Body.
-	Body *models.VerifySlackCredentialsCommand
+	Body SlackVerifySlackCredentialsBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *SlackVerifySlackCredentialsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the slack verify slack credentials params
-func (o *SlackVerifySlackCredentialsParams) WithBody(body *models.VerifySlackCredentialsCommand) *SlackVerifySlackCredentialsParams {
+func (o *SlackVerifySlackCredentialsParams) WithBody(body SlackVerifySlackCredentialsBody) *SlackVerifySlackCredentialsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the slack verify slack credentials params
-func (o *SlackVerifySlackCredentialsParams) SetBody(body *models.VerifySlackCredentialsCommand) {
+func (o *SlackVerifySlackCredentialsParams) SetBody(body SlackVerifySlackCredentialsBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *SlackVerifySlackCredentialsParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

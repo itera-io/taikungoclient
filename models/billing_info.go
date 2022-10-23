@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // BillingInfo billing info
@@ -20,7 +21,7 @@ import (
 type BillingInfo struct {
 
 	// data
-	Data []*BillingSummaryDto `json:"data"`
+	Data []*BillingInfoDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -114,6 +115,97 @@ func (m *BillingInfo) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BillingInfo) UnmarshalBinary(b []byte) error {
 	var res BillingInfo
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// BillingInfoDataItems0 billing info data items0
+//
+// swagger:model BillingInfoDataItems0
+type BillingInfoDataItems0 struct {
+
+	// end date
+	// Format: date-time
+	EndDate *strfmt.DateTime `json:"endDate,omitempty"`
+
+	// is deleted
+	IsDeleted bool `json:"isDeleted"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// start date
+	// Format: date-time
+	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
+
+	// tcu
+	Tcu float64 `json:"tcu,omitempty"`
+}
+
+// Validate validates this billing info data items0
+func (m *BillingInfoDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateEndDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStartDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *BillingInfoDataItems0) validateEndDate(formats strfmt.Registry) error {
+	if swag.IsZero(m.EndDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("endDate", "body", "date-time", m.EndDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BillingInfoDataItems0) validateStartDate(formats strfmt.Registry) error {
+	if swag.IsZero(m.StartDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("startDate", "body", "date-time", m.StartDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this billing info data items0 based on context it is used
+func (m *BillingInfoDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *BillingInfoDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *BillingInfoDataItems0) UnmarshalBinary(b []byte) error {
+	var res BillingInfoDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

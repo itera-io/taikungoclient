@@ -35,7 +35,7 @@ type CreateProjectAppCommand struct {
 	Namespace string `json:"namespace,omitempty"`
 
 	// parameters
-	Parameters []*ProjectAppParamsDto `json:"parameters"`
+	Parameters []*CreateProjectAppCommandParametersItems0 `json:"parameters"`
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
@@ -126,6 +126,52 @@ func (m *CreateProjectAppCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *CreateProjectAppCommand) UnmarshalBinary(b []byte) error {
 	var res CreateProjectAppCommand
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CreateProjectAppCommandParametersItems0 create project app command parameters items0
+//
+// swagger:model CreateProjectAppCommandParametersItems0
+type CreateProjectAppCommandParametersItems0 struct {
+
+	// is changeable
+	IsChangeable bool `json:"isChangeable"`
+
+	// is readonly
+	IsReadonly bool `json:"isReadonly"`
+
+	// key
+	Key string `json:"key,omitempty"`
+
+	// value
+	Value string `json:"value,omitempty"`
+}
+
+// Validate validates this create project app command parameters items0
+func (m *CreateProjectAppCommandParametersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this create project app command parameters items0 based on context it is used
+func (m *CreateProjectAppCommandParametersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CreateProjectAppCommandParametersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CreateProjectAppCommandParametersItems0) UnmarshalBinary(b []byte) error {
+	var res CreateProjectAppCommandParametersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

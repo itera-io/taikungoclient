@@ -6,13 +6,15 @@ package showback_summaries
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ShowbackSummariesGroupedListReader is a Reader for the ShowbackSummariesGroupedList structure.
@@ -75,7 +77,7 @@ ShowbackSummariesGroupedListOK describes a response with status code 200, with d
 Success
 */
 type ShowbackSummariesGroupedListOK struct {
-	Payload *models.GroupedShowbackList
+	Payload *ShowbackSummariesGroupedListOKBody
 }
 
 // IsSuccess returns true when this showback summaries grouped list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *ShowbackSummariesGroupedListOK) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListOK  %+v", 200, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedListOK) GetPayload() *models.GroupedShowbackList {
+func (o *ShowbackSummariesGroupedListOK) GetPayload() *ShowbackSummariesGroupedListOKBody {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GroupedShowbackList)
+	o.Payload = new(ShowbackSummariesGroupedListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ ShowbackSummariesGroupedListBadRequest describes a response with status code 400
 Bad Request
 */
 type ShowbackSummariesGroupedListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *ShowbackSummariesGroupedListBadRequestBody
 }
 
 // IsSuccess returns true when this showback summaries grouped list bad request response has a 2xx status code
@@ -174,13 +176,13 @@ func (o *ShowbackSummariesGroupedListBadRequest) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ShowbackSummariesGroupedListBadRequest) GetPayload() *ShowbackSummariesGroupedListBadRequestBody {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(ShowbackSummariesGroupedListBadRequestBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -201,7 +203,7 @@ ShowbackSummariesGroupedListUnauthorized describes a response with status code 4
 Unauthorized
 */
 type ShowbackSummariesGroupedListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackSummariesGroupedListUnauthorizedBody
 }
 
 // IsSuccess returns true when this showback summaries grouped list unauthorized response has a 2xx status code
@@ -237,13 +239,13 @@ func (o *ShowbackSummariesGroupedListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesGroupedListUnauthorized) GetPayload() *ShowbackSummariesGroupedListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackSummariesGroupedListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +266,7 @@ ShowbackSummariesGroupedListForbidden describes a response with status code 403,
 Forbidden
 */
 type ShowbackSummariesGroupedListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackSummariesGroupedListForbiddenBody
 }
 
 // IsSuccess returns true when this showback summaries grouped list forbidden response has a 2xx status code
@@ -300,13 +302,13 @@ func (o *ShowbackSummariesGroupedListForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedListForbidden) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesGroupedListForbidden) GetPayload() *ShowbackSummariesGroupedListForbiddenBody {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackSummariesGroupedListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +329,7 @@ ShowbackSummariesGroupedListNotFound describes a response with status code 404, 
 Not Found
 */
 type ShowbackSummariesGroupedListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackSummariesGroupedListNotFoundBody
 }
 
 // IsSuccess returns true when this showback summaries grouped list not found response has a 2xx status code
@@ -363,13 +365,13 @@ func (o *ShowbackSummariesGroupedListNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedListNotFound) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesGroupedListNotFound) GetPayload() *ShowbackSummariesGroupedListNotFoundBody {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackSummariesGroupedListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,5 +429,895 @@ func (o *ShowbackSummariesGroupedListInternalServerError) String() string {
 
 func (o *ShowbackSummariesGroupedListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedListBadRequestBody showback summaries grouped list bad request body
+swagger:model ShowbackSummariesGroupedListBadRequestBody
+*/
+type ShowbackSummariesGroupedListBadRequestBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// errors
+	// Read Only: true
+	Errors map[string][]string `json:"errors,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback summaries grouped list bad request body
+func (o *ShowbackSummariesGroupedListBadRequestBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validate this showback summaries grouped list bad request body based on the context it is used
+func (o *ShowbackSummariesGroupedListBadRequestBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateErrors(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedListBadRequestBody) contextValidateErrors(ctx context.Context, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListBadRequestBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListBadRequestBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedListBadRequestBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedListForbiddenBody showback summaries grouped list forbidden body
+swagger:model ShowbackSummariesGroupedListForbiddenBody
+*/
+type ShowbackSummariesGroupedListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback summaries grouped list forbidden body
+func (o *ShowbackSummariesGroupedListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback summaries grouped list forbidden body based on context it is used
+func (o *ShowbackSummariesGroupedListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedListNotFoundBody showback summaries grouped list not found body
+swagger:model ShowbackSummariesGroupedListNotFoundBody
+*/
+type ShowbackSummariesGroupedListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback summaries grouped list not found body
+func (o *ShowbackSummariesGroupedListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback summaries grouped list not found body based on context it is used
+func (o *ShowbackSummariesGroupedListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedListOKBody showback summaries grouped list o k body
+swagger:model ShowbackSummariesGroupedListOKBody
+*/
+type ShowbackSummariesGroupedListOKBody struct {
+
+	// by label values
+	ByLabelValues []*ShowbackSummariesGroupedListOKBodyByLabelValuesItems0 `json:"byLabelValues"`
+
+	// credentials
+	Credentials []*ShowbackSummariesGroupedListOKBodyCredentialsItems0 `json:"credentials"`
+
+	// projects
+	Projects []*ShowbackSummariesGroupedListOKBodyProjectsItems0 `json:"projects"`
+}
+
+// Validate validates this showback summaries grouped list o k body
+func (o *ShowbackSummariesGroupedListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateByLabelValues(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateCredentials(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateProjects(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedListOKBody) validateByLabelValues(formats strfmt.Registry) error {
+	if swag.IsZero(o.ByLabelValues) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.ByLabelValues); i++ {
+		if swag.IsZero(o.ByLabelValues[i]) { // not required
+			continue
+		}
+
+		if o.ByLabelValues[i] != nil {
+			if err := o.ByLabelValues[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("showbackSummariesGroupedListOK" + "." + "byLabelValues" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("showbackSummariesGroupedListOK" + "." + "byLabelValues" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedListOKBody) validateCredentials(formats strfmt.Registry) error {
+	if swag.IsZero(o.Credentials) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Credentials); i++ {
+		if swag.IsZero(o.Credentials[i]) { // not required
+			continue
+		}
+
+		if o.Credentials[i] != nil {
+			if err := o.Credentials[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("showbackSummariesGroupedListOK" + "." + "credentials" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("showbackSummariesGroupedListOK" + "." + "credentials" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedListOKBody) validateProjects(formats strfmt.Registry) error {
+	if swag.IsZero(o.Projects) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Projects); i++ {
+		if swag.IsZero(o.Projects[i]) { // not required
+			continue
+		}
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("showbackSummariesGroupedListOK" + "." + "projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("showbackSummariesGroupedListOK" + "." + "projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this showback summaries grouped list o k body based on the context it is used
+func (o *ShowbackSummariesGroupedListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateByLabelValues(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateCredentials(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedListOKBody) contextValidateByLabelValues(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.ByLabelValues); i++ {
+
+		if o.ByLabelValues[i] != nil {
+			if err := o.ByLabelValues[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("showbackSummariesGroupedListOK" + "." + "byLabelValues" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("showbackSummariesGroupedListOK" + "." + "byLabelValues" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedListOKBody) contextValidateCredentials(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Credentials); i++ {
+
+		if o.Credentials[i] != nil {
+			if err := o.Credentials[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("showbackSummariesGroupedListOK" + "." + "credentials" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("showbackSummariesGroupedListOK" + "." + "credentials" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedListOKBody) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Projects); i++ {
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("showbackSummariesGroupedListOK" + "." + "projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("showbackSummariesGroupedListOK" + "." + "projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListOKBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedListOKBodyByLabelValuesItems0 showback summaries grouped list o k body by label values items0
+swagger:model ShowbackSummariesGroupedListOKBodyByLabelValuesItems0
+*/
+type ShowbackSummariesGroupedListOKBodyByLabelValuesItems0 struct {
+
+	// data
+	Data []*ShowbackSummariesGroupedListOKBodyByLabelValuesItems0DataItems0 `json:"data"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
+}
+
+// Validate validates this showback summaries grouped list o k body by label values items0
+func (o *ShowbackSummariesGroupedListOKBodyByLabelValuesItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedListOKBodyByLabelValuesItems0) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this showback summaries grouped list o k body by label values items0 based on the context it is used
+func (o *ShowbackSummariesGroupedListOKBodyByLabelValuesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedListOKBodyByLabelValuesItems0) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListOKBodyByLabelValuesItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListOKBodyByLabelValuesItems0) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedListOKBodyByLabelValuesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedListOKBodyByLabelValuesItems0DataItems0 showback summaries grouped list o k body by label values items0 data items0
+swagger:model ShowbackSummariesGroupedListOKBodyByLabelValuesItems0DataItems0
+*/
+type ShowbackSummariesGroupedListOKBodyByLabelValuesItems0DataItems0 struct {
+
+	// price
+	Price float64 `json:"price,omitempty"`
+
+	// start date
+	StartDate string `json:"startDate,omitempty"`
+}
+
+// Validate validates this showback summaries grouped list o k body by label values items0 data items0
+func (o *ShowbackSummariesGroupedListOKBodyByLabelValuesItems0DataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback summaries grouped list o k body by label values items0 data items0 based on context it is used
+func (o *ShowbackSummariesGroupedListOKBodyByLabelValuesItems0DataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListOKBodyByLabelValuesItems0DataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListOKBodyByLabelValuesItems0DataItems0) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedListOKBodyByLabelValuesItems0DataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedListOKBodyCredentialsItems0 showback summaries grouped list o k body credentials items0
+swagger:model ShowbackSummariesGroupedListOKBodyCredentialsItems0
+*/
+type ShowbackSummariesGroupedListOKBodyCredentialsItems0 struct {
+
+	// data
+	Data []*ShowbackSummariesGroupedListOKBodyCredentialsItems0DataItems0 `json:"data"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
+}
+
+// Validate validates this showback summaries grouped list o k body credentials items0
+func (o *ShowbackSummariesGroupedListOKBodyCredentialsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedListOKBodyCredentialsItems0) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this showback summaries grouped list o k body credentials items0 based on the context it is used
+func (o *ShowbackSummariesGroupedListOKBodyCredentialsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedListOKBodyCredentialsItems0) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListOKBodyCredentialsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListOKBodyCredentialsItems0) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedListOKBodyCredentialsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedListOKBodyCredentialsItems0DataItems0 showback summaries grouped list o k body credentials items0 data items0
+swagger:model ShowbackSummariesGroupedListOKBodyCredentialsItems0DataItems0
+*/
+type ShowbackSummariesGroupedListOKBodyCredentialsItems0DataItems0 struct {
+
+	// price
+	Price float64 `json:"price,omitempty"`
+
+	// start date
+	StartDate string `json:"startDate,omitempty"`
+}
+
+// Validate validates this showback summaries grouped list o k body credentials items0 data items0
+func (o *ShowbackSummariesGroupedListOKBodyCredentialsItems0DataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback summaries grouped list o k body credentials items0 data items0 based on context it is used
+func (o *ShowbackSummariesGroupedListOKBodyCredentialsItems0DataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListOKBodyCredentialsItems0DataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListOKBodyCredentialsItems0DataItems0) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedListOKBodyCredentialsItems0DataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedListOKBodyProjectsItems0 showback summaries grouped list o k body projects items0
+swagger:model ShowbackSummariesGroupedListOKBodyProjectsItems0
+*/
+type ShowbackSummariesGroupedListOKBodyProjectsItems0 struct {
+
+	// data
+	Data []*ShowbackSummariesGroupedListOKBodyProjectsItems0DataItems0 `json:"data"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
+}
+
+// Validate validates this showback summaries grouped list o k body projects items0
+func (o *ShowbackSummariesGroupedListOKBodyProjectsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedListOKBodyProjectsItems0) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this showback summaries grouped list o k body projects items0 based on the context it is used
+func (o *ShowbackSummariesGroupedListOKBodyProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackSummariesGroupedListOKBodyProjectsItems0) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListOKBodyProjectsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListOKBodyProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedListOKBodyProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedListOKBodyProjectsItems0DataItems0 showback summaries grouped list o k body projects items0 data items0
+swagger:model ShowbackSummariesGroupedListOKBodyProjectsItems0DataItems0
+*/
+type ShowbackSummariesGroupedListOKBodyProjectsItems0DataItems0 struct {
+
+	// price
+	Price float64 `json:"price,omitempty"`
+
+	// start date
+	StartDate string `json:"startDate,omitempty"`
+}
+
+// Validate validates this showback summaries grouped list o k body projects items0 data items0
+func (o *ShowbackSummariesGroupedListOKBodyProjectsItems0DataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback summaries grouped list o k body projects items0 data items0 based on context it is used
+func (o *ShowbackSummariesGroupedListOKBodyProjectsItems0DataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListOKBodyProjectsItems0DataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListOKBodyProjectsItems0DataItems0) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedListOKBodyProjectsItems0DataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackSummariesGroupedListUnauthorizedBody showback summaries grouped list unauthorized body
+swagger:model ShowbackSummariesGroupedListUnauthorizedBody
+*/
+type ShowbackSummariesGroupedListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback summaries grouped list unauthorized body
+func (o *ShowbackSummariesGroupedListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback summaries grouped list unauthorized body based on context it is used
+func (o *ShowbackSummariesGroupedListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackSummariesGroupedListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackSummariesGroupedListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

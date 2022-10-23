@@ -6,13 +6,13 @@ package users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // UsersVerifyEmailReader is a Reader for the UsersVerifyEmail structure.
@@ -75,7 +75,7 @@ UsersVerifyEmailOK describes a response with status code 200, with default heade
 Success
 */
 type UsersVerifyEmailOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users verify email o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *UsersVerifyEmailOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailOK  %+v", 200, o.Payload)
 }
 
-func (o *UsersVerifyEmailOK) GetPayload() models.Unit {
+func (o *UsersVerifyEmailOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ UsersVerifyEmailBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type UsersVerifyEmailBadRequest struct {
-	Payload []*models.Error
+	Payload []*UsersVerifyEmailBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this users verify email bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UsersVerifyEmailBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersVerifyEmailBadRequest) GetPayload() []*models.Error {
+func (o *UsersVerifyEmailBadRequest) GetPayload() []*UsersVerifyEmailBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ UsersVerifyEmailUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type UsersVerifyEmailUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *UsersVerifyEmailUnauthorizedBody
 }
 
 // IsSuccess returns true when this users verify email unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *UsersVerifyEmailUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersVerifyEmailUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UsersVerifyEmailUnauthorized) GetPayload() *UsersVerifyEmailUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *UsersVerifyEmailUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersVerifyEmailUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ UsersVerifyEmailForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type UsersVerifyEmailForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *UsersVerifyEmailForbiddenBody
 }
 
 // IsSuccess returns true when this users verify email forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *UsersVerifyEmailForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersVerifyEmailForbidden) GetPayload() *models.ProblemDetails {
+func (o *UsersVerifyEmailForbidden) GetPayload() *UsersVerifyEmailForbiddenBody {
 	return o.Payload
 }
 
 func (o *UsersVerifyEmailForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersVerifyEmailForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ UsersVerifyEmailNotFound describes a response with status code 404, with default
 Not Found
 */
 type UsersVerifyEmailNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *UsersVerifyEmailNotFoundBody
 }
 
 // IsSuccess returns true when this users verify email not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *UsersVerifyEmailNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersVerifyEmailNotFound) GetPayload() *models.ProblemDetails {
+func (o *UsersVerifyEmailNotFound) GetPayload() *UsersVerifyEmailNotFoundBody {
 	return o.Payload
 }
 
 func (o *UsersVerifyEmailNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersVerifyEmailNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *UsersVerifyEmailInternalServerError) String() string {
 
 func (o *UsersVerifyEmailInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+UsersVerifyEmailBadRequestBodyItems0 users verify email bad request body items0
+swagger:model UsersVerifyEmailBadRequestBodyItems0
+*/
+type UsersVerifyEmailBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this users verify email bad request body items0
+func (o *UsersVerifyEmailBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users verify email bad request body items0 based on context it is used
+func (o *UsersVerifyEmailBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersVerifyEmailBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersVerifyEmailBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res UsersVerifyEmailBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersVerifyEmailBody users verify email body
+swagger:model UsersVerifyEmailBody
+*/
+type UsersVerifyEmailBody struct {
+
+	// mode
+	Mode string `json:"mode,omitempty"`
+
+	// token
+	Token string `json:"token,omitempty"`
+}
+
+// Validate validates this users verify email body
+func (o *UsersVerifyEmailBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users verify email body based on context it is used
+func (o *UsersVerifyEmailBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersVerifyEmailBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersVerifyEmailBody) UnmarshalBinary(b []byte) error {
+	var res UsersVerifyEmailBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersVerifyEmailForbiddenBody users verify email forbidden body
+swagger:model UsersVerifyEmailForbiddenBody
+*/
+type UsersVerifyEmailForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users verify email forbidden body
+func (o *UsersVerifyEmailForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users verify email forbidden body based on context it is used
+func (o *UsersVerifyEmailForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersVerifyEmailForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersVerifyEmailForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res UsersVerifyEmailForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersVerifyEmailNotFoundBody users verify email not found body
+swagger:model UsersVerifyEmailNotFoundBody
+*/
+type UsersVerifyEmailNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users verify email not found body
+func (o *UsersVerifyEmailNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users verify email not found body based on context it is used
+func (o *UsersVerifyEmailNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersVerifyEmailNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersVerifyEmailNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res UsersVerifyEmailNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersVerifyEmailUnauthorizedBody users verify email unauthorized body
+swagger:model UsersVerifyEmailUnauthorizedBody
+*/
+type UsersVerifyEmailUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users verify email unauthorized body
+func (o *UsersVerifyEmailUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users verify email unauthorized body based on context it is used
+func (o *UsersVerifyEmailUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersVerifyEmailUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersVerifyEmailUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res UsersVerifyEmailUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

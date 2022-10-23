@@ -6,13 +6,15 @@ package showback_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ShowbackCredentialsListReader is a Reader for the ShowbackCredentialsList structure.
@@ -75,7 +77,7 @@ ShowbackCredentialsListOK describes a response with status code 200, with defaul
 Success
 */
 type ShowbackCredentialsListOK struct {
-	Payload *models.ShowbackCredentialsList
+	Payload *ShowbackCredentialsListOKBody
 }
 
 // IsSuccess returns true when this showback credentials list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *ShowbackCredentialsListOK) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials][%d] showbackCredentialsListOK  %+v", 200, o.Payload)
 }
 
-func (o *ShowbackCredentialsListOK) GetPayload() *models.ShowbackCredentialsList {
+func (o *ShowbackCredentialsListOK) GetPayload() *ShowbackCredentialsListOKBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ShowbackCredentialsList)
+	o.Payload = new(ShowbackCredentialsListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ ShowbackCredentialsListBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type ShowbackCredentialsListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *ShowbackCredentialsListBadRequestBody
 }
 
 // IsSuccess returns true when this showback credentials list bad request response has a 2xx status code
@@ -174,13 +176,13 @@ func (o *ShowbackCredentialsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials][%d] showbackCredentialsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackCredentialsListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ShowbackCredentialsListBadRequest) GetPayload() *ShowbackCredentialsListBadRequestBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(ShowbackCredentialsListBadRequestBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -201,7 +203,7 @@ ShowbackCredentialsListUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type ShowbackCredentialsListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackCredentialsListUnauthorizedBody
 }
 
 // IsSuccess returns true when this showback credentials list unauthorized response has a 2xx status code
@@ -237,13 +239,13 @@ func (o *ShowbackCredentialsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials][%d] showbackCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackCredentialsListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsListUnauthorized) GetPayload() *ShowbackCredentialsListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackCredentialsListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +266,7 @@ ShowbackCredentialsListForbidden describes a response with status code 403, with
 Forbidden
 */
 type ShowbackCredentialsListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackCredentialsListForbiddenBody
 }
 
 // IsSuccess returns true when this showback credentials list forbidden response has a 2xx status code
@@ -300,13 +302,13 @@ func (o *ShowbackCredentialsListForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials][%d] showbackCredentialsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackCredentialsListForbidden) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsListForbidden) GetPayload() *ShowbackCredentialsListForbiddenBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackCredentialsListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +329,7 @@ ShowbackCredentialsListNotFound describes a response with status code 404, with 
 Not Found
 */
 type ShowbackCredentialsListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackCredentialsListNotFoundBody
 }
 
 // IsSuccess returns true when this showback credentials list not found response has a 2xx status code
@@ -363,13 +365,13 @@ func (o *ShowbackCredentialsListNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials][%d] showbackCredentialsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackCredentialsListNotFound) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsListNotFound) GetPayload() *ShowbackCredentialsListNotFoundBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackCredentialsListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,5 +429,507 @@ func (o *ShowbackCredentialsListInternalServerError) String() string {
 
 func (o *ShowbackCredentialsListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ShowbackCredentialsListBadRequestBody showback credentials list bad request body
+swagger:model ShowbackCredentialsListBadRequestBody
+*/
+type ShowbackCredentialsListBadRequestBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// errors
+	// Read Only: true
+	Errors map[string][]string `json:"errors,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials list bad request body
+func (o *ShowbackCredentialsListBadRequestBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validate this showback credentials list bad request body based on the context it is used
+func (o *ShowbackCredentialsListBadRequestBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateErrors(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackCredentialsListBadRequestBody) contextValidateErrors(ctx context.Context, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsListBadRequestBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsListBadRequestBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsListBadRequestBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsListForbiddenBody showback credentials list forbidden body
+swagger:model ShowbackCredentialsListForbiddenBody
+*/
+type ShowbackCredentialsListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials list forbidden body
+func (o *ShowbackCredentialsListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials list forbidden body based on context it is used
+func (o *ShowbackCredentialsListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsListNotFoundBody showback credentials list not found body
+swagger:model ShowbackCredentialsListNotFoundBody
+*/
+type ShowbackCredentialsListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials list not found body
+func (o *ShowbackCredentialsListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials list not found body based on context it is used
+func (o *ShowbackCredentialsListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsListOKBody showback credentials list o k body
+swagger:model ShowbackCredentialsListOKBody
+*/
+type ShowbackCredentialsListOKBody struct {
+
+	// data
+	Data []*ShowbackCredentialsListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this showback credentials list o k body
+func (o *ShowbackCredentialsListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackCredentialsListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("showbackCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("showbackCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this showback credentials list o k body based on the context it is used
+func (o *ShowbackCredentialsListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackCredentialsListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("showbackCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("showbackCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsListOKBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsListOKBodyDataItems0 showback credentials list o k body data items0
+swagger:model ShowbackCredentialsListOKBodyDataItems0
+*/
+type ShowbackCredentialsListOKBodyDataItems0 struct {
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// created by
+	CreatedBy string `json:"createdBy,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// last modified
+	LastModified string `json:"lastModified,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// password
+	Password string `json:"password,omitempty"`
+
+	// rules
+	Rules []*ShowbackCredentialsListOKBodyDataItems0RulesItems0 `json:"rules"`
+
+	// url
+	URL string `json:"url,omitempty"`
+
+	// username
+	Username string `json:"username,omitempty"`
+}
+
+// Validate validates this showback credentials list o k body data items0
+func (o *ShowbackCredentialsListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateRules(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackCredentialsListOKBodyDataItems0) validateRules(formats strfmt.Registry) error {
+	if swag.IsZero(o.Rules) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Rules); i++ {
+		if swag.IsZero(o.Rules[i]) { // not required
+			continue
+		}
+
+		if o.Rules[i] != nil {
+			if err := o.Rules[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("rules" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("rules" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this showback credentials list o k body data items0 based on the context it is used
+func (o *ShowbackCredentialsListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateRules(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackCredentialsListOKBodyDataItems0) contextValidateRules(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Rules); i++ {
+
+		if o.Rules[i] != nil {
+			if err := o.Rules[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("rules" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("rules" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsListOKBodyDataItems0RulesItems0 showback credentials list o k body data items0 rules items0
+swagger:model ShowbackCredentialsListOKBodyDataItems0RulesItems0
+*/
+type ShowbackCredentialsListOKBodyDataItems0RulesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this showback credentials list o k body data items0 rules items0
+func (o *ShowbackCredentialsListOKBodyDataItems0RulesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials list o k body data items0 rules items0 based on context it is used
+func (o *ShowbackCredentialsListOKBodyDataItems0RulesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsListOKBodyDataItems0RulesItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsListOKBodyDataItems0RulesItems0) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsListOKBodyDataItems0RulesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsListUnauthorizedBody showback credentials list unauthorized body
+swagger:model ShowbackCredentialsListUnauthorizedBody
+*/
+type ShowbackCredentialsListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials list unauthorized body
+func (o *ShowbackCredentialsListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials list unauthorized body based on context it is used
+func (o *ShowbackCredentialsListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

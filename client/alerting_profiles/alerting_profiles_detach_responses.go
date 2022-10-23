@@ -6,13 +6,13 @@ package alerting_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AlertingProfilesDetachReader is a Reader for the AlertingProfilesDetach structure.
@@ -75,7 +75,7 @@ AlertingProfilesDetachOK describes a response with status code 200, with default
 Success
 */
 type AlertingProfilesDetachOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles detach o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AlertingProfilesDetachOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachOK  %+v", 200, o.Payload)
 }
 
-func (o *AlertingProfilesDetachOK) GetPayload() models.Unit {
+func (o *AlertingProfilesDetachOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AlertingProfilesDetachBadRequest describes a response with status code 400, with
 Bad Request
 */
 type AlertingProfilesDetachBadRequest struct {
-	Payload []*models.Error
+	Payload []*AlertingProfilesDetachBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this alerting profiles detach bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AlertingProfilesDetachBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesDetachBadRequest) GetPayload() []*models.Error {
+func (o *AlertingProfilesDetachBadRequest) GetPayload() []*AlertingProfilesDetachBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AlertingProfilesDetachUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type AlertingProfilesDetachUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesDetachUnauthorizedBody
 }
 
 // IsSuccess returns true when this alerting profiles detach unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AlertingProfilesDetachUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesDetachUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesDetachUnauthorized) GetPayload() *AlertingProfilesDetachUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesDetachUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesDetachUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AlertingProfilesDetachForbidden describes a response with status code 403, with 
 Forbidden
 */
 type AlertingProfilesDetachForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesDetachForbiddenBody
 }
 
 // IsSuccess returns true when this alerting profiles detach forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AlertingProfilesDetachForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesDetachForbidden) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesDetachForbidden) GetPayload() *AlertingProfilesDetachForbiddenBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesDetachForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesDetachForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AlertingProfilesDetachNotFound describes a response with status code 404, with d
 Not Found
 */
 type AlertingProfilesDetachNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesDetachNotFoundBody
 }
 
 // IsSuccess returns true when this alerting profiles detach not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AlertingProfilesDetachNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesDetachNotFound) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesDetachNotFound) GetPayload() *AlertingProfilesDetachNotFoundBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesDetachNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesDetachNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *AlertingProfilesDetachInternalServerError) String() string {
 
 func (o *AlertingProfilesDetachInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AlertingProfilesDetachBadRequestBodyItems0 alerting profiles detach bad request body items0
+swagger:model AlertingProfilesDetachBadRequestBodyItems0
+*/
+type AlertingProfilesDetachBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this alerting profiles detach bad request body items0
+func (o *AlertingProfilesDetachBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles detach bad request body items0 based on context it is used
+func (o *AlertingProfilesDetachBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesDetachBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesDetachBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesDetachBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesDetachBody alerting profiles detach body
+swagger:model AlertingProfilesDetachBody
+*/
+type AlertingProfilesDetachBody struct {
+
+	// alerting profile Id
+	AlertingProfileID int32 `json:"alertingProfileId,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this alerting profiles detach body
+func (o *AlertingProfilesDetachBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles detach body based on context it is used
+func (o *AlertingProfilesDetachBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesDetachBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesDetachBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesDetachBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesDetachForbiddenBody alerting profiles detach forbidden body
+swagger:model AlertingProfilesDetachForbiddenBody
+*/
+type AlertingProfilesDetachForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles detach forbidden body
+func (o *AlertingProfilesDetachForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles detach forbidden body based on context it is used
+func (o *AlertingProfilesDetachForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesDetachForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesDetachForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesDetachForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesDetachNotFoundBody alerting profiles detach not found body
+swagger:model AlertingProfilesDetachNotFoundBody
+*/
+type AlertingProfilesDetachNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles detach not found body
+func (o *AlertingProfilesDetachNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles detach not found body based on context it is used
+func (o *AlertingProfilesDetachNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesDetachNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesDetachNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesDetachNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesDetachUnauthorizedBody alerting profiles detach unauthorized body
+swagger:model AlertingProfilesDetachUnauthorizedBody
+*/
+type AlertingProfilesDetachUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles detach unauthorized body
+func (o *AlertingProfilesDetachUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles detach unauthorized body based on context it is used
+func (o *AlertingProfilesDetachUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesDetachUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesDetachUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesDetachUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package organizations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // OrganizationsAcceptOfferReader is a Reader for the OrganizationsAcceptOffer structure.
@@ -75,7 +75,7 @@ OrganizationsAcceptOfferOK describes a response with status code 200, with defau
 Success
 */
 type OrganizationsAcceptOfferOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations accept offer o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OrganizationsAcceptOfferOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferOK  %+v", 200, o.Payload)
 }
 
-func (o *OrganizationsAcceptOfferOK) GetPayload() models.Unit {
+func (o *OrganizationsAcceptOfferOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OrganizationsAcceptOfferBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type OrganizationsAcceptOfferBadRequest struct {
-	Payload []*models.Error
+	Payload []*OrganizationsAcceptOfferBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this organizations accept offer bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OrganizationsAcceptOfferBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsAcceptOfferBadRequest) GetPayload() []*models.Error {
+func (o *OrganizationsAcceptOfferBadRequest) GetPayload() []*OrganizationsAcceptOfferBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OrganizationsAcceptOfferUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type OrganizationsAcceptOfferUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *OrganizationsAcceptOfferUnauthorizedBody
 }
 
 // IsSuccess returns true when this organizations accept offer unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OrganizationsAcceptOfferUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsAcceptOfferUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsAcceptOfferUnauthorized) GetPayload() *OrganizationsAcceptOfferUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *OrganizationsAcceptOfferUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OrganizationsAcceptOfferUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OrganizationsAcceptOfferForbidden describes a response with status code 403, wit
 Forbidden
 */
 type OrganizationsAcceptOfferForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *OrganizationsAcceptOfferForbiddenBody
 }
 
 // IsSuccess returns true when this organizations accept offer forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OrganizationsAcceptOfferForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsAcceptOfferForbidden) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsAcceptOfferForbidden) GetPayload() *OrganizationsAcceptOfferForbiddenBody {
 	return o.Payload
 }
 
 func (o *OrganizationsAcceptOfferForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OrganizationsAcceptOfferForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OrganizationsAcceptOfferNotFound describes a response with status code 404, with
 Not Found
 */
 type OrganizationsAcceptOfferNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *OrganizationsAcceptOfferNotFoundBody
 }
 
 // IsSuccess returns true when this organizations accept offer not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OrganizationsAcceptOfferNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsAcceptOfferNotFound) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsAcceptOfferNotFound) GetPayload() *OrganizationsAcceptOfferNotFoundBody {
 	return o.Payload
 }
 
 func (o *OrganizationsAcceptOfferNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OrganizationsAcceptOfferNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *OrganizationsAcceptOfferInternalServerError) String() string {
 
 func (o *OrganizationsAcceptOfferInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+OrganizationsAcceptOfferBadRequestBodyItems0 organizations accept offer bad request body items0
+swagger:model OrganizationsAcceptOfferBadRequestBodyItems0
+*/
+type OrganizationsAcceptOfferBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this organizations accept offer bad request body items0
+func (o *OrganizationsAcceptOfferBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organizations accept offer bad request body items0 based on context it is used
+func (o *OrganizationsAcceptOfferBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OrganizationsAcceptOfferBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OrganizationsAcceptOfferBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OrganizationsAcceptOfferBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OrganizationsAcceptOfferForbiddenBody organizations accept offer forbidden body
+swagger:model OrganizationsAcceptOfferForbiddenBody
+*/
+type OrganizationsAcceptOfferForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this organizations accept offer forbidden body
+func (o *OrganizationsAcceptOfferForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organizations accept offer forbidden body based on context it is used
+func (o *OrganizationsAcceptOfferForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OrganizationsAcceptOfferForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OrganizationsAcceptOfferForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res OrganizationsAcceptOfferForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OrganizationsAcceptOfferNotFoundBody organizations accept offer not found body
+swagger:model OrganizationsAcceptOfferNotFoundBody
+*/
+type OrganizationsAcceptOfferNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this organizations accept offer not found body
+func (o *OrganizationsAcceptOfferNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organizations accept offer not found body based on context it is used
+func (o *OrganizationsAcceptOfferNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OrganizationsAcceptOfferNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OrganizationsAcceptOfferNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res OrganizationsAcceptOfferNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OrganizationsAcceptOfferUnauthorizedBody organizations accept offer unauthorized body
+swagger:model OrganizationsAcceptOfferUnauthorizedBody
+*/
+type OrganizationsAcceptOfferUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this organizations accept offer unauthorized body
+func (o *OrganizationsAcceptOfferUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organizations accept offer unauthorized body based on context it is used
+func (o *OrganizationsAcceptOfferUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OrganizationsAcceptOfferUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OrganizationsAcceptOfferUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res OrganizationsAcceptOfferUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

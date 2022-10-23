@@ -6,13 +6,13 @@ package user_projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // UserProjectsProjectsListByUserReader is a Reader for the UserProjectsProjectsListByUser structure.
@@ -75,7 +75,7 @@ UserProjectsProjectsListByUserOK describes a response with status code 200, with
 Success
 */
 type UserProjectsProjectsListByUserOK struct {
-	Payload []*models.CommonDropdownDto
+	Payload []*UserProjectsProjectsListByUserOKBodyItems0
 }
 
 // IsSuccess returns true when this user projects projects list by user o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *UserProjectsProjectsListByUserOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/projects/list][%d] userProjectsProjectsListByUserOK  %+v", 200, o.Payload)
 }
 
-func (o *UserProjectsProjectsListByUserOK) GetPayload() []*models.CommonDropdownDto {
+func (o *UserProjectsProjectsListByUserOK) GetPayload() []*UserProjectsProjectsListByUserOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ UserProjectsProjectsListByUserBadRequest describes a response with status code 4
 Bad Request
 */
 type UserProjectsProjectsListByUserBadRequest struct {
-	Payload []*models.Error
+	Payload []*UserProjectsProjectsListByUserBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this user projects projects list by user bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UserProjectsProjectsListByUserBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/projects/list][%d] userProjectsProjectsListByUserBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserProjectsProjectsListByUserBadRequest) GetPayload() []*models.Error {
+func (o *UserProjectsProjectsListByUserBadRequest) GetPayload() []*UserProjectsProjectsListByUserBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ UserProjectsProjectsListByUserUnauthorized describes a response with status code
 Unauthorized
 */
 type UserProjectsProjectsListByUserUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *UserProjectsProjectsListByUserUnauthorizedBody
 }
 
 // IsSuccess returns true when this user projects projects list by user unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *UserProjectsProjectsListByUserUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/projects/list][%d] userProjectsProjectsListByUserUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserProjectsProjectsListByUserUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UserProjectsProjectsListByUserUnauthorized) GetPayload() *UserProjectsProjectsListByUserUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *UserProjectsProjectsListByUserUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UserProjectsProjectsListByUserUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ UserProjectsProjectsListByUserForbidden describes a response with status code 40
 Forbidden
 */
 type UserProjectsProjectsListByUserForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *UserProjectsProjectsListByUserForbiddenBody
 }
 
 // IsSuccess returns true when this user projects projects list by user forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *UserProjectsProjectsListByUserForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/projects/list][%d] userProjectsProjectsListByUserForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserProjectsProjectsListByUserForbidden) GetPayload() *models.ProblemDetails {
+func (o *UserProjectsProjectsListByUserForbidden) GetPayload() *UserProjectsProjectsListByUserForbiddenBody {
 	return o.Payload
 }
 
 func (o *UserProjectsProjectsListByUserForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UserProjectsProjectsListByUserForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ UserProjectsProjectsListByUserNotFound describes a response with status code 404
 Not Found
 */
 type UserProjectsProjectsListByUserNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *UserProjectsProjectsListByUserNotFoundBody
 }
 
 // IsSuccess returns true when this user projects projects list by user not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *UserProjectsProjectsListByUserNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/projects/list][%d] userProjectsProjectsListByUserNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserProjectsProjectsListByUserNotFound) GetPayload() *models.ProblemDetails {
+func (o *UserProjectsProjectsListByUserNotFound) GetPayload() *UserProjectsProjectsListByUserNotFoundBody {
 	return o.Payload
 }
 
 func (o *UserProjectsProjectsListByUserNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UserProjectsProjectsListByUserNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *UserProjectsProjectsListByUserInternalServerError) String() string {
 
 func (o *UserProjectsProjectsListByUserInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+UserProjectsProjectsListByUserBadRequestBodyItems0 user projects projects list by user bad request body items0
+swagger:model UserProjectsProjectsListByUserBadRequestBodyItems0
+*/
+type UserProjectsProjectsListByUserBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this user projects projects list by user bad request body items0
+func (o *UserProjectsProjectsListByUserBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user projects projects list by user bad request body items0 based on context it is used
+func (o *UserProjectsProjectsListByUserBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UserProjectsProjectsListByUserBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UserProjectsProjectsListByUserBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res UserProjectsProjectsListByUserBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UserProjectsProjectsListByUserForbiddenBody user projects projects list by user forbidden body
+swagger:model UserProjectsProjectsListByUserForbiddenBody
+*/
+type UserProjectsProjectsListByUserForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this user projects projects list by user forbidden body
+func (o *UserProjectsProjectsListByUserForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user projects projects list by user forbidden body based on context it is used
+func (o *UserProjectsProjectsListByUserForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UserProjectsProjectsListByUserForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UserProjectsProjectsListByUserForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res UserProjectsProjectsListByUserForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UserProjectsProjectsListByUserNotFoundBody user projects projects list by user not found body
+swagger:model UserProjectsProjectsListByUserNotFoundBody
+*/
+type UserProjectsProjectsListByUserNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this user projects projects list by user not found body
+func (o *UserProjectsProjectsListByUserNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user projects projects list by user not found body based on context it is used
+func (o *UserProjectsProjectsListByUserNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UserProjectsProjectsListByUserNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UserProjectsProjectsListByUserNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res UserProjectsProjectsListByUserNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UserProjectsProjectsListByUserOKBodyItems0 user projects projects list by user o k body items0
+swagger:model UserProjectsProjectsListByUserOKBodyItems0
+*/
+type UserProjectsProjectsListByUserOKBodyItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this user projects projects list by user o k body items0
+func (o *UserProjectsProjectsListByUserOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user projects projects list by user o k body items0 based on context it is used
+func (o *UserProjectsProjectsListByUserOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UserProjectsProjectsListByUserOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UserProjectsProjectsListByUserOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res UserProjectsProjectsListByUserOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UserProjectsProjectsListByUserUnauthorizedBody user projects projects list by user unauthorized body
+swagger:model UserProjectsProjectsListByUserUnauthorizedBody
+*/
+type UserProjectsProjectsListByUserUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this user projects projects list by user unauthorized body
+func (o *UserProjectsProjectsListByUserUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user projects projects list by user unauthorized body based on context it is used
+func (o *UserProjectsProjectsListByUserUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UserProjectsProjectsListByUserUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UserProjectsProjectsListByUserUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res UserProjectsProjectsListByUserUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

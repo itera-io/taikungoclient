@@ -20,7 +20,7 @@ import (
 type GroupedShowbackByLabelList struct {
 
 	// by label values
-	ByLabelValues []*GroupedShowbackSummaryByLabelInfo `json:"byLabelValues"`
+	ByLabelValues []*GroupedShowbackByLabelListByLabelValuesItems0 `json:"byLabelValues"`
 }
 
 // Validate validates this grouped showback by label list
@@ -108,6 +108,156 @@ func (m *GroupedShowbackByLabelList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *GroupedShowbackByLabelList) UnmarshalBinary(b []byte) error {
 	var res GroupedShowbackByLabelList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// GroupedShowbackByLabelListByLabelValuesItems0 grouped showback by label list by label values items0
+//
+// swagger:model GroupedShowbackByLabelListByLabelValuesItems0
+type GroupedShowbackByLabelListByLabelValuesItems0 struct {
+
+	// credential name
+	CredentialName string `json:"credentialName,omitempty"`
+
+	// data
+	Data []*GroupedShowbackByLabelListByLabelValuesItems0DataItems0 `json:"data"`
+
+	// rule name
+	RuleName string `json:"ruleName,omitempty"`
+
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
+}
+
+// Validate validates this grouped showback by label list by label values items0
+func (m *GroupedShowbackByLabelListByLabelValuesItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *GroupedShowbackByLabelListByLabelValuesItems0) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(m.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Data); i++ {
+		if swag.IsZero(m.Data[i]) { // not required
+			continue
+		}
+
+		if m.Data[i] != nil {
+			if err := m.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this grouped showback by label list by label values items0 based on the context it is used
+func (m *GroupedShowbackByLabelListByLabelValuesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *GroupedShowbackByLabelListByLabelValuesItems0) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Data); i++ {
+
+		if m.Data[i] != nil {
+			if err := m.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *GroupedShowbackByLabelListByLabelValuesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *GroupedShowbackByLabelListByLabelValuesItems0) UnmarshalBinary(b []byte) error {
+	var res GroupedShowbackByLabelListByLabelValuesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// GroupedShowbackByLabelListByLabelValuesItems0DataItems0 grouped showback by label list by label values items0 data items0
+//
+// swagger:model GroupedShowbackByLabelListByLabelValuesItems0DataItems0
+type GroupedShowbackByLabelListByLabelValuesItems0DataItems0 struct {
+
+	// by label
+	ByLabel string `json:"byLabel,omitempty"`
+
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
+}
+
+// Validate validates this grouped showback by label list by label values items0 data items0
+func (m *GroupedShowbackByLabelListByLabelValuesItems0DataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this grouped showback by label list by label values items0 data items0 based on context it is used
+func (m *GroupedShowbackByLabelListByLabelValuesItems0DataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *GroupedShowbackByLabelListByLabelValuesItems0DataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *GroupedShowbackByLabelListByLabelValuesItems0DataItems0) UnmarshalBinary(b []byte) error {
+	var res GroupedShowbackByLabelListByLabelValuesItems0DataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

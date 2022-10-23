@@ -32,10 +32,10 @@ type ProjectGroupDetailsListDto struct {
 	OrganizationName string `json:"organizationName,omitempty"`
 
 	// projects
-	Projects []*ProjectListDto `json:"projects"`
+	Projects []*ProjectGroupDetailsListDtoProjectsItems0 `json:"projects"`
 
 	// user groups
-	UserGroups []*UserGroupEntityListDto `json:"userGroups"`
+	UserGroups []*ProjectGroupDetailsListDtoUserGroupsItems0 `json:"userGroups"`
 }
 
 // Validate validates this project group details list dto
@@ -177,6 +177,86 @@ func (m *ProjectGroupDetailsListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ProjectGroupDetailsListDto) UnmarshalBinary(b []byte) error {
 	var res ProjectGroupDetailsListDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectGroupDetailsListDtoProjectsItems0 project group details list dto projects items0
+//
+// swagger:model ProjectGroupDetailsListDtoProjectsItems0
+type ProjectGroupDetailsListDtoProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this project group details list dto projects items0
+func (m *ProjectGroupDetailsListDtoProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project group details list dto projects items0 based on context it is used
+func (m *ProjectGroupDetailsListDtoProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectGroupDetailsListDtoProjectsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectGroupDetailsListDtoProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupDetailsListDtoProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectGroupDetailsListDtoUserGroupsItems0 project group details list dto user groups items0
+//
+// swagger:model ProjectGroupDetailsListDtoUserGroupsItems0
+type ProjectGroupDetailsListDtoUserGroupsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this project group details list dto user groups items0
+func (m *ProjectGroupDetailsListDtoUserGroupsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project group details list dto user groups items0 based on context it is used
+func (m *ProjectGroupDetailsListDtoUserGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectGroupDetailsListDtoUserGroupsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectGroupDetailsListDtoUserGroupsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupDetailsListDtoUserGroupsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

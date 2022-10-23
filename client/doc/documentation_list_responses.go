@@ -6,13 +6,15 @@ package doc
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // DocumentationListReader is a Reader for the DocumentationList structure.
@@ -75,7 +77,7 @@ DocumentationListOK describes a response with status code 200, with default head
 Success
 */
 type DocumentationListOK struct {
-	Payload *models.DocumentationsList
+	Payload *DocumentationListOKBody
 }
 
 // IsSuccess returns true when this documentation list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *DocumentationListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Documentation][%d] documentationListOK  %+v", 200, o.Payload)
 }
 
-func (o *DocumentationListOK) GetPayload() *models.DocumentationsList {
+func (o *DocumentationListOK) GetPayload() *DocumentationListOKBody {
 	return o.Payload
 }
 
 func (o *DocumentationListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.DocumentationsList)
+	o.Payload = new(DocumentationListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ DocumentationListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type DocumentationListBadRequest struct {
-	Payload []*models.Error
+	Payload []*DocumentationListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this documentation list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *DocumentationListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Documentation][%d] documentationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *DocumentationListBadRequest) GetPayload() []*models.Error {
+func (o *DocumentationListBadRequest) GetPayload() []*DocumentationListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ DocumentationListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type DocumentationListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *DocumentationListUnauthorizedBody
 }
 
 // IsSuccess returns true when this documentation list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *DocumentationListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Documentation][%d] documentationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *DocumentationListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *DocumentationListUnauthorized) GetPayload() *DocumentationListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *DocumentationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(DocumentationListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ DocumentationListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type DocumentationListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *DocumentationListForbiddenBody
 }
 
 // IsSuccess returns true when this documentation list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *DocumentationListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Documentation][%d] documentationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *DocumentationListForbidden) GetPayload() *models.ProblemDetails {
+func (o *DocumentationListForbidden) GetPayload() *DocumentationListForbiddenBody {
 	return o.Payload
 }
 
 func (o *DocumentationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(DocumentationListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ DocumentationListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type DocumentationListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *DocumentationListNotFoundBody
 }
 
 // IsSuccess returns true when this documentation list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *DocumentationListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Documentation][%d] documentationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *DocumentationListNotFound) GetPayload() *models.ProblemDetails {
+func (o *DocumentationListNotFound) GetPayload() *DocumentationListNotFoundBody {
 	return o.Payload
 }
 
 func (o *DocumentationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(DocumentationListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,348 @@ func (o *DocumentationListInternalServerError) String() string {
 
 func (o *DocumentationListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+DocumentationListBadRequestBodyItems0 documentation list bad request body items0
+swagger:model DocumentationListBadRequestBodyItems0
+*/
+type DocumentationListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this documentation list bad request body items0
+func (o *DocumentationListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this documentation list bad request body items0 based on context it is used
+func (o *DocumentationListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DocumentationListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DocumentationListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res DocumentationListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DocumentationListForbiddenBody documentation list forbidden body
+swagger:model DocumentationListForbiddenBody
+*/
+type DocumentationListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this documentation list forbidden body
+func (o *DocumentationListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this documentation list forbidden body based on context it is used
+func (o *DocumentationListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DocumentationListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DocumentationListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res DocumentationListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DocumentationListNotFoundBody documentation list not found body
+swagger:model DocumentationListNotFoundBody
+*/
+type DocumentationListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this documentation list not found body
+func (o *DocumentationListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this documentation list not found body based on context it is used
+func (o *DocumentationListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DocumentationListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DocumentationListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res DocumentationListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DocumentationListOKBody documentation list o k body
+swagger:model DocumentationListOKBody
+*/
+type DocumentationListOKBody struct {
+
+	// data
+	Data []*DocumentationListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this documentation list o k body
+func (o *DocumentationListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *DocumentationListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("documentationListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("documentationListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this documentation list o k body based on the context it is used
+func (o *DocumentationListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *DocumentationListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("documentationListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("documentationListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DocumentationListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DocumentationListOKBody) UnmarshalBinary(b []byte) error {
+	var res DocumentationListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DocumentationListOKBodyDataItems0 documentation list o k body data items0
+swagger:model DocumentationListOKBodyDataItems0
+*/
+type DocumentationListOKBodyDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// key
+	Key string `json:"key,omitempty"`
+
+	// link
+	Link string `json:"link,omitempty"`
+
+	// role
+	Role string `json:"role,omitempty"`
+}
+
+// Validate validates this documentation list o k body data items0
+func (o *DocumentationListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this documentation list o k body data items0 based on context it is used
+func (o *DocumentationListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DocumentationListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DocumentationListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res DocumentationListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DocumentationListUnauthorizedBody documentation list unauthorized body
+swagger:model DocumentationListUnauthorizedBody
+*/
+type DocumentationListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this documentation list unauthorized body
+func (o *DocumentationListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this documentation list unauthorized body based on context it is used
+func (o *DocumentationListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DocumentationListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DocumentationListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res DocumentationListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

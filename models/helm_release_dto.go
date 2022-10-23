@@ -7,10 +7,12 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // HelmReleaseDto helm release dto
@@ -25,13 +27,13 @@ type HelmReleaseDto struct {
 	Kind string `json:"kind,omitempty"`
 
 	// metadata
-	Metadata *HelmMetadata `json:"metadata,omitempty"`
+	Metadata *HelmReleaseDtoMetadata `json:"metadata,omitempty"`
 
 	// spec
-	Spec *HelmSpec `json:"spec,omitempty"`
+	Spec *HelmReleaseDtoSpec `json:"spec,omitempty"`
 
 	// status
-	Status *HelmStatus `json:"status,omitempty"`
+	Status *HelmReleaseDtoStatus `json:"status,omitempty"`
 }
 
 // Validate validates this helm release dto
@@ -194,6 +196,610 @@ func (m *HelmReleaseDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *HelmReleaseDto) UnmarshalBinary(b []byte) error {
 	var res HelmReleaseDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// HelmReleaseDtoMetadata helm release dto metadata
+//
+// swagger:model HelmReleaseDtoMetadata
+type HelmReleaseDtoMetadata struct {
+
+	// creation timestamp
+	CreationTimestamp string `json:"creationTimestamp,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+}
+
+// Validate validates this helm release dto metadata
+func (m *HelmReleaseDtoMetadata) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this helm release dto metadata based on context it is used
+func (m *HelmReleaseDtoMetadata) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *HelmReleaseDtoMetadata) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *HelmReleaseDtoMetadata) UnmarshalBinary(b []byte) error {
+	var res HelmReleaseDtoMetadata
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// HelmReleaseDtoSpec helm release dto spec
+//
+// swagger:model HelmReleaseDtoSpec
+type HelmReleaseDtoSpec struct {
+
+	// chart
+	Chart *HelmReleaseDtoSpecChart `json:"chart,omitempty"`
+
+	// interval
+	Interval string `json:"interval,omitempty"`
+
+	// release name
+	ReleaseName string `json:"releaseName,omitempty"`
+
+	// storage namespace
+	StorageNamespace string `json:"storageNamespace,omitempty"`
+
+	// target namespace
+	TargetNamespace string `json:"targetNamespace,omitempty"`
+
+	// url
+	URL string `json:"url,omitempty"`
+
+	// values
+	Values *JSONNode `json:"values,omitempty"`
+}
+
+// Validate validates this helm release dto spec
+func (m *HelmReleaseDtoSpec) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateChart(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateValues(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *HelmReleaseDtoSpec) validateChart(formats strfmt.Registry) error {
+	if swag.IsZero(m.Chart) { // not required
+		return nil
+	}
+
+	if m.Chart != nil {
+		if err := m.Chart.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "chart")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "chart")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HelmReleaseDtoSpec) validateValues(formats strfmt.Registry) error {
+	if swag.IsZero(m.Values) { // not required
+		return nil
+	}
+
+	if m.Values != nil {
+		if err := m.Values.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "values")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "values")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this helm release dto spec based on the context it is used
+func (m *HelmReleaseDtoSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateChart(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateValues(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *HelmReleaseDtoSpec) contextValidateChart(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Chart != nil {
+		if err := m.Chart.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "chart")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "chart")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HelmReleaseDtoSpec) contextValidateValues(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Values != nil {
+		if err := m.Values.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "values")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "values")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *HelmReleaseDtoSpec) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *HelmReleaseDtoSpec) UnmarshalBinary(b []byte) error {
+	var res HelmReleaseDtoSpec
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// HelmReleaseDtoSpecChart helm release dto spec chart
+//
+// swagger:model HelmReleaseDtoSpecChart
+type HelmReleaseDtoSpecChart struct {
+
+	// spec
+	Spec *HelmReleaseDtoSpecChartSpec `json:"spec,omitempty"`
+}
+
+// Validate validates this helm release dto spec chart
+func (m *HelmReleaseDtoSpecChart) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateSpec(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *HelmReleaseDtoSpecChart) validateSpec(formats strfmt.Registry) error {
+	if swag.IsZero(m.Spec) { // not required
+		return nil
+	}
+
+	if m.Spec != nil {
+		if err := m.Spec.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "chart" + "." + "spec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "chart" + "." + "spec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this helm release dto spec chart based on the context it is used
+func (m *HelmReleaseDtoSpecChart) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateSpec(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *HelmReleaseDtoSpecChart) contextValidateSpec(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Spec != nil {
+		if err := m.Spec.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "chart" + "." + "spec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "chart" + "." + "spec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *HelmReleaseDtoSpecChart) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *HelmReleaseDtoSpecChart) UnmarshalBinary(b []byte) error {
+	var res HelmReleaseDtoSpecChart
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// HelmReleaseDtoSpecChartSpec helm release dto spec chart spec
+//
+// swagger:model HelmReleaseDtoSpecChartSpec
+type HelmReleaseDtoSpecChartSpec struct {
+
+	// chart
+	Chart string `json:"chart,omitempty"`
+
+	// interval
+	Interval string `json:"interval,omitempty"`
+
+	// source ref
+	SourceRef *HelmReleaseDtoSpecChartSpecSourceRef `json:"sourceRef,omitempty"`
+
+	// version
+	Version string `json:"version,omitempty"`
+}
+
+// Validate validates this helm release dto spec chart spec
+func (m *HelmReleaseDtoSpecChartSpec) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateSourceRef(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *HelmReleaseDtoSpecChartSpec) validateSourceRef(formats strfmt.Registry) error {
+	if swag.IsZero(m.SourceRef) { // not required
+		return nil
+	}
+
+	if m.SourceRef != nil {
+		if err := m.SourceRef.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "chart" + "." + "spec" + "." + "sourceRef")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "chart" + "." + "spec" + "." + "sourceRef")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this helm release dto spec chart spec based on the context it is used
+func (m *HelmReleaseDtoSpecChartSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateSourceRef(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *HelmReleaseDtoSpecChartSpec) contextValidateSourceRef(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SourceRef != nil {
+		if err := m.SourceRef.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "chart" + "." + "spec" + "." + "sourceRef")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "chart" + "." + "spec" + "." + "sourceRef")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *HelmReleaseDtoSpecChartSpec) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *HelmReleaseDtoSpecChartSpec) UnmarshalBinary(b []byte) error {
+	var res HelmReleaseDtoSpecChartSpec
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// HelmReleaseDtoSpecChartSpecSourceRef helm release dto spec chart spec source ref
+//
+// swagger:model HelmReleaseDtoSpecChartSpecSourceRef
+type HelmReleaseDtoSpecChartSpecSourceRef struct {
+
+	// kind
+	Kind string `json:"kind,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this helm release dto spec chart spec source ref
+func (m *HelmReleaseDtoSpecChartSpecSourceRef) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this helm release dto spec chart spec source ref based on context it is used
+func (m *HelmReleaseDtoSpecChartSpecSourceRef) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *HelmReleaseDtoSpecChartSpecSourceRef) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *HelmReleaseDtoSpecChartSpecSourceRef) UnmarshalBinary(b []byte) error {
+	var res HelmReleaseDtoSpecChartSpecSourceRef
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// HelmReleaseDtoStatus helm release dto status
+//
+// swagger:model HelmReleaseDtoStatus
+type HelmReleaseDtoStatus struct {
+
+	// conditions
+	Conditions []*HelmReleaseDtoStatusConditionsItems0 `json:"conditions"`
+
+	// failures
+	Failures int64 `json:"failures,omitempty"`
+
+	// helm chart
+	HelmChart string `json:"helmChart,omitempty"`
+
+	// observed generation
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+}
+
+// Validate validates this helm release dto status
+func (m *HelmReleaseDtoStatus) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateConditions(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *HelmReleaseDtoStatus) validateConditions(formats strfmt.Registry) error {
+	if swag.IsZero(m.Conditions) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Conditions); i++ {
+		if swag.IsZero(m.Conditions[i]) { // not required
+			continue
+		}
+
+		if m.Conditions[i] != nil {
+			if err := m.Conditions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("status" + "." + "conditions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("status" + "." + "conditions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this helm release dto status based on the context it is used
+func (m *HelmReleaseDtoStatus) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateConditions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *HelmReleaseDtoStatus) contextValidateConditions(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Conditions); i++ {
+
+		if m.Conditions[i] != nil {
+			if err := m.Conditions[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("status" + "." + "conditions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("status" + "." + "conditions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *HelmReleaseDtoStatus) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *HelmReleaseDtoStatus) UnmarshalBinary(b []byte) error {
+	var res HelmReleaseDtoStatus
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// HelmReleaseDtoStatusConditionsItems0 helm release dto status conditions items0
+//
+// swagger:model HelmReleaseDtoStatusConditionsItems0
+type HelmReleaseDtoStatusConditionsItems0 struct {
+
+	// last transition time
+	// Format: date-time
+	LastTransitionTime *strfmt.DateTime `json:"lastTransitionTime,omitempty"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// reason
+	Reason string `json:"reason,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this helm release dto status conditions items0
+func (m *HelmReleaseDtoStatusConditionsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateLastTransitionTime(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *HelmReleaseDtoStatusConditionsItems0) validateLastTransitionTime(formats strfmt.Registry) error {
+	if swag.IsZero(m.LastTransitionTime) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("lastTransitionTime", "body", "date-time", m.LastTransitionTime.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this helm release dto status conditions items0 based on context it is used
+func (m *HelmReleaseDtoStatusConditionsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *HelmReleaseDtoStatusConditionsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *HelmReleaseDtoStatusConditionsItems0) UnmarshalBinary(b []byte) error {
+	var res HelmReleaseDtoStatusConditionsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

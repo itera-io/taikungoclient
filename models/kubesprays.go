@@ -20,7 +20,7 @@ import (
 type Kubesprays struct {
 
 	// data
-	Data []*KubesprayListDto `json:"data"`
+	Data []*KubespraysDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,52 @@ func (m *Kubesprays) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *Kubesprays) UnmarshalBinary(b []byte) error {
 	var res Kubesprays
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// KubespraysDataItems0 kubesprays data items0
+//
+// swagger:model KubespraysDataItems0
+type KubespraysDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is deprecated
+	IsDeprecated bool `json:"isDeprecated"`
+
+	// kubernetes version
+	KubernetesVersion string `json:"kubernetesVersion,omitempty"`
+
+	// version
+	Version string `json:"version,omitempty"`
+}
+
+// Validate validates this kubesprays data items0
+func (m *KubespraysDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubesprays data items0 based on context it is used
+func (m *KubespraysDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *KubespraysDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *KubespraysDataItems0) UnmarshalBinary(b []byte) error {
+	var res KubespraysDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

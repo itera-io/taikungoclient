@@ -20,7 +20,7 @@ import (
 type Deployments struct {
 
 	// data
-	Data []*DeploymentDto `json:"data"`
+	Data []*DeploymentsDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,52 @@ func (m *Deployments) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *Deployments) UnmarshalBinary(b []byte) error {
 	var res Deployments
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DeploymentsDataItems0 deployments data items0
+//
+// swagger:model DeploymentsDataItems0
+type DeploymentsDataItems0 struct {
+
+	// age
+	Age string `json:"age,omitempty"`
+
+	// metadata name
+	MetadataName string `json:"metadataName,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+}
+
+// Validate validates this deployments data items0
+func (m *DeploymentsDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this deployments data items0 based on context it is used
+func (m *DeploymentsDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DeploymentsDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DeploymentsDataItems0) UnmarshalBinary(b []byte) error {
+	var res DeploymentsDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

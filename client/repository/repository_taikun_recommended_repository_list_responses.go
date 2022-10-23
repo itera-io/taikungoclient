@@ -6,13 +6,13 @@ package repository
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // RepositoryTaikunRecommendedRepositoryListReader is a Reader for the RepositoryTaikunRecommendedRepositoryList structure.
@@ -75,7 +75,7 @@ RepositoryTaikunRecommendedRepositoryListOK describes a response with status cod
 Success
 */
 type RepositoryTaikunRecommendedRepositoryListOK struct {
-	Payload []*models.ArtifactRepositoryDto
+	Payload []*RepositoryTaikunRecommendedRepositoryListOKBodyItems0
 }
 
 // IsSuccess returns true when this repository taikun recommended repository list o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *RepositoryTaikunRecommendedRepositoryListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListOK  %+v", 200, o.Payload)
 }
 
-func (o *RepositoryTaikunRecommendedRepositoryListOK) GetPayload() []*models.ArtifactRepositoryDto {
+func (o *RepositoryTaikunRecommendedRepositoryListOK) GetPayload() []*RepositoryTaikunRecommendedRepositoryListOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ RepositoryTaikunRecommendedRepositoryListBadRequest describes a response with st
 Bad Request
 */
 type RepositoryTaikunRecommendedRepositoryListBadRequest struct {
-	Payload []*models.Error
+	Payload []*RepositoryTaikunRecommendedRepositoryListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this repository taikun recommended repository list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) GetPayload() []*models.Error {
+func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) GetPayload() []*RepositoryTaikunRecommendedRepositoryListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ RepositoryTaikunRecommendedRepositoryListUnauthorized describes a response with 
 Unauthorized
 */
 type RepositoryTaikunRecommendedRepositoryListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *RepositoryTaikunRecommendedRepositoryListUnauthorizedBody
 }
 
 // IsSuccess returns true when this repository taikun recommended repository list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) String() string 
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) GetPayload() *RepositoryTaikunRecommendedRepositoryListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(RepositoryTaikunRecommendedRepositoryListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ RepositoryTaikunRecommendedRepositoryListForbidden describes a response with sta
 Forbidden
 */
 type RepositoryTaikunRecommendedRepositoryListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *RepositoryTaikunRecommendedRepositoryListForbiddenBody
 }
 
 // IsSuccess returns true when this repository taikun recommended repository list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *RepositoryTaikunRecommendedRepositoryListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *RepositoryTaikunRecommendedRepositoryListForbidden) GetPayload() *models.ProblemDetails {
+func (o *RepositoryTaikunRecommendedRepositoryListForbidden) GetPayload() *RepositoryTaikunRecommendedRepositoryListForbiddenBody {
 	return o.Payload
 }
 
 func (o *RepositoryTaikunRecommendedRepositoryListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(RepositoryTaikunRecommendedRepositoryListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ RepositoryTaikunRecommendedRepositoryListNotFound describes a response with stat
 Not Found
 */
 type RepositoryTaikunRecommendedRepositoryListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *RepositoryTaikunRecommendedRepositoryListNotFoundBody
 }
 
 // IsSuccess returns true when this repository taikun recommended repository list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *RepositoryTaikunRecommendedRepositoryListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *RepositoryTaikunRecommendedRepositoryListNotFound) GetPayload() *models.ProblemDetails {
+func (o *RepositoryTaikunRecommendedRepositoryListNotFound) GetPayload() *RepositoryTaikunRecommendedRepositoryListNotFoundBody {
 	return o.Payload
 }
 
 func (o *RepositoryTaikunRecommendedRepositoryListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(RepositoryTaikunRecommendedRepositoryListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,261 @@ func (o *RepositoryTaikunRecommendedRepositoryListInternalServerError) String() 
 
 func (o *RepositoryTaikunRecommendedRepositoryListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+RepositoryTaikunRecommendedRepositoryListBadRequestBodyItems0 repository taikun recommended repository list bad request body items0
+swagger:model RepositoryTaikunRecommendedRepositoryListBadRequestBodyItems0
+*/
+type RepositoryTaikunRecommendedRepositoryListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this repository taikun recommended repository list bad request body items0
+func (o *RepositoryTaikunRecommendedRepositoryListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this repository taikun recommended repository list bad request body items0 based on context it is used
+func (o *RepositoryTaikunRecommendedRepositoryListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *RepositoryTaikunRecommendedRepositoryListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *RepositoryTaikunRecommendedRepositoryListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res RepositoryTaikunRecommendedRepositoryListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+RepositoryTaikunRecommendedRepositoryListForbiddenBody repository taikun recommended repository list forbidden body
+swagger:model RepositoryTaikunRecommendedRepositoryListForbiddenBody
+*/
+type RepositoryTaikunRecommendedRepositoryListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this repository taikun recommended repository list forbidden body
+func (o *RepositoryTaikunRecommendedRepositoryListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this repository taikun recommended repository list forbidden body based on context it is used
+func (o *RepositoryTaikunRecommendedRepositoryListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *RepositoryTaikunRecommendedRepositoryListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *RepositoryTaikunRecommendedRepositoryListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res RepositoryTaikunRecommendedRepositoryListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+RepositoryTaikunRecommendedRepositoryListNotFoundBody repository taikun recommended repository list not found body
+swagger:model RepositoryTaikunRecommendedRepositoryListNotFoundBody
+*/
+type RepositoryTaikunRecommendedRepositoryListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this repository taikun recommended repository list not found body
+func (o *RepositoryTaikunRecommendedRepositoryListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this repository taikun recommended repository list not found body based on context it is used
+func (o *RepositoryTaikunRecommendedRepositoryListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *RepositoryTaikunRecommendedRepositoryListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *RepositoryTaikunRecommendedRepositoryListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res RepositoryTaikunRecommendedRepositoryListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+RepositoryTaikunRecommendedRepositoryListOKBodyItems0 repository taikun recommended repository list o k body items0
+swagger:model RepositoryTaikunRecommendedRepositoryListOKBodyItems0
+*/
+type RepositoryTaikunRecommendedRepositoryListOKBodyItems0 struct {
+
+	// disabled
+	Disabled bool `json:"disabled"`
+
+	// display name
+	DisplayName string `json:"displayName"`
+
+	// has catalog app
+	HasCatalogApp bool `json:"hasCatalogApp"`
+
+	// is bound
+	IsBound bool `json:"isBound"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// official
+	Official bool `json:"official"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// repository Id
+	RepositoryID string `json:"repositoryId,omitempty"`
+
+	// url
+	URL string `json:"url,omitempty"`
+
+	// verified publisher
+	VerifiedPublisher bool `json:"verifiedPublisher"`
+}
+
+// Validate validates this repository taikun recommended repository list o k body items0
+func (o *RepositoryTaikunRecommendedRepositoryListOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this repository taikun recommended repository list o k body items0 based on context it is used
+func (o *RepositoryTaikunRecommendedRepositoryListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *RepositoryTaikunRecommendedRepositoryListOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *RepositoryTaikunRecommendedRepositoryListOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res RepositoryTaikunRecommendedRepositoryListOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+RepositoryTaikunRecommendedRepositoryListUnauthorizedBody repository taikun recommended repository list unauthorized body
+swagger:model RepositoryTaikunRecommendedRepositoryListUnauthorizedBody
+*/
+type RepositoryTaikunRecommendedRepositoryListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this repository taikun recommended repository list unauthorized body
+func (o *RepositoryTaikunRecommendedRepositoryListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this repository taikun recommended repository list unauthorized body based on context it is used
+func (o *RepositoryTaikunRecommendedRepositoryListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *RepositoryTaikunRecommendedRepositoryListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *RepositoryTaikunRecommendedRepositoryListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res RepositoryTaikunRecommendedRepositoryListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

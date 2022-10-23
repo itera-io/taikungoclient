@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CronJobFetchKubernetesAlertsReader is a Reader for the CronJobFetchKubernetesAlerts structure.
@@ -75,7 +75,7 @@ CronJobFetchKubernetesAlertsOK describes a response with status code 200, with d
 Success
 */
 type CronJobFetchKubernetesAlertsOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes alerts o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobFetchKubernetesAlertsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesAlertsOK) GetPayload() models.Unit {
+func (o *CronJobFetchKubernetesAlertsOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobFetchKubernetesAlertsBadRequest describes a response with status code 400
 Bad Request
 */
 type CronJobFetchKubernetesAlertsBadRequest struct {
-	Payload []*models.Error
+	Payload []*CronJobFetchKubernetesAlertsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes alerts bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobFetchKubernetesAlertsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesAlertsBadRequest) GetPayload() []*models.Error {
+func (o *CronJobFetchKubernetesAlertsBadRequest) GetPayload() []*CronJobFetchKubernetesAlertsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobFetchKubernetesAlertsUnauthorized describes a response with status code 4
 Unauthorized
 */
 type CronJobFetchKubernetesAlertsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobFetchKubernetesAlertsUnauthorizedBody
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes alerts unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobFetchKubernetesAlertsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesAlertsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchKubernetesAlertsUnauthorized) GetPayload() *CronJobFetchKubernetesAlertsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CronJobFetchKubernetesAlertsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobFetchKubernetesAlertsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobFetchKubernetesAlertsForbidden describes a response with status code 403,
 Forbidden
 */
 type CronJobFetchKubernetesAlertsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobFetchKubernetesAlertsForbiddenBody
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes alerts forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobFetchKubernetesAlertsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesAlertsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchKubernetesAlertsForbidden) GetPayload() *CronJobFetchKubernetesAlertsForbiddenBody {
 	return o.Payload
 }
 
 func (o *CronJobFetchKubernetesAlertsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobFetchKubernetesAlertsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobFetchKubernetesAlertsNotFound describes a response with status code 404, 
 Not Found
 */
 type CronJobFetchKubernetesAlertsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobFetchKubernetesAlertsNotFoundBody
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes alerts not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobFetchKubernetesAlertsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesAlertsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchKubernetesAlertsNotFound) GetPayload() *CronJobFetchKubernetesAlertsNotFoundBody {
 	return o.Payload
 }
 
 func (o *CronJobFetchKubernetesAlertsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobFetchKubernetesAlertsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *CronJobFetchKubernetesAlertsInternalServerError) String() string {
 
 func (o *CronJobFetchKubernetesAlertsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CronJobFetchKubernetesAlertsBadRequestBodyItems0 cron job fetch kubernetes alerts bad request body items0
+swagger:model CronJobFetchKubernetesAlertsBadRequestBodyItems0
+*/
+type CronJobFetchKubernetesAlertsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this cron job fetch kubernetes alerts bad request body items0
+func (o *CronJobFetchKubernetesAlertsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch kubernetes alerts bad request body items0 based on context it is used
+func (o *CronJobFetchKubernetesAlertsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchKubernetesAlertsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchKubernetesAlertsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchKubernetesAlertsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobFetchKubernetesAlertsForbiddenBody cron job fetch kubernetes alerts forbidden body
+swagger:model CronJobFetchKubernetesAlertsForbiddenBody
+*/
+type CronJobFetchKubernetesAlertsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job fetch kubernetes alerts forbidden body
+func (o *CronJobFetchKubernetesAlertsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch kubernetes alerts forbidden body based on context it is used
+func (o *CronJobFetchKubernetesAlertsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchKubernetesAlertsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchKubernetesAlertsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchKubernetesAlertsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobFetchKubernetesAlertsNotFoundBody cron job fetch kubernetes alerts not found body
+swagger:model CronJobFetchKubernetesAlertsNotFoundBody
+*/
+type CronJobFetchKubernetesAlertsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job fetch kubernetes alerts not found body
+func (o *CronJobFetchKubernetesAlertsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch kubernetes alerts not found body based on context it is used
+func (o *CronJobFetchKubernetesAlertsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchKubernetesAlertsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchKubernetesAlertsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchKubernetesAlertsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobFetchKubernetesAlertsUnauthorizedBody cron job fetch kubernetes alerts unauthorized body
+swagger:model CronJobFetchKubernetesAlertsUnauthorizedBody
+*/
+type CronJobFetchKubernetesAlertsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job fetch kubernetes alerts unauthorized body
+func (o *CronJobFetchKubernetesAlertsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch kubernetes alerts unauthorized body based on context it is used
+func (o *CronJobFetchKubernetesAlertsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchKubernetesAlertsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchKubernetesAlertsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchKubernetesAlertsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

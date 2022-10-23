@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSearchNodesListParams creates a new SearchNodesListParams object,
@@ -64,7 +62,7 @@ SearchNodesListParams contains all the parameters to send to the API endpoint
 type SearchNodesListParams struct {
 
 	// Body.
-	Body *models.NodesSearchCommand
+	Body SearchNodesListBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *SearchNodesListParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the search nodes list params
-func (o *SearchNodesListParams) WithBody(body *models.NodesSearchCommand) *SearchNodesListParams {
+func (o *SearchNodesListParams) WithBody(body SearchNodesListBody) *SearchNodesListParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the search nodes list params
-func (o *SearchNodesListParams) SetBody(body *models.NodesSearchCommand) {
+func (o *SearchNodesListParams) SetBody(body SearchNodesListBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *SearchNodesListParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

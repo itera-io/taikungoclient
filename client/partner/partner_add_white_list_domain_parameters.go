@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewPartnerAddWhiteListDomainParams creates a new PartnerAddWhiteListDomainParams object,
@@ -64,7 +62,7 @@ PartnerAddWhiteListDomainParams contains all the parameters to send to the API e
 type PartnerAddWhiteListDomainParams struct {
 
 	// Body.
-	Body *models.WhiteListDomainCreateCommand
+	Body PartnerAddWhiteListDomainBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *PartnerAddWhiteListDomainParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the partner add white list domain params
-func (o *PartnerAddWhiteListDomainParams) WithBody(body *models.WhiteListDomainCreateCommand) *PartnerAddWhiteListDomainParams {
+func (o *PartnerAddWhiteListDomainParams) WithBody(body PartnerAddWhiteListDomainBody) *PartnerAddWhiteListDomainParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the partner add white list domain params
-func (o *PartnerAddWhiteListDomainParams) SetBody(body *models.WhiteListDomainCreateCommand) {
+func (o *PartnerAddWhiteListDomainParams) SetBody(body PartnerAddWhiteListDomainBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *PartnerAddWhiteListDomainParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

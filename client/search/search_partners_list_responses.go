@@ -6,13 +6,15 @@ package search
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SearchPartnersListReader is a Reader for the SearchPartnersList structure.
@@ -75,7 +77,7 @@ SearchPartnersListOK describes a response with status code 200, with default hea
 Success
 */
 type SearchPartnersListOK struct {
-	Payload *models.PartnersSearchList
+	Payload *SearchPartnersListOKBody
 }
 
 // IsSuccess returns true when this search partners list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *SearchPartnersListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/partners][%d] searchPartnersListOK  %+v", 200, o.Payload)
 }
 
-func (o *SearchPartnersListOK) GetPayload() *models.PartnersSearchList {
+func (o *SearchPartnersListOK) GetPayload() *SearchPartnersListOKBody {
 	return o.Payload
 }
 
 func (o *SearchPartnersListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PartnersSearchList)
+	o.Payload = new(SearchPartnersListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ SearchPartnersListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type SearchPartnersListBadRequest struct {
-	Payload []*models.Error
+	Payload []*SearchPartnersListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this search partners list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *SearchPartnersListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/partners][%d] searchPartnersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchPartnersListBadRequest) GetPayload() []*models.Error {
+func (o *SearchPartnersListBadRequest) GetPayload() []*SearchPartnersListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ SearchPartnersListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type SearchPartnersListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SearchPartnersListUnauthorizedBody
 }
 
 // IsSuccess returns true when this search partners list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *SearchPartnersListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/partners][%d] searchPartnersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchPartnersListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchPartnersListUnauthorized) GetPayload() *SearchPartnersListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SearchPartnersListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchPartnersListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ SearchPartnersListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type SearchPartnersListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SearchPartnersListForbiddenBody
 }
 
 // IsSuccess returns true when this search partners list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *SearchPartnersListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/partners][%d] searchPartnersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchPartnersListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchPartnersListForbidden) GetPayload() *SearchPartnersListForbiddenBody {
 	return o.Payload
 }
 
 func (o *SearchPartnersListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchPartnersListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ SearchPartnersListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type SearchPartnersListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SearchPartnersListNotFoundBody
 }
 
 // IsSuccess returns true when this search partners list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *SearchPartnersListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/partners][%d] searchPartnersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchPartnersListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchPartnersListNotFound) GetPayload() *SearchPartnersListNotFoundBody {
 	return o.Payload
 }
 
 func (o *SearchPartnersListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchPartnersListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,389 @@ func (o *SearchPartnersListInternalServerError) String() string {
 
 func (o *SearchPartnersListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SearchPartnersListBadRequestBodyItems0 search partners list bad request body items0
+swagger:model SearchPartnersListBadRequestBodyItems0
+*/
+type SearchPartnersListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this search partners list bad request body items0
+func (o *SearchPartnersListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search partners list bad request body items0 based on context it is used
+func (o *SearchPartnersListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPartnersListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPartnersListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SearchPartnersListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPartnersListBody search partners list body
+swagger:model SearchPartnersListBody
+*/
+type SearchPartnersListBody struct {
+
+	// limit
+	Limit int32 `json:"limit,omitempty"`
+
+	// offset
+	Offset int32 `json:"offset,omitempty"`
+
+	// search term
+	SearchTerm string `json:"searchTerm,omitempty"`
+}
+
+// Validate validates this search partners list body
+func (o *SearchPartnersListBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search partners list body based on context it is used
+func (o *SearchPartnersListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPartnersListBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPartnersListBody) UnmarshalBinary(b []byte) error {
+	var res SearchPartnersListBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPartnersListForbiddenBody search partners list forbidden body
+swagger:model SearchPartnersListForbiddenBody
+*/
+type SearchPartnersListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search partners list forbidden body
+func (o *SearchPartnersListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search partners list forbidden body based on context it is used
+func (o *SearchPartnersListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPartnersListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPartnersListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SearchPartnersListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPartnersListNotFoundBody search partners list not found body
+swagger:model SearchPartnersListNotFoundBody
+*/
+type SearchPartnersListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search partners list not found body
+func (o *SearchPartnersListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search partners list not found body based on context it is used
+func (o *SearchPartnersListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPartnersListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPartnersListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SearchPartnersListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPartnersListOKBody search partners list o k body
+swagger:model SearchPartnersListOKBody
+*/
+type SearchPartnersListOKBody struct {
+
+	// data
+	Data []*SearchPartnersListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this search partners list o k body
+func (o *SearchPartnersListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchPartnersListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchPartnersListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchPartnersListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this search partners list o k body based on the context it is used
+func (o *SearchPartnersListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchPartnersListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchPartnersListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchPartnersListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPartnersListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPartnersListOKBody) UnmarshalBinary(b []byte) error {
+	var res SearchPartnersListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPartnersListOKBodyDataItems0 search partners list o k body data items0
+swagger:model SearchPartnersListOKBodyDataItems0
+*/
+type SearchPartnersListOKBodyDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// logo
+	Logo string `json:"logo,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this search partners list o k body data items0
+func (o *SearchPartnersListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search partners list o k body data items0 based on context it is used
+func (o *SearchPartnersListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPartnersListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPartnersListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res SearchPartnersListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPartnersListUnauthorizedBody search partners list unauthorized body
+swagger:model SearchPartnersListUnauthorizedBody
+*/
+type SearchPartnersListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search partners list unauthorized body
+func (o *SearchPartnersListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search partners list unauthorized body based on context it is used
+func (o *SearchPartnersListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPartnersListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPartnersListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SearchPartnersListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

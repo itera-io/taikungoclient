@@ -20,7 +20,7 @@ import (
 type UserForListDto struct {
 
 	// bound projects
-	BoundProjects []*ProjectDto `json:"boundProjects"`
+	BoundProjects []*UserForListDtoBoundProjectsItems0 `json:"boundProjects"`
 
 	// created at
 	CreatedAt string `json:"createdAt,omitempty"`
@@ -80,7 +80,7 @@ type UserForListDto struct {
 	Owner bool `json:"owner"`
 
 	// partner
-	Partner *PartnerDetailsForUserDto `json:"partner,omitempty"`
+	Partner *UserForListDtoPartner `json:"partner,omitempty"`
 
 	// role
 	Role string `json:"role,omitempty"`
@@ -217,6 +217,92 @@ func (m *UserForListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *UserForListDto) UnmarshalBinary(b []byte) error {
 	var res UserForListDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// UserForListDtoBoundProjectsItems0 user for list dto bound projects items0
+//
+// swagger:model UserForListDtoBoundProjectsItems0
+type UserForListDtoBoundProjectsItems0 struct {
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this user for list dto bound projects items0
+func (m *UserForListDtoBoundProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user for list dto bound projects items0 based on context it is used
+func (m *UserForListDtoBoundProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *UserForListDtoBoundProjectsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *UserForListDtoBoundProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res UserForListDtoBoundProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// UserForListDtoPartner user for list dto partner
+//
+// swagger:model UserForListDtoPartner
+type UserForListDtoPartner struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// link
+	Link string `json:"link,omitempty"`
+
+	// logo
+	Logo string `json:"logo,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this user for list dto partner
+func (m *UserForListDtoPartner) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user for list dto partner based on context it is used
+func (m *UserForListDtoPartner) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *UserForListDtoPartner) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *UserForListDtoPartner) UnmarshalBinary(b []byte) error {
+	var res UserForListDtoPartner
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -6,13 +6,15 @@ package keycloak
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // KeycloakLoginReader is a Reader for the KeycloakLogin structure.
@@ -75,7 +77,7 @@ KeycloakLoginOK describes a response with status code 200, with default header v
 Success
 */
 type KeycloakLoginOK struct {
-	Payload *models.GetToken
+	Payload *KeycloakLoginOKBody
 }
 
 // IsSuccess returns true when this keycloak login o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *KeycloakLoginOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/login][%d] keycloakLoginOK  %+v", 200, o.Payload)
 }
 
-func (o *KeycloakLoginOK) GetPayload() *models.GetToken {
+func (o *KeycloakLoginOK) GetPayload() *KeycloakLoginOKBody {
 	return o.Payload
 }
 
 func (o *KeycloakLoginOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetToken)
+	o.Payload = new(KeycloakLoginOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ KeycloakLoginBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type KeycloakLoginBadRequest struct {
-	Payload []*models.Error
+	Payload []*KeycloakLoginBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this keycloak login bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *KeycloakLoginBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/login][%d] keycloakLoginBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KeycloakLoginBadRequest) GetPayload() []*models.Error {
+func (o *KeycloakLoginBadRequest) GetPayload() []*KeycloakLoginBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ KeycloakLoginUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type KeycloakLoginUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KeycloakLoginUnauthorizedBody
 }
 
 // IsSuccess returns true when this keycloak login unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *KeycloakLoginUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/login][%d] keycloakLoginUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KeycloakLoginUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KeycloakLoginUnauthorized) GetPayload() *KeycloakLoginUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KeycloakLoginUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KeycloakLoginUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ KeycloakLoginForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type KeycloakLoginForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KeycloakLoginForbiddenBody
 }
 
 // IsSuccess returns true when this keycloak login forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *KeycloakLoginForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/login][%d] keycloakLoginForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KeycloakLoginForbidden) GetPayload() *models.ProblemDetails {
+func (o *KeycloakLoginForbidden) GetPayload() *KeycloakLoginForbiddenBody {
 	return o.Payload
 }
 
 func (o *KeycloakLoginForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KeycloakLoginForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ KeycloakLoginNotFound describes a response with status code 404, with default he
 Not Found
 */
 type KeycloakLoginNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KeycloakLoginNotFoundBody
 }
 
 // IsSuccess returns true when this keycloak login not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *KeycloakLoginNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/login][%d] keycloakLoginNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KeycloakLoginNotFound) GetPayload() *models.ProblemDetails {
+func (o *KeycloakLoginNotFound) GetPayload() *KeycloakLoginNotFoundBody {
 	return o.Payload
 }
 
 func (o *KeycloakLoginNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KeycloakLoginNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,303 @@ func (o *KeycloakLoginInternalServerError) String() string {
 
 func (o *KeycloakLoginInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KeycloakLoginBadRequestBodyItems0 keycloak login bad request body items0
+swagger:model KeycloakLoginBadRequestBodyItems0
+*/
+type KeycloakLoginBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this keycloak login bad request body items0
+func (o *KeycloakLoginBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this keycloak login bad request body items0 based on context it is used
+func (o *KeycloakLoginBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KeycloakLoginBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KeycloakLoginBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KeycloakLoginBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KeycloakLoginBody keycloak login body
+swagger:model KeycloakLoginBody
+*/
+type KeycloakLoginBody struct {
+
+	// email
+	Email string `json:"email,omitempty"`
+
+	// password
+	Password string `json:"password,omitempty"`
+}
+
+// Validate validates this keycloak login body
+func (o *KeycloakLoginBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this keycloak login body based on context it is used
+func (o *KeycloakLoginBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KeycloakLoginBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KeycloakLoginBody) UnmarshalBinary(b []byte) error {
+	var res KeycloakLoginBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KeycloakLoginForbiddenBody keycloak login forbidden body
+swagger:model KeycloakLoginForbiddenBody
+*/
+type KeycloakLoginForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this keycloak login forbidden body
+func (o *KeycloakLoginForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this keycloak login forbidden body based on context it is used
+func (o *KeycloakLoginForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KeycloakLoginForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KeycloakLoginForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KeycloakLoginForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KeycloakLoginNotFoundBody keycloak login not found body
+swagger:model KeycloakLoginNotFoundBody
+*/
+type KeycloakLoginNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this keycloak login not found body
+func (o *KeycloakLoginNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this keycloak login not found body based on context it is used
+func (o *KeycloakLoginNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KeycloakLoginNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KeycloakLoginNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KeycloakLoginNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KeycloakLoginOKBody keycloak login o k body
+swagger:model KeycloakLoginOKBody
+*/
+type KeycloakLoginOKBody struct {
+
+	// refresh token
+	RefreshToken string `json:"refreshToken,omitempty"`
+
+	// refresh token expire time
+	// Format: date-time
+	RefreshTokenExpireTime *strfmt.DateTime `json:"refreshTokenExpireTime,omitempty"`
+
+	// token
+	Token string `json:"token,omitempty"`
+}
+
+// Validate validates this keycloak login o k body
+func (o *KeycloakLoginOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateRefreshTokenExpireTime(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KeycloakLoginOKBody) validateRefreshTokenExpireTime(formats strfmt.Registry) error {
+	if swag.IsZero(o.RefreshTokenExpireTime) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("keycloakLoginOK"+"."+"refreshTokenExpireTime", "body", "date-time", o.RefreshTokenExpireTime.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this keycloak login o k body based on context it is used
+func (o *KeycloakLoginOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KeycloakLoginOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KeycloakLoginOKBody) UnmarshalBinary(b []byte) error {
+	var res KeycloakLoginOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KeycloakLoginUnauthorizedBody keycloak login unauthorized body
+swagger:model KeycloakLoginUnauthorizedBody
+*/
+type KeycloakLoginUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this keycloak login unauthorized body
+func (o *KeycloakLoginUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this keycloak login unauthorized body based on context it is used
+func (o *KeycloakLoginUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KeycloakLoginUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KeycloakLoginUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KeycloakLoginUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

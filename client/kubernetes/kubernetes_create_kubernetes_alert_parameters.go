@@ -15,8 +15,6 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesCreateKubernetesAlertParams creates a new KubernetesCreateKubernetesAlertParams object,
@@ -65,7 +63,7 @@ KubernetesCreateKubernetesAlertParams contains all the parameters to send to the
 type KubernetesCreateKubernetesAlertParams struct {
 
 	// Body.
-	Body *models.CreateAlertDto
+	Body KubernetesCreateKubernetesAlertBody
 
 	// ProjectID.
 	//
@@ -129,13 +127,13 @@ func (o *KubernetesCreateKubernetesAlertParams) SetHTTPClient(client *http.Clien
 }
 
 // WithBody adds the body to the kubernetes create kubernetes alert params
-func (o *KubernetesCreateKubernetesAlertParams) WithBody(body *models.CreateAlertDto) *KubernetesCreateKubernetesAlertParams {
+func (o *KubernetesCreateKubernetesAlertParams) WithBody(body KubernetesCreateKubernetesAlertBody) *KubernetesCreateKubernetesAlertParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes create kubernetes alert params
-func (o *KubernetesCreateKubernetesAlertParams) SetBody(body *models.CreateAlertDto) {
+func (o *KubernetesCreateKubernetesAlertParams) SetBody(body KubernetesCreateKubernetesAlertBody) {
 	o.Body = body
 }
 
@@ -168,10 +166,8 @@ func (o *KubernetesCreateKubernetesAlertParams) WriteToRequest(r runtime.ClientR
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param projectId

@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // EstimatedInfracost estimated infracost
@@ -20,7 +21,7 @@ import (
 type EstimatedInfracost struct {
 
 	// resources
-	Resources []*Resource `json:"resources"`
+	Resources []*EstimatedInfracostResourcesItems0 `json:"resources"`
 
 	// total hourly cost
 	TotalHourlyCost string `json:"totalHourlyCost,omitempty"`
@@ -114,6 +115,663 @@ func (m *EstimatedInfracost) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *EstimatedInfracost) UnmarshalBinary(b []byte) error {
 	var res EstimatedInfracost
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EstimatedInfracostResourcesItems0 estimated infracost resources items0
+//
+// swagger:model EstimatedInfracostResourcesItems0
+type EstimatedInfracostResourcesItems0 struct {
+
+	// cost components
+	CostComponents []*EstimatedInfracostResourcesItems0CostComponentsItems0 `json:"costComponents"`
+
+	// hourly cost
+	HourlyCost string `json:"hourlyCost,omitempty"`
+
+	// metadata
+	Metadata *EstimatedInfracostResourcesItems0Metadata `json:"metadata,omitempty"`
+
+	// monthly cost
+	MonthlyCost string `json:"monthlyCost,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// subresources
+	Subresources []*EstimatedInfracostResourcesItems0SubresourcesItems0 `json:"subresources"`
+}
+
+// Validate validates this estimated infracost resources items0
+func (m *EstimatedInfracostResourcesItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateCostComponents(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMetadata(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSubresources(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *EstimatedInfracostResourcesItems0) validateCostComponents(formats strfmt.Registry) error {
+	if swag.IsZero(m.CostComponents) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.CostComponents); i++ {
+		if swag.IsZero(m.CostComponents[i]) { // not required
+			continue
+		}
+
+		if m.CostComponents[i] != nil {
+			if err := m.CostComponents[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("costComponents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("costComponents" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *EstimatedInfracostResourcesItems0) validateMetadata(formats strfmt.Registry) error {
+	if swag.IsZero(m.Metadata) { // not required
+		return nil
+	}
+
+	if m.Metadata != nil {
+		if err := m.Metadata.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("metadata")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("metadata")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *EstimatedInfracostResourcesItems0) validateSubresources(formats strfmt.Registry) error {
+	if swag.IsZero(m.Subresources) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Subresources); i++ {
+		if swag.IsZero(m.Subresources[i]) { // not required
+			continue
+		}
+
+		if m.Subresources[i] != nil {
+			if err := m.Subresources[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("subresources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("subresources" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this estimated infracost resources items0 based on the context it is used
+func (m *EstimatedInfracostResourcesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCostComponents(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMetadata(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSubresources(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *EstimatedInfracostResourcesItems0) contextValidateCostComponents(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.CostComponents); i++ {
+
+		if m.CostComponents[i] != nil {
+			if err := m.CostComponents[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("costComponents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("costComponents" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *EstimatedInfracostResourcesItems0) contextValidateMetadata(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Metadata != nil {
+		if err := m.Metadata.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("metadata")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("metadata")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *EstimatedInfracostResourcesItems0) contextValidateSubresources(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Subresources); i++ {
+
+		if m.Subresources[i] != nil {
+			if err := m.Subresources[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("subresources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("subresources" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EstimatedInfracostResourcesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EstimatedInfracostResourcesItems0) UnmarshalBinary(b []byte) error {
+	var res EstimatedInfracostResourcesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EstimatedInfracostResourcesItems0CostComponentsItems0 estimated infracost resources items0 cost components items0
+//
+// swagger:model EstimatedInfracostResourcesItems0CostComponentsItems0
+type EstimatedInfracostResourcesItems0CostComponentsItems0 struct {
+
+	// hourly cost
+	HourlyCost string `json:"hourlyCost,omitempty"`
+
+	// hourly quantity
+	HourlyQuantity string `json:"hourlyQuantity,omitempty"`
+
+	// monthly cost
+	MonthlyCost string `json:"monthlyCost,omitempty"`
+
+	// monthly quantity
+	MonthlyQuantity string `json:"monthlyQuantity,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// price
+	Price string `json:"price,omitempty"`
+
+	// unit
+	Unit string `json:"unit,omitempty"`
+}
+
+// Validate validates this estimated infracost resources items0 cost components items0
+func (m *EstimatedInfracostResourcesItems0CostComponentsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this estimated infracost resources items0 cost components items0 based on context it is used
+func (m *EstimatedInfracostResourcesItems0CostComponentsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EstimatedInfracostResourcesItems0CostComponentsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EstimatedInfracostResourcesItems0CostComponentsItems0) UnmarshalBinary(b []byte) error {
+	var res EstimatedInfracostResourcesItems0CostComponentsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EstimatedInfracostResourcesItems0Metadata estimated infracost resources items0 metadata
+//
+// swagger:model EstimatedInfracostResourcesItems0Metadata
+type EstimatedInfracostResourcesItems0Metadata struct {
+
+	// infracost command
+	InfracostCommand string `json:"infracostCommand,omitempty"`
+
+	// path
+	Path string `json:"path,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+
+	// vcs branch
+	VcsBranch string `json:"vcsBranch,omitempty"`
+
+	// vcs commit author email
+	VcsCommitAuthorEmail string `json:"vcsCommitAuthorEmail,omitempty"`
+
+	// vcs commit author name
+	VcsCommitAuthorName string `json:"vcsCommitAuthorName,omitempty"`
+
+	// vcs commit message
+	VcsCommitMessage string `json:"vcsCommitMessage,omitempty"`
+
+	// vcs commit sha
+	VcsCommitSha string `json:"vcsCommitSha,omitempty"`
+
+	// vcs commit timestamp
+	// Format: date-time
+	VcsCommitTimestamp *strfmt.DateTime `json:"vcsCommitTimestamp,omitempty"`
+
+	// vcs repository Url
+	VcsRepositoryURL string `json:"vcsRepositoryUrl,omitempty"`
+
+	// vcs sub path
+	VcsSubPath string `json:"vcsSubPath,omitempty"`
+}
+
+// Validate validates this estimated infracost resources items0 metadata
+func (m *EstimatedInfracostResourcesItems0Metadata) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateVcsCommitTimestamp(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *EstimatedInfracostResourcesItems0Metadata) validateVcsCommitTimestamp(formats strfmt.Registry) error {
+	if swag.IsZero(m.VcsCommitTimestamp) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("metadata"+"."+"vcsCommitTimestamp", "body", "date-time", m.VcsCommitTimestamp.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this estimated infracost resources items0 metadata based on context it is used
+func (m *EstimatedInfracostResourcesItems0Metadata) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EstimatedInfracostResourcesItems0Metadata) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EstimatedInfracostResourcesItems0Metadata) UnmarshalBinary(b []byte) error {
+	var res EstimatedInfracostResourcesItems0Metadata
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EstimatedInfracostResourcesItems0SubresourcesItems0 estimated infracost resources items0 subresources items0
+//
+// swagger:model EstimatedInfracostResourcesItems0SubresourcesItems0
+type EstimatedInfracostResourcesItems0SubresourcesItems0 struct {
+
+	// cost components
+	CostComponents []*EstimatedInfracostResourcesItems0SubresourcesItems0CostComponentsItems0 `json:"costComponents"`
+
+	// hourly cost
+	HourlyCost string `json:"hourlyCost,omitempty"`
+
+	// metadata
+	Metadata *EstimatedInfracostResourcesItems0SubresourcesItems0Metadata `json:"metadata,omitempty"`
+
+	// monthly cost
+	MonthlyCost string `json:"monthlyCost,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this estimated infracost resources items0 subresources items0
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateCostComponents(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMetadata(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0) validateCostComponents(formats strfmt.Registry) error {
+	if swag.IsZero(m.CostComponents) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.CostComponents); i++ {
+		if swag.IsZero(m.CostComponents[i]) { // not required
+			continue
+		}
+
+		if m.CostComponents[i] != nil {
+			if err := m.CostComponents[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("costComponents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("costComponents" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0) validateMetadata(formats strfmt.Registry) error {
+	if swag.IsZero(m.Metadata) { // not required
+		return nil
+	}
+
+	if m.Metadata != nil {
+		if err := m.Metadata.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("metadata")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("metadata")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this estimated infracost resources items0 subresources items0 based on the context it is used
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCostComponents(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMetadata(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0) contextValidateCostComponents(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.CostComponents); i++ {
+
+		if m.CostComponents[i] != nil {
+			if err := m.CostComponents[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("costComponents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("costComponents" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0) contextValidateMetadata(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Metadata != nil {
+		if err := m.Metadata.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("metadata")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("metadata")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0) UnmarshalBinary(b []byte) error {
+	var res EstimatedInfracostResourcesItems0SubresourcesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EstimatedInfracostResourcesItems0SubresourcesItems0CostComponentsItems0 estimated infracost resources items0 subresources items0 cost components items0
+//
+// swagger:model EstimatedInfracostResourcesItems0SubresourcesItems0CostComponentsItems0
+type EstimatedInfracostResourcesItems0SubresourcesItems0CostComponentsItems0 struct {
+
+	// hourly cost
+	HourlyCost string `json:"hourlyCost,omitempty"`
+
+	// hourly quantity
+	HourlyQuantity string `json:"hourlyQuantity,omitempty"`
+
+	// monthly cost
+	MonthlyCost string `json:"monthlyCost,omitempty"`
+
+	// monthly quantity
+	MonthlyQuantity string `json:"monthlyQuantity,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// price
+	Price string `json:"price,omitempty"`
+
+	// unit
+	Unit string `json:"unit,omitempty"`
+}
+
+// Validate validates this estimated infracost resources items0 subresources items0 cost components items0
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0CostComponentsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this estimated infracost resources items0 subresources items0 cost components items0 based on context it is used
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0CostComponentsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0CostComponentsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0CostComponentsItems0) UnmarshalBinary(b []byte) error {
+	var res EstimatedInfracostResourcesItems0SubresourcesItems0CostComponentsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EstimatedInfracostResourcesItems0SubresourcesItems0Metadata estimated infracost resources items0 subresources items0 metadata
+//
+// swagger:model EstimatedInfracostResourcesItems0SubresourcesItems0Metadata
+type EstimatedInfracostResourcesItems0SubresourcesItems0Metadata struct {
+
+	// infracost command
+	InfracostCommand string `json:"infracostCommand,omitempty"`
+
+	// path
+	Path string `json:"path,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+
+	// vcs branch
+	VcsBranch string `json:"vcsBranch,omitempty"`
+
+	// vcs commit author email
+	VcsCommitAuthorEmail string `json:"vcsCommitAuthorEmail,omitempty"`
+
+	// vcs commit author name
+	VcsCommitAuthorName string `json:"vcsCommitAuthorName,omitempty"`
+
+	// vcs commit message
+	VcsCommitMessage string `json:"vcsCommitMessage,omitempty"`
+
+	// vcs commit sha
+	VcsCommitSha string `json:"vcsCommitSha,omitempty"`
+
+	// vcs commit timestamp
+	// Format: date-time
+	VcsCommitTimestamp *strfmt.DateTime `json:"vcsCommitTimestamp,omitempty"`
+
+	// vcs repository Url
+	VcsRepositoryURL string `json:"vcsRepositoryUrl,omitempty"`
+
+	// vcs sub path
+	VcsSubPath string `json:"vcsSubPath,omitempty"`
+}
+
+// Validate validates this estimated infracost resources items0 subresources items0 metadata
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0Metadata) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateVcsCommitTimestamp(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0Metadata) validateVcsCommitTimestamp(formats strfmt.Registry) error {
+	if swag.IsZero(m.VcsCommitTimestamp) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("metadata"+"."+"vcsCommitTimestamp", "body", "date-time", m.VcsCommitTimestamp.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this estimated infracost resources items0 subresources items0 metadata based on context it is used
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0Metadata) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0Metadata) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EstimatedInfracostResourcesItems0SubresourcesItems0Metadata) UnmarshalBinary(b []byte) error {
+	var res EstimatedInfracostResourcesItems0SubresourcesItems0Metadata
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

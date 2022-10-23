@@ -20,7 +20,7 @@ import (
 type KubernetesJobList struct {
 
 	// data
-	Data []*KubernetesJobDto `json:"data"`
+	Data []*KubernetesJobListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,55 @@ func (m *KubernetesJobList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *KubernetesJobList) UnmarshalBinary(b []byte) error {
 	var res KubernetesJobList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// KubernetesJobListDataItems0 kubernetes job list data items0
+//
+// swagger:model KubernetesJobListDataItems0
+type KubernetesJobListDataItems0 struct {
+
+	// age
+	Age string `json:"age,omitempty"`
+
+	// completions
+	Completions int32 `json:"completions,omitempty"`
+
+	// conditions
+	Conditions string `json:"conditions,omitempty"`
+
+	// metadata name
+	MetadataName string `json:"metadataName,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+}
+
+// Validate validates this kubernetes job list data items0
+func (m *KubernetesJobListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes job list data items0 based on context it is used
+func (m *KubernetesJobListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *KubernetesJobListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *KubernetesJobListDataItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesJobListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

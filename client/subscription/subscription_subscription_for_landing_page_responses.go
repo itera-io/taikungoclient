@@ -6,13 +6,13 @@ package subscription
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SubscriptionSubscriptionForLandingPageReader is a Reader for the SubscriptionSubscriptionForLandingPage structure.
@@ -75,7 +75,7 @@ SubscriptionSubscriptionForLandingPageOK describes a response with status code 2
 Success
 */
 type SubscriptionSubscriptionForLandingPageOK struct {
-	Payload []*models.ListForLandingPageDto
+	Payload []*SubscriptionSubscriptionForLandingPageOKBodyItems0
 }
 
 // IsSuccess returns true when this subscription subscription for landing page o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *SubscriptionSubscriptionForLandingPageOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageOK  %+v", 200, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForLandingPageOK) GetPayload() []*models.ListForLandingPageDto {
+func (o *SubscriptionSubscriptionForLandingPageOK) GetPayload() []*SubscriptionSubscriptionForLandingPageOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ SubscriptionSubscriptionForLandingPageBadRequest describes a response with statu
 Bad Request
 */
 type SubscriptionSubscriptionForLandingPageBadRequest struct {
-	Payload []*models.Error
+	Payload []*SubscriptionSubscriptionForLandingPageBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this subscription subscription for landing page bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SubscriptionSubscriptionForLandingPageBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForLandingPageBadRequest) GetPayload() []*models.Error {
+func (o *SubscriptionSubscriptionForLandingPageBadRequest) GetPayload() []*SubscriptionSubscriptionForLandingPageBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ SubscriptionSubscriptionForLandingPageUnauthorized describes a response with sta
 Unauthorized
 */
 type SubscriptionSubscriptionForLandingPageUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SubscriptionSubscriptionForLandingPageUnauthorizedBody
 }
 
 // IsSuccess returns true when this subscription subscription for landing page unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *SubscriptionSubscriptionForLandingPageUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForLandingPageUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionSubscriptionForLandingPageUnauthorized) GetPayload() *SubscriptionSubscriptionForLandingPageUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SubscriptionSubscriptionForLandingPageUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SubscriptionSubscriptionForLandingPageUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ SubscriptionSubscriptionForLandingPageForbidden describes a response with status
 Forbidden
 */
 type SubscriptionSubscriptionForLandingPageForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SubscriptionSubscriptionForLandingPageForbiddenBody
 }
 
 // IsSuccess returns true when this subscription subscription for landing page forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *SubscriptionSubscriptionForLandingPageForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForLandingPageForbidden) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionSubscriptionForLandingPageForbidden) GetPayload() *SubscriptionSubscriptionForLandingPageForbiddenBody {
 	return o.Payload
 }
 
 func (o *SubscriptionSubscriptionForLandingPageForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SubscriptionSubscriptionForLandingPageForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ SubscriptionSubscriptionForLandingPageNotFound describes a response with status 
 Not Found
 */
 type SubscriptionSubscriptionForLandingPageNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SubscriptionSubscriptionForLandingPageNotFoundBody
 }
 
 // IsSuccess returns true when this subscription subscription for landing page not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *SubscriptionSubscriptionForLandingPageNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForLandingPageNotFound) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionSubscriptionForLandingPageNotFound) GetPayload() *SubscriptionSubscriptionForLandingPageNotFoundBody {
 	return o.Payload
 }
 
 func (o *SubscriptionSubscriptionForLandingPageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SubscriptionSubscriptionForLandingPageNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,276 @@ func (o *SubscriptionSubscriptionForLandingPageInternalServerError) String() str
 
 func (o *SubscriptionSubscriptionForLandingPageInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SubscriptionSubscriptionForLandingPageBadRequestBodyItems0 subscription subscription for landing page bad request body items0
+swagger:model SubscriptionSubscriptionForLandingPageBadRequestBodyItems0
+*/
+type SubscriptionSubscriptionForLandingPageBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this subscription subscription for landing page bad request body items0
+func (o *SubscriptionSubscriptionForLandingPageBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subscription subscription for landing page bad request body items0 based on context it is used
+func (o *SubscriptionSubscriptionForLandingPageBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionSubscriptionForLandingPageBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionSubscriptionForLandingPageBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SubscriptionSubscriptionForLandingPageBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SubscriptionSubscriptionForLandingPageForbiddenBody subscription subscription for landing page forbidden body
+swagger:model SubscriptionSubscriptionForLandingPageForbiddenBody
+*/
+type SubscriptionSubscriptionForLandingPageForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this subscription subscription for landing page forbidden body
+func (o *SubscriptionSubscriptionForLandingPageForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subscription subscription for landing page forbidden body based on context it is used
+func (o *SubscriptionSubscriptionForLandingPageForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionSubscriptionForLandingPageForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionSubscriptionForLandingPageForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SubscriptionSubscriptionForLandingPageForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SubscriptionSubscriptionForLandingPageNotFoundBody subscription subscription for landing page not found body
+swagger:model SubscriptionSubscriptionForLandingPageNotFoundBody
+*/
+type SubscriptionSubscriptionForLandingPageNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this subscription subscription for landing page not found body
+func (o *SubscriptionSubscriptionForLandingPageNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subscription subscription for landing page not found body based on context it is used
+func (o *SubscriptionSubscriptionForLandingPageNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionSubscriptionForLandingPageNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionSubscriptionForLandingPageNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SubscriptionSubscriptionForLandingPageNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SubscriptionSubscriptionForLandingPageOKBodyItems0 subscription subscription for landing page o k body items0
+swagger:model SubscriptionSubscriptionForLandingPageOKBodyItems0
+*/
+type SubscriptionSubscriptionForLandingPageOKBodyItems0 struct {
+
+	// cloud credential limit
+	CloudCredentialLimit int32 `json:"cloudCredentialLimit,omitempty"`
+
+	// currency
+	Currency string `json:"currency,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is demo
+	IsDemo bool `json:"isDemo"`
+
+	// is deprecated
+	IsDeprecated bool `json:"isDeprecated"`
+
+	// monthly price
+	MonthlyPrice float64 `json:"monthlyPrice,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// partner Id
+	PartnerID int32 `json:"partnerId,omitempty"`
+
+	// project limit
+	ProjectLimit int32 `json:"projectLimit,omitempty"`
+
+	// server limit
+	ServerLimit int32 `json:"serverLimit,omitempty"`
+
+	// tcu price
+	TcuPrice float64 `json:"tcuPrice,omitempty"`
+
+	// trial days
+	TrialDays int32 `json:"trialDays,omitempty"`
+
+	// user limit
+	UserLimit int32 `json:"userLimit,omitempty"`
+
+	// yearly price
+	YearlyPrice float64 `json:"yearlyPrice,omitempty"`
+}
+
+// Validate validates this subscription subscription for landing page o k body items0
+func (o *SubscriptionSubscriptionForLandingPageOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subscription subscription for landing page o k body items0 based on context it is used
+func (o *SubscriptionSubscriptionForLandingPageOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionSubscriptionForLandingPageOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionSubscriptionForLandingPageOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SubscriptionSubscriptionForLandingPageOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SubscriptionSubscriptionForLandingPageUnauthorizedBody subscription subscription for landing page unauthorized body
+swagger:model SubscriptionSubscriptionForLandingPageUnauthorizedBody
+*/
+type SubscriptionSubscriptionForLandingPageUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this subscription subscription for landing page unauthorized body
+func (o *SubscriptionSubscriptionForLandingPageUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subscription subscription for landing page unauthorized body based on context it is used
+func (o *SubscriptionSubscriptionForLandingPageUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionSubscriptionForLandingPageUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionSubscriptionForLandingPageUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SubscriptionSubscriptionForLandingPageUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

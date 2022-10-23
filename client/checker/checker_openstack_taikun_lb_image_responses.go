@@ -6,13 +6,13 @@ package checker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CheckerOpenstackTaikunLbImageReader is a Reader for the CheckerOpenstackTaikunLbImage structure.
@@ -75,7 +75,7 @@ CheckerOpenstackTaikunLbImageOK describes a response with status code 200, with 
 Success
 */
 type CheckerOpenstackTaikunLbImageOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker openstack taikun lb image o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CheckerOpenstackTaikunLbImageOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageOK  %+v", 200, o.Payload)
 }
 
-func (o *CheckerOpenstackTaikunLbImageOK) GetPayload() models.Unit {
+func (o *CheckerOpenstackTaikunLbImageOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CheckerOpenstackTaikunLbImageBadRequest describes a response with status code 40
 Bad Request
 */
 type CheckerOpenstackTaikunLbImageBadRequest struct {
-	Payload []*models.Error
+	Payload []*CheckerOpenstackTaikunLbImageBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this checker openstack taikun lb image bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerOpenstackTaikunLbImageBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerOpenstackTaikunLbImageBadRequest) GetPayload() []*models.Error {
+func (o *CheckerOpenstackTaikunLbImageBadRequest) GetPayload() []*CheckerOpenstackTaikunLbImageBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CheckerOpenstackTaikunLbImageUnauthorized describes a response with status code 
 Unauthorized
 */
 type CheckerOpenstackTaikunLbImageUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerOpenstackTaikunLbImageUnauthorizedBody
 }
 
 // IsSuccess returns true when this checker openstack taikun lb image unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CheckerOpenstackTaikunLbImageUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerOpenstackTaikunLbImageUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerOpenstackTaikunLbImageUnauthorized) GetPayload() *CheckerOpenstackTaikunLbImageUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CheckerOpenstackTaikunLbImageUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerOpenstackTaikunLbImageUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CheckerOpenstackTaikunLbImageForbidden describes a response with status code 403
 Forbidden
 */
 type CheckerOpenstackTaikunLbImageForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerOpenstackTaikunLbImageForbiddenBody
 }
 
 // IsSuccess returns true when this checker openstack taikun lb image forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CheckerOpenstackTaikunLbImageForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerOpenstackTaikunLbImageForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerOpenstackTaikunLbImageForbidden) GetPayload() *CheckerOpenstackTaikunLbImageForbiddenBody {
 	return o.Payload
 }
 
 func (o *CheckerOpenstackTaikunLbImageForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerOpenstackTaikunLbImageForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CheckerOpenstackTaikunLbImageNotFound describes a response with status code 404,
 Not Found
 */
 type CheckerOpenstackTaikunLbImageNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerOpenstackTaikunLbImageNotFoundBody
 }
 
 // IsSuccess returns true when this checker openstack taikun lb image not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CheckerOpenstackTaikunLbImageNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerOpenstackTaikunLbImageNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerOpenstackTaikunLbImageNotFound) GetPayload() *CheckerOpenstackTaikunLbImageNotFoundBody {
 	return o.Payload
 }
 
 func (o *CheckerOpenstackTaikunLbImageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerOpenstackTaikunLbImageNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *CheckerOpenstackTaikunLbImageInternalServerError) String() string {
 
 func (o *CheckerOpenstackTaikunLbImageInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CheckerOpenstackTaikunLbImageBadRequestBodyItems0 checker openstack taikun lb image bad request body items0
+swagger:model CheckerOpenstackTaikunLbImageBadRequestBodyItems0
+*/
+type CheckerOpenstackTaikunLbImageBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this checker openstack taikun lb image bad request body items0
+func (o *CheckerOpenstackTaikunLbImageBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker openstack taikun lb image bad request body items0 based on context it is used
+func (o *CheckerOpenstackTaikunLbImageBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerOpenstackTaikunLbImageBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerOpenstackTaikunLbImageBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CheckerOpenstackTaikunLbImageBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerOpenstackTaikunLbImageForbiddenBody checker openstack taikun lb image forbidden body
+swagger:model CheckerOpenstackTaikunLbImageForbiddenBody
+*/
+type CheckerOpenstackTaikunLbImageForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker openstack taikun lb image forbidden body
+func (o *CheckerOpenstackTaikunLbImageForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker openstack taikun lb image forbidden body based on context it is used
+func (o *CheckerOpenstackTaikunLbImageForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerOpenstackTaikunLbImageForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerOpenstackTaikunLbImageForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CheckerOpenstackTaikunLbImageForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerOpenstackTaikunLbImageNotFoundBody checker openstack taikun lb image not found body
+swagger:model CheckerOpenstackTaikunLbImageNotFoundBody
+*/
+type CheckerOpenstackTaikunLbImageNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker openstack taikun lb image not found body
+func (o *CheckerOpenstackTaikunLbImageNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker openstack taikun lb image not found body based on context it is used
+func (o *CheckerOpenstackTaikunLbImageNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerOpenstackTaikunLbImageNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerOpenstackTaikunLbImageNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CheckerOpenstackTaikunLbImageNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerOpenstackTaikunLbImageUnauthorizedBody checker openstack taikun lb image unauthorized body
+swagger:model CheckerOpenstackTaikunLbImageUnauthorizedBody
+*/
+type CheckerOpenstackTaikunLbImageUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker openstack taikun lb image unauthorized body
+func (o *CheckerOpenstackTaikunLbImageUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker openstack taikun lb image unauthorized body based on context it is used
+func (o *CheckerOpenstackTaikunLbImageUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerOpenstackTaikunLbImageUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerOpenstackTaikunLbImageUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CheckerOpenstackTaikunLbImageUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

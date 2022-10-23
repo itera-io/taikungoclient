@@ -6,13 +6,13 @@ package openstack
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // OpenstackNetworksReader is a Reader for the OpenstackNetworks structure.
@@ -75,7 +75,7 @@ OpenstackNetworksOK describes a response with status code 200, with default head
 Success
 */
 type OpenstackNetworksOK struct {
-	Payload []*models.CommonStringBasedDropdownDto
+	Payload []*OpenstackNetworksOKBodyItems0
 }
 
 // IsSuccess returns true when this openstack networks o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OpenstackNetworksOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksOK  %+v", 200, o.Payload)
 }
 
-func (o *OpenstackNetworksOK) GetPayload() []*models.CommonStringBasedDropdownDto {
+func (o *OpenstackNetworksOK) GetPayload() []*OpenstackNetworksOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OpenstackNetworksBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type OpenstackNetworksBadRequest struct {
-	Payload []*models.Error
+	Payload []*OpenstackNetworksBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this openstack networks bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpenstackNetworksBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackNetworksBadRequest) GetPayload() []*models.Error {
+func (o *OpenstackNetworksBadRequest) GetPayload() []*OpenstackNetworksBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OpenstackNetworksUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpenstackNetworksUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *OpenstackNetworksUnauthorizedBody
 }
 
 // IsSuccess returns true when this openstack networks unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OpenstackNetworksUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackNetworksUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpenstackNetworksUnauthorized) GetPayload() *OpenstackNetworksUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *OpenstackNetworksUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpenstackNetworksUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OpenstackNetworksForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpenstackNetworksForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *OpenstackNetworksForbiddenBody
 }
 
 // IsSuccess returns true when this openstack networks forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OpenstackNetworksForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackNetworksForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpenstackNetworksForbidden) GetPayload() *OpenstackNetworksForbiddenBody {
 	return o.Payload
 }
 
 func (o *OpenstackNetworksForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpenstackNetworksForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OpenstackNetworksNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpenstackNetworksNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *OpenstackNetworksNotFoundBody
 }
 
 // IsSuccess returns true when this openstack networks not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OpenstackNetworksNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackNetworksNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpenstackNetworksNotFound) GetPayload() *OpenstackNetworksNotFoundBody {
 	return o.Payload
 }
 
 func (o *OpenstackNetworksNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpenstackNetworksNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,296 @@ func (o *OpenstackNetworksInternalServerError) String() string {
 
 func (o *OpenstackNetworksInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+OpenstackNetworksBadRequestBodyItems0 openstack networks bad request body items0
+swagger:model OpenstackNetworksBadRequestBodyItems0
+*/
+type OpenstackNetworksBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this openstack networks bad request body items0
+func (o *OpenstackNetworksBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack networks bad request body items0 based on context it is used
+func (o *OpenstackNetworksBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackNetworksBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackNetworksBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OpenstackNetworksBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpenstackNetworksBody openstack networks body
+swagger:model OpenstackNetworksBody
+*/
+type OpenstackNetworksBody struct {
+
+	// application cred enabled
+	ApplicationCredEnabled bool `json:"applicationCredEnabled"`
+
+	// is admin
+	IsAdmin bool `json:"isAdmin"`
+
+	// open stack domain
+	OpenStackDomain string `json:"openStackDomain,omitempty"`
+
+	// open stack password
+	OpenStackPassword string `json:"openStackPassword,omitempty"`
+
+	// open stack project Id
+	OpenStackProjectID string `json:"openStackProjectId,omitempty"`
+
+	// open stack region
+	OpenStackRegion string `json:"openStackRegion,omitempty"`
+
+	// open stack Url
+	OpenStackURL string `json:"openStackUrl,omitempty"`
+
+	// open stack user
+	OpenStackUser string `json:"openStackUser,omitempty"`
+}
+
+// Validate validates this openstack networks body
+func (o *OpenstackNetworksBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack networks body based on context it is used
+func (o *OpenstackNetworksBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackNetworksBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackNetworksBody) UnmarshalBinary(b []byte) error {
+	var res OpenstackNetworksBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpenstackNetworksForbiddenBody openstack networks forbidden body
+swagger:model OpenstackNetworksForbiddenBody
+*/
+type OpenstackNetworksForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this openstack networks forbidden body
+func (o *OpenstackNetworksForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack networks forbidden body based on context it is used
+func (o *OpenstackNetworksForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackNetworksForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackNetworksForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res OpenstackNetworksForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpenstackNetworksNotFoundBody openstack networks not found body
+swagger:model OpenstackNetworksNotFoundBody
+*/
+type OpenstackNetworksNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this openstack networks not found body
+func (o *OpenstackNetworksNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack networks not found body based on context it is used
+func (o *OpenstackNetworksNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackNetworksNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackNetworksNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res OpenstackNetworksNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpenstackNetworksOKBodyItems0 openstack networks o k body items0
+swagger:model OpenstackNetworksOKBodyItems0
+*/
+type OpenstackNetworksOKBodyItems0 struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this openstack networks o k body items0
+func (o *OpenstackNetworksOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack networks o k body items0 based on context it is used
+func (o *OpenstackNetworksOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackNetworksOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackNetworksOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OpenstackNetworksOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpenstackNetworksUnauthorizedBody openstack networks unauthorized body
+swagger:model OpenstackNetworksUnauthorizedBody
+*/
+type OpenstackNetworksUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this openstack networks unauthorized body
+func (o *OpenstackNetworksUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack networks unauthorized body based on context it is used
+func (o *OpenstackNetworksUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackNetworksUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackNetworksUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res OpenstackNetworksUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

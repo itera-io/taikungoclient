@@ -6,13 +6,13 @@ package stand_alone_profile
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // StandAloneProfileLockManagementReader is a Reader for the StandAloneProfileLockManagement structure.
@@ -75,7 +75,7 @@ StandAloneProfileLockManagementOK describes a response with status code 200, wit
 Success
 */
 type StandAloneProfileLockManagementOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile lock management o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneProfileLockManagementOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/lockmanager][%d] standAloneProfileLockManagementOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneProfileLockManagementOK) GetPayload() models.Unit {
+func (o *StandAloneProfileLockManagementOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneProfileLockManagementBadRequest describes a response with status code 
 Bad Request
 */
 type StandAloneProfileLockManagementBadRequest struct {
-	Payload []*models.Error
+	Payload []*StandAloneProfileLockManagementBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this stand alone profile lock management bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneProfileLockManagementBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/lockmanager][%d] standAloneProfileLockManagementBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileLockManagementBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneProfileLockManagementBadRequest) GetPayload() []*StandAloneProfileLockManagementBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneProfileLockManagementUnauthorized describes a response with status cod
 Unauthorized
 */
 type StandAloneProfileLockManagementUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneProfileLockManagementUnauthorizedBody
 }
 
 // IsSuccess returns true when this stand alone profile lock management unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneProfileLockManagementUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/lockmanager][%d] standAloneProfileLockManagementUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneProfileLockManagementUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileLockManagementUnauthorized) GetPayload() *StandAloneProfileLockManagementUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *StandAloneProfileLockManagementUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneProfileLockManagementUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneProfileLockManagementForbidden describes a response with status code 4
 Forbidden
 */
 type StandAloneProfileLockManagementForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneProfileLockManagementForbiddenBody
 }
 
 // IsSuccess returns true when this stand alone profile lock management forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneProfileLockManagementForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/lockmanager][%d] standAloneProfileLockManagementForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneProfileLockManagementForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileLockManagementForbidden) GetPayload() *StandAloneProfileLockManagementForbiddenBody {
 	return o.Payload
 }
 
 func (o *StandAloneProfileLockManagementForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneProfileLockManagementForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneProfileLockManagementNotFound describes a response with status code 40
 Not Found
 */
 type StandAloneProfileLockManagementNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneProfileLockManagementNotFoundBody
 }
 
 // IsSuccess returns true when this stand alone profile lock management not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneProfileLockManagementNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/lockmanager][%d] standAloneProfileLockManagementNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneProfileLockManagementNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileLockManagementNotFound) GetPayload() *StandAloneProfileLockManagementNotFoundBody {
 	return o.Payload
 }
 
 func (o *StandAloneProfileLockManagementNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneProfileLockManagementNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *StandAloneProfileLockManagementInternalServerError) String() string {
 
 func (o *StandAloneProfileLockManagementInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+StandAloneProfileLockManagementBadRequestBodyItems0 stand alone profile lock management bad request body items0
+swagger:model StandAloneProfileLockManagementBadRequestBodyItems0
+*/
+type StandAloneProfileLockManagementBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this stand alone profile lock management bad request body items0
+func (o *StandAloneProfileLockManagementBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profile lock management bad request body items0 based on context it is used
+func (o *StandAloneProfileLockManagementBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneProfileLockManagementBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneProfileLockManagementBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileLockManagementBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneProfileLockManagementBody stand alone profile lock management body
+swagger:model StandAloneProfileLockManagementBody
+*/
+type StandAloneProfileLockManagementBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// mode
+	Mode string `json:"mode,omitempty"`
+}
+
+// Validate validates this stand alone profile lock management body
+func (o *StandAloneProfileLockManagementBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profile lock management body based on context it is used
+func (o *StandAloneProfileLockManagementBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneProfileLockManagementBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneProfileLockManagementBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileLockManagementBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneProfileLockManagementForbiddenBody stand alone profile lock management forbidden body
+swagger:model StandAloneProfileLockManagementForbiddenBody
+*/
+type StandAloneProfileLockManagementForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone profile lock management forbidden body
+func (o *StandAloneProfileLockManagementForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profile lock management forbidden body based on context it is used
+func (o *StandAloneProfileLockManagementForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneProfileLockManagementForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneProfileLockManagementForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileLockManagementForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneProfileLockManagementNotFoundBody stand alone profile lock management not found body
+swagger:model StandAloneProfileLockManagementNotFoundBody
+*/
+type StandAloneProfileLockManagementNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone profile lock management not found body
+func (o *StandAloneProfileLockManagementNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profile lock management not found body based on context it is used
+func (o *StandAloneProfileLockManagementNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneProfileLockManagementNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneProfileLockManagementNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileLockManagementNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneProfileLockManagementUnauthorizedBody stand alone profile lock management unauthorized body
+swagger:model StandAloneProfileLockManagementUnauthorizedBody
+*/
+type StandAloneProfileLockManagementUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone profile lock management unauthorized body
+func (o *StandAloneProfileLockManagementUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profile lock management unauthorized body based on context it is used
+func (o *StandAloneProfileLockManagementUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneProfileLockManagementUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneProfileLockManagementUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileLockManagementUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

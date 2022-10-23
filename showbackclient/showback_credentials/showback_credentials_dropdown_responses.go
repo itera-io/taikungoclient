@@ -6,13 +6,14 @@ package showback_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ShowbackCredentialsDropdownReader is a Reader for the ShowbackCredentialsDropdown structure.
@@ -75,7 +76,7 @@ ShowbackCredentialsDropdownOK describes a response with status code 200, with de
 Success
 */
 type ShowbackCredentialsDropdownOK struct {
-	Payload []*models.ShowbackCredentialsDetailsDto
+	Payload []*ShowbackCredentialsDropdownOKBodyItems0
 }
 
 // IsSuccess returns true when this showback credentials dropdown o k response has a 2xx status code
@@ -111,7 +112,7 @@ func (o *ShowbackCredentialsDropdownOK) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownOK  %+v", 200, o.Payload)
 }
 
-func (o *ShowbackCredentialsDropdownOK) GetPayload() []*models.ShowbackCredentialsDetailsDto {
+func (o *ShowbackCredentialsDropdownOK) GetPayload() []*ShowbackCredentialsDropdownOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +137,7 @@ ShowbackCredentialsDropdownBadRequest describes a response with status code 400,
 Bad Request
 */
 type ShowbackCredentialsDropdownBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *ShowbackCredentialsDropdownBadRequestBody
 }
 
 // IsSuccess returns true when this showback credentials dropdown bad request response has a 2xx status code
@@ -172,13 +173,13 @@ func (o *ShowbackCredentialsDropdownBadRequest) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackCredentialsDropdownBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ShowbackCredentialsDropdownBadRequest) GetPayload() *ShowbackCredentialsDropdownBadRequestBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsDropdownBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(ShowbackCredentialsDropdownBadRequestBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -199,7 +200,7 @@ ShowbackCredentialsDropdownUnauthorized describes a response with status code 40
 Unauthorized
 */
 type ShowbackCredentialsDropdownUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackCredentialsDropdownUnauthorizedBody
 }
 
 // IsSuccess returns true when this showback credentials dropdown unauthorized response has a 2xx status code
@@ -235,13 +236,13 @@ func (o *ShowbackCredentialsDropdownUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackCredentialsDropdownUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsDropdownUnauthorized) GetPayload() *ShowbackCredentialsDropdownUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsDropdownUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackCredentialsDropdownUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +263,7 @@ ShowbackCredentialsDropdownForbidden describes a response with status code 403, 
 Forbidden
 */
 type ShowbackCredentialsDropdownForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackCredentialsDropdownForbiddenBody
 }
 
 // IsSuccess returns true when this showback credentials dropdown forbidden response has a 2xx status code
@@ -298,13 +299,13 @@ func (o *ShowbackCredentialsDropdownForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackCredentialsDropdownForbidden) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsDropdownForbidden) GetPayload() *ShowbackCredentialsDropdownForbiddenBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsDropdownForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackCredentialsDropdownForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +326,7 @@ ShowbackCredentialsDropdownNotFound describes a response with status code 404, w
 Not Found
 */
 type ShowbackCredentialsDropdownNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackCredentialsDropdownNotFoundBody
 }
 
 // IsSuccess returns true when this showback credentials dropdown not found response has a 2xx status code
@@ -361,13 +362,13 @@ func (o *ShowbackCredentialsDropdownNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackCredentialsDropdownNotFound) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsDropdownNotFound) GetPayload() *ShowbackCredentialsDropdownNotFoundBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsDropdownNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackCredentialsDropdownNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +426,264 @@ func (o *ShowbackCredentialsDropdownInternalServerError) String() string {
 
 func (o *ShowbackCredentialsDropdownInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ShowbackCredentialsDropdownBadRequestBody showback credentials dropdown bad request body
+swagger:model ShowbackCredentialsDropdownBadRequestBody
+*/
+type ShowbackCredentialsDropdownBadRequestBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// errors
+	// Read Only: true
+	Errors map[string][]string `json:"errors,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials dropdown bad request body
+func (o *ShowbackCredentialsDropdownBadRequestBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validate this showback credentials dropdown bad request body based on the context it is used
+func (o *ShowbackCredentialsDropdownBadRequestBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateErrors(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackCredentialsDropdownBadRequestBody) contextValidateErrors(ctx context.Context, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsDropdownBadRequestBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsDropdownBadRequestBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsDropdownBadRequestBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsDropdownForbiddenBody showback credentials dropdown forbidden body
+swagger:model ShowbackCredentialsDropdownForbiddenBody
+*/
+type ShowbackCredentialsDropdownForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials dropdown forbidden body
+func (o *ShowbackCredentialsDropdownForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials dropdown forbidden body based on context it is used
+func (o *ShowbackCredentialsDropdownForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsDropdownForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsDropdownForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsDropdownForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsDropdownNotFoundBody showback credentials dropdown not found body
+swagger:model ShowbackCredentialsDropdownNotFoundBody
+*/
+type ShowbackCredentialsDropdownNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials dropdown not found body
+func (o *ShowbackCredentialsDropdownNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials dropdown not found body based on context it is used
+func (o *ShowbackCredentialsDropdownNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsDropdownNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsDropdownNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsDropdownNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsDropdownOKBodyItems0 showback credentials dropdown o k body items0
+swagger:model ShowbackCredentialsDropdownOKBodyItems0
+*/
+type ShowbackCredentialsDropdownOKBodyItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this showback credentials dropdown o k body items0
+func (o *ShowbackCredentialsDropdownOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials dropdown o k body items0 based on context it is used
+func (o *ShowbackCredentialsDropdownOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsDropdownOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsDropdownOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsDropdownOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsDropdownUnauthorizedBody showback credentials dropdown unauthorized body
+swagger:model ShowbackCredentialsDropdownUnauthorizedBody
+*/
+type ShowbackCredentialsDropdownUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials dropdown unauthorized body
+func (o *ShowbackCredentialsDropdownUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials dropdown unauthorized body based on context it is used
+func (o *ShowbackCredentialsDropdownUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsDropdownUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsDropdownUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsDropdownUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

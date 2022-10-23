@@ -6,13 +6,16 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ProjectsEditReader is a Reader for the ProjectsEdit structure.
@@ -75,7 +78,7 @@ ProjectsEditOK describes a response with status code 200, with default header va
 Success
 */
 type ProjectsEditOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects edit o k response has a 2xx status code
@@ -111,7 +114,7 @@ func (o *ProjectsEditOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsEditOK) GetPayload() models.Unit {
+func (o *ProjectsEditOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +139,7 @@ ProjectsEditBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type ProjectsEditBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectsEditBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this projects edit bad request response has a 2xx status code
@@ -172,7 +175,7 @@ func (o *ProjectsEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsEditBadRequest) GetPayload() []*models.Error {
+func (o *ProjectsEditBadRequest) GetPayload() []*ProjectsEditBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +200,7 @@ ProjectsEditUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type ProjectsEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsEditUnauthorizedBody
 }
 
 // IsSuccess returns true when this projects edit unauthorized response has a 2xx status code
@@ -233,13 +236,13 @@ func (o *ProjectsEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsEditUnauthorized) GetPayload() *ProjectsEditUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectsEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsEditUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +263,7 @@ ProjectsEditForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type ProjectsEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsEditForbiddenBody
 }
 
 // IsSuccess returns true when this projects edit forbidden response has a 2xx status code
@@ -296,13 +299,13 @@ func (o *ProjectsEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsEditForbidden) GetPayload() *ProjectsEditForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectsEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsEditForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +326,7 @@ ProjectsEditNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type ProjectsEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsEditNotFoundBody
 }
 
 // IsSuccess returns true when this projects edit not found response has a 2xx status code
@@ -359,13 +362,13 @@ func (o *ProjectsEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsEditNotFound) GetPayload() *ProjectsEditNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectsEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsEditNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +426,354 @@ func (o *ProjectsEditInternalServerError) String() string {
 
 func (o *ProjectsEditInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectsEditBadRequestBodyItems0 projects edit bad request body items0
+swagger:model ProjectsEditBadRequestBodyItems0
+*/
+type ProjectsEditBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this projects edit bad request body items0
+func (o *ProjectsEditBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects edit bad request body items0 based on context it is used
+func (o *ProjectsEditBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsEditBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsEditBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsEditBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsEditBody projects edit body
+swagger:model ProjectsEditBody
+*/
+type ProjectsEditBody struct {
+
+	// access Ip
+	AccessIP string `json:"accessIp,omitempty"`
+
+	// app enabled
+	AppEnabled bool `json:"appEnabled"`
+
+	// failure reason
+	FailureReason string `json:"failureReason,omitempty"`
+
+	// health
+	// Enum: [100 150 200 300 400]
+	Health int32 `json:"health,omitempty"`
+
+	// image name
+	ImageName string `json:"imageName,omitempty"`
+
+	// is auto upgrade
+	IsAutoUpgrade bool `json:"isAutoUpgrade"`
+
+	// is backup enabled
+	IsBackupEnabled bool `json:"isBackupEnabled"`
+
+	// is kubevap enabled
+	IsKubevapEnabled bool `json:"isKubevapEnabled"`
+
+	// is monitoring enabled
+	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
+
+	// is opa enabled
+	IsOpaEnabled bool `json:"isOpaEnabled"`
+
+	// kube config
+	KubeConfig string `json:"kubeConfig,omitempty"`
+
+	// kubernetes current version
+	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion,omitempty"`
+
+	// kubespray current version
+	KubesprayCurrentVersion string `json:"kubesprayCurrentVersion,omitempty"`
+
+	// status
+	// Enum: [100 145 150 154 155 156 160 165 200 250 300 400 500 550 600 700 800 900 1000 1100]
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this projects edit body
+func (o *ProjectsEditBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateHealth(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var projectsEditBodyTypeHealthPropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,150,200,300,400]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		projectsEditBodyTypeHealthPropEnum = append(projectsEditBodyTypeHealthPropEnum, v)
+	}
+}
+
+// prop value enum
+func (o *ProjectsEditBody) validateHealthEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, projectsEditBodyTypeHealthPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ProjectsEditBody) validateHealth(formats strfmt.Registry) error {
+	if swag.IsZero(o.Health) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := o.validateHealthEnum("body"+"."+"health", "body", o.Health); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var projectsEditBodyTypeStatusPropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,145,150,154,155,156,160,165,200,250,300,400,500,550,600,700,800,900,1000,1100]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		projectsEditBodyTypeStatusPropEnum = append(projectsEditBodyTypeStatusPropEnum, v)
+	}
+}
+
+// prop value enum
+func (o *ProjectsEditBody) validateStatusEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, projectsEditBodyTypeStatusPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ProjectsEditBody) validateStatus(formats strfmt.Registry) error {
+	if swag.IsZero(o.Status) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := o.validateStatusEnum("body"+"."+"status", "body", o.Status); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this projects edit body based on context it is used
+func (o *ProjectsEditBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsEditBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsEditBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsEditBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsEditForbiddenBody projects edit forbidden body
+swagger:model ProjectsEditForbiddenBody
+*/
+type ProjectsEditForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects edit forbidden body
+func (o *ProjectsEditForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects edit forbidden body based on context it is used
+func (o *ProjectsEditForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsEditForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsEditForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsEditForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsEditNotFoundBody projects edit not found body
+swagger:model ProjectsEditNotFoundBody
+*/
+type ProjectsEditNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects edit not found body
+func (o *ProjectsEditNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects edit not found body based on context it is used
+func (o *ProjectsEditNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsEditNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsEditNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsEditNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsEditUnauthorizedBody projects edit unauthorized body
+swagger:model ProjectsEditUnauthorizedBody
+*/
+type ProjectsEditUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects edit unauthorized body
+func (o *ProjectsEditUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects edit unauthorized body based on context it is used
+func (o *ProjectsEditUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsEditUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsEditUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsEditUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

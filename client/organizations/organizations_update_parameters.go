@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOrganizationsUpdateParams creates a new OrganizationsUpdateParams object,
@@ -64,7 +62,7 @@ OrganizationsUpdateParams contains all the parameters to send to the API endpoin
 type OrganizationsUpdateParams struct {
 
 	// Body.
-	Body *models.UpdateOrganizationCommand
+	Body OrganizationsUpdateBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *OrganizationsUpdateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the organizations update params
-func (o *OrganizationsUpdateParams) WithBody(body *models.UpdateOrganizationCommand) *OrganizationsUpdateParams {
+func (o *OrganizationsUpdateParams) WithBody(body OrganizationsUpdateBody) *OrganizationsUpdateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the organizations update params
-func (o *OrganizationsUpdateParams) SetBody(body *models.UpdateOrganizationCommand) {
+func (o *OrganizationsUpdateParams) SetBody(body OrganizationsUpdateBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *OrganizationsUpdateParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

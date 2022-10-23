@@ -6,13 +6,16 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ProjectsListForBillingReader is a Reader for the ProjectsListForBilling structure.
@@ -75,7 +78,7 @@ ProjectsListForBillingOK describes a response with status code 200, with default
 Success
 */
 type ProjectsListForBillingOK struct {
-	Payload []*models.ProjectsForBillingDto
+	Payload []*ProjectsListForBillingOKBodyItems0
 }
 
 // IsSuccess returns true when this projects list for billing o k response has a 2xx status code
@@ -111,7 +114,7 @@ func (o *ProjectsListForBillingOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forbilling][%d] projectsListForBillingOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsListForBillingOK) GetPayload() []*models.ProjectsForBillingDto {
+func (o *ProjectsListForBillingOK) GetPayload() []*ProjectsListForBillingOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +139,7 @@ ProjectsListForBillingBadRequest describes a response with status code 400, with
 Bad Request
 */
 type ProjectsListForBillingBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectsListForBillingBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this projects list for billing bad request response has a 2xx status code
@@ -172,7 +175,7 @@ func (o *ProjectsListForBillingBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forbilling][%d] projectsListForBillingBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsListForBillingBadRequest) GetPayload() []*models.Error {
+func (o *ProjectsListForBillingBadRequest) GetPayload() []*ProjectsListForBillingBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +200,7 @@ ProjectsListForBillingUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type ProjectsListForBillingUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsListForBillingUnauthorizedBody
 }
 
 // IsSuccess returns true when this projects list for billing unauthorized response has a 2xx status code
@@ -233,13 +236,13 @@ func (o *ProjectsListForBillingUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forbilling][%d] projectsListForBillingUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsListForBillingUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsListForBillingUnauthorized) GetPayload() *ProjectsListForBillingUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectsListForBillingUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsListForBillingUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +263,7 @@ ProjectsListForBillingForbidden describes a response with status code 403, with 
 Forbidden
 */
 type ProjectsListForBillingForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsListForBillingForbiddenBody
 }
 
 // IsSuccess returns true when this projects list for billing forbidden response has a 2xx status code
@@ -296,13 +299,13 @@ func (o *ProjectsListForBillingForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forbilling][%d] projectsListForBillingForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsListForBillingForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsListForBillingForbidden) GetPayload() *ProjectsListForBillingForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectsListForBillingForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsListForBillingForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +326,7 @@ ProjectsListForBillingNotFound describes a response with status code 404, with d
 Not Found
 */
 type ProjectsListForBillingNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsListForBillingNotFoundBody
 }
 
 // IsSuccess returns true when this projects list for billing not found response has a 2xx status code
@@ -359,13 +362,13 @@ func (o *ProjectsListForBillingNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forbilling][%d] projectsListForBillingNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsListForBillingNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsListForBillingNotFound) GetPayload() *ProjectsListForBillingNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectsListForBillingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsListForBillingNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +426,492 @@ func (o *ProjectsListForBillingInternalServerError) String() string {
 
 func (o *ProjectsListForBillingInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectsListForBillingBadRequestBodyItems0 projects list for billing bad request body items0
+swagger:model ProjectsListForBillingBadRequestBodyItems0
+*/
+type ProjectsListForBillingBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this projects list for billing bad request body items0
+func (o *ProjectsListForBillingBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list for billing bad request body items0 based on context it is used
+func (o *ProjectsListForBillingBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListForBillingBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListForBillingBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsListForBillingBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListForBillingForbiddenBody projects list for billing forbidden body
+swagger:model ProjectsListForBillingForbiddenBody
+*/
+type ProjectsListForBillingForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects list for billing forbidden body
+func (o *ProjectsListForBillingForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list for billing forbidden body based on context it is used
+func (o *ProjectsListForBillingForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListForBillingForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListForBillingForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsListForBillingForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListForBillingNotFoundBody projects list for billing not found body
+swagger:model ProjectsListForBillingNotFoundBody
+*/
+type ProjectsListForBillingNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects list for billing not found body
+func (o *ProjectsListForBillingNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list for billing not found body based on context it is used
+func (o *ProjectsListForBillingNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListForBillingNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListForBillingNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsListForBillingNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListForBillingOKBodyItems0 projects list for billing o k body items0
+swagger:model ProjectsListForBillingOKBodyItems0
+*/
+type ProjectsListForBillingOKBodyItems0 struct {
+
+	// billing enabled
+	BillingEnabled bool `json:"billingEnabled"`
+
+	// billing start date
+	// Format: date-time
+	BillingStartDate *strfmt.DateTime `json:"billingStartDate,omitempty"`
+
+	// created at
+	// Format: date-time
+	CreatedAt *strfmt.DateTime `json:"createdAt,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// price
+	Price float64 `json:"price,omitempty"`
+
+	// servers
+	Servers []*ProjectsListForBillingOKBodyItems0ServersItems0 `json:"servers"`
+
+	// standalone vms
+	StandaloneVms []*ProjectsListForBillingOKBodyItems0StandaloneVmsItems0 `json:"standaloneVms"`
+}
+
+// Validate validates this projects list for billing o k body items0
+func (o *ProjectsListForBillingOKBodyItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateBillingStartDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateServers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateStandaloneVms(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsListForBillingOKBodyItems0) validateBillingStartDate(formats strfmt.Registry) error {
+	if swag.IsZero(o.BillingStartDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("billingStartDate", "body", "date-time", o.BillingStartDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsListForBillingOKBodyItems0) validateCreatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(o.CreatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("createdAt", "body", "date-time", o.CreatedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsListForBillingOKBodyItems0) validateServers(formats strfmt.Registry) error {
+	if swag.IsZero(o.Servers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Servers); i++ {
+		if swag.IsZero(o.Servers[i]) { // not required
+			continue
+		}
+
+		if o.Servers[i] != nil {
+			if err := o.Servers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsListForBillingOKBodyItems0) validateStandaloneVms(formats strfmt.Registry) error {
+	if swag.IsZero(o.StandaloneVms) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.StandaloneVms); i++ {
+		if swag.IsZero(o.StandaloneVms[i]) { // not required
+			continue
+		}
+
+		if o.StandaloneVms[i] != nil {
+			if err := o.StandaloneVms[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this projects list for billing o k body items0 based on the context it is used
+func (o *ProjectsListForBillingOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateServers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateStandaloneVms(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsListForBillingOKBodyItems0) contextValidateServers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Servers); i++ {
+
+		if o.Servers[i] != nil {
+			if err := o.Servers[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsListForBillingOKBodyItems0) contextValidateStandaloneVms(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.StandaloneVms); i++ {
+
+		if o.StandaloneVms[i] != nil {
+			if err := o.StandaloneVms[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListForBillingOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListForBillingOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsListForBillingOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListForBillingOKBodyItems0ServersItems0 projects list for billing o k body items0 servers items0
+swagger:model ProjectsListForBillingOKBodyItems0ServersItems0
+*/
+type ProjectsListForBillingOKBodyItems0ServersItems0 struct {
+
+	// cpu
+	CPU int32 `json:"cpu,omitempty"`
+
+	// ram
+	RAM int64 `json:"ram,omitempty"`
+}
+
+// Validate validates this projects list for billing o k body items0 servers items0
+func (o *ProjectsListForBillingOKBodyItems0ServersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list for billing o k body items0 servers items0 based on context it is used
+func (o *ProjectsListForBillingOKBodyItems0ServersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListForBillingOKBodyItems0ServersItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListForBillingOKBodyItems0ServersItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsListForBillingOKBodyItems0ServersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListForBillingOKBodyItems0StandaloneVmsItems0 projects list for billing o k body items0 standalone vms items0
+swagger:model ProjectsListForBillingOKBodyItems0StandaloneVmsItems0
+*/
+type ProjectsListForBillingOKBodyItems0StandaloneVmsItems0 struct {
+
+	// cpu
+	CPU int32 `json:"cpu,omitempty"`
+
+	// ram
+	RAM int64 `json:"ram,omitempty"`
+}
+
+// Validate validates this projects list for billing o k body items0 standalone vms items0
+func (o *ProjectsListForBillingOKBodyItems0StandaloneVmsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list for billing o k body items0 standalone vms items0 based on context it is used
+func (o *ProjectsListForBillingOKBodyItems0StandaloneVmsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListForBillingOKBodyItems0StandaloneVmsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListForBillingOKBodyItems0StandaloneVmsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsListForBillingOKBodyItems0StandaloneVmsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListForBillingUnauthorizedBody projects list for billing unauthorized body
+swagger:model ProjectsListForBillingUnauthorizedBody
+*/
+type ProjectsListForBillingUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects list for billing unauthorized body
+func (o *ProjectsListForBillingUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list for billing unauthorized body based on context it is used
+func (o *ProjectsListForBillingUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListForBillingUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListForBillingUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsListForBillingUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

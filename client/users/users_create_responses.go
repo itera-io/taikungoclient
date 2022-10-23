@@ -6,13 +6,16 @@ package users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // UsersCreateReader is a Reader for the UsersCreate structure.
@@ -75,7 +78,7 @@ UsersCreateOK describes a response with status code 200, with default header val
 Success
 */
 type UsersCreateOK struct {
-	Payload *models.APIResponse
+	Payload *UsersCreateOKBody
 }
 
 // IsSuccess returns true when this users create o k response has a 2xx status code
@@ -111,13 +114,13 @@ func (o *UsersCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *UsersCreateOK) GetPayload() *models.APIResponse {
+func (o *UsersCreateOK) GetPayload() *UsersCreateOKBody {
 	return o.Payload
 }
 
 func (o *UsersCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(UsersCreateOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +141,7 @@ UsersCreateBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type UsersCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*UsersCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this users create bad request response has a 2xx status code
@@ -174,7 +177,7 @@ func (o *UsersCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersCreateBadRequest) GetPayload() []*models.Error {
+func (o *UsersCreateBadRequest) GetPayload() []*UsersCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +202,7 @@ UsersCreateUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type UsersCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *UsersCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this users create unauthorized response has a 2xx status code
@@ -235,13 +238,13 @@ func (o *UsersCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UsersCreateUnauthorized) GetPayload() *UsersCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *UsersCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +265,7 @@ UsersCreateForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type UsersCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *UsersCreateForbiddenBody
 }
 
 // IsSuccess returns true when this users create forbidden response has a 2xx status code
@@ -298,13 +301,13 @@ func (o *UsersCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *UsersCreateForbidden) GetPayload() *UsersCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *UsersCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +328,7 @@ UsersCreateNotFound describes a response with status code 404, with default head
 Not Found
 */
 type UsersCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *UsersCreateNotFoundBody
 }
 
 // IsSuccess returns true when this users create not found response has a 2xx status code
@@ -361,13 +364,13 @@ func (o *UsersCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *UsersCreateNotFound) GetPayload() *UsersCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *UsersCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +428,339 @@ func (o *UsersCreateInternalServerError) String() string {
 
 func (o *UsersCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+UsersCreateBadRequestBodyItems0 users create bad request body items0
+swagger:model UsersCreateBadRequestBodyItems0
+*/
+type UsersCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this users create bad request body items0
+func (o *UsersCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users create bad request body items0 based on context it is used
+func (o *UsersCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res UsersCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersCreateBody users create body
+swagger:model UsersCreateBody
+*/
+type UsersCreateBody struct {
+
+	// display name
+	DisplayName string `json:"displayName"`
+
+	// email
+	Email string `json:"email,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// role
+	// Enum: [100 200 250 400 6000]
+	Role int32 `json:"role,omitempty"`
+
+	// username
+	Username string `json:"username,omitempty"`
+}
+
+// Validate validates this users create body
+func (o *UsersCreateBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateRole(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var usersCreateBodyTypeRolePropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200,250,400,6000]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		usersCreateBodyTypeRolePropEnum = append(usersCreateBodyTypeRolePropEnum, v)
+	}
+}
+
+// prop value enum
+func (o *UsersCreateBody) validateRoleEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, usersCreateBodyTypeRolePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UsersCreateBody) validateRole(formats strfmt.Registry) error {
+	if swag.IsZero(o.Role) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := o.validateRoleEnum("body"+"."+"role", "body", o.Role); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this users create body based on context it is used
+func (o *UsersCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersCreateBody) UnmarshalBinary(b []byte) error {
+	var res UsersCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersCreateForbiddenBody users create forbidden body
+swagger:model UsersCreateForbiddenBody
+*/
+type UsersCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users create forbidden body
+func (o *UsersCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users create forbidden body based on context it is used
+func (o *UsersCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res UsersCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersCreateNotFoundBody users create not found body
+swagger:model UsersCreateNotFoundBody
+*/
+type UsersCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users create not found body
+func (o *UsersCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users create not found body based on context it is used
+func (o *UsersCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res UsersCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersCreateOKBody users create o k body
+swagger:model UsersCreateOKBody
+*/
+type UsersCreateOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this users create o k body
+func (o *UsersCreateOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users create o k body based on context it is used
+func (o *UsersCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersCreateOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersCreateOKBody) UnmarshalBinary(b []byte) error {
+	var res UsersCreateOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersCreateUnauthorizedBody users create unauthorized body
+swagger:model UsersCreateUnauthorizedBody
+*/
+type UsersCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users create unauthorized body
+func (o *UsersCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users create unauthorized body based on context it is used
+func (o *UsersCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res UsersCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAdminCreateUserParams creates a new AdminCreateUserParams object,
@@ -64,7 +62,7 @@ AdminCreateUserParams contains all the parameters to send to the API endpoint
 type AdminCreateUserParams struct {
 
 	// Body.
-	Body *models.AdminUserCreateCommand
+	Body AdminCreateUserBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *AdminCreateUserParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the admin create user params
-func (o *AdminCreateUserParams) WithBody(body *models.AdminUserCreateCommand) *AdminCreateUserParams {
+func (o *AdminCreateUserParams) WithBody(body AdminCreateUserBody) *AdminCreateUserParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the admin create user params
-func (o *AdminCreateUserParams) SetBody(body *models.AdminUserCreateCommand) {
+func (o *AdminCreateUserParams) SetBody(body AdminCreateUserBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *AdminCreateUserParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

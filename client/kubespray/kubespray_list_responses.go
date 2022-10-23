@@ -6,13 +6,15 @@ package kubespray
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubesprayListReader is a Reader for the KubesprayList structure.
@@ -75,7 +77,7 @@ KubesprayListOK describes a response with status code 200, with default header v
 Success
 */
 type KubesprayListOK struct {
-	Payload *models.Kubesprays
+	Payload *KubesprayListOKBody
 }
 
 // IsSuccess returns true when this kubespray list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *KubesprayListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubespray][%d] kubesprayListOK  %+v", 200, o.Payload)
 }
 
-func (o *KubesprayListOK) GetPayload() *models.Kubesprays {
+func (o *KubesprayListOK) GetPayload() *KubesprayListOKBody {
 	return o.Payload
 }
 
 func (o *KubesprayListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Kubesprays)
+	o.Payload = new(KubesprayListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ KubesprayListBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type KubesprayListBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubesprayListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubespray list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *KubesprayListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubespray][%d] kubesprayListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubesprayListBadRequest) GetPayload() []*models.Error {
+func (o *KubesprayListBadRequest) GetPayload() []*KubesprayListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ KubesprayListUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type KubesprayListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubesprayListUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubespray list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *KubesprayListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubespray][%d] kubesprayListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubesprayListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubesprayListUnauthorized) GetPayload() *KubesprayListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubesprayListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubesprayListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ KubesprayListForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type KubesprayListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubesprayListForbiddenBody
 }
 
 // IsSuccess returns true when this kubespray list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *KubesprayListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubespray][%d] kubesprayListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubesprayListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubesprayListForbidden) GetPayload() *KubesprayListForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubesprayListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubesprayListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ KubesprayListNotFound describes a response with status code 404, with default he
 Not Found
 */
 type KubesprayListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubesprayListNotFoundBody
 }
 
 // IsSuccess returns true when this kubespray list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *KubesprayListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubespray][%d] kubesprayListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubesprayListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubesprayListNotFound) GetPayload() *KubesprayListNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubesprayListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubesprayListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,348 @@ func (o *KubesprayListInternalServerError) String() string {
 
 func (o *KubesprayListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubesprayListBadRequestBodyItems0 kubespray list bad request body items0
+swagger:model KubesprayListBadRequestBodyItems0
+*/
+type KubesprayListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubespray list bad request body items0
+func (o *KubesprayListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubespray list bad request body items0 based on context it is used
+func (o *KubesprayListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubesprayListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubesprayListForbiddenBody kubespray list forbidden body
+swagger:model KubesprayListForbiddenBody
+*/
+type KubesprayListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubespray list forbidden body
+func (o *KubesprayListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubespray list forbidden body based on context it is used
+func (o *KubesprayListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubesprayListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubesprayListNotFoundBody kubespray list not found body
+swagger:model KubesprayListNotFoundBody
+*/
+type KubesprayListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubespray list not found body
+func (o *KubesprayListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubespray list not found body based on context it is used
+func (o *KubesprayListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubesprayListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubesprayListOKBody kubespray list o k body
+swagger:model KubesprayListOKBody
+*/
+type KubesprayListOKBody struct {
+
+	// data
+	Data []*KubesprayListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this kubespray list o k body
+func (o *KubesprayListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubesprayListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubesprayListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubesprayListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this kubespray list o k body based on the context it is used
+func (o *KubesprayListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubesprayListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubesprayListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubesprayListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayListOKBody) UnmarshalBinary(b []byte) error {
+	var res KubesprayListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubesprayListOKBodyDataItems0 kubespray list o k body data items0
+swagger:model KubesprayListOKBodyDataItems0
+*/
+type KubesprayListOKBodyDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is deprecated
+	IsDeprecated bool `json:"isDeprecated"`
+
+	// kubernetes version
+	KubernetesVersion string `json:"kubernetesVersion,omitempty"`
+
+	// version
+	Version string `json:"version,omitempty"`
+}
+
+// Validate validates this kubespray list o k body data items0
+func (o *KubesprayListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubespray list o k body data items0 based on context it is used
+func (o *KubesprayListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res KubesprayListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubesprayListUnauthorizedBody kubespray list unauthorized body
+swagger:model KubesprayListUnauthorizedBody
+*/
+type KubesprayListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubespray list unauthorized body
+func (o *KubesprayListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubespray list unauthorized body based on context it is used
+func (o *KubesprayListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubesprayListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package s3_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // S3CredentialsLockManagerReader is a Reader for the S3CredentialsLockManager structure.
@@ -75,7 +75,7 @@ S3CredentialsLockManagerOK describes a response with status code 200, with defau
 Success
 */
 type S3CredentialsLockManagerOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this s3 credentials lock manager o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *S3CredentialsLockManagerOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerOK  %+v", 200, o.Payload)
 }
 
-func (o *S3CredentialsLockManagerOK) GetPayload() models.Unit {
+func (o *S3CredentialsLockManagerOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ S3CredentialsLockManagerBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type S3CredentialsLockManagerBadRequest struct {
-	Payload []*models.Error
+	Payload []*S3CredentialsLockManagerBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this s3 credentials lock manager bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *S3CredentialsLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsLockManagerBadRequest) GetPayload() []*models.Error {
+func (o *S3CredentialsLockManagerBadRequest) GetPayload() []*S3CredentialsLockManagerBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ S3CredentialsLockManagerUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type S3CredentialsLockManagerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *S3CredentialsLockManagerUnauthorizedBody
 }
 
 // IsSuccess returns true when this s3 credentials lock manager unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *S3CredentialsLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *S3CredentialsLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsLockManagerUnauthorized) GetPayload() *S3CredentialsLockManagerUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *S3CredentialsLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(S3CredentialsLockManagerUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ S3CredentialsLockManagerForbidden describes a response with status code 403, wit
 Forbidden
 */
 type S3CredentialsLockManagerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *S3CredentialsLockManagerForbiddenBody
 }
 
 // IsSuccess returns true when this s3 credentials lock manager forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *S3CredentialsLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *S3CredentialsLockManagerForbidden) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsLockManagerForbidden) GetPayload() *S3CredentialsLockManagerForbiddenBody {
 	return o.Payload
 }
 
 func (o *S3CredentialsLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(S3CredentialsLockManagerForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ S3CredentialsLockManagerNotFound describes a response with status code 404, with
 Not Found
 */
 type S3CredentialsLockManagerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *S3CredentialsLockManagerNotFoundBody
 }
 
 // IsSuccess returns true when this s3 credentials lock manager not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *S3CredentialsLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *S3CredentialsLockManagerNotFound) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsLockManagerNotFound) GetPayload() *S3CredentialsLockManagerNotFoundBody {
 	return o.Payload
 }
 
 func (o *S3CredentialsLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(S3CredentialsLockManagerNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *S3CredentialsLockManagerInternalServerError) String() string {
 
 func (o *S3CredentialsLockManagerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+S3CredentialsLockManagerBadRequestBodyItems0 s3 credentials lock manager bad request body items0
+swagger:model S3CredentialsLockManagerBadRequestBodyItems0
+*/
+type S3CredentialsLockManagerBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this s3 credentials lock manager bad request body items0
+func (o *S3CredentialsLockManagerBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this s3 credentials lock manager bad request body items0 based on context it is used
+func (o *S3CredentialsLockManagerBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsLockManagerBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsLockManagerBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsLockManagerBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+S3CredentialsLockManagerBody s3 credentials lock manager body
+swagger:model S3CredentialsLockManagerBody
+*/
+type S3CredentialsLockManagerBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// mode
+	Mode string `json:"mode,omitempty"`
+}
+
+// Validate validates this s3 credentials lock manager body
+func (o *S3CredentialsLockManagerBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this s3 credentials lock manager body based on context it is used
+func (o *S3CredentialsLockManagerBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsLockManagerBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsLockManagerBody) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsLockManagerBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+S3CredentialsLockManagerForbiddenBody s3 credentials lock manager forbidden body
+swagger:model S3CredentialsLockManagerForbiddenBody
+*/
+type S3CredentialsLockManagerForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this s3 credentials lock manager forbidden body
+func (o *S3CredentialsLockManagerForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this s3 credentials lock manager forbidden body based on context it is used
+func (o *S3CredentialsLockManagerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsLockManagerForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsLockManagerForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsLockManagerForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+S3CredentialsLockManagerNotFoundBody s3 credentials lock manager not found body
+swagger:model S3CredentialsLockManagerNotFoundBody
+*/
+type S3CredentialsLockManagerNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this s3 credentials lock manager not found body
+func (o *S3CredentialsLockManagerNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this s3 credentials lock manager not found body based on context it is used
+func (o *S3CredentialsLockManagerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsLockManagerNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsLockManagerNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsLockManagerNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+S3CredentialsLockManagerUnauthorizedBody s3 credentials lock manager unauthorized body
+swagger:model S3CredentialsLockManagerUnauthorizedBody
+*/
+type S3CredentialsLockManagerUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this s3 credentials lock manager unauthorized body
+func (o *S3CredentialsLockManagerUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this s3 credentials lock manager unauthorized body based on context it is used
+func (o *S3CredentialsLockManagerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsLockManagerUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsLockManagerUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsLockManagerUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

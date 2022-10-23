@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCheckerS3Params creates a new CheckerS3Params object,
@@ -64,7 +62,7 @@ CheckerS3Params contains all the parameters to send to the API endpoint
 type CheckerS3Params struct {
 
 	// Body.
-	Body *models.CheckS3Command
+	Body CheckerS3Body
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *CheckerS3Params) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the checker s3 params
-func (o *CheckerS3Params) WithBody(body *models.CheckS3Command) *CheckerS3Params {
+func (o *CheckerS3Params) WithBody(body CheckerS3Body) *CheckerS3Params {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the checker s3 params
-func (o *CheckerS3Params) SetBody(body *models.CheckS3Command) {
+func (o *CheckerS3Params) SetBody(body CheckerS3Body) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *CheckerS3Params) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

@@ -53,13 +53,13 @@ type CreateStandAloneVMCommand struct {
 	SpotPrice float64 `json:"spotPrice,omitempty"`
 
 	// stand alone meta datas
-	StandAloneMetaDatas []*StandAloneMetaDataDto `json:"standAloneMetaDatas"`
+	StandAloneMetaDatas []*CreateStandAloneVMCommandStandAloneMetaDatasItems0 `json:"standAloneMetaDatas"`
 
 	// stand alone profile Id
 	StandAloneProfileID int32 `json:"standAloneProfileId,omitempty"`
 
 	// stand alone Vm disks
-	StandAloneVMDisks []*StandAloneVMDiskDto `json:"standAloneVmDisks"`
+	StandAloneVMDisks []*CreateStandAloneVMCommandStandAloneVMDisksItems0 `json:"standAloneVmDisks"`
 
 	// username
 	Username string `json:"username,omitempty"`
@@ -210,6 +210,95 @@ func (m *CreateStandAloneVMCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *CreateStandAloneVMCommand) UnmarshalBinary(b []byte) error {
 	var res CreateStandAloneVMCommand
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CreateStandAloneVMCommandStandAloneMetaDatasItems0 create stand alone VM command stand alone meta datas items0
+//
+// swagger:model CreateStandAloneVMCommandStandAloneMetaDatasItems0
+type CreateStandAloneVMCommandStandAloneMetaDatasItems0 struct {
+
+	// key
+	Key string `json:"key,omitempty"`
+
+	// value
+	Value string `json:"value,omitempty"`
+}
+
+// Validate validates this create stand alone VM command stand alone meta datas items0
+func (m *CreateStandAloneVMCommandStandAloneMetaDatasItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this create stand alone VM command stand alone meta datas items0 based on context it is used
+func (m *CreateStandAloneVMCommandStandAloneMetaDatasItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CreateStandAloneVMCommandStandAloneMetaDatasItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CreateStandAloneVMCommandStandAloneMetaDatasItems0) UnmarshalBinary(b []byte) error {
+	var res CreateStandAloneVMCommandStandAloneMetaDatasItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CreateStandAloneVMCommandStandAloneVMDisksItems0 create stand alone VM command stand alone VM disks items0
+//
+// swagger:model CreateStandAloneVMCommandStandAloneVMDisksItems0
+type CreateStandAloneVMCommandStandAloneVMDisksItems0 struct {
+
+	// device name
+	DeviceName string `json:"deviceName,omitempty"`
+
+	// lun Id
+	LunID int32 `json:"lunId,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// size
+	Size int64 `json:"size,omitempty"`
+
+	// volume type
+	VolumeType string `json:"volumeType,omitempty"`
+}
+
+// Validate validates this create stand alone VM command stand alone VM disks items0
+func (m *CreateStandAloneVMCommandStandAloneVMDisksItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this create stand alone VM command stand alone VM disks items0 based on context it is used
+func (m *CreateStandAloneVMCommandStandAloneVMDisksItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CreateStandAloneVMCommandStandAloneVMDisksItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CreateStandAloneVMCommandStandAloneVMDisksItems0) UnmarshalBinary(b []byte) error {
+	var res CreateStandAloneVMCommandStandAloneVMDisksItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

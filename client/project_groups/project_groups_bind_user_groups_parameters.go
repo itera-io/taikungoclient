@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectGroupsBindUserGroupsParams creates a new ProjectGroupsBindUserGroupsParams object,
@@ -64,7 +62,7 @@ ProjectGroupsBindUserGroupsParams contains all the parameters to send to the API
 type ProjectGroupsBindUserGroupsParams struct {
 
 	// Body.
-	Body *models.BindUserGroupsToProjectGroupCommand
+	Body ProjectGroupsBindUserGroupsBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *ProjectGroupsBindUserGroupsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the project groups bind user groups params
-func (o *ProjectGroupsBindUserGroupsParams) WithBody(body *models.BindUserGroupsToProjectGroupCommand) *ProjectGroupsBindUserGroupsParams {
+func (o *ProjectGroupsBindUserGroupsParams) WithBody(body ProjectGroupsBindUserGroupsBody) *ProjectGroupsBindUserGroupsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the project groups bind user groups params
-func (o *ProjectGroupsBindUserGroupsParams) SetBody(body *models.BindUserGroupsToProjectGroupCommand) {
+func (o *ProjectGroupsBindUserGroupsParams) SetBody(body ProjectGroupsBindUserGroupsBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *ProjectGroupsBindUserGroupsParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

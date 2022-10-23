@@ -20,7 +20,7 @@ import (
 type AccessProfilesSearchList struct {
 
 	// data
-	Data []*CommonSearchResponseData `json:"data"`
+	Data []*AccessProfilesSearchListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,52 @@ func (m *AccessProfilesSearchList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AccessProfilesSearchList) UnmarshalBinary(b []byte) error {
 	var res AccessProfilesSearchList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AccessProfilesSearchListDataItems0 access profiles search list data items0
+//
+// swagger:model AccessProfilesSearchListDataItems0
+type AccessProfilesSearchListDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+}
+
+// Validate validates this access profiles search list data items0
+func (m *AccessProfilesSearchListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this access profiles search list data items0 based on context it is used
+func (m *AccessProfilesSearchListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AccessProfilesSearchListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AccessProfilesSearchListDataItems0) UnmarshalBinary(b []byte) error {
+	var res AccessProfilesSearchListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

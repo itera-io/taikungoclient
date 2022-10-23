@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewUsersDisableUserParams creates a new UsersDisableUserParams object,
@@ -67,7 +65,7 @@ type UsersDisableUserParams struct {
 
 	   Command
 	*/
-	Body *models.DisableUserCommand
+	Body UsersDisableUserBody
 
 	// V.
 	V string
@@ -126,13 +124,13 @@ func (o *UsersDisableUserParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the users disable user params
-func (o *UsersDisableUserParams) WithBody(body *models.DisableUserCommand) *UsersDisableUserParams {
+func (o *UsersDisableUserParams) WithBody(body UsersDisableUserBody) *UsersDisableUserParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the users disable user params
-func (o *UsersDisableUserParams) SetBody(body *models.DisableUserCommand) {
+func (o *UsersDisableUserParams) SetBody(body UsersDisableUserBody) {
 	o.Body = body
 }
 
@@ -154,10 +152,8 @@ func (o *UsersDisableUserParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

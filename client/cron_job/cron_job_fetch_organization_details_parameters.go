@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobFetchOrganizationDetailsParams creates a new CronJobFetchOrganizationDetailsParams object,
@@ -64,7 +62,7 @@ CronJobFetchOrganizationDetailsParams contains all the parameters to send to the
 type CronJobFetchOrganizationDetailsParams struct {
 
 	// Body.
-	Body models.FetchOrganizationDetailsCommand
+	Body interface{}
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *CronJobFetchOrganizationDetailsParams) SetHTTPClient(client *http.Clien
 }
 
 // WithBody adds the body to the cron job fetch organization details params
-func (o *CronJobFetchOrganizationDetailsParams) WithBody(body models.FetchOrganizationDetailsCommand) *CronJobFetchOrganizationDetailsParams {
+func (o *CronJobFetchOrganizationDetailsParams) WithBody(body interface{}) *CronJobFetchOrganizationDetailsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job fetch organization details params
-func (o *CronJobFetchOrganizationDetailsParams) SetBody(body models.FetchOrganizationDetailsCommand) {
+func (o *CronJobFetchOrganizationDetailsParams) SetBody(body interface{}) {
 	o.Body = body
 }
 

@@ -6,13 +6,13 @@ package alerting_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AlertingProfilesLockManagerReader is a Reader for the AlertingProfilesLockManager structure.
@@ -75,7 +75,7 @@ AlertingProfilesLockManagerOK describes a response with status code 200, with de
 Success
 */
 type AlertingProfilesLockManagerOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles lock manager o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AlertingProfilesLockManagerOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/lockmanager][%d] alertingProfilesLockManagerOK  %+v", 200, o.Payload)
 }
 
-func (o *AlertingProfilesLockManagerOK) GetPayload() models.Unit {
+func (o *AlertingProfilesLockManagerOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AlertingProfilesLockManagerBadRequest describes a response with status code 400,
 Bad Request
 */
 type AlertingProfilesLockManagerBadRequest struct {
-	Payload []*models.Error
+	Payload []*AlertingProfilesLockManagerBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this alerting profiles lock manager bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AlertingProfilesLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/lockmanager][%d] alertingProfilesLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesLockManagerBadRequest) GetPayload() []*models.Error {
+func (o *AlertingProfilesLockManagerBadRequest) GetPayload() []*AlertingProfilesLockManagerBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AlertingProfilesLockManagerUnauthorized describes a response with status code 40
 Unauthorized
 */
 type AlertingProfilesLockManagerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesLockManagerUnauthorizedBody
 }
 
 // IsSuccess returns true when this alerting profiles lock manager unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AlertingProfilesLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/lockmanager][%d] alertingProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesLockManagerUnauthorized) GetPayload() *AlertingProfilesLockManagerUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesLockManagerUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AlertingProfilesLockManagerForbidden describes a response with status code 403, 
 Forbidden
 */
 type AlertingProfilesLockManagerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesLockManagerForbiddenBody
 }
 
 // IsSuccess returns true when this alerting profiles lock manager forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AlertingProfilesLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/lockmanager][%d] alertingProfilesLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesLockManagerForbidden) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesLockManagerForbidden) GetPayload() *AlertingProfilesLockManagerForbiddenBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesLockManagerForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AlertingProfilesLockManagerNotFound describes a response with status code 404, w
 Not Found
 */
 type AlertingProfilesLockManagerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesLockManagerNotFoundBody
 }
 
 // IsSuccess returns true when this alerting profiles lock manager not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AlertingProfilesLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/lockmanager][%d] alertingProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesLockManagerNotFound) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesLockManagerNotFound) GetPayload() *AlertingProfilesLockManagerNotFoundBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesLockManagerNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *AlertingProfilesLockManagerInternalServerError) String() string {
 
 func (o *AlertingProfilesLockManagerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AlertingProfilesLockManagerBadRequestBodyItems0 alerting profiles lock manager bad request body items0
+swagger:model AlertingProfilesLockManagerBadRequestBodyItems0
+*/
+type AlertingProfilesLockManagerBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this alerting profiles lock manager bad request body items0
+func (o *AlertingProfilesLockManagerBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles lock manager bad request body items0 based on context it is used
+func (o *AlertingProfilesLockManagerBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesLockManagerBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesLockManagerBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesLockManagerBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesLockManagerBody alerting profiles lock manager body
+swagger:model AlertingProfilesLockManagerBody
+*/
+type AlertingProfilesLockManagerBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// mode
+	Mode string `json:"mode,omitempty"`
+}
+
+// Validate validates this alerting profiles lock manager body
+func (o *AlertingProfilesLockManagerBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles lock manager body based on context it is used
+func (o *AlertingProfilesLockManagerBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesLockManagerBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesLockManagerBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesLockManagerBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesLockManagerForbiddenBody alerting profiles lock manager forbidden body
+swagger:model AlertingProfilesLockManagerForbiddenBody
+*/
+type AlertingProfilesLockManagerForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles lock manager forbidden body
+func (o *AlertingProfilesLockManagerForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles lock manager forbidden body based on context it is used
+func (o *AlertingProfilesLockManagerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesLockManagerForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesLockManagerForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesLockManagerForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesLockManagerNotFoundBody alerting profiles lock manager not found body
+swagger:model AlertingProfilesLockManagerNotFoundBody
+*/
+type AlertingProfilesLockManagerNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles lock manager not found body
+func (o *AlertingProfilesLockManagerNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles lock manager not found body based on context it is used
+func (o *AlertingProfilesLockManagerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesLockManagerNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesLockManagerNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesLockManagerNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesLockManagerUnauthorizedBody alerting profiles lock manager unauthorized body
+swagger:model AlertingProfilesLockManagerUnauthorizedBody
+*/
+type AlertingProfilesLockManagerUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles lock manager unauthorized body
+func (o *AlertingProfilesLockManagerUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles lock manager unauthorized body based on context it is used
+func (o *AlertingProfilesLockManagerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesLockManagerUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesLockManagerUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesLockManagerUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

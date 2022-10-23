@@ -20,7 +20,7 @@ import (
 type KubeConfigForUserList struct {
 
 	// data
-	Data []*KubeConfigForUserDto `json:"data"`
+	Data []*KubeConfigForUserListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,76 @@ func (m *KubeConfigForUserList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *KubeConfigForUserList) UnmarshalBinary(b []byte) error {
 	var res KubeConfigForUserList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// KubeConfigForUserListDataItems0 kube config for user list data items0
+//
+// swagger:model KubeConfigForUserListDataItems0
+type KubeConfigForUserListDataItems0 struct {
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// created by
+	CreatedBy string `json:"createdBy,omitempty"`
+
+	// display name
+	DisplayName string `json:"displayName"`
+
+	// expiration date
+	ExpirationDate string `json:"expirationDate,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is accessible for all
+	IsAccessibleForAll bool `json:"isAccessibleForAll"`
+
+	// is accessible for manager
+	IsAccessibleForManager bool `json:"isAccessibleForManager"`
+
+	// kube config role name
+	KubeConfigRoleName string `json:"kubeConfigRoleName,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// user Id
+	UserID string `json:"userId,omitempty"`
+}
+
+// Validate validates this kube config for user list data items0
+func (m *KubeConfigForUserListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kube config for user list data items0 based on context it is used
+func (m *KubeConfigForUserListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *KubeConfigForUserListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *KubeConfigForUserListDataItems0) UnmarshalBinary(b []byte) error {
+	var res KubeConfigForUserListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

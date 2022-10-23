@@ -6,13 +6,15 @@ package images
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ImagesGoogleImagesReader is a Reader for the ImagesGoogleImages structure.
@@ -75,7 +77,7 @@ ImagesGoogleImagesOK describes a response with status code 200, with default hea
 Success
 */
 type ImagesGoogleImagesOK struct {
-	Payload *models.GoogleImageList
+	Payload *ImagesGoogleImagesOKBody
 }
 
 // IsSuccess returns true when this images google images o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *ImagesGoogleImagesOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesOK  %+v", 200, o.Payload)
 }
 
-func (o *ImagesGoogleImagesOK) GetPayload() *models.GoogleImageList {
+func (o *ImagesGoogleImagesOK) GetPayload() *ImagesGoogleImagesOKBody {
 	return o.Payload
 }
 
 func (o *ImagesGoogleImagesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GoogleImageList)
+	o.Payload = new(ImagesGoogleImagesOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ ImagesGoogleImagesBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type ImagesGoogleImagesBadRequest struct {
-	Payload []*models.Error
+	Payload []*ImagesGoogleImagesBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this images google images bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *ImagesGoogleImagesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesGoogleImagesBadRequest) GetPayload() []*models.Error {
+func (o *ImagesGoogleImagesBadRequest) GetPayload() []*ImagesGoogleImagesBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ ImagesGoogleImagesUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type ImagesGoogleImagesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesGoogleImagesUnauthorizedBody
 }
 
 // IsSuccess returns true when this images google images unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *ImagesGoogleImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesGoogleImagesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ImagesGoogleImagesUnauthorized) GetPayload() *ImagesGoogleImagesUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ImagesGoogleImagesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesGoogleImagesUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ ImagesGoogleImagesForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type ImagesGoogleImagesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesGoogleImagesForbiddenBody
 }
 
 // IsSuccess returns true when this images google images forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *ImagesGoogleImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesGoogleImagesForbidden) GetPayload() *models.ProblemDetails {
+func (o *ImagesGoogleImagesForbidden) GetPayload() *ImagesGoogleImagesForbiddenBody {
 	return o.Payload
 }
 
 func (o *ImagesGoogleImagesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesGoogleImagesForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ ImagesGoogleImagesNotFound describes a response with status code 404, with defau
 Not Found
 */
 type ImagesGoogleImagesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesGoogleImagesNotFoundBody
 }
 
 // IsSuccess returns true when this images google images not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *ImagesGoogleImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesGoogleImagesNotFound) GetPayload() *models.ProblemDetails {
+func (o *ImagesGoogleImagesNotFound) GetPayload() *ImagesGoogleImagesNotFoundBody {
 	return o.Payload
 }
 
 func (o *ImagesGoogleImagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesGoogleImagesNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,342 @@ func (o *ImagesGoogleImagesInternalServerError) String() string {
 
 func (o *ImagesGoogleImagesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ImagesGoogleImagesBadRequestBodyItems0 images google images bad request body items0
+swagger:model ImagesGoogleImagesBadRequestBodyItems0
+*/
+type ImagesGoogleImagesBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this images google images bad request body items0
+func (o *ImagesGoogleImagesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images google images bad request body items0 based on context it is used
+func (o *ImagesGoogleImagesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesGoogleImagesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesGoogleImagesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ImagesGoogleImagesBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesGoogleImagesForbiddenBody images google images forbidden body
+swagger:model ImagesGoogleImagesForbiddenBody
+*/
+type ImagesGoogleImagesForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images google images forbidden body
+func (o *ImagesGoogleImagesForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images google images forbidden body based on context it is used
+func (o *ImagesGoogleImagesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesGoogleImagesForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesGoogleImagesForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ImagesGoogleImagesForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesGoogleImagesNotFoundBody images google images not found body
+swagger:model ImagesGoogleImagesNotFoundBody
+*/
+type ImagesGoogleImagesNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images google images not found body
+func (o *ImagesGoogleImagesNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images google images not found body based on context it is used
+func (o *ImagesGoogleImagesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesGoogleImagesNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesGoogleImagesNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ImagesGoogleImagesNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesGoogleImagesOKBody images google images o k body
+swagger:model ImagesGoogleImagesOKBody
+*/
+type ImagesGoogleImagesOKBody struct {
+
+	// data
+	Data []*ImagesGoogleImagesOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this images google images o k body
+func (o *ImagesGoogleImagesOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ImagesGoogleImagesOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("imagesGoogleImagesOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("imagesGoogleImagesOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this images google images o k body based on the context it is used
+func (o *ImagesGoogleImagesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ImagesGoogleImagesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("imagesGoogleImagesOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("imagesGoogleImagesOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesGoogleImagesOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesGoogleImagesOKBody) UnmarshalBinary(b []byte) error {
+	var res ImagesGoogleImagesOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesGoogleImagesOKBodyDataItems0 images google images o k body data items0
+swagger:model ImagesGoogleImagesOKBodyDataItems0
+*/
+type ImagesGoogleImagesOKBodyDataItems0 struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this images google images o k body data items0
+func (o *ImagesGoogleImagesOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images google images o k body data items0 based on context it is used
+func (o *ImagesGoogleImagesOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesGoogleImagesOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesGoogleImagesOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res ImagesGoogleImagesOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesGoogleImagesUnauthorizedBody images google images unauthorized body
+swagger:model ImagesGoogleImagesUnauthorizedBody
+*/
+type ImagesGoogleImagesUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images google images unauthorized body
+func (o *ImagesGoogleImagesUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images google images unauthorized body based on context it is used
+func (o *ImagesGoogleImagesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesGoogleImagesUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesGoogleImagesUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ImagesGoogleImagesUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

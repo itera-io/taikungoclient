@@ -6,13 +6,13 @@ package cloud_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CloudCredentialsExceededQuotasReader is a Reader for the CloudCredentialsExceededQuotas structure.
@@ -75,7 +75,7 @@ CloudCredentialsExceededQuotasOK describes a response with status code 200, with
 Success
 */
 type CloudCredentialsExceededQuotasOK struct {
-	Payload *models.ExceededQuotaList
+	Payload *CloudCredentialsExceededQuotasOKBody
 }
 
 // IsSuccess returns true when this cloud credentials exceeded quotas o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *CloudCredentialsExceededQuotasOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasOK  %+v", 200, o.Payload)
 }
 
-func (o *CloudCredentialsExceededQuotasOK) GetPayload() *models.ExceededQuotaList {
+func (o *CloudCredentialsExceededQuotasOK) GetPayload() *CloudCredentialsExceededQuotasOKBody {
 	return o.Payload
 }
 
 func (o *CloudCredentialsExceededQuotasOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ExceededQuotaList)
+	o.Payload = new(CloudCredentialsExceededQuotasOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ CloudCredentialsExceededQuotasBadRequest describes a response with status code 4
 Bad Request
 */
 type CloudCredentialsExceededQuotasBadRequest struct {
-	Payload []*models.Error
+	Payload []*CloudCredentialsExceededQuotasBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this cloud credentials exceeded quotas bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *CloudCredentialsExceededQuotasBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsExceededQuotasBadRequest) GetPayload() []*models.Error {
+func (o *CloudCredentialsExceededQuotasBadRequest) GetPayload() []*CloudCredentialsExceededQuotasBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ CloudCredentialsExceededQuotasUnauthorized describes a response with status code
 Unauthorized
 */
 type CloudCredentialsExceededQuotasUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CloudCredentialsExceededQuotasUnauthorizedBody
 }
 
 // IsSuccess returns true when this cloud credentials exceeded quotas unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *CloudCredentialsExceededQuotasUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsExceededQuotasUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsExceededQuotasUnauthorized) GetPayload() *CloudCredentialsExceededQuotasUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CloudCredentialsExceededQuotasUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CloudCredentialsExceededQuotasUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ CloudCredentialsExceededQuotasForbidden describes a response with status code 40
 Forbidden
 */
 type CloudCredentialsExceededQuotasForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CloudCredentialsExceededQuotasForbiddenBody
 }
 
 // IsSuccess returns true when this cloud credentials exceeded quotas forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *CloudCredentialsExceededQuotasForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsExceededQuotasForbidden) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsExceededQuotasForbidden) GetPayload() *CloudCredentialsExceededQuotasForbiddenBody {
 	return o.Payload
 }
 
 func (o *CloudCredentialsExceededQuotasForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CloudCredentialsExceededQuotasForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ CloudCredentialsExceededQuotasNotFound describes a response with status code 404
 Not Found
 */
 type CloudCredentialsExceededQuotasNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CloudCredentialsExceededQuotasNotFoundBody
 }
 
 // IsSuccess returns true when this cloud credentials exceeded quotas not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *CloudCredentialsExceededQuotasNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsExceededQuotasNotFound) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsExceededQuotasNotFound) GetPayload() *CloudCredentialsExceededQuotasNotFoundBody {
 	return o.Payload
 }
 
 func (o *CloudCredentialsExceededQuotasNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CloudCredentialsExceededQuotasNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +425,237 @@ func (o *CloudCredentialsExceededQuotasInternalServerError) String() string {
 
 func (o *CloudCredentialsExceededQuotasInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CloudCredentialsExceededQuotasBadRequestBodyItems0 cloud credentials exceeded quotas bad request body items0
+swagger:model CloudCredentialsExceededQuotasBadRequestBodyItems0
+*/
+type CloudCredentialsExceededQuotasBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this cloud credentials exceeded quotas bad request body items0
+func (o *CloudCredentialsExceededQuotasBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials exceeded quotas bad request body items0 based on context it is used
+func (o *CloudCredentialsExceededQuotasBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsExceededQuotasBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsExceededQuotasBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsExceededQuotasBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsExceededQuotasForbiddenBody cloud credentials exceeded quotas forbidden body
+swagger:model CloudCredentialsExceededQuotasForbiddenBody
+*/
+type CloudCredentialsExceededQuotasForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cloud credentials exceeded quotas forbidden body
+func (o *CloudCredentialsExceededQuotasForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials exceeded quotas forbidden body based on context it is used
+func (o *CloudCredentialsExceededQuotasForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsExceededQuotasForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsExceededQuotasForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsExceededQuotasForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsExceededQuotasNotFoundBody cloud credentials exceeded quotas not found body
+swagger:model CloudCredentialsExceededQuotasNotFoundBody
+*/
+type CloudCredentialsExceededQuotasNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cloud credentials exceeded quotas not found body
+func (o *CloudCredentialsExceededQuotasNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials exceeded quotas not found body based on context it is used
+func (o *CloudCredentialsExceededQuotasNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsExceededQuotasNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsExceededQuotasNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsExceededQuotasNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsExceededQuotasOKBody cloud credentials exceeded quotas o k body
+swagger:model CloudCredentialsExceededQuotasOKBody
+*/
+type CloudCredentialsExceededQuotasOKBody struct {
+
+	// data
+	Data interface{} `json:"data,omitempty"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this cloud credentials exceeded quotas o k body
+func (o *CloudCredentialsExceededQuotasOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials exceeded quotas o k body based on context it is used
+func (o *CloudCredentialsExceededQuotasOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsExceededQuotasOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsExceededQuotasOKBody) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsExceededQuotasOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsExceededQuotasUnauthorizedBody cloud credentials exceeded quotas unauthorized body
+swagger:model CloudCredentialsExceededQuotasUnauthorizedBody
+*/
+type CloudCredentialsExceededQuotasUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cloud credentials exceeded quotas unauthorized body
+func (o *CloudCredentialsExceededQuotasUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials exceeded quotas unauthorized body based on context it is used
+func (o *CloudCredentialsExceededQuotasUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsExceededQuotasUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsExceededQuotasUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsExceededQuotasUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

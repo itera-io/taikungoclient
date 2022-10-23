@@ -6,13 +6,16 @@ package payment
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // PaymentGetStripeInvoicesReader is a Reader for the PaymentGetStripeInvoices structure.
@@ -75,7 +78,7 @@ PaymentGetStripeInvoicesOK describes a response with status code 200, with defau
 Success
 */
 type PaymentGetStripeInvoicesOK struct {
-	Payload *models.StripeInvoices
+	Payload *PaymentGetStripeInvoicesOKBody
 }
 
 // IsSuccess returns true when this payment get stripe invoices o k response has a 2xx status code
@@ -111,13 +114,13 @@ func (o *PaymentGetStripeInvoicesOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesOK  %+v", 200, o.Payload)
 }
 
-func (o *PaymentGetStripeInvoicesOK) GetPayload() *models.StripeInvoices {
+func (o *PaymentGetStripeInvoicesOK) GetPayload() *PaymentGetStripeInvoicesOKBody {
 	return o.Payload
 }
 
 func (o *PaymentGetStripeInvoicesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.StripeInvoices)
+	o.Payload = new(PaymentGetStripeInvoicesOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +141,7 @@ PaymentGetStripeInvoicesBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type PaymentGetStripeInvoicesBadRequest struct {
-	Payload []*models.Error
+	Payload []*PaymentGetStripeInvoicesBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this payment get stripe invoices bad request response has a 2xx status code
@@ -174,7 +177,7 @@ func (o *PaymentGetStripeInvoicesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentGetStripeInvoicesBadRequest) GetPayload() []*models.Error {
+func (o *PaymentGetStripeInvoicesBadRequest) GetPayload() []*PaymentGetStripeInvoicesBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +202,7 @@ PaymentGetStripeInvoicesUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type PaymentGetStripeInvoicesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *PaymentGetStripeInvoicesUnauthorizedBody
 }
 
 // IsSuccess returns true when this payment get stripe invoices unauthorized response has a 2xx status code
@@ -235,13 +238,13 @@ func (o *PaymentGetStripeInvoicesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentGetStripeInvoicesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetStripeInvoicesUnauthorized) GetPayload() *PaymentGetStripeInvoicesUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *PaymentGetStripeInvoicesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PaymentGetStripeInvoicesUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +265,7 @@ PaymentGetStripeInvoicesForbidden describes a response with status code 403, wit
 Forbidden
 */
 type PaymentGetStripeInvoicesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *PaymentGetStripeInvoicesForbiddenBody
 }
 
 // IsSuccess returns true when this payment get stripe invoices forbidden response has a 2xx status code
@@ -298,13 +301,13 @@ func (o *PaymentGetStripeInvoicesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentGetStripeInvoicesForbidden) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetStripeInvoicesForbidden) GetPayload() *PaymentGetStripeInvoicesForbiddenBody {
 	return o.Payload
 }
 
 func (o *PaymentGetStripeInvoicesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PaymentGetStripeInvoicesForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +328,7 @@ PaymentGetStripeInvoicesNotFound describes a response with status code 404, with
 Not Found
 */
 type PaymentGetStripeInvoicesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *PaymentGetStripeInvoicesNotFoundBody
 }
 
 // IsSuccess returns true when this payment get stripe invoices not found response has a 2xx status code
@@ -361,13 +364,13 @@ func (o *PaymentGetStripeInvoicesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentGetStripeInvoicesNotFound) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetStripeInvoicesNotFound) GetPayload() *PaymentGetStripeInvoicesNotFoundBody {
 	return o.Payload
 }
 
 func (o *PaymentGetStripeInvoicesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PaymentGetStripeInvoicesNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +428,393 @@ func (o *PaymentGetStripeInvoicesInternalServerError) String() string {
 
 func (o *PaymentGetStripeInvoicesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+PaymentGetStripeInvoicesBadRequestBodyItems0 payment get stripe invoices bad request body items0
+swagger:model PaymentGetStripeInvoicesBadRequestBodyItems0
+*/
+type PaymentGetStripeInvoicesBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this payment get stripe invoices bad request body items0
+func (o *PaymentGetStripeInvoicesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment get stripe invoices bad request body items0 based on context it is used
+func (o *PaymentGetStripeInvoicesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentGetStripeInvoicesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentGetStripeInvoicesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res PaymentGetStripeInvoicesBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PaymentGetStripeInvoicesForbiddenBody payment get stripe invoices forbidden body
+swagger:model PaymentGetStripeInvoicesForbiddenBody
+*/
+type PaymentGetStripeInvoicesForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this payment get stripe invoices forbidden body
+func (o *PaymentGetStripeInvoicesForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment get stripe invoices forbidden body based on context it is used
+func (o *PaymentGetStripeInvoicesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentGetStripeInvoicesForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentGetStripeInvoicesForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res PaymentGetStripeInvoicesForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PaymentGetStripeInvoicesNotFoundBody payment get stripe invoices not found body
+swagger:model PaymentGetStripeInvoicesNotFoundBody
+*/
+type PaymentGetStripeInvoicesNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this payment get stripe invoices not found body
+func (o *PaymentGetStripeInvoicesNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment get stripe invoices not found body based on context it is used
+func (o *PaymentGetStripeInvoicesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentGetStripeInvoicesNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentGetStripeInvoicesNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res PaymentGetStripeInvoicesNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PaymentGetStripeInvoicesOKBody payment get stripe invoices o k body
+swagger:model PaymentGetStripeInvoicesOKBody
+*/
+type PaymentGetStripeInvoicesOKBody struct {
+
+	// data
+	Data []*PaymentGetStripeInvoicesOKBodyDataItems0 `json:"data"`
+}
+
+// Validate validates this payment get stripe invoices o k body
+func (o *PaymentGetStripeInvoicesOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PaymentGetStripeInvoicesOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("paymentGetStripeInvoicesOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("paymentGetStripeInvoicesOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this payment get stripe invoices o k body based on the context it is used
+func (o *PaymentGetStripeInvoicesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PaymentGetStripeInvoicesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("paymentGetStripeInvoicesOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("paymentGetStripeInvoicesOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentGetStripeInvoicesOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentGetStripeInvoicesOKBody) UnmarshalBinary(b []byte) error {
+	var res PaymentGetStripeInvoicesOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PaymentGetStripeInvoicesOKBodyDataItems0 payment get stripe invoices o k body data items0
+swagger:model PaymentGetStripeInvoicesOKBodyDataItems0
+*/
+type PaymentGetStripeInvoicesOKBodyDataItems0 struct {
+
+	// charge reason
+	ChargeReason string `json:"chargeReason,omitempty"`
+
+	// charge status
+	ChargeStatus string `json:"chargeStatus,omitempty"`
+
+	// end date
+	// Format: date-time
+	EndDate *strfmt.DateTime `json:"endDate,omitempty"`
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// invoice status
+	InvoiceStatus string `json:"invoiceStatus,omitempty"`
+
+	// price
+	Price float64 `json:"price,omitempty"`
+
+	// start date
+	// Format: date-time
+	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
+}
+
+// Validate validates this payment get stripe invoices o k body data items0
+func (o *PaymentGetStripeInvoicesOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateEndDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateStartDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PaymentGetStripeInvoicesOKBodyDataItems0) validateEndDate(formats strfmt.Registry) error {
+	if swag.IsZero(o.EndDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("endDate", "body", "date-time", o.EndDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *PaymentGetStripeInvoicesOKBodyDataItems0) validateStartDate(formats strfmt.Registry) error {
+	if swag.IsZero(o.StartDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("startDate", "body", "date-time", o.StartDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this payment get stripe invoices o k body data items0 based on context it is used
+func (o *PaymentGetStripeInvoicesOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentGetStripeInvoicesOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentGetStripeInvoicesOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res PaymentGetStripeInvoicesOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PaymentGetStripeInvoicesUnauthorizedBody payment get stripe invoices unauthorized body
+swagger:model PaymentGetStripeInvoicesUnauthorizedBody
+*/
+type PaymentGetStripeInvoicesUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this payment get stripe invoices unauthorized body
+func (o *PaymentGetStripeInvoicesUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment get stripe invoices unauthorized body based on context it is used
+func (o *PaymentGetStripeInvoicesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentGetStripeInvoicesUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentGetStripeInvoicesUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res PaymentGetStripeInvoicesUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

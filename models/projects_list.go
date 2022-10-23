@@ -20,7 +20,7 @@ import (
 type ProjectsList struct {
 
 	// data
-	Data []*ProjectListDetailDto `json:"data"`
+	Data []*ProjectsListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,246 @@ func (m *ProjectsList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ProjectsList) UnmarshalBinary(b []byte) error {
 	var res ProjectsList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectsListDataItems0 projects list data items0
+//
+// swagger:model ProjectsListDataItems0
+type ProjectsListDataItems0 struct {
+
+	// alerts count
+	AlertsCount int32 `json:"alertsCount,omitempty"`
+
+	// allow full spot kubernetes
+	AllowFullSpotKubernetes bool `json:"allowFullSpotKubernetes"`
+
+	// allow spot v ms
+	AllowSpotVMs bool `json:"allowSpotVMs"`
+
+	// allow spot workers
+	AllowSpotWorkers bool `json:"allowSpotWorkers"`
+
+	// bound users
+	BoundUsers []*ProjectsListDataItems0BoundUsersItems0 `json:"boundUsers"`
+
+	// certification expired at
+	CertificationExpiredAt string `json:"certificationExpiredAt,omitempty"`
+
+	// cloud credential name
+	CloudCredentialName string `json:"cloudCredentialName,omitempty"`
+
+	// cloud type
+	CloudType string `json:"cloudType,omitempty"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// created by
+	CreatedBy string `json:"createdBy,omitempty"`
+
+	// delete on expiration
+	DeleteOnExpiration bool `json:"deleteOnExpiration"`
+
+	// expired at
+	ExpiredAt string `json:"expiredAt,omitempty"`
+
+	// has expiration warning
+	HasExpirationWarning bool `json:"hasExpirationWarning"`
+
+	// has kube config file
+	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
+
+	// health
+	Health string `json:"health,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is kubernetes
+	IsKubernetes bool `json:"isKubernetes"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// kubernetes current version
+	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion,omitempty"`
+
+	// kubernetes target version
+	KubernetesTargetVersion string `json:"kubernetesTargetVersion,omitempty"`
+
+	// kubespray current version
+	KubesprayCurrentVersion string `json:"kubesprayCurrentVersion,omitempty"`
+
+	// kubespray target version
+	KubesprayTargetVersion string `json:"kubesprayTargetVersion,omitempty"`
+
+	// last modified
+	LastModified string `json:"lastModified,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// max spot price
+	MaxSpotPrice float64 `json:"maxSpotPrice,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// project action
+	ProjectAction bool `json:"projectAction"`
+
+	// quota Id
+	QuotaID int32 `json:"quotaId,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// total hourly cost
+	TotalHourlyCost float64 `json:"totalHourlyCost,omitempty"`
+
+	// total servers count
+	TotalServersCount int32 `json:"totalServersCount,omitempty"`
+
+	// total standalone vms count
+	TotalStandaloneVmsCount int32 `json:"totalStandaloneVmsCount,omitempty"`
+}
+
+// Validate validates this projects list data items0
+func (m *ProjectsListDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateBoundUsers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ProjectsListDataItems0) validateBoundUsers(formats strfmt.Registry) error {
+	if swag.IsZero(m.BoundUsers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.BoundUsers); i++ {
+		if swag.IsZero(m.BoundUsers[i]) { // not required
+			continue
+		}
+
+		if m.BoundUsers[i] != nil {
+			if err := m.BoundUsers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("boundUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundUsers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this projects list data items0 based on the context it is used
+func (m *ProjectsListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateBoundUsers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ProjectsListDataItems0) contextValidateBoundUsers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.BoundUsers); i++ {
+
+		if m.BoundUsers[i] != nil {
+			if err := m.BoundUsers[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("boundUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundUsers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectsListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectsListDataItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsListDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectsListDataItems0BoundUsersItems0 projects list data items0 bound users items0
+//
+// swagger:model ProjectsListDataItems0BoundUsersItems0
+type ProjectsListDataItems0BoundUsersItems0 struct {
+
+	// user Id
+	UserID string `json:"userId,omitempty"`
+
+	// user name
+	UserName string `json:"userName,omitempty"`
+}
+
+// Validate validates this projects list data items0 bound users items0
+func (m *ProjectsListDataItems0BoundUsersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list data items0 bound users items0 based on context it is used
+func (m *ProjectsListDataItems0BoundUsersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectsListDataItems0BoundUsersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectsListDataItems0BoundUsersItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsListDataItems0BoundUsersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOpaProfilesUpdateParams creates a new OpaProfilesUpdateParams object,
@@ -64,7 +62,7 @@ OpaProfilesUpdateParams contains all the parameters to send to the API endpoint
 type OpaProfilesUpdateParams struct {
 
 	// Body.
-	Body *models.OpaProfileUpdateCommand
+	Body OpaProfilesUpdateBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *OpaProfilesUpdateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the opa profiles update params
-func (o *OpaProfilesUpdateParams) WithBody(body *models.OpaProfileUpdateCommand) *OpaProfilesUpdateParams {
+func (o *OpaProfilesUpdateParams) WithBody(body OpaProfilesUpdateBody) *OpaProfilesUpdateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the opa profiles update params
-func (o *OpaProfilesUpdateParams) SetBody(body *models.OpaProfileUpdateCommand) {
+func (o *OpaProfilesUpdateParams) SetBody(body OpaProfilesUpdateBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *OpaProfilesUpdateParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

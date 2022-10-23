@@ -26,7 +26,7 @@ type BindUserGroupsToProjectGroupCommand struct {
 	ProjectGroupName string `json:"projectGroupName,omitempty"`
 
 	// user groups
-	UserGroups []*UpdateProjectUserGroupDto `json:"userGroups"`
+	UserGroups []*BindUserGroupsToProjectGroupCommandUserGroupsItems0 `json:"userGroups"`
 }
 
 // Validate validates this bind user groups to project group command
@@ -114,6 +114,46 @@ func (m *BindUserGroupsToProjectGroupCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BindUserGroupsToProjectGroupCommand) UnmarshalBinary(b []byte) error {
 	var res BindUserGroupsToProjectGroupCommand
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// BindUserGroupsToProjectGroupCommandUserGroupsItems0 bind user groups to project group command user groups items0
+//
+// swagger:model BindUserGroupsToProjectGroupCommandUserGroupsItems0
+type BindUserGroupsToProjectGroupCommandUserGroupsItems0 struct {
+
+	// is bound
+	IsBound bool `json:"isBound"`
+
+	// user group Id
+	UserGroupID int32 `json:"userGroupId,omitempty"`
+}
+
+// Validate validates this bind user groups to project group command user groups items0
+func (m *BindUserGroupsToProjectGroupCommandUserGroupsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this bind user groups to project group command user groups items0 based on context it is used
+func (m *BindUserGroupsToProjectGroupCommandUserGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *BindUserGroupsToProjectGroupCommandUserGroupsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *BindUserGroupsToProjectGroupCommandUserGroupsItems0) UnmarshalBinary(b []byte) error {
+	var res BindUserGroupsToProjectGroupCommandUserGroupsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

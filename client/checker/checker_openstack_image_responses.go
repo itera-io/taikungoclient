@@ -6,13 +6,13 @@ package checker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CheckerOpenstackImageReader is a Reader for the CheckerOpenstackImage structure.
@@ -75,7 +75,7 @@ CheckerOpenstackImageOK describes a response with status code 200, with default 
 Success
 */
 type CheckerOpenstackImageOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker openstack image o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CheckerOpenstackImageOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageOK  %+v", 200, o.Payload)
 }
 
-func (o *CheckerOpenstackImageOK) GetPayload() models.Unit {
+func (o *CheckerOpenstackImageOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CheckerOpenstackImageBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type CheckerOpenstackImageBadRequest struct {
-	Payload []*models.Error
+	Payload []*CheckerOpenstackImageBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this checker openstack image bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerOpenstackImageBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerOpenstackImageBadRequest) GetPayload() []*models.Error {
+func (o *CheckerOpenstackImageBadRequest) GetPayload() []*CheckerOpenstackImageBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CheckerOpenstackImageUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type CheckerOpenstackImageUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerOpenstackImageUnauthorizedBody
 }
 
 // IsSuccess returns true when this checker openstack image unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CheckerOpenstackImageUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerOpenstackImageUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerOpenstackImageUnauthorized) GetPayload() *CheckerOpenstackImageUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CheckerOpenstackImageUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerOpenstackImageUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CheckerOpenstackImageForbidden describes a response with status code 403, with d
 Forbidden
 */
 type CheckerOpenstackImageForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerOpenstackImageForbiddenBody
 }
 
 // IsSuccess returns true when this checker openstack image forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CheckerOpenstackImageForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerOpenstackImageForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerOpenstackImageForbidden) GetPayload() *CheckerOpenstackImageForbiddenBody {
 	return o.Payload
 }
 
 func (o *CheckerOpenstackImageForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerOpenstackImageForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CheckerOpenstackImageNotFound describes a response with status code 404, with de
 Not Found
 */
 type CheckerOpenstackImageNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerOpenstackImageNotFoundBody
 }
 
 // IsSuccess returns true when this checker openstack image not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CheckerOpenstackImageNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerOpenstackImageNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerOpenstackImageNotFound) GetPayload() *CheckerOpenstackImageNotFoundBody {
 	return o.Payload
 }
 
 func (o *CheckerOpenstackImageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerOpenstackImageNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *CheckerOpenstackImageInternalServerError) String() string {
 
 func (o *CheckerOpenstackImageInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CheckerOpenstackImageBadRequestBodyItems0 checker openstack image bad request body items0
+swagger:model CheckerOpenstackImageBadRequestBodyItems0
+*/
+type CheckerOpenstackImageBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this checker openstack image bad request body items0
+func (o *CheckerOpenstackImageBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker openstack image bad request body items0 based on context it is used
+func (o *CheckerOpenstackImageBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerOpenstackImageBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerOpenstackImageBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CheckerOpenstackImageBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerOpenstackImageForbiddenBody checker openstack image forbidden body
+swagger:model CheckerOpenstackImageForbiddenBody
+*/
+type CheckerOpenstackImageForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker openstack image forbidden body
+func (o *CheckerOpenstackImageForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker openstack image forbidden body based on context it is used
+func (o *CheckerOpenstackImageForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerOpenstackImageForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerOpenstackImageForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CheckerOpenstackImageForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerOpenstackImageNotFoundBody checker openstack image not found body
+swagger:model CheckerOpenstackImageNotFoundBody
+*/
+type CheckerOpenstackImageNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker openstack image not found body
+func (o *CheckerOpenstackImageNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker openstack image not found body based on context it is used
+func (o *CheckerOpenstackImageNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerOpenstackImageNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerOpenstackImageNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CheckerOpenstackImageNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerOpenstackImageUnauthorizedBody checker openstack image unauthorized body
+swagger:model CheckerOpenstackImageUnauthorizedBody
+*/
+type CheckerOpenstackImageUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker openstack image unauthorized body
+func (o *CheckerOpenstackImageUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker openstack image unauthorized body based on context it is used
+func (o *CheckerOpenstackImageUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerOpenstackImageUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerOpenstackImageUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CheckerOpenstackImageUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

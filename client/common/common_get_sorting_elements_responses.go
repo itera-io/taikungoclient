@@ -6,13 +6,13 @@ package common
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CommonGetSortingElementsReader is a Reader for the CommonGetSortingElements structure.
@@ -136,7 +136,7 @@ CommonGetSortingElementsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type CommonGetSortingElementsBadRequest struct {
-	Payload []*models.Error
+	Payload []*CommonGetSortingElementsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this common get sorting elements bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CommonGetSortingElementsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CommonGetSortingElementsBadRequest) GetPayload() []*models.Error {
+func (o *CommonGetSortingElementsBadRequest) GetPayload() []*CommonGetSortingElementsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CommonGetSortingElementsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type CommonGetSortingElementsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CommonGetSortingElementsUnauthorizedBody
 }
 
 // IsSuccess returns true when this common get sorting elements unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CommonGetSortingElementsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CommonGetSortingElementsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CommonGetSortingElementsUnauthorized) GetPayload() *CommonGetSortingElementsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CommonGetSortingElementsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CommonGetSortingElementsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CommonGetSortingElementsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type CommonGetSortingElementsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CommonGetSortingElementsForbiddenBody
 }
 
 // IsSuccess returns true when this common get sorting elements forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CommonGetSortingElementsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CommonGetSortingElementsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CommonGetSortingElementsForbidden) GetPayload() *CommonGetSortingElementsForbiddenBody {
 	return o.Payload
 }
 
 func (o *CommonGetSortingElementsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CommonGetSortingElementsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CommonGetSortingElementsNotFound describes a response with status code 404, with
 Not Found
 */
 type CommonGetSortingElementsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CommonGetSortingElementsNotFoundBody
 }
 
 // IsSuccess returns true when this common get sorting elements not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CommonGetSortingElementsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CommonGetSortingElementsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CommonGetSortingElementsNotFound) GetPayload() *CommonGetSortingElementsNotFoundBody {
 	return o.Payload
 }
 
 func (o *CommonGetSortingElementsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CommonGetSortingElementsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *CommonGetSortingElementsInternalServerError) String() string {
 
 func (o *CommonGetSortingElementsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CommonGetSortingElementsBadRequestBodyItems0 common get sorting elements bad request body items0
+swagger:model CommonGetSortingElementsBadRequestBodyItems0
+*/
+type CommonGetSortingElementsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this common get sorting elements bad request body items0
+func (o *CommonGetSortingElementsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get sorting elements bad request body items0 based on context it is used
+func (o *CommonGetSortingElementsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetSortingElementsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetSortingElementsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetSortingElementsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetSortingElementsForbiddenBody common get sorting elements forbidden body
+swagger:model CommonGetSortingElementsForbiddenBody
+*/
+type CommonGetSortingElementsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this common get sorting elements forbidden body
+func (o *CommonGetSortingElementsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get sorting elements forbidden body based on context it is used
+func (o *CommonGetSortingElementsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetSortingElementsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetSortingElementsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CommonGetSortingElementsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetSortingElementsNotFoundBody common get sorting elements not found body
+swagger:model CommonGetSortingElementsNotFoundBody
+*/
+type CommonGetSortingElementsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this common get sorting elements not found body
+func (o *CommonGetSortingElementsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get sorting elements not found body based on context it is used
+func (o *CommonGetSortingElementsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetSortingElementsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetSortingElementsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CommonGetSortingElementsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetSortingElementsUnauthorizedBody common get sorting elements unauthorized body
+swagger:model CommonGetSortingElementsUnauthorizedBody
+*/
+type CommonGetSortingElementsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this common get sorting elements unauthorized body
+func (o *CommonGetSortingElementsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get sorting elements unauthorized body based on context it is used
+func (o *CommonGetSortingElementsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetSortingElementsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetSortingElementsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CommonGetSortingElementsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -6,13 +6,15 @@ package search
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SearchDeploymentListReader is a Reader for the SearchDeploymentList structure.
@@ -75,7 +77,7 @@ SearchDeploymentListOK describes a response with status code 200, with default h
 Success
 */
 type SearchDeploymentListOK struct {
-	Payload *models.DeploymentSearchList
+	Payload *SearchDeploymentListOKBody
 }
 
 // IsSuccess returns true when this search deployment list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *SearchDeploymentListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/deployments][%d] searchDeploymentListOK  %+v", 200, o.Payload)
 }
 
-func (o *SearchDeploymentListOK) GetPayload() *models.DeploymentSearchList {
+func (o *SearchDeploymentListOK) GetPayload() *SearchDeploymentListOKBody {
 	return o.Payload
 }
 
 func (o *SearchDeploymentListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.DeploymentSearchList)
+	o.Payload = new(SearchDeploymentListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ SearchDeploymentListBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type SearchDeploymentListBadRequest struct {
-	Payload []*models.Error
+	Payload []*SearchDeploymentListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this search deployment list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *SearchDeploymentListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/deployments][%d] searchDeploymentListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchDeploymentListBadRequest) GetPayload() []*models.Error {
+func (o *SearchDeploymentListBadRequest) GetPayload() []*SearchDeploymentListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ SearchDeploymentListUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type SearchDeploymentListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SearchDeploymentListUnauthorizedBody
 }
 
 // IsSuccess returns true when this search deployment list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *SearchDeploymentListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/deployments][%d] searchDeploymentListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchDeploymentListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchDeploymentListUnauthorized) GetPayload() *SearchDeploymentListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SearchDeploymentListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchDeploymentListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ SearchDeploymentListForbidden describes a response with status code 403, with de
 Forbidden
 */
 type SearchDeploymentListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SearchDeploymentListForbiddenBody
 }
 
 // IsSuccess returns true when this search deployment list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *SearchDeploymentListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/deployments][%d] searchDeploymentListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchDeploymentListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchDeploymentListForbidden) GetPayload() *SearchDeploymentListForbiddenBody {
 	return o.Payload
 }
 
 func (o *SearchDeploymentListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchDeploymentListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ SearchDeploymentListNotFound describes a response with status code 404, with def
 Not Found
 */
 type SearchDeploymentListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SearchDeploymentListNotFoundBody
 }
 
 // IsSuccess returns true when this search deployment list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *SearchDeploymentListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/deployments][%d] searchDeploymentListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchDeploymentListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchDeploymentListNotFound) GetPayload() *SearchDeploymentListNotFoundBody {
 	return o.Payload
 }
 
 func (o *SearchDeploymentListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchDeploymentListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,398 @@ func (o *SearchDeploymentListInternalServerError) String() string {
 
 func (o *SearchDeploymentListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SearchDeploymentListBadRequestBodyItems0 search deployment list bad request body items0
+swagger:model SearchDeploymentListBadRequestBodyItems0
+*/
+type SearchDeploymentListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this search deployment list bad request body items0
+func (o *SearchDeploymentListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search deployment list bad request body items0 based on context it is used
+func (o *SearchDeploymentListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchDeploymentListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchDeploymentListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SearchDeploymentListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchDeploymentListBody search deployment list body
+swagger:model SearchDeploymentListBody
+*/
+type SearchDeploymentListBody struct {
+
+	// limit
+	Limit int32 `json:"limit,omitempty"`
+
+	// offset
+	Offset int32 `json:"offset,omitempty"`
+
+	// search term
+	SearchTerm string `json:"searchTerm,omitempty"`
+}
+
+// Validate validates this search deployment list body
+func (o *SearchDeploymentListBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search deployment list body based on context it is used
+func (o *SearchDeploymentListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchDeploymentListBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchDeploymentListBody) UnmarshalBinary(b []byte) error {
+	var res SearchDeploymentListBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchDeploymentListForbiddenBody search deployment list forbidden body
+swagger:model SearchDeploymentListForbiddenBody
+*/
+type SearchDeploymentListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search deployment list forbidden body
+func (o *SearchDeploymentListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search deployment list forbidden body based on context it is used
+func (o *SearchDeploymentListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchDeploymentListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchDeploymentListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SearchDeploymentListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchDeploymentListNotFoundBody search deployment list not found body
+swagger:model SearchDeploymentListNotFoundBody
+*/
+type SearchDeploymentListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search deployment list not found body
+func (o *SearchDeploymentListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search deployment list not found body based on context it is used
+func (o *SearchDeploymentListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchDeploymentListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchDeploymentListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SearchDeploymentListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchDeploymentListOKBody search deployment list o k body
+swagger:model SearchDeploymentListOKBody
+*/
+type SearchDeploymentListOKBody struct {
+
+	// data
+	Data []*SearchDeploymentListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this search deployment list o k body
+func (o *SearchDeploymentListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchDeploymentListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchDeploymentListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchDeploymentListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this search deployment list o k body based on the context it is used
+func (o *SearchDeploymentListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchDeploymentListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchDeploymentListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchDeploymentListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchDeploymentListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchDeploymentListOKBody) UnmarshalBinary(b []byte) error {
+	var res SearchDeploymentListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchDeploymentListOKBodyDataItems0 search deployment list o k body data items0
+swagger:model SearchDeploymentListOKBodyDataItems0
+*/
+type SearchDeploymentListOKBodyDataItems0 struct {
+
+	// metadata name
+	MetadataName string `json:"metadataName,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this search deployment list o k body data items0
+func (o *SearchDeploymentListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search deployment list o k body data items0 based on context it is used
+func (o *SearchDeploymentListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchDeploymentListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchDeploymentListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res SearchDeploymentListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchDeploymentListUnauthorizedBody search deployment list unauthorized body
+swagger:model SearchDeploymentListUnauthorizedBody
+*/
+type SearchDeploymentListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search deployment list unauthorized body
+func (o *SearchDeploymentListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search deployment list unauthorized body based on context it is used
+func (o *SearchDeploymentListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchDeploymentListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchDeploymentListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SearchDeploymentListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

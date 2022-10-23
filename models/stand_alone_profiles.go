@@ -20,7 +20,7 @@ import (
 type StandAloneProfiles struct {
 
 	// data
-	Data []*StandAloneProfilesListDto `json:"data"`
+	Data []*StandAloneProfilesDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,174 @@ func (m *StandAloneProfiles) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *StandAloneProfiles) UnmarshalBinary(b []byte) error {
 	var res StandAloneProfiles
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// StandAloneProfilesDataItems0 stand alone profiles data items0
+//
+// swagger:model StandAloneProfilesDataItems0
+type StandAloneProfilesDataItems0 struct {
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// partner logo
+	PartnerLogo string `json:"partnerLogo,omitempty"`
+
+	// public key
+	PublicKey string `json:"publicKey,omitempty"`
+
+	// standalone vms
+	StandaloneVms []*StandAloneProfilesDataItems0StandaloneVmsItems0 `json:"standaloneVms"`
+}
+
+// Validate validates this stand alone profiles data items0
+func (m *StandAloneProfilesDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateStandaloneVms(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StandAloneProfilesDataItems0) validateStandaloneVms(formats strfmt.Registry) error {
+	if swag.IsZero(m.StandaloneVms) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.StandaloneVms); i++ {
+		if swag.IsZero(m.StandaloneVms[i]) { // not required
+			continue
+		}
+
+		if m.StandaloneVms[i] != nil {
+			if err := m.StandaloneVms[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this stand alone profiles data items0 based on the context it is used
+func (m *StandAloneProfilesDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateStandaloneVms(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StandAloneProfilesDataItems0) contextValidateStandaloneVms(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.StandaloneVms); i++ {
+
+		if m.StandaloneVms[i] != nil {
+			if err := m.StandaloneVms[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *StandAloneProfilesDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *StandAloneProfilesDataItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfilesDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// StandAloneProfilesDataItems0StandaloneVmsItems0 stand alone profiles data items0 standalone vms items0
+//
+// swagger:model StandAloneProfilesDataItems0StandaloneVmsItems0
+type StandAloneProfilesDataItems0StandaloneVmsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this stand alone profiles data items0 standalone vms items0
+func (m *StandAloneProfilesDataItems0StandaloneVmsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profiles data items0 standalone vms items0 based on context it is used
+func (m *StandAloneProfilesDataItems0StandaloneVmsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *StandAloneProfilesDataItems0StandaloneVmsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *StandAloneProfilesDataItems0StandaloneVmsItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfilesDataItems0StandaloneVmsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

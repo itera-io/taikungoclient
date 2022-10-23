@@ -6,13 +6,13 @@ package catalog
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CatalogCatalogAppValueAutocompleteReader is a Reader for the CatalogCatalogAppValueAutocomplete structure.
@@ -75,7 +75,7 @@ CatalogCatalogAppValueAutocompleteOK describes a response with status code 200, 
 Success
 */
 type CatalogCatalogAppValueAutocompleteOK struct {
-	Payload []*models.PackageAutocompleteDto
+	Payload []*CatalogCatalogAppValueAutocompleteOKBodyItems0
 }
 
 // IsSuccess returns true when this catalog catalog app value autocomplete o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CatalogCatalogAppValueAutocompleteOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteOK  %+v", 200, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueAutocompleteOK) GetPayload() []*models.PackageAutocompleteDto {
+func (o *CatalogCatalogAppValueAutocompleteOK) GetPayload() []*CatalogCatalogAppValueAutocompleteOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CatalogCatalogAppValueAutocompleteBadRequest describes a response with status co
 Bad Request
 */
 type CatalogCatalogAppValueAutocompleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*CatalogCatalogAppValueAutocompleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this catalog catalog app value autocomplete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CatalogCatalogAppValueAutocompleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueAutocompleteBadRequest) GetPayload() []*models.Error {
+func (o *CatalogCatalogAppValueAutocompleteBadRequest) GetPayload() []*CatalogCatalogAppValueAutocompleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CatalogCatalogAppValueAutocompleteUnauthorized describes a response with status 
 Unauthorized
 */
 type CatalogCatalogAppValueAutocompleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogCatalogAppValueAutocompleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this catalog catalog app value autocomplete unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CatalogCatalogAppValueAutocompleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueAutocompleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppValueAutocompleteUnauthorized) GetPayload() *CatalogCatalogAppValueAutocompleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppValueAutocompleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogCatalogAppValueAutocompleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CatalogCatalogAppValueAutocompleteForbidden describes a response with status cod
 Forbidden
 */
 type CatalogCatalogAppValueAutocompleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogCatalogAppValueAutocompleteForbiddenBody
 }
 
 // IsSuccess returns true when this catalog catalog app value autocomplete forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CatalogCatalogAppValueAutocompleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueAutocompleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppValueAutocompleteForbidden) GetPayload() *CatalogCatalogAppValueAutocompleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppValueAutocompleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogCatalogAppValueAutocompleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CatalogCatalogAppValueAutocompleteNotFound describes a response with status code
 Not Found
 */
 type CatalogCatalogAppValueAutocompleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogCatalogAppValueAutocompleteNotFoundBody
 }
 
 // IsSuccess returns true when this catalog catalog app value autocomplete not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CatalogCatalogAppValueAutocompleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueAutocompleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppValueAutocompleteNotFound) GetPayload() *CatalogCatalogAppValueAutocompleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppValueAutocompleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogCatalogAppValueAutocompleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,281 @@ func (o *CatalogCatalogAppValueAutocompleteInternalServerError) String() string 
 
 func (o *CatalogCatalogAppValueAutocompleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CatalogCatalogAppValueAutocompleteBadRequestBodyItems0 catalog catalog app value autocomplete bad request body items0
+swagger:model CatalogCatalogAppValueAutocompleteBadRequestBodyItems0
+*/
+type CatalogCatalogAppValueAutocompleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this catalog catalog app value autocomplete bad request body items0
+func (o *CatalogCatalogAppValueAutocompleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog catalog app value autocomplete bad request body items0 based on context it is used
+func (o *CatalogCatalogAppValueAutocompleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogCatalogAppValueAutocompleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogCatalogAppValueAutocompleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CatalogCatalogAppValueAutocompleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogCatalogAppValueAutocompleteBody catalog catalog app value autocomplete body
+swagger:model CatalogCatalogAppValueAutocompleteBody
+*/
+type CatalogCatalogAppValueAutocompleteBody struct {
+
+	// catalog app Id
+	CatalogAppID int32 `json:"catalogAppId,omitempty"`
+
+	// package Id
+	PackageID string `json:"packageId,omitempty"`
+
+	// version
+	Version string `json:"version,omitempty"`
+}
+
+// Validate validates this catalog catalog app value autocomplete body
+func (o *CatalogCatalogAppValueAutocompleteBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog catalog app value autocomplete body based on context it is used
+func (o *CatalogCatalogAppValueAutocompleteBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogCatalogAppValueAutocompleteBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogCatalogAppValueAutocompleteBody) UnmarshalBinary(b []byte) error {
+	var res CatalogCatalogAppValueAutocompleteBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogCatalogAppValueAutocompleteForbiddenBody catalog catalog app value autocomplete forbidden body
+swagger:model CatalogCatalogAppValueAutocompleteForbiddenBody
+*/
+type CatalogCatalogAppValueAutocompleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog catalog app value autocomplete forbidden body
+func (o *CatalogCatalogAppValueAutocompleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog catalog app value autocomplete forbidden body based on context it is used
+func (o *CatalogCatalogAppValueAutocompleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogCatalogAppValueAutocompleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogCatalogAppValueAutocompleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CatalogCatalogAppValueAutocompleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogCatalogAppValueAutocompleteNotFoundBody catalog catalog app value autocomplete not found body
+swagger:model CatalogCatalogAppValueAutocompleteNotFoundBody
+*/
+type CatalogCatalogAppValueAutocompleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog catalog app value autocomplete not found body
+func (o *CatalogCatalogAppValueAutocompleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog catalog app value autocomplete not found body based on context it is used
+func (o *CatalogCatalogAppValueAutocompleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogCatalogAppValueAutocompleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogCatalogAppValueAutocompleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CatalogCatalogAppValueAutocompleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogCatalogAppValueAutocompleteOKBodyItems0 catalog catalog app value autocomplete o k body items0
+swagger:model CatalogCatalogAppValueAutocompleteOKBodyItems0
+*/
+type CatalogCatalogAppValueAutocompleteOKBodyItems0 struct {
+
+	// key
+	Key string `json:"key,omitempty"`
+
+	// value
+	Value interface{} `json:"value,omitempty"`
+}
+
+// Validate validates this catalog catalog app value autocomplete o k body items0
+func (o *CatalogCatalogAppValueAutocompleteOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog catalog app value autocomplete o k body items0 based on context it is used
+func (o *CatalogCatalogAppValueAutocompleteOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogCatalogAppValueAutocompleteOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogCatalogAppValueAutocompleteOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CatalogCatalogAppValueAutocompleteOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogCatalogAppValueAutocompleteUnauthorizedBody catalog catalog app value autocomplete unauthorized body
+swagger:model CatalogCatalogAppValueAutocompleteUnauthorizedBody
+*/
+type CatalogCatalogAppValueAutocompleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog catalog app value autocomplete unauthorized body
+func (o *CatalogCatalogAppValueAutocompleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog catalog app value autocomplete unauthorized body based on context it is used
+func (o *CatalogCatalogAppValueAutocompleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogCatalogAppValueAutocompleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogCatalogAppValueAutocompleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CatalogCatalogAppValueAutocompleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

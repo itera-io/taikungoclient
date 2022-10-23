@@ -6,13 +6,15 @@ package partner
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // PartnerAddWhiteListDomainReader is a Reader for the PartnerAddWhiteListDomain structure.
@@ -75,7 +77,7 @@ PartnerAddWhiteListDomainOK describes a response with status code 200, with defa
 Success
 */
 type PartnerAddWhiteListDomainOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner add white list domain o k response has a 2xx status code
@@ -111,7 +113,7 @@ func (o *PartnerAddWhiteListDomainOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainOK  %+v", 200, o.Payload)
 }
 
-func (o *PartnerAddWhiteListDomainOK) GetPayload() models.Unit {
+func (o *PartnerAddWhiteListDomainOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +138,7 @@ PartnerAddWhiteListDomainBadRequest describes a response with status code 400, w
 Bad Request
 */
 type PartnerAddWhiteListDomainBadRequest struct {
-	Payload []*models.Error
+	Payload []*PartnerAddWhiteListDomainBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this partner add white list domain bad request response has a 2xx status code
@@ -172,7 +174,7 @@ func (o *PartnerAddWhiteListDomainBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerAddWhiteListDomainBadRequest) GetPayload() []*models.Error {
+func (o *PartnerAddWhiteListDomainBadRequest) GetPayload() []*PartnerAddWhiteListDomainBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +199,7 @@ PartnerAddWhiteListDomainUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type PartnerAddWhiteListDomainUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *PartnerAddWhiteListDomainUnauthorizedBody
 }
 
 // IsSuccess returns true when this partner add white list domain unauthorized response has a 2xx status code
@@ -233,13 +235,13 @@ func (o *PartnerAddWhiteListDomainUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerAddWhiteListDomainUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PartnerAddWhiteListDomainUnauthorized) GetPayload() *PartnerAddWhiteListDomainUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *PartnerAddWhiteListDomainUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PartnerAddWhiteListDomainUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +262,7 @@ PartnerAddWhiteListDomainForbidden describes a response with status code 403, wi
 Forbidden
 */
 type PartnerAddWhiteListDomainForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *PartnerAddWhiteListDomainForbiddenBody
 }
 
 // IsSuccess returns true when this partner add white list domain forbidden response has a 2xx status code
@@ -296,13 +298,13 @@ func (o *PartnerAddWhiteListDomainForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerAddWhiteListDomainForbidden) GetPayload() *models.ProblemDetails {
+func (o *PartnerAddWhiteListDomainForbidden) GetPayload() *PartnerAddWhiteListDomainForbiddenBody {
 	return o.Payload
 }
 
 func (o *PartnerAddWhiteListDomainForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PartnerAddWhiteListDomainForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +325,7 @@ PartnerAddWhiteListDomainNotFound describes a response with status code 404, wit
 Not Found
 */
 type PartnerAddWhiteListDomainNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *PartnerAddWhiteListDomainNotFoundBody
 }
 
 // IsSuccess returns true when this partner add white list domain not found response has a 2xx status code
@@ -359,13 +361,13 @@ func (o *PartnerAddWhiteListDomainNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerAddWhiteListDomainNotFound) GetPayload() *models.ProblemDetails {
+func (o *PartnerAddWhiteListDomainNotFound) GetPayload() *PartnerAddWhiteListDomainNotFoundBody {
 	return o.Payload
 }
 
 func (o *PartnerAddWhiteListDomainNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PartnerAddWhiteListDomainNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +425,339 @@ func (o *PartnerAddWhiteListDomainInternalServerError) String() string {
 
 func (o *PartnerAddWhiteListDomainInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+PartnerAddWhiteListDomainBadRequestBodyItems0 partner add white list domain bad request body items0
+swagger:model PartnerAddWhiteListDomainBadRequestBodyItems0
+*/
+type PartnerAddWhiteListDomainBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this partner add white list domain bad request body items0
+func (o *PartnerAddWhiteListDomainBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this partner add white list domain bad request body items0 based on context it is used
+func (o *PartnerAddWhiteListDomainBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PartnerAddWhiteListDomainBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PartnerAddWhiteListDomainBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res PartnerAddWhiteListDomainBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PartnerAddWhiteListDomainBody partner add white list domain body
+swagger:model PartnerAddWhiteListDomainBody
+*/
+type PartnerAddWhiteListDomainBody struct {
+
+	// partner Id
+	PartnerID int32 `json:"partnerId,omitempty"`
+
+	// white list domains
+	WhiteListDomains []*PartnerAddWhiteListDomainParamsBodyWhiteListDomainsItems0 `json:"whiteListDomains"`
+}
+
+// Validate validates this partner add white list domain body
+func (o *PartnerAddWhiteListDomainBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateWhiteListDomains(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PartnerAddWhiteListDomainBody) validateWhiteListDomains(formats strfmt.Registry) error {
+	if swag.IsZero(o.WhiteListDomains) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.WhiteListDomains); i++ {
+		if swag.IsZero(o.WhiteListDomains[i]) { // not required
+			continue
+		}
+
+		if o.WhiteListDomains[i] != nil {
+			if err := o.WhiteListDomains[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("body" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("body" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this partner add white list domain body based on the context it is used
+func (o *PartnerAddWhiteListDomainBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateWhiteListDomains(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PartnerAddWhiteListDomainBody) contextValidateWhiteListDomains(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.WhiteListDomains); i++ {
+
+		if o.WhiteListDomains[i] != nil {
+			if err := o.WhiteListDomains[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("body" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("body" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PartnerAddWhiteListDomainBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PartnerAddWhiteListDomainBody) UnmarshalBinary(b []byte) error {
+	var res PartnerAddWhiteListDomainBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PartnerAddWhiteListDomainForbiddenBody partner add white list domain forbidden body
+swagger:model PartnerAddWhiteListDomainForbiddenBody
+*/
+type PartnerAddWhiteListDomainForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this partner add white list domain forbidden body
+func (o *PartnerAddWhiteListDomainForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this partner add white list domain forbidden body based on context it is used
+func (o *PartnerAddWhiteListDomainForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PartnerAddWhiteListDomainForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PartnerAddWhiteListDomainForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res PartnerAddWhiteListDomainForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PartnerAddWhiteListDomainNotFoundBody partner add white list domain not found body
+swagger:model PartnerAddWhiteListDomainNotFoundBody
+*/
+type PartnerAddWhiteListDomainNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this partner add white list domain not found body
+func (o *PartnerAddWhiteListDomainNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this partner add white list domain not found body based on context it is used
+func (o *PartnerAddWhiteListDomainNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PartnerAddWhiteListDomainNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PartnerAddWhiteListDomainNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res PartnerAddWhiteListDomainNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PartnerAddWhiteListDomainParamsBodyWhiteListDomainsItems0 partner add white list domain params body white list domains items0
+swagger:model PartnerAddWhiteListDomainParamsBodyWhiteListDomainsItems0
+*/
+type PartnerAddWhiteListDomainParamsBodyWhiteListDomainsItems0 struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this partner add white list domain params body white list domains items0
+func (o *PartnerAddWhiteListDomainParamsBodyWhiteListDomainsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this partner add white list domain params body white list domains items0 based on context it is used
+func (o *PartnerAddWhiteListDomainParamsBodyWhiteListDomainsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PartnerAddWhiteListDomainParamsBodyWhiteListDomainsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PartnerAddWhiteListDomainParamsBodyWhiteListDomainsItems0) UnmarshalBinary(b []byte) error {
+	var res PartnerAddWhiteListDomainParamsBodyWhiteListDomainsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PartnerAddWhiteListDomainUnauthorizedBody partner add white list domain unauthorized body
+swagger:model PartnerAddWhiteListDomainUnauthorizedBody
+*/
+type PartnerAddWhiteListDomainUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this partner add white list domain unauthorized body
+func (o *PartnerAddWhiteListDomainUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this partner add white list domain unauthorized body based on context it is used
+func (o *PartnerAddWhiteListDomainUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PartnerAddWhiteListDomainUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PartnerAddWhiteListDomainUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res PartnerAddWhiteListDomainUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

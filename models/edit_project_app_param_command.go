@@ -20,7 +20,7 @@ import (
 type EditProjectAppParamCommand struct {
 
 	// parameters
-	Parameters []*ProjectAppParamsDto `json:"parameters"`
+	Parameters []*EditProjectAppParamCommandParametersItems0 `json:"parameters"`
 
 	// project app Id
 	ProjectAppID int32 `json:"projectAppId,omitempty"`
@@ -111,6 +111,52 @@ func (m *EditProjectAppParamCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *EditProjectAppParamCommand) UnmarshalBinary(b []byte) error {
 	var res EditProjectAppParamCommand
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EditProjectAppParamCommandParametersItems0 edit project app param command parameters items0
+//
+// swagger:model EditProjectAppParamCommandParametersItems0
+type EditProjectAppParamCommandParametersItems0 struct {
+
+	// is changeable
+	IsChangeable bool `json:"isChangeable"`
+
+	// is readonly
+	IsReadonly bool `json:"isReadonly"`
+
+	// key
+	Key string `json:"key,omitempty"`
+
+	// value
+	Value string `json:"value,omitempty"`
+}
+
+// Validate validates this edit project app param command parameters items0
+func (m *EditProjectAppParamCommandParametersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this edit project app param command parameters items0 based on context it is used
+func (m *EditProjectAppParamCommandParametersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EditProjectAppParamCommandParametersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EditProjectAppParamCommandParametersItems0) UnmarshalBinary(b []byte) error {
+	var res EditProjectAppParamCommandParametersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -6,13 +6,13 @@ package opa_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // OpaProfilesDisableGatekeeperReader is a Reader for the OpaProfilesDisableGatekeeper structure.
@@ -75,7 +75,7 @@ OpaProfilesDisableGatekeeperOK describes a response with status code 200, with d
 Success
 */
 type OpaProfilesDisableGatekeeperOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles disable gatekeeper o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OpaProfilesDisableGatekeeperOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperOK  %+v", 200, o.Payload)
 }
 
-func (o *OpaProfilesDisableGatekeeperOK) GetPayload() models.Unit {
+func (o *OpaProfilesDisableGatekeeperOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OpaProfilesDisableGatekeeperBadRequest describes a response with status code 400
 Bad Request
 */
 type OpaProfilesDisableGatekeeperBadRequest struct {
-	Payload []*models.Error
+	Payload []*OpaProfilesDisableGatekeeperBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this opa profiles disable gatekeeper bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpaProfilesDisableGatekeeperBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesDisableGatekeeperBadRequest) GetPayload() []*models.Error {
+func (o *OpaProfilesDisableGatekeeperBadRequest) GetPayload() []*OpaProfilesDisableGatekeeperBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OpaProfilesDisableGatekeeperUnauthorized describes a response with status code 4
 Unauthorized
 */
 type OpaProfilesDisableGatekeeperUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *OpaProfilesDisableGatekeeperUnauthorizedBody
 }
 
 // IsSuccess returns true when this opa profiles disable gatekeeper unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OpaProfilesDisableGatekeeperUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesDisableGatekeeperUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesDisableGatekeeperUnauthorized) GetPayload() *OpaProfilesDisableGatekeeperUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *OpaProfilesDisableGatekeeperUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpaProfilesDisableGatekeeperUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OpaProfilesDisableGatekeeperForbidden describes a response with status code 403,
 Forbidden
 */
 type OpaProfilesDisableGatekeeperForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *OpaProfilesDisableGatekeeperForbiddenBody
 }
 
 // IsSuccess returns true when this opa profiles disable gatekeeper forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OpaProfilesDisableGatekeeperForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesDisableGatekeeperForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesDisableGatekeeperForbidden) GetPayload() *OpaProfilesDisableGatekeeperForbiddenBody {
 	return o.Payload
 }
 
 func (o *OpaProfilesDisableGatekeeperForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpaProfilesDisableGatekeeperForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OpaProfilesDisableGatekeeperNotFound describes a response with status code 404, 
 Not Found
 */
 type OpaProfilesDisableGatekeeperNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *OpaProfilesDisableGatekeeperNotFoundBody
 }
 
 // IsSuccess returns true when this opa profiles disable gatekeeper not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OpaProfilesDisableGatekeeperNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesDisableGatekeeperNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesDisableGatekeeperNotFound) GetPayload() *OpaProfilesDisableGatekeeperNotFoundBody {
 	return o.Payload
 }
 
 func (o *OpaProfilesDisableGatekeeperNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpaProfilesDisableGatekeeperNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *OpaProfilesDisableGatekeeperInternalServerError) String() string {
 
 func (o *OpaProfilesDisableGatekeeperInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+OpaProfilesDisableGatekeeperBadRequestBodyItems0 opa profiles disable gatekeeper bad request body items0
+swagger:model OpaProfilesDisableGatekeeperBadRequestBodyItems0
+*/
+type OpaProfilesDisableGatekeeperBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this opa profiles disable gatekeeper bad request body items0
+func (o *OpaProfilesDisableGatekeeperBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles disable gatekeeper bad request body items0 based on context it is used
+func (o *OpaProfilesDisableGatekeeperBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesDisableGatekeeperBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesDisableGatekeeperBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesDisableGatekeeperBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesDisableGatekeeperBody opa profiles disable gatekeeper body
+swagger:model OpaProfilesDisableGatekeeperBody
+*/
+type OpaProfilesDisableGatekeeperBody struct {
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this opa profiles disable gatekeeper body
+func (o *OpaProfilesDisableGatekeeperBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles disable gatekeeper body based on context it is used
+func (o *OpaProfilesDisableGatekeeperBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesDisableGatekeeperBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesDisableGatekeeperBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesDisableGatekeeperBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesDisableGatekeeperForbiddenBody opa profiles disable gatekeeper forbidden body
+swagger:model OpaProfilesDisableGatekeeperForbiddenBody
+*/
+type OpaProfilesDisableGatekeeperForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this opa profiles disable gatekeeper forbidden body
+func (o *OpaProfilesDisableGatekeeperForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles disable gatekeeper forbidden body based on context it is used
+func (o *OpaProfilesDisableGatekeeperForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesDisableGatekeeperForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesDisableGatekeeperForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesDisableGatekeeperForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesDisableGatekeeperNotFoundBody opa profiles disable gatekeeper not found body
+swagger:model OpaProfilesDisableGatekeeperNotFoundBody
+*/
+type OpaProfilesDisableGatekeeperNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this opa profiles disable gatekeeper not found body
+func (o *OpaProfilesDisableGatekeeperNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles disable gatekeeper not found body based on context it is used
+func (o *OpaProfilesDisableGatekeeperNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesDisableGatekeeperNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesDisableGatekeeperNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesDisableGatekeeperNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesDisableGatekeeperUnauthorizedBody opa profiles disable gatekeeper unauthorized body
+swagger:model OpaProfilesDisableGatekeeperUnauthorizedBody
+*/
+type OpaProfilesDisableGatekeeperUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this opa profiles disable gatekeeper unauthorized body
+func (o *OpaProfilesDisableGatekeeperUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles disable gatekeeper unauthorized body based on context it is used
+func (o *OpaProfilesDisableGatekeeperUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesDisableGatekeeperUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesDisableGatekeeperUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesDisableGatekeeperUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

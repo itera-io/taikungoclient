@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewPaymentPayInvoiceParams creates a new PaymentPayInvoiceParams object,
@@ -64,7 +62,7 @@ PaymentPayInvoiceParams contains all the parameters to send to the API endpoint
 type PaymentPayInvoiceParams struct {
 
 	// Body.
-	Body *models.PayInvoiceCommand
+	Body PaymentPayInvoiceBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *PaymentPayInvoiceParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the payment pay invoice params
-func (o *PaymentPayInvoiceParams) WithBody(body *models.PayInvoiceCommand) *PaymentPayInvoiceParams {
+func (o *PaymentPayInvoiceParams) WithBody(body PaymentPayInvoiceBody) *PaymentPayInvoiceParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the payment pay invoice params
-func (o *PaymentPayInvoiceParams) SetBody(body *models.PayInvoiceCommand) {
+func (o *PaymentPayInvoiceParams) SetBody(body PaymentPayInvoiceBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *PaymentPayInvoiceParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

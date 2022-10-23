@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesPatchIngressParams creates a new KubernetesPatchIngressParams object,
@@ -64,7 +62,7 @@ KubernetesPatchIngressParams contains all the parameters to send to the API endp
 type KubernetesPatchIngressParams struct {
 
 	// Body.
-	Body *models.PatchIngressCommand
+	Body KubernetesPatchIngressBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *KubernetesPatchIngressParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the kubernetes patch ingress params
-func (o *KubernetesPatchIngressParams) WithBody(body *models.PatchIngressCommand) *KubernetesPatchIngressParams {
+func (o *KubernetesPatchIngressParams) WithBody(body KubernetesPatchIngressBody) *KubernetesPatchIngressParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes patch ingress params
-func (o *KubernetesPatchIngressParams) SetBody(body *models.PatchIngressCommand) {
+func (o *KubernetesPatchIngressParams) SetBody(body KubernetesPatchIngressBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *KubernetesPatchIngressParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

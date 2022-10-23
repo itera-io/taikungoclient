@@ -6,13 +6,13 @@ package ops_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // OpsCredentialsOperationCredentialsForOrganizationListReader is a Reader for the OpsCredentialsOperationCredentialsForOrganizationList structure.
@@ -75,7 +75,7 @@ OpsCredentialsOperationCredentialsForOrganizationListOK describes a response wit
 Success
 */
 type OpsCredentialsOperationCredentialsForOrganizationListOK struct {
-	Payload []*models.OperationCredentialsForOrganizationEntity
+	Payload []*OpsCredentialsOperationCredentialsForOrganizationListOKBodyItems0
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListOK) String() strin
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListOK  %+v", 200, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListOK) GetPayload() []*models.OperationCredentialsForOrganizationEntity {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListOK) GetPayload() []*OpsCredentialsOperationCredentialsForOrganizationListOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OpsCredentialsOperationCredentialsForOrganizationListBadRequest describes a resp
 Bad Request
 */
 type OpsCredentialsOperationCredentialsForOrganizationListBadRequest struct {
-	Payload []*models.Error
+	Payload []*OpsCredentialsOperationCredentialsForOrganizationListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) String
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) GetPayload() []*models.Error {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) GetPayload() []*OpsCredentialsOperationCredentialsForOrganizationListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OpsCredentialsOperationCredentialsForOrganizationListUnauthorized describes a re
 Unauthorized
 */
 type OpsCredentialsOperationCredentialsForOrganizationListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *OpsCredentialsOperationCredentialsForOrganizationListUnauthorizedBody
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) Stri
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) GetPayload() *OpsCredentialsOperationCredentialsForOrganizationListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpsCredentialsOperationCredentialsForOrganizationListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OpsCredentialsOperationCredentialsForOrganizationListForbidden describes a respo
 Forbidden
 */
 type OpsCredentialsOperationCredentialsForOrganizationListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *OpsCredentialsOperationCredentialsForOrganizationListForbiddenBody
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) String(
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) GetPayload() *OpsCredentialsOperationCredentialsForOrganizationListForbiddenBody {
 	return o.Payload
 }
 
 func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpsCredentialsOperationCredentialsForOrganizationListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OpsCredentialsOperationCredentialsForOrganizationListNotFound describes a respon
 Not Found
 */
 type OpsCredentialsOperationCredentialsForOrganizationListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *OpsCredentialsOperationCredentialsForOrganizationListNotFoundBody
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) String()
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) GetPayload() *OpsCredentialsOperationCredentialsForOrganizationListNotFoundBody {
 	return o.Payload
 }
 
 func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpsCredentialsOperationCredentialsForOrganizationListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListInternalServerErro
 
 func (o *OpsCredentialsOperationCredentialsForOrganizationListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+OpsCredentialsOperationCredentialsForOrganizationListBadRequestBodyItems0 ops credentials operation credentials for organization list bad request body items0
+swagger:model OpsCredentialsOperationCredentialsForOrganizationListBadRequestBodyItems0
+*/
+type OpsCredentialsOperationCredentialsForOrganizationListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this ops credentials operation credentials for organization list bad request body items0
+func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ops credentials operation credentials for organization list bad request body items0 based on context it is used
+func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OpsCredentialsOperationCredentialsForOrganizationListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpsCredentialsOperationCredentialsForOrganizationListForbiddenBody ops credentials operation credentials for organization list forbidden body
+swagger:model OpsCredentialsOperationCredentialsForOrganizationListForbiddenBody
+*/
+type OpsCredentialsOperationCredentialsForOrganizationListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ops credentials operation credentials for organization list forbidden body
+func (o *OpsCredentialsOperationCredentialsForOrganizationListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ops credentials operation credentials for organization list forbidden body based on context it is used
+func (o *OpsCredentialsOperationCredentialsForOrganizationListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpsCredentialsOperationCredentialsForOrganizationListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpsCredentialsOperationCredentialsForOrganizationListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res OpsCredentialsOperationCredentialsForOrganizationListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpsCredentialsOperationCredentialsForOrganizationListNotFoundBody ops credentials operation credentials for organization list not found body
+swagger:model OpsCredentialsOperationCredentialsForOrganizationListNotFoundBody
+*/
+type OpsCredentialsOperationCredentialsForOrganizationListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ops credentials operation credentials for organization list not found body
+func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ops credentials operation credentials for organization list not found body based on context it is used
+func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res OpsCredentialsOperationCredentialsForOrganizationListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpsCredentialsOperationCredentialsForOrganizationListOKBodyItems0 ops credentials operation credentials for organization list o k body items0
+swagger:model OpsCredentialsOperationCredentialsForOrganizationListOKBodyItems0
+*/
+type OpsCredentialsOperationCredentialsForOrganizationListOKBodyItems0 struct {
+
+	// is default
+	IsDefault bool `json:"isDefault"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// operation credential Id
+	OperationCredentialID int32 `json:"operationCredentialId,omitempty"`
+}
+
+// Validate validates this ops credentials operation credentials for organization list o k body items0
+func (o *OpsCredentialsOperationCredentialsForOrganizationListOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ops credentials operation credentials for organization list o k body items0 based on context it is used
+func (o *OpsCredentialsOperationCredentialsForOrganizationListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpsCredentialsOperationCredentialsForOrganizationListOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpsCredentialsOperationCredentialsForOrganizationListOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OpsCredentialsOperationCredentialsForOrganizationListOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpsCredentialsOperationCredentialsForOrganizationListUnauthorizedBody ops credentials operation credentials for organization list unauthorized body
+swagger:model OpsCredentialsOperationCredentialsForOrganizationListUnauthorizedBody
+*/
+type OpsCredentialsOperationCredentialsForOrganizationListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ops credentials operation credentials for organization list unauthorized body
+func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ops credentials operation credentials for organization list unauthorized body based on context it is used
+func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res OpsCredentialsOperationCredentialsForOrganizationListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

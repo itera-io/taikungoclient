@@ -6,13 +6,13 @@ package keycloak
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KeycloakDeleteReader is a Reader for the KeycloakDelete structure.
@@ -75,7 +75,7 @@ KeycloakDeleteOK describes a response with status code 200, with default header 
 Success
 */
 type KeycloakDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this keycloak delete o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KeycloakDeleteOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *KeycloakDeleteOK) GetPayload() models.Unit {
+func (o *KeycloakDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KeycloakDeleteBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type KeycloakDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*KeycloakDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this keycloak delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KeycloakDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KeycloakDeleteBadRequest) GetPayload() []*models.Error {
+func (o *KeycloakDeleteBadRequest) GetPayload() []*KeycloakDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KeycloakDeleteUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type KeycloakDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KeycloakDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this keycloak delete unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KeycloakDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KeycloakDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KeycloakDeleteUnauthorized) GetPayload() *KeycloakDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KeycloakDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KeycloakDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KeycloakDeleteForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type KeycloakDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KeycloakDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this keycloak delete forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KeycloakDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KeycloakDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *KeycloakDeleteForbidden) GetPayload() *KeycloakDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *KeycloakDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KeycloakDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KeycloakDeleteNotFound describes a response with status code 404, with default h
 Not Found
 */
 type KeycloakDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KeycloakDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this keycloak delete not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KeycloakDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KeycloakDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *KeycloakDeleteNotFound) GetPayload() *KeycloakDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *KeycloakDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KeycloakDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *KeycloakDeleteInternalServerError) String() string {
 
 func (o *KeycloakDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KeycloakDeleteBadRequestBodyItems0 keycloak delete bad request body items0
+swagger:model KeycloakDeleteBadRequestBodyItems0
+*/
+type KeycloakDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this keycloak delete bad request body items0
+func (o *KeycloakDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this keycloak delete bad request body items0 based on context it is used
+func (o *KeycloakDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KeycloakDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KeycloakDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KeycloakDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KeycloakDeleteBody keycloak delete body
+swagger:model KeycloakDeleteBody
+*/
+type KeycloakDeleteBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this keycloak delete body
+func (o *KeycloakDeleteBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this keycloak delete body based on context it is used
+func (o *KeycloakDeleteBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KeycloakDeleteBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KeycloakDeleteBody) UnmarshalBinary(b []byte) error {
+	var res KeycloakDeleteBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KeycloakDeleteForbiddenBody keycloak delete forbidden body
+swagger:model KeycloakDeleteForbiddenBody
+*/
+type KeycloakDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this keycloak delete forbidden body
+func (o *KeycloakDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this keycloak delete forbidden body based on context it is used
+func (o *KeycloakDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KeycloakDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KeycloakDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KeycloakDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KeycloakDeleteNotFoundBody keycloak delete not found body
+swagger:model KeycloakDeleteNotFoundBody
+*/
+type KeycloakDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this keycloak delete not found body
+func (o *KeycloakDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this keycloak delete not found body based on context it is used
+func (o *KeycloakDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KeycloakDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KeycloakDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KeycloakDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KeycloakDeleteUnauthorizedBody keycloak delete unauthorized body
+swagger:model KeycloakDeleteUnauthorizedBody
+*/
+type KeycloakDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this keycloak delete unauthorized body
+func (o *KeycloakDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this keycloak delete unauthorized body based on context it is used
+func (o *KeycloakDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KeycloakDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KeycloakDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KeycloakDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

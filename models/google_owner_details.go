@@ -19,7 +19,7 @@ import (
 type GoogleOwnerDetails struct {
 
 	// image
-	Image *GoogleCommonImages `json:"image,omitempty"`
+	Image *GoogleOwnerDetailsImage `json:"image,omitempty"`
 
 	// owner
 	Owner string `json:"owner,omitempty"`
@@ -99,6 +99,46 @@ func (m *GoogleOwnerDetails) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *GoogleOwnerDetails) UnmarshalBinary(b []byte) error {
 	var res GoogleOwnerDetails
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// GoogleOwnerDetailsImage google owner details image
+//
+// swagger:model GoogleOwnerDetailsImage
+type GoogleOwnerDetailsImage struct {
+
+	// display name
+	DisplayName string `json:"displayName"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this google owner details image
+func (m *GoogleOwnerDetailsImage) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google owner details image based on context it is used
+func (m *GoogleOwnerDetailsImage) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *GoogleOwnerDetailsImage) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *GoogleOwnerDetailsImage) UnmarshalBinary(b []byte) error {
+	var res GoogleOwnerDetailsImage
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

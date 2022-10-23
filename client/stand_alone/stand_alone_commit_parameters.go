@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneCommitParams creates a new StandAloneCommitParams object,
@@ -64,7 +62,7 @@ StandAloneCommitParams contains all the parameters to send to the API endpoint
 type StandAloneCommitParams struct {
 
 	// Body.
-	Body *models.CommitStandAloneVMCommand
+	Body StandAloneCommitBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *StandAloneCommitParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone commit params
-func (o *StandAloneCommitParams) WithBody(body *models.CommitStandAloneVMCommand) *StandAloneCommitParams {
+func (o *StandAloneCommitParams) WithBody(body StandAloneCommitBody) *StandAloneCommitParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone commit params
-func (o *StandAloneCommitParams) SetBody(body *models.CommitStandAloneVMCommand) {
+func (o *StandAloneCommitParams) SetBody(body StandAloneCommitBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *StandAloneCommitParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

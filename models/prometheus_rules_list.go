@@ -20,7 +20,7 @@ import (
 type PrometheusRulesList struct {
 
 	// data
-	Data []*PrometheusRuleListDto `json:"data"`
+	Data []*PrometheusRulesListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,710 @@ func (m *PrometheusRulesList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PrometheusRulesList) UnmarshalBinary(b []byte) error {
 	var res PrometheusRulesList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PrometheusRulesListDataItems0 prometheus rules list data items0
+//
+// swagger:model PrometheusRulesListDataItems0
+type PrometheusRulesListDataItems0 struct {
+
+	// billing start date
+	BillingStartDate string `json:"billingStartDate,omitempty"`
+
+	// bound organizations
+	BoundOrganizations []*PrometheusRulesListDataItems0BoundOrganizationsItems0 `json:"boundOrganizations"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// created by
+	CreatedBy string `json:"createdBy,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is all
+	IsAll bool `json:"isAll"`
+
+	// labels
+	Labels []*PrometheusRulesListDataItems0LabelsItems0 `json:"labels"`
+
+	// last modified
+	LastModified string `json:"lastModified,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// metric name
+	MetricName string `json:"metricName,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// operation credential
+	OperationCredential *PrometheusRulesListDataItems0OperationCredential `json:"operationCredential,omitempty"`
+
+	// partner
+	Partner *PrometheusRulesListDataItems0Partner `json:"partner,omitempty"`
+
+	// password
+	Password string `json:"password,omitempty"`
+
+	// price
+	Price float64 `json:"price,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+
+	// url
+	URL string `json:"url,omitempty"`
+
+	// user name
+	UserName string `json:"userName,omitempty"`
+}
+
+// Validate validates this prometheus rules list data items0
+func (m *PrometheusRulesListDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateBoundOrganizations(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLabels(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOperationCredential(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePartner(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PrometheusRulesListDataItems0) validateBoundOrganizations(formats strfmt.Registry) error {
+	if swag.IsZero(m.BoundOrganizations) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.BoundOrganizations); i++ {
+		if swag.IsZero(m.BoundOrganizations[i]) { // not required
+			continue
+		}
+
+		if m.BoundOrganizations[i] != nil {
+			if err := m.BoundOrganizations[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("boundOrganizations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundOrganizations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PrometheusRulesListDataItems0) validateLabels(formats strfmt.Registry) error {
+	if swag.IsZero(m.Labels) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Labels); i++ {
+		if swag.IsZero(m.Labels[i]) { // not required
+			continue
+		}
+
+		if m.Labels[i] != nil {
+			if err := m.Labels[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("labels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("labels" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PrometheusRulesListDataItems0) validateOperationCredential(formats strfmt.Registry) error {
+	if swag.IsZero(m.OperationCredential) { // not required
+		return nil
+	}
+
+	if m.OperationCredential != nil {
+		if err := m.OperationCredential.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("operationCredential")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("operationCredential")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PrometheusRulesListDataItems0) validatePartner(formats strfmt.Registry) error {
+	if swag.IsZero(m.Partner) { // not required
+		return nil
+	}
+
+	if m.Partner != nil {
+		if err := m.Partner.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("partner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("partner")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this prometheus rules list data items0 based on the context it is used
+func (m *PrometheusRulesListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateBoundOrganizations(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLabels(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOperationCredential(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePartner(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PrometheusRulesListDataItems0) contextValidateBoundOrganizations(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.BoundOrganizations); i++ {
+
+		if m.BoundOrganizations[i] != nil {
+			if err := m.BoundOrganizations[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("boundOrganizations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundOrganizations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PrometheusRulesListDataItems0) contextValidateLabels(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Labels); i++ {
+
+		if m.Labels[i] != nil {
+			if err := m.Labels[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("labels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("labels" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PrometheusRulesListDataItems0) contextValidateOperationCredential(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.OperationCredential != nil {
+		if err := m.OperationCredential.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("operationCredential")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("operationCredential")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PrometheusRulesListDataItems0) contextValidatePartner(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Partner != nil {
+		if err := m.Partner.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("partner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("partner")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PrometheusRulesListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PrometheusRulesListDataItems0) UnmarshalBinary(b []byte) error {
+	var res PrometheusRulesListDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PrometheusRulesListDataItems0BoundOrganizationsItems0 prometheus rules list data items0 bound organizations items0
+//
+// swagger:model PrometheusRulesListDataItems0BoundOrganizationsItems0
+type PrometheusRulesListDataItems0BoundOrganizationsItems0 struct {
+
+	// global discount rate
+	GlobalDiscountRate float64 `json:"globalDiscountRate"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// rule discount rate
+	RuleDiscountRate float64 `json:"ruleDiscountRate"`
+}
+
+// Validate validates this prometheus rules list data items0 bound organizations items0
+func (m *PrometheusRulesListDataItems0BoundOrganizationsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus rules list data items0 bound organizations items0 based on context it is used
+func (m *PrometheusRulesListDataItems0BoundOrganizationsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PrometheusRulesListDataItems0BoundOrganizationsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PrometheusRulesListDataItems0BoundOrganizationsItems0) UnmarshalBinary(b []byte) error {
+	var res PrometheusRulesListDataItems0BoundOrganizationsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PrometheusRulesListDataItems0LabelsItems0 prometheus rules list data items0 labels items0
+//
+// swagger:model PrometheusRulesListDataItems0LabelsItems0
+type PrometheusRulesListDataItems0LabelsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// label
+	Label string `json:"label,omitempty"`
+
+	// value
+	Value string `json:"value,omitempty"`
+}
+
+// Validate validates this prometheus rules list data items0 labels items0
+func (m *PrometheusRulesListDataItems0LabelsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus rules list data items0 labels items0 based on context it is used
+func (m *PrometheusRulesListDataItems0LabelsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PrometheusRulesListDataItems0LabelsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PrometheusRulesListDataItems0LabelsItems0) UnmarshalBinary(b []byte) error {
+	var res PrometheusRulesListDataItems0LabelsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PrometheusRulesListDataItems0OperationCredential prometheus rules list data items0 operation credential
+//
+// swagger:model PrometheusRulesListDataItems0OperationCredential
+type PrometheusRulesListDataItems0OperationCredential struct {
+
+	// is default
+	IsDefault bool `json:"isDefault"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// operation credential Id
+	OperationCredentialID int32 `json:"operationCredentialId,omitempty"`
+}
+
+// Validate validates this prometheus rules list data items0 operation credential
+func (m *PrometheusRulesListDataItems0OperationCredential) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus rules list data items0 operation credential based on context it is used
+func (m *PrometheusRulesListDataItems0OperationCredential) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PrometheusRulesListDataItems0OperationCredential) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PrometheusRulesListDataItems0OperationCredential) UnmarshalBinary(b []byte) error {
+	var res PrometheusRulesListDataItems0OperationCredential
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PrometheusRulesListDataItems0Partner prometheus rules list data items0 partner
+//
+// swagger:model PrometheusRulesListDataItems0Partner
+type PrometheusRulesListDataItems0Partner struct {
+
+	// address
+	Address string `json:"address,omitempty"`
+
+	// allow registration
+	AllowRegistration bool `json:"allowRegistration"`
+
+	// city
+	City string `json:"city,omitempty"`
+
+	// country
+	Country string `json:"country,omitempty"`
+
+	// domain
+	Domain string `json:"domain,omitempty"`
+
+	// email
+	Email string `json:"email,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// link
+	Link string `json:"link,omitempty"`
+
+	// logo
+	Logo string `json:"logo,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organizations
+	Organizations []*PrometheusRulesListDataItems0PartnerOrganizationsItems0 `json:"organizations"`
+
+	// payment enabled
+	PaymentEnabled bool `json:"paymentEnabled"`
+
+	// phone
+	Phone string `json:"phone,omitempty"`
+
+	// required user approval
+	RequiredUserApproval bool `json:"requiredUserApproval"`
+
+	// vat number
+	VatNumber string `json:"vatNumber,omitempty"`
+
+	// white list domains
+	WhiteListDomains []*PrometheusRulesListDataItems0PartnerWhiteListDomainsItems0 `json:"whiteListDomains"`
+}
+
+// Validate validates this prometheus rules list data items0 partner
+func (m *PrometheusRulesListDataItems0Partner) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateOrganizations(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateWhiteListDomains(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PrometheusRulesListDataItems0Partner) validateOrganizations(formats strfmt.Registry) error {
+	if swag.IsZero(m.Organizations) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Organizations); i++ {
+		if swag.IsZero(m.Organizations[i]) { // not required
+			continue
+		}
+
+		if m.Organizations[i] != nil {
+			if err := m.Organizations[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("partner" + "." + "organizations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("partner" + "." + "organizations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PrometheusRulesListDataItems0Partner) validateWhiteListDomains(formats strfmt.Registry) error {
+	if swag.IsZero(m.WhiteListDomains) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.WhiteListDomains); i++ {
+		if swag.IsZero(m.WhiteListDomains[i]) { // not required
+			continue
+		}
+
+		if m.WhiteListDomains[i] != nil {
+			if err := m.WhiteListDomains[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("partner" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("partner" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this prometheus rules list data items0 partner based on the context it is used
+func (m *PrometheusRulesListDataItems0Partner) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateOrganizations(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateWhiteListDomains(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PrometheusRulesListDataItems0Partner) contextValidateOrganizations(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Organizations); i++ {
+
+		if m.Organizations[i] != nil {
+			if err := m.Organizations[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("partner" + "." + "organizations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("partner" + "." + "organizations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PrometheusRulesListDataItems0Partner) contextValidateWhiteListDomains(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.WhiteListDomains); i++ {
+
+		if m.WhiteListDomains[i] != nil {
+			if err := m.WhiteListDomains[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("partner" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("partner" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PrometheusRulesListDataItems0Partner) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PrometheusRulesListDataItems0Partner) UnmarshalBinary(b []byte) error {
+	var res PrometheusRulesListDataItems0Partner
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PrometheusRulesListDataItems0PartnerOrganizationsItems0 prometheus rules list data items0 partner organizations items0
+//
+// swagger:model PrometheusRulesListDataItems0PartnerOrganizationsItems0
+type PrometheusRulesListDataItems0PartnerOrganizationsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this prometheus rules list data items0 partner organizations items0
+func (m *PrometheusRulesListDataItems0PartnerOrganizationsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus rules list data items0 partner organizations items0 based on context it is used
+func (m *PrometheusRulesListDataItems0PartnerOrganizationsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PrometheusRulesListDataItems0PartnerOrganizationsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PrometheusRulesListDataItems0PartnerOrganizationsItems0) UnmarshalBinary(b []byte) error {
+	var res PrometheusRulesListDataItems0PartnerOrganizationsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PrometheusRulesListDataItems0PartnerWhiteListDomainsItems0 prometheus rules list data items0 partner white list domains items0
+//
+// swagger:model PrometheusRulesListDataItems0PartnerWhiteListDomainsItems0
+type PrometheusRulesListDataItems0PartnerWhiteListDomainsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this prometheus rules list data items0 partner white list domains items0
+func (m *PrometheusRulesListDataItems0PartnerWhiteListDomainsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus rules list data items0 partner white list domains items0 based on context it is used
+func (m *PrometheusRulesListDataItems0PartnerWhiteListDomainsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PrometheusRulesListDataItems0PartnerWhiteListDomainsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PrometheusRulesListDataItems0PartnerWhiteListDomainsItems0) UnmarshalBinary(b []byte) error {
+	var res PrometheusRulesListDataItems0PartnerWhiteListDomainsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

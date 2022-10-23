@@ -6,13 +6,13 @@ package alerting_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AlertingProfilesAssignEmailsReader is a Reader for the AlertingProfilesAssignEmails structure.
@@ -75,7 +75,7 @@ AlertingProfilesAssignEmailsOK describes a response with status code 200, with d
 Success
 */
 type AlertingProfilesAssignEmailsOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles assign emails o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AlertingProfilesAssignEmailsOK) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsOK  %+v", 200, o.Payload)
 }
 
-func (o *AlertingProfilesAssignEmailsOK) GetPayload() models.Unit {
+func (o *AlertingProfilesAssignEmailsOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AlertingProfilesAssignEmailsBadRequest describes a response with status code 400
 Bad Request
 */
 type AlertingProfilesAssignEmailsBadRequest struct {
-	Payload []*models.Error
+	Payload []*AlertingProfilesAssignEmailsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this alerting profiles assign emails bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AlertingProfilesAssignEmailsBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesAssignEmailsBadRequest) GetPayload() []*models.Error {
+func (o *AlertingProfilesAssignEmailsBadRequest) GetPayload() []*AlertingProfilesAssignEmailsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AlertingProfilesAssignEmailsUnauthorized describes a response with status code 4
 Unauthorized
 */
 type AlertingProfilesAssignEmailsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesAssignEmailsUnauthorizedBody
 }
 
 // IsSuccess returns true when this alerting profiles assign emails unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AlertingProfilesAssignEmailsUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesAssignEmailsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAssignEmailsUnauthorized) GetPayload() *AlertingProfilesAssignEmailsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAssignEmailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesAssignEmailsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AlertingProfilesAssignEmailsForbidden describes a response with status code 403,
 Forbidden
 */
 type AlertingProfilesAssignEmailsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesAssignEmailsForbiddenBody
 }
 
 // IsSuccess returns true when this alerting profiles assign emails forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AlertingProfilesAssignEmailsForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesAssignEmailsForbidden) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAssignEmailsForbidden) GetPayload() *AlertingProfilesAssignEmailsForbiddenBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAssignEmailsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesAssignEmailsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AlertingProfilesAssignEmailsNotFound describes a response with status code 404, 
 Not Found
 */
 type AlertingProfilesAssignEmailsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesAssignEmailsNotFoundBody
 }
 
 // IsSuccess returns true when this alerting profiles assign emails not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AlertingProfilesAssignEmailsNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesAssignEmailsNotFound) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAssignEmailsNotFound) GetPayload() *AlertingProfilesAssignEmailsNotFoundBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAssignEmailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesAssignEmailsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *AlertingProfilesAssignEmailsInternalServerError) String() string {
 
 func (o *AlertingProfilesAssignEmailsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AlertingProfilesAssignEmailsBadRequestBodyItems0 alerting profiles assign emails bad request body items0
+swagger:model AlertingProfilesAssignEmailsBadRequestBodyItems0
+*/
+type AlertingProfilesAssignEmailsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this alerting profiles assign emails bad request body items0
+func (o *AlertingProfilesAssignEmailsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles assign emails bad request body items0 based on context it is used
+func (o *AlertingProfilesAssignEmailsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesAssignEmailsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesAssignEmailsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesAssignEmailsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesAssignEmailsForbiddenBody alerting profiles assign emails forbidden body
+swagger:model AlertingProfilesAssignEmailsForbiddenBody
+*/
+type AlertingProfilesAssignEmailsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles assign emails forbidden body
+func (o *AlertingProfilesAssignEmailsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles assign emails forbidden body based on context it is used
+func (o *AlertingProfilesAssignEmailsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesAssignEmailsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesAssignEmailsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesAssignEmailsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesAssignEmailsNotFoundBody alerting profiles assign emails not found body
+swagger:model AlertingProfilesAssignEmailsNotFoundBody
+*/
+type AlertingProfilesAssignEmailsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles assign emails not found body
+func (o *AlertingProfilesAssignEmailsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles assign emails not found body based on context it is used
+func (o *AlertingProfilesAssignEmailsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesAssignEmailsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesAssignEmailsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesAssignEmailsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesAssignEmailsParamsBodyItems0 alerting profiles assign emails params body items0
+swagger:model AlertingProfilesAssignEmailsParamsBodyItems0
+*/
+type AlertingProfilesAssignEmailsParamsBodyItems0 struct {
+
+	// email
+	Email string `json:"email,omitempty"`
+}
+
+// Validate validates this alerting profiles assign emails params body items0
+func (o *AlertingProfilesAssignEmailsParamsBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles assign emails params body items0 based on context it is used
+func (o *AlertingProfilesAssignEmailsParamsBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesAssignEmailsParamsBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesAssignEmailsParamsBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesAssignEmailsParamsBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesAssignEmailsUnauthorizedBody alerting profiles assign emails unauthorized body
+swagger:model AlertingProfilesAssignEmailsUnauthorizedBody
+*/
+type AlertingProfilesAssignEmailsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles assign emails unauthorized body
+func (o *AlertingProfilesAssignEmailsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles assign emails unauthorized body based on context it is used
+func (o *AlertingProfilesAssignEmailsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesAssignEmailsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesAssignEmailsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesAssignEmailsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

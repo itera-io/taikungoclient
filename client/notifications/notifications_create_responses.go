@@ -6,13 +6,16 @@ package notifications
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // NotificationsCreateReader is a Reader for the NotificationsCreate structure.
@@ -75,7 +78,7 @@ NotificationsCreateOK describes a response with status code 200, with default he
 Success
 */
 type NotificationsCreateOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications create o k response has a 2xx status code
@@ -111,7 +114,7 @@ func (o *NotificationsCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *NotificationsCreateOK) GetPayload() models.Unit {
+func (o *NotificationsCreateOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +139,7 @@ NotificationsCreateBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type NotificationsCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*NotificationsCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this notifications create bad request response has a 2xx status code
@@ -172,7 +175,7 @@ func (o *NotificationsCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NotificationsCreateBadRequest) GetPayload() []*models.Error {
+func (o *NotificationsCreateBadRequest) GetPayload() []*NotificationsCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +200,7 @@ NotificationsCreateUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type NotificationsCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *NotificationsCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this notifications create unauthorized response has a 2xx status code
@@ -233,13 +236,13 @@ func (o *NotificationsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NotificationsCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *NotificationsCreateUnauthorized) GetPayload() *NotificationsCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *NotificationsCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(NotificationsCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +263,7 @@ NotificationsCreateForbidden describes a response with status code 403, with def
 Forbidden
 */
 type NotificationsCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *NotificationsCreateForbiddenBody
 }
 
 // IsSuccess returns true when this notifications create forbidden response has a 2xx status code
@@ -296,13 +299,13 @@ func (o *NotificationsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NotificationsCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *NotificationsCreateForbidden) GetPayload() *NotificationsCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *NotificationsCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(NotificationsCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +326,7 @@ NotificationsCreateNotFound describes a response with status code 404, with defa
 Not Found
 */
 type NotificationsCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *NotificationsCreateNotFoundBody
 }
 
 // IsSuccess returns true when this notifications create not found response has a 2xx status code
@@ -359,13 +362,13 @@ func (o *NotificationsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NotificationsCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *NotificationsCreateNotFound) GetPayload() *NotificationsCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *NotificationsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(NotificationsCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +426,362 @@ func (o *NotificationsCreateInternalServerError) String() string {
 
 func (o *NotificationsCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+NotificationsCreateBadRequestBodyItems0 notifications create bad request body items0
+swagger:model NotificationsCreateBadRequestBodyItems0
+*/
+type NotificationsCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this notifications create bad request body items0
+func (o *NotificationsCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this notifications create bad request body items0 based on context it is used
+func (o *NotificationsCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *NotificationsCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *NotificationsCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res NotificationsCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+NotificationsCreateBody notifications create body
+swagger:model NotificationsCreateBody
+*/
+type NotificationsCreateBody struct {
+
+	// action status
+	// Enum: [0 1 2]
+	ActionStatus int32 `json:"actionStatus,omitempty"`
+
+	// action type
+	// Enum: [10 20 30 32 34 36 38 40 42 44 50 60 70 80 90 100 105 110 120 130 140 150 155 156 160 165 170 175 176 177 180 190 200 210 220 230 240 250 260 270 280 290 300 310 320 330 340 350 360 370 380 390]
+	ActionType int32 `json:"actionType,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project type
+	// Enum: [100 200]
+	ProjectType int32 `json:"projectType,omitempty"`
+}
+
+// Validate validates this notifications create body
+func (o *NotificationsCreateBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateActionStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateActionType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateProjectType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var notificationsCreateBodyTypeActionStatusPropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[0,1,2]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		notificationsCreateBodyTypeActionStatusPropEnum = append(notificationsCreateBodyTypeActionStatusPropEnum, v)
+	}
+}
+
+// prop value enum
+func (o *NotificationsCreateBody) validateActionStatusEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, notificationsCreateBodyTypeActionStatusPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *NotificationsCreateBody) validateActionStatus(formats strfmt.Registry) error {
+	if swag.IsZero(o.ActionStatus) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := o.validateActionStatusEnum("body"+"."+"actionStatus", "body", o.ActionStatus); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var notificationsCreateBodyTypeActionTypePropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[10,20,30,32,34,36,38,40,42,44,50,60,70,80,90,100,105,110,120,130,140,150,155,156,160,165,170,175,176,177,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		notificationsCreateBodyTypeActionTypePropEnum = append(notificationsCreateBodyTypeActionTypePropEnum, v)
+	}
+}
+
+// prop value enum
+func (o *NotificationsCreateBody) validateActionTypeEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, notificationsCreateBodyTypeActionTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *NotificationsCreateBody) validateActionType(formats strfmt.Registry) error {
+	if swag.IsZero(o.ActionType) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := o.validateActionTypeEnum("body"+"."+"actionType", "body", o.ActionType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var notificationsCreateBodyTypeProjectTypePropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		notificationsCreateBodyTypeProjectTypePropEnum = append(notificationsCreateBodyTypeProjectTypePropEnum, v)
+	}
+}
+
+// prop value enum
+func (o *NotificationsCreateBody) validateProjectTypeEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, notificationsCreateBodyTypeProjectTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *NotificationsCreateBody) validateProjectType(formats strfmt.Registry) error {
+	if swag.IsZero(o.ProjectType) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := o.validateProjectTypeEnum("body"+"."+"projectType", "body", o.ProjectType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this notifications create body based on context it is used
+func (o *NotificationsCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *NotificationsCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *NotificationsCreateBody) UnmarshalBinary(b []byte) error {
+	var res NotificationsCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+NotificationsCreateForbiddenBody notifications create forbidden body
+swagger:model NotificationsCreateForbiddenBody
+*/
+type NotificationsCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this notifications create forbidden body
+func (o *NotificationsCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this notifications create forbidden body based on context it is used
+func (o *NotificationsCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *NotificationsCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *NotificationsCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res NotificationsCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+NotificationsCreateNotFoundBody notifications create not found body
+swagger:model NotificationsCreateNotFoundBody
+*/
+type NotificationsCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this notifications create not found body
+func (o *NotificationsCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this notifications create not found body based on context it is used
+func (o *NotificationsCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *NotificationsCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *NotificationsCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res NotificationsCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+NotificationsCreateUnauthorizedBody notifications create unauthorized body
+swagger:model NotificationsCreateUnauthorizedBody
+*/
+type NotificationsCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this notifications create unauthorized body
+func (o *NotificationsCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this notifications create unauthorized body based on context it is used
+func (o *NotificationsCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *NotificationsCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *NotificationsCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res NotificationsCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

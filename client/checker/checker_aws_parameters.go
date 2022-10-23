@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCheckerAwsParams creates a new CheckerAwsParams object,
@@ -64,7 +62,7 @@ CheckerAwsParams contains all the parameters to send to the API endpoint
 type CheckerAwsParams struct {
 
 	// Body.
-	Body *models.CheckAwsCommand
+	Body CheckerAwsBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *CheckerAwsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the checker aws params
-func (o *CheckerAwsParams) WithBody(body *models.CheckAwsCommand) *CheckerAwsParams {
+func (o *CheckerAwsParams) WithBody(body CheckerAwsBody) *CheckerAwsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the checker aws params
-func (o *CheckerAwsParams) SetBody(body *models.CheckAwsCommand) {
+func (o *CheckerAwsParams) SetBody(body CheckerAwsBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *CheckerAwsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

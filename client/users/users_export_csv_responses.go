@@ -6,13 +6,13 @@ package users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // UsersExportCsvReader is a Reader for the UsersExportCsv structure.
@@ -126,7 +126,7 @@ UsersExportCsvBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type UsersExportCsvBadRequest struct {
-	Payload []*models.Error
+	Payload []*UsersExportCsvBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this users export csv bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *UsersExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersExportCsvBadRequest) GetPayload() []*models.Error {
+func (o *UsersExportCsvBadRequest) GetPayload() []*UsersExportCsvBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -187,7 +187,7 @@ UsersExportCsvUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type UsersExportCsvUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *UsersExportCsvUnauthorizedBody
 }
 
 // IsSuccess returns true when this users export csv unauthorized response has a 2xx status code
@@ -223,13 +223,13 @@ func (o *UsersExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UsersExportCsvUnauthorized) GetPayload() *UsersExportCsvUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *UsersExportCsvUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersExportCsvUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -250,7 +250,7 @@ UsersExportCsvForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type UsersExportCsvForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *UsersExportCsvForbiddenBody
 }
 
 // IsSuccess returns true when this users export csv forbidden response has a 2xx status code
@@ -286,13 +286,13 @@ func (o *UsersExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersExportCsvForbidden) GetPayload() *models.ProblemDetails {
+func (o *UsersExportCsvForbidden) GetPayload() *UsersExportCsvForbiddenBody {
 	return o.Payload
 }
 
 func (o *UsersExportCsvForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersExportCsvForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -313,7 +313,7 @@ UsersExportCsvNotFound describes a response with status code 404, with default h
 Not Found
 */
 type UsersExportCsvNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *UsersExportCsvNotFoundBody
 }
 
 // IsSuccess returns true when this users export csv not found response has a 2xx status code
@@ -349,13 +349,13 @@ func (o *UsersExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersExportCsvNotFound) GetPayload() *models.ProblemDetails {
+func (o *UsersExportCsvNotFound) GetPayload() *UsersExportCsvNotFoundBody {
 	return o.Payload
 }
 
 func (o *UsersExportCsvNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersExportCsvNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -413,5 +413,196 @@ func (o *UsersExportCsvInternalServerError) String() string {
 
 func (o *UsersExportCsvInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+UsersExportCsvBadRequestBodyItems0 users export csv bad request body items0
+swagger:model UsersExportCsvBadRequestBodyItems0
+*/
+type UsersExportCsvBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this users export csv bad request body items0
+func (o *UsersExportCsvBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users export csv bad request body items0 based on context it is used
+func (o *UsersExportCsvBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersExportCsvBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersExportCsvBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res UsersExportCsvBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersExportCsvForbiddenBody users export csv forbidden body
+swagger:model UsersExportCsvForbiddenBody
+*/
+type UsersExportCsvForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users export csv forbidden body
+func (o *UsersExportCsvForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users export csv forbidden body based on context it is used
+func (o *UsersExportCsvForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersExportCsvForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersExportCsvForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res UsersExportCsvForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersExportCsvNotFoundBody users export csv not found body
+swagger:model UsersExportCsvNotFoundBody
+*/
+type UsersExportCsvNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users export csv not found body
+func (o *UsersExportCsvNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users export csv not found body based on context it is used
+func (o *UsersExportCsvNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersExportCsvNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersExportCsvNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res UsersExportCsvNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersExportCsvUnauthorizedBody users export csv unauthorized body
+swagger:model UsersExportCsvUnauthorizedBody
+*/
+type UsersExportCsvUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users export csv unauthorized body
+func (o *UsersExportCsvUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users export csv unauthorized body based on context it is used
+func (o *UsersExportCsvUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersExportCsvUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersExportCsvUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res UsersExportCsvUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesGetNamespacesListReader is a Reader for the KubernetesGetNamespacesList structure.
@@ -136,7 +136,7 @@ KubernetesGetNamespacesListBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesGetNamespacesListBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesGetNamespacesListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes get namespaces list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesGetNamespacesListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetNamespacesListBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetNamespacesListBadRequest) GetPayload() []*KubernetesGetNamespacesListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesGetNamespacesListUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesGetNamespacesListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetNamespacesListUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes get namespaces list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesGetNamespacesListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetNamespacesListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetNamespacesListUnauthorized) GetPayload() *KubernetesGetNamespacesListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetNamespacesListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetNamespacesListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesGetNamespacesListForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesGetNamespacesListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetNamespacesListForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes get namespaces list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesGetNamespacesListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetNamespacesListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetNamespacesListForbidden) GetPayload() *KubernetesGetNamespacesListForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetNamespacesListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetNamespacesListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesGetNamespacesListNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesGetNamespacesListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetNamespacesListNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes get namespaces list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesGetNamespacesListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetNamespacesListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetNamespacesListNotFound) GetPayload() *KubernetesGetNamespacesListNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetNamespacesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetNamespacesListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *KubernetesGetNamespacesListInternalServerError) String() string {
 
 func (o *KubernetesGetNamespacesListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesGetNamespacesListBadRequestBodyItems0 kubernetes get namespaces list bad request body items0
+swagger:model KubernetesGetNamespacesListBadRequestBodyItems0
+*/
+type KubernetesGetNamespacesListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes get namespaces list bad request body items0
+func (o *KubernetesGetNamespacesListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get namespaces list bad request body items0 based on context it is used
+func (o *KubernetesGetNamespacesListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetNamespacesListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetNamespacesListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetNamespacesListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetNamespacesListForbiddenBody kubernetes get namespaces list forbidden body
+swagger:model KubernetesGetNamespacesListForbiddenBody
+*/
+type KubernetesGetNamespacesListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get namespaces list forbidden body
+func (o *KubernetesGetNamespacesListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get namespaces list forbidden body based on context it is used
+func (o *KubernetesGetNamespacesListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetNamespacesListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetNamespacesListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetNamespacesListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetNamespacesListNotFoundBody kubernetes get namespaces list not found body
+swagger:model KubernetesGetNamespacesListNotFoundBody
+*/
+type KubernetesGetNamespacesListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get namespaces list not found body
+func (o *KubernetesGetNamespacesListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get namespaces list not found body based on context it is used
+func (o *KubernetesGetNamespacesListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetNamespacesListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetNamespacesListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetNamespacesListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetNamespacesListUnauthorizedBody kubernetes get namespaces list unauthorized body
+swagger:model KubernetesGetNamespacesListUnauthorizedBody
+*/
+type KubernetesGetNamespacesListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get namespaces list unauthorized body
+func (o *KubernetesGetNamespacesListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get namespaces list unauthorized body based on context it is used
+func (o *KubernetesGetNamespacesListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetNamespacesListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetNamespacesListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetNamespacesListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesDescribeDeploymentParams creates a new KubernetesDescribeDeploymentParams object,
@@ -64,7 +62,7 @@ KubernetesDescribeDeploymentParams contains all the parameters to send to the AP
 type KubernetesDescribeDeploymentParams struct {
 
 	// Body.
-	Body *models.DescribeDeploymentCommand
+	Body KubernetesDescribeDeploymentBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *KubernetesDescribeDeploymentParams) SetHTTPClient(client *http.Client) 
 }
 
 // WithBody adds the body to the kubernetes describe deployment params
-func (o *KubernetesDescribeDeploymentParams) WithBody(body *models.DescribeDeploymentCommand) *KubernetesDescribeDeploymentParams {
+func (o *KubernetesDescribeDeploymentParams) WithBody(body KubernetesDescribeDeploymentBody) *KubernetesDescribeDeploymentParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes describe deployment params
-func (o *KubernetesDescribeDeploymentParams) SetBody(body *models.DescribeDeploymentCommand) {
+func (o *KubernetesDescribeDeploymentParams) SetBody(body KubernetesDescribeDeploymentBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *KubernetesDescribeDeploymentParams) WriteToRequest(r runtime.ClientRequ
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

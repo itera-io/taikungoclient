@@ -7,10 +7,12 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ResetServerStatusCommand reset server status command
@@ -25,7 +27,8 @@ type ResetServerStatusCommand struct {
 	ServerIds []int32 `json:"serverIds"`
 
 	// status
-	Status CloudStatus `json:"status,omitempty"`
+	// Enum: [100 200 250 300 400 500 600 700 800]
+	Status int32 `json:"status,omitempty"`
 }
 
 // Validate validates this reset server status command
@@ -42,48 +45,41 @@ func (m *ResetServerStatusCommand) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+var resetServerStatusCommandTypeStatusPropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200,250,300,400,500,600,700,800]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		resetServerStatusCommandTypeStatusPropEnum = append(resetServerStatusCommandTypeStatusPropEnum, v)
+	}
+}
+
+// prop value enum
+func (m *ResetServerStatusCommand) validateStatusEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, resetServerStatusCommandTypeStatusPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *ResetServerStatusCommand) validateStatus(formats strfmt.Registry) error {
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
 
-	if err := m.Status.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("status")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("status")
-		}
+	// value enum
+	if err := m.validateStatusEnum("status", "body", m.Status); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-// ContextValidate validate this reset server status command based on the context it is used
+// ContextValidate validates this reset server status command based on context it is used
 func (m *ResetServerStatusCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateStatus(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ResetServerStatusCommand) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := m.Status.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("status")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("status")
-		}
-		return err
-	}
-
 	return nil
 }
 

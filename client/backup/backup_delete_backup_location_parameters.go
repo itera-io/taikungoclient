@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewBackupDeleteBackupLocationParams creates a new BackupDeleteBackupLocationParams object,
@@ -64,7 +62,7 @@ BackupDeleteBackupLocationParams contains all the parameters to send to the API 
 type BackupDeleteBackupLocationParams struct {
 
 	// Body.
-	Body *models.DeleteBackupStorageLocationCommand
+	Body BackupDeleteBackupLocationBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *BackupDeleteBackupLocationParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the backup delete backup location params
-func (o *BackupDeleteBackupLocationParams) WithBody(body *models.DeleteBackupStorageLocationCommand) *BackupDeleteBackupLocationParams {
+func (o *BackupDeleteBackupLocationParams) WithBody(body BackupDeleteBackupLocationBody) *BackupDeleteBackupLocationParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the backup delete backup location params
-func (o *BackupDeleteBackupLocationParams) SetBody(body *models.DeleteBackupStorageLocationCommand) {
+func (o *BackupDeleteBackupLocationParams) SetBody(body BackupDeleteBackupLocationBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *BackupDeleteBackupLocationParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

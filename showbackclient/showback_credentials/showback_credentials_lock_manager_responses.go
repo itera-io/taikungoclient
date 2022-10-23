@@ -6,13 +6,14 @@ package showback_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ShowbackCredentialsLockManagerReader is a Reader for the ShowbackCredentialsLockManager structure.
@@ -75,7 +76,7 @@ ShowbackCredentialsLockManagerOK describes a response with status code 200, with
 Success
 */
 type ShowbackCredentialsLockManagerOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback credentials lock manager o k response has a 2xx status code
@@ -111,7 +112,7 @@ func (o *ShowbackCredentialsLockManagerOK) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerOK  %+v", 200, o.Payload)
 }
 
-func (o *ShowbackCredentialsLockManagerOK) GetPayload() models.Unit {
+func (o *ShowbackCredentialsLockManagerOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +137,7 @@ ShowbackCredentialsLockManagerBadRequest describes a response with status code 4
 Bad Request
 */
 type ShowbackCredentialsLockManagerBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *ShowbackCredentialsLockManagerBadRequestBody
 }
 
 // IsSuccess returns true when this showback credentials lock manager bad request response has a 2xx status code
@@ -172,13 +173,13 @@ func (o *ShowbackCredentialsLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackCredentialsLockManagerBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ShowbackCredentialsLockManagerBadRequest) GetPayload() *ShowbackCredentialsLockManagerBadRequestBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(ShowbackCredentialsLockManagerBadRequestBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -199,7 +200,7 @@ ShowbackCredentialsLockManagerUnauthorized describes a response with status code
 Unauthorized
 */
 type ShowbackCredentialsLockManagerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackCredentialsLockManagerUnauthorizedBody
 }
 
 // IsSuccess returns true when this showback credentials lock manager unauthorized response has a 2xx status code
@@ -235,13 +236,13 @@ func (o *ShowbackCredentialsLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackCredentialsLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsLockManagerUnauthorized) GetPayload() *ShowbackCredentialsLockManagerUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackCredentialsLockManagerUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +263,7 @@ ShowbackCredentialsLockManagerForbidden describes a response with status code 40
 Forbidden
 */
 type ShowbackCredentialsLockManagerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackCredentialsLockManagerForbiddenBody
 }
 
 // IsSuccess returns true when this showback credentials lock manager forbidden response has a 2xx status code
@@ -298,13 +299,13 @@ func (o *ShowbackCredentialsLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackCredentialsLockManagerForbidden) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsLockManagerForbidden) GetPayload() *ShowbackCredentialsLockManagerForbiddenBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackCredentialsLockManagerForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +326,7 @@ ShowbackCredentialsLockManagerNotFound describes a response with status code 404
 Not Found
 */
 type ShowbackCredentialsLockManagerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackCredentialsLockManagerNotFoundBody
 }
 
 // IsSuccess returns true when this showback credentials lock manager not found response has a 2xx status code
@@ -361,13 +362,13 @@ func (o *ShowbackCredentialsLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackCredentialsLockManagerNotFound) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsLockManagerNotFound) GetPayload() *ShowbackCredentialsLockManagerNotFoundBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackCredentialsLockManagerNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +426,264 @@ func (o *ShowbackCredentialsLockManagerInternalServerError) String() string {
 
 func (o *ShowbackCredentialsLockManagerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ShowbackCredentialsLockManagerBadRequestBody showback credentials lock manager bad request body
+swagger:model ShowbackCredentialsLockManagerBadRequestBody
+*/
+type ShowbackCredentialsLockManagerBadRequestBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// errors
+	// Read Only: true
+	Errors map[string][]string `json:"errors,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials lock manager bad request body
+func (o *ShowbackCredentialsLockManagerBadRequestBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validate this showback credentials lock manager bad request body based on the context it is used
+func (o *ShowbackCredentialsLockManagerBadRequestBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateErrors(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackCredentialsLockManagerBadRequestBody) contextValidateErrors(ctx context.Context, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsLockManagerBadRequestBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsLockManagerBadRequestBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsLockManagerBadRequestBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsLockManagerBody showback credentials lock manager body
+swagger:model ShowbackCredentialsLockManagerBody
+*/
+type ShowbackCredentialsLockManagerBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// mode
+	Mode string `json:"mode,omitempty"`
+}
+
+// Validate validates this showback credentials lock manager body
+func (o *ShowbackCredentialsLockManagerBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials lock manager body based on context it is used
+func (o *ShowbackCredentialsLockManagerBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsLockManagerBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsLockManagerBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsLockManagerBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsLockManagerForbiddenBody showback credentials lock manager forbidden body
+swagger:model ShowbackCredentialsLockManagerForbiddenBody
+*/
+type ShowbackCredentialsLockManagerForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials lock manager forbidden body
+func (o *ShowbackCredentialsLockManagerForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials lock manager forbidden body based on context it is used
+func (o *ShowbackCredentialsLockManagerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsLockManagerForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsLockManagerForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsLockManagerForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsLockManagerNotFoundBody showback credentials lock manager not found body
+swagger:model ShowbackCredentialsLockManagerNotFoundBody
+*/
+type ShowbackCredentialsLockManagerNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials lock manager not found body
+func (o *ShowbackCredentialsLockManagerNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials lock manager not found body based on context it is used
+func (o *ShowbackCredentialsLockManagerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsLockManagerNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsLockManagerNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsLockManagerNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsLockManagerUnauthorizedBody showback credentials lock manager unauthorized body
+swagger:model ShowbackCredentialsLockManagerUnauthorizedBody
+*/
+type ShowbackCredentialsLockManagerUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials lock manager unauthorized body
+func (o *ShowbackCredentialsLockManagerUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials lock manager unauthorized body based on context it is used
+func (o *ShowbackCredentialsLockManagerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsLockManagerUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsLockManagerUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsLockManagerUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

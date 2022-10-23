@@ -6,13 +6,13 @@ package kubernetes_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesProfilesLockManagerReader is a Reader for the KubernetesProfilesLockManager structure.
@@ -75,7 +75,7 @@ KubernetesProfilesLockManagerOK describes a response with status code 200, with 
 Success
 */
 type KubernetesProfilesLockManagerOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes profiles lock manager o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KubernetesProfilesLockManagerOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesProfilesLockManagerOK) GetPayload() models.Unit {
+func (o *KubernetesProfilesLockManagerOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KubernetesProfilesLockManagerBadRequest describes a response with status code 40
 Bad Request
 */
 type KubernetesProfilesLockManagerBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesProfilesLockManagerBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes profiles lock manager bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesProfilesLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesProfilesLockManagerBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesProfilesLockManagerBadRequest) GetPayload() []*KubernetesProfilesLockManagerBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesProfilesLockManagerUnauthorized describes a response with status code 
 Unauthorized
 */
 type KubernetesProfilesLockManagerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesProfilesLockManagerUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes profiles lock manager unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesProfilesLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesProfilesLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesLockManagerUnauthorized) GetPayload() *KubernetesProfilesLockManagerUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesProfilesLockManagerUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesProfilesLockManagerForbidden describes a response with status code 403
 Forbidden
 */
 type KubernetesProfilesLockManagerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesProfilesLockManagerForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes profiles lock manager forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesProfilesLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesProfilesLockManagerForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesLockManagerForbidden) GetPayload() *KubernetesProfilesLockManagerForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesProfilesLockManagerForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesProfilesLockManagerNotFound describes a response with status code 404,
 Not Found
 */
 type KubernetesProfilesLockManagerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesProfilesLockManagerNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes profiles lock manager not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesProfilesLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesProfilesLockManagerNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesLockManagerNotFound) GetPayload() *KubernetesProfilesLockManagerNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesProfilesLockManagerNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *KubernetesProfilesLockManagerInternalServerError) String() string {
 
 func (o *KubernetesProfilesLockManagerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesProfilesLockManagerBadRequestBodyItems0 kubernetes profiles lock manager bad request body items0
+swagger:model KubernetesProfilesLockManagerBadRequestBodyItems0
+*/
+type KubernetesProfilesLockManagerBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes profiles lock manager bad request body items0
+func (o *KubernetesProfilesLockManagerBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles lock manager bad request body items0 based on context it is used
+func (o *KubernetesProfilesLockManagerBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesProfilesLockManagerBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesProfilesLockManagerBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesLockManagerBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesProfilesLockManagerBody kubernetes profiles lock manager body
+swagger:model KubernetesProfilesLockManagerBody
+*/
+type KubernetesProfilesLockManagerBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// mode
+	Mode string `json:"mode,omitempty"`
+}
+
+// Validate validates this kubernetes profiles lock manager body
+func (o *KubernetesProfilesLockManagerBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles lock manager body based on context it is used
+func (o *KubernetesProfilesLockManagerBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesProfilesLockManagerBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesProfilesLockManagerBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesLockManagerBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesProfilesLockManagerForbiddenBody kubernetes profiles lock manager forbidden body
+swagger:model KubernetesProfilesLockManagerForbiddenBody
+*/
+type KubernetesProfilesLockManagerForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes profiles lock manager forbidden body
+func (o *KubernetesProfilesLockManagerForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles lock manager forbidden body based on context it is used
+func (o *KubernetesProfilesLockManagerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesProfilesLockManagerForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesProfilesLockManagerForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesLockManagerForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesProfilesLockManagerNotFoundBody kubernetes profiles lock manager not found body
+swagger:model KubernetesProfilesLockManagerNotFoundBody
+*/
+type KubernetesProfilesLockManagerNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes profiles lock manager not found body
+func (o *KubernetesProfilesLockManagerNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles lock manager not found body based on context it is used
+func (o *KubernetesProfilesLockManagerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesProfilesLockManagerNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesProfilesLockManagerNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesLockManagerNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesProfilesLockManagerUnauthorizedBody kubernetes profiles lock manager unauthorized body
+swagger:model KubernetesProfilesLockManagerUnauthorizedBody
+*/
+type KubernetesProfilesLockManagerUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes profiles lock manager unauthorized body
+func (o *KubernetesProfilesLockManagerUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles lock manager unauthorized body based on context it is used
+func (o *KubernetesProfilesLockManagerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesProfilesLockManagerUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesProfilesLockManagerUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesLockManagerUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package stand_alone
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // StandAloneCommitReader is a Reader for the StandAloneCommit structure.
@@ -75,7 +75,7 @@ StandAloneCommitOK describes a response with status code 200, with default heade
 Success
 */
 type StandAloneCommitOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone commit o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneCommitOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneCommitOK) GetPayload() models.Unit {
+func (o *StandAloneCommitOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneCommitBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type StandAloneCommitBadRequest struct {
-	Payload []*models.Error
+	Payload []*StandAloneCommitBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this stand alone commit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneCommitBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneCommitBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneCommitBadRequest) GetPayload() []*StandAloneCommitBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneCommitUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type StandAloneCommitUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneCommitUnauthorizedBody
 }
 
 // IsSuccess returns true when this stand alone commit unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneCommitUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneCommitUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneCommitUnauthorized) GetPayload() *StandAloneCommitUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *StandAloneCommitUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneCommitUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneCommitForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type StandAloneCommitForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneCommitForbiddenBody
 }
 
 // IsSuccess returns true when this stand alone commit forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneCommitForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneCommitForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneCommitForbidden) GetPayload() *StandAloneCommitForbiddenBody {
 	return o.Payload
 }
 
 func (o *StandAloneCommitForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneCommitForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneCommitNotFound describes a response with status code 404, with default
 Not Found
 */
 type StandAloneCommitNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneCommitNotFoundBody
 }
 
 // IsSuccess returns true when this stand alone commit not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneCommitNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneCommitNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneCommitNotFound) GetPayload() *StandAloneCommitNotFoundBody {
 	return o.Payload
 }
 
 func (o *StandAloneCommitNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneCommitNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *StandAloneCommitInternalServerError) String() string {
 
 func (o *StandAloneCommitInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+StandAloneCommitBadRequestBodyItems0 stand alone commit bad request body items0
+swagger:model StandAloneCommitBadRequestBodyItems0
+*/
+type StandAloneCommitBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this stand alone commit bad request body items0
+func (o *StandAloneCommitBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone commit bad request body items0 based on context it is used
+func (o *StandAloneCommitBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneCommitBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneCommitBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneCommitBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneCommitBody stand alone commit body
+swagger:model StandAloneCommitBody
+*/
+type StandAloneCommitBody struct {
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this stand alone commit body
+func (o *StandAloneCommitBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone commit body based on context it is used
+func (o *StandAloneCommitBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneCommitBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneCommitBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneCommitBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneCommitForbiddenBody stand alone commit forbidden body
+swagger:model StandAloneCommitForbiddenBody
+*/
+type StandAloneCommitForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone commit forbidden body
+func (o *StandAloneCommitForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone commit forbidden body based on context it is used
+func (o *StandAloneCommitForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneCommitForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneCommitForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneCommitForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneCommitNotFoundBody stand alone commit not found body
+swagger:model StandAloneCommitNotFoundBody
+*/
+type StandAloneCommitNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone commit not found body
+func (o *StandAloneCommitNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone commit not found body based on context it is used
+func (o *StandAloneCommitNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneCommitNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneCommitNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneCommitNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneCommitUnauthorizedBody stand alone commit unauthorized body
+swagger:model StandAloneCommitUnauthorizedBody
+*/
+type StandAloneCommitUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone commit unauthorized body
+func (o *StandAloneCommitUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone commit unauthorized body based on context it is used
+func (o *StandAloneCommitUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneCommitUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneCommitUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneCommitUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

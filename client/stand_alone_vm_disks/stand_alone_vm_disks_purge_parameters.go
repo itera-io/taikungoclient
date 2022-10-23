@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneVMDisksPurgeParams creates a new StandAloneVMDisksPurgeParams object,
@@ -64,7 +62,7 @@ StandAloneVMDisksPurgeParams contains all the parameters to send to the API endp
 type StandAloneVMDisksPurgeParams struct {
 
 	// Body.
-	Body *models.PurgeStandAloneVMDiskCommand
+	Body StandAloneVMDisksPurgeBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *StandAloneVMDisksPurgeParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone Vm disks purge params
-func (o *StandAloneVMDisksPurgeParams) WithBody(body *models.PurgeStandAloneVMDiskCommand) *StandAloneVMDisksPurgeParams {
+func (o *StandAloneVMDisksPurgeParams) WithBody(body StandAloneVMDisksPurgeBody) *StandAloneVMDisksPurgeParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone Vm disks purge params
-func (o *StandAloneVMDisksPurgeParams) SetBody(body *models.PurgeStandAloneVMDiskCommand) {
+func (o *StandAloneVMDisksPurgeParams) SetBody(body StandAloneVMDisksPurgeBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *StandAloneVMDisksPurgeParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

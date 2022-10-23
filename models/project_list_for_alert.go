@@ -38,10 +38,10 @@ type ProjectListForAlert struct {
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
 
 	// kubernetes alerts
-	KubernetesAlerts []*KubernetesAlertDto `json:"kubernetesAlerts"`
+	KubernetesAlerts []*ProjectListForAlertKubernetesAlertsItems0 `json:"kubernetesAlerts"`
 
 	// monitoring credentials
-	MonitoringCredentials []*MonitoringCredentialsListDto `json:"monitoringCredentials"`
+	MonitoringCredentials []*ProjectListForAlertMonitoringCredentialsItems0 `json:"monitoringCredentials"`
 
 	// name
 	Name string `json:"name,omitempty"`
@@ -195,6 +195,137 @@ func (m *ProjectListForAlert) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ProjectListForAlert) UnmarshalBinary(b []byte) error {
 	var res ProjectListForAlert
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectListForAlertKubernetesAlertsItems0 project list for alert kubernetes alerts items0
+//
+// swagger:model ProjectListForAlertKubernetesAlertsItems0
+type ProjectListForAlertKubernetesAlertsItems0 struct {
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// end at
+	EndAt string `json:"endAt,omitempty"`
+
+	// fingerprint
+	Fingerprint string `json:"fingerprint,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is silenced
+	IsSilenced bool `json:"isSilenced"`
+
+	// is solved
+	IsSolved bool `json:"isSolved"`
+
+	// labels
+	Labels interface{} `json:"labels,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// severity
+	Severity string `json:"severity,omitempty"`
+
+	// silence reason
+	SilenceReason string `json:"silenceReason,omitempty"`
+
+	// starts at
+	StartsAt string `json:"startsAt,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+}
+
+// Validate validates this project list for alert kubernetes alerts items0
+func (m *ProjectListForAlertKubernetesAlertsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project list for alert kubernetes alerts items0 based on context it is used
+func (m *ProjectListForAlertKubernetesAlertsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectListForAlertKubernetesAlertsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectListForAlertKubernetesAlertsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectListForAlertKubernetesAlertsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectListForAlertMonitoringCredentialsItems0 project list for alert monitoring credentials items0
+//
+// swagger:model ProjectListForAlertMonitoringCredentialsItems0
+type ProjectListForAlertMonitoringCredentialsItems0 struct {
+
+	// alert manager Url
+	AlertManagerURL string `json:"alertManagerUrl,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// loki Url
+	LokiURL string `json:"lokiUrl,omitempty"`
+
+	// password
+	Password string `json:"password,omitempty"`
+
+	// prometheus Url
+	PrometheusURL string `json:"prometheusUrl,omitempty"`
+
+	// username
+	Username string `json:"username,omitempty"`
+}
+
+// Validate validates this project list for alert monitoring credentials items0
+func (m *ProjectListForAlertMonitoringCredentialsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project list for alert monitoring credentials items0 based on context it is used
+func (m *ProjectListForAlertMonitoringCredentialsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectListForAlertMonitoringCredentialsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectListForAlertMonitoringCredentialsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectListForAlertMonitoringCredentialsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

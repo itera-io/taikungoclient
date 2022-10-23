@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAdminDeleteOrganizationParams creates a new AdminDeleteOrganizationParams object,
@@ -64,7 +62,7 @@ AdminDeleteOrganizationParams contains all the parameters to send to the API end
 type AdminDeleteOrganizationParams struct {
 
 	// Body.
-	Body *models.AdminOrganizationsDeleteCommand
+	Body AdminDeleteOrganizationBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *AdminDeleteOrganizationParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the admin delete organization params
-func (o *AdminDeleteOrganizationParams) WithBody(body *models.AdminOrganizationsDeleteCommand) *AdminDeleteOrganizationParams {
+func (o *AdminDeleteOrganizationParams) WithBody(body AdminDeleteOrganizationBody) *AdminDeleteOrganizationParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the admin delete organization params
-func (o *AdminDeleteOrganizationParams) SetBody(body *models.AdminOrganizationsDeleteCommand) {
+func (o *AdminDeleteOrganizationParams) SetBody(body AdminDeleteOrganizationBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *AdminDeleteOrganizationParams) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

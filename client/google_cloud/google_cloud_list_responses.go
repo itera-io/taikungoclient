@@ -6,13 +6,15 @@ package google_cloud
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // GoogleCloudListReader is a Reader for the GoogleCloudList structure.
@@ -75,7 +77,7 @@ GoogleCloudListOK describes a response with status code 200, with default header
 Success
 */
 type GoogleCloudListOK struct {
-	Payload *models.GoogleCredentialList
+	Payload *GoogleCloudListOKBody
 }
 
 // IsSuccess returns true when this google cloud list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *GoogleCloudListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListOK  %+v", 200, o.Payload)
 }
 
-func (o *GoogleCloudListOK) GetPayload() *models.GoogleCredentialList {
+func (o *GoogleCloudListOK) GetPayload() *GoogleCloudListOKBody {
 	return o.Payload
 }
 
 func (o *GoogleCloudListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GoogleCredentialList)
+	o.Payload = new(GoogleCloudListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ GoogleCloudListBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type GoogleCloudListBadRequest struct {
-	Payload []*models.Error
+	Payload []*GoogleCloudListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this google cloud list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *GoogleCloudListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GoogleCloudListBadRequest) GetPayload() []*models.Error {
+func (o *GoogleCloudListBadRequest) GetPayload() []*GoogleCloudListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ GoogleCloudListUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type GoogleCloudListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *GoogleCloudListUnauthorizedBody
 }
 
 // IsSuccess returns true when this google cloud list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *GoogleCloudListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GoogleCloudListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudListUnauthorized) GetPayload() *GoogleCloudListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *GoogleCloudListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(GoogleCloudListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ GoogleCloudListForbidden describes a response with status code 403, with default
 Forbidden
 */
 type GoogleCloudListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *GoogleCloudListForbiddenBody
 }
 
 // IsSuccess returns true when this google cloud list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *GoogleCloudListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GoogleCloudListForbidden) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudListForbidden) GetPayload() *GoogleCloudListForbiddenBody {
 	return o.Payload
 }
 
 func (o *GoogleCloudListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(GoogleCloudListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ GoogleCloudListNotFound describes a response with status code 404, with default 
 Not Found
 */
 type GoogleCloudListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *GoogleCloudListNotFoundBody
 }
 
 // IsSuccess returns true when this google cloud list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *GoogleCloudListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GoogleCloudListNotFound) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudListNotFound) GetPayload() *GoogleCloudListNotFoundBody {
 	return o.Payload
 }
 
 func (o *GoogleCloudListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(GoogleCloudListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,492 @@ func (o *GoogleCloudListInternalServerError) String() string {
 
 func (o *GoogleCloudListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+GoogleCloudListBadRequestBodyItems0 google cloud list bad request body items0
+swagger:model GoogleCloudListBadRequestBodyItems0
+*/
+type GoogleCloudListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this google cloud list bad request body items0
+func (o *GoogleCloudListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud list bad request body items0 based on context it is used
+func (o *GoogleCloudListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudListForbiddenBody google cloud list forbidden body
+swagger:model GoogleCloudListForbiddenBody
+*/
+type GoogleCloudListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this google cloud list forbidden body
+func (o *GoogleCloudListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud list forbidden body based on context it is used
+func (o *GoogleCloudListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudListNotFoundBody google cloud list not found body
+swagger:model GoogleCloudListNotFoundBody
+*/
+type GoogleCloudListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this google cloud list not found body
+func (o *GoogleCloudListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud list not found body based on context it is used
+func (o *GoogleCloudListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudListOKBody google cloud list o k body
+swagger:model GoogleCloudListOKBody
+*/
+type GoogleCloudListOKBody struct {
+
+	// data
+	Data []*GoogleCloudListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this google cloud list o k body
+func (o *GoogleCloudListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GoogleCloudListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("googleCloudListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("googleCloudListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this google cloud list o k body based on the context it is used
+func (o *GoogleCloudListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GoogleCloudListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("googleCloudListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("googleCloudListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudListOKBody) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudListOKBodyDataItems0 google cloud list o k body data items0
+swagger:model GoogleCloudListOKBodyDataItems0
+*/
+type GoogleCloudListOKBodyDataItems0 struct {
+
+	// billing account Id
+	BillingAccountID string `json:"billingAccountId,omitempty"`
+
+	// billing account name
+	BillingAccountName string `json:"billingAccountName,omitempty"`
+
+	// continent name
+	ContinentName string `json:"continentName,omitempty"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// folder Id
+	FolderID string `json:"folderId,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is default
+	IsDefault bool `json:"isDefault"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// partner logo
+	PartnerLogo string `json:"partnerLogo,omitempty"`
+
+	// partner name
+	PartnerName string `json:"partnerName,omitempty"`
+
+	// project Id
+	ProjectID string `json:"projectId,omitempty"`
+
+	// projects
+	Projects []*GoogleCloudListOKBodyDataItems0ProjectsItems0 `json:"projects"`
+
+	// region
+	Region string `json:"region,omitempty"`
+
+	// zones
+	Zones []string `json:"zones"`
+}
+
+// Validate validates this google cloud list o k body data items0
+func (o *GoogleCloudListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateProjects(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GoogleCloudListOKBodyDataItems0) validateProjects(formats strfmt.Registry) error {
+	if swag.IsZero(o.Projects) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Projects); i++ {
+		if swag.IsZero(o.Projects[i]) { // not required
+			continue
+		}
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this google cloud list o k body data items0 based on the context it is used
+func (o *GoogleCloudListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *GoogleCloudListOKBodyDataItems0) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Projects); i++ {
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudListOKBodyDataItems0ProjectsItems0 google cloud list o k body data items0 projects items0
+swagger:model GoogleCloudListOKBodyDataItems0ProjectsItems0
+*/
+type GoogleCloudListOKBodyDataItems0ProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this google cloud list o k body data items0 projects items0
+func (o *GoogleCloudListOKBodyDataItems0ProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud list o k body data items0 projects items0 based on context it is used
+func (o *GoogleCloudListOKBodyDataItems0ProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudListOKBodyDataItems0ProjectsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudListOKBodyDataItems0ProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudListOKBodyDataItems0ProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudListUnauthorizedBody google cloud list unauthorized body
+swagger:model GoogleCloudListUnauthorizedBody
+*/
+type GoogleCloudListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this google cloud list unauthorized body
+func (o *GoogleCloudListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud list unauthorized body based on context it is used
+func (o *GoogleCloudListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

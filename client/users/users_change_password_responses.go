@@ -6,13 +6,13 @@ package users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // UsersChangePasswordReader is a Reader for the UsersChangePassword structure.
@@ -75,7 +75,7 @@ UsersChangePasswordOK describes a response with status code 200, with default he
 Success
 */
 type UsersChangePasswordOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users change password o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *UsersChangePasswordOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/changepassword][%d] usersChangePasswordOK  %+v", 200, o.Payload)
 }
 
-func (o *UsersChangePasswordOK) GetPayload() models.Unit {
+func (o *UsersChangePasswordOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ UsersChangePasswordBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type UsersChangePasswordBadRequest struct {
-	Payload []*models.Error
+	Payload []*UsersChangePasswordBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this users change password bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UsersChangePasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/changepassword][%d] usersChangePasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersChangePasswordBadRequest) GetPayload() []*models.Error {
+func (o *UsersChangePasswordBadRequest) GetPayload() []*UsersChangePasswordBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ UsersChangePasswordUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type UsersChangePasswordUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *UsersChangePasswordUnauthorizedBody
 }
 
 // IsSuccess returns true when this users change password unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *UsersChangePasswordUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/changepassword][%d] usersChangePasswordUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersChangePasswordUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UsersChangePasswordUnauthorized) GetPayload() *UsersChangePasswordUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *UsersChangePasswordUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersChangePasswordUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ UsersChangePasswordForbidden describes a response with status code 403, with def
 Forbidden
 */
 type UsersChangePasswordForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *UsersChangePasswordForbiddenBody
 }
 
 // IsSuccess returns true when this users change password forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *UsersChangePasswordForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/changepassword][%d] usersChangePasswordForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersChangePasswordForbidden) GetPayload() *models.ProblemDetails {
+func (o *UsersChangePasswordForbidden) GetPayload() *UsersChangePasswordForbiddenBody {
 	return o.Payload
 }
 
 func (o *UsersChangePasswordForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersChangePasswordForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ UsersChangePasswordNotFound describes a response with status code 404, with defa
 Not Found
 */
 type UsersChangePasswordNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *UsersChangePasswordNotFoundBody
 }
 
 // IsSuccess returns true when this users change password not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *UsersChangePasswordNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/changepassword][%d] usersChangePasswordNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersChangePasswordNotFound) GetPayload() *models.ProblemDetails {
+func (o *UsersChangePasswordNotFound) GetPayload() *UsersChangePasswordNotFoundBody {
 	return o.Payload
 }
 
 func (o *UsersChangePasswordNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersChangePasswordNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *UsersChangePasswordInternalServerError) String() string {
 
 func (o *UsersChangePasswordInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+UsersChangePasswordBadRequestBodyItems0 users change password bad request body items0
+swagger:model UsersChangePasswordBadRequestBodyItems0
+*/
+type UsersChangePasswordBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this users change password bad request body items0
+func (o *UsersChangePasswordBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users change password bad request body items0 based on context it is used
+func (o *UsersChangePasswordBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersChangePasswordBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersChangePasswordBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res UsersChangePasswordBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersChangePasswordBody users change password body
+swagger:model UsersChangePasswordBody
+*/
+type UsersChangePasswordBody struct {
+
+	// new password
+	NewPassword string `json:"newPassword,omitempty"`
+
+	// password
+	Password string `json:"password,omitempty"`
+}
+
+// Validate validates this users change password body
+func (o *UsersChangePasswordBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users change password body based on context it is used
+func (o *UsersChangePasswordBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersChangePasswordBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersChangePasswordBody) UnmarshalBinary(b []byte) error {
+	var res UsersChangePasswordBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersChangePasswordForbiddenBody users change password forbidden body
+swagger:model UsersChangePasswordForbiddenBody
+*/
+type UsersChangePasswordForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users change password forbidden body
+func (o *UsersChangePasswordForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users change password forbidden body based on context it is used
+func (o *UsersChangePasswordForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersChangePasswordForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersChangePasswordForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res UsersChangePasswordForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersChangePasswordNotFoundBody users change password not found body
+swagger:model UsersChangePasswordNotFoundBody
+*/
+type UsersChangePasswordNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users change password not found body
+func (o *UsersChangePasswordNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users change password not found body based on context it is used
+func (o *UsersChangePasswordNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersChangePasswordNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersChangePasswordNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res UsersChangePasswordNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersChangePasswordUnauthorizedBody users change password unauthorized body
+swagger:model UsersChangePasswordUnauthorizedBody
+*/
+type UsersChangePasswordUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users change password unauthorized body
+func (o *UsersChangePasswordUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users change password unauthorized body based on context it is used
+func (o *UsersChangePasswordUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersChangePasswordUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersChangePasswordUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res UsersChangePasswordUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

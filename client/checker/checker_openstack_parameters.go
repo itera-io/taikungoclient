@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCheckerOpenstackParams creates a new CheckerOpenstackParams object,
@@ -64,7 +62,7 @@ CheckerOpenstackParams contains all the parameters to send to the API endpoint
 type CheckerOpenstackParams struct {
 
 	// Body.
-	Body *models.CheckOpenstackCommand
+	Body CheckerOpenstackBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *CheckerOpenstackParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the checker openstack params
-func (o *CheckerOpenstackParams) WithBody(body *models.CheckOpenstackCommand) *CheckerOpenstackParams {
+func (o *CheckerOpenstackParams) WithBody(body CheckerOpenstackBody) *CheckerOpenstackParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the checker openstack params
-func (o *CheckerOpenstackParams) SetBody(body *models.CheckOpenstackCommand) {
+func (o *CheckerOpenstackParams) SetBody(body CheckerOpenstackBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *CheckerOpenstackParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

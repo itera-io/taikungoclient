@@ -20,7 +20,7 @@ import (
 type Pods struct {
 
 	// data
-	Data []*PodListDto `json:"data"`
+	Data []*PodsDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,64 @@ func (m *Pods) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *Pods) UnmarshalBinary(b []byte) error {
 	var res Pods
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PodsDataItems0 pods data items0
+//
+// swagger:model PodsDataItems0
+type PodsDataItems0 struct {
+
+	// age
+	Age string `json:"age,omitempty"`
+
+	// container
+	Container []string `json:"container"`
+
+	// metadata name
+	MetadataName string `json:"metadataName,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// node
+	Node string `json:"node,omitempty"`
+
+	// phase
+	Phase string `json:"phase,omitempty"`
+
+	// restart count
+	RestartCount int32 `json:"restartCount,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+}
+
+// Validate validates this pods data items0
+func (m *PodsDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this pods data items0 based on context it is used
+func (m *PodsDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PodsDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PodsDataItems0) UnmarshalBinary(b []byte) error {
+	var res PodsDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -76,7 +77,7 @@ type StandaloneVMListDto struct {
 	Revision int32 `json:"revision,omitempty"`
 
 	// stand alone profile
-	StandAloneProfile *StandaloneProfileListDto `json:"standAloneProfile,omitempty"`
+	StandAloneProfile *StandaloneVMListDtoStandAloneProfile `json:"standAloneProfile,omitempty"`
 
 	// status
 	Status string `json:"status,omitempty"`
@@ -162,6 +163,171 @@ func (m *StandaloneVMListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *StandaloneVMListDto) UnmarshalBinary(b []byte) error {
 	var res StandaloneVMListDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// StandaloneVMListDtoStandAloneProfile standalone VM list dto stand alone profile
+//
+// swagger:model StandaloneVMListDtoStandAloneProfile
+type StandaloneVMListDtoStandAloneProfile struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// revision
+	Revision int32 `json:"revision,omitempty"`
+
+	// stand alone profile security groups
+	StandAloneProfileSecurityGroups []*StandaloneVMListDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0 `json:"standAloneProfileSecurityGroups"`
+}
+
+// Validate validates this standalone VM list dto stand alone profile
+func (m *StandaloneVMListDtoStandAloneProfile) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateStandAloneProfileSecurityGroups(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StandaloneVMListDtoStandAloneProfile) validateStandAloneProfileSecurityGroups(formats strfmt.Registry) error {
+	if swag.IsZero(m.StandAloneProfileSecurityGroups) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.StandAloneProfileSecurityGroups); i++ {
+		if swag.IsZero(m.StandAloneProfileSecurityGroups[i]) { // not required
+			continue
+		}
+
+		if m.StandAloneProfileSecurityGroups[i] != nil {
+			if err := m.StandAloneProfileSecurityGroups[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this standalone VM list dto stand alone profile based on the context it is used
+func (m *StandaloneVMListDtoStandAloneProfile) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateStandAloneProfileSecurityGroups(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StandaloneVMListDtoStandAloneProfile) contextValidateStandAloneProfileSecurityGroups(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.StandAloneProfileSecurityGroups); i++ {
+
+		if m.StandAloneProfileSecurityGroups[i] != nil {
+			if err := m.StandAloneProfileSecurityGroups[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *StandaloneVMListDtoStandAloneProfile) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *StandaloneVMListDtoStandAloneProfile) UnmarshalBinary(b []byte) error {
+	var res StandaloneVMListDtoStandAloneProfile
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// StandaloneVMListDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0 standalone VM list dto stand alone profile stand alone profile security groups items0
+//
+// swagger:model StandaloneVMListDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0
+type StandaloneVMListDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// port max range
+	PortMaxRange int32 `json:"portMaxRange,omitempty"`
+
+	// port min range
+	PortMinRange int32 `json:"portMinRange,omitempty"`
+
+	// protocol
+	Protocol string `json:"protocol,omitempty"`
+
+	// remote Ip prefix
+	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
+}
+
+// Validate validates this standalone VM list dto stand alone profile stand alone profile security groups items0
+func (m *StandaloneVMListDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this standalone VM list dto stand alone profile stand alone profile security groups items0 based on context it is used
+func (m *StandaloneVMListDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *StandaloneVMListDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *StandaloneVMListDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0) UnmarshalBinary(b []byte) error {
+	var res StandaloneVMListDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

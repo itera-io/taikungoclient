@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CronJobFetchAzurePricesReader is a Reader for the CronJobFetchAzurePrices structure.
@@ -75,7 +75,7 @@ CronJobFetchAzurePricesOK describes a response with status code 200, with defaul
 Success
 */
 type CronJobFetchAzurePricesOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job fetch azure prices o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobFetchAzurePricesOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobFetchAzurePricesOK) GetPayload() models.Unit {
+func (o *CronJobFetchAzurePricesOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobFetchAzurePricesBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type CronJobFetchAzurePricesBadRequest struct {
-	Payload []*models.Error
+	Payload []*CronJobFetchAzurePricesBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this cron job fetch azure prices bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobFetchAzurePricesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobFetchAzurePricesBadRequest) GetPayload() []*models.Error {
+func (o *CronJobFetchAzurePricesBadRequest) GetPayload() []*CronJobFetchAzurePricesBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobFetchAzurePricesUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type CronJobFetchAzurePricesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobFetchAzurePricesUnauthorizedBody
 }
 
 // IsSuccess returns true when this cron job fetch azure prices unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobFetchAzurePricesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobFetchAzurePricesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchAzurePricesUnauthorized) GetPayload() *CronJobFetchAzurePricesUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CronJobFetchAzurePricesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobFetchAzurePricesUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobFetchAzurePricesForbidden describes a response with status code 403, with
 Forbidden
 */
 type CronJobFetchAzurePricesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobFetchAzurePricesForbiddenBody
 }
 
 // IsSuccess returns true when this cron job fetch azure prices forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobFetchAzurePricesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobFetchAzurePricesForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchAzurePricesForbidden) GetPayload() *CronJobFetchAzurePricesForbiddenBody {
 	return o.Payload
 }
 
 func (o *CronJobFetchAzurePricesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobFetchAzurePricesForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobFetchAzurePricesNotFound describes a response with status code 404, with 
 Not Found
 */
 type CronJobFetchAzurePricesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobFetchAzurePricesNotFoundBody
 }
 
 // IsSuccess returns true when this cron job fetch azure prices not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobFetchAzurePricesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobFetchAzurePricesNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchAzurePricesNotFound) GetPayload() *CronJobFetchAzurePricesNotFoundBody {
 	return o.Payload
 }
 
 func (o *CronJobFetchAzurePricesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobFetchAzurePricesNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *CronJobFetchAzurePricesInternalServerError) String() string {
 
 func (o *CronJobFetchAzurePricesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CronJobFetchAzurePricesBadRequestBodyItems0 cron job fetch azure prices bad request body items0
+swagger:model CronJobFetchAzurePricesBadRequestBodyItems0
+*/
+type CronJobFetchAzurePricesBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this cron job fetch azure prices bad request body items0
+func (o *CronJobFetchAzurePricesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch azure prices bad request body items0 based on context it is used
+func (o *CronJobFetchAzurePricesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchAzurePricesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchAzurePricesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchAzurePricesBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobFetchAzurePricesForbiddenBody cron job fetch azure prices forbidden body
+swagger:model CronJobFetchAzurePricesForbiddenBody
+*/
+type CronJobFetchAzurePricesForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job fetch azure prices forbidden body
+func (o *CronJobFetchAzurePricesForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch azure prices forbidden body based on context it is used
+func (o *CronJobFetchAzurePricesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchAzurePricesForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchAzurePricesForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchAzurePricesForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobFetchAzurePricesNotFoundBody cron job fetch azure prices not found body
+swagger:model CronJobFetchAzurePricesNotFoundBody
+*/
+type CronJobFetchAzurePricesNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job fetch azure prices not found body
+func (o *CronJobFetchAzurePricesNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch azure prices not found body based on context it is used
+func (o *CronJobFetchAzurePricesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchAzurePricesNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchAzurePricesNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchAzurePricesNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobFetchAzurePricesUnauthorizedBody cron job fetch azure prices unauthorized body
+swagger:model CronJobFetchAzurePricesUnauthorizedBody
+*/
+type CronJobFetchAzurePricesUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job fetch azure prices unauthorized body
+func (o *CronJobFetchAzurePricesUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch azure prices unauthorized body based on context it is used
+func (o *CronJobFetchAzurePricesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchAzurePricesUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchAzurePricesUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchAzurePricesUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

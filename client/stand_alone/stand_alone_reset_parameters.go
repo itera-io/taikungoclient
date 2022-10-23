@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneResetParams creates a new StandAloneResetParams object,
@@ -64,7 +62,7 @@ StandAloneResetParams contains all the parameters to send to the API endpoint
 type StandAloneResetParams struct {
 
 	// Body.
-	Body *models.ResetStandAloneVMStatusCommand
+	Body StandAloneResetBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *StandAloneResetParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone reset params
-func (o *StandAloneResetParams) WithBody(body *models.ResetStandAloneVMStatusCommand) *StandAloneResetParams {
+func (o *StandAloneResetParams) WithBody(body StandAloneResetBody) *StandAloneResetParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone reset params
-func (o *StandAloneResetParams) SetBody(body *models.ResetStandAloneVMStatusCommand) {
+func (o *StandAloneResetParams) SetBody(body StandAloneResetBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *StandAloneResetParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

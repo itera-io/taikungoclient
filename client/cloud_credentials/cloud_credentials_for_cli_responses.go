@@ -6,13 +6,15 @@ package cloud_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CloudCredentialsForCliReader is a Reader for the CloudCredentialsForCli structure.
@@ -75,7 +77,7 @@ CloudCredentialsForCliOK describes a response with status code 200, with default
 Success
 */
 type CloudCredentialsForCliOK struct {
-	Payload *models.CredentialsForCli
+	Payload *CloudCredentialsForCliOKBody
 }
 
 // IsSuccess returns true when this cloud credentials for cli o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *CloudCredentialsForCliOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/cli][%d] cloudCredentialsForCliOK  %+v", 200, o.Payload)
 }
 
-func (o *CloudCredentialsForCliOK) GetPayload() *models.CredentialsForCli {
+func (o *CloudCredentialsForCliOK) GetPayload() *CloudCredentialsForCliOKBody {
 	return o.Payload
 }
 
 func (o *CloudCredentialsForCliOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.CredentialsForCli)
+	o.Payload = new(CloudCredentialsForCliOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ CloudCredentialsForCliBadRequest describes a response with status code 400, with
 Bad Request
 */
 type CloudCredentialsForCliBadRequest struct {
-	Payload []*models.Error
+	Payload []*CloudCredentialsForCliBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this cloud credentials for cli bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *CloudCredentialsForCliBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/cli][%d] cloudCredentialsForCliBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsForCliBadRequest) GetPayload() []*models.Error {
+func (o *CloudCredentialsForCliBadRequest) GetPayload() []*CloudCredentialsForCliBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ CloudCredentialsForCliUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type CloudCredentialsForCliUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CloudCredentialsForCliUnauthorizedBody
 }
 
 // IsSuccess returns true when this cloud credentials for cli unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *CloudCredentialsForCliUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/cli][%d] cloudCredentialsForCliUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsForCliUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsForCliUnauthorized) GetPayload() *CloudCredentialsForCliUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CloudCredentialsForCliUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CloudCredentialsForCliUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ CloudCredentialsForCliForbidden describes a response with status code 403, with 
 Forbidden
 */
 type CloudCredentialsForCliForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CloudCredentialsForCliForbiddenBody
 }
 
 // IsSuccess returns true when this cloud credentials for cli forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *CloudCredentialsForCliForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/cli][%d] cloudCredentialsForCliForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsForCliForbidden) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsForCliForbidden) GetPayload() *CloudCredentialsForCliForbiddenBody {
 	return o.Payload
 }
 
 func (o *CloudCredentialsForCliForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CloudCredentialsForCliForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ CloudCredentialsForCliNotFound describes a response with status code 404, with d
 Not Found
 */
 type CloudCredentialsForCliNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CloudCredentialsForCliNotFoundBody
 }
 
 // IsSuccess returns true when this cloud credentials for cli not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *CloudCredentialsForCliNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/cli][%d] cloudCredentialsForCliNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsForCliNotFound) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsForCliNotFound) GetPayload() *CloudCredentialsForCliNotFoundBody {
 	return o.Payload
 }
 
 func (o *CloudCredentialsForCliNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CloudCredentialsForCliNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,354 @@ func (o *CloudCredentialsForCliInternalServerError) String() string {
 
 func (o *CloudCredentialsForCliInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CloudCredentialsForCliBadRequestBodyItems0 cloud credentials for cli bad request body items0
+swagger:model CloudCredentialsForCliBadRequestBodyItems0
+*/
+type CloudCredentialsForCliBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this cloud credentials for cli bad request body items0
+func (o *CloudCredentialsForCliBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials for cli bad request body items0 based on context it is used
+func (o *CloudCredentialsForCliBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsForCliBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsForCliBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsForCliBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsForCliForbiddenBody cloud credentials for cli forbidden body
+swagger:model CloudCredentialsForCliForbiddenBody
+*/
+type CloudCredentialsForCliForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cloud credentials for cli forbidden body
+func (o *CloudCredentialsForCliForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials for cli forbidden body based on context it is used
+func (o *CloudCredentialsForCliForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsForCliForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsForCliForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsForCliForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsForCliNotFoundBody cloud credentials for cli not found body
+swagger:model CloudCredentialsForCliNotFoundBody
+*/
+type CloudCredentialsForCliNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cloud credentials for cli not found body
+func (o *CloudCredentialsForCliNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials for cli not found body based on context it is used
+func (o *CloudCredentialsForCliNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsForCliNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsForCliNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsForCliNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsForCliOKBody cloud credentials for cli o k body
+swagger:model CloudCredentialsForCliOKBody
+*/
+type CloudCredentialsForCliOKBody struct {
+
+	// data
+	Data []*CloudCredentialsForCliOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this cloud credentials for cli o k body
+func (o *CloudCredentialsForCliOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CloudCredentialsForCliOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("cloudCredentialsForCliOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("cloudCredentialsForCliOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cloud credentials for cli o k body based on the context it is used
+func (o *CloudCredentialsForCliOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CloudCredentialsForCliOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("cloudCredentialsForCliOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("cloudCredentialsForCliOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsForCliOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsForCliOKBody) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsForCliOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsForCliOKBodyDataItems0 cloud credentials for cli o k body data items0
+swagger:model CloudCredentialsForCliOKBodyDataItems0
+*/
+type CloudCredentialsForCliOKBodyDataItems0 struct {
+
+	// cloud credential name
+	CloudCredentialName string `json:"cloudCredentialName,omitempty"`
+
+	// cloud type
+	CloudType string `json:"cloudType,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// partner name
+	PartnerName string `json:"partnerName,omitempty"`
+}
+
+// Validate validates this cloud credentials for cli o k body data items0
+func (o *CloudCredentialsForCliOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials for cli o k body data items0 based on context it is used
+func (o *CloudCredentialsForCliOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsForCliOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsForCliOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsForCliOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsForCliUnauthorizedBody cloud credentials for cli unauthorized body
+swagger:model CloudCredentialsForCliUnauthorizedBody
+*/
+type CloudCredentialsForCliUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cloud credentials for cli unauthorized body
+func (o *CloudCredentialsForCliUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials for cli unauthorized body based on context it is used
+func (o *CloudCredentialsForCliUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsForCliUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsForCliUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsForCliUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

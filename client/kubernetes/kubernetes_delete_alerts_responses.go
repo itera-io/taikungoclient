@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesDeleteAlertsReader is a Reader for the KubernetesDeleteAlerts structure.
@@ -75,7 +75,7 @@ KubernetesDeleteAlertsOK describes a response with status code 200, with default
 Success
 */
 type KubernetesDeleteAlertsOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes delete alerts o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KubernetesDeleteAlertsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesDeleteAlertsOK) GetPayload() models.Unit {
+func (o *KubernetesDeleteAlertsOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KubernetesDeleteAlertsBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesDeleteAlertsBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesDeleteAlertsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes delete alerts bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDeleteAlertsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDeleteAlertsBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesDeleteAlertsBadRequest) GetPayload() []*KubernetesDeleteAlertsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesDeleteAlertsUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesDeleteAlertsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesDeleteAlertsUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes delete alerts unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesDeleteAlertsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDeleteAlertsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDeleteAlertsUnauthorized) GetPayload() *KubernetesDeleteAlertsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesDeleteAlertsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesDeleteAlertsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesDeleteAlertsForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesDeleteAlertsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesDeleteAlertsForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes delete alerts forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesDeleteAlertsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDeleteAlertsForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDeleteAlertsForbidden) GetPayload() *KubernetesDeleteAlertsForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesDeleteAlertsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesDeleteAlertsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesDeleteAlertsNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesDeleteAlertsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesDeleteAlertsNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes delete alerts not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesDeleteAlertsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDeleteAlertsNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDeleteAlertsNotFound) GetPayload() *KubernetesDeleteAlertsNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesDeleteAlertsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesDeleteAlertsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *KubernetesDeleteAlertsInternalServerError) String() string {
 
 func (o *KubernetesDeleteAlertsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesDeleteAlertsBadRequestBodyItems0 kubernetes delete alerts bad request body items0
+swagger:model KubernetesDeleteAlertsBadRequestBodyItems0
+*/
+type KubernetesDeleteAlertsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes delete alerts bad request body items0
+func (o *KubernetesDeleteAlertsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes delete alerts bad request body items0 based on context it is used
+func (o *KubernetesDeleteAlertsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDeleteAlertsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDeleteAlertsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesDeleteAlertsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDeleteAlertsBody kubernetes delete alerts body
+swagger:model KubernetesDeleteAlertsBody
+*/
+type KubernetesDeleteAlertsBody struct {
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this kubernetes delete alerts body
+func (o *KubernetesDeleteAlertsBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes delete alerts body based on context it is used
+func (o *KubernetesDeleteAlertsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDeleteAlertsBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDeleteAlertsBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDeleteAlertsBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDeleteAlertsForbiddenBody kubernetes delete alerts forbidden body
+swagger:model KubernetesDeleteAlertsForbiddenBody
+*/
+type KubernetesDeleteAlertsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes delete alerts forbidden body
+func (o *KubernetesDeleteAlertsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes delete alerts forbidden body based on context it is used
+func (o *KubernetesDeleteAlertsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDeleteAlertsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDeleteAlertsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDeleteAlertsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDeleteAlertsNotFoundBody kubernetes delete alerts not found body
+swagger:model KubernetesDeleteAlertsNotFoundBody
+*/
+type KubernetesDeleteAlertsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes delete alerts not found body
+func (o *KubernetesDeleteAlertsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes delete alerts not found body based on context it is used
+func (o *KubernetesDeleteAlertsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDeleteAlertsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDeleteAlertsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDeleteAlertsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDeleteAlertsUnauthorizedBody kubernetes delete alerts unauthorized body
+swagger:model KubernetesDeleteAlertsUnauthorizedBody
+*/
+type KubernetesDeleteAlertsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes delete alerts unauthorized body
+func (o *KubernetesDeleteAlertsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes delete alerts unauthorized body based on context it is used
+func (o *KubernetesDeleteAlertsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDeleteAlertsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDeleteAlertsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDeleteAlertsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

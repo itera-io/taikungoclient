@@ -20,7 +20,7 @@ import (
 type BindUnbindEndpointToTokenCommand struct {
 
 	// endpoints
-	Endpoints []*AvailableEndpointData `json:"endpoints"`
+	Endpoints []*BindUnbindEndpointToTokenCommandEndpointsItems0 `json:"endpoints"`
 
 	// token Id
 	TokenID string `json:"tokenId,omitempty"`
@@ -111,6 +111,55 @@ func (m *BindUnbindEndpointToTokenCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BindUnbindEndpointToTokenCommand) UnmarshalBinary(b []byte) error {
 	var res BindUnbindEndpointToTokenCommand
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// BindUnbindEndpointToTokenCommandEndpointsItems0 bind unbind endpoint to token command endpoints items0
+//
+// swagger:model BindUnbindEndpointToTokenCommandEndpointsItems0
+type BindUnbindEndpointToTokenCommandEndpointsItems0 struct {
+
+	// controller
+	Controller string `json:"controller,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// method
+	Method string `json:"method,omitempty"`
+
+	// path
+	Path string `json:"path,omitempty"`
+}
+
+// Validate validates this bind unbind endpoint to token command endpoints items0
+func (m *BindUnbindEndpointToTokenCommandEndpointsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this bind unbind endpoint to token command endpoints items0 based on context it is used
+func (m *BindUnbindEndpointToTokenCommandEndpointsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *BindUnbindEndpointToTokenCommandEndpointsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *BindUnbindEndpointToTokenCommandEndpointsItems0) UnmarshalBinary(b []byte) error {
+	var res BindUnbindEndpointToTokenCommandEndpointsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

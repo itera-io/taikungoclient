@@ -6,13 +6,13 @@ package aws
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AwsAwsZoneListReader is a Reader for the AwsAwsZoneList structure.
@@ -75,7 +75,7 @@ AwsAwsZoneListOK describes a response with status code 200, with default header 
 Success
 */
 type AwsAwsZoneListOK struct {
-	Payload *models.AzResult
+	Payload *AwsAwsZoneListOKBody
 }
 
 // IsSuccess returns true when this aws aws zone list o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *AwsAwsZoneListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListOK  %+v", 200, o.Payload)
 }
 
-func (o *AwsAwsZoneListOK) GetPayload() *models.AzResult {
+func (o *AwsAwsZoneListOK) GetPayload() *AwsAwsZoneListOKBody {
 	return o.Payload
 }
 
 func (o *AwsAwsZoneListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.AzResult)
+	o.Payload = new(AwsAwsZoneListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ AwsAwsZoneListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AwsAwsZoneListBadRequest struct {
-	Payload []*models.Error
+	Payload []*AwsAwsZoneListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this aws aws zone list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AwsAwsZoneListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsAwsZoneListBadRequest) GetPayload() []*models.Error {
+func (o *AwsAwsZoneListBadRequest) GetPayload() []*AwsAwsZoneListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ AwsAwsZoneListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type AwsAwsZoneListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AwsAwsZoneListUnauthorizedBody
 }
 
 // IsSuccess returns true when this aws aws zone list unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *AwsAwsZoneListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsAwsZoneListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AwsAwsZoneListUnauthorized) GetPayload() *AwsAwsZoneListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AwsAwsZoneListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AwsAwsZoneListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ AwsAwsZoneListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type AwsAwsZoneListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AwsAwsZoneListForbiddenBody
 }
 
 // IsSuccess returns true when this aws aws zone list forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *AwsAwsZoneListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsAwsZoneListForbidden) GetPayload() *models.ProblemDetails {
+func (o *AwsAwsZoneListForbidden) GetPayload() *AwsAwsZoneListForbiddenBody {
 	return o.Payload
 }
 
 func (o *AwsAwsZoneListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AwsAwsZoneListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ AwsAwsZoneListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type AwsAwsZoneListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AwsAwsZoneListNotFoundBody
 }
 
 // IsSuccess returns true when this aws aws zone list not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *AwsAwsZoneListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsAwsZoneListNotFound) GetPayload() *models.ProblemDetails {
+func (o *AwsAwsZoneListNotFound) GetPayload() *AwsAwsZoneListNotFoundBody {
 	return o.Payload
 }
 
 func (o *AwsAwsZoneListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AwsAwsZoneListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +425,284 @@ func (o *AwsAwsZoneListInternalServerError) String() string {
 
 func (o *AwsAwsZoneListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AwsAwsZoneListBadRequestBodyItems0 aws aws zone list bad request body items0
+swagger:model AwsAwsZoneListBadRequestBodyItems0
+*/
+type AwsAwsZoneListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this aws aws zone list bad request body items0
+func (o *AwsAwsZoneListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws aws zone list bad request body items0 based on context it is used
+func (o *AwsAwsZoneListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsAwsZoneListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsAwsZoneListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AwsAwsZoneListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AwsAwsZoneListBody aws aws zone list body
+swagger:model AwsAwsZoneListBody
+*/
+type AwsAwsZoneListBody struct {
+
+	// aws access key Id
+	AwsAccessKeyID string `json:"awsAccessKeyId,omitempty"`
+
+	// aws secret access key
+	AwsSecretAccessKey string `json:"awsSecretAccessKey,omitempty"`
+
+	// cloud Id
+	CloudID int32 `json:"cloudId,omitempty"`
+
+	// region
+	Region string `json:"region,omitempty"`
+}
+
+// Validate validates this aws aws zone list body
+func (o *AwsAwsZoneListBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws aws zone list body based on context it is used
+func (o *AwsAwsZoneListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsAwsZoneListBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsAwsZoneListBody) UnmarshalBinary(b []byte) error {
+	var res AwsAwsZoneListBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AwsAwsZoneListForbiddenBody aws aws zone list forbidden body
+swagger:model AwsAwsZoneListForbiddenBody
+*/
+type AwsAwsZoneListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this aws aws zone list forbidden body
+func (o *AwsAwsZoneListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws aws zone list forbidden body based on context it is used
+func (o *AwsAwsZoneListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsAwsZoneListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsAwsZoneListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AwsAwsZoneListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AwsAwsZoneListNotFoundBody aws aws zone list not found body
+swagger:model AwsAwsZoneListNotFoundBody
+*/
+type AwsAwsZoneListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this aws aws zone list not found body
+func (o *AwsAwsZoneListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws aws zone list not found body based on context it is used
+func (o *AwsAwsZoneListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsAwsZoneListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsAwsZoneListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AwsAwsZoneListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AwsAwsZoneListOKBody aws aws zone list o k body
+swagger:model AwsAwsZoneListOKBody
+*/
+type AwsAwsZoneListOKBody struct {
+
+	// list
+	List []string `json:"list"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this aws aws zone list o k body
+func (o *AwsAwsZoneListOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws aws zone list o k body based on context it is used
+func (o *AwsAwsZoneListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsAwsZoneListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsAwsZoneListOKBody) UnmarshalBinary(b []byte) error {
+	var res AwsAwsZoneListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AwsAwsZoneListUnauthorizedBody aws aws zone list unauthorized body
+swagger:model AwsAwsZoneListUnauthorizedBody
+*/
+type AwsAwsZoneListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this aws aws zone list unauthorized body
+func (o *AwsAwsZoneListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws aws zone list unauthorized body based on context it is used
+func (o *AwsAwsZoneListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsAwsZoneListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsAwsZoneListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AwsAwsZoneListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

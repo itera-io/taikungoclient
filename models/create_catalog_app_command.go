@@ -26,7 +26,7 @@ type CreateCatalogAppCommand struct {
 	PackageName string `json:"packageName,omitempty"`
 
 	// parameters
-	Parameters []*CatalogAppParamsDto `json:"parameters"`
+	Parameters []*CreateCatalogAppCommandParametersItems0 `json:"parameters"`
 
 	// repo name
 	RepoName string `json:"repoName,omitempty"`
@@ -120,6 +120,52 @@ func (m *CreateCatalogAppCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *CreateCatalogAppCommand) UnmarshalBinary(b []byte) error {
 	var res CreateCatalogAppCommand
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CreateCatalogAppCommandParametersItems0 create catalog app command parameters items0
+//
+// swagger:model CreateCatalogAppCommandParametersItems0
+type CreateCatalogAppCommandParametersItems0 struct {
+
+	// is changeable
+	IsChangeable bool `json:"isChangeable"`
+
+	// is readonly
+	IsReadonly bool `json:"isReadonly"`
+
+	// key
+	Key string `json:"key,omitempty"`
+
+	// value
+	Value string `json:"value,omitempty"`
+}
+
+// Validate validates this create catalog app command parameters items0
+func (m *CreateCatalogAppCommandParametersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this create catalog app command parameters items0 based on context it is used
+func (m *CreateCatalogAppCommandParametersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CreateCatalogAppCommandParametersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CreateCatalogAppCommandParametersItems0) UnmarshalBinary(b []byte) error {
+	var res CreateCatalogAppCommandParametersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -6,13 +6,16 @@ package stand_alone_vm_disks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // StandAloneVMDisksResetReader is a Reader for the StandAloneVMDisksReset structure.
@@ -75,7 +78,7 @@ StandAloneVMDisksResetOK describes a response with status code 200, with default
 Success
 */
 type StandAloneVMDisksResetOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks reset o k response has a 2xx status code
@@ -111,7 +114,7 @@ func (o *StandAloneVMDisksResetOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneVMDisksResetOK) GetPayload() models.Unit {
+func (o *StandAloneVMDisksResetOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +139,7 @@ StandAloneVMDisksResetBadRequest describes a response with status code 400, with
 Bad Request
 */
 type StandAloneVMDisksResetBadRequest struct {
-	Payload []*models.Error
+	Payload []*StandAloneVMDisksResetBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this stand alone Vm disks reset bad request response has a 2xx status code
@@ -172,7 +175,7 @@ func (o *StandAloneVMDisksResetBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneVMDisksResetBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneVMDisksResetBadRequest) GetPayload() []*StandAloneVMDisksResetBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +200,7 @@ StandAloneVMDisksResetUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type StandAloneVMDisksResetUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneVMDisksResetUnauthorizedBody
 }
 
 // IsSuccess returns true when this stand alone Vm disks reset unauthorized response has a 2xx status code
@@ -233,13 +236,13 @@ func (o *StandAloneVMDisksResetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksResetUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksResetUnauthorized) GetPayload() *StandAloneVMDisksResetUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksResetUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneVMDisksResetUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +263,7 @@ StandAloneVMDisksResetForbidden describes a response with status code 403, with 
 Forbidden
 */
 type StandAloneVMDisksResetForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneVMDisksResetForbiddenBody
 }
 
 // IsSuccess returns true when this stand alone Vm disks reset forbidden response has a 2xx status code
@@ -296,13 +299,13 @@ func (o *StandAloneVMDisksResetForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksResetForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksResetForbidden) GetPayload() *StandAloneVMDisksResetForbiddenBody {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksResetForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneVMDisksResetForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +326,7 @@ StandAloneVMDisksResetNotFound describes a response with status code 404, with d
 Not Found
 */
 type StandAloneVMDisksResetNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneVMDisksResetNotFoundBody
 }
 
 // IsSuccess returns true when this stand alone Vm disks reset not found response has a 2xx status code
@@ -359,13 +362,13 @@ func (o *StandAloneVMDisksResetNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksResetNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksResetNotFound) GetPayload() *StandAloneVMDisksResetNotFoundBody {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksResetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneVMDisksResetNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +426,283 @@ func (o *StandAloneVMDisksResetInternalServerError) String() string {
 
 func (o *StandAloneVMDisksResetInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+StandAloneVMDisksResetBadRequestBodyItems0 stand alone VM disks reset bad request body items0
+swagger:model StandAloneVMDisksResetBadRequestBodyItems0
+*/
+type StandAloneVMDisksResetBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this stand alone VM disks reset bad request body items0
+func (o *StandAloneVMDisksResetBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks reset bad request body items0 based on context it is used
+func (o *StandAloneVMDisksResetBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksResetBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksResetBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksResetBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneVMDisksResetBody stand alone VM disks reset body
+swagger:model StandAloneVMDisksResetBody
+*/
+type StandAloneVMDisksResetBody struct {
+
+	// disk ids
+	DiskIds []int32 `json:"diskIds"`
+
+	// stand alone Vm Id
+	StandAloneVMID int32 `json:"standAloneVmId,omitempty"`
+
+	// status
+	// Enum: [100 200 300 400 500 600]
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this stand alone VM disks reset body
+func (o *StandAloneVMDisksResetBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var standAloneVmDisksResetBodyTypeStatusPropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200,300,400,500,600]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		standAloneVmDisksResetBodyTypeStatusPropEnum = append(standAloneVmDisksResetBodyTypeStatusPropEnum, v)
+	}
+}
+
+// prop value enum
+func (o *StandAloneVMDisksResetBody) validateStatusEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, standAloneVmDisksResetBodyTypeStatusPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *StandAloneVMDisksResetBody) validateStatus(formats strfmt.Registry) error {
+	if swag.IsZero(o.Status) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := o.validateStatusEnum("body"+"."+"status", "body", o.Status); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks reset body based on context it is used
+func (o *StandAloneVMDisksResetBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksResetBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksResetBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksResetBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneVMDisksResetForbiddenBody stand alone VM disks reset forbidden body
+swagger:model StandAloneVMDisksResetForbiddenBody
+*/
+type StandAloneVMDisksResetForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone VM disks reset forbidden body
+func (o *StandAloneVMDisksResetForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks reset forbidden body based on context it is used
+func (o *StandAloneVMDisksResetForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksResetForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksResetForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksResetForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneVMDisksResetNotFoundBody stand alone VM disks reset not found body
+swagger:model StandAloneVMDisksResetNotFoundBody
+*/
+type StandAloneVMDisksResetNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone VM disks reset not found body
+func (o *StandAloneVMDisksResetNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks reset not found body based on context it is used
+func (o *StandAloneVMDisksResetNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksResetNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksResetNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksResetNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneVMDisksResetUnauthorizedBody stand alone VM disks reset unauthorized body
+swagger:model StandAloneVMDisksResetUnauthorizedBody
+*/
+type StandAloneVMDisksResetUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone VM disks reset unauthorized body
+func (o *StandAloneVMDisksResetUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks reset unauthorized body based on context it is used
+func (o *StandAloneVMDisksResetUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksResetUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksResetUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksResetUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

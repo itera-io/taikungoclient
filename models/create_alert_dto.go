@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateAlertDto create alert dto
@@ -20,7 +21,7 @@ import (
 type CreateAlertDto struct {
 
 	// alerts
-	Alerts []*KubernetesAlertCreateDto `json:"alerts"`
+	Alerts []*CreateAlertDtoAlertsItems0 `json:"alerts"`
 
 	// status
 	Status string `json:"status,omitempty"`
@@ -111,6 +112,185 @@ func (m *CreateAlertDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *CreateAlertDto) UnmarshalBinary(b []byte) error {
 	var res CreateAlertDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CreateAlertDtoAlertsItems0 create alert dto alerts items0
+//
+// swagger:model CreateAlertDtoAlertsItems0
+type CreateAlertDtoAlertsItems0 struct {
+
+	// annotations
+	Annotations *CreateAlertDtoAlertsItems0Annotations `json:"annotations,omitempty"`
+
+	// ends at
+	// Format: date-time
+	EndsAt *strfmt.DateTime `json:"endsAt,omitempty"`
+
+	// fingerprint
+	Fingerprint string `json:"fingerprint,omitempty"`
+
+	// labels
+	Labels interface{} `json:"labels,omitempty"`
+
+	// starts at
+	// Format: date-time
+	StartsAt *strfmt.DateTime `json:"startsAt,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+}
+
+// Validate validates this create alert dto alerts items0
+func (m *CreateAlertDtoAlertsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAnnotations(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEndsAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStartsAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateAlertDtoAlertsItems0) validateAnnotations(formats strfmt.Registry) error {
+	if swag.IsZero(m.Annotations) { // not required
+		return nil
+	}
+
+	if m.Annotations != nil {
+		if err := m.Annotations.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("annotations")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("annotations")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CreateAlertDtoAlertsItems0) validateEndsAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.EndsAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("endsAt", "body", "date-time", m.EndsAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateAlertDtoAlertsItems0) validateStartsAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.StartsAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("startsAt", "body", "date-time", m.StartsAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this create alert dto alerts items0 based on the context it is used
+func (m *CreateAlertDtoAlertsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAnnotations(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateAlertDtoAlertsItems0) contextValidateAnnotations(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Annotations != nil {
+		if err := m.Annotations.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("annotations")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("annotations")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CreateAlertDtoAlertsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CreateAlertDtoAlertsItems0) UnmarshalBinary(b []byte) error {
+	var res CreateAlertDtoAlertsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CreateAlertDtoAlertsItems0Annotations create alert dto alerts items0 annotations
+//
+// swagger:model CreateAlertDtoAlertsItems0Annotations
+type CreateAlertDtoAlertsItems0Annotations struct {
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+}
+
+// Validate validates this create alert dto alerts items0 annotations
+func (m *CreateAlertDtoAlertsItems0Annotations) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this create alert dto alerts items0 annotations based on context it is used
+func (m *CreateAlertDtoAlertsItems0Annotations) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CreateAlertDtoAlertsItems0Annotations) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CreateAlertDtoAlertsItems0Annotations) UnmarshalBinary(b []byte) error {
+	var res CreateAlertDtoAlertsItems0Annotations
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

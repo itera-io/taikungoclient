@@ -6,13 +6,13 @@ package stand_alone
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // StandAlonePurgeReader is a Reader for the StandAlonePurge structure.
@@ -75,7 +75,7 @@ StandAlonePurgeOK describes a response with status code 200, with default header
 Success
 */
 type StandAlonePurgeOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone purge o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAlonePurgeOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAlonePurgeOK) GetPayload() models.Unit {
+func (o *StandAlonePurgeOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAlonePurgeBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type StandAlonePurgeBadRequest struct {
-	Payload []*models.Error
+	Payload []*StandAlonePurgeBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this stand alone purge bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAlonePurgeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAlonePurgeBadRequest) GetPayload() []*models.Error {
+func (o *StandAlonePurgeBadRequest) GetPayload() []*StandAlonePurgeBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAlonePurgeUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type StandAlonePurgeUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *StandAlonePurgeUnauthorizedBody
 }
 
 // IsSuccess returns true when this stand alone purge unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAlonePurgeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAlonePurgeUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAlonePurgeUnauthorized) GetPayload() *StandAlonePurgeUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *StandAlonePurgeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAlonePurgeUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAlonePurgeForbidden describes a response with status code 403, with default
 Forbidden
 */
 type StandAlonePurgeForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *StandAlonePurgeForbiddenBody
 }
 
 // IsSuccess returns true when this stand alone purge forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAlonePurgeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAlonePurgeForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAlonePurgeForbidden) GetPayload() *StandAlonePurgeForbiddenBody {
 	return o.Payload
 }
 
 func (o *StandAlonePurgeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAlonePurgeForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAlonePurgeNotFound describes a response with status code 404, with default 
 Not Found
 */
 type StandAlonePurgeNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *StandAlonePurgeNotFoundBody
 }
 
 // IsSuccess returns true when this stand alone purge not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAlonePurgeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAlonePurgeNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAlonePurgeNotFound) GetPayload() *StandAlonePurgeNotFoundBody {
 	return o.Payload
 }
 
 func (o *StandAlonePurgeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAlonePurgeNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *StandAlonePurgeInternalServerError) String() string {
 
 func (o *StandAlonePurgeInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+StandAlonePurgeBadRequestBodyItems0 stand alone purge bad request body items0
+swagger:model StandAlonePurgeBadRequestBodyItems0
+*/
+type StandAlonePurgeBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this stand alone purge bad request body items0
+func (o *StandAlonePurgeBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone purge bad request body items0 based on context it is used
+func (o *StandAlonePurgeBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAlonePurgeBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAlonePurgeBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res StandAlonePurgeBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAlonePurgeBody stand alone purge body
+swagger:model StandAlonePurgeBody
+*/
+type StandAlonePurgeBody struct {
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// vm ids
+	VMIds []int32 `json:"vmIds"`
+}
+
+// Validate validates this stand alone purge body
+func (o *StandAlonePurgeBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone purge body based on context it is used
+func (o *StandAlonePurgeBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAlonePurgeBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAlonePurgeBody) UnmarshalBinary(b []byte) error {
+	var res StandAlonePurgeBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAlonePurgeForbiddenBody stand alone purge forbidden body
+swagger:model StandAlonePurgeForbiddenBody
+*/
+type StandAlonePurgeForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone purge forbidden body
+func (o *StandAlonePurgeForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone purge forbidden body based on context it is used
+func (o *StandAlonePurgeForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAlonePurgeForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAlonePurgeForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res StandAlonePurgeForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAlonePurgeNotFoundBody stand alone purge not found body
+swagger:model StandAlonePurgeNotFoundBody
+*/
+type StandAlonePurgeNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone purge not found body
+func (o *StandAlonePurgeNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone purge not found body based on context it is used
+func (o *StandAlonePurgeNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAlonePurgeNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAlonePurgeNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res StandAlonePurgeNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAlonePurgeUnauthorizedBody stand alone purge unauthorized body
+swagger:model StandAlonePurgeUnauthorizedBody
+*/
+type StandAlonePurgeUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone purge unauthorized body
+func (o *StandAlonePurgeUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone purge unauthorized body based on context it is used
+func (o *StandAlonePurgeUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAlonePurgeUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAlonePurgeUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res StandAlonePurgeUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

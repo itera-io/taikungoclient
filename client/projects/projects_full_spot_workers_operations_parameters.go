@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectsFullSpotWorkersOperationsParams creates a new ProjectsFullSpotWorkersOperationsParams object,
@@ -64,7 +62,7 @@ ProjectsFullSpotWorkersOperationsParams contains all the parameters to send to t
 type ProjectsFullSpotWorkersOperationsParams struct {
 
 	// Body.
-	Body *models.FullSpotOperationCommand
+	Body ProjectsFullSpotWorkersOperationsBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *ProjectsFullSpotWorkersOperationsParams) SetHTTPClient(client *http.Cli
 }
 
 // WithBody adds the body to the projects full spot workers operations params
-func (o *ProjectsFullSpotWorkersOperationsParams) WithBody(body *models.FullSpotOperationCommand) *ProjectsFullSpotWorkersOperationsParams {
+func (o *ProjectsFullSpotWorkersOperationsParams) WithBody(body ProjectsFullSpotWorkersOperationsBody) *ProjectsFullSpotWorkersOperationsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the projects full spot workers operations params
-func (o *ProjectsFullSpotWorkersOperationsParams) SetBody(body *models.FullSpotOperationCommand) {
+func (o *ProjectsFullSpotWorkersOperationsParams) SetBody(body ProjectsFullSpotWorkersOperationsBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *ProjectsFullSpotWorkersOperationsParams) WriteToRequest(r runtime.Clien
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

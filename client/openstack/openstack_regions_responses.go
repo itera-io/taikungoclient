@@ -6,13 +6,13 @@ package openstack
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // OpenstackRegionsReader is a Reader for the OpenstackRegions structure.
@@ -136,7 +136,7 @@ OpenstackRegionsBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type OpenstackRegionsBadRequest struct {
-	Payload []*models.Error
+	Payload []*OpenstackRegionsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this openstack regions bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpenstackRegionsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackRegionsBadRequest) GetPayload() []*models.Error {
+func (o *OpenstackRegionsBadRequest) GetPayload() []*OpenstackRegionsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OpenstackRegionsUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type OpenstackRegionsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *OpenstackRegionsUnauthorizedBody
 }
 
 // IsSuccess returns true when this openstack regions unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OpenstackRegionsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackRegionsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpenstackRegionsUnauthorized) GetPayload() *OpenstackRegionsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *OpenstackRegionsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpenstackRegionsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OpenstackRegionsForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type OpenstackRegionsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *OpenstackRegionsForbiddenBody
 }
 
 // IsSuccess returns true when this openstack regions forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OpenstackRegionsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackRegionsForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpenstackRegionsForbidden) GetPayload() *OpenstackRegionsForbiddenBody {
 	return o.Payload
 }
 
 func (o *OpenstackRegionsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpenstackRegionsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OpenstackRegionsNotFound describes a response with status code 404, with default
 Not Found
 */
 type OpenstackRegionsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *OpenstackRegionsNotFoundBody
 }
 
 // IsSuccess returns true when this openstack regions not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OpenstackRegionsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackRegionsNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpenstackRegionsNotFound) GetPayload() *OpenstackRegionsNotFoundBody {
 	return o.Payload
 }
 
 func (o *OpenstackRegionsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpenstackRegionsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,249 @@ func (o *OpenstackRegionsInternalServerError) String() string {
 
 func (o *OpenstackRegionsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+OpenstackRegionsBadRequestBodyItems0 openstack regions bad request body items0
+swagger:model OpenstackRegionsBadRequestBodyItems0
+*/
+type OpenstackRegionsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this openstack regions bad request body items0
+func (o *OpenstackRegionsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack regions bad request body items0 based on context it is used
+func (o *OpenstackRegionsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackRegionsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackRegionsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OpenstackRegionsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpenstackRegionsBody openstack regions body
+swagger:model OpenstackRegionsBody
+*/
+type OpenstackRegionsBody struct {
+
+	// application cred enabled
+	ApplicationCredEnabled bool `json:"applicationCredEnabled"`
+
+	// is admin
+	IsAdmin bool `json:"isAdmin"`
+
+	// open stack domain
+	OpenStackDomain string `json:"openStackDomain,omitempty"`
+
+	// open stack password
+	OpenStackPassword string `json:"openStackPassword,omitempty"`
+
+	// open stack Url
+	OpenStackURL string `json:"openStackUrl,omitempty"`
+
+	// open stack user
+	OpenStackUser string `json:"openStackUser,omitempty"`
+}
+
+// Validate validates this openstack regions body
+func (o *OpenstackRegionsBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack regions body based on context it is used
+func (o *OpenstackRegionsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackRegionsBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackRegionsBody) UnmarshalBinary(b []byte) error {
+	var res OpenstackRegionsBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpenstackRegionsForbiddenBody openstack regions forbidden body
+swagger:model OpenstackRegionsForbiddenBody
+*/
+type OpenstackRegionsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this openstack regions forbidden body
+func (o *OpenstackRegionsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack regions forbidden body based on context it is used
+func (o *OpenstackRegionsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackRegionsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackRegionsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res OpenstackRegionsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpenstackRegionsNotFoundBody openstack regions not found body
+swagger:model OpenstackRegionsNotFoundBody
+*/
+type OpenstackRegionsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this openstack regions not found body
+func (o *OpenstackRegionsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack regions not found body based on context it is used
+func (o *OpenstackRegionsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackRegionsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackRegionsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res OpenstackRegionsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpenstackRegionsUnauthorizedBody openstack regions unauthorized body
+swagger:model OpenstackRegionsUnauthorizedBody
+*/
+type OpenstackRegionsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this openstack regions unauthorized body
+func (o *OpenstackRegionsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this openstack regions unauthorized body based on context it is used
+func (o *OpenstackRegionsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpenstackRegionsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpenstackRegionsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res OpenstackRegionsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -20,7 +20,7 @@ import (
 type CloudCredentialsSearchList struct {
 
 	// data
-	Data []*CloudCredentialsResponseData `json:"data"`
+	Data []*CloudCredentialsSearchListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,55 @@ func (m *CloudCredentialsSearchList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *CloudCredentialsSearchList) UnmarshalBinary(b []byte) error {
 	var res CloudCredentialsSearchList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CloudCredentialsSearchListDataItems0 cloud credentials search list data items0
+//
+// swagger:model CloudCredentialsSearchListDataItems0
+type CloudCredentialsSearchListDataItems0 struct {
+
+	// cloud type
+	CloudType string `json:"cloudType,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+}
+
+// Validate validates this cloud credentials search list data items0
+func (m *CloudCredentialsSearchListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials search list data items0 based on context it is used
+func (m *CloudCredentialsSearchListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CloudCredentialsSearchListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CloudCredentialsSearchListDataItems0) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsSearchListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

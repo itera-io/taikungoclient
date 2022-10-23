@@ -6,13 +6,13 @@ package stand_alone_vm_disks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // StandAloneVMDisksCreateReader is a Reader for the StandAloneVMDisksCreate structure.
@@ -75,7 +75,7 @@ StandAloneVMDisksCreateOK describes a response with status code 200, with defaul
 Success
 */
 type StandAloneVMDisksCreateOK struct {
-	Payload *models.APIResponse
+	Payload *StandAloneVMDisksCreateOKBody
 }
 
 // IsSuccess returns true when this stand alone Vm disks create o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *StandAloneVMDisksCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneVMDisksCreateOK) GetPayload() *models.APIResponse {
+func (o *StandAloneVMDisksCreateOK) GetPayload() *StandAloneVMDisksCreateOKBody {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(StandAloneVMDisksCreateOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ StandAloneVMDisksCreateBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneVMDisksCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*StandAloneVMDisksCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this stand alone Vm disks create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *StandAloneVMDisksCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneVMDisksCreateBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneVMDisksCreateBadRequest) GetPayload() []*StandAloneVMDisksCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ StandAloneVMDisksCreateUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneVMDisksCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneVMDisksCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this stand alone Vm disks create unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *StandAloneVMDisksCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksCreateUnauthorized) GetPayload() *StandAloneVMDisksCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneVMDisksCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ StandAloneVMDisksCreateForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneVMDisksCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneVMDisksCreateForbiddenBody
 }
 
 // IsSuccess returns true when this stand alone Vm disks create forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *StandAloneVMDisksCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksCreateForbidden) GetPayload() *StandAloneVMDisksCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneVMDisksCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ StandAloneVMDisksCreateNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneVMDisksCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneVMDisksCreateNotFoundBody
 }
 
 // IsSuccess returns true when this stand alone Vm disks create not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *StandAloneVMDisksCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksCreateNotFound) GetPayload() *StandAloneVMDisksCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneVMDisksCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +425,299 @@ func (o *StandAloneVMDisksCreateInternalServerError) String() string {
 
 func (o *StandAloneVMDisksCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+StandAloneVMDisksCreateBadRequestBodyItems0 stand alone VM disks create bad request body items0
+swagger:model StandAloneVMDisksCreateBadRequestBodyItems0
+*/
+type StandAloneVMDisksCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this stand alone VM disks create bad request body items0
+func (o *StandAloneVMDisksCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks create bad request body items0 based on context it is used
+func (o *StandAloneVMDisksCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneVMDisksCreateBody stand alone VM disks create body
+swagger:model StandAloneVMDisksCreateBody
+*/
+type StandAloneVMDisksCreateBody struct {
+
+	// device name
+	DeviceName string `json:"deviceName,omitempty"`
+
+	// lun Id
+	LunID int32 `json:"lunId,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// size
+	Size int64 `json:"size,omitempty"`
+
+	// standalone Vm Id
+	StandaloneVMID int32 `json:"standaloneVmId,omitempty"`
+
+	// volume type
+	VolumeType string `json:"volumeType,omitempty"`
+}
+
+// Validate validates this stand alone VM disks create body
+func (o *StandAloneVMDisksCreateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks create body based on context it is used
+func (o *StandAloneVMDisksCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksCreateBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneVMDisksCreateForbiddenBody stand alone VM disks create forbidden body
+swagger:model StandAloneVMDisksCreateForbiddenBody
+*/
+type StandAloneVMDisksCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone VM disks create forbidden body
+func (o *StandAloneVMDisksCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks create forbidden body based on context it is used
+func (o *StandAloneVMDisksCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneVMDisksCreateNotFoundBody stand alone VM disks create not found body
+swagger:model StandAloneVMDisksCreateNotFoundBody
+*/
+type StandAloneVMDisksCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone VM disks create not found body
+func (o *StandAloneVMDisksCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks create not found body based on context it is used
+func (o *StandAloneVMDisksCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneVMDisksCreateOKBody stand alone VM disks create o k body
+swagger:model StandAloneVMDisksCreateOKBody
+*/
+type StandAloneVMDisksCreateOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this stand alone VM disks create o k body
+func (o *StandAloneVMDisksCreateOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks create o k body based on context it is used
+func (o *StandAloneVMDisksCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksCreateOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksCreateOKBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksCreateOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneVMDisksCreateUnauthorizedBody stand alone VM disks create unauthorized body
+swagger:model StandAloneVMDisksCreateUnauthorizedBody
+*/
+type StandAloneVMDisksCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone VM disks create unauthorized body
+func (o *StandAloneVMDisksCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM disks create unauthorized body based on context it is used
+func (o *StandAloneVMDisksCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneVMDisksCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneVMDisksCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDisksCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

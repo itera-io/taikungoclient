@@ -6,13 +6,15 @@ package search
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SearchPrometheusRulesListReader is a Reader for the SearchPrometheusRulesList structure.
@@ -75,7 +77,7 @@ SearchPrometheusRulesListOK describes a response with status code 200, with defa
 Success
 */
 type SearchPrometheusRulesListOK struct {
-	Payload *models.PrometheusRulesSearchList
+	Payload *SearchPrometheusRulesListOKBody
 }
 
 // IsSuccess returns true when this search prometheus rules list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *SearchPrometheusRulesListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListOK  %+v", 200, o.Payload)
 }
 
-func (o *SearchPrometheusRulesListOK) GetPayload() *models.PrometheusRulesSearchList {
+func (o *SearchPrometheusRulesListOK) GetPayload() *SearchPrometheusRulesListOKBody {
 	return o.Payload
 }
 
 func (o *SearchPrometheusRulesListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PrometheusRulesSearchList)
+	o.Payload = new(SearchPrometheusRulesListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ SearchPrometheusRulesListBadRequest describes a response with status code 400, w
 Bad Request
 */
 type SearchPrometheusRulesListBadRequest struct {
-	Payload []*models.Error
+	Payload []*SearchPrometheusRulesListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this search prometheus rules list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *SearchPrometheusRulesListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchPrometheusRulesListBadRequest) GetPayload() []*models.Error {
+func (o *SearchPrometheusRulesListBadRequest) GetPayload() []*SearchPrometheusRulesListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ SearchPrometheusRulesListUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type SearchPrometheusRulesListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SearchPrometheusRulesListUnauthorizedBody
 }
 
 // IsSuccess returns true when this search prometheus rules list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *SearchPrometheusRulesListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchPrometheusRulesListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchPrometheusRulesListUnauthorized) GetPayload() *SearchPrometheusRulesListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SearchPrometheusRulesListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchPrometheusRulesListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ SearchPrometheusRulesListForbidden describes a response with status code 403, wi
 Forbidden
 */
 type SearchPrometheusRulesListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SearchPrometheusRulesListForbiddenBody
 }
 
 // IsSuccess returns true when this search prometheus rules list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *SearchPrometheusRulesListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchPrometheusRulesListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchPrometheusRulesListForbidden) GetPayload() *SearchPrometheusRulesListForbiddenBody {
 	return o.Payload
 }
 
 func (o *SearchPrometheusRulesListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchPrometheusRulesListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ SearchPrometheusRulesListNotFound describes a response with status code 404, wit
 Not Found
 */
 type SearchPrometheusRulesListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SearchPrometheusRulesListNotFoundBody
 }
 
 // IsSuccess returns true when this search prometheus rules list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *SearchPrometheusRulesListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchPrometheusRulesListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchPrometheusRulesListNotFound) GetPayload() *SearchPrometheusRulesListNotFoundBody {
 	return o.Payload
 }
 
 func (o *SearchPrometheusRulesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchPrometheusRulesListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,389 @@ func (o *SearchPrometheusRulesListInternalServerError) String() string {
 
 func (o *SearchPrometheusRulesListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SearchPrometheusRulesListBadRequestBodyItems0 search prometheus rules list bad request body items0
+swagger:model SearchPrometheusRulesListBadRequestBodyItems0
+*/
+type SearchPrometheusRulesListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this search prometheus rules list bad request body items0
+func (o *SearchPrometheusRulesListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search prometheus rules list bad request body items0 based on context it is used
+func (o *SearchPrometheusRulesListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPrometheusRulesListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPrometheusRulesListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SearchPrometheusRulesListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPrometheusRulesListBody search prometheus rules list body
+swagger:model SearchPrometheusRulesListBody
+*/
+type SearchPrometheusRulesListBody struct {
+
+	// limit
+	Limit int32 `json:"limit,omitempty"`
+
+	// offset
+	Offset int32 `json:"offset,omitempty"`
+
+	// search term
+	SearchTerm string `json:"searchTerm,omitempty"`
+}
+
+// Validate validates this search prometheus rules list body
+func (o *SearchPrometheusRulesListBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search prometheus rules list body based on context it is used
+func (o *SearchPrometheusRulesListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPrometheusRulesListBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPrometheusRulesListBody) UnmarshalBinary(b []byte) error {
+	var res SearchPrometheusRulesListBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPrometheusRulesListForbiddenBody search prometheus rules list forbidden body
+swagger:model SearchPrometheusRulesListForbiddenBody
+*/
+type SearchPrometheusRulesListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search prometheus rules list forbidden body
+func (o *SearchPrometheusRulesListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search prometheus rules list forbidden body based on context it is used
+func (o *SearchPrometheusRulesListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPrometheusRulesListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPrometheusRulesListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SearchPrometheusRulesListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPrometheusRulesListNotFoundBody search prometheus rules list not found body
+swagger:model SearchPrometheusRulesListNotFoundBody
+*/
+type SearchPrometheusRulesListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search prometheus rules list not found body
+func (o *SearchPrometheusRulesListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search prometheus rules list not found body based on context it is used
+func (o *SearchPrometheusRulesListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPrometheusRulesListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPrometheusRulesListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SearchPrometheusRulesListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPrometheusRulesListOKBody search prometheus rules list o k body
+swagger:model SearchPrometheusRulesListOKBody
+*/
+type SearchPrometheusRulesListOKBody struct {
+
+	// data
+	Data []*SearchPrometheusRulesListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this search prometheus rules list o k body
+func (o *SearchPrometheusRulesListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchPrometheusRulesListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchPrometheusRulesListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchPrometheusRulesListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this search prometheus rules list o k body based on the context it is used
+func (o *SearchPrometheusRulesListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchPrometheusRulesListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchPrometheusRulesListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchPrometheusRulesListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPrometheusRulesListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPrometheusRulesListOKBody) UnmarshalBinary(b []byte) error {
+	var res SearchPrometheusRulesListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPrometheusRulesListOKBodyDataItems0 search prometheus rules list o k body data items0
+swagger:model SearchPrometheusRulesListOKBodyDataItems0
+*/
+type SearchPrometheusRulesListOKBodyDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// partner
+	Partner int32 `json:"partner,omitempty"`
+}
+
+// Validate validates this search prometheus rules list o k body data items0
+func (o *SearchPrometheusRulesListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search prometheus rules list o k body data items0 based on context it is used
+func (o *SearchPrometheusRulesListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPrometheusRulesListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPrometheusRulesListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res SearchPrometheusRulesListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPrometheusRulesListUnauthorizedBody search prometheus rules list unauthorized body
+swagger:model SearchPrometheusRulesListUnauthorizedBody
+*/
+type SearchPrometheusRulesListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search prometheus rules list unauthorized body
+func (o *SearchPrometheusRulesListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search prometheus rules list unauthorized body based on context it is used
+func (o *SearchPrometheusRulesListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPrometheusRulesListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPrometheusRulesListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SearchPrometheusRulesListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

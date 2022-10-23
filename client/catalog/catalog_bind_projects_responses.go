@@ -6,13 +6,15 @@ package catalog
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CatalogBindProjectsReader is a Reader for the CatalogBindProjects structure.
@@ -75,7 +77,7 @@ CatalogBindProjectsOK describes a response with status code 200, with default he
 Success
 */
 type CatalogBindProjectsOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog bind projects o k response has a 2xx status code
@@ -111,7 +113,7 @@ func (o *CatalogBindProjectsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsOK  %+v", 200, o.Payload)
 }
 
-func (o *CatalogBindProjectsOK) GetPayload() models.Unit {
+func (o *CatalogBindProjectsOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +138,7 @@ CatalogBindProjectsBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type CatalogBindProjectsBadRequest struct {
-	Payload []*models.Error
+	Payload []*CatalogBindProjectsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this catalog bind projects bad request response has a 2xx status code
@@ -172,7 +174,7 @@ func (o *CatalogBindProjectsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogBindProjectsBadRequest) GetPayload() []*models.Error {
+func (o *CatalogBindProjectsBadRequest) GetPayload() []*CatalogBindProjectsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +199,7 @@ CatalogBindProjectsUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type CatalogBindProjectsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogBindProjectsUnauthorizedBody
 }
 
 // IsSuccess returns true when this catalog bind projects unauthorized response has a 2xx status code
@@ -233,13 +235,13 @@ func (o *CatalogBindProjectsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogBindProjectsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogBindProjectsUnauthorized) GetPayload() *CatalogBindProjectsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CatalogBindProjectsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogBindProjectsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +262,7 @@ CatalogBindProjectsForbidden describes a response with status code 403, with def
 Forbidden
 */
 type CatalogBindProjectsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogBindProjectsForbiddenBody
 }
 
 // IsSuccess returns true when this catalog bind projects forbidden response has a 2xx status code
@@ -296,13 +298,13 @@ func (o *CatalogBindProjectsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogBindProjectsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogBindProjectsForbidden) GetPayload() *CatalogBindProjectsForbiddenBody {
 	return o.Payload
 }
 
 func (o *CatalogBindProjectsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogBindProjectsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +325,7 @@ CatalogBindProjectsNotFound describes a response with status code 404, with defa
 Not Found
 */
 type CatalogBindProjectsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogBindProjectsNotFoundBody
 }
 
 // IsSuccess returns true when this catalog bind projects not found response has a 2xx status code
@@ -359,13 +361,13 @@ func (o *CatalogBindProjectsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogBindProjectsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogBindProjectsNotFound) GetPayload() *CatalogBindProjectsNotFoundBody {
 	return o.Payload
 }
 
 func (o *CatalogBindProjectsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogBindProjectsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +425,342 @@ func (o *CatalogBindProjectsInternalServerError) String() string {
 
 func (o *CatalogBindProjectsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CatalogBindProjectsBadRequestBodyItems0 catalog bind projects bad request body items0
+swagger:model CatalogBindProjectsBadRequestBodyItems0
+*/
+type CatalogBindProjectsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this catalog bind projects bad request body items0
+func (o *CatalogBindProjectsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog bind projects bad request body items0 based on context it is used
+func (o *CatalogBindProjectsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogBindProjectsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogBindProjectsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CatalogBindProjectsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogBindProjectsBody catalog bind projects body
+swagger:model CatalogBindProjectsBody
+*/
+type CatalogBindProjectsBody struct {
+
+	// catalog Id
+	CatalogID int32 `json:"catalogId,omitempty"`
+
+	// projects
+	Projects []*CatalogBindProjectsParamsBodyProjectsItems0 `json:"projects"`
+}
+
+// Validate validates this catalog bind projects body
+func (o *CatalogBindProjectsBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateProjects(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CatalogBindProjectsBody) validateProjects(formats strfmt.Registry) error {
+	if swag.IsZero(o.Projects) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Projects); i++ {
+		if swag.IsZero(o.Projects[i]) { // not required
+			continue
+		}
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("body" + "." + "projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("body" + "." + "projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this catalog bind projects body based on the context it is used
+func (o *CatalogBindProjectsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CatalogBindProjectsBody) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Projects); i++ {
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("body" + "." + "projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("body" + "." + "projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogBindProjectsBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogBindProjectsBody) UnmarshalBinary(b []byte) error {
+	var res CatalogBindProjectsBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogBindProjectsForbiddenBody catalog bind projects forbidden body
+swagger:model CatalogBindProjectsForbiddenBody
+*/
+type CatalogBindProjectsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog bind projects forbidden body
+func (o *CatalogBindProjectsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog bind projects forbidden body based on context it is used
+func (o *CatalogBindProjectsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogBindProjectsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogBindProjectsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CatalogBindProjectsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogBindProjectsNotFoundBody catalog bind projects not found body
+swagger:model CatalogBindProjectsNotFoundBody
+*/
+type CatalogBindProjectsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog bind projects not found body
+func (o *CatalogBindProjectsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog bind projects not found body based on context it is used
+func (o *CatalogBindProjectsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogBindProjectsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogBindProjectsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CatalogBindProjectsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogBindProjectsParamsBodyProjectsItems0 catalog bind projects params body projects items0
+swagger:model CatalogBindProjectsParamsBodyProjectsItems0
+*/
+type CatalogBindProjectsParamsBodyProjectsItems0 struct {
+
+	// is bound
+	IsBound bool `json:"isBound"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this catalog bind projects params body projects items0
+func (o *CatalogBindProjectsParamsBodyProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog bind projects params body projects items0 based on context it is used
+func (o *CatalogBindProjectsParamsBodyProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogBindProjectsParamsBodyProjectsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogBindProjectsParamsBodyProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res CatalogBindProjectsParamsBodyProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogBindProjectsUnauthorizedBody catalog bind projects unauthorized body
+swagger:model CatalogBindProjectsUnauthorizedBody
+*/
+type CatalogBindProjectsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog bind projects unauthorized body
+func (o *CatalogBindProjectsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog bind projects unauthorized body based on context it is used
+func (o *CatalogBindProjectsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogBindProjectsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogBindProjectsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CatalogBindProjectsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

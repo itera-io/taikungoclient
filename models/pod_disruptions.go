@@ -20,7 +20,7 @@ import (
 type PodDisruptions struct {
 
 	// data
-	Data []*PodDisruptionDto `json:"data"`
+	Data []*PodDisruptionsDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,58 @@ func (m *PodDisruptions) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PodDisruptions) UnmarshalBinary(b []byte) error {
 	var res PodDisruptions
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PodDisruptionsDataItems0 pod disruptions data items0
+//
+// swagger:model PodDisruptionsDataItems0
+type PodDisruptionsDataItems0 struct {
+
+	// allowed disruptions
+	AllowedDisruptions interface{} `json:"allowedDisruptions,omitempty"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// max available
+	MaxAvailable interface{} `json:"maxAvailable,omitempty"`
+
+	// min available
+	MinAvailable interface{} `json:"minAvailable,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+}
+
+// Validate validates this pod disruptions data items0
+func (m *PodDisruptionsDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this pod disruptions data items0 based on context it is used
+func (m *PodDisruptionsDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PodDisruptionsDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PodDisruptionsDataItems0) UnmarshalBinary(b []byte) error {
+	var res PodDisruptionsDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

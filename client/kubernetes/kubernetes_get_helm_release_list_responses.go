@@ -6,11 +6,16 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 
 	"github.com/itera-io/taikungoclient/models"
 )
@@ -75,7 +80,7 @@ KubernetesGetHelmReleaseListOK describes a response with status code 200, with d
 Success
 */
 type KubernetesGetHelmReleaseListOK struct {
-	Payload *models.HelmReleasesList
+	Payload *KubernetesGetHelmReleaseListOKBody
 }
 
 // IsSuccess returns true when this kubernetes get helm release list o k response has a 2xx status code
@@ -111,13 +116,13 @@ func (o *KubernetesGetHelmReleaseListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesGetHelmReleaseListOK) GetPayload() *models.HelmReleasesList {
+func (o *KubernetesGetHelmReleaseListOK) GetPayload() *KubernetesGetHelmReleaseListOKBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetHelmReleaseListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.HelmReleasesList)
+	o.Payload = new(KubernetesGetHelmReleaseListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +143,7 @@ KubernetesGetHelmReleaseListBadRequest describes a response with status code 400
 Bad Request
 */
 type KubernetesGetHelmReleaseListBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesGetHelmReleaseListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes get helm release list bad request response has a 2xx status code
@@ -174,7 +179,7 @@ func (o *KubernetesGetHelmReleaseListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetHelmReleaseListBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetHelmReleaseListBadRequest) GetPayload() []*KubernetesGetHelmReleaseListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +204,7 @@ KubernetesGetHelmReleaseListUnauthorized describes a response with status code 4
 Unauthorized
 */
 type KubernetesGetHelmReleaseListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetHelmReleaseListUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes get helm release list unauthorized response has a 2xx status code
@@ -235,13 +240,13 @@ func (o *KubernetesGetHelmReleaseListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetHelmReleaseListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetHelmReleaseListUnauthorized) GetPayload() *KubernetesGetHelmReleaseListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetHelmReleaseListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetHelmReleaseListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +267,7 @@ KubernetesGetHelmReleaseListForbidden describes a response with status code 403,
 Forbidden
 */
 type KubernetesGetHelmReleaseListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetHelmReleaseListForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes get helm release list forbidden response has a 2xx status code
@@ -298,13 +303,13 @@ func (o *KubernetesGetHelmReleaseListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetHelmReleaseListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetHelmReleaseListForbidden) GetPayload() *KubernetesGetHelmReleaseListForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetHelmReleaseListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetHelmReleaseListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +330,7 @@ KubernetesGetHelmReleaseListNotFound describes a response with status code 404, 
 Not Found
 */
 type KubernetesGetHelmReleaseListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetHelmReleaseListNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes get helm release list not found response has a 2xx status code
@@ -361,13 +366,13 @@ func (o *KubernetesGetHelmReleaseListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetHelmReleaseListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetHelmReleaseListNotFound) GetPayload() *KubernetesGetHelmReleaseListNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetHelmReleaseListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetHelmReleaseListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +430,1101 @@ func (o *KubernetesGetHelmReleaseListInternalServerError) String() string {
 
 func (o *KubernetesGetHelmReleaseListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesGetHelmReleaseListBadRequestBodyItems0 kubernetes get helm release list bad request body items0
+swagger:model KubernetesGetHelmReleaseListBadRequestBodyItems0
+*/
+type KubernetesGetHelmReleaseListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes get helm release list bad request body items0
+func (o *KubernetesGetHelmReleaseListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get helm release list bad request body items0 based on context it is used
+func (o *KubernetesGetHelmReleaseListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetHelmReleaseListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetHelmReleaseListForbiddenBody kubernetes get helm release list forbidden body
+swagger:model KubernetesGetHelmReleaseListForbiddenBody
+*/
+type KubernetesGetHelmReleaseListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get helm release list forbidden body
+func (o *KubernetesGetHelmReleaseListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get helm release list forbidden body based on context it is used
+func (o *KubernetesGetHelmReleaseListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetHelmReleaseListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetHelmReleaseListNotFoundBody kubernetes get helm release list not found body
+swagger:model KubernetesGetHelmReleaseListNotFoundBody
+*/
+type KubernetesGetHelmReleaseListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get helm release list not found body
+func (o *KubernetesGetHelmReleaseListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get helm release list not found body based on context it is used
+func (o *KubernetesGetHelmReleaseListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetHelmReleaseListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetHelmReleaseListOKBody kubernetes get helm release list o k body
+swagger:model KubernetesGetHelmReleaseListOKBody
+*/
+type KubernetesGetHelmReleaseListOKBody struct {
+
+	// data
+	Data []*KubernetesGetHelmReleaseListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this kubernetes get helm release list o k body
+func (o *KubernetesGetHelmReleaseListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesGetHelmReleaseListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesGetHelmReleaseListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this kubernetes get helm release list o k body based on the context it is used
+func (o *KubernetesGetHelmReleaseListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesGetHelmReleaseListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesGetHelmReleaseListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetHelmReleaseListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetHelmReleaseListOKBodyDataItems0 kubernetes get helm release list o k body data items0
+swagger:model KubernetesGetHelmReleaseListOKBodyDataItems0
+*/
+type KubernetesGetHelmReleaseListOKBodyDataItems0 struct {
+
+	// api version
+	APIVersion string `json:"apiVersion,omitempty"`
+
+	// kind
+	Kind string `json:"kind,omitempty"`
+
+	// metadata
+	Metadata *KubernetesGetHelmReleaseListOKBodyDataItems0Metadata `json:"metadata,omitempty"`
+
+	// spec
+	Spec *KubernetesGetHelmReleaseListOKBodyDataItems0Spec `json:"spec,omitempty"`
+
+	// status
+	Status *KubernetesGetHelmReleaseListOKBodyDataItems0Status `json:"status,omitempty"`
+}
+
+// Validate validates this kubernetes get helm release list o k body data items0
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateMetadata(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateSpec(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0) validateMetadata(formats strfmt.Registry) error {
+	if swag.IsZero(o.Metadata) { // not required
+		return nil
+	}
+
+	if o.Metadata != nil {
+		if err := o.Metadata.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("metadata")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("metadata")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0) validateSpec(formats strfmt.Registry) error {
+	if swag.IsZero(o.Spec) { // not required
+		return nil
+	}
+
+	if o.Spec != nil {
+		if err := o.Spec.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0) validateStatus(formats strfmt.Registry) error {
+	if swag.IsZero(o.Status) { // not required
+		return nil
+	}
+
+	if o.Status != nil {
+		if err := o.Status.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this kubernetes get helm release list o k body data items0 based on the context it is used
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateMetadata(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateSpec(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0) contextValidateMetadata(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Metadata != nil {
+		if err := o.Metadata.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("metadata")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("metadata")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0) contextValidateSpec(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Spec != nil {
+		if err := o.Spec.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Status != nil {
+		if err := o.Status.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetHelmReleaseListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetHelmReleaseListOKBodyDataItems0Metadata kubernetes get helm release list o k body data items0 metadata
+swagger:model KubernetesGetHelmReleaseListOKBodyDataItems0Metadata
+*/
+type KubernetesGetHelmReleaseListOKBodyDataItems0Metadata struct {
+
+	// creation timestamp
+	CreationTimestamp string `json:"creationTimestamp,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+}
+
+// Validate validates this kubernetes get helm release list o k body data items0 metadata
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Metadata) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get helm release list o k body data items0 metadata based on context it is used
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Metadata) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Metadata) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Metadata) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetHelmReleaseListOKBodyDataItems0Metadata
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetHelmReleaseListOKBodyDataItems0Spec kubernetes get helm release list o k body data items0 spec
+swagger:model KubernetesGetHelmReleaseListOKBodyDataItems0Spec
+*/
+type KubernetesGetHelmReleaseListOKBodyDataItems0Spec struct {
+
+	// chart
+	Chart *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChart `json:"chart,omitempty"`
+
+	// interval
+	Interval string `json:"interval,omitempty"`
+
+	// release name
+	ReleaseName string `json:"releaseName,omitempty"`
+
+	// storage namespace
+	StorageNamespace string `json:"storageNamespace,omitempty"`
+
+	// target namespace
+	TargetNamespace string `json:"targetNamespace,omitempty"`
+
+	// url
+	URL string `json:"url,omitempty"`
+
+	// values
+	Values *models.JSONNode `json:"values,omitempty"`
+}
+
+// Validate validates this kubernetes get helm release list o k body data items0 spec
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Spec) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateChart(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateValues(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Spec) validateChart(formats strfmt.Registry) error {
+	if swag.IsZero(o.Chart) { // not required
+		return nil
+	}
+
+	if o.Chart != nil {
+		if err := o.Chart.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "chart")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "chart")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Spec) validateValues(formats strfmt.Registry) error {
+	if swag.IsZero(o.Values) { // not required
+		return nil
+	}
+
+	if o.Values != nil {
+		if err := o.Values.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "values")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "values")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this kubernetes get helm release list o k body data items0 spec based on the context it is used
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Spec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateChart(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateValues(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Spec) contextValidateChart(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Chart != nil {
+		if err := o.Chart.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "chart")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "chart")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Spec) contextValidateValues(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Values != nil {
+		if err := o.Values.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "values")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "values")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Spec) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Spec) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetHelmReleaseListOKBodyDataItems0Spec
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetHelmReleaseListOKBodyDataItems0SpecChart kubernetes get helm release list o k body data items0 spec chart
+swagger:model KubernetesGetHelmReleaseListOKBodyDataItems0SpecChart
+*/
+type KubernetesGetHelmReleaseListOKBodyDataItems0SpecChart struct {
+
+	// spec
+	Spec *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpec `json:"spec,omitempty"`
+}
+
+// Validate validates this kubernetes get helm release list o k body data items0 spec chart
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChart) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateSpec(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChart) validateSpec(formats strfmt.Registry) error {
+	if swag.IsZero(o.Spec) { // not required
+		return nil
+	}
+
+	if o.Spec != nil {
+		if err := o.Spec.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "chart" + "." + "spec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "chart" + "." + "spec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this kubernetes get helm release list o k body data items0 spec chart based on the context it is used
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChart) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateSpec(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChart) contextValidateSpec(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Spec != nil {
+		if err := o.Spec.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "chart" + "." + "spec")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "chart" + "." + "spec")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChart) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChart) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetHelmReleaseListOKBodyDataItems0SpecChart
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpec kubernetes get helm release list o k body data items0 spec chart spec
+swagger:model KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpec
+*/
+type KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpec struct {
+
+	// chart
+	Chart string `json:"chart,omitempty"`
+
+	// interval
+	Interval string `json:"interval,omitempty"`
+
+	// source ref
+	SourceRef *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpecSourceRef `json:"sourceRef,omitempty"`
+
+	// version
+	Version string `json:"version,omitempty"`
+}
+
+// Validate validates this kubernetes get helm release list o k body data items0 spec chart spec
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpec) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateSourceRef(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpec) validateSourceRef(formats strfmt.Registry) error {
+	if swag.IsZero(o.SourceRef) { // not required
+		return nil
+	}
+
+	if o.SourceRef != nil {
+		if err := o.SourceRef.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "chart" + "." + "spec" + "." + "sourceRef")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "chart" + "." + "spec" + "." + "sourceRef")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this kubernetes get helm release list o k body data items0 spec chart spec based on the context it is used
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpec) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateSourceRef(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpec) contextValidateSourceRef(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.SourceRef != nil {
+		if err := o.SourceRef.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("spec" + "." + "chart" + "." + "spec" + "." + "sourceRef")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("spec" + "." + "chart" + "." + "spec" + "." + "sourceRef")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpec) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpec) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpec
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpecSourceRef kubernetes get helm release list o k body data items0 spec chart spec source ref
+swagger:model KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpecSourceRef
+*/
+type KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpecSourceRef struct {
+
+	// kind
+	Kind string `json:"kind,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this kubernetes get helm release list o k body data items0 spec chart spec source ref
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpecSourceRef) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get helm release list o k body data items0 spec chart spec source ref based on context it is used
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpecSourceRef) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpecSourceRef) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpecSourceRef) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetHelmReleaseListOKBodyDataItems0SpecChartSpecSourceRef
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetHelmReleaseListOKBodyDataItems0Status kubernetes get helm release list o k body data items0 status
+swagger:model KubernetesGetHelmReleaseListOKBodyDataItems0Status
+*/
+type KubernetesGetHelmReleaseListOKBodyDataItems0Status struct {
+
+	// conditions
+	Conditions []*KubernetesGetHelmReleaseListOKBodyDataItems0StatusConditionsItems0 `json:"conditions"`
+
+	// failures
+	Failures int64 `json:"failures,omitempty"`
+
+	// helm chart
+	HelmChart string `json:"helmChart,omitempty"`
+
+	// observed generation
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+}
+
+// Validate validates this kubernetes get helm release list o k body data items0 status
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Status) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateConditions(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Status) validateConditions(formats strfmt.Registry) error {
+	if swag.IsZero(o.Conditions) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Conditions); i++ {
+		if swag.IsZero(o.Conditions[i]) { // not required
+			continue
+		}
+
+		if o.Conditions[i] != nil {
+			if err := o.Conditions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("status" + "." + "conditions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("status" + "." + "conditions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this kubernetes get helm release list o k body data items0 status based on the context it is used
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Status) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateConditions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Status) contextValidateConditions(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Conditions); i++ {
+
+		if o.Conditions[i] != nil {
+			if err := o.Conditions[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("status" + "." + "conditions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("status" + "." + "conditions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Status) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0Status) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetHelmReleaseListOKBodyDataItems0Status
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetHelmReleaseListOKBodyDataItems0StatusConditionsItems0 kubernetes get helm release list o k body data items0 status conditions items0
+swagger:model KubernetesGetHelmReleaseListOKBodyDataItems0StatusConditionsItems0
+*/
+type KubernetesGetHelmReleaseListOKBodyDataItems0StatusConditionsItems0 struct {
+
+	// last transition time
+	// Format: date-time
+	LastTransitionTime *strfmt.DateTime `json:"lastTransitionTime,omitempty"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// reason
+	Reason string `json:"reason,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get helm release list o k body data items0 status conditions items0
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0StatusConditionsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateLastTransitionTime(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0StatusConditionsItems0) validateLastTransitionTime(formats strfmt.Registry) error {
+	if swag.IsZero(o.LastTransitionTime) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("lastTransitionTime", "body", "date-time", o.LastTransitionTime.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this kubernetes get helm release list o k body data items0 status conditions items0 based on context it is used
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0StatusConditionsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0StatusConditionsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListOKBodyDataItems0StatusConditionsItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetHelmReleaseListOKBodyDataItems0StatusConditionsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetHelmReleaseListUnauthorizedBody kubernetes get helm release list unauthorized body
+swagger:model KubernetesGetHelmReleaseListUnauthorizedBody
+*/
+type KubernetesGetHelmReleaseListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get helm release list unauthorized body
+func (o *KubernetesGetHelmReleaseListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get helm release list unauthorized body based on context it is used
+func (o *KubernetesGetHelmReleaseListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetHelmReleaseListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetHelmReleaseListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

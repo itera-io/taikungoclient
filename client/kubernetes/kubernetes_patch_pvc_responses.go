@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesPatchPvcReader is a Reader for the KubernetesPatchPvc structure.
@@ -75,7 +75,7 @@ KubernetesPatchPvcOK describes a response with status code 200, with default hea
 Success
 */
 type KubernetesPatchPvcOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch pvc o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KubernetesPatchPvcOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pvc][%d] kubernetesPatchPvcOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesPatchPvcOK) GetPayload() models.Unit {
+func (o *KubernetesPatchPvcOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KubernetesPatchPvcBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubernetesPatchPvcBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesPatchPvcBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes patch pvc bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesPatchPvcBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pvc][%d] kubernetesPatchPvcBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchPvcBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesPatchPvcBadRequest) GetPayload() []*KubernetesPatchPvcBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesPatchPvcUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubernetesPatchPvcUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesPatchPvcUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes patch pvc unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesPatchPvcUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pvc][%d] kubernetesPatchPvcUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchPvcUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchPvcUnauthorized) GetPayload() *KubernetesPatchPvcUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesPatchPvcUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesPatchPvcUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesPatchPvcForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubernetesPatchPvcForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesPatchPvcForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes patch pvc forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesPatchPvcForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pvc][%d] kubernetesPatchPvcForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchPvcForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchPvcForbidden) GetPayload() *KubernetesPatchPvcForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesPatchPvcForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesPatchPvcForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesPatchPvcNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubernetesPatchPvcNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesPatchPvcNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes patch pvc not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesPatchPvcNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pvc][%d] kubernetesPatchPvcNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchPvcNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchPvcNotFound) GetPayload() *KubernetesPatchPvcNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesPatchPvcNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesPatchPvcNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,243 @@ func (o *KubernetesPatchPvcInternalServerError) String() string {
 
 func (o *KubernetesPatchPvcInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesPatchPvcBadRequestBodyItems0 kubernetes patch pvc bad request body items0
+swagger:model KubernetesPatchPvcBadRequestBodyItems0
+*/
+type KubernetesPatchPvcBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes patch pvc bad request body items0
+func (o *KubernetesPatchPvcBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch pvc bad request body items0 based on context it is used
+func (o *KubernetesPatchPvcBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchPvcBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchPvcBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchPvcBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchPvcBody kubernetes patch pvc body
+swagger:model KubernetesPatchPvcBody
+*/
+type KubernetesPatchPvcBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// yaml
+	Yaml string `json:"yaml,omitempty"`
+}
+
+// Validate validates this kubernetes patch pvc body
+func (o *KubernetesPatchPvcBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch pvc body based on context it is used
+func (o *KubernetesPatchPvcBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchPvcBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchPvcBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchPvcBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchPvcForbiddenBody kubernetes patch pvc forbidden body
+swagger:model KubernetesPatchPvcForbiddenBody
+*/
+type KubernetesPatchPvcForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes patch pvc forbidden body
+func (o *KubernetesPatchPvcForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch pvc forbidden body based on context it is used
+func (o *KubernetesPatchPvcForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchPvcForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchPvcForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchPvcForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchPvcNotFoundBody kubernetes patch pvc not found body
+swagger:model KubernetesPatchPvcNotFoundBody
+*/
+type KubernetesPatchPvcNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes patch pvc not found body
+func (o *KubernetesPatchPvcNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch pvc not found body based on context it is used
+func (o *KubernetesPatchPvcNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchPvcNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchPvcNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchPvcNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchPvcUnauthorizedBody kubernetes patch pvc unauthorized body
+swagger:model KubernetesPatchPvcUnauthorizedBody
+*/
+type KubernetesPatchPvcUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes patch pvc unauthorized body
+func (o *KubernetesPatchPvcUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch pvc unauthorized body based on context it is used
+func (o *KubernetesPatchPvcUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchPvcUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchPvcUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchPvcUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

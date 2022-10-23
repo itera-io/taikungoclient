@@ -6,13 +6,15 @@ package cloud_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CloudCredentialsDashboardListReader is a Reader for the CloudCredentialsDashboardList structure.
@@ -75,7 +77,7 @@ CloudCredentialsDashboardListOK describes a response with status code 200, with 
 Success
 */
 type CloudCredentialsDashboardListOK struct {
-	Payload *models.CredentialsChart
+	Payload *CloudCredentialsDashboardListOKBody
 }
 
 // IsSuccess returns true when this cloud credentials dashboard list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *CloudCredentialsDashboardListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListOK  %+v", 200, o.Payload)
 }
 
-func (o *CloudCredentialsDashboardListOK) GetPayload() *models.CredentialsChart {
+func (o *CloudCredentialsDashboardListOK) GetPayload() *CloudCredentialsDashboardListOKBody {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDashboardListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.CredentialsChart)
+	o.Payload = new(CloudCredentialsDashboardListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ CloudCredentialsDashboardListBadRequest describes a response with status code 40
 Bad Request
 */
 type CloudCredentialsDashboardListBadRequest struct {
-	Payload []*models.Error
+	Payload []*CloudCredentialsDashboardListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this cloud credentials dashboard list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *CloudCredentialsDashboardListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsDashboardListBadRequest) GetPayload() []*models.Error {
+func (o *CloudCredentialsDashboardListBadRequest) GetPayload() []*CloudCredentialsDashboardListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ CloudCredentialsDashboardListUnauthorized describes a response with status code 
 Unauthorized
 */
 type CloudCredentialsDashboardListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CloudCredentialsDashboardListUnauthorizedBody
 }
 
 // IsSuccess returns true when this cloud credentials dashboard list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *CloudCredentialsDashboardListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsDashboardListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsDashboardListUnauthorized) GetPayload() *CloudCredentialsDashboardListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDashboardListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CloudCredentialsDashboardListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ CloudCredentialsDashboardListForbidden describes a response with status code 403
 Forbidden
 */
 type CloudCredentialsDashboardListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CloudCredentialsDashboardListForbiddenBody
 }
 
 // IsSuccess returns true when this cloud credentials dashboard list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *CloudCredentialsDashboardListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsDashboardListForbidden) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsDashboardListForbidden) GetPayload() *CloudCredentialsDashboardListForbiddenBody {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDashboardListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CloudCredentialsDashboardListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ CloudCredentialsDashboardListNotFound describes a response with status code 404,
 Not Found
 */
 type CloudCredentialsDashboardListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CloudCredentialsDashboardListNotFoundBody
 }
 
 // IsSuccess returns true when this cloud credentials dashboard list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *CloudCredentialsDashboardListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsDashboardListNotFound) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsDashboardListNotFound) GetPayload() *CloudCredentialsDashboardListNotFoundBody {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDashboardListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CloudCredentialsDashboardListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,1257 @@ func (o *CloudCredentialsDashboardListInternalServerError) String() string {
 
 func (o *CloudCredentialsDashboardListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CloudCredentialsDashboardListBadRequestBodyItems0 cloud credentials dashboard list bad request body items0
+swagger:model CloudCredentialsDashboardListBadRequestBodyItems0
+*/
+type CloudCredentialsDashboardListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this cloud credentials dashboard list bad request body items0
+func (o *CloudCredentialsDashboardListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials dashboard list bad request body items0 based on context it is used
+func (o *CloudCredentialsDashboardListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDashboardListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsDashboardListForbiddenBody cloud credentials dashboard list forbidden body
+swagger:model CloudCredentialsDashboardListForbiddenBody
+*/
+type CloudCredentialsDashboardListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cloud credentials dashboard list forbidden body
+func (o *CloudCredentialsDashboardListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials dashboard list forbidden body based on context it is used
+func (o *CloudCredentialsDashboardListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDashboardListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsDashboardListNotFoundBody cloud credentials dashboard list not found body
+swagger:model CloudCredentialsDashboardListNotFoundBody
+*/
+type CloudCredentialsDashboardListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cloud credentials dashboard list not found body
+func (o *CloudCredentialsDashboardListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials dashboard list not found body based on context it is used
+func (o *CloudCredentialsDashboardListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDashboardListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsDashboardListOKBody cloud credentials dashboard list o k body
+swagger:model CloudCredentialsDashboardListOKBody
+*/
+type CloudCredentialsDashboardListOKBody struct {
+
+	// amazon
+	Amazon []*CloudCredentialsDashboardListOKBodyAmazonItems0 `json:"amazon"`
+
+	// azure
+	Azure []*CloudCredentialsDashboardListOKBodyAzureItems0 `json:"azure"`
+
+	// google
+	Google []*CloudCredentialsDashboardListOKBodyGoogleItems0 `json:"google"`
+
+	// openstack
+	Openstack []*CloudCredentialsDashboardListOKBodyOpenstackItems0 `json:"openstack"`
+
+	// total count aws
+	TotalCountAws int32 `json:"totalCountAws,omitempty"`
+
+	// total count azure
+	TotalCountAzure int32 `json:"totalCountAzure,omitempty"`
+
+	// total count google
+	TotalCountGoogle int32 `json:"totalCountGoogle,omitempty"`
+
+	// total count openstack
+	TotalCountOpenstack int32 `json:"totalCountOpenstack,omitempty"`
+}
+
+// Validate validates this cloud credentials dashboard list o k body
+func (o *CloudCredentialsDashboardListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateAmazon(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateAzure(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateGoogle(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateOpenstack(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBody) validateAmazon(formats strfmt.Registry) error {
+	if swag.IsZero(o.Amazon) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Amazon); i++ {
+		if swag.IsZero(o.Amazon[i]) { // not required
+			continue
+		}
+
+		if o.Amazon[i] != nil {
+			if err := o.Amazon[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("cloudCredentialsDashboardListOK" + "." + "amazon" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("cloudCredentialsDashboardListOK" + "." + "amazon" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBody) validateAzure(formats strfmt.Registry) error {
+	if swag.IsZero(o.Azure) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Azure); i++ {
+		if swag.IsZero(o.Azure[i]) { // not required
+			continue
+		}
+
+		if o.Azure[i] != nil {
+			if err := o.Azure[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("cloudCredentialsDashboardListOK" + "." + "azure" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("cloudCredentialsDashboardListOK" + "." + "azure" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBody) validateGoogle(formats strfmt.Registry) error {
+	if swag.IsZero(o.Google) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Google); i++ {
+		if swag.IsZero(o.Google[i]) { // not required
+			continue
+		}
+
+		if o.Google[i] != nil {
+			if err := o.Google[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("cloudCredentialsDashboardListOK" + "." + "google" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("cloudCredentialsDashboardListOK" + "." + "google" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBody) validateOpenstack(formats strfmt.Registry) error {
+	if swag.IsZero(o.Openstack) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Openstack); i++ {
+		if swag.IsZero(o.Openstack[i]) { // not required
+			continue
+		}
+
+		if o.Openstack[i] != nil {
+			if err := o.Openstack[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("cloudCredentialsDashboardListOK" + "." + "openstack" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("cloudCredentialsDashboardListOK" + "." + "openstack" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cloud credentials dashboard list o k body based on the context it is used
+func (o *CloudCredentialsDashboardListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateAmazon(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateAzure(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateGoogle(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateOpenstack(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBody) contextValidateAmazon(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Amazon); i++ {
+
+		if o.Amazon[i] != nil {
+			if err := o.Amazon[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("cloudCredentialsDashboardListOK" + "." + "amazon" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("cloudCredentialsDashboardListOK" + "." + "amazon" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBody) contextValidateAzure(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Azure); i++ {
+
+		if o.Azure[i] != nil {
+			if err := o.Azure[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("cloudCredentialsDashboardListOK" + "." + "azure" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("cloudCredentialsDashboardListOK" + "." + "azure" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBody) contextValidateGoogle(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Google); i++ {
+
+		if o.Google[i] != nil {
+			if err := o.Google[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("cloudCredentialsDashboardListOK" + "." + "google" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("cloudCredentialsDashboardListOK" + "." + "google" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBody) contextValidateOpenstack(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Openstack); i++ {
+
+		if o.Openstack[i] != nil {
+			if err := o.Openstack[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("cloudCredentialsDashboardListOK" + "." + "openstack" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("cloudCredentialsDashboardListOK" + "." + "openstack" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBody) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDashboardListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsDashboardListOKBodyAmazonItems0 cloud credentials dashboard list o k body amazon items0
+swagger:model CloudCredentialsDashboardListOKBodyAmazonItems0
+*/
+type CloudCredentialsDashboardListOKBodyAmazonItems0 struct {
+
+	// availability zones
+	AvailabilityZones []string `json:"availabilityZones"`
+
+	// continent name
+	ContinentName string `json:"continentName,omitempty"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// created by
+	CreatedBy string `json:"createdBy,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is default
+	IsDefault bool `json:"isDefault"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// last modified
+	LastModified string `json:"lastModified,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// project count
+	ProjectCount int32 `json:"projectCount,omitempty"`
+
+	// projects
+	Projects []*CloudCredentialsDashboardListOKBodyAmazonItems0ProjectsItems0 `json:"projects"`
+
+	// region
+	Region string `json:"region,omitempty"`
+}
+
+// Validate validates this cloud credentials dashboard list o k body amazon items0
+func (o *CloudCredentialsDashboardListOKBodyAmazonItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateProjects(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBodyAmazonItems0) validateProjects(formats strfmt.Registry) error {
+	if swag.IsZero(o.Projects) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Projects); i++ {
+		if swag.IsZero(o.Projects[i]) { // not required
+			continue
+		}
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cloud credentials dashboard list o k body amazon items0 based on the context it is used
+func (o *CloudCredentialsDashboardListOKBodyAmazonItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBodyAmazonItems0) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Projects); i++ {
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyAmazonItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyAmazonItems0) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDashboardListOKBodyAmazonItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsDashboardListOKBodyAmazonItems0ProjectsItems0 cloud credentials dashboard list o k body amazon items0 projects items0
+swagger:model CloudCredentialsDashboardListOKBodyAmazonItems0ProjectsItems0
+*/
+type CloudCredentialsDashboardListOKBodyAmazonItems0ProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this cloud credentials dashboard list o k body amazon items0 projects items0
+func (o *CloudCredentialsDashboardListOKBodyAmazonItems0ProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials dashboard list o k body amazon items0 projects items0 based on context it is used
+func (o *CloudCredentialsDashboardListOKBodyAmazonItems0ProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyAmazonItems0ProjectsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyAmazonItems0ProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDashboardListOKBodyAmazonItems0ProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsDashboardListOKBodyAzureItems0 cloud credentials dashboard list o k body azure items0
+swagger:model CloudCredentialsDashboardListOKBodyAzureItems0
+*/
+type CloudCredentialsDashboardListOKBodyAzureItems0 struct {
+
+	// availability zones
+	AvailabilityZones []string `json:"availabilityZones"`
+
+	// continent name
+	ContinentName string `json:"continentName,omitempty"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// created by
+	CreatedBy string `json:"createdBy,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is default
+	IsDefault bool `json:"isDefault"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// last modified
+	LastModified string `json:"lastModified,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// location
+	Location string `json:"location,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// project count
+	ProjectCount int32 `json:"projectCount,omitempty"`
+
+	// projects
+	Projects []*CloudCredentialsDashboardListOKBodyAzureItems0ProjectsItems0 `json:"projects"`
+
+	// tenant Id
+	TenantID string `json:"tenantId,omitempty"`
+}
+
+// Validate validates this cloud credentials dashboard list o k body azure items0
+func (o *CloudCredentialsDashboardListOKBodyAzureItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateProjects(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBodyAzureItems0) validateProjects(formats strfmt.Registry) error {
+	if swag.IsZero(o.Projects) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Projects); i++ {
+		if swag.IsZero(o.Projects[i]) { // not required
+			continue
+		}
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cloud credentials dashboard list o k body azure items0 based on the context it is used
+func (o *CloudCredentialsDashboardListOKBodyAzureItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBodyAzureItems0) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Projects); i++ {
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyAzureItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyAzureItems0) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDashboardListOKBodyAzureItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsDashboardListOKBodyAzureItems0ProjectsItems0 cloud credentials dashboard list o k body azure items0 projects items0
+swagger:model CloudCredentialsDashboardListOKBodyAzureItems0ProjectsItems0
+*/
+type CloudCredentialsDashboardListOKBodyAzureItems0ProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this cloud credentials dashboard list o k body azure items0 projects items0
+func (o *CloudCredentialsDashboardListOKBodyAzureItems0ProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials dashboard list o k body azure items0 projects items0 based on context it is used
+func (o *CloudCredentialsDashboardListOKBodyAzureItems0ProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyAzureItems0ProjectsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyAzureItems0ProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDashboardListOKBodyAzureItems0ProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsDashboardListOKBodyGoogleItems0 cloud credentials dashboard list o k body google items0
+swagger:model CloudCredentialsDashboardListOKBodyGoogleItems0
+*/
+type CloudCredentialsDashboardListOKBodyGoogleItems0 struct {
+
+	// billing account Id
+	BillingAccountID string `json:"billingAccountId,omitempty"`
+
+	// billing account name
+	BillingAccountName string `json:"billingAccountName,omitempty"`
+
+	// continent name
+	ContinentName string `json:"continentName,omitempty"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// folder Id
+	FolderID string `json:"folderId,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is default
+	IsDefault bool `json:"isDefault"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// partner logo
+	PartnerLogo string `json:"partnerLogo,omitempty"`
+
+	// partner name
+	PartnerName string `json:"partnerName,omitempty"`
+
+	// project Id
+	ProjectID string `json:"projectId,omitempty"`
+
+	// projects
+	Projects []*CloudCredentialsDashboardListOKBodyGoogleItems0ProjectsItems0 `json:"projects"`
+
+	// region
+	Region string `json:"region,omitempty"`
+
+	// zones
+	Zones []string `json:"zones"`
+}
+
+// Validate validates this cloud credentials dashboard list o k body google items0
+func (o *CloudCredentialsDashboardListOKBodyGoogleItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateProjects(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBodyGoogleItems0) validateProjects(formats strfmt.Registry) error {
+	if swag.IsZero(o.Projects) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Projects); i++ {
+		if swag.IsZero(o.Projects[i]) { // not required
+			continue
+		}
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cloud credentials dashboard list o k body google items0 based on the context it is used
+func (o *CloudCredentialsDashboardListOKBodyGoogleItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBodyGoogleItems0) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Projects); i++ {
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyGoogleItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyGoogleItems0) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDashboardListOKBodyGoogleItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsDashboardListOKBodyGoogleItems0ProjectsItems0 cloud credentials dashboard list o k body google items0 projects items0
+swagger:model CloudCredentialsDashboardListOKBodyGoogleItems0ProjectsItems0
+*/
+type CloudCredentialsDashboardListOKBodyGoogleItems0ProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this cloud credentials dashboard list o k body google items0 projects items0
+func (o *CloudCredentialsDashboardListOKBodyGoogleItems0ProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials dashboard list o k body google items0 projects items0 based on context it is used
+func (o *CloudCredentialsDashboardListOKBodyGoogleItems0ProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyGoogleItems0ProjectsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyGoogleItems0ProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDashboardListOKBodyGoogleItems0ProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsDashboardListOKBodyOpenstackItems0 cloud credentials dashboard list o k body openstack items0
+swagger:model CloudCredentialsDashboardListOKBodyOpenstackItems0
+*/
+type CloudCredentialsDashboardListOKBodyOpenstackItems0 struct {
+
+	// availability zone
+	AvailabilityZone string `json:"availabilityZone,omitempty"`
+
+	// continent name
+	ContinentName string `json:"continentName,omitempty"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// created by
+	CreatedBy string `json:"createdBy,omitempty"`
+
+	// domain
+	Domain string `json:"domain,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// import network
+	ImportNetwork bool `json:"importNetwork"`
+
+	// internal subnet Id
+	InternalSubnetID string `json:"internalSubnetId,omitempty"`
+
+	// is default
+	IsDefault bool `json:"isDefault"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// last modified
+	LastModified string `json:"lastModified,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// project
+	Project string `json:"project,omitempty"`
+
+	// project count
+	ProjectCount int32 `json:"projectCount,omitempty"`
+
+	// projects
+	Projects []*CloudCredentialsDashboardListOKBodyOpenstackItems0ProjectsItems0 `json:"projects"`
+
+	// public network
+	PublicNetwork string `json:"publicNetwork,omitempty"`
+
+	// region
+	Region string `json:"region,omitempty"`
+
+	// tenant Id
+	TenantID string `json:"tenantId,omitempty"`
+
+	// url
+	URL string `json:"url,omitempty"`
+
+	// user
+	User string `json:"user,omitempty"`
+
+	// volume type
+	VolumeType string `json:"volumeType,omitempty"`
+}
+
+// Validate validates this cloud credentials dashboard list o k body openstack items0
+func (o *CloudCredentialsDashboardListOKBodyOpenstackItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateProjects(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBodyOpenstackItems0) validateProjects(formats strfmt.Registry) error {
+	if swag.IsZero(o.Projects) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Projects); i++ {
+		if swag.IsZero(o.Projects[i]) { // not required
+			continue
+		}
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cloud credentials dashboard list o k body openstack items0 based on the context it is used
+func (o *CloudCredentialsDashboardListOKBodyOpenstackItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CloudCredentialsDashboardListOKBodyOpenstackItems0) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Projects); i++ {
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyOpenstackItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyOpenstackItems0) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDashboardListOKBodyOpenstackItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsDashboardListOKBodyOpenstackItems0ProjectsItems0 cloud credentials dashboard list o k body openstack items0 projects items0
+swagger:model CloudCredentialsDashboardListOKBodyOpenstackItems0ProjectsItems0
+*/
+type CloudCredentialsDashboardListOKBodyOpenstackItems0ProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this cloud credentials dashboard list o k body openstack items0 projects items0
+func (o *CloudCredentialsDashboardListOKBodyOpenstackItems0ProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials dashboard list o k body openstack items0 projects items0 based on context it is used
+func (o *CloudCredentialsDashboardListOKBodyOpenstackItems0ProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyOpenstackItems0ProjectsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListOKBodyOpenstackItems0ProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDashboardListOKBodyOpenstackItems0ProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsDashboardListUnauthorizedBody cloud credentials dashboard list unauthorized body
+swagger:model CloudCredentialsDashboardListUnauthorizedBody
+*/
+type CloudCredentialsDashboardListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cloud credentials dashboard list unauthorized body
+func (o *CloudCredentialsDashboardListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials dashboard list unauthorized body based on context it is used
+func (o *CloudCredentialsDashboardListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDashboardListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDashboardListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

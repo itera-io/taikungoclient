@@ -19,7 +19,7 @@ import (
 type AzurePublisherDetails struct {
 
 	// image
-	Image *AzureCommonImages `json:"image,omitempty"`
+	Image *AzurePublisherDetailsImage `json:"image,omitempty"`
 
 	// publisher
 	Publisher string `json:"publisher,omitempty"`
@@ -99,6 +99,49 @@ func (m *AzurePublisherDetails) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AzurePublisherDetails) UnmarshalBinary(b []byte) error {
 	var res AzurePublisherDetails
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AzurePublisherDetailsImage azure publisher details image
+//
+// swagger:model AzurePublisherDetailsImage
+type AzurePublisherDetailsImage struct {
+
+	// display name
+	DisplayName string `json:"displayName"`
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this azure publisher details image
+func (m *AzurePublisherDetailsImage) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure publisher details image based on context it is used
+func (m *AzurePublisherDetailsImage) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AzurePublisherDetailsImage) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AzurePublisherDetailsImage) UnmarshalBinary(b []byte) error {
+	var res AzurePublisherDetailsImage
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

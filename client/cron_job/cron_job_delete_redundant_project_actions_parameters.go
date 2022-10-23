@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobDeleteRedundantProjectActionsParams creates a new CronJobDeleteRedundantProjectActionsParams object,
@@ -64,7 +62,7 @@ CronJobDeleteRedundantProjectActionsParams contains all the parameters to send t
 type CronJobDeleteRedundantProjectActionsParams struct {
 
 	// Body.
-	Body models.DeleteRedundantProjectActionsCommand
+	Body interface{}
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *CronJobDeleteRedundantProjectActionsParams) SetHTTPClient(client *http.
 }
 
 // WithBody adds the body to the cron job delete redundant project actions params
-func (o *CronJobDeleteRedundantProjectActionsParams) WithBody(body models.DeleteRedundantProjectActionsCommand) *CronJobDeleteRedundantProjectActionsParams {
+func (o *CronJobDeleteRedundantProjectActionsParams) WithBody(body interface{}) *CronJobDeleteRedundantProjectActionsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job delete redundant project actions params
-func (o *CronJobDeleteRedundantProjectActionsParams) SetBody(body models.DeleteRedundantProjectActionsCommand) {
+func (o *CronJobDeleteRedundantProjectActionsParams) SetBody(body interface{}) {
 	o.Body = body
 }
 

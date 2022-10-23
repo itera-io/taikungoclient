@@ -20,7 +20,7 @@ import (
 type AdminUsersList struct {
 
 	// data
-	Data []*AdminUsersResponseData `json:"data"`
+	Data []*AdminUsersListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,61 @@ func (m *AdminUsersList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AdminUsersList) UnmarshalBinary(b []byte) error {
 	var res AdminUsersList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AdminUsersListDataItems0 admin users list data items0
+//
+// swagger:model AdminUsersListDataItems0
+type AdminUsersListDataItems0 struct {
+
+	// csm
+	Csm bool `json:"csm"`
+
+	// email
+	Email string `json:"email,omitempty"`
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// owner
+	Owner bool `json:"owner"`
+
+	// role
+	Role string `json:"role,omitempty"`
+}
+
+// Validate validates this admin users list data items0
+func (m *AdminUsersListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin users list data items0 based on context it is used
+func (m *AdminUsersListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AdminUsersListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AdminUsersListDataItems0) UnmarshalBinary(b []byte) error {
+	var res AdminUsersListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

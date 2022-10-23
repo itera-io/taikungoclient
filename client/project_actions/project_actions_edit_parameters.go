@@ -15,8 +15,6 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectActionsEditParams creates a new ProjectActionsEditParams object,
@@ -65,7 +63,7 @@ ProjectActionsEditParams contains all the parameters to send to the API endpoint
 type ProjectActionsEditParams struct {
 
 	// Body.
-	Body *models.ProjectActionUpdateDto
+	Body ProjectActionsEditBody
 
 	// ProjectID.
 	//
@@ -129,13 +127,13 @@ func (o *ProjectActionsEditParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the project actions edit params
-func (o *ProjectActionsEditParams) WithBody(body *models.ProjectActionUpdateDto) *ProjectActionsEditParams {
+func (o *ProjectActionsEditParams) WithBody(body ProjectActionsEditBody) *ProjectActionsEditParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the project actions edit params
-func (o *ProjectActionsEditParams) SetBody(body *models.ProjectActionUpdateDto) {
+func (o *ProjectActionsEditParams) SetBody(body ProjectActionsEditBody) {
 	o.Body = body
 }
 
@@ -168,10 +166,8 @@ func (o *ProjectActionsEditParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param projectId

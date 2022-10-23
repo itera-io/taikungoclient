@@ -23,7 +23,7 @@ type PrometheusDashboardListDto struct {
 	CategoryName string `json:"categoryName,omitempty"`
 
 	// data
-	Data []*PrometheusDashboardDto `json:"data"`
+	Data []*PrometheusDashboardListDtoDataItems0 `json:"data"`
 }
 
 // Validate validates this prometheus dashboard list dto
@@ -111,6 +111,58 @@ func (m *PrometheusDashboardListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PrometheusDashboardListDto) UnmarshalBinary(b []byte) error {
 	var res PrometheusDashboardListDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PrometheusDashboardListDtoDataItems0 prometheus dashboard list dto data items0
+//
+// swagger:model PrometheusDashboardListDtoDataItems0
+type PrometheusDashboardListDtoDataItems0 struct {
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// expression decoded
+	ExpressionDecoded string `json:"expressionDecoded,omitempty"`
+
+	// expression encoded
+	ExpressionEncoded string `json:"expressionEncoded,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is readonly
+	IsReadonly bool `json:"isReadonly"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this prometheus dashboard list dto data items0
+func (m *PrometheusDashboardListDtoDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus dashboard list dto data items0 based on context it is used
+func (m *PrometheusDashboardListDtoDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PrometheusDashboardListDtoDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PrometheusDashboardListDtoDataItems0) UnmarshalBinary(b []byte) error {
+	var res PrometheusDashboardListDtoDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

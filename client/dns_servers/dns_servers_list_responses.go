@@ -6,13 +6,13 @@ package dns_servers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // DNSServersListReader is a Reader for the DNSServersList structure.
@@ -75,7 +75,7 @@ DNSServersListOK describes a response with status code 200, with default header 
 Success
 */
 type DNSServersListOK struct {
-	Payload []*models.DNSServersListDto
+	Payload []*DNSServersListOKBodyItems0
 }
 
 // IsSuccess returns true when this dns servers list o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *DNSServersListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListOK  %+v", 200, o.Payload)
 }
 
-func (o *DNSServersListOK) GetPayload() []*models.DNSServersListDto {
+func (o *DNSServersListOK) GetPayload() []*DNSServersListOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ DNSServersListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type DNSServersListBadRequest struct {
-	Payload []*models.Error
+	Payload []*DNSServersListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this dns servers list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *DNSServersListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *DNSServersListBadRequest) GetPayload() []*models.Error {
+func (o *DNSServersListBadRequest) GetPayload() []*DNSServersListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ DNSServersListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type DNSServersListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *DNSServersListUnauthorizedBody
 }
 
 // IsSuccess returns true when this dns servers list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *DNSServersListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *DNSServersListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *DNSServersListUnauthorized) GetPayload() *DNSServersListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *DNSServersListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(DNSServersListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ DNSServersListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type DNSServersListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *DNSServersListForbiddenBody
 }
 
 // IsSuccess returns true when this dns servers list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *DNSServersListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *DNSServersListForbidden) GetPayload() *models.ProblemDetails {
+func (o *DNSServersListForbidden) GetPayload() *DNSServersListForbiddenBody {
 	return o.Payload
 }
 
 func (o *DNSServersListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(DNSServersListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ DNSServersListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type DNSServersListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *DNSServersListNotFoundBody
 }
 
 // IsSuccess returns true when this dns servers list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *DNSServersListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *DNSServersListNotFound) GetPayload() *models.ProblemDetails {
+func (o *DNSServersListNotFound) GetPayload() *DNSServersListNotFoundBody {
 	return o.Payload
 }
 
 func (o *DNSServersListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(DNSServersListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *DNSServersListInternalServerError) String() string {
 
 func (o *DNSServersListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+DNSServersListBadRequestBodyItems0 DNS servers list bad request body items0
+swagger:model DNSServersListBadRequestBodyItems0
+*/
+type DNSServersListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this DNS servers list bad request body items0
+func (o *DNSServersListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this DNS servers list bad request body items0 based on context it is used
+func (o *DNSServersListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DNSServersListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DNSServersListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res DNSServersListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DNSServersListForbiddenBody DNS servers list forbidden body
+swagger:model DNSServersListForbiddenBody
+*/
+type DNSServersListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this DNS servers list forbidden body
+func (o *DNSServersListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this DNS servers list forbidden body based on context it is used
+func (o *DNSServersListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DNSServersListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DNSServersListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res DNSServersListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DNSServersListNotFoundBody DNS servers list not found body
+swagger:model DNSServersListNotFoundBody
+*/
+type DNSServersListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this DNS servers list not found body
+func (o *DNSServersListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this DNS servers list not found body based on context it is used
+func (o *DNSServersListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DNSServersListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DNSServersListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res DNSServersListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DNSServersListOKBodyItems0 DNS servers list o k body items0
+swagger:model DNSServersListOKBodyItems0
+*/
+type DNSServersListOKBodyItems0 struct {
+
+	// access profile name
+	AccessProfileName string `json:"accessProfileName,omitempty"`
+
+	// address
+	Address string `json:"address,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this DNS servers list o k body items0
+func (o *DNSServersListOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this DNS servers list o k body items0 based on context it is used
+func (o *DNSServersListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DNSServersListOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DNSServersListOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res DNSServersListOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DNSServersListUnauthorizedBody DNS servers list unauthorized body
+swagger:model DNSServersListUnauthorizedBody
+*/
+type DNSServersListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this DNS servers list unauthorized body
+func (o *DNSServersListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this DNS servers list unauthorized body based on context it is used
+func (o *DNSServersListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DNSServersListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DNSServersListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res DNSServersListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

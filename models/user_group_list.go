@@ -20,7 +20,7 @@ import (
 type UserGroupList struct {
 
 	// data
-	Data []*UserGroupDetailsListDto `json:"data"`
+	Data []*UserGroupListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,256 @@ func (m *UserGroupList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *UserGroupList) UnmarshalBinary(b []byte) error {
 	var res UserGroupList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// UserGroupListDataItems0 user group list data items0
+//
+// swagger:model UserGroupListDataItems0
+type UserGroupListDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// project groups
+	ProjectGroups []*UserGroupListDataItems0ProjectGroupsItems0 `json:"projectGroups"`
+
+	// users
+	Users []*UserGroupListDataItems0UsersItems0 `json:"users"`
+}
+
+// Validate validates this user group list data items0
+func (m *UserGroupListDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateProjectGroups(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UserGroupListDataItems0) validateProjectGroups(formats strfmt.Registry) error {
+	if swag.IsZero(m.ProjectGroups) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ProjectGroups); i++ {
+		if swag.IsZero(m.ProjectGroups[i]) { // not required
+			continue
+		}
+
+		if m.ProjectGroups[i] != nil {
+			if err := m.ProjectGroups[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectGroups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *UserGroupListDataItems0) validateUsers(formats strfmt.Registry) error {
+	if swag.IsZero(m.Users) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Users); i++ {
+		if swag.IsZero(m.Users[i]) { // not required
+			continue
+		}
+
+		if m.Users[i] != nil {
+			if err := m.Users[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("users" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("users" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this user group list data items0 based on the context it is used
+func (m *UserGroupListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateProjectGroups(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UserGroupListDataItems0) contextValidateProjectGroups(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ProjectGroups); i++ {
+
+		if m.ProjectGroups[i] != nil {
+			if err := m.ProjectGroups[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectGroups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *UserGroupListDataItems0) contextValidateUsers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Users); i++ {
+
+		if m.Users[i] != nil {
+			if err := m.Users[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("users" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("users" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *UserGroupListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *UserGroupListDataItems0) UnmarshalBinary(b []byte) error {
+	var res UserGroupListDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// UserGroupListDataItems0ProjectGroupsItems0 user group list data items0 project groups items0
+//
+// swagger:model UserGroupListDataItems0ProjectGroupsItems0
+type UserGroupListDataItems0ProjectGroupsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this user group list data items0 project groups items0
+func (m *UserGroupListDataItems0ProjectGroupsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user group list data items0 project groups items0 based on context it is used
+func (m *UserGroupListDataItems0ProjectGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *UserGroupListDataItems0ProjectGroupsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *UserGroupListDataItems0ProjectGroupsItems0) UnmarshalBinary(b []byte) error {
+	var res UserGroupListDataItems0ProjectGroupsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// UserGroupListDataItems0UsersItems0 user group list data items0 users items0
+//
+// swagger:model UserGroupListDataItems0UsersItems0
+type UserGroupListDataItems0UsersItems0 struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this user group list data items0 users items0
+func (m *UserGroupListDataItems0UsersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user group list data items0 users items0 based on context it is used
+func (m *UserGroupListDataItems0UsersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *UserGroupListDataItems0UsersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *UserGroupListDataItems0UsersItems0) UnmarshalBinary(b []byte) error {
+	var res UserGroupListDataItems0UsersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

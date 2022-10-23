@@ -20,73 +20,73 @@ import (
 type EnumList struct {
 
 	// alert types
-	AlertTypes []*CommonDropdownDto `json:"alertTypes"`
+	AlertTypes []*EnumListAlertTypesItems0 `json:"alertTypes"`
 
 	// alerting integration types
-	AlertingIntegrationTypes []*CommonDropdownDto `json:"alertingIntegrationTypes"`
+	AlertingIntegrationTypes []*EnumListAlertingIntegrationTypesItems0 `json:"alertingIntegrationTypes"`
 
 	// audit logs
-	AuditLogs []*CommonDropdownDto `json:"auditLogs"`
+	AuditLogs []*EnumListAuditLogsItems0 `json:"auditLogs"`
 
 	// availability
-	Availability []*CommonAvailabilityDto `json:"availability"`
+	Availability []*EnumListAvailabilityItems0 `json:"availability"`
 
 	// aws platforms
-	AwsPlatforms []*CommonStringBasedDropdownDto `json:"awsPlatforms"`
+	AwsPlatforms []*EnumListAwsPlatformsItems0 `json:"awsPlatforms"`
 
 	// azure quotas
-	AzureQuotas []*CommonDropdownDto `json:"azureQuotas"`
+	AzureQuotas []*EnumListAzureQuotasItems0 `json:"azureQuotas"`
 
 	// cloud types
-	CloudTypes []*CommonDropdownDto `json:"cloudTypes"`
+	CloudTypes []*EnumListCloudTypesItems0 `json:"cloudTypes"`
 
 	// cron periods
-	CronPeriods []*CommonStringBasedDropdownDto `json:"cronPeriods"`
+	CronPeriods []*EnumListCronPeriodsItems0 `json:"cronPeriods"`
 
 	// google image types
-	GoogleImageTypes []*CommonDropdownDto `json:"googleImageTypes"`
+	GoogleImageTypes []*EnumListGoogleImageTypesItems0 `json:"googleImageTypes"`
 
 	// openstack continents
-	OpenstackContinents []*CommonStringBasedDropdownDto `json:"openstackContinents"`
+	OpenstackContinents []*EnumListOpenstackContinentsItems0 `json:"openstackContinents"`
 
 	// project statuses
-	ProjectStatuses []*CommonDropdownDto `json:"projectStatuses"`
+	ProjectStatuses []*EnumListProjectStatusesItems0 `json:"projectStatuses"`
 
 	// prometheus types
-	PrometheusTypes []*CommonDropdownDto `json:"prometheusTypes"`
+	PrometheusTypes []*EnumListPrometheusTypesItems0 `json:"prometheusTypes"`
 
 	// reboot options
-	RebootOptions []*CommonDropdownDto `json:"rebootOptions"`
+	RebootOptions []*EnumListRebootOptionsItems0 `json:"rebootOptions"`
 
 	// reminder types
-	ReminderTypes []*CommonDropdownDto `json:"reminderTypes"`
+	ReminderTypes []*EnumListReminderTypesItems0 `json:"reminderTypes"`
 
 	// request logs
-	RequestLogs []*CommonDropdownDto `json:"requestLogs"`
+	RequestLogs []*EnumListRequestLogsItems0 `json:"requestLogs"`
 
 	// security group rules
-	SecurityGroupRules []*CommonDropdownDto `json:"securityGroupRules"`
+	SecurityGroupRules []*EnumListSecurityGroupRulesItems0 `json:"securityGroupRules"`
 
 	// server roles
-	ServerRoles []*CommonDropdownDto `json:"serverRoles"`
+	ServerRoles []*EnumListServerRolesItems0 `json:"serverRoles"`
 
 	// server statuses
-	ServerStatuses []*CommonDropdownDto `json:"serverStatuses"`
+	ServerStatuses []*EnumListServerStatusesItems0 `json:"serverStatuses"`
 
 	// showback kinds
-	ShowbackKinds []*CommonDropdownDto `json:"showbackKinds"`
+	ShowbackKinds []*EnumListShowbackKindsItems0 `json:"showbackKinds"`
 
 	// slack types
-	SlackTypes []*CommonDropdownDto `json:"slackTypes"`
+	SlackTypes []*EnumListSlackTypesItems0 `json:"slackTypes"`
 
 	// standalone Vm statuses
-	StandaloneVMStatuses []*CommonDropdownDto `json:"standaloneVmStatuses"`
+	StandaloneVMStatuses []*EnumListStandaloneVMStatusesItems0 `json:"standaloneVmStatuses"`
 
 	// user roles
-	UserRoles []*CommonDropdownDto `json:"userRoles"`
+	UserRoles []*EnumListUserRolesItems0 `json:"userRoles"`
 
 	// validity periods
-	ValidityPeriods []*CommonDropdownDto `json:"validityPeriods"`
+	ValidityPeriods []*EnumListValidityPeriodsItems0 `json:"validityPeriods"`
 }
 
 // Validate validates this enum list
@@ -1362,6 +1362,926 @@ func (m *EnumList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *EnumList) UnmarshalBinary(b []byte) error {
 	var res EnumList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListAlertTypesItems0 enum list alert types items0
+//
+// swagger:model EnumListAlertTypesItems0
+type EnumListAlertTypesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list alert types items0
+func (m *EnumListAlertTypesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list alert types items0 based on context it is used
+func (m *EnumListAlertTypesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListAlertTypesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListAlertTypesItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListAlertTypesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListAlertingIntegrationTypesItems0 enum list alerting integration types items0
+//
+// swagger:model EnumListAlertingIntegrationTypesItems0
+type EnumListAlertingIntegrationTypesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list alerting integration types items0
+func (m *EnumListAlertingIntegrationTypesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list alerting integration types items0 based on context it is used
+func (m *EnumListAlertingIntegrationTypesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListAlertingIntegrationTypesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListAlertingIntegrationTypesItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListAlertingIntegrationTypesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListAuditLogsItems0 enum list audit logs items0
+//
+// swagger:model EnumListAuditLogsItems0
+type EnumListAuditLogsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list audit logs items0
+func (m *EnumListAuditLogsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list audit logs items0 based on context it is used
+func (m *EnumListAuditLogsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListAuditLogsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListAuditLogsItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListAuditLogsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListAvailabilityItems0 enum list availability items0
+//
+// swagger:model EnumListAvailabilityItems0
+type EnumListAvailabilityItems0 struct {
+
+	// id
+	ID bool `json:"id"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list availability items0
+func (m *EnumListAvailabilityItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list availability items0 based on context it is used
+func (m *EnumListAvailabilityItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListAvailabilityItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListAvailabilityItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListAvailabilityItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListAwsPlatformsItems0 enum list aws platforms items0
+//
+// swagger:model EnumListAwsPlatformsItems0
+type EnumListAwsPlatformsItems0 struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list aws platforms items0
+func (m *EnumListAwsPlatformsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list aws platforms items0 based on context it is used
+func (m *EnumListAwsPlatformsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListAwsPlatformsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListAwsPlatformsItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListAwsPlatformsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListAzureQuotasItems0 enum list azure quotas items0
+//
+// swagger:model EnumListAzureQuotasItems0
+type EnumListAzureQuotasItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list azure quotas items0
+func (m *EnumListAzureQuotasItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list azure quotas items0 based on context it is used
+func (m *EnumListAzureQuotasItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListAzureQuotasItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListAzureQuotasItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListAzureQuotasItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListCloudTypesItems0 enum list cloud types items0
+//
+// swagger:model EnumListCloudTypesItems0
+type EnumListCloudTypesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list cloud types items0
+func (m *EnumListCloudTypesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list cloud types items0 based on context it is used
+func (m *EnumListCloudTypesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListCloudTypesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListCloudTypesItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListCloudTypesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListCronPeriodsItems0 enum list cron periods items0
+//
+// swagger:model EnumListCronPeriodsItems0
+type EnumListCronPeriodsItems0 struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list cron periods items0
+func (m *EnumListCronPeriodsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list cron periods items0 based on context it is used
+func (m *EnumListCronPeriodsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListCronPeriodsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListCronPeriodsItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListCronPeriodsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListGoogleImageTypesItems0 enum list google image types items0
+//
+// swagger:model EnumListGoogleImageTypesItems0
+type EnumListGoogleImageTypesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list google image types items0
+func (m *EnumListGoogleImageTypesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list google image types items0 based on context it is used
+func (m *EnumListGoogleImageTypesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListGoogleImageTypesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListGoogleImageTypesItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListGoogleImageTypesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListOpenstackContinentsItems0 enum list openstack continents items0
+//
+// swagger:model EnumListOpenstackContinentsItems0
+type EnumListOpenstackContinentsItems0 struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list openstack continents items0
+func (m *EnumListOpenstackContinentsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list openstack continents items0 based on context it is used
+func (m *EnumListOpenstackContinentsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListOpenstackContinentsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListOpenstackContinentsItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListOpenstackContinentsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListProjectStatusesItems0 enum list project statuses items0
+//
+// swagger:model EnumListProjectStatusesItems0
+type EnumListProjectStatusesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list project statuses items0
+func (m *EnumListProjectStatusesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list project statuses items0 based on context it is used
+func (m *EnumListProjectStatusesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListProjectStatusesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListProjectStatusesItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListProjectStatusesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListPrometheusTypesItems0 enum list prometheus types items0
+//
+// swagger:model EnumListPrometheusTypesItems0
+type EnumListPrometheusTypesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list prometheus types items0
+func (m *EnumListPrometheusTypesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list prometheus types items0 based on context it is used
+func (m *EnumListPrometheusTypesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListPrometheusTypesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListPrometheusTypesItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListPrometheusTypesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListRebootOptionsItems0 enum list reboot options items0
+//
+// swagger:model EnumListRebootOptionsItems0
+type EnumListRebootOptionsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list reboot options items0
+func (m *EnumListRebootOptionsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list reboot options items0 based on context it is used
+func (m *EnumListRebootOptionsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListRebootOptionsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListRebootOptionsItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListRebootOptionsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListReminderTypesItems0 enum list reminder types items0
+//
+// swagger:model EnumListReminderTypesItems0
+type EnumListReminderTypesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list reminder types items0
+func (m *EnumListReminderTypesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list reminder types items0 based on context it is used
+func (m *EnumListReminderTypesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListReminderTypesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListReminderTypesItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListReminderTypesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListRequestLogsItems0 enum list request logs items0
+//
+// swagger:model EnumListRequestLogsItems0
+type EnumListRequestLogsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list request logs items0
+func (m *EnumListRequestLogsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list request logs items0 based on context it is used
+func (m *EnumListRequestLogsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListRequestLogsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListRequestLogsItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListRequestLogsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListSecurityGroupRulesItems0 enum list security group rules items0
+//
+// swagger:model EnumListSecurityGroupRulesItems0
+type EnumListSecurityGroupRulesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list security group rules items0
+func (m *EnumListSecurityGroupRulesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list security group rules items0 based on context it is used
+func (m *EnumListSecurityGroupRulesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListSecurityGroupRulesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListSecurityGroupRulesItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListSecurityGroupRulesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListServerRolesItems0 enum list server roles items0
+//
+// swagger:model EnumListServerRolesItems0
+type EnumListServerRolesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list server roles items0
+func (m *EnumListServerRolesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list server roles items0 based on context it is used
+func (m *EnumListServerRolesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListServerRolesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListServerRolesItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListServerRolesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListServerStatusesItems0 enum list server statuses items0
+//
+// swagger:model EnumListServerStatusesItems0
+type EnumListServerStatusesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list server statuses items0
+func (m *EnumListServerStatusesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list server statuses items0 based on context it is used
+func (m *EnumListServerStatusesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListServerStatusesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListServerStatusesItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListServerStatusesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListShowbackKindsItems0 enum list showback kinds items0
+//
+// swagger:model EnumListShowbackKindsItems0
+type EnumListShowbackKindsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list showback kinds items0
+func (m *EnumListShowbackKindsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list showback kinds items0 based on context it is used
+func (m *EnumListShowbackKindsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListShowbackKindsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListShowbackKindsItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListShowbackKindsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListSlackTypesItems0 enum list slack types items0
+//
+// swagger:model EnumListSlackTypesItems0
+type EnumListSlackTypesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list slack types items0
+func (m *EnumListSlackTypesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list slack types items0 based on context it is used
+func (m *EnumListSlackTypesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListSlackTypesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListSlackTypesItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListSlackTypesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListStandaloneVMStatusesItems0 enum list standalone VM statuses items0
+//
+// swagger:model EnumListStandaloneVMStatusesItems0
+type EnumListStandaloneVMStatusesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list standalone VM statuses items0
+func (m *EnumListStandaloneVMStatusesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list standalone VM statuses items0 based on context it is used
+func (m *EnumListStandaloneVMStatusesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListStandaloneVMStatusesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListStandaloneVMStatusesItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListStandaloneVMStatusesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListUserRolesItems0 enum list user roles items0
+//
+// swagger:model EnumListUserRolesItems0
+type EnumListUserRolesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list user roles items0
+func (m *EnumListUserRolesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list user roles items0 based on context it is used
+func (m *EnumListUserRolesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListUserRolesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListUserRolesItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListUserRolesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// EnumListValidityPeriodsItems0 enum list validity periods items0
+//
+// swagger:model EnumListValidityPeriodsItems0
+type EnumListValidityPeriodsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this enum list validity periods items0
+func (m *EnumListValidityPeriodsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this enum list validity periods items0 based on context it is used
+func (m *EnumListValidityPeriodsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *EnumListValidityPeriodsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *EnumListValidityPeriodsItems0) UnmarshalBinary(b []byte) error {
+	var res EnumListValidityPeriodsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

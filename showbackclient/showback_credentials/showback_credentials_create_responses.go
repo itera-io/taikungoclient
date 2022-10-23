@@ -6,13 +6,14 @@ package showback_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ShowbackCredentialsCreateReader is a Reader for the ShowbackCredentialsCreate structure.
@@ -75,7 +76,7 @@ ShowbackCredentialsCreateOK describes a response with status code 200, with defa
 Success
 */
 type ShowbackCredentialsCreateOK struct {
-	Payload *models.APIResponse
+	Payload *ShowbackCredentialsCreateOKBody
 }
 
 // IsSuccess returns true when this showback credentials create o k response has a 2xx status code
@@ -111,13 +112,13 @@ func (o *ShowbackCredentialsCreateOK) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/create][%d] showbackCredentialsCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *ShowbackCredentialsCreateOK) GetPayload() *models.APIResponse {
+func (o *ShowbackCredentialsCreateOK) GetPayload() *ShowbackCredentialsCreateOKBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(ShowbackCredentialsCreateOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +139,7 @@ ShowbackCredentialsCreateBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ShowbackCredentialsCreateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *ShowbackCredentialsCreateBadRequestBody
 }
 
 // IsSuccess returns true when this showback credentials create bad request response has a 2xx status code
@@ -174,13 +175,13 @@ func (o *ShowbackCredentialsCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/create][%d] showbackCredentialsCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackCredentialsCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ShowbackCredentialsCreateBadRequest) GetPayload() *ShowbackCredentialsCreateBadRequestBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(ShowbackCredentialsCreateBadRequestBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -201,7 +202,7 @@ ShowbackCredentialsCreateUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ShowbackCredentialsCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackCredentialsCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this showback credentials create unauthorized response has a 2xx status code
@@ -237,13 +238,13 @@ func (o *ShowbackCredentialsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/create][%d] showbackCredentialsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackCredentialsCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsCreateUnauthorized) GetPayload() *ShowbackCredentialsCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackCredentialsCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +265,7 @@ ShowbackCredentialsCreateForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ShowbackCredentialsCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackCredentialsCreateForbiddenBody
 }
 
 // IsSuccess returns true when this showback credentials create forbidden response has a 2xx status code
@@ -300,13 +301,13 @@ func (o *ShowbackCredentialsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/create][%d] showbackCredentialsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackCredentialsCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsCreateForbidden) GetPayload() *ShowbackCredentialsCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackCredentialsCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +328,7 @@ ShowbackCredentialsCreateNotFound describes a response with status code 404, wit
 Not Found
 */
 type ShowbackCredentialsCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ShowbackCredentialsCreateNotFoundBody
 }
 
 // IsSuccess returns true when this showback credentials create not found response has a 2xx status code
@@ -363,13 +364,13 @@ func (o *ShowbackCredentialsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/create][%d] showbackCredentialsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackCredentialsCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsCreateNotFound) GetPayload() *ShowbackCredentialsCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ShowbackCredentialsCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,5 +428,323 @@ func (o *ShowbackCredentialsCreateInternalServerError) String() string {
 
 func (o *ShowbackCredentialsCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ShowbackCredentialsCreateBadRequestBody showback credentials create bad request body
+swagger:model ShowbackCredentialsCreateBadRequestBody
+*/
+type ShowbackCredentialsCreateBadRequestBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// errors
+	// Read Only: true
+	Errors map[string][]string `json:"errors,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials create bad request body
+func (o *ShowbackCredentialsCreateBadRequestBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validate this showback credentials create bad request body based on the context it is used
+func (o *ShowbackCredentialsCreateBadRequestBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateErrors(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ShowbackCredentialsCreateBadRequestBody) contextValidateErrors(ctx context.Context, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsCreateBadRequestBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsCreateBadRequestBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsCreateBadRequestBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsCreateBody showback credentials create body
+swagger:model ShowbackCredentialsCreateBody
+*/
+type ShowbackCredentialsCreateBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// password
+	Password string `json:"password,omitempty"`
+
+	// url
+	URL string `json:"url,omitempty"`
+
+	// username
+	Username string `json:"username,omitempty"`
+}
+
+// Validate validates this showback credentials create body
+func (o *ShowbackCredentialsCreateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials create body based on context it is used
+func (o *ShowbackCredentialsCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsCreateBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsCreateForbiddenBody showback credentials create forbidden body
+swagger:model ShowbackCredentialsCreateForbiddenBody
+*/
+type ShowbackCredentialsCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials create forbidden body
+func (o *ShowbackCredentialsCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials create forbidden body based on context it is used
+func (o *ShowbackCredentialsCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsCreateNotFoundBody showback credentials create not found body
+swagger:model ShowbackCredentialsCreateNotFoundBody
+*/
+type ShowbackCredentialsCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials create not found body
+func (o *ShowbackCredentialsCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials create not found body based on context it is used
+func (o *ShowbackCredentialsCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsCreateOKBody showback credentials create o k body
+swagger:model ShowbackCredentialsCreateOKBody
+*/
+type ShowbackCredentialsCreateOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this showback credentials create o k body
+func (o *ShowbackCredentialsCreateOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials create o k body based on context it is used
+func (o *ShowbackCredentialsCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsCreateOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsCreateOKBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsCreateOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ShowbackCredentialsCreateUnauthorizedBody showback credentials create unauthorized body
+swagger:model ShowbackCredentialsCreateUnauthorizedBody
+*/
+type ShowbackCredentialsCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this showback credentials create unauthorized body
+func (o *ShowbackCredentialsCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials create unauthorized body based on context it is used
+func (o *ShowbackCredentialsCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ShowbackCredentialsCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ShowbackCredentialsCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

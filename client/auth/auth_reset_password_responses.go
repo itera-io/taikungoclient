@@ -6,13 +6,13 @@ package auth
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AuthResetPasswordReader is a Reader for the AuthResetPassword structure.
@@ -75,7 +75,7 @@ AuthResetPasswordOK describes a response with status code 200, with default head
 Success
 */
 type AuthResetPasswordOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this auth reset password o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AuthResetPasswordOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordOK  %+v", 200, o.Payload)
 }
 
-func (o *AuthResetPasswordOK) GetPayload() models.Unit {
+func (o *AuthResetPasswordOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AuthResetPasswordBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AuthResetPasswordBadRequest struct {
-	Payload []*models.Error
+	Payload []*AuthResetPasswordBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this auth reset password bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AuthResetPasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AuthResetPasswordBadRequest) GetPayload() []*models.Error {
+func (o *AuthResetPasswordBadRequest) GetPayload() []*AuthResetPasswordBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AuthResetPasswordUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type AuthResetPasswordUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AuthResetPasswordUnauthorizedBody
 }
 
 // IsSuccess returns true when this auth reset password unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AuthResetPasswordUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AuthResetPasswordUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AuthResetPasswordUnauthorized) GetPayload() *AuthResetPasswordUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AuthResetPasswordUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AuthResetPasswordUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AuthResetPasswordForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type AuthResetPasswordForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AuthResetPasswordForbiddenBody
 }
 
 // IsSuccess returns true when this auth reset password forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AuthResetPasswordForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AuthResetPasswordForbidden) GetPayload() *models.ProblemDetails {
+func (o *AuthResetPasswordForbidden) GetPayload() *AuthResetPasswordForbiddenBody {
 	return o.Payload
 }
 
 func (o *AuthResetPasswordForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AuthResetPasswordForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AuthResetPasswordNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type AuthResetPasswordNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AuthResetPasswordNotFoundBody
 }
 
 // IsSuccess returns true when this auth reset password not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AuthResetPasswordNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AuthResetPasswordNotFound) GetPayload() *models.ProblemDetails {
+func (o *AuthResetPasswordNotFound) GetPayload() *AuthResetPasswordNotFoundBody {
 	return o.Payload
 }
 
 func (o *AuthResetPasswordNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AuthResetPasswordNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *AuthResetPasswordInternalServerError) String() string {
 
 func (o *AuthResetPasswordInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AuthResetPasswordBadRequestBodyItems0 auth reset password bad request body items0
+swagger:model AuthResetPasswordBadRequestBodyItems0
+*/
+type AuthResetPasswordBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this auth reset password bad request body items0
+func (o *AuthResetPasswordBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this auth reset password bad request body items0 based on context it is used
+func (o *AuthResetPasswordBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthResetPasswordBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthResetPasswordBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AuthResetPasswordBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AuthResetPasswordBody auth reset password body
+swagger:model AuthResetPasswordBody
+*/
+type AuthResetPasswordBody struct {
+
+	// email
+	Email string `json:"email,omitempty"`
+
+	// new password
+	NewPassword string `json:"newPassword,omitempty"`
+
+	// token
+	Token string `json:"token,omitempty"`
+}
+
+// Validate validates this auth reset password body
+func (o *AuthResetPasswordBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this auth reset password body based on context it is used
+func (o *AuthResetPasswordBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthResetPasswordBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthResetPasswordBody) UnmarshalBinary(b []byte) error {
+	var res AuthResetPasswordBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AuthResetPasswordForbiddenBody auth reset password forbidden body
+swagger:model AuthResetPasswordForbiddenBody
+*/
+type AuthResetPasswordForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this auth reset password forbidden body
+func (o *AuthResetPasswordForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this auth reset password forbidden body based on context it is used
+func (o *AuthResetPasswordForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthResetPasswordForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthResetPasswordForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AuthResetPasswordForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AuthResetPasswordNotFoundBody auth reset password not found body
+swagger:model AuthResetPasswordNotFoundBody
+*/
+type AuthResetPasswordNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this auth reset password not found body
+func (o *AuthResetPasswordNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this auth reset password not found body based on context it is used
+func (o *AuthResetPasswordNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthResetPasswordNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthResetPasswordNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AuthResetPasswordNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AuthResetPasswordUnauthorizedBody auth reset password unauthorized body
+swagger:model AuthResetPasswordUnauthorizedBody
+*/
+type AuthResetPasswordUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this auth reset password unauthorized body
+func (o *AuthResetPasswordUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this auth reset password unauthorized body based on context it is used
+func (o *AuthResetPasswordUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthResetPasswordUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthResetPasswordUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AuthResetPasswordUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

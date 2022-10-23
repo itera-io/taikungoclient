@@ -6,13 +6,13 @@ package images
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ImagesPersonalAwsImagesReader is a Reader for the ImagesPersonalAwsImages structure.
@@ -75,7 +75,7 @@ ImagesPersonalAwsImagesOK describes a response with status code 200, with defaul
 Success
 */
 type ImagesPersonalAwsImagesOK struct {
-	Payload []*models.CommonStringBasedDropdownDto
+	Payload []*ImagesPersonalAwsImagesOKBodyItems0
 }
 
 // IsSuccess returns true when this images personal aws images o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ImagesPersonalAwsImagesOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesOK  %+v", 200, o.Payload)
 }
 
-func (o *ImagesPersonalAwsImagesOK) GetPayload() []*models.CommonStringBasedDropdownDto {
+func (o *ImagesPersonalAwsImagesOK) GetPayload() []*ImagesPersonalAwsImagesOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ImagesPersonalAwsImagesBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type ImagesPersonalAwsImagesBadRequest struct {
-	Payload []*models.Error
+	Payload []*ImagesPersonalAwsImagesBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this images personal aws images bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ImagesPersonalAwsImagesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesPersonalAwsImagesBadRequest) GetPayload() []*models.Error {
+func (o *ImagesPersonalAwsImagesBadRequest) GetPayload() []*ImagesPersonalAwsImagesBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ImagesPersonalAwsImagesUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type ImagesPersonalAwsImagesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesPersonalAwsImagesUnauthorizedBody
 }
 
 // IsSuccess returns true when this images personal aws images unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ImagesPersonalAwsImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesPersonalAwsImagesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ImagesPersonalAwsImagesUnauthorized) GetPayload() *ImagesPersonalAwsImagesUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ImagesPersonalAwsImagesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesPersonalAwsImagesUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ImagesPersonalAwsImagesForbidden describes a response with status code 403, with
 Forbidden
 */
 type ImagesPersonalAwsImagesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesPersonalAwsImagesForbiddenBody
 }
 
 // IsSuccess returns true when this images personal aws images forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ImagesPersonalAwsImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesPersonalAwsImagesForbidden) GetPayload() *models.ProblemDetails {
+func (o *ImagesPersonalAwsImagesForbidden) GetPayload() *ImagesPersonalAwsImagesForbiddenBody {
 	return o.Payload
 }
 
 func (o *ImagesPersonalAwsImagesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesPersonalAwsImagesForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ImagesPersonalAwsImagesNotFound describes a response with status code 404, with 
 Not Found
 */
 type ImagesPersonalAwsImagesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesPersonalAwsImagesNotFoundBody
 }
 
 // IsSuccess returns true when this images personal aws images not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ImagesPersonalAwsImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesPersonalAwsImagesNotFound) GetPayload() *models.ProblemDetails {
+func (o *ImagesPersonalAwsImagesNotFound) GetPayload() *ImagesPersonalAwsImagesNotFoundBody {
 	return o.Payload
 }
 
 func (o *ImagesPersonalAwsImagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesPersonalAwsImagesNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *ImagesPersonalAwsImagesInternalServerError) String() string {
 
 func (o *ImagesPersonalAwsImagesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ImagesPersonalAwsImagesBadRequestBodyItems0 images personal aws images bad request body items0
+swagger:model ImagesPersonalAwsImagesBadRequestBodyItems0
+*/
+type ImagesPersonalAwsImagesBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this images personal aws images bad request body items0
+func (o *ImagesPersonalAwsImagesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images personal aws images bad request body items0 based on context it is used
+func (o *ImagesPersonalAwsImagesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesPersonalAwsImagesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesPersonalAwsImagesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ImagesPersonalAwsImagesBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesPersonalAwsImagesForbiddenBody images personal aws images forbidden body
+swagger:model ImagesPersonalAwsImagesForbiddenBody
+*/
+type ImagesPersonalAwsImagesForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images personal aws images forbidden body
+func (o *ImagesPersonalAwsImagesForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images personal aws images forbidden body based on context it is used
+func (o *ImagesPersonalAwsImagesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesPersonalAwsImagesForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesPersonalAwsImagesForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ImagesPersonalAwsImagesForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesPersonalAwsImagesNotFoundBody images personal aws images not found body
+swagger:model ImagesPersonalAwsImagesNotFoundBody
+*/
+type ImagesPersonalAwsImagesNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images personal aws images not found body
+func (o *ImagesPersonalAwsImagesNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images personal aws images not found body based on context it is used
+func (o *ImagesPersonalAwsImagesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesPersonalAwsImagesNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesPersonalAwsImagesNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ImagesPersonalAwsImagesNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesPersonalAwsImagesOKBodyItems0 images personal aws images o k body items0
+swagger:model ImagesPersonalAwsImagesOKBodyItems0
+*/
+type ImagesPersonalAwsImagesOKBodyItems0 struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this images personal aws images o k body items0
+func (o *ImagesPersonalAwsImagesOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images personal aws images o k body items0 based on context it is used
+func (o *ImagesPersonalAwsImagesOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesPersonalAwsImagesOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesPersonalAwsImagesOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ImagesPersonalAwsImagesOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesPersonalAwsImagesUnauthorizedBody images personal aws images unauthorized body
+swagger:model ImagesPersonalAwsImagesUnauthorizedBody
+*/
+type ImagesPersonalAwsImagesUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images personal aws images unauthorized body
+func (o *ImagesPersonalAwsImagesUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images personal aws images unauthorized body based on context it is used
+func (o *ImagesPersonalAwsImagesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesPersonalAwsImagesUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesPersonalAwsImagesUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ImagesPersonalAwsImagesUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneIPManagementParams creates a new StandAloneIPManagementParams object,
@@ -64,7 +62,7 @@ StandAloneIPManagementParams contains all the parameters to send to the API endp
 type StandAloneIPManagementParams struct {
 
 	// Body.
-	Body *models.StandAloneVMIPManagementCommand
+	Body StandAloneIPManagementBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *StandAloneIPManagementParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone Ip management params
-func (o *StandAloneIPManagementParams) WithBody(body *models.StandAloneVMIPManagementCommand) *StandAloneIPManagementParams {
+func (o *StandAloneIPManagementParams) WithBody(body StandAloneIPManagementBody) *StandAloneIPManagementParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone Ip management params
-func (o *StandAloneIPManagementParams) SetBody(body *models.StandAloneVMIPManagementCommand) {
+func (o *StandAloneIPManagementParams) SetBody(body StandAloneIPManagementBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *StandAloneIPManagementParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

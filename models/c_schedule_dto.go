@@ -46,7 +46,7 @@ type CScheduleDto struct {
 	Schedule string `json:"schedule,omitempty"`
 
 	// status
-	Status *Status `json:"status,omitempty"`
+	Status *CScheduleDtoStatus `json:"status,omitempty"`
 
 	// ttl
 	TTL string `json:"ttl,omitempty"`
@@ -158,6 +158,68 @@ func (m *CScheduleDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *CScheduleDto) UnmarshalBinary(b []byte) error {
 	var res CScheduleDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CScheduleDtoStatus c schedule dto status
+//
+// swagger:model CScheduleDtoStatus
+type CScheduleDtoStatus struct {
+
+	// last backup
+	// Format: date-time
+	LastBackup *strfmt.DateTime `json:"lastBackup,omitempty"`
+
+	// phase
+	Phase string `json:"phase,omitempty"`
+}
+
+// Validate validates this c schedule dto status
+func (m *CScheduleDtoStatus) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateLastBackup(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CScheduleDtoStatus) validateLastBackup(formats strfmt.Registry) error {
+	if swag.IsZero(m.LastBackup) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("status"+"."+"lastBackup", "body", "date-time", m.LastBackup.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this c schedule dto status based on context it is used
+func (m *CScheduleDtoStatus) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CScheduleDtoStatus) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CScheduleDtoStatus) UnmarshalBinary(b []byte) error {
+	var res CScheduleDtoStatus
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

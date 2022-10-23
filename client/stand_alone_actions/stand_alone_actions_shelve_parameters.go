@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneActionsShelveParams creates a new StandAloneActionsShelveParams object,
@@ -64,7 +62,7 @@ StandAloneActionsShelveParams contains all the parameters to send to the API end
 type StandAloneActionsShelveParams struct {
 
 	// Body.
-	Body *models.ShelveStandAloneVMCommand
+	Body StandAloneActionsShelveBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *StandAloneActionsShelveParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone actions shelve params
-func (o *StandAloneActionsShelveParams) WithBody(body *models.ShelveStandAloneVMCommand) *StandAloneActionsShelveParams {
+func (o *StandAloneActionsShelveParams) WithBody(body StandAloneActionsShelveBody) *StandAloneActionsShelveParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone actions shelve params
-func (o *StandAloneActionsShelveParams) SetBody(body *models.ShelveStandAloneVMCommand) {
+func (o *StandAloneActionsShelveParams) SetBody(body StandAloneActionsShelveBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *StandAloneActionsShelveParams) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

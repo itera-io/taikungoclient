@@ -6,13 +6,13 @@ package project_app
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ProjectAppLockManagerReader is a Reader for the ProjectAppLockManager structure.
@@ -75,7 +75,7 @@ ProjectAppLockManagerOK describes a response with status code 200, with default 
 Success
 */
 type ProjectAppLockManagerOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project app lock manager o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectAppLockManagerOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectAppLockManagerOK) GetPayload() models.Unit {
+func (o *ProjectAppLockManagerOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectAppLockManagerBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type ProjectAppLockManagerBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectAppLockManagerBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this project app lock manager bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectAppLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectAppLockManagerBadRequest) GetPayload() []*models.Error {
+func (o *ProjectAppLockManagerBadRequest) GetPayload() []*ProjectAppLockManagerBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectAppLockManagerUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type ProjectAppLockManagerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectAppLockManagerUnauthorizedBody
 }
 
 // IsSuccess returns true when this project app lock manager unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectAppLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppLockManagerUnauthorized) GetPayload() *ProjectAppLockManagerUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectAppLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectAppLockManagerUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectAppLockManagerForbidden describes a response with status code 403, with d
 Forbidden
 */
 type ProjectAppLockManagerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectAppLockManagerForbiddenBody
 }
 
 // IsSuccess returns true when this project app lock manager forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectAppLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppLockManagerForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppLockManagerForbidden) GetPayload() *ProjectAppLockManagerForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectAppLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectAppLockManagerForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectAppLockManagerNotFound describes a response with status code 404, with de
 Not Found
 */
 type ProjectAppLockManagerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectAppLockManagerNotFoundBody
 }
 
 // IsSuccess returns true when this project app lock manager not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectAppLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppLockManagerNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppLockManagerNotFound) GetPayload() *ProjectAppLockManagerNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectAppLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectAppLockManagerNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *ProjectAppLockManagerInternalServerError) String() string {
 
 func (o *ProjectAppLockManagerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectAppLockManagerBadRequestBodyItems0 project app lock manager bad request body items0
+swagger:model ProjectAppLockManagerBadRequestBodyItems0
+*/
+type ProjectAppLockManagerBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this project app lock manager bad request body items0
+func (o *ProjectAppLockManagerBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app lock manager bad request body items0 based on context it is used
+func (o *ProjectAppLockManagerBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppLockManagerBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppLockManagerBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectAppLockManagerBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppLockManagerBody project app lock manager body
+swagger:model ProjectAppLockManagerBody
+*/
+type ProjectAppLockManagerBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// mode
+	Mode string `json:"mode,omitempty"`
+}
+
+// Validate validates this project app lock manager body
+func (o *ProjectAppLockManagerBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app lock manager body based on context it is used
+func (o *ProjectAppLockManagerBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppLockManagerBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppLockManagerBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppLockManagerBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppLockManagerForbiddenBody project app lock manager forbidden body
+swagger:model ProjectAppLockManagerForbiddenBody
+*/
+type ProjectAppLockManagerForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project app lock manager forbidden body
+func (o *ProjectAppLockManagerForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app lock manager forbidden body based on context it is used
+func (o *ProjectAppLockManagerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppLockManagerForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppLockManagerForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppLockManagerForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppLockManagerNotFoundBody project app lock manager not found body
+swagger:model ProjectAppLockManagerNotFoundBody
+*/
+type ProjectAppLockManagerNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project app lock manager not found body
+func (o *ProjectAppLockManagerNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app lock manager not found body based on context it is used
+func (o *ProjectAppLockManagerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppLockManagerNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppLockManagerNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppLockManagerNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppLockManagerUnauthorizedBody project app lock manager unauthorized body
+swagger:model ProjectAppLockManagerUnauthorizedBody
+*/
+type ProjectAppLockManagerUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project app lock manager unauthorized body
+func (o *ProjectAppLockManagerUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app lock manager unauthorized body based on context it is used
+func (o *ProjectAppLockManagerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppLockManagerUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppLockManagerUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppLockManagerUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

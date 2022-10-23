@@ -20,7 +20,7 @@ import (
 type OrganizationSearchList struct {
 
 	// data
-	Data []*CommonSearchResponseData `json:"data"`
+	Data []*OrganizationSearchListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,52 @@ func (m *OrganizationSearchList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *OrganizationSearchList) UnmarshalBinary(b []byte) error {
 	var res OrganizationSearchList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// OrganizationSearchListDataItems0 organization search list data items0
+//
+// swagger:model OrganizationSearchListDataItems0
+type OrganizationSearchListDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+}
+
+// Validate validates this organization search list data items0
+func (m *OrganizationSearchListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organization search list data items0 based on context it is used
+func (m *OrganizationSearchListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *OrganizationSearchListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *OrganizationSearchListDataItems0) UnmarshalBinary(b []byte) error {
+	var res OrganizationSearchListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

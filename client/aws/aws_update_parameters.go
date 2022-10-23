@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAwsUpdateParams creates a new AwsUpdateParams object,
@@ -64,7 +62,7 @@ AwsUpdateParams contains all the parameters to send to the API endpoint
 type AwsUpdateParams struct {
 
 	// Body.
-	Body *models.UpdateAwsCommand
+	Body AwsUpdateBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *AwsUpdateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the aws update params
-func (o *AwsUpdateParams) WithBody(body *models.UpdateAwsCommand) *AwsUpdateParams {
+func (o *AwsUpdateParams) WithBody(body AwsUpdateBody) *AwsUpdateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the aws update params
-func (o *AwsUpdateParams) SetBody(body *models.UpdateAwsCommand) {
+func (o *AwsUpdateParams) SetBody(body AwsUpdateBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *AwsUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSecurityGroupCreateParams creates a new SecurityGroupCreateParams object,
@@ -64,7 +62,7 @@ SecurityGroupCreateParams contains all the parameters to send to the API endpoin
 type SecurityGroupCreateParams struct {
 
 	// Body.
-	Body *models.CreateSecurityGroupCommand
+	Body SecurityGroupCreateBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *SecurityGroupCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the security group create params
-func (o *SecurityGroupCreateParams) WithBody(body *models.CreateSecurityGroupCommand) *SecurityGroupCreateParams {
+func (o *SecurityGroupCreateParams) WithBody(body SecurityGroupCreateBody) *SecurityGroupCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the security group create params
-func (o *SecurityGroupCreateParams) SetBody(body *models.CreateSecurityGroupCommand) {
+func (o *SecurityGroupCreateParams) SetBody(body SecurityGroupCreateBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *SecurityGroupCreateParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

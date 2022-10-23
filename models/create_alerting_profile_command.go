@@ -7,11 +7,13 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateAlertingProfileCommand create alerting profile command
@@ -20,10 +22,10 @@ import (
 type CreateAlertingProfileCommand struct {
 
 	// alerting integrations
-	AlertingIntegrations []*AlertingIntegrationDto `json:"alertingIntegrations"`
+	AlertingIntegrations []*CreateAlertingProfileCommandAlertingIntegrationsItems0 `json:"alertingIntegrations"`
 
 	// emails
-	Emails []*AlertingEmailDto `json:"emails"`
+	Emails []*CreateAlertingProfileCommandEmailsItems0 `json:"emails"`
 
 	// name
 	Name string `json:"name,omitempty"`
@@ -32,13 +34,14 @@ type CreateAlertingProfileCommand struct {
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
 	// reminder
-	Reminder AlertingReminder `json:"reminder,omitempty"`
+	// Enum: [100 200 300 -1]
+	Reminder int32 `json:"reminder,omitempty"`
 
 	// slack configuration Id
 	SlackConfigurationID int32 `json:"slackConfigurationId,omitempty"`
 
 	// webhooks
-	Webhooks []*AlertingWebhookDto `json:"webhooks"`
+	Webhooks []*CreateAlertingProfileCommandWebhooksItems0 `json:"webhooks"`
 }
 
 // Validate validates this create alerting profile command
@@ -119,17 +122,33 @@ func (m *CreateAlertingProfileCommand) validateEmails(formats strfmt.Registry) e
 	return nil
 }
 
+var createAlertingProfileCommandTypeReminderPropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200,300,-1]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		createAlertingProfileCommandTypeReminderPropEnum = append(createAlertingProfileCommandTypeReminderPropEnum, v)
+	}
+}
+
+// prop value enum
+func (m *CreateAlertingProfileCommand) validateReminderEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, createAlertingProfileCommandTypeReminderPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *CreateAlertingProfileCommand) validateReminder(formats strfmt.Registry) error {
 	if swag.IsZero(m.Reminder) { // not required
 		return nil
 	}
 
-	if err := m.Reminder.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("reminder")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("reminder")
-		}
+	// value enum
+	if err := m.validateReminderEnum("reminder", "body", m.Reminder); err != nil {
 		return err
 	}
 
@@ -171,10 +190,6 @@ func (m *CreateAlertingProfileCommand) ContextValidate(ctx context.Context, form
 	}
 
 	if err := m.contextValidateEmails(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateReminder(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -228,20 +243,6 @@ func (m *CreateAlertingProfileCommand) contextValidateEmails(ctx context.Context
 	return nil
 }
 
-func (m *CreateAlertingProfileCommand) contextValidateReminder(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := m.Reminder.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("reminder")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("reminder")
-		}
-		return err
-	}
-
-	return nil
-}
-
 func (m *CreateAlertingProfileCommand) contextValidateWebhooks(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Webhooks); i++ {
@@ -273,6 +274,279 @@ func (m *CreateAlertingProfileCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *CreateAlertingProfileCommand) UnmarshalBinary(b []byte) error {
 	var res CreateAlertingProfileCommand
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CreateAlertingProfileCommandAlertingIntegrationsItems0 create alerting profile command alerting integrations items0
+//
+// swagger:model CreateAlertingProfileCommandAlertingIntegrationsItems0
+type CreateAlertingProfileCommandAlertingIntegrationsItems0 struct {
+
+	// alerting integration type
+	// Enum: [100 200 300 400]
+	AlertingIntegrationType int32 `json:"alertingIntegrationType,omitempty"`
+
+	// token
+	Token string `json:"token,omitempty"`
+
+	// url
+	URL string `json:"url,omitempty"`
+}
+
+// Validate validates this create alerting profile command alerting integrations items0
+func (m *CreateAlertingProfileCommandAlertingIntegrationsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAlertingIntegrationType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var createAlertingProfileCommandAlertingIntegrationsItems0TypeAlertingIntegrationTypePropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200,300,400]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		createAlertingProfileCommandAlertingIntegrationsItems0TypeAlertingIntegrationTypePropEnum = append(createAlertingProfileCommandAlertingIntegrationsItems0TypeAlertingIntegrationTypePropEnum, v)
+	}
+}
+
+// prop value enum
+func (m *CreateAlertingProfileCommandAlertingIntegrationsItems0) validateAlertingIntegrationTypeEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, createAlertingProfileCommandAlertingIntegrationsItems0TypeAlertingIntegrationTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *CreateAlertingProfileCommandAlertingIntegrationsItems0) validateAlertingIntegrationType(formats strfmt.Registry) error {
+	if swag.IsZero(m.AlertingIntegrationType) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateAlertingIntegrationTypeEnum("alertingIntegrationType", "body", m.AlertingIntegrationType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this create alerting profile command alerting integrations items0 based on context it is used
+func (m *CreateAlertingProfileCommandAlertingIntegrationsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CreateAlertingProfileCommandAlertingIntegrationsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CreateAlertingProfileCommandAlertingIntegrationsItems0) UnmarshalBinary(b []byte) error {
+	var res CreateAlertingProfileCommandAlertingIntegrationsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CreateAlertingProfileCommandEmailsItems0 create alerting profile command emails items0
+//
+// swagger:model CreateAlertingProfileCommandEmailsItems0
+type CreateAlertingProfileCommandEmailsItems0 struct {
+
+	// email
+	Email string `json:"email,omitempty"`
+}
+
+// Validate validates this create alerting profile command emails items0
+func (m *CreateAlertingProfileCommandEmailsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this create alerting profile command emails items0 based on context it is used
+func (m *CreateAlertingProfileCommandEmailsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CreateAlertingProfileCommandEmailsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CreateAlertingProfileCommandEmailsItems0) UnmarshalBinary(b []byte) error {
+	var res CreateAlertingProfileCommandEmailsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CreateAlertingProfileCommandWebhooksItems0 create alerting profile command webhooks items0
+//
+// swagger:model CreateAlertingProfileCommandWebhooksItems0
+type CreateAlertingProfileCommandWebhooksItems0 struct {
+
+	// headers
+	Headers []*CreateAlertingProfileCommandWebhooksItems0HeadersItems0 `json:"headers"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// url
+	URL string `json:"url,omitempty"`
+}
+
+// Validate validates this create alerting profile command webhooks items0
+func (m *CreateAlertingProfileCommandWebhooksItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateHeaders(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateAlertingProfileCommandWebhooksItems0) validateHeaders(formats strfmt.Registry) error {
+	if swag.IsZero(m.Headers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Headers); i++ {
+		if swag.IsZero(m.Headers[i]) { // not required
+			continue
+		}
+
+		if m.Headers[i] != nil {
+			if err := m.Headers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("headers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("headers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this create alerting profile command webhooks items0 based on the context it is used
+func (m *CreateAlertingProfileCommandWebhooksItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateHeaders(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateAlertingProfileCommandWebhooksItems0) contextValidateHeaders(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Headers); i++ {
+
+		if m.Headers[i] != nil {
+			if err := m.Headers[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("headers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("headers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CreateAlertingProfileCommandWebhooksItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CreateAlertingProfileCommandWebhooksItems0) UnmarshalBinary(b []byte) error {
+	var res CreateAlertingProfileCommandWebhooksItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CreateAlertingProfileCommandWebhooksItems0HeadersItems0 create alerting profile command webhooks items0 headers items0
+//
+// swagger:model CreateAlertingProfileCommandWebhooksItems0HeadersItems0
+type CreateAlertingProfileCommandWebhooksItems0HeadersItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// key
+	Key string `json:"key,omitempty"`
+
+	// value
+	Value string `json:"value,omitempty"`
+}
+
+// Validate validates this create alerting profile command webhooks items0 headers items0
+func (m *CreateAlertingProfileCommandWebhooksItems0HeadersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this create alerting profile command webhooks items0 headers items0 based on context it is used
+func (m *CreateAlertingProfileCommandWebhooksItems0HeadersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CreateAlertingProfileCommandWebhooksItems0HeadersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CreateAlertingProfileCommandWebhooksItems0HeadersItems0) UnmarshalBinary(b []byte) error {
+	var res CreateAlertingProfileCommandWebhooksItems0HeadersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

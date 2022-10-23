@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewUsersToggleDemoModeParams creates a new UsersToggleDemoModeParams object,
@@ -67,7 +65,7 @@ type UsersToggleDemoModeParams struct {
 
 	   Command
 	*/
-	Body *models.ToggleDemoModeCommand
+	Body UsersToggleDemoModeBody
 
 	// V.
 	V string
@@ -126,13 +124,13 @@ func (o *UsersToggleDemoModeParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the users toggle demo mode params
-func (o *UsersToggleDemoModeParams) WithBody(body *models.ToggleDemoModeCommand) *UsersToggleDemoModeParams {
+func (o *UsersToggleDemoModeParams) WithBody(body UsersToggleDemoModeBody) *UsersToggleDemoModeParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the users toggle demo mode params
-func (o *UsersToggleDemoModeParams) SetBody(body *models.ToggleDemoModeCommand) {
+func (o *UsersToggleDemoModeParams) SetBody(body UsersToggleDemoModeBody) {
 	o.Body = body
 }
 
@@ -154,10 +152,8 @@ func (o *UsersToggleDemoModeParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

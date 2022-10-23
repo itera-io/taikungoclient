@@ -20,7 +20,7 @@ import (
 type BindProjectsCommand struct {
 
 	// projects
-	Projects []*UpdateUserProjectDto `json:"projects"`
+	Projects []*BindProjectsCommandProjectsItems0 `json:"projects"`
 
 	// user Id
 	UserID string `json:"userId,omitempty"`
@@ -114,6 +114,49 @@ func (m *BindProjectsCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BindProjectsCommand) UnmarshalBinary(b []byte) error {
 	var res BindProjectsCommand
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// BindProjectsCommandProjectsItems0 bind projects command projects items0
+//
+// swagger:model BindProjectsCommandProjectsItems0
+type BindProjectsCommandProjectsItems0 struct {
+
+	// is bound
+	IsBound bool `json:"isBound"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this bind projects command projects items0
+func (m *BindProjectsCommandProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this bind projects command projects items0 based on context it is used
+func (m *BindProjectsCommandProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *BindProjectsCommandProjectsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *BindProjectsCommandProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res BindProjectsCommandProjectsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

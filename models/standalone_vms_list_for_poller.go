@@ -20,7 +20,7 @@ import (
 type StandaloneVmsListForPoller struct {
 
 	// data
-	Data []*StandAloneVMFullDto `json:"data"`
+	Data []*StandaloneVmsListForPollerDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,436 @@ func (m *StandaloneVmsListForPoller) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *StandaloneVmsListForPoller) UnmarshalBinary(b []byte) error {
 	var res StandaloneVmsListForPoller
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// StandaloneVmsListForPollerDataItems0 standalone vms list for poller data items0
+//
+// swagger:model StandaloneVmsListForPollerDataItems0
+type StandaloneVmsListForPollerDataItems0 struct {
+
+	// availability zone
+	AvailabilityZone string `json:"availabilityZone,omitempty"`
+
+	// cloud init
+	CloudInit string `json:"cloudInit,omitempty"`
+
+	// cpu
+	CPU int32 `json:"cpu,omitempty"`
+
+	// flavor Id
+	FlavorID string `json:"flavorId,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// image
+	Image string `json:"image,omitempty"`
+
+	// is windows
+	IsWindows bool `json:"isWindows"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// password
+	Password string `json:"password,omitempty"`
+
+	// public Ip enabled
+	PublicIPEnabled bool `json:"publicIpEnabled"`
+
+	// ram
+	RAM int64 `json:"ram,omitempty"`
+
+	// revision
+	Revision int32 `json:"revision,omitempty"`
+
+	// shut off
+	ShutOff bool `json:"shutOff"`
+
+	// spot instance
+	SpotInstance bool `json:"spotInstance"`
+
+	// spot price
+	SpotPrice string `json:"spotPrice,omitempty"`
+
+	// ssh public key
+	SSHPublicKey string `json:"sshPublicKey,omitempty"`
+
+	// stand alone profile
+	StandAloneProfile *StandaloneVmsListForPollerDataItems0StandAloneProfile `json:"standAloneProfile,omitempty"`
+
+	// stand alone Vm disks
+	StandAloneVMDisks []*StandaloneVmsListForPollerDataItems0StandAloneVMDisksItems0 `json:"standAloneVmDisks"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// username
+	Username string `json:"username,omitempty"`
+
+	// volume size
+	VolumeSize int64 `json:"volumeSize,omitempty"`
+
+	// volume type
+	VolumeType string `json:"volumeType,omitempty"`
+}
+
+// Validate validates this standalone vms list for poller data items0
+func (m *StandaloneVmsListForPollerDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateStandAloneProfile(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStandAloneVMDisks(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StandaloneVmsListForPollerDataItems0) validateStandAloneProfile(formats strfmt.Registry) error {
+	if swag.IsZero(m.StandAloneProfile) { // not required
+		return nil
+	}
+
+	if m.StandAloneProfile != nil {
+		if err := m.StandAloneProfile.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("standAloneProfile")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("standAloneProfile")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *StandaloneVmsListForPollerDataItems0) validateStandAloneVMDisks(formats strfmt.Registry) error {
+	if swag.IsZero(m.StandAloneVMDisks) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.StandAloneVMDisks); i++ {
+		if swag.IsZero(m.StandAloneVMDisks[i]) { // not required
+			continue
+		}
+
+		if m.StandAloneVMDisks[i] != nil {
+			if err := m.StandAloneVMDisks[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this standalone vms list for poller data items0 based on the context it is used
+func (m *StandaloneVmsListForPollerDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateStandAloneProfile(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStandAloneVMDisks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StandaloneVmsListForPollerDataItems0) contextValidateStandAloneProfile(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StandAloneProfile != nil {
+		if err := m.StandAloneProfile.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("standAloneProfile")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("standAloneProfile")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *StandaloneVmsListForPollerDataItems0) contextValidateStandAloneVMDisks(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.StandAloneVMDisks); i++ {
+
+		if m.StandAloneVMDisks[i] != nil {
+			if err := m.StandAloneVMDisks[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *StandaloneVmsListForPollerDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *StandaloneVmsListForPollerDataItems0) UnmarshalBinary(b []byte) error {
+	var res StandaloneVmsListForPollerDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// StandaloneVmsListForPollerDataItems0StandAloneProfile standalone vms list for poller data items0 stand alone profile
+//
+// swagger:model StandaloneVmsListForPollerDataItems0StandAloneProfile
+type StandaloneVmsListForPollerDataItems0StandAloneProfile struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// public key
+	PublicKey string `json:"publicKey,omitempty"`
+
+	// revision
+	Revision int32 `json:"revision,omitempty"`
+
+	// stand alone profile security groups
+	StandAloneProfileSecurityGroups []*StandaloneVmsListForPollerDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0 `json:"standAloneProfileSecurityGroups"`
+}
+
+// Validate validates this standalone vms list for poller data items0 stand alone profile
+func (m *StandaloneVmsListForPollerDataItems0StandAloneProfile) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateStandAloneProfileSecurityGroups(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StandaloneVmsListForPollerDataItems0StandAloneProfile) validateStandAloneProfileSecurityGroups(formats strfmt.Registry) error {
+	if swag.IsZero(m.StandAloneProfileSecurityGroups) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.StandAloneProfileSecurityGroups); i++ {
+		if swag.IsZero(m.StandAloneProfileSecurityGroups[i]) { // not required
+			continue
+		}
+
+		if m.StandAloneProfileSecurityGroups[i] != nil {
+			if err := m.StandAloneProfileSecurityGroups[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this standalone vms list for poller data items0 stand alone profile based on the context it is used
+func (m *StandaloneVmsListForPollerDataItems0StandAloneProfile) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateStandAloneProfileSecurityGroups(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StandaloneVmsListForPollerDataItems0StandAloneProfile) contextValidateStandAloneProfileSecurityGroups(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.StandAloneProfileSecurityGroups); i++ {
+
+		if m.StandAloneProfileSecurityGroups[i] != nil {
+			if err := m.StandAloneProfileSecurityGroups[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *StandaloneVmsListForPollerDataItems0StandAloneProfile) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *StandaloneVmsListForPollerDataItems0StandAloneProfile) UnmarshalBinary(b []byte) error {
+	var res StandaloneVmsListForPollerDataItems0StandAloneProfile
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// StandaloneVmsListForPollerDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0 standalone vms list for poller data items0 stand alone profile stand alone profile security groups items0
+//
+// swagger:model StandaloneVmsListForPollerDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0
+type StandaloneVmsListForPollerDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// port max range
+	PortMaxRange int32 `json:"portMaxRange,omitempty"`
+
+	// port min range
+	PortMinRange int32 `json:"portMinRange,omitempty"`
+
+	// priority
+	Priority int32 `json:"priority,omitempty"`
+
+	// protocol
+	Protocol string `json:"protocol,omitempty"`
+
+	// remote Ip prefix
+	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
+}
+
+// Validate validates this standalone vms list for poller data items0 stand alone profile stand alone profile security groups items0
+func (m *StandaloneVmsListForPollerDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this standalone vms list for poller data items0 stand alone profile stand alone profile security groups items0 based on context it is used
+func (m *StandaloneVmsListForPollerDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *StandaloneVmsListForPollerDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *StandaloneVmsListForPollerDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) UnmarshalBinary(b []byte) error {
+	var res StandaloneVmsListForPollerDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// StandaloneVmsListForPollerDataItems0StandAloneVMDisksItems0 standalone vms list for poller data items0 stand alone VM disks items0
+//
+// swagger:model StandaloneVmsListForPollerDataItems0StandAloneVMDisksItems0
+type StandaloneVmsListForPollerDataItems0StandAloneVMDisksItems0 struct {
+
+	// device name
+	DeviceName string `json:"deviceName,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// lun Id
+	LunID string `json:"lunId,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// size
+	Size int64 `json:"size,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// volume type
+	VolumeType string `json:"volumeType,omitempty"`
+}
+
+// Validate validates this standalone vms list for poller data items0 stand alone VM disks items0
+func (m *StandaloneVmsListForPollerDataItems0StandAloneVMDisksItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this standalone vms list for poller data items0 stand alone VM disks items0 based on context it is used
+func (m *StandaloneVmsListForPollerDataItems0StandAloneVMDisksItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *StandaloneVmsListForPollerDataItems0StandAloneVMDisksItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *StandaloneVmsListForPollerDataItems0StandAloneVMDisksItems0) UnmarshalBinary(b []byte) error {
+	var res StandaloneVmsListForPollerDataItems0StandAloneVMDisksItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

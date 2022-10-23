@@ -6,13 +6,13 @@ package catalog
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CatalogEditCatalogReader is a Reader for the CatalogEditCatalog structure.
@@ -75,7 +75,7 @@ CatalogEditCatalogOK describes a response with status code 200, with default hea
 Success
 */
 type CatalogEditCatalogOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog edit catalog o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CatalogEditCatalogOK) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogOK  %+v", 200, o.Payload)
 }
 
-func (o *CatalogEditCatalogOK) GetPayload() models.Unit {
+func (o *CatalogEditCatalogOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CatalogEditCatalogBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type CatalogEditCatalogBadRequest struct {
-	Payload []*models.Error
+	Payload []*CatalogEditCatalogBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this catalog edit catalog bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CatalogEditCatalogBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogEditCatalogBadRequest) GetPayload() []*models.Error {
+func (o *CatalogEditCatalogBadRequest) GetPayload() []*CatalogEditCatalogBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CatalogEditCatalogUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type CatalogEditCatalogUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogEditCatalogUnauthorizedBody
 }
 
 // IsSuccess returns true when this catalog edit catalog unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CatalogEditCatalogUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogEditCatalogUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogEditCatalogUnauthorized) GetPayload() *CatalogEditCatalogUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogEditCatalogUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CatalogEditCatalogForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type CatalogEditCatalogForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogEditCatalogForbiddenBody
 }
 
 // IsSuccess returns true when this catalog edit catalog forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CatalogEditCatalogForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogEditCatalogForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogEditCatalogForbidden) GetPayload() *CatalogEditCatalogForbiddenBody {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogEditCatalogForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CatalogEditCatalogNotFound describes a response with status code 404, with defau
 Not Found
 */
 type CatalogEditCatalogNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogEditCatalogNotFoundBody
 }
 
 // IsSuccess returns true when this catalog edit catalog not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CatalogEditCatalogNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogEditCatalogNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogEditCatalogNotFound) GetPayload() *CatalogEditCatalogNotFoundBody {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogEditCatalogNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *CatalogEditCatalogInternalServerError) String() string {
 
 func (o *CatalogEditCatalogInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CatalogEditCatalogBadRequestBodyItems0 catalog edit catalog bad request body items0
+swagger:model CatalogEditCatalogBadRequestBodyItems0
+*/
+type CatalogEditCatalogBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this catalog edit catalog bad request body items0
+func (o *CatalogEditCatalogBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog edit catalog bad request body items0 based on context it is used
+func (o *CatalogEditCatalogBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogEditCatalogBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogEditCatalogBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CatalogEditCatalogBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogEditCatalogBody catalog edit catalog body
+swagger:model CatalogEditCatalogBody
+*/
+type CatalogEditCatalogBody struct {
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this catalog edit catalog body
+func (o *CatalogEditCatalogBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog edit catalog body based on context it is used
+func (o *CatalogEditCatalogBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogEditCatalogBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogEditCatalogBody) UnmarshalBinary(b []byte) error {
+	var res CatalogEditCatalogBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogEditCatalogForbiddenBody catalog edit catalog forbidden body
+swagger:model CatalogEditCatalogForbiddenBody
+*/
+type CatalogEditCatalogForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog edit catalog forbidden body
+func (o *CatalogEditCatalogForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog edit catalog forbidden body based on context it is used
+func (o *CatalogEditCatalogForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogEditCatalogForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogEditCatalogForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CatalogEditCatalogForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogEditCatalogNotFoundBody catalog edit catalog not found body
+swagger:model CatalogEditCatalogNotFoundBody
+*/
+type CatalogEditCatalogNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog edit catalog not found body
+func (o *CatalogEditCatalogNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog edit catalog not found body based on context it is used
+func (o *CatalogEditCatalogNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogEditCatalogNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogEditCatalogNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CatalogEditCatalogNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogEditCatalogUnauthorizedBody catalog edit catalog unauthorized body
+swagger:model CatalogEditCatalogUnauthorizedBody
+*/
+type CatalogEditCatalogUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog edit catalog unauthorized body
+func (o *CatalogEditCatalogUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog edit catalog unauthorized body based on context it is used
+func (o *CatalogEditCatalogUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogEditCatalogUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogEditCatalogUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CatalogEditCatalogUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

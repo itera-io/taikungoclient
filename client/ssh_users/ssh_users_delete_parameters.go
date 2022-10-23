@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSSHUsersDeleteParams creates a new SSHUsersDeleteParams object,
@@ -64,7 +62,7 @@ SSHUsersDeleteParams contains all the parameters to send to the API endpoint
 type SSHUsersDeleteParams struct {
 
 	// Body.
-	Body *models.DeleteSSHUserCommand
+	Body SSHUsersDeleteBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *SSHUsersDeleteParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the Ssh users delete params
-func (o *SSHUsersDeleteParams) WithBody(body *models.DeleteSSHUserCommand) *SSHUsersDeleteParams {
+func (o *SSHUsersDeleteParams) WithBody(body SSHUsersDeleteBody) *SSHUsersDeleteParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the Ssh users delete params
-func (o *SSHUsersDeleteParams) SetBody(body *models.DeleteSSHUserCommand) {
+func (o *SSHUsersDeleteParams) SetBody(body SSHUsersDeleteBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *SSHUsersDeleteParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

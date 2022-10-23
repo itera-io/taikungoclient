@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSearchSecretListParams creates a new SearchSecretListParams object,
@@ -64,7 +62,7 @@ SearchSecretListParams contains all the parameters to send to the API endpoint
 type SearchSecretListParams struct {
 
 	// Body.
-	Body *models.SecretSearchCommand
+	Body SearchSecretListBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *SearchSecretListParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the search secret list params
-func (o *SearchSecretListParams) WithBody(body *models.SecretSearchCommand) *SearchSecretListParams {
+func (o *SearchSecretListParams) WithBody(body SearchSecretListBody) *SearchSecretListParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the search secret list params
-func (o *SearchSecretListParams) SetBody(body *models.SecretSearchCommand) {
+func (o *SearchSecretListParams) SetBody(body SearchSecretListBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *SearchSecretListParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

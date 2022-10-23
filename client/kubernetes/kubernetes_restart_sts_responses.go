@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesRestartStsReader is a Reader for the KubernetesRestartSts structure.
@@ -75,7 +75,7 @@ KubernetesRestartStsOK describes a response with status code 200, with default h
 Success
 */
 type KubernetesRestartStsOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes restart sts o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KubernetesRestartStsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/sts][%d] kubernetesRestartStsOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesRestartStsOK) GetPayload() models.Unit {
+func (o *KubernetesRestartStsOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KubernetesRestartStsBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type KubernetesRestartStsBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesRestartStsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes restart sts bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesRestartStsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/sts][%d] kubernetesRestartStsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesRestartStsBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesRestartStsBadRequest) GetPayload() []*KubernetesRestartStsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesRestartStsUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type KubernetesRestartStsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesRestartStsUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes restart sts unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesRestartStsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/sts][%d] kubernetesRestartStsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesRestartStsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartStsUnauthorized) GetPayload() *KubernetesRestartStsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesRestartStsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesRestartStsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesRestartStsForbidden describes a response with status code 403, with de
 Forbidden
 */
 type KubernetesRestartStsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesRestartStsForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes restart sts forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesRestartStsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/sts][%d] kubernetesRestartStsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesRestartStsForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartStsForbidden) GetPayload() *KubernetesRestartStsForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesRestartStsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesRestartStsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesRestartStsNotFound describes a response with status code 404, with def
 Not Found
 */
 type KubernetesRestartStsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesRestartStsNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes restart sts not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesRestartStsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/sts][%d] kubernetesRestartStsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesRestartStsNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartStsNotFound) GetPayload() *KubernetesRestartStsNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesRestartStsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesRestartStsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *KubernetesRestartStsInternalServerError) String() string {
 
 func (o *KubernetesRestartStsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesRestartStsBadRequestBodyItems0 kubernetes restart sts bad request body items0
+swagger:model KubernetesRestartStsBadRequestBodyItems0
+*/
+type KubernetesRestartStsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes restart sts bad request body items0
+func (o *KubernetesRestartStsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes restart sts bad request body items0 based on context it is used
+func (o *KubernetesRestartStsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesRestartStsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesRestartStsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesRestartStsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesRestartStsBody kubernetes restart sts body
+swagger:model KubernetesRestartStsBody
+*/
+type KubernetesRestartStsBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this kubernetes restart sts body
+func (o *KubernetesRestartStsBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes restart sts body based on context it is used
+func (o *KubernetesRestartStsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesRestartStsBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesRestartStsBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesRestartStsBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesRestartStsForbiddenBody kubernetes restart sts forbidden body
+swagger:model KubernetesRestartStsForbiddenBody
+*/
+type KubernetesRestartStsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes restart sts forbidden body
+func (o *KubernetesRestartStsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes restart sts forbidden body based on context it is used
+func (o *KubernetesRestartStsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesRestartStsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesRestartStsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesRestartStsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesRestartStsNotFoundBody kubernetes restart sts not found body
+swagger:model KubernetesRestartStsNotFoundBody
+*/
+type KubernetesRestartStsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes restart sts not found body
+func (o *KubernetesRestartStsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes restart sts not found body based on context it is used
+func (o *KubernetesRestartStsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesRestartStsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesRestartStsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesRestartStsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesRestartStsUnauthorizedBody kubernetes restart sts unauthorized body
+swagger:model KubernetesRestartStsUnauthorizedBody
+*/
+type KubernetesRestartStsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes restart sts unauthorized body
+func (o *KubernetesRestartStsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes restart sts unauthorized body based on context it is used
+func (o *KubernetesRestartStsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesRestartStsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesRestartStsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesRestartStsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

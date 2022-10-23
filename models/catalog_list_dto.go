@@ -20,10 +20,10 @@ import (
 type CatalogListDto struct {
 
 	// bound applications
-	BoundApplications []*AvailablePackagesDto `json:"boundApplications"`
+	BoundApplications []*CatalogListDtoBoundApplicationsItems0 `json:"boundApplications"`
 
 	// bound projects
-	BoundProjects []*CommonDropdownDto `json:"boundProjects"`
+	BoundProjects []*CatalogListDtoBoundProjectsItems0 `json:"boundProjects"`
 
 	// description
 	Description string `json:"description,omitempty"`
@@ -183,6 +183,331 @@ func (m *CatalogListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *CatalogListDto) UnmarshalBinary(b []byte) error {
 	var res CatalogListDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CatalogListDtoBoundApplicationsItems0 catalog list dto bound applications items0
+//
+// swagger:model CatalogListDtoBoundApplicationsItems0
+type CatalogListDtoBoundApplicationsItems0 struct {
+
+	// app version
+	AppVersion string `json:"appVersion,omitempty"`
+
+	// catalog app Id
+	CatalogAppID int32 `json:"catalogAppId,omitempty"`
+
+	// deprecated
+	Deprecated bool `json:"deprecated"`
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// installed instance count
+	InstalledInstanceCount int32 `json:"installedInstanceCount,omitempty"`
+
+	// logo image Id
+	LogoImageID string `json:"logoImageId,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// normalized name
+	NormalizedName string `json:"normalizedName,omitempty"`
+
+	// package Id
+	PackageID string `json:"packageId,omitempty"`
+
+	// repository
+	Repository *CatalogListDtoBoundApplicationsItems0Repository `json:"repository,omitempty"`
+
+	// security report summary
+	SecurityReportSummary *CatalogListDtoBoundApplicationsItems0SecurityReportSummary `json:"securityReportSummary,omitempty"`
+
+	// signed
+	Signed bool `json:"signed"`
+
+	// stars
+	Stars int64 `json:"stars,omitempty"`
+
+	// ts
+	Ts string `json:"ts,omitempty"`
+
+	// version
+	Version string `json:"version,omitempty"`
+}
+
+// Validate validates this catalog list dto bound applications items0
+func (m *CatalogListDtoBoundApplicationsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateRepository(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSecurityReportSummary(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CatalogListDtoBoundApplicationsItems0) validateRepository(formats strfmt.Registry) error {
+	if swag.IsZero(m.Repository) { // not required
+		return nil
+	}
+
+	if m.Repository != nil {
+		if err := m.Repository.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("repository")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("repository")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CatalogListDtoBoundApplicationsItems0) validateSecurityReportSummary(formats strfmt.Registry) error {
+	if swag.IsZero(m.SecurityReportSummary) { // not required
+		return nil
+	}
+
+	if m.SecurityReportSummary != nil {
+		if err := m.SecurityReportSummary.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("securityReportSummary")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("securityReportSummary")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this catalog list dto bound applications items0 based on the context it is used
+func (m *CatalogListDtoBoundApplicationsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateRepository(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSecurityReportSummary(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CatalogListDtoBoundApplicationsItems0) contextValidateRepository(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Repository != nil {
+		if err := m.Repository.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("repository")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("repository")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CatalogListDtoBoundApplicationsItems0) contextValidateSecurityReportSummary(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SecurityReportSummary != nil {
+		if err := m.SecurityReportSummary.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("securityReportSummary")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("securityReportSummary")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CatalogListDtoBoundApplicationsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CatalogListDtoBoundApplicationsItems0) UnmarshalBinary(b []byte) error {
+	var res CatalogListDtoBoundApplicationsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CatalogListDtoBoundApplicationsItems0Repository catalog list dto bound applications items0 repository
+//
+// swagger:model CatalogListDtoBoundApplicationsItems0Repository
+type CatalogListDtoBoundApplicationsItems0Repository struct {
+
+	// kind
+	Kind int64 `json:"kind,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// official
+	Official bool `json:"official"`
+
+	// organization display name
+	OrganizationDisplayName string `json:"organizationDisplayName,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// repository Id
+	RepositoryID string `json:"repositoryId,omitempty"`
+
+	// scanner disabled
+	ScannerDisabled bool `json:"scannerDisabled"`
+
+	// url
+	URL string `json:"url,omitempty"`
+
+	// verified publisher
+	VerifiedPublisher bool `json:"verifiedPublisher"`
+}
+
+// Validate validates this catalog list dto bound applications items0 repository
+func (m *CatalogListDtoBoundApplicationsItems0Repository) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog list dto bound applications items0 repository based on context it is used
+func (m *CatalogListDtoBoundApplicationsItems0Repository) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CatalogListDtoBoundApplicationsItems0Repository) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CatalogListDtoBoundApplicationsItems0Repository) UnmarshalBinary(b []byte) error {
+	var res CatalogListDtoBoundApplicationsItems0Repository
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CatalogListDtoBoundApplicationsItems0SecurityReportSummary catalog list dto bound applications items0 security report summary
+//
+// swagger:model CatalogListDtoBoundApplicationsItems0SecurityReportSummary
+type CatalogListDtoBoundApplicationsItems0SecurityReportSummary struct {
+
+	// critical
+	Critical int64 `json:"critical,omitempty"`
+
+	// high
+	High int64 `json:"high,omitempty"`
+
+	// low
+	Low int64 `json:"low,omitempty"`
+
+	// medium
+	Medium int64 `json:"medium,omitempty"`
+
+	// unknown
+	Unknown int64 `json:"unknown,omitempty"`
+}
+
+// Validate validates this catalog list dto bound applications items0 security report summary
+func (m *CatalogListDtoBoundApplicationsItems0SecurityReportSummary) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog list dto bound applications items0 security report summary based on context it is used
+func (m *CatalogListDtoBoundApplicationsItems0SecurityReportSummary) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CatalogListDtoBoundApplicationsItems0SecurityReportSummary) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CatalogListDtoBoundApplicationsItems0SecurityReportSummary) UnmarshalBinary(b []byte) error {
+	var res CatalogListDtoBoundApplicationsItems0SecurityReportSummary
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CatalogListDtoBoundProjectsItems0 catalog list dto bound projects items0
+//
+// swagger:model CatalogListDtoBoundProjectsItems0
+type CatalogListDtoBoundProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this catalog list dto bound projects items0
+func (m *CatalogListDtoBoundProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog list dto bound projects items0 based on context it is used
+func (m *CatalogListDtoBoundProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CatalogListDtoBoundProjectsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CatalogListDtoBoundProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res CatalogListDtoBoundProjectsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

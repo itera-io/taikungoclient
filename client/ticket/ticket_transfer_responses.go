@@ -6,13 +6,13 @@ package ticket
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // TicketTransferReader is a Reader for the TicketTransfer structure.
@@ -75,7 +75,7 @@ TicketTransferOK describes a response with status code 200, with default header 
 Success
 */
 type TicketTransferOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket transfer o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *TicketTransferOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/transfer][%d] ticketTransferOK  %+v", 200, o.Payload)
 }
 
-func (o *TicketTransferOK) GetPayload() models.Unit {
+func (o *TicketTransferOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ TicketTransferBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type TicketTransferBadRequest struct {
-	Payload []*models.Error
+	Payload []*TicketTransferBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this ticket transfer bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *TicketTransferBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/transfer][%d] ticketTransferBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketTransferBadRequest) GetPayload() []*models.Error {
+func (o *TicketTransferBadRequest) GetPayload() []*TicketTransferBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ TicketTransferUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type TicketTransferUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *TicketTransferUnauthorizedBody
 }
 
 // IsSuccess returns true when this ticket transfer unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *TicketTransferUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/transfer][%d] ticketTransferUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketTransferUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *TicketTransferUnauthorized) GetPayload() *TicketTransferUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *TicketTransferUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(TicketTransferUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ TicketTransferForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type TicketTransferForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *TicketTransferForbiddenBody
 }
 
 // IsSuccess returns true when this ticket transfer forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *TicketTransferForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/transfer][%d] ticketTransferForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketTransferForbidden) GetPayload() *models.ProblemDetails {
+func (o *TicketTransferForbidden) GetPayload() *TicketTransferForbiddenBody {
 	return o.Payload
 }
 
 func (o *TicketTransferForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(TicketTransferForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ TicketTransferNotFound describes a response with status code 404, with default h
 Not Found
 */
 type TicketTransferNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *TicketTransferNotFoundBody
 }
 
 // IsSuccess returns true when this ticket transfer not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *TicketTransferNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/transfer][%d] ticketTransferNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketTransferNotFound) GetPayload() *models.ProblemDetails {
+func (o *TicketTransferNotFound) GetPayload() *TicketTransferNotFoundBody {
 	return o.Payload
 }
 
 func (o *TicketTransferNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(TicketTransferNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *TicketTransferInternalServerError) String() string {
 
 func (o *TicketTransferInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+TicketTransferBadRequestBodyItems0 ticket transfer bad request body items0
+swagger:model TicketTransferBadRequestBodyItems0
+*/
+type TicketTransferBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this ticket transfer bad request body items0
+func (o *TicketTransferBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket transfer bad request body items0 based on context it is used
+func (o *TicketTransferBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketTransferBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketTransferBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res TicketTransferBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+TicketTransferBody ticket transfer body
+swagger:model TicketTransferBody
+*/
+type TicketTransferBody struct {
+
+	// ticket Id
+	TicketID string `json:"ticketId,omitempty"`
+
+	// user Id
+	UserID string `json:"userId,omitempty"`
+}
+
+// Validate validates this ticket transfer body
+func (o *TicketTransferBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket transfer body based on context it is used
+func (o *TicketTransferBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketTransferBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketTransferBody) UnmarshalBinary(b []byte) error {
+	var res TicketTransferBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+TicketTransferForbiddenBody ticket transfer forbidden body
+swagger:model TicketTransferForbiddenBody
+*/
+type TicketTransferForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ticket transfer forbidden body
+func (o *TicketTransferForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket transfer forbidden body based on context it is used
+func (o *TicketTransferForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketTransferForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketTransferForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res TicketTransferForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+TicketTransferNotFoundBody ticket transfer not found body
+swagger:model TicketTransferNotFoundBody
+*/
+type TicketTransferNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ticket transfer not found body
+func (o *TicketTransferNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket transfer not found body based on context it is used
+func (o *TicketTransferNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketTransferNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketTransferNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res TicketTransferNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+TicketTransferUnauthorizedBody ticket transfer unauthorized body
+swagger:model TicketTransferUnauthorizedBody
+*/
+type TicketTransferUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ticket transfer unauthorized body
+func (o *TicketTransferUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket transfer unauthorized body based on context it is used
+func (o *TicketTransferUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketTransferUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketTransferUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res TicketTransferUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

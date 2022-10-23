@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOpenstackSubnetsParams creates a new OpenstackSubnetsParams object,
@@ -64,7 +62,7 @@ OpenstackSubnetsParams contains all the parameters to send to the API endpoint
 type OpenstackSubnetsParams struct {
 
 	// Body.
-	Body *models.OpenstackSubnetListQuery
+	Body OpenstackSubnetsBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *OpenstackSubnetsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the openstack subnets params
-func (o *OpenstackSubnetsParams) WithBody(body *models.OpenstackSubnetListQuery) *OpenstackSubnetsParams {
+func (o *OpenstackSubnetsParams) WithBody(body OpenstackSubnetsBody) *OpenstackSubnetsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the openstack subnets params
-func (o *OpenstackSubnetsParams) SetBody(body *models.OpenstackSubnetListQuery) {
+func (o *OpenstackSubnetsParams) SetBody(body OpenstackSubnetsBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *OpenstackSubnetsParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

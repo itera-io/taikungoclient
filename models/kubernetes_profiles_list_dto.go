@@ -59,7 +59,7 @@ type KubernetesProfilesListDto struct {
 	OrganizationName string `json:"organizationName,omitempty"`
 
 	// projects
-	Projects []*CommonDropdownDto `json:"projects"`
+	Projects []*KubernetesProfilesListDtoProjectsItems0 `json:"projects"`
 
 	// taikun l b enabled
 	TaikunLBEnabled bool `json:"taikunLBEnabled"`
@@ -153,6 +153,46 @@ func (m *KubernetesProfilesListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *KubernetesProfilesListDto) UnmarshalBinary(b []byte) error {
 	var res KubernetesProfilesListDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// KubernetesProfilesListDtoProjectsItems0 kubernetes profiles list dto projects items0
+//
+// swagger:model KubernetesProfilesListDtoProjectsItems0
+type KubernetesProfilesListDtoProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this kubernetes profiles list dto projects items0
+func (m *KubernetesProfilesListDtoProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles list dto projects items0 based on context it is used
+func (m *KubernetesProfilesListDtoProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *KubernetesProfilesListDtoProjectsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *KubernetesProfilesListDtoProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesListDtoProjectsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

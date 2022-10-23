@@ -6,13 +6,13 @@ package organizations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // OrganizationsOrganizationListReader is a Reader for the OrganizationsOrganizationList structure.
@@ -75,7 +75,7 @@ OrganizationsOrganizationListOK describes a response with status code 200, with 
 Success
 */
 type OrganizationsOrganizationListOK struct {
-	Payload []*models.CommonDropdownDto
+	Payload []*OrganizationsOrganizationListOKBodyItems0
 }
 
 // IsSuccess returns true when this organizations organization list o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OrganizationsOrganizationListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListOK  %+v", 200, o.Payload)
 }
 
-func (o *OrganizationsOrganizationListOK) GetPayload() []*models.CommonDropdownDto {
+func (o *OrganizationsOrganizationListOK) GetPayload() []*OrganizationsOrganizationListOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OrganizationsOrganizationListBadRequest describes a response with status code 40
 Bad Request
 */
 type OrganizationsOrganizationListBadRequest struct {
-	Payload []*models.Error
+	Payload []*OrganizationsOrganizationListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this organizations organization list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OrganizationsOrganizationListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsOrganizationListBadRequest) GetPayload() []*models.Error {
+func (o *OrganizationsOrganizationListBadRequest) GetPayload() []*OrganizationsOrganizationListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OrganizationsOrganizationListUnauthorized describes a response with status code 
 Unauthorized
 */
 type OrganizationsOrganizationListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *OrganizationsOrganizationListUnauthorizedBody
 }
 
 // IsSuccess returns true when this organizations organization list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OrganizationsOrganizationListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsOrganizationListUnauthorized) GetPayload() *OrganizationsOrganizationListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *OrganizationsOrganizationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OrganizationsOrganizationListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OrganizationsOrganizationListForbidden describes a response with status code 403
 Forbidden
 */
 type OrganizationsOrganizationListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *OrganizationsOrganizationListForbiddenBody
 }
 
 // IsSuccess returns true when this organizations organization list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OrganizationsOrganizationListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsOrganizationListForbidden) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsOrganizationListForbidden) GetPayload() *OrganizationsOrganizationListForbiddenBody {
 	return o.Payload
 }
 
 func (o *OrganizationsOrganizationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OrganizationsOrganizationListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OrganizationsOrganizationListNotFound describes a response with status code 404,
 Not Found
 */
 type OrganizationsOrganizationListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *OrganizationsOrganizationListNotFoundBody
 }
 
 // IsSuccess returns true when this organizations organization list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OrganizationsOrganizationListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsOrganizationListNotFound) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsOrganizationListNotFound) GetPayload() *OrganizationsOrganizationListNotFoundBody {
 	return o.Payload
 }
 
 func (o *OrganizationsOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OrganizationsOrganizationListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *OrganizationsOrganizationListInternalServerError) String() string {
 
 func (o *OrganizationsOrganizationListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+OrganizationsOrganizationListBadRequestBodyItems0 organizations organization list bad request body items0
+swagger:model OrganizationsOrganizationListBadRequestBodyItems0
+*/
+type OrganizationsOrganizationListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this organizations organization list bad request body items0
+func (o *OrganizationsOrganizationListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organizations organization list bad request body items0 based on context it is used
+func (o *OrganizationsOrganizationListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OrganizationsOrganizationListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OrganizationsOrganizationListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OrganizationsOrganizationListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OrganizationsOrganizationListForbiddenBody organizations organization list forbidden body
+swagger:model OrganizationsOrganizationListForbiddenBody
+*/
+type OrganizationsOrganizationListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this organizations organization list forbidden body
+func (o *OrganizationsOrganizationListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organizations organization list forbidden body based on context it is used
+func (o *OrganizationsOrganizationListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OrganizationsOrganizationListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OrganizationsOrganizationListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res OrganizationsOrganizationListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OrganizationsOrganizationListNotFoundBody organizations organization list not found body
+swagger:model OrganizationsOrganizationListNotFoundBody
+*/
+type OrganizationsOrganizationListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this organizations organization list not found body
+func (o *OrganizationsOrganizationListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organizations organization list not found body based on context it is used
+func (o *OrganizationsOrganizationListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OrganizationsOrganizationListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OrganizationsOrganizationListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res OrganizationsOrganizationListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OrganizationsOrganizationListOKBodyItems0 organizations organization list o k body items0
+swagger:model OrganizationsOrganizationListOKBodyItems0
+*/
+type OrganizationsOrganizationListOKBodyItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this organizations organization list o k body items0
+func (o *OrganizationsOrganizationListOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organizations organization list o k body items0 based on context it is used
+func (o *OrganizationsOrganizationListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OrganizationsOrganizationListOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OrganizationsOrganizationListOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OrganizationsOrganizationListOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OrganizationsOrganizationListUnauthorizedBody organizations organization list unauthorized body
+swagger:model OrganizationsOrganizationListUnauthorizedBody
+*/
+type OrganizationsOrganizationListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this organizations organization list unauthorized body
+func (o *OrganizationsOrganizationListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organizations organization list unauthorized body based on context it is used
+func (o *OrganizationsOrganizationListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OrganizationsOrganizationListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OrganizationsOrganizationListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res OrganizationsOrganizationListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

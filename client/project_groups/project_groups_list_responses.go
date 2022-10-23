@@ -6,13 +6,15 @@ package project_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ProjectGroupsListReader is a Reader for the ProjectGroupsList structure.
@@ -75,7 +77,7 @@ ProjectGroupsListOK describes a response with status code 200, with default head
 Success
 */
 type ProjectGroupsListOK struct {
-	Payload *models.ProjectGroupList
+	Payload *ProjectGroupsListOKBody
 }
 
 // IsSuccess returns true when this project groups list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *ProjectGroupsListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectGroups/list][%d] projectGroupsListOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectGroupsListOK) GetPayload() *models.ProjectGroupList {
+func (o *ProjectGroupsListOK) GetPayload() *ProjectGroupsListOKBody {
 	return o.Payload
 }
 
 func (o *ProjectGroupsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProjectGroupList)
+	o.Payload = new(ProjectGroupsListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ ProjectGroupsListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type ProjectGroupsListBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectGroupsListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this project groups list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *ProjectGroupsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectGroups/list][%d] projectGroupsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectGroupsListBadRequest) GetPayload() []*models.Error {
+func (o *ProjectGroupsListBadRequest) GetPayload() []*ProjectGroupsListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ ProjectGroupsListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type ProjectGroupsListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectGroupsListUnauthorizedBody
 }
 
 // IsSuccess returns true when this project groups list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *ProjectGroupsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectGroups/list][%d] projectGroupsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectGroupsListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsListUnauthorized) GetPayload() *ProjectGroupsListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectGroupsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectGroupsListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ ProjectGroupsListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type ProjectGroupsListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectGroupsListForbiddenBody
 }
 
 // IsSuccess returns true when this project groups list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *ProjectGroupsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectGroups/list][%d] projectGroupsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectGroupsListForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsListForbidden) GetPayload() *ProjectGroupsListForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectGroupsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectGroupsListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ ProjectGroupsListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type ProjectGroupsListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectGroupsListNotFoundBody
 }
 
 // IsSuccess returns true when this project groups list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *ProjectGroupsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectGroups/list][%d] projectGroupsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectGroupsListNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsListNotFound) GetPayload() *ProjectGroupsListNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectGroupsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectGroupsListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,554 @@ func (o *ProjectGroupsListInternalServerError) String() string {
 
 func (o *ProjectGroupsListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectGroupsListBadRequestBodyItems0 project groups list bad request body items0
+swagger:model ProjectGroupsListBadRequestBodyItems0
+*/
+type ProjectGroupsListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this project groups list bad request body items0
+func (o *ProjectGroupsListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups list bad request body items0 based on context it is used
+func (o *ProjectGroupsListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsListForbiddenBody project groups list forbidden body
+swagger:model ProjectGroupsListForbiddenBody
+*/
+type ProjectGroupsListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project groups list forbidden body
+func (o *ProjectGroupsListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups list forbidden body based on context it is used
+func (o *ProjectGroupsListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsListNotFoundBody project groups list not found body
+swagger:model ProjectGroupsListNotFoundBody
+*/
+type ProjectGroupsListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project groups list not found body
+func (o *ProjectGroupsListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups list not found body based on context it is used
+func (o *ProjectGroupsListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsListOKBody project groups list o k body
+swagger:model ProjectGroupsListOKBody
+*/
+type ProjectGroupsListOKBody struct {
+
+	// data
+	Data []*ProjectGroupsListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this project groups list o k body
+func (o *ProjectGroupsListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectGroupsListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectGroupsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectGroupsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this project groups list o k body based on the context it is used
+func (o *ProjectGroupsListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectGroupsListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectGroupsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectGroupsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsListOKBody) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsListOKBodyDataItems0 project groups list o k body data items0
+swagger:model ProjectGroupsListOKBodyDataItems0
+*/
+type ProjectGroupsListOKBodyDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// projects
+	Projects []*ProjectGroupsListOKBodyDataItems0ProjectsItems0 `json:"projects"`
+
+	// user groups
+	UserGroups []*ProjectGroupsListOKBodyDataItems0UserGroupsItems0 `json:"userGroups"`
+}
+
+// Validate validates this project groups list o k body data items0
+func (o *ProjectGroupsListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateProjects(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateUserGroups(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectGroupsListOKBodyDataItems0) validateProjects(formats strfmt.Registry) error {
+	if swag.IsZero(o.Projects) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Projects); i++ {
+		if swag.IsZero(o.Projects[i]) { // not required
+			continue
+		}
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectGroupsListOKBodyDataItems0) validateUserGroups(formats strfmt.Registry) error {
+	if swag.IsZero(o.UserGroups) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.UserGroups); i++ {
+		if swag.IsZero(o.UserGroups[i]) { // not required
+			continue
+		}
+
+		if o.UserGroups[i] != nil {
+			if err := o.UserGroups[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("userGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("userGroups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this project groups list o k body data items0 based on the context it is used
+func (o *ProjectGroupsListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateUserGroups(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectGroupsListOKBodyDataItems0) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Projects); i++ {
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectGroupsListOKBodyDataItems0) contextValidateUserGroups(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.UserGroups); i++ {
+
+		if o.UserGroups[i] != nil {
+			if err := o.UserGroups[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("userGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("userGroups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsListOKBodyDataItems0ProjectsItems0 project groups list o k body data items0 projects items0
+swagger:model ProjectGroupsListOKBodyDataItems0ProjectsItems0
+*/
+type ProjectGroupsListOKBodyDataItems0ProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this project groups list o k body data items0 projects items0
+func (o *ProjectGroupsListOKBodyDataItems0ProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups list o k body data items0 projects items0 based on context it is used
+func (o *ProjectGroupsListOKBodyDataItems0ProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsListOKBodyDataItems0ProjectsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsListOKBodyDataItems0ProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsListOKBodyDataItems0ProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsListOKBodyDataItems0UserGroupsItems0 project groups list o k body data items0 user groups items0
+swagger:model ProjectGroupsListOKBodyDataItems0UserGroupsItems0
+*/
+type ProjectGroupsListOKBodyDataItems0UserGroupsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this project groups list o k body data items0 user groups items0
+func (o *ProjectGroupsListOKBodyDataItems0UserGroupsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups list o k body data items0 user groups items0 based on context it is used
+func (o *ProjectGroupsListOKBodyDataItems0UserGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsListOKBodyDataItems0UserGroupsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsListOKBodyDataItems0UserGroupsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsListOKBodyDataItems0UserGroupsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsListUnauthorizedBody project groups list unauthorized body
+swagger:model ProjectGroupsListUnauthorizedBody
+*/
+type ProjectGroupsListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project groups list unauthorized body
+func (o *ProjectGroupsListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups list unauthorized body based on context it is used
+func (o *ProjectGroupsListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -20,7 +20,7 @@ import (
 type StandAloneProfilesSearchList struct {
 
 	// data
-	Data []*CommonSearchResponseData `json:"data"`
+	Data []*StandAloneProfilesSearchListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,52 @@ func (m *StandAloneProfilesSearchList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *StandAloneProfilesSearchList) UnmarshalBinary(b []byte) error {
 	var res StandAloneProfilesSearchList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// StandAloneProfilesSearchListDataItems0 stand alone profiles search list data items0
+//
+// swagger:model StandAloneProfilesSearchListDataItems0
+type StandAloneProfilesSearchListDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+}
+
+// Validate validates this stand alone profiles search list data items0
+func (m *StandAloneProfilesSearchListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profiles search list data items0 based on context it is used
+func (m *StandAloneProfilesSearchListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *StandAloneProfilesSearchListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *StandAloneProfilesSearchListDataItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfilesSearchListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

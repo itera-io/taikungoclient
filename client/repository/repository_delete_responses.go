@@ -6,13 +6,13 @@ package repository
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // RepositoryDeleteReader is a Reader for the RepositoryDelete structure.
@@ -75,7 +75,7 @@ RepositoryDeleteOK describes a response with status code 200, with default heade
 Success
 */
 type RepositoryDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository delete o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *RepositoryDeleteOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *RepositoryDeleteOK) GetPayload() models.Unit {
+func (o *RepositoryDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ RepositoryDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type RepositoryDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*RepositoryDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this repository delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *RepositoryDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *RepositoryDeleteBadRequest) GetPayload() []*models.Error {
+func (o *RepositoryDeleteBadRequest) GetPayload() []*RepositoryDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ RepositoryDeleteUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type RepositoryDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *RepositoryDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this repository delete unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *RepositoryDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *RepositoryDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *RepositoryDeleteUnauthorized) GetPayload() *RepositoryDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *RepositoryDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(RepositoryDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ RepositoryDeleteForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type RepositoryDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *RepositoryDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this repository delete forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *RepositoryDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *RepositoryDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *RepositoryDeleteForbidden) GetPayload() *RepositoryDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *RepositoryDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(RepositoryDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ RepositoryDeleteNotFound describes a response with status code 404, with default
 Not Found
 */
 type RepositoryDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *RepositoryDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this repository delete not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *RepositoryDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *RepositoryDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *RepositoryDeleteNotFound) GetPayload() *RepositoryDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *RepositoryDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(RepositoryDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *RepositoryDeleteInternalServerError) String() string {
 
 func (o *RepositoryDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+RepositoryDeleteBadRequestBodyItems0 repository delete bad request body items0
+swagger:model RepositoryDeleteBadRequestBodyItems0
+*/
+type RepositoryDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this repository delete bad request body items0
+func (o *RepositoryDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this repository delete bad request body items0 based on context it is used
+func (o *RepositoryDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *RepositoryDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *RepositoryDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res RepositoryDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+RepositoryDeleteBody repository delete body
+swagger:model RepositoryDeleteBody
+*/
+type RepositoryDeleteBody struct {
+
+	// ids
+	Ids []string `json:"ids"`
+}
+
+// Validate validates this repository delete body
+func (o *RepositoryDeleteBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this repository delete body based on context it is used
+func (o *RepositoryDeleteBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *RepositoryDeleteBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *RepositoryDeleteBody) UnmarshalBinary(b []byte) error {
+	var res RepositoryDeleteBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+RepositoryDeleteForbiddenBody repository delete forbidden body
+swagger:model RepositoryDeleteForbiddenBody
+*/
+type RepositoryDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this repository delete forbidden body
+func (o *RepositoryDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this repository delete forbidden body based on context it is used
+func (o *RepositoryDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *RepositoryDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *RepositoryDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res RepositoryDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+RepositoryDeleteNotFoundBody repository delete not found body
+swagger:model RepositoryDeleteNotFoundBody
+*/
+type RepositoryDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this repository delete not found body
+func (o *RepositoryDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this repository delete not found body based on context it is used
+func (o *RepositoryDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *RepositoryDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *RepositoryDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res RepositoryDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+RepositoryDeleteUnauthorizedBody repository delete unauthorized body
+swagger:model RepositoryDeleteUnauthorizedBody
+*/
+type RepositoryDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this repository delete unauthorized body
+func (o *RepositoryDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this repository delete unauthorized body based on context it is used
+func (o *RepositoryDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *RepositoryDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *RepositoryDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res RepositoryDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

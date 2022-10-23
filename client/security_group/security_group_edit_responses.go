@@ -6,13 +6,16 @@ package security_group
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // SecurityGroupEditReader is a Reader for the SecurityGroupEdit structure.
@@ -75,7 +78,7 @@ SecurityGroupEditOK describes a response with status code 200, with default head
 Success
 */
 type SecurityGroupEditOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this security group edit o k response has a 2xx status code
@@ -111,7 +114,7 @@ func (o *SecurityGroupEditOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditOK  %+v", 200, o.Payload)
 }
 
-func (o *SecurityGroupEditOK) GetPayload() models.Unit {
+func (o *SecurityGroupEditOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +139,7 @@ SecurityGroupEditBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type SecurityGroupEditBadRequest struct {
-	Payload []*models.Error
+	Payload []*SecurityGroupEditBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this security group edit bad request response has a 2xx status code
@@ -172,7 +175,7 @@ func (o *SecurityGroupEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SecurityGroupEditBadRequest) GetPayload() []*models.Error {
+func (o *SecurityGroupEditBadRequest) GetPayload() []*SecurityGroupEditBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +200,7 @@ SecurityGroupEditUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type SecurityGroupEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SecurityGroupEditUnauthorizedBody
 }
 
 // IsSuccess returns true when this security group edit unauthorized response has a 2xx status code
@@ -233,13 +236,13 @@ func (o *SecurityGroupEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SecurityGroupEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupEditUnauthorized) GetPayload() *SecurityGroupEditUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SecurityGroupEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SecurityGroupEditUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +263,7 @@ SecurityGroupEditForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type SecurityGroupEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SecurityGroupEditForbiddenBody
 }
 
 // IsSuccess returns true when this security group edit forbidden response has a 2xx status code
@@ -296,13 +299,13 @@ func (o *SecurityGroupEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SecurityGroupEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupEditForbidden) GetPayload() *SecurityGroupEditForbiddenBody {
 	return o.Payload
 }
 
 func (o *SecurityGroupEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SecurityGroupEditForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +326,7 @@ SecurityGroupEditNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type SecurityGroupEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SecurityGroupEditNotFoundBody
 }
 
 // IsSuccess returns true when this security group edit not found response has a 2xx status code
@@ -359,13 +362,13 @@ func (o *SecurityGroupEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SecurityGroupEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupEditNotFound) GetPayload() *SecurityGroupEditNotFoundBody {
 	return o.Payload
 }
 
 func (o *SecurityGroupEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SecurityGroupEditNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +426,292 @@ func (o *SecurityGroupEditInternalServerError) String() string {
 
 func (o *SecurityGroupEditInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SecurityGroupEditBadRequestBodyItems0 security group edit bad request body items0
+swagger:model SecurityGroupEditBadRequestBodyItems0
+*/
+type SecurityGroupEditBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this security group edit bad request body items0
+func (o *SecurityGroupEditBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group edit bad request body items0 based on context it is used
+func (o *SecurityGroupEditBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupEditBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupEditBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupEditBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupEditBody security group edit body
+swagger:model SecurityGroupEditBody
+*/
+type SecurityGroupEditBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// port max range
+	PortMaxRange int32 `json:"portMaxRange,omitempty"`
+
+	// port min range
+	PortMinRange int32 `json:"portMinRange,omitempty"`
+
+	// protocol
+	// Enum: [100 200 300]
+	Protocol int32 `json:"protocol,omitempty"`
+
+	// remote Ip prefix
+	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
+}
+
+// Validate validates this security group edit body
+func (o *SecurityGroupEditBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateProtocol(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var securityGroupEditBodyTypeProtocolPropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200,300]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		securityGroupEditBodyTypeProtocolPropEnum = append(securityGroupEditBodyTypeProtocolPropEnum, v)
+	}
+}
+
+// prop value enum
+func (o *SecurityGroupEditBody) validateProtocolEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, securityGroupEditBodyTypeProtocolPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *SecurityGroupEditBody) validateProtocol(formats strfmt.Registry) error {
+	if swag.IsZero(o.Protocol) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := o.validateProtocolEnum("body"+"."+"protocol", "body", o.Protocol); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this security group edit body based on context it is used
+func (o *SecurityGroupEditBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupEditBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupEditBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupEditBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupEditForbiddenBody security group edit forbidden body
+swagger:model SecurityGroupEditForbiddenBody
+*/
+type SecurityGroupEditForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this security group edit forbidden body
+func (o *SecurityGroupEditForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group edit forbidden body based on context it is used
+func (o *SecurityGroupEditForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupEditForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupEditForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupEditForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupEditNotFoundBody security group edit not found body
+swagger:model SecurityGroupEditNotFoundBody
+*/
+type SecurityGroupEditNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this security group edit not found body
+func (o *SecurityGroupEditNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group edit not found body based on context it is used
+func (o *SecurityGroupEditNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupEditNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupEditNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupEditNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupEditUnauthorizedBody security group edit unauthorized body
+swagger:model SecurityGroupEditUnauthorizedBody
+*/
+type SecurityGroupEditUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this security group edit unauthorized body
+func (o *SecurityGroupEditUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group edit unauthorized body based on context it is used
+func (o *SecurityGroupEditUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupEditUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupEditUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupEditUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

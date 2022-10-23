@@ -6,13 +6,15 @@ package flavors
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // FlavorsAwsFlavorsReader is a Reader for the FlavorsAwsFlavors structure.
@@ -75,7 +77,7 @@ FlavorsAwsFlavorsOK describes a response with status code 200, with default head
 Success
 */
 type FlavorsAwsFlavorsOK struct {
-	Payload *models.AwsFlavorList
+	Payload *FlavorsAwsFlavorsOKBody
 }
 
 // IsSuccess returns true when this flavors aws flavors o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *FlavorsAwsFlavorsOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsOK  %+v", 200, o.Payload)
 }
 
-func (o *FlavorsAwsFlavorsOK) GetPayload() *models.AwsFlavorList {
+func (o *FlavorsAwsFlavorsOK) GetPayload() *FlavorsAwsFlavorsOKBody {
 	return o.Payload
 }
 
 func (o *FlavorsAwsFlavorsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.AwsFlavorList)
+	o.Payload = new(FlavorsAwsFlavorsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ FlavorsAwsFlavorsBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type FlavorsAwsFlavorsBadRequest struct {
-	Payload []*models.Error
+	Payload []*FlavorsAwsFlavorsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this flavors aws flavors bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *FlavorsAwsFlavorsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsAwsFlavorsBadRequest) GetPayload() []*models.Error {
+func (o *FlavorsAwsFlavorsBadRequest) GetPayload() []*FlavorsAwsFlavorsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ FlavorsAwsFlavorsUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type FlavorsAwsFlavorsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *FlavorsAwsFlavorsUnauthorizedBody
 }
 
 // IsSuccess returns true when this flavors aws flavors unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *FlavorsAwsFlavorsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsAwsFlavorsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *FlavorsAwsFlavorsUnauthorized) GetPayload() *FlavorsAwsFlavorsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *FlavorsAwsFlavorsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(FlavorsAwsFlavorsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ FlavorsAwsFlavorsForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type FlavorsAwsFlavorsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *FlavorsAwsFlavorsForbiddenBody
 }
 
 // IsSuccess returns true when this flavors aws flavors forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *FlavorsAwsFlavorsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsAwsFlavorsForbidden) GetPayload() *models.ProblemDetails {
+func (o *FlavorsAwsFlavorsForbidden) GetPayload() *FlavorsAwsFlavorsForbiddenBody {
 	return o.Payload
 }
 
 func (o *FlavorsAwsFlavorsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(FlavorsAwsFlavorsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ FlavorsAwsFlavorsNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type FlavorsAwsFlavorsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *FlavorsAwsFlavorsNotFoundBody
 }
 
 // IsSuccess returns true when this flavors aws flavors not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *FlavorsAwsFlavorsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsAwsFlavorsNotFound) GetPayload() *models.ProblemDetails {
+func (o *FlavorsAwsFlavorsNotFound) GetPayload() *FlavorsAwsFlavorsNotFoundBody {
 	return o.Payload
 }
 
 func (o *FlavorsAwsFlavorsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(FlavorsAwsFlavorsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,360 @@ func (o *FlavorsAwsFlavorsInternalServerError) String() string {
 
 func (o *FlavorsAwsFlavorsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+FlavorsAwsFlavorsBadRequestBodyItems0 flavors aws flavors bad request body items0
+swagger:model FlavorsAwsFlavorsBadRequestBodyItems0
+*/
+type FlavorsAwsFlavorsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this flavors aws flavors bad request body items0
+func (o *FlavorsAwsFlavorsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this flavors aws flavors bad request body items0 based on context it is used
+func (o *FlavorsAwsFlavorsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *FlavorsAwsFlavorsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *FlavorsAwsFlavorsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res FlavorsAwsFlavorsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+FlavorsAwsFlavorsForbiddenBody flavors aws flavors forbidden body
+swagger:model FlavorsAwsFlavorsForbiddenBody
+*/
+type FlavorsAwsFlavorsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this flavors aws flavors forbidden body
+func (o *FlavorsAwsFlavorsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this flavors aws flavors forbidden body based on context it is used
+func (o *FlavorsAwsFlavorsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *FlavorsAwsFlavorsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *FlavorsAwsFlavorsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res FlavorsAwsFlavorsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+FlavorsAwsFlavorsNotFoundBody flavors aws flavors not found body
+swagger:model FlavorsAwsFlavorsNotFoundBody
+*/
+type FlavorsAwsFlavorsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this flavors aws flavors not found body
+func (o *FlavorsAwsFlavorsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this flavors aws flavors not found body based on context it is used
+func (o *FlavorsAwsFlavorsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *FlavorsAwsFlavorsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *FlavorsAwsFlavorsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res FlavorsAwsFlavorsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+FlavorsAwsFlavorsOKBody flavors aws flavors o k body
+swagger:model FlavorsAwsFlavorsOKBody
+*/
+type FlavorsAwsFlavorsOKBody struct {
+
+	// data
+	Data []*FlavorsAwsFlavorsOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this flavors aws flavors o k body
+func (o *FlavorsAwsFlavorsOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *FlavorsAwsFlavorsOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("flavorsAwsFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("flavorsAwsFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this flavors aws flavors o k body based on the context it is used
+func (o *FlavorsAwsFlavorsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *FlavorsAwsFlavorsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("flavorsAwsFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("flavorsAwsFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *FlavorsAwsFlavorsOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *FlavorsAwsFlavorsOKBody) UnmarshalBinary(b []byte) error {
+	var res FlavorsAwsFlavorsOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+FlavorsAwsFlavorsOKBodyDataItems0 flavors aws flavors o k body data items0
+swagger:model FlavorsAwsFlavorsOKBodyDataItems0
+*/
+type FlavorsAwsFlavorsOKBodyDataItems0 struct {
+
+	// cpu
+	CPU int32 `json:"cpu,omitempty"`
+
+	// description
+	Description interface{} `json:"description,omitempty"`
+
+	// linux price
+	LinuxPrice string `json:"linuxPrice,omitempty"`
+
+	// linux spot price
+	LinuxSpotPrice string `json:"linuxSpotPrice,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// ram
+	RAM int64 `json:"ram,omitempty"`
+
+	// windows price
+	WindowsPrice string `json:"windowsPrice,omitempty"`
+
+	// windows spot price
+	WindowsSpotPrice string `json:"windowsSpotPrice,omitempty"`
+}
+
+// Validate validates this flavors aws flavors o k body data items0
+func (o *FlavorsAwsFlavorsOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this flavors aws flavors o k body data items0 based on context it is used
+func (o *FlavorsAwsFlavorsOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *FlavorsAwsFlavorsOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *FlavorsAwsFlavorsOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res FlavorsAwsFlavorsOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+FlavorsAwsFlavorsUnauthorizedBody flavors aws flavors unauthorized body
+swagger:model FlavorsAwsFlavorsUnauthorizedBody
+*/
+type FlavorsAwsFlavorsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this flavors aws flavors unauthorized body
+func (o *FlavorsAwsFlavorsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this flavors aws flavors unauthorized body based on context it is used
+func (o *FlavorsAwsFlavorsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *FlavorsAwsFlavorsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *FlavorsAwsFlavorsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res FlavorsAwsFlavorsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

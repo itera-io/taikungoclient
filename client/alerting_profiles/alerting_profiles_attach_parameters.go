@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAlertingProfilesAttachParams creates a new AlertingProfilesAttachParams object,
@@ -67,7 +65,7 @@ type AlertingProfilesAttachParams struct {
 
 	   Attach command
 	*/
-	Body *models.AttachDetachAlertingProfileCommand
+	Body AlertingProfilesAttachBody
 
 	// V.
 	V string
@@ -126,13 +124,13 @@ func (o *AlertingProfilesAttachParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the alerting profiles attach params
-func (o *AlertingProfilesAttachParams) WithBody(body *models.AttachDetachAlertingProfileCommand) *AlertingProfilesAttachParams {
+func (o *AlertingProfilesAttachParams) WithBody(body AlertingProfilesAttachBody) *AlertingProfilesAttachParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the alerting profiles attach params
-func (o *AlertingProfilesAttachParams) SetBody(body *models.AttachDetachAlertingProfileCommand) {
+func (o *AlertingProfilesAttachParams) SetBody(body AlertingProfilesAttachBody) {
 	o.Body = body
 }
 
@@ -154,10 +152,8 @@ func (o *AlertingProfilesAttachParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

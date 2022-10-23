@@ -6,13 +6,13 @@ package allowed_host
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AllowedHostEditReader is a Reader for the AllowedHostEdit structure.
@@ -75,7 +75,7 @@ AllowedHostEditOK describes a response with status code 200, with default header
 Success
 */
 type AllowedHostEditOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this allowed host edit o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AllowedHostEditOK) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditOK  %+v", 200, o.Payload)
 }
 
-func (o *AllowedHostEditOK) GetPayload() models.Unit {
+func (o *AllowedHostEditOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AllowedHostEditBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type AllowedHostEditBadRequest struct {
-	Payload []*models.Error
+	Payload []*AllowedHostEditBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this allowed host edit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AllowedHostEditBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AllowedHostEditBadRequest) GetPayload() []*models.Error {
+func (o *AllowedHostEditBadRequest) GetPayload() []*AllowedHostEditBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AllowedHostEditUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type AllowedHostEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AllowedHostEditUnauthorizedBody
 }
 
 // IsSuccess returns true when this allowed host edit unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AllowedHostEditUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AllowedHostEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostEditUnauthorized) GetPayload() *AllowedHostEditUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AllowedHostEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AllowedHostEditUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AllowedHostEditForbidden describes a response with status code 403, with default
 Forbidden
 */
 type AllowedHostEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AllowedHostEditForbiddenBody
 }
 
 // IsSuccess returns true when this allowed host edit forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AllowedHostEditForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AllowedHostEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostEditForbidden) GetPayload() *AllowedHostEditForbiddenBody {
 	return o.Payload
 }
 
 func (o *AllowedHostEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AllowedHostEditForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AllowedHostEditNotFound describes a response with status code 404, with default 
 Not Found
 */
 type AllowedHostEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AllowedHostEditNotFoundBody
 }
 
 // IsSuccess returns true when this allowed host edit not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AllowedHostEditNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AllowedHostEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostEditNotFound) GetPayload() *AllowedHostEditNotFoundBody {
 	return o.Payload
 }
 
 func (o *AllowedHostEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AllowedHostEditNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *AllowedHostEditInternalServerError) String() string {
 
 func (o *AllowedHostEditInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AllowedHostEditBadRequestBodyItems0 allowed host edit bad request body items0
+swagger:model AllowedHostEditBadRequestBodyItems0
+*/
+type AllowedHostEditBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this allowed host edit bad request body items0
+func (o *AllowedHostEditBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this allowed host edit bad request body items0 based on context it is used
+func (o *AllowedHostEditBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AllowedHostEditBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AllowedHostEditBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AllowedHostEditBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AllowedHostEditBody allowed host edit body
+swagger:model AllowedHostEditBody
+*/
+type AllowedHostEditBody struct {
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// ip address
+	IPAddress string `json:"ipAddress,omitempty"`
+
+	// mask bits
+	MaskBits int32 `json:"maskBits,omitempty"`
+}
+
+// Validate validates this allowed host edit body
+func (o *AllowedHostEditBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this allowed host edit body based on context it is used
+func (o *AllowedHostEditBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AllowedHostEditBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AllowedHostEditBody) UnmarshalBinary(b []byte) error {
+	var res AllowedHostEditBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AllowedHostEditForbiddenBody allowed host edit forbidden body
+swagger:model AllowedHostEditForbiddenBody
+*/
+type AllowedHostEditForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this allowed host edit forbidden body
+func (o *AllowedHostEditForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this allowed host edit forbidden body based on context it is used
+func (o *AllowedHostEditForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AllowedHostEditForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AllowedHostEditForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AllowedHostEditForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AllowedHostEditNotFoundBody allowed host edit not found body
+swagger:model AllowedHostEditNotFoundBody
+*/
+type AllowedHostEditNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this allowed host edit not found body
+func (o *AllowedHostEditNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this allowed host edit not found body based on context it is used
+func (o *AllowedHostEditNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AllowedHostEditNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AllowedHostEditNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AllowedHostEditNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AllowedHostEditUnauthorizedBody allowed host edit unauthorized body
+swagger:model AllowedHostEditUnauthorizedBody
+*/
+type AllowedHostEditUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this allowed host edit unauthorized body
+func (o *AllowedHostEditUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this allowed host edit unauthorized body based on context it is used
+func (o *AllowedHostEditUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AllowedHostEditUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AllowedHostEditUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AllowedHostEditUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

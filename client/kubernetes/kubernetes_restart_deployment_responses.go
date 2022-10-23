@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesRestartDeploymentReader is a Reader for the KubernetesRestartDeployment structure.
@@ -75,7 +75,7 @@ KubernetesRestartDeploymentOK describes a response with status code 200, with de
 Success
 */
 type KubernetesRestartDeploymentOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes restart deployment o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KubernetesRestartDeploymentOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesRestartDeploymentOK) GetPayload() models.Unit {
+func (o *KubernetesRestartDeploymentOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KubernetesRestartDeploymentBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesRestartDeploymentBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesRestartDeploymentBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes restart deployment bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesRestartDeploymentBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesRestartDeploymentBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesRestartDeploymentBadRequest) GetPayload() []*KubernetesRestartDeploymentBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesRestartDeploymentUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesRestartDeploymentUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesRestartDeploymentUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes restart deployment unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesRestartDeploymentUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesRestartDeploymentUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartDeploymentUnauthorized) GetPayload() *KubernetesRestartDeploymentUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesRestartDeploymentUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesRestartDeploymentUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesRestartDeploymentForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesRestartDeploymentForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesRestartDeploymentForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes restart deployment forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesRestartDeploymentForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesRestartDeploymentForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartDeploymentForbidden) GetPayload() *KubernetesRestartDeploymentForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesRestartDeploymentForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesRestartDeploymentForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesRestartDeploymentNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesRestartDeploymentNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesRestartDeploymentNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes restart deployment not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesRestartDeploymentNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesRestartDeploymentNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartDeploymentNotFound) GetPayload() *KubernetesRestartDeploymentNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesRestartDeploymentNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesRestartDeploymentNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *KubernetesRestartDeploymentInternalServerError) String() string {
 
 func (o *KubernetesRestartDeploymentInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesRestartDeploymentBadRequestBodyItems0 kubernetes restart deployment bad request body items0
+swagger:model KubernetesRestartDeploymentBadRequestBodyItems0
+*/
+type KubernetesRestartDeploymentBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes restart deployment bad request body items0
+func (o *KubernetesRestartDeploymentBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes restart deployment bad request body items0 based on context it is used
+func (o *KubernetesRestartDeploymentBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesRestartDeploymentBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesRestartDeploymentBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesRestartDeploymentBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesRestartDeploymentBody kubernetes restart deployment body
+swagger:model KubernetesRestartDeploymentBody
+*/
+type KubernetesRestartDeploymentBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this kubernetes restart deployment body
+func (o *KubernetesRestartDeploymentBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes restart deployment body based on context it is used
+func (o *KubernetesRestartDeploymentBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesRestartDeploymentBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesRestartDeploymentBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesRestartDeploymentBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesRestartDeploymentForbiddenBody kubernetes restart deployment forbidden body
+swagger:model KubernetesRestartDeploymentForbiddenBody
+*/
+type KubernetesRestartDeploymentForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes restart deployment forbidden body
+func (o *KubernetesRestartDeploymentForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes restart deployment forbidden body based on context it is used
+func (o *KubernetesRestartDeploymentForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesRestartDeploymentForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesRestartDeploymentForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesRestartDeploymentForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesRestartDeploymentNotFoundBody kubernetes restart deployment not found body
+swagger:model KubernetesRestartDeploymentNotFoundBody
+*/
+type KubernetesRestartDeploymentNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes restart deployment not found body
+func (o *KubernetesRestartDeploymentNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes restart deployment not found body based on context it is used
+func (o *KubernetesRestartDeploymentNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesRestartDeploymentNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesRestartDeploymentNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesRestartDeploymentNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesRestartDeploymentUnauthorizedBody kubernetes restart deployment unauthorized body
+swagger:model KubernetesRestartDeploymentUnauthorizedBody
+*/
+type KubernetesRestartDeploymentUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes restart deployment unauthorized body
+func (o *KubernetesRestartDeploymentUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes restart deployment unauthorized body based on context it is used
+func (o *KubernetesRestartDeploymentUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesRestartDeploymentUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesRestartDeploymentUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesRestartDeploymentUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

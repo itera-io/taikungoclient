@@ -6,13 +6,13 @@ package servers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ServersUpdateReader is a Reader for the ServersUpdate structure.
@@ -75,7 +75,7 @@ ServersUpdateOK describes a response with status code 200, with default header v
 Success
 */
 type ServersUpdateOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers update o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ServersUpdateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *ServersUpdateOK) GetPayload() models.Unit {
+func (o *ServersUpdateOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ServersUpdateBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type ServersUpdateBadRequest struct {
-	Payload []*models.Error
+	Payload []*ServersUpdateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this servers update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ServersUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersUpdateBadRequest) GetPayload() []*models.Error {
+func (o *ServersUpdateBadRequest) GetPayload() []*ServersUpdateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ServersUpdateUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type ServersUpdateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ServersUpdateUnauthorizedBody
 }
 
 // IsSuccess returns true when this servers update unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ServersUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersUpdateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ServersUpdateUnauthorized) GetPayload() *ServersUpdateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ServersUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ServersUpdateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ServersUpdateForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type ServersUpdateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ServersUpdateForbiddenBody
 }
 
 // IsSuccess returns true when this servers update forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ServersUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersUpdateForbidden) GetPayload() *models.ProblemDetails {
+func (o *ServersUpdateForbidden) GetPayload() *ServersUpdateForbiddenBody {
 	return o.Payload
 }
 
 func (o *ServersUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ServersUpdateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ServersUpdateNotFound describes a response with status code 404, with default he
 Not Found
 */
 type ServersUpdateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ServersUpdateNotFoundBody
 }
 
 // IsSuccess returns true when this servers update not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ServersUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersUpdateNotFound) GetPayload() *models.ProblemDetails {
+func (o *ServersUpdateNotFound) GetPayload() *ServersUpdateNotFoundBody {
 	return o.Payload
 }
 
 func (o *ServersUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ServersUpdateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,246 @@ func (o *ServersUpdateInternalServerError) String() string {
 
 func (o *ServersUpdateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ServersUpdateBadRequestBodyItems0 servers update bad request body items0
+swagger:model ServersUpdateBadRequestBodyItems0
+*/
+type ServersUpdateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this servers update bad request body items0
+func (o *ServersUpdateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this servers update bad request body items0 based on context it is used
+func (o *ServersUpdateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ServersUpdateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ServersUpdateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ServersUpdateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ServersUpdateBody servers update body
+swagger:model ServersUpdateBody
+*/
+type ServersUpdateBody struct {
+
+	// aws host name
+	AwsHostName string `json:"awsHostName,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// instance Id
+	InstanceID string `json:"instanceId,omitempty"`
+
+	// ip
+	IP string `json:"ip,omitempty"`
+
+	// provider ID
+	ProviderID string `json:"providerID,omitempty"`
+}
+
+// Validate validates this servers update body
+func (o *ServersUpdateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this servers update body based on context it is used
+func (o *ServersUpdateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ServersUpdateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ServersUpdateBody) UnmarshalBinary(b []byte) error {
+	var res ServersUpdateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ServersUpdateForbiddenBody servers update forbidden body
+swagger:model ServersUpdateForbiddenBody
+*/
+type ServersUpdateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this servers update forbidden body
+func (o *ServersUpdateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this servers update forbidden body based on context it is used
+func (o *ServersUpdateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ServersUpdateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ServersUpdateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ServersUpdateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ServersUpdateNotFoundBody servers update not found body
+swagger:model ServersUpdateNotFoundBody
+*/
+type ServersUpdateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this servers update not found body
+func (o *ServersUpdateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this servers update not found body based on context it is used
+func (o *ServersUpdateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ServersUpdateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ServersUpdateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ServersUpdateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ServersUpdateUnauthorizedBody servers update unauthorized body
+swagger:model ServersUpdateUnauthorizedBody
+*/
+type ServersUpdateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this servers update unauthorized body
+func (o *ServersUpdateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this servers update unauthorized body based on context it is used
+func (o *ServersUpdateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ServersUpdateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ServersUpdateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ServersUpdateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

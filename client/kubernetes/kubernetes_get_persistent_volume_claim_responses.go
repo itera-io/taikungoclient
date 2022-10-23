@@ -6,13 +6,15 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesGetPersistentVolumeClaimReader is a Reader for the KubernetesGetPersistentVolumeClaim structure.
@@ -75,7 +77,7 @@ KubernetesGetPersistentVolumeClaimOK describes a response with status code 200, 
 Success
 */
 type KubernetesGetPersistentVolumeClaimOK struct {
-	Payload *models.Pvcs
+	Payload *KubernetesGetPersistentVolumeClaimOKBody
 }
 
 // IsSuccess returns true when this kubernetes get persistent volume claim o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *KubernetesGetPersistentVolumeClaimOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesGetPersistentVolumeClaimOK) GetPayload() *models.Pvcs {
+func (o *KubernetesGetPersistentVolumeClaimOK) GetPayload() *KubernetesGetPersistentVolumeClaimOKBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetPersistentVolumeClaimOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Pvcs)
+	o.Payload = new(KubernetesGetPersistentVolumeClaimOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ KubernetesGetPersistentVolumeClaimBadRequest describes a response with status co
 Bad Request
 */
 type KubernetesGetPersistentVolumeClaimBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesGetPersistentVolumeClaimBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes get persistent volume claim bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *KubernetesGetPersistentVolumeClaimBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetPersistentVolumeClaimBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetPersistentVolumeClaimBadRequest) GetPayload() []*KubernetesGetPersistentVolumeClaimBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ KubernetesGetPersistentVolumeClaimUnauthorized describes a response with status 
 Unauthorized
 */
 type KubernetesGetPersistentVolumeClaimUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetPersistentVolumeClaimUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes get persistent volume claim unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *KubernetesGetPersistentVolumeClaimUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetPersistentVolumeClaimUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPersistentVolumeClaimUnauthorized) GetPayload() *KubernetesGetPersistentVolumeClaimUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetPersistentVolumeClaimUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetPersistentVolumeClaimUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ KubernetesGetPersistentVolumeClaimForbidden describes a response with status cod
 Forbidden
 */
 type KubernetesGetPersistentVolumeClaimForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetPersistentVolumeClaimForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes get persistent volume claim forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *KubernetesGetPersistentVolumeClaimForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetPersistentVolumeClaimForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPersistentVolumeClaimForbidden) GetPayload() *KubernetesGetPersistentVolumeClaimForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetPersistentVolumeClaimForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetPersistentVolumeClaimForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ KubernetesGetPersistentVolumeClaimNotFound describes a response with status code
 Not Found
 */
 type KubernetesGetPersistentVolumeClaimNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetPersistentVolumeClaimNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes get persistent volume claim not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *KubernetesGetPersistentVolumeClaimNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetPersistentVolumeClaimNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPersistentVolumeClaimNotFound) GetPayload() *KubernetesGetPersistentVolumeClaimNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetPersistentVolumeClaimNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetPersistentVolumeClaimNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,354 @@ func (o *KubernetesGetPersistentVolumeClaimInternalServerError) String() string 
 
 func (o *KubernetesGetPersistentVolumeClaimInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesGetPersistentVolumeClaimBadRequestBodyItems0 kubernetes get persistent volume claim bad request body items0
+swagger:model KubernetesGetPersistentVolumeClaimBadRequestBodyItems0
+*/
+type KubernetesGetPersistentVolumeClaimBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes get persistent volume claim bad request body items0
+func (o *KubernetesGetPersistentVolumeClaimBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get persistent volume claim bad request body items0 based on context it is used
+func (o *KubernetesGetPersistentVolumeClaimBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetPersistentVolumeClaimBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetPersistentVolumeClaimBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetPersistentVolumeClaimBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetPersistentVolumeClaimForbiddenBody kubernetes get persistent volume claim forbidden body
+swagger:model KubernetesGetPersistentVolumeClaimForbiddenBody
+*/
+type KubernetesGetPersistentVolumeClaimForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get persistent volume claim forbidden body
+func (o *KubernetesGetPersistentVolumeClaimForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get persistent volume claim forbidden body based on context it is used
+func (o *KubernetesGetPersistentVolumeClaimForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetPersistentVolumeClaimForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetPersistentVolumeClaimForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetPersistentVolumeClaimForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetPersistentVolumeClaimNotFoundBody kubernetes get persistent volume claim not found body
+swagger:model KubernetesGetPersistentVolumeClaimNotFoundBody
+*/
+type KubernetesGetPersistentVolumeClaimNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get persistent volume claim not found body
+func (o *KubernetesGetPersistentVolumeClaimNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get persistent volume claim not found body based on context it is used
+func (o *KubernetesGetPersistentVolumeClaimNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetPersistentVolumeClaimNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetPersistentVolumeClaimNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetPersistentVolumeClaimNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetPersistentVolumeClaimOKBody kubernetes get persistent volume claim o k body
+swagger:model KubernetesGetPersistentVolumeClaimOKBody
+*/
+type KubernetesGetPersistentVolumeClaimOKBody struct {
+
+	// data
+	Data []*KubernetesGetPersistentVolumeClaimOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this kubernetes get persistent volume claim o k body
+func (o *KubernetesGetPersistentVolumeClaimOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetPersistentVolumeClaimOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesGetPersistentVolumeClaimOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesGetPersistentVolumeClaimOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this kubernetes get persistent volume claim o k body based on the context it is used
+func (o *KubernetesGetPersistentVolumeClaimOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetPersistentVolumeClaimOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesGetPersistentVolumeClaimOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesGetPersistentVolumeClaimOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetPersistentVolumeClaimOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetPersistentVolumeClaimOKBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetPersistentVolumeClaimOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetPersistentVolumeClaimOKBodyDataItems0 kubernetes get persistent volume claim o k body data items0
+swagger:model KubernetesGetPersistentVolumeClaimOKBodyDataItems0
+*/
+type KubernetesGetPersistentVolumeClaimOKBodyDataItems0 struct {
+
+	// age
+	Age string `json:"age,omitempty"`
+
+	// metadata name
+	MetadataName string `json:"metadataName,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// phase
+	Phase string `json:"phase,omitempty"`
+
+	// size
+	Size string `json:"size,omitempty"`
+
+	// storage class name
+	StorageClassName string `json:"storageClassName,omitempty"`
+}
+
+// Validate validates this kubernetes get persistent volume claim o k body data items0
+func (o *KubernetesGetPersistentVolumeClaimOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get persistent volume claim o k body data items0 based on context it is used
+func (o *KubernetesGetPersistentVolumeClaimOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetPersistentVolumeClaimOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetPersistentVolumeClaimOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetPersistentVolumeClaimOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetPersistentVolumeClaimUnauthorizedBody kubernetes get persistent volume claim unauthorized body
+swagger:model KubernetesGetPersistentVolumeClaimUnauthorizedBody
+*/
+type KubernetesGetPersistentVolumeClaimUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get persistent volume claim unauthorized body
+func (o *KubernetesGetPersistentVolumeClaimUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get persistent volume claim unauthorized body based on context it is used
+func (o *KubernetesGetPersistentVolumeClaimUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetPersistentVolumeClaimUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetPersistentVolumeClaimUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetPersistentVolumeClaimUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

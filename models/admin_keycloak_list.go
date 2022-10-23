@@ -20,7 +20,7 @@ import (
 type AdminKeycloakList struct {
 
 	// data
-	Data []*KeycloakListDto `json:"data"`
+	Data []*AdminKeycloakListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,70 @@ func (m *AdminKeycloakList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AdminKeycloakList) UnmarshalBinary(b []byte) error {
 	var res AdminKeycloakList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AdminKeycloakListDataItems0 admin keycloak list data items0
+//
+// swagger:model AdminKeycloakListDataItems0
+type AdminKeycloakListDataItems0 struct {
+
+	// client Id
+	ClientID string `json:"clientId,omitempty"`
+
+	// client secret
+	ClientSecret string `json:"clientSecret,omitempty"`
+
+	// enabled
+	Enabled bool `json:"enabled"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// partner logo
+	PartnerLogo string `json:"partnerLogo,omitempty"`
+
+	// realms name
+	RealmsName string `json:"realmsName,omitempty"`
+
+	// url
+	URL string `json:"url,omitempty"`
+}
+
+// Validate validates this admin keycloak list data items0
+func (m *AdminKeycloakListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin keycloak list data items0 based on context it is used
+func (m *AdminKeycloakListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AdminKeycloakListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AdminKeycloakListDataItems0) UnmarshalBinary(b []byte) error {
+	var res AdminKeycloakListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

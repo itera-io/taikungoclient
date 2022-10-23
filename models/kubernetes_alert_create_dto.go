@@ -20,7 +20,7 @@ import (
 type KubernetesAlertCreateDto struct {
 
 	// annotations
-	Annotations *Annotations `json:"annotations,omitempty"`
+	Annotations *KubernetesAlertCreateDtoAnnotations `json:"annotations,omitempty"`
 
 	// ends at
 	// Format: date-time
@@ -146,6 +146,46 @@ func (m *KubernetesAlertCreateDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *KubernetesAlertCreateDto) UnmarshalBinary(b []byte) error {
 	var res KubernetesAlertCreateDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// KubernetesAlertCreateDtoAnnotations kubernetes alert create dto annotations
+//
+// swagger:model KubernetesAlertCreateDtoAnnotations
+type KubernetesAlertCreateDtoAnnotations struct {
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+}
+
+// Validate validates this kubernetes alert create dto annotations
+func (m *KubernetesAlertCreateDtoAnnotations) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes alert create dto annotations based on context it is used
+func (m *KubernetesAlertCreateDtoAnnotations) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *KubernetesAlertCreateDtoAnnotations) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *KubernetesAlertCreateDtoAnnotations) UnmarshalBinary(b []byte) error {
+	var res KubernetesAlertCreateDtoAnnotations
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

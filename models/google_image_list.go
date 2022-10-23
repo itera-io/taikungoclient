@@ -20,7 +20,7 @@ import (
 type GoogleImageList struct {
 
 	// data
-	Data []*CommonStringBasedDropdownDto `json:"data"`
+	Data []*GoogleImageListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,46 @@ func (m *GoogleImageList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *GoogleImageList) UnmarshalBinary(b []byte) error {
 	var res GoogleImageList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// GoogleImageListDataItems0 google image list data items0
+//
+// swagger:model GoogleImageListDataItems0
+type GoogleImageListDataItems0 struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this google image list data items0
+func (m *GoogleImageListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google image list data items0 based on context it is used
+func (m *GoogleImageListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *GoogleImageListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *GoogleImageListDataItems0) UnmarshalBinary(b []byte) error {
+	var res GoogleImageListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

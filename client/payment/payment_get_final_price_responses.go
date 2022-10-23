@@ -6,13 +6,13 @@ package payment
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // PaymentGetFinalPriceReader is a Reader for the PaymentGetFinalPrice structure.
@@ -75,7 +75,7 @@ PaymentGetFinalPriceOK describes a response with status code 200, with default h
 Success
 */
 type PaymentGetFinalPriceOK struct {
-	Payload *models.FinalPriceDto
+	Payload *PaymentGetFinalPriceOKBody
 }
 
 // IsSuccess returns true when this payment get final price o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *PaymentGetFinalPriceOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceOK  %+v", 200, o.Payload)
 }
 
-func (o *PaymentGetFinalPriceOK) GetPayload() *models.FinalPriceDto {
+func (o *PaymentGetFinalPriceOK) GetPayload() *PaymentGetFinalPriceOKBody {
 	return o.Payload
 }
 
 func (o *PaymentGetFinalPriceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.FinalPriceDto)
+	o.Payload = new(PaymentGetFinalPriceOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ PaymentGetFinalPriceBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type PaymentGetFinalPriceBadRequest struct {
-	Payload []*models.Error
+	Payload []*PaymentGetFinalPriceBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this payment get final price bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *PaymentGetFinalPriceBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentGetFinalPriceBadRequest) GetPayload() []*models.Error {
+func (o *PaymentGetFinalPriceBadRequest) GetPayload() []*PaymentGetFinalPriceBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ PaymentGetFinalPriceUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type PaymentGetFinalPriceUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *PaymentGetFinalPriceUnauthorizedBody
 }
 
 // IsSuccess returns true when this payment get final price unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *PaymentGetFinalPriceUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentGetFinalPriceUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetFinalPriceUnauthorized) GetPayload() *PaymentGetFinalPriceUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *PaymentGetFinalPriceUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PaymentGetFinalPriceUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ PaymentGetFinalPriceForbidden describes a response with status code 403, with de
 Forbidden
 */
 type PaymentGetFinalPriceForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *PaymentGetFinalPriceForbiddenBody
 }
 
 // IsSuccess returns true when this payment get final price forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *PaymentGetFinalPriceForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentGetFinalPriceForbidden) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetFinalPriceForbidden) GetPayload() *PaymentGetFinalPriceForbiddenBody {
 	return o.Payload
 }
 
 func (o *PaymentGetFinalPriceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PaymentGetFinalPriceForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ PaymentGetFinalPriceNotFound describes a response with status code 404, with def
 Not Found
 */
 type PaymentGetFinalPriceNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *PaymentGetFinalPriceNotFoundBody
 }
 
 // IsSuccess returns true when this payment get final price not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *PaymentGetFinalPriceNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentGetFinalPriceNotFound) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetFinalPriceNotFound) GetPayload() *PaymentGetFinalPriceNotFoundBody {
 	return o.Payload
 }
 
 func (o *PaymentGetFinalPriceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PaymentGetFinalPriceNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +425,278 @@ func (o *PaymentGetFinalPriceInternalServerError) String() string {
 
 func (o *PaymentGetFinalPriceInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+PaymentGetFinalPriceBadRequestBodyItems0 payment get final price bad request body items0
+swagger:model PaymentGetFinalPriceBadRequestBodyItems0
+*/
+type PaymentGetFinalPriceBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this payment get final price bad request body items0
+func (o *PaymentGetFinalPriceBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment get final price bad request body items0 based on context it is used
+func (o *PaymentGetFinalPriceBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentGetFinalPriceBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentGetFinalPriceBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res PaymentGetFinalPriceBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PaymentGetFinalPriceBody payment get final price body
+swagger:model PaymentGetFinalPriceBody
+*/
+type PaymentGetFinalPriceBody struct {
+
+	// organization Uuid
+	OrganizationUUID string `json:"organizationUuid,omitempty"`
+
+	// subscription Id
+	SubscriptionID int32 `json:"subscriptionId,omitempty"`
+}
+
+// Validate validates this payment get final price body
+func (o *PaymentGetFinalPriceBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment get final price body based on context it is used
+func (o *PaymentGetFinalPriceBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentGetFinalPriceBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentGetFinalPriceBody) UnmarshalBinary(b []byte) error {
+	var res PaymentGetFinalPriceBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PaymentGetFinalPriceForbiddenBody payment get final price forbidden body
+swagger:model PaymentGetFinalPriceForbiddenBody
+*/
+type PaymentGetFinalPriceForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this payment get final price forbidden body
+func (o *PaymentGetFinalPriceForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment get final price forbidden body based on context it is used
+func (o *PaymentGetFinalPriceForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentGetFinalPriceForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentGetFinalPriceForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res PaymentGetFinalPriceForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PaymentGetFinalPriceNotFoundBody payment get final price not found body
+swagger:model PaymentGetFinalPriceNotFoundBody
+*/
+type PaymentGetFinalPriceNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this payment get final price not found body
+func (o *PaymentGetFinalPriceNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment get final price not found body based on context it is used
+func (o *PaymentGetFinalPriceNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentGetFinalPriceNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentGetFinalPriceNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res PaymentGetFinalPriceNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PaymentGetFinalPriceOKBody payment get final price o k body
+swagger:model PaymentGetFinalPriceOKBody
+*/
+type PaymentGetFinalPriceOKBody struct {
+
+	// monthly final price
+	MonthlyFinalPrice float64 `json:"monthlyFinalPrice,omitempty"`
+
+	// yearly final price
+	YearlyFinalPrice float64 `json:"yearlyFinalPrice,omitempty"`
+}
+
+// Validate validates this payment get final price o k body
+func (o *PaymentGetFinalPriceOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment get final price o k body based on context it is used
+func (o *PaymentGetFinalPriceOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentGetFinalPriceOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentGetFinalPriceOKBody) UnmarshalBinary(b []byte) error {
+	var res PaymentGetFinalPriceOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PaymentGetFinalPriceUnauthorizedBody payment get final price unauthorized body
+swagger:model PaymentGetFinalPriceUnauthorizedBody
+*/
+type PaymentGetFinalPriceUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this payment get final price unauthorized body
+func (o *PaymentGetFinalPriceUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment get final price unauthorized body based on context it is used
+func (o *PaymentGetFinalPriceUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentGetFinalPriceUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentGetFinalPriceUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res PaymentGetFinalPriceUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectsSpotVmsOperationsParams creates a new ProjectsSpotVmsOperationsParams object,
@@ -64,7 +62,7 @@ ProjectsSpotVmsOperationsParams contains all the parameters to send to the API e
 type ProjectsSpotVmsOperationsParams struct {
 
 	// Body.
-	Body *models.SpotVMOperationCommand
+	Body ProjectsSpotVmsOperationsBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *ProjectsSpotVmsOperationsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the projects spot vms operations params
-func (o *ProjectsSpotVmsOperationsParams) WithBody(body *models.SpotVMOperationCommand) *ProjectsSpotVmsOperationsParams {
+func (o *ProjectsSpotVmsOperationsParams) WithBody(body ProjectsSpotVmsOperationsBody) *ProjectsSpotVmsOperationsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the projects spot vms operations params
-func (o *ProjectsSpotVmsOperationsParams) SetBody(body *models.SpotVMOperationCommand) {
+func (o *ProjectsSpotVmsOperationsParams) SetBody(body ProjectsSpotVmsOperationsBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *ProjectsSpotVmsOperationsParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

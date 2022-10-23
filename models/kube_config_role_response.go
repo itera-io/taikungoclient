@@ -20,7 +20,7 @@ import (
 type KubeConfigRoleResponse struct {
 
 	// data
-	Data []*KubeConfigRoleDto `json:"data"`
+	Data []*KubeConfigRoleResponseDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,46 @@ func (m *KubeConfigRoleResponse) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *KubeConfigRoleResponse) UnmarshalBinary(b []byte) error {
 	var res KubeConfigRoleResponse
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// KubeConfigRoleResponseDataItems0 kube config role response data items0
+//
+// swagger:model KubeConfigRoleResponseDataItems0
+type KubeConfigRoleResponseDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this kube config role response data items0
+func (m *KubeConfigRoleResponseDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kube config role response data items0 based on context it is used
+func (m *KubeConfigRoleResponseDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *KubeConfigRoleResponseDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *KubeConfigRoleResponseDataItems0) UnmarshalBinary(b []byte) error {
+	var res KubeConfigRoleResponseDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

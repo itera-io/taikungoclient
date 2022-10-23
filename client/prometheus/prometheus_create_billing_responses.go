@@ -6,13 +6,15 @@ package prometheus
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // PrometheusCreateBillingReader is a Reader for the PrometheusCreateBilling structure.
@@ -75,7 +77,7 @@ PrometheusCreateBillingOK describes a response with status code 200, with defaul
 Success
 */
 type PrometheusCreateBillingOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this prometheus create billing o k response has a 2xx status code
@@ -111,7 +113,7 @@ func (o *PrometheusCreateBillingOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingOK  %+v", 200, o.Payload)
 }
 
-func (o *PrometheusCreateBillingOK) GetPayload() models.Unit {
+func (o *PrometheusCreateBillingOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +138,7 @@ PrometheusCreateBillingBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type PrometheusCreateBillingBadRequest struct {
-	Payload []*models.Error
+	Payload []*PrometheusCreateBillingBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this prometheus create billing bad request response has a 2xx status code
@@ -172,7 +174,7 @@ func (o *PrometheusCreateBillingBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusCreateBillingBadRequest) GetPayload() []*models.Error {
+func (o *PrometheusCreateBillingBadRequest) GetPayload() []*PrometheusCreateBillingBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +199,7 @@ PrometheusCreateBillingUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type PrometheusCreateBillingUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *PrometheusCreateBillingUnauthorizedBody
 }
 
 // IsSuccess returns true when this prometheus create billing unauthorized response has a 2xx status code
@@ -233,13 +235,13 @@ func (o *PrometheusCreateBillingUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusCreateBillingUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PrometheusCreateBillingUnauthorized) GetPayload() *PrometheusCreateBillingUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *PrometheusCreateBillingUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PrometheusCreateBillingUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +262,7 @@ PrometheusCreateBillingForbidden describes a response with status code 403, with
 Forbidden
 */
 type PrometheusCreateBillingForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *PrometheusCreateBillingForbiddenBody
 }
 
 // IsSuccess returns true when this prometheus create billing forbidden response has a 2xx status code
@@ -296,13 +298,13 @@ func (o *PrometheusCreateBillingForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusCreateBillingForbidden) GetPayload() *models.ProblemDetails {
+func (o *PrometheusCreateBillingForbidden) GetPayload() *PrometheusCreateBillingForbiddenBody {
 	return o.Payload
 }
 
 func (o *PrometheusCreateBillingForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PrometheusCreateBillingForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +325,7 @@ PrometheusCreateBillingNotFound describes a response with status code 404, with 
 Not Found
 */
 type PrometheusCreateBillingNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *PrometheusCreateBillingNotFoundBody
 }
 
 // IsSuccess returns true when this prometheus create billing not found response has a 2xx status code
@@ -359,13 +361,13 @@ func (o *PrometheusCreateBillingNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusCreateBillingNotFound) GetPayload() *models.ProblemDetails {
+func (o *PrometheusCreateBillingNotFound) GetPayload() *PrometheusCreateBillingNotFoundBody {
 	return o.Payload
 }
 
 func (o *PrometheusCreateBillingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PrometheusCreateBillingNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +425,265 @@ func (o *PrometheusCreateBillingInternalServerError) String() string {
 
 func (o *PrometheusCreateBillingInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+PrometheusCreateBillingBadRequestBodyItems0 prometheus create billing bad request body items0
+swagger:model PrometheusCreateBillingBadRequestBodyItems0
+*/
+type PrometheusCreateBillingBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this prometheus create billing bad request body items0
+func (o *PrometheusCreateBillingBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus create billing bad request body items0 based on context it is used
+func (o *PrometheusCreateBillingBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PrometheusCreateBillingBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PrometheusCreateBillingBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res PrometheusCreateBillingBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PrometheusCreateBillingBody prometheus create billing body
+swagger:model PrometheusCreateBillingBody
+*/
+type PrometheusCreateBillingBody struct {
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// price
+	Price float64 `json:"price,omitempty"`
+
+	// prometheus rule Id
+	PrometheusRuleID int32 `json:"prometheusRuleId,omitempty"`
+
+	// start date
+	// Format: date-time
+	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
+}
+
+// Validate validates this prometheus create billing body
+func (o *PrometheusCreateBillingBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateStartDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *PrometheusCreateBillingBody) validateStartDate(formats strfmt.Registry) error {
+	if swag.IsZero(o.StartDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("body"+"."+"startDate", "body", "date-time", o.StartDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this prometheus create billing body based on context it is used
+func (o *PrometheusCreateBillingBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PrometheusCreateBillingBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PrometheusCreateBillingBody) UnmarshalBinary(b []byte) error {
+	var res PrometheusCreateBillingBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PrometheusCreateBillingForbiddenBody prometheus create billing forbidden body
+swagger:model PrometheusCreateBillingForbiddenBody
+*/
+type PrometheusCreateBillingForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this prometheus create billing forbidden body
+func (o *PrometheusCreateBillingForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus create billing forbidden body based on context it is used
+func (o *PrometheusCreateBillingForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PrometheusCreateBillingForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PrometheusCreateBillingForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res PrometheusCreateBillingForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PrometheusCreateBillingNotFoundBody prometheus create billing not found body
+swagger:model PrometheusCreateBillingNotFoundBody
+*/
+type PrometheusCreateBillingNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this prometheus create billing not found body
+func (o *PrometheusCreateBillingNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus create billing not found body based on context it is used
+func (o *PrometheusCreateBillingNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PrometheusCreateBillingNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PrometheusCreateBillingNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res PrometheusCreateBillingNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PrometheusCreateBillingUnauthorizedBody prometheus create billing unauthorized body
+swagger:model PrometheusCreateBillingUnauthorizedBody
+*/
+type PrometheusCreateBillingUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this prometheus create billing unauthorized body
+func (o *PrometheusCreateBillingUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus create billing unauthorized body based on context it is used
+func (o *PrometheusCreateBillingUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PrometheusCreateBillingUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PrometheusCreateBillingUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res PrometheusCreateBillingUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

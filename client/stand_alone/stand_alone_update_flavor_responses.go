@@ -6,13 +6,13 @@ package stand_alone
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // StandAloneUpdateFlavorReader is a Reader for the StandAloneUpdateFlavor structure.
@@ -75,7 +75,7 @@ StandAloneUpdateFlavorOK describes a response with status code 200, with default
 Success
 */
 type StandAloneUpdateFlavorOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone update flavor o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneUpdateFlavorOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneUpdateFlavorOK) GetPayload() models.Unit {
+func (o *StandAloneUpdateFlavorOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneUpdateFlavorBadRequest describes a response with status code 400, with
 Bad Request
 */
 type StandAloneUpdateFlavorBadRequest struct {
-	Payload []*models.Error
+	Payload []*StandAloneUpdateFlavorBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this stand alone update flavor bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneUpdateFlavorBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneUpdateFlavorBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneUpdateFlavorBadRequest) GetPayload() []*StandAloneUpdateFlavorBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneUpdateFlavorUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type StandAloneUpdateFlavorUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneUpdateFlavorUnauthorizedBody
 }
 
 // IsSuccess returns true when this stand alone update flavor unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneUpdateFlavorUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneUpdateFlavorUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneUpdateFlavorUnauthorized) GetPayload() *StandAloneUpdateFlavorUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *StandAloneUpdateFlavorUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneUpdateFlavorUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneUpdateFlavorForbidden describes a response with status code 403, with 
 Forbidden
 */
 type StandAloneUpdateFlavorForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneUpdateFlavorForbiddenBody
 }
 
 // IsSuccess returns true when this stand alone update flavor forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneUpdateFlavorForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneUpdateFlavorForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneUpdateFlavorForbidden) GetPayload() *StandAloneUpdateFlavorForbiddenBody {
 	return o.Payload
 }
 
 func (o *StandAloneUpdateFlavorForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneUpdateFlavorForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneUpdateFlavorNotFound describes a response with status code 404, with d
 Not Found
 */
 type StandAloneUpdateFlavorNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneUpdateFlavorNotFoundBody
 }
 
 // IsSuccess returns true when this stand alone update flavor not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneUpdateFlavorNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneUpdateFlavorNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneUpdateFlavorNotFound) GetPayload() *StandAloneUpdateFlavorNotFoundBody {
 	return o.Payload
 }
 
 func (o *StandAloneUpdateFlavorNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneUpdateFlavorNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *StandAloneUpdateFlavorInternalServerError) String() string {
 
 func (o *StandAloneUpdateFlavorInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+StandAloneUpdateFlavorBadRequestBodyItems0 stand alone update flavor bad request body items0
+swagger:model StandAloneUpdateFlavorBadRequestBodyItems0
+*/
+type StandAloneUpdateFlavorBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this stand alone update flavor bad request body items0
+func (o *StandAloneUpdateFlavorBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone update flavor bad request body items0 based on context it is used
+func (o *StandAloneUpdateFlavorBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneUpdateFlavorBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneUpdateFlavorBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneUpdateFlavorBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneUpdateFlavorBody stand alone update flavor body
+swagger:model StandAloneUpdateFlavorBody
+*/
+type StandAloneUpdateFlavorBody struct {
+
+	// flavor
+	Flavor string `json:"flavor,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this stand alone update flavor body
+func (o *StandAloneUpdateFlavorBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone update flavor body based on context it is used
+func (o *StandAloneUpdateFlavorBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneUpdateFlavorBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneUpdateFlavorBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneUpdateFlavorBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneUpdateFlavorForbiddenBody stand alone update flavor forbidden body
+swagger:model StandAloneUpdateFlavorForbiddenBody
+*/
+type StandAloneUpdateFlavorForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone update flavor forbidden body
+func (o *StandAloneUpdateFlavorForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone update flavor forbidden body based on context it is used
+func (o *StandAloneUpdateFlavorForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneUpdateFlavorForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneUpdateFlavorForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneUpdateFlavorForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneUpdateFlavorNotFoundBody stand alone update flavor not found body
+swagger:model StandAloneUpdateFlavorNotFoundBody
+*/
+type StandAloneUpdateFlavorNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone update flavor not found body
+func (o *StandAloneUpdateFlavorNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone update flavor not found body based on context it is used
+func (o *StandAloneUpdateFlavorNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneUpdateFlavorNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneUpdateFlavorNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneUpdateFlavorNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneUpdateFlavorUnauthorizedBody stand alone update flavor unauthorized body
+swagger:model StandAloneUpdateFlavorUnauthorizedBody
+*/
+type StandAloneUpdateFlavorUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone update flavor unauthorized body
+func (o *StandAloneUpdateFlavorUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone update flavor unauthorized body based on context it is used
+func (o *StandAloneUpdateFlavorUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneUpdateFlavorUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneUpdateFlavorUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneUpdateFlavorUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -44,10 +44,10 @@ type ProjectsForBillingDto struct {
 	Price float64 `json:"price,omitempty"`
 
 	// servers
-	Servers []*ServersForBillingDto `json:"servers"`
+	Servers []*ProjectsForBillingDtoServersItems0 `json:"servers"`
 
 	// standalone vms
-	StandaloneVms []*StandaloneVmsForBillingDto `json:"standaloneVms"`
+	StandaloneVms []*ProjectsForBillingDtoStandaloneVmsItems0 `json:"standaloneVms"`
 }
 
 // Validate validates this projects for billing dto
@@ -221,6 +221,86 @@ func (m *ProjectsForBillingDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ProjectsForBillingDto) UnmarshalBinary(b []byte) error {
 	var res ProjectsForBillingDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectsForBillingDtoServersItems0 projects for billing dto servers items0
+//
+// swagger:model ProjectsForBillingDtoServersItems0
+type ProjectsForBillingDtoServersItems0 struct {
+
+	// cpu
+	CPU int32 `json:"cpu,omitempty"`
+
+	// ram
+	RAM int64 `json:"ram,omitempty"`
+}
+
+// Validate validates this projects for billing dto servers items0
+func (m *ProjectsForBillingDtoServersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects for billing dto servers items0 based on context it is used
+func (m *ProjectsForBillingDtoServersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectsForBillingDtoServersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectsForBillingDtoServersItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsForBillingDtoServersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectsForBillingDtoStandaloneVmsItems0 projects for billing dto standalone vms items0
+//
+// swagger:model ProjectsForBillingDtoStandaloneVmsItems0
+type ProjectsForBillingDtoStandaloneVmsItems0 struct {
+
+	// cpu
+	CPU int32 `json:"cpu,omitempty"`
+
+	// ram
+	RAM int64 `json:"ram,omitempty"`
+}
+
+// Validate validates this projects for billing dto standalone vms items0
+func (m *ProjectsForBillingDtoStandaloneVmsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects for billing dto standalone vms items0 based on context it is used
+func (m *ProjectsForBillingDtoStandaloneVmsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectsForBillingDtoStandaloneVmsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectsForBillingDtoStandaloneVmsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsForBillingDtoStandaloneVmsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -6,13 +6,15 @@ package search
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SearchConfigMapListReader is a Reader for the SearchConfigMapList structure.
@@ -75,7 +77,7 @@ SearchConfigMapListOK describes a response with status code 200, with default he
 Success
 */
 type SearchConfigMapListOK struct {
-	Payload *models.ConfigMapSearchList
+	Payload *SearchConfigMapListOKBody
 }
 
 // IsSuccess returns true when this search config map list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *SearchConfigMapListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListOK  %+v", 200, o.Payload)
 }
 
-func (o *SearchConfigMapListOK) GetPayload() *models.ConfigMapSearchList {
+func (o *SearchConfigMapListOK) GetPayload() *SearchConfigMapListOKBody {
 	return o.Payload
 }
 
 func (o *SearchConfigMapListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ConfigMapSearchList)
+	o.Payload = new(SearchConfigMapListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ SearchConfigMapListBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type SearchConfigMapListBadRequest struct {
-	Payload []*models.Error
+	Payload []*SearchConfigMapListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this search config map list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *SearchConfigMapListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchConfigMapListBadRequest) GetPayload() []*models.Error {
+func (o *SearchConfigMapListBadRequest) GetPayload() []*SearchConfigMapListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ SearchConfigMapListUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type SearchConfigMapListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SearchConfigMapListUnauthorizedBody
 }
 
 // IsSuccess returns true when this search config map list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *SearchConfigMapListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchConfigMapListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchConfigMapListUnauthorized) GetPayload() *SearchConfigMapListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SearchConfigMapListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchConfigMapListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ SearchConfigMapListForbidden describes a response with status code 403, with def
 Forbidden
 */
 type SearchConfigMapListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SearchConfigMapListForbiddenBody
 }
 
 // IsSuccess returns true when this search config map list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *SearchConfigMapListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchConfigMapListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchConfigMapListForbidden) GetPayload() *SearchConfigMapListForbiddenBody {
 	return o.Payload
 }
 
 func (o *SearchConfigMapListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchConfigMapListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ SearchConfigMapListNotFound describes a response with status code 404, with defa
 Not Found
 */
 type SearchConfigMapListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SearchConfigMapListNotFoundBody
 }
 
 // IsSuccess returns true when this search config map list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *SearchConfigMapListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchConfigMapListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchConfigMapListNotFound) GetPayload() *SearchConfigMapListNotFoundBody {
 	return o.Payload
 }
 
 func (o *SearchConfigMapListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchConfigMapListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,398 @@ func (o *SearchConfigMapListInternalServerError) String() string {
 
 func (o *SearchConfigMapListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SearchConfigMapListBadRequestBodyItems0 search config map list bad request body items0
+swagger:model SearchConfigMapListBadRequestBodyItems0
+*/
+type SearchConfigMapListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this search config map list bad request body items0
+func (o *SearchConfigMapListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search config map list bad request body items0 based on context it is used
+func (o *SearchConfigMapListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchConfigMapListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchConfigMapListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SearchConfigMapListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchConfigMapListBody search config map list body
+swagger:model SearchConfigMapListBody
+*/
+type SearchConfigMapListBody struct {
+
+	// limit
+	Limit int32 `json:"limit,omitempty"`
+
+	// offset
+	Offset int32 `json:"offset,omitempty"`
+
+	// search term
+	SearchTerm string `json:"searchTerm,omitempty"`
+}
+
+// Validate validates this search config map list body
+func (o *SearchConfigMapListBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search config map list body based on context it is used
+func (o *SearchConfigMapListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchConfigMapListBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchConfigMapListBody) UnmarshalBinary(b []byte) error {
+	var res SearchConfigMapListBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchConfigMapListForbiddenBody search config map list forbidden body
+swagger:model SearchConfigMapListForbiddenBody
+*/
+type SearchConfigMapListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search config map list forbidden body
+func (o *SearchConfigMapListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search config map list forbidden body based on context it is used
+func (o *SearchConfigMapListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchConfigMapListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchConfigMapListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SearchConfigMapListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchConfigMapListNotFoundBody search config map list not found body
+swagger:model SearchConfigMapListNotFoundBody
+*/
+type SearchConfigMapListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search config map list not found body
+func (o *SearchConfigMapListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search config map list not found body based on context it is used
+func (o *SearchConfigMapListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchConfigMapListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchConfigMapListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SearchConfigMapListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchConfigMapListOKBody search config map list o k body
+swagger:model SearchConfigMapListOKBody
+*/
+type SearchConfigMapListOKBody struct {
+
+	// data
+	Data []*SearchConfigMapListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this search config map list o k body
+func (o *SearchConfigMapListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchConfigMapListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchConfigMapListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchConfigMapListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this search config map list o k body based on the context it is used
+func (o *SearchConfigMapListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchConfigMapListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchConfigMapListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchConfigMapListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchConfigMapListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchConfigMapListOKBody) UnmarshalBinary(b []byte) error {
+	var res SearchConfigMapListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchConfigMapListOKBodyDataItems0 search config map list o k body data items0
+swagger:model SearchConfigMapListOKBodyDataItems0
+*/
+type SearchConfigMapListOKBodyDataItems0 struct {
+
+	// metadata name
+	MetadataName string `json:"metadataName,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this search config map list o k body data items0
+func (o *SearchConfigMapListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search config map list o k body data items0 based on context it is used
+func (o *SearchConfigMapListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchConfigMapListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchConfigMapListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res SearchConfigMapListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchConfigMapListUnauthorizedBody search config map list unauthorized body
+swagger:model SearchConfigMapListUnauthorizedBody
+*/
+type SearchConfigMapListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search config map list unauthorized body
+func (o *SearchConfigMapListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search config map list unauthorized body based on context it is used
+func (o *SearchConfigMapListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchConfigMapListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchConfigMapListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SearchConfigMapListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

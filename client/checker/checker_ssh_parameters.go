@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCheckerSSHParams creates a new CheckerSSHParams object,
@@ -64,7 +62,7 @@ CheckerSSHParams contains all the parameters to send to the API endpoint
 type CheckerSSHParams struct {
 
 	// Body.
-	Body *models.SSHKeyCommand
+	Body CheckerSSHBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *CheckerSSHParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the checker Ssh params
-func (o *CheckerSSHParams) WithBody(body *models.SSHKeyCommand) *CheckerSSHParams {
+func (o *CheckerSSHParams) WithBody(body CheckerSSHBody) *CheckerSSHParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the checker Ssh params
-func (o *CheckerSSHParams) SetBody(body *models.SSHKeyCommand) {
+func (o *CheckerSSHParams) SetBody(body CheckerSSHBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *CheckerSSHParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

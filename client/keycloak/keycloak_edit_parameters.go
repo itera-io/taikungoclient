@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKeycloakEditParams creates a new KeycloakEditParams object,
@@ -64,7 +62,7 @@ KeycloakEditParams contains all the parameters to send to the API endpoint
 type KeycloakEditParams struct {
 
 	// Body.
-	Body *models.KeycloakEditCommand
+	Body KeycloakEditBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *KeycloakEditParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the keycloak edit params
-func (o *KeycloakEditParams) WithBody(body *models.KeycloakEditCommand) *KeycloakEditParams {
+func (o *KeycloakEditParams) WithBody(body KeycloakEditBody) *KeycloakEditParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the keycloak edit params
-func (o *KeycloakEditParams) SetBody(body *models.KeycloakEditCommand) {
+func (o *KeycloakEditParams) SetBody(body KeycloakEditBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *KeycloakEditParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

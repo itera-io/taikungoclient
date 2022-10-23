@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewInvoicesDownloadParams creates a new InvoicesDownloadParams object,
@@ -64,7 +62,7 @@ InvoicesDownloadParams contains all the parameters to send to the API endpoint
 type InvoicesDownloadParams struct {
 
 	// Body.
-	Body *models.DownloadInvoiceCommand
+	Body InvoicesDownloadBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *InvoicesDownloadParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the invoices download params
-func (o *InvoicesDownloadParams) WithBody(body *models.DownloadInvoiceCommand) *InvoicesDownloadParams {
+func (o *InvoicesDownloadParams) WithBody(body InvoicesDownloadBody) *InvoicesDownloadParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the invoices download params
-func (o *InvoicesDownloadParams) SetBody(body *models.DownloadInvoiceCommand) {
+func (o *InvoicesDownloadParams) SetBody(body InvoicesDownloadBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *InvoicesDownloadParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

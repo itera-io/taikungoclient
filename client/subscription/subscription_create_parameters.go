@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSubscriptionCreateParams creates a new SubscriptionCreateParams object,
@@ -64,7 +62,7 @@ SubscriptionCreateParams contains all the parameters to send to the API endpoint
 type SubscriptionCreateParams struct {
 
 	// Body.
-	Body *models.CreateSubscriptionCommand
+	Body SubscriptionCreateBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *SubscriptionCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the subscription create params
-func (o *SubscriptionCreateParams) WithBody(body *models.CreateSubscriptionCommand) *SubscriptionCreateParams {
+func (o *SubscriptionCreateParams) WithBody(body SubscriptionCreateBody) *SubscriptionCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the subscription create params
-func (o *SubscriptionCreateParams) SetBody(body *models.CreateSubscriptionCommand) {
+func (o *SubscriptionCreateParams) SetBody(body SubscriptionCreateBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *SubscriptionCreateParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

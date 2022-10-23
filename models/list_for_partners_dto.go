@@ -61,7 +61,7 @@ type ListForPartnersDto struct {
 	Name string `json:"name,omitempty"`
 
 	// partner
-	Partner *PartnerDetailsForSubscription `json:"partner,omitempty"`
+	Partner *ListForPartnersDtoPartner `json:"partner,omitempty"`
 
 	// project limit
 	ProjectLimit int32 `json:"projectLimit,omitempty"`
@@ -156,6 +156,52 @@ func (m *ListForPartnersDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ListForPartnersDto) UnmarshalBinary(b []byte) error {
 	var res ListForPartnersDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ListForPartnersDtoPartner list for partners dto partner
+//
+// swagger:model ListForPartnersDtoPartner
+type ListForPartnersDtoPartner struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// link
+	Link string `json:"link,omitempty"`
+
+	// logo
+	Logo string `json:"logo,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this list for partners dto partner
+func (m *ListForPartnersDtoPartner) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this list for partners dto partner based on context it is used
+func (m *ListForPartnersDtoPartner) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ListForPartnersDtoPartner) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ListForPartnersDtoPartner) UnmarshalBinary(b []byte) error {
+	var res ListForPartnersDtoPartner
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

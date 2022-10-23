@@ -6,13 +6,16 @@ package security_group
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // SecurityGroupCreateReader is a Reader for the SecurityGroupCreate structure.
@@ -75,7 +78,7 @@ SecurityGroupCreateOK describes a response with status code 200, with default he
 Success
 */
 type SecurityGroupCreateOK struct {
-	Payload *models.APIResponse
+	Payload *SecurityGroupCreateOKBody
 }
 
 // IsSuccess returns true when this security group create o k response has a 2xx status code
@@ -111,13 +114,13 @@ func (o *SecurityGroupCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *SecurityGroupCreateOK) GetPayload() *models.APIResponse {
+func (o *SecurityGroupCreateOK) GetPayload() *SecurityGroupCreateOKBody {
 	return o.Payload
 }
 
 func (o *SecurityGroupCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(SecurityGroupCreateOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +141,7 @@ SecurityGroupCreateBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type SecurityGroupCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*SecurityGroupCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this security group create bad request response has a 2xx status code
@@ -174,7 +177,7 @@ func (o *SecurityGroupCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SecurityGroupCreateBadRequest) GetPayload() []*models.Error {
+func (o *SecurityGroupCreateBadRequest) GetPayload() []*SecurityGroupCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +202,7 @@ SecurityGroupCreateUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type SecurityGroupCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SecurityGroupCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this security group create unauthorized response has a 2xx status code
@@ -235,13 +238,13 @@ func (o *SecurityGroupCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SecurityGroupCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupCreateUnauthorized) GetPayload() *SecurityGroupCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SecurityGroupCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SecurityGroupCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +265,7 @@ SecurityGroupCreateForbidden describes a response with status code 403, with def
 Forbidden
 */
 type SecurityGroupCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SecurityGroupCreateForbiddenBody
 }
 
 // IsSuccess returns true when this security group create forbidden response has a 2xx status code
@@ -298,13 +301,13 @@ func (o *SecurityGroupCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SecurityGroupCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupCreateForbidden) GetPayload() *SecurityGroupCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *SecurityGroupCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SecurityGroupCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +328,7 @@ SecurityGroupCreateNotFound describes a response with status code 404, with defa
 Not Found
 */
 type SecurityGroupCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SecurityGroupCreateNotFoundBody
 }
 
 // IsSuccess returns true when this security group create not found response has a 2xx status code
@@ -361,13 +364,13 @@ func (o *SecurityGroupCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SecurityGroupCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupCreateNotFound) GetPayload() *SecurityGroupCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *SecurityGroupCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SecurityGroupCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +428,342 @@ func (o *SecurityGroupCreateInternalServerError) String() string {
 
 func (o *SecurityGroupCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SecurityGroupCreateBadRequestBodyItems0 security group create bad request body items0
+swagger:model SecurityGroupCreateBadRequestBodyItems0
+*/
+type SecurityGroupCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this security group create bad request body items0
+func (o *SecurityGroupCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group create bad request body items0 based on context it is used
+func (o *SecurityGroupCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupCreateBody security group create body
+swagger:model SecurityGroupCreateBody
+*/
+type SecurityGroupCreateBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// port max range
+	PortMaxRange int32 `json:"portMaxRange,omitempty"`
+
+	// port min range
+	PortMinRange int32 `json:"portMinRange,omitempty"`
+
+	// protocol
+	// Enum: [100 200 300]
+	Protocol int32 `json:"protocol,omitempty"`
+
+	// remote Ip prefix
+	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
+
+	// stand alone profile Id
+	StandAloneProfileID int32 `json:"standAloneProfileId,omitempty"`
+}
+
+// Validate validates this security group create body
+func (o *SecurityGroupCreateBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateProtocol(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var securityGroupCreateBodyTypeProtocolPropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200,300]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		securityGroupCreateBodyTypeProtocolPropEnum = append(securityGroupCreateBodyTypeProtocolPropEnum, v)
+	}
+}
+
+// prop value enum
+func (o *SecurityGroupCreateBody) validateProtocolEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, securityGroupCreateBodyTypeProtocolPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *SecurityGroupCreateBody) validateProtocol(formats strfmt.Registry) error {
+	if swag.IsZero(o.Protocol) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := o.validateProtocolEnum("body"+"."+"protocol", "body", o.Protocol); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this security group create body based on context it is used
+func (o *SecurityGroupCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupCreateBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupCreateForbiddenBody security group create forbidden body
+swagger:model SecurityGroupCreateForbiddenBody
+*/
+type SecurityGroupCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this security group create forbidden body
+func (o *SecurityGroupCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group create forbidden body based on context it is used
+func (o *SecurityGroupCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupCreateNotFoundBody security group create not found body
+swagger:model SecurityGroupCreateNotFoundBody
+*/
+type SecurityGroupCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this security group create not found body
+func (o *SecurityGroupCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group create not found body based on context it is used
+func (o *SecurityGroupCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupCreateOKBody security group create o k body
+swagger:model SecurityGroupCreateOKBody
+*/
+type SecurityGroupCreateOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this security group create o k body
+func (o *SecurityGroupCreateOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group create o k body based on context it is used
+func (o *SecurityGroupCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupCreateOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupCreateOKBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupCreateOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupCreateUnauthorizedBody security group create unauthorized body
+swagger:model SecurityGroupCreateUnauthorizedBody
+*/
+type SecurityGroupCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this security group create unauthorized body
+func (o *SecurityGroupCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group create unauthorized body based on context it is used
+func (o *SecurityGroupCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

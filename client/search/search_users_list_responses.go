@@ -6,13 +6,15 @@ package search
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SearchUsersListReader is a Reader for the SearchUsersList structure.
@@ -75,7 +77,7 @@ SearchUsersListOK describes a response with status code 200, with default header
 Success
 */
 type SearchUsersListOK struct {
-	Payload *models.UsersSearchList
+	Payload *SearchUsersListOKBody
 }
 
 // IsSuccess returns true when this search users list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *SearchUsersListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/users][%d] searchUsersListOK  %+v", 200, o.Payload)
 }
 
-func (o *SearchUsersListOK) GetPayload() *models.UsersSearchList {
+func (o *SearchUsersListOK) GetPayload() *SearchUsersListOKBody {
 	return o.Payload
 }
 
 func (o *SearchUsersListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.UsersSearchList)
+	o.Payload = new(SearchUsersListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ SearchUsersListBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type SearchUsersListBadRequest struct {
-	Payload []*models.Error
+	Payload []*SearchUsersListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this search users list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *SearchUsersListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/users][%d] searchUsersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchUsersListBadRequest) GetPayload() []*models.Error {
+func (o *SearchUsersListBadRequest) GetPayload() []*SearchUsersListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ SearchUsersListUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type SearchUsersListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SearchUsersListUnauthorizedBody
 }
 
 // IsSuccess returns true when this search users list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *SearchUsersListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/users][%d] searchUsersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchUsersListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchUsersListUnauthorized) GetPayload() *SearchUsersListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SearchUsersListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchUsersListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ SearchUsersListForbidden describes a response with status code 403, with default
 Forbidden
 */
 type SearchUsersListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SearchUsersListForbiddenBody
 }
 
 // IsSuccess returns true when this search users list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *SearchUsersListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/users][%d] searchUsersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchUsersListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchUsersListForbidden) GetPayload() *SearchUsersListForbiddenBody {
 	return o.Payload
 }
 
 func (o *SearchUsersListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchUsersListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ SearchUsersListNotFound describes a response with status code 404, with default 
 Not Found
 */
 type SearchUsersListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SearchUsersListNotFoundBody
 }
 
 // IsSuccess returns true when this search users list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *SearchUsersListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/users][%d] searchUsersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchUsersListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchUsersListNotFound) GetPayload() *SearchUsersListNotFoundBody {
 	return o.Payload
 }
 
 func (o *SearchUsersListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchUsersListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,395 @@ func (o *SearchUsersListInternalServerError) String() string {
 
 func (o *SearchUsersListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SearchUsersListBadRequestBodyItems0 search users list bad request body items0
+swagger:model SearchUsersListBadRequestBodyItems0
+*/
+type SearchUsersListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this search users list bad request body items0
+func (o *SearchUsersListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search users list bad request body items0 based on context it is used
+func (o *SearchUsersListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchUsersListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchUsersListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SearchUsersListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchUsersListBody search users list body
+swagger:model SearchUsersListBody
+*/
+type SearchUsersListBody struct {
+
+	// limit
+	Limit int32 `json:"limit,omitempty"`
+
+	// offset
+	Offset int32 `json:"offset,omitempty"`
+
+	// search term
+	SearchTerm string `json:"searchTerm,omitempty"`
+}
+
+// Validate validates this search users list body
+func (o *SearchUsersListBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search users list body based on context it is used
+func (o *SearchUsersListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchUsersListBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchUsersListBody) UnmarshalBinary(b []byte) error {
+	var res SearchUsersListBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchUsersListForbiddenBody search users list forbidden body
+swagger:model SearchUsersListForbiddenBody
+*/
+type SearchUsersListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search users list forbidden body
+func (o *SearchUsersListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search users list forbidden body based on context it is used
+func (o *SearchUsersListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchUsersListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchUsersListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SearchUsersListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchUsersListNotFoundBody search users list not found body
+swagger:model SearchUsersListNotFoundBody
+*/
+type SearchUsersListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search users list not found body
+func (o *SearchUsersListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search users list not found body based on context it is used
+func (o *SearchUsersListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchUsersListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchUsersListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SearchUsersListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchUsersListOKBody search users list o k body
+swagger:model SearchUsersListOKBody
+*/
+type SearchUsersListOKBody struct {
+
+	// data
+	Data []*SearchUsersListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this search users list o k body
+func (o *SearchUsersListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchUsersListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchUsersListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchUsersListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this search users list o k body based on the context it is used
+func (o *SearchUsersListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchUsersListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchUsersListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchUsersListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchUsersListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchUsersListOKBody) UnmarshalBinary(b []byte) error {
+	var res SearchUsersListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchUsersListOKBodyDataItems0 search users list o k body data items0
+swagger:model SearchUsersListOKBodyDataItems0
+*/
+type SearchUsersListOKBodyDataItems0 struct {
+
+	// email
+	Email string `json:"email,omitempty"`
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+}
+
+// Validate validates this search users list o k body data items0
+func (o *SearchUsersListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search users list o k body data items0 based on context it is used
+func (o *SearchUsersListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchUsersListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchUsersListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res SearchUsersListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchUsersListUnauthorizedBody search users list unauthorized body
+swagger:model SearchUsersListUnauthorizedBody
+*/
+type SearchUsersListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search users list unauthorized body
+func (o *SearchUsersListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search users list unauthorized body based on context it is used
+func (o *SearchUsersListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchUsersListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchUsersListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SearchUsersListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

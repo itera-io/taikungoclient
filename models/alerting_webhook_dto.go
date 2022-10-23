@@ -20,7 +20,7 @@ import (
 type AlertingWebhookDto struct {
 
 	// headers
-	Headers []*WebhookHeaderDto `json:"headers"`
+	Headers []*AlertingWebhookDtoHeadersItems0 `json:"headers"`
 
 	// id
 	ID int32 `json:"id,omitempty"`
@@ -114,6 +114,49 @@ func (m *AlertingWebhookDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AlertingWebhookDto) UnmarshalBinary(b []byte) error {
 	var res AlertingWebhookDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AlertingWebhookDtoHeadersItems0 alerting webhook dto headers items0
+//
+// swagger:model AlertingWebhookDtoHeadersItems0
+type AlertingWebhookDtoHeadersItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// key
+	Key string `json:"key,omitempty"`
+
+	// value
+	Value string `json:"value,omitempty"`
+}
+
+// Validate validates this alerting webhook dto headers items0
+func (m *AlertingWebhookDtoHeadersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting webhook dto headers items0 based on context it is used
+func (m *AlertingWebhookDtoHeadersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AlertingWebhookDtoHeadersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AlertingWebhookDtoHeadersItems0) UnmarshalBinary(b []byte) error {
+	var res AlertingWebhookDtoHeadersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

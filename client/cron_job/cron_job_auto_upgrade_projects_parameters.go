@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobAutoUpgradeProjectsParams creates a new CronJobAutoUpgradeProjectsParams object,
@@ -64,7 +62,7 @@ CronJobAutoUpgradeProjectsParams contains all the parameters to send to the API 
 type CronJobAutoUpgradeProjectsParams struct {
 
 	// Body.
-	Body models.AutoUpgradeProjectsCommand
+	Body interface{}
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *CronJobAutoUpgradeProjectsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the cron job auto upgrade projects params
-func (o *CronJobAutoUpgradeProjectsParams) WithBody(body models.AutoUpgradeProjectsCommand) *CronJobAutoUpgradeProjectsParams {
+func (o *CronJobAutoUpgradeProjectsParams) WithBody(body interface{}) *CronJobAutoUpgradeProjectsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job auto upgrade projects params
-func (o *CronJobAutoUpgradeProjectsParams) SetBody(body models.AutoUpgradeProjectsCommand) {
+func (o *CronJobAutoUpgradeProjectsParams) SetBody(body interface{}) {
 	o.Body = body
 }
 

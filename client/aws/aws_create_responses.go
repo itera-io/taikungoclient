@@ -6,13 +6,13 @@ package aws
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AwsCreateReader is a Reader for the AwsCreate structure.
@@ -75,7 +75,7 @@ AwsCreateOK describes a response with status code 200, with default header value
 Success
 */
 type AwsCreateOK struct {
-	Payload *models.APIResponse
+	Payload *AwsCreateOKBody
 }
 
 // IsSuccess returns true when this aws create o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *AwsCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *AwsCreateOK) GetPayload() *models.APIResponse {
+func (o *AwsCreateOK) GetPayload() *AwsCreateOKBody {
 	return o.Payload
 }
 
 func (o *AwsCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(AwsCreateOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ AwsCreateBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AwsCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*AwsCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this aws create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AwsCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsCreateBadRequest) GetPayload() []*models.Error {
+func (o *AwsCreateBadRequest) GetPayload() []*AwsCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ AwsCreateUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type AwsCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AwsCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this aws create unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *AwsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AwsCreateUnauthorized) GetPayload() *AwsCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AwsCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AwsCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ AwsCreateForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type AwsCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AwsCreateForbiddenBody
 }
 
 // IsSuccess returns true when this aws create forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *AwsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *AwsCreateForbidden) GetPayload() *AwsCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *AwsCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AwsCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ AwsCreateNotFound describes a response with status code 404, with default header
 Not Found
 */
 type AwsCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AwsCreateNotFoundBody
 }
 
 // IsSuccess returns true when this aws create not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *AwsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *AwsCreateNotFound) GetPayload() *AwsCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *AwsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AwsCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +425,299 @@ func (o *AwsCreateInternalServerError) String() string {
 
 func (o *AwsCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AwsCreateBadRequestBodyItems0 aws create bad request body items0
+swagger:model AwsCreateBadRequestBodyItems0
+*/
+type AwsCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this aws create bad request body items0
+func (o *AwsCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws create bad request body items0 based on context it is used
+func (o *AwsCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AwsCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AwsCreateBody aws create body
+swagger:model AwsCreateBody
+*/
+type AwsCreateBody struct {
+
+	// aws access key Id
+	AwsAccessKeyID string `json:"awsAccessKeyId,omitempty"`
+
+	// aws region
+	AwsRegion string `json:"awsRegion,omitempty"`
+
+	// aws secret access key
+	AwsSecretAccessKey string `json:"awsSecretAccessKey,omitempty"`
+
+	// az count
+	AzCount int32 `json:"azCount,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+}
+
+// Validate validates this aws create body
+func (o *AwsCreateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws create body based on context it is used
+func (o *AwsCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsCreateBody) UnmarshalBinary(b []byte) error {
+	var res AwsCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AwsCreateForbiddenBody aws create forbidden body
+swagger:model AwsCreateForbiddenBody
+*/
+type AwsCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this aws create forbidden body
+func (o *AwsCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws create forbidden body based on context it is used
+func (o *AwsCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AwsCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AwsCreateNotFoundBody aws create not found body
+swagger:model AwsCreateNotFoundBody
+*/
+type AwsCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this aws create not found body
+func (o *AwsCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws create not found body based on context it is used
+func (o *AwsCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AwsCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AwsCreateOKBody aws create o k body
+swagger:model AwsCreateOKBody
+*/
+type AwsCreateOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this aws create o k body
+func (o *AwsCreateOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws create o k body based on context it is used
+func (o *AwsCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsCreateOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsCreateOKBody) UnmarshalBinary(b []byte) error {
+	var res AwsCreateOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AwsCreateUnauthorizedBody aws create unauthorized body
+swagger:model AwsCreateUnauthorizedBody
+*/
+type AwsCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this aws create unauthorized body
+func (o *AwsCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this aws create unauthorized body based on context it is used
+func (o *AwsCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AwsCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AwsCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AwsCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

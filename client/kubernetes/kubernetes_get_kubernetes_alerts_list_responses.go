@@ -6,13 +6,15 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesGetKubernetesAlertsListReader is a Reader for the KubernetesGetKubernetesAlertsList structure.
@@ -75,7 +77,7 @@ KubernetesGetKubernetesAlertsListOK describes a response with status code 200, w
 Success
 */
 type KubernetesGetKubernetesAlertsListOK struct {
-	Payload *models.KubernetesAlertList
+	Payload *KubernetesGetKubernetesAlertsListOKBody
 }
 
 // IsSuccess returns true when this kubernetes get kubernetes alerts list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *KubernetesGetKubernetesAlertsListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesGetKubernetesAlertsListOK) GetPayload() *models.KubernetesAlertList {
+func (o *KubernetesGetKubernetesAlertsListOK) GetPayload() *KubernetesGetKubernetesAlertsListOKBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubernetesAlertsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.KubernetesAlertList)
+	o.Payload = new(KubernetesGetKubernetesAlertsListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ KubernetesGetKubernetesAlertsListBadRequest describes a response with status cod
 Bad Request
 */
 type KubernetesGetKubernetesAlertsListBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesGetKubernetesAlertsListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes get kubernetes alerts list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *KubernetesGetKubernetesAlertsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetKubernetesAlertsListBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetKubernetesAlertsListBadRequest) GetPayload() []*KubernetesGetKubernetesAlertsListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ KubernetesGetKubernetesAlertsListUnauthorized describes a response with status c
 Unauthorized
 */
 type KubernetesGetKubernetesAlertsListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetKubernetesAlertsListUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes get kubernetes alerts list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *KubernetesGetKubernetesAlertsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetKubernetesAlertsListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetKubernetesAlertsListUnauthorized) GetPayload() *KubernetesGetKubernetesAlertsListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubernetesAlertsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetKubernetesAlertsListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ KubernetesGetKubernetesAlertsListForbidden describes a response with status code
 Forbidden
 */
 type KubernetesGetKubernetesAlertsListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetKubernetesAlertsListForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes get kubernetes alerts list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *KubernetesGetKubernetesAlertsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetKubernetesAlertsListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetKubernetesAlertsListForbidden) GetPayload() *KubernetesGetKubernetesAlertsListForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubernetesAlertsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetKubernetesAlertsListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ KubernetesGetKubernetesAlertsListNotFound describes a response with status code 
 Not Found
 */
 type KubernetesGetKubernetesAlertsListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetKubernetesAlertsListNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes get kubernetes alerts list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *KubernetesGetKubernetesAlertsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetKubernetesAlertsListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetKubernetesAlertsListNotFound) GetPayload() *KubernetesGetKubernetesAlertsListNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubernetesAlertsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetKubernetesAlertsListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,381 @@ func (o *KubernetesGetKubernetesAlertsListInternalServerError) String() string {
 
 func (o *KubernetesGetKubernetesAlertsListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesGetKubernetesAlertsListBadRequestBodyItems0 kubernetes get kubernetes alerts list bad request body items0
+swagger:model KubernetesGetKubernetesAlertsListBadRequestBodyItems0
+*/
+type KubernetesGetKubernetesAlertsListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes get kubernetes alerts list bad request body items0
+func (o *KubernetesGetKubernetesAlertsListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get kubernetes alerts list bad request body items0 based on context it is used
+func (o *KubernetesGetKubernetesAlertsListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetKubernetesAlertsListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetKubernetesAlertsListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetKubernetesAlertsListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetKubernetesAlertsListForbiddenBody kubernetes get kubernetes alerts list forbidden body
+swagger:model KubernetesGetKubernetesAlertsListForbiddenBody
+*/
+type KubernetesGetKubernetesAlertsListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get kubernetes alerts list forbidden body
+func (o *KubernetesGetKubernetesAlertsListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get kubernetes alerts list forbidden body based on context it is used
+func (o *KubernetesGetKubernetesAlertsListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetKubernetesAlertsListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetKubernetesAlertsListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetKubernetesAlertsListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetKubernetesAlertsListNotFoundBody kubernetes get kubernetes alerts list not found body
+swagger:model KubernetesGetKubernetesAlertsListNotFoundBody
+*/
+type KubernetesGetKubernetesAlertsListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get kubernetes alerts list not found body
+func (o *KubernetesGetKubernetesAlertsListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get kubernetes alerts list not found body based on context it is used
+func (o *KubernetesGetKubernetesAlertsListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetKubernetesAlertsListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetKubernetesAlertsListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetKubernetesAlertsListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetKubernetesAlertsListOKBody kubernetes get kubernetes alerts list o k body
+swagger:model KubernetesGetKubernetesAlertsListOKBody
+*/
+type KubernetesGetKubernetesAlertsListOKBody struct {
+
+	// data
+	Data []*KubernetesGetKubernetesAlertsListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this kubernetes get kubernetes alerts list o k body
+func (o *KubernetesGetKubernetesAlertsListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetKubernetesAlertsListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesGetKubernetesAlertsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesGetKubernetesAlertsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this kubernetes get kubernetes alerts list o k body based on the context it is used
+func (o *KubernetesGetKubernetesAlertsListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetKubernetesAlertsListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesGetKubernetesAlertsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesGetKubernetesAlertsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetKubernetesAlertsListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetKubernetesAlertsListOKBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetKubernetesAlertsListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetKubernetesAlertsListOKBodyDataItems0 kubernetes get kubernetes alerts list o k body data items0
+swagger:model KubernetesGetKubernetesAlertsListOKBodyDataItems0
+*/
+type KubernetesGetKubernetesAlertsListOKBodyDataItems0 struct {
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// end at
+	EndAt string `json:"endAt,omitempty"`
+
+	// fingerprint
+	Fingerprint string `json:"fingerprint,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is silenced
+	IsSilenced bool `json:"isSilenced"`
+
+	// is solved
+	IsSolved bool `json:"isSolved"`
+
+	// labels
+	Labels interface{} `json:"labels,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// severity
+	Severity string `json:"severity,omitempty"`
+
+	// silence reason
+	SilenceReason string `json:"silenceReason,omitempty"`
+
+	// starts at
+	StartsAt string `json:"startsAt,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+}
+
+// Validate validates this kubernetes get kubernetes alerts list o k body data items0
+func (o *KubernetesGetKubernetesAlertsListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get kubernetes alerts list o k body data items0 based on context it is used
+func (o *KubernetesGetKubernetesAlertsListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetKubernetesAlertsListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetKubernetesAlertsListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetKubernetesAlertsListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetKubernetesAlertsListUnauthorizedBody kubernetes get kubernetes alerts list unauthorized body
+swagger:model KubernetesGetKubernetesAlertsListUnauthorizedBody
+*/
+type KubernetesGetKubernetesAlertsListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get kubernetes alerts list unauthorized body
+func (o *KubernetesGetKubernetesAlertsListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get kubernetes alerts list unauthorized body based on context it is used
+func (o *KubernetesGetKubernetesAlertsListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetKubernetesAlertsListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetKubernetesAlertsListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetKubernetesAlertsListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAuthLoginParams creates a new AuthLoginParams object,
@@ -64,7 +62,7 @@ AuthLoginParams contains all the parameters to send to the API endpoint
 type AuthLoginParams struct {
 
 	// Body.
-	Body *models.LoginCommand
+	Body AuthLoginBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *AuthLoginParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the auth login params
-func (o *AuthLoginParams) WithBody(body *models.LoginCommand) *AuthLoginParams {
+func (o *AuthLoginParams) WithBody(body AuthLoginBody) *AuthLoginParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the auth login params
-func (o *AuthLoginParams) SetBody(body *models.LoginCommand) {
+func (o *AuthLoginParams) SetBody(body AuthLoginBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *AuthLoginParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

@@ -6,13 +6,13 @@ package admin
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AdminMakeOwnerReader is a Reader for the AdminMakeOwner structure.
@@ -75,7 +75,7 @@ AdminMakeOwnerOK describes a response with status code 200, with default header 
 Success
 */
 type AdminMakeOwnerOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin make owner o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AdminMakeOwnerOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerOK  %+v", 200, o.Payload)
 }
 
-func (o *AdminMakeOwnerOK) GetPayload() models.Unit {
+func (o *AdminMakeOwnerOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AdminMakeOwnerBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AdminMakeOwnerBadRequest struct {
-	Payload []*models.Error
+	Payload []*AdminMakeOwnerBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this admin make owner bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminMakeOwnerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminMakeOwnerBadRequest) GetPayload() []*models.Error {
+func (o *AdminMakeOwnerBadRequest) GetPayload() []*AdminMakeOwnerBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AdminMakeOwnerUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type AdminMakeOwnerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AdminMakeOwnerUnauthorizedBody
 }
 
 // IsSuccess returns true when this admin make owner unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AdminMakeOwnerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminMakeOwnerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AdminMakeOwnerUnauthorized) GetPayload() *AdminMakeOwnerUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AdminMakeOwnerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AdminMakeOwnerUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AdminMakeOwnerForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type AdminMakeOwnerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AdminMakeOwnerForbiddenBody
 }
 
 // IsSuccess returns true when this admin make owner forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AdminMakeOwnerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminMakeOwnerForbidden) GetPayload() *models.ProblemDetails {
+func (o *AdminMakeOwnerForbidden) GetPayload() *AdminMakeOwnerForbiddenBody {
 	return o.Payload
 }
 
 func (o *AdminMakeOwnerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AdminMakeOwnerForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AdminMakeOwnerNotFound describes a response with status code 404, with default h
 Not Found
 */
 type AdminMakeOwnerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AdminMakeOwnerNotFoundBody
 }
 
 // IsSuccess returns true when this admin make owner not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AdminMakeOwnerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminMakeOwnerNotFound) GetPayload() *models.ProblemDetails {
+func (o *AdminMakeOwnerNotFound) GetPayload() *AdminMakeOwnerNotFoundBody {
 	return o.Payload
 }
 
 func (o *AdminMakeOwnerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AdminMakeOwnerNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *AdminMakeOwnerInternalServerError) String() string {
 
 func (o *AdminMakeOwnerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AdminMakeOwnerBadRequestBodyItems0 admin make owner bad request body items0
+swagger:model AdminMakeOwnerBadRequestBodyItems0
+*/
+type AdminMakeOwnerBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this admin make owner bad request body items0
+func (o *AdminMakeOwnerBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin make owner bad request body items0 based on context it is used
+func (o *AdminMakeOwnerBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminMakeOwnerBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminMakeOwnerBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AdminMakeOwnerBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminMakeOwnerBody admin make owner body
+swagger:model AdminMakeOwnerBody
+*/
+type AdminMakeOwnerBody struct {
+
+	// user Id
+	UserID string `json:"userId,omitempty"`
+}
+
+// Validate validates this admin make owner body
+func (o *AdminMakeOwnerBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin make owner body based on context it is used
+func (o *AdminMakeOwnerBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminMakeOwnerBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminMakeOwnerBody) UnmarshalBinary(b []byte) error {
+	var res AdminMakeOwnerBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminMakeOwnerForbiddenBody admin make owner forbidden body
+swagger:model AdminMakeOwnerForbiddenBody
+*/
+type AdminMakeOwnerForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this admin make owner forbidden body
+func (o *AdminMakeOwnerForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin make owner forbidden body based on context it is used
+func (o *AdminMakeOwnerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminMakeOwnerForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminMakeOwnerForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AdminMakeOwnerForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminMakeOwnerNotFoundBody admin make owner not found body
+swagger:model AdminMakeOwnerNotFoundBody
+*/
+type AdminMakeOwnerNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this admin make owner not found body
+func (o *AdminMakeOwnerNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin make owner not found body based on context it is used
+func (o *AdminMakeOwnerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminMakeOwnerNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminMakeOwnerNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AdminMakeOwnerNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminMakeOwnerUnauthorizedBody admin make owner unauthorized body
+swagger:model AdminMakeOwnerUnauthorizedBody
+*/
+type AdminMakeOwnerUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this admin make owner unauthorized body
+func (o *AdminMakeOwnerUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin make owner unauthorized body based on context it is used
+func (o *AdminMakeOwnerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminMakeOwnerUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminMakeOwnerUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AdminMakeOwnerUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

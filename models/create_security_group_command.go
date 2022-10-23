@@ -7,10 +7,12 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateSecurityGroupCommand create security group command
@@ -28,7 +30,8 @@ type CreateSecurityGroupCommand struct {
 	PortMinRange int32 `json:"portMinRange,omitempty"`
 
 	// protocol
-	Protocol SecurityGroupProtocol `json:"protocol,omitempty"`
+	// Enum: [100 200 300]
+	Protocol int32 `json:"protocol,omitempty"`
 
 	// remote Ip prefix
 	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
@@ -51,48 +54,41 @@ func (m *CreateSecurityGroupCommand) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+var createSecurityGroupCommandTypeProtocolPropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200,300]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		createSecurityGroupCommandTypeProtocolPropEnum = append(createSecurityGroupCommandTypeProtocolPropEnum, v)
+	}
+}
+
+// prop value enum
+func (m *CreateSecurityGroupCommand) validateProtocolEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, createSecurityGroupCommandTypeProtocolPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *CreateSecurityGroupCommand) validateProtocol(formats strfmt.Registry) error {
 	if swag.IsZero(m.Protocol) { // not required
 		return nil
 	}
 
-	if err := m.Protocol.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("protocol")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("protocol")
-		}
+	// value enum
+	if err := m.validateProtocolEnum("protocol", "body", m.Protocol); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-// ContextValidate validate this create security group command based on the context it is used
+// ContextValidate validates this create security group command based on context it is used
 func (m *CreateSecurityGroupCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateProtocol(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *CreateSecurityGroupCommand) contextValidateProtocol(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := m.Protocol.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("protocol")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("protocol")
-		}
-		return err
-	}
-
 	return nil
 }
 

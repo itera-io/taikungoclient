@@ -6,13 +6,13 @@ package users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // UsersConfirmEmailReader is a Reader for the UsersConfirmEmail structure.
@@ -75,7 +75,7 @@ UsersConfirmEmailOK describes a response with status code 200, with default head
 Success
 */
 type UsersConfirmEmailOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users confirm email o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *UsersConfirmEmailOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailOK  %+v", 200, o.Payload)
 }
 
-func (o *UsersConfirmEmailOK) GetPayload() models.Unit {
+func (o *UsersConfirmEmailOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ UsersConfirmEmailBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type UsersConfirmEmailBadRequest struct {
-	Payload []*models.Error
+	Payload []*UsersConfirmEmailBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this users confirm email bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UsersConfirmEmailBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersConfirmEmailBadRequest) GetPayload() []*models.Error {
+func (o *UsersConfirmEmailBadRequest) GetPayload() []*UsersConfirmEmailBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ UsersConfirmEmailUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type UsersConfirmEmailUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *UsersConfirmEmailUnauthorizedBody
 }
 
 // IsSuccess returns true when this users confirm email unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *UsersConfirmEmailUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersConfirmEmailUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UsersConfirmEmailUnauthorized) GetPayload() *UsersConfirmEmailUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *UsersConfirmEmailUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersConfirmEmailUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ UsersConfirmEmailForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type UsersConfirmEmailForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *UsersConfirmEmailForbiddenBody
 }
 
 // IsSuccess returns true when this users confirm email forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *UsersConfirmEmailForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersConfirmEmailForbidden) GetPayload() *models.ProblemDetails {
+func (o *UsersConfirmEmailForbidden) GetPayload() *UsersConfirmEmailForbiddenBody {
 	return o.Payload
 }
 
 func (o *UsersConfirmEmailForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersConfirmEmailForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ UsersConfirmEmailNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type UsersConfirmEmailNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *UsersConfirmEmailNotFoundBody
 }
 
 // IsSuccess returns true when this users confirm email not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *UsersConfirmEmailNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersConfirmEmailNotFound) GetPayload() *models.ProblemDetails {
+func (o *UsersConfirmEmailNotFound) GetPayload() *UsersConfirmEmailNotFoundBody {
 	return o.Payload
 }
 
 func (o *UsersConfirmEmailNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersConfirmEmailNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *UsersConfirmEmailInternalServerError) String() string {
 
 func (o *UsersConfirmEmailInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+UsersConfirmEmailBadRequestBodyItems0 users confirm email bad request body items0
+swagger:model UsersConfirmEmailBadRequestBodyItems0
+*/
+type UsersConfirmEmailBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this users confirm email bad request body items0
+func (o *UsersConfirmEmailBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users confirm email bad request body items0 based on context it is used
+func (o *UsersConfirmEmailBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersConfirmEmailBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersConfirmEmailBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res UsersConfirmEmailBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersConfirmEmailBody users confirm email body
+swagger:model UsersConfirmEmailBody
+*/
+type UsersConfirmEmailBody struct {
+
+	// mode
+	Mode string `json:"mode,omitempty"`
+
+	// new email
+	NewEmail string `json:"newEmail,omitempty"`
+}
+
+// Validate validates this users confirm email body
+func (o *UsersConfirmEmailBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users confirm email body based on context it is used
+func (o *UsersConfirmEmailBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersConfirmEmailBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersConfirmEmailBody) UnmarshalBinary(b []byte) error {
+	var res UsersConfirmEmailBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersConfirmEmailForbiddenBody users confirm email forbidden body
+swagger:model UsersConfirmEmailForbiddenBody
+*/
+type UsersConfirmEmailForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users confirm email forbidden body
+func (o *UsersConfirmEmailForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users confirm email forbidden body based on context it is used
+func (o *UsersConfirmEmailForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersConfirmEmailForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersConfirmEmailForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res UsersConfirmEmailForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersConfirmEmailNotFoundBody users confirm email not found body
+swagger:model UsersConfirmEmailNotFoundBody
+*/
+type UsersConfirmEmailNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users confirm email not found body
+func (o *UsersConfirmEmailNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users confirm email not found body based on context it is used
+func (o *UsersConfirmEmailNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersConfirmEmailNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersConfirmEmailNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res UsersConfirmEmailNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersConfirmEmailUnauthorizedBody users confirm email unauthorized body
+swagger:model UsersConfirmEmailUnauthorizedBody
+*/
+type UsersConfirmEmailUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users confirm email unauthorized body
+func (o *UsersConfirmEmailUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users confirm email unauthorized body based on context it is used
+func (o *UsersConfirmEmailUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersConfirmEmailUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersConfirmEmailUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res UsersConfirmEmailUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

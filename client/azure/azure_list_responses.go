@@ -6,13 +6,15 @@ package azure
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AzureListReader is a Reader for the AzureList structure.
@@ -75,7 +77,7 @@ AzureListOK describes a response with status code 200, with default header value
 Success
 */
 type AzureListOK struct {
-	Payload *models.AzureCredentialList
+	Payload *AzureListOKBody
 }
 
 // IsSuccess returns true when this azure list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *AzureListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListOK  %+v", 200, o.Payload)
 }
 
-func (o *AzureListOK) GetPayload() *models.AzureCredentialList {
+func (o *AzureListOK) GetPayload() *AzureListOKBody {
 	return o.Payload
 }
 
 func (o *AzureListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.AzureCredentialList)
+	o.Payload = new(AzureListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ AzureListBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AzureListBadRequest struct {
-	Payload []*models.Error
+	Payload []*AzureListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this azure list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *AzureListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureListBadRequest) GetPayload() []*models.Error {
+func (o *AzureListBadRequest) GetPayload() []*AzureListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ AzureListUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type AzureListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AzureListUnauthorizedBody
 }
 
 // IsSuccess returns true when this azure list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *AzureListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AzureListUnauthorized) GetPayload() *AzureListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AzureListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AzureListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ AzureListForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type AzureListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AzureListForbiddenBody
 }
 
 // IsSuccess returns true when this azure list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *AzureListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureListForbidden) GetPayload() *models.ProblemDetails {
+func (o *AzureListForbidden) GetPayload() *AzureListForbiddenBody {
 	return o.Payload
 }
 
 func (o *AzureListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AzureListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ AzureListNotFound describes a response with status code 404, with default header
 Not Found
 */
 type AzureListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AzureListNotFoundBody
 }
 
 // IsSuccess returns true when this azure list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *AzureListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureListNotFound) GetPayload() *models.ProblemDetails {
+func (o *AzureListNotFound) GetPayload() *AzureListNotFoundBody {
 	return o.Payload
 }
 
 func (o *AzureListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AzureListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,489 @@ func (o *AzureListInternalServerError) String() string {
 
 func (o *AzureListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AzureListBadRequestBodyItems0 azure list bad request body items0
+swagger:model AzureListBadRequestBodyItems0
+*/
+type AzureListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this azure list bad request body items0
+func (o *AzureListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure list bad request body items0 based on context it is used
+func (o *AzureListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AzureListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureListForbiddenBody azure list forbidden body
+swagger:model AzureListForbiddenBody
+*/
+type AzureListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this azure list forbidden body
+func (o *AzureListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure list forbidden body based on context it is used
+func (o *AzureListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AzureListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureListNotFoundBody azure list not found body
+swagger:model AzureListNotFoundBody
+*/
+type AzureListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this azure list not found body
+func (o *AzureListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure list not found body based on context it is used
+func (o *AzureListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AzureListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureListOKBody azure list o k body
+swagger:model AzureListOKBody
+*/
+type AzureListOKBody struct {
+
+	// data
+	Data []*AzureListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this azure list o k body
+func (o *AzureListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *AzureListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("azureListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("azureListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this azure list o k body based on the context it is used
+func (o *AzureListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *AzureListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("azureListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("azureListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureListOKBody) UnmarshalBinary(b []byte) error {
+	var res AzureListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureListOKBodyDataItems0 azure list o k body data items0
+swagger:model AzureListOKBodyDataItems0
+*/
+type AzureListOKBodyDataItems0 struct {
+
+	// availability zones
+	AvailabilityZones []string `json:"availabilityZones"`
+
+	// continent name
+	ContinentName string `json:"continentName,omitempty"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// created by
+	CreatedBy string `json:"createdBy,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is default
+	IsDefault bool `json:"isDefault"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// last modified
+	LastModified string `json:"lastModified,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// location
+	Location string `json:"location,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// project count
+	ProjectCount int32 `json:"projectCount,omitempty"`
+
+	// projects
+	Projects []*AzureListOKBodyDataItems0ProjectsItems0 `json:"projects"`
+
+	// tenant Id
+	TenantID string `json:"tenantId,omitempty"`
+}
+
+// Validate validates this azure list o k body data items0
+func (o *AzureListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateProjects(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *AzureListOKBodyDataItems0) validateProjects(formats strfmt.Registry) error {
+	if swag.IsZero(o.Projects) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Projects); i++ {
+		if swag.IsZero(o.Projects[i]) { // not required
+			continue
+		}
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this azure list o k body data items0 based on the context it is used
+func (o *AzureListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *AzureListOKBodyDataItems0) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Projects); i++ {
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res AzureListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureListOKBodyDataItems0ProjectsItems0 azure list o k body data items0 projects items0
+swagger:model AzureListOKBodyDataItems0ProjectsItems0
+*/
+type AzureListOKBodyDataItems0ProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this azure list o k body data items0 projects items0
+func (o *AzureListOKBodyDataItems0ProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure list o k body data items0 projects items0 based on context it is used
+func (o *AzureListOKBodyDataItems0ProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureListOKBodyDataItems0ProjectsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureListOKBodyDataItems0ProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res AzureListOKBodyDataItems0ProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureListUnauthorizedBody azure list unauthorized body
+swagger:model AzureListUnauthorizedBody
+*/
+type AzureListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this azure list unauthorized body
+func (o *AzureListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure list unauthorized body based on context it is used
+func (o *AzureListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AzureListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // UsersToggleDemoModeReader is a Reader for the UsersToggleDemoMode structure.
@@ -75,7 +75,7 @@ UsersToggleDemoModeOK describes a response with status code 200, with default he
 Success
 */
 type UsersToggleDemoModeOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users toggle demo mode o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *UsersToggleDemoModeOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/toggle-demo-mode][%d] usersToggleDemoModeOK  %+v", 200, o.Payload)
 }
 
-func (o *UsersToggleDemoModeOK) GetPayload() models.Unit {
+func (o *UsersToggleDemoModeOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ UsersToggleDemoModeBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type UsersToggleDemoModeBadRequest struct {
-	Payload []*models.Error
+	Payload []*UsersToggleDemoModeBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this users toggle demo mode bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UsersToggleDemoModeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/toggle-demo-mode][%d] usersToggleDemoModeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersToggleDemoModeBadRequest) GetPayload() []*models.Error {
+func (o *UsersToggleDemoModeBadRequest) GetPayload() []*UsersToggleDemoModeBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ UsersToggleDemoModeUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type UsersToggleDemoModeUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *UsersToggleDemoModeUnauthorizedBody
 }
 
 // IsSuccess returns true when this users toggle demo mode unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *UsersToggleDemoModeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/toggle-demo-mode][%d] usersToggleDemoModeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersToggleDemoModeUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UsersToggleDemoModeUnauthorized) GetPayload() *UsersToggleDemoModeUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *UsersToggleDemoModeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersToggleDemoModeUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ UsersToggleDemoModeForbidden describes a response with status code 403, with def
 Forbidden
 */
 type UsersToggleDemoModeForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *UsersToggleDemoModeForbiddenBody
 }
 
 // IsSuccess returns true when this users toggle demo mode forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *UsersToggleDemoModeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/toggle-demo-mode][%d] usersToggleDemoModeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersToggleDemoModeForbidden) GetPayload() *models.ProblemDetails {
+func (o *UsersToggleDemoModeForbidden) GetPayload() *UsersToggleDemoModeForbiddenBody {
 	return o.Payload
 }
 
 func (o *UsersToggleDemoModeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersToggleDemoModeForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ UsersToggleDemoModeNotFound describes a response with status code 404, with defa
 Not Found
 */
 type UsersToggleDemoModeNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *UsersToggleDemoModeNotFoundBody
 }
 
 // IsSuccess returns true when this users toggle demo mode not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *UsersToggleDemoModeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/toggle-demo-mode][%d] usersToggleDemoModeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersToggleDemoModeNotFound) GetPayload() *models.ProblemDetails {
+func (o *UsersToggleDemoModeNotFound) GetPayload() *UsersToggleDemoModeNotFoundBody {
 	return o.Payload
 }
 
 func (o *UsersToggleDemoModeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersToggleDemoModeNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *UsersToggleDemoModeInternalServerError) String() string {
 
 func (o *UsersToggleDemoModeInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+UsersToggleDemoModeBadRequestBodyItems0 users toggle demo mode bad request body items0
+swagger:model UsersToggleDemoModeBadRequestBodyItems0
+*/
+type UsersToggleDemoModeBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this users toggle demo mode bad request body items0
+func (o *UsersToggleDemoModeBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users toggle demo mode bad request body items0 based on context it is used
+func (o *UsersToggleDemoModeBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersToggleDemoModeBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersToggleDemoModeBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res UsersToggleDemoModeBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersToggleDemoModeBody users toggle demo mode body
+swagger:model UsersToggleDemoModeBody
+*/
+type UsersToggleDemoModeBody struct {
+
+	// mode
+	Mode string `json:"mode,omitempty"`
+}
+
+// Validate validates this users toggle demo mode body
+func (o *UsersToggleDemoModeBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users toggle demo mode body based on context it is used
+func (o *UsersToggleDemoModeBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersToggleDemoModeBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersToggleDemoModeBody) UnmarshalBinary(b []byte) error {
+	var res UsersToggleDemoModeBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersToggleDemoModeForbiddenBody users toggle demo mode forbidden body
+swagger:model UsersToggleDemoModeForbiddenBody
+*/
+type UsersToggleDemoModeForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users toggle demo mode forbidden body
+func (o *UsersToggleDemoModeForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users toggle demo mode forbidden body based on context it is used
+func (o *UsersToggleDemoModeForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersToggleDemoModeForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersToggleDemoModeForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res UsersToggleDemoModeForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersToggleDemoModeNotFoundBody users toggle demo mode not found body
+swagger:model UsersToggleDemoModeNotFoundBody
+*/
+type UsersToggleDemoModeNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users toggle demo mode not found body
+func (o *UsersToggleDemoModeNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users toggle demo mode not found body based on context it is used
+func (o *UsersToggleDemoModeNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersToggleDemoModeNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersToggleDemoModeNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res UsersToggleDemoModeNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersToggleDemoModeUnauthorizedBody users toggle demo mode unauthorized body
+swagger:model UsersToggleDemoModeUnauthorizedBody
+*/
+type UsersToggleDemoModeUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users toggle demo mode unauthorized body
+func (o *UsersToggleDemoModeUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users toggle demo mode unauthorized body based on context it is used
+func (o *UsersToggleDemoModeUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersToggleDemoModeUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersToggleDemoModeUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res UsersToggleDemoModeUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

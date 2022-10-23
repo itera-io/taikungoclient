@@ -6,13 +6,13 @@ package notifications
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // NotificationsNotifyOwnerReader is a Reader for the NotificationsNotifyOwner structure.
@@ -75,7 +75,7 @@ NotificationsNotifyOwnerOK describes a response with status code 200, with defau
 Success
 */
 type NotificationsNotifyOwnerOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications notify owner o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *NotificationsNotifyOwnerOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerOK  %+v", 200, o.Payload)
 }
 
-func (o *NotificationsNotifyOwnerOK) GetPayload() models.Unit {
+func (o *NotificationsNotifyOwnerOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ NotificationsNotifyOwnerBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type NotificationsNotifyOwnerBadRequest struct {
-	Payload []*models.Error
+	Payload []*NotificationsNotifyOwnerBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this notifications notify owner bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *NotificationsNotifyOwnerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NotificationsNotifyOwnerBadRequest) GetPayload() []*models.Error {
+func (o *NotificationsNotifyOwnerBadRequest) GetPayload() []*NotificationsNotifyOwnerBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ NotificationsNotifyOwnerUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type NotificationsNotifyOwnerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *NotificationsNotifyOwnerUnauthorizedBody
 }
 
 // IsSuccess returns true when this notifications notify owner unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *NotificationsNotifyOwnerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NotificationsNotifyOwnerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *NotificationsNotifyOwnerUnauthorized) GetPayload() *NotificationsNotifyOwnerUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *NotificationsNotifyOwnerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(NotificationsNotifyOwnerUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ NotificationsNotifyOwnerForbidden describes a response with status code 403, wit
 Forbidden
 */
 type NotificationsNotifyOwnerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *NotificationsNotifyOwnerForbiddenBody
 }
 
 // IsSuccess returns true when this notifications notify owner forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *NotificationsNotifyOwnerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NotificationsNotifyOwnerForbidden) GetPayload() *models.ProblemDetails {
+func (o *NotificationsNotifyOwnerForbidden) GetPayload() *NotificationsNotifyOwnerForbiddenBody {
 	return o.Payload
 }
 
 func (o *NotificationsNotifyOwnerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(NotificationsNotifyOwnerForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ NotificationsNotifyOwnerNotFound describes a response with status code 404, with
 Not Found
 */
 type NotificationsNotifyOwnerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *NotificationsNotifyOwnerNotFoundBody
 }
 
 // IsSuccess returns true when this notifications notify owner not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *NotificationsNotifyOwnerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NotificationsNotifyOwnerNotFound) GetPayload() *models.ProblemDetails {
+func (o *NotificationsNotifyOwnerNotFound) GetPayload() *NotificationsNotifyOwnerNotFoundBody {
 	return o.Payload
 }
 
 func (o *NotificationsNotifyOwnerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(NotificationsNotifyOwnerNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *NotificationsNotifyOwnerInternalServerError) String() string {
 
 func (o *NotificationsNotifyOwnerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+NotificationsNotifyOwnerBadRequestBodyItems0 notifications notify owner bad request body items0
+swagger:model NotificationsNotifyOwnerBadRequestBodyItems0
+*/
+type NotificationsNotifyOwnerBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this notifications notify owner bad request body items0
+func (o *NotificationsNotifyOwnerBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this notifications notify owner bad request body items0 based on context it is used
+func (o *NotificationsNotifyOwnerBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *NotificationsNotifyOwnerBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *NotificationsNotifyOwnerBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res NotificationsNotifyOwnerBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+NotificationsNotifyOwnerBody notifications notify owner body
+swagger:model NotificationsNotifyOwnerBody
+*/
+type NotificationsNotifyOwnerBody struct {
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+}
+
+// Validate validates this notifications notify owner body
+func (o *NotificationsNotifyOwnerBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this notifications notify owner body based on context it is used
+func (o *NotificationsNotifyOwnerBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *NotificationsNotifyOwnerBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *NotificationsNotifyOwnerBody) UnmarshalBinary(b []byte) error {
+	var res NotificationsNotifyOwnerBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+NotificationsNotifyOwnerForbiddenBody notifications notify owner forbidden body
+swagger:model NotificationsNotifyOwnerForbiddenBody
+*/
+type NotificationsNotifyOwnerForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this notifications notify owner forbidden body
+func (o *NotificationsNotifyOwnerForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this notifications notify owner forbidden body based on context it is used
+func (o *NotificationsNotifyOwnerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *NotificationsNotifyOwnerForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *NotificationsNotifyOwnerForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res NotificationsNotifyOwnerForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+NotificationsNotifyOwnerNotFoundBody notifications notify owner not found body
+swagger:model NotificationsNotifyOwnerNotFoundBody
+*/
+type NotificationsNotifyOwnerNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this notifications notify owner not found body
+func (o *NotificationsNotifyOwnerNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this notifications notify owner not found body based on context it is used
+func (o *NotificationsNotifyOwnerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *NotificationsNotifyOwnerNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *NotificationsNotifyOwnerNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res NotificationsNotifyOwnerNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+NotificationsNotifyOwnerUnauthorizedBody notifications notify owner unauthorized body
+swagger:model NotificationsNotifyOwnerUnauthorizedBody
+*/
+type NotificationsNotifyOwnerUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this notifications notify owner unauthorized body
+func (o *NotificationsNotifyOwnerUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this notifications notify owner unauthorized body based on context it is used
+func (o *NotificationsNotifyOwnerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *NotificationsNotifyOwnerUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *NotificationsNotifyOwnerUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res NotificationsNotifyOwnerUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

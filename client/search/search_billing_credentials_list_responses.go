@@ -6,13 +6,15 @@ package search
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SearchBillingCredentialsListReader is a Reader for the SearchBillingCredentialsList structure.
@@ -75,7 +77,7 @@ SearchBillingCredentialsListOK describes a response with status code 200, with d
 Success
 */
 type SearchBillingCredentialsListOK struct {
-	Payload *models.BillingCredentialsSearchList
+	Payload *SearchBillingCredentialsListOKBody
 }
 
 // IsSuccess returns true when this search billing credentials list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *SearchBillingCredentialsListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListOK  %+v", 200, o.Payload)
 }
 
-func (o *SearchBillingCredentialsListOK) GetPayload() *models.BillingCredentialsSearchList {
+func (o *SearchBillingCredentialsListOK) GetPayload() *SearchBillingCredentialsListOKBody {
 	return o.Payload
 }
 
 func (o *SearchBillingCredentialsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.BillingCredentialsSearchList)
+	o.Payload = new(SearchBillingCredentialsListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ SearchBillingCredentialsListBadRequest describes a response with status code 400
 Bad Request
 */
 type SearchBillingCredentialsListBadRequest struct {
-	Payload []*models.Error
+	Payload []*SearchBillingCredentialsListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this search billing credentials list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *SearchBillingCredentialsListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchBillingCredentialsListBadRequest) GetPayload() []*models.Error {
+func (o *SearchBillingCredentialsListBadRequest) GetPayload() []*SearchBillingCredentialsListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ SearchBillingCredentialsListUnauthorized describes a response with status code 4
 Unauthorized
 */
 type SearchBillingCredentialsListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SearchBillingCredentialsListUnauthorizedBody
 }
 
 // IsSuccess returns true when this search billing credentials list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *SearchBillingCredentialsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchBillingCredentialsListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchBillingCredentialsListUnauthorized) GetPayload() *SearchBillingCredentialsListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SearchBillingCredentialsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchBillingCredentialsListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ SearchBillingCredentialsListForbidden describes a response with status code 403,
 Forbidden
 */
 type SearchBillingCredentialsListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SearchBillingCredentialsListForbiddenBody
 }
 
 // IsSuccess returns true when this search billing credentials list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *SearchBillingCredentialsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchBillingCredentialsListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchBillingCredentialsListForbidden) GetPayload() *SearchBillingCredentialsListForbiddenBody {
 	return o.Payload
 }
 
 func (o *SearchBillingCredentialsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchBillingCredentialsListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ SearchBillingCredentialsListNotFound describes a response with status code 404, 
 Not Found
 */
 type SearchBillingCredentialsListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SearchBillingCredentialsListNotFoundBody
 }
 
 // IsSuccess returns true when this search billing credentials list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *SearchBillingCredentialsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchBillingCredentialsListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchBillingCredentialsListNotFound) GetPayload() *SearchBillingCredentialsListNotFoundBody {
 	return o.Payload
 }
 
 func (o *SearchBillingCredentialsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchBillingCredentialsListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,392 @@ func (o *SearchBillingCredentialsListInternalServerError) String() string {
 
 func (o *SearchBillingCredentialsListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SearchBillingCredentialsListBadRequestBodyItems0 search billing credentials list bad request body items0
+swagger:model SearchBillingCredentialsListBadRequestBodyItems0
+*/
+type SearchBillingCredentialsListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this search billing credentials list bad request body items0
+func (o *SearchBillingCredentialsListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search billing credentials list bad request body items0 based on context it is used
+func (o *SearchBillingCredentialsListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchBillingCredentialsListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchBillingCredentialsListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SearchBillingCredentialsListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchBillingCredentialsListBody search billing credentials list body
+swagger:model SearchBillingCredentialsListBody
+*/
+type SearchBillingCredentialsListBody struct {
+
+	// limit
+	Limit int32 `json:"limit,omitempty"`
+
+	// offset
+	Offset int32 `json:"offset,omitempty"`
+
+	// search term
+	SearchTerm string `json:"searchTerm,omitempty"`
+}
+
+// Validate validates this search billing credentials list body
+func (o *SearchBillingCredentialsListBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search billing credentials list body based on context it is used
+func (o *SearchBillingCredentialsListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchBillingCredentialsListBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchBillingCredentialsListBody) UnmarshalBinary(b []byte) error {
+	var res SearchBillingCredentialsListBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchBillingCredentialsListForbiddenBody search billing credentials list forbidden body
+swagger:model SearchBillingCredentialsListForbiddenBody
+*/
+type SearchBillingCredentialsListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search billing credentials list forbidden body
+func (o *SearchBillingCredentialsListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search billing credentials list forbidden body based on context it is used
+func (o *SearchBillingCredentialsListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchBillingCredentialsListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchBillingCredentialsListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SearchBillingCredentialsListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchBillingCredentialsListNotFoundBody search billing credentials list not found body
+swagger:model SearchBillingCredentialsListNotFoundBody
+*/
+type SearchBillingCredentialsListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search billing credentials list not found body
+func (o *SearchBillingCredentialsListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search billing credentials list not found body based on context it is used
+func (o *SearchBillingCredentialsListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchBillingCredentialsListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchBillingCredentialsListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SearchBillingCredentialsListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchBillingCredentialsListOKBody search billing credentials list o k body
+swagger:model SearchBillingCredentialsListOKBody
+*/
+type SearchBillingCredentialsListOKBody struct {
+
+	// data
+	Data []*SearchBillingCredentialsListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this search billing credentials list o k body
+func (o *SearchBillingCredentialsListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchBillingCredentialsListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchBillingCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchBillingCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this search billing credentials list o k body based on the context it is used
+func (o *SearchBillingCredentialsListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchBillingCredentialsListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchBillingCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchBillingCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchBillingCredentialsListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchBillingCredentialsListOKBody) UnmarshalBinary(b []byte) error {
+	var res SearchBillingCredentialsListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchBillingCredentialsListOKBodyDataItems0 search billing credentials list o k body data items0
+swagger:model SearchBillingCredentialsListOKBodyDataItems0
+*/
+type SearchBillingCredentialsListOKBodyDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+}
+
+// Validate validates this search billing credentials list o k body data items0
+func (o *SearchBillingCredentialsListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search billing credentials list o k body data items0 based on context it is used
+func (o *SearchBillingCredentialsListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchBillingCredentialsListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchBillingCredentialsListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res SearchBillingCredentialsListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchBillingCredentialsListUnauthorizedBody search billing credentials list unauthorized body
+swagger:model SearchBillingCredentialsListUnauthorizedBody
+*/
+type SearchBillingCredentialsListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search billing credentials list unauthorized body
+func (o *SearchBillingCredentialsListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search billing credentials list unauthorized body based on context it is used
+func (o *SearchBillingCredentialsListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchBillingCredentialsListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchBillingCredentialsListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SearchBillingCredentialsListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

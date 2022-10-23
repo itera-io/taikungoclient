@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOrganizationsCreateDefaultProfilersParams creates a new OrganizationsCreateDefaultProfilersParams object,
@@ -64,7 +62,7 @@ OrganizationsCreateDefaultProfilersParams contains all the parameters to send to
 type OrganizationsCreateDefaultProfilersParams struct {
 
 	// Body.
-	Body *models.DefaultProfilesCreateCommand
+	Body OrganizationsCreateDefaultProfilersBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *OrganizationsCreateDefaultProfilersParams) SetHTTPClient(client *http.C
 }
 
 // WithBody adds the body to the organizations create default profilers params
-func (o *OrganizationsCreateDefaultProfilersParams) WithBody(body *models.DefaultProfilesCreateCommand) *OrganizationsCreateDefaultProfilersParams {
+func (o *OrganizationsCreateDefaultProfilersParams) WithBody(body OrganizationsCreateDefaultProfilersBody) *OrganizationsCreateDefaultProfilersParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the organizations create default profilers params
-func (o *OrganizationsCreateDefaultProfilersParams) SetBody(body *models.DefaultProfilesCreateCommand) {
+func (o *OrganizationsCreateDefaultProfilersParams) SetBody(body OrganizationsCreateDefaultProfilersBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *OrganizationsCreateDefaultProfilersParams) WriteToRequest(r runtime.Cli
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

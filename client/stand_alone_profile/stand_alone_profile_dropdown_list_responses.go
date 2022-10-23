@@ -6,13 +6,13 @@ package stand_alone_profile
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // StandAloneProfileDropdownListReader is a Reader for the StandAloneProfileDropdownList structure.
@@ -75,7 +75,7 @@ StandAloneProfileDropdownListOK describes a response with status code 200, with 
 Success
 */
 type StandAloneProfileDropdownListOK struct {
-	Payload []*models.CommonDropdownDto
+	Payload []*StandAloneProfileDropdownListOKBodyItems0
 }
 
 // IsSuccess returns true when this stand alone profile dropdown list o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneProfileDropdownListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile/list][%d] standAloneProfileDropdownListOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneProfileDropdownListOK) GetPayload() []*models.CommonDropdownDto {
+func (o *StandAloneProfileDropdownListOK) GetPayload() []*StandAloneProfileDropdownListOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneProfileDropdownListBadRequest describes a response with status code 40
 Bad Request
 */
 type StandAloneProfileDropdownListBadRequest struct {
-	Payload []*models.Error
+	Payload []*StandAloneProfileDropdownListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this stand alone profile dropdown list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneProfileDropdownListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile/list][%d] standAloneProfileDropdownListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileDropdownListBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneProfileDropdownListBadRequest) GetPayload() []*StandAloneProfileDropdownListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneProfileDropdownListUnauthorized describes a response with status code 
 Unauthorized
 */
 type StandAloneProfileDropdownListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneProfileDropdownListUnauthorizedBody
 }
 
 // IsSuccess returns true when this stand alone profile dropdown list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneProfileDropdownListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile/list][%d] standAloneProfileDropdownListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneProfileDropdownListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileDropdownListUnauthorized) GetPayload() *StandAloneProfileDropdownListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *StandAloneProfileDropdownListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneProfileDropdownListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneProfileDropdownListForbidden describes a response with status code 403
 Forbidden
 */
 type StandAloneProfileDropdownListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneProfileDropdownListForbiddenBody
 }
 
 // IsSuccess returns true when this stand alone profile dropdown list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneProfileDropdownListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile/list][%d] standAloneProfileDropdownListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneProfileDropdownListForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileDropdownListForbidden) GetPayload() *StandAloneProfileDropdownListForbiddenBody {
 	return o.Payload
 }
 
 func (o *StandAloneProfileDropdownListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneProfileDropdownListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneProfileDropdownListNotFound describes a response with status code 404,
 Not Found
 */
 type StandAloneProfileDropdownListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneProfileDropdownListNotFoundBody
 }
 
 // IsSuccess returns true when this stand alone profile dropdown list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneProfileDropdownListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile/list][%d] standAloneProfileDropdownListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneProfileDropdownListNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileDropdownListNotFound) GetPayload() *StandAloneProfileDropdownListNotFoundBody {
 	return o.Payload
 }
 
 func (o *StandAloneProfileDropdownListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneProfileDropdownListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *StandAloneProfileDropdownListInternalServerError) String() string {
 
 func (o *StandAloneProfileDropdownListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+StandAloneProfileDropdownListBadRequestBodyItems0 stand alone profile dropdown list bad request body items0
+swagger:model StandAloneProfileDropdownListBadRequestBodyItems0
+*/
+type StandAloneProfileDropdownListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this stand alone profile dropdown list bad request body items0
+func (o *StandAloneProfileDropdownListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profile dropdown list bad request body items0 based on context it is used
+func (o *StandAloneProfileDropdownListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneProfileDropdownListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneProfileDropdownListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileDropdownListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneProfileDropdownListForbiddenBody stand alone profile dropdown list forbidden body
+swagger:model StandAloneProfileDropdownListForbiddenBody
+*/
+type StandAloneProfileDropdownListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone profile dropdown list forbidden body
+func (o *StandAloneProfileDropdownListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profile dropdown list forbidden body based on context it is used
+func (o *StandAloneProfileDropdownListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneProfileDropdownListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneProfileDropdownListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileDropdownListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneProfileDropdownListNotFoundBody stand alone profile dropdown list not found body
+swagger:model StandAloneProfileDropdownListNotFoundBody
+*/
+type StandAloneProfileDropdownListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone profile dropdown list not found body
+func (o *StandAloneProfileDropdownListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profile dropdown list not found body based on context it is used
+func (o *StandAloneProfileDropdownListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneProfileDropdownListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneProfileDropdownListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileDropdownListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneProfileDropdownListOKBodyItems0 stand alone profile dropdown list o k body items0
+swagger:model StandAloneProfileDropdownListOKBodyItems0
+*/
+type StandAloneProfileDropdownListOKBodyItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this stand alone profile dropdown list o k body items0
+func (o *StandAloneProfileDropdownListOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profile dropdown list o k body items0 based on context it is used
+func (o *StandAloneProfileDropdownListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneProfileDropdownListOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneProfileDropdownListOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileDropdownListOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneProfileDropdownListUnauthorizedBody stand alone profile dropdown list unauthorized body
+swagger:model StandAloneProfileDropdownListUnauthorizedBody
+*/
+type StandAloneProfileDropdownListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone profile dropdown list unauthorized body
+func (o *StandAloneProfileDropdownListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profile dropdown list unauthorized body based on context it is used
+func (o *StandAloneProfileDropdownListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneProfileDropdownListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneProfileDropdownListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileDropdownListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

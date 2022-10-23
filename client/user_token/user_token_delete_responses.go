@@ -6,13 +6,13 @@ package user_token
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // UserTokenDeleteReader is a Reader for the UserTokenDelete structure.
@@ -75,7 +75,7 @@ UserTokenDeleteOK describes a response with status code 200, with default header
 Success
 */
 type UserTokenDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token delete o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *UserTokenDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserToken/delete/{id}][%d] userTokenDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *UserTokenDeleteOK) GetPayload() models.Unit {
+func (o *UserTokenDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ UserTokenDeleteBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type UserTokenDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*UserTokenDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this user token delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UserTokenDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserToken/delete/{id}][%d] userTokenDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserTokenDeleteBadRequest) GetPayload() []*models.Error {
+func (o *UserTokenDeleteBadRequest) GetPayload() []*UserTokenDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ UserTokenDeleteUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type UserTokenDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *UserTokenDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this user token delete unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *UserTokenDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserToken/delete/{id}][%d] userTokenDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserTokenDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UserTokenDeleteUnauthorized) GetPayload() *UserTokenDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *UserTokenDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UserTokenDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ UserTokenDeleteForbidden describes a response with status code 403, with default
 Forbidden
 */
 type UserTokenDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *UserTokenDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this user token delete forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *UserTokenDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserToken/delete/{id}][%d] userTokenDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserTokenDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *UserTokenDeleteForbidden) GetPayload() *UserTokenDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *UserTokenDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UserTokenDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ UserTokenDeleteNotFound describes a response with status code 404, with default 
 Not Found
 */
 type UserTokenDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *UserTokenDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this user token delete not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *UserTokenDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserToken/delete/{id}][%d] userTokenDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserTokenDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *UserTokenDeleteNotFound) GetPayload() *UserTokenDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *UserTokenDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UserTokenDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *UserTokenDeleteInternalServerError) String() string {
 
 func (o *UserTokenDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+UserTokenDeleteBadRequestBodyItems0 user token delete bad request body items0
+swagger:model UserTokenDeleteBadRequestBodyItems0
+*/
+type UserTokenDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this user token delete bad request body items0
+func (o *UserTokenDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user token delete bad request body items0 based on context it is used
+func (o *UserTokenDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UserTokenDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UserTokenDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res UserTokenDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UserTokenDeleteForbiddenBody user token delete forbidden body
+swagger:model UserTokenDeleteForbiddenBody
+*/
+type UserTokenDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this user token delete forbidden body
+func (o *UserTokenDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user token delete forbidden body based on context it is used
+func (o *UserTokenDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UserTokenDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UserTokenDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res UserTokenDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UserTokenDeleteNotFoundBody user token delete not found body
+swagger:model UserTokenDeleteNotFoundBody
+*/
+type UserTokenDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this user token delete not found body
+func (o *UserTokenDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user token delete not found body based on context it is used
+func (o *UserTokenDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UserTokenDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UserTokenDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res UserTokenDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UserTokenDeleteUnauthorizedBody user token delete unauthorized body
+swagger:model UserTokenDeleteUnauthorizedBody
+*/
+type UserTokenDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this user token delete unauthorized body
+func (o *UserTokenDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user token delete unauthorized body based on context it is used
+func (o *UserTokenDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UserTokenDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UserTokenDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res UserTokenDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

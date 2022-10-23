@@ -6,13 +6,15 @@ package allowed_host
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AllowedHostListReader is a Reader for the AllowedHostList structure.
@@ -75,7 +77,7 @@ AllowedHostListOK describes a response with status code 200, with default header
 Success
 */
 type AllowedHostListOK struct {
-	Payload *models.AllowedHostList
+	Payload *AllowedHostListOKBody
 }
 
 // IsSuccess returns true when this allowed host list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *AllowedHostListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListOK  %+v", 200, o.Payload)
 }
 
-func (o *AllowedHostListOK) GetPayload() *models.AllowedHostList {
+func (o *AllowedHostListOK) GetPayload() *AllowedHostListOKBody {
 	return o.Payload
 }
 
 func (o *AllowedHostListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.AllowedHostList)
+	o.Payload = new(AllowedHostListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ AllowedHostListBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type AllowedHostListBadRequest struct {
-	Payload []*models.Error
+	Payload []*AllowedHostListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this allowed host list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *AllowedHostListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AllowedHostListBadRequest) GetPayload() []*models.Error {
+func (o *AllowedHostListBadRequest) GetPayload() []*AllowedHostListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ AllowedHostListUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type AllowedHostListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AllowedHostListUnauthorizedBody
 }
 
 // IsSuccess returns true when this allowed host list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *AllowedHostListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AllowedHostListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostListUnauthorized) GetPayload() *AllowedHostListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AllowedHostListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AllowedHostListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ AllowedHostListForbidden describes a response with status code 403, with default
 Forbidden
 */
 type AllowedHostListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AllowedHostListForbiddenBody
 }
 
 // IsSuccess returns true when this allowed host list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *AllowedHostListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AllowedHostListForbidden) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostListForbidden) GetPayload() *AllowedHostListForbiddenBody {
 	return o.Payload
 }
 
 func (o *AllowedHostListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AllowedHostListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ AllowedHostListNotFound describes a response with status code 404, with default 
 Not Found
 */
 type AllowedHostListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AllowedHostListNotFoundBody
 }
 
 // IsSuccess returns true when this allowed host list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *AllowedHostListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AllowedHostListNotFound) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostListNotFound) GetPayload() *AllowedHostListNotFoundBody {
 	return o.Payload
 }
 
 func (o *AllowedHostListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AllowedHostListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,354 @@ func (o *AllowedHostListInternalServerError) String() string {
 
 func (o *AllowedHostListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AllowedHostListBadRequestBodyItems0 allowed host list bad request body items0
+swagger:model AllowedHostListBadRequestBodyItems0
+*/
+type AllowedHostListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this allowed host list bad request body items0
+func (o *AllowedHostListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this allowed host list bad request body items0 based on context it is used
+func (o *AllowedHostListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AllowedHostListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AllowedHostListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AllowedHostListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AllowedHostListForbiddenBody allowed host list forbidden body
+swagger:model AllowedHostListForbiddenBody
+*/
+type AllowedHostListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this allowed host list forbidden body
+func (o *AllowedHostListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this allowed host list forbidden body based on context it is used
+func (o *AllowedHostListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AllowedHostListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AllowedHostListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AllowedHostListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AllowedHostListNotFoundBody allowed host list not found body
+swagger:model AllowedHostListNotFoundBody
+*/
+type AllowedHostListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this allowed host list not found body
+func (o *AllowedHostListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this allowed host list not found body based on context it is used
+func (o *AllowedHostListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AllowedHostListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AllowedHostListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AllowedHostListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AllowedHostListOKBody allowed host list o k body
+swagger:model AllowedHostListOKBody
+*/
+type AllowedHostListOKBody struct {
+
+	// data
+	Data []*AllowedHostListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this allowed host list o k body
+func (o *AllowedHostListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *AllowedHostListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("allowedHostListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("allowedHostListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this allowed host list o k body based on the context it is used
+func (o *AllowedHostListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *AllowedHostListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("allowedHostListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("allowedHostListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AllowedHostListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AllowedHostListOKBody) UnmarshalBinary(b []byte) error {
+	var res AllowedHostListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AllowedHostListOKBodyDataItems0 allowed host list o k body data items0
+swagger:model AllowedHostListOKBodyDataItems0
+*/
+type AllowedHostListOKBodyDataItems0 struct {
+
+	// access profile Id
+	AccessProfileID int32 `json:"accessProfileId,omitempty"`
+
+	// access profile name
+	AccessProfileName string `json:"accessProfileName,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// ip address
+	IPAddress string `json:"ipAddress,omitempty"`
+
+	// mask bits
+	MaskBits int32 `json:"maskBits,omitempty"`
+}
+
+// Validate validates this allowed host list o k body data items0
+func (o *AllowedHostListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this allowed host list o k body data items0 based on context it is used
+func (o *AllowedHostListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AllowedHostListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AllowedHostListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res AllowedHostListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AllowedHostListUnauthorizedBody allowed host list unauthorized body
+swagger:model AllowedHostListUnauthorizedBody
+*/
+type AllowedHostListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this allowed host list unauthorized body
+func (o *AllowedHostListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this allowed host list unauthorized body based on context it is used
+func (o *AllowedHostListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AllowedHostListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AllowedHostListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AllowedHostListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

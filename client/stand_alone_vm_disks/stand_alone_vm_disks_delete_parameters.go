@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneVMDisksDeleteParams creates a new StandAloneVMDisksDeleteParams object,
@@ -64,7 +62,7 @@ StandAloneVMDisksDeleteParams contains all the parameters to send to the API end
 type StandAloneVMDisksDeleteParams struct {
 
 	// Body.
-	Body *models.DeleteStandAloneVMDiskCommand
+	Body StandAloneVMDisksDeleteBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *StandAloneVMDisksDeleteParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone Vm disks delete params
-func (o *StandAloneVMDisksDeleteParams) WithBody(body *models.DeleteStandAloneVMDiskCommand) *StandAloneVMDisksDeleteParams {
+func (o *StandAloneVMDisksDeleteParams) WithBody(body StandAloneVMDisksDeleteBody) *StandAloneVMDisksDeleteParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone Vm disks delete params
-func (o *StandAloneVMDisksDeleteParams) SetBody(body *models.DeleteStandAloneVMDiskCommand) {
+func (o *StandAloneVMDisksDeleteParams) SetBody(body StandAloneVMDisksDeleteBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *StandAloneVMDisksDeleteParams) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

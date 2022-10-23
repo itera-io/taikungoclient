@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectAppEditParamsParams creates a new ProjectAppEditParamsParams object,
@@ -64,7 +62,7 @@ ProjectAppEditParamsParams contains all the parameters to send to the API endpoi
 type ProjectAppEditParamsParams struct {
 
 	// Body.
-	Body *models.EditProjectAppParamCommand
+	Body ProjectAppEditParamsBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *ProjectAppEditParamsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the project app edit params params
-func (o *ProjectAppEditParamsParams) WithBody(body *models.EditProjectAppParamCommand) *ProjectAppEditParamsParams {
+func (o *ProjectAppEditParamsParams) WithBody(body ProjectAppEditParamsBody) *ProjectAppEditParamsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the project app edit params params
-func (o *ProjectAppEditParamsParams) SetBody(body *models.EditProjectAppParamCommand) {
+func (o *ProjectAppEditParamsParams) SetBody(body ProjectAppEditParamsBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *ProjectAppEditParamsParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

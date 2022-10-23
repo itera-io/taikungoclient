@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAuthForgotPasswordParams creates a new AuthForgotPasswordParams object,
@@ -64,7 +62,7 @@ AuthForgotPasswordParams contains all the parameters to send to the API endpoint
 type AuthForgotPasswordParams struct {
 
 	// Body.
-	Body *models.ForgotPasswordCommand
+	Body AuthForgotPasswordBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *AuthForgotPasswordParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the auth forgot password params
-func (o *AuthForgotPasswordParams) WithBody(body *models.ForgotPasswordCommand) *AuthForgotPasswordParams {
+func (o *AuthForgotPasswordParams) WithBody(body AuthForgotPasswordBody) *AuthForgotPasswordParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the auth forgot password params
-func (o *AuthForgotPasswordParams) SetBody(body *models.ForgotPasswordCommand) {
+func (o *AuthForgotPasswordParams) SetBody(body AuthForgotPasswordBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *AuthForgotPasswordParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

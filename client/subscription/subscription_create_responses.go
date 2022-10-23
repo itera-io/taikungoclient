@@ -6,13 +6,13 @@ package subscription
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SubscriptionCreateReader is a Reader for the SubscriptionCreate structure.
@@ -75,7 +75,7 @@ SubscriptionCreateOK describes a response with status code 200, with default hea
 Success
 */
 type SubscriptionCreateOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this subscription create o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *SubscriptionCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *SubscriptionCreateOK) GetPayload() models.Unit {
+func (o *SubscriptionCreateOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ SubscriptionCreateBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type SubscriptionCreateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload *SubscriptionCreateBadRequestBody
 }
 
 // IsSuccess returns true when this subscription create bad request response has a 2xx status code
@@ -172,13 +172,13 @@ func (o *SubscriptionCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionCreateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionCreateBadRequest) GetPayload() *SubscriptionCreateBadRequestBody {
 	return o.Payload
 }
 
 func (o *SubscriptionCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SubscriptionCreateBadRequestBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -199,7 +199,7 @@ SubscriptionCreateUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type SubscriptionCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SubscriptionCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this subscription create unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *SubscriptionCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SubscriptionCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionCreateUnauthorized) GetPayload() *SubscriptionCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SubscriptionCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SubscriptionCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ SubscriptionCreateForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type SubscriptionCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SubscriptionCreateForbiddenBody
 }
 
 // IsSuccess returns true when this subscription create forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *SubscriptionCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SubscriptionCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionCreateForbidden) GetPayload() *SubscriptionCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *SubscriptionCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SubscriptionCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ SubscriptionCreateNotFound describes a response with status code 404, with defau
 Not Found
 */
 type SubscriptionCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SubscriptionCreateNotFoundBody
 }
 
 // IsSuccess returns true when this subscription create not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *SubscriptionCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SubscriptionCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionCreateNotFound) GetPayload() *SubscriptionCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *SubscriptionCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SubscriptionCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +425,267 @@ func (o *SubscriptionCreateInternalServerError) String() string {
 
 func (o *SubscriptionCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SubscriptionCreateBadRequestBody subscription create bad request body
+swagger:model SubscriptionCreateBadRequestBody
+*/
+type SubscriptionCreateBadRequestBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this subscription create bad request body
+func (o *SubscriptionCreateBadRequestBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subscription create bad request body based on context it is used
+func (o *SubscriptionCreateBadRequestBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionCreateBadRequestBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionCreateBadRequestBody) UnmarshalBinary(b []byte) error {
+	var res SubscriptionCreateBadRequestBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SubscriptionCreateBody subscription create body
+swagger:model SubscriptionCreateBody
+*/
+type SubscriptionCreateBody struct {
+
+	// cloud credential limit
+	CloudCredentialLimit int32 `json:"cloudCredentialLimit,omitempty"`
+
+	// monthly price
+	MonthlyPrice float64 `json:"monthlyPrice,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// project limit
+	ProjectLimit int32 `json:"projectLimit,omitempty"`
+
+	// server limit
+	ServerLimit int32 `json:"serverLimit,omitempty"`
+
+	// tcu price
+	TcuPrice float64 `json:"tcuPrice,omitempty"`
+
+	// trial days
+	TrialDays int32 `json:"trialDays,omitempty"`
+
+	// user limit
+	UserLimit int32 `json:"userLimit,omitempty"`
+
+	// yearly price
+	YearlyPrice float64 `json:"yearlyPrice,omitempty"`
+}
+
+// Validate validates this subscription create body
+func (o *SubscriptionCreateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subscription create body based on context it is used
+func (o *SubscriptionCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionCreateBody) UnmarshalBinary(b []byte) error {
+	var res SubscriptionCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SubscriptionCreateForbiddenBody subscription create forbidden body
+swagger:model SubscriptionCreateForbiddenBody
+*/
+type SubscriptionCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this subscription create forbidden body
+func (o *SubscriptionCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subscription create forbidden body based on context it is used
+func (o *SubscriptionCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SubscriptionCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SubscriptionCreateNotFoundBody subscription create not found body
+swagger:model SubscriptionCreateNotFoundBody
+*/
+type SubscriptionCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this subscription create not found body
+func (o *SubscriptionCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subscription create not found body based on context it is used
+func (o *SubscriptionCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SubscriptionCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SubscriptionCreateUnauthorizedBody subscription create unauthorized body
+swagger:model SubscriptionCreateUnauthorizedBody
+*/
+type SubscriptionCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this subscription create unauthorized body
+func (o *SubscriptionCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subscription create unauthorized body based on context it is used
+func (o *SubscriptionCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SubscriptionCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package backup
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // BackupRestoreBackupReader is a Reader for the BackupRestoreBackup structure.
@@ -75,7 +75,7 @@ BackupRestoreBackupOK describes a response with status code 200, with default he
 Success
 */
 type BackupRestoreBackupOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup restore backup o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *BackupRestoreBackupOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/restore][%d] backupRestoreBackupOK  %+v", 200, o.Payload)
 }
 
-func (o *BackupRestoreBackupOK) GetPayload() models.Unit {
+func (o *BackupRestoreBackupOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ BackupRestoreBackupBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type BackupRestoreBackupBadRequest struct {
-	Payload []*models.Error
+	Payload []*BackupRestoreBackupBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this backup restore backup bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *BackupRestoreBackupBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/restore][%d] backupRestoreBackupBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupRestoreBackupBadRequest) GetPayload() []*models.Error {
+func (o *BackupRestoreBackupBadRequest) GetPayload() []*BackupRestoreBackupBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ BackupRestoreBackupUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type BackupRestoreBackupUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *BackupRestoreBackupUnauthorizedBody
 }
 
 // IsSuccess returns true when this backup restore backup unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *BackupRestoreBackupUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/restore][%d] backupRestoreBackupUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupRestoreBackupUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BackupRestoreBackupUnauthorized) GetPayload() *BackupRestoreBackupUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *BackupRestoreBackupUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BackupRestoreBackupUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ BackupRestoreBackupForbidden describes a response with status code 403, with def
 Forbidden
 */
 type BackupRestoreBackupForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *BackupRestoreBackupForbiddenBody
 }
 
 // IsSuccess returns true when this backup restore backup forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *BackupRestoreBackupForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/restore][%d] backupRestoreBackupForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupRestoreBackupForbidden) GetPayload() *models.ProblemDetails {
+func (o *BackupRestoreBackupForbidden) GetPayload() *BackupRestoreBackupForbiddenBody {
 	return o.Payload
 }
 
 func (o *BackupRestoreBackupForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BackupRestoreBackupForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ BackupRestoreBackupNotFound describes a response with status code 404, with defa
 Not Found
 */
 type BackupRestoreBackupNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *BackupRestoreBackupNotFoundBody
 }
 
 // IsSuccess returns true when this backup restore backup not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *BackupRestoreBackupNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/restore][%d] backupRestoreBackupNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupRestoreBackupNotFound) GetPayload() *models.ProblemDetails {
+func (o *BackupRestoreBackupNotFound) GetPayload() *BackupRestoreBackupNotFoundBody {
 	return o.Payload
 }
 
 func (o *BackupRestoreBackupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BackupRestoreBackupNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,246 @@ func (o *BackupRestoreBackupInternalServerError) String() string {
 
 func (o *BackupRestoreBackupInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+BackupRestoreBackupBadRequestBodyItems0 backup restore backup bad request body items0
+swagger:model BackupRestoreBackupBadRequestBodyItems0
+*/
+type BackupRestoreBackupBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this backup restore backup bad request body items0
+func (o *BackupRestoreBackupBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup restore backup bad request body items0 based on context it is used
+func (o *BackupRestoreBackupBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupRestoreBackupBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupRestoreBackupBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res BackupRestoreBackupBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupRestoreBackupBody backup restore backup body
+swagger:model BackupRestoreBackupBody
+*/
+type BackupRestoreBackupBody struct {
+
+	// backup name
+	BackupName string `json:"backupName,omitempty"`
+
+	// exclude namespaces
+	ExcludeNamespaces []string `json:"excludeNamespaces"`
+
+	// include namespaces
+	IncludeNamespaces []string `json:"includeNamespaces"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// restore name
+	RestoreName string `json:"restoreName,omitempty"`
+}
+
+// Validate validates this backup restore backup body
+func (o *BackupRestoreBackupBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup restore backup body based on context it is used
+func (o *BackupRestoreBackupBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupRestoreBackupBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupRestoreBackupBody) UnmarshalBinary(b []byte) error {
+	var res BackupRestoreBackupBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupRestoreBackupForbiddenBody backup restore backup forbidden body
+swagger:model BackupRestoreBackupForbiddenBody
+*/
+type BackupRestoreBackupForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this backup restore backup forbidden body
+func (o *BackupRestoreBackupForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup restore backup forbidden body based on context it is used
+func (o *BackupRestoreBackupForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupRestoreBackupForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupRestoreBackupForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res BackupRestoreBackupForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupRestoreBackupNotFoundBody backup restore backup not found body
+swagger:model BackupRestoreBackupNotFoundBody
+*/
+type BackupRestoreBackupNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this backup restore backup not found body
+func (o *BackupRestoreBackupNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup restore backup not found body based on context it is used
+func (o *BackupRestoreBackupNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupRestoreBackupNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupRestoreBackupNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res BackupRestoreBackupNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupRestoreBackupUnauthorizedBody backup restore backup unauthorized body
+swagger:model BackupRestoreBackupUnauthorizedBody
+*/
+type BackupRestoreBackupUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this backup restore backup unauthorized body
+func (o *BackupRestoreBackupUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup restore backup unauthorized body based on context it is used
+func (o *BackupRestoreBackupUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupRestoreBackupUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupRestoreBackupUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res BackupRestoreBackupUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

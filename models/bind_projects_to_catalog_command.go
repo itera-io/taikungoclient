@@ -23,7 +23,7 @@ type BindProjectsToCatalogCommand struct {
 	CatalogID int32 `json:"catalogId,omitempty"`
 
 	// projects
-	Projects []*UpdateCatalogDto `json:"projects"`
+	Projects []*BindProjectsToCatalogCommandProjectsItems0 `json:"projects"`
 }
 
 // Validate validates this bind projects to catalog command
@@ -111,6 +111,46 @@ func (m *BindProjectsToCatalogCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BindProjectsToCatalogCommand) UnmarshalBinary(b []byte) error {
 	var res BindProjectsToCatalogCommand
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// BindProjectsToCatalogCommandProjectsItems0 bind projects to catalog command projects items0
+//
+// swagger:model BindProjectsToCatalogCommandProjectsItems0
+type BindProjectsToCatalogCommandProjectsItems0 struct {
+
+	// is bound
+	IsBound bool `json:"isBound"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this bind projects to catalog command projects items0
+func (m *BindProjectsToCatalogCommandProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this bind projects to catalog command projects items0 based on context it is used
+func (m *BindProjectsToCatalogCommandProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *BindProjectsToCatalogCommandProjectsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *BindProjectsToCatalogCommandProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res BindProjectsToCatalogCommandProjectsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

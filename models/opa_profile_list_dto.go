@@ -56,7 +56,7 @@ type OpaProfileListDto struct {
 	OrganizationName string `json:"organizationName,omitempty"`
 
 	// projects
-	Projects []*CommonDropdownDto `json:"projects"`
+	Projects []*OpaProfileListDtoProjectsItems0 `json:"projects"`
 
 	// require probe
 	RequireProbe bool `json:"requireProbe"`
@@ -156,6 +156,46 @@ func (m *OpaProfileListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *OpaProfileListDto) UnmarshalBinary(b []byte) error {
 	var res OpaProfileListDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// OpaProfileListDtoProjectsItems0 opa profile list dto projects items0
+//
+// swagger:model OpaProfileListDtoProjectsItems0
+type OpaProfileListDtoProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this opa profile list dto projects items0
+func (m *OpaProfileListDtoProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profile list dto projects items0 based on context it is used
+func (m *OpaProfileListDtoProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *OpaProfileListDtoProjectsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *OpaProfileListDtoProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res OpaProfileListDtoProjectsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

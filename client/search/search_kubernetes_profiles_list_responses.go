@@ -6,13 +6,15 @@ package search
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SearchKubernetesProfilesListReader is a Reader for the SearchKubernetesProfilesList structure.
@@ -75,7 +77,7 @@ SearchKubernetesProfilesListOK describes a response with status code 200, with d
 Success
 */
 type SearchKubernetesProfilesListOK struct {
-	Payload *models.KubernetesProfilesSearchList
+	Payload *SearchKubernetesProfilesListOKBody
 }
 
 // IsSuccess returns true when this search kubernetes profiles list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *SearchKubernetesProfilesListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListOK  %+v", 200, o.Payload)
 }
 
-func (o *SearchKubernetesProfilesListOK) GetPayload() *models.KubernetesProfilesSearchList {
+func (o *SearchKubernetesProfilesListOK) GetPayload() *SearchKubernetesProfilesListOKBody {
 	return o.Payload
 }
 
 func (o *SearchKubernetesProfilesListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.KubernetesProfilesSearchList)
+	o.Payload = new(SearchKubernetesProfilesListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ SearchKubernetesProfilesListBadRequest describes a response with status code 400
 Bad Request
 */
 type SearchKubernetesProfilesListBadRequest struct {
-	Payload []*models.Error
+	Payload []*SearchKubernetesProfilesListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this search kubernetes profiles list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *SearchKubernetesProfilesListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchKubernetesProfilesListBadRequest) GetPayload() []*models.Error {
+func (o *SearchKubernetesProfilesListBadRequest) GetPayload() []*SearchKubernetesProfilesListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ SearchKubernetesProfilesListUnauthorized describes a response with status code 4
 Unauthorized
 */
 type SearchKubernetesProfilesListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SearchKubernetesProfilesListUnauthorizedBody
 }
 
 // IsSuccess returns true when this search kubernetes profiles list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *SearchKubernetesProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchKubernetesProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchKubernetesProfilesListUnauthorized) GetPayload() *SearchKubernetesProfilesListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SearchKubernetesProfilesListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchKubernetesProfilesListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ SearchKubernetesProfilesListForbidden describes a response with status code 403,
 Forbidden
 */
 type SearchKubernetesProfilesListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SearchKubernetesProfilesListForbiddenBody
 }
 
 // IsSuccess returns true when this search kubernetes profiles list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *SearchKubernetesProfilesListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchKubernetesProfilesListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchKubernetesProfilesListForbidden) GetPayload() *SearchKubernetesProfilesListForbiddenBody {
 	return o.Payload
 }
 
 func (o *SearchKubernetesProfilesListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchKubernetesProfilesListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ SearchKubernetesProfilesListNotFound describes a response with status code 404, 
 Not Found
 */
 type SearchKubernetesProfilesListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SearchKubernetesProfilesListNotFoundBody
 }
 
 // IsSuccess returns true when this search kubernetes profiles list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *SearchKubernetesProfilesListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchKubernetesProfilesListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchKubernetesProfilesListNotFound) GetPayload() *SearchKubernetesProfilesListNotFoundBody {
 	return o.Payload
 }
 
 func (o *SearchKubernetesProfilesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchKubernetesProfilesListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,392 @@ func (o *SearchKubernetesProfilesListInternalServerError) String() string {
 
 func (o *SearchKubernetesProfilesListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SearchKubernetesProfilesListBadRequestBodyItems0 search kubernetes profiles list bad request body items0
+swagger:model SearchKubernetesProfilesListBadRequestBodyItems0
+*/
+type SearchKubernetesProfilesListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this search kubernetes profiles list bad request body items0
+func (o *SearchKubernetesProfilesListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search kubernetes profiles list bad request body items0 based on context it is used
+func (o *SearchKubernetesProfilesListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchKubernetesProfilesListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchKubernetesProfilesListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SearchKubernetesProfilesListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchKubernetesProfilesListBody search kubernetes profiles list body
+swagger:model SearchKubernetesProfilesListBody
+*/
+type SearchKubernetesProfilesListBody struct {
+
+	// limit
+	Limit int32 `json:"limit,omitempty"`
+
+	// offset
+	Offset int32 `json:"offset,omitempty"`
+
+	// search term
+	SearchTerm string `json:"searchTerm,omitempty"`
+}
+
+// Validate validates this search kubernetes profiles list body
+func (o *SearchKubernetesProfilesListBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search kubernetes profiles list body based on context it is used
+func (o *SearchKubernetesProfilesListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchKubernetesProfilesListBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchKubernetesProfilesListBody) UnmarshalBinary(b []byte) error {
+	var res SearchKubernetesProfilesListBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchKubernetesProfilesListForbiddenBody search kubernetes profiles list forbidden body
+swagger:model SearchKubernetesProfilesListForbiddenBody
+*/
+type SearchKubernetesProfilesListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search kubernetes profiles list forbidden body
+func (o *SearchKubernetesProfilesListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search kubernetes profiles list forbidden body based on context it is used
+func (o *SearchKubernetesProfilesListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchKubernetesProfilesListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchKubernetesProfilesListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SearchKubernetesProfilesListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchKubernetesProfilesListNotFoundBody search kubernetes profiles list not found body
+swagger:model SearchKubernetesProfilesListNotFoundBody
+*/
+type SearchKubernetesProfilesListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search kubernetes profiles list not found body
+func (o *SearchKubernetesProfilesListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search kubernetes profiles list not found body based on context it is used
+func (o *SearchKubernetesProfilesListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchKubernetesProfilesListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchKubernetesProfilesListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SearchKubernetesProfilesListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchKubernetesProfilesListOKBody search kubernetes profiles list o k body
+swagger:model SearchKubernetesProfilesListOKBody
+*/
+type SearchKubernetesProfilesListOKBody struct {
+
+	// data
+	Data []*SearchKubernetesProfilesListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this search kubernetes profiles list o k body
+func (o *SearchKubernetesProfilesListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchKubernetesProfilesListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchKubernetesProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchKubernetesProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this search kubernetes profiles list o k body based on the context it is used
+func (o *SearchKubernetesProfilesListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchKubernetesProfilesListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchKubernetesProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchKubernetesProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchKubernetesProfilesListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchKubernetesProfilesListOKBody) UnmarshalBinary(b []byte) error {
+	var res SearchKubernetesProfilesListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchKubernetesProfilesListOKBodyDataItems0 search kubernetes profiles list o k body data items0
+swagger:model SearchKubernetesProfilesListOKBodyDataItems0
+*/
+type SearchKubernetesProfilesListOKBodyDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+}
+
+// Validate validates this search kubernetes profiles list o k body data items0
+func (o *SearchKubernetesProfilesListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search kubernetes profiles list o k body data items0 based on context it is used
+func (o *SearchKubernetesProfilesListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchKubernetesProfilesListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchKubernetesProfilesListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res SearchKubernetesProfilesListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchKubernetesProfilesListUnauthorizedBody search kubernetes profiles list unauthorized body
+swagger:model SearchKubernetesProfilesListUnauthorizedBody
+*/
+type SearchKubernetesProfilesListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search kubernetes profiles list unauthorized body
+func (o *SearchKubernetesProfilesListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search kubernetes profiles list unauthorized body based on context it is used
+func (o *SearchKubernetesProfilesListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchKubernetesProfilesListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchKubernetesProfilesListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SearchKubernetesProfilesListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

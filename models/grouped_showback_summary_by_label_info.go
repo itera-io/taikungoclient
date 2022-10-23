@@ -23,7 +23,7 @@ type GroupedShowbackSummaryByLabelInfo struct {
 	CredentialName string `json:"credentialName,omitempty"`
 
 	// data
-	Data []*GroupedShowbackSummariesByLabelDto `json:"data"`
+	Data []*GroupedShowbackSummaryByLabelInfoDataItems0 `json:"data"`
 
 	// rule name
 	RuleName string `json:"ruleName,omitempty"`
@@ -117,6 +117,46 @@ func (m *GroupedShowbackSummaryByLabelInfo) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *GroupedShowbackSummaryByLabelInfo) UnmarshalBinary(b []byte) error {
 	var res GroupedShowbackSummaryByLabelInfo
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// GroupedShowbackSummaryByLabelInfoDataItems0 grouped showback summary by label info data items0
+//
+// swagger:model GroupedShowbackSummaryByLabelInfoDataItems0
+type GroupedShowbackSummaryByLabelInfoDataItems0 struct {
+
+	// by label
+	ByLabel string `json:"byLabel,omitempty"`
+
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
+}
+
+// Validate validates this grouped showback summary by label info data items0
+func (m *GroupedShowbackSummaryByLabelInfoDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this grouped showback summary by label info data items0 based on context it is used
+func (m *GroupedShowbackSummaryByLabelInfoDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *GroupedShowbackSummaryByLabelInfoDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *GroupedShowbackSummaryByLabelInfoDataItems0) UnmarshalBinary(b []byte) error {
+	var res GroupedShowbackSummaryByLabelInfoDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -6,13 +6,13 @@ package prometheus
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // PrometheusMetricNameReader is a Reader for the PrometheusMetricName structure.
@@ -136,7 +136,7 @@ PrometheusMetricNameBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type PrometheusMetricNameBadRequest struct {
-	Payload []*models.Error
+	Payload []*PrometheusMetricNameBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this prometheus metric name bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PrometheusMetricNameBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusMetricNameBadRequest) GetPayload() []*models.Error {
+func (o *PrometheusMetricNameBadRequest) GetPayload() []*PrometheusMetricNameBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ PrometheusMetricNameUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type PrometheusMetricNameUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *PrometheusMetricNameUnauthorizedBody
 }
 
 // IsSuccess returns true when this prometheus metric name unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *PrometheusMetricNameUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusMetricNameUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PrometheusMetricNameUnauthorized) GetPayload() *PrometheusMetricNameUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *PrometheusMetricNameUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PrometheusMetricNameUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ PrometheusMetricNameForbidden describes a response with status code 403, with de
 Forbidden
 */
 type PrometheusMetricNameForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *PrometheusMetricNameForbiddenBody
 }
 
 // IsSuccess returns true when this prometheus metric name forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *PrometheusMetricNameForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusMetricNameForbidden) GetPayload() *models.ProblemDetails {
+func (o *PrometheusMetricNameForbidden) GetPayload() *PrometheusMetricNameForbiddenBody {
 	return o.Payload
 }
 
 func (o *PrometheusMetricNameForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PrometheusMetricNameForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ PrometheusMetricNameNotFound describes a response with status code 404, with def
 Not Found
 */
 type PrometheusMetricNameNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *PrometheusMetricNameNotFoundBody
 }
 
 // IsSuccess returns true when this prometheus metric name not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *PrometheusMetricNameNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusMetricNameNotFound) GetPayload() *models.ProblemDetails {
+func (o *PrometheusMetricNameNotFound) GetPayload() *PrometheusMetricNameNotFoundBody {
 	return o.Payload
 }
 
 func (o *PrometheusMetricNameNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PrometheusMetricNameNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *PrometheusMetricNameInternalServerError) String() string {
 
 func (o *PrometheusMetricNameInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+PrometheusMetricNameBadRequestBodyItems0 prometheus metric name bad request body items0
+swagger:model PrometheusMetricNameBadRequestBodyItems0
+*/
+type PrometheusMetricNameBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this prometheus metric name bad request body items0
+func (o *PrometheusMetricNameBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus metric name bad request body items0 based on context it is used
+func (o *PrometheusMetricNameBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PrometheusMetricNameBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PrometheusMetricNameBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res PrometheusMetricNameBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PrometheusMetricNameBody prometheus metric name body
+swagger:model PrometheusMetricNameBody
+*/
+type PrometheusMetricNameBody struct {
+
+	// operation credential Id
+	OperationCredentialID int32 `json:"operationCredentialId,omitempty"`
+}
+
+// Validate validates this prometheus metric name body
+func (o *PrometheusMetricNameBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus metric name body based on context it is used
+func (o *PrometheusMetricNameBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PrometheusMetricNameBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PrometheusMetricNameBody) UnmarshalBinary(b []byte) error {
+	var res PrometheusMetricNameBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PrometheusMetricNameForbiddenBody prometheus metric name forbidden body
+swagger:model PrometheusMetricNameForbiddenBody
+*/
+type PrometheusMetricNameForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this prometheus metric name forbidden body
+func (o *PrometheusMetricNameForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus metric name forbidden body based on context it is used
+func (o *PrometheusMetricNameForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PrometheusMetricNameForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PrometheusMetricNameForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res PrometheusMetricNameForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PrometheusMetricNameNotFoundBody prometheus metric name not found body
+swagger:model PrometheusMetricNameNotFoundBody
+*/
+type PrometheusMetricNameNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this prometheus metric name not found body
+func (o *PrometheusMetricNameNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus metric name not found body based on context it is used
+func (o *PrometheusMetricNameNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PrometheusMetricNameNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PrometheusMetricNameNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res PrometheusMetricNameNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PrometheusMetricNameUnauthorizedBody prometheus metric name unauthorized body
+swagger:model PrometheusMetricNameUnauthorizedBody
+*/
+type PrometheusMetricNameUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this prometheus metric name unauthorized body
+func (o *PrometheusMetricNameUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this prometheus metric name unauthorized body based on context it is used
+func (o *PrometheusMetricNameUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PrometheusMetricNameUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PrometheusMetricNameUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res PrometheusMetricNameUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package security_group
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SecurityGroupListReader is a Reader for the SecurityGroupList structure.
@@ -75,7 +75,7 @@ SecurityGroupListOK describes a response with status code 200, with default head
 Success
 */
 type SecurityGroupListOK struct {
-	Payload []*models.SecurityGroupListDto
+	Payload []*SecurityGroupListOKBodyItems0
 }
 
 // IsSuccess returns true when this security group list o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *SecurityGroupListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListOK  %+v", 200, o.Payload)
 }
 
-func (o *SecurityGroupListOK) GetPayload() []*models.SecurityGroupListDto {
+func (o *SecurityGroupListOK) GetPayload() []*SecurityGroupListOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ SecurityGroupListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type SecurityGroupListBadRequest struct {
-	Payload []*models.Error
+	Payload []*SecurityGroupListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this security group list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SecurityGroupListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SecurityGroupListBadRequest) GetPayload() []*models.Error {
+func (o *SecurityGroupListBadRequest) GetPayload() []*SecurityGroupListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ SecurityGroupListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type SecurityGroupListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SecurityGroupListUnauthorizedBody
 }
 
 // IsSuccess returns true when this security group list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *SecurityGroupListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SecurityGroupListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupListUnauthorized) GetPayload() *SecurityGroupListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SecurityGroupListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SecurityGroupListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ SecurityGroupListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type SecurityGroupListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SecurityGroupListForbiddenBody
 }
 
 // IsSuccess returns true when this security group list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *SecurityGroupListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SecurityGroupListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupListForbidden) GetPayload() *SecurityGroupListForbiddenBody {
 	return o.Payload
 }
 
 func (o *SecurityGroupListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SecurityGroupListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ SecurityGroupListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type SecurityGroupListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SecurityGroupListNotFoundBody
 }
 
 // IsSuccess returns true when this security group list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *SecurityGroupListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SecurityGroupListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupListNotFound) GetPayload() *SecurityGroupListNotFoundBody {
 	return o.Payload
 }
 
 func (o *SecurityGroupListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SecurityGroupListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,252 @@ func (o *SecurityGroupListInternalServerError) String() string {
 
 func (o *SecurityGroupListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SecurityGroupListBadRequestBodyItems0 security group list bad request body items0
+swagger:model SecurityGroupListBadRequestBodyItems0
+*/
+type SecurityGroupListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this security group list bad request body items0
+func (o *SecurityGroupListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group list bad request body items0 based on context it is used
+func (o *SecurityGroupListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupListForbiddenBody security group list forbidden body
+swagger:model SecurityGroupListForbiddenBody
+*/
+type SecurityGroupListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this security group list forbidden body
+func (o *SecurityGroupListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group list forbidden body based on context it is used
+func (o *SecurityGroupListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupListNotFoundBody security group list not found body
+swagger:model SecurityGroupListNotFoundBody
+*/
+type SecurityGroupListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this security group list not found body
+func (o *SecurityGroupListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group list not found body based on context it is used
+func (o *SecurityGroupListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupListOKBodyItems0 security group list o k body items0
+swagger:model SecurityGroupListOKBodyItems0
+*/
+type SecurityGroupListOKBodyItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// port max range
+	PortMaxRange int32 `json:"portMaxRange,omitempty"`
+
+	// port min range
+	PortMinRange int32 `json:"portMinRange,omitempty"`
+
+	// profile name
+	ProfileName string `json:"profileName,omitempty"`
+
+	// protocol
+	Protocol string `json:"protocol,omitempty"`
+
+	// remote Ip prefix
+	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
+}
+
+// Validate validates this security group list o k body items0
+func (o *SecurityGroupListOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group list o k body items0 based on context it is used
+func (o *SecurityGroupListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupListOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupListOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupListOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SecurityGroupListUnauthorizedBody security group list unauthorized body
+swagger:model SecurityGroupListUnauthorizedBody
+*/
+type SecurityGroupListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this security group list unauthorized body
+func (o *SecurityGroupListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this security group list unauthorized body based on context it is used
+func (o *SecurityGroupListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SecurityGroupListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SecurityGroupListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SecurityGroupListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

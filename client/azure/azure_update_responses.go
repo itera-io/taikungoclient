@@ -6,13 +6,13 @@ package azure
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AzureUpdateReader is a Reader for the AzureUpdate structure.
@@ -75,7 +75,7 @@ AzureUpdateOK describes a response with status code 200, with default header val
 Success
 */
 type AzureUpdateOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure update o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AzureUpdateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *AzureUpdateOK) GetPayload() models.Unit {
+func (o *AzureUpdateOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AzureUpdateBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type AzureUpdateBadRequest struct {
-	Payload []*models.Error
+	Payload []*AzureUpdateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this azure update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AzureUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureUpdateBadRequest) GetPayload() []*models.Error {
+func (o *AzureUpdateBadRequest) GetPayload() []*AzureUpdateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AzureUpdateUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type AzureUpdateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AzureUpdateUnauthorizedBody
 }
 
 // IsSuccess returns true when this azure update unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AzureUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureUpdateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AzureUpdateUnauthorized) GetPayload() *AzureUpdateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AzureUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AzureUpdateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AzureUpdateForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type AzureUpdateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AzureUpdateForbiddenBody
 }
 
 // IsSuccess returns true when this azure update forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AzureUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureUpdateForbidden) GetPayload() *models.ProblemDetails {
+func (o *AzureUpdateForbidden) GetPayload() *AzureUpdateForbiddenBody {
 	return o.Payload
 }
 
 func (o *AzureUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AzureUpdateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AzureUpdateNotFound describes a response with status code 404, with default head
 Not Found
 */
 type AzureUpdateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AzureUpdateNotFoundBody
 }
 
 // IsSuccess returns true when this azure update not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AzureUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureUpdateNotFound) GetPayload() *models.ProblemDetails {
+func (o *AzureUpdateNotFound) GetPayload() *AzureUpdateNotFoundBody {
 	return o.Payload
 }
 
 func (o *AzureUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AzureUpdateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,243 @@ func (o *AzureUpdateInternalServerError) String() string {
 
 func (o *AzureUpdateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AzureUpdateBadRequestBodyItems0 azure update bad request body items0
+swagger:model AzureUpdateBadRequestBodyItems0
+*/
+type AzureUpdateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this azure update bad request body items0
+func (o *AzureUpdateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure update bad request body items0 based on context it is used
+func (o *AzureUpdateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureUpdateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureUpdateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AzureUpdateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureUpdateBody azure update body
+swagger:model AzureUpdateBody
+*/
+type AzureUpdateBody struct {
+
+	// azure client Id
+	AzureClientID string `json:"azureClientId,omitempty"`
+
+	// azure client secret
+	AzureClientSecret string `json:"azureClientSecret,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this azure update body
+func (o *AzureUpdateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure update body based on context it is used
+func (o *AzureUpdateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureUpdateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureUpdateBody) UnmarshalBinary(b []byte) error {
+	var res AzureUpdateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureUpdateForbiddenBody azure update forbidden body
+swagger:model AzureUpdateForbiddenBody
+*/
+type AzureUpdateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this azure update forbidden body
+func (o *AzureUpdateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure update forbidden body based on context it is used
+func (o *AzureUpdateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureUpdateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureUpdateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AzureUpdateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureUpdateNotFoundBody azure update not found body
+swagger:model AzureUpdateNotFoundBody
+*/
+type AzureUpdateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this azure update not found body
+func (o *AzureUpdateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure update not found body based on context it is used
+func (o *AzureUpdateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureUpdateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureUpdateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AzureUpdateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureUpdateUnauthorizedBody azure update unauthorized body
+swagger:model AzureUpdateUnauthorizedBody
+*/
+type AzureUpdateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this azure update unauthorized body
+func (o *AzureUpdateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure update unauthorized body based on context it is used
+func (o *AzureUpdateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureUpdateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureUpdateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AzureUpdateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

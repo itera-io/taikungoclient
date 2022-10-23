@@ -6,13 +6,13 @@ package azure
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AzureDashboardReader is a Reader for the AzureDashboard structure.
@@ -75,7 +75,7 @@ AzureDashboardOK describes a response with status code 200, with default header 
 Success
 */
 type AzureDashboardOK struct {
-	Payload []*models.AzureQuotaListRecordDto
+	Payload []*AzureDashboardOKBodyItems0
 }
 
 // IsSuccess returns true when this azure dashboard o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AzureDashboardOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardOK  %+v", 200, o.Payload)
 }
 
-func (o *AzureDashboardOK) GetPayload() []*models.AzureQuotaListRecordDto {
+func (o *AzureDashboardOK) GetPayload() []*AzureDashboardOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AzureDashboardBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AzureDashboardBadRequest struct {
-	Payload []*models.Error
+	Payload []*AzureDashboardBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this azure dashboard bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AzureDashboardBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureDashboardBadRequest) GetPayload() []*models.Error {
+func (o *AzureDashboardBadRequest) GetPayload() []*AzureDashboardBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AzureDashboardUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type AzureDashboardUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AzureDashboardUnauthorizedBody
 }
 
 // IsSuccess returns true when this azure dashboard unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AzureDashboardUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureDashboardUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AzureDashboardUnauthorized) GetPayload() *AzureDashboardUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AzureDashboardUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AzureDashboardUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AzureDashboardForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type AzureDashboardForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AzureDashboardForbiddenBody
 }
 
 // IsSuccess returns true when this azure dashboard forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AzureDashboardForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureDashboardForbidden) GetPayload() *models.ProblemDetails {
+func (o *AzureDashboardForbidden) GetPayload() *AzureDashboardForbiddenBody {
 	return o.Payload
 }
 
 func (o *AzureDashboardForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AzureDashboardForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AzureDashboardNotFound describes a response with status code 404, with default h
 Not Found
 */
 type AzureDashboardNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AzureDashboardNotFoundBody
 }
 
 // IsSuccess returns true when this azure dashboard not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AzureDashboardNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureDashboardNotFound) GetPayload() *models.ProblemDetails {
+func (o *AzureDashboardNotFound) GetPayload() *AzureDashboardNotFoundBody {
 	return o.Payload
 }
 
 func (o *AzureDashboardNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AzureDashboardNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,281 @@ func (o *AzureDashboardInternalServerError) String() string {
 
 func (o *AzureDashboardInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AzureDashboardBadRequestBodyItems0 azure dashboard bad request body items0
+swagger:model AzureDashboardBadRequestBodyItems0
+*/
+type AzureDashboardBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this azure dashboard bad request body items0
+func (o *AzureDashboardBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure dashboard bad request body items0 based on context it is used
+func (o *AzureDashboardBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureDashboardBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureDashboardBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AzureDashboardBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureDashboardBody azure dashboard body
+swagger:model AzureDashboardBody
+*/
+type AzureDashboardBody struct {
+
+	// cloud Id
+	CloudID int32 `json:"cloudId,omitempty"`
+
+	// filter by
+	FilterBy string `json:"filterBy,omitempty"`
+}
+
+// Validate validates this azure dashboard body
+func (o *AzureDashboardBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure dashboard body based on context it is used
+func (o *AzureDashboardBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureDashboardBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureDashboardBody) UnmarshalBinary(b []byte) error {
+	var res AzureDashboardBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureDashboardForbiddenBody azure dashboard forbidden body
+swagger:model AzureDashboardForbiddenBody
+*/
+type AzureDashboardForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this azure dashboard forbidden body
+func (o *AzureDashboardForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure dashboard forbidden body based on context it is used
+func (o *AzureDashboardForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureDashboardForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureDashboardForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AzureDashboardForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureDashboardNotFoundBody azure dashboard not found body
+swagger:model AzureDashboardNotFoundBody
+*/
+type AzureDashboardNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this azure dashboard not found body
+func (o *AzureDashboardNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure dashboard not found body based on context it is used
+func (o *AzureDashboardNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureDashboardNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureDashboardNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AzureDashboardNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureDashboardOKBodyItems0 azure dashboard o k body items0
+swagger:model AzureDashboardOKBodyItems0
+*/
+type AzureDashboardOKBodyItems0 struct {
+
+	// current usage
+	CurrentUsage int32 `json:"currentUsage,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// total cores
+	TotalCores int64 `json:"totalCores,omitempty"`
+}
+
+// Validate validates this azure dashboard o k body items0
+func (o *AzureDashboardOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure dashboard o k body items0 based on context it is used
+func (o *AzureDashboardOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureDashboardOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureDashboardOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AzureDashboardOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AzureDashboardUnauthorizedBody azure dashboard unauthorized body
+swagger:model AzureDashboardUnauthorizedBody
+*/
+type AzureDashboardUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this azure dashboard unauthorized body
+func (o *AzureDashboardUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this azure dashboard unauthorized body based on context it is used
+func (o *AzureDashboardUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AzureDashboardUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AzureDashboardUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AzureDashboardUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

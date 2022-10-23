@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesPatchPdbReader is a Reader for the KubernetesPatchPdb structure.
@@ -75,7 +75,7 @@ KubernetesPatchPdbOK describes a response with status code 200, with default hea
 Success
 */
 type KubernetesPatchPdbOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch pdb o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KubernetesPatchPdbOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesPatchPdbOK) GetPayload() models.Unit {
+func (o *KubernetesPatchPdbOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KubernetesPatchPdbBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubernetesPatchPdbBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesPatchPdbBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes patch pdb bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesPatchPdbBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchPdbBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesPatchPdbBadRequest) GetPayload() []*KubernetesPatchPdbBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesPatchPdbUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubernetesPatchPdbUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesPatchPdbUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes patch pdb unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesPatchPdbUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchPdbUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchPdbUnauthorized) GetPayload() *KubernetesPatchPdbUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesPatchPdbUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesPatchPdbUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesPatchPdbForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubernetesPatchPdbForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesPatchPdbForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes patch pdb forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesPatchPdbForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchPdbForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchPdbForbidden) GetPayload() *KubernetesPatchPdbForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesPatchPdbForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesPatchPdbForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesPatchPdbNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubernetesPatchPdbNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesPatchPdbNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes patch pdb not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesPatchPdbNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchPdbNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchPdbNotFound) GetPayload() *KubernetesPatchPdbNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesPatchPdbNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesPatchPdbNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,243 @@ func (o *KubernetesPatchPdbInternalServerError) String() string {
 
 func (o *KubernetesPatchPdbInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesPatchPdbBadRequestBodyItems0 kubernetes patch pdb bad request body items0
+swagger:model KubernetesPatchPdbBadRequestBodyItems0
+*/
+type KubernetesPatchPdbBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes patch pdb bad request body items0
+func (o *KubernetesPatchPdbBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch pdb bad request body items0 based on context it is used
+func (o *KubernetesPatchPdbBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchPdbBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchPdbBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchPdbBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchPdbBody kubernetes patch pdb body
+swagger:model KubernetesPatchPdbBody
+*/
+type KubernetesPatchPdbBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// yaml
+	Yaml string `json:"yaml,omitempty"`
+}
+
+// Validate validates this kubernetes patch pdb body
+func (o *KubernetesPatchPdbBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch pdb body based on context it is used
+func (o *KubernetesPatchPdbBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchPdbBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchPdbBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchPdbBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchPdbForbiddenBody kubernetes patch pdb forbidden body
+swagger:model KubernetesPatchPdbForbiddenBody
+*/
+type KubernetesPatchPdbForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes patch pdb forbidden body
+func (o *KubernetesPatchPdbForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch pdb forbidden body based on context it is used
+func (o *KubernetesPatchPdbForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchPdbForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchPdbForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchPdbForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchPdbNotFoundBody kubernetes patch pdb not found body
+swagger:model KubernetesPatchPdbNotFoundBody
+*/
+type KubernetesPatchPdbNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes patch pdb not found body
+func (o *KubernetesPatchPdbNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch pdb not found body based on context it is used
+func (o *KubernetesPatchPdbNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchPdbNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchPdbNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchPdbNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchPdbUnauthorizedBody kubernetes patch pdb unauthorized body
+swagger:model KubernetesPatchPdbUnauthorizedBody
+*/
+type KubernetesPatchPdbUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes patch pdb unauthorized body
+func (o *KubernetesPatchPdbUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch pdb unauthorized body based on context it is used
+func (o *KubernetesPatchPdbUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchPdbUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchPdbUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchPdbUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

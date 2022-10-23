@@ -6,13 +6,15 @@ package search
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SearchPersistenceVolumeClaimListReader is a Reader for the SearchPersistenceVolumeClaimList structure.
@@ -75,7 +77,7 @@ SearchPersistenceVolumeClaimListOK describes a response with status code 200, wi
 Success
 */
 type SearchPersistenceVolumeClaimListOK struct {
-	Payload *models.PvcSearchList
+	Payload *SearchPersistenceVolumeClaimListOKBody
 }
 
 // IsSuccess returns true when this search persistence volume claim list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *SearchPersistenceVolumeClaimListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListOK  %+v", 200, o.Payload)
 }
 
-func (o *SearchPersistenceVolumeClaimListOK) GetPayload() *models.PvcSearchList {
+func (o *SearchPersistenceVolumeClaimListOK) GetPayload() *SearchPersistenceVolumeClaimListOKBody {
 	return o.Payload
 }
 
 func (o *SearchPersistenceVolumeClaimListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PvcSearchList)
+	o.Payload = new(SearchPersistenceVolumeClaimListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ SearchPersistenceVolumeClaimListBadRequest describes a response with status code
 Bad Request
 */
 type SearchPersistenceVolumeClaimListBadRequest struct {
-	Payload []*models.Error
+	Payload []*SearchPersistenceVolumeClaimListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this search persistence volume claim list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *SearchPersistenceVolumeClaimListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchPersistenceVolumeClaimListBadRequest) GetPayload() []*models.Error {
+func (o *SearchPersistenceVolumeClaimListBadRequest) GetPayload() []*SearchPersistenceVolumeClaimListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ SearchPersistenceVolumeClaimListUnauthorized describes a response with status co
 Unauthorized
 */
 type SearchPersistenceVolumeClaimListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SearchPersistenceVolumeClaimListUnauthorizedBody
 }
 
 // IsSuccess returns true when this search persistence volume claim list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *SearchPersistenceVolumeClaimListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchPersistenceVolumeClaimListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchPersistenceVolumeClaimListUnauthorized) GetPayload() *SearchPersistenceVolumeClaimListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SearchPersistenceVolumeClaimListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchPersistenceVolumeClaimListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ SearchPersistenceVolumeClaimListForbidden describes a response with status code 
 Forbidden
 */
 type SearchPersistenceVolumeClaimListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SearchPersistenceVolumeClaimListForbiddenBody
 }
 
 // IsSuccess returns true when this search persistence volume claim list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *SearchPersistenceVolumeClaimListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchPersistenceVolumeClaimListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchPersistenceVolumeClaimListForbidden) GetPayload() *SearchPersistenceVolumeClaimListForbiddenBody {
 	return o.Payload
 }
 
 func (o *SearchPersistenceVolumeClaimListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchPersistenceVolumeClaimListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ SearchPersistenceVolumeClaimListNotFound describes a response with status code 4
 Not Found
 */
 type SearchPersistenceVolumeClaimListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SearchPersistenceVolumeClaimListNotFoundBody
 }
 
 // IsSuccess returns true when this search persistence volume claim list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *SearchPersistenceVolumeClaimListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchPersistenceVolumeClaimListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchPersistenceVolumeClaimListNotFound) GetPayload() *SearchPersistenceVolumeClaimListNotFoundBody {
 	return o.Payload
 }
 
 func (o *SearchPersistenceVolumeClaimListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchPersistenceVolumeClaimListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,398 @@ func (o *SearchPersistenceVolumeClaimListInternalServerError) String() string {
 
 func (o *SearchPersistenceVolumeClaimListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SearchPersistenceVolumeClaimListBadRequestBodyItems0 search persistence volume claim list bad request body items0
+swagger:model SearchPersistenceVolumeClaimListBadRequestBodyItems0
+*/
+type SearchPersistenceVolumeClaimListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this search persistence volume claim list bad request body items0
+func (o *SearchPersistenceVolumeClaimListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search persistence volume claim list bad request body items0 based on context it is used
+func (o *SearchPersistenceVolumeClaimListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPersistenceVolumeClaimListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPersistenceVolumeClaimListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SearchPersistenceVolumeClaimListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPersistenceVolumeClaimListBody search persistence volume claim list body
+swagger:model SearchPersistenceVolumeClaimListBody
+*/
+type SearchPersistenceVolumeClaimListBody struct {
+
+	// limit
+	Limit int32 `json:"limit,omitempty"`
+
+	// offset
+	Offset int32 `json:"offset,omitempty"`
+
+	// search term
+	SearchTerm string `json:"searchTerm,omitempty"`
+}
+
+// Validate validates this search persistence volume claim list body
+func (o *SearchPersistenceVolumeClaimListBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search persistence volume claim list body based on context it is used
+func (o *SearchPersistenceVolumeClaimListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPersistenceVolumeClaimListBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPersistenceVolumeClaimListBody) UnmarshalBinary(b []byte) error {
+	var res SearchPersistenceVolumeClaimListBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPersistenceVolumeClaimListForbiddenBody search persistence volume claim list forbidden body
+swagger:model SearchPersistenceVolumeClaimListForbiddenBody
+*/
+type SearchPersistenceVolumeClaimListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search persistence volume claim list forbidden body
+func (o *SearchPersistenceVolumeClaimListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search persistence volume claim list forbidden body based on context it is used
+func (o *SearchPersistenceVolumeClaimListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPersistenceVolumeClaimListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPersistenceVolumeClaimListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SearchPersistenceVolumeClaimListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPersistenceVolumeClaimListNotFoundBody search persistence volume claim list not found body
+swagger:model SearchPersistenceVolumeClaimListNotFoundBody
+*/
+type SearchPersistenceVolumeClaimListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search persistence volume claim list not found body
+func (o *SearchPersistenceVolumeClaimListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search persistence volume claim list not found body based on context it is used
+func (o *SearchPersistenceVolumeClaimListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPersistenceVolumeClaimListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPersistenceVolumeClaimListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SearchPersistenceVolumeClaimListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPersistenceVolumeClaimListOKBody search persistence volume claim list o k body
+swagger:model SearchPersistenceVolumeClaimListOKBody
+*/
+type SearchPersistenceVolumeClaimListOKBody struct {
+
+	// data
+	Data []*SearchPersistenceVolumeClaimListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this search persistence volume claim list o k body
+func (o *SearchPersistenceVolumeClaimListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchPersistenceVolumeClaimListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchPersistenceVolumeClaimListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchPersistenceVolumeClaimListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this search persistence volume claim list o k body based on the context it is used
+func (o *SearchPersistenceVolumeClaimListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchPersistenceVolumeClaimListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchPersistenceVolumeClaimListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchPersistenceVolumeClaimListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPersistenceVolumeClaimListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPersistenceVolumeClaimListOKBody) UnmarshalBinary(b []byte) error {
+	var res SearchPersistenceVolumeClaimListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPersistenceVolumeClaimListOKBodyDataItems0 search persistence volume claim list o k body data items0
+swagger:model SearchPersistenceVolumeClaimListOKBodyDataItems0
+*/
+type SearchPersistenceVolumeClaimListOKBodyDataItems0 struct {
+
+	// metadata name
+	MetadataName string `json:"metadataName,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this search persistence volume claim list o k body data items0
+func (o *SearchPersistenceVolumeClaimListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search persistence volume claim list o k body data items0 based on context it is used
+func (o *SearchPersistenceVolumeClaimListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPersistenceVolumeClaimListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPersistenceVolumeClaimListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res SearchPersistenceVolumeClaimListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchPersistenceVolumeClaimListUnauthorizedBody search persistence volume claim list unauthorized body
+swagger:model SearchPersistenceVolumeClaimListUnauthorizedBody
+*/
+type SearchPersistenceVolumeClaimListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search persistence volume claim list unauthorized body
+func (o *SearchPersistenceVolumeClaimListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search persistence volume claim list unauthorized body based on context it is used
+func (o *SearchPersistenceVolumeClaimListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchPersistenceVolumeClaimListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchPersistenceVolumeClaimListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SearchPersistenceVolumeClaimListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

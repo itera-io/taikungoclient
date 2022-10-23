@@ -6,13 +6,13 @@ package project_revisions
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ProjectRevisionsEditReader is a Reader for the ProjectRevisionsEdit structure.
@@ -75,7 +75,7 @@ ProjectRevisionsEditOK describes a response with status code 200, with default h
 Success
 */
 type ProjectRevisionsEditOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project revisions edit o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectRevisionsEditOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectRevisionsEditOK) GetPayload() models.Unit {
+func (o *ProjectRevisionsEditOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectRevisionsEditBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type ProjectRevisionsEditBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectRevisionsEditBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this project revisions edit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectRevisionsEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectRevisionsEditBadRequest) GetPayload() []*models.Error {
+func (o *ProjectRevisionsEditBadRequest) GetPayload() []*ProjectRevisionsEditBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectRevisionsEditUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type ProjectRevisionsEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectRevisionsEditUnauthorizedBody
 }
 
 // IsSuccess returns true when this project revisions edit unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectRevisionsEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectRevisionsEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectRevisionsEditUnauthorized) GetPayload() *ProjectRevisionsEditUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectRevisionsEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectRevisionsEditUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectRevisionsEditForbidden describes a response with status code 403, with de
 Forbidden
 */
 type ProjectRevisionsEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectRevisionsEditForbiddenBody
 }
 
 // IsSuccess returns true when this project revisions edit forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectRevisionsEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectRevisionsEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectRevisionsEditForbidden) GetPayload() *ProjectRevisionsEditForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectRevisionsEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectRevisionsEditForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectRevisionsEditNotFound describes a response with status code 404, with def
 Not Found
 */
 type ProjectRevisionsEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectRevisionsEditNotFoundBody
 }
 
 // IsSuccess returns true when this project revisions edit not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectRevisionsEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectRevisionsEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectRevisionsEditNotFound) GetPayload() *ProjectRevisionsEditNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectRevisionsEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectRevisionsEditNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *ProjectRevisionsEditInternalServerError) String() string {
 
 func (o *ProjectRevisionsEditInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectRevisionsEditBadRequestBodyItems0 project revisions edit bad request body items0
+swagger:model ProjectRevisionsEditBadRequestBodyItems0
+*/
+type ProjectRevisionsEditBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this project revisions edit bad request body items0
+func (o *ProjectRevisionsEditBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project revisions edit bad request body items0 based on context it is used
+func (o *ProjectRevisionsEditBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectRevisionsEditBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectRevisionsEditBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectRevisionsEditBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectRevisionsEditBody project revisions edit body
+swagger:model ProjectRevisionsEditBody
+*/
+type ProjectRevisionsEditBody struct {
+
+	// access profile revision
+	AccessProfileRevision int32 `json:"accessProfileRevision,omitempty"`
+
+	// cloud credential revision
+	CloudCredentialRevision int32 `json:"cloudCredentialRevision,omitempty"`
+
+	// opa profile revision
+	OpaProfileRevision int32 `json:"opaProfileRevision,omitempty"`
+}
+
+// Validate validates this project revisions edit body
+func (o *ProjectRevisionsEditBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project revisions edit body based on context it is used
+func (o *ProjectRevisionsEditBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectRevisionsEditBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectRevisionsEditBody) UnmarshalBinary(b []byte) error {
+	var res ProjectRevisionsEditBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectRevisionsEditForbiddenBody project revisions edit forbidden body
+swagger:model ProjectRevisionsEditForbiddenBody
+*/
+type ProjectRevisionsEditForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project revisions edit forbidden body
+func (o *ProjectRevisionsEditForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project revisions edit forbidden body based on context it is used
+func (o *ProjectRevisionsEditForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectRevisionsEditForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectRevisionsEditForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectRevisionsEditForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectRevisionsEditNotFoundBody project revisions edit not found body
+swagger:model ProjectRevisionsEditNotFoundBody
+*/
+type ProjectRevisionsEditNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project revisions edit not found body
+func (o *ProjectRevisionsEditNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project revisions edit not found body based on context it is used
+func (o *ProjectRevisionsEditNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectRevisionsEditNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectRevisionsEditNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectRevisionsEditNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectRevisionsEditUnauthorizedBody project revisions edit unauthorized body
+swagger:model ProjectRevisionsEditUnauthorizedBody
+*/
+type ProjectRevisionsEditUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project revisions edit unauthorized body
+func (o *ProjectRevisionsEditUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project revisions edit unauthorized body based on context it is used
+func (o *ProjectRevisionsEditUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectRevisionsEditUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectRevisionsEditUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectRevisionsEditUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

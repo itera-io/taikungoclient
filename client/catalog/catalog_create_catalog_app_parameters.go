@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCatalogCreateCatalogAppParams creates a new CatalogCreateCatalogAppParams object,
@@ -64,7 +62,7 @@ CatalogCreateCatalogAppParams contains all the parameters to send to the API end
 type CatalogCreateCatalogAppParams struct {
 
 	// Body.
-	Body *models.CreateCatalogAppCommand
+	Body CatalogCreateCatalogAppBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *CatalogCreateCatalogAppParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the catalog create catalog app params
-func (o *CatalogCreateCatalogAppParams) WithBody(body *models.CreateCatalogAppCommand) *CatalogCreateCatalogAppParams {
+func (o *CatalogCreateCatalogAppParams) WithBody(body CatalogCreateCatalogAppBody) *CatalogCreateCatalogAppParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the catalog create catalog app params
-func (o *CatalogCreateCatalogAppParams) SetBody(body *models.CreateCatalogAppCommand) {
+func (o *CatalogCreateCatalogAppParams) SetBody(body CatalogCreateCatalogAppBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *CatalogCreateCatalogAppParams) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

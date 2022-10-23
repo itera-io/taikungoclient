@@ -20,7 +20,7 @@ import (
 type GoogleFlavorList struct {
 
 	// data
-	Data []*GoogleFlavorDto `json:"data"`
+	Data []*GoogleFlavorListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,64 @@ func (m *GoogleFlavorList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *GoogleFlavorList) UnmarshalBinary(b []byte) error {
 	var res GoogleFlavorList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// GoogleFlavorListDataItems0 google flavor list data items0
+//
+// swagger:model GoogleFlavorListDataItems0
+type GoogleFlavorListDataItems0 struct {
+
+	// cpu
+	CPU int32 `json:"cpu,omitempty"`
+
+	// description
+	Description interface{} `json:"description,omitempty"`
+
+	// linux price
+	LinuxPrice string `json:"linuxPrice,omitempty"`
+
+	// linux spot price
+	LinuxSpotPrice string `json:"linuxSpotPrice,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// ram
+	RAM int64 `json:"ram,omitempty"`
+
+	// windows price
+	WindowsPrice string `json:"windowsPrice,omitempty"`
+
+	// windows spot price
+	WindowsSpotPrice string `json:"windowsSpotPrice,omitempty"`
+}
+
+// Validate validates this google flavor list data items0
+func (m *GoogleFlavorListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google flavor list data items0 based on context it is used
+func (m *GoogleFlavorListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *GoogleFlavorListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *GoogleFlavorListDataItems0) UnmarshalBinary(b []byte) error {
+	var res GoogleFlavorListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

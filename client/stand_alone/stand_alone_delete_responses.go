@@ -6,13 +6,13 @@ package stand_alone
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // StandAloneDeleteReader is a Reader for the StandAloneDelete structure.
@@ -75,7 +75,7 @@ StandAloneDeleteOK describes a response with status code 200, with default heade
 Success
 */
 type StandAloneDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone delete o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneDeleteOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/delete][%d] standAloneDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneDeleteOK) GetPayload() models.Unit {
+func (o *StandAloneDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type StandAloneDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*StandAloneDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this stand alone delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/delete][%d] standAloneDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneDeleteBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneDeleteBadRequest) GetPayload() []*StandAloneDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneDeleteUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type StandAloneDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this stand alone delete unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/delete][%d] standAloneDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneDeleteUnauthorized) GetPayload() *StandAloneDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *StandAloneDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneDeleteForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type StandAloneDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this stand alone delete forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/delete][%d] standAloneDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneDeleteForbidden) GetPayload() *StandAloneDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *StandAloneDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneDeleteNotFound describes a response with status code 404, with default
 Not Found
 */
 type StandAloneDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this stand alone delete not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/delete][%d] standAloneDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneDeleteNotFound) GetPayload() *StandAloneDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *StandAloneDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *StandAloneDeleteInternalServerError) String() string {
 
 func (o *StandAloneDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+StandAloneDeleteBadRequestBodyItems0 stand alone delete bad request body items0
+swagger:model StandAloneDeleteBadRequestBodyItems0
+*/
+type StandAloneDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this stand alone delete bad request body items0
+func (o *StandAloneDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone delete bad request body items0 based on context it is used
+func (o *StandAloneDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneDeleteBody stand alone delete body
+swagger:model StandAloneDeleteBody
+*/
+type StandAloneDeleteBody struct {
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// vm ids
+	VMIds []int32 `json:"vmIds"`
+}
+
+// Validate validates this stand alone delete body
+func (o *StandAloneDeleteBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone delete body based on context it is used
+func (o *StandAloneDeleteBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneDeleteBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneDeleteBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneDeleteBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneDeleteForbiddenBody stand alone delete forbidden body
+swagger:model StandAloneDeleteForbiddenBody
+*/
+type StandAloneDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone delete forbidden body
+func (o *StandAloneDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone delete forbidden body based on context it is used
+func (o *StandAloneDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneDeleteNotFoundBody stand alone delete not found body
+swagger:model StandAloneDeleteNotFoundBody
+*/
+type StandAloneDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone delete not found body
+func (o *StandAloneDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone delete not found body based on context it is used
+func (o *StandAloneDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneDeleteUnauthorizedBody stand alone delete unauthorized body
+swagger:model StandAloneDeleteUnauthorizedBody
+*/
+type StandAloneDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone delete unauthorized body
+func (o *StandAloneDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone delete unauthorized body based on context it is used
+func (o *StandAloneDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

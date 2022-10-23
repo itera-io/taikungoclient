@@ -6,13 +6,13 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ProjectsListSelectorReader is a Reader for the ProjectsListSelector structure.
@@ -75,7 +75,7 @@ ProjectsListSelectorOK describes a response with status code 200, with default h
 Success
 */
 type ProjectsListSelectorOK struct {
-	Payload []*models.ProjectEntity
+	Payload []*ProjectsListSelectorOKBodyItems0
 }
 
 // IsSuccess returns true when this projects list selector o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectsListSelectorOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsListSelectorOK) GetPayload() []*models.ProjectEntity {
+func (o *ProjectsListSelectorOK) GetPayload() []*ProjectsListSelectorOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectsListSelectorBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type ProjectsListSelectorBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectsListSelectorBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this projects list selector bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsListSelectorBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsListSelectorBadRequest) GetPayload() []*models.Error {
+func (o *ProjectsListSelectorBadRequest) GetPayload() []*ProjectsListSelectorBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectsListSelectorUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type ProjectsListSelectorUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsListSelectorUnauthorizedBody
 }
 
 // IsSuccess returns true when this projects list selector unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectsListSelectorUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsListSelectorUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsListSelectorUnauthorized) GetPayload() *ProjectsListSelectorUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectsListSelectorUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsListSelectorUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectsListSelectorForbidden describes a response with status code 403, with de
 Forbidden
 */
 type ProjectsListSelectorForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsListSelectorForbiddenBody
 }
 
 // IsSuccess returns true when this projects list selector forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectsListSelectorForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsListSelectorForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsListSelectorForbidden) GetPayload() *ProjectsListSelectorForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectsListSelectorForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsListSelectorForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectsListSelectorNotFound describes a response with status code 404, with def
 Not Found
 */
 type ProjectsListSelectorNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsListSelectorNotFoundBody
 }
 
 // IsSuccess returns true when this projects list selector not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectsListSelectorNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsListSelectorNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsListSelectorNotFound) GetPayload() *ProjectsListSelectorNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectsListSelectorNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsListSelectorNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *ProjectsListSelectorInternalServerError) String() string {
 
 func (o *ProjectsListSelectorInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectsListSelectorBadRequestBodyItems0 projects list selector bad request body items0
+swagger:model ProjectsListSelectorBadRequestBodyItems0
+*/
+type ProjectsListSelectorBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this projects list selector bad request body items0
+func (o *ProjectsListSelectorBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list selector bad request body items0 based on context it is used
+func (o *ProjectsListSelectorBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListSelectorBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListSelectorBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsListSelectorBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListSelectorForbiddenBody projects list selector forbidden body
+swagger:model ProjectsListSelectorForbiddenBody
+*/
+type ProjectsListSelectorForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects list selector forbidden body
+func (o *ProjectsListSelectorForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list selector forbidden body based on context it is used
+func (o *ProjectsListSelectorForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListSelectorForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListSelectorForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsListSelectorForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListSelectorNotFoundBody projects list selector not found body
+swagger:model ProjectsListSelectorNotFoundBody
+*/
+type ProjectsListSelectorNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects list selector not found body
+func (o *ProjectsListSelectorNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list selector not found body based on context it is used
+func (o *ProjectsListSelectorNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListSelectorNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListSelectorNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsListSelectorNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListSelectorOKBodyItems0 projects list selector o k body items0
+swagger:model ProjectsListSelectorOKBodyItems0
+*/
+type ProjectsListSelectorOKBodyItems0 struct {
+
+	// has kube config file
+	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this projects list selector o k body items0
+func (o *ProjectsListSelectorOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list selector o k body items0 based on context it is used
+func (o *ProjectsListSelectorOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListSelectorOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListSelectorOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsListSelectorOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListSelectorUnauthorizedBody projects list selector unauthorized body
+swagger:model ProjectsListSelectorUnauthorizedBody
+*/
+type ProjectsListSelectorUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects list selector unauthorized body
+func (o *ProjectsListSelectorUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list selector unauthorized body based on context it is used
+func (o *ProjectsListSelectorUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListSelectorUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListSelectorUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsListSelectorUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

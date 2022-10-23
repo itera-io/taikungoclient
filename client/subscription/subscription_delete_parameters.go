@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSubscriptionDeleteParams creates a new SubscriptionDeleteParams object,
@@ -64,7 +62,7 @@ SubscriptionDeleteParams contains all the parameters to send to the API endpoint
 type SubscriptionDeleteParams struct {
 
 	// Body.
-	Body *models.DeleteSubscriptionCommand
+	Body SubscriptionDeleteBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *SubscriptionDeleteParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the subscription delete params
-func (o *SubscriptionDeleteParams) WithBody(body *models.DeleteSubscriptionCommand) *SubscriptionDeleteParams {
+func (o *SubscriptionDeleteParams) WithBody(body SubscriptionDeleteBody) *SubscriptionDeleteParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the subscription delete params
-func (o *SubscriptionDeleteParams) SetBody(body *models.DeleteSubscriptionCommand) {
+func (o *SubscriptionDeleteParams) SetBody(body SubscriptionDeleteBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *SubscriptionDeleteParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

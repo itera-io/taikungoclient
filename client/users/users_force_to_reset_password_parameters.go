@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewUsersForceToResetPasswordParams creates a new UsersForceToResetPasswordParams object,
@@ -67,7 +65,7 @@ type UsersForceToResetPasswordParams struct {
 
 	   Command
 	*/
-	Body *models.ForceToResetPasswordCommand
+	Body UsersForceToResetPasswordBody
 
 	// V.
 	V string
@@ -126,13 +124,13 @@ func (o *UsersForceToResetPasswordParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the users force to reset password params
-func (o *UsersForceToResetPasswordParams) WithBody(body *models.ForceToResetPasswordCommand) *UsersForceToResetPasswordParams {
+func (o *UsersForceToResetPasswordParams) WithBody(body UsersForceToResetPasswordBody) *UsersForceToResetPasswordParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the users force to reset password params
-func (o *UsersForceToResetPasswordParams) SetBody(body *models.ForceToResetPasswordCommand) {
+func (o *UsersForceToResetPasswordParams) SetBody(body UsersForceToResetPasswordBody) {
 	o.Body = body
 }
 
@@ -154,10 +152,8 @@ func (o *UsersForceToResetPasswordParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

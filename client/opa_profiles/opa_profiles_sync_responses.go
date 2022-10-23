@@ -6,13 +6,13 @@ package opa_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // OpaProfilesSyncReader is a Reader for the OpaProfilesSync structure.
@@ -75,7 +75,7 @@ OpaProfilesSyncOK describes a response with status code 200, with default header
 Success
 */
 type OpaProfilesSyncOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles sync o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OpaProfilesSyncOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncOK  %+v", 200, o.Payload)
 }
 
-func (o *OpaProfilesSyncOK) GetPayload() models.Unit {
+func (o *OpaProfilesSyncOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OpaProfilesSyncBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type OpaProfilesSyncBadRequest struct {
-	Payload []*models.Error
+	Payload []*OpaProfilesSyncBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this opa profiles sync bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpaProfilesSyncBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesSyncBadRequest) GetPayload() []*models.Error {
+func (o *OpaProfilesSyncBadRequest) GetPayload() []*OpaProfilesSyncBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OpaProfilesSyncUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type OpaProfilesSyncUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *OpaProfilesSyncUnauthorizedBody
 }
 
 // IsSuccess returns true when this opa profiles sync unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OpaProfilesSyncUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesSyncUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesSyncUnauthorized) GetPayload() *OpaProfilesSyncUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *OpaProfilesSyncUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpaProfilesSyncUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OpaProfilesSyncForbidden describes a response with status code 403, with default
 Forbidden
 */
 type OpaProfilesSyncForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *OpaProfilesSyncForbiddenBody
 }
 
 // IsSuccess returns true when this opa profiles sync forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OpaProfilesSyncForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesSyncForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesSyncForbidden) GetPayload() *OpaProfilesSyncForbiddenBody {
 	return o.Payload
 }
 
 func (o *OpaProfilesSyncForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpaProfilesSyncForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OpaProfilesSyncNotFound describes a response with status code 404, with default 
 Not Found
 */
 type OpaProfilesSyncNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *OpaProfilesSyncNotFoundBody
 }
 
 // IsSuccess returns true when this opa profiles sync not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OpaProfilesSyncNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesSyncNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesSyncNotFound) GetPayload() *OpaProfilesSyncNotFoundBody {
 	return o.Payload
 }
 
 func (o *OpaProfilesSyncNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpaProfilesSyncNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *OpaProfilesSyncInternalServerError) String() string {
 
 func (o *OpaProfilesSyncInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+OpaProfilesSyncBadRequestBodyItems0 opa profiles sync bad request body items0
+swagger:model OpaProfilesSyncBadRequestBodyItems0
+*/
+type OpaProfilesSyncBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this opa profiles sync bad request body items0
+func (o *OpaProfilesSyncBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles sync bad request body items0 based on context it is used
+func (o *OpaProfilesSyncBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesSyncBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesSyncBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesSyncBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesSyncBody opa profiles sync body
+swagger:model OpaProfilesSyncBody
+*/
+type OpaProfilesSyncBody struct {
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this opa profiles sync body
+func (o *OpaProfilesSyncBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles sync body based on context it is used
+func (o *OpaProfilesSyncBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesSyncBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesSyncBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesSyncBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesSyncForbiddenBody opa profiles sync forbidden body
+swagger:model OpaProfilesSyncForbiddenBody
+*/
+type OpaProfilesSyncForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this opa profiles sync forbidden body
+func (o *OpaProfilesSyncForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles sync forbidden body based on context it is used
+func (o *OpaProfilesSyncForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesSyncForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesSyncForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesSyncForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesSyncNotFoundBody opa profiles sync not found body
+swagger:model OpaProfilesSyncNotFoundBody
+*/
+type OpaProfilesSyncNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this opa profiles sync not found body
+func (o *OpaProfilesSyncNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles sync not found body based on context it is used
+func (o *OpaProfilesSyncNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesSyncNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesSyncNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesSyncNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesSyncUnauthorizedBody opa profiles sync unauthorized body
+swagger:model OpaProfilesSyncUnauthorizedBody
+*/
+type OpaProfilesSyncUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this opa profiles sync unauthorized body
+func (o *OpaProfilesSyncUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles sync unauthorized body based on context it is used
+func (o *OpaProfilesSyncUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesSyncUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesSyncUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesSyncUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

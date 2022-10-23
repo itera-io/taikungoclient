@@ -6,13 +6,13 @@ package backup
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // BackupClearProjectReader is a Reader for the BackupClearProject structure.
@@ -75,7 +75,7 @@ BackupClearProjectOK describes a response with status code 200, with default hea
 Success
 */
 type BackupClearProjectOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup clear project o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *BackupClearProjectOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectOK  %+v", 200, o.Payload)
 }
 
-func (o *BackupClearProjectOK) GetPayload() models.Unit {
+func (o *BackupClearProjectOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ BackupClearProjectBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type BackupClearProjectBadRequest struct {
-	Payload []*models.Error
+	Payload []*BackupClearProjectBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this backup clear project bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *BackupClearProjectBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupClearProjectBadRequest) GetPayload() []*models.Error {
+func (o *BackupClearProjectBadRequest) GetPayload() []*BackupClearProjectBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ BackupClearProjectUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type BackupClearProjectUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *BackupClearProjectUnauthorizedBody
 }
 
 // IsSuccess returns true when this backup clear project unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *BackupClearProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupClearProjectUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BackupClearProjectUnauthorized) GetPayload() *BackupClearProjectUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *BackupClearProjectUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BackupClearProjectUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ BackupClearProjectForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type BackupClearProjectForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *BackupClearProjectForbiddenBody
 }
 
 // IsSuccess returns true when this backup clear project forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *BackupClearProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupClearProjectForbidden) GetPayload() *models.ProblemDetails {
+func (o *BackupClearProjectForbidden) GetPayload() *BackupClearProjectForbiddenBody {
 	return o.Payload
 }
 
 func (o *BackupClearProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BackupClearProjectForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ BackupClearProjectNotFound describes a response with status code 404, with defau
 Not Found
 */
 type BackupClearProjectNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *BackupClearProjectNotFoundBody
 }
 
 // IsSuccess returns true when this backup clear project not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *BackupClearProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupClearProjectNotFound) GetPayload() *models.ProblemDetails {
+func (o *BackupClearProjectNotFound) GetPayload() *BackupClearProjectNotFoundBody {
 	return o.Payload
 }
 
 func (o *BackupClearProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BackupClearProjectNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *BackupClearProjectInternalServerError) String() string {
 
 func (o *BackupClearProjectInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+BackupClearProjectBadRequestBodyItems0 backup clear project bad request body items0
+swagger:model BackupClearProjectBadRequestBodyItems0
+*/
+type BackupClearProjectBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this backup clear project bad request body items0
+func (o *BackupClearProjectBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup clear project bad request body items0 based on context it is used
+func (o *BackupClearProjectBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupClearProjectBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupClearProjectBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res BackupClearProjectBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupClearProjectBody backup clear project body
+swagger:model BackupClearProjectBody
+*/
+type BackupClearProjectBody struct {
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this backup clear project body
+func (o *BackupClearProjectBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup clear project body based on context it is used
+func (o *BackupClearProjectBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupClearProjectBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupClearProjectBody) UnmarshalBinary(b []byte) error {
+	var res BackupClearProjectBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupClearProjectForbiddenBody backup clear project forbidden body
+swagger:model BackupClearProjectForbiddenBody
+*/
+type BackupClearProjectForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this backup clear project forbidden body
+func (o *BackupClearProjectForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup clear project forbidden body based on context it is used
+func (o *BackupClearProjectForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupClearProjectForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupClearProjectForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res BackupClearProjectForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupClearProjectNotFoundBody backup clear project not found body
+swagger:model BackupClearProjectNotFoundBody
+*/
+type BackupClearProjectNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this backup clear project not found body
+func (o *BackupClearProjectNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup clear project not found body based on context it is used
+func (o *BackupClearProjectNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupClearProjectNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupClearProjectNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res BackupClearProjectNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupClearProjectUnauthorizedBody backup clear project unauthorized body
+swagger:model BackupClearProjectUnauthorizedBody
+*/
+type BackupClearProjectUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this backup clear project unauthorized body
+func (o *BackupClearProjectUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup clear project unauthorized body based on context it is used
+func (o *BackupClearProjectUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupClearProjectUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupClearProjectUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res BackupClearProjectUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

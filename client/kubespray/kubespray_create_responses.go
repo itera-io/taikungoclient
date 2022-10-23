@@ -6,13 +6,13 @@ package kubespray
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubesprayCreateReader is a Reader for the KubesprayCreate structure.
@@ -75,7 +75,7 @@ KubesprayCreateOK describes a response with status code 200, with default header
 Success
 */
 type KubesprayCreateOK struct {
-	Payload *models.APIResponse
+	Payload *KubesprayCreateOKBody
 }
 
 // IsSuccess returns true when this kubespray create o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *KubesprayCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *KubesprayCreateOK) GetPayload() *models.APIResponse {
+func (o *KubesprayCreateOK) GetPayload() *KubesprayCreateOKBody {
 	return o.Payload
 }
 
 func (o *KubesprayCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(KubesprayCreateOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ KubesprayCreateBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type KubesprayCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubesprayCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubespray create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubesprayCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubesprayCreateBadRequest) GetPayload() []*models.Error {
+func (o *KubesprayCreateBadRequest) GetPayload() []*KubesprayCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ KubesprayCreateUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type KubesprayCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubesprayCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubespray create unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *KubesprayCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubesprayCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubesprayCreateUnauthorized) GetPayload() *KubesprayCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubesprayCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubesprayCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ KubesprayCreateForbidden describes a response with status code 403, with default
 Forbidden
 */
 type KubesprayCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubesprayCreateForbiddenBody
 }
 
 // IsSuccess returns true when this kubespray create forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *KubesprayCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubesprayCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubesprayCreateForbidden) GetPayload() *KubesprayCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubesprayCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubesprayCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ KubesprayCreateNotFound describes a response with status code 404, with default 
 Not Found
 */
 type KubesprayCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubesprayCreateNotFoundBody
 }
 
 // IsSuccess returns true when this kubespray create not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *KubesprayCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubesprayCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubesprayCreateNotFound) GetPayload() *KubesprayCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubesprayCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubesprayCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +425,287 @@ func (o *KubesprayCreateInternalServerError) String() string {
 
 func (o *KubesprayCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubesprayCreateBadRequestBodyItems0 kubespray create bad request body items0
+swagger:model KubesprayCreateBadRequestBodyItems0
+*/
+type KubesprayCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubespray create bad request body items0
+func (o *KubesprayCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubespray create bad request body items0 based on context it is used
+func (o *KubesprayCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubesprayCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubesprayCreateBody kubespray create body
+swagger:model KubesprayCreateBody
+*/
+type KubesprayCreateBody struct {
+
+	// kubernetes version
+	KubernetesVersion string `json:"kubernetesVersion,omitempty"`
+
+	// version
+	Version string `json:"version,omitempty"`
+}
+
+// Validate validates this kubespray create body
+func (o *KubesprayCreateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubespray create body based on context it is used
+func (o *KubesprayCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayCreateBody) UnmarshalBinary(b []byte) error {
+	var res KubesprayCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubesprayCreateForbiddenBody kubespray create forbidden body
+swagger:model KubesprayCreateForbiddenBody
+*/
+type KubesprayCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubespray create forbidden body
+func (o *KubesprayCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubespray create forbidden body based on context it is used
+func (o *KubesprayCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubesprayCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubesprayCreateNotFoundBody kubespray create not found body
+swagger:model KubesprayCreateNotFoundBody
+*/
+type KubesprayCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubespray create not found body
+func (o *KubesprayCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubespray create not found body based on context it is used
+func (o *KubesprayCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubesprayCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubesprayCreateOKBody kubespray create o k body
+swagger:model KubesprayCreateOKBody
+*/
+type KubesprayCreateOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this kubespray create o k body
+func (o *KubesprayCreateOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubespray create o k body based on context it is used
+func (o *KubesprayCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayCreateOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayCreateOKBody) UnmarshalBinary(b []byte) error {
+	var res KubesprayCreateOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubesprayCreateUnauthorizedBody kubespray create unauthorized body
+swagger:model KubesprayCreateUnauthorizedBody
+*/
+type KubesprayCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubespray create unauthorized body
+func (o *KubesprayCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubespray create unauthorized body based on context it is used
+func (o *KubesprayCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubesprayCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

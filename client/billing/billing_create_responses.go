@@ -6,13 +6,15 @@ package billing
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // BillingCreateReader is a Reader for the BillingCreate structure.
@@ -75,7 +77,7 @@ BillingCreateOK describes a response with status code 200, with default header v
 Success
 */
 type BillingCreateOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this billing create o k response has a 2xx status code
@@ -111,7 +113,7 @@ func (o *BillingCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *BillingCreateOK) GetPayload() models.Unit {
+func (o *BillingCreateOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +138,7 @@ BillingCreateBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type BillingCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*BillingCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this billing create bad request response has a 2xx status code
@@ -172,7 +174,7 @@ func (o *BillingCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BillingCreateBadRequest) GetPayload() []*models.Error {
+func (o *BillingCreateBadRequest) GetPayload() []*BillingCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +199,7 @@ BillingCreateUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type BillingCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *BillingCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this billing create unauthorized response has a 2xx status code
@@ -233,13 +235,13 @@ func (o *BillingCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BillingCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BillingCreateUnauthorized) GetPayload() *BillingCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *BillingCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BillingCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +262,7 @@ BillingCreateForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type BillingCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *BillingCreateForbiddenBody
 }
 
 // IsSuccess returns true when this billing create forbidden response has a 2xx status code
@@ -296,13 +298,13 @@ func (o *BillingCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BillingCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *BillingCreateForbidden) GetPayload() *BillingCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *BillingCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BillingCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +325,7 @@ BillingCreateNotFound describes a response with status code 404, with default he
 Not Found
 */
 type BillingCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *BillingCreateNotFoundBody
 }
 
 // IsSuccess returns true when this billing create not found response has a 2xx status code
@@ -359,13 +361,13 @@ func (o *BillingCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BillingCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *BillingCreateNotFound) GetPayload() *BillingCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *BillingCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BillingCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +425,262 @@ func (o *BillingCreateInternalServerError) String() string {
 
 func (o *BillingCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+BillingCreateBadRequestBodyItems0 billing create bad request body items0
+swagger:model BillingCreateBadRequestBodyItems0
+*/
+type BillingCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this billing create bad request body items0
+func (o *BillingCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this billing create bad request body items0 based on context it is used
+func (o *BillingCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BillingCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BillingCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res BillingCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BillingCreateBody billing create body
+swagger:model BillingCreateBody
+*/
+type BillingCreateBody struct {
+
+	// begin apply
+	// Format: date-time
+	BeginApply *strfmt.DateTime `json:"beginApply,omitempty"`
+
+	// icu
+	Icu int32 `json:"icu,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this billing create body
+func (o *BillingCreateBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateBeginApply(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *BillingCreateBody) validateBeginApply(formats strfmt.Registry) error {
+	if swag.IsZero(o.BeginApply) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("body"+"."+"beginApply", "body", "date-time", o.BeginApply.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this billing create body based on context it is used
+func (o *BillingCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BillingCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BillingCreateBody) UnmarshalBinary(b []byte) error {
+	var res BillingCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BillingCreateForbiddenBody billing create forbidden body
+swagger:model BillingCreateForbiddenBody
+*/
+type BillingCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this billing create forbidden body
+func (o *BillingCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this billing create forbidden body based on context it is used
+func (o *BillingCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BillingCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BillingCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res BillingCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BillingCreateNotFoundBody billing create not found body
+swagger:model BillingCreateNotFoundBody
+*/
+type BillingCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this billing create not found body
+func (o *BillingCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this billing create not found body based on context it is used
+func (o *BillingCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BillingCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BillingCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res BillingCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BillingCreateUnauthorizedBody billing create unauthorized body
+swagger:model BillingCreateUnauthorizedBody
+*/
+type BillingCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this billing create unauthorized body
+func (o *BillingCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this billing create unauthorized body based on context it is used
+func (o *BillingCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BillingCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BillingCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res BillingCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

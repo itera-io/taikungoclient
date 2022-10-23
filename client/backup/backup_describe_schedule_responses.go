@@ -6,13 +6,13 @@ package backup
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // BackupDescribeScheduleReader is a Reader for the BackupDescribeSchedule structure.
@@ -136,7 +136,7 @@ BackupDescribeScheduleBadRequest describes a response with status code 400, with
 Bad Request
 */
 type BackupDescribeScheduleBadRequest struct {
-	Payload []*models.Error
+	Payload []*BackupDescribeScheduleBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this backup describe schedule bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *BackupDescribeScheduleBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupDescribeScheduleBadRequest) GetPayload() []*models.Error {
+func (o *BackupDescribeScheduleBadRequest) GetPayload() []*BackupDescribeScheduleBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ BackupDescribeScheduleUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type BackupDescribeScheduleUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *BackupDescribeScheduleUnauthorizedBody
 }
 
 // IsSuccess returns true when this backup describe schedule unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *BackupDescribeScheduleUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupDescribeScheduleUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BackupDescribeScheduleUnauthorized) GetPayload() *BackupDescribeScheduleUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *BackupDescribeScheduleUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BackupDescribeScheduleUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ BackupDescribeScheduleForbidden describes a response with status code 403, with 
 Forbidden
 */
 type BackupDescribeScheduleForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *BackupDescribeScheduleForbiddenBody
 }
 
 // IsSuccess returns true when this backup describe schedule forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *BackupDescribeScheduleForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupDescribeScheduleForbidden) GetPayload() *models.ProblemDetails {
+func (o *BackupDescribeScheduleForbidden) GetPayload() *BackupDescribeScheduleForbiddenBody {
 	return o.Payload
 }
 
 func (o *BackupDescribeScheduleForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BackupDescribeScheduleForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ BackupDescribeScheduleNotFound describes a response with status code 404, with d
 Not Found
 */
 type BackupDescribeScheduleNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *BackupDescribeScheduleNotFoundBody
 }
 
 // IsSuccess returns true when this backup describe schedule not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *BackupDescribeScheduleNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupDescribeScheduleNotFound) GetPayload() *models.ProblemDetails {
+func (o *BackupDescribeScheduleNotFound) GetPayload() *BackupDescribeScheduleNotFoundBody {
 	return o.Payload
 }
 
 func (o *BackupDescribeScheduleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BackupDescribeScheduleNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *BackupDescribeScheduleInternalServerError) String() string {
 
 func (o *BackupDescribeScheduleInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+BackupDescribeScheduleBadRequestBodyItems0 backup describe schedule bad request body items0
+swagger:model BackupDescribeScheduleBadRequestBodyItems0
+*/
+type BackupDescribeScheduleBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this backup describe schedule bad request body items0
+func (o *BackupDescribeScheduleBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup describe schedule bad request body items0 based on context it is used
+func (o *BackupDescribeScheduleBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupDescribeScheduleBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupDescribeScheduleBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res BackupDescribeScheduleBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupDescribeScheduleForbiddenBody backup describe schedule forbidden body
+swagger:model BackupDescribeScheduleForbiddenBody
+*/
+type BackupDescribeScheduleForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this backup describe schedule forbidden body
+func (o *BackupDescribeScheduleForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup describe schedule forbidden body based on context it is used
+func (o *BackupDescribeScheduleForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupDescribeScheduleForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupDescribeScheduleForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res BackupDescribeScheduleForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupDescribeScheduleNotFoundBody backup describe schedule not found body
+swagger:model BackupDescribeScheduleNotFoundBody
+*/
+type BackupDescribeScheduleNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this backup describe schedule not found body
+func (o *BackupDescribeScheduleNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup describe schedule not found body based on context it is used
+func (o *BackupDescribeScheduleNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupDescribeScheduleNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupDescribeScheduleNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res BackupDescribeScheduleNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupDescribeScheduleUnauthorizedBody backup describe schedule unauthorized body
+swagger:model BackupDescribeScheduleUnauthorizedBody
+*/
+type BackupDescribeScheduleUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this backup describe schedule unauthorized body
+func (o *BackupDescribeScheduleUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup describe schedule unauthorized body based on context it is used
+func (o *BackupDescribeScheduleUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupDescribeScheduleUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupDescribeScheduleUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res BackupDescribeScheduleUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

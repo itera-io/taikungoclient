@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKeycloakDeleteParams creates a new KeycloakDeleteParams object,
@@ -64,7 +62,7 @@ KeycloakDeleteParams contains all the parameters to send to the API endpoint
 type KeycloakDeleteParams struct {
 
 	// Body.
-	Body *models.KeycloakDeleteCommand
+	Body KeycloakDeleteBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *KeycloakDeleteParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the keycloak delete params
-func (o *KeycloakDeleteParams) WithBody(body *models.KeycloakDeleteCommand) *KeycloakDeleteParams {
+func (o *KeycloakDeleteParams) WithBody(body KeycloakDeleteBody) *KeycloakDeleteParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the keycloak delete params
-func (o *KeycloakDeleteParams) SetBody(body *models.KeycloakDeleteCommand) {
+func (o *KeycloakDeleteParams) SetBody(body KeycloakDeleteBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *KeycloakDeleteParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

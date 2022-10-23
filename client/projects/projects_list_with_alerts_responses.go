@@ -6,13 +6,15 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ProjectsListWithAlertsReader is a Reader for the ProjectsListWithAlerts structure.
@@ -75,7 +77,7 @@ ProjectsListWithAlertsOK describes a response with status code 200, with default
 Success
 */
 type ProjectsListWithAlertsOK struct {
-	Payload []*models.ProjectListForAlert
+	Payload []*ProjectsListWithAlertsOKBodyItems0
 }
 
 // IsSuccess returns true when this projects list with alerts o k response has a 2xx status code
@@ -111,7 +113,7 @@ func (o *ProjectsListWithAlertsOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsListWithAlertsOK) GetPayload() []*models.ProjectListForAlert {
+func (o *ProjectsListWithAlertsOK) GetPayload() []*ProjectsListWithAlertsOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +138,7 @@ ProjectsListWithAlertsBadRequest describes a response with status code 400, with
 Bad Request
 */
 type ProjectsListWithAlertsBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectsListWithAlertsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this projects list with alerts bad request response has a 2xx status code
@@ -172,7 +174,7 @@ func (o *ProjectsListWithAlertsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsListWithAlertsBadRequest) GetPayload() []*models.Error {
+func (o *ProjectsListWithAlertsBadRequest) GetPayload() []*ProjectsListWithAlertsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +199,7 @@ ProjectsListWithAlertsUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type ProjectsListWithAlertsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsListWithAlertsUnauthorizedBody
 }
 
 // IsSuccess returns true when this projects list with alerts unauthorized response has a 2xx status code
@@ -233,13 +235,13 @@ func (o *ProjectsListWithAlertsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsListWithAlertsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsListWithAlertsUnauthorized) GetPayload() *ProjectsListWithAlertsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectsListWithAlertsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsListWithAlertsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +262,7 @@ ProjectsListWithAlertsForbidden describes a response with status code 403, with 
 Forbidden
 */
 type ProjectsListWithAlertsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsListWithAlertsForbiddenBody
 }
 
 // IsSuccess returns true when this projects list with alerts forbidden response has a 2xx status code
@@ -296,13 +298,13 @@ func (o *ProjectsListWithAlertsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsListWithAlertsForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsListWithAlertsForbidden) GetPayload() *ProjectsListWithAlertsForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectsListWithAlertsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsListWithAlertsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +325,7 @@ ProjectsListWithAlertsNotFound describes a response with status code 404, with d
 Not Found
 */
 type ProjectsListWithAlertsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsListWithAlertsNotFoundBody
 }
 
 // IsSuccess returns true when this projects list with alerts not found response has a 2xx status code
@@ -359,13 +361,13 @@ func (o *ProjectsListWithAlertsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsListWithAlertsNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsListWithAlertsNotFound) GetPayload() *ProjectsListWithAlertsNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectsListWithAlertsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsListWithAlertsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +425,518 @@ func (o *ProjectsListWithAlertsInternalServerError) String() string {
 
 func (o *ProjectsListWithAlertsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectsListWithAlertsBadRequestBodyItems0 projects list with alerts bad request body items0
+swagger:model ProjectsListWithAlertsBadRequestBodyItems0
+*/
+type ProjectsListWithAlertsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this projects list with alerts bad request body items0
+func (o *ProjectsListWithAlertsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list with alerts bad request body items0 based on context it is used
+func (o *ProjectsListWithAlertsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListWithAlertsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListWithAlertsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsListWithAlertsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListWithAlertsForbiddenBody projects list with alerts forbidden body
+swagger:model ProjectsListWithAlertsForbiddenBody
+*/
+type ProjectsListWithAlertsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects list with alerts forbidden body
+func (o *ProjectsListWithAlertsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list with alerts forbidden body based on context it is used
+func (o *ProjectsListWithAlertsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListWithAlertsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListWithAlertsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsListWithAlertsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListWithAlertsNotFoundBody projects list with alerts not found body
+swagger:model ProjectsListWithAlertsNotFoundBody
+*/
+type ProjectsListWithAlertsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects list with alerts not found body
+func (o *ProjectsListWithAlertsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list with alerts not found body based on context it is used
+func (o *ProjectsListWithAlertsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListWithAlertsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListWithAlertsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsListWithAlertsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListWithAlertsOKBodyItems0 projects list with alerts o k body items0
+swagger:model ProjectsListWithAlertsOKBodyItems0
+*/
+type ProjectsListWithAlertsOKBodyItems0 struct {
+
+	// has kube config file
+	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
+
+	// health
+	Health string `json:"health,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is kubernetes
+	IsKubernetes bool `json:"isKubernetes"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// is monitoring enabled
+	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
+
+	// kubernetes alerts
+	KubernetesAlerts []*ProjectsListWithAlertsOKBodyItems0KubernetesAlertsItems0 `json:"kubernetesAlerts"`
+
+	// monitoring credentials
+	MonitoringCredentials []*ProjectsListWithAlertsOKBodyItems0MonitoringCredentialsItems0 `json:"monitoringCredentials"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// token
+	Token string `json:"token,omitempty"`
+}
+
+// Validate validates this projects list with alerts o k body items0
+func (o *ProjectsListWithAlertsOKBodyItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateKubernetesAlerts(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateMonitoringCredentials(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsListWithAlertsOKBodyItems0) validateKubernetesAlerts(formats strfmt.Registry) error {
+	if swag.IsZero(o.KubernetesAlerts) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.KubernetesAlerts); i++ {
+		if swag.IsZero(o.KubernetesAlerts[i]) { // not required
+			continue
+		}
+
+		if o.KubernetesAlerts[i] != nil {
+			if err := o.KubernetesAlerts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesAlerts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesAlerts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsListWithAlertsOKBodyItems0) validateMonitoringCredentials(formats strfmt.Registry) error {
+	if swag.IsZero(o.MonitoringCredentials) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.MonitoringCredentials); i++ {
+		if swag.IsZero(o.MonitoringCredentials[i]) { // not required
+			continue
+		}
+
+		if o.MonitoringCredentials[i] != nil {
+			if err := o.MonitoringCredentials[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this projects list with alerts o k body items0 based on the context it is used
+func (o *ProjectsListWithAlertsOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateKubernetesAlerts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateMonitoringCredentials(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsListWithAlertsOKBodyItems0) contextValidateKubernetesAlerts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.KubernetesAlerts); i++ {
+
+		if o.KubernetesAlerts[i] != nil {
+			if err := o.KubernetesAlerts[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesAlerts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesAlerts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsListWithAlertsOKBodyItems0) contextValidateMonitoringCredentials(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.MonitoringCredentials); i++ {
+
+		if o.MonitoringCredentials[i] != nil {
+			if err := o.MonitoringCredentials[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListWithAlertsOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListWithAlertsOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsListWithAlertsOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListWithAlertsOKBodyItems0KubernetesAlertsItems0 projects list with alerts o k body items0 kubernetes alerts items0
+swagger:model ProjectsListWithAlertsOKBodyItems0KubernetesAlertsItems0
+*/
+type ProjectsListWithAlertsOKBodyItems0KubernetesAlertsItems0 struct {
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// end at
+	EndAt string `json:"endAt,omitempty"`
+
+	// fingerprint
+	Fingerprint string `json:"fingerprint,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is silenced
+	IsSilenced bool `json:"isSilenced"`
+
+	// is solved
+	IsSolved bool `json:"isSolved"`
+
+	// labels
+	Labels interface{} `json:"labels,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// severity
+	Severity string `json:"severity,omitempty"`
+
+	// silence reason
+	SilenceReason string `json:"silenceReason,omitempty"`
+
+	// starts at
+	StartsAt string `json:"startsAt,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+}
+
+// Validate validates this projects list with alerts o k body items0 kubernetes alerts items0
+func (o *ProjectsListWithAlertsOKBodyItems0KubernetesAlertsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list with alerts o k body items0 kubernetes alerts items0 based on context it is used
+func (o *ProjectsListWithAlertsOKBodyItems0KubernetesAlertsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListWithAlertsOKBodyItems0KubernetesAlertsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListWithAlertsOKBodyItems0KubernetesAlertsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsListWithAlertsOKBodyItems0KubernetesAlertsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListWithAlertsOKBodyItems0MonitoringCredentialsItems0 projects list with alerts o k body items0 monitoring credentials items0
+swagger:model ProjectsListWithAlertsOKBodyItems0MonitoringCredentialsItems0
+*/
+type ProjectsListWithAlertsOKBodyItems0MonitoringCredentialsItems0 struct {
+
+	// alert manager Url
+	AlertManagerURL string `json:"alertManagerUrl,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// loki Url
+	LokiURL string `json:"lokiUrl,omitempty"`
+
+	// password
+	Password string `json:"password,omitempty"`
+
+	// prometheus Url
+	PrometheusURL string `json:"prometheusUrl,omitempty"`
+
+	// username
+	Username string `json:"username,omitempty"`
+}
+
+// Validate validates this projects list with alerts o k body items0 monitoring credentials items0
+func (o *ProjectsListWithAlertsOKBodyItems0MonitoringCredentialsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list with alerts o k body items0 monitoring credentials items0 based on context it is used
+func (o *ProjectsListWithAlertsOKBodyItems0MonitoringCredentialsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListWithAlertsOKBodyItems0MonitoringCredentialsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListWithAlertsOKBodyItems0MonitoringCredentialsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsListWithAlertsOKBodyItems0MonitoringCredentialsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsListWithAlertsUnauthorizedBody projects list with alerts unauthorized body
+swagger:model ProjectsListWithAlertsUnauthorizedBody
+*/
+type ProjectsListWithAlertsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects list with alerts unauthorized body
+func (o *ProjectsListWithAlertsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects list with alerts unauthorized body based on context it is used
+func (o *ProjectsListWithAlertsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsListWithAlertsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsListWithAlertsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsListWithAlertsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

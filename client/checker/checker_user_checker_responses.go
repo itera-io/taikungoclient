@@ -6,13 +6,13 @@ package checker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CheckerUserCheckerReader is a Reader for the CheckerUserChecker structure.
@@ -75,7 +75,7 @@ CheckerUserCheckerOK describes a response with status code 200, with default hea
 Success
 */
 type CheckerUserCheckerOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker user checker o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CheckerUserCheckerOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerOK  %+v", 200, o.Payload)
 }
 
-func (o *CheckerUserCheckerOK) GetPayload() models.Unit {
+func (o *CheckerUserCheckerOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CheckerUserCheckerBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type CheckerUserCheckerBadRequest struct {
-	Payload []*models.Error
+	Payload []*CheckerUserCheckerBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this checker user checker bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerUserCheckerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerUserCheckerBadRequest) GetPayload() []*models.Error {
+func (o *CheckerUserCheckerBadRequest) GetPayload() []*CheckerUserCheckerBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CheckerUserCheckerUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type CheckerUserCheckerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerUserCheckerUnauthorizedBody
 }
 
 // IsSuccess returns true when this checker user checker unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CheckerUserCheckerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerUserCheckerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerUserCheckerUnauthorized) GetPayload() *CheckerUserCheckerUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CheckerUserCheckerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerUserCheckerUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CheckerUserCheckerForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type CheckerUserCheckerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerUserCheckerForbiddenBody
 }
 
 // IsSuccess returns true when this checker user checker forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CheckerUserCheckerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerUserCheckerForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerUserCheckerForbidden) GetPayload() *CheckerUserCheckerForbiddenBody {
 	return o.Payload
 }
 
 func (o *CheckerUserCheckerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerUserCheckerForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CheckerUserCheckerNotFound describes a response with status code 404, with defau
 Not Found
 */
 type CheckerUserCheckerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerUserCheckerNotFoundBody
 }
 
 // IsSuccess returns true when this checker user checker not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CheckerUserCheckerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerUserCheckerNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerUserCheckerNotFound) GetPayload() *CheckerUserCheckerNotFoundBody {
 	return o.Payload
 }
 
 func (o *CheckerUserCheckerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerUserCheckerNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *CheckerUserCheckerInternalServerError) String() string {
 
 func (o *CheckerUserCheckerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CheckerUserCheckerBadRequestBodyItems0 checker user checker bad request body items0
+swagger:model CheckerUserCheckerBadRequestBodyItems0
+*/
+type CheckerUserCheckerBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this checker user checker bad request body items0
+func (o *CheckerUserCheckerBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker user checker bad request body items0 based on context it is used
+func (o *CheckerUserCheckerBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerUserCheckerBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerUserCheckerBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CheckerUserCheckerBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerUserCheckerBody checker user checker body
+swagger:model CheckerUserCheckerBody
+*/
+type CheckerUserCheckerBody struct {
+
+	// email
+	Email string `json:"email,omitempty"`
+
+	// user name
+	UserName string `json:"userName,omitempty"`
+}
+
+// Validate validates this checker user checker body
+func (o *CheckerUserCheckerBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker user checker body based on context it is used
+func (o *CheckerUserCheckerBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerUserCheckerBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerUserCheckerBody) UnmarshalBinary(b []byte) error {
+	var res CheckerUserCheckerBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerUserCheckerForbiddenBody checker user checker forbidden body
+swagger:model CheckerUserCheckerForbiddenBody
+*/
+type CheckerUserCheckerForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker user checker forbidden body
+func (o *CheckerUserCheckerForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker user checker forbidden body based on context it is used
+func (o *CheckerUserCheckerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerUserCheckerForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerUserCheckerForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CheckerUserCheckerForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerUserCheckerNotFoundBody checker user checker not found body
+swagger:model CheckerUserCheckerNotFoundBody
+*/
+type CheckerUserCheckerNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker user checker not found body
+func (o *CheckerUserCheckerNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker user checker not found body based on context it is used
+func (o *CheckerUserCheckerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerUserCheckerNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerUserCheckerNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CheckerUserCheckerNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerUserCheckerUnauthorizedBody checker user checker unauthorized body
+swagger:model CheckerUserCheckerUnauthorizedBody
+*/
+type CheckerUserCheckerUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker user checker unauthorized body
+func (o *CheckerUserCheckerUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker user checker unauthorized body based on context it is used
+func (o *CheckerUserCheckerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerUserCheckerUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerUserCheckerUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CheckerUserCheckerUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

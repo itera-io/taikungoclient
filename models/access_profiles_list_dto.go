@@ -20,7 +20,7 @@ import (
 type AccessProfilesListDto struct {
 
 	// allowed hosts
-	AllowedHosts []*AllowedHostListDto `json:"allowedHosts"`
+	AllowedHosts []*AccessProfilesListDtoAllowedHostsItems0 `json:"allowedHosts"`
 
 	// created at
 	CreatedAt string `json:"createdAt,omitempty"`
@@ -29,7 +29,7 @@ type AccessProfilesListDto struct {
 	CreatedBy string `json:"createdBy,omitempty"`
 
 	// dns servers
-	DNSServers []*DNSServerListDto `json:"dnsServers"`
+	DNSServers []*AccessProfilesListDtoDNSServersItems0 `json:"dnsServers"`
 
 	// http proxy
 	HTTPProxy string `json:"httpProxy,omitempty"`
@@ -50,7 +50,7 @@ type AccessProfilesListDto struct {
 	Name string `json:"name,omitempty"`
 
 	// ntp servers
-	NtpServers []*NtpServerListDto `json:"ntpServers"`
+	NtpServers []*AccessProfilesListDtoNtpServersItems0 `json:"ntpServers"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
@@ -59,7 +59,7 @@ type AccessProfilesListDto struct {
 	OrganizationName string `json:"organizationName,omitempty"`
 
 	// projects
-	Projects []*CommonDropdownDto `json:"projects"`
+	Projects []*AccessProfilesListDtoProjectsItems0 `json:"projects"`
 }
 
 // Validate validates this access profiles list dto
@@ -309,6 +309,178 @@ func (m *AccessProfilesListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AccessProfilesListDto) UnmarshalBinary(b []byte) error {
 	var res AccessProfilesListDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AccessProfilesListDtoAllowedHostsItems0 access profiles list dto allowed hosts items0
+//
+// swagger:model AccessProfilesListDtoAllowedHostsItems0
+type AccessProfilesListDtoAllowedHostsItems0 struct {
+
+	// access profile Id
+	AccessProfileID int32 `json:"accessProfileId,omitempty"`
+
+	// access profile name
+	AccessProfileName string `json:"accessProfileName,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// ip address
+	IPAddress string `json:"ipAddress,omitempty"`
+
+	// mask bits
+	MaskBits int32 `json:"maskBits,omitempty"`
+}
+
+// Validate validates this access profiles list dto allowed hosts items0
+func (m *AccessProfilesListDtoAllowedHostsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this access profiles list dto allowed hosts items0 based on context it is used
+func (m *AccessProfilesListDtoAllowedHostsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AccessProfilesListDtoAllowedHostsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AccessProfilesListDtoAllowedHostsItems0) UnmarshalBinary(b []byte) error {
+	var res AccessProfilesListDtoAllowedHostsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AccessProfilesListDtoDNSServersItems0 access profiles list dto DNS servers items0
+//
+// swagger:model AccessProfilesListDtoDNSServersItems0
+type AccessProfilesListDtoDNSServersItems0 struct {
+
+	// address
+	Address string `json:"address,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this access profiles list dto DNS servers items0
+func (m *AccessProfilesListDtoDNSServersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this access profiles list dto DNS servers items0 based on context it is used
+func (m *AccessProfilesListDtoDNSServersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AccessProfilesListDtoDNSServersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AccessProfilesListDtoDNSServersItems0) UnmarshalBinary(b []byte) error {
+	var res AccessProfilesListDtoDNSServersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AccessProfilesListDtoNtpServersItems0 access profiles list dto ntp servers items0
+//
+// swagger:model AccessProfilesListDtoNtpServersItems0
+type AccessProfilesListDtoNtpServersItems0 struct {
+
+	// address
+	Address string `json:"address,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this access profiles list dto ntp servers items0
+func (m *AccessProfilesListDtoNtpServersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this access profiles list dto ntp servers items0 based on context it is used
+func (m *AccessProfilesListDtoNtpServersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AccessProfilesListDtoNtpServersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AccessProfilesListDtoNtpServersItems0) UnmarshalBinary(b []byte) error {
+	var res AccessProfilesListDtoNtpServersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AccessProfilesListDtoProjectsItems0 access profiles list dto projects items0
+//
+// swagger:model AccessProfilesListDtoProjectsItems0
+type AccessProfilesListDtoProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this access profiles list dto projects items0
+func (m *AccessProfilesListDtoProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this access profiles list dto projects items0 based on context it is used
+func (m *AccessProfilesListDtoProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AccessProfilesListDtoProjectsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AccessProfilesListDtoProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res AccessProfilesListDtoProjectsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

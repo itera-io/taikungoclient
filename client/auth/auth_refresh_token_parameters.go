@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAuthRefreshTokenParams creates a new AuthRefreshTokenParams object,
@@ -64,7 +62,7 @@ AuthRefreshTokenParams contains all the parameters to send to the API endpoint
 type AuthRefreshTokenParams struct {
 
 	// Body.
-	Body *models.RefreshTokenCommand
+	Body AuthRefreshTokenBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *AuthRefreshTokenParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the auth refresh token params
-func (o *AuthRefreshTokenParams) WithBody(body *models.RefreshTokenCommand) *AuthRefreshTokenParams {
+func (o *AuthRefreshTokenParams) WithBody(body AuthRefreshTokenBody) *AuthRefreshTokenParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the auth refresh token params
-func (o *AuthRefreshTokenParams) SetBody(body *models.RefreshTokenCommand) {
+func (o *AuthRefreshTokenParams) SetBody(body AuthRefreshTokenBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *AuthRefreshTokenParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

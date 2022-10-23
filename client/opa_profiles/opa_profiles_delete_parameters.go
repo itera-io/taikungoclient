@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOpaProfilesDeleteParams creates a new OpaProfilesDeleteParams object,
@@ -64,7 +62,7 @@ OpaProfilesDeleteParams contains all the parameters to send to the API endpoint
 type OpaProfilesDeleteParams struct {
 
 	// Body.
-	Body *models.DeleteOpaProfileCommand
+	Body OpaProfilesDeleteBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *OpaProfilesDeleteParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the opa profiles delete params
-func (o *OpaProfilesDeleteParams) WithBody(body *models.DeleteOpaProfileCommand) *OpaProfilesDeleteParams {
+func (o *OpaProfilesDeleteParams) WithBody(body OpaProfilesDeleteBody) *OpaProfilesDeleteParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the opa profiles delete params
-func (o *OpaProfilesDeleteParams) SetBody(body *models.DeleteOpaProfileCommand) {
+func (o *OpaProfilesDeleteParams) SetBody(body OpaProfilesDeleteBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *OpaProfilesDeleteParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

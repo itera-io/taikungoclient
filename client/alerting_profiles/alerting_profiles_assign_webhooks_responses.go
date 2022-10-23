@@ -6,13 +6,15 @@ package alerting_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AlertingProfilesAssignWebhooksReader is a Reader for the AlertingProfilesAssignWebhooks structure.
@@ -75,7 +77,7 @@ AlertingProfilesAssignWebhooksOK describes a response with status code 200, with
 Success
 */
 type AlertingProfilesAssignWebhooksOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles assign webhooks o k response has a 2xx status code
@@ -111,7 +113,7 @@ func (o *AlertingProfilesAssignWebhooksOK) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignwebhooks/{id}][%d] alertingProfilesAssignWebhooksOK  %+v", 200, o.Payload)
 }
 
-func (o *AlertingProfilesAssignWebhooksOK) GetPayload() models.Unit {
+func (o *AlertingProfilesAssignWebhooksOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +138,7 @@ AlertingProfilesAssignWebhooksBadRequest describes a response with status code 4
 Bad Request
 */
 type AlertingProfilesAssignWebhooksBadRequest struct {
-	Payload []*models.Error
+	Payload []*AlertingProfilesAssignWebhooksBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this alerting profiles assign webhooks bad request response has a 2xx status code
@@ -172,7 +174,7 @@ func (o *AlertingProfilesAssignWebhooksBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignwebhooks/{id}][%d] alertingProfilesAssignWebhooksBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesAssignWebhooksBadRequest) GetPayload() []*models.Error {
+func (o *AlertingProfilesAssignWebhooksBadRequest) GetPayload() []*AlertingProfilesAssignWebhooksBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +199,7 @@ AlertingProfilesAssignWebhooksUnauthorized describes a response with status code
 Unauthorized
 */
 type AlertingProfilesAssignWebhooksUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesAssignWebhooksUnauthorizedBody
 }
 
 // IsSuccess returns true when this alerting profiles assign webhooks unauthorized response has a 2xx status code
@@ -233,13 +235,13 @@ func (o *AlertingProfilesAssignWebhooksUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignwebhooks/{id}][%d] alertingProfilesAssignWebhooksUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesAssignWebhooksUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAssignWebhooksUnauthorized) GetPayload() *AlertingProfilesAssignWebhooksUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAssignWebhooksUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesAssignWebhooksUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +262,7 @@ AlertingProfilesAssignWebhooksForbidden describes a response with status code 40
 Forbidden
 */
 type AlertingProfilesAssignWebhooksForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesAssignWebhooksForbiddenBody
 }
 
 // IsSuccess returns true when this alerting profiles assign webhooks forbidden response has a 2xx status code
@@ -296,13 +298,13 @@ func (o *AlertingProfilesAssignWebhooksForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignwebhooks/{id}][%d] alertingProfilesAssignWebhooksForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesAssignWebhooksForbidden) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAssignWebhooksForbidden) GetPayload() *AlertingProfilesAssignWebhooksForbiddenBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAssignWebhooksForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesAssignWebhooksForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +325,7 @@ AlertingProfilesAssignWebhooksNotFound describes a response with status code 404
 Not Found
 */
 type AlertingProfilesAssignWebhooksNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesAssignWebhooksNotFoundBody
 }
 
 // IsSuccess returns true when this alerting profiles assign webhooks not found response has a 2xx status code
@@ -359,13 +361,13 @@ func (o *AlertingProfilesAssignWebhooksNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignwebhooks/{id}][%d] alertingProfilesAssignWebhooksNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesAssignWebhooksNotFound) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAssignWebhooksNotFound) GetPayload() *AlertingProfilesAssignWebhooksNotFoundBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAssignWebhooksNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesAssignWebhooksNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +425,348 @@ func (o *AlertingProfilesAssignWebhooksInternalServerError) String() string {
 
 func (o *AlertingProfilesAssignWebhooksInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AlertingProfilesAssignWebhooksBadRequestBodyItems0 alerting profiles assign webhooks bad request body items0
+swagger:model AlertingProfilesAssignWebhooksBadRequestBodyItems0
+*/
+type AlertingProfilesAssignWebhooksBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this alerting profiles assign webhooks bad request body items0
+func (o *AlertingProfilesAssignWebhooksBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles assign webhooks bad request body items0 based on context it is used
+func (o *AlertingProfilesAssignWebhooksBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesAssignWebhooksBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesAssignWebhooksBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesAssignWebhooksBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesAssignWebhooksForbiddenBody alerting profiles assign webhooks forbidden body
+swagger:model AlertingProfilesAssignWebhooksForbiddenBody
+*/
+type AlertingProfilesAssignWebhooksForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles assign webhooks forbidden body
+func (o *AlertingProfilesAssignWebhooksForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles assign webhooks forbidden body based on context it is used
+func (o *AlertingProfilesAssignWebhooksForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesAssignWebhooksForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesAssignWebhooksForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesAssignWebhooksForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesAssignWebhooksNotFoundBody alerting profiles assign webhooks not found body
+swagger:model AlertingProfilesAssignWebhooksNotFoundBody
+*/
+type AlertingProfilesAssignWebhooksNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles assign webhooks not found body
+func (o *AlertingProfilesAssignWebhooksNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles assign webhooks not found body based on context it is used
+func (o *AlertingProfilesAssignWebhooksNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesAssignWebhooksNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesAssignWebhooksNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesAssignWebhooksNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesAssignWebhooksParamsBodyItems0 alerting profiles assign webhooks params body items0
+swagger:model AlertingProfilesAssignWebhooksParamsBodyItems0
+*/
+type AlertingProfilesAssignWebhooksParamsBodyItems0 struct {
+
+	// headers
+	Headers []*AlertingProfilesAssignWebhooksParamsBodyItems0HeadersItems0 `json:"headers"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// url
+	URL string `json:"url,omitempty"`
+}
+
+// Validate validates this alerting profiles assign webhooks params body items0
+func (o *AlertingProfilesAssignWebhooksParamsBodyItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateHeaders(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *AlertingProfilesAssignWebhooksParamsBodyItems0) validateHeaders(formats strfmt.Registry) error {
+	if swag.IsZero(o.Headers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Headers); i++ {
+		if swag.IsZero(o.Headers[i]) { // not required
+			continue
+		}
+
+		if o.Headers[i] != nil {
+			if err := o.Headers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("headers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("headers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this alerting profiles assign webhooks params body items0 based on the context it is used
+func (o *AlertingProfilesAssignWebhooksParamsBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateHeaders(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *AlertingProfilesAssignWebhooksParamsBodyItems0) contextValidateHeaders(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Headers); i++ {
+
+		if o.Headers[i] != nil {
+			if err := o.Headers[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("headers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("headers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesAssignWebhooksParamsBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesAssignWebhooksParamsBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesAssignWebhooksParamsBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesAssignWebhooksParamsBodyItems0HeadersItems0 alerting profiles assign webhooks params body items0 headers items0
+swagger:model AlertingProfilesAssignWebhooksParamsBodyItems0HeadersItems0
+*/
+type AlertingProfilesAssignWebhooksParamsBodyItems0HeadersItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// key
+	Key string `json:"key,omitempty"`
+
+	// value
+	Value string `json:"value,omitempty"`
+}
+
+// Validate validates this alerting profiles assign webhooks params body items0 headers items0
+func (o *AlertingProfilesAssignWebhooksParamsBodyItems0HeadersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles assign webhooks params body items0 headers items0 based on context it is used
+func (o *AlertingProfilesAssignWebhooksParamsBodyItems0HeadersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesAssignWebhooksParamsBodyItems0HeadersItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesAssignWebhooksParamsBodyItems0HeadersItems0) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesAssignWebhooksParamsBodyItems0HeadersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesAssignWebhooksUnauthorizedBody alerting profiles assign webhooks unauthorized body
+swagger:model AlertingProfilesAssignWebhooksUnauthorizedBody
+*/
+type AlertingProfilesAssignWebhooksUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles assign webhooks unauthorized body
+func (o *AlertingProfilesAssignWebhooksUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles assign webhooks unauthorized body based on context it is used
+func (o *AlertingProfilesAssignWebhooksUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesAssignWebhooksUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesAssignWebhooksUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesAssignWebhooksUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

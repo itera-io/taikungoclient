@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSearchPrometheusRulesListParams creates a new SearchPrometheusRulesListParams object,
@@ -64,7 +62,7 @@ SearchPrometheusRulesListParams contains all the parameters to send to the API e
 type SearchPrometheusRulesListParams struct {
 
 	// Body.
-	Body *models.PrometheusRulesSearchCommand
+	Body SearchPrometheusRulesListBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *SearchPrometheusRulesListParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the search prometheus rules list params
-func (o *SearchPrometheusRulesListParams) WithBody(body *models.PrometheusRulesSearchCommand) *SearchPrometheusRulesListParams {
+func (o *SearchPrometheusRulesListParams) WithBody(body SearchPrometheusRulesListBody) *SearchPrometheusRulesListParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the search prometheus rules list params
-func (o *SearchPrometheusRulesListParams) SetBody(body *models.PrometheusRulesSearchCommand) {
+func (o *SearchPrometheusRulesListParams) SetBody(body SearchPrometheusRulesListBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *SearchPrometheusRulesListParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

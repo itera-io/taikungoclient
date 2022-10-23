@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -19,19 +20,19 @@ import (
 type DashboardChart struct {
 
 	// cloud credentials
-	CloudCredentials *CredentialChartDto `json:"cloudCredentials,omitempty"`
+	CloudCredentials *DashboardChartCloudCredentials `json:"cloudCredentials,omitempty"`
 
 	// organization
-	Organization *OrganizationEntityForDashboard `json:"organization,omitempty"`
+	Organization *DashboardChartOrganization `json:"organization,omitempty"`
 
 	// projects
-	Projects *ProjectChartDto `json:"projects,omitempty"`
+	Projects *DashboardChartProjects `json:"projects,omitempty"`
 
 	// servers
-	Servers *ServerChartDto `json:"servers,omitempty"`
+	Servers *DashboardChartServers `json:"servers,omitempty"`
 
 	// stand alone vms
-	StandAloneVms *ServerChartDto `json:"standAloneVms,omitempty"`
+	StandAloneVms *DashboardChartStandAloneVms `json:"standAloneVms,omitempty"`
 }
 
 // Validate validates this dashboard chart
@@ -280,6 +281,2535 @@ func (m *DashboardChart) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *DashboardChart) UnmarshalBinary(b []byte) error {
 	var res DashboardChart
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartCloudCredentials dashboard chart cloud credentials
+//
+// swagger:model DashboardChartCloudCredentials
+type DashboardChartCloudCredentials struct {
+
+	// aws
+	Aws int32 `json:"aws,omitempty"`
+
+	// azure
+	Azure int32 `json:"azure,omitempty"`
+
+	// google
+	Google int32 `json:"google,omitempty"`
+
+	// openstack
+	Openstack int32 `json:"openstack,omitempty"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this dashboard chart cloud credentials
+func (m *DashboardChartCloudCredentials) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart cloud credentials based on context it is used
+func (m *DashboardChartCloudCredentials) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartCloudCredentials) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartCloudCredentials) UnmarshalBinary(b []byte) error {
+	var res DashboardChartCloudCredentials
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartOrganization dashboard chart organization
+//
+// swagger:model DashboardChartOrganization
+type DashboardChartOrganization struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// users
+	Users int32 `json:"users,omitempty"`
+}
+
+// Validate validates this dashboard chart organization
+func (m *DashboardChartOrganization) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart organization based on context it is used
+func (m *DashboardChartOrganization) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartOrganization) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartOrganization) UnmarshalBinary(b []byte) error {
+	var res DashboardChartOrganization
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartProjects dashboard chart projects
+//
+// swagger:model DashboardChartProjects
+type DashboardChartProjects struct {
+
+	// failed
+	Failed []*DashboardChartProjectsFailedItems0 `json:"failed"`
+
+	// pending
+	Pending []*DashboardChartProjectsPendingItems0 `json:"pending"`
+
+	// succeeded
+	Succeeded []*DashboardChartProjectsSucceededItems0 `json:"succeeded"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+
+	// updating
+	Updating []*DashboardChartProjectsUpdatingItems0 `json:"updating"`
+}
+
+// Validate validates this dashboard chart projects
+func (m *DashboardChartProjects) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateFailed(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePending(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSucceeded(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUpdating(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *DashboardChartProjects) validateFailed(formats strfmt.Registry) error {
+	if swag.IsZero(m.Failed) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Failed); i++ {
+		if swag.IsZero(m.Failed[i]) { // not required
+			continue
+		}
+
+		if m.Failed[i] != nil {
+			if err := m.Failed[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + "failed" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + "failed" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartProjects) validatePending(formats strfmt.Registry) error {
+	if swag.IsZero(m.Pending) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Pending); i++ {
+		if swag.IsZero(m.Pending[i]) { // not required
+			continue
+		}
+
+		if m.Pending[i] != nil {
+			if err := m.Pending[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + "pending" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + "pending" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartProjects) validateSucceeded(formats strfmt.Registry) error {
+	if swag.IsZero(m.Succeeded) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Succeeded); i++ {
+		if swag.IsZero(m.Succeeded[i]) { // not required
+			continue
+		}
+
+		if m.Succeeded[i] != nil {
+			if err := m.Succeeded[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + "succeeded" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + "succeeded" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartProjects) validateUpdating(formats strfmt.Registry) error {
+	if swag.IsZero(m.Updating) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Updating); i++ {
+		if swag.IsZero(m.Updating[i]) { // not required
+			continue
+		}
+
+		if m.Updating[i] != nil {
+			if err := m.Updating[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + "updating" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + "updating" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this dashboard chart projects based on the context it is used
+func (m *DashboardChartProjects) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateFailed(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePending(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSucceeded(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUpdating(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *DashboardChartProjects) contextValidateFailed(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Failed); i++ {
+
+		if m.Failed[i] != nil {
+			if err := m.Failed[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + "failed" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + "failed" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartProjects) contextValidatePending(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Pending); i++ {
+
+		if m.Pending[i] != nil {
+			if err := m.Pending[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + "pending" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + "pending" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartProjects) contextValidateSucceeded(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Succeeded); i++ {
+
+		if m.Succeeded[i] != nil {
+			if err := m.Succeeded[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + "succeeded" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + "succeeded" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartProjects) contextValidateUpdating(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Updating); i++ {
+
+		if m.Updating[i] != nil {
+			if err := m.Updating[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + "updating" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + "updating" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartProjects) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartProjects) UnmarshalBinary(b []byte) error {
+	var res DashboardChartProjects
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartProjectsFailedItems0 dashboard chart projects failed items0
+//
+// swagger:model DashboardChartProjectsFailedItems0
+type DashboardChartProjectsFailedItems0 struct {
+
+	// expired at
+	ExpiredAt string `json:"expiredAt,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this dashboard chart projects failed items0
+func (m *DashboardChartProjectsFailedItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart projects failed items0 based on context it is used
+func (m *DashboardChartProjectsFailedItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartProjectsFailedItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartProjectsFailedItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartProjectsFailedItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartProjectsPendingItems0 dashboard chart projects pending items0
+//
+// swagger:model DashboardChartProjectsPendingItems0
+type DashboardChartProjectsPendingItems0 struct {
+
+	// expired at
+	ExpiredAt string `json:"expiredAt,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this dashboard chart projects pending items0
+func (m *DashboardChartProjectsPendingItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart projects pending items0 based on context it is used
+func (m *DashboardChartProjectsPendingItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartProjectsPendingItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartProjectsPendingItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartProjectsPendingItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartProjectsSucceededItems0 dashboard chart projects succeeded items0
+//
+// swagger:model DashboardChartProjectsSucceededItems0
+type DashboardChartProjectsSucceededItems0 struct {
+
+	// expired at
+	ExpiredAt string `json:"expiredAt,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this dashboard chart projects succeeded items0
+func (m *DashboardChartProjectsSucceededItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart projects succeeded items0 based on context it is used
+func (m *DashboardChartProjectsSucceededItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartProjectsSucceededItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartProjectsSucceededItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartProjectsSucceededItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartProjectsUpdatingItems0 dashboard chart projects updating items0
+//
+// swagger:model DashboardChartProjectsUpdatingItems0
+type DashboardChartProjectsUpdatingItems0 struct {
+
+	// expired at
+	ExpiredAt string `json:"expiredAt,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this dashboard chart projects updating items0
+func (m *DashboardChartProjectsUpdatingItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart projects updating items0 based on context it is used
+func (m *DashboardChartProjectsUpdatingItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartProjectsUpdatingItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartProjectsUpdatingItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartProjectsUpdatingItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartServers dashboard chart servers
+//
+// swagger:model DashboardChartServers
+type DashboardChartServers struct {
+
+	// aws
+	Aws []*DashboardChartServersAwsItems0 `json:"aws"`
+
+	// azure
+	Azure []*DashboardChartServersAzureItems0 `json:"azure"`
+
+	// failed
+	Failed []*DashboardChartServersFailedItems0 `json:"failed"`
+
+	// google
+	Google []*DashboardChartServersGoogleItems0 `json:"google"`
+
+	// openstack
+	Openstack []*DashboardChartServersOpenstackItems0 `json:"openstack"`
+
+	// succeeded
+	Succeeded []*DashboardChartServersSucceededItems0 `json:"succeeded"`
+
+	// total aws count
+	TotalAwsCount int32 `json:"totalAwsCount,omitempty"`
+
+	// total azure count
+	TotalAzureCount int32 `json:"totalAzureCount,omitempty"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+
+	// total Cpu
+	TotalCPU int32 `json:"totalCpu,omitempty"`
+
+	// total disk size
+	TotalDiskSize int64 `json:"totalDiskSize,omitempty"`
+
+	// total failed count
+	TotalFailedCount int32 `json:"totalFailedCount,omitempty"`
+
+	// total google count
+	TotalGoogleCount int32 `json:"totalGoogleCount,omitempty"`
+
+	// total openstack count
+	TotalOpenstackCount int32 `json:"totalOpenstackCount,omitempty"`
+
+	// total pending count
+	TotalPendingCount int32 `json:"totalPendingCount,omitempty"`
+
+	// total Ram
+	TotalRAM int64 `json:"totalRam,omitempty"`
+
+	// total succeeded count
+	TotalSucceededCount int32 `json:"totalSucceededCount,omitempty"`
+
+	// total updating count
+	TotalUpdatingCount int32 `json:"totalUpdatingCount,omitempty"`
+
+	// updating
+	Updating []*DashboardChartServersUpdatingItems0 `json:"updating"`
+
+	// used resources
+	UsedResources []*DashboardChartServersUsedResourcesItems0 `json:"usedResources"`
+
+	// waiting
+	Waiting []*DashboardChartServersWaitingItems0 `json:"waiting"`
+}
+
+// Validate validates this dashboard chart servers
+func (m *DashboardChartServers) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAws(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAzure(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFailed(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateGoogle(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOpenstack(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSucceeded(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUpdating(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsedResources(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateWaiting(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *DashboardChartServers) validateAws(formats strfmt.Registry) error {
+	if swag.IsZero(m.Aws) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Aws); i++ {
+		if swag.IsZero(m.Aws[i]) { // not required
+			continue
+		}
+
+		if m.Aws[i] != nil {
+			if err := m.Aws[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "aws" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "aws" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) validateAzure(formats strfmt.Registry) error {
+	if swag.IsZero(m.Azure) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Azure); i++ {
+		if swag.IsZero(m.Azure[i]) { // not required
+			continue
+		}
+
+		if m.Azure[i] != nil {
+			if err := m.Azure[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "azure" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "azure" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) validateFailed(formats strfmt.Registry) error {
+	if swag.IsZero(m.Failed) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Failed); i++ {
+		if swag.IsZero(m.Failed[i]) { // not required
+			continue
+		}
+
+		if m.Failed[i] != nil {
+			if err := m.Failed[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "failed" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "failed" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) validateGoogle(formats strfmt.Registry) error {
+	if swag.IsZero(m.Google) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Google); i++ {
+		if swag.IsZero(m.Google[i]) { // not required
+			continue
+		}
+
+		if m.Google[i] != nil {
+			if err := m.Google[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "google" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "google" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) validateOpenstack(formats strfmt.Registry) error {
+	if swag.IsZero(m.Openstack) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Openstack); i++ {
+		if swag.IsZero(m.Openstack[i]) { // not required
+			continue
+		}
+
+		if m.Openstack[i] != nil {
+			if err := m.Openstack[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "openstack" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "openstack" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) validateSucceeded(formats strfmt.Registry) error {
+	if swag.IsZero(m.Succeeded) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Succeeded); i++ {
+		if swag.IsZero(m.Succeeded[i]) { // not required
+			continue
+		}
+
+		if m.Succeeded[i] != nil {
+			if err := m.Succeeded[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "succeeded" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "succeeded" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) validateUpdating(formats strfmt.Registry) error {
+	if swag.IsZero(m.Updating) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Updating); i++ {
+		if swag.IsZero(m.Updating[i]) { // not required
+			continue
+		}
+
+		if m.Updating[i] != nil {
+			if err := m.Updating[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "updating" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "updating" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) validateUsedResources(formats strfmt.Registry) error {
+	if swag.IsZero(m.UsedResources) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.UsedResources); i++ {
+		if swag.IsZero(m.UsedResources[i]) { // not required
+			continue
+		}
+
+		if m.UsedResources[i] != nil {
+			if err := m.UsedResources[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "usedResources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "usedResources" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) validateWaiting(formats strfmt.Registry) error {
+	if swag.IsZero(m.Waiting) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Waiting); i++ {
+		if swag.IsZero(m.Waiting[i]) { // not required
+			continue
+		}
+
+		if m.Waiting[i] != nil {
+			if err := m.Waiting[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "waiting" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "waiting" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this dashboard chart servers based on the context it is used
+func (m *DashboardChartServers) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAws(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAzure(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFailed(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateGoogle(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOpenstack(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSucceeded(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUpdating(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsedResources(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateWaiting(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *DashboardChartServers) contextValidateAws(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Aws); i++ {
+
+		if m.Aws[i] != nil {
+			if err := m.Aws[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "aws" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "aws" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) contextValidateAzure(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Azure); i++ {
+
+		if m.Azure[i] != nil {
+			if err := m.Azure[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "azure" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "azure" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) contextValidateFailed(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Failed); i++ {
+
+		if m.Failed[i] != nil {
+			if err := m.Failed[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "failed" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "failed" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) contextValidateGoogle(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Google); i++ {
+
+		if m.Google[i] != nil {
+			if err := m.Google[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "google" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "google" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) contextValidateOpenstack(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Openstack); i++ {
+
+		if m.Openstack[i] != nil {
+			if err := m.Openstack[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "openstack" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "openstack" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) contextValidateSucceeded(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Succeeded); i++ {
+
+		if m.Succeeded[i] != nil {
+			if err := m.Succeeded[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "succeeded" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "succeeded" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) contextValidateUpdating(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Updating); i++ {
+
+		if m.Updating[i] != nil {
+			if err := m.Updating[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "updating" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "updating" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) contextValidateUsedResources(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.UsedResources); i++ {
+
+		if m.UsedResources[i] != nil {
+			if err := m.UsedResources[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "usedResources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "usedResources" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartServers) contextValidateWaiting(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Waiting); i++ {
+
+		if m.Waiting[i] != nil {
+			if err := m.Waiting[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("servers" + "." + "waiting" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("servers" + "." + "waiting" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartServers) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartServers) UnmarshalBinary(b []byte) error {
+	var res DashboardChartServers
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartServersAwsItems0 dashboard chart servers aws items0
+//
+// swagger:model DashboardChartServersAwsItems0
+type DashboardChartServersAwsItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart servers aws items0
+func (m *DashboardChartServersAwsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart servers aws items0 based on context it is used
+func (m *DashboardChartServersAwsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartServersAwsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartServersAwsItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartServersAwsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartServersAzureItems0 dashboard chart servers azure items0
+//
+// swagger:model DashboardChartServersAzureItems0
+type DashboardChartServersAzureItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart servers azure items0
+func (m *DashboardChartServersAzureItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart servers azure items0 based on context it is used
+func (m *DashboardChartServersAzureItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartServersAzureItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartServersAzureItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartServersAzureItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartServersFailedItems0 dashboard chart servers failed items0
+//
+// swagger:model DashboardChartServersFailedItems0
+type DashboardChartServersFailedItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart servers failed items0
+func (m *DashboardChartServersFailedItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart servers failed items0 based on context it is used
+func (m *DashboardChartServersFailedItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartServersFailedItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartServersFailedItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartServersFailedItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartServersGoogleItems0 dashboard chart servers google items0
+//
+// swagger:model DashboardChartServersGoogleItems0
+type DashboardChartServersGoogleItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart servers google items0
+func (m *DashboardChartServersGoogleItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart servers google items0 based on context it is used
+func (m *DashboardChartServersGoogleItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartServersGoogleItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartServersGoogleItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartServersGoogleItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartServersOpenstackItems0 dashboard chart servers openstack items0
+//
+// swagger:model DashboardChartServersOpenstackItems0
+type DashboardChartServersOpenstackItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart servers openstack items0
+func (m *DashboardChartServersOpenstackItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart servers openstack items0 based on context it is used
+func (m *DashboardChartServersOpenstackItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartServersOpenstackItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartServersOpenstackItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartServersOpenstackItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartServersSucceededItems0 dashboard chart servers succeeded items0
+//
+// swagger:model DashboardChartServersSucceededItems0
+type DashboardChartServersSucceededItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart servers succeeded items0
+func (m *DashboardChartServersSucceededItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart servers succeeded items0 based on context it is used
+func (m *DashboardChartServersSucceededItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartServersSucceededItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartServersSucceededItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartServersSucceededItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartServersUpdatingItems0 dashboard chart servers updating items0
+//
+// swagger:model DashboardChartServersUpdatingItems0
+type DashboardChartServersUpdatingItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart servers updating items0
+func (m *DashboardChartServersUpdatingItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart servers updating items0 based on context it is used
+func (m *DashboardChartServersUpdatingItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartServersUpdatingItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartServersUpdatingItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartServersUpdatingItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartServersUsedResourcesItems0 dashboard chart servers used resources items0
+//
+// swagger:model DashboardChartServersUsedResourcesItems0
+type DashboardChartServersUsedResourcesItems0 struct {
+
+	// cpu
+	CPU int64 `json:"cpu,omitempty"`
+
+	// disk size
+	DiskSize int64 `json:"diskSize,omitempty"`
+
+	// max Cpu
+	MaxCPU int64 `json:"maxCpu,omitempty"`
+
+	// max disk size
+	MaxDiskSize int64 `json:"maxDiskSize,omitempty"`
+
+	// max Ram
+	MaxRAM int64 `json:"maxRam,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// ram
+	RAM int64 `json:"ram,omitempty"`
+}
+
+// Validate validates this dashboard chart servers used resources items0
+func (m *DashboardChartServersUsedResourcesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart servers used resources items0 based on context it is used
+func (m *DashboardChartServersUsedResourcesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartServersUsedResourcesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartServersUsedResourcesItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartServersUsedResourcesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartServersWaitingItems0 dashboard chart servers waiting items0
+//
+// swagger:model DashboardChartServersWaitingItems0
+type DashboardChartServersWaitingItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart servers waiting items0
+func (m *DashboardChartServersWaitingItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart servers waiting items0 based on context it is used
+func (m *DashboardChartServersWaitingItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartServersWaitingItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartServersWaitingItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartServersWaitingItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartStandAloneVms dashboard chart stand alone vms
+//
+// swagger:model DashboardChartStandAloneVms
+type DashboardChartStandAloneVms struct {
+
+	// aws
+	Aws []*DashboardChartStandAloneVmsAwsItems0 `json:"aws"`
+
+	// azure
+	Azure []*DashboardChartStandAloneVmsAzureItems0 `json:"azure"`
+
+	// failed
+	Failed []*DashboardChartStandAloneVmsFailedItems0 `json:"failed"`
+
+	// google
+	Google []*DashboardChartStandAloneVmsGoogleItems0 `json:"google"`
+
+	// openstack
+	Openstack []*DashboardChartStandAloneVmsOpenstackItems0 `json:"openstack"`
+
+	// succeeded
+	Succeeded []*DashboardChartStandAloneVmsSucceededItems0 `json:"succeeded"`
+
+	// total aws count
+	TotalAwsCount int32 `json:"totalAwsCount,omitempty"`
+
+	// total azure count
+	TotalAzureCount int32 `json:"totalAzureCount,omitempty"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+
+	// total Cpu
+	TotalCPU int32 `json:"totalCpu,omitempty"`
+
+	// total disk size
+	TotalDiskSize int64 `json:"totalDiskSize,omitempty"`
+
+	// total failed count
+	TotalFailedCount int32 `json:"totalFailedCount,omitempty"`
+
+	// total google count
+	TotalGoogleCount int32 `json:"totalGoogleCount,omitempty"`
+
+	// total openstack count
+	TotalOpenstackCount int32 `json:"totalOpenstackCount,omitempty"`
+
+	// total pending count
+	TotalPendingCount int32 `json:"totalPendingCount,omitempty"`
+
+	// total Ram
+	TotalRAM int64 `json:"totalRam,omitempty"`
+
+	// total succeeded count
+	TotalSucceededCount int32 `json:"totalSucceededCount,omitempty"`
+
+	// total updating count
+	TotalUpdatingCount int32 `json:"totalUpdatingCount,omitempty"`
+
+	// updating
+	Updating []*DashboardChartStandAloneVmsUpdatingItems0 `json:"updating"`
+
+	// used resources
+	UsedResources []*DashboardChartStandAloneVmsUsedResourcesItems0 `json:"usedResources"`
+
+	// waiting
+	Waiting []*DashboardChartStandAloneVmsWaitingItems0 `json:"waiting"`
+}
+
+// Validate validates this dashboard chart stand alone vms
+func (m *DashboardChartStandAloneVms) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAws(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAzure(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFailed(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateGoogle(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOpenstack(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSucceeded(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUpdating(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsedResources(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateWaiting(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) validateAws(formats strfmt.Registry) error {
+	if swag.IsZero(m.Aws) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Aws); i++ {
+		if swag.IsZero(m.Aws[i]) { // not required
+			continue
+		}
+
+		if m.Aws[i] != nil {
+			if err := m.Aws[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "aws" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "aws" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) validateAzure(formats strfmt.Registry) error {
+	if swag.IsZero(m.Azure) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Azure); i++ {
+		if swag.IsZero(m.Azure[i]) { // not required
+			continue
+		}
+
+		if m.Azure[i] != nil {
+			if err := m.Azure[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "azure" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "azure" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) validateFailed(formats strfmt.Registry) error {
+	if swag.IsZero(m.Failed) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Failed); i++ {
+		if swag.IsZero(m.Failed[i]) { // not required
+			continue
+		}
+
+		if m.Failed[i] != nil {
+			if err := m.Failed[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "failed" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "failed" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) validateGoogle(formats strfmt.Registry) error {
+	if swag.IsZero(m.Google) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Google); i++ {
+		if swag.IsZero(m.Google[i]) { // not required
+			continue
+		}
+
+		if m.Google[i] != nil {
+			if err := m.Google[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "google" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "google" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) validateOpenstack(formats strfmt.Registry) error {
+	if swag.IsZero(m.Openstack) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Openstack); i++ {
+		if swag.IsZero(m.Openstack[i]) { // not required
+			continue
+		}
+
+		if m.Openstack[i] != nil {
+			if err := m.Openstack[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "openstack" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "openstack" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) validateSucceeded(formats strfmt.Registry) error {
+	if swag.IsZero(m.Succeeded) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Succeeded); i++ {
+		if swag.IsZero(m.Succeeded[i]) { // not required
+			continue
+		}
+
+		if m.Succeeded[i] != nil {
+			if err := m.Succeeded[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "succeeded" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "succeeded" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) validateUpdating(formats strfmt.Registry) error {
+	if swag.IsZero(m.Updating) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Updating); i++ {
+		if swag.IsZero(m.Updating[i]) { // not required
+			continue
+		}
+
+		if m.Updating[i] != nil {
+			if err := m.Updating[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "updating" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "updating" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) validateUsedResources(formats strfmt.Registry) error {
+	if swag.IsZero(m.UsedResources) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.UsedResources); i++ {
+		if swag.IsZero(m.UsedResources[i]) { // not required
+			continue
+		}
+
+		if m.UsedResources[i] != nil {
+			if err := m.UsedResources[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "usedResources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "usedResources" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) validateWaiting(formats strfmt.Registry) error {
+	if swag.IsZero(m.Waiting) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Waiting); i++ {
+		if swag.IsZero(m.Waiting[i]) { // not required
+			continue
+		}
+
+		if m.Waiting[i] != nil {
+			if err := m.Waiting[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "waiting" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "waiting" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this dashboard chart stand alone vms based on the context it is used
+func (m *DashboardChartStandAloneVms) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAws(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateAzure(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFailed(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateGoogle(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOpenstack(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSucceeded(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUpdating(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsedResources(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateWaiting(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) contextValidateAws(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Aws); i++ {
+
+		if m.Aws[i] != nil {
+			if err := m.Aws[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "aws" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "aws" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) contextValidateAzure(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Azure); i++ {
+
+		if m.Azure[i] != nil {
+			if err := m.Azure[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "azure" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "azure" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) contextValidateFailed(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Failed); i++ {
+
+		if m.Failed[i] != nil {
+			if err := m.Failed[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "failed" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "failed" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) contextValidateGoogle(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Google); i++ {
+
+		if m.Google[i] != nil {
+			if err := m.Google[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "google" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "google" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) contextValidateOpenstack(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Openstack); i++ {
+
+		if m.Openstack[i] != nil {
+			if err := m.Openstack[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "openstack" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "openstack" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) contextValidateSucceeded(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Succeeded); i++ {
+
+		if m.Succeeded[i] != nil {
+			if err := m.Succeeded[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "succeeded" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "succeeded" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) contextValidateUpdating(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Updating); i++ {
+
+		if m.Updating[i] != nil {
+			if err := m.Updating[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "updating" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "updating" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) contextValidateUsedResources(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.UsedResources); i++ {
+
+		if m.UsedResources[i] != nil {
+			if err := m.UsedResources[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "usedResources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "usedResources" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DashboardChartStandAloneVms) contextValidateWaiting(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Waiting); i++ {
+
+		if m.Waiting[i] != nil {
+			if err := m.Waiting[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneVms" + "." + "waiting" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVms" + "." + "waiting" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartStandAloneVms) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartStandAloneVms) UnmarshalBinary(b []byte) error {
+	var res DashboardChartStandAloneVms
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartStandAloneVmsAwsItems0 dashboard chart stand alone vms aws items0
+//
+// swagger:model DashboardChartStandAloneVmsAwsItems0
+type DashboardChartStandAloneVmsAwsItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart stand alone vms aws items0
+func (m *DashboardChartStandAloneVmsAwsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart stand alone vms aws items0 based on context it is used
+func (m *DashboardChartStandAloneVmsAwsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsAwsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsAwsItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartStandAloneVmsAwsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartStandAloneVmsAzureItems0 dashboard chart stand alone vms azure items0
+//
+// swagger:model DashboardChartStandAloneVmsAzureItems0
+type DashboardChartStandAloneVmsAzureItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart stand alone vms azure items0
+func (m *DashboardChartStandAloneVmsAzureItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart stand alone vms azure items0 based on context it is used
+func (m *DashboardChartStandAloneVmsAzureItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsAzureItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsAzureItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartStandAloneVmsAzureItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartStandAloneVmsFailedItems0 dashboard chart stand alone vms failed items0
+//
+// swagger:model DashboardChartStandAloneVmsFailedItems0
+type DashboardChartStandAloneVmsFailedItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart stand alone vms failed items0
+func (m *DashboardChartStandAloneVmsFailedItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart stand alone vms failed items0 based on context it is used
+func (m *DashboardChartStandAloneVmsFailedItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsFailedItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsFailedItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartStandAloneVmsFailedItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartStandAloneVmsGoogleItems0 dashboard chart stand alone vms google items0
+//
+// swagger:model DashboardChartStandAloneVmsGoogleItems0
+type DashboardChartStandAloneVmsGoogleItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart stand alone vms google items0
+func (m *DashboardChartStandAloneVmsGoogleItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart stand alone vms google items0 based on context it is used
+func (m *DashboardChartStandAloneVmsGoogleItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsGoogleItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsGoogleItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartStandAloneVmsGoogleItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartStandAloneVmsOpenstackItems0 dashboard chart stand alone vms openstack items0
+//
+// swagger:model DashboardChartStandAloneVmsOpenstackItems0
+type DashboardChartStandAloneVmsOpenstackItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart stand alone vms openstack items0
+func (m *DashboardChartStandAloneVmsOpenstackItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart stand alone vms openstack items0 based on context it is used
+func (m *DashboardChartStandAloneVmsOpenstackItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsOpenstackItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsOpenstackItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartStandAloneVmsOpenstackItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartStandAloneVmsSucceededItems0 dashboard chart stand alone vms succeeded items0
+//
+// swagger:model DashboardChartStandAloneVmsSucceededItems0
+type DashboardChartStandAloneVmsSucceededItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart stand alone vms succeeded items0
+func (m *DashboardChartStandAloneVmsSucceededItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart stand alone vms succeeded items0 based on context it is used
+func (m *DashboardChartStandAloneVmsSucceededItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsSucceededItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsSucceededItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartStandAloneVmsSucceededItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartStandAloneVmsUpdatingItems0 dashboard chart stand alone vms updating items0
+//
+// swagger:model DashboardChartStandAloneVmsUpdatingItems0
+type DashboardChartStandAloneVmsUpdatingItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart stand alone vms updating items0
+func (m *DashboardChartStandAloneVmsUpdatingItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart stand alone vms updating items0 based on context it is used
+func (m *DashboardChartStandAloneVmsUpdatingItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsUpdatingItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsUpdatingItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartStandAloneVmsUpdatingItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartStandAloneVmsUsedResourcesItems0 dashboard chart stand alone vms used resources items0
+//
+// swagger:model DashboardChartStandAloneVmsUsedResourcesItems0
+type DashboardChartStandAloneVmsUsedResourcesItems0 struct {
+
+	// cpu
+	CPU int64 `json:"cpu,omitempty"`
+
+	// disk size
+	DiskSize int64 `json:"diskSize,omitempty"`
+
+	// max Cpu
+	MaxCPU int64 `json:"maxCpu,omitempty"`
+
+	// max disk size
+	MaxDiskSize int64 `json:"maxDiskSize,omitempty"`
+
+	// max Ram
+	MaxRAM int64 `json:"maxRam,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// ram
+	RAM int64 `json:"ram,omitempty"`
+}
+
+// Validate validates this dashboard chart stand alone vms used resources items0
+func (m *DashboardChartStandAloneVmsUsedResourcesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart stand alone vms used resources items0 based on context it is used
+func (m *DashboardChartStandAloneVmsUsedResourcesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsUsedResourcesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsUsedResourcesItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartStandAloneVmsUsedResourcesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// DashboardChartStandAloneVmsWaitingItems0 dashboard chart stand alone vms waiting items0
+//
+// swagger:model DashboardChartStandAloneVmsWaitingItems0
+type DashboardChartStandAloneVmsWaitingItems0 struct {
+
+	// names
+	Names []string `json:"names"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+}
+
+// Validate validates this dashboard chart stand alone vms waiting items0
+func (m *DashboardChartStandAloneVmsWaitingItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this dashboard chart stand alone vms waiting items0 based on context it is used
+func (m *DashboardChartStandAloneVmsWaitingItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsWaitingItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *DashboardChartStandAloneVmsWaitingItems0) UnmarshalBinary(b []byte) error {
+	var res DashboardChartStandAloneVmsWaitingItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

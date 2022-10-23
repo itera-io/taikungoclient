@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectAppInstallParams creates a new ProjectAppInstallParams object,
@@ -64,7 +62,7 @@ ProjectAppInstallParams contains all the parameters to send to the API endpoint
 type ProjectAppInstallParams struct {
 
 	// Body.
-	Body *models.CreateProjectAppCommand
+	Body ProjectAppInstallBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *ProjectAppInstallParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the project app install params
-func (o *ProjectAppInstallParams) WithBody(body *models.CreateProjectAppCommand) *ProjectAppInstallParams {
+func (o *ProjectAppInstallParams) WithBody(body ProjectAppInstallBody) *ProjectAppInstallParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the project app install params
-func (o *ProjectAppInstallParams) SetBody(body *models.CreateProjectAppCommand) {
+func (o *ProjectAppInstallParams) SetBody(body ProjectAppInstallBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *ProjectAppInstallParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

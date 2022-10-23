@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CronJobSyncProjectsReader is a Reader for the CronJobSyncProjects structure.
@@ -75,7 +75,7 @@ CronJobSyncProjectsOK describes a response with status code 200, with default he
 Success
 */
 type CronJobSyncProjectsOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync projects o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobSyncProjectsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-projects][%d] cronJobSyncProjectsOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobSyncProjectsOK) GetPayload() models.Unit {
+func (o *CronJobSyncProjectsOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobSyncProjectsBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type CronJobSyncProjectsBadRequest struct {
-	Payload []*models.Error
+	Payload []*CronJobSyncProjectsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this cron job sync projects bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobSyncProjectsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-projects][%d] cronJobSyncProjectsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobSyncProjectsBadRequest) GetPayload() []*models.Error {
+func (o *CronJobSyncProjectsBadRequest) GetPayload() []*CronJobSyncProjectsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobSyncProjectsUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type CronJobSyncProjectsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobSyncProjectsUnauthorizedBody
 }
 
 // IsSuccess returns true when this cron job sync projects unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobSyncProjectsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-projects][%d] cronJobSyncProjectsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobSyncProjectsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncProjectsUnauthorized) GetPayload() *CronJobSyncProjectsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CronJobSyncProjectsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobSyncProjectsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobSyncProjectsForbidden describes a response with status code 403, with def
 Forbidden
 */
 type CronJobSyncProjectsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobSyncProjectsForbiddenBody
 }
 
 // IsSuccess returns true when this cron job sync projects forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobSyncProjectsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-projects][%d] cronJobSyncProjectsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobSyncProjectsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncProjectsForbidden) GetPayload() *CronJobSyncProjectsForbiddenBody {
 	return o.Payload
 }
 
 func (o *CronJobSyncProjectsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobSyncProjectsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobSyncProjectsNotFound describes a response with status code 404, with defa
 Not Found
 */
 type CronJobSyncProjectsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobSyncProjectsNotFoundBody
 }
 
 // IsSuccess returns true when this cron job sync projects not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobSyncProjectsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-projects][%d] cronJobSyncProjectsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobSyncProjectsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncProjectsNotFound) GetPayload() *CronJobSyncProjectsNotFoundBody {
 	return o.Payload
 }
 
 func (o *CronJobSyncProjectsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobSyncProjectsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *CronJobSyncProjectsInternalServerError) String() string {
 
 func (o *CronJobSyncProjectsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CronJobSyncProjectsBadRequestBodyItems0 cron job sync projects bad request body items0
+swagger:model CronJobSyncProjectsBadRequestBodyItems0
+*/
+type CronJobSyncProjectsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this cron job sync projects bad request body items0
+func (o *CronJobSyncProjectsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job sync projects bad request body items0 based on context it is used
+func (o *CronJobSyncProjectsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobSyncProjectsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobSyncProjectsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CronJobSyncProjectsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobSyncProjectsForbiddenBody cron job sync projects forbidden body
+swagger:model CronJobSyncProjectsForbiddenBody
+*/
+type CronJobSyncProjectsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job sync projects forbidden body
+func (o *CronJobSyncProjectsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job sync projects forbidden body based on context it is used
+func (o *CronJobSyncProjectsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobSyncProjectsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobSyncProjectsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CronJobSyncProjectsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobSyncProjectsNotFoundBody cron job sync projects not found body
+swagger:model CronJobSyncProjectsNotFoundBody
+*/
+type CronJobSyncProjectsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job sync projects not found body
+func (o *CronJobSyncProjectsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job sync projects not found body based on context it is used
+func (o *CronJobSyncProjectsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobSyncProjectsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobSyncProjectsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CronJobSyncProjectsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobSyncProjectsUnauthorizedBody cron job sync projects unauthorized body
+swagger:model CronJobSyncProjectsUnauthorizedBody
+*/
+type CronJobSyncProjectsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job sync projects unauthorized body
+func (o *CronJobSyncProjectsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job sync projects unauthorized body based on context it is used
+func (o *CronJobSyncProjectsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobSyncProjectsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobSyncProjectsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CronJobSyncProjectsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

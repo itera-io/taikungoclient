@@ -6,13 +6,15 @@ package auth
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AuthRefreshTokenReader is a Reader for the AuthRefreshToken structure.
@@ -75,7 +77,7 @@ AuthRefreshTokenOK describes a response with status code 200, with default heade
 Success
 */
 type AuthRefreshTokenOK struct {
-	Payload *models.GetToken
+	Payload *AuthRefreshTokenOKBody
 }
 
 // IsSuccess returns true when this auth refresh token o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *AuthRefreshTokenOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenOK  %+v", 200, o.Payload)
 }
 
-func (o *AuthRefreshTokenOK) GetPayload() *models.GetToken {
+func (o *AuthRefreshTokenOK) GetPayload() *AuthRefreshTokenOKBody {
 	return o.Payload
 }
 
 func (o *AuthRefreshTokenOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GetToken)
+	o.Payload = new(AuthRefreshTokenOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ AuthRefreshTokenBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type AuthRefreshTokenBadRequest struct {
-	Payload []*models.Error
+	Payload []*AuthRefreshTokenBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this auth refresh token bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *AuthRefreshTokenBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AuthRefreshTokenBadRequest) GetPayload() []*models.Error {
+func (o *AuthRefreshTokenBadRequest) GetPayload() []*AuthRefreshTokenBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ AuthRefreshTokenUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type AuthRefreshTokenUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AuthRefreshTokenUnauthorizedBody
 }
 
 // IsSuccess returns true when this auth refresh token unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *AuthRefreshTokenUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AuthRefreshTokenUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AuthRefreshTokenUnauthorized) GetPayload() *AuthRefreshTokenUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AuthRefreshTokenUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AuthRefreshTokenUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ AuthRefreshTokenForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type AuthRefreshTokenForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AuthRefreshTokenForbiddenBody
 }
 
 // IsSuccess returns true when this auth refresh token forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *AuthRefreshTokenForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AuthRefreshTokenForbidden) GetPayload() *models.ProblemDetails {
+func (o *AuthRefreshTokenForbidden) GetPayload() *AuthRefreshTokenForbiddenBody {
 	return o.Payload
 }
 
 func (o *AuthRefreshTokenForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AuthRefreshTokenForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ AuthRefreshTokenNotFound describes a response with status code 404, with default
 Not Found
 */
 type AuthRefreshTokenNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AuthRefreshTokenNotFoundBody
 }
 
 // IsSuccess returns true when this auth refresh token not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *AuthRefreshTokenNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AuthRefreshTokenNotFound) GetPayload() *models.ProblemDetails {
+func (o *AuthRefreshTokenNotFound) GetPayload() *AuthRefreshTokenNotFoundBody {
 	return o.Payload
 }
 
 func (o *AuthRefreshTokenNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AuthRefreshTokenNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,303 @@ func (o *AuthRefreshTokenInternalServerError) String() string {
 
 func (o *AuthRefreshTokenInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AuthRefreshTokenBadRequestBodyItems0 auth refresh token bad request body items0
+swagger:model AuthRefreshTokenBadRequestBodyItems0
+*/
+type AuthRefreshTokenBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this auth refresh token bad request body items0
+func (o *AuthRefreshTokenBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this auth refresh token bad request body items0 based on context it is used
+func (o *AuthRefreshTokenBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthRefreshTokenBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthRefreshTokenBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AuthRefreshTokenBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AuthRefreshTokenBody auth refresh token body
+swagger:model AuthRefreshTokenBody
+*/
+type AuthRefreshTokenBody struct {
+
+	// refresh token
+	RefreshToken string `json:"refreshToken,omitempty"`
+
+	// token
+	Token string `json:"token,omitempty"`
+}
+
+// Validate validates this auth refresh token body
+func (o *AuthRefreshTokenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this auth refresh token body based on context it is used
+func (o *AuthRefreshTokenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthRefreshTokenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthRefreshTokenBody) UnmarshalBinary(b []byte) error {
+	var res AuthRefreshTokenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AuthRefreshTokenForbiddenBody auth refresh token forbidden body
+swagger:model AuthRefreshTokenForbiddenBody
+*/
+type AuthRefreshTokenForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this auth refresh token forbidden body
+func (o *AuthRefreshTokenForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this auth refresh token forbidden body based on context it is used
+func (o *AuthRefreshTokenForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthRefreshTokenForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthRefreshTokenForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AuthRefreshTokenForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AuthRefreshTokenNotFoundBody auth refresh token not found body
+swagger:model AuthRefreshTokenNotFoundBody
+*/
+type AuthRefreshTokenNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this auth refresh token not found body
+func (o *AuthRefreshTokenNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this auth refresh token not found body based on context it is used
+func (o *AuthRefreshTokenNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthRefreshTokenNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthRefreshTokenNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AuthRefreshTokenNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AuthRefreshTokenOKBody auth refresh token o k body
+swagger:model AuthRefreshTokenOKBody
+*/
+type AuthRefreshTokenOKBody struct {
+
+	// refresh token
+	RefreshToken string `json:"refreshToken,omitempty"`
+
+	// refresh token expire time
+	// Format: date-time
+	RefreshTokenExpireTime *strfmt.DateTime `json:"refreshTokenExpireTime,omitempty"`
+
+	// token
+	Token string `json:"token,omitempty"`
+}
+
+// Validate validates this auth refresh token o k body
+func (o *AuthRefreshTokenOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateRefreshTokenExpireTime(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *AuthRefreshTokenOKBody) validateRefreshTokenExpireTime(formats strfmt.Registry) error {
+	if swag.IsZero(o.RefreshTokenExpireTime) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("authRefreshTokenOK"+"."+"refreshTokenExpireTime", "body", "date-time", o.RefreshTokenExpireTime.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this auth refresh token o k body based on context it is used
+func (o *AuthRefreshTokenOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthRefreshTokenOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthRefreshTokenOKBody) UnmarshalBinary(b []byte) error {
+	var res AuthRefreshTokenOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AuthRefreshTokenUnauthorizedBody auth refresh token unauthorized body
+swagger:model AuthRefreshTokenUnauthorizedBody
+*/
+type AuthRefreshTokenUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this auth refresh token unauthorized body
+func (o *AuthRefreshTokenUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this auth refresh token unauthorized body based on context it is used
+func (o *AuthRefreshTokenUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthRefreshTokenUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthRefreshTokenUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AuthRefreshTokenUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

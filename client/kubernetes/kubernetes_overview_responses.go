@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesOverviewReader is a Reader for the KubernetesOverview structure.
@@ -136,7 +136,7 @@ KubernetesOverviewBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubernetesOverviewBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesOverviewBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes overview bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesOverviewBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesOverviewBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesOverviewBadRequest) GetPayload() []*KubernetesOverviewBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesOverviewUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubernetesOverviewUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesOverviewUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes overview unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesOverviewUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesOverviewUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesOverviewUnauthorized) GetPayload() *KubernetesOverviewUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesOverviewUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesOverviewUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesOverviewForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubernetesOverviewForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesOverviewForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes overview forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesOverviewForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesOverviewForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesOverviewForbidden) GetPayload() *KubernetesOverviewForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesOverviewForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesOverviewForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesOverviewNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubernetesOverviewNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesOverviewNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes overview not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesOverviewNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesOverviewNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesOverviewNotFound) GetPayload() *KubernetesOverviewNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesOverviewNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesOverviewNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *KubernetesOverviewInternalServerError) String() string {
 
 func (o *KubernetesOverviewInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesOverviewBadRequestBodyItems0 kubernetes overview bad request body items0
+swagger:model KubernetesOverviewBadRequestBodyItems0
+*/
+type KubernetesOverviewBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes overview bad request body items0
+func (o *KubernetesOverviewBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes overview bad request body items0 based on context it is used
+func (o *KubernetesOverviewBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesOverviewBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesOverviewBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesOverviewBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesOverviewForbiddenBody kubernetes overview forbidden body
+swagger:model KubernetesOverviewForbiddenBody
+*/
+type KubernetesOverviewForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes overview forbidden body
+func (o *KubernetesOverviewForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes overview forbidden body based on context it is used
+func (o *KubernetesOverviewForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesOverviewForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesOverviewForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesOverviewForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesOverviewNotFoundBody kubernetes overview not found body
+swagger:model KubernetesOverviewNotFoundBody
+*/
+type KubernetesOverviewNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes overview not found body
+func (o *KubernetesOverviewNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes overview not found body based on context it is used
+func (o *KubernetesOverviewNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesOverviewNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesOverviewNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesOverviewNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesOverviewUnauthorizedBody kubernetes overview unauthorized body
+swagger:model KubernetesOverviewUnauthorizedBody
+*/
+type KubernetesOverviewUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes overview unauthorized body
+func (o *KubernetesOverviewUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes overview unauthorized body based on context it is used
+func (o *KubernetesOverviewUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesOverviewUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesOverviewUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesOverviewUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

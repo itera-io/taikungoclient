@@ -6,13 +6,13 @@ package kubernetes_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesProfilesDeleteReader is a Reader for the KubernetesProfilesDelete structure.
@@ -81,7 +81,7 @@ KubernetesProfilesDeleteOK describes a response with status code 200, with defau
 Success
 */
 type KubernetesProfilesDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes profiles delete o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *KubernetesProfilesDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesProfilesDeleteOK) GetPayload() models.Unit {
+func (o *KubernetesProfilesDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ KubernetesProfilesDeleteBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type KubernetesProfilesDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesProfilesDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes profiles delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *KubernetesProfilesDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesProfilesDeleteBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesProfilesDeleteBadRequest) GetPayload() []*KubernetesProfilesDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ KubernetesProfilesDeleteUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type KubernetesProfilesDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesProfilesDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes profiles delete unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *KubernetesProfilesDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesProfilesDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesDeleteUnauthorized) GetPayload() *KubernetesProfilesDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesProfilesDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ KubernetesProfilesDeleteForbidden describes a response with status code 403, wit
 Forbidden
 */
 type KubernetesProfilesDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesProfilesDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes profiles delete forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *KubernetesProfilesDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesProfilesDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesDeleteForbidden) GetPayload() *KubernetesProfilesDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesProfilesDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ KubernetesProfilesDeleteNotFound describes a response with status code 404, with
 Not Found
 */
 type KubernetesProfilesDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesProfilesDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes profiles delete not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *KubernetesProfilesDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesProfilesDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesDeleteNotFound) GetPayload() *KubernetesProfilesDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesProfilesDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,5 +480,196 @@ func (o *KubernetesProfilesDeleteInternalServerError) String() string {
 
 func (o *KubernetesProfilesDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesProfilesDeleteBadRequestBodyItems0 kubernetes profiles delete bad request body items0
+swagger:model KubernetesProfilesDeleteBadRequestBodyItems0
+*/
+type KubernetesProfilesDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes profiles delete bad request body items0
+func (o *KubernetesProfilesDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles delete bad request body items0 based on context it is used
+func (o *KubernetesProfilesDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesProfilesDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesProfilesDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesProfilesDeleteForbiddenBody kubernetes profiles delete forbidden body
+swagger:model KubernetesProfilesDeleteForbiddenBody
+*/
+type KubernetesProfilesDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes profiles delete forbidden body
+func (o *KubernetesProfilesDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles delete forbidden body based on context it is used
+func (o *KubernetesProfilesDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesProfilesDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesProfilesDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesProfilesDeleteNotFoundBody kubernetes profiles delete not found body
+swagger:model KubernetesProfilesDeleteNotFoundBody
+*/
+type KubernetesProfilesDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes profiles delete not found body
+func (o *KubernetesProfilesDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles delete not found body based on context it is used
+func (o *KubernetesProfilesDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesProfilesDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesProfilesDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesProfilesDeleteUnauthorizedBody kubernetes profiles delete unauthorized body
+swagger:model KubernetesProfilesDeleteUnauthorizedBody
+*/
+type KubernetesProfilesDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes profiles delete unauthorized body
+func (o *KubernetesProfilesDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles delete unauthorized body based on context it is used
+func (o *KubernetesProfilesDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesProfilesDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesProfilesDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -20,7 +20,7 @@ import (
 type BackupCredentialsSearchList struct {
 
 	// data
-	Data []*CommonSearchResponseData `json:"data"`
+	Data []*BackupCredentialsSearchListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,52 @@ func (m *BackupCredentialsSearchList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BackupCredentialsSearchList) UnmarshalBinary(b []byte) error {
 	var res BackupCredentialsSearchList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// BackupCredentialsSearchListDataItems0 backup credentials search list data items0
+//
+// swagger:model BackupCredentialsSearchListDataItems0
+type BackupCredentialsSearchListDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+}
+
+// Validate validates this backup credentials search list data items0
+func (m *BackupCredentialsSearchListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup credentials search list data items0 based on context it is used
+func (m *BackupCredentialsSearchListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *BackupCredentialsSearchListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *BackupCredentialsSearchListDataItems0) UnmarshalBinary(b []byte) error {
+	var res BackupCredentialsSearchListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

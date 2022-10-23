@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesDescribeCronJobParams creates a new KubernetesDescribeCronJobParams object,
@@ -64,7 +62,7 @@ KubernetesDescribeCronJobParams contains all the parameters to send to the API e
 type KubernetesDescribeCronJobParams struct {
 
 	// Body.
-	Body *models.DescribeCronJobCommand
+	Body KubernetesDescribeCronJobBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *KubernetesDescribeCronJobParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the kubernetes describe cron job params
-func (o *KubernetesDescribeCronJobParams) WithBody(body *models.DescribeCronJobCommand) *KubernetesDescribeCronJobParams {
+func (o *KubernetesDescribeCronJobParams) WithBody(body KubernetesDescribeCronJobBody) *KubernetesDescribeCronJobParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes describe cron job params
-func (o *KubernetesDescribeCronJobParams) SetBody(body *models.DescribeCronJobCommand) {
+func (o *KubernetesDescribeCronJobParams) SetBody(body KubernetesDescribeCronJobBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *KubernetesDescribeCronJobParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAlertingProfilesVerifyWebhookParams creates a new AlertingProfilesVerifyWebhookParams object,
@@ -64,7 +62,7 @@ AlertingProfilesVerifyWebhookParams contains all the parameters to send to the A
 type AlertingProfilesVerifyWebhookParams struct {
 
 	// Body.
-	Body *models.VerifyWebhookCommand
+	Body AlertingProfilesVerifyWebhookBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *AlertingProfilesVerifyWebhookParams) SetHTTPClient(client *http.Client)
 }
 
 // WithBody adds the body to the alerting profiles verify webhook params
-func (o *AlertingProfilesVerifyWebhookParams) WithBody(body *models.VerifyWebhookCommand) *AlertingProfilesVerifyWebhookParams {
+func (o *AlertingProfilesVerifyWebhookParams) WithBody(body AlertingProfilesVerifyWebhookBody) *AlertingProfilesVerifyWebhookParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the alerting profiles verify webhook params
-func (o *AlertingProfilesVerifyWebhookParams) SetBody(body *models.VerifyWebhookCommand) {
+func (o *AlertingProfilesVerifyWebhookParams) SetBody(body AlertingProfilesVerifyWebhookBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *AlertingProfilesVerifyWebhookParams) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

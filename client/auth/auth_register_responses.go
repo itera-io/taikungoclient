@@ -6,13 +6,13 @@ package auth
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AuthRegisterReader is a Reader for the AuthRegister structure.
@@ -126,7 +126,7 @@ AuthRegisterBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type AuthRegisterBadRequest struct {
-	Payload []*models.Error
+	Payload []*AuthRegisterBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this auth register bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *AuthRegisterBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/register][%d] authRegisterBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AuthRegisterBadRequest) GetPayload() []*models.Error {
+func (o *AuthRegisterBadRequest) GetPayload() []*AuthRegisterBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -187,7 +187,7 @@ AuthRegisterUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type AuthRegisterUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AuthRegisterUnauthorizedBody
 }
 
 // IsSuccess returns true when this auth register unauthorized response has a 2xx status code
@@ -223,13 +223,13 @@ func (o *AuthRegisterUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/register][%d] authRegisterUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AuthRegisterUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AuthRegisterUnauthorized) GetPayload() *AuthRegisterUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AuthRegisterUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AuthRegisterUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -250,7 +250,7 @@ AuthRegisterForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type AuthRegisterForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AuthRegisterForbiddenBody
 }
 
 // IsSuccess returns true when this auth register forbidden response has a 2xx status code
@@ -286,13 +286,13 @@ func (o *AuthRegisterForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/register][%d] authRegisterForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AuthRegisterForbidden) GetPayload() *models.ProblemDetails {
+func (o *AuthRegisterForbidden) GetPayload() *AuthRegisterForbiddenBody {
 	return o.Payload
 }
 
 func (o *AuthRegisterForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AuthRegisterForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -313,7 +313,7 @@ AuthRegisterNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type AuthRegisterNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AuthRegisterNotFoundBody
 }
 
 // IsSuccess returns true when this auth register not found response has a 2xx status code
@@ -349,13 +349,13 @@ func (o *AuthRegisterNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/register][%d] authRegisterNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AuthRegisterNotFound) GetPayload() *models.ProblemDetails {
+func (o *AuthRegisterNotFound) GetPayload() *AuthRegisterNotFoundBody {
 	return o.Payload
 }
 
 func (o *AuthRegisterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AuthRegisterNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -413,5 +413,240 @@ func (o *AuthRegisterInternalServerError) String() string {
 
 func (o *AuthRegisterInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AuthRegisterBadRequestBodyItems0 auth register bad request body items0
+swagger:model AuthRegisterBadRequestBodyItems0
+*/
+type AuthRegisterBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this auth register bad request body items0
+func (o *AuthRegisterBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this auth register bad request body items0 based on context it is used
+func (o *AuthRegisterBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthRegisterBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthRegisterBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AuthRegisterBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AuthRegisterBody auth register body
+swagger:model AuthRegisterBody
+*/
+type AuthRegisterBody struct {
+
+	// subscription Id
+	SubscriptionID int32 `json:"subscriptionId,omitempty"`
+
+	// uuid
+	UUID string `json:"uuid,omitempty"`
+
+	// yearly
+	Yearly bool `json:"yearly"`
+}
+
+// Validate validates this auth register body
+func (o *AuthRegisterBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this auth register body based on context it is used
+func (o *AuthRegisterBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthRegisterBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthRegisterBody) UnmarshalBinary(b []byte) error {
+	var res AuthRegisterBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AuthRegisterForbiddenBody auth register forbidden body
+swagger:model AuthRegisterForbiddenBody
+*/
+type AuthRegisterForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this auth register forbidden body
+func (o *AuthRegisterForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this auth register forbidden body based on context it is used
+func (o *AuthRegisterForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthRegisterForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthRegisterForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AuthRegisterForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AuthRegisterNotFoundBody auth register not found body
+swagger:model AuthRegisterNotFoundBody
+*/
+type AuthRegisterNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this auth register not found body
+func (o *AuthRegisterNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this auth register not found body based on context it is used
+func (o *AuthRegisterNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthRegisterNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthRegisterNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AuthRegisterNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AuthRegisterUnauthorizedBody auth register unauthorized body
+swagger:model AuthRegisterUnauthorizedBody
+*/
+type AuthRegisterUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this auth register unauthorized body
+func (o *AuthRegisterUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this auth register unauthorized body based on context it is used
+func (o *AuthRegisterUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AuthRegisterUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AuthRegisterUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AuthRegisterUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

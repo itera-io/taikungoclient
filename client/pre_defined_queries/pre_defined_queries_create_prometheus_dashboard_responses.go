@@ -6,13 +6,13 @@ package pre_defined_queries
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // PreDefinedQueriesCreatePrometheusDashboardReader is a Reader for the PreDefinedQueriesCreatePrometheusDashboard structure.
@@ -75,7 +75,7 @@ PreDefinedQueriesCreatePrometheusDashboardOK describes a response with status co
 Success
 */
 type PreDefinedQueriesCreatePrometheusDashboardOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this pre defined queries create prometheus dashboard o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *PreDefinedQueriesCreatePrometheusDashboardOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/create][%d] preDefinedQueriesCreatePrometheusDashboardOK  %+v", 200, o.Payload)
 }
 
-func (o *PreDefinedQueriesCreatePrometheusDashboardOK) GetPayload() models.Unit {
+func (o *PreDefinedQueriesCreatePrometheusDashboardOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ PreDefinedQueriesCreatePrometheusDashboardBadRequest describes a response with s
 Bad Request
 */
 type PreDefinedQueriesCreatePrometheusDashboardBadRequest struct {
-	Payload []*models.Error
+	Payload []*PreDefinedQueriesCreatePrometheusDashboardBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this pre defined queries create prometheus dashboard bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PreDefinedQueriesCreatePrometheusDashboardBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/create][%d] preDefinedQueriesCreatePrometheusDashboardBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PreDefinedQueriesCreatePrometheusDashboardBadRequest) GetPayload() []*models.Error {
+func (o *PreDefinedQueriesCreatePrometheusDashboardBadRequest) GetPayload() []*PreDefinedQueriesCreatePrometheusDashboardBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ PreDefinedQueriesCreatePrometheusDashboardUnauthorized describes a response with
 Unauthorized
 */
 type PreDefinedQueriesCreatePrometheusDashboardUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *PreDefinedQueriesCreatePrometheusDashboardUnauthorizedBody
 }
 
 // IsSuccess returns true when this pre defined queries create prometheus dashboard unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *PreDefinedQueriesCreatePrometheusDashboardUnauthorized) String() string
 	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/create][%d] preDefinedQueriesCreatePrometheusDashboardUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PreDefinedQueriesCreatePrometheusDashboardUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PreDefinedQueriesCreatePrometheusDashboardUnauthorized) GetPayload() *PreDefinedQueriesCreatePrometheusDashboardUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesCreatePrometheusDashboardUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PreDefinedQueriesCreatePrometheusDashboardUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ PreDefinedQueriesCreatePrometheusDashboardForbidden describes a response with st
 Forbidden
 */
 type PreDefinedQueriesCreatePrometheusDashboardForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *PreDefinedQueriesCreatePrometheusDashboardForbiddenBody
 }
 
 // IsSuccess returns true when this pre defined queries create prometheus dashboard forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *PreDefinedQueriesCreatePrometheusDashboardForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/create][%d] preDefinedQueriesCreatePrometheusDashboardForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PreDefinedQueriesCreatePrometheusDashboardForbidden) GetPayload() *models.ProblemDetails {
+func (o *PreDefinedQueriesCreatePrometheusDashboardForbidden) GetPayload() *PreDefinedQueriesCreatePrometheusDashboardForbiddenBody {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesCreatePrometheusDashboardForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PreDefinedQueriesCreatePrometheusDashboardForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ PreDefinedQueriesCreatePrometheusDashboardNotFound describes a response with sta
 Not Found
 */
 type PreDefinedQueriesCreatePrometheusDashboardNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *PreDefinedQueriesCreatePrometheusDashboardNotFoundBody
 }
 
 // IsSuccess returns true when this pre defined queries create prometheus dashboard not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *PreDefinedQueriesCreatePrometheusDashboardNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/create][%d] preDefinedQueriesCreatePrometheusDashboardNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PreDefinedQueriesCreatePrometheusDashboardNotFound) GetPayload() *models.ProblemDetails {
+func (o *PreDefinedQueriesCreatePrometheusDashboardNotFound) GetPayload() *PreDefinedQueriesCreatePrometheusDashboardNotFoundBody {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesCreatePrometheusDashboardNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PreDefinedQueriesCreatePrometheusDashboardNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,243 @@ func (o *PreDefinedQueriesCreatePrometheusDashboardInternalServerError) String()
 
 func (o *PreDefinedQueriesCreatePrometheusDashboardInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+PreDefinedQueriesCreatePrometheusDashboardBadRequestBodyItems0 pre defined queries create prometheus dashboard bad request body items0
+swagger:model PreDefinedQueriesCreatePrometheusDashboardBadRequestBodyItems0
+*/
+type PreDefinedQueriesCreatePrometheusDashboardBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this pre defined queries create prometheus dashboard bad request body items0
+func (o *PreDefinedQueriesCreatePrometheusDashboardBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this pre defined queries create prometheus dashboard bad request body items0 based on context it is used
+func (o *PreDefinedQueriesCreatePrometheusDashboardBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PreDefinedQueriesCreatePrometheusDashboardBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PreDefinedQueriesCreatePrometheusDashboardBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res PreDefinedQueriesCreatePrometheusDashboardBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PreDefinedQueriesCreatePrometheusDashboardBody pre defined queries create prometheus dashboard body
+swagger:model PreDefinedQueriesCreatePrometheusDashboardBody
+*/
+type PreDefinedQueriesCreatePrometheusDashboardBody struct {
+
+	// category name
+	CategoryName string `json:"categoryName,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// expression
+	Expression string `json:"expression,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this pre defined queries create prometheus dashboard body
+func (o *PreDefinedQueriesCreatePrometheusDashboardBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this pre defined queries create prometheus dashboard body based on context it is used
+func (o *PreDefinedQueriesCreatePrometheusDashboardBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PreDefinedQueriesCreatePrometheusDashboardBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PreDefinedQueriesCreatePrometheusDashboardBody) UnmarshalBinary(b []byte) error {
+	var res PreDefinedQueriesCreatePrometheusDashboardBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PreDefinedQueriesCreatePrometheusDashboardForbiddenBody pre defined queries create prometheus dashboard forbidden body
+swagger:model PreDefinedQueriesCreatePrometheusDashboardForbiddenBody
+*/
+type PreDefinedQueriesCreatePrometheusDashboardForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this pre defined queries create prometheus dashboard forbidden body
+func (o *PreDefinedQueriesCreatePrometheusDashboardForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this pre defined queries create prometheus dashboard forbidden body based on context it is used
+func (o *PreDefinedQueriesCreatePrometheusDashboardForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PreDefinedQueriesCreatePrometheusDashboardForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PreDefinedQueriesCreatePrometheusDashboardForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res PreDefinedQueriesCreatePrometheusDashboardForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PreDefinedQueriesCreatePrometheusDashboardNotFoundBody pre defined queries create prometheus dashboard not found body
+swagger:model PreDefinedQueriesCreatePrometheusDashboardNotFoundBody
+*/
+type PreDefinedQueriesCreatePrometheusDashboardNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this pre defined queries create prometheus dashboard not found body
+func (o *PreDefinedQueriesCreatePrometheusDashboardNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this pre defined queries create prometheus dashboard not found body based on context it is used
+func (o *PreDefinedQueriesCreatePrometheusDashboardNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PreDefinedQueriesCreatePrometheusDashboardNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PreDefinedQueriesCreatePrometheusDashboardNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res PreDefinedQueriesCreatePrometheusDashboardNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PreDefinedQueriesCreatePrometheusDashboardUnauthorizedBody pre defined queries create prometheus dashboard unauthorized body
+swagger:model PreDefinedQueriesCreatePrometheusDashboardUnauthorizedBody
+*/
+type PreDefinedQueriesCreatePrometheusDashboardUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this pre defined queries create prometheus dashboard unauthorized body
+func (o *PreDefinedQueriesCreatePrometheusDashboardUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this pre defined queries create prometheus dashboard unauthorized body based on context it is used
+func (o *PreDefinedQueriesCreatePrometheusDashboardUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PreDefinedQueriesCreatePrometheusDashboardUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PreDefinedQueriesCreatePrometheusDashboardUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res PreDefinedQueriesCreatePrometheusDashboardUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

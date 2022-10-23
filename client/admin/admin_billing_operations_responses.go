@@ -6,13 +6,13 @@ package admin
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AdminBillingOperationsReader is a Reader for the AdminBillingOperations structure.
@@ -75,7 +75,7 @@ AdminBillingOperationsOK describes a response with status code 200, with default
 Success
 */
 type AdminBillingOperationsOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin billing operations o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AdminBillingOperationsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsOK  %+v", 200, o.Payload)
 }
 
-func (o *AdminBillingOperationsOK) GetPayload() models.Unit {
+func (o *AdminBillingOperationsOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AdminBillingOperationsBadRequest describes a response with status code 400, with
 Bad Request
 */
 type AdminBillingOperationsBadRequest struct {
-	Payload []*models.Error
+	Payload []*AdminBillingOperationsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this admin billing operations bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminBillingOperationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminBillingOperationsBadRequest) GetPayload() []*models.Error {
+func (o *AdminBillingOperationsBadRequest) GetPayload() []*AdminBillingOperationsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AdminBillingOperationsUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type AdminBillingOperationsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AdminBillingOperationsUnauthorizedBody
 }
 
 // IsSuccess returns true when this admin billing operations unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AdminBillingOperationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminBillingOperationsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AdminBillingOperationsUnauthorized) GetPayload() *AdminBillingOperationsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AdminBillingOperationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AdminBillingOperationsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AdminBillingOperationsForbidden describes a response with status code 403, with 
 Forbidden
 */
 type AdminBillingOperationsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AdminBillingOperationsForbiddenBody
 }
 
 // IsSuccess returns true when this admin billing operations forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AdminBillingOperationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminBillingOperationsForbidden) GetPayload() *models.ProblemDetails {
+func (o *AdminBillingOperationsForbidden) GetPayload() *AdminBillingOperationsForbiddenBody {
 	return o.Payload
 }
 
 func (o *AdminBillingOperationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AdminBillingOperationsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AdminBillingOperationsNotFound describes a response with status code 404, with d
 Not Found
 */
 type AdminBillingOperationsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AdminBillingOperationsNotFoundBody
 }
 
 // IsSuccess returns true when this admin billing operations not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AdminBillingOperationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminBillingOperationsNotFound) GetPayload() *models.ProblemDetails {
+func (o *AdminBillingOperationsNotFound) GetPayload() *AdminBillingOperationsNotFoundBody {
 	return o.Payload
 }
 
 func (o *AdminBillingOperationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AdminBillingOperationsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *AdminBillingOperationsInternalServerError) String() string {
 
 func (o *AdminBillingOperationsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AdminBillingOperationsBadRequestBodyItems0 admin billing operations bad request body items0
+swagger:model AdminBillingOperationsBadRequestBodyItems0
+*/
+type AdminBillingOperationsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this admin billing operations bad request body items0
+func (o *AdminBillingOperationsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin billing operations bad request body items0 based on context it is used
+func (o *AdminBillingOperationsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminBillingOperationsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminBillingOperationsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AdminBillingOperationsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminBillingOperationsBody admin billing operations body
+swagger:model AdminBillingOperationsBody
+*/
+type AdminBillingOperationsBody struct {
+
+	// cloud credential Id
+	CloudCredentialID int32 `json:"cloudCredentialId,omitempty"`
+}
+
+// Validate validates this admin billing operations body
+func (o *AdminBillingOperationsBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin billing operations body based on context it is used
+func (o *AdminBillingOperationsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminBillingOperationsBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminBillingOperationsBody) UnmarshalBinary(b []byte) error {
+	var res AdminBillingOperationsBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminBillingOperationsForbiddenBody admin billing operations forbidden body
+swagger:model AdminBillingOperationsForbiddenBody
+*/
+type AdminBillingOperationsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this admin billing operations forbidden body
+func (o *AdminBillingOperationsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin billing operations forbidden body based on context it is used
+func (o *AdminBillingOperationsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminBillingOperationsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminBillingOperationsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AdminBillingOperationsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminBillingOperationsNotFoundBody admin billing operations not found body
+swagger:model AdminBillingOperationsNotFoundBody
+*/
+type AdminBillingOperationsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this admin billing operations not found body
+func (o *AdminBillingOperationsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin billing operations not found body based on context it is used
+func (o *AdminBillingOperationsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminBillingOperationsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminBillingOperationsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AdminBillingOperationsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminBillingOperationsUnauthorizedBody admin billing operations unauthorized body
+swagger:model AdminBillingOperationsUnauthorizedBody
+*/
+type AdminBillingOperationsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this admin billing operations unauthorized body
+func (o *AdminBillingOperationsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin billing operations unauthorized body based on context it is used
+func (o *AdminBillingOperationsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminBillingOperationsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminBillingOperationsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AdminBillingOperationsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

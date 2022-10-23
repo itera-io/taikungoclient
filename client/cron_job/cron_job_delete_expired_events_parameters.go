@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobDeleteExpiredEventsParams creates a new CronJobDeleteExpiredEventsParams object,
@@ -64,7 +62,7 @@ CronJobDeleteExpiredEventsParams contains all the parameters to send to the API 
 type CronJobDeleteExpiredEventsParams struct {
 
 	// Body.
-	Body models.DeleteExpiredEventsCommand
+	Body interface{}
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *CronJobDeleteExpiredEventsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the cron job delete expired events params
-func (o *CronJobDeleteExpiredEventsParams) WithBody(body models.DeleteExpiredEventsCommand) *CronJobDeleteExpiredEventsParams {
+func (o *CronJobDeleteExpiredEventsParams) WithBody(body interface{}) *CronJobDeleteExpiredEventsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job delete expired events params
-func (o *CronJobDeleteExpiredEventsParams) SetBody(body models.DeleteExpiredEventsCommand) {
+func (o *CronJobDeleteExpiredEventsParams) SetBody(body interface{}) {
 	o.Body = body
 }
 

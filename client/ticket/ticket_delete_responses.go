@@ -6,13 +6,13 @@ package ticket
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // TicketDeleteReader is a Reader for the TicketDelete structure.
@@ -75,7 +75,7 @@ TicketDeleteOK describes a response with status code 200, with default header va
 Success
 */
 type TicketDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket delete o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *TicketDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/{ticketId}][%d] ticketDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *TicketDeleteOK) GetPayload() models.Unit {
+func (o *TicketDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ TicketDeleteBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type TicketDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*TicketDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this ticket delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *TicketDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/{ticketId}][%d] ticketDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketDeleteBadRequest) GetPayload() []*models.Error {
+func (o *TicketDeleteBadRequest) GetPayload() []*TicketDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ TicketDeleteUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type TicketDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *TicketDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this ticket delete unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *TicketDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/{ticketId}][%d] ticketDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *TicketDeleteUnauthorized) GetPayload() *TicketDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *TicketDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(TicketDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ TicketDeleteForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type TicketDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *TicketDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this ticket delete forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *TicketDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/{ticketId}][%d] ticketDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *TicketDeleteForbidden) GetPayload() *TicketDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *TicketDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(TicketDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ TicketDeleteNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type TicketDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *TicketDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this ticket delete not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *TicketDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/{ticketId}][%d] ticketDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *TicketDeleteNotFound) GetPayload() *TicketDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *TicketDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(TicketDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *TicketDeleteInternalServerError) String() string {
 
 func (o *TicketDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+TicketDeleteBadRequestBodyItems0 ticket delete bad request body items0
+swagger:model TicketDeleteBadRequestBodyItems0
+*/
+type TicketDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this ticket delete bad request body items0
+func (o *TicketDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket delete bad request body items0 based on context it is used
+func (o *TicketDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res TicketDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+TicketDeleteForbiddenBody ticket delete forbidden body
+swagger:model TicketDeleteForbiddenBody
+*/
+type TicketDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ticket delete forbidden body
+func (o *TicketDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket delete forbidden body based on context it is used
+func (o *TicketDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res TicketDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+TicketDeleteNotFoundBody ticket delete not found body
+swagger:model TicketDeleteNotFoundBody
+*/
+type TicketDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ticket delete not found body
+func (o *TicketDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket delete not found body based on context it is used
+func (o *TicketDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res TicketDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+TicketDeleteUnauthorizedBody ticket delete unauthorized body
+swagger:model TicketDeleteUnauthorizedBody
+*/
+type TicketDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ticket delete unauthorized body
+func (o *TicketDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket delete unauthorized body based on context it is used
+func (o *TicketDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res TicketDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

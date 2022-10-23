@@ -15,8 +15,6 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesCreateKubernetesEventParams creates a new KubernetesCreateKubernetesEventParams object,
@@ -65,7 +63,7 @@ KubernetesCreateKubernetesEventParams contains all the parameters to send to the
 type KubernetesCreateKubernetesEventParams struct {
 
 	// Body.
-	Body *models.KubernetesEventCreateDto
+	Body KubernetesCreateKubernetesEventBody
 
 	// ProjectID.
 	//
@@ -129,13 +127,13 @@ func (o *KubernetesCreateKubernetesEventParams) SetHTTPClient(client *http.Clien
 }
 
 // WithBody adds the body to the kubernetes create kubernetes event params
-func (o *KubernetesCreateKubernetesEventParams) WithBody(body *models.KubernetesEventCreateDto) *KubernetesCreateKubernetesEventParams {
+func (o *KubernetesCreateKubernetesEventParams) WithBody(body KubernetesCreateKubernetesEventBody) *KubernetesCreateKubernetesEventParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes create kubernetes event params
-func (o *KubernetesCreateKubernetesEventParams) SetBody(body *models.KubernetesEventCreateDto) {
+func (o *KubernetesCreateKubernetesEventParams) SetBody(body KubernetesCreateKubernetesEventBody) {
 	o.Body = body
 }
 
@@ -168,10 +166,8 @@ func (o *KubernetesCreateKubernetesEventParams) WriteToRequest(r runtime.ClientR
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param projectId

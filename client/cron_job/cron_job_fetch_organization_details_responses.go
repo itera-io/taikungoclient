@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CronJobFetchOrganizationDetailsReader is a Reader for the CronJobFetchOrganizationDetails structure.
@@ -75,7 +75,7 @@ CronJobFetchOrganizationDetailsOK describes a response with status code 200, wit
 Success
 */
 type CronJobFetchOrganizationDetailsOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job fetch organization details o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobFetchOrganizationDetailsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobFetchOrganizationDetailsOK) GetPayload() models.Unit {
+func (o *CronJobFetchOrganizationDetailsOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobFetchOrganizationDetailsBadRequest describes a response with status code 
 Bad Request
 */
 type CronJobFetchOrganizationDetailsBadRequest struct {
-	Payload []*models.Error
+	Payload []*CronJobFetchOrganizationDetailsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this cron job fetch organization details bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobFetchOrganizationDetailsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobFetchOrganizationDetailsBadRequest) GetPayload() []*models.Error {
+func (o *CronJobFetchOrganizationDetailsBadRequest) GetPayload() []*CronJobFetchOrganizationDetailsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobFetchOrganizationDetailsUnauthorized describes a response with status cod
 Unauthorized
 */
 type CronJobFetchOrganizationDetailsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobFetchOrganizationDetailsUnauthorizedBody
 }
 
 // IsSuccess returns true when this cron job fetch organization details unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobFetchOrganizationDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobFetchOrganizationDetailsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchOrganizationDetailsUnauthorized) GetPayload() *CronJobFetchOrganizationDetailsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CronJobFetchOrganizationDetailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobFetchOrganizationDetailsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobFetchOrganizationDetailsForbidden describes a response with status code 4
 Forbidden
 */
 type CronJobFetchOrganizationDetailsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobFetchOrganizationDetailsForbiddenBody
 }
 
 // IsSuccess returns true when this cron job fetch organization details forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobFetchOrganizationDetailsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobFetchOrganizationDetailsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchOrganizationDetailsForbidden) GetPayload() *CronJobFetchOrganizationDetailsForbiddenBody {
 	return o.Payload
 }
 
 func (o *CronJobFetchOrganizationDetailsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobFetchOrganizationDetailsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobFetchOrganizationDetailsNotFound describes a response with status code 40
 Not Found
 */
 type CronJobFetchOrganizationDetailsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobFetchOrganizationDetailsNotFoundBody
 }
 
 // IsSuccess returns true when this cron job fetch organization details not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobFetchOrganizationDetailsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobFetchOrganizationDetailsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchOrganizationDetailsNotFound) GetPayload() *CronJobFetchOrganizationDetailsNotFoundBody {
 	return o.Payload
 }
 
 func (o *CronJobFetchOrganizationDetailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobFetchOrganizationDetailsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *CronJobFetchOrganizationDetailsInternalServerError) String() string {
 
 func (o *CronJobFetchOrganizationDetailsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CronJobFetchOrganizationDetailsBadRequestBodyItems0 cron job fetch organization details bad request body items0
+swagger:model CronJobFetchOrganizationDetailsBadRequestBodyItems0
+*/
+type CronJobFetchOrganizationDetailsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this cron job fetch organization details bad request body items0
+func (o *CronJobFetchOrganizationDetailsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch organization details bad request body items0 based on context it is used
+func (o *CronJobFetchOrganizationDetailsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchOrganizationDetailsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchOrganizationDetailsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchOrganizationDetailsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobFetchOrganizationDetailsForbiddenBody cron job fetch organization details forbidden body
+swagger:model CronJobFetchOrganizationDetailsForbiddenBody
+*/
+type CronJobFetchOrganizationDetailsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job fetch organization details forbidden body
+func (o *CronJobFetchOrganizationDetailsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch organization details forbidden body based on context it is used
+func (o *CronJobFetchOrganizationDetailsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchOrganizationDetailsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchOrganizationDetailsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchOrganizationDetailsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobFetchOrganizationDetailsNotFoundBody cron job fetch organization details not found body
+swagger:model CronJobFetchOrganizationDetailsNotFoundBody
+*/
+type CronJobFetchOrganizationDetailsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job fetch organization details not found body
+func (o *CronJobFetchOrganizationDetailsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch organization details not found body based on context it is used
+func (o *CronJobFetchOrganizationDetailsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchOrganizationDetailsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchOrganizationDetailsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchOrganizationDetailsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobFetchOrganizationDetailsUnauthorizedBody cron job fetch organization details unauthorized body
+swagger:model CronJobFetchOrganizationDetailsUnauthorizedBody
+*/
+type CronJobFetchOrganizationDetailsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job fetch organization details unauthorized body
+func (o *CronJobFetchOrganizationDetailsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch organization details unauthorized body based on context it is used
+func (o *CronJobFetchOrganizationDetailsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchOrganizationDetailsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchOrganizationDetailsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchOrganizationDetailsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

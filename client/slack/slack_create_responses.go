@@ -6,13 +6,16 @@ package slack
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // SlackCreateReader is a Reader for the SlackCreate structure.
@@ -75,7 +78,7 @@ SlackCreateOK describes a response with status code 200, with default header val
 Success
 */
 type SlackCreateOK struct {
-	Payload *models.APIResponse
+	Payload *SlackCreateOKBody
 }
 
 // IsSuccess returns true when this slack create o k response has a 2xx status code
@@ -111,13 +114,13 @@ func (o *SlackCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *SlackCreateOK) GetPayload() *models.APIResponse {
+func (o *SlackCreateOK) GetPayload() *SlackCreateOKBody {
 	return o.Payload
 }
 
 func (o *SlackCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(SlackCreateOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +141,7 @@ SlackCreateBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type SlackCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*SlackCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this slack create bad request response has a 2xx status code
@@ -174,7 +177,7 @@ func (o *SlackCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SlackCreateBadRequest) GetPayload() []*models.Error {
+func (o *SlackCreateBadRequest) GetPayload() []*SlackCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +202,7 @@ SlackCreateUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type SlackCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SlackCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this slack create unauthorized response has a 2xx status code
@@ -235,13 +238,13 @@ func (o *SlackCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SlackCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SlackCreateUnauthorized) GetPayload() *SlackCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SlackCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SlackCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +265,7 @@ SlackCreateForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type SlackCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SlackCreateForbiddenBody
 }
 
 // IsSuccess returns true when this slack create forbidden response has a 2xx status code
@@ -298,13 +301,13 @@ func (o *SlackCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SlackCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *SlackCreateForbidden) GetPayload() *SlackCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *SlackCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SlackCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +328,7 @@ SlackCreateNotFound describes a response with status code 404, with default head
 Not Found
 */
 type SlackCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SlackCreateNotFoundBody
 }
 
 // IsSuccess returns true when this slack create not found response has a 2xx status code
@@ -361,13 +364,13 @@ func (o *SlackCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SlackCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *SlackCreateNotFound) GetPayload() *SlackCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *SlackCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SlackCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +428,339 @@ func (o *SlackCreateInternalServerError) String() string {
 
 func (o *SlackCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SlackCreateBadRequestBodyItems0 slack create bad request body items0
+swagger:model SlackCreateBadRequestBodyItems0
+*/
+type SlackCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this slack create bad request body items0
+func (o *SlackCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this slack create bad request body items0 based on context it is used
+func (o *SlackCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SlackCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SlackCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SlackCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SlackCreateBody slack create body
+swagger:model SlackCreateBody
+*/
+type SlackCreateBody struct {
+
+	// channel
+	Channel string `json:"channel,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// slack type
+	// Enum: [100 200]
+	SlackType int32 `json:"slackType,omitempty"`
+
+	// url
+	URL string `json:"url,omitempty"`
+}
+
+// Validate validates this slack create body
+func (o *SlackCreateBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateSlackType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var slackCreateBodyTypeSlackTypePropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		slackCreateBodyTypeSlackTypePropEnum = append(slackCreateBodyTypeSlackTypePropEnum, v)
+	}
+}
+
+// prop value enum
+func (o *SlackCreateBody) validateSlackTypeEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, slackCreateBodyTypeSlackTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *SlackCreateBody) validateSlackType(formats strfmt.Registry) error {
+	if swag.IsZero(o.SlackType) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := o.validateSlackTypeEnum("body"+"."+"slackType", "body", o.SlackType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this slack create body based on context it is used
+func (o *SlackCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SlackCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SlackCreateBody) UnmarshalBinary(b []byte) error {
+	var res SlackCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SlackCreateForbiddenBody slack create forbidden body
+swagger:model SlackCreateForbiddenBody
+*/
+type SlackCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this slack create forbidden body
+func (o *SlackCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this slack create forbidden body based on context it is used
+func (o *SlackCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SlackCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SlackCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SlackCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SlackCreateNotFoundBody slack create not found body
+swagger:model SlackCreateNotFoundBody
+*/
+type SlackCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this slack create not found body
+func (o *SlackCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this slack create not found body based on context it is used
+func (o *SlackCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SlackCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SlackCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SlackCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SlackCreateOKBody slack create o k body
+swagger:model SlackCreateOKBody
+*/
+type SlackCreateOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this slack create o k body
+func (o *SlackCreateOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this slack create o k body based on context it is used
+func (o *SlackCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SlackCreateOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SlackCreateOKBody) UnmarshalBinary(b []byte) error {
+	var res SlackCreateOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SlackCreateUnauthorizedBody slack create unauthorized body
+swagger:model SlackCreateUnauthorizedBody
+*/
+type SlackCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this slack create unauthorized body
+func (o *SlackCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this slack create unauthorized body based on context it is used
+func (o *SlackCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SlackCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SlackCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SlackCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

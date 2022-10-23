@@ -68,10 +68,10 @@ type StandAloneVMFullDto struct {
 	SSHPublicKey string `json:"sshPublicKey,omitempty"`
 
 	// stand alone profile
-	StandAloneProfile *StandAloneProfileFullDto `json:"standAloneProfile,omitempty"`
+	StandAloneProfile *StandAloneVMFullDtoStandAloneProfile `json:"standAloneProfile,omitempty"`
 
 	// stand alone Vm disks
-	StandAloneVMDisks []*StandAloneVMDiskFullDto `json:"standAloneVmDisks"`
+	StandAloneVMDisks []*StandAloneVMFullDtoStandAloneVMDisksItems0 `json:"standAloneVmDisks"`
 
 	// status
 	Status string `json:"status,omitempty"`
@@ -214,6 +214,229 @@ func (m *StandAloneVMFullDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *StandAloneVMFullDto) UnmarshalBinary(b []byte) error {
 	var res StandAloneVMFullDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// StandAloneVMFullDtoStandAloneProfile stand alone VM full dto stand alone profile
+//
+// swagger:model StandAloneVMFullDtoStandAloneProfile
+type StandAloneVMFullDtoStandAloneProfile struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// public key
+	PublicKey string `json:"publicKey,omitempty"`
+
+	// revision
+	Revision int32 `json:"revision,omitempty"`
+
+	// stand alone profile security groups
+	StandAloneProfileSecurityGroups []*StandAloneVMFullDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0 `json:"standAloneProfileSecurityGroups"`
+}
+
+// Validate validates this stand alone VM full dto stand alone profile
+func (m *StandAloneVMFullDtoStandAloneProfile) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateStandAloneProfileSecurityGroups(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StandAloneVMFullDtoStandAloneProfile) validateStandAloneProfileSecurityGroups(formats strfmt.Registry) error {
+	if swag.IsZero(m.StandAloneProfileSecurityGroups) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.StandAloneProfileSecurityGroups); i++ {
+		if swag.IsZero(m.StandAloneProfileSecurityGroups[i]) { // not required
+			continue
+		}
+
+		if m.StandAloneProfileSecurityGroups[i] != nil {
+			if err := m.StandAloneProfileSecurityGroups[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this stand alone VM full dto stand alone profile based on the context it is used
+func (m *StandAloneVMFullDtoStandAloneProfile) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateStandAloneProfileSecurityGroups(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StandAloneVMFullDtoStandAloneProfile) contextValidateStandAloneProfileSecurityGroups(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.StandAloneProfileSecurityGroups); i++ {
+
+		if m.StandAloneProfileSecurityGroups[i] != nil {
+			if err := m.StandAloneProfileSecurityGroups[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *StandAloneVMFullDtoStandAloneProfile) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *StandAloneVMFullDtoStandAloneProfile) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMFullDtoStandAloneProfile
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// StandAloneVMFullDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0 stand alone VM full dto stand alone profile stand alone profile security groups items0
+//
+// swagger:model StandAloneVMFullDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0
+type StandAloneVMFullDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// port max range
+	PortMaxRange int32 `json:"portMaxRange,omitempty"`
+
+	// port min range
+	PortMinRange int32 `json:"portMinRange,omitempty"`
+
+	// priority
+	Priority int32 `json:"priority,omitempty"`
+
+	// protocol
+	Protocol string `json:"protocol,omitempty"`
+
+	// remote Ip prefix
+	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
+}
+
+// Validate validates this stand alone VM full dto stand alone profile stand alone profile security groups items0
+func (m *StandAloneVMFullDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM full dto stand alone profile stand alone profile security groups items0 based on context it is used
+func (m *StandAloneVMFullDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *StandAloneVMFullDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *StandAloneVMFullDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMFullDtoStandAloneProfileStandAloneProfileSecurityGroupsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// StandAloneVMFullDtoStandAloneVMDisksItems0 stand alone VM full dto stand alone VM disks items0
+//
+// swagger:model StandAloneVMFullDtoStandAloneVMDisksItems0
+type StandAloneVMFullDtoStandAloneVMDisksItems0 struct {
+
+	// device name
+	DeviceName string `json:"deviceName,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// lun Id
+	LunID string `json:"lunId,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// size
+	Size int64 `json:"size,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// volume type
+	VolumeType string `json:"volumeType,omitempty"`
+}
+
+// Validate validates this stand alone VM full dto stand alone VM disks items0
+func (m *StandAloneVMFullDtoStandAloneVMDisksItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone VM full dto stand alone VM disks items0 based on context it is used
+func (m *StandAloneVMFullDtoStandAloneVMDisksItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *StandAloneVMFullDtoStandAloneVMDisksItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *StandAloneVMFullDtoStandAloneVMDisksItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMFullDtoStandAloneVMDisksItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

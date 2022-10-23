@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSearchIngressListParams creates a new SearchIngressListParams object,
@@ -64,7 +62,7 @@ SearchIngressListParams contains all the parameters to send to the API endpoint
 type SearchIngressListParams struct {
 
 	// Body.
-	Body *models.IngressSearchCommand
+	Body SearchIngressListBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *SearchIngressListParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the search ingress list params
-func (o *SearchIngressListParams) WithBody(body *models.IngressSearchCommand) *SearchIngressListParams {
+func (o *SearchIngressListParams) WithBody(body SearchIngressListBody) *SearchIngressListParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the search ingress list params
-func (o *SearchIngressListParams) SetBody(body *models.IngressSearchCommand) {
+func (o *SearchIngressListParams) SetBody(body SearchIngressListBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *SearchIngressListParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

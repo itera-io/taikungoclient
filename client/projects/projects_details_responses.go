@@ -6,13 +6,16 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ProjectsDetailsReader is a Reader for the ProjectsDetails structure.
@@ -75,7 +78,7 @@ ProjectsDetailsOK describes a response with status code 200, with default header
 Success
 */
 type ProjectsDetailsOK struct {
-	Payload *models.ProjectForListDto
+	Payload *ProjectsDetailsOKBody
 }
 
 // IsSuccess returns true when this projects details o k response has a 2xx status code
@@ -111,13 +114,13 @@ func (o *ProjectsDetailsOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/{projectId}][%d] projectsDetailsOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsDetailsOK) GetPayload() *models.ProjectForListDto {
+func (o *ProjectsDetailsOK) GetPayload() *ProjectsDetailsOKBody {
 	return o.Payload
 }
 
 func (o *ProjectsDetailsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProjectForListDto)
+	o.Payload = new(ProjectsDetailsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +141,7 @@ ProjectsDetailsBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type ProjectsDetailsBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectsDetailsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this projects details bad request response has a 2xx status code
@@ -174,7 +177,7 @@ func (o *ProjectsDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/{projectId}][%d] projectsDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsDetailsBadRequest) GetPayload() []*models.Error {
+func (o *ProjectsDetailsBadRequest) GetPayload() []*ProjectsDetailsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +202,7 @@ ProjectsDetailsUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type ProjectsDetailsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsDetailsUnauthorizedBody
 }
 
 // IsSuccess returns true when this projects details unauthorized response has a 2xx status code
@@ -235,13 +238,13 @@ func (o *ProjectsDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/{projectId}][%d] projectsDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsDetailsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsDetailsUnauthorized) GetPayload() *ProjectsDetailsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectsDetailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsDetailsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +265,7 @@ ProjectsDetailsForbidden describes a response with status code 403, with default
 Forbidden
 */
 type ProjectsDetailsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsDetailsForbiddenBody
 }
 
 // IsSuccess returns true when this projects details forbidden response has a 2xx status code
@@ -298,13 +301,13 @@ func (o *ProjectsDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/{projectId}][%d] projectsDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsDetailsForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsDetailsForbidden) GetPayload() *ProjectsDetailsForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectsDetailsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsDetailsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +328,7 @@ ProjectsDetailsNotFound describes a response with status code 404, with default 
 Not Found
 */
 type ProjectsDetailsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectsDetailsNotFoundBody
 }
 
 // IsSuccess returns true when this projects details not found response has a 2xx status code
@@ -361,13 +364,13 @@ func (o *ProjectsDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/{projectId}][%d] projectsDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsDetailsNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsDetailsNotFound) GetPayload() *ProjectsDetailsNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectsDetailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectsDetailsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +428,1863 @@ func (o *ProjectsDetailsInternalServerError) String() string {
 
 func (o *ProjectsDetailsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectsDetailsBadRequestBodyItems0 projects details bad request body items0
+swagger:model ProjectsDetailsBadRequestBodyItems0
+*/
+type ProjectsDetailsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this projects details bad request body items0
+func (o *ProjectsDetailsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects details bad request body items0 based on context it is used
+func (o *ProjectsDetailsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsForbiddenBody projects details forbidden body
+swagger:model ProjectsDetailsForbiddenBody
+*/
+type ProjectsDetailsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects details forbidden body
+func (o *ProjectsDetailsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects details forbidden body based on context it is used
+func (o *ProjectsDetailsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsNotFoundBody projects details not found body
+swagger:model ProjectsDetailsNotFoundBody
+*/
+type ProjectsDetailsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects details not found body
+func (o *ProjectsDetailsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects details not found body based on context it is used
+func (o *ProjectsDetailsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsOKBody projects details o k body
+swagger:model ProjectsDetailsOKBody
+*/
+type ProjectsDetailsOKBody struct {
+
+	// access Ip
+	AccessIP string `json:"accessIp,omitempty"`
+
+	// access profile revision
+	AccessProfileRevision int32 `json:"accessProfileRevision,omitempty"`
+
+	// access profiles
+	AccessProfiles *ProjectsDetailsOKBodyAccessProfiles `json:"accessProfiles,omitempty"`
+
+	// availability zones
+	AvailabilityZones []string `json:"availabilityZones"`
+
+	// aws project a z subnets
+	AwsProjectAZSubnets []*ProjectsDetailsOKBodyAwsProjectAZSubnetsItems0 `json:"awsProjectAZSubnets"`
+
+	// bastion
+	Bastion int32 `json:"bastion,omitempty"`
+
+	// bound users
+	BoundUsers []*ProjectsDetailsOKBodyBoundUsersItems0 `json:"boundUsers"`
+
+	// cidr
+	Cidr string `json:"cidr,omitempty"`
+
+	// cloud credential Id
+	CloudCredentialID int32 `json:"cloudCredentialId,omitempty"`
+
+	// cloud credential name
+	CloudCredentialName string `json:"cloudCredentialName,omitempty"`
+
+	// cloud type
+	CloudType string `json:"cloudType,omitempty"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// flavors
+	Flavors []string `json:"flavors"`
+
+	// google project Id
+	GoogleProjectID string `json:"googleProjectId,omitempty"`
+
+	// has kube config file
+	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
+
+	// has selected flavors
+	HasSelectedFlavors bool `json:"hasSelectedFlavors"`
+
+	// health
+	Health string `json:"health,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// image name
+	ImageName string `json:"imageName,omitempty"`
+
+	// is auto upgrade
+	IsAutoUpgrade bool `json:"isAutoUpgrade"`
+
+	// is autoscaling enabled
+	IsAutoscalingEnabled bool `json:"isAutoscalingEnabled"`
+
+	// is backup enabled
+	IsBackupEnabled bool `json:"isBackupEnabled"`
+
+	// is delete cluster
+	IsDeleteCluster bool `json:"isDeleteCluster"`
+
+	// is kubernetes
+	IsKubernetes bool `json:"isKubernetes"`
+
+	// is kubevap enabled
+	IsKubevapEnabled bool `json:"isKubevapEnabled"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// is monitoring enabled
+	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
+
+	// is opa enabled
+	IsOpaEnabled bool `json:"isOpaEnabled"`
+
+	// job Url
+	JobURL string `json:"jobUrl,omitempty"`
+
+	// kubernetes alerts
+	KubernetesAlerts []*ProjectsDetailsOKBodyKubernetesAlertsItems0 `json:"kubernetesAlerts"`
+
+	// kubernetes current version
+	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion,omitempty"`
+
+	// kubernetes profiles
+	KubernetesProfiles *ProjectsDetailsOKBodyKubernetesProfiles `json:"kubernetesProfiles,omitempty"`
+
+	// kubernetes target version
+	KubernetesTargetVersion string `json:"kubernetesTargetVersion,omitempty"`
+
+	// kubespray current version
+	KubesprayCurrentVersion string `json:"kubesprayCurrentVersion,omitempty"`
+
+	// kubespray target version
+	KubesprayTargetVersion string `json:"kubesprayTargetVersion,omitempty"`
+
+	// kubevap enabeled kubernetes versions
+	KubevapEnabeledKubernetesVersions []string `json:"kubevapEnabeledKubernetesVersions"`
+
+	// master
+	Master int32 `json:"master,omitempty"`
+
+	// master ready
+	MasterReady int32 `json:"masterReady,omitempty"`
+
+	// monitoring credential
+	MonitoringCredential *ProjectsDetailsOKBodyMonitoringCredential `json:"monitoringCredential,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// net mask
+	NetMask int32 `json:"netMask,omitempty"`
+
+	// opa profile revision
+	OpaProfileRevision int32 `json:"opaProfileRevision,omitempty"`
+
+	// opa profiles
+	OpaProfiles *ProjectsDetailsOKBodyOpaProfiles `json:"opaProfiles,omitempty"`
+
+	// operation
+	Operation string `json:"operation,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// partner Id
+	PartnerID int32 `json:"partnerId,omitempty"`
+
+	// private Ip
+	PrivateIP string `json:"privateIp,omitempty"`
+
+	// public Ip
+	PublicIP string `json:"publicIp,omitempty"`
+
+	// quota Id
+	QuotaID int32 `json:"quotaId,omitempty"`
+
+	// router Id end range
+	RouterIDEndRange int32 `json:"routerIdEndRange,omitempty"`
+
+	// router Id start range
+	RouterIDStartRange int32 `json:"routerIdStartRange,omitempty"`
+
+	// s3 access key Id
+	S3AccessKeyID string `json:"s3AccessKeyId,omitempty"`
+
+	// s3 bucket name
+	S3BucketName string `json:"s3BucketName,omitempty"`
+
+	// s3 endpoint
+	S3Endpoint string `json:"s3Endpoint,omitempty"`
+
+	// s3 region
+	S3Region string `json:"s3Region,omitempty"`
+
+	// s3 secret key
+	S3SecretKey string `json:"s3SecretKey,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// taikun l b flavor
+	TaikunLBFlavor string `json:"taikunLBFlavor,omitempty"`
+
+	// taikun l b private key
+	TaikunLBPrivateKey string `json:"taikunLBPrivateKey,omitempty"`
+
+	// taikun l b public key
+	TaikunLBPublicKey string `json:"taikunLBPublicKey,omitempty"`
+
+	// taikun private SSH key
+	TaikunPrivateSSHKey string `json:"taikunPrivateSSHKey,omitempty"`
+
+	// taikun public SSH key
+	TaikunPublicSSHKey string `json:"taikunPublicSSHKey,omitempty"`
+
+	// token
+	Token string `json:"token,omitempty"`
+
+	// topic name
+	TopicName string `json:"topicName,omitempty"`
+
+	// total servers count
+	TotalServersCount int32 `json:"totalServersCount,omitempty"`
+
+	// updated at
+	// Format: date-time
+	UpdatedAt *strfmt.DateTime `json:"updatedAt,omitempty"`
+}
+
+// Validate validates this projects details o k body
+func (o *ProjectsDetailsOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateAccessProfiles(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateAwsProjectAZSubnets(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateBoundUsers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateKubernetesAlerts(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateKubernetesProfiles(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateMonitoringCredential(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateOpaProfiles(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateUpdatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsDetailsOKBody) validateAccessProfiles(formats strfmt.Registry) error {
+	if swag.IsZero(o.AccessProfiles) { // not required
+		return nil
+	}
+
+	if o.AccessProfiles != nil {
+		if err := o.AccessProfiles.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("projectsDetailsOK" + "." + "accessProfiles")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("projectsDetailsOK" + "." + "accessProfiles")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBody) validateAwsProjectAZSubnets(formats strfmt.Registry) error {
+	if swag.IsZero(o.AwsProjectAZSubnets) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.AwsProjectAZSubnets); i++ {
+		if swag.IsZero(o.AwsProjectAZSubnets[i]) { // not required
+			continue
+		}
+
+		if o.AwsProjectAZSubnets[i] != nil {
+			if err := o.AwsProjectAZSubnets[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "awsProjectAZSubnets" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "awsProjectAZSubnets" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBody) validateBoundUsers(formats strfmt.Registry) error {
+	if swag.IsZero(o.BoundUsers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.BoundUsers); i++ {
+		if swag.IsZero(o.BoundUsers[i]) { // not required
+			continue
+		}
+
+		if o.BoundUsers[i] != nil {
+			if err := o.BoundUsers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "boundUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "boundUsers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBody) validateKubernetesAlerts(formats strfmt.Registry) error {
+	if swag.IsZero(o.KubernetesAlerts) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.KubernetesAlerts); i++ {
+		if swag.IsZero(o.KubernetesAlerts[i]) { // not required
+			continue
+		}
+
+		if o.KubernetesAlerts[i] != nil {
+			if err := o.KubernetesAlerts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "kubernetesAlerts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "kubernetesAlerts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBody) validateKubernetesProfiles(formats strfmt.Registry) error {
+	if swag.IsZero(o.KubernetesProfiles) { // not required
+		return nil
+	}
+
+	if o.KubernetesProfiles != nil {
+		if err := o.KubernetesProfiles.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("projectsDetailsOK" + "." + "kubernetesProfiles")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("projectsDetailsOK" + "." + "kubernetesProfiles")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBody) validateMonitoringCredential(formats strfmt.Registry) error {
+	if swag.IsZero(o.MonitoringCredential) { // not required
+		return nil
+	}
+
+	if o.MonitoringCredential != nil {
+		if err := o.MonitoringCredential.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("projectsDetailsOK" + "." + "monitoringCredential")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("projectsDetailsOK" + "." + "monitoringCredential")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBody) validateOpaProfiles(formats strfmt.Registry) error {
+	if swag.IsZero(o.OpaProfiles) { // not required
+		return nil
+	}
+
+	if o.OpaProfiles != nil {
+		if err := o.OpaProfiles.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("projectsDetailsOK" + "." + "opaProfiles")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("projectsDetailsOK" + "." + "opaProfiles")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBody) validateUpdatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(o.UpdatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("projectsDetailsOK"+"."+"updatedAt", "body", "date-time", o.UpdatedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this projects details o k body based on the context it is used
+func (o *ProjectsDetailsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateAccessProfiles(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateAwsProjectAZSubnets(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateBoundUsers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateKubernetesAlerts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateKubernetesProfiles(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateMonitoringCredential(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateOpaProfiles(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsDetailsOKBody) contextValidateAccessProfiles(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.AccessProfiles != nil {
+		if err := o.AccessProfiles.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("projectsDetailsOK" + "." + "accessProfiles")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("projectsDetailsOK" + "." + "accessProfiles")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBody) contextValidateAwsProjectAZSubnets(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.AwsProjectAZSubnets); i++ {
+
+		if o.AwsProjectAZSubnets[i] != nil {
+			if err := o.AwsProjectAZSubnets[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "awsProjectAZSubnets" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "awsProjectAZSubnets" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBody) contextValidateBoundUsers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.BoundUsers); i++ {
+
+		if o.BoundUsers[i] != nil {
+			if err := o.BoundUsers[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "boundUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "boundUsers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBody) contextValidateKubernetesAlerts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.KubernetesAlerts); i++ {
+
+		if o.KubernetesAlerts[i] != nil {
+			if err := o.KubernetesAlerts[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "kubernetesAlerts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "kubernetesAlerts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBody) contextValidateKubernetesProfiles(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.KubernetesProfiles != nil {
+		if err := o.KubernetesProfiles.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("projectsDetailsOK" + "." + "kubernetesProfiles")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("projectsDetailsOK" + "." + "kubernetesProfiles")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBody) contextValidateMonitoringCredential(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.MonitoringCredential != nil {
+		if err := o.MonitoringCredential.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("projectsDetailsOK" + "." + "monitoringCredential")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("projectsDetailsOK" + "." + "monitoringCredential")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBody) contextValidateOpaProfiles(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.OpaProfiles != nil {
+		if err := o.OpaProfiles.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("projectsDetailsOK" + "." + "opaProfiles")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("projectsDetailsOK" + "." + "opaProfiles")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsOKBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsOKBodyAccessProfiles projects details o k body access profiles
+swagger:model ProjectsDetailsOKBodyAccessProfiles
+*/
+type ProjectsDetailsOKBodyAccessProfiles struct {
+
+	// allowed hosts
+	AllowedHosts []*ProjectsDetailsOKBodyAccessProfilesAllowedHostsItems0 `json:"allowedHosts"`
+
+	// dns servers
+	DNSServers []*ProjectsDetailsOKBodyAccessProfilesDNSServersItems0 `json:"dnsServers"`
+
+	// http proxy
+	HTTPProxy string `json:"httpProxy,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// ntp servers
+	NtpServers []*ProjectsDetailsOKBodyAccessProfilesNtpServersItems0 `json:"ntpServers"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// revision
+	Revision int32 `json:"revision,omitempty"`
+
+	// ssh users
+	SSHUsers []*ProjectsDetailsOKBodyAccessProfilesSSHUsersItems0 `json:"sshUsers"`
+}
+
+// Validate validates this projects details o k body access profiles
+func (o *ProjectsDetailsOKBodyAccessProfiles) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateAllowedHosts(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateDNSServers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateNtpServers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateSSHUsers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsDetailsOKBodyAccessProfiles) validateAllowedHosts(formats strfmt.Registry) error {
+	if swag.IsZero(o.AllowedHosts) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.AllowedHosts); i++ {
+		if swag.IsZero(o.AllowedHosts[i]) { // not required
+			continue
+		}
+
+		if o.AllowedHosts[i] != nil {
+			if err := o.AllowedHosts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "allowedHosts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "allowedHosts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBodyAccessProfiles) validateDNSServers(formats strfmt.Registry) error {
+	if swag.IsZero(o.DNSServers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.DNSServers); i++ {
+		if swag.IsZero(o.DNSServers[i]) { // not required
+			continue
+		}
+
+		if o.DNSServers[i] != nil {
+			if err := o.DNSServers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "dnsServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "dnsServers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBodyAccessProfiles) validateNtpServers(formats strfmt.Registry) error {
+	if swag.IsZero(o.NtpServers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.NtpServers); i++ {
+		if swag.IsZero(o.NtpServers[i]) { // not required
+			continue
+		}
+
+		if o.NtpServers[i] != nil {
+			if err := o.NtpServers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "ntpServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "ntpServers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBodyAccessProfiles) validateSSHUsers(formats strfmt.Registry) error {
+	if swag.IsZero(o.SSHUsers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.SSHUsers); i++ {
+		if swag.IsZero(o.SSHUsers[i]) { // not required
+			continue
+		}
+
+		if o.SSHUsers[i] != nil {
+			if err := o.SSHUsers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "sshUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "sshUsers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this projects details o k body access profiles based on the context it is used
+func (o *ProjectsDetailsOKBodyAccessProfiles) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateAllowedHosts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateDNSServers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateNtpServers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateSSHUsers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsDetailsOKBodyAccessProfiles) contextValidateAllowedHosts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.AllowedHosts); i++ {
+
+		if o.AllowedHosts[i] != nil {
+			if err := o.AllowedHosts[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "allowedHosts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "allowedHosts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBodyAccessProfiles) contextValidateDNSServers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.DNSServers); i++ {
+
+		if o.DNSServers[i] != nil {
+			if err := o.DNSServers[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "dnsServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "dnsServers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBodyAccessProfiles) contextValidateNtpServers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.NtpServers); i++ {
+
+		if o.NtpServers[i] != nil {
+			if err := o.NtpServers[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "ntpServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "ntpServers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *ProjectsDetailsOKBodyAccessProfiles) contextValidateSSHUsers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.SSHUsers); i++ {
+
+		if o.SSHUsers[i] != nil {
+			if err := o.SSHUsers[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "sshUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "accessProfiles" + "." + "sshUsers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyAccessProfiles) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyAccessProfiles) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsOKBodyAccessProfiles
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsOKBodyAccessProfilesAllowedHostsItems0 projects details o k body access profiles allowed hosts items0
+swagger:model ProjectsDetailsOKBodyAccessProfilesAllowedHostsItems0
+*/
+type ProjectsDetailsOKBodyAccessProfilesAllowedHostsItems0 struct {
+
+	// access profile Id
+	AccessProfileID int32 `json:"accessProfileId,omitempty"`
+
+	// access profile name
+	AccessProfileName string `json:"accessProfileName,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// ip address
+	IPAddress string `json:"ipAddress,omitempty"`
+
+	// mask bits
+	MaskBits int32 `json:"maskBits,omitempty"`
+}
+
+// Validate validates this projects details o k body access profiles allowed hosts items0
+func (o *ProjectsDetailsOKBodyAccessProfilesAllowedHostsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects details o k body access profiles allowed hosts items0 based on context it is used
+func (o *ProjectsDetailsOKBodyAccessProfilesAllowedHostsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyAccessProfilesAllowedHostsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyAccessProfilesAllowedHostsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsOKBodyAccessProfilesAllowedHostsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsOKBodyAccessProfilesDNSServersItems0 projects details o k body access profiles DNS servers items0
+swagger:model ProjectsDetailsOKBodyAccessProfilesDNSServersItems0
+*/
+type ProjectsDetailsOKBodyAccessProfilesDNSServersItems0 struct {
+
+	// address
+	Address string `json:"address,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this projects details o k body access profiles DNS servers items0
+func (o *ProjectsDetailsOKBodyAccessProfilesDNSServersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects details o k body access profiles DNS servers items0 based on context it is used
+func (o *ProjectsDetailsOKBodyAccessProfilesDNSServersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyAccessProfilesDNSServersItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyAccessProfilesDNSServersItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsOKBodyAccessProfilesDNSServersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsOKBodyAccessProfilesNtpServersItems0 projects details o k body access profiles ntp servers items0
+swagger:model ProjectsDetailsOKBodyAccessProfilesNtpServersItems0
+*/
+type ProjectsDetailsOKBodyAccessProfilesNtpServersItems0 struct {
+
+	// address
+	Address string `json:"address,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this projects details o k body access profiles ntp servers items0
+func (o *ProjectsDetailsOKBodyAccessProfilesNtpServersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects details o k body access profiles ntp servers items0 based on context it is used
+func (o *ProjectsDetailsOKBodyAccessProfilesNtpServersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyAccessProfilesNtpServersItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyAccessProfilesNtpServersItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsOKBodyAccessProfilesNtpServersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsOKBodyAccessProfilesSSHUsersItems0 projects details o k body access profiles SSH users items0
+swagger:model ProjectsDetailsOKBodyAccessProfilesSSHUsersItems0
+*/
+type ProjectsDetailsOKBodyAccessProfilesSSHUsersItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is deleted
+	IsDeleted bool `json:"isDeleted"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// ssh public key
+	SSHPublicKey string `json:"sshPublicKey,omitempty"`
+}
+
+// Validate validates this projects details o k body access profiles SSH users items0
+func (o *ProjectsDetailsOKBodyAccessProfilesSSHUsersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects details o k body access profiles SSH users items0 based on context it is used
+func (o *ProjectsDetailsOKBodyAccessProfilesSSHUsersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyAccessProfilesSSHUsersItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyAccessProfilesSSHUsersItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsOKBodyAccessProfilesSSHUsersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsOKBodyAwsProjectAZSubnetsItems0 projects details o k body aws project a z subnets items0
+swagger:model ProjectsDetailsOKBodyAwsProjectAZSubnetsItems0
+*/
+type ProjectsDetailsOKBodyAwsProjectAZSubnetsItems0 struct {
+
+	// private Ip
+	PrivateIP string `json:"privateIp,omitempty"`
+
+	// public Ip
+	PublicIP string `json:"publicIp,omitempty"`
+
+	// zone
+	Zone string `json:"zone,omitempty"`
+}
+
+// Validate validates this projects details o k body aws project a z subnets items0
+func (o *ProjectsDetailsOKBodyAwsProjectAZSubnetsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects details o k body aws project a z subnets items0 based on context it is used
+func (o *ProjectsDetailsOKBodyAwsProjectAZSubnetsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyAwsProjectAZSubnetsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyAwsProjectAZSubnetsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsOKBodyAwsProjectAZSubnetsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsOKBodyBoundUsersItems0 projects details o k body bound users items0
+swagger:model ProjectsDetailsOKBodyBoundUsersItems0
+*/
+type ProjectsDetailsOKBodyBoundUsersItems0 struct {
+
+	// user Id
+	UserID string `json:"userId,omitempty"`
+
+	// user name
+	UserName string `json:"userName,omitempty"`
+}
+
+// Validate validates this projects details o k body bound users items0
+func (o *ProjectsDetailsOKBodyBoundUsersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects details o k body bound users items0 based on context it is used
+func (o *ProjectsDetailsOKBodyBoundUsersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyBoundUsersItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyBoundUsersItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsOKBodyBoundUsersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsOKBodyKubernetesAlertsItems0 projects details o k body kubernetes alerts items0
+swagger:model ProjectsDetailsOKBodyKubernetesAlertsItems0
+*/
+type ProjectsDetailsOKBodyKubernetesAlertsItems0 struct {
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// end at
+	EndAt string `json:"endAt,omitempty"`
+
+	// fingerprint
+	Fingerprint string `json:"fingerprint,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is silenced
+	IsSilenced bool `json:"isSilenced"`
+
+	// is solved
+	IsSolved bool `json:"isSolved"`
+
+	// labels
+	Labels interface{} `json:"labels,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// severity
+	Severity string `json:"severity,omitempty"`
+
+	// silence reason
+	SilenceReason string `json:"silenceReason,omitempty"`
+
+	// starts at
+	StartsAt string `json:"startsAt,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+}
+
+// Validate validates this projects details o k body kubernetes alerts items0
+func (o *ProjectsDetailsOKBodyKubernetesAlertsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects details o k body kubernetes alerts items0 based on context it is used
+func (o *ProjectsDetailsOKBodyKubernetesAlertsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyKubernetesAlertsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyKubernetesAlertsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsOKBodyKubernetesAlertsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsOKBodyKubernetesProfiles projects details o k body kubernetes profiles
+swagger:model ProjectsDetailsOKBodyKubernetesProfiles
+*/
+type ProjectsDetailsOKBodyKubernetesProfiles struct {
+
+	// allow scheduling on master
+	AllowSchedulingOnMaster bool `json:"allowSchedulingOnMaster"`
+
+	// cni
+	Cni string `json:"cni,omitempty"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// created by
+	CreatedBy string `json:"createdBy,omitempty"`
+
+	// expose node port on bastion
+	ExposeNodePortOnBastion bool `json:"exposeNodePortOnBastion"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// last modified
+	LastModified string `json:"lastModified,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// octavia enabled
+	OctaviaEnabled bool `json:"octaviaEnabled"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// projects
+	Projects []*ProjectsDetailsOKBodyKubernetesProfilesProjectsItems0 `json:"projects"`
+
+	// taikun l b enabled
+	TaikunLBEnabled bool `json:"taikunLBEnabled"`
+
+	// unique cluster name
+	UniqueClusterName bool `json:"uniqueClusterName"`
+}
+
+// Validate validates this projects details o k body kubernetes profiles
+func (o *ProjectsDetailsOKBodyKubernetesProfiles) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateProjects(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsDetailsOKBodyKubernetesProfiles) validateProjects(formats strfmt.Registry) error {
+	if swag.IsZero(o.Projects) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Projects); i++ {
+		if swag.IsZero(o.Projects[i]) { // not required
+			continue
+		}
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "kubernetesProfiles" + "." + "projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "kubernetesProfiles" + "." + "projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this projects details o k body kubernetes profiles based on the context it is used
+func (o *ProjectsDetailsOKBodyKubernetesProfiles) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsDetailsOKBodyKubernetesProfiles) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Projects); i++ {
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "kubernetesProfiles" + "." + "projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "kubernetesProfiles" + "." + "projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyKubernetesProfiles) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyKubernetesProfiles) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsOKBodyKubernetesProfiles
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsOKBodyKubernetesProfilesProjectsItems0 projects details o k body kubernetes profiles projects items0
+swagger:model ProjectsDetailsOKBodyKubernetesProfilesProjectsItems0
+*/
+type ProjectsDetailsOKBodyKubernetesProfilesProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this projects details o k body kubernetes profiles projects items0
+func (o *ProjectsDetailsOKBodyKubernetesProfilesProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects details o k body kubernetes profiles projects items0 based on context it is used
+func (o *ProjectsDetailsOKBodyKubernetesProfilesProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyKubernetesProfilesProjectsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyKubernetesProfilesProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsOKBodyKubernetesProfilesProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsOKBodyMonitoringCredential projects details o k body monitoring credential
+swagger:model ProjectsDetailsOKBodyMonitoringCredential
+*/
+type ProjectsDetailsOKBodyMonitoringCredential struct {
+
+	// alert manager Url
+	AlertManagerURL string `json:"alertManagerUrl,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// loki Url
+	LokiURL string `json:"lokiUrl,omitempty"`
+
+	// password
+	Password string `json:"password,omitempty"`
+
+	// prometheus Url
+	PrometheusURL string `json:"prometheusUrl,omitempty"`
+
+	// username
+	Username string `json:"username,omitempty"`
+}
+
+// Validate validates this projects details o k body monitoring credential
+func (o *ProjectsDetailsOKBodyMonitoringCredential) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects details o k body monitoring credential based on context it is used
+func (o *ProjectsDetailsOKBodyMonitoringCredential) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyMonitoringCredential) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyMonitoringCredential) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsOKBodyMonitoringCredential
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsOKBodyOpaProfiles projects details o k body opa profiles
+swagger:model ProjectsDetailsOKBodyOpaProfiles
+*/
+type ProjectsDetailsOKBodyOpaProfiles struct {
+
+	// allowed repo
+	AllowedRepo []string `json:"allowedRepo"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// forbid Http ingress
+	ForbidHTTPIngress bool `json:"forbidHttpIngress"`
+
+	// forbid node port
+	ForbidNodePort bool `json:"forbidNodePort"`
+
+	// forbid specific tags
+	ForbidSpecificTags []string `json:"forbidSpecificTags"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// ingress whitelist
+	IngressWhitelist []string `json:"ingressWhitelist"`
+
+	// is default
+	IsDefault bool `json:"isDefault"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// projects
+	Projects []*ProjectsDetailsOKBodyOpaProfilesProjectsItems0 `json:"projects"`
+
+	// require probe
+	RequireProbe bool `json:"requireProbe"`
+
+	// revision
+	Revision int32 `json:"revision,omitempty"`
+
+	// unique ingresses
+	UniqueIngresses bool `json:"uniqueIngresses"`
+
+	// unique service selector
+	UniqueServiceSelector bool `json:"uniqueServiceSelector"`
+}
+
+// Validate validates this projects details o k body opa profiles
+func (o *ProjectsDetailsOKBodyOpaProfiles) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateProjects(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsDetailsOKBodyOpaProfiles) validateProjects(formats strfmt.Registry) error {
+	if swag.IsZero(o.Projects) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Projects); i++ {
+		if swag.IsZero(o.Projects[i]) { // not required
+			continue
+		}
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "opaProfiles" + "." + "projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "opaProfiles" + "." + "projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this projects details o k body opa profiles based on the context it is used
+func (o *ProjectsDetailsOKBodyOpaProfiles) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsDetailsOKBodyOpaProfiles) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Projects); i++ {
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectsDetailsOK" + "." + "opaProfiles" + "." + "projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectsDetailsOK" + "." + "opaProfiles" + "." + "projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyOpaProfiles) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyOpaProfiles) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsOKBodyOpaProfiles
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsOKBodyOpaProfilesProjectsItems0 projects details o k body opa profiles projects items0
+swagger:model ProjectsDetailsOKBodyOpaProfilesProjectsItems0
+*/
+type ProjectsDetailsOKBodyOpaProfilesProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this projects details o k body opa profiles projects items0
+func (o *ProjectsDetailsOKBodyOpaProfilesProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects details o k body opa profiles projects items0 based on context it is used
+func (o *ProjectsDetailsOKBodyOpaProfilesProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyOpaProfilesProjectsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsOKBodyOpaProfilesProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsOKBodyOpaProfilesProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectsDetailsUnauthorizedBody projects details unauthorized body
+swagger:model ProjectsDetailsUnauthorizedBody
+*/
+type ProjectsDetailsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this projects details unauthorized body
+func (o *ProjectsDetailsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this projects details unauthorized body based on context it is used
+func (o *ProjectsDetailsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectsDetailsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectsDetailsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectsDetailsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

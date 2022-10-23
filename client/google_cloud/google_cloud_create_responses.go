@@ -6,13 +6,13 @@ package google_cloud
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // GoogleCloudCreateReader is a Reader for the GoogleCloudCreate structure.
@@ -75,7 +75,7 @@ GoogleCloudCreateOK describes a response with status code 200, with default head
 Success
 */
 type GoogleCloudCreateOK struct {
-	Payload *models.APIResponse
+	Payload *GoogleCloudCreateOKBody
 }
 
 // IsSuccess returns true when this google cloud create o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *GoogleCloudCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *GoogleCloudCreateOK) GetPayload() *models.APIResponse {
+func (o *GoogleCloudCreateOK) GetPayload() *GoogleCloudCreateOKBody {
 	return o.Payload
 }
 
 func (o *GoogleCloudCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(GoogleCloudCreateOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ GoogleCloudCreateBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type GoogleCloudCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*GoogleCloudCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this google cloud create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *GoogleCloudCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GoogleCloudCreateBadRequest) GetPayload() []*models.Error {
+func (o *GoogleCloudCreateBadRequest) GetPayload() []*GoogleCloudCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ GoogleCloudCreateUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type GoogleCloudCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *GoogleCloudCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this google cloud create unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *GoogleCloudCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GoogleCloudCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudCreateUnauthorized) GetPayload() *GoogleCloudCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *GoogleCloudCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(GoogleCloudCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ GoogleCloudCreateForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type GoogleCloudCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *GoogleCloudCreateForbiddenBody
 }
 
 // IsSuccess returns true when this google cloud create forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *GoogleCloudCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GoogleCloudCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudCreateForbidden) GetPayload() *GoogleCloudCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *GoogleCloudCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(GoogleCloudCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ GoogleCloudCreateNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type GoogleCloudCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *GoogleCloudCreateNotFoundBody
 }
 
 // IsSuccess returns true when this google cloud create not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *GoogleCloudCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GoogleCloudCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudCreateNotFound) GetPayload() *GoogleCloudCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *GoogleCloudCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(GoogleCloudCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +425,246 @@ func (o *GoogleCloudCreateInternalServerError) String() string {
 
 func (o *GoogleCloudCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+GoogleCloudCreateBadRequestBodyItems0 google cloud create bad request body items0
+swagger:model GoogleCloudCreateBadRequestBodyItems0
+*/
+type GoogleCloudCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this google cloud create bad request body items0
+func (o *GoogleCloudCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud create bad request body items0 based on context it is used
+func (o *GoogleCloudCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudCreateForbiddenBody google cloud create forbidden body
+swagger:model GoogleCloudCreateForbiddenBody
+*/
+type GoogleCloudCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this google cloud create forbidden body
+func (o *GoogleCloudCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud create forbidden body based on context it is used
+func (o *GoogleCloudCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudCreateNotFoundBody google cloud create not found body
+swagger:model GoogleCloudCreateNotFoundBody
+*/
+type GoogleCloudCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this google cloud create not found body
+func (o *GoogleCloudCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud create not found body based on context it is used
+func (o *GoogleCloudCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudCreateOKBody google cloud create o k body
+swagger:model GoogleCloudCreateOKBody
+*/
+type GoogleCloudCreateOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this google cloud create o k body
+func (o *GoogleCloudCreateOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud create o k body based on context it is used
+func (o *GoogleCloudCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudCreateOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudCreateOKBody) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudCreateOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudCreateUnauthorizedBody google cloud create unauthorized body
+swagger:model GoogleCloudCreateUnauthorizedBody
+*/
+type GoogleCloudCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this google cloud create unauthorized body
+func (o *GoogleCloudCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud create unauthorized body based on context it is used
+func (o *GoogleCloudCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package slack
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SlackSlackConfigurationForOrganizationListReader is a Reader for the SlackSlackConfigurationForOrganizationList structure.
@@ -75,7 +75,7 @@ SlackSlackConfigurationForOrganizationListOK describes a response with status co
 Success
 */
 type SlackSlackConfigurationForOrganizationListOK struct {
-	Payload []*models.SlackConfigurationEntity
+	Payload []*SlackSlackConfigurationForOrganizationListOKBodyItems0
 }
 
 // IsSuccess returns true when this slack slack configuration for organization list o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *SlackSlackConfigurationForOrganizationListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListOK  %+v", 200, o.Payload)
 }
 
-func (o *SlackSlackConfigurationForOrganizationListOK) GetPayload() []*models.SlackConfigurationEntity {
+func (o *SlackSlackConfigurationForOrganizationListOK) GetPayload() []*SlackSlackConfigurationForOrganizationListOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ SlackSlackConfigurationForOrganizationListBadRequest describes a response with s
 Bad Request
 */
 type SlackSlackConfigurationForOrganizationListBadRequest struct {
-	Payload []*models.Error
+	Payload []*SlackSlackConfigurationForOrganizationListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this slack slack configuration for organization list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SlackSlackConfigurationForOrganizationListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SlackSlackConfigurationForOrganizationListBadRequest) GetPayload() []*models.Error {
+func (o *SlackSlackConfigurationForOrganizationListBadRequest) GetPayload() []*SlackSlackConfigurationForOrganizationListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ SlackSlackConfigurationForOrganizationListUnauthorized describes a response with
 Unauthorized
 */
 type SlackSlackConfigurationForOrganizationListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SlackSlackConfigurationForOrganizationListUnauthorizedBody
 }
 
 // IsSuccess returns true when this slack slack configuration for organization list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *SlackSlackConfigurationForOrganizationListUnauthorized) String() string
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SlackSlackConfigurationForOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SlackSlackConfigurationForOrganizationListUnauthorized) GetPayload() *SlackSlackConfigurationForOrganizationListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SlackSlackConfigurationForOrganizationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SlackSlackConfigurationForOrganizationListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ SlackSlackConfigurationForOrganizationListForbidden describes a response with st
 Forbidden
 */
 type SlackSlackConfigurationForOrganizationListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SlackSlackConfigurationForOrganizationListForbiddenBody
 }
 
 // IsSuccess returns true when this slack slack configuration for organization list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *SlackSlackConfigurationForOrganizationListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SlackSlackConfigurationForOrganizationListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SlackSlackConfigurationForOrganizationListForbidden) GetPayload() *SlackSlackConfigurationForOrganizationListForbiddenBody {
 	return o.Payload
 }
 
 func (o *SlackSlackConfigurationForOrganizationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SlackSlackConfigurationForOrganizationListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ SlackSlackConfigurationForOrganizationListNotFound describes a response with sta
 Not Found
 */
 type SlackSlackConfigurationForOrganizationListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SlackSlackConfigurationForOrganizationListNotFoundBody
 }
 
 // IsSuccess returns true when this slack slack configuration for organization list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *SlackSlackConfigurationForOrganizationListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SlackSlackConfigurationForOrganizationListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SlackSlackConfigurationForOrganizationListNotFound) GetPayload() *SlackSlackConfigurationForOrganizationListNotFoundBody {
 	return o.Payload
 }
 
 func (o *SlackSlackConfigurationForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SlackSlackConfigurationForOrganizationListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *SlackSlackConfigurationForOrganizationListInternalServerError) String()
 
 func (o *SlackSlackConfigurationForOrganizationListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SlackSlackConfigurationForOrganizationListBadRequestBodyItems0 slack slack configuration for organization list bad request body items0
+swagger:model SlackSlackConfigurationForOrganizationListBadRequestBodyItems0
+*/
+type SlackSlackConfigurationForOrganizationListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this slack slack configuration for organization list bad request body items0
+func (o *SlackSlackConfigurationForOrganizationListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this slack slack configuration for organization list bad request body items0 based on context it is used
+func (o *SlackSlackConfigurationForOrganizationListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SlackSlackConfigurationForOrganizationListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SlackSlackConfigurationForOrganizationListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SlackSlackConfigurationForOrganizationListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SlackSlackConfigurationForOrganizationListForbiddenBody slack slack configuration for organization list forbidden body
+swagger:model SlackSlackConfigurationForOrganizationListForbiddenBody
+*/
+type SlackSlackConfigurationForOrganizationListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this slack slack configuration for organization list forbidden body
+func (o *SlackSlackConfigurationForOrganizationListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this slack slack configuration for organization list forbidden body based on context it is used
+func (o *SlackSlackConfigurationForOrganizationListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SlackSlackConfigurationForOrganizationListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SlackSlackConfigurationForOrganizationListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SlackSlackConfigurationForOrganizationListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SlackSlackConfigurationForOrganizationListNotFoundBody slack slack configuration for organization list not found body
+swagger:model SlackSlackConfigurationForOrganizationListNotFoundBody
+*/
+type SlackSlackConfigurationForOrganizationListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this slack slack configuration for organization list not found body
+func (o *SlackSlackConfigurationForOrganizationListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this slack slack configuration for organization list not found body based on context it is used
+func (o *SlackSlackConfigurationForOrganizationListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SlackSlackConfigurationForOrganizationListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SlackSlackConfigurationForOrganizationListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SlackSlackConfigurationForOrganizationListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SlackSlackConfigurationForOrganizationListOKBodyItems0 slack slack configuration for organization list o k body items0
+swagger:model SlackSlackConfigurationForOrganizationListOKBodyItems0
+*/
+type SlackSlackConfigurationForOrganizationListOKBodyItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this slack slack configuration for organization list o k body items0
+func (o *SlackSlackConfigurationForOrganizationListOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this slack slack configuration for organization list o k body items0 based on context it is used
+func (o *SlackSlackConfigurationForOrganizationListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SlackSlackConfigurationForOrganizationListOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SlackSlackConfigurationForOrganizationListOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SlackSlackConfigurationForOrganizationListOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SlackSlackConfigurationForOrganizationListUnauthorizedBody slack slack configuration for organization list unauthorized body
+swagger:model SlackSlackConfigurationForOrganizationListUnauthorizedBody
+*/
+type SlackSlackConfigurationForOrganizationListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this slack slack configuration for organization list unauthorized body
+func (o *SlackSlackConfigurationForOrganizationListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this slack slack configuration for organization list unauthorized body based on context it is used
+func (o *SlackSlackConfigurationForOrganizationListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SlackSlackConfigurationForOrganizationListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SlackSlackConfigurationForOrganizationListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SlackSlackConfigurationForOrganizationListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

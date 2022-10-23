@@ -6,13 +6,13 @@ package checker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CheckerCidrReader is a Reader for the CheckerCidr structure.
@@ -75,7 +75,7 @@ CheckerCidrOK describes a response with status code 200, with default header val
 Success
 */
 type CheckerCidrOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker cidr o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CheckerCidrOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrOK  %+v", 200, o.Payload)
 }
 
-func (o *CheckerCidrOK) GetPayload() models.Unit {
+func (o *CheckerCidrOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CheckerCidrBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type CheckerCidrBadRequest struct {
-	Payload []*models.Error
+	Payload []*CheckerCidrBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this checker cidr bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerCidrBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerCidrBadRequest) GetPayload() []*models.Error {
+func (o *CheckerCidrBadRequest) GetPayload() []*CheckerCidrBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CheckerCidrUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type CheckerCidrUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerCidrUnauthorizedBody
 }
 
 // IsSuccess returns true when this checker cidr unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CheckerCidrUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerCidrUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerCidrUnauthorized) GetPayload() *CheckerCidrUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CheckerCidrUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerCidrUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CheckerCidrForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type CheckerCidrForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerCidrForbiddenBody
 }
 
 // IsSuccess returns true when this checker cidr forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CheckerCidrForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerCidrForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerCidrForbidden) GetPayload() *CheckerCidrForbiddenBody {
 	return o.Payload
 }
 
 func (o *CheckerCidrForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerCidrForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CheckerCidrNotFound describes a response with status code 404, with default head
 Not Found
 */
 type CheckerCidrNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerCidrNotFoundBody
 }
 
 // IsSuccess returns true when this checker cidr not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CheckerCidrNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerCidrNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerCidrNotFound) GetPayload() *CheckerCidrNotFoundBody {
 	return o.Payload
 }
 
 func (o *CheckerCidrNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerCidrNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *CheckerCidrInternalServerError) String() string {
 
 func (o *CheckerCidrInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CheckerCidrBadRequestBodyItems0 checker cidr bad request body items0
+swagger:model CheckerCidrBadRequestBodyItems0
+*/
+type CheckerCidrBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this checker cidr bad request body items0
+func (o *CheckerCidrBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker cidr bad request body items0 based on context it is used
+func (o *CheckerCidrBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerCidrBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerCidrBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CheckerCidrBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerCidrBody checker cidr body
+swagger:model CheckerCidrBody
+*/
+type CheckerCidrBody struct {
+
+	// cidr
+	Cidr string `json:"cidr,omitempty"`
+}
+
+// Validate validates this checker cidr body
+func (o *CheckerCidrBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker cidr body based on context it is used
+func (o *CheckerCidrBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerCidrBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerCidrBody) UnmarshalBinary(b []byte) error {
+	var res CheckerCidrBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerCidrForbiddenBody checker cidr forbidden body
+swagger:model CheckerCidrForbiddenBody
+*/
+type CheckerCidrForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker cidr forbidden body
+func (o *CheckerCidrForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker cidr forbidden body based on context it is used
+func (o *CheckerCidrForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerCidrForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerCidrForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CheckerCidrForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerCidrNotFoundBody checker cidr not found body
+swagger:model CheckerCidrNotFoundBody
+*/
+type CheckerCidrNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker cidr not found body
+func (o *CheckerCidrNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker cidr not found body based on context it is used
+func (o *CheckerCidrNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerCidrNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerCidrNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CheckerCidrNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerCidrUnauthorizedBody checker cidr unauthorized body
+swagger:model CheckerCidrUnauthorizedBody
+*/
+type CheckerCidrUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker cidr unauthorized body
+func (o *CheckerCidrUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker cidr unauthorized body based on context it is used
+func (o *CheckerCidrUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerCidrUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerCidrUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CheckerCidrUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

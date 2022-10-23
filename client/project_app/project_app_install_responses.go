@@ -6,13 +6,15 @@ package project_app
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ProjectAppInstallReader is a Reader for the ProjectAppInstall structure.
@@ -75,7 +77,7 @@ ProjectAppInstallOK describes a response with status code 200, with default head
 Success
 */
 type ProjectAppInstallOK struct {
-	Payload *models.APIResponse
+	Payload *ProjectAppInstallOKBody
 }
 
 // IsSuccess returns true when this project app install o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *ProjectAppInstallOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/install][%d] projectAppInstallOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectAppInstallOK) GetPayload() *models.APIResponse {
+func (o *ProjectAppInstallOK) GetPayload() *ProjectAppInstallOKBody {
 	return o.Payload
 }
 
 func (o *ProjectAppInstallOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(ProjectAppInstallOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ ProjectAppInstallBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type ProjectAppInstallBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectAppInstallBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this project app install bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *ProjectAppInstallBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/install][%d] projectAppInstallBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectAppInstallBadRequest) GetPayload() []*models.Error {
+func (o *ProjectAppInstallBadRequest) GetPayload() []*ProjectAppInstallBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ ProjectAppInstallUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type ProjectAppInstallUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectAppInstallUnauthorizedBody
 }
 
 // IsSuccess returns true when this project app install unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *ProjectAppInstallUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/install][%d] projectAppInstallUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppInstallUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppInstallUnauthorized) GetPayload() *ProjectAppInstallUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectAppInstallUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectAppInstallUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ ProjectAppInstallForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type ProjectAppInstallForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectAppInstallForbiddenBody
 }
 
 // IsSuccess returns true when this project app install forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *ProjectAppInstallForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/install][%d] projectAppInstallForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppInstallForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppInstallForbidden) GetPayload() *ProjectAppInstallForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectAppInstallForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectAppInstallForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ ProjectAppInstallNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type ProjectAppInstallNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectAppInstallNotFoundBody
 }
 
 // IsSuccess returns true when this project app install not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *ProjectAppInstallNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/install][%d] projectAppInstallNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppInstallNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppInstallNotFound) GetPayload() *ProjectAppInstallNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectAppInstallNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectAppInstallNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,413 @@ func (o *ProjectAppInstallInternalServerError) String() string {
 
 func (o *ProjectAppInstallInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectAppInstallBadRequestBodyItems0 project app install bad request body items0
+swagger:model ProjectAppInstallBadRequestBodyItems0
+*/
+type ProjectAppInstallBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this project app install bad request body items0
+func (o *ProjectAppInstallBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app install bad request body items0 based on context it is used
+func (o *ProjectAppInstallBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppInstallBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppInstallBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectAppInstallBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppInstallBody project app install body
+swagger:model ProjectAppInstallBody
+*/
+type ProjectAppInstallBody struct {
+
+	// auto sync
+	AutoSync bool `json:"autoSync"`
+
+	// catalog app Id
+	CatalogAppID int32 `json:"catalogAppId,omitempty"`
+
+	// extra values
+	ExtraValues string `json:"extraValues,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// parameters
+	Parameters []*ProjectAppInstallParamsBodyParametersItems0 `json:"parameters"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this project app install body
+func (o *ProjectAppInstallBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateParameters(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectAppInstallBody) validateParameters(formats strfmt.Registry) error {
+	if swag.IsZero(o.Parameters) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Parameters); i++ {
+		if swag.IsZero(o.Parameters[i]) { // not required
+			continue
+		}
+
+		if o.Parameters[i] != nil {
+			if err := o.Parameters[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this project app install body based on the context it is used
+func (o *ProjectAppInstallBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateParameters(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectAppInstallBody) contextValidateParameters(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Parameters); i++ {
+
+		if o.Parameters[i] != nil {
+			if err := o.Parameters[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppInstallBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppInstallBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppInstallBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppInstallForbiddenBody project app install forbidden body
+swagger:model ProjectAppInstallForbiddenBody
+*/
+type ProjectAppInstallForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project app install forbidden body
+func (o *ProjectAppInstallForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app install forbidden body based on context it is used
+func (o *ProjectAppInstallForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppInstallForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppInstallForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppInstallForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppInstallNotFoundBody project app install not found body
+swagger:model ProjectAppInstallNotFoundBody
+*/
+type ProjectAppInstallNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project app install not found body
+func (o *ProjectAppInstallNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app install not found body based on context it is used
+func (o *ProjectAppInstallNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppInstallNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppInstallNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppInstallNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppInstallOKBody project app install o k body
+swagger:model ProjectAppInstallOKBody
+*/
+type ProjectAppInstallOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this project app install o k body
+func (o *ProjectAppInstallOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app install o k body based on context it is used
+func (o *ProjectAppInstallOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppInstallOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppInstallOKBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppInstallOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppInstallParamsBodyParametersItems0 project app install params body parameters items0
+swagger:model ProjectAppInstallParamsBodyParametersItems0
+*/
+type ProjectAppInstallParamsBodyParametersItems0 struct {
+
+	// is changeable
+	IsChangeable bool `json:"isChangeable"`
+
+	// is readonly
+	IsReadonly bool `json:"isReadonly"`
+
+	// key
+	Key string `json:"key,omitempty"`
+
+	// value
+	Value string `json:"value,omitempty"`
+}
+
+// Validate validates this project app install params body parameters items0
+func (o *ProjectAppInstallParamsBodyParametersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app install params body parameters items0 based on context it is used
+func (o *ProjectAppInstallParamsBodyParametersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppInstallParamsBodyParametersItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppInstallParamsBodyParametersItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectAppInstallParamsBodyParametersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppInstallUnauthorizedBody project app install unauthorized body
+swagger:model ProjectAppInstallUnauthorizedBody
+*/
+type ProjectAppInstallUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project app install unauthorized body
+func (o *ProjectAppInstallUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app install unauthorized body based on context it is used
+func (o *ProjectAppInstallUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppInstallUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppInstallUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppInstallUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

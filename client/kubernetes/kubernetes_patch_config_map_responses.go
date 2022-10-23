@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesPatchConfigMapReader is a Reader for the KubernetesPatchConfigMap structure.
@@ -75,7 +75,7 @@ KubernetesPatchConfigMapOK describes a response with status code 200, with defau
 Success
 */
 type KubernetesPatchConfigMapOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch config map o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KubernetesPatchConfigMapOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesPatchConfigMapOK) GetPayload() models.Unit {
+func (o *KubernetesPatchConfigMapOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KubernetesPatchConfigMapBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type KubernetesPatchConfigMapBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesPatchConfigMapBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes patch config map bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesPatchConfigMapBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchConfigMapBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesPatchConfigMapBadRequest) GetPayload() []*KubernetesPatchConfigMapBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesPatchConfigMapUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type KubernetesPatchConfigMapUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesPatchConfigMapUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes patch config map unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesPatchConfigMapUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchConfigMapUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchConfigMapUnauthorized) GetPayload() *KubernetesPatchConfigMapUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesPatchConfigMapUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesPatchConfigMapUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesPatchConfigMapForbidden describes a response with status code 403, wit
 Forbidden
 */
 type KubernetesPatchConfigMapForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesPatchConfigMapForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes patch config map forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesPatchConfigMapForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchConfigMapForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchConfigMapForbidden) GetPayload() *KubernetesPatchConfigMapForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesPatchConfigMapForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesPatchConfigMapForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesPatchConfigMapNotFound describes a response with status code 404, with
 Not Found
 */
 type KubernetesPatchConfigMapNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesPatchConfigMapNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes patch config map not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesPatchConfigMapNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchConfigMapNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchConfigMapNotFound) GetPayload() *KubernetesPatchConfigMapNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesPatchConfigMapNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesPatchConfigMapNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,243 @@ func (o *KubernetesPatchConfigMapInternalServerError) String() string {
 
 func (o *KubernetesPatchConfigMapInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesPatchConfigMapBadRequestBodyItems0 kubernetes patch config map bad request body items0
+swagger:model KubernetesPatchConfigMapBadRequestBodyItems0
+*/
+type KubernetesPatchConfigMapBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes patch config map bad request body items0
+func (o *KubernetesPatchConfigMapBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch config map bad request body items0 based on context it is used
+func (o *KubernetesPatchConfigMapBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchConfigMapBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchConfigMapBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchConfigMapBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchConfigMapBody kubernetes patch config map body
+swagger:model KubernetesPatchConfigMapBody
+*/
+type KubernetesPatchConfigMapBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// yaml
+	Yaml string `json:"yaml,omitempty"`
+}
+
+// Validate validates this kubernetes patch config map body
+func (o *KubernetesPatchConfigMapBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch config map body based on context it is used
+func (o *KubernetesPatchConfigMapBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchConfigMapBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchConfigMapBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchConfigMapBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchConfigMapForbiddenBody kubernetes patch config map forbidden body
+swagger:model KubernetesPatchConfigMapForbiddenBody
+*/
+type KubernetesPatchConfigMapForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes patch config map forbidden body
+func (o *KubernetesPatchConfigMapForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch config map forbidden body based on context it is used
+func (o *KubernetesPatchConfigMapForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchConfigMapForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchConfigMapForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchConfigMapForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchConfigMapNotFoundBody kubernetes patch config map not found body
+swagger:model KubernetesPatchConfigMapNotFoundBody
+*/
+type KubernetesPatchConfigMapNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes patch config map not found body
+func (o *KubernetesPatchConfigMapNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch config map not found body based on context it is used
+func (o *KubernetesPatchConfigMapNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchConfigMapNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchConfigMapNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchConfigMapNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchConfigMapUnauthorizedBody kubernetes patch config map unauthorized body
+swagger:model KubernetesPatchConfigMapUnauthorizedBody
+*/
+type KubernetesPatchConfigMapUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes patch config map unauthorized body
+func (o *KubernetesPatchConfigMapUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch config map unauthorized body based on context it is used
+func (o *KubernetesPatchConfigMapUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchConfigMapUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchConfigMapUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchConfigMapUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

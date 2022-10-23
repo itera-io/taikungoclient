@@ -6,13 +6,16 @@ package billing
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // BillingListReader is a Reader for the BillingList structure.
@@ -75,7 +78,7 @@ BillingListOK describes a response with status code 200, with default header val
 Success
 */
 type BillingListOK struct {
-	Payload *models.BillingInfo
+	Payload *BillingListOKBody
 }
 
 // IsSuccess returns true when this billing list o k response has a 2xx status code
@@ -111,13 +114,13 @@ func (o *BillingListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListOK  %+v", 200, o.Payload)
 }
 
-func (o *BillingListOK) GetPayload() *models.BillingInfo {
+func (o *BillingListOK) GetPayload() *BillingListOKBody {
 	return o.Payload
 }
 
 func (o *BillingListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.BillingInfo)
+	o.Payload = new(BillingListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +141,7 @@ BillingListBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type BillingListBadRequest struct {
-	Payload []*models.Error
+	Payload []*BillingListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this billing list bad request response has a 2xx status code
@@ -174,7 +177,7 @@ func (o *BillingListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BillingListBadRequest) GetPayload() []*models.Error {
+func (o *BillingListBadRequest) GetPayload() []*BillingListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +202,7 @@ BillingListUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type BillingListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *BillingListUnauthorizedBody
 }
 
 // IsSuccess returns true when this billing list unauthorized response has a 2xx status code
@@ -235,13 +238,13 @@ func (o *BillingListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BillingListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BillingListUnauthorized) GetPayload() *BillingListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *BillingListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BillingListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +265,7 @@ BillingListForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type BillingListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *BillingListForbiddenBody
 }
 
 // IsSuccess returns true when this billing list forbidden response has a 2xx status code
@@ -298,13 +301,13 @@ func (o *BillingListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BillingListForbidden) GetPayload() *models.ProblemDetails {
+func (o *BillingListForbidden) GetPayload() *BillingListForbiddenBody {
 	return o.Payload
 }
 
 func (o *BillingListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BillingListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +328,7 @@ BillingListNotFound describes a response with status code 404, with default head
 Not Found
 */
 type BillingListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *BillingListNotFoundBody
 }
 
 // IsSuccess returns true when this billing list not found response has a 2xx status code
@@ -361,13 +364,13 @@ func (o *BillingListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BillingListNotFound) GetPayload() *models.ProblemDetails {
+func (o *BillingListNotFound) GetPayload() *BillingListNotFoundBody {
 	return o.Payload
 }
 
 func (o *BillingListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BillingListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +428,396 @@ func (o *BillingListInternalServerError) String() string {
 
 func (o *BillingListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+BillingListBadRequestBodyItems0 billing list bad request body items0
+swagger:model BillingListBadRequestBodyItems0
+*/
+type BillingListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this billing list bad request body items0
+func (o *BillingListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this billing list bad request body items0 based on context it is used
+func (o *BillingListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BillingListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BillingListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res BillingListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BillingListForbiddenBody billing list forbidden body
+swagger:model BillingListForbiddenBody
+*/
+type BillingListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this billing list forbidden body
+func (o *BillingListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this billing list forbidden body based on context it is used
+func (o *BillingListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BillingListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BillingListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res BillingListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BillingListNotFoundBody billing list not found body
+swagger:model BillingListNotFoundBody
+*/
+type BillingListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this billing list not found body
+func (o *BillingListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this billing list not found body based on context it is used
+func (o *BillingListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BillingListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BillingListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res BillingListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BillingListOKBody billing list o k body
+swagger:model BillingListOKBody
+*/
+type BillingListOKBody struct {
+
+	// data
+	Data []*BillingListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+
+	// total tcu
+	TotalTcu float64 `json:"totalTcu,omitempty"`
+}
+
+// Validate validates this billing list o k body
+func (o *BillingListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *BillingListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("billingListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("billingListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this billing list o k body based on the context it is used
+func (o *BillingListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *BillingListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("billingListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("billingListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BillingListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BillingListOKBody) UnmarshalBinary(b []byte) error {
+	var res BillingListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BillingListOKBodyDataItems0 billing list o k body data items0
+swagger:model BillingListOKBodyDataItems0
+*/
+type BillingListOKBodyDataItems0 struct {
+
+	// end date
+	// Format: date-time
+	EndDate *strfmt.DateTime `json:"endDate,omitempty"`
+
+	// is deleted
+	IsDeleted bool `json:"isDeleted"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// start date
+	// Format: date-time
+	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
+
+	// tcu
+	Tcu float64 `json:"tcu,omitempty"`
+}
+
+// Validate validates this billing list o k body data items0
+func (o *BillingListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateEndDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateStartDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *BillingListOKBodyDataItems0) validateEndDate(formats strfmt.Registry) error {
+	if swag.IsZero(o.EndDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("endDate", "body", "date-time", o.EndDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *BillingListOKBodyDataItems0) validateStartDate(formats strfmt.Registry) error {
+	if swag.IsZero(o.StartDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("startDate", "body", "date-time", o.StartDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this billing list o k body data items0 based on context it is used
+func (o *BillingListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BillingListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BillingListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res BillingListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BillingListUnauthorizedBody billing list unauthorized body
+swagger:model BillingListUnauthorizedBody
+*/
+type BillingListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this billing list unauthorized body
+func (o *BillingListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this billing list unauthorized body based on context it is used
+func (o *BillingListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BillingListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BillingListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res BillingListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

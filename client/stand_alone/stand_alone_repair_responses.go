@@ -6,13 +6,13 @@ package stand_alone
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // StandAloneRepairReader is a Reader for the StandAloneRepair structure.
@@ -75,7 +75,7 @@ StandAloneRepairOK describes a response with status code 200, with default heade
 Success
 */
 type StandAloneRepairOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone repair o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneRepairOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneRepairOK) GetPayload() models.Unit {
+func (o *StandAloneRepairOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneRepairBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type StandAloneRepairBadRequest struct {
-	Payload []*models.Error
+	Payload []*StandAloneRepairBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this stand alone repair bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneRepairBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneRepairBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneRepairBadRequest) GetPayload() []*StandAloneRepairBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneRepairUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type StandAloneRepairUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneRepairUnauthorizedBody
 }
 
 // IsSuccess returns true when this stand alone repair unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneRepairUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneRepairUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneRepairUnauthorized) GetPayload() *StandAloneRepairUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *StandAloneRepairUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneRepairUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneRepairForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type StandAloneRepairForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneRepairForbiddenBody
 }
 
 // IsSuccess returns true when this stand alone repair forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneRepairForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneRepairForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneRepairForbidden) GetPayload() *StandAloneRepairForbiddenBody {
 	return o.Payload
 }
 
 func (o *StandAloneRepairForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneRepairForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneRepairNotFound describes a response with status code 404, with default
 Not Found
 */
 type StandAloneRepairNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneRepairNotFoundBody
 }
 
 // IsSuccess returns true when this stand alone repair not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneRepairNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneRepairNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneRepairNotFound) GetPayload() *StandAloneRepairNotFoundBody {
 	return o.Payload
 }
 
 func (o *StandAloneRepairNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneRepairNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *StandAloneRepairInternalServerError) String() string {
 
 func (o *StandAloneRepairInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+StandAloneRepairBadRequestBodyItems0 stand alone repair bad request body items0
+swagger:model StandAloneRepairBadRequestBodyItems0
+*/
+type StandAloneRepairBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this stand alone repair bad request body items0
+func (o *StandAloneRepairBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone repair bad request body items0 based on context it is used
+func (o *StandAloneRepairBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneRepairBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneRepairBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneRepairBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneRepairBody stand alone repair body
+swagger:model StandAloneRepairBody
+*/
+type StandAloneRepairBody struct {
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this stand alone repair body
+func (o *StandAloneRepairBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone repair body based on context it is used
+func (o *StandAloneRepairBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneRepairBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneRepairBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneRepairBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneRepairForbiddenBody stand alone repair forbidden body
+swagger:model StandAloneRepairForbiddenBody
+*/
+type StandAloneRepairForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone repair forbidden body
+func (o *StandAloneRepairForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone repair forbidden body based on context it is used
+func (o *StandAloneRepairForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneRepairForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneRepairForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneRepairForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneRepairNotFoundBody stand alone repair not found body
+swagger:model StandAloneRepairNotFoundBody
+*/
+type StandAloneRepairNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone repair not found body
+func (o *StandAloneRepairNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone repair not found body based on context it is used
+func (o *StandAloneRepairNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneRepairNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneRepairNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneRepairNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneRepairUnauthorizedBody stand alone repair unauthorized body
+swagger:model StandAloneRepairUnauthorizedBody
+*/
+type StandAloneRepairUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone repair unauthorized body
+func (o *StandAloneRepairUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone repair unauthorized body based on context it is used
+func (o *StandAloneRepairUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneRepairUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneRepairUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneRepairUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

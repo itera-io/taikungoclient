@@ -6,13 +6,13 @@ package kubespray
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubesprayDeleteReader is a Reader for the KubesprayDelete structure.
@@ -81,7 +81,7 @@ KubesprayDeleteOK describes a response with status code 200, with default header
 Success
 */
 type KubesprayDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubespray delete o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *KubesprayDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *KubesprayDeleteOK) GetPayload() models.Unit {
+func (o *KubesprayDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ KubesprayDeleteBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type KubesprayDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubesprayDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubespray delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *KubesprayDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubesprayDeleteBadRequest) GetPayload() []*models.Error {
+func (o *KubesprayDeleteBadRequest) GetPayload() []*KubesprayDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ KubesprayDeleteUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type KubesprayDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubesprayDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubespray delete unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *KubesprayDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubesprayDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubesprayDeleteUnauthorized) GetPayload() *KubesprayDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubesprayDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubesprayDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ KubesprayDeleteForbidden describes a response with status code 403, with default
 Forbidden
 */
 type KubesprayDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubesprayDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this kubespray delete forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *KubesprayDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubesprayDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubesprayDeleteForbidden) GetPayload() *KubesprayDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubesprayDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubesprayDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ KubesprayDeleteNotFound describes a response with status code 404, with default 
 Not Found
 */
 type KubesprayDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubesprayDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this kubespray delete not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *KubesprayDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubesprayDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubesprayDeleteNotFound) GetPayload() *KubesprayDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubesprayDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubesprayDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,5 +480,196 @@ func (o *KubesprayDeleteInternalServerError) String() string {
 
 func (o *KubesprayDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubesprayDeleteBadRequestBodyItems0 kubespray delete bad request body items0
+swagger:model KubesprayDeleteBadRequestBodyItems0
+*/
+type KubesprayDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubespray delete bad request body items0
+func (o *KubesprayDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubespray delete bad request body items0 based on context it is used
+func (o *KubesprayDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubesprayDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubesprayDeleteForbiddenBody kubespray delete forbidden body
+swagger:model KubesprayDeleteForbiddenBody
+*/
+type KubesprayDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubespray delete forbidden body
+func (o *KubesprayDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubespray delete forbidden body based on context it is used
+func (o *KubesprayDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubesprayDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubesprayDeleteNotFoundBody kubespray delete not found body
+swagger:model KubesprayDeleteNotFoundBody
+*/
+type KubesprayDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubespray delete not found body
+func (o *KubesprayDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubespray delete not found body based on context it is used
+func (o *KubesprayDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubesprayDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubesprayDeleteUnauthorizedBody kubespray delete unauthorized body
+swagger:model KubesprayDeleteUnauthorizedBody
+*/
+type KubesprayDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubespray delete unauthorized body
+func (o *KubesprayDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubespray delete unauthorized body based on context it is used
+func (o *KubesprayDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubesprayDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubesprayDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubesprayDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

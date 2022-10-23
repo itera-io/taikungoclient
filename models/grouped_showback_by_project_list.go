@@ -20,7 +20,7 @@ import (
 type GroupedShowbackByProjectList struct {
 
 	// by projects
-	ByProjects []*GroupedShowbackSummaryByProjectInfos `json:"byProjects"`
+	ByProjects []*GroupedShowbackByProjectListByProjectsItems0 `json:"byProjects"`
 }
 
 // Validate validates this grouped showback by project list
@@ -108,6 +108,156 @@ func (m *GroupedShowbackByProjectList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *GroupedShowbackByProjectList) UnmarshalBinary(b []byte) error {
 	var res GroupedShowbackByProjectList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// GroupedShowbackByProjectListByProjectsItems0 grouped showback by project list by projects items0
+//
+// swagger:model GroupedShowbackByProjectListByProjectsItems0
+type GroupedShowbackByProjectListByProjectsItems0 struct {
+
+	// credential name
+	CredentialName string `json:"credentialName,omitempty"`
+
+	// data
+	Data []*GroupedShowbackByProjectListByProjectsItems0DataItems0 `json:"data"`
+
+	// rule name
+	RuleName string `json:"ruleName,omitempty"`
+
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
+}
+
+// Validate validates this grouped showback by project list by projects items0
+func (m *GroupedShowbackByProjectListByProjectsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *GroupedShowbackByProjectListByProjectsItems0) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(m.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Data); i++ {
+		if swag.IsZero(m.Data[i]) { // not required
+			continue
+		}
+
+		if m.Data[i] != nil {
+			if err := m.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this grouped showback by project list by projects items0 based on the context it is used
+func (m *GroupedShowbackByProjectListByProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *GroupedShowbackByProjectListByProjectsItems0) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Data); i++ {
+
+		if m.Data[i] != nil {
+			if err := m.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *GroupedShowbackByProjectListByProjectsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *GroupedShowbackByProjectListByProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res GroupedShowbackByProjectListByProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// GroupedShowbackByProjectListByProjectsItems0DataItems0 grouped showback by project list by projects items0 data items0
+//
+// swagger:model GroupedShowbackByProjectListByProjectsItems0DataItems0
+type GroupedShowbackByProjectListByProjectsItems0DataItems0 struct {
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
+}
+
+// Validate validates this grouped showback by project list by projects items0 data items0
+func (m *GroupedShowbackByProjectListByProjectsItems0DataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this grouped showback by project list by projects items0 data items0 based on context it is used
+func (m *GroupedShowbackByProjectListByProjectsItems0DataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *GroupedShowbackByProjectListByProjectsItems0DataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *GroupedShowbackByProjectListByProjectsItems0DataItems0) UnmarshalBinary(b []byte) error {
+	var res GroupedShowbackByProjectListByProjectsItems0DataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

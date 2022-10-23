@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // PrometheusBillingInfo prometheus billing info
@@ -20,7 +21,7 @@ import (
 type PrometheusBillingInfo struct {
 
 	// data
-	Data []*PrometheusBillingSummaryDto `json:"data"`
+	Data []*PrometheusBillingInfoDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -114,6 +115,103 @@ func (m *PrometheusBillingInfo) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PrometheusBillingInfo) UnmarshalBinary(b []byte) error {
 	var res PrometheusBillingInfo
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PrometheusBillingInfoDataItems0 prometheus billing info data items0
+//
+// swagger:model PrometheusBillingInfoDataItems0
+type PrometheusBillingInfoDataItems0 struct {
+
+	// created by
+	CreatedBy string `json:"createdBy,omitempty"`
+
+	// end date
+	// Format: date-time
+	EndDate *strfmt.DateTime `json:"endDate,omitempty"`
+
+	// last modified
+	LastModified string `json:"lastModified,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// price
+	Price float64 `json:"price,omitempty"`
+
+	// prometheus rule Id
+	PrometheusRuleID int32 `json:"prometheusRuleId,omitempty"`
+
+	// rule name
+	RuleName string `json:"ruleName,omitempty"`
+
+	// start date
+	// Format: date-time
+	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
+}
+
+// Validate validates this prometheus billing info data items0
+func (m *PrometheusBillingInfoDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateEndDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStartDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PrometheusBillingInfoDataItems0) validateEndDate(formats strfmt.Registry) error {
+	if swag.IsZero(m.EndDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("endDate", "body", "date-time", m.EndDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PrometheusBillingInfoDataItems0) validateStartDate(formats strfmt.Registry) error {
+	if swag.IsZero(m.StartDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("startDate", "body", "date-time", m.StartDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this prometheus billing info data items0 based on context it is used
+func (m *PrometheusBillingInfoDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PrometheusBillingInfoDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PrometheusBillingInfoDataItems0) UnmarshalBinary(b []byte) error {
+	var res PrometheusBillingInfoDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

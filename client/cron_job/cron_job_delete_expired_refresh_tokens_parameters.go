@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobDeleteExpiredRefreshTokensParams creates a new CronJobDeleteExpiredRefreshTokensParams object,
@@ -64,7 +62,7 @@ CronJobDeleteExpiredRefreshTokensParams contains all the parameters to send to t
 type CronJobDeleteExpiredRefreshTokensParams struct {
 
 	// Body.
-	Body models.DeleteExpiredRefreshTokensCommand
+	Body interface{}
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *CronJobDeleteExpiredRefreshTokensParams) SetHTTPClient(client *http.Cli
 }
 
 // WithBody adds the body to the cron job delete expired refresh tokens params
-func (o *CronJobDeleteExpiredRefreshTokensParams) WithBody(body models.DeleteExpiredRefreshTokensCommand) *CronJobDeleteExpiredRefreshTokensParams {
+func (o *CronJobDeleteExpiredRefreshTokensParams) WithBody(body interface{}) *CronJobDeleteExpiredRefreshTokensParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job delete expired refresh tokens params
-func (o *CronJobDeleteExpiredRefreshTokensParams) SetBody(body models.DeleteExpiredRefreshTokensCommand) {
+func (o *CronJobDeleteExpiredRefreshTokensParams) SetBody(body interface{}) {
 	o.Body = body
 }
 

@@ -31,13 +31,13 @@ type LokiResponseDto struct {
 	End *strfmt.DateTime `json:"end,omitempty"`
 
 	// filters
-	Filters []*Filter `json:"filters"`
+	Filters []*LokiResponseDtoFiltersItems0 `json:"filters"`
 
 	// limit
 	Limit int32 `json:"limit,omitempty"`
 
 	// parameters
-	Parameters []*Parameter `json:"parameters"`
+	Parameters []*LokiResponseDtoParametersItems0 `json:"parameters"`
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
@@ -218,6 +218,89 @@ func (m *LokiResponseDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *LokiResponseDto) UnmarshalBinary(b []byte) error {
 	var res LokiResponseDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// LokiResponseDtoFiltersItems0 loki response dto filters items0
+//
+// swagger:model LokiResponseDtoFiltersItems0
+type LokiResponseDtoFiltersItems0 struct {
+
+	// operator
+	Operator string `json:"operator,omitempty"`
+
+	// value
+	Value string `json:"value,omitempty"`
+}
+
+// Validate validates this loki response dto filters items0
+func (m *LokiResponseDtoFiltersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this loki response dto filters items0 based on context it is used
+func (m *LokiResponseDtoFiltersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *LokiResponseDtoFiltersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *LokiResponseDtoFiltersItems0) UnmarshalBinary(b []byte) error {
+	var res LokiResponseDtoFiltersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// LokiResponseDtoParametersItems0 loki response dto parameters items0
+//
+// swagger:model LokiResponseDtoParametersItems0
+type LokiResponseDtoParametersItems0 struct {
+
+	// label
+	Label string `json:"label,omitempty"`
+
+	// operator
+	Operator string `json:"operator,omitempty"`
+
+	// value
+	Value string `json:"value,omitempty"`
+}
+
+// Validate validates this loki response dto parameters items0
+func (m *LokiResponseDtoParametersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this loki response dto parameters items0 based on context it is used
+func (m *LokiResponseDtoParametersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *LokiResponseDtoParametersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *LokiResponseDtoParametersItems0) UnmarshalBinary(b []byte) error {
+	var res LokiResponseDtoParametersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

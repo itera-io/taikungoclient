@@ -6,13 +6,13 @@ package organizations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // OrganizationsCreateDefaultProfilersReader is a Reader for the OrganizationsCreateDefaultProfilers structure.
@@ -75,7 +75,7 @@ OrganizationsCreateDefaultProfilersOK describes a response with status code 200,
 Success
 */
 type OrganizationsCreateDefaultProfilersOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations create default profilers o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OrganizationsCreateDefaultProfilersOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersOK  %+v", 200, o.Payload)
 }
 
-func (o *OrganizationsCreateDefaultProfilersOK) GetPayload() models.Unit {
+func (o *OrganizationsCreateDefaultProfilersOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OrganizationsCreateDefaultProfilersBadRequest describes a response with status c
 Bad Request
 */
 type OrganizationsCreateDefaultProfilersBadRequest struct {
-	Payload []*models.Error
+	Payload []*OrganizationsCreateDefaultProfilersBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this organizations create default profilers bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OrganizationsCreateDefaultProfilersBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsCreateDefaultProfilersBadRequest) GetPayload() []*models.Error {
+func (o *OrganizationsCreateDefaultProfilersBadRequest) GetPayload() []*OrganizationsCreateDefaultProfilersBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OrganizationsCreateDefaultProfilersUnauthorized describes a response with status
 Unauthorized
 */
 type OrganizationsCreateDefaultProfilersUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *OrganizationsCreateDefaultProfilersUnauthorizedBody
 }
 
 // IsSuccess returns true when this organizations create default profilers unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OrganizationsCreateDefaultProfilersUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsCreateDefaultProfilersUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsCreateDefaultProfilersUnauthorized) GetPayload() *OrganizationsCreateDefaultProfilersUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *OrganizationsCreateDefaultProfilersUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OrganizationsCreateDefaultProfilersUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OrganizationsCreateDefaultProfilersForbidden describes a response with status co
 Forbidden
 */
 type OrganizationsCreateDefaultProfilersForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *OrganizationsCreateDefaultProfilersForbiddenBody
 }
 
 // IsSuccess returns true when this organizations create default profilers forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OrganizationsCreateDefaultProfilersForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsCreateDefaultProfilersForbidden) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsCreateDefaultProfilersForbidden) GetPayload() *OrganizationsCreateDefaultProfilersForbiddenBody {
 	return o.Payload
 }
 
 func (o *OrganizationsCreateDefaultProfilersForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OrganizationsCreateDefaultProfilersForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OrganizationsCreateDefaultProfilersNotFound describes a response with status cod
 Not Found
 */
 type OrganizationsCreateDefaultProfilersNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *OrganizationsCreateDefaultProfilersNotFoundBody
 }
 
 // IsSuccess returns true when this organizations create default profilers not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OrganizationsCreateDefaultProfilersNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsCreateDefaultProfilersNotFound) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsCreateDefaultProfilersNotFound) GetPayload() *OrganizationsCreateDefaultProfilersNotFoundBody {
 	return o.Payload
 }
 
 func (o *OrganizationsCreateDefaultProfilersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OrganizationsCreateDefaultProfilersNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *OrganizationsCreateDefaultProfilersInternalServerError) String() string
 
 func (o *OrganizationsCreateDefaultProfilersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+OrganizationsCreateDefaultProfilersBadRequestBodyItems0 organizations create default profilers bad request body items0
+swagger:model OrganizationsCreateDefaultProfilersBadRequestBodyItems0
+*/
+type OrganizationsCreateDefaultProfilersBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this organizations create default profilers bad request body items0
+func (o *OrganizationsCreateDefaultProfilersBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organizations create default profilers bad request body items0 based on context it is used
+func (o *OrganizationsCreateDefaultProfilersBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OrganizationsCreateDefaultProfilersBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OrganizationsCreateDefaultProfilersBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OrganizationsCreateDefaultProfilersBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OrganizationsCreateDefaultProfilersBody organizations create default profilers body
+swagger:model OrganizationsCreateDefaultProfilersBody
+*/
+type OrganizationsCreateDefaultProfilersBody struct {
+
+	// uuid
+	UUID string `json:"uuid,omitempty"`
+}
+
+// Validate validates this organizations create default profilers body
+func (o *OrganizationsCreateDefaultProfilersBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organizations create default profilers body based on context it is used
+func (o *OrganizationsCreateDefaultProfilersBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OrganizationsCreateDefaultProfilersBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OrganizationsCreateDefaultProfilersBody) UnmarshalBinary(b []byte) error {
+	var res OrganizationsCreateDefaultProfilersBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OrganizationsCreateDefaultProfilersForbiddenBody organizations create default profilers forbidden body
+swagger:model OrganizationsCreateDefaultProfilersForbiddenBody
+*/
+type OrganizationsCreateDefaultProfilersForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this organizations create default profilers forbidden body
+func (o *OrganizationsCreateDefaultProfilersForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organizations create default profilers forbidden body based on context it is used
+func (o *OrganizationsCreateDefaultProfilersForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OrganizationsCreateDefaultProfilersForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OrganizationsCreateDefaultProfilersForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res OrganizationsCreateDefaultProfilersForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OrganizationsCreateDefaultProfilersNotFoundBody organizations create default profilers not found body
+swagger:model OrganizationsCreateDefaultProfilersNotFoundBody
+*/
+type OrganizationsCreateDefaultProfilersNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this organizations create default profilers not found body
+func (o *OrganizationsCreateDefaultProfilersNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organizations create default profilers not found body based on context it is used
+func (o *OrganizationsCreateDefaultProfilersNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OrganizationsCreateDefaultProfilersNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OrganizationsCreateDefaultProfilersNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res OrganizationsCreateDefaultProfilersNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OrganizationsCreateDefaultProfilersUnauthorizedBody organizations create default profilers unauthorized body
+swagger:model OrganizationsCreateDefaultProfilersUnauthorizedBody
+*/
+type OrganizationsCreateDefaultProfilersUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this organizations create default profilers unauthorized body
+func (o *OrganizationsCreateDefaultProfilersUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this organizations create default profilers unauthorized body based on context it is used
+func (o *OrganizationsCreateDefaultProfilersUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OrganizationsCreateDefaultProfilersUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OrganizationsCreateDefaultProfilersUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res OrganizationsCreateDefaultProfilersUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

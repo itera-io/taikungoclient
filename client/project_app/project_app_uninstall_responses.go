@@ -6,13 +6,13 @@ package project_app
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ProjectAppUninstallReader is a Reader for the ProjectAppUninstall structure.
@@ -75,7 +75,7 @@ ProjectAppUninstallOK describes a response with status code 200, with default he
 Success
 */
 type ProjectAppUninstallOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project app uninstall o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectAppUninstallOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectApp/uninstall/{projectAppId}][%d] projectAppUninstallOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectAppUninstallOK) GetPayload() models.Unit {
+func (o *ProjectAppUninstallOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectAppUninstallBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type ProjectAppUninstallBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectAppUninstallBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this project app uninstall bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectAppUninstallBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectApp/uninstall/{projectAppId}][%d] projectAppUninstallBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectAppUninstallBadRequest) GetPayload() []*models.Error {
+func (o *ProjectAppUninstallBadRequest) GetPayload() []*ProjectAppUninstallBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectAppUninstallUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ProjectAppUninstallUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectAppUninstallUnauthorizedBody
 }
 
 // IsSuccess returns true when this project app uninstall unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectAppUninstallUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectApp/uninstall/{projectAppId}][%d] projectAppUninstallUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppUninstallUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppUninstallUnauthorized) GetPayload() *ProjectAppUninstallUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectAppUninstallUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectAppUninstallUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectAppUninstallForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ProjectAppUninstallForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectAppUninstallForbiddenBody
 }
 
 // IsSuccess returns true when this project app uninstall forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectAppUninstallForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectApp/uninstall/{projectAppId}][%d] projectAppUninstallForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppUninstallForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppUninstallForbidden) GetPayload() *ProjectAppUninstallForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectAppUninstallForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectAppUninstallForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectAppUninstallNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ProjectAppUninstallNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectAppUninstallNotFoundBody
 }
 
 // IsSuccess returns true when this project app uninstall not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectAppUninstallNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectApp/uninstall/{projectAppId}][%d] projectAppUninstallNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppUninstallNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppUninstallNotFound) GetPayload() *ProjectAppUninstallNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectAppUninstallNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectAppUninstallNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *ProjectAppUninstallInternalServerError) String() string {
 
 func (o *ProjectAppUninstallInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectAppUninstallBadRequestBodyItems0 project app uninstall bad request body items0
+swagger:model ProjectAppUninstallBadRequestBodyItems0
+*/
+type ProjectAppUninstallBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this project app uninstall bad request body items0
+func (o *ProjectAppUninstallBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app uninstall bad request body items0 based on context it is used
+func (o *ProjectAppUninstallBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppUninstallBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppUninstallBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectAppUninstallBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppUninstallForbiddenBody project app uninstall forbidden body
+swagger:model ProjectAppUninstallForbiddenBody
+*/
+type ProjectAppUninstallForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project app uninstall forbidden body
+func (o *ProjectAppUninstallForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app uninstall forbidden body based on context it is used
+func (o *ProjectAppUninstallForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppUninstallForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppUninstallForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppUninstallForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppUninstallNotFoundBody project app uninstall not found body
+swagger:model ProjectAppUninstallNotFoundBody
+*/
+type ProjectAppUninstallNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project app uninstall not found body
+func (o *ProjectAppUninstallNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app uninstall not found body based on context it is used
+func (o *ProjectAppUninstallNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppUninstallNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppUninstallNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppUninstallNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectAppUninstallUnauthorizedBody project app uninstall unauthorized body
+swagger:model ProjectAppUninstallUnauthorizedBody
+*/
+type ProjectAppUninstallUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project app uninstall unauthorized body
+func (o *ProjectAppUninstallUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project app uninstall unauthorized body based on context it is used
+func (o *ProjectAppUninstallUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectAppUninstallUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectAppUninstallUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectAppUninstallUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

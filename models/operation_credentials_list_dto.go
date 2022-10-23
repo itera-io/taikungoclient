@@ -56,7 +56,7 @@ type OperationCredentialsListDto struct {
 	PrometheusUsername string `json:"prometheusUsername,omitempty"`
 
 	// rules
-	Rules []*SimplePrometheusEntity `json:"rules"`
+	Rules []*OperationCredentialsListDtoRulesItems0 `json:"rules"`
 }
 
 // Validate validates this operation credentials list dto
@@ -144,6 +144,46 @@ func (m *OperationCredentialsListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *OperationCredentialsListDto) UnmarshalBinary(b []byte) error {
 	var res OperationCredentialsListDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// OperationCredentialsListDtoRulesItems0 operation credentials list dto rules items0
+//
+// swagger:model OperationCredentialsListDtoRulesItems0
+type OperationCredentialsListDtoRulesItems0 struct {
+
+	// prometheus rule Id
+	PrometheusRuleID int32 `json:"prometheusRuleId,omitempty"`
+
+	// prometheus rule name
+	PrometheusRuleName string `json:"prometheusRuleName,omitempty"`
+}
+
+// Validate validates this operation credentials list dto rules items0
+func (m *OperationCredentialsListDtoRulesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this operation credentials list dto rules items0 based on context it is used
+func (m *OperationCredentialsListDtoRulesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *OperationCredentialsListDtoRulesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *OperationCredentialsListDtoRulesItems0) UnmarshalBinary(b []byte) error {
+	var res OperationCredentialsListDtoRulesItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

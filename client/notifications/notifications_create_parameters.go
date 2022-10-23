@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewNotificationsCreateParams creates a new NotificationsCreateParams object,
@@ -64,7 +62,7 @@ NotificationsCreateParams contains all the parameters to send to the API endpoin
 type NotificationsCreateParams struct {
 
 	// Body.
-	Body *models.NotificationSendCommand
+	Body NotificationsCreateBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *NotificationsCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the notifications create params
-func (o *NotificationsCreateParams) WithBody(body *models.NotificationSendCommand) *NotificationsCreateParams {
+func (o *NotificationsCreateParams) WithBody(body NotificationsCreateBody) *NotificationsCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the notifications create params
-func (o *NotificationsCreateParams) SetBody(body *models.NotificationSendCommand) {
+func (o *NotificationsCreateParams) SetBody(body NotificationsCreateBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *NotificationsCreateParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

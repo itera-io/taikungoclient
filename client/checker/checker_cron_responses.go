@@ -6,13 +6,13 @@ package checker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CheckerCronReader is a Reader for the CheckerCron structure.
@@ -75,7 +75,7 @@ CheckerCronOK describes a response with status code 200, with default header val
 Success
 */
 type CheckerCronOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker cron o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CheckerCronOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronOK  %+v", 200, o.Payload)
 }
 
-func (o *CheckerCronOK) GetPayload() models.Unit {
+func (o *CheckerCronOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CheckerCronBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type CheckerCronBadRequest struct {
-	Payload []*models.Error
+	Payload []*CheckerCronBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this checker cron bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerCronBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerCronBadRequest) GetPayload() []*models.Error {
+func (o *CheckerCronBadRequest) GetPayload() []*CheckerCronBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CheckerCronUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type CheckerCronUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerCronUnauthorizedBody
 }
 
 // IsSuccess returns true when this checker cron unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CheckerCronUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerCronUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerCronUnauthorized) GetPayload() *CheckerCronUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CheckerCronUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerCronUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CheckerCronForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type CheckerCronForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerCronForbiddenBody
 }
 
 // IsSuccess returns true when this checker cron forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CheckerCronForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerCronForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerCronForbidden) GetPayload() *CheckerCronForbiddenBody {
 	return o.Payload
 }
 
 func (o *CheckerCronForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerCronForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CheckerCronNotFound describes a response with status code 404, with default head
 Not Found
 */
 type CheckerCronNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerCronNotFoundBody
 }
 
 // IsSuccess returns true when this checker cron not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CheckerCronNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerCronNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerCronNotFound) GetPayload() *CheckerCronNotFoundBody {
 	return o.Payload
 }
 
 func (o *CheckerCronNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerCronNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *CheckerCronInternalServerError) String() string {
 
 func (o *CheckerCronInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CheckerCronBadRequestBodyItems0 checker cron bad request body items0
+swagger:model CheckerCronBadRequestBodyItems0
+*/
+type CheckerCronBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this checker cron bad request body items0
+func (o *CheckerCronBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker cron bad request body items0 based on context it is used
+func (o *CheckerCronBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerCronBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerCronBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CheckerCronBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerCronBody checker cron body
+swagger:model CheckerCronBody
+*/
+type CheckerCronBody struct {
+
+	// cron period
+	CronPeriod string `json:"cronPeriod,omitempty"`
+}
+
+// Validate validates this checker cron body
+func (o *CheckerCronBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker cron body based on context it is used
+func (o *CheckerCronBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerCronBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerCronBody) UnmarshalBinary(b []byte) error {
+	var res CheckerCronBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerCronForbiddenBody checker cron forbidden body
+swagger:model CheckerCronForbiddenBody
+*/
+type CheckerCronForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker cron forbidden body
+func (o *CheckerCronForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker cron forbidden body based on context it is used
+func (o *CheckerCronForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerCronForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerCronForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CheckerCronForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerCronNotFoundBody checker cron not found body
+swagger:model CheckerCronNotFoundBody
+*/
+type CheckerCronNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker cron not found body
+func (o *CheckerCronNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker cron not found body based on context it is used
+func (o *CheckerCronNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerCronNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerCronNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CheckerCronNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerCronUnauthorizedBody checker cron unauthorized body
+swagger:model CheckerCronUnauthorizedBody
+*/
+type CheckerCronUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker cron unauthorized body
+func (o *CheckerCronUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker cron unauthorized body based on context it is used
+func (o *CheckerCronUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerCronUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerCronUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CheckerCronUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

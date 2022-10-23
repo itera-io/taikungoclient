@@ -6,13 +6,13 @@ package catalog
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CatalogDeleteCatalogAppReader is a Reader for the CatalogDeleteCatalogApp structure.
@@ -75,7 +75,7 @@ CatalogDeleteCatalogAppOK describes a response with status code 200, with defaul
 Success
 */
 type CatalogDeleteCatalogAppOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog delete catalog app o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CatalogDeleteCatalogAppOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete-app/{id}][%d] catalogDeleteCatalogAppOK  %+v", 200, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogAppOK) GetPayload() models.Unit {
+func (o *CatalogDeleteCatalogAppOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CatalogDeleteCatalogAppBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type CatalogDeleteCatalogAppBadRequest struct {
-	Payload []*models.Error
+	Payload []*CatalogDeleteCatalogAppBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this catalog delete catalog app bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CatalogDeleteCatalogAppBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete-app/{id}][%d] catalogDeleteCatalogAppBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogAppBadRequest) GetPayload() []*models.Error {
+func (o *CatalogDeleteCatalogAppBadRequest) GetPayload() []*CatalogDeleteCatalogAppBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CatalogDeleteCatalogAppUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type CatalogDeleteCatalogAppUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogDeleteCatalogAppUnauthorizedBody
 }
 
 // IsSuccess returns true when this catalog delete catalog app unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CatalogDeleteCatalogAppUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete-app/{id}][%d] catalogDeleteCatalogAppUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogAppUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogDeleteCatalogAppUnauthorized) GetPayload() *CatalogDeleteCatalogAppUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CatalogDeleteCatalogAppUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogDeleteCatalogAppUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CatalogDeleteCatalogAppForbidden describes a response with status code 403, with
 Forbidden
 */
 type CatalogDeleteCatalogAppForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogDeleteCatalogAppForbiddenBody
 }
 
 // IsSuccess returns true when this catalog delete catalog app forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CatalogDeleteCatalogAppForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete-app/{id}][%d] catalogDeleteCatalogAppForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogAppForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogDeleteCatalogAppForbidden) GetPayload() *CatalogDeleteCatalogAppForbiddenBody {
 	return o.Payload
 }
 
 func (o *CatalogDeleteCatalogAppForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogDeleteCatalogAppForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CatalogDeleteCatalogAppNotFound describes a response with status code 404, with 
 Not Found
 */
 type CatalogDeleteCatalogAppNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogDeleteCatalogAppNotFoundBody
 }
 
 // IsSuccess returns true when this catalog delete catalog app not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CatalogDeleteCatalogAppNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete-app/{id}][%d] catalogDeleteCatalogAppNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogAppNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogDeleteCatalogAppNotFound) GetPayload() *CatalogDeleteCatalogAppNotFoundBody {
 	return o.Payload
 }
 
 func (o *CatalogDeleteCatalogAppNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogDeleteCatalogAppNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *CatalogDeleteCatalogAppInternalServerError) String() string {
 
 func (o *CatalogDeleteCatalogAppInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CatalogDeleteCatalogAppBadRequestBodyItems0 catalog delete catalog app bad request body items0
+swagger:model CatalogDeleteCatalogAppBadRequestBodyItems0
+*/
+type CatalogDeleteCatalogAppBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this catalog delete catalog app bad request body items0
+func (o *CatalogDeleteCatalogAppBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog delete catalog app bad request body items0 based on context it is used
+func (o *CatalogDeleteCatalogAppBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogDeleteCatalogAppBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogDeleteCatalogAppBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CatalogDeleteCatalogAppBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogDeleteCatalogAppForbiddenBody catalog delete catalog app forbidden body
+swagger:model CatalogDeleteCatalogAppForbiddenBody
+*/
+type CatalogDeleteCatalogAppForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog delete catalog app forbidden body
+func (o *CatalogDeleteCatalogAppForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog delete catalog app forbidden body based on context it is used
+func (o *CatalogDeleteCatalogAppForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogDeleteCatalogAppForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogDeleteCatalogAppForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CatalogDeleteCatalogAppForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogDeleteCatalogAppNotFoundBody catalog delete catalog app not found body
+swagger:model CatalogDeleteCatalogAppNotFoundBody
+*/
+type CatalogDeleteCatalogAppNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog delete catalog app not found body
+func (o *CatalogDeleteCatalogAppNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog delete catalog app not found body based on context it is used
+func (o *CatalogDeleteCatalogAppNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogDeleteCatalogAppNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogDeleteCatalogAppNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CatalogDeleteCatalogAppNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogDeleteCatalogAppUnauthorizedBody catalog delete catalog app unauthorized body
+swagger:model CatalogDeleteCatalogAppUnauthorizedBody
+*/
+type CatalogDeleteCatalogAppUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog delete catalog app unauthorized body
+func (o *CatalogDeleteCatalogAppUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog delete catalog app unauthorized body based on context it is used
+func (o *CatalogDeleteCatalogAppUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogDeleteCatalogAppUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogDeleteCatalogAppUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CatalogDeleteCatalogAppUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

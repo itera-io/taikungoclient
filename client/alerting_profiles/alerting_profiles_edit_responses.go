@@ -6,13 +6,16 @@ package alerting_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AlertingProfilesEditReader is a Reader for the AlertingProfilesEdit structure.
@@ -75,7 +78,7 @@ AlertingProfilesEditOK describes a response with status code 200, with default h
 Success
 */
 type AlertingProfilesEditOK struct {
-	Payload *models.APIResponse
+	Payload *AlertingProfilesEditOKBody
 }
 
 // IsSuccess returns true when this alerting profiles edit o k response has a 2xx status code
@@ -111,13 +114,13 @@ func (o *AlertingProfilesEditOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditOK  %+v", 200, o.Payload)
 }
 
-func (o *AlertingProfilesEditOK) GetPayload() *models.APIResponse {
+func (o *AlertingProfilesEditOK) GetPayload() *AlertingProfilesEditOKBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesEditOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(AlertingProfilesEditOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +141,7 @@ AlertingProfilesEditBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type AlertingProfilesEditBadRequest struct {
-	Payload []*models.Error
+	Payload []*AlertingProfilesEditBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this alerting profiles edit bad request response has a 2xx status code
@@ -174,7 +177,7 @@ func (o *AlertingProfilesEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesEditBadRequest) GetPayload() []*models.Error {
+func (o *AlertingProfilesEditBadRequest) GetPayload() []*AlertingProfilesEditBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +202,7 @@ AlertingProfilesEditUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type AlertingProfilesEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesEditUnauthorizedBody
 }
 
 // IsSuccess returns true when this alerting profiles edit unauthorized response has a 2xx status code
@@ -235,13 +238,13 @@ func (o *AlertingProfilesEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesEditUnauthorized) GetPayload() *AlertingProfilesEditUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesEditUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +265,7 @@ AlertingProfilesEditForbidden describes a response with status code 403, with de
 Forbidden
 */
 type AlertingProfilesEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesEditForbiddenBody
 }
 
 // IsSuccess returns true when this alerting profiles edit forbidden response has a 2xx status code
@@ -298,13 +301,13 @@ func (o *AlertingProfilesEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesEditForbidden) GetPayload() *AlertingProfilesEditForbiddenBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesEditForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +328,7 @@ AlertingProfilesEditNotFound describes a response with status code 404, with def
 Not Found
 */
 type AlertingProfilesEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesEditNotFoundBody
 }
 
 // IsSuccess returns true when this alerting profiles edit not found response has a 2xx status code
@@ -361,13 +364,13 @@ func (o *AlertingProfilesEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesEditNotFound) GetPayload() *AlertingProfilesEditNotFoundBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesEditNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +428,339 @@ func (o *AlertingProfilesEditInternalServerError) String() string {
 
 func (o *AlertingProfilesEditInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AlertingProfilesEditBadRequestBodyItems0 alerting profiles edit bad request body items0
+swagger:model AlertingProfilesEditBadRequestBodyItems0
+*/
+type AlertingProfilesEditBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this alerting profiles edit bad request body items0
+func (o *AlertingProfilesEditBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles edit bad request body items0 based on context it is used
+func (o *AlertingProfilesEditBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesEditBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesEditBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesEditBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesEditBody alerting profiles edit body
+swagger:model AlertingProfilesEditBody
+*/
+type AlertingProfilesEditBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// reminder
+	// Enum: [100 200 300 -1]
+	Reminder int32 `json:"reminder,omitempty"`
+
+	// slack configuration Id
+	SlackConfigurationID int32 `json:"slackConfigurationId,omitempty"`
+}
+
+// Validate validates this alerting profiles edit body
+func (o *AlertingProfilesEditBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateReminder(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var alertingProfilesEditBodyTypeReminderPropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200,300,-1]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		alertingProfilesEditBodyTypeReminderPropEnum = append(alertingProfilesEditBodyTypeReminderPropEnum, v)
+	}
+}
+
+// prop value enum
+func (o *AlertingProfilesEditBody) validateReminderEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, alertingProfilesEditBodyTypeReminderPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AlertingProfilesEditBody) validateReminder(formats strfmt.Registry) error {
+	if swag.IsZero(o.Reminder) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := o.validateReminderEnum("body"+"."+"reminder", "body", o.Reminder); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this alerting profiles edit body based on context it is used
+func (o *AlertingProfilesEditBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesEditBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesEditBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesEditBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesEditForbiddenBody alerting profiles edit forbidden body
+swagger:model AlertingProfilesEditForbiddenBody
+*/
+type AlertingProfilesEditForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles edit forbidden body
+func (o *AlertingProfilesEditForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles edit forbidden body based on context it is used
+func (o *AlertingProfilesEditForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesEditForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesEditForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesEditForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesEditNotFoundBody alerting profiles edit not found body
+swagger:model AlertingProfilesEditNotFoundBody
+*/
+type AlertingProfilesEditNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles edit not found body
+func (o *AlertingProfilesEditNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles edit not found body based on context it is used
+func (o *AlertingProfilesEditNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesEditNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesEditNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesEditNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesEditOKBody alerting profiles edit o k body
+swagger:model AlertingProfilesEditOKBody
+*/
+type AlertingProfilesEditOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this alerting profiles edit o k body
+func (o *AlertingProfilesEditOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles edit o k body based on context it is used
+func (o *AlertingProfilesEditOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesEditOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesEditOKBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesEditOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesEditUnauthorizedBody alerting profiles edit unauthorized body
+swagger:model AlertingProfilesEditUnauthorizedBody
+*/
+type AlertingProfilesEditUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles edit unauthorized body
+func (o *AlertingProfilesEditUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles edit unauthorized body based on context it is used
+func (o *AlertingProfilesEditUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesEditUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesEditUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesEditUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

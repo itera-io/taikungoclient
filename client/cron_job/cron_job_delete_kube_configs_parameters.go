@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobDeleteKubeConfigsParams creates a new CronJobDeleteKubeConfigsParams object,
@@ -64,7 +62,7 @@ CronJobDeleteKubeConfigsParams contains all the parameters to send to the API en
 type CronJobDeleteKubeConfigsParams struct {
 
 	// Body.
-	Body models.DeleteRemovedUsersKubeConfigCommand
+	Body interface{}
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *CronJobDeleteKubeConfigsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the cron job delete kube configs params
-func (o *CronJobDeleteKubeConfigsParams) WithBody(body models.DeleteRemovedUsersKubeConfigCommand) *CronJobDeleteKubeConfigsParams {
+func (o *CronJobDeleteKubeConfigsParams) WithBody(body interface{}) *CronJobDeleteKubeConfigsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job delete kube configs params
-func (o *CronJobDeleteKubeConfigsParams) SetBody(body models.DeleteRemovedUsersKubeConfigCommand) {
+func (o *CronJobDeleteKubeConfigsParams) SetBody(body interface{}) {
 	o.Body = body
 }
 

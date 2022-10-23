@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewPartnerBindOrganizationsParams creates a new PartnerBindOrganizationsParams object,
@@ -64,7 +62,7 @@ PartnerBindOrganizationsParams contains all the parameters to send to the API en
 type PartnerBindOrganizationsParams struct {
 
 	// Body.
-	Body *models.BindOrganizationsCommand
+	Body PartnerBindOrganizationsBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *PartnerBindOrganizationsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the partner bind organizations params
-func (o *PartnerBindOrganizationsParams) WithBody(body *models.BindOrganizationsCommand) *PartnerBindOrganizationsParams {
+func (o *PartnerBindOrganizationsParams) WithBody(body PartnerBindOrganizationsBody) *PartnerBindOrganizationsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the partner bind organizations params
-func (o *PartnerBindOrganizationsParams) SetBody(body *models.BindOrganizationsCommand) {
+func (o *PartnerBindOrganizationsParams) SetBody(body PartnerBindOrganizationsBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *PartnerBindOrganizationsParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

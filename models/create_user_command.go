@@ -7,10 +7,12 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateUserCommand create user command
@@ -28,7 +30,8 @@ type CreateUserCommand struct {
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
 	// role
-	Role UserRole `json:"role,omitempty"`
+	// Enum: [100 200 250 400 6000]
+	Role int32 `json:"role,omitempty"`
 
 	// username
 	Username string `json:"username,omitempty"`
@@ -48,48 +51,41 @@ func (m *CreateUserCommand) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+var createUserCommandTypeRolePropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200,250,400,6000]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		createUserCommandTypeRolePropEnum = append(createUserCommandTypeRolePropEnum, v)
+	}
+}
+
+// prop value enum
+func (m *CreateUserCommand) validateRoleEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, createUserCommandTypeRolePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *CreateUserCommand) validateRole(formats strfmt.Registry) error {
 	if swag.IsZero(m.Role) { // not required
 		return nil
 	}
 
-	if err := m.Role.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("role")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("role")
-		}
+	// value enum
+	if err := m.validateRoleEnum("role", "body", m.Role); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-// ContextValidate validate this create user command based on the context it is used
+// ContextValidate validates this create user command based on context it is used
 func (m *CreateUserCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateRole(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *CreateUserCommand) contextValidateRole(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := m.Role.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("role")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("role")
-		}
-		return err
-	}
-
 	return nil
 }
 

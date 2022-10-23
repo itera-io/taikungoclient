@@ -6,13 +6,13 @@ package google_cloud
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // GoogleCloudRegionListReader is a Reader for the GoogleCloudRegionList structure.
@@ -136,7 +136,7 @@ GoogleCloudRegionListBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type GoogleCloudRegionListBadRequest struct {
-	Payload []*models.Error
+	Payload []*GoogleCloudRegionListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this google cloud region list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *GoogleCloudRegionListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GoogleCloudRegionListBadRequest) GetPayload() []*models.Error {
+func (o *GoogleCloudRegionListBadRequest) GetPayload() []*GoogleCloudRegionListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ GoogleCloudRegionListUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type GoogleCloudRegionListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *GoogleCloudRegionListUnauthorizedBody
 }
 
 // IsSuccess returns true when this google cloud region list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *GoogleCloudRegionListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GoogleCloudRegionListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudRegionListUnauthorized) GetPayload() *GoogleCloudRegionListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *GoogleCloudRegionListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(GoogleCloudRegionListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ GoogleCloudRegionListForbidden describes a response with status code 403, with d
 Forbidden
 */
 type GoogleCloudRegionListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *GoogleCloudRegionListForbiddenBody
 }
 
 // IsSuccess returns true when this google cloud region list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *GoogleCloudRegionListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GoogleCloudRegionListForbidden) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudRegionListForbidden) GetPayload() *GoogleCloudRegionListForbiddenBody {
 	return o.Payload
 }
 
 func (o *GoogleCloudRegionListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(GoogleCloudRegionListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ GoogleCloudRegionListNotFound describes a response with status code 404, with de
 Not Found
 */
 type GoogleCloudRegionListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *GoogleCloudRegionListNotFoundBody
 }
 
 // IsSuccess returns true when this google cloud region list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *GoogleCloudRegionListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GoogleCloudRegionListNotFound) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudRegionListNotFound) GetPayload() *GoogleCloudRegionListNotFoundBody {
 	return o.Payload
 }
 
 func (o *GoogleCloudRegionListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(GoogleCloudRegionListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *GoogleCloudRegionListInternalServerError) String() string {
 
 func (o *GoogleCloudRegionListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+GoogleCloudRegionListBadRequestBodyItems0 google cloud region list bad request body items0
+swagger:model GoogleCloudRegionListBadRequestBodyItems0
+*/
+type GoogleCloudRegionListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this google cloud region list bad request body items0
+func (o *GoogleCloudRegionListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud region list bad request body items0 based on context it is used
+func (o *GoogleCloudRegionListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudRegionListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudRegionListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudRegionListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudRegionListForbiddenBody google cloud region list forbidden body
+swagger:model GoogleCloudRegionListForbiddenBody
+*/
+type GoogleCloudRegionListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this google cloud region list forbidden body
+func (o *GoogleCloudRegionListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud region list forbidden body based on context it is used
+func (o *GoogleCloudRegionListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudRegionListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudRegionListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudRegionListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudRegionListNotFoundBody google cloud region list not found body
+swagger:model GoogleCloudRegionListNotFoundBody
+*/
+type GoogleCloudRegionListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this google cloud region list not found body
+func (o *GoogleCloudRegionListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud region list not found body based on context it is used
+func (o *GoogleCloudRegionListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudRegionListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudRegionListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudRegionListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+GoogleCloudRegionListUnauthorizedBody google cloud region list unauthorized body
+swagger:model GoogleCloudRegionListUnauthorizedBody
+*/
+type GoogleCloudRegionListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this google cloud region list unauthorized body
+func (o *GoogleCloudRegionListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this google cloud region list unauthorized body based on context it is used
+func (o *GoogleCloudRegionListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *GoogleCloudRegionListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *GoogleCloudRegionListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res GoogleCloudRegionListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

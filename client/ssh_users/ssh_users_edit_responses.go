@@ -6,13 +6,13 @@ package ssh_users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SSHUsersEditReader is a Reader for the SSHUsersEdit structure.
@@ -75,7 +75,7 @@ SSHUsersEditOK describes a response with status code 200, with default header va
 Success
 */
 type SSHUsersEditOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ssh users edit o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *SSHUsersEditOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/edit][%d] sshUsersEditOK  %+v", 200, o.Payload)
 }
 
-func (o *SSHUsersEditOK) GetPayload() models.Unit {
+func (o *SSHUsersEditOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ SSHUsersEditBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type SSHUsersEditBadRequest struct {
-	Payload []*models.Error
+	Payload []*SSHUsersEditBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this ssh users edit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SSHUsersEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/edit][%d] sshUsersEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SSHUsersEditBadRequest) GetPayload() []*models.Error {
+func (o *SSHUsersEditBadRequest) GetPayload() []*SSHUsersEditBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ SSHUsersEditUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type SSHUsersEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SSHUsersEditUnauthorizedBody
 }
 
 // IsSuccess returns true when this ssh users edit unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *SSHUsersEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/edit][%d] sshUsersEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SSHUsersEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersEditUnauthorized) GetPayload() *SSHUsersEditUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SSHUsersEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SSHUsersEditUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ SSHUsersEditForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type SSHUsersEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SSHUsersEditForbiddenBody
 }
 
 // IsSuccess returns true when this ssh users edit forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *SSHUsersEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/edit][%d] sshUsersEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SSHUsersEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersEditForbidden) GetPayload() *SSHUsersEditForbiddenBody {
 	return o.Payload
 }
 
 func (o *SSHUsersEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SSHUsersEditForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ SSHUsersEditNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type SSHUsersEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SSHUsersEditNotFoundBody
 }
 
 // IsSuccess returns true when this ssh users edit not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *SSHUsersEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/edit][%d] sshUsersEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SSHUsersEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersEditNotFound) GetPayload() *SSHUsersEditNotFoundBody {
 	return o.Payload
 }
 
 func (o *SSHUsersEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SSHUsersEditNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,243 @@ func (o *SSHUsersEditInternalServerError) String() string {
 
 func (o *SSHUsersEditInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SSHUsersEditBadRequestBodyItems0 SSH users edit bad request body items0
+swagger:model SSHUsersEditBadRequestBodyItems0
+*/
+type SSHUsersEditBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this SSH users edit bad request body items0
+func (o *SSHUsersEditBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users edit bad request body items0 based on context it is used
+func (o *SSHUsersEditBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersEditBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersEditBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SSHUsersEditBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SSHUsersEditBody SSH users edit body
+swagger:model SSHUsersEditBody
+*/
+type SSHUsersEditBody struct {
+
+	// access profile Id
+	AccessProfileID int32 `json:"accessProfileId,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// ssh public key
+	SSHPublicKey string `json:"sshPublicKey,omitempty"`
+}
+
+// Validate validates this SSH users edit body
+func (o *SSHUsersEditBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users edit body based on context it is used
+func (o *SSHUsersEditBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersEditBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersEditBody) UnmarshalBinary(b []byte) error {
+	var res SSHUsersEditBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SSHUsersEditForbiddenBody SSH users edit forbidden body
+swagger:model SSHUsersEditForbiddenBody
+*/
+type SSHUsersEditForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this SSH users edit forbidden body
+func (o *SSHUsersEditForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users edit forbidden body based on context it is used
+func (o *SSHUsersEditForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersEditForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersEditForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SSHUsersEditForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SSHUsersEditNotFoundBody SSH users edit not found body
+swagger:model SSHUsersEditNotFoundBody
+*/
+type SSHUsersEditNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this SSH users edit not found body
+func (o *SSHUsersEditNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users edit not found body based on context it is used
+func (o *SSHUsersEditNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersEditNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersEditNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SSHUsersEditNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SSHUsersEditUnauthorizedBody SSH users edit unauthorized body
+swagger:model SSHUsersEditUnauthorizedBody
+*/
+type SSHUsersEditUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this SSH users edit unauthorized body
+func (o *SSHUsersEditUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users edit unauthorized body based on context it is used
+func (o *SSHUsersEditUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersEditUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersEditUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SSHUsersEditUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

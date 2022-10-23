@@ -6,13 +6,13 @@ package checker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CheckerPrometheusReader is a Reader for the CheckerPrometheus structure.
@@ -75,7 +75,7 @@ CheckerPrometheusOK describes a response with status code 200, with default head
 Success
 */
 type CheckerPrometheusOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker prometheus o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CheckerPrometheusOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/prometheus][%d] checkerPrometheusOK  %+v", 200, o.Payload)
 }
 
-func (o *CheckerPrometheusOK) GetPayload() models.Unit {
+func (o *CheckerPrometheusOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CheckerPrometheusBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type CheckerPrometheusBadRequest struct {
-	Payload []*models.Error
+	Payload []*CheckerPrometheusBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this checker prometheus bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerPrometheusBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/prometheus][%d] checkerPrometheusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerPrometheusBadRequest) GetPayload() []*models.Error {
+func (o *CheckerPrometheusBadRequest) GetPayload() []*CheckerPrometheusBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CheckerPrometheusUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type CheckerPrometheusUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerPrometheusUnauthorizedBody
 }
 
 // IsSuccess returns true when this checker prometheus unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CheckerPrometheusUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/prometheus][%d] checkerPrometheusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerPrometheusUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerPrometheusUnauthorized) GetPayload() *CheckerPrometheusUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CheckerPrometheusUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerPrometheusUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CheckerPrometheusForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type CheckerPrometheusForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerPrometheusForbiddenBody
 }
 
 // IsSuccess returns true when this checker prometheus forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CheckerPrometheusForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/prometheus][%d] checkerPrometheusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerPrometheusForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerPrometheusForbidden) GetPayload() *CheckerPrometheusForbiddenBody {
 	return o.Payload
 }
 
 func (o *CheckerPrometheusForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerPrometheusForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CheckerPrometheusNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type CheckerPrometheusNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerPrometheusNotFoundBody
 }
 
 // IsSuccess returns true when this checker prometheus not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CheckerPrometheusNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/prometheus][%d] checkerPrometheusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerPrometheusNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerPrometheusNotFound) GetPayload() *CheckerPrometheusNotFoundBody {
 	return o.Payload
 }
 
 func (o *CheckerPrometheusNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerPrometheusNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *CheckerPrometheusInternalServerError) String() string {
 
 func (o *CheckerPrometheusInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CheckerPrometheusBadRequestBodyItems0 checker prometheus bad request body items0
+swagger:model CheckerPrometheusBadRequestBodyItems0
+*/
+type CheckerPrometheusBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this checker prometheus bad request body items0
+func (o *CheckerPrometheusBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker prometheus bad request body items0 based on context it is used
+func (o *CheckerPrometheusBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerPrometheusBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerPrometheusBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CheckerPrometheusBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerPrometheusBody checker prometheus body
+swagger:model CheckerPrometheusBody
+*/
+type CheckerPrometheusBody struct {
+
+	// password
+	Password string `json:"password,omitempty"`
+
+	// url
+	URL string `json:"url,omitempty"`
+
+	// user name
+	UserName string `json:"userName,omitempty"`
+}
+
+// Validate validates this checker prometheus body
+func (o *CheckerPrometheusBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker prometheus body based on context it is used
+func (o *CheckerPrometheusBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerPrometheusBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerPrometheusBody) UnmarshalBinary(b []byte) error {
+	var res CheckerPrometheusBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerPrometheusForbiddenBody checker prometheus forbidden body
+swagger:model CheckerPrometheusForbiddenBody
+*/
+type CheckerPrometheusForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker prometheus forbidden body
+func (o *CheckerPrometheusForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker prometheus forbidden body based on context it is used
+func (o *CheckerPrometheusForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerPrometheusForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerPrometheusForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CheckerPrometheusForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerPrometheusNotFoundBody checker prometheus not found body
+swagger:model CheckerPrometheusNotFoundBody
+*/
+type CheckerPrometheusNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker prometheus not found body
+func (o *CheckerPrometheusNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker prometheus not found body based on context it is used
+func (o *CheckerPrometheusNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerPrometheusNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerPrometheusNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CheckerPrometheusNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerPrometheusUnauthorizedBody checker prometheus unauthorized body
+swagger:model CheckerPrometheusUnauthorizedBody
+*/
+type CheckerPrometheusUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker prometheus unauthorized body
+func (o *CheckerPrometheusUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker prometheus unauthorized body based on context it is used
+func (o *CheckerPrometheusUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerPrometheusUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerPrometheusUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CheckerPrometheusUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

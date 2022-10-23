@@ -6,13 +6,13 @@ package ops_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // OpsCredentialsDeleteReader is a Reader for the OpsCredentialsDelete structure.
@@ -81,7 +81,7 @@ OpsCredentialsDeleteOK describes a response with status code 200, with default h
 Success
 */
 type OpsCredentialsDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ops credentials delete o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *OpsCredentialsDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *OpsCredentialsDeleteOK) GetPayload() models.Unit {
+func (o *OpsCredentialsDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ OpsCredentialsDeleteBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type OpsCredentialsDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*OpsCredentialsDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this ops credentials delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *OpsCredentialsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsDeleteBadRequest) GetPayload() []*models.Error {
+func (o *OpsCredentialsDeleteBadRequest) GetPayload() []*OpsCredentialsDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ OpsCredentialsDeleteUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type OpsCredentialsDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *OpsCredentialsDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this ops credentials delete unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *OpsCredentialsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpsCredentialsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsDeleteUnauthorized) GetPayload() *OpsCredentialsDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *OpsCredentialsDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpsCredentialsDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ OpsCredentialsDeleteForbidden describes a response with status code 403, with de
 Forbidden
 */
 type OpsCredentialsDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *OpsCredentialsDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this ops credentials delete forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *OpsCredentialsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpsCredentialsDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsDeleteForbidden) GetPayload() *OpsCredentialsDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *OpsCredentialsDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpsCredentialsDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ OpsCredentialsDeleteNotFound describes a response with status code 404, with def
 Not Found
 */
 type OpsCredentialsDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *OpsCredentialsDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this ops credentials delete not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *OpsCredentialsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpsCredentialsDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsDeleteNotFound) GetPayload() *OpsCredentialsDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *OpsCredentialsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpsCredentialsDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,5 +480,196 @@ func (o *OpsCredentialsDeleteInternalServerError) String() string {
 
 func (o *OpsCredentialsDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+OpsCredentialsDeleteBadRequestBodyItems0 ops credentials delete bad request body items0
+swagger:model OpsCredentialsDeleteBadRequestBodyItems0
+*/
+type OpsCredentialsDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this ops credentials delete bad request body items0
+func (o *OpsCredentialsDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ops credentials delete bad request body items0 based on context it is used
+func (o *OpsCredentialsDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpsCredentialsDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpsCredentialsDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OpsCredentialsDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpsCredentialsDeleteForbiddenBody ops credentials delete forbidden body
+swagger:model OpsCredentialsDeleteForbiddenBody
+*/
+type OpsCredentialsDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ops credentials delete forbidden body
+func (o *OpsCredentialsDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ops credentials delete forbidden body based on context it is used
+func (o *OpsCredentialsDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpsCredentialsDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpsCredentialsDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res OpsCredentialsDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpsCredentialsDeleteNotFoundBody ops credentials delete not found body
+swagger:model OpsCredentialsDeleteNotFoundBody
+*/
+type OpsCredentialsDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ops credentials delete not found body
+func (o *OpsCredentialsDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ops credentials delete not found body based on context it is used
+func (o *OpsCredentialsDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpsCredentialsDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpsCredentialsDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res OpsCredentialsDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpsCredentialsDeleteUnauthorizedBody ops credentials delete unauthorized body
+swagger:model OpsCredentialsDeleteUnauthorizedBody
+*/
+type OpsCredentialsDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ops credentials delete unauthorized body
+func (o *OpsCredentialsDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ops credentials delete unauthorized body based on context it is used
+func (o *OpsCredentialsDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpsCredentialsDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpsCredentialsDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res OpsCredentialsDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

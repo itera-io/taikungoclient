@@ -20,7 +20,7 @@ import (
 type NotificationHistory struct {
 
 	// data
-	Data []*NotificationListDto `json:"data"`
+	Data []*NotificationHistoryDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,64 @@ func (m *NotificationHistory) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *NotificationHistory) UnmarshalBinary(b []byte) error {
 	var res NotificationHistory
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// NotificationHistoryDataItems0 notification history data items0
+//
+// swagger:model NotificationHistoryDataItems0
+type NotificationHistoryDataItems0 struct {
+
+	// action message
+	ActionMessage string `json:"actionMessage,omitempty"`
+
+	// action status
+	ActionStatus string `json:"actionStatus,omitempty"`
+
+	// category
+	Category string `json:"category,omitempty"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// is deleted
+	IsDeleted bool `json:"isDeleted"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// username
+	Username string `json:"username,omitempty"`
+}
+
+// Validate validates this notification history data items0
+func (m *NotificationHistoryDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this notification history data items0 based on context it is used
+func (m *NotificationHistoryDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *NotificationHistoryDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *NotificationHistoryDataItems0) UnmarshalBinary(b []byte) error {
+	var res NotificationHistoryDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

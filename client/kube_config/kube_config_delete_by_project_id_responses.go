@@ -6,13 +6,13 @@ package kube_config
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubeConfigDeleteByProjectIDReader is a Reader for the KubeConfigDeleteByProjectID structure.
@@ -75,7 +75,7 @@ KubeConfigDeleteByProjectIDOK describes a response with status code 200, with de
 Success
 */
 type KubeConfigDeleteByProjectIDOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kube config delete by project Id o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KubeConfigDeleteByProjectIDOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdOK  %+v", 200, o.Payload)
 }
 
-func (o *KubeConfigDeleteByProjectIDOK) GetPayload() models.Unit {
+func (o *KubeConfigDeleteByProjectIDOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KubeConfigDeleteByProjectIDBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubeConfigDeleteByProjectIDBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubeConfigDeleteByProjectIDBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kube config delete by project Id bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubeConfigDeleteByProjectIDBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubeConfigDeleteByProjectIDBadRequest) GetPayload() []*models.Error {
+func (o *KubeConfigDeleteByProjectIDBadRequest) GetPayload() []*KubeConfigDeleteByProjectIDBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubeConfigDeleteByProjectIDUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubeConfigDeleteByProjectIDUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubeConfigDeleteByProjectIDUnauthorizedBody
 }
 
 // IsSuccess returns true when this kube config delete by project Id unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubeConfigDeleteByProjectIDUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubeConfigDeleteByProjectIDUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigDeleteByProjectIDUnauthorized) GetPayload() *KubeConfigDeleteByProjectIDUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubeConfigDeleteByProjectIDUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubeConfigDeleteByProjectIDUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubeConfigDeleteByProjectIDForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubeConfigDeleteByProjectIDForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubeConfigDeleteByProjectIDForbiddenBody
 }
 
 // IsSuccess returns true when this kube config delete by project Id forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubeConfigDeleteByProjectIDForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubeConfigDeleteByProjectIDForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigDeleteByProjectIDForbidden) GetPayload() *KubeConfigDeleteByProjectIDForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubeConfigDeleteByProjectIDForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubeConfigDeleteByProjectIDForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubeConfigDeleteByProjectIDNotFound describes a response with status code 404, w
 Not Found
 */
 type KubeConfigDeleteByProjectIDNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubeConfigDeleteByProjectIDNotFoundBody
 }
 
 // IsSuccess returns true when this kube config delete by project Id not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubeConfigDeleteByProjectIDNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubeConfigDeleteByProjectIDNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigDeleteByProjectIDNotFound) GetPayload() *KubeConfigDeleteByProjectIDNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubeConfigDeleteByProjectIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubeConfigDeleteByProjectIDNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *KubeConfigDeleteByProjectIDInternalServerError) String() string {
 
 func (o *KubeConfigDeleteByProjectIDInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubeConfigDeleteByProjectIDBadRequestBodyItems0 kube config delete by project ID bad request body items0
+swagger:model KubeConfigDeleteByProjectIDBadRequestBodyItems0
+*/
+type KubeConfigDeleteByProjectIDBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kube config delete by project ID bad request body items0
+func (o *KubeConfigDeleteByProjectIDBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kube config delete by project ID bad request body items0 based on context it is used
+func (o *KubeConfigDeleteByProjectIDBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubeConfigDeleteByProjectIDBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubeConfigDeleteByProjectIDBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubeConfigDeleteByProjectIDBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubeConfigDeleteByProjectIDBody kube config delete by project ID body
+swagger:model KubeConfigDeleteByProjectIDBody
+*/
+type KubeConfigDeleteByProjectIDBody struct {
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this kube config delete by project ID body
+func (o *KubeConfigDeleteByProjectIDBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kube config delete by project ID body based on context it is used
+func (o *KubeConfigDeleteByProjectIDBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubeConfigDeleteByProjectIDBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubeConfigDeleteByProjectIDBody) UnmarshalBinary(b []byte) error {
+	var res KubeConfigDeleteByProjectIDBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubeConfigDeleteByProjectIDForbiddenBody kube config delete by project ID forbidden body
+swagger:model KubeConfigDeleteByProjectIDForbiddenBody
+*/
+type KubeConfigDeleteByProjectIDForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kube config delete by project ID forbidden body
+func (o *KubeConfigDeleteByProjectIDForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kube config delete by project ID forbidden body based on context it is used
+func (o *KubeConfigDeleteByProjectIDForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubeConfigDeleteByProjectIDForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubeConfigDeleteByProjectIDForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubeConfigDeleteByProjectIDForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubeConfigDeleteByProjectIDNotFoundBody kube config delete by project ID not found body
+swagger:model KubeConfigDeleteByProjectIDNotFoundBody
+*/
+type KubeConfigDeleteByProjectIDNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kube config delete by project ID not found body
+func (o *KubeConfigDeleteByProjectIDNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kube config delete by project ID not found body based on context it is used
+func (o *KubeConfigDeleteByProjectIDNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubeConfigDeleteByProjectIDNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubeConfigDeleteByProjectIDNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubeConfigDeleteByProjectIDNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubeConfigDeleteByProjectIDUnauthorizedBody kube config delete by project ID unauthorized body
+swagger:model KubeConfigDeleteByProjectIDUnauthorizedBody
+*/
+type KubeConfigDeleteByProjectIDUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kube config delete by project ID unauthorized body
+func (o *KubeConfigDeleteByProjectIDUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kube config delete by project ID unauthorized body based on context it is used
+func (o *KubeConfigDeleteByProjectIDUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubeConfigDeleteByProjectIDUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubeConfigDeleteByProjectIDUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubeConfigDeleteByProjectIDUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

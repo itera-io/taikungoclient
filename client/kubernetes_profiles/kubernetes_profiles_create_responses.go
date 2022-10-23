@@ -6,13 +6,13 @@ package kubernetes_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesProfilesCreateReader is a Reader for the KubernetesProfilesCreate structure.
@@ -75,7 +75,7 @@ KubernetesProfilesCreateOK describes a response with status code 200, with defau
 Success
 */
 type KubernetesProfilesCreateOK struct {
-	Payload *models.APIResponse
+	Payload *KubernetesProfilesCreateOKBody
 }
 
 // IsSuccess returns true when this kubernetes profiles create o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *KubernetesProfilesCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesProfilesCreateOK) GetPayload() *models.APIResponse {
+func (o *KubernetesProfilesCreateOK) GetPayload() *KubernetesProfilesCreateOKBody {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(KubernetesProfilesCreateOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ KubernetesProfilesCreateBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type KubernetesProfilesCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesProfilesCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes profiles create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubernetesProfilesCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesProfilesCreateBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesProfilesCreateBadRequest) GetPayload() []*KubernetesProfilesCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ KubernetesProfilesCreateUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type KubernetesProfilesCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesProfilesCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes profiles create unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *KubernetesProfilesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesProfilesCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesCreateUnauthorized) GetPayload() *KubernetesProfilesCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesProfilesCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ KubernetesProfilesCreateForbidden describes a response with status code 403, wit
 Forbidden
 */
 type KubernetesProfilesCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesProfilesCreateForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes profiles create forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *KubernetesProfilesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesProfilesCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesCreateForbidden) GetPayload() *KubernetesProfilesCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesProfilesCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ KubernetesProfilesCreateNotFound describes a response with status code 404, with
 Not Found
 */
 type KubernetesProfilesCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesProfilesCreateNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes profiles create not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *KubernetesProfilesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesProfilesCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesCreateNotFound) GetPayload() *KubernetesProfilesCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesProfilesCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +425,302 @@ func (o *KubernetesProfilesCreateInternalServerError) String() string {
 
 func (o *KubernetesProfilesCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesProfilesCreateBadRequestBodyItems0 kubernetes profiles create bad request body items0
+swagger:model KubernetesProfilesCreateBadRequestBodyItems0
+*/
+type KubernetesProfilesCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes profiles create bad request body items0
+func (o *KubernetesProfilesCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles create bad request body items0 based on context it is used
+func (o *KubernetesProfilesCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesProfilesCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesProfilesCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesProfilesCreateBody kubernetes profiles create body
+swagger:model KubernetesProfilesCreateBody
+*/
+type KubernetesProfilesCreateBody struct {
+
+	// allow scheduling on master
+	AllowSchedulingOnMaster bool `json:"allowSchedulingOnMaster"`
+
+	// expose node port on bastion
+	ExposeNodePortOnBastion bool `json:"exposeNodePortOnBastion"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// octavia enabled
+	OctaviaEnabled bool `json:"octaviaEnabled"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// taikun l b enabled
+	TaikunLBEnabled bool `json:"taikunLBEnabled"`
+
+	// unique cluster name
+	UniqueClusterName bool `json:"uniqueClusterName"`
+}
+
+// Validate validates this kubernetes profiles create body
+func (o *KubernetesProfilesCreateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles create body based on context it is used
+func (o *KubernetesProfilesCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesProfilesCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesProfilesCreateBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesProfilesCreateForbiddenBody kubernetes profiles create forbidden body
+swagger:model KubernetesProfilesCreateForbiddenBody
+*/
+type KubernetesProfilesCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes profiles create forbidden body
+func (o *KubernetesProfilesCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles create forbidden body based on context it is used
+func (o *KubernetesProfilesCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesProfilesCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesProfilesCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesProfilesCreateNotFoundBody kubernetes profiles create not found body
+swagger:model KubernetesProfilesCreateNotFoundBody
+*/
+type KubernetesProfilesCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes profiles create not found body
+func (o *KubernetesProfilesCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles create not found body based on context it is used
+func (o *KubernetesProfilesCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesProfilesCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesProfilesCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesProfilesCreateOKBody kubernetes profiles create o k body
+swagger:model KubernetesProfilesCreateOKBody
+*/
+type KubernetesProfilesCreateOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this kubernetes profiles create o k body
+func (o *KubernetesProfilesCreateOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles create o k body based on context it is used
+func (o *KubernetesProfilesCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesProfilesCreateOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesProfilesCreateOKBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesCreateOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesProfilesCreateUnauthorizedBody kubernetes profiles create unauthorized body
+swagger:model KubernetesProfilesCreateUnauthorizedBody
+*/
+type KubernetesProfilesCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes profiles create unauthorized body
+func (o *KubernetesProfilesCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes profiles create unauthorized body based on context it is used
+func (o *KubernetesProfilesCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesProfilesCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesProfilesCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesProfilesCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

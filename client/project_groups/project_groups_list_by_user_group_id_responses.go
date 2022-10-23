@@ -6,13 +6,13 @@ package project_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ProjectGroupsListByUserGroupIDReader is a Reader for the ProjectGroupsListByUserGroupID structure.
@@ -75,7 +75,7 @@ ProjectGroupsListByUserGroupIDOK describes a response with status code 200, with
 Success
 */
 type ProjectGroupsListByUserGroupIDOK struct {
-	Payload []*models.CommonDropdownDto
+	Payload []*ProjectGroupsListByUserGroupIDOKBodyItems0
 }
 
 // IsSuccess returns true when this project groups list by user group Id o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectGroupsListByUserGroupIDOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectGroups/list-by-user-group-id][%d] projectGroupsListByUserGroupIdOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectGroupsListByUserGroupIDOK) GetPayload() []*models.CommonDropdownDto {
+func (o *ProjectGroupsListByUserGroupIDOK) GetPayload() []*ProjectGroupsListByUserGroupIDOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectGroupsListByUserGroupIDBadRequest describes a response with status code 4
 Bad Request
 */
 type ProjectGroupsListByUserGroupIDBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectGroupsListByUserGroupIDBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this project groups list by user group Id bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectGroupsListByUserGroupIDBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectGroups/list-by-user-group-id][%d] projectGroupsListByUserGroupIdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectGroupsListByUserGroupIDBadRequest) GetPayload() []*models.Error {
+func (o *ProjectGroupsListByUserGroupIDBadRequest) GetPayload() []*ProjectGroupsListByUserGroupIDBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectGroupsListByUserGroupIDUnauthorized describes a response with status code
 Unauthorized
 */
 type ProjectGroupsListByUserGroupIDUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectGroupsListByUserGroupIDUnauthorizedBody
 }
 
 // IsSuccess returns true when this project groups list by user group Id unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectGroupsListByUserGroupIDUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectGroups/list-by-user-group-id][%d] projectGroupsListByUserGroupIdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectGroupsListByUserGroupIDUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsListByUserGroupIDUnauthorized) GetPayload() *ProjectGroupsListByUserGroupIDUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectGroupsListByUserGroupIDUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectGroupsListByUserGroupIDUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectGroupsListByUserGroupIDForbidden describes a response with status code 40
 Forbidden
 */
 type ProjectGroupsListByUserGroupIDForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectGroupsListByUserGroupIDForbiddenBody
 }
 
 // IsSuccess returns true when this project groups list by user group Id forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectGroupsListByUserGroupIDForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectGroups/list-by-user-group-id][%d] projectGroupsListByUserGroupIdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectGroupsListByUserGroupIDForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsListByUserGroupIDForbidden) GetPayload() *ProjectGroupsListByUserGroupIDForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectGroupsListByUserGroupIDForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectGroupsListByUserGroupIDForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectGroupsListByUserGroupIDNotFound describes a response with status code 404
 Not Found
 */
 type ProjectGroupsListByUserGroupIDNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectGroupsListByUserGroupIDNotFoundBody
 }
 
 // IsSuccess returns true when this project groups list by user group Id not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectGroupsListByUserGroupIDNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectGroups/list-by-user-group-id][%d] projectGroupsListByUserGroupIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectGroupsListByUserGroupIDNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsListByUserGroupIDNotFound) GetPayload() *ProjectGroupsListByUserGroupIDNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectGroupsListByUserGroupIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectGroupsListByUserGroupIDNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *ProjectGroupsListByUserGroupIDInternalServerError) String() string {
 
 func (o *ProjectGroupsListByUserGroupIDInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectGroupsListByUserGroupIDBadRequestBodyItems0 project groups list by user group ID bad request body items0
+swagger:model ProjectGroupsListByUserGroupIDBadRequestBodyItems0
+*/
+type ProjectGroupsListByUserGroupIDBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this project groups list by user group ID bad request body items0
+func (o *ProjectGroupsListByUserGroupIDBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups list by user group ID bad request body items0 based on context it is used
+func (o *ProjectGroupsListByUserGroupIDBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsListByUserGroupIDBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsListByUserGroupIDBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsListByUserGroupIDBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsListByUserGroupIDForbiddenBody project groups list by user group ID forbidden body
+swagger:model ProjectGroupsListByUserGroupIDForbiddenBody
+*/
+type ProjectGroupsListByUserGroupIDForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project groups list by user group ID forbidden body
+func (o *ProjectGroupsListByUserGroupIDForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups list by user group ID forbidden body based on context it is used
+func (o *ProjectGroupsListByUserGroupIDForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsListByUserGroupIDForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsListByUserGroupIDForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsListByUserGroupIDForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsListByUserGroupIDNotFoundBody project groups list by user group ID not found body
+swagger:model ProjectGroupsListByUserGroupIDNotFoundBody
+*/
+type ProjectGroupsListByUserGroupIDNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project groups list by user group ID not found body
+func (o *ProjectGroupsListByUserGroupIDNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups list by user group ID not found body based on context it is used
+func (o *ProjectGroupsListByUserGroupIDNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsListByUserGroupIDNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsListByUserGroupIDNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsListByUserGroupIDNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsListByUserGroupIDOKBodyItems0 project groups list by user group ID o k body items0
+swagger:model ProjectGroupsListByUserGroupIDOKBodyItems0
+*/
+type ProjectGroupsListByUserGroupIDOKBodyItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this project groups list by user group ID o k body items0
+func (o *ProjectGroupsListByUserGroupIDOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups list by user group ID o k body items0 based on context it is used
+func (o *ProjectGroupsListByUserGroupIDOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsListByUserGroupIDOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsListByUserGroupIDOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsListByUserGroupIDOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsListByUserGroupIDUnauthorizedBody project groups list by user group ID unauthorized body
+swagger:model ProjectGroupsListByUserGroupIDUnauthorizedBody
+*/
+type ProjectGroupsListByUserGroupIDUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project groups list by user group ID unauthorized body
+func (o *ProjectGroupsListByUserGroupIDUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups list by user group ID unauthorized body based on context it is used
+func (o *ProjectGroupsListByUserGroupIDUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsListByUserGroupIDUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsListByUserGroupIDUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsListByUserGroupIDUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

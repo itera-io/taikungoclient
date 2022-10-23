@@ -6,13 +6,15 @@ package catalog
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CatalogCatalogAppDetailsReader is a Reader for the CatalogCatalogAppDetails structure.
@@ -75,7 +77,7 @@ CatalogCatalogAppDetailsOK describes a response with status code 200, with defau
 Success
 */
 type CatalogCatalogAppDetailsOK struct {
-	Payload *models.CatalogAppDetailsDto
+	Payload *CatalogCatalogAppDetailsOKBody
 }
 
 // IsSuccess returns true when this catalog catalog app details o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *CatalogCatalogAppDetailsOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app/{id}][%d] catalogCatalogAppDetailsOK  %+v", 200, o.Payload)
 }
 
-func (o *CatalogCatalogAppDetailsOK) GetPayload() *models.CatalogAppDetailsDto {
+func (o *CatalogCatalogAppDetailsOK) GetPayload() *CatalogCatalogAppDetailsOKBody {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppDetailsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.CatalogAppDetailsDto)
+	o.Payload = new(CatalogCatalogAppDetailsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ CatalogCatalogAppDetailsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type CatalogCatalogAppDetailsBadRequest struct {
-	Payload []*models.Error
+	Payload []*CatalogCatalogAppDetailsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this catalog catalog app details bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *CatalogCatalogAppDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app/{id}][%d] catalogCatalogAppDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogCatalogAppDetailsBadRequest) GetPayload() []*models.Error {
+func (o *CatalogCatalogAppDetailsBadRequest) GetPayload() []*CatalogCatalogAppDetailsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ CatalogCatalogAppDetailsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type CatalogCatalogAppDetailsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogCatalogAppDetailsUnauthorizedBody
 }
 
 // IsSuccess returns true when this catalog catalog app details unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *CatalogCatalogAppDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app/{id}][%d] catalogCatalogAppDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogCatalogAppDetailsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppDetailsUnauthorized) GetPayload() *CatalogCatalogAppDetailsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppDetailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogCatalogAppDetailsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ CatalogCatalogAppDetailsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type CatalogCatalogAppDetailsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogCatalogAppDetailsForbiddenBody
 }
 
 // IsSuccess returns true when this catalog catalog app details forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *CatalogCatalogAppDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app/{id}][%d] catalogCatalogAppDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogCatalogAppDetailsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppDetailsForbidden) GetPayload() *CatalogCatalogAppDetailsForbiddenBody {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppDetailsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogCatalogAppDetailsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ CatalogCatalogAppDetailsNotFound describes a response with status code 404, with
 Not Found
 */
 type CatalogCatalogAppDetailsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogCatalogAppDetailsNotFoundBody
 }
 
 // IsSuccess returns true when this catalog catalog app details not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *CatalogCatalogAppDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app/{id}][%d] catalogCatalogAppDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogCatalogAppDetailsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppDetailsNotFound) GetPayload() *CatalogCatalogAppDetailsNotFoundBody {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppDetailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogCatalogAppDetailsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,501 @@ func (o *CatalogCatalogAppDetailsInternalServerError) String() string {
 
 func (o *CatalogCatalogAppDetailsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CatalogCatalogAppDetailsBadRequestBodyItems0 catalog catalog app details bad request body items0
+swagger:model CatalogCatalogAppDetailsBadRequestBodyItems0
+*/
+type CatalogCatalogAppDetailsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this catalog catalog app details bad request body items0
+func (o *CatalogCatalogAppDetailsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog catalog app details bad request body items0 based on context it is used
+func (o *CatalogCatalogAppDetailsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogCatalogAppDetailsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogCatalogAppDetailsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CatalogCatalogAppDetailsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogCatalogAppDetailsForbiddenBody catalog catalog app details forbidden body
+swagger:model CatalogCatalogAppDetailsForbiddenBody
+*/
+type CatalogCatalogAppDetailsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog catalog app details forbidden body
+func (o *CatalogCatalogAppDetailsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog catalog app details forbidden body based on context it is used
+func (o *CatalogCatalogAppDetailsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogCatalogAppDetailsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogCatalogAppDetailsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CatalogCatalogAppDetailsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogCatalogAppDetailsNotFoundBody catalog catalog app details not found body
+swagger:model CatalogCatalogAppDetailsNotFoundBody
+*/
+type CatalogCatalogAppDetailsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog catalog app details not found body
+func (o *CatalogCatalogAppDetailsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog catalog app details not found body based on context it is used
+func (o *CatalogCatalogAppDetailsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogCatalogAppDetailsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogCatalogAppDetailsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CatalogCatalogAppDetailsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogCatalogAppDetailsOKBody catalog catalog app details o k body
+swagger:model CatalogCatalogAppDetailsOKBody
+*/
+type CatalogCatalogAppDetailsOKBody struct {
+
+	// app repo Id
+	AppRepoID int32 `json:"appRepoId,omitempty"`
+
+	// app repo name
+	AppRepoName string `json:"appRepoName,omitempty"`
+
+	// app repo organization name
+	AppRepoOrganizationName string `json:"appRepoOrganizationName,omitempty"`
+
+	// app version
+	AppVersion string `json:"appVersion,omitempty"`
+
+	// catalog Id
+	CatalogID int32 `json:"catalogId,omitempty"`
+
+	// catalog name
+	CatalogName string `json:"catalogName,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// logo Id
+	LogoID string `json:"logoId,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// official
+	Official bool `json:"official"`
+
+	// package Id
+	PackageID string `json:"packageId,omitempty"`
+
+	// project apps
+	ProjectApps []*CatalogCatalogAppDetailsOKBodyProjectAppsItems0 `json:"projectApps"`
+
+	// readme
+	Readme string `json:"readme,omitempty"`
+
+	// security report
+	SecurityReport *CatalogCatalogAppDetailsOKBodySecurityReport `json:"securityReport,omitempty"`
+
+	// stars
+	Stars int32 `json:"stars,omitempty"`
+
+	// verified publisher
+	VerifiedPublisher bool `json:"verifiedPublisher"`
+
+	// version
+	Version string `json:"version,omitempty"`
+}
+
+// Validate validates this catalog catalog app details o k body
+func (o *CatalogCatalogAppDetailsOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateProjectApps(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateSecurityReport(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CatalogCatalogAppDetailsOKBody) validateProjectApps(formats strfmt.Registry) error {
+	if swag.IsZero(o.ProjectApps) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.ProjectApps); i++ {
+		if swag.IsZero(o.ProjectApps[i]) { // not required
+			continue
+		}
+
+		if o.ProjectApps[i] != nil {
+			if err := o.ProjectApps[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("catalogCatalogAppDetailsOK" + "." + "projectApps" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("catalogCatalogAppDetailsOK" + "." + "projectApps" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CatalogCatalogAppDetailsOKBody) validateSecurityReport(formats strfmt.Registry) error {
+	if swag.IsZero(o.SecurityReport) { // not required
+		return nil
+	}
+
+	if o.SecurityReport != nil {
+		if err := o.SecurityReport.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("catalogCatalogAppDetailsOK" + "." + "securityReport")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("catalogCatalogAppDetailsOK" + "." + "securityReport")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this catalog catalog app details o k body based on the context it is used
+func (o *CatalogCatalogAppDetailsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateProjectApps(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateSecurityReport(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CatalogCatalogAppDetailsOKBody) contextValidateProjectApps(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.ProjectApps); i++ {
+
+		if o.ProjectApps[i] != nil {
+			if err := o.ProjectApps[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("catalogCatalogAppDetailsOK" + "." + "projectApps" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("catalogCatalogAppDetailsOK" + "." + "projectApps" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CatalogCatalogAppDetailsOKBody) contextValidateSecurityReport(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.SecurityReport != nil {
+		if err := o.SecurityReport.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("catalogCatalogAppDetailsOK" + "." + "securityReport")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("catalogCatalogAppDetailsOK" + "." + "securityReport")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogCatalogAppDetailsOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogCatalogAppDetailsOKBody) UnmarshalBinary(b []byte) error {
+	var res CatalogCatalogAppDetailsOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogCatalogAppDetailsOKBodyProjectAppsItems0 catalog catalog app details o k body project apps items0
+swagger:model CatalogCatalogAppDetailsOKBodyProjectAppsItems0
+*/
+type CatalogCatalogAppDetailsOKBodyProjectAppsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// version
+	Version string `json:"version,omitempty"`
+}
+
+// Validate validates this catalog catalog app details o k body project apps items0
+func (o *CatalogCatalogAppDetailsOKBodyProjectAppsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog catalog app details o k body project apps items0 based on context it is used
+func (o *CatalogCatalogAppDetailsOKBodyProjectAppsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogCatalogAppDetailsOKBodyProjectAppsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogCatalogAppDetailsOKBodyProjectAppsItems0) UnmarshalBinary(b []byte) error {
+	var res CatalogCatalogAppDetailsOKBodyProjectAppsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogCatalogAppDetailsOKBodySecurityReport catalog catalog app details o k body security report
+swagger:model CatalogCatalogAppDetailsOKBodySecurityReport
+*/
+type CatalogCatalogAppDetailsOKBodySecurityReport struct {
+
+	// critical
+	Critical int64 `json:"critical,omitempty"`
+
+	// high
+	High int64 `json:"high,omitempty"`
+
+	// low
+	Low int64 `json:"low,omitempty"`
+
+	// medium
+	Medium int64 `json:"medium,omitempty"`
+
+	// unknown
+	Unknown int64 `json:"unknown,omitempty"`
+}
+
+// Validate validates this catalog catalog app details o k body security report
+func (o *CatalogCatalogAppDetailsOKBodySecurityReport) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog catalog app details o k body security report based on context it is used
+func (o *CatalogCatalogAppDetailsOKBodySecurityReport) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogCatalogAppDetailsOKBodySecurityReport) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogCatalogAppDetailsOKBodySecurityReport) UnmarshalBinary(b []byte) error {
+	var res CatalogCatalogAppDetailsOKBodySecurityReport
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogCatalogAppDetailsUnauthorizedBody catalog catalog app details unauthorized body
+swagger:model CatalogCatalogAppDetailsUnauthorizedBody
+*/
+type CatalogCatalogAppDetailsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog catalog app details unauthorized body
+func (o *CatalogCatalogAppDetailsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog catalog app details unauthorized body based on context it is used
+func (o *CatalogCatalogAppDetailsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogCatalogAppDetailsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogCatalogAppDetailsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CatalogCatalogAppDetailsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

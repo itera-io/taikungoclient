@@ -6,13 +6,13 @@ package backup
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // BackupScheduleByNameReader is a Reader for the BackupScheduleByName structure.
@@ -75,7 +75,7 @@ BackupScheduleByNameOK describes a response with status code 200, with default h
 Success
 */
 type BackupScheduleByNameOK struct {
-	Payload *models.ScheduleDto
+	Payload *BackupScheduleByNameOKBody
 }
 
 // IsSuccess returns true when this backup schedule by name o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *BackupScheduleByNameOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedule/{projectId}/{name}][%d] backupScheduleByNameOK  %+v", 200, o.Payload)
 }
 
-func (o *BackupScheduleByNameOK) GetPayload() *models.ScheduleDto {
+func (o *BackupScheduleByNameOK) GetPayload() *BackupScheduleByNameOKBody {
 	return o.Payload
 }
 
 func (o *BackupScheduleByNameOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ScheduleDto)
+	o.Payload = new(BackupScheduleByNameOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ BackupScheduleByNameBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type BackupScheduleByNameBadRequest struct {
-	Payload []*models.Error
+	Payload []*BackupScheduleByNameBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this backup schedule by name bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *BackupScheduleByNameBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedule/{projectId}/{name}][%d] backupScheduleByNameBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupScheduleByNameBadRequest) GetPayload() []*models.Error {
+func (o *BackupScheduleByNameBadRequest) GetPayload() []*BackupScheduleByNameBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ BackupScheduleByNameUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type BackupScheduleByNameUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *BackupScheduleByNameUnauthorizedBody
 }
 
 // IsSuccess returns true when this backup schedule by name unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *BackupScheduleByNameUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedule/{projectId}/{name}][%d] backupScheduleByNameUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupScheduleByNameUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BackupScheduleByNameUnauthorized) GetPayload() *BackupScheduleByNameUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *BackupScheduleByNameUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BackupScheduleByNameUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ BackupScheduleByNameForbidden describes a response with status code 403, with de
 Forbidden
 */
 type BackupScheduleByNameForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *BackupScheduleByNameForbiddenBody
 }
 
 // IsSuccess returns true when this backup schedule by name forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *BackupScheduleByNameForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedule/{projectId}/{name}][%d] backupScheduleByNameForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupScheduleByNameForbidden) GetPayload() *models.ProblemDetails {
+func (o *BackupScheduleByNameForbidden) GetPayload() *BackupScheduleByNameForbiddenBody {
 	return o.Payload
 }
 
 func (o *BackupScheduleByNameForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BackupScheduleByNameForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ BackupScheduleByNameNotFound describes a response with status code 404, with def
 Not Found
 */
 type BackupScheduleByNameNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *BackupScheduleByNameNotFoundBody
 }
 
 // IsSuccess returns true when this backup schedule by name not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *BackupScheduleByNameNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedule/{projectId}/{name}][%d] backupScheduleByNameNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupScheduleByNameNotFound) GetPayload() *models.ProblemDetails {
+func (o *BackupScheduleByNameNotFound) GetPayload() *BackupScheduleByNameNotFoundBody {
 	return o.Payload
 }
 
 func (o *BackupScheduleByNameNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BackupScheduleByNameNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +425,237 @@ func (o *BackupScheduleByNameInternalServerError) String() string {
 
 func (o *BackupScheduleByNameInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+BackupScheduleByNameBadRequestBodyItems0 backup schedule by name bad request body items0
+swagger:model BackupScheduleByNameBadRequestBodyItems0
+*/
+type BackupScheduleByNameBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this backup schedule by name bad request body items0
+func (o *BackupScheduleByNameBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup schedule by name bad request body items0 based on context it is used
+func (o *BackupScheduleByNameBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupScheduleByNameBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupScheduleByNameBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res BackupScheduleByNameBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupScheduleByNameForbiddenBody backup schedule by name forbidden body
+swagger:model BackupScheduleByNameForbiddenBody
+*/
+type BackupScheduleByNameForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this backup schedule by name forbidden body
+func (o *BackupScheduleByNameForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup schedule by name forbidden body based on context it is used
+func (o *BackupScheduleByNameForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupScheduleByNameForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupScheduleByNameForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res BackupScheduleByNameForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupScheduleByNameNotFoundBody backup schedule by name not found body
+swagger:model BackupScheduleByNameNotFoundBody
+*/
+type BackupScheduleByNameNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this backup schedule by name not found body
+func (o *BackupScheduleByNameNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup schedule by name not found body based on context it is used
+func (o *BackupScheduleByNameNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupScheduleByNameNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupScheduleByNameNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res BackupScheduleByNameNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupScheduleByNameOKBody backup schedule by name o k body
+swagger:model BackupScheduleByNameOKBody
+*/
+type BackupScheduleByNameOKBody struct {
+
+	// excluded namespace
+	ExcludedNamespace []string `json:"excludedNamespace"`
+
+	// included namespace
+	IncludedNamespace []string `json:"includedNamespace"`
+}
+
+// Validate validates this backup schedule by name o k body
+func (o *BackupScheduleByNameOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup schedule by name o k body based on context it is used
+func (o *BackupScheduleByNameOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupScheduleByNameOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupScheduleByNameOKBody) UnmarshalBinary(b []byte) error {
+	var res BackupScheduleByNameOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupScheduleByNameUnauthorizedBody backup schedule by name unauthorized body
+swagger:model BackupScheduleByNameUnauthorizedBody
+*/
+type BackupScheduleByNameUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this backup schedule by name unauthorized body
+func (o *BackupScheduleByNameUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup schedule by name unauthorized body based on context it is used
+func (o *BackupScheduleByNameUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupScheduleByNameUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupScheduleByNameUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res BackupScheduleByNameUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

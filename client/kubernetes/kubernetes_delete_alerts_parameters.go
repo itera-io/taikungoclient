@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesDeleteAlertsParams creates a new KubernetesDeleteAlertsParams object,
@@ -64,7 +62,7 @@ KubernetesDeleteAlertsParams contains all the parameters to send to the API endp
 type KubernetesDeleteAlertsParams struct {
 
 	// Body.
-	Body *models.DeleteAlertCommand
+	Body KubernetesDeleteAlertsBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *KubernetesDeleteAlertsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the kubernetes delete alerts params
-func (o *KubernetesDeleteAlertsParams) WithBody(body *models.DeleteAlertCommand) *KubernetesDeleteAlertsParams {
+func (o *KubernetesDeleteAlertsParams) WithBody(body KubernetesDeleteAlertsBody) *KubernetesDeleteAlertsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes delete alerts params
-func (o *KubernetesDeleteAlertsParams) SetBody(body *models.DeleteAlertCommand) {
+func (o *KubernetesDeleteAlertsParams) SetBody(body KubernetesDeleteAlertsBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *KubernetesDeleteAlertsParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

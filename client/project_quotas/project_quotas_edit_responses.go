@@ -6,13 +6,13 @@ package project_quotas
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ProjectQuotasEditReader is a Reader for the ProjectQuotasEdit structure.
@@ -75,7 +75,7 @@ ProjectQuotasEditOK describes a response with status code 200, with default head
 Success
 */
 type ProjectQuotasEditOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project quotas edit o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectQuotasEditOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectQuotasEditOK) GetPayload() models.Unit {
+func (o *ProjectQuotasEditOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectQuotasEditBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type ProjectQuotasEditBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectQuotasEditBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this project quotas edit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectQuotasEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectQuotasEditBadRequest) GetPayload() []*models.Error {
+func (o *ProjectQuotasEditBadRequest) GetPayload() []*ProjectQuotasEditBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectQuotasEditUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type ProjectQuotasEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectQuotasEditUnauthorizedBody
 }
 
 // IsSuccess returns true when this project quotas edit unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectQuotasEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectQuotasEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectQuotasEditUnauthorized) GetPayload() *ProjectQuotasEditUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectQuotasEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectQuotasEditUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectQuotasEditForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type ProjectQuotasEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectQuotasEditForbiddenBody
 }
 
 // IsSuccess returns true when this project quotas edit forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectQuotasEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectQuotasEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectQuotasEditForbidden) GetPayload() *ProjectQuotasEditForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectQuotasEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectQuotasEditForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectQuotasEditNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type ProjectQuotasEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectQuotasEditNotFoundBody
 }
 
 // IsSuccess returns true when this project quotas edit not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectQuotasEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectQuotasEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectQuotasEditNotFound) GetPayload() *ProjectQuotasEditNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectQuotasEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectQuotasEditNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,252 @@ func (o *ProjectQuotasEditInternalServerError) String() string {
 
 func (o *ProjectQuotasEditInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectQuotasEditBadRequestBodyItems0 project quotas edit bad request body items0
+swagger:model ProjectQuotasEditBadRequestBodyItems0
+*/
+type ProjectQuotasEditBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this project quotas edit bad request body items0
+func (o *ProjectQuotasEditBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project quotas edit bad request body items0 based on context it is used
+func (o *ProjectQuotasEditBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectQuotasEditBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectQuotasEditBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectQuotasEditBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectQuotasEditBody project quotas edit body
+swagger:model ProjectQuotasEditBody
+*/
+type ProjectQuotasEditBody struct {
+
+	// quota Id
+	QuotaID int32 `json:"quotaId,omitempty"`
+
+	// server Cpu
+	ServerCPU int64 `json:"serverCpu,omitempty"`
+
+	// server disk size
+	ServerDiskSize int64 `json:"serverDiskSize,omitempty"`
+
+	// server Ram
+	ServerRAM int64 `json:"serverRam,omitempty"`
+
+	// vm Cpu
+	VMCPU int64 `json:"vmCpu,omitempty"`
+
+	// vm Ram
+	VMRAM int64 `json:"vmRam,omitempty"`
+
+	// vm volume size
+	VMVolumeSize int64 `json:"vmVolumeSize,omitempty"`
+}
+
+// Validate validates this project quotas edit body
+func (o *ProjectQuotasEditBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project quotas edit body based on context it is used
+func (o *ProjectQuotasEditBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectQuotasEditBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectQuotasEditBody) UnmarshalBinary(b []byte) error {
+	var res ProjectQuotasEditBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectQuotasEditForbiddenBody project quotas edit forbidden body
+swagger:model ProjectQuotasEditForbiddenBody
+*/
+type ProjectQuotasEditForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project quotas edit forbidden body
+func (o *ProjectQuotasEditForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project quotas edit forbidden body based on context it is used
+func (o *ProjectQuotasEditForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectQuotasEditForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectQuotasEditForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectQuotasEditForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectQuotasEditNotFoundBody project quotas edit not found body
+swagger:model ProjectQuotasEditNotFoundBody
+*/
+type ProjectQuotasEditNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project quotas edit not found body
+func (o *ProjectQuotasEditNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project quotas edit not found body based on context it is used
+func (o *ProjectQuotasEditNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectQuotasEditNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectQuotasEditNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectQuotasEditNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectQuotasEditUnauthorizedBody project quotas edit unauthorized body
+swagger:model ProjectQuotasEditUnauthorizedBody
+*/
+type ProjectQuotasEditUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project quotas edit unauthorized body
+func (o *ProjectQuotasEditUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project quotas edit unauthorized body based on context it is used
+func (o *ProjectQuotasEditUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectQuotasEditUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectQuotasEditUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectQuotasEditUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

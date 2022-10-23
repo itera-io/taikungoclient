@@ -6,13 +6,13 @@ package users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // UsersDisableUserReader is a Reader for the UsersDisableUser structure.
@@ -75,7 +75,7 @@ UsersDisableUserOK describes a response with status code 200, with default heade
 Success
 */
 type UsersDisableUserOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users disable user o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *UsersDisableUserOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/disable][%d] usersDisableUserOK  %+v", 200, o.Payload)
 }
 
-func (o *UsersDisableUserOK) GetPayload() models.Unit {
+func (o *UsersDisableUserOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ UsersDisableUserBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type UsersDisableUserBadRequest struct {
-	Payload []*models.Error
+	Payload []*UsersDisableUserBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this users disable user bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UsersDisableUserBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/disable][%d] usersDisableUserBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersDisableUserBadRequest) GetPayload() []*models.Error {
+func (o *UsersDisableUserBadRequest) GetPayload() []*UsersDisableUserBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ UsersDisableUserUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type UsersDisableUserUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *UsersDisableUserUnauthorizedBody
 }
 
 // IsSuccess returns true when this users disable user unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *UsersDisableUserUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/disable][%d] usersDisableUserUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersDisableUserUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UsersDisableUserUnauthorized) GetPayload() *UsersDisableUserUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *UsersDisableUserUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersDisableUserUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ UsersDisableUserForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type UsersDisableUserForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *UsersDisableUserForbiddenBody
 }
 
 // IsSuccess returns true when this users disable user forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *UsersDisableUserForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/disable][%d] usersDisableUserForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersDisableUserForbidden) GetPayload() *models.ProblemDetails {
+func (o *UsersDisableUserForbidden) GetPayload() *UsersDisableUserForbiddenBody {
 	return o.Payload
 }
 
 func (o *UsersDisableUserForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersDisableUserForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ UsersDisableUserNotFound describes a response with status code 404, with default
 Not Found
 */
 type UsersDisableUserNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *UsersDisableUserNotFoundBody
 }
 
 // IsSuccess returns true when this users disable user not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *UsersDisableUserNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/disable][%d] usersDisableUserNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersDisableUserNotFound) GetPayload() *models.ProblemDetails {
+func (o *UsersDisableUserNotFound) GetPayload() *UsersDisableUserNotFoundBody {
 	return o.Payload
 }
 
 func (o *UsersDisableUserNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersDisableUserNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *UsersDisableUserInternalServerError) String() string {
 
 func (o *UsersDisableUserInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+UsersDisableUserBadRequestBodyItems0 users disable user bad request body items0
+swagger:model UsersDisableUserBadRequestBodyItems0
+*/
+type UsersDisableUserBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this users disable user bad request body items0
+func (o *UsersDisableUserBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users disable user bad request body items0 based on context it is used
+func (o *UsersDisableUserBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersDisableUserBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersDisableUserBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res UsersDisableUserBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersDisableUserBody users disable user body
+swagger:model UsersDisableUserBody
+*/
+type UsersDisableUserBody struct {
+
+	// disable
+	Disable bool `json:"disable"`
+
+	// id
+	ID string `json:"id,omitempty"`
+}
+
+// Validate validates this users disable user body
+func (o *UsersDisableUserBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users disable user body based on context it is used
+func (o *UsersDisableUserBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersDisableUserBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersDisableUserBody) UnmarshalBinary(b []byte) error {
+	var res UsersDisableUserBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersDisableUserForbiddenBody users disable user forbidden body
+swagger:model UsersDisableUserForbiddenBody
+*/
+type UsersDisableUserForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users disable user forbidden body
+func (o *UsersDisableUserForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users disable user forbidden body based on context it is used
+func (o *UsersDisableUserForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersDisableUserForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersDisableUserForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res UsersDisableUserForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersDisableUserNotFoundBody users disable user not found body
+swagger:model UsersDisableUserNotFoundBody
+*/
+type UsersDisableUserNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users disable user not found body
+func (o *UsersDisableUserNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users disable user not found body based on context it is used
+func (o *UsersDisableUserNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersDisableUserNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersDisableUserNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res UsersDisableUserNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersDisableUserUnauthorizedBody users disable user unauthorized body
+swagger:model UsersDisableUserUnauthorizedBody
+*/
+type UsersDisableUserUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users disable user unauthorized body
+func (o *UsersDisableUserUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users disable user unauthorized body based on context it is used
+func (o *UsersDisableUserUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersDisableUserUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersDisableUserUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res UsersDisableUserUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

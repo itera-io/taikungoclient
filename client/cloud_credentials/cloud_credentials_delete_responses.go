@@ -6,13 +6,13 @@ package cloud_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CloudCredentialsDeleteReader is a Reader for the CloudCredentialsDelete structure.
@@ -81,7 +81,7 @@ CloudCredentialsDeleteOK describes a response with status code 200, with default
 Success
 */
 type CloudCredentialsDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials delete o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *CloudCredentialsDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *CloudCredentialsDeleteOK) GetPayload() models.Unit {
+func (o *CloudCredentialsDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ CloudCredentialsDeleteBadRequest describes a response with status code 400, with
 Bad Request
 */
 type CloudCredentialsDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*CloudCredentialsDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this cloud credentials delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *CloudCredentialsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsDeleteBadRequest) GetPayload() []*models.Error {
+func (o *CloudCredentialsDeleteBadRequest) GetPayload() []*CloudCredentialsDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ CloudCredentialsDeleteUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type CloudCredentialsDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CloudCredentialsDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this cloud credentials delete unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *CloudCredentialsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsDeleteUnauthorized) GetPayload() *CloudCredentialsDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CloudCredentialsDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ CloudCredentialsDeleteForbidden describes a response with status code 403, with 
 Forbidden
 */
 type CloudCredentialsDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CloudCredentialsDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this cloud credentials delete forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *CloudCredentialsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsDeleteForbidden) GetPayload() *CloudCredentialsDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CloudCredentialsDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ CloudCredentialsDeleteNotFound describes a response with status code 404, with d
 Not Found
 */
 type CloudCredentialsDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CloudCredentialsDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this cloud credentials delete not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *CloudCredentialsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsDeleteNotFound) GetPayload() *CloudCredentialsDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CloudCredentialsDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,5 +480,196 @@ func (o *CloudCredentialsDeleteInternalServerError) String() string {
 
 func (o *CloudCredentialsDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CloudCredentialsDeleteBadRequestBodyItems0 cloud credentials delete bad request body items0
+swagger:model CloudCredentialsDeleteBadRequestBodyItems0
+*/
+type CloudCredentialsDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this cloud credentials delete bad request body items0
+func (o *CloudCredentialsDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials delete bad request body items0 based on context it is used
+func (o *CloudCredentialsDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsDeleteForbiddenBody cloud credentials delete forbidden body
+swagger:model CloudCredentialsDeleteForbiddenBody
+*/
+type CloudCredentialsDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cloud credentials delete forbidden body
+func (o *CloudCredentialsDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials delete forbidden body based on context it is used
+func (o *CloudCredentialsDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsDeleteNotFoundBody cloud credentials delete not found body
+swagger:model CloudCredentialsDeleteNotFoundBody
+*/
+type CloudCredentialsDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cloud credentials delete not found body
+func (o *CloudCredentialsDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials delete not found body based on context it is used
+func (o *CloudCredentialsDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CloudCredentialsDeleteUnauthorizedBody cloud credentials delete unauthorized body
+swagger:model CloudCredentialsDeleteUnauthorizedBody
+*/
+type CloudCredentialsDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cloud credentials delete unauthorized body
+func (o *CloudCredentialsDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cloud credentials delete unauthorized body based on context it is used
+func (o *CloudCredentialsDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CloudCredentialsDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CloudCredentialsDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CloudCredentialsDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

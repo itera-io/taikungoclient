@@ -6,13 +6,15 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesGetStsReader is a Reader for the KubernetesGetSts structure.
@@ -75,7 +77,7 @@ KubernetesGetStsOK describes a response with status code 200, with default heade
 Success
 */
 type KubernetesGetStsOK struct {
-	Payload *models.StsList
+	Payload *KubernetesGetStsOKBody
 }
 
 // IsSuccess returns true when this kubernetes get sts o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *KubernetesGetStsOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/sts][%d] kubernetesGetStsOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesGetStsOK) GetPayload() *models.StsList {
+func (o *KubernetesGetStsOK) GetPayload() *KubernetesGetStsOKBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetStsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.StsList)
+	o.Payload = new(KubernetesGetStsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ KubernetesGetStsBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type KubernetesGetStsBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesGetStsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes get sts bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *KubernetesGetStsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/sts][%d] kubernetesGetStsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetStsBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetStsBadRequest) GetPayload() []*KubernetesGetStsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ KubernetesGetStsUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type KubernetesGetStsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetStsUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes get sts unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *KubernetesGetStsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/sts][%d] kubernetesGetStsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetStsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetStsUnauthorized) GetPayload() *KubernetesGetStsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetStsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetStsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ KubernetesGetStsForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type KubernetesGetStsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetStsForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes get sts forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *KubernetesGetStsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/sts][%d] kubernetesGetStsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetStsForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetStsForbidden) GetPayload() *KubernetesGetStsForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetStsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetStsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ KubernetesGetStsNotFound describes a response with status code 404, with default
 Not Found
 */
 type KubernetesGetStsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetStsNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes get sts not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *KubernetesGetStsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/sts][%d] kubernetesGetStsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetStsNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetStsNotFound) GetPayload() *KubernetesGetStsNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetStsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetStsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,348 @@ func (o *KubernetesGetStsInternalServerError) String() string {
 
 func (o *KubernetesGetStsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesGetStsBadRequestBodyItems0 kubernetes get sts bad request body items0
+swagger:model KubernetesGetStsBadRequestBodyItems0
+*/
+type KubernetesGetStsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes get sts bad request body items0
+func (o *KubernetesGetStsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get sts bad request body items0 based on context it is used
+func (o *KubernetesGetStsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetStsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetStsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetStsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetStsForbiddenBody kubernetes get sts forbidden body
+swagger:model KubernetesGetStsForbiddenBody
+*/
+type KubernetesGetStsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get sts forbidden body
+func (o *KubernetesGetStsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get sts forbidden body based on context it is used
+func (o *KubernetesGetStsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetStsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetStsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetStsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetStsNotFoundBody kubernetes get sts not found body
+swagger:model KubernetesGetStsNotFoundBody
+*/
+type KubernetesGetStsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get sts not found body
+func (o *KubernetesGetStsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get sts not found body based on context it is used
+func (o *KubernetesGetStsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetStsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetStsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetStsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetStsOKBody kubernetes get sts o k body
+swagger:model KubernetesGetStsOKBody
+*/
+type KubernetesGetStsOKBody struct {
+
+	// data
+	Data []*KubernetesGetStsOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this kubernetes get sts o k body
+func (o *KubernetesGetStsOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetStsOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesGetStsOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesGetStsOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this kubernetes get sts o k body based on the context it is used
+func (o *KubernetesGetStsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetStsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesGetStsOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesGetStsOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetStsOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetStsOKBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetStsOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetStsOKBodyDataItems0 kubernetes get sts o k body data items0
+swagger:model KubernetesGetStsOKBodyDataItems0
+*/
+type KubernetesGetStsOKBodyDataItems0 struct {
+
+	// age
+	Age string `json:"age,omitempty"`
+
+	// metadata name
+	MetadataName string `json:"metadataName,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+}
+
+// Validate validates this kubernetes get sts o k body data items0
+func (o *KubernetesGetStsOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get sts o k body data items0 based on context it is used
+func (o *KubernetesGetStsOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetStsOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetStsOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetStsOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetStsUnauthorizedBody kubernetes get sts unauthorized body
+swagger:model KubernetesGetStsUnauthorizedBody
+*/
+type KubernetesGetStsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get sts unauthorized body
+func (o *KubernetesGetStsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get sts unauthorized body based on context it is used
+func (o *KubernetesGetStsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetStsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetStsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetStsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -20,19 +20,19 @@ import (
 type ProjectChartDto struct {
 
 	// failed
-	Failed []*ProjectCommonRecordDto `json:"failed"`
+	Failed []*ProjectChartDtoFailedItems0 `json:"failed"`
 
 	// pending
-	Pending []*ProjectCommonRecordDto `json:"pending"`
+	Pending []*ProjectChartDtoPendingItems0 `json:"pending"`
 
 	// succeeded
-	Succeeded []*ProjectCommonRecordDto `json:"succeeded"`
+	Succeeded []*ProjectChartDtoSucceededItems0 `json:"succeeded"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
 
 	// updating
-	Updating []*ProjectCommonRecordDto `json:"updating"`
+	Updating []*ProjectChartDtoUpdatingItems0 `json:"updating"`
 }
 
 // Validate validates this project chart dto
@@ -282,6 +282,178 @@ func (m *ProjectChartDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ProjectChartDto) UnmarshalBinary(b []byte) error {
 	var res ProjectChartDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectChartDtoFailedItems0 project chart dto failed items0
+//
+// swagger:model ProjectChartDtoFailedItems0
+type ProjectChartDtoFailedItems0 struct {
+
+	// expired at
+	ExpiredAt string `json:"expiredAt,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this project chart dto failed items0
+func (m *ProjectChartDtoFailedItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project chart dto failed items0 based on context it is used
+func (m *ProjectChartDtoFailedItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectChartDtoFailedItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectChartDtoFailedItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectChartDtoFailedItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectChartDtoPendingItems0 project chart dto pending items0
+//
+// swagger:model ProjectChartDtoPendingItems0
+type ProjectChartDtoPendingItems0 struct {
+
+	// expired at
+	ExpiredAt string `json:"expiredAt,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this project chart dto pending items0
+func (m *ProjectChartDtoPendingItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project chart dto pending items0 based on context it is used
+func (m *ProjectChartDtoPendingItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectChartDtoPendingItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectChartDtoPendingItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectChartDtoPendingItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectChartDtoSucceededItems0 project chart dto succeeded items0
+//
+// swagger:model ProjectChartDtoSucceededItems0
+type ProjectChartDtoSucceededItems0 struct {
+
+	// expired at
+	ExpiredAt string `json:"expiredAt,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this project chart dto succeeded items0
+func (m *ProjectChartDtoSucceededItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project chart dto succeeded items0 based on context it is used
+func (m *ProjectChartDtoSucceededItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectChartDtoSucceededItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectChartDtoSucceededItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectChartDtoSucceededItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ProjectChartDtoUpdatingItems0 project chart dto updating items0
+//
+// swagger:model ProjectChartDtoUpdatingItems0
+type ProjectChartDtoUpdatingItems0 struct {
+
+	// expired at
+	ExpiredAt string `json:"expiredAt,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this project chart dto updating items0
+func (m *ProjectChartDtoUpdatingItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project chart dto updating items0 based on context it is used
+func (m *ProjectChartDtoUpdatingItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ProjectChartDtoUpdatingItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ProjectChartDtoUpdatingItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectChartDtoUpdatingItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

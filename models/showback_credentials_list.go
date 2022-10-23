@@ -20,7 +20,7 @@ import (
 type ShowbackCredentialsList struct {
 
 	// data
-	Data []*ShowbackCredentialsListDto `json:"data"`
+	Data []*ShowbackCredentialsListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,183 @@ func (m *ShowbackCredentialsList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ShowbackCredentialsList) UnmarshalBinary(b []byte) error {
 	var res ShowbackCredentialsList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ShowbackCredentialsListDataItems0 showback credentials list data items0
+//
+// swagger:model ShowbackCredentialsListDataItems0
+type ShowbackCredentialsListDataItems0 struct {
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// created by
+	CreatedBy string `json:"createdBy,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// last modified
+	LastModified string `json:"lastModified,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// password
+	Password string `json:"password,omitempty"`
+
+	// rules
+	Rules []*ShowbackCredentialsListDataItems0RulesItems0 `json:"rules"`
+
+	// url
+	URL string `json:"url,omitempty"`
+
+	// username
+	Username string `json:"username,omitempty"`
+}
+
+// Validate validates this showback credentials list data items0
+func (m *ShowbackCredentialsListDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateRules(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ShowbackCredentialsListDataItems0) validateRules(formats strfmt.Registry) error {
+	if swag.IsZero(m.Rules) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Rules); i++ {
+		if swag.IsZero(m.Rules[i]) { // not required
+			continue
+		}
+
+		if m.Rules[i] != nil {
+			if err := m.Rules[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("rules" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("rules" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this showback credentials list data items0 based on the context it is used
+func (m *ShowbackCredentialsListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateRules(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ShowbackCredentialsListDataItems0) contextValidateRules(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Rules); i++ {
+
+		if m.Rules[i] != nil {
+			if err := m.Rules[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("rules" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("rules" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ShowbackCredentialsListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ShowbackCredentialsListDataItems0) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsListDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// ShowbackCredentialsListDataItems0RulesItems0 showback credentials list data items0 rules items0
+//
+// swagger:model ShowbackCredentialsListDataItems0RulesItems0
+type ShowbackCredentialsListDataItems0RulesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this showback credentials list data items0 rules items0
+func (m *ShowbackCredentialsListDataItems0RulesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this showback credentials list data items0 rules items0 based on context it is used
+func (m *ShowbackCredentialsListDataItems0RulesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *ShowbackCredentialsListDataItems0RulesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *ShowbackCredentialsListDataItems0RulesItems0) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsListDataItems0RulesItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

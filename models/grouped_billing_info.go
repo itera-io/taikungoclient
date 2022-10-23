@@ -20,7 +20,7 @@ import (
 type GroupedBillingInfo struct {
 
 	// data
-	Data []*GroupedBillings `json:"data"`
+	Data []*GroupedBillingInfoDataItems0 `json:"data"`
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
@@ -114,6 +114,46 @@ func (m *GroupedBillingInfo) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *GroupedBillingInfo) UnmarshalBinary(b []byte) error {
 	var res GroupedBillingInfo
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// GroupedBillingInfoDataItems0 grouped billing info data items0
+//
+// swagger:model GroupedBillingInfoDataItems0
+type GroupedBillingInfoDataItems0 struct {
+
+	// start date
+	StartDate string `json:"startDate,omitempty"`
+
+	// tcu
+	Tcu int64 `json:"tcu,omitempty"`
+}
+
+// Validate validates this grouped billing info data items0
+func (m *GroupedBillingInfoDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this grouped billing info data items0 based on context it is used
+func (m *GroupedBillingInfoDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *GroupedBillingInfoDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *GroupedBillingInfoDataItems0) UnmarshalBinary(b []byte) error {
+	var res GroupedBillingInfoDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

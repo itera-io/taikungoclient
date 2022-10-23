@@ -15,8 +15,6 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewServersUpdateByProjectIDParams creates a new ServersUpdateByProjectIDParams object,
@@ -65,7 +63,7 @@ ServersUpdateByProjectIDParams contains all the parameters to send to the API en
 type ServersUpdateByProjectIDParams struct {
 
 	// Body.
-	Body []*models.UpdateServerHealthDto
+	Body []*ServersUpdateByProjectIDParamsBodyItems0
 
 	// ProjectID.
 	//
@@ -129,13 +127,13 @@ func (o *ServersUpdateByProjectIDParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the servers update by project Id params
-func (o *ServersUpdateByProjectIDParams) WithBody(body []*models.UpdateServerHealthDto) *ServersUpdateByProjectIDParams {
+func (o *ServersUpdateByProjectIDParams) WithBody(body []*ServersUpdateByProjectIDParamsBodyItems0) *ServersUpdateByProjectIDParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the servers update by project Id params
-func (o *ServersUpdateByProjectIDParams) SetBody(body []*models.UpdateServerHealthDto) {
+func (o *ServersUpdateByProjectIDParams) SetBody(body []*ServersUpdateByProjectIDParamsBodyItems0) {
 	o.Body = body
 }
 

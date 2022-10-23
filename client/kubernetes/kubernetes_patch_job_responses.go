@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesPatchJobReader is a Reader for the KubernetesPatchJob structure.
@@ -75,7 +75,7 @@ KubernetesPatchJobOK describes a response with status code 200, with default hea
 Success
 */
 type KubernetesPatchJobOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch job o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KubernetesPatchJobOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesPatchJobOK) GetPayload() models.Unit {
+func (o *KubernetesPatchJobOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KubernetesPatchJobBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubernetesPatchJobBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesPatchJobBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes patch job bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesPatchJobBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchJobBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesPatchJobBadRequest) GetPayload() []*KubernetesPatchJobBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesPatchJobUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubernetesPatchJobUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesPatchJobUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes patch job unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesPatchJobUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchJobUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchJobUnauthorized) GetPayload() *KubernetesPatchJobUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesPatchJobUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesPatchJobUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesPatchJobForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubernetesPatchJobForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesPatchJobForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes patch job forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesPatchJobForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchJobForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchJobForbidden) GetPayload() *KubernetesPatchJobForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesPatchJobForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesPatchJobForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesPatchJobNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubernetesPatchJobNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesPatchJobNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes patch job not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesPatchJobNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchJobNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchJobNotFound) GetPayload() *KubernetesPatchJobNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesPatchJobNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesPatchJobNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,243 @@ func (o *KubernetesPatchJobInternalServerError) String() string {
 
 func (o *KubernetesPatchJobInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesPatchJobBadRequestBodyItems0 kubernetes patch job bad request body items0
+swagger:model KubernetesPatchJobBadRequestBodyItems0
+*/
+type KubernetesPatchJobBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes patch job bad request body items0
+func (o *KubernetesPatchJobBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch job bad request body items0 based on context it is used
+func (o *KubernetesPatchJobBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchJobBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchJobBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchJobBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchJobBody kubernetes patch job body
+swagger:model KubernetesPatchJobBody
+*/
+type KubernetesPatchJobBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// yaml
+	Yaml string `json:"yaml,omitempty"`
+}
+
+// Validate validates this kubernetes patch job body
+func (o *KubernetesPatchJobBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch job body based on context it is used
+func (o *KubernetesPatchJobBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchJobBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchJobBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchJobBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchJobForbiddenBody kubernetes patch job forbidden body
+swagger:model KubernetesPatchJobForbiddenBody
+*/
+type KubernetesPatchJobForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes patch job forbidden body
+func (o *KubernetesPatchJobForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch job forbidden body based on context it is used
+func (o *KubernetesPatchJobForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchJobForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchJobForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchJobForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchJobNotFoundBody kubernetes patch job not found body
+swagger:model KubernetesPatchJobNotFoundBody
+*/
+type KubernetesPatchJobNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes patch job not found body
+func (o *KubernetesPatchJobNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch job not found body based on context it is used
+func (o *KubernetesPatchJobNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchJobNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchJobNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchJobNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesPatchJobUnauthorizedBody kubernetes patch job unauthorized body
+swagger:model KubernetesPatchJobUnauthorizedBody
+*/
+type KubernetesPatchJobUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes patch job unauthorized body
+func (o *KubernetesPatchJobUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes patch job unauthorized body based on context it is used
+func (o *KubernetesPatchJobUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesPatchJobUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesPatchJobUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesPatchJobUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

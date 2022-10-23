@@ -6,13 +6,13 @@ package opa_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // OpaProfilesLockManagerReader is a Reader for the OpaProfilesLockManager structure.
@@ -75,7 +75,7 @@ OpaProfilesLockManagerOK describes a response with status code 200, with default
 Success
 */
 type OpaProfilesLockManagerOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles lock manager o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OpaProfilesLockManagerOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerOK  %+v", 200, o.Payload)
 }
 
-func (o *OpaProfilesLockManagerOK) GetPayload() models.Unit {
+func (o *OpaProfilesLockManagerOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OpaProfilesLockManagerBadRequest describes a response with status code 400, with
 Bad Request
 */
 type OpaProfilesLockManagerBadRequest struct {
-	Payload []*models.Error
+	Payload []*OpaProfilesLockManagerBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this opa profiles lock manager bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpaProfilesLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesLockManagerBadRequest) GetPayload() []*models.Error {
+func (o *OpaProfilesLockManagerBadRequest) GetPayload() []*OpaProfilesLockManagerBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OpaProfilesLockManagerUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type OpaProfilesLockManagerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *OpaProfilesLockManagerUnauthorizedBody
 }
 
 // IsSuccess returns true when this opa profiles lock manager unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OpaProfilesLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesLockManagerUnauthorized) GetPayload() *OpaProfilesLockManagerUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *OpaProfilesLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpaProfilesLockManagerUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OpaProfilesLockManagerForbidden describes a response with status code 403, with 
 Forbidden
 */
 type OpaProfilesLockManagerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *OpaProfilesLockManagerForbiddenBody
 }
 
 // IsSuccess returns true when this opa profiles lock manager forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OpaProfilesLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesLockManagerForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesLockManagerForbidden) GetPayload() *OpaProfilesLockManagerForbiddenBody {
 	return o.Payload
 }
 
 func (o *OpaProfilesLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpaProfilesLockManagerForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OpaProfilesLockManagerNotFound describes a response with status code 404, with d
 Not Found
 */
 type OpaProfilesLockManagerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *OpaProfilesLockManagerNotFoundBody
 }
 
 // IsSuccess returns true when this opa profiles lock manager not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OpaProfilesLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesLockManagerNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesLockManagerNotFound) GetPayload() *OpaProfilesLockManagerNotFoundBody {
 	return o.Payload
 }
 
 func (o *OpaProfilesLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpaProfilesLockManagerNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *OpaProfilesLockManagerInternalServerError) String() string {
 
 func (o *OpaProfilesLockManagerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+OpaProfilesLockManagerBadRequestBodyItems0 opa profiles lock manager bad request body items0
+swagger:model OpaProfilesLockManagerBadRequestBodyItems0
+*/
+type OpaProfilesLockManagerBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this opa profiles lock manager bad request body items0
+func (o *OpaProfilesLockManagerBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles lock manager bad request body items0 based on context it is used
+func (o *OpaProfilesLockManagerBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesLockManagerBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesLockManagerBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesLockManagerBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesLockManagerBody opa profiles lock manager body
+swagger:model OpaProfilesLockManagerBody
+*/
+type OpaProfilesLockManagerBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// mode
+	Mode string `json:"mode,omitempty"`
+}
+
+// Validate validates this opa profiles lock manager body
+func (o *OpaProfilesLockManagerBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles lock manager body based on context it is used
+func (o *OpaProfilesLockManagerBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesLockManagerBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesLockManagerBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesLockManagerBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesLockManagerForbiddenBody opa profiles lock manager forbidden body
+swagger:model OpaProfilesLockManagerForbiddenBody
+*/
+type OpaProfilesLockManagerForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this opa profiles lock manager forbidden body
+func (o *OpaProfilesLockManagerForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles lock manager forbidden body based on context it is used
+func (o *OpaProfilesLockManagerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesLockManagerForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesLockManagerForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesLockManagerForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesLockManagerNotFoundBody opa profiles lock manager not found body
+swagger:model OpaProfilesLockManagerNotFoundBody
+*/
+type OpaProfilesLockManagerNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this opa profiles lock manager not found body
+func (o *OpaProfilesLockManagerNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles lock manager not found body based on context it is used
+func (o *OpaProfilesLockManagerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesLockManagerNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesLockManagerNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesLockManagerNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesLockManagerUnauthorizedBody opa profiles lock manager unauthorized body
+swagger:model OpaProfilesLockManagerUnauthorizedBody
+*/
+type OpaProfilesLockManagerUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this opa profiles lock manager unauthorized body
+func (o *OpaProfilesLockManagerUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles lock manager unauthorized body based on context it is used
+func (o *OpaProfilesLockManagerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesLockManagerUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesLockManagerUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesLockManagerUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

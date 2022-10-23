@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewUsersChangePasswordParams creates a new UsersChangePasswordParams object,
@@ -64,7 +62,7 @@ UsersChangePasswordParams contains all the parameters to send to the API endpoin
 type UsersChangePasswordParams struct {
 
 	// Body.
-	Body *models.ChangePasswordCommand
+	Body UsersChangePasswordBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *UsersChangePasswordParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the users change password params
-func (o *UsersChangePasswordParams) WithBody(body *models.ChangePasswordCommand) *UsersChangePasswordParams {
+func (o *UsersChangePasswordParams) WithBody(body UsersChangePasswordBody) *UsersChangePasswordParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the users change password params
-func (o *UsersChangePasswordParams) SetBody(body *models.ChangePasswordCommand) {
+func (o *UsersChangePasswordParams) SetBody(body UsersChangePasswordBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *UsersChangePasswordParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

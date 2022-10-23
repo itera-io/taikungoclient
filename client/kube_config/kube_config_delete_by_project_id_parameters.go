@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubeConfigDeleteByProjectIDParams creates a new KubeConfigDeleteByProjectIDParams object,
@@ -64,7 +62,7 @@ KubeConfigDeleteByProjectIDParams contains all the parameters to send to the API
 type KubeConfigDeleteByProjectIDParams struct {
 
 	// Body.
-	Body *models.DeleteKubeConfigByProjectIDCommand
+	Body KubeConfigDeleteByProjectIDBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *KubeConfigDeleteByProjectIDParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the kube config delete by project Id params
-func (o *KubeConfigDeleteByProjectIDParams) WithBody(body *models.DeleteKubeConfigByProjectIDCommand) *KubeConfigDeleteByProjectIDParams {
+func (o *KubeConfigDeleteByProjectIDParams) WithBody(body KubeConfigDeleteByProjectIDBody) *KubeConfigDeleteByProjectIDParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kube config delete by project Id params
-func (o *KubeConfigDeleteByProjectIDParams) SetBody(body *models.DeleteKubeConfigByProjectIDCommand) {
+func (o *KubeConfigDeleteByProjectIDParams) SetBody(body KubeConfigDeleteByProjectIDBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *KubeConfigDeleteByProjectIDParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

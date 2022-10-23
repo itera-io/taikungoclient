@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CronJobAutoUpgradeProjectsReader is a Reader for the CronJobAutoUpgradeProjects structure.
@@ -75,7 +75,7 @@ CronJobAutoUpgradeProjectsOK describes a response with status code 200, with def
 Success
 */
 type CronJobAutoUpgradeProjectsOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job auto upgrade projects o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobAutoUpgradeProjectsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobAutoUpgradeProjectsOK) GetPayload() models.Unit {
+func (o *CronJobAutoUpgradeProjectsOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobAutoUpgradeProjectsBadRequest describes a response with status code 400, 
 Bad Request
 */
 type CronJobAutoUpgradeProjectsBadRequest struct {
-	Payload []*models.Error
+	Payload []*CronJobAutoUpgradeProjectsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this cron job auto upgrade projects bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobAutoUpgradeProjectsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobAutoUpgradeProjectsBadRequest) GetPayload() []*models.Error {
+func (o *CronJobAutoUpgradeProjectsBadRequest) GetPayload() []*CronJobAutoUpgradeProjectsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobAutoUpgradeProjectsUnauthorized describes a response with status code 401
 Unauthorized
 */
 type CronJobAutoUpgradeProjectsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobAutoUpgradeProjectsUnauthorizedBody
 }
 
 // IsSuccess returns true when this cron job auto upgrade projects unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobAutoUpgradeProjectsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobAutoUpgradeProjectsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobAutoUpgradeProjectsUnauthorized) GetPayload() *CronJobAutoUpgradeProjectsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CronJobAutoUpgradeProjectsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobAutoUpgradeProjectsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobAutoUpgradeProjectsForbidden describes a response with status code 403, w
 Forbidden
 */
 type CronJobAutoUpgradeProjectsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobAutoUpgradeProjectsForbiddenBody
 }
 
 // IsSuccess returns true when this cron job auto upgrade projects forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobAutoUpgradeProjectsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobAutoUpgradeProjectsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobAutoUpgradeProjectsForbidden) GetPayload() *CronJobAutoUpgradeProjectsForbiddenBody {
 	return o.Payload
 }
 
 func (o *CronJobAutoUpgradeProjectsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobAutoUpgradeProjectsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobAutoUpgradeProjectsNotFound describes a response with status code 404, wi
 Not Found
 */
 type CronJobAutoUpgradeProjectsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobAutoUpgradeProjectsNotFoundBody
 }
 
 // IsSuccess returns true when this cron job auto upgrade projects not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobAutoUpgradeProjectsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobAutoUpgradeProjectsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobAutoUpgradeProjectsNotFound) GetPayload() *CronJobAutoUpgradeProjectsNotFoundBody {
 	return o.Payload
 }
 
 func (o *CronJobAutoUpgradeProjectsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobAutoUpgradeProjectsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *CronJobAutoUpgradeProjectsInternalServerError) String() string {
 
 func (o *CronJobAutoUpgradeProjectsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CronJobAutoUpgradeProjectsBadRequestBodyItems0 cron job auto upgrade projects bad request body items0
+swagger:model CronJobAutoUpgradeProjectsBadRequestBodyItems0
+*/
+type CronJobAutoUpgradeProjectsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this cron job auto upgrade projects bad request body items0
+func (o *CronJobAutoUpgradeProjectsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job auto upgrade projects bad request body items0 based on context it is used
+func (o *CronJobAutoUpgradeProjectsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobAutoUpgradeProjectsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobAutoUpgradeProjectsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CronJobAutoUpgradeProjectsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobAutoUpgradeProjectsForbiddenBody cron job auto upgrade projects forbidden body
+swagger:model CronJobAutoUpgradeProjectsForbiddenBody
+*/
+type CronJobAutoUpgradeProjectsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job auto upgrade projects forbidden body
+func (o *CronJobAutoUpgradeProjectsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job auto upgrade projects forbidden body based on context it is used
+func (o *CronJobAutoUpgradeProjectsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobAutoUpgradeProjectsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobAutoUpgradeProjectsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CronJobAutoUpgradeProjectsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobAutoUpgradeProjectsNotFoundBody cron job auto upgrade projects not found body
+swagger:model CronJobAutoUpgradeProjectsNotFoundBody
+*/
+type CronJobAutoUpgradeProjectsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job auto upgrade projects not found body
+func (o *CronJobAutoUpgradeProjectsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job auto upgrade projects not found body based on context it is used
+func (o *CronJobAutoUpgradeProjectsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobAutoUpgradeProjectsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobAutoUpgradeProjectsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CronJobAutoUpgradeProjectsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobAutoUpgradeProjectsUnauthorizedBody cron job auto upgrade projects unauthorized body
+swagger:model CronJobAutoUpgradeProjectsUnauthorizedBody
+*/
+type CronJobAutoUpgradeProjectsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job auto upgrade projects unauthorized body
+func (o *CronJobAutoUpgradeProjectsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job auto upgrade projects unauthorized body based on context it is used
+func (o *CronJobAutoUpgradeProjectsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobAutoUpgradeProjectsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobAutoUpgradeProjectsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CronJobAutoUpgradeProjectsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

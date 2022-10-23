@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCheckerCidrParams creates a new CheckerCidrParams object,
@@ -64,7 +62,7 @@ CheckerCidrParams contains all the parameters to send to the API endpoint
 type CheckerCidrParams struct {
 
 	// Body.
-	Body *models.CidrCommand
+	Body CheckerCidrBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *CheckerCidrParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the checker cidr params
-func (o *CheckerCidrParams) WithBody(body *models.CidrCommand) *CheckerCidrParams {
+func (o *CheckerCidrParams) WithBody(body CheckerCidrBody) *CheckerCidrParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the checker cidr params
-func (o *CheckerCidrParams) SetBody(body *models.CidrCommand) {
+func (o *CheckerCidrParams) SetBody(body CheckerCidrBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *CheckerCidrParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

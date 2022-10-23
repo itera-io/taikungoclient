@@ -6,13 +6,13 @@ package users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // UsersToggleNotificationModeReader is a Reader for the UsersToggleNotificationMode structure.
@@ -75,7 +75,7 @@ UsersToggleNotificationModeOK describes a response with status code 200, with de
 Success
 */
 type UsersToggleNotificationModeOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users toggle notification mode o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *UsersToggleNotificationModeOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeOK  %+v", 200, o.Payload)
 }
 
-func (o *UsersToggleNotificationModeOK) GetPayload() models.Unit {
+func (o *UsersToggleNotificationModeOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ UsersToggleNotificationModeBadRequest describes a response with status code 400,
 Bad Request
 */
 type UsersToggleNotificationModeBadRequest struct {
-	Payload []*models.Error
+	Payload []*UsersToggleNotificationModeBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this users toggle notification mode bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UsersToggleNotificationModeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersToggleNotificationModeBadRequest) GetPayload() []*models.Error {
+func (o *UsersToggleNotificationModeBadRequest) GetPayload() []*UsersToggleNotificationModeBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ UsersToggleNotificationModeUnauthorized describes a response with status code 40
 Unauthorized
 */
 type UsersToggleNotificationModeUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *UsersToggleNotificationModeUnauthorizedBody
 }
 
 // IsSuccess returns true when this users toggle notification mode unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *UsersToggleNotificationModeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersToggleNotificationModeUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UsersToggleNotificationModeUnauthorized) GetPayload() *UsersToggleNotificationModeUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *UsersToggleNotificationModeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersToggleNotificationModeUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ UsersToggleNotificationModeForbidden describes a response with status code 403, 
 Forbidden
 */
 type UsersToggleNotificationModeForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *UsersToggleNotificationModeForbiddenBody
 }
 
 // IsSuccess returns true when this users toggle notification mode forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *UsersToggleNotificationModeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersToggleNotificationModeForbidden) GetPayload() *models.ProblemDetails {
+func (o *UsersToggleNotificationModeForbidden) GetPayload() *UsersToggleNotificationModeForbiddenBody {
 	return o.Payload
 }
 
 func (o *UsersToggleNotificationModeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersToggleNotificationModeForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ UsersToggleNotificationModeNotFound describes a response with status code 404, w
 Not Found
 */
 type UsersToggleNotificationModeNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *UsersToggleNotificationModeNotFoundBody
 }
 
 // IsSuccess returns true when this users toggle notification mode not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *UsersToggleNotificationModeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersToggleNotificationModeNotFound) GetPayload() *models.ProblemDetails {
+func (o *UsersToggleNotificationModeNotFound) GetPayload() *UsersToggleNotificationModeNotFoundBody {
 	return o.Payload
 }
 
 func (o *UsersToggleNotificationModeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersToggleNotificationModeNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *UsersToggleNotificationModeInternalServerError) String() string {
 
 func (o *UsersToggleNotificationModeInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+UsersToggleNotificationModeBadRequestBodyItems0 users toggle notification mode bad request body items0
+swagger:model UsersToggleNotificationModeBadRequestBodyItems0
+*/
+type UsersToggleNotificationModeBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this users toggle notification mode bad request body items0
+func (o *UsersToggleNotificationModeBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users toggle notification mode bad request body items0 based on context it is used
+func (o *UsersToggleNotificationModeBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersToggleNotificationModeBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersToggleNotificationModeBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res UsersToggleNotificationModeBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersToggleNotificationModeForbiddenBody users toggle notification mode forbidden body
+swagger:model UsersToggleNotificationModeForbiddenBody
+*/
+type UsersToggleNotificationModeForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users toggle notification mode forbidden body
+func (o *UsersToggleNotificationModeForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users toggle notification mode forbidden body based on context it is used
+func (o *UsersToggleNotificationModeForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersToggleNotificationModeForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersToggleNotificationModeForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res UsersToggleNotificationModeForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersToggleNotificationModeNotFoundBody users toggle notification mode not found body
+swagger:model UsersToggleNotificationModeNotFoundBody
+*/
+type UsersToggleNotificationModeNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users toggle notification mode not found body
+func (o *UsersToggleNotificationModeNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users toggle notification mode not found body based on context it is used
+func (o *UsersToggleNotificationModeNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersToggleNotificationModeNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersToggleNotificationModeNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res UsersToggleNotificationModeNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersToggleNotificationModeUnauthorizedBody users toggle notification mode unauthorized body
+swagger:model UsersToggleNotificationModeUnauthorizedBody
+*/
+type UsersToggleNotificationModeUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users toggle notification mode unauthorized body
+func (o *UsersToggleNotificationModeUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users toggle notification mode unauthorized body based on context it is used
+func (o *UsersToggleNotificationModeUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersToggleNotificationModeUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersToggleNotificationModeUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res UsersToggleNotificationModeUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

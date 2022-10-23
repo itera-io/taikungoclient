@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneActionsConsoleParams creates a new StandAloneActionsConsoleParams object,
@@ -64,7 +62,7 @@ StandAloneActionsConsoleParams contains all the parameters to send to the API en
 type StandAloneActionsConsoleParams struct {
 
 	// Body.
-	Body *models.VMConsoleScreenshotCommand
+	Body StandAloneActionsConsoleBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *StandAloneActionsConsoleParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone actions console params
-func (o *StandAloneActionsConsoleParams) WithBody(body *models.VMConsoleScreenshotCommand) *StandAloneActionsConsoleParams {
+func (o *StandAloneActionsConsoleParams) WithBody(body StandAloneActionsConsoleBody) *StandAloneActionsConsoleParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone actions console params
-func (o *StandAloneActionsConsoleParams) SetBody(body *models.VMConsoleScreenshotCommand) {
+func (o *StandAloneActionsConsoleParams) SetBody(body StandAloneActionsConsoleBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *StandAloneActionsConsoleParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

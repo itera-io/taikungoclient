@@ -6,13 +6,16 @@ package backup
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // BackupListAllBackupsReader is a Reader for the BackupListAllBackups structure.
@@ -75,7 +78,7 @@ BackupListAllBackupsOK describes a response with status code 200, with default h
 Success
 */
 type BackupListAllBackupsOK struct {
-	Payload *models.ListAllBackups
+	Payload *BackupListAllBackupsOKBody
 }
 
 // IsSuccess returns true when this backup list all backups o k response has a 2xx status code
@@ -111,13 +114,13 @@ func (o *BackupListAllBackupsOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/backups/{projectId}][%d] backupListAllBackupsOK  %+v", 200, o.Payload)
 }
 
-func (o *BackupListAllBackupsOK) GetPayload() *models.ListAllBackups {
+func (o *BackupListAllBackupsOK) GetPayload() *BackupListAllBackupsOKBody {
 	return o.Payload
 }
 
 func (o *BackupListAllBackupsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ListAllBackups)
+	o.Payload = new(BackupListAllBackupsOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +141,7 @@ BackupListAllBackupsBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type BackupListAllBackupsBadRequest struct {
-	Payload []*models.Error
+	Payload []*BackupListAllBackupsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this backup list all backups bad request response has a 2xx status code
@@ -174,7 +177,7 @@ func (o *BackupListAllBackupsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/backups/{projectId}][%d] backupListAllBackupsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupListAllBackupsBadRequest) GetPayload() []*models.Error {
+func (o *BackupListAllBackupsBadRequest) GetPayload() []*BackupListAllBackupsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +202,7 @@ BackupListAllBackupsUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type BackupListAllBackupsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *BackupListAllBackupsUnauthorizedBody
 }
 
 // IsSuccess returns true when this backup list all backups unauthorized response has a 2xx status code
@@ -235,13 +238,13 @@ func (o *BackupListAllBackupsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/backups/{projectId}][%d] backupListAllBackupsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupListAllBackupsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllBackupsUnauthorized) GetPayload() *BackupListAllBackupsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *BackupListAllBackupsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BackupListAllBackupsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +265,7 @@ BackupListAllBackupsForbidden describes a response with status code 403, with de
 Forbidden
 */
 type BackupListAllBackupsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *BackupListAllBackupsForbiddenBody
 }
 
 // IsSuccess returns true when this backup list all backups forbidden response has a 2xx status code
@@ -298,13 +301,13 @@ func (o *BackupListAllBackupsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/backups/{projectId}][%d] backupListAllBackupsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupListAllBackupsForbidden) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllBackupsForbidden) GetPayload() *BackupListAllBackupsForbiddenBody {
 	return o.Payload
 }
 
 func (o *BackupListAllBackupsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BackupListAllBackupsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +328,7 @@ BackupListAllBackupsNotFound describes a response with status code 404, with def
 Not Found
 */
 type BackupListAllBackupsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *BackupListAllBackupsNotFoundBody
 }
 
 // IsSuccess returns true when this backup list all backups not found response has a 2xx status code
@@ -361,13 +364,13 @@ func (o *BackupListAllBackupsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/backups/{projectId}][%d] backupListAllBackupsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupListAllBackupsNotFound) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllBackupsNotFound) GetPayload() *BackupListAllBackupsNotFoundBody {
 	return o.Payload
 }
 
 func (o *BackupListAllBackupsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(BackupListAllBackupsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +428,396 @@ func (o *BackupListAllBackupsInternalServerError) String() string {
 
 func (o *BackupListAllBackupsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+BackupListAllBackupsBadRequestBodyItems0 backup list all backups bad request body items0
+swagger:model BackupListAllBackupsBadRequestBodyItems0
+*/
+type BackupListAllBackupsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this backup list all backups bad request body items0
+func (o *BackupListAllBackupsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup list all backups bad request body items0 based on context it is used
+func (o *BackupListAllBackupsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupListAllBackupsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupListAllBackupsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res BackupListAllBackupsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupListAllBackupsForbiddenBody backup list all backups forbidden body
+swagger:model BackupListAllBackupsForbiddenBody
+*/
+type BackupListAllBackupsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this backup list all backups forbidden body
+func (o *BackupListAllBackupsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup list all backups forbidden body based on context it is used
+func (o *BackupListAllBackupsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupListAllBackupsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupListAllBackupsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res BackupListAllBackupsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupListAllBackupsNotFoundBody backup list all backups not found body
+swagger:model BackupListAllBackupsNotFoundBody
+*/
+type BackupListAllBackupsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this backup list all backups not found body
+func (o *BackupListAllBackupsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup list all backups not found body based on context it is used
+func (o *BackupListAllBackupsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupListAllBackupsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupListAllBackupsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res BackupListAllBackupsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupListAllBackupsOKBody backup list all backups o k body
+swagger:model BackupListAllBackupsOKBody
+*/
+type BackupListAllBackupsOKBody struct {
+
+	// data
+	Data []*BackupListAllBackupsOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this backup list all backups o k body
+func (o *BackupListAllBackupsOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *BackupListAllBackupsOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("backupListAllBackupsOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("backupListAllBackupsOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this backup list all backups o k body based on the context it is used
+func (o *BackupListAllBackupsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *BackupListAllBackupsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("backupListAllBackupsOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("backupListAllBackupsOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupListAllBackupsOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupListAllBackupsOKBody) UnmarshalBinary(b []byte) error {
+	var res BackupListAllBackupsOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupListAllBackupsOKBodyDataItems0 backup list all backups o k body data items0
+swagger:model BackupListAllBackupsOKBodyDataItems0
+*/
+type BackupListAllBackupsOKBodyDataItems0 struct {
+
+	// created at
+	// Format: date-time
+	CreatedAt *strfmt.DateTime `json:"createdAt,omitempty"`
+
+	// expiration
+	// Format: date-time
+	Expiration *strfmt.DateTime `json:"expiration,omitempty"`
+
+	// location
+	Location string `json:"location,omitempty"`
+
+	// metadata name
+	MetadataName string `json:"metadataName,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// phase
+	Phase string `json:"phase,omitempty"`
+
+	// schedule name
+	ScheduleName string `json:"scheduleName,omitempty"`
+}
+
+// Validate validates this backup list all backups o k body data items0
+func (o *BackupListAllBackupsOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateExpiration(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *BackupListAllBackupsOKBodyDataItems0) validateCreatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(o.CreatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("createdAt", "body", "date-time", o.CreatedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *BackupListAllBackupsOKBodyDataItems0) validateExpiration(formats strfmt.Registry) error {
+	if swag.IsZero(o.Expiration) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("expiration", "body", "date-time", o.Expiration.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this backup list all backups o k body data items0 based on context it is used
+func (o *BackupListAllBackupsOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupListAllBackupsOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupListAllBackupsOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res BackupListAllBackupsOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+BackupListAllBackupsUnauthorizedBody backup list all backups unauthorized body
+swagger:model BackupListAllBackupsUnauthorizedBody
+*/
+type BackupListAllBackupsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this backup list all backups unauthorized body
+func (o *BackupListAllBackupsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this backup list all backups unauthorized body based on context it is used
+func (o *BackupListAllBackupsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *BackupListAllBackupsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *BackupListAllBackupsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res BackupListAllBackupsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

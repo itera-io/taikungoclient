@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesDescribeCrdParams creates a new KubernetesDescribeCrdParams object,
@@ -64,7 +62,7 @@ KubernetesDescribeCrdParams contains all the parameters to send to the API endpo
 type KubernetesDescribeCrdParams struct {
 
 	// Body.
-	Body *models.DescribeCrdCommand
+	Body KubernetesDescribeCrdBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *KubernetesDescribeCrdParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the kubernetes describe crd params
-func (o *KubernetesDescribeCrdParams) WithBody(body *models.DescribeCrdCommand) *KubernetesDescribeCrdParams {
+func (o *KubernetesDescribeCrdParams) WithBody(body KubernetesDescribeCrdBody) *KubernetesDescribeCrdParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes describe crd params
-func (o *KubernetesDescribeCrdParams) SetBody(body *models.DescribeCrdCommand) {
+func (o *KubernetesDescribeCrdParams) SetBody(body KubernetesDescribeCrdBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *KubernetesDescribeCrdParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

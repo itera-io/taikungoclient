@@ -6,13 +6,15 @@ package subscription
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SubscriptionListReader is a Reader for the SubscriptionList structure.
@@ -75,7 +77,7 @@ SubscriptionListOK describes a response with status code 200, with default heade
 Success
 */
 type SubscriptionListOK struct {
-	Payload *models.PrivateSubscriptionList
+	Payload *SubscriptionListOKBody
 }
 
 // IsSuccess returns true when this subscription list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *SubscriptionListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription][%d] subscriptionListOK  %+v", 200, o.Payload)
 }
 
-func (o *SubscriptionListOK) GetPayload() *models.PrivateSubscriptionList {
+func (o *SubscriptionListOK) GetPayload() *SubscriptionListOKBody {
 	return o.Payload
 }
 
 func (o *SubscriptionListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PrivateSubscriptionList)
+	o.Payload = new(SubscriptionListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ SubscriptionListBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type SubscriptionListBadRequest struct {
-	Payload []*models.Error
+	Payload []*SubscriptionListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this subscription list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *SubscriptionListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription][%d] subscriptionListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionListBadRequest) GetPayload() []*models.Error {
+func (o *SubscriptionListBadRequest) GetPayload() []*SubscriptionListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ SubscriptionListUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type SubscriptionListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SubscriptionListUnauthorizedBody
 }
 
 // IsSuccess returns true when this subscription list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *SubscriptionListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription][%d] subscriptionListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SubscriptionListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionListUnauthorized) GetPayload() *SubscriptionListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SubscriptionListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SubscriptionListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ SubscriptionListForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type SubscriptionListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SubscriptionListForbiddenBody
 }
 
 // IsSuccess returns true when this subscription list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *SubscriptionListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription][%d] subscriptionListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SubscriptionListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionListForbidden) GetPayload() *SubscriptionListForbiddenBody {
 	return o.Payload
 }
 
 func (o *SubscriptionListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SubscriptionListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ SubscriptionListNotFound describes a response with status code 404, with default
 Not Found
 */
 type SubscriptionListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SubscriptionListNotFoundBody
 }
 
 // IsSuccess returns true when this subscription list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *SubscriptionListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription][%d] subscriptionListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SubscriptionListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionListNotFound) GetPayload() *SubscriptionListNotFoundBody {
 	return o.Payload
 }
 
 func (o *SubscriptionListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SubscriptionListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,505 @@ func (o *SubscriptionListInternalServerError) String() string {
 
 func (o *SubscriptionListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SubscriptionListBadRequestBodyItems0 subscription list bad request body items0
+swagger:model SubscriptionListBadRequestBodyItems0
+*/
+type SubscriptionListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this subscription list bad request body items0
+func (o *SubscriptionListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subscription list bad request body items0 based on context it is used
+func (o *SubscriptionListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SubscriptionListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SubscriptionListForbiddenBody subscription list forbidden body
+swagger:model SubscriptionListForbiddenBody
+*/
+type SubscriptionListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this subscription list forbidden body
+func (o *SubscriptionListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subscription list forbidden body based on context it is used
+func (o *SubscriptionListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SubscriptionListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SubscriptionListNotFoundBody subscription list not found body
+swagger:model SubscriptionListNotFoundBody
+*/
+type SubscriptionListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this subscription list not found body
+func (o *SubscriptionListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subscription list not found body based on context it is used
+func (o *SubscriptionListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SubscriptionListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SubscriptionListOKBody subscription list o k body
+swagger:model SubscriptionListOKBody
+*/
+type SubscriptionListOKBody struct {
+
+	// active subscription status
+	ActiveSubscriptionStatus string `json:"activeSubscriptionStatus,omitempty"`
+
+	// data
+	Data []*SubscriptionListOKBodyDataItems0 `json:"data"`
+
+	// is eligible to switch
+	IsEligibleToSwitch bool `json:"isEligibleToSwitch"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this subscription list o k body
+func (o *SubscriptionListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SubscriptionListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("subscriptionListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("subscriptionListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this subscription list o k body based on the context it is used
+func (o *SubscriptionListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SubscriptionListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("subscriptionListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("subscriptionListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionListOKBody) UnmarshalBinary(b []byte) error {
+	var res SubscriptionListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SubscriptionListOKBodyDataItems0 subscription list o k body data items0
+swagger:model SubscriptionListOKBodyDataItems0
+*/
+type SubscriptionListOKBodyDataItems0 struct {
+
+	// cloud credential limit
+	CloudCredentialLimit int32 `json:"cloudCredentialLimit,omitempty"`
+
+	// currency
+	Currency string `json:"currency,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// exceeded cloud credential
+	ExceededCloudCredential bool `json:"exceededCloudCredential"`
+
+	// exceeded project
+	ExceededProject bool `json:"exceededProject"`
+
+	// exceeded servers
+	ExceededServers bool `json:"exceededServers"`
+
+	// exceeded user
+	ExceededUser bool `json:"exceededUser"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is active
+	IsActive bool `json:"isActive"`
+
+	// is demo
+	IsDemo bool `json:"isDemo"`
+
+	// is deprecated
+	IsDeprecated bool `json:"isDeprecated"`
+
+	// is yearly
+	IsYearly bool `json:"isYearly"`
+
+	// monthly price
+	MonthlyPrice float64 `json:"monthlyPrice,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// partner
+	Partner *SubscriptionListOKBodyDataItems0Partner `json:"partner,omitempty"`
+
+	// project limit
+	ProjectLimit int32 `json:"projectLimit,omitempty"`
+
+	// server limit
+	ServerLimit int32 `json:"serverLimit,omitempty"`
+
+	// tcu price
+	TcuPrice float64 `json:"tcuPrice,omitempty"`
+
+	// trial days
+	TrialDays int32 `json:"trialDays,omitempty"`
+
+	// user limit
+	UserLimit int32 `json:"userLimit,omitempty"`
+
+	// yearly price
+	YearlyPrice float64 `json:"yearlyPrice,omitempty"`
+}
+
+// Validate validates this subscription list o k body data items0
+func (o *SubscriptionListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validatePartner(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SubscriptionListOKBodyDataItems0) validatePartner(formats strfmt.Registry) error {
+	if swag.IsZero(o.Partner) { // not required
+		return nil
+	}
+
+	if o.Partner != nil {
+		if err := o.Partner.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("partner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("partner")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this subscription list o k body data items0 based on the context it is used
+func (o *SubscriptionListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidatePartner(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SubscriptionListOKBodyDataItems0) contextValidatePartner(ctx context.Context, formats strfmt.Registry) error {
+
+	if o.Partner != nil {
+		if err := o.Partner.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("partner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("partner")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res SubscriptionListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SubscriptionListOKBodyDataItems0Partner subscription list o k body data items0 partner
+swagger:model SubscriptionListOKBodyDataItems0Partner
+*/
+type SubscriptionListOKBodyDataItems0Partner struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// link
+	Link string `json:"link,omitempty"`
+
+	// logo
+	Logo string `json:"logo,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this subscription list o k body data items0 partner
+func (o *SubscriptionListOKBodyDataItems0Partner) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subscription list o k body data items0 partner based on context it is used
+func (o *SubscriptionListOKBodyDataItems0Partner) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionListOKBodyDataItems0Partner) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionListOKBodyDataItems0Partner) UnmarshalBinary(b []byte) error {
+	var res SubscriptionListOKBodyDataItems0Partner
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SubscriptionListUnauthorizedBody subscription list unauthorized body
+swagger:model SubscriptionListUnauthorizedBody
+*/
+type SubscriptionListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this subscription list unauthorized body
+func (o *SubscriptionListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this subscription list unauthorized body based on context it is used
+func (o *SubscriptionListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SubscriptionListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SubscriptionListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SubscriptionListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

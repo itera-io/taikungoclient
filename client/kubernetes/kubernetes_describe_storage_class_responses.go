@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesDescribeStorageClassReader is a Reader for the KubernetesDescribeStorageClass structure.
@@ -136,7 +136,7 @@ KubernetesDescribeStorageClassBadRequest describes a response with status code 4
 Bad Request
 */
 type KubernetesDescribeStorageClassBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesDescribeStorageClassBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes describe storage class bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeStorageClassBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/storageclass][%d] kubernetesDescribeStorageClassBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeStorageClassBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesDescribeStorageClassBadRequest) GetPayload() []*KubernetesDescribeStorageClassBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesDescribeStorageClassUnauthorized describes a response with status code
 Unauthorized
 */
 type KubernetesDescribeStorageClassUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesDescribeStorageClassUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes describe storage class unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesDescribeStorageClassUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/storageclass][%d] kubernetesDescribeStorageClassUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeStorageClassUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeStorageClassUnauthorized) GetPayload() *KubernetesDescribeStorageClassUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeStorageClassUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesDescribeStorageClassUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesDescribeStorageClassForbidden describes a response with status code 40
 Forbidden
 */
 type KubernetesDescribeStorageClassForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesDescribeStorageClassForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes describe storage class forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesDescribeStorageClassForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/storageclass][%d] kubernetesDescribeStorageClassForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeStorageClassForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeStorageClassForbidden) GetPayload() *KubernetesDescribeStorageClassForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeStorageClassForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesDescribeStorageClassForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesDescribeStorageClassNotFound describes a response with status code 404
 Not Found
 */
 type KubernetesDescribeStorageClassNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesDescribeStorageClassNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes describe storage class not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesDescribeStorageClassNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/storageclass][%d] kubernetesDescribeStorageClassNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeStorageClassNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeStorageClassNotFound) GetPayload() *KubernetesDescribeStorageClassNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeStorageClassNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesDescribeStorageClassNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *KubernetesDescribeStorageClassInternalServerError) String() string {
 
 func (o *KubernetesDescribeStorageClassInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesDescribeStorageClassBadRequestBodyItems0 kubernetes describe storage class bad request body items0
+swagger:model KubernetesDescribeStorageClassBadRequestBodyItems0
+*/
+type KubernetesDescribeStorageClassBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes describe storage class bad request body items0
+func (o *KubernetesDescribeStorageClassBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe storage class bad request body items0 based on context it is used
+func (o *KubernetesDescribeStorageClassBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeStorageClassBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeStorageClassBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeStorageClassBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeStorageClassBody kubernetes describe storage class body
+swagger:model KubernetesDescribeStorageClassBody
+*/
+type KubernetesDescribeStorageClassBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this kubernetes describe storage class body
+func (o *KubernetesDescribeStorageClassBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe storage class body based on context it is used
+func (o *KubernetesDescribeStorageClassBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeStorageClassBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeStorageClassBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeStorageClassBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeStorageClassForbiddenBody kubernetes describe storage class forbidden body
+swagger:model KubernetesDescribeStorageClassForbiddenBody
+*/
+type KubernetesDescribeStorageClassForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes describe storage class forbidden body
+func (o *KubernetesDescribeStorageClassForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe storage class forbidden body based on context it is used
+func (o *KubernetesDescribeStorageClassForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeStorageClassForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeStorageClassForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeStorageClassForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeStorageClassNotFoundBody kubernetes describe storage class not found body
+swagger:model KubernetesDescribeStorageClassNotFoundBody
+*/
+type KubernetesDescribeStorageClassNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes describe storage class not found body
+func (o *KubernetesDescribeStorageClassNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe storage class not found body based on context it is used
+func (o *KubernetesDescribeStorageClassNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeStorageClassNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeStorageClassNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeStorageClassNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeStorageClassUnauthorizedBody kubernetes describe storage class unauthorized body
+swagger:model KubernetesDescribeStorageClassUnauthorizedBody
+*/
+type KubernetesDescribeStorageClassUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes describe storage class unauthorized body
+func (o *KubernetesDescribeStorageClassUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe storage class unauthorized body based on context it is used
+func (o *KubernetesDescribeStorageClassUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeStorageClassUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeStorageClassUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeStorageClassUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

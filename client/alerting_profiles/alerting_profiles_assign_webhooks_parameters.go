@@ -15,8 +15,6 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAlertingProfilesAssignWebhooksParams creates a new AlertingProfilesAssignWebhooksParams object,
@@ -65,7 +63,7 @@ AlertingProfilesAssignWebhooksParams contains all the parameters to send to the 
 type AlertingProfilesAssignWebhooksParams struct {
 
 	// Body.
-	Body []*models.AlertingWebhookDto
+	Body []*AlertingProfilesAssignWebhooksParamsBodyItems0
 
 	// ID.
 	//
@@ -129,13 +127,13 @@ func (o *AlertingProfilesAssignWebhooksParams) SetHTTPClient(client *http.Client
 }
 
 // WithBody adds the body to the alerting profiles assign webhooks params
-func (o *AlertingProfilesAssignWebhooksParams) WithBody(body []*models.AlertingWebhookDto) *AlertingProfilesAssignWebhooksParams {
+func (o *AlertingProfilesAssignWebhooksParams) WithBody(body []*AlertingProfilesAssignWebhooksParamsBodyItems0) *AlertingProfilesAssignWebhooksParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the alerting profiles assign webhooks params
-func (o *AlertingProfilesAssignWebhooksParams) SetBody(body []*models.AlertingWebhookDto) {
+func (o *AlertingProfilesAssignWebhooksParams) SetBody(body []*AlertingProfilesAssignWebhooksParamsBodyItems0) {
 	o.Body = body
 }
 

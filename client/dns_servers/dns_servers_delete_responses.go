@@ -6,13 +6,13 @@ package dns_servers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // DNSServersDeleteReader is a Reader for the DNSServersDelete structure.
@@ -81,7 +81,7 @@ DNSServersDeleteOK describes a response with status code 200, with default heade
 Success
 */
 type DNSServersDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers delete o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *DNSServersDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *DNSServersDeleteOK) GetPayload() models.Unit {
+func (o *DNSServersDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ DNSServersDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type DNSServersDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*DNSServersDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this dns servers delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *DNSServersDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *DNSServersDeleteBadRequest) GetPayload() []*models.Error {
+func (o *DNSServersDeleteBadRequest) GetPayload() []*DNSServersDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ DNSServersDeleteUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type DNSServersDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *DNSServersDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this dns servers delete unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *DNSServersDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *DNSServersDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *DNSServersDeleteUnauthorized) GetPayload() *DNSServersDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *DNSServersDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(DNSServersDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ DNSServersDeleteForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type DNSServersDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *DNSServersDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this dns servers delete forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *DNSServersDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *DNSServersDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *DNSServersDeleteForbidden) GetPayload() *DNSServersDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *DNSServersDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(DNSServersDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ DNSServersDeleteNotFound describes a response with status code 404, with default
 Not Found
 */
 type DNSServersDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *DNSServersDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this dns servers delete not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *DNSServersDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *DNSServersDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *DNSServersDeleteNotFound) GetPayload() *DNSServersDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *DNSServersDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(DNSServersDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,5 +480,196 @@ func (o *DNSServersDeleteInternalServerError) String() string {
 
 func (o *DNSServersDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+DNSServersDeleteBadRequestBodyItems0 DNS servers delete bad request body items0
+swagger:model DNSServersDeleteBadRequestBodyItems0
+*/
+type DNSServersDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this DNS servers delete bad request body items0
+func (o *DNSServersDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this DNS servers delete bad request body items0 based on context it is used
+func (o *DNSServersDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DNSServersDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DNSServersDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res DNSServersDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DNSServersDeleteForbiddenBody DNS servers delete forbidden body
+swagger:model DNSServersDeleteForbiddenBody
+*/
+type DNSServersDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this DNS servers delete forbidden body
+func (o *DNSServersDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this DNS servers delete forbidden body based on context it is used
+func (o *DNSServersDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DNSServersDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DNSServersDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res DNSServersDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DNSServersDeleteNotFoundBody DNS servers delete not found body
+swagger:model DNSServersDeleteNotFoundBody
+*/
+type DNSServersDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this DNS servers delete not found body
+func (o *DNSServersDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this DNS servers delete not found body based on context it is used
+func (o *DNSServersDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DNSServersDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DNSServersDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res DNSServersDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+DNSServersDeleteUnauthorizedBody DNS servers delete unauthorized body
+swagger:model DNSServersDeleteUnauthorizedBody
+*/
+type DNSServersDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this DNS servers delete unauthorized body
+func (o *DNSServersDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this DNS servers delete unauthorized body based on context it is used
+func (o *DNSServersDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *DNSServersDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *DNSServersDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res DNSServersDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

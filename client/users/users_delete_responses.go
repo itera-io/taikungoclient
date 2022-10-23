@@ -6,13 +6,13 @@ package users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // UsersDeleteReader is a Reader for the UsersDelete structure.
@@ -81,7 +81,7 @@ UsersDeleteOK describes a response with status code 200, with default header val
 Success
 */
 type UsersDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users delete o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *UsersDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *UsersDeleteOK) GetPayload() models.Unit {
+func (o *UsersDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ UsersDeleteBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type UsersDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*UsersDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this users delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *UsersDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersDeleteBadRequest) GetPayload() []*models.Error {
+func (o *UsersDeleteBadRequest) GetPayload() []*UsersDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ UsersDeleteUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type UsersDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *UsersDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this users delete unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *UsersDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UsersDeleteUnauthorized) GetPayload() *UsersDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *UsersDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ UsersDeleteForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type UsersDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *UsersDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this users delete forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *UsersDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *UsersDeleteForbidden) GetPayload() *UsersDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *UsersDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ UsersDeleteNotFound describes a response with status code 404, with default head
 Not Found
 */
 type UsersDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *UsersDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this users delete not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *UsersDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *UsersDeleteNotFound) GetPayload() *UsersDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *UsersDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(UsersDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,5 +480,196 @@ func (o *UsersDeleteInternalServerError) String() string {
 
 func (o *UsersDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+UsersDeleteBadRequestBodyItems0 users delete bad request body items0
+swagger:model UsersDeleteBadRequestBodyItems0
+*/
+type UsersDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this users delete bad request body items0
+func (o *UsersDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users delete bad request body items0 based on context it is used
+func (o *UsersDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res UsersDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersDeleteForbiddenBody users delete forbidden body
+swagger:model UsersDeleteForbiddenBody
+*/
+type UsersDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users delete forbidden body
+func (o *UsersDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users delete forbidden body based on context it is used
+func (o *UsersDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res UsersDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersDeleteNotFoundBody users delete not found body
+swagger:model UsersDeleteNotFoundBody
+*/
+type UsersDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users delete not found body
+func (o *UsersDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users delete not found body based on context it is used
+func (o *UsersDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res UsersDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+UsersDeleteUnauthorizedBody users delete unauthorized body
+swagger:model UsersDeleteUnauthorizedBody
+*/
+type UsersDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this users delete unauthorized body
+func (o *UsersDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this users delete unauthorized body based on context it is used
+func (o *UsersDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *UsersDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *UsersDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res UsersDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

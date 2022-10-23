@@ -6,13 +6,13 @@ package project_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ProjectGroupsCreateReader is a Reader for the ProjectGroupsCreate structure.
@@ -75,7 +75,7 @@ ProjectGroupsCreateOK describes a response with status code 200, with default he
 Success
 */
 type ProjectGroupsCreateOK struct {
-	Payload *models.APIResponse
+	Payload *ProjectGroupsCreateOKBody
 }
 
 // IsSuccess returns true when this project groups create o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *ProjectGroupsCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectGroupsCreateOK) GetPayload() *models.APIResponse {
+func (o *ProjectGroupsCreateOK) GetPayload() *ProjectGroupsCreateOKBody {
 	return o.Payload
 }
 
 func (o *ProjectGroupsCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(ProjectGroupsCreateOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ ProjectGroupsCreateBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type ProjectGroupsCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*ProjectGroupsCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this project groups create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *ProjectGroupsCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectGroupsCreateBadRequest) GetPayload() []*models.Error {
+func (o *ProjectGroupsCreateBadRequest) GetPayload() []*ProjectGroupsCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ ProjectGroupsCreateUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ProjectGroupsCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectGroupsCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this project groups create unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *ProjectGroupsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectGroupsCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsCreateUnauthorized) GetPayload() *ProjectGroupsCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ProjectGroupsCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectGroupsCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ ProjectGroupsCreateForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ProjectGroupsCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectGroupsCreateForbiddenBody
 }
 
 // IsSuccess returns true when this project groups create forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *ProjectGroupsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectGroupsCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsCreateForbidden) GetPayload() *ProjectGroupsCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *ProjectGroupsCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectGroupsCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ ProjectGroupsCreateNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ProjectGroupsCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ProjectGroupsCreateNotFoundBody
 }
 
 // IsSuccess returns true when this project groups create not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *ProjectGroupsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectGroupsCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsCreateNotFound) GetPayload() *ProjectGroupsCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *ProjectGroupsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ProjectGroupsCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +425,290 @@ func (o *ProjectGroupsCreateInternalServerError) String() string {
 
 func (o *ProjectGroupsCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ProjectGroupsCreateBadRequestBodyItems0 project groups create bad request body items0
+swagger:model ProjectGroupsCreateBadRequestBodyItems0
+*/
+type ProjectGroupsCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this project groups create bad request body items0
+func (o *ProjectGroupsCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups create bad request body items0 based on context it is used
+func (o *ProjectGroupsCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsCreateBody project groups create body
+swagger:model ProjectGroupsCreateBody
+*/
+type ProjectGroupsCreateBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// project ids
+	ProjectIds []int32 `json:"projectIds"`
+}
+
+// Validate validates this project groups create body
+func (o *ProjectGroupsCreateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups create body based on context it is used
+func (o *ProjectGroupsCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsCreateBody) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsCreateForbiddenBody project groups create forbidden body
+swagger:model ProjectGroupsCreateForbiddenBody
+*/
+type ProjectGroupsCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project groups create forbidden body
+func (o *ProjectGroupsCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups create forbidden body based on context it is used
+func (o *ProjectGroupsCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsCreateNotFoundBody project groups create not found body
+swagger:model ProjectGroupsCreateNotFoundBody
+*/
+type ProjectGroupsCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project groups create not found body
+func (o *ProjectGroupsCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups create not found body based on context it is used
+func (o *ProjectGroupsCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsCreateOKBody project groups create o k body
+swagger:model ProjectGroupsCreateOKBody
+*/
+type ProjectGroupsCreateOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this project groups create o k body
+func (o *ProjectGroupsCreateOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups create o k body based on context it is used
+func (o *ProjectGroupsCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsCreateOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsCreateOKBody) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsCreateOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ProjectGroupsCreateUnauthorizedBody project groups create unauthorized body
+swagger:model ProjectGroupsCreateUnauthorizedBody
+*/
+type ProjectGroupsCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this project groups create unauthorized body
+func (o *ProjectGroupsCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this project groups create unauthorized body based on context it is used
+func (o *ProjectGroupsCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ProjectGroupsCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ProjectGroupsCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ProjectGroupsCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

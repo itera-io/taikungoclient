@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewBackupImportBackupStorageParams creates a new BackupImportBackupStorageParams object,
@@ -64,7 +62,7 @@ BackupImportBackupStorageParams contains all the parameters to send to the API e
 type BackupImportBackupStorageParams struct {
 
 	// Body.
-	Body *models.ImportBackupStorageLocationCommand
+	Body BackupImportBackupStorageBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *BackupImportBackupStorageParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the backup import backup storage params
-func (o *BackupImportBackupStorageParams) WithBody(body *models.ImportBackupStorageLocationCommand) *BackupImportBackupStorageParams {
+func (o *BackupImportBackupStorageParams) WithBody(body BackupImportBackupStorageBody) *BackupImportBackupStorageParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the backup import backup storage params
-func (o *BackupImportBackupStorageParams) SetBody(body *models.ImportBackupStorageLocationCommand) {
+func (o *BackupImportBackupStorageParams) SetBody(body BackupImportBackupStorageBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *BackupImportBackupStorageParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

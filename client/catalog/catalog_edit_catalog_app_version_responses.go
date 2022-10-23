@@ -6,13 +6,13 @@ package catalog
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CatalogEditCatalogAppVersionReader is a Reader for the CatalogEditCatalogAppVersion structure.
@@ -75,7 +75,7 @@ CatalogEditCatalogAppVersionOK describes a response with status code 200, with d
 Success
 */
 type CatalogEditCatalogAppVersionOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog edit catalog app version o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CatalogEditCatalogAppVersionOK) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionOK  %+v", 200, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppVersionOK) GetPayload() models.Unit {
+func (o *CatalogEditCatalogAppVersionOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CatalogEditCatalogAppVersionBadRequest describes a response with status code 400
 Bad Request
 */
 type CatalogEditCatalogAppVersionBadRequest struct {
-	Payload []*models.Error
+	Payload []*CatalogEditCatalogAppVersionBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this catalog edit catalog app version bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CatalogEditCatalogAppVersionBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppVersionBadRequest) GetPayload() []*models.Error {
+func (o *CatalogEditCatalogAppVersionBadRequest) GetPayload() []*CatalogEditCatalogAppVersionBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CatalogEditCatalogAppVersionUnauthorized describes a response with status code 4
 Unauthorized
 */
 type CatalogEditCatalogAppVersionUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogEditCatalogAppVersionUnauthorizedBody
 }
 
 // IsSuccess returns true when this catalog edit catalog app version unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CatalogEditCatalogAppVersionUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppVersionUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogEditCatalogAppVersionUnauthorized) GetPayload() *CatalogEditCatalogAppVersionUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogAppVersionUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogEditCatalogAppVersionUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CatalogEditCatalogAppVersionForbidden describes a response with status code 403,
 Forbidden
 */
 type CatalogEditCatalogAppVersionForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogEditCatalogAppVersionForbiddenBody
 }
 
 // IsSuccess returns true when this catalog edit catalog app version forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CatalogEditCatalogAppVersionForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppVersionForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogEditCatalogAppVersionForbidden) GetPayload() *CatalogEditCatalogAppVersionForbiddenBody {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogAppVersionForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogEditCatalogAppVersionForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CatalogEditCatalogAppVersionNotFound describes a response with status code 404, 
 Not Found
 */
 type CatalogEditCatalogAppVersionNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CatalogEditCatalogAppVersionNotFoundBody
 }
 
 // IsSuccess returns true when this catalog edit catalog app version not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CatalogEditCatalogAppVersionNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppVersionNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogEditCatalogAppVersionNotFound) GetPayload() *CatalogEditCatalogAppVersionNotFoundBody {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogAppVersionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CatalogEditCatalogAppVersionNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *CatalogEditCatalogAppVersionInternalServerError) String() string {
 
 func (o *CatalogEditCatalogAppVersionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CatalogEditCatalogAppVersionBadRequestBodyItems0 catalog edit catalog app version bad request body items0
+swagger:model CatalogEditCatalogAppVersionBadRequestBodyItems0
+*/
+type CatalogEditCatalogAppVersionBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this catalog edit catalog app version bad request body items0
+func (o *CatalogEditCatalogAppVersionBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog edit catalog app version bad request body items0 based on context it is used
+func (o *CatalogEditCatalogAppVersionBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogEditCatalogAppVersionBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogEditCatalogAppVersionBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CatalogEditCatalogAppVersionBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogEditCatalogAppVersionBody catalog edit catalog app version body
+swagger:model CatalogEditCatalogAppVersionBody
+*/
+type CatalogEditCatalogAppVersionBody struct {
+
+	// catalog app Id
+	CatalogAppID int32 `json:"catalogAppId,omitempty"`
+
+	// version
+	Version string `json:"version,omitempty"`
+}
+
+// Validate validates this catalog edit catalog app version body
+func (o *CatalogEditCatalogAppVersionBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog edit catalog app version body based on context it is used
+func (o *CatalogEditCatalogAppVersionBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogEditCatalogAppVersionBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogEditCatalogAppVersionBody) UnmarshalBinary(b []byte) error {
+	var res CatalogEditCatalogAppVersionBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogEditCatalogAppVersionForbiddenBody catalog edit catalog app version forbidden body
+swagger:model CatalogEditCatalogAppVersionForbiddenBody
+*/
+type CatalogEditCatalogAppVersionForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog edit catalog app version forbidden body
+func (o *CatalogEditCatalogAppVersionForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog edit catalog app version forbidden body based on context it is used
+func (o *CatalogEditCatalogAppVersionForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogEditCatalogAppVersionForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogEditCatalogAppVersionForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CatalogEditCatalogAppVersionForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogEditCatalogAppVersionNotFoundBody catalog edit catalog app version not found body
+swagger:model CatalogEditCatalogAppVersionNotFoundBody
+*/
+type CatalogEditCatalogAppVersionNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog edit catalog app version not found body
+func (o *CatalogEditCatalogAppVersionNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog edit catalog app version not found body based on context it is used
+func (o *CatalogEditCatalogAppVersionNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogEditCatalogAppVersionNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogEditCatalogAppVersionNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CatalogEditCatalogAppVersionNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CatalogEditCatalogAppVersionUnauthorizedBody catalog edit catalog app version unauthorized body
+swagger:model CatalogEditCatalogAppVersionUnauthorizedBody
+*/
+type CatalogEditCatalogAppVersionUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this catalog edit catalog app version unauthorized body
+func (o *CatalogEditCatalogAppVersionUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this catalog edit catalog app version unauthorized body based on context it is used
+func (o *CatalogEditCatalogAppVersionUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CatalogEditCatalogAppVersionUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CatalogEditCatalogAppVersionUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CatalogEditCatalogAppVersionUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -15,8 +15,6 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectInfracostsEditParams creates a new ProjectInfracostsEditParams object,
@@ -65,7 +63,7 @@ ProjectInfracostsEditParams contains all the parameters to send to the API endpo
 type ProjectInfracostsEditParams struct {
 
 	// Body.
-	Body *models.ProjectInfracostUpsertDto
+	Body ProjectInfracostsEditBody
 
 	// ProjectID.
 	//
@@ -129,13 +127,13 @@ func (o *ProjectInfracostsEditParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the project infracosts edit params
-func (o *ProjectInfracostsEditParams) WithBody(body *models.ProjectInfracostUpsertDto) *ProjectInfracostsEditParams {
+func (o *ProjectInfracostsEditParams) WithBody(body ProjectInfracostsEditBody) *ProjectInfracostsEditParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the project infracosts edit params
-func (o *ProjectInfracostsEditParams) SetBody(body *models.ProjectInfracostUpsertDto) {
+func (o *ProjectInfracostsEditParams) SetBody(body ProjectInfracostsEditBody) {
 	o.Body = body
 }
 
@@ -168,10 +166,8 @@ func (o *ProjectInfracostsEditParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param projectId

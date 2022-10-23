@@ -6,13 +6,13 @@ package checker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CheckerYamlReader is a Reader for the CheckerYaml structure.
@@ -75,7 +75,7 @@ CheckerYamlOK describes a response with status code 200, with default header val
 Success
 */
 type CheckerYamlOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker yaml o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CheckerYamlOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlOK  %+v", 200, o.Payload)
 }
 
-func (o *CheckerYamlOK) GetPayload() models.Unit {
+func (o *CheckerYamlOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CheckerYamlBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type CheckerYamlBadRequest struct {
-	Payload []*models.Error
+	Payload []*CheckerYamlBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this checker yaml bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerYamlBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerYamlBadRequest) GetPayload() []*models.Error {
+func (o *CheckerYamlBadRequest) GetPayload() []*CheckerYamlBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CheckerYamlUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type CheckerYamlUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerYamlUnauthorizedBody
 }
 
 // IsSuccess returns true when this checker yaml unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CheckerYamlUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerYamlUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerYamlUnauthorized) GetPayload() *CheckerYamlUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CheckerYamlUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerYamlUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CheckerYamlForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type CheckerYamlForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerYamlForbiddenBody
 }
 
 // IsSuccess returns true when this checker yaml forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CheckerYamlForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerYamlForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerYamlForbidden) GetPayload() *CheckerYamlForbiddenBody {
 	return o.Payload
 }
 
 func (o *CheckerYamlForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerYamlForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CheckerYamlNotFound describes a response with status code 404, with default head
 Not Found
 */
 type CheckerYamlNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CheckerYamlNotFoundBody
 }
 
 // IsSuccess returns true when this checker yaml not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CheckerYamlNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerYamlNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerYamlNotFound) GetPayload() *CheckerYamlNotFoundBody {
 	return o.Payload
 }
 
 func (o *CheckerYamlNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CheckerYamlNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *CheckerYamlInternalServerError) String() string {
 
 func (o *CheckerYamlInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CheckerYamlBadRequestBodyItems0 checker yaml bad request body items0
+swagger:model CheckerYamlBadRequestBodyItems0
+*/
+type CheckerYamlBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this checker yaml bad request body items0
+func (o *CheckerYamlBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker yaml bad request body items0 based on context it is used
+func (o *CheckerYamlBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerYamlBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerYamlBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CheckerYamlBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerYamlBody checker yaml body
+swagger:model CheckerYamlBody
+*/
+type CheckerYamlBody struct {
+
+	// yaml
+	Yaml string `json:"yaml,omitempty"`
+}
+
+// Validate validates this checker yaml body
+func (o *CheckerYamlBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker yaml body based on context it is used
+func (o *CheckerYamlBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerYamlBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerYamlBody) UnmarshalBinary(b []byte) error {
+	var res CheckerYamlBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerYamlForbiddenBody checker yaml forbidden body
+swagger:model CheckerYamlForbiddenBody
+*/
+type CheckerYamlForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker yaml forbidden body
+func (o *CheckerYamlForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker yaml forbidden body based on context it is used
+func (o *CheckerYamlForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerYamlForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerYamlForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CheckerYamlForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerYamlNotFoundBody checker yaml not found body
+swagger:model CheckerYamlNotFoundBody
+*/
+type CheckerYamlNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker yaml not found body
+func (o *CheckerYamlNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker yaml not found body based on context it is used
+func (o *CheckerYamlNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerYamlNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerYamlNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CheckerYamlNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CheckerYamlUnauthorizedBody checker yaml unauthorized body
+swagger:model CheckerYamlUnauthorizedBody
+*/
+type CheckerYamlUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this checker yaml unauthorized body
+func (o *CheckerYamlUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this checker yaml unauthorized body based on context it is used
+func (o *CheckerYamlUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CheckerYamlUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CheckerYamlUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CheckerYamlUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

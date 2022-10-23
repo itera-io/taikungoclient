@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobFetchKubernetesAlertsParams creates a new CronJobFetchKubernetesAlertsParams object,
@@ -64,7 +62,7 @@ CronJobFetchKubernetesAlertsParams contains all the parameters to send to the AP
 type CronJobFetchKubernetesAlertsParams struct {
 
 	// Body.
-	Body models.FetchKubernetesAlertDataCommand
+	Body interface{}
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *CronJobFetchKubernetesAlertsParams) SetHTTPClient(client *http.Client) 
 }
 
 // WithBody adds the body to the cron job fetch kubernetes alerts params
-func (o *CronJobFetchKubernetesAlertsParams) WithBody(body models.FetchKubernetesAlertDataCommand) *CronJobFetchKubernetesAlertsParams {
+func (o *CronJobFetchKubernetesAlertsParams) WithBody(body interface{}) *CronJobFetchKubernetesAlertsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job fetch kubernetes alerts params
-func (o *CronJobFetchKubernetesAlertsParams) SetBody(body models.FetchKubernetesAlertDataCommand) {
+func (o *CronJobFetchKubernetesAlertsParams) SetBody(body interface{}) {
 	o.Body = body
 }
 

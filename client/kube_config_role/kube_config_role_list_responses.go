@@ -6,13 +6,15 @@ package kube_config_role
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubeConfigRoleListReader is a Reader for the KubeConfigRoleList structure.
@@ -75,7 +77,7 @@ KubeConfigRoleListOK describes a response with status code 200, with default hea
 Success
 */
 type KubeConfigRoleListOK struct {
-	Payload *models.KubeConfigRoleResponse
+	Payload *KubeConfigRoleListOKBody
 }
 
 // IsSuccess returns true when this kube config role list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *KubeConfigRoleListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListOK  %+v", 200, o.Payload)
 }
 
-func (o *KubeConfigRoleListOK) GetPayload() *models.KubeConfigRoleResponse {
+func (o *KubeConfigRoleListOK) GetPayload() *KubeConfigRoleListOKBody {
 	return o.Payload
 }
 
 func (o *KubeConfigRoleListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.KubeConfigRoleResponse)
+	o.Payload = new(KubeConfigRoleListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ KubeConfigRoleListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubeConfigRoleListBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubeConfigRoleListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kube config role list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *KubeConfigRoleListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubeConfigRoleListBadRequest) GetPayload() []*models.Error {
+func (o *KubeConfigRoleListBadRequest) GetPayload() []*KubeConfigRoleListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ KubeConfigRoleListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubeConfigRoleListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubeConfigRoleListUnauthorizedBody
 }
 
 // IsSuccess returns true when this kube config role list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *KubeConfigRoleListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubeConfigRoleListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigRoleListUnauthorized) GetPayload() *KubeConfigRoleListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubeConfigRoleListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubeConfigRoleListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ KubeConfigRoleListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubeConfigRoleListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubeConfigRoleListForbiddenBody
 }
 
 // IsSuccess returns true when this kube config role list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *KubeConfigRoleListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubeConfigRoleListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigRoleListForbidden) GetPayload() *KubeConfigRoleListForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubeConfigRoleListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubeConfigRoleListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ KubeConfigRoleListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubeConfigRoleListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubeConfigRoleListNotFoundBody
 }
 
 // IsSuccess returns true when this kube config role list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *KubeConfigRoleListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubeConfigRoleListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigRoleListNotFound) GetPayload() *KubeConfigRoleListNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubeConfigRoleListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubeConfigRoleListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,342 @@ func (o *KubeConfigRoleListInternalServerError) String() string {
 
 func (o *KubeConfigRoleListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubeConfigRoleListBadRequestBodyItems0 kube config role list bad request body items0
+swagger:model KubeConfigRoleListBadRequestBodyItems0
+*/
+type KubeConfigRoleListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kube config role list bad request body items0
+func (o *KubeConfigRoleListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kube config role list bad request body items0 based on context it is used
+func (o *KubeConfigRoleListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubeConfigRoleListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubeConfigRoleListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubeConfigRoleListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubeConfigRoleListForbiddenBody kube config role list forbidden body
+swagger:model KubeConfigRoleListForbiddenBody
+*/
+type KubeConfigRoleListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kube config role list forbidden body
+func (o *KubeConfigRoleListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kube config role list forbidden body based on context it is used
+func (o *KubeConfigRoleListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubeConfigRoleListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubeConfigRoleListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubeConfigRoleListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubeConfigRoleListNotFoundBody kube config role list not found body
+swagger:model KubeConfigRoleListNotFoundBody
+*/
+type KubeConfigRoleListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kube config role list not found body
+func (o *KubeConfigRoleListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kube config role list not found body based on context it is used
+func (o *KubeConfigRoleListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubeConfigRoleListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubeConfigRoleListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubeConfigRoleListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubeConfigRoleListOKBody kube config role list o k body
+swagger:model KubeConfigRoleListOKBody
+*/
+type KubeConfigRoleListOKBody struct {
+
+	// data
+	Data []*KubeConfigRoleListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this kube config role list o k body
+func (o *KubeConfigRoleListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubeConfigRoleListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubeConfigRoleListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubeConfigRoleListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this kube config role list o k body based on the context it is used
+func (o *KubeConfigRoleListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubeConfigRoleListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubeConfigRoleListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubeConfigRoleListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubeConfigRoleListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubeConfigRoleListOKBody) UnmarshalBinary(b []byte) error {
+	var res KubeConfigRoleListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubeConfigRoleListOKBodyDataItems0 kube config role list o k body data items0
+swagger:model KubeConfigRoleListOKBodyDataItems0
+*/
+type KubeConfigRoleListOKBodyDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this kube config role list o k body data items0
+func (o *KubeConfigRoleListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kube config role list o k body data items0 based on context it is used
+func (o *KubeConfigRoleListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubeConfigRoleListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubeConfigRoleListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res KubeConfigRoleListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubeConfigRoleListUnauthorizedBody kube config role list unauthorized body
+swagger:model KubeConfigRoleListUnauthorizedBody
+*/
+type KubeConfigRoleListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kube config role list unauthorized body
+func (o *KubeConfigRoleListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kube config role list unauthorized body based on context it is used
+func (o *KubeConfigRoleListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubeConfigRoleListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubeConfigRoleListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubeConfigRoleListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

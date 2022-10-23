@@ -6,13 +6,13 @@ package alerting_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AlertingProfilesDeleteReader is a Reader for the AlertingProfilesDelete structure.
@@ -81,7 +81,7 @@ AlertingProfilesDeleteOK describes a response with status code 200, with default
 Success
 */
 type AlertingProfilesDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles delete o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *AlertingProfilesDeleteOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *AlertingProfilesDeleteOK) GetPayload() models.Unit {
+func (o *AlertingProfilesDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ AlertingProfilesDeleteBadRequest describes a response with status code 400, with
 Bad Request
 */
 type AlertingProfilesDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*AlertingProfilesDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this alerting profiles delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *AlertingProfilesDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesDeleteBadRequest) GetPayload() []*models.Error {
+func (o *AlertingProfilesDeleteBadRequest) GetPayload() []*AlertingProfilesDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ AlertingProfilesDeleteUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type AlertingProfilesDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this alerting profiles delete unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *AlertingProfilesDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesDeleteUnauthorized) GetPayload() *AlertingProfilesDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ AlertingProfilesDeleteForbidden describes a response with status code 403, with 
 Forbidden
 */
 type AlertingProfilesDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this alerting profiles delete forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *AlertingProfilesDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesDeleteForbidden) GetPayload() *AlertingProfilesDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ AlertingProfilesDeleteNotFound describes a response with status code 404, with d
 Not Found
 */
 type AlertingProfilesDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AlertingProfilesDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this alerting profiles delete not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *AlertingProfilesDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesDeleteNotFound) GetPayload() *AlertingProfilesDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *AlertingProfilesDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AlertingProfilesDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,5 +480,234 @@ func (o *AlertingProfilesDeleteInternalServerError) String() string {
 
 func (o *AlertingProfilesDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AlertingProfilesDeleteBadRequestBodyItems0 alerting profiles delete bad request body items0
+swagger:model AlertingProfilesDeleteBadRequestBodyItems0
+*/
+type AlertingProfilesDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this alerting profiles delete bad request body items0
+func (o *AlertingProfilesDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles delete bad request body items0 based on context it is used
+func (o *AlertingProfilesDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesDeleteBody alerting profiles delete body
+swagger:model AlertingProfilesDeleteBody
+*/
+type AlertingProfilesDeleteBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this alerting profiles delete body
+func (o *AlertingProfilesDeleteBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles delete body based on context it is used
+func (o *AlertingProfilesDeleteBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesDeleteBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesDeleteBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesDeleteBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesDeleteForbiddenBody alerting profiles delete forbidden body
+swagger:model AlertingProfilesDeleteForbiddenBody
+*/
+type AlertingProfilesDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles delete forbidden body
+func (o *AlertingProfilesDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles delete forbidden body based on context it is used
+func (o *AlertingProfilesDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesDeleteNotFoundBody alerting profiles delete not found body
+swagger:model AlertingProfilesDeleteNotFoundBody
+*/
+type AlertingProfilesDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles delete not found body
+func (o *AlertingProfilesDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles delete not found body based on context it is used
+func (o *AlertingProfilesDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AlertingProfilesDeleteUnauthorizedBody alerting profiles delete unauthorized body
+swagger:model AlertingProfilesDeleteUnauthorizedBody
+*/
+type AlertingProfilesDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this alerting profiles delete unauthorized body
+func (o *AlertingProfilesDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this alerting profiles delete unauthorized body based on context it is used
+func (o *AlertingProfilesDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AlertingProfilesDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AlertingProfilesDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AlertingProfilesDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

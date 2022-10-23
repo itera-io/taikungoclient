@@ -20,7 +20,7 @@ import (
 type KubernetesAlertList struct {
 
 	// data
-	Data []*KubernetesAlertDto `json:"data"`
+	Data []*KubernetesAlertListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,85 @@ func (m *KubernetesAlertList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *KubernetesAlertList) UnmarshalBinary(b []byte) error {
 	var res KubernetesAlertList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// KubernetesAlertListDataItems0 kubernetes alert list data items0
+//
+// swagger:model KubernetesAlertListDataItems0
+type KubernetesAlertListDataItems0 struct {
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// end at
+	EndAt string `json:"endAt,omitempty"`
+
+	// fingerprint
+	Fingerprint string `json:"fingerprint,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is silenced
+	IsSilenced bool `json:"isSilenced"`
+
+	// is solved
+	IsSolved bool `json:"isSolved"`
+
+	// labels
+	Labels interface{} `json:"labels,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// severity
+	Severity string `json:"severity,omitempty"`
+
+	// silence reason
+	SilenceReason string `json:"silenceReason,omitempty"`
+
+	// starts at
+	StartsAt string `json:"startsAt,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+}
+
+// Validate validates this kubernetes alert list data items0
+func (m *KubernetesAlertListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes alert list data items0 based on context it is used
+func (m *KubernetesAlertListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *KubernetesAlertListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *KubernetesAlertListDataItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesAlertListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

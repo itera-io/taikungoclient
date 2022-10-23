@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesDescribeCronJobReader is a Reader for the KubernetesDescribeCronJob structure.
@@ -136,7 +136,7 @@ KubernetesDescribeCronJobBadRequest describes a response with status code 400, w
 Bad Request
 */
 type KubernetesDescribeCronJobBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesDescribeCronJobBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes describe cron job bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeCronJobBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeCronJobBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesDescribeCronJobBadRequest) GetPayload() []*KubernetesDescribeCronJobBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesDescribeCronJobUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type KubernetesDescribeCronJobUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesDescribeCronJobUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes describe cron job unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesDescribeCronJobUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeCronJobUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeCronJobUnauthorized) GetPayload() *KubernetesDescribeCronJobUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeCronJobUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesDescribeCronJobUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesDescribeCronJobForbidden describes a response with status code 403, wi
 Forbidden
 */
 type KubernetesDescribeCronJobForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesDescribeCronJobForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes describe cron job forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesDescribeCronJobForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeCronJobForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeCronJobForbidden) GetPayload() *KubernetesDescribeCronJobForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeCronJobForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesDescribeCronJobForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesDescribeCronJobNotFound describes a response with status code 404, wit
 Not Found
 */
 type KubernetesDescribeCronJobNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesDescribeCronJobNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes describe cron job not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesDescribeCronJobNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeCronJobNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeCronJobNotFound) GetPayload() *KubernetesDescribeCronJobNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeCronJobNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesDescribeCronJobNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *KubernetesDescribeCronJobInternalServerError) String() string {
 
 func (o *KubernetesDescribeCronJobInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesDescribeCronJobBadRequestBodyItems0 kubernetes describe cron job bad request body items0
+swagger:model KubernetesDescribeCronJobBadRequestBodyItems0
+*/
+type KubernetesDescribeCronJobBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes describe cron job bad request body items0
+func (o *KubernetesDescribeCronJobBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe cron job bad request body items0 based on context it is used
+func (o *KubernetesDescribeCronJobBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeCronJobBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeCronJobBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeCronJobBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeCronJobBody kubernetes describe cron job body
+swagger:model KubernetesDescribeCronJobBody
+*/
+type KubernetesDescribeCronJobBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this kubernetes describe cron job body
+func (o *KubernetesDescribeCronJobBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe cron job body based on context it is used
+func (o *KubernetesDescribeCronJobBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeCronJobBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeCronJobBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeCronJobBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeCronJobForbiddenBody kubernetes describe cron job forbidden body
+swagger:model KubernetesDescribeCronJobForbiddenBody
+*/
+type KubernetesDescribeCronJobForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes describe cron job forbidden body
+func (o *KubernetesDescribeCronJobForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe cron job forbidden body based on context it is used
+func (o *KubernetesDescribeCronJobForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeCronJobForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeCronJobForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeCronJobForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeCronJobNotFoundBody kubernetes describe cron job not found body
+swagger:model KubernetesDescribeCronJobNotFoundBody
+*/
+type KubernetesDescribeCronJobNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes describe cron job not found body
+func (o *KubernetesDescribeCronJobNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe cron job not found body based on context it is used
+func (o *KubernetesDescribeCronJobNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeCronJobNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeCronJobNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeCronJobNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeCronJobUnauthorizedBody kubernetes describe cron job unauthorized body
+swagger:model KubernetesDescribeCronJobUnauthorizedBody
+*/
+type KubernetesDescribeCronJobUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes describe cron job unauthorized body
+func (o *KubernetesDescribeCronJobUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe cron job unauthorized body based on context it is used
+func (o *KubernetesDescribeCronJobUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeCronJobUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeCronJobUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeCronJobUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

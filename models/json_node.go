@@ -194,3 +194,40 @@ func (m *JSONNode) UnmarshalBinary(b []byte) error {
 	*m = res
 	return nil
 }
+
+// JSONNodeOptions JSON node options
+//
+// swagger:model JSONNodeOptions
+type JSONNodeOptions struct {
+
+	// property name case insensitive
+	PropertyNameCaseInsensitive bool `json:"propertyNameCaseInsensitive"`
+}
+
+// Validate validates this JSON node options
+func (m *JSONNodeOptions) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this JSON node options based on context it is used
+func (m *JSONNodeOptions) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *JSONNodeOptions) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *JSONNodeOptions) UnmarshalBinary(b []byte) error {
+	var res JSONNodeOptions
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}

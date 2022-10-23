@@ -20,7 +20,7 @@ import (
 type BoundImagesForProjectsList struct {
 
 	// data
-	Data []*BoundImagesForProjectsListDto `json:"data"`
+	Data []*BoundImagesForProjectsListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,73 @@ func (m *BoundImagesForProjectsList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BoundImagesForProjectsList) UnmarshalBinary(b []byte) error {
 	var res BoundImagesForProjectsList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// BoundImagesForProjectsListDataItems0 bound images for projects list data items0
+//
+// swagger:model BoundImagesForProjectsListDataItems0
+type BoundImagesForProjectsListDataItems0 struct {
+
+	// cloud Id
+	CloudID int32 `json:"cloudId,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// image Id
+	ImageID string `json:"imageId,omitempty"`
+
+	// is aws
+	IsAws bool `json:"isAws"`
+
+	// is azure
+	IsAzure bool `json:"isAzure"`
+
+	// is openstack
+	IsOpenstack bool `json:"isOpenstack"`
+
+	// is windows
+	IsWindows bool `json:"isWindows"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
+	// size
+	Size float64 `json:"size,omitempty"`
+}
+
+// Validate validates this bound images for projects list data items0
+func (m *BoundImagesForProjectsListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this bound images for projects list data items0 based on context it is used
+func (m *BoundImagesForProjectsListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *BoundImagesForProjectsListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *BoundImagesForProjectsListDataItems0) UnmarshalBinary(b []byte) error {
+	var res BoundImagesForProjectsListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

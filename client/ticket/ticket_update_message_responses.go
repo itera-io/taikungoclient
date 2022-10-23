@@ -6,13 +6,13 @@ package ticket
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // TicketUpdateMessageReader is a Reader for the TicketUpdateMessage structure.
@@ -75,7 +75,7 @@ TicketUpdateMessageOK describes a response with status code 200, with default he
 Success
 */
 type TicketUpdateMessageOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket update message o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *TicketUpdateMessageOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageOK  %+v", 200, o.Payload)
 }
 
-func (o *TicketUpdateMessageOK) GetPayload() models.Unit {
+func (o *TicketUpdateMessageOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ TicketUpdateMessageBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type TicketUpdateMessageBadRequest struct {
-	Payload []*models.Error
+	Payload []*TicketUpdateMessageBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this ticket update message bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *TicketUpdateMessageBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketUpdateMessageBadRequest) GetPayload() []*models.Error {
+func (o *TicketUpdateMessageBadRequest) GetPayload() []*TicketUpdateMessageBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ TicketUpdateMessageUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type TicketUpdateMessageUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *TicketUpdateMessageUnauthorizedBody
 }
 
 // IsSuccess returns true when this ticket update message unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *TicketUpdateMessageUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketUpdateMessageUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *TicketUpdateMessageUnauthorized) GetPayload() *TicketUpdateMessageUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *TicketUpdateMessageUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(TicketUpdateMessageUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ TicketUpdateMessageForbidden describes a response with status code 403, with def
 Forbidden
 */
 type TicketUpdateMessageForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *TicketUpdateMessageForbiddenBody
 }
 
 // IsSuccess returns true when this ticket update message forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *TicketUpdateMessageForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketUpdateMessageForbidden) GetPayload() *models.ProblemDetails {
+func (o *TicketUpdateMessageForbidden) GetPayload() *TicketUpdateMessageForbiddenBody {
 	return o.Payload
 }
 
 func (o *TicketUpdateMessageForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(TicketUpdateMessageForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ TicketUpdateMessageNotFound describes a response with status code 404, with defa
 Not Found
 */
 type TicketUpdateMessageNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *TicketUpdateMessageNotFoundBody
 }
 
 // IsSuccess returns true when this ticket update message not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *TicketUpdateMessageNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketUpdateMessageNotFound) GetPayload() *models.ProblemDetails {
+func (o *TicketUpdateMessageNotFound) GetPayload() *TicketUpdateMessageNotFoundBody {
 	return o.Payload
 }
 
 func (o *TicketUpdateMessageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(TicketUpdateMessageNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *TicketUpdateMessageInternalServerError) String() string {
 
 func (o *TicketUpdateMessageInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+TicketUpdateMessageBadRequestBodyItems0 ticket update message bad request body items0
+swagger:model TicketUpdateMessageBadRequestBodyItems0
+*/
+type TicketUpdateMessageBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this ticket update message bad request body items0
+func (o *TicketUpdateMessageBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket update message bad request body items0 based on context it is used
+func (o *TicketUpdateMessageBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketUpdateMessageBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketUpdateMessageBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res TicketUpdateMessageBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+TicketUpdateMessageBody ticket update message body
+swagger:model TicketUpdateMessageBody
+*/
+type TicketUpdateMessageBody struct {
+
+	// body
+	Body string `json:"body,omitempty"`
+
+	// message Id
+	MessageID string `json:"messageId,omitempty"`
+}
+
+// Validate validates this ticket update message body
+func (o *TicketUpdateMessageBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket update message body based on context it is used
+func (o *TicketUpdateMessageBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketUpdateMessageBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketUpdateMessageBody) UnmarshalBinary(b []byte) error {
+	var res TicketUpdateMessageBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+TicketUpdateMessageForbiddenBody ticket update message forbidden body
+swagger:model TicketUpdateMessageForbiddenBody
+*/
+type TicketUpdateMessageForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ticket update message forbidden body
+func (o *TicketUpdateMessageForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket update message forbidden body based on context it is used
+func (o *TicketUpdateMessageForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketUpdateMessageForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketUpdateMessageForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res TicketUpdateMessageForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+TicketUpdateMessageNotFoundBody ticket update message not found body
+swagger:model TicketUpdateMessageNotFoundBody
+*/
+type TicketUpdateMessageNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ticket update message not found body
+func (o *TicketUpdateMessageNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket update message not found body based on context it is used
+func (o *TicketUpdateMessageNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketUpdateMessageNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketUpdateMessageNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res TicketUpdateMessageNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+TicketUpdateMessageUnauthorizedBody ticket update message unauthorized body
+swagger:model TicketUpdateMessageUnauthorizedBody
+*/
+type TicketUpdateMessageUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ticket update message unauthorized body
+func (o *TicketUpdateMessageUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket update message unauthorized body based on context it is used
+func (o *TicketUpdateMessageUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketUpdateMessageUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketUpdateMessageUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res TicketUpdateMessageUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

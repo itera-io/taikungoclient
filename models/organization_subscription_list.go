@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // OrganizationSubscriptionList organization subscription list
@@ -20,7 +21,7 @@ import (
 type OrganizationSubscriptionList struct {
 
 	// data
-	Data []*OrganizationSubscriptionDto `json:"data"`
+	Data []*OrganizationSubscriptionListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +112,291 @@ func (m *OrganizationSubscriptionList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *OrganizationSubscriptionList) UnmarshalBinary(b []byte) error {
 	var res OrganizationSubscriptionList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// OrganizationSubscriptionListDataItems0 organization subscription list data items0
+//
+// swagger:model OrganizationSubscriptionListDataItems0
+type OrganizationSubscriptionListDataItems0 struct {
+
+	// end date
+	// Format: date-time
+	EndDate *strfmt.DateTime `json:"endDate,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// invoices
+	Invoices []*OrganizationSubscriptionListDataItems0InvoicesItems0 `json:"invoices"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// start date
+	// Format: date-time
+	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
+
+	// stripe subscription Id
+	StripeSubscriptionID string `json:"stripeSubscriptionId,omitempty"`
+
+	// subscription Id
+	SubscriptionID int32 `json:"subscriptionId,omitempty"`
+
+	// subscription name
+	SubscriptionName string `json:"subscriptionName,omitempty"`
+
+	// subscription type
+	SubscriptionType string `json:"subscriptionType,omitempty"`
+}
+
+// Validate validates this organization subscription list data items0
+func (m *OrganizationSubscriptionListDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateEndDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateInvoices(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStartDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *OrganizationSubscriptionListDataItems0) validateEndDate(formats strfmt.Registry) error {
+	if swag.IsZero(m.EndDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("endDate", "body", "date-time", m.EndDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *OrganizationSubscriptionListDataItems0) validateInvoices(formats strfmt.Registry) error {
+	if swag.IsZero(m.Invoices) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Invoices); i++ {
+		if swag.IsZero(m.Invoices[i]) { // not required
+			continue
+		}
+
+		if m.Invoices[i] != nil {
+			if err := m.Invoices[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("invoices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("invoices" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *OrganizationSubscriptionListDataItems0) validateStartDate(formats strfmt.Registry) error {
+	if swag.IsZero(m.StartDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("startDate", "body", "date-time", m.StartDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this organization subscription list data items0 based on the context it is used
+func (m *OrganizationSubscriptionListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateInvoices(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *OrganizationSubscriptionListDataItems0) contextValidateInvoices(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Invoices); i++ {
+
+		if m.Invoices[i] != nil {
+			if err := m.Invoices[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("invoices" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("invoices" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *OrganizationSubscriptionListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *OrganizationSubscriptionListDataItems0) UnmarshalBinary(b []byte) error {
+	var res OrganizationSubscriptionListDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// OrganizationSubscriptionListDataItems0InvoicesItems0 organization subscription list data items0 invoices items0
+//
+// swagger:model OrganizationSubscriptionListDataItems0InvoicesItems0
+type OrganizationSubscriptionListDataItems0InvoicesItems0 struct {
+
+	// document number
+	DocumentNumber string `json:"documentNumber,omitempty"`
+
+	// due date
+	// Format: date-time
+	DueDate *strfmt.DateTime `json:"dueDate,omitempty"`
+
+	// end date
+	// Format: date-time
+	EndDate *strfmt.DateTime `json:"endDate,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is paid
+	IsPaid bool `json:"isPaid"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization subscription Id
+	OrganizationSubscriptionID int32 `json:"organizationSubscriptionId,omitempty"`
+
+	// price
+	Price float64 `json:"price,omitempty"`
+
+	// required payment action
+	RequiredPaymentAction bool `json:"requiredPaymentAction"`
+
+	// start date
+	// Format: date-time
+	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
+
+	// stripe invoice Id
+	StripeInvoiceID string `json:"stripeInvoiceId,omitempty"`
+}
+
+// Validate validates this organization subscription list data items0 invoices items0
+func (m *OrganizationSubscriptionListDataItems0InvoicesItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateDueDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEndDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStartDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *OrganizationSubscriptionListDataItems0InvoicesItems0) validateDueDate(formats strfmt.Registry) error {
+	if swag.IsZero(m.DueDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("dueDate", "body", "date-time", m.DueDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *OrganizationSubscriptionListDataItems0InvoicesItems0) validateEndDate(formats strfmt.Registry) error {
+	if swag.IsZero(m.EndDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("endDate", "body", "date-time", m.EndDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *OrganizationSubscriptionListDataItems0InvoicesItems0) validateStartDate(formats strfmt.Registry) error {
+	if swag.IsZero(m.StartDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("startDate", "body", "date-time", m.StartDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this organization subscription list data items0 invoices items0 based on context it is used
+func (m *OrganizationSubscriptionListDataItems0InvoicesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *OrganizationSubscriptionListDataItems0InvoicesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *OrganizationSubscriptionListDataItems0InvoicesItems0) UnmarshalBinary(b []byte) error {
+	var res OrganizationSubscriptionListDataItems0InvoicesItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -6,13 +6,15 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesGetPodListReader is a Reader for the KubernetesGetPodList structure.
@@ -75,7 +77,7 @@ KubernetesGetPodListOK describes a response with status code 200, with default h
 Success
 */
 type KubernetesGetPodListOK struct {
-	Payload *models.Pods
+	Payload *KubernetesGetPodListOKBody
 }
 
 // IsSuccess returns true when this kubernetes get pod list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *KubernetesGetPodListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pod][%d] kubernetesGetPodListOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesGetPodListOK) GetPayload() *models.Pods {
+func (o *KubernetesGetPodListOK) GetPayload() *KubernetesGetPodListOKBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetPodListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Pods)
+	o.Payload = new(KubernetesGetPodListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ KubernetesGetPodListBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type KubernetesGetPodListBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesGetPodListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes get pod list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *KubernetesGetPodListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pod][%d] kubernetesGetPodListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetPodListBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetPodListBadRequest) GetPayload() []*KubernetesGetPodListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ KubernetesGetPodListUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type KubernetesGetPodListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetPodListUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes get pod list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *KubernetesGetPodListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pod][%d] kubernetesGetPodListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetPodListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPodListUnauthorized) GetPayload() *KubernetesGetPodListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetPodListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetPodListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ KubernetesGetPodListForbidden describes a response with status code 403, with de
 Forbidden
 */
 type KubernetesGetPodListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetPodListForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes get pod list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *KubernetesGetPodListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pod][%d] kubernetesGetPodListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetPodListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPodListForbidden) GetPayload() *KubernetesGetPodListForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetPodListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetPodListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ KubernetesGetPodListNotFound describes a response with status code 404, with def
 Not Found
 */
 type KubernetesGetPodListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesGetPodListNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes get pod list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *KubernetesGetPodListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pod][%d] kubernetesGetPodListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetPodListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPodListNotFound) GetPayload() *KubernetesGetPodListNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesGetPodListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesGetPodListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,360 @@ func (o *KubernetesGetPodListInternalServerError) String() string {
 
 func (o *KubernetesGetPodListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesGetPodListBadRequestBodyItems0 kubernetes get pod list bad request body items0
+swagger:model KubernetesGetPodListBadRequestBodyItems0
+*/
+type KubernetesGetPodListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes get pod list bad request body items0
+func (o *KubernetesGetPodListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get pod list bad request body items0 based on context it is used
+func (o *KubernetesGetPodListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetPodListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetPodListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetPodListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetPodListForbiddenBody kubernetes get pod list forbidden body
+swagger:model KubernetesGetPodListForbiddenBody
+*/
+type KubernetesGetPodListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get pod list forbidden body
+func (o *KubernetesGetPodListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get pod list forbidden body based on context it is used
+func (o *KubernetesGetPodListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetPodListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetPodListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetPodListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetPodListNotFoundBody kubernetes get pod list not found body
+swagger:model KubernetesGetPodListNotFoundBody
+*/
+type KubernetesGetPodListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get pod list not found body
+func (o *KubernetesGetPodListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get pod list not found body based on context it is used
+func (o *KubernetesGetPodListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetPodListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetPodListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetPodListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetPodListOKBody kubernetes get pod list o k body
+swagger:model KubernetesGetPodListOKBody
+*/
+type KubernetesGetPodListOKBody struct {
+
+	// data
+	Data []*KubernetesGetPodListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this kubernetes get pod list o k body
+func (o *KubernetesGetPodListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetPodListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesGetPodListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesGetPodListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this kubernetes get pod list o k body based on the context it is used
+func (o *KubernetesGetPodListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *KubernetesGetPodListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("kubernetesGetPodListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesGetPodListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetPodListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetPodListOKBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetPodListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetPodListOKBodyDataItems0 kubernetes get pod list o k body data items0
+swagger:model KubernetesGetPodListOKBodyDataItems0
+*/
+type KubernetesGetPodListOKBodyDataItems0 struct {
+
+	// age
+	Age string `json:"age,omitempty"`
+
+	// container
+	Container []string `json:"container"`
+
+	// metadata name
+	MetadataName string `json:"metadataName,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// node
+	Node string `json:"node,omitempty"`
+
+	// phase
+	Phase string `json:"phase,omitempty"`
+
+	// restart count
+	RestartCount int32 `json:"restartCount,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
+}
+
+// Validate validates this kubernetes get pod list o k body data items0
+func (o *KubernetesGetPodListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get pod list o k body data items0 based on context it is used
+func (o *KubernetesGetPodListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetPodListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetPodListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetPodListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesGetPodListUnauthorizedBody kubernetes get pod list unauthorized body
+swagger:model KubernetesGetPodListUnauthorizedBody
+*/
+type KubernetesGetPodListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes get pod list unauthorized body
+func (o *KubernetesGetPodListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes get pod list unauthorized body based on context it is used
+func (o *KubernetesGetPodListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesGetPodListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesGetPodListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesGetPodListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

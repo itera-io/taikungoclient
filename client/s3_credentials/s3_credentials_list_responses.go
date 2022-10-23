@@ -6,13 +6,15 @@ package s3_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // S3CredentialsListReader is a Reader for the S3CredentialsList structure.
@@ -75,7 +77,7 @@ S3CredentialsListOK describes a response with status code 200, with default head
 Success
 */
 type S3CredentialsListOK struct {
-	Payload *models.BackupCredentials
+	Payload *S3CredentialsListOKBody
 }
 
 // IsSuccess returns true when this s3 credentials list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *S3CredentialsListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/S3Credentials/list][%d] s3CredentialsListOK  %+v", 200, o.Payload)
 }
 
-func (o *S3CredentialsListOK) GetPayload() *models.BackupCredentials {
+func (o *S3CredentialsListOK) GetPayload() *S3CredentialsListOKBody {
 	return o.Payload
 }
 
 func (o *S3CredentialsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.BackupCredentials)
+	o.Payload = new(S3CredentialsListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ S3CredentialsListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type S3CredentialsListBadRequest struct {
-	Payload []*models.Error
+	Payload []*S3CredentialsListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this s3 credentials list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *S3CredentialsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/S3Credentials/list][%d] s3CredentialsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsListBadRequest) GetPayload() []*models.Error {
+func (o *S3CredentialsListBadRequest) GetPayload() []*S3CredentialsListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ S3CredentialsListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type S3CredentialsListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *S3CredentialsListUnauthorizedBody
 }
 
 // IsSuccess returns true when this s3 credentials list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *S3CredentialsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/S3Credentials/list][%d] s3CredentialsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *S3CredentialsListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsListUnauthorized) GetPayload() *S3CredentialsListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *S3CredentialsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(S3CredentialsListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ S3CredentialsListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type S3CredentialsListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *S3CredentialsListForbiddenBody
 }
 
 // IsSuccess returns true when this s3 credentials list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *S3CredentialsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/S3Credentials/list][%d] s3CredentialsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *S3CredentialsListForbidden) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsListForbidden) GetPayload() *S3CredentialsListForbiddenBody {
 	return o.Payload
 }
 
 func (o *S3CredentialsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(S3CredentialsListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ S3CredentialsListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type S3CredentialsListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *S3CredentialsListNotFoundBody
 }
 
 // IsSuccess returns true when this s3 credentials list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *S3CredentialsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/S3Credentials/list][%d] s3CredentialsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *S3CredentialsListNotFound) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsListNotFound) GetPayload() *S3CredentialsListNotFoundBody {
 	return o.Payload
 }
 
 func (o *S3CredentialsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(S3CredentialsListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,483 @@ func (o *S3CredentialsListInternalServerError) String() string {
 
 func (o *S3CredentialsListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+S3CredentialsListBadRequestBodyItems0 s3 credentials list bad request body items0
+swagger:model S3CredentialsListBadRequestBodyItems0
+*/
+type S3CredentialsListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this s3 credentials list bad request body items0
+func (o *S3CredentialsListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this s3 credentials list bad request body items0 based on context it is used
+func (o *S3CredentialsListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+S3CredentialsListForbiddenBody s3 credentials list forbidden body
+swagger:model S3CredentialsListForbiddenBody
+*/
+type S3CredentialsListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this s3 credentials list forbidden body
+func (o *S3CredentialsListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this s3 credentials list forbidden body based on context it is used
+func (o *S3CredentialsListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+S3CredentialsListNotFoundBody s3 credentials list not found body
+swagger:model S3CredentialsListNotFoundBody
+*/
+type S3CredentialsListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this s3 credentials list not found body
+func (o *S3CredentialsListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this s3 credentials list not found body based on context it is used
+func (o *S3CredentialsListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+S3CredentialsListOKBody s3 credentials list o k body
+swagger:model S3CredentialsListOKBody
+*/
+type S3CredentialsListOKBody struct {
+
+	// data
+	Data []*S3CredentialsListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this s3 credentials list o k body
+func (o *S3CredentialsListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *S3CredentialsListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("s3CredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("s3CredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this s3 credentials list o k body based on the context it is used
+func (o *S3CredentialsListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *S3CredentialsListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("s3CredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("s3CredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsListOKBody) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+S3CredentialsListOKBodyDataItems0 s3 credentials list o k body data items0
+swagger:model S3CredentialsListOKBodyDataItems0
+*/
+type S3CredentialsListOKBodyDataItems0 struct {
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// created by
+	CreatedBy string `json:"createdBy,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is default
+	IsDefault bool `json:"isDefault"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// last modified
+	LastModified string `json:"lastModified,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// projects
+	Projects []*S3CredentialsListOKBodyDataItems0ProjectsItems0 `json:"projects"`
+
+	// s3 access key Id
+	S3AccessKeyID string `json:"s3AccessKeyId,omitempty"`
+
+	// s3 endpoint
+	S3Endpoint string `json:"s3Endpoint,omitempty"`
+
+	// s3 name
+	S3Name string `json:"s3Name,omitempty"`
+
+	// s3 region
+	S3Region string `json:"s3Region,omitempty"`
+}
+
+// Validate validates this s3 credentials list o k body data items0
+func (o *S3CredentialsListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateProjects(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *S3CredentialsListOKBodyDataItems0) validateProjects(formats strfmt.Registry) error {
+	if swag.IsZero(o.Projects) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Projects); i++ {
+		if swag.IsZero(o.Projects[i]) { // not required
+			continue
+		}
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this s3 credentials list o k body data items0 based on the context it is used
+func (o *S3CredentialsListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *S3CredentialsListOKBodyDataItems0) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Projects); i++ {
+
+		if o.Projects[i] != nil {
+			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+S3CredentialsListOKBodyDataItems0ProjectsItems0 s3 credentials list o k body data items0 projects items0
+swagger:model S3CredentialsListOKBodyDataItems0ProjectsItems0
+*/
+type S3CredentialsListOKBodyDataItems0ProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this s3 credentials list o k body data items0 projects items0
+func (o *S3CredentialsListOKBodyDataItems0ProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this s3 credentials list o k body data items0 projects items0 based on context it is used
+func (o *S3CredentialsListOKBodyDataItems0ProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsListOKBodyDataItems0ProjectsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsListOKBodyDataItems0ProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsListOKBodyDataItems0ProjectsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+S3CredentialsListUnauthorizedBody s3 credentials list unauthorized body
+swagger:model S3CredentialsListUnauthorizedBody
+*/
+type S3CredentialsListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this s3 credentials list unauthorized body
+func (o *S3CredentialsListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this s3 credentials list unauthorized body based on context it is used
+func (o *S3CredentialsListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *S3CredentialsListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *S3CredentialsListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res S3CredentialsListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

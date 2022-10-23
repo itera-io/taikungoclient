@@ -6,13 +6,13 @@ package opa_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // OpaProfilesDeleteReader is a Reader for the OpaProfilesDelete structure.
@@ -75,7 +75,7 @@ OpaProfilesDeleteOK describes a response with status code 200, with default head
 Success
 */
 type OpaProfilesDeleteOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles delete o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OpaProfilesDeleteOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *OpaProfilesDeleteOK) GetPayload() models.Unit {
+func (o *OpaProfilesDeleteOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OpaProfilesDeleteBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type OpaProfilesDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload []*OpaProfilesDeleteBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this opa profiles delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpaProfilesDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesDeleteBadRequest) GetPayload() []*models.Error {
+func (o *OpaProfilesDeleteBadRequest) GetPayload() []*OpaProfilesDeleteBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OpaProfilesDeleteUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpaProfilesDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *OpaProfilesDeleteUnauthorizedBody
 }
 
 // IsSuccess returns true when this opa profiles delete unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OpaProfilesDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesDeleteUnauthorized) GetPayload() *OpaProfilesDeleteUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *OpaProfilesDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpaProfilesDeleteUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OpaProfilesDeleteForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpaProfilesDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *OpaProfilesDeleteForbiddenBody
 }
 
 // IsSuccess returns true when this opa profiles delete forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OpaProfilesDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesDeleteForbidden) GetPayload() *OpaProfilesDeleteForbiddenBody {
 	return o.Payload
 }
 
 func (o *OpaProfilesDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpaProfilesDeleteForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OpaProfilesDeleteNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpaProfilesDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *OpaProfilesDeleteNotFoundBody
 }
 
 // IsSuccess returns true when this opa profiles delete not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OpaProfilesDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesDeleteNotFound) GetPayload() *OpaProfilesDeleteNotFoundBody {
 	return o.Payload
 }
 
 func (o *OpaProfilesDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(OpaProfilesDeleteNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,234 @@ func (o *OpaProfilesDeleteInternalServerError) String() string {
 
 func (o *OpaProfilesDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+OpaProfilesDeleteBadRequestBodyItems0 opa profiles delete bad request body items0
+swagger:model OpaProfilesDeleteBadRequestBodyItems0
+*/
+type OpaProfilesDeleteBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this opa profiles delete bad request body items0
+func (o *OpaProfilesDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles delete bad request body items0 based on context it is used
+func (o *OpaProfilesDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesDeleteBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesDeleteBody opa profiles delete body
+swagger:model OpaProfilesDeleteBody
+*/
+type OpaProfilesDeleteBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this opa profiles delete body
+func (o *OpaProfilesDeleteBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles delete body based on context it is used
+func (o *OpaProfilesDeleteBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesDeleteBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesDeleteBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesDeleteBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesDeleteForbiddenBody opa profiles delete forbidden body
+swagger:model OpaProfilesDeleteForbiddenBody
+*/
+type OpaProfilesDeleteForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this opa profiles delete forbidden body
+func (o *OpaProfilesDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles delete forbidden body based on context it is used
+func (o *OpaProfilesDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesDeleteForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesDeleteNotFoundBody opa profiles delete not found body
+swagger:model OpaProfilesDeleteNotFoundBody
+*/
+type OpaProfilesDeleteNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this opa profiles delete not found body
+func (o *OpaProfilesDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles delete not found body based on context it is used
+func (o *OpaProfilesDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesDeleteNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OpaProfilesDeleteUnauthorizedBody opa profiles delete unauthorized body
+swagger:model OpaProfilesDeleteUnauthorizedBody
+*/
+type OpaProfilesDeleteUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this opa profiles delete unauthorized body
+func (o *OpaProfilesDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this opa profiles delete unauthorized body based on context it is used
+func (o *OpaProfilesDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OpaProfilesDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OpaProfilesDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res OpaProfilesDeleteUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -23,7 +23,7 @@ type AllFlavorsList struct {
 	CloudType string `json:"cloudType,omitempty"`
 
 	// data
-	Data []*FlavorsListDto `json:"data"`
+	Data []*AllFlavorsListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -114,6 +114,55 @@ func (m *AllFlavorsList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AllFlavorsList) UnmarshalBinary(b []byte) error {
 	var res AllFlavorsList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AllFlavorsListDataItems0 all flavors list data items0
+//
+// swagger:model AllFlavorsListDataItems0
+type AllFlavorsListDataItems0 struct {
+
+	// cpu
+	CPU int32 `json:"cpu,omitempty"`
+
+	// description
+	Description interface{} `json:"description,omitempty"`
+
+	// max data disk count
+	MaxDataDiskCount float64 `json:"maxDataDiskCount,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// ram
+	RAM int64 `json:"ram,omitempty"`
+}
+
+// Validate validates this all flavors list data items0
+func (m *AllFlavorsListDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this all flavors list data items0 based on context it is used
+func (m *AllFlavorsListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AllFlavorsListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AllFlavorsListDataItems0) UnmarshalBinary(b []byte) error {
+	var res AllFlavorsListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

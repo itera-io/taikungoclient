@@ -6,13 +6,13 @@ package payment
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // PaymentCreateCustomerReader is a Reader for the PaymentCreateCustomer structure.
@@ -136,7 +136,7 @@ PaymentCreateCustomerBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type PaymentCreateCustomerBadRequest struct {
-	Payload []*models.Error
+	Payload []*PaymentCreateCustomerBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this payment create customer bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PaymentCreateCustomerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentCreateCustomerBadRequest) GetPayload() []*models.Error {
+func (o *PaymentCreateCustomerBadRequest) GetPayload() []*PaymentCreateCustomerBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ PaymentCreateCustomerUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type PaymentCreateCustomerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *PaymentCreateCustomerUnauthorizedBody
 }
 
 // IsSuccess returns true when this payment create customer unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *PaymentCreateCustomerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentCreateCustomerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PaymentCreateCustomerUnauthorized) GetPayload() *PaymentCreateCustomerUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *PaymentCreateCustomerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PaymentCreateCustomerUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ PaymentCreateCustomerForbidden describes a response with status code 403, with d
 Forbidden
 */
 type PaymentCreateCustomerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *PaymentCreateCustomerForbiddenBody
 }
 
 // IsSuccess returns true when this payment create customer forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *PaymentCreateCustomerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentCreateCustomerForbidden) GetPayload() *models.ProblemDetails {
+func (o *PaymentCreateCustomerForbidden) GetPayload() *PaymentCreateCustomerForbiddenBody {
 	return o.Payload
 }
 
 func (o *PaymentCreateCustomerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PaymentCreateCustomerForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ PaymentCreateCustomerNotFound describes a response with status code 404, with de
 Not Found
 */
 type PaymentCreateCustomerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *PaymentCreateCustomerNotFoundBody
 }
 
 // IsSuccess returns true when this payment create customer not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *PaymentCreateCustomerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentCreateCustomerNotFound) GetPayload() *models.ProblemDetails {
+func (o *PaymentCreateCustomerNotFound) GetPayload() *PaymentCreateCustomerNotFoundBody {
 	return o.Payload
 }
 
 func (o *PaymentCreateCustomerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PaymentCreateCustomerNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,261 @@ func (o *PaymentCreateCustomerInternalServerError) String() string {
 
 func (o *PaymentCreateCustomerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+PaymentCreateCustomerBadRequestBodyItems0 payment create customer bad request body items0
+swagger:model PaymentCreateCustomerBadRequestBodyItems0
+*/
+type PaymentCreateCustomerBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this payment create customer bad request body items0
+func (o *PaymentCreateCustomerBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment create customer bad request body items0 based on context it is used
+func (o *PaymentCreateCustomerBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentCreateCustomerBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentCreateCustomerBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res PaymentCreateCustomerBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PaymentCreateCustomerBody payment create customer body
+swagger:model PaymentCreateCustomerBody
+*/
+type PaymentCreateCustomerBody struct {
+
+	// address
+	Address string `json:"address,omitempty"`
+
+	// billing email
+	BillingEmail string `json:"billingEmail,omitempty"`
+
+	// city
+	City string `json:"city,omitempty"`
+
+	// country
+	Country string `json:"country,omitempty"`
+
+	// legal name
+	LegalName string `json:"legalName,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// partner Id
+	PartnerID int32 `json:"partnerId,omitempty"`
+
+	// user email
+	UserEmail string `json:"userEmail,omitempty"`
+
+	// user name
+	UserName string `json:"userName,omitempty"`
+
+	// vat number
+	VatNumber string `json:"vatNumber,omitempty"`
+}
+
+// Validate validates this payment create customer body
+func (o *PaymentCreateCustomerBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment create customer body based on context it is used
+func (o *PaymentCreateCustomerBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentCreateCustomerBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentCreateCustomerBody) UnmarshalBinary(b []byte) error {
+	var res PaymentCreateCustomerBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PaymentCreateCustomerForbiddenBody payment create customer forbidden body
+swagger:model PaymentCreateCustomerForbiddenBody
+*/
+type PaymentCreateCustomerForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this payment create customer forbidden body
+func (o *PaymentCreateCustomerForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment create customer forbidden body based on context it is used
+func (o *PaymentCreateCustomerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentCreateCustomerForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentCreateCustomerForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res PaymentCreateCustomerForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PaymentCreateCustomerNotFoundBody payment create customer not found body
+swagger:model PaymentCreateCustomerNotFoundBody
+*/
+type PaymentCreateCustomerNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this payment create customer not found body
+func (o *PaymentCreateCustomerNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment create customer not found body based on context it is used
+func (o *PaymentCreateCustomerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentCreateCustomerNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentCreateCustomerNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res PaymentCreateCustomerNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PaymentCreateCustomerUnauthorizedBody payment create customer unauthorized body
+swagger:model PaymentCreateCustomerUnauthorizedBody
+*/
+type PaymentCreateCustomerUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this payment create customer unauthorized body
+func (o *PaymentCreateCustomerUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this payment create customer unauthorized body based on context it is used
+func (o *PaymentCreateCustomerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PaymentCreateCustomerUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PaymentCreateCustomerUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res PaymentCreateCustomerUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

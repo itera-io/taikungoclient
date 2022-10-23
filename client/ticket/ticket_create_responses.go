@@ -6,13 +6,13 @@ package ticket
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // TicketCreateReader is a Reader for the TicketCreate structure.
@@ -75,7 +75,7 @@ TicketCreateOK describes a response with status code 200, with default header va
 Success
 */
 type TicketCreateOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket create o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *TicketCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *TicketCreateOK) GetPayload() models.Unit {
+func (o *TicketCreateOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ TicketCreateBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type TicketCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*TicketCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this ticket create bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *TicketCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketCreateBadRequest) GetPayload() []*models.Error {
+func (o *TicketCreateBadRequest) GetPayload() []*TicketCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ TicketCreateUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type TicketCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *TicketCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this ticket create unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *TicketCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *TicketCreateUnauthorized) GetPayload() *TicketCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *TicketCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(TicketCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ TicketCreateForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type TicketCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *TicketCreateForbiddenBody
 }
 
 // IsSuccess returns true when this ticket create forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *TicketCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *TicketCreateForbidden) GetPayload() *TicketCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *TicketCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(TicketCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ TicketCreateNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type TicketCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *TicketCreateNotFoundBody
 }
 
 // IsSuccess returns true when this ticket create not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *TicketCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *TicketCreateNotFound) GetPayload() *TicketCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *TicketCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(TicketCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *TicketCreateInternalServerError) String() string {
 
 func (o *TicketCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+TicketCreateBadRequestBodyItems0 ticket create bad request body items0
+swagger:model TicketCreateBadRequestBodyItems0
+*/
+type TicketCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this ticket create bad request body items0
+func (o *TicketCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket create bad request body items0 based on context it is used
+func (o *TicketCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res TicketCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+TicketCreateBody ticket create body
+swagger:model TicketCreateBody
+*/
+type TicketCreateBody struct {
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+}
+
+// Validate validates this ticket create body
+func (o *TicketCreateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket create body based on context it is used
+func (o *TicketCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketCreateBody) UnmarshalBinary(b []byte) error {
+	var res TicketCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+TicketCreateForbiddenBody ticket create forbidden body
+swagger:model TicketCreateForbiddenBody
+*/
+type TicketCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ticket create forbidden body
+func (o *TicketCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket create forbidden body based on context it is used
+func (o *TicketCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res TicketCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+TicketCreateNotFoundBody ticket create not found body
+swagger:model TicketCreateNotFoundBody
+*/
+type TicketCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ticket create not found body
+func (o *TicketCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket create not found body based on context it is used
+func (o *TicketCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res TicketCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+TicketCreateUnauthorizedBody ticket create unauthorized body
+swagger:model TicketCreateUnauthorizedBody
+*/
+type TicketCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ticket create unauthorized body
+func (o *TicketCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ticket create unauthorized body based on context it is used
+func (o *TicketCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *TicketCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *TicketCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res TicketCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -6,13 +6,15 @@ package images
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // ImagesOpenstackImagesReader is a Reader for the ImagesOpenstackImages structure.
@@ -75,7 +77,7 @@ ImagesOpenstackImagesOK describes a response with status code 200, with default 
 Success
 */
 type ImagesOpenstackImagesOK struct {
-	Payload *models.OpenstackImageList
+	Payload *ImagesOpenstackImagesOKBody
 }
 
 // IsSuccess returns true when this images openstack images o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *ImagesOpenstackImagesOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesOK  %+v", 200, o.Payload)
 }
 
-func (o *ImagesOpenstackImagesOK) GetPayload() *models.OpenstackImageList {
+func (o *ImagesOpenstackImagesOK) GetPayload() *ImagesOpenstackImagesOKBody {
 	return o.Payload
 }
 
 func (o *ImagesOpenstackImagesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.OpenstackImageList)
+	o.Payload = new(ImagesOpenstackImagesOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ ImagesOpenstackImagesBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type ImagesOpenstackImagesBadRequest struct {
-	Payload []*models.Error
+	Payload []*ImagesOpenstackImagesBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this images openstack images bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *ImagesOpenstackImagesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesOpenstackImagesBadRequest) GetPayload() []*models.Error {
+func (o *ImagesOpenstackImagesBadRequest) GetPayload() []*ImagesOpenstackImagesBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ ImagesOpenstackImagesUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type ImagesOpenstackImagesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesOpenstackImagesUnauthorizedBody
 }
 
 // IsSuccess returns true when this images openstack images unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *ImagesOpenstackImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesOpenstackImagesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ImagesOpenstackImagesUnauthorized) GetPayload() *ImagesOpenstackImagesUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *ImagesOpenstackImagesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesOpenstackImagesUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ ImagesOpenstackImagesForbidden describes a response with status code 403, with d
 Forbidden
 */
 type ImagesOpenstackImagesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesOpenstackImagesForbiddenBody
 }
 
 // IsSuccess returns true when this images openstack images forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *ImagesOpenstackImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesOpenstackImagesForbidden) GetPayload() *models.ProblemDetails {
+func (o *ImagesOpenstackImagesForbidden) GetPayload() *ImagesOpenstackImagesForbiddenBody {
 	return o.Payload
 }
 
 func (o *ImagesOpenstackImagesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesOpenstackImagesForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ ImagesOpenstackImagesNotFound describes a response with status code 404, with de
 Not Found
 */
 type ImagesOpenstackImagesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *ImagesOpenstackImagesNotFoundBody
 }
 
 // IsSuccess returns true when this images openstack images not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *ImagesOpenstackImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesOpenstackImagesNotFound) GetPayload() *models.ProblemDetails {
+func (o *ImagesOpenstackImagesNotFound) GetPayload() *ImagesOpenstackImagesNotFoundBody {
 	return o.Payload
 }
 
 func (o *ImagesOpenstackImagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(ImagesOpenstackImagesNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,342 @@ func (o *ImagesOpenstackImagesInternalServerError) String() string {
 
 func (o *ImagesOpenstackImagesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+ImagesOpenstackImagesBadRequestBodyItems0 images openstack images bad request body items0
+swagger:model ImagesOpenstackImagesBadRequestBodyItems0
+*/
+type ImagesOpenstackImagesBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this images openstack images bad request body items0
+func (o *ImagesOpenstackImagesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images openstack images bad request body items0 based on context it is used
+func (o *ImagesOpenstackImagesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesOpenstackImagesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesOpenstackImagesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res ImagesOpenstackImagesBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesOpenstackImagesForbiddenBody images openstack images forbidden body
+swagger:model ImagesOpenstackImagesForbiddenBody
+*/
+type ImagesOpenstackImagesForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images openstack images forbidden body
+func (o *ImagesOpenstackImagesForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images openstack images forbidden body based on context it is used
+func (o *ImagesOpenstackImagesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesOpenstackImagesForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesOpenstackImagesForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res ImagesOpenstackImagesForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesOpenstackImagesNotFoundBody images openstack images not found body
+swagger:model ImagesOpenstackImagesNotFoundBody
+*/
+type ImagesOpenstackImagesNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images openstack images not found body
+func (o *ImagesOpenstackImagesNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images openstack images not found body based on context it is used
+func (o *ImagesOpenstackImagesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesOpenstackImagesNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesOpenstackImagesNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res ImagesOpenstackImagesNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesOpenstackImagesOKBody images openstack images o k body
+swagger:model ImagesOpenstackImagesOKBody
+*/
+type ImagesOpenstackImagesOKBody struct {
+
+	// data
+	Data []*ImagesOpenstackImagesOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this images openstack images o k body
+func (o *ImagesOpenstackImagesOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ImagesOpenstackImagesOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("imagesOpenstackImagesOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("imagesOpenstackImagesOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this images openstack images o k body based on the context it is used
+func (o *ImagesOpenstackImagesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ImagesOpenstackImagesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("imagesOpenstackImagesOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("imagesOpenstackImagesOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesOpenstackImagesOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesOpenstackImagesOKBody) UnmarshalBinary(b []byte) error {
+	var res ImagesOpenstackImagesOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesOpenstackImagesOKBodyDataItems0 images openstack images o k body data items0
+swagger:model ImagesOpenstackImagesOKBodyDataItems0
+*/
+type ImagesOpenstackImagesOKBodyDataItems0 struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this images openstack images o k body data items0
+func (o *ImagesOpenstackImagesOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images openstack images o k body data items0 based on context it is used
+func (o *ImagesOpenstackImagesOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesOpenstackImagesOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesOpenstackImagesOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res ImagesOpenstackImagesOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+ImagesOpenstackImagesUnauthorizedBody images openstack images unauthorized body
+swagger:model ImagesOpenstackImagesUnauthorizedBody
+*/
+type ImagesOpenstackImagesUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this images openstack images unauthorized body
+func (o *ImagesOpenstackImagesUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this images openstack images unauthorized body based on context it is used
+func (o *ImagesOpenstackImagesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *ImagesOpenstackImagesUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *ImagesOpenstackImagesUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res ImagesOpenstackImagesUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

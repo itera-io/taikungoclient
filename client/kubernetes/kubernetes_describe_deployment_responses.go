@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesDescribeDeploymentReader is a Reader for the KubernetesDescribeDeployment structure.
@@ -136,7 +136,7 @@ KubernetesDescribeDeploymentBadRequest describes a response with status code 400
 Bad Request
 */
 type KubernetesDescribeDeploymentBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesDescribeDeploymentBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes describe deployment bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeDeploymentBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeDeploymentBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesDescribeDeploymentBadRequest) GetPayload() []*KubernetesDescribeDeploymentBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesDescribeDeploymentUnauthorized describes a response with status code 4
 Unauthorized
 */
 type KubernetesDescribeDeploymentUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesDescribeDeploymentUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes describe deployment unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesDescribeDeploymentUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeDeploymentUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeDeploymentUnauthorized) GetPayload() *KubernetesDescribeDeploymentUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeDeploymentUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesDescribeDeploymentUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesDescribeDeploymentForbidden describes a response with status code 403,
 Forbidden
 */
 type KubernetesDescribeDeploymentForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesDescribeDeploymentForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes describe deployment forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesDescribeDeploymentForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeDeploymentForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeDeploymentForbidden) GetPayload() *KubernetesDescribeDeploymentForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeDeploymentForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesDescribeDeploymentForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesDescribeDeploymentNotFound describes a response with status code 404, 
 Not Found
 */
 type KubernetesDescribeDeploymentNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesDescribeDeploymentNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes describe deployment not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesDescribeDeploymentNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeDeploymentNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeDeploymentNotFound) GetPayload() *KubernetesDescribeDeploymentNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeDeploymentNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesDescribeDeploymentNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *KubernetesDescribeDeploymentInternalServerError) String() string {
 
 func (o *KubernetesDescribeDeploymentInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesDescribeDeploymentBadRequestBodyItems0 kubernetes describe deployment bad request body items0
+swagger:model KubernetesDescribeDeploymentBadRequestBodyItems0
+*/
+type KubernetesDescribeDeploymentBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes describe deployment bad request body items0
+func (o *KubernetesDescribeDeploymentBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe deployment bad request body items0 based on context it is used
+func (o *KubernetesDescribeDeploymentBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeDeploymentBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeDeploymentBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeDeploymentBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeDeploymentBody kubernetes describe deployment body
+swagger:model KubernetesDescribeDeploymentBody
+*/
+type KubernetesDescribeDeploymentBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this kubernetes describe deployment body
+func (o *KubernetesDescribeDeploymentBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe deployment body based on context it is used
+func (o *KubernetesDescribeDeploymentBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeDeploymentBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeDeploymentBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeDeploymentBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeDeploymentForbiddenBody kubernetes describe deployment forbidden body
+swagger:model KubernetesDescribeDeploymentForbiddenBody
+*/
+type KubernetesDescribeDeploymentForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes describe deployment forbidden body
+func (o *KubernetesDescribeDeploymentForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe deployment forbidden body based on context it is used
+func (o *KubernetesDescribeDeploymentForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeDeploymentForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeDeploymentForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeDeploymentForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeDeploymentNotFoundBody kubernetes describe deployment not found body
+swagger:model KubernetesDescribeDeploymentNotFoundBody
+*/
+type KubernetesDescribeDeploymentNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes describe deployment not found body
+func (o *KubernetesDescribeDeploymentNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe deployment not found body based on context it is used
+func (o *KubernetesDescribeDeploymentNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeDeploymentNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeDeploymentNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeDeploymentNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeDeploymentUnauthorizedBody kubernetes describe deployment unauthorized body
+swagger:model KubernetesDescribeDeploymentUnauthorizedBody
+*/
+type KubernetesDescribeDeploymentUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes describe deployment unauthorized body
+func (o *KubernetesDescribeDeploymentUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe deployment unauthorized body based on context it is used
+func (o *KubernetesDescribeDeploymentUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeDeploymentUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeDeploymentUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeDeploymentUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

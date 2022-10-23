@@ -6,13 +6,13 @@ package partner
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // PartnerUpdateReader is a Reader for the PartnerUpdate structure.
@@ -75,7 +75,7 @@ PartnerUpdateOK describes a response with status code 200, with default header v
 Success
 */
 type PartnerUpdateOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner update o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *PartnerUpdateOK) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *PartnerUpdateOK) GetPayload() models.Unit {
+func (o *PartnerUpdateOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ PartnerUpdateBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type PartnerUpdateBadRequest struct {
-	Payload []*models.Error
+	Payload []*PartnerUpdateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this partner update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PartnerUpdateBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerUpdateBadRequest) GetPayload() []*models.Error {
+func (o *PartnerUpdateBadRequest) GetPayload() []*PartnerUpdateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ PartnerUpdateUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type PartnerUpdateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *PartnerUpdateUnauthorizedBody
 }
 
 // IsSuccess returns true when this partner update unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *PartnerUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerUpdateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PartnerUpdateUnauthorized) GetPayload() *PartnerUpdateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *PartnerUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PartnerUpdateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ PartnerUpdateForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type PartnerUpdateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *PartnerUpdateForbiddenBody
 }
 
 // IsSuccess returns true when this partner update forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *PartnerUpdateForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerUpdateForbidden) GetPayload() *models.ProblemDetails {
+func (o *PartnerUpdateForbidden) GetPayload() *PartnerUpdateForbiddenBody {
 	return o.Payload
 }
 
 func (o *PartnerUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PartnerUpdateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ PartnerUpdateNotFound describes a response with status code 404, with default he
 Not Found
 */
 type PartnerUpdateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *PartnerUpdateNotFoundBody
 }
 
 // IsSuccess returns true when this partner update not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *PartnerUpdateNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerUpdateNotFound) GetPayload() *models.ProblemDetails {
+func (o *PartnerUpdateNotFound) GetPayload() *PartnerUpdateNotFoundBody {
 	return o.Payload
 }
 
 func (o *PartnerUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(PartnerUpdateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *PartnerUpdateInternalServerError) String() string {
 
 func (o *PartnerUpdateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+PartnerUpdateBadRequestBodyItems0 partner update bad request body items0
+swagger:model PartnerUpdateBadRequestBodyItems0
+*/
+type PartnerUpdateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this partner update bad request body items0
+func (o *PartnerUpdateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this partner update bad request body items0 based on context it is used
+func (o *PartnerUpdateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PartnerUpdateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PartnerUpdateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res PartnerUpdateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PartnerUpdateForbiddenBody partner update forbidden body
+swagger:model PartnerUpdateForbiddenBody
+*/
+type PartnerUpdateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this partner update forbidden body
+func (o *PartnerUpdateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this partner update forbidden body based on context it is used
+func (o *PartnerUpdateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PartnerUpdateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PartnerUpdateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res PartnerUpdateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PartnerUpdateNotFoundBody partner update not found body
+swagger:model PartnerUpdateNotFoundBody
+*/
+type PartnerUpdateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this partner update not found body
+func (o *PartnerUpdateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this partner update not found body based on context it is used
+func (o *PartnerUpdateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PartnerUpdateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PartnerUpdateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res PartnerUpdateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+PartnerUpdateUnauthorizedBody partner update unauthorized body
+swagger:model PartnerUpdateUnauthorizedBody
+*/
+type PartnerUpdateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this partner update unauthorized body
+func (o *PartnerUpdateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this partner update unauthorized body based on context it is used
+func (o *PartnerUpdateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *PartnerUpdateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *PartnerUpdateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res PartnerUpdateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

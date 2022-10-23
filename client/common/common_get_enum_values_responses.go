@@ -6,13 +6,15 @@ package common
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CommonGetEnumValuesReader is a Reader for the CommonGetEnumValues structure.
@@ -75,7 +77,7 @@ CommonGetEnumValuesOK describes a response with status code 200, with default he
 Success
 */
 type CommonGetEnumValuesOK struct {
-	Payload *models.EnumList
+	Payload *CommonGetEnumValuesOKBody
 }
 
 // IsSuccess returns true when this common get enum values o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *CommonGetEnumValuesOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesOK  %+v", 200, o.Payload)
 }
 
-func (o *CommonGetEnumValuesOK) GetPayload() *models.EnumList {
+func (o *CommonGetEnumValuesOK) GetPayload() *CommonGetEnumValuesOKBody {
 	return o.Payload
 }
 
 func (o *CommonGetEnumValuesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.EnumList)
+	o.Payload = new(CommonGetEnumValuesOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ CommonGetEnumValuesBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type CommonGetEnumValuesBadRequest struct {
-	Payload []*models.Error
+	Payload []*CommonGetEnumValuesBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this common get enum values bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *CommonGetEnumValuesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CommonGetEnumValuesBadRequest) GetPayload() []*models.Error {
+func (o *CommonGetEnumValuesBadRequest) GetPayload() []*CommonGetEnumValuesBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ CommonGetEnumValuesUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type CommonGetEnumValuesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CommonGetEnumValuesUnauthorizedBody
 }
 
 // IsSuccess returns true when this common get enum values unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *CommonGetEnumValuesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CommonGetEnumValuesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CommonGetEnumValuesUnauthorized) GetPayload() *CommonGetEnumValuesUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CommonGetEnumValuesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CommonGetEnumValuesUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ CommonGetEnumValuesForbidden describes a response with status code 403, with def
 Forbidden
 */
 type CommonGetEnumValuesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CommonGetEnumValuesForbiddenBody
 }
 
 // IsSuccess returns true when this common get enum values forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *CommonGetEnumValuesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CommonGetEnumValuesForbidden) GetPayload() *models.ProblemDetails {
+func (o *CommonGetEnumValuesForbidden) GetPayload() *CommonGetEnumValuesForbiddenBody {
 	return o.Payload
 }
 
 func (o *CommonGetEnumValuesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CommonGetEnumValuesForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ CommonGetEnumValuesNotFound describes a response with status code 404, with defa
 Not Found
 */
 type CommonGetEnumValuesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CommonGetEnumValuesNotFoundBody
 }
 
 // IsSuccess returns true when this common get enum values not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *CommonGetEnumValuesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CommonGetEnumValuesNotFound) GetPayload() *models.ProblemDetails {
+func (o *CommonGetEnumValuesNotFound) GetPayload() *CommonGetEnumValuesNotFoundBody {
 	return o.Payload
 }
 
 func (o *CommonGetEnumValuesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CommonGetEnumValuesNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,2495 @@ func (o *CommonGetEnumValuesInternalServerError) String() string {
 
 func (o *CommonGetEnumValuesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CommonGetEnumValuesBadRequestBodyItems0 common get enum values bad request body items0
+swagger:model CommonGetEnumValuesBadRequestBodyItems0
+*/
+type CommonGetEnumValuesBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this common get enum values bad request body items0
+func (o *CommonGetEnumValuesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values bad request body items0 based on context it is used
+func (o *CommonGetEnumValuesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesForbiddenBody common get enum values forbidden body
+swagger:model CommonGetEnumValuesForbiddenBody
+*/
+type CommonGetEnumValuesForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this common get enum values forbidden body
+func (o *CommonGetEnumValuesForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values forbidden body based on context it is used
+func (o *CommonGetEnumValuesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesNotFoundBody common get enum values not found body
+swagger:model CommonGetEnumValuesNotFoundBody
+*/
+type CommonGetEnumValuesNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this common get enum values not found body
+func (o *CommonGetEnumValuesNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values not found body based on context it is used
+func (o *CommonGetEnumValuesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBody common get enum values o k body
+swagger:model CommonGetEnumValuesOKBody
+*/
+type CommonGetEnumValuesOKBody struct {
+
+	// alert types
+	AlertTypes []*CommonGetEnumValuesOKBodyAlertTypesItems0 `json:"alertTypes"`
+
+	// alerting integration types
+	AlertingIntegrationTypes []*CommonGetEnumValuesOKBodyAlertingIntegrationTypesItems0 `json:"alertingIntegrationTypes"`
+
+	// audit logs
+	AuditLogs []*CommonGetEnumValuesOKBodyAuditLogsItems0 `json:"auditLogs"`
+
+	// availability
+	Availability []*CommonGetEnumValuesOKBodyAvailabilityItems0 `json:"availability"`
+
+	// aws platforms
+	AwsPlatforms []*CommonGetEnumValuesOKBodyAwsPlatformsItems0 `json:"awsPlatforms"`
+
+	// azure quotas
+	AzureQuotas []*CommonGetEnumValuesOKBodyAzureQuotasItems0 `json:"azureQuotas"`
+
+	// cloud types
+	CloudTypes []*CommonGetEnumValuesOKBodyCloudTypesItems0 `json:"cloudTypes"`
+
+	// cron periods
+	CronPeriods []*CommonGetEnumValuesOKBodyCronPeriodsItems0 `json:"cronPeriods"`
+
+	// google image types
+	GoogleImageTypes []*CommonGetEnumValuesOKBodyGoogleImageTypesItems0 `json:"googleImageTypes"`
+
+	// openstack continents
+	OpenstackContinents []*CommonGetEnumValuesOKBodyOpenstackContinentsItems0 `json:"openstackContinents"`
+
+	// project statuses
+	ProjectStatuses []*CommonGetEnumValuesOKBodyProjectStatusesItems0 `json:"projectStatuses"`
+
+	// prometheus types
+	PrometheusTypes []*CommonGetEnumValuesOKBodyPrometheusTypesItems0 `json:"prometheusTypes"`
+
+	// reboot options
+	RebootOptions []*CommonGetEnumValuesOKBodyRebootOptionsItems0 `json:"rebootOptions"`
+
+	// reminder types
+	ReminderTypes []*CommonGetEnumValuesOKBodyReminderTypesItems0 `json:"reminderTypes"`
+
+	// request logs
+	RequestLogs []*CommonGetEnumValuesOKBodyRequestLogsItems0 `json:"requestLogs"`
+
+	// security group rules
+	SecurityGroupRules []*CommonGetEnumValuesOKBodySecurityGroupRulesItems0 `json:"securityGroupRules"`
+
+	// server roles
+	ServerRoles []*CommonGetEnumValuesOKBodyServerRolesItems0 `json:"serverRoles"`
+
+	// server statuses
+	ServerStatuses []*CommonGetEnumValuesOKBodyServerStatusesItems0 `json:"serverStatuses"`
+
+	// showback kinds
+	ShowbackKinds []*CommonGetEnumValuesOKBodyShowbackKindsItems0 `json:"showbackKinds"`
+
+	// slack types
+	SlackTypes []*CommonGetEnumValuesOKBodySlackTypesItems0 `json:"slackTypes"`
+
+	// standalone Vm statuses
+	StandaloneVMStatuses []*CommonGetEnumValuesOKBodyStandaloneVMStatusesItems0 `json:"standaloneVmStatuses"`
+
+	// user roles
+	UserRoles []*CommonGetEnumValuesOKBodyUserRolesItems0 `json:"userRoles"`
+
+	// validity periods
+	ValidityPeriods []*CommonGetEnumValuesOKBodyValidityPeriodsItems0 `json:"validityPeriods"`
+}
+
+// Validate validates this common get enum values o k body
+func (o *CommonGetEnumValuesOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateAlertTypes(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateAlertingIntegrationTypes(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateAuditLogs(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateAvailability(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateAwsPlatforms(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateAzureQuotas(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateCloudTypes(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateCronPeriods(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateGoogleImageTypes(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateOpenstackContinents(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateProjectStatuses(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validatePrometheusTypes(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateRebootOptions(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateReminderTypes(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateRequestLogs(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateSecurityGroupRules(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateServerRoles(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateServerStatuses(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateShowbackKinds(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateSlackTypes(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateStandaloneVMStatuses(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateUserRoles(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.validateValidityPeriods(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateAlertTypes(formats strfmt.Registry) error {
+	if swag.IsZero(o.AlertTypes) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.AlertTypes); i++ {
+		if swag.IsZero(o.AlertTypes[i]) { // not required
+			continue
+		}
+
+		if o.AlertTypes[i] != nil {
+			if err := o.AlertTypes[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "alertTypes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "alertTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateAlertingIntegrationTypes(formats strfmt.Registry) error {
+	if swag.IsZero(o.AlertingIntegrationTypes) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.AlertingIntegrationTypes); i++ {
+		if swag.IsZero(o.AlertingIntegrationTypes[i]) { // not required
+			continue
+		}
+
+		if o.AlertingIntegrationTypes[i] != nil {
+			if err := o.AlertingIntegrationTypes[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "alertingIntegrationTypes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "alertingIntegrationTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateAuditLogs(formats strfmt.Registry) error {
+	if swag.IsZero(o.AuditLogs) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.AuditLogs); i++ {
+		if swag.IsZero(o.AuditLogs[i]) { // not required
+			continue
+		}
+
+		if o.AuditLogs[i] != nil {
+			if err := o.AuditLogs[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "auditLogs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "auditLogs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateAvailability(formats strfmt.Registry) error {
+	if swag.IsZero(o.Availability) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Availability); i++ {
+		if swag.IsZero(o.Availability[i]) { // not required
+			continue
+		}
+
+		if o.Availability[i] != nil {
+			if err := o.Availability[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "availability" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "availability" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateAwsPlatforms(formats strfmt.Registry) error {
+	if swag.IsZero(o.AwsPlatforms) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.AwsPlatforms); i++ {
+		if swag.IsZero(o.AwsPlatforms[i]) { // not required
+			continue
+		}
+
+		if o.AwsPlatforms[i] != nil {
+			if err := o.AwsPlatforms[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "awsPlatforms" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "awsPlatforms" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateAzureQuotas(formats strfmt.Registry) error {
+	if swag.IsZero(o.AzureQuotas) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.AzureQuotas); i++ {
+		if swag.IsZero(o.AzureQuotas[i]) { // not required
+			continue
+		}
+
+		if o.AzureQuotas[i] != nil {
+			if err := o.AzureQuotas[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "azureQuotas" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "azureQuotas" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateCloudTypes(formats strfmt.Registry) error {
+	if swag.IsZero(o.CloudTypes) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.CloudTypes); i++ {
+		if swag.IsZero(o.CloudTypes[i]) { // not required
+			continue
+		}
+
+		if o.CloudTypes[i] != nil {
+			if err := o.CloudTypes[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "cloudTypes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "cloudTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateCronPeriods(formats strfmt.Registry) error {
+	if swag.IsZero(o.CronPeriods) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.CronPeriods); i++ {
+		if swag.IsZero(o.CronPeriods[i]) { // not required
+			continue
+		}
+
+		if o.CronPeriods[i] != nil {
+			if err := o.CronPeriods[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "cronPeriods" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "cronPeriods" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateGoogleImageTypes(formats strfmt.Registry) error {
+	if swag.IsZero(o.GoogleImageTypes) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.GoogleImageTypes); i++ {
+		if swag.IsZero(o.GoogleImageTypes[i]) { // not required
+			continue
+		}
+
+		if o.GoogleImageTypes[i] != nil {
+			if err := o.GoogleImageTypes[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "googleImageTypes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "googleImageTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateOpenstackContinents(formats strfmt.Registry) error {
+	if swag.IsZero(o.OpenstackContinents) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.OpenstackContinents); i++ {
+		if swag.IsZero(o.OpenstackContinents[i]) { // not required
+			continue
+		}
+
+		if o.OpenstackContinents[i] != nil {
+			if err := o.OpenstackContinents[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "openstackContinents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "openstackContinents" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateProjectStatuses(formats strfmt.Registry) error {
+	if swag.IsZero(o.ProjectStatuses) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.ProjectStatuses); i++ {
+		if swag.IsZero(o.ProjectStatuses[i]) { // not required
+			continue
+		}
+
+		if o.ProjectStatuses[i] != nil {
+			if err := o.ProjectStatuses[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "projectStatuses" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "projectStatuses" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validatePrometheusTypes(formats strfmt.Registry) error {
+	if swag.IsZero(o.PrometheusTypes) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.PrometheusTypes); i++ {
+		if swag.IsZero(o.PrometheusTypes[i]) { // not required
+			continue
+		}
+
+		if o.PrometheusTypes[i] != nil {
+			if err := o.PrometheusTypes[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "prometheusTypes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "prometheusTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateRebootOptions(formats strfmt.Registry) error {
+	if swag.IsZero(o.RebootOptions) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.RebootOptions); i++ {
+		if swag.IsZero(o.RebootOptions[i]) { // not required
+			continue
+		}
+
+		if o.RebootOptions[i] != nil {
+			if err := o.RebootOptions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "rebootOptions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "rebootOptions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateReminderTypes(formats strfmt.Registry) error {
+	if swag.IsZero(o.ReminderTypes) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.ReminderTypes); i++ {
+		if swag.IsZero(o.ReminderTypes[i]) { // not required
+			continue
+		}
+
+		if o.ReminderTypes[i] != nil {
+			if err := o.ReminderTypes[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "reminderTypes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "reminderTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateRequestLogs(formats strfmt.Registry) error {
+	if swag.IsZero(o.RequestLogs) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.RequestLogs); i++ {
+		if swag.IsZero(o.RequestLogs[i]) { // not required
+			continue
+		}
+
+		if o.RequestLogs[i] != nil {
+			if err := o.RequestLogs[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "requestLogs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "requestLogs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateSecurityGroupRules(formats strfmt.Registry) error {
+	if swag.IsZero(o.SecurityGroupRules) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.SecurityGroupRules); i++ {
+		if swag.IsZero(o.SecurityGroupRules[i]) { // not required
+			continue
+		}
+
+		if o.SecurityGroupRules[i] != nil {
+			if err := o.SecurityGroupRules[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "securityGroupRules" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "securityGroupRules" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateServerRoles(formats strfmt.Registry) error {
+	if swag.IsZero(o.ServerRoles) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.ServerRoles); i++ {
+		if swag.IsZero(o.ServerRoles[i]) { // not required
+			continue
+		}
+
+		if o.ServerRoles[i] != nil {
+			if err := o.ServerRoles[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "serverRoles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "serverRoles" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateServerStatuses(formats strfmt.Registry) error {
+	if swag.IsZero(o.ServerStatuses) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.ServerStatuses); i++ {
+		if swag.IsZero(o.ServerStatuses[i]) { // not required
+			continue
+		}
+
+		if o.ServerStatuses[i] != nil {
+			if err := o.ServerStatuses[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "serverStatuses" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "serverStatuses" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateShowbackKinds(formats strfmt.Registry) error {
+	if swag.IsZero(o.ShowbackKinds) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.ShowbackKinds); i++ {
+		if swag.IsZero(o.ShowbackKinds[i]) { // not required
+			continue
+		}
+
+		if o.ShowbackKinds[i] != nil {
+			if err := o.ShowbackKinds[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "showbackKinds" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "showbackKinds" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateSlackTypes(formats strfmt.Registry) error {
+	if swag.IsZero(o.SlackTypes) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.SlackTypes); i++ {
+		if swag.IsZero(o.SlackTypes[i]) { // not required
+			continue
+		}
+
+		if o.SlackTypes[i] != nil {
+			if err := o.SlackTypes[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "slackTypes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "slackTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateStandaloneVMStatuses(formats strfmt.Registry) error {
+	if swag.IsZero(o.StandaloneVMStatuses) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.StandaloneVMStatuses); i++ {
+		if swag.IsZero(o.StandaloneVMStatuses[i]) { // not required
+			continue
+		}
+
+		if o.StandaloneVMStatuses[i] != nil {
+			if err := o.StandaloneVMStatuses[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "standaloneVmStatuses" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "standaloneVmStatuses" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateUserRoles(formats strfmt.Registry) error {
+	if swag.IsZero(o.UserRoles) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.UserRoles); i++ {
+		if swag.IsZero(o.UserRoles[i]) { // not required
+			continue
+		}
+
+		if o.UserRoles[i] != nil {
+			if err := o.UserRoles[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "userRoles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "userRoles" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) validateValidityPeriods(formats strfmt.Registry) error {
+	if swag.IsZero(o.ValidityPeriods) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.ValidityPeriods); i++ {
+		if swag.IsZero(o.ValidityPeriods[i]) { // not required
+			continue
+		}
+
+		if o.ValidityPeriods[i] != nil {
+			if err := o.ValidityPeriods[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "validityPeriods" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "validityPeriods" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this common get enum values o k body based on the context it is used
+func (o *CommonGetEnumValuesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateAlertTypes(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateAlertingIntegrationTypes(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateAuditLogs(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateAvailability(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateAwsPlatforms(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateAzureQuotas(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateCloudTypes(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateCronPeriods(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateGoogleImageTypes(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateOpenstackContinents(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateProjectStatuses(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidatePrometheusTypes(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateRebootOptions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateReminderTypes(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateRequestLogs(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateSecurityGroupRules(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateServerRoles(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateServerStatuses(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateShowbackKinds(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateSlackTypes(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateStandaloneVMStatuses(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateUserRoles(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := o.contextValidateValidityPeriods(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateAlertTypes(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.AlertTypes); i++ {
+
+		if o.AlertTypes[i] != nil {
+			if err := o.AlertTypes[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "alertTypes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "alertTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateAlertingIntegrationTypes(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.AlertingIntegrationTypes); i++ {
+
+		if o.AlertingIntegrationTypes[i] != nil {
+			if err := o.AlertingIntegrationTypes[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "alertingIntegrationTypes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "alertingIntegrationTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateAuditLogs(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.AuditLogs); i++ {
+
+		if o.AuditLogs[i] != nil {
+			if err := o.AuditLogs[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "auditLogs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "auditLogs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateAvailability(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Availability); i++ {
+
+		if o.Availability[i] != nil {
+			if err := o.Availability[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "availability" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "availability" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateAwsPlatforms(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.AwsPlatforms); i++ {
+
+		if o.AwsPlatforms[i] != nil {
+			if err := o.AwsPlatforms[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "awsPlatforms" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "awsPlatforms" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateAzureQuotas(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.AzureQuotas); i++ {
+
+		if o.AzureQuotas[i] != nil {
+			if err := o.AzureQuotas[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "azureQuotas" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "azureQuotas" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateCloudTypes(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.CloudTypes); i++ {
+
+		if o.CloudTypes[i] != nil {
+			if err := o.CloudTypes[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "cloudTypes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "cloudTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateCronPeriods(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.CronPeriods); i++ {
+
+		if o.CronPeriods[i] != nil {
+			if err := o.CronPeriods[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "cronPeriods" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "cronPeriods" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateGoogleImageTypes(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.GoogleImageTypes); i++ {
+
+		if o.GoogleImageTypes[i] != nil {
+			if err := o.GoogleImageTypes[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "googleImageTypes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "googleImageTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateOpenstackContinents(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.OpenstackContinents); i++ {
+
+		if o.OpenstackContinents[i] != nil {
+			if err := o.OpenstackContinents[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "openstackContinents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "openstackContinents" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateProjectStatuses(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.ProjectStatuses); i++ {
+
+		if o.ProjectStatuses[i] != nil {
+			if err := o.ProjectStatuses[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "projectStatuses" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "projectStatuses" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidatePrometheusTypes(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.PrometheusTypes); i++ {
+
+		if o.PrometheusTypes[i] != nil {
+			if err := o.PrometheusTypes[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "prometheusTypes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "prometheusTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateRebootOptions(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.RebootOptions); i++ {
+
+		if o.RebootOptions[i] != nil {
+			if err := o.RebootOptions[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "rebootOptions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "rebootOptions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateReminderTypes(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.ReminderTypes); i++ {
+
+		if o.ReminderTypes[i] != nil {
+			if err := o.ReminderTypes[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "reminderTypes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "reminderTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateRequestLogs(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.RequestLogs); i++ {
+
+		if o.RequestLogs[i] != nil {
+			if err := o.RequestLogs[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "requestLogs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "requestLogs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateSecurityGroupRules(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.SecurityGroupRules); i++ {
+
+		if o.SecurityGroupRules[i] != nil {
+			if err := o.SecurityGroupRules[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "securityGroupRules" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "securityGroupRules" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateServerRoles(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.ServerRoles); i++ {
+
+		if o.ServerRoles[i] != nil {
+			if err := o.ServerRoles[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "serverRoles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "serverRoles" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateServerStatuses(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.ServerStatuses); i++ {
+
+		if o.ServerStatuses[i] != nil {
+			if err := o.ServerStatuses[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "serverStatuses" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "serverStatuses" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateShowbackKinds(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.ShowbackKinds); i++ {
+
+		if o.ShowbackKinds[i] != nil {
+			if err := o.ShowbackKinds[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "showbackKinds" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "showbackKinds" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateSlackTypes(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.SlackTypes); i++ {
+
+		if o.SlackTypes[i] != nil {
+			if err := o.SlackTypes[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "slackTypes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "slackTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateStandaloneVMStatuses(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.StandaloneVMStatuses); i++ {
+
+		if o.StandaloneVMStatuses[i] != nil {
+			if err := o.StandaloneVMStatuses[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "standaloneVmStatuses" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "standaloneVmStatuses" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateUserRoles(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.UserRoles); i++ {
+
+		if o.UserRoles[i] != nil {
+			if err := o.UserRoles[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "userRoles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "userRoles" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (o *CommonGetEnumValuesOKBody) contextValidateValidityPeriods(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.ValidityPeriods); i++ {
+
+		if o.ValidityPeriods[i] != nil {
+			if err := o.ValidityPeriods[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("commonGetEnumValuesOK" + "." + "validityPeriods" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commonGetEnumValuesOK" + "." + "validityPeriods" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBody) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyAlertTypesItems0 common get enum values o k body alert types items0
+swagger:model CommonGetEnumValuesOKBodyAlertTypesItems0
+*/
+type CommonGetEnumValuesOKBodyAlertTypesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body alert types items0
+func (o *CommonGetEnumValuesOKBodyAlertTypesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body alert types items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyAlertTypesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyAlertTypesItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyAlertTypesItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyAlertTypesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyAlertingIntegrationTypesItems0 common get enum values o k body alerting integration types items0
+swagger:model CommonGetEnumValuesOKBodyAlertingIntegrationTypesItems0
+*/
+type CommonGetEnumValuesOKBodyAlertingIntegrationTypesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body alerting integration types items0
+func (o *CommonGetEnumValuesOKBodyAlertingIntegrationTypesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body alerting integration types items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyAlertingIntegrationTypesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyAlertingIntegrationTypesItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyAlertingIntegrationTypesItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyAlertingIntegrationTypesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyAuditLogsItems0 common get enum values o k body audit logs items0
+swagger:model CommonGetEnumValuesOKBodyAuditLogsItems0
+*/
+type CommonGetEnumValuesOKBodyAuditLogsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body audit logs items0
+func (o *CommonGetEnumValuesOKBodyAuditLogsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body audit logs items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyAuditLogsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyAuditLogsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyAuditLogsItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyAuditLogsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyAvailabilityItems0 common get enum values o k body availability items0
+swagger:model CommonGetEnumValuesOKBodyAvailabilityItems0
+*/
+type CommonGetEnumValuesOKBodyAvailabilityItems0 struct {
+
+	// id
+	ID bool `json:"id"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body availability items0
+func (o *CommonGetEnumValuesOKBodyAvailabilityItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body availability items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyAvailabilityItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyAvailabilityItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyAvailabilityItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyAvailabilityItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyAwsPlatformsItems0 common get enum values o k body aws platforms items0
+swagger:model CommonGetEnumValuesOKBodyAwsPlatformsItems0
+*/
+type CommonGetEnumValuesOKBodyAwsPlatformsItems0 struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body aws platforms items0
+func (o *CommonGetEnumValuesOKBodyAwsPlatformsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body aws platforms items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyAwsPlatformsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyAwsPlatformsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyAwsPlatformsItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyAwsPlatformsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyAzureQuotasItems0 common get enum values o k body azure quotas items0
+swagger:model CommonGetEnumValuesOKBodyAzureQuotasItems0
+*/
+type CommonGetEnumValuesOKBodyAzureQuotasItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body azure quotas items0
+func (o *CommonGetEnumValuesOKBodyAzureQuotasItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body azure quotas items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyAzureQuotasItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyAzureQuotasItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyAzureQuotasItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyAzureQuotasItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyCloudTypesItems0 common get enum values o k body cloud types items0
+swagger:model CommonGetEnumValuesOKBodyCloudTypesItems0
+*/
+type CommonGetEnumValuesOKBodyCloudTypesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body cloud types items0
+func (o *CommonGetEnumValuesOKBodyCloudTypesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body cloud types items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyCloudTypesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyCloudTypesItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyCloudTypesItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyCloudTypesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyCronPeriodsItems0 common get enum values o k body cron periods items0
+swagger:model CommonGetEnumValuesOKBodyCronPeriodsItems0
+*/
+type CommonGetEnumValuesOKBodyCronPeriodsItems0 struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body cron periods items0
+func (o *CommonGetEnumValuesOKBodyCronPeriodsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body cron periods items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyCronPeriodsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyCronPeriodsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyCronPeriodsItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyCronPeriodsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyGoogleImageTypesItems0 common get enum values o k body google image types items0
+swagger:model CommonGetEnumValuesOKBodyGoogleImageTypesItems0
+*/
+type CommonGetEnumValuesOKBodyGoogleImageTypesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body google image types items0
+func (o *CommonGetEnumValuesOKBodyGoogleImageTypesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body google image types items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyGoogleImageTypesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyGoogleImageTypesItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyGoogleImageTypesItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyGoogleImageTypesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyOpenstackContinentsItems0 common get enum values o k body openstack continents items0
+swagger:model CommonGetEnumValuesOKBodyOpenstackContinentsItems0
+*/
+type CommonGetEnumValuesOKBodyOpenstackContinentsItems0 struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body openstack continents items0
+func (o *CommonGetEnumValuesOKBodyOpenstackContinentsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body openstack continents items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyOpenstackContinentsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyOpenstackContinentsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyOpenstackContinentsItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyOpenstackContinentsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyProjectStatusesItems0 common get enum values o k body project statuses items0
+swagger:model CommonGetEnumValuesOKBodyProjectStatusesItems0
+*/
+type CommonGetEnumValuesOKBodyProjectStatusesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body project statuses items0
+func (o *CommonGetEnumValuesOKBodyProjectStatusesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body project statuses items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyProjectStatusesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyProjectStatusesItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyProjectStatusesItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyProjectStatusesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyPrometheusTypesItems0 common get enum values o k body prometheus types items0
+swagger:model CommonGetEnumValuesOKBodyPrometheusTypesItems0
+*/
+type CommonGetEnumValuesOKBodyPrometheusTypesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body prometheus types items0
+func (o *CommonGetEnumValuesOKBodyPrometheusTypesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body prometheus types items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyPrometheusTypesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyPrometheusTypesItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyPrometheusTypesItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyPrometheusTypesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyRebootOptionsItems0 common get enum values o k body reboot options items0
+swagger:model CommonGetEnumValuesOKBodyRebootOptionsItems0
+*/
+type CommonGetEnumValuesOKBodyRebootOptionsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body reboot options items0
+func (o *CommonGetEnumValuesOKBodyRebootOptionsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body reboot options items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyRebootOptionsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyRebootOptionsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyRebootOptionsItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyRebootOptionsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyReminderTypesItems0 common get enum values o k body reminder types items0
+swagger:model CommonGetEnumValuesOKBodyReminderTypesItems0
+*/
+type CommonGetEnumValuesOKBodyReminderTypesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body reminder types items0
+func (o *CommonGetEnumValuesOKBodyReminderTypesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body reminder types items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyReminderTypesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyReminderTypesItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyReminderTypesItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyReminderTypesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyRequestLogsItems0 common get enum values o k body request logs items0
+swagger:model CommonGetEnumValuesOKBodyRequestLogsItems0
+*/
+type CommonGetEnumValuesOKBodyRequestLogsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body request logs items0
+func (o *CommonGetEnumValuesOKBodyRequestLogsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body request logs items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyRequestLogsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyRequestLogsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyRequestLogsItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyRequestLogsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodySecurityGroupRulesItems0 common get enum values o k body security group rules items0
+swagger:model CommonGetEnumValuesOKBodySecurityGroupRulesItems0
+*/
+type CommonGetEnumValuesOKBodySecurityGroupRulesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body security group rules items0
+func (o *CommonGetEnumValuesOKBodySecurityGroupRulesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body security group rules items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodySecurityGroupRulesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodySecurityGroupRulesItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodySecurityGroupRulesItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodySecurityGroupRulesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyServerRolesItems0 common get enum values o k body server roles items0
+swagger:model CommonGetEnumValuesOKBodyServerRolesItems0
+*/
+type CommonGetEnumValuesOKBodyServerRolesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body server roles items0
+func (o *CommonGetEnumValuesOKBodyServerRolesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body server roles items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyServerRolesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyServerRolesItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyServerRolesItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyServerRolesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyServerStatusesItems0 common get enum values o k body server statuses items0
+swagger:model CommonGetEnumValuesOKBodyServerStatusesItems0
+*/
+type CommonGetEnumValuesOKBodyServerStatusesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body server statuses items0
+func (o *CommonGetEnumValuesOKBodyServerStatusesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body server statuses items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyServerStatusesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyServerStatusesItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyServerStatusesItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyServerStatusesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyShowbackKindsItems0 common get enum values o k body showback kinds items0
+swagger:model CommonGetEnumValuesOKBodyShowbackKindsItems0
+*/
+type CommonGetEnumValuesOKBodyShowbackKindsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body showback kinds items0
+func (o *CommonGetEnumValuesOKBodyShowbackKindsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body showback kinds items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyShowbackKindsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyShowbackKindsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyShowbackKindsItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyShowbackKindsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodySlackTypesItems0 common get enum values o k body slack types items0
+swagger:model CommonGetEnumValuesOKBodySlackTypesItems0
+*/
+type CommonGetEnumValuesOKBodySlackTypesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body slack types items0
+func (o *CommonGetEnumValuesOKBodySlackTypesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body slack types items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodySlackTypesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodySlackTypesItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodySlackTypesItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodySlackTypesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyStandaloneVMStatusesItems0 common get enum values o k body standalone VM statuses items0
+swagger:model CommonGetEnumValuesOKBodyStandaloneVMStatusesItems0
+*/
+type CommonGetEnumValuesOKBodyStandaloneVMStatusesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body standalone VM statuses items0
+func (o *CommonGetEnumValuesOKBodyStandaloneVMStatusesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body standalone VM statuses items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyStandaloneVMStatusesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyStandaloneVMStatusesItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyStandaloneVMStatusesItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyStandaloneVMStatusesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyUserRolesItems0 common get enum values o k body user roles items0
+swagger:model CommonGetEnumValuesOKBodyUserRolesItems0
+*/
+type CommonGetEnumValuesOKBodyUserRolesItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body user roles items0
+func (o *CommonGetEnumValuesOKBodyUserRolesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body user roles items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyUserRolesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyUserRolesItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyUserRolesItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyUserRolesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesOKBodyValidityPeriodsItems0 common get enum values o k body validity periods items0
+swagger:model CommonGetEnumValuesOKBodyValidityPeriodsItems0
+*/
+type CommonGetEnumValuesOKBodyValidityPeriodsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this common get enum values o k body validity periods items0
+func (o *CommonGetEnumValuesOKBodyValidityPeriodsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values o k body validity periods items0 based on context it is used
+func (o *CommonGetEnumValuesOKBodyValidityPeriodsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyValidityPeriodsItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesOKBodyValidityPeriodsItems0) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesOKBodyValidityPeriodsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CommonGetEnumValuesUnauthorizedBody common get enum values unauthorized body
+swagger:model CommonGetEnumValuesUnauthorizedBody
+*/
+type CommonGetEnumValuesUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this common get enum values unauthorized body
+func (o *CommonGetEnumValuesUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this common get enum values unauthorized body based on context it is used
+func (o *CommonGetEnumValuesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CommonGetEnumValuesUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CommonGetEnumValuesUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CommonGetEnumValuesUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

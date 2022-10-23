@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CronJobFetchKubernetesOverviewReader is a Reader for the CronJobFetchKubernetesOverview structure.
@@ -75,7 +75,7 @@ CronJobFetchKubernetesOverviewOK describes a response with status code 200, with
 Success
 */
 type CronJobFetchKubernetesOverviewOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes overview o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobFetchKubernetesOverviewOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesOverviewOK) GetPayload() models.Unit {
+func (o *CronJobFetchKubernetesOverviewOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobFetchKubernetesOverviewBadRequest describes a response with status code 4
 Bad Request
 */
 type CronJobFetchKubernetesOverviewBadRequest struct {
-	Payload []*models.Error
+	Payload []*CronJobFetchKubernetesOverviewBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes overview bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobFetchKubernetesOverviewBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesOverviewBadRequest) GetPayload() []*models.Error {
+func (o *CronJobFetchKubernetesOverviewBadRequest) GetPayload() []*CronJobFetchKubernetesOverviewBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobFetchKubernetesOverviewUnauthorized describes a response with status code
 Unauthorized
 */
 type CronJobFetchKubernetesOverviewUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobFetchKubernetesOverviewUnauthorizedBody
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes overview unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobFetchKubernetesOverviewUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesOverviewUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchKubernetesOverviewUnauthorized) GetPayload() *CronJobFetchKubernetesOverviewUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CronJobFetchKubernetesOverviewUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobFetchKubernetesOverviewUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobFetchKubernetesOverviewForbidden describes a response with status code 40
 Forbidden
 */
 type CronJobFetchKubernetesOverviewForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobFetchKubernetesOverviewForbiddenBody
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes overview forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobFetchKubernetesOverviewForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesOverviewForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchKubernetesOverviewForbidden) GetPayload() *CronJobFetchKubernetesOverviewForbiddenBody {
 	return o.Payload
 }
 
 func (o *CronJobFetchKubernetesOverviewForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobFetchKubernetesOverviewForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobFetchKubernetesOverviewNotFound describes a response with status code 404
 Not Found
 */
 type CronJobFetchKubernetesOverviewNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobFetchKubernetesOverviewNotFoundBody
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes overview not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobFetchKubernetesOverviewNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesOverviewNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchKubernetesOverviewNotFound) GetPayload() *CronJobFetchKubernetesOverviewNotFoundBody {
 	return o.Payload
 }
 
 func (o *CronJobFetchKubernetesOverviewNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobFetchKubernetesOverviewNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *CronJobFetchKubernetesOverviewInternalServerError) String() string {
 
 func (o *CronJobFetchKubernetesOverviewInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CronJobFetchKubernetesOverviewBadRequestBodyItems0 cron job fetch kubernetes overview bad request body items0
+swagger:model CronJobFetchKubernetesOverviewBadRequestBodyItems0
+*/
+type CronJobFetchKubernetesOverviewBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this cron job fetch kubernetes overview bad request body items0
+func (o *CronJobFetchKubernetesOverviewBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch kubernetes overview bad request body items0 based on context it is used
+func (o *CronJobFetchKubernetesOverviewBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchKubernetesOverviewBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchKubernetesOverviewBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchKubernetesOverviewBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobFetchKubernetesOverviewForbiddenBody cron job fetch kubernetes overview forbidden body
+swagger:model CronJobFetchKubernetesOverviewForbiddenBody
+*/
+type CronJobFetchKubernetesOverviewForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job fetch kubernetes overview forbidden body
+func (o *CronJobFetchKubernetesOverviewForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch kubernetes overview forbidden body based on context it is used
+func (o *CronJobFetchKubernetesOverviewForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchKubernetesOverviewForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchKubernetesOverviewForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchKubernetesOverviewForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobFetchKubernetesOverviewNotFoundBody cron job fetch kubernetes overview not found body
+swagger:model CronJobFetchKubernetesOverviewNotFoundBody
+*/
+type CronJobFetchKubernetesOverviewNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job fetch kubernetes overview not found body
+func (o *CronJobFetchKubernetesOverviewNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch kubernetes overview not found body based on context it is used
+func (o *CronJobFetchKubernetesOverviewNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchKubernetesOverviewNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchKubernetesOverviewNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchKubernetesOverviewNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobFetchKubernetesOverviewUnauthorizedBody cron job fetch kubernetes overview unauthorized body
+swagger:model CronJobFetchKubernetesOverviewUnauthorizedBody
+*/
+type CronJobFetchKubernetesOverviewUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job fetch kubernetes overview unauthorized body
+func (o *CronJobFetchKubernetesOverviewUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job fetch kubernetes overview unauthorized body based on context it is used
+func (o *CronJobFetchKubernetesOverviewUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobFetchKubernetesOverviewUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobFetchKubernetesOverviewUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CronJobFetchKubernetesOverviewUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

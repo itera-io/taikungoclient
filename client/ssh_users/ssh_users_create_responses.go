@@ -6,13 +6,13 @@ package ssh_users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SSHUsersCreateReader is a Reader for the SSHUsersCreate structure.
@@ -75,7 +75,7 @@ SSHUsersCreateOK describes a response with status code 200, with default header 
 Success
 */
 type SSHUsersCreateOK struct {
-	Payload *models.APIResponse
+	Payload *SSHUsersCreateOKBody
 }
 
 // IsSuccess returns true when this ssh users create o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *SSHUsersCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/create][%d] sshUsersCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *SSHUsersCreateOK) GetPayload() *models.APIResponse {
+func (o *SSHUsersCreateOK) GetPayload() *SSHUsersCreateOKBody {
 	return o.Payload
 }
 
 func (o *SSHUsersCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
+	o.Payload = new(SSHUsersCreateOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ SSHUsersCreateBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type SSHUsersCreateBadRequest struct {
-	Payload []*models.Error
+	Payload []*SSHUsersCreateBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this ssh users create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *SSHUsersCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/create][%d] sshUsersCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SSHUsersCreateBadRequest) GetPayload() []*models.Error {
+func (o *SSHUsersCreateBadRequest) GetPayload() []*SSHUsersCreateBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ SSHUsersCreateUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type SSHUsersCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SSHUsersCreateUnauthorizedBody
 }
 
 // IsSuccess returns true when this ssh users create unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *SSHUsersCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/create][%d] sshUsersCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SSHUsersCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersCreateUnauthorized) GetPayload() *SSHUsersCreateUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SSHUsersCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SSHUsersCreateUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ SSHUsersCreateForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type SSHUsersCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SSHUsersCreateForbiddenBody
 }
 
 // IsSuccess returns true when this ssh users create forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *SSHUsersCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/create][%d] sshUsersCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SSHUsersCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersCreateForbidden) GetPayload() *SSHUsersCreateForbiddenBody {
 	return o.Payload
 }
 
 func (o *SSHUsersCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SSHUsersCreateForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ SSHUsersCreateNotFound describes a response with status code 404, with default h
 Not Found
 */
 type SSHUsersCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SSHUsersCreateNotFoundBody
 }
 
 // IsSuccess returns true when this ssh users create not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *SSHUsersCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/create][%d] sshUsersCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SSHUsersCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersCreateNotFound) GetPayload() *SSHUsersCreateNotFoundBody {
 	return o.Payload
 }
 
 func (o *SSHUsersCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SSHUsersCreateNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +425,290 @@ func (o *SSHUsersCreateInternalServerError) String() string {
 
 func (o *SSHUsersCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SSHUsersCreateBadRequestBodyItems0 SSH users create bad request body items0
+swagger:model SSHUsersCreateBadRequestBodyItems0
+*/
+type SSHUsersCreateBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this SSH users create bad request body items0
+func (o *SSHUsersCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users create bad request body items0 based on context it is used
+func (o *SSHUsersCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SSHUsersCreateBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SSHUsersCreateBody SSH users create body
+swagger:model SSHUsersCreateBody
+*/
+type SSHUsersCreateBody struct {
+
+	// access profile Id
+	AccessProfileID int32 `json:"accessProfileId,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// ssh public key
+	SSHPublicKey string `json:"sshPublicKey,omitempty"`
+}
+
+// Validate validates this SSH users create body
+func (o *SSHUsersCreateBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users create body based on context it is used
+func (o *SSHUsersCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersCreateBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersCreateBody) UnmarshalBinary(b []byte) error {
+	var res SSHUsersCreateBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SSHUsersCreateForbiddenBody SSH users create forbidden body
+swagger:model SSHUsersCreateForbiddenBody
+*/
+type SSHUsersCreateForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this SSH users create forbidden body
+func (o *SSHUsersCreateForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users create forbidden body based on context it is used
+func (o *SSHUsersCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersCreateForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersCreateForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SSHUsersCreateForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SSHUsersCreateNotFoundBody SSH users create not found body
+swagger:model SSHUsersCreateNotFoundBody
+*/
+type SSHUsersCreateNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this SSH users create not found body
+func (o *SSHUsersCreateNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users create not found body based on context it is used
+func (o *SSHUsersCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersCreateNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersCreateNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SSHUsersCreateNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SSHUsersCreateOKBody SSH users create o k body
+swagger:model SSHUsersCreateOKBody
+*/
+type SSHUsersCreateOKBody struct {
+
+	// id
+	ID string `json:"id,omitempty"`
+
+	// is error
+	IsError bool `json:"isError"`
+
+	// message
+	Message string `json:"message,omitempty"`
+
+	// result
+	Result interface{} `json:"result,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+}
+
+// Validate validates this SSH users create o k body
+func (o *SSHUsersCreateOKBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users create o k body based on context it is used
+func (o *SSHUsersCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersCreateOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersCreateOKBody) UnmarshalBinary(b []byte) error {
+	var res SSHUsersCreateOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SSHUsersCreateUnauthorizedBody SSH users create unauthorized body
+swagger:model SSHUsersCreateUnauthorizedBody
+*/
+type SSHUsersCreateUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this SSH users create unauthorized body
+func (o *SSHUsersCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this SSH users create unauthorized body based on context it is used
+func (o *SSHUsersCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SSHUsersCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SSHUsersCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SSHUsersCreateUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

@@ -20,7 +20,7 @@ import (
 type AccessProfilesList struct {
 
 	// data
-	Data []*AccessProfilesListDto `json:"data"`
+	Data []*AccessProfilesListDataItems0 `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,6 +111,480 @@ func (m *AccessProfilesList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AccessProfilesList) UnmarshalBinary(b []byte) error {
 	var res AccessProfilesList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AccessProfilesListDataItems0 access profiles list data items0
+//
+// swagger:model AccessProfilesListDataItems0
+type AccessProfilesListDataItems0 struct {
+
+	// allowed hosts
+	AllowedHosts []*AccessProfilesListDataItems0AllowedHostsItems0 `json:"allowedHosts"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
+	// created by
+	CreatedBy string `json:"createdBy,omitempty"`
+
+	// dns servers
+	DNSServers []*AccessProfilesListDataItems0DNSServersItems0 `json:"dnsServers"`
+
+	// http proxy
+	HTTPProxy string `json:"httpProxy,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
+	// last modified
+	LastModified string `json:"lastModified,omitempty"`
+
+	// last modified by
+	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// ntp servers
+	NtpServers []*AccessProfilesListDataItems0NtpServersItems0 `json:"ntpServers"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
+	// projects
+	Projects []*AccessProfilesListDataItems0ProjectsItems0 `json:"projects"`
+}
+
+// Validate validates this access profiles list data items0
+func (m *AccessProfilesListDataItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAllowedHosts(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDNSServers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNtpServers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProjects(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AccessProfilesListDataItems0) validateAllowedHosts(formats strfmt.Registry) error {
+	if swag.IsZero(m.AllowedHosts) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.AllowedHosts); i++ {
+		if swag.IsZero(m.AllowedHosts[i]) { // not required
+			continue
+		}
+
+		if m.AllowedHosts[i] != nil {
+			if err := m.AllowedHosts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("allowedHosts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("allowedHosts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AccessProfilesListDataItems0) validateDNSServers(formats strfmt.Registry) error {
+	if swag.IsZero(m.DNSServers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.DNSServers); i++ {
+		if swag.IsZero(m.DNSServers[i]) { // not required
+			continue
+		}
+
+		if m.DNSServers[i] != nil {
+			if err := m.DNSServers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("dnsServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("dnsServers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AccessProfilesListDataItems0) validateNtpServers(formats strfmt.Registry) error {
+	if swag.IsZero(m.NtpServers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.NtpServers); i++ {
+		if swag.IsZero(m.NtpServers[i]) { // not required
+			continue
+		}
+
+		if m.NtpServers[i] != nil {
+			if err := m.NtpServers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("ntpServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("ntpServers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AccessProfilesListDataItems0) validateProjects(formats strfmt.Registry) error {
+	if swag.IsZero(m.Projects) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Projects); i++ {
+		if swag.IsZero(m.Projects[i]) { // not required
+			continue
+		}
+
+		if m.Projects[i] != nil {
+			if err := m.Projects[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this access profiles list data items0 based on the context it is used
+func (m *AccessProfilesListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAllowedHosts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDNSServers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateNtpServers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AccessProfilesListDataItems0) contextValidateAllowedHosts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AllowedHosts); i++ {
+
+		if m.AllowedHosts[i] != nil {
+			if err := m.AllowedHosts[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("allowedHosts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("allowedHosts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AccessProfilesListDataItems0) contextValidateDNSServers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.DNSServers); i++ {
+
+		if m.DNSServers[i] != nil {
+			if err := m.DNSServers[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("dnsServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("dnsServers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AccessProfilesListDataItems0) contextValidateNtpServers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.NtpServers); i++ {
+
+		if m.NtpServers[i] != nil {
+			if err := m.NtpServers[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("ntpServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("ntpServers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AccessProfilesListDataItems0) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Projects); i++ {
+
+		if m.Projects[i] != nil {
+			if err := m.Projects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AccessProfilesListDataItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AccessProfilesListDataItems0) UnmarshalBinary(b []byte) error {
+	var res AccessProfilesListDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AccessProfilesListDataItems0AllowedHostsItems0 access profiles list data items0 allowed hosts items0
+//
+// swagger:model AccessProfilesListDataItems0AllowedHostsItems0
+type AccessProfilesListDataItems0AllowedHostsItems0 struct {
+
+	// access profile Id
+	AccessProfileID int32 `json:"accessProfileId,omitempty"`
+
+	// access profile name
+	AccessProfileName string `json:"accessProfileName,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// ip address
+	IPAddress string `json:"ipAddress,omitempty"`
+
+	// mask bits
+	MaskBits int32 `json:"maskBits,omitempty"`
+}
+
+// Validate validates this access profiles list data items0 allowed hosts items0
+func (m *AccessProfilesListDataItems0AllowedHostsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this access profiles list data items0 allowed hosts items0 based on context it is used
+func (m *AccessProfilesListDataItems0AllowedHostsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AccessProfilesListDataItems0AllowedHostsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AccessProfilesListDataItems0AllowedHostsItems0) UnmarshalBinary(b []byte) error {
+	var res AccessProfilesListDataItems0AllowedHostsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AccessProfilesListDataItems0DNSServersItems0 access profiles list data items0 DNS servers items0
+//
+// swagger:model AccessProfilesListDataItems0DNSServersItems0
+type AccessProfilesListDataItems0DNSServersItems0 struct {
+
+	// address
+	Address string `json:"address,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this access profiles list data items0 DNS servers items0
+func (m *AccessProfilesListDataItems0DNSServersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this access profiles list data items0 DNS servers items0 based on context it is used
+func (m *AccessProfilesListDataItems0DNSServersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AccessProfilesListDataItems0DNSServersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AccessProfilesListDataItems0DNSServersItems0) UnmarshalBinary(b []byte) error {
+	var res AccessProfilesListDataItems0DNSServersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AccessProfilesListDataItems0NtpServersItems0 access profiles list data items0 ntp servers items0
+//
+// swagger:model AccessProfilesListDataItems0NtpServersItems0
+type AccessProfilesListDataItems0NtpServersItems0 struct {
+
+	// address
+	Address string `json:"address,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this access profiles list data items0 ntp servers items0
+func (m *AccessProfilesListDataItems0NtpServersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this access profiles list data items0 ntp servers items0 based on context it is used
+func (m *AccessProfilesListDataItems0NtpServersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AccessProfilesListDataItems0NtpServersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AccessProfilesListDataItems0NtpServersItems0) UnmarshalBinary(b []byte) error {
+	var res AccessProfilesListDataItems0NtpServersItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// AccessProfilesListDataItems0ProjectsItems0 access profiles list data items0 projects items0
+//
+// swagger:model AccessProfilesListDataItems0ProjectsItems0
+type AccessProfilesListDataItems0ProjectsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this access profiles list data items0 projects items0
+func (m *AccessProfilesListDataItems0ProjectsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this access profiles list data items0 projects items0 based on context it is used
+func (m *AccessProfilesListDataItems0ProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *AccessProfilesListDataItems0ProjectsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *AccessProfilesListDataItems0ProjectsItems0) UnmarshalBinary(b []byte) error {
+	var res AccessProfilesListDataItems0ProjectsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

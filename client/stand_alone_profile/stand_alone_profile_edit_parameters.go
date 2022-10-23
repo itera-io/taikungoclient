@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneProfileEditParams creates a new StandAloneProfileEditParams object,
@@ -64,7 +62,7 @@ StandAloneProfileEditParams contains all the parameters to send to the API endpo
 type StandAloneProfileEditParams struct {
 
 	// Body.
-	Body *models.StandAloneProfileUpdateCommand
+	Body StandAloneProfileEditBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *StandAloneProfileEditParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone profile edit params
-func (o *StandAloneProfileEditParams) WithBody(body *models.StandAloneProfileUpdateCommand) *StandAloneProfileEditParams {
+func (o *StandAloneProfileEditParams) WithBody(body StandAloneProfileEditBody) *StandAloneProfileEditParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone profile edit params
-func (o *StandAloneProfileEditParams) SetBody(body *models.StandAloneProfileUpdateCommand) {
+func (o *StandAloneProfileEditParams) SetBody(body StandAloneProfileEditBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *StandAloneProfileEditParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

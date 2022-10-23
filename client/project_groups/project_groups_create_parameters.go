@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectGroupsCreateParams creates a new ProjectGroupsCreateParams object,
@@ -64,7 +62,7 @@ ProjectGroupsCreateParams contains all the parameters to send to the API endpoin
 type ProjectGroupsCreateParams struct {
 
 	// Body.
-	Body *models.CreateProjectGroupCommand
+	Body ProjectGroupsCreateBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *ProjectGroupsCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the project groups create params
-func (o *ProjectGroupsCreateParams) WithBody(body *models.CreateProjectGroupCommand) *ProjectGroupsCreateParams {
+func (o *ProjectGroupsCreateParams) WithBody(body ProjectGroupsCreateBody) *ProjectGroupsCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the project groups create params
-func (o *ProjectGroupsCreateParams) SetBody(body *models.CreateProjectGroupCommand) {
+func (o *ProjectGroupsCreateParams) SetBody(body ProjectGroupsCreateBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *ProjectGroupsCreateParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

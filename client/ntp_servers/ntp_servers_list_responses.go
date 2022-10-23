@@ -6,13 +6,13 @@ package ntp_servers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // NtpServersListReader is a Reader for the NtpServersList structure.
@@ -75,7 +75,7 @@ NtpServersListOK describes a response with status code 200, with default header 
 Success
 */
 type NtpServersListOK struct {
-	Payload []*models.NtpServersListDto
+	Payload []*NtpServersListOKBodyItems0
 }
 
 // IsSuccess returns true when this ntp servers list o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *NtpServersListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListOK  %+v", 200, o.Payload)
 }
 
-func (o *NtpServersListOK) GetPayload() []*models.NtpServersListDto {
+func (o *NtpServersListOK) GetPayload() []*NtpServersListOKBodyItems0 {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ NtpServersListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type NtpServersListBadRequest struct {
-	Payload []*models.Error
+	Payload []*NtpServersListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this ntp servers list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *NtpServersListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NtpServersListBadRequest) GetPayload() []*models.Error {
+func (o *NtpServersListBadRequest) GetPayload() []*NtpServersListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ NtpServersListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type NtpServersListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *NtpServersListUnauthorizedBody
 }
 
 // IsSuccess returns true when this ntp servers list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *NtpServersListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NtpServersListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *NtpServersListUnauthorized) GetPayload() *NtpServersListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *NtpServersListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(NtpServersListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ NtpServersListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type NtpServersListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *NtpServersListForbiddenBody
 }
 
 // IsSuccess returns true when this ntp servers list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *NtpServersListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NtpServersListForbidden) GetPayload() *models.ProblemDetails {
+func (o *NtpServersListForbidden) GetPayload() *NtpServersListForbiddenBody {
 	return o.Payload
 }
 
 func (o *NtpServersListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(NtpServersListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ NtpServersListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type NtpServersListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *NtpServersListNotFoundBody
 }
 
 // IsSuccess returns true when this ntp servers list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *NtpServersListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NtpServersListNotFound) GetPayload() *models.ProblemDetails {
+func (o *NtpServersListNotFound) GetPayload() *NtpServersListNotFoundBody {
 	return o.Payload
 }
 
 func (o *NtpServersListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(NtpServersListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *NtpServersListInternalServerError) String() string {
 
 func (o *NtpServersListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+NtpServersListBadRequestBodyItems0 ntp servers list bad request body items0
+swagger:model NtpServersListBadRequestBodyItems0
+*/
+type NtpServersListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this ntp servers list bad request body items0
+func (o *NtpServersListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ntp servers list bad request body items0 based on context it is used
+func (o *NtpServersListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *NtpServersListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *NtpServersListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res NtpServersListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+NtpServersListForbiddenBody ntp servers list forbidden body
+swagger:model NtpServersListForbiddenBody
+*/
+type NtpServersListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ntp servers list forbidden body
+func (o *NtpServersListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ntp servers list forbidden body based on context it is used
+func (o *NtpServersListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *NtpServersListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *NtpServersListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res NtpServersListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+NtpServersListNotFoundBody ntp servers list not found body
+swagger:model NtpServersListNotFoundBody
+*/
+type NtpServersListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ntp servers list not found body
+func (o *NtpServersListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ntp servers list not found body based on context it is used
+func (o *NtpServersListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *NtpServersListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *NtpServersListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res NtpServersListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+NtpServersListOKBodyItems0 ntp servers list o k body items0
+swagger:model NtpServersListOKBodyItems0
+*/
+type NtpServersListOKBodyItems0 struct {
+
+	// access profile name
+	AccessProfileName string `json:"accessProfileName,omitempty"`
+
+	// address
+	Address string `json:"address,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
+}
+
+// Validate validates this ntp servers list o k body items0
+func (o *NtpServersListOKBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ntp servers list o k body items0 based on context it is used
+func (o *NtpServersListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *NtpServersListOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *NtpServersListOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res NtpServersListOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+NtpServersListUnauthorizedBody ntp servers list unauthorized body
+swagger:model NtpServersListUnauthorizedBody
+*/
+type NtpServersListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this ntp servers list unauthorized body
+func (o *NtpServersListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this ntp servers list unauthorized body based on context it is used
+func (o *NtpServersListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *NtpServersListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *NtpServersListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res NtpServersListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

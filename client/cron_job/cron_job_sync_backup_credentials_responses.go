@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // CronJobSyncBackupCredentialsReader is a Reader for the CronJobSyncBackupCredentials structure.
@@ -75,7 +75,7 @@ CronJobSyncBackupCredentialsOK describes a response with status code 200, with d
 Success
 */
 type CronJobSyncBackupCredentialsOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync backup credentials o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobSyncBackupCredentialsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobSyncBackupCredentialsOK) GetPayload() models.Unit {
+func (o *CronJobSyncBackupCredentialsOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobSyncBackupCredentialsBadRequest describes a response with status code 400
 Bad Request
 */
 type CronJobSyncBackupCredentialsBadRequest struct {
-	Payload []*models.Error
+	Payload []*CronJobSyncBackupCredentialsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this cron job sync backup credentials bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobSyncBackupCredentialsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobSyncBackupCredentialsBadRequest) GetPayload() []*models.Error {
+func (o *CronJobSyncBackupCredentialsBadRequest) GetPayload() []*CronJobSyncBackupCredentialsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobSyncBackupCredentialsUnauthorized describes a response with status code 4
 Unauthorized
 */
 type CronJobSyncBackupCredentialsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobSyncBackupCredentialsUnauthorizedBody
 }
 
 // IsSuccess returns true when this cron job sync backup credentials unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobSyncBackupCredentialsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobSyncBackupCredentialsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncBackupCredentialsUnauthorized) GetPayload() *CronJobSyncBackupCredentialsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CronJobSyncBackupCredentialsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobSyncBackupCredentialsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobSyncBackupCredentialsForbidden describes a response with status code 403,
 Forbidden
 */
 type CronJobSyncBackupCredentialsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobSyncBackupCredentialsForbiddenBody
 }
 
 // IsSuccess returns true when this cron job sync backup credentials forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobSyncBackupCredentialsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobSyncBackupCredentialsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncBackupCredentialsForbidden) GetPayload() *CronJobSyncBackupCredentialsForbiddenBody {
 	return o.Payload
 }
 
 func (o *CronJobSyncBackupCredentialsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobSyncBackupCredentialsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobSyncBackupCredentialsNotFound describes a response with status code 404, 
 Not Found
 */
 type CronJobSyncBackupCredentialsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobSyncBackupCredentialsNotFoundBody
 }
 
 // IsSuccess returns true when this cron job sync backup credentials not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobSyncBackupCredentialsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobSyncBackupCredentialsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncBackupCredentialsNotFound) GetPayload() *CronJobSyncBackupCredentialsNotFoundBody {
 	return o.Payload
 }
 
 func (o *CronJobSyncBackupCredentialsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobSyncBackupCredentialsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,196 @@ func (o *CronJobSyncBackupCredentialsInternalServerError) String() string {
 
 func (o *CronJobSyncBackupCredentialsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CronJobSyncBackupCredentialsBadRequestBodyItems0 cron job sync backup credentials bad request body items0
+swagger:model CronJobSyncBackupCredentialsBadRequestBodyItems0
+*/
+type CronJobSyncBackupCredentialsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this cron job sync backup credentials bad request body items0
+func (o *CronJobSyncBackupCredentialsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job sync backup credentials bad request body items0 based on context it is used
+func (o *CronJobSyncBackupCredentialsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobSyncBackupCredentialsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobSyncBackupCredentialsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CronJobSyncBackupCredentialsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobSyncBackupCredentialsForbiddenBody cron job sync backup credentials forbidden body
+swagger:model CronJobSyncBackupCredentialsForbiddenBody
+*/
+type CronJobSyncBackupCredentialsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job sync backup credentials forbidden body
+func (o *CronJobSyncBackupCredentialsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job sync backup credentials forbidden body based on context it is used
+func (o *CronJobSyncBackupCredentialsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobSyncBackupCredentialsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobSyncBackupCredentialsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CronJobSyncBackupCredentialsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobSyncBackupCredentialsNotFoundBody cron job sync backup credentials not found body
+swagger:model CronJobSyncBackupCredentialsNotFoundBody
+*/
+type CronJobSyncBackupCredentialsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job sync backup credentials not found body
+func (o *CronJobSyncBackupCredentialsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job sync backup credentials not found body based on context it is used
+func (o *CronJobSyncBackupCredentialsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobSyncBackupCredentialsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobSyncBackupCredentialsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CronJobSyncBackupCredentialsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobSyncBackupCredentialsUnauthorizedBody cron job sync backup credentials unauthorized body
+swagger:model CronJobSyncBackupCredentialsUnauthorizedBody
+*/
+type CronJobSyncBackupCredentialsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job sync backup credentials unauthorized body
+func (o *CronJobSyncBackupCredentialsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job sync backup credentials unauthorized body based on context it is used
+func (o *CronJobSyncBackupCredentialsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobSyncBackupCredentialsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobSyncBackupCredentialsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CronJobSyncBackupCredentialsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

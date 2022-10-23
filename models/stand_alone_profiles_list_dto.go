@@ -44,7 +44,7 @@ type StandAloneProfilesListDto struct {
 	PublicKey string `json:"publicKey,omitempty"`
 
 	// standalone vms
-	StandaloneVms []*StandAloneVMSmallDetailDto `json:"standaloneVms"`
+	StandaloneVms []*StandAloneProfilesListDtoStandaloneVmsItems0 `json:"standaloneVms"`
 }
 
 // Validate validates this stand alone profiles list dto
@@ -132,6 +132,49 @@ func (m *StandAloneProfilesListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *StandAloneProfilesListDto) UnmarshalBinary(b []byte) error {
 	var res StandAloneProfilesListDto
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// StandAloneProfilesListDtoStandaloneVmsItems0 stand alone profiles list dto standalone vms items0
+//
+// swagger:model StandAloneProfilesListDtoStandaloneVmsItems0
+type StandAloneProfilesListDtoStandaloneVmsItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this stand alone profiles list dto standalone vms items0
+func (m *StandAloneProfilesListDtoStandaloneVmsItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profiles list dto standalone vms items0 based on context it is used
+func (m *StandAloneProfilesListDtoStandaloneVmsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *StandAloneProfilesListDtoStandaloneVmsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *StandAloneProfilesListDtoStandaloneVmsItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfilesListDtoStandaloneVmsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

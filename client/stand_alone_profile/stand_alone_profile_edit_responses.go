@@ -6,13 +6,13 @@ package stand_alone_profile
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // StandAloneProfileEditReader is a Reader for the StandAloneProfileEdit structure.
@@ -75,7 +75,7 @@ StandAloneProfileEditOK describes a response with status code 200, with default 
 Success
 */
 type StandAloneProfileEditOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile edit o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneProfileEditOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneProfileEditOK) GetPayload() models.Unit {
+func (o *StandAloneProfileEditOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneProfileEditBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type StandAloneProfileEditBadRequest struct {
-	Payload []*models.Error
+	Payload []*StandAloneProfileEditBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this stand alone profile edit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneProfileEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileEditBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneProfileEditBadRequest) GetPayload() []*StandAloneProfileEditBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneProfileEditUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type StandAloneProfileEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneProfileEditUnauthorizedBody
 }
 
 // IsSuccess returns true when this stand alone profile edit unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneProfileEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneProfileEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileEditUnauthorized) GetPayload() *StandAloneProfileEditUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *StandAloneProfileEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneProfileEditUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneProfileEditForbidden describes a response with status code 403, with d
 Forbidden
 */
 type StandAloneProfileEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneProfileEditForbiddenBody
 }
 
 // IsSuccess returns true when this stand alone profile edit forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneProfileEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneProfileEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileEditForbidden) GetPayload() *StandAloneProfileEditForbiddenBody {
 	return o.Payload
 }
 
 func (o *StandAloneProfileEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneProfileEditForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneProfileEditNotFound describes a response with status code 404, with de
 Not Found
 */
 type StandAloneProfileEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *StandAloneProfileEditNotFoundBody
 }
 
 // IsSuccess returns true when this stand alone profile edit not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneProfileEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneProfileEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileEditNotFound) GetPayload() *StandAloneProfileEditNotFoundBody {
 	return o.Payload
 }
 
 func (o *StandAloneProfileEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(StandAloneProfileEditNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *StandAloneProfileEditInternalServerError) String() string {
 
 func (o *StandAloneProfileEditInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+StandAloneProfileEditBadRequestBodyItems0 stand alone profile edit bad request body items0
+swagger:model StandAloneProfileEditBadRequestBodyItems0
+*/
+type StandAloneProfileEditBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this stand alone profile edit bad request body items0
+func (o *StandAloneProfileEditBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profile edit bad request body items0 based on context it is used
+func (o *StandAloneProfileEditBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneProfileEditBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneProfileEditBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileEditBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneProfileEditBody stand alone profile edit body
+swagger:model StandAloneProfileEditBody
+*/
+type StandAloneProfileEditBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+}
+
+// Validate validates this stand alone profile edit body
+func (o *StandAloneProfileEditBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profile edit body based on context it is used
+func (o *StandAloneProfileEditBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneProfileEditBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneProfileEditBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileEditBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneProfileEditForbiddenBody stand alone profile edit forbidden body
+swagger:model StandAloneProfileEditForbiddenBody
+*/
+type StandAloneProfileEditForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone profile edit forbidden body
+func (o *StandAloneProfileEditForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profile edit forbidden body based on context it is used
+func (o *StandAloneProfileEditForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneProfileEditForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneProfileEditForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileEditForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneProfileEditNotFoundBody stand alone profile edit not found body
+swagger:model StandAloneProfileEditNotFoundBody
+*/
+type StandAloneProfileEditNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone profile edit not found body
+func (o *StandAloneProfileEditNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profile edit not found body based on context it is used
+func (o *StandAloneProfileEditNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneProfileEditNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneProfileEditNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileEditNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+StandAloneProfileEditUnauthorizedBody stand alone profile edit unauthorized body
+swagger:model StandAloneProfileEditUnauthorizedBody
+*/
+type StandAloneProfileEditUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this stand alone profile edit unauthorized body
+func (o *StandAloneProfileEditUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this stand alone profile edit unauthorized body based on context it is used
+func (o *StandAloneProfileEditUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *StandAloneProfileEditUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *StandAloneProfileEditUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res StandAloneProfileEditUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

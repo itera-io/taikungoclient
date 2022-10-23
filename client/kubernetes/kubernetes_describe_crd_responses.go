@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // KubernetesDescribeCrdReader is a Reader for the KubernetesDescribeCrd structure.
@@ -136,7 +136,7 @@ KubernetesDescribeCrdBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesDescribeCrdBadRequest struct {
-	Payload []*models.Error
+	Payload []*KubernetesDescribeCrdBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this kubernetes describe crd bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeCrdBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/crd][%d] kubernetesDescribeCrdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeCrdBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesDescribeCrdBadRequest) GetPayload() []*KubernetesDescribeCrdBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesDescribeCrdUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesDescribeCrdUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesDescribeCrdUnauthorizedBody
 }
 
 // IsSuccess returns true when this kubernetes describe crd unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesDescribeCrdUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/crd][%d] kubernetesDescribeCrdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeCrdUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeCrdUnauthorized) GetPayload() *KubernetesDescribeCrdUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeCrdUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesDescribeCrdUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesDescribeCrdForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesDescribeCrdForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesDescribeCrdForbiddenBody
 }
 
 // IsSuccess returns true when this kubernetes describe crd forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesDescribeCrdForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/crd][%d] kubernetesDescribeCrdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeCrdForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeCrdForbidden) GetPayload() *KubernetesDescribeCrdForbiddenBody {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeCrdForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesDescribeCrdForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesDescribeCrdNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesDescribeCrdNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *KubernetesDescribeCrdNotFoundBody
 }
 
 // IsSuccess returns true when this kubernetes describe crd not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesDescribeCrdNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/crd][%d] kubernetesDescribeCrdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeCrdNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeCrdNotFound) GetPayload() *KubernetesDescribeCrdNotFoundBody {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeCrdNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(KubernetesDescribeCrdNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,237 @@ func (o *KubernetesDescribeCrdInternalServerError) String() string {
 
 func (o *KubernetesDescribeCrdInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+KubernetesDescribeCrdBadRequestBodyItems0 kubernetes describe crd bad request body items0
+swagger:model KubernetesDescribeCrdBadRequestBodyItems0
+*/
+type KubernetesDescribeCrdBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this kubernetes describe crd bad request body items0
+func (o *KubernetesDescribeCrdBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe crd bad request body items0 based on context it is used
+func (o *KubernetesDescribeCrdBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeCrdBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeCrdBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeCrdBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeCrdBody kubernetes describe crd body
+swagger:model KubernetesDescribeCrdBody
+*/
+type KubernetesDescribeCrdBody struct {
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+}
+
+// Validate validates this kubernetes describe crd body
+func (o *KubernetesDescribeCrdBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe crd body based on context it is used
+func (o *KubernetesDescribeCrdBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeCrdBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeCrdBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeCrdBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeCrdForbiddenBody kubernetes describe crd forbidden body
+swagger:model KubernetesDescribeCrdForbiddenBody
+*/
+type KubernetesDescribeCrdForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes describe crd forbidden body
+func (o *KubernetesDescribeCrdForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe crd forbidden body based on context it is used
+func (o *KubernetesDescribeCrdForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeCrdForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeCrdForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeCrdForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeCrdNotFoundBody kubernetes describe crd not found body
+swagger:model KubernetesDescribeCrdNotFoundBody
+*/
+type KubernetesDescribeCrdNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes describe crd not found body
+func (o *KubernetesDescribeCrdNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe crd not found body based on context it is used
+func (o *KubernetesDescribeCrdNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeCrdNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeCrdNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeCrdNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+KubernetesDescribeCrdUnauthorizedBody kubernetes describe crd unauthorized body
+swagger:model KubernetesDescribeCrdUnauthorizedBody
+*/
+type KubernetesDescribeCrdUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this kubernetes describe crd unauthorized body
+func (o *KubernetesDescribeCrdUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this kubernetes describe crd unauthorized body based on context it is used
+func (o *KubernetesDescribeCrdUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *KubernetesDescribeCrdUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *KubernetesDescribeCrdUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res KubernetesDescribeCrdUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

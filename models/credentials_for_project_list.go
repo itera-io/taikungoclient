@@ -7,10 +7,12 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CredentialsForProjectList credentials for project list
@@ -19,10 +21,10 @@ import (
 type CredentialsForProjectList struct {
 
 	// aws
-	Aws *AwsCredentialsForProjectDto `json:"aws,omitempty"`
+	Aws *CredentialsForProjectListAws `json:"aws,omitempty"`
 
 	// azure
-	Azure *AzureCredentialsForProjectDto `json:"azure,omitempty"`
+	Azure *CredentialsForProjectListAzure `json:"azure,omitempty"`
 
 	// billing enabled
 	BillingEnabled bool `json:"billingEnabled"`
@@ -31,16 +33,17 @@ type CredentialsForProjectList struct {
 	CloudCredentialRevision int32 `json:"cloudCredentialRevision,omitempty"`
 
 	// cloud type
-	CloudType CloudType `json:"cloudType,omitempty"`
+	// Enum: [100 200 300 400]
+	CloudType int32 `json:"cloudType,omitempty"`
 
 	// continent name
 	ContinentName string `json:"continentName,omitempty"`
 
 	// google
-	Google *GoogleCredentialForProjectDto `json:"google,omitempty"`
+	Google *CredentialsForProjectListGoogle `json:"google,omitempty"`
 
 	// openstack
-	Openstack *OpenstackCredentialsForProjectDto `json:"openstack,omitempty"`
+	Openstack *CredentialsForProjectListOpenstack `json:"openstack,omitempty"`
 
 	// requires v p n
 	RequiresVPN bool `json:"requiresVPN"`
@@ -114,17 +117,33 @@ func (m *CredentialsForProjectList) validateAzure(formats strfmt.Registry) error
 	return nil
 }
 
+var credentialsForProjectListTypeCloudTypePropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200,300,400]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		credentialsForProjectListTypeCloudTypePropEnum = append(credentialsForProjectListTypeCloudTypePropEnum, v)
+	}
+}
+
+// prop value enum
+func (m *CredentialsForProjectList) validateCloudTypeEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, credentialsForProjectListTypeCloudTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *CredentialsForProjectList) validateCloudType(formats strfmt.Registry) error {
 	if swag.IsZero(m.CloudType) { // not required
 		return nil
 	}
 
-	if err := m.CloudType.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("cloudType")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("cloudType")
-		}
+	// value enum
+	if err := m.validateCloudTypeEnum("cloudType", "body", m.CloudType); err != nil {
 		return err
 	}
 
@@ -181,10 +200,6 @@ func (m *CredentialsForProjectList) ContextValidate(ctx context.Context, formats
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateCloudType(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateGoogle(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -226,20 +241,6 @@ func (m *CredentialsForProjectList) contextValidateAzure(ctx context.Context, fo
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *CredentialsForProjectList) contextValidateCloudType(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := m.CloudType.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("cloudType")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("cloudType")
-		}
-		return err
 	}
 
 	return nil
@@ -288,6 +289,217 @@ func (m *CredentialsForProjectList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *CredentialsForProjectList) UnmarshalBinary(b []byte) error {
 	var res CredentialsForProjectList
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CredentialsForProjectListAws credentials for project list aws
+//
+// swagger:model CredentialsForProjectListAws
+type CredentialsForProjectListAws struct {
+
+	// aws access key Id
+	AwsAccessKeyID string `json:"awsAccessKeyId,omitempty"`
+
+	// aws region
+	AwsRegion string `json:"awsRegion,omitempty"`
+
+	// aws secret access key
+	AwsSecretAccessKey string `json:"awsSecretAccessKey,omitempty"`
+}
+
+// Validate validates this credentials for project list aws
+func (m *CredentialsForProjectListAws) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this credentials for project list aws based on context it is used
+func (m *CredentialsForProjectListAws) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CredentialsForProjectListAws) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CredentialsForProjectListAws) UnmarshalBinary(b []byte) error {
+	var res CredentialsForProjectListAws
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CredentialsForProjectListAzure credentials for project list azure
+//
+// swagger:model CredentialsForProjectListAzure
+type CredentialsForProjectListAzure struct {
+
+	// azure client Id
+	AzureClientID string `json:"azureClientId,omitempty"`
+
+	// azure client secret
+	AzureClientSecret string `json:"azureClientSecret,omitempty"`
+
+	// azure location
+	AzureLocation string `json:"azureLocation,omitempty"`
+
+	// azure subscription Id
+	AzureSubscriptionID string `json:"azureSubscriptionId,omitempty"`
+
+	// azure tenant Id
+	AzureTenantID string `json:"azureTenantId,omitempty"`
+}
+
+// Validate validates this credentials for project list azure
+func (m *CredentialsForProjectListAzure) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this credentials for project list azure based on context it is used
+func (m *CredentialsForProjectListAzure) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CredentialsForProjectListAzure) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CredentialsForProjectListAzure) UnmarshalBinary(b []byte) error {
+	var res CredentialsForProjectListAzure
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CredentialsForProjectListGoogle credentials for project list google
+//
+// swagger:model CredentialsForProjectListGoogle
+type CredentialsForProjectListGoogle struct {
+
+	// billing account Id
+	BillingAccountID string `json:"billingAccountId,omitempty"`
+
+	// config
+	Config string `json:"config,omitempty"`
+
+	// folder Id
+	FolderID string `json:"folderId,omitempty"`
+
+	// region
+	Region string `json:"region,omitempty"`
+
+	// zone
+	Zone string `json:"zone,omitempty"`
+}
+
+// Validate validates this credentials for project list google
+func (m *CredentialsForProjectListGoogle) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this credentials for project list google based on context it is used
+func (m *CredentialsForProjectListGoogle) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CredentialsForProjectListGoogle) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CredentialsForProjectListGoogle) UnmarshalBinary(b []byte) error {
+	var res CredentialsForProjectListGoogle
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// CredentialsForProjectListOpenstack credentials for project list openstack
+//
+// swagger:model CredentialsForProjectListOpenstack
+type CredentialsForProjectListOpenstack struct {
+
+	// open stack availability zone
+	OpenStackAvailabilityZone string `json:"openStackAvailabilityZone,omitempty"`
+
+	// open stack domain
+	OpenStackDomain string `json:"openStackDomain,omitempty"`
+
+	// open stack import network
+	OpenStackImportNetwork bool `json:"openStackImportNetwork"`
+
+	// open stack internal subnet Id
+	OpenStackInternalSubnetID string `json:"openStackInternalSubnetId,omitempty"`
+
+	// open stack password
+	OpenStackPassword string `json:"openStackPassword,omitempty"`
+
+	// open stack project
+	OpenStackProject string `json:"openStackProject,omitempty"`
+
+	// open stack public network
+	OpenStackPublicNetwork string `json:"openStackPublicNetwork,omitempty"`
+
+	// open stack region
+	OpenStackRegion string `json:"openStackRegion,omitempty"`
+
+	// open stack tenant Id
+	OpenStackTenantID string `json:"openStackTenantId,omitempty"`
+
+	// open stack Url
+	OpenStackURL string `json:"openStackUrl,omitempty"`
+
+	// open stack user
+	OpenStackUser string `json:"openStackUser,omitempty"`
+
+	// open stack volume type
+	OpenStackVolumeType string `json:"openStackVolumeType,omitempty"`
+}
+
+// Validate validates this credentials for project list openstack
+func (m *CredentialsForProjectListOpenstack) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this credentials for project list openstack based on context it is used
+func (m *CredentialsForProjectListOpenstack) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *CredentialsForProjectListOpenstack) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *CredentialsForProjectListOpenstack) UnmarshalBinary(b []byte) error {
+	var res CredentialsForProjectListOpenstack
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

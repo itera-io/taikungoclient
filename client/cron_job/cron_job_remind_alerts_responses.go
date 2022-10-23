@@ -6,13 +6,16 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CronJobRemindAlertsReader is a Reader for the CronJobRemindAlerts structure.
@@ -75,7 +78,7 @@ CronJobRemindAlertsOK describes a response with status code 200, with default he
 Success
 */
 type CronJobRemindAlertsOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job remind alerts o k response has a 2xx status code
@@ -111,7 +114,7 @@ func (o *CronJobRemindAlertsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/remind-alerts][%d] cronJobRemindAlertsOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobRemindAlertsOK) GetPayload() models.Unit {
+func (o *CronJobRemindAlertsOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +139,7 @@ CronJobRemindAlertsBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type CronJobRemindAlertsBadRequest struct {
-	Payload []*models.Error
+	Payload []*CronJobRemindAlertsBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this cron job remind alerts bad request response has a 2xx status code
@@ -172,7 +175,7 @@ func (o *CronJobRemindAlertsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/remind-alerts][%d] cronJobRemindAlertsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobRemindAlertsBadRequest) GetPayload() []*models.Error {
+func (o *CronJobRemindAlertsBadRequest) GetPayload() []*CronJobRemindAlertsBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +200,7 @@ CronJobRemindAlertsUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type CronJobRemindAlertsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobRemindAlertsUnauthorizedBody
 }
 
 // IsSuccess returns true when this cron job remind alerts unauthorized response has a 2xx status code
@@ -233,13 +236,13 @@ func (o *CronJobRemindAlertsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/remind-alerts][%d] cronJobRemindAlertsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobRemindAlertsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobRemindAlertsUnauthorized) GetPayload() *CronJobRemindAlertsUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *CronJobRemindAlertsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobRemindAlertsUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +263,7 @@ CronJobRemindAlertsForbidden describes a response with status code 403, with def
 Forbidden
 */
 type CronJobRemindAlertsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobRemindAlertsForbiddenBody
 }
 
 // IsSuccess returns true when this cron job remind alerts forbidden response has a 2xx status code
@@ -296,13 +299,13 @@ func (o *CronJobRemindAlertsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/remind-alerts][%d] cronJobRemindAlertsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobRemindAlertsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobRemindAlertsForbidden) GetPayload() *CronJobRemindAlertsForbiddenBody {
 	return o.Payload
 }
 
 func (o *CronJobRemindAlertsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobRemindAlertsForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +326,7 @@ CronJobRemindAlertsNotFound describes a response with status code 404, with defa
 Not Found
 */
 type CronJobRemindAlertsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *CronJobRemindAlertsNotFoundBody
 }
 
 // IsSuccess returns true when this cron job remind alerts not found response has a 2xx status code
@@ -359,13 +362,13 @@ func (o *CronJobRemindAlertsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/remind-alerts][%d] cronJobRemindAlertsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobRemindAlertsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobRemindAlertsNotFound) GetPayload() *CronJobRemindAlertsNotFoundBody {
 	return o.Payload
 }
 
 func (o *CronJobRemindAlertsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(CronJobRemindAlertsNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +426,277 @@ func (o *CronJobRemindAlertsInternalServerError) String() string {
 
 func (o *CronJobRemindAlertsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+CronJobRemindAlertsBadRequestBodyItems0 cron job remind alerts bad request body items0
+swagger:model CronJobRemindAlertsBadRequestBodyItems0
+*/
+type CronJobRemindAlertsBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this cron job remind alerts bad request body items0
+func (o *CronJobRemindAlertsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job remind alerts bad request body items0 based on context it is used
+func (o *CronJobRemindAlertsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobRemindAlertsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobRemindAlertsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res CronJobRemindAlertsBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobRemindAlertsBody cron job remind alerts body
+swagger:model CronJobRemindAlertsBody
+*/
+type CronJobRemindAlertsBody struct {
+
+	// reminder
+	// Enum: [100 200 300 -1]
+	Reminder int32 `json:"reminder,omitempty"`
+}
+
+// Validate validates this cron job remind alerts body
+func (o *CronJobRemindAlertsBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateReminder(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var cronJobRemindAlertsBodyTypeReminderPropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[100,200,300,-1]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		cronJobRemindAlertsBodyTypeReminderPropEnum = append(cronJobRemindAlertsBodyTypeReminderPropEnum, v)
+	}
+}
+
+// prop value enum
+func (o *CronJobRemindAlertsBody) validateReminderEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, cronJobRemindAlertsBodyTypeReminderPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CronJobRemindAlertsBody) validateReminder(formats strfmt.Registry) error {
+	if swag.IsZero(o.Reminder) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := o.validateReminderEnum("body"+"."+"reminder", "body", o.Reminder); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this cron job remind alerts body based on context it is used
+func (o *CronJobRemindAlertsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobRemindAlertsBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobRemindAlertsBody) UnmarshalBinary(b []byte) error {
+	var res CronJobRemindAlertsBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobRemindAlertsForbiddenBody cron job remind alerts forbidden body
+swagger:model CronJobRemindAlertsForbiddenBody
+*/
+type CronJobRemindAlertsForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job remind alerts forbidden body
+func (o *CronJobRemindAlertsForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job remind alerts forbidden body based on context it is used
+func (o *CronJobRemindAlertsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobRemindAlertsForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobRemindAlertsForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res CronJobRemindAlertsForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobRemindAlertsNotFoundBody cron job remind alerts not found body
+swagger:model CronJobRemindAlertsNotFoundBody
+*/
+type CronJobRemindAlertsNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job remind alerts not found body
+func (o *CronJobRemindAlertsNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job remind alerts not found body based on context it is used
+func (o *CronJobRemindAlertsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobRemindAlertsNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobRemindAlertsNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res CronJobRemindAlertsNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+CronJobRemindAlertsUnauthorizedBody cron job remind alerts unauthorized body
+swagger:model CronJobRemindAlertsUnauthorizedBody
+*/
+type CronJobRemindAlertsUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this cron job remind alerts unauthorized body
+func (o *CronJobRemindAlertsUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this cron job remind alerts unauthorized body based on context it is used
+func (o *CronJobRemindAlertsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *CronJobRemindAlertsUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *CronJobRemindAlertsUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res CronJobRemindAlertsUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

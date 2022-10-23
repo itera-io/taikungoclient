@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOpsCredentialsLockManagerParams creates a new OpsCredentialsLockManagerParams object,
@@ -64,7 +62,7 @@ OpsCredentialsLockManagerParams contains all the parameters to send to the API e
 type OpsCredentialsLockManagerParams struct {
 
 	// Body.
-	Body *models.OperationCredentialLockManagerCommand
+	Body OpsCredentialsLockManagerBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *OpsCredentialsLockManagerParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the ops credentials lock manager params
-func (o *OpsCredentialsLockManagerParams) WithBody(body *models.OperationCredentialLockManagerCommand) *OpsCredentialsLockManagerParams {
+func (o *OpsCredentialsLockManagerParams) WithBody(body OpsCredentialsLockManagerBody) *OpsCredentialsLockManagerParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the ops credentials lock manager params
-func (o *OpsCredentialsLockManagerParams) SetBody(body *models.OperationCredentialLockManagerCommand) {
+func (o *OpsCredentialsLockManagerParams) SetBody(body OpsCredentialsLockManagerBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *OpsCredentialsLockManagerParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

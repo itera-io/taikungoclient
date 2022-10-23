@@ -6,13 +6,15 @@ package search
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // SearchStandAloneProfilesListReader is a Reader for the SearchStandAloneProfilesList structure.
@@ -75,7 +77,7 @@ SearchStandAloneProfilesListOK describes a response with status code 200, with d
 Success
 */
 type SearchStandAloneProfilesListOK struct {
-	Payload *models.StandAloneProfilesSearchList
+	Payload *SearchStandAloneProfilesListOKBody
 }
 
 // IsSuccess returns true when this search stand alone profiles list o k response has a 2xx status code
@@ -111,13 +113,13 @@ func (o *SearchStandAloneProfilesListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListOK  %+v", 200, o.Payload)
 }
 
-func (o *SearchStandAloneProfilesListOK) GetPayload() *models.StandAloneProfilesSearchList {
+func (o *SearchStandAloneProfilesListOK) GetPayload() *SearchStandAloneProfilesListOKBody {
 	return o.Payload
 }
 
 func (o *SearchStandAloneProfilesListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.StandAloneProfilesSearchList)
+	o.Payload = new(SearchStandAloneProfilesListOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +140,7 @@ SearchStandAloneProfilesListBadRequest describes a response with status code 400
 Bad Request
 */
 type SearchStandAloneProfilesListBadRequest struct {
-	Payload []*models.Error
+	Payload []*SearchStandAloneProfilesListBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this search stand alone profiles list bad request response has a 2xx status code
@@ -174,7 +176,7 @@ func (o *SearchStandAloneProfilesListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchStandAloneProfilesListBadRequest) GetPayload() []*models.Error {
+func (o *SearchStandAloneProfilesListBadRequest) GetPayload() []*SearchStandAloneProfilesListBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -199,7 +201,7 @@ SearchStandAloneProfilesListUnauthorized describes a response with status code 4
 Unauthorized
 */
 type SearchStandAloneProfilesListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *SearchStandAloneProfilesListUnauthorizedBody
 }
 
 // IsSuccess returns true when this search stand alone profiles list unauthorized response has a 2xx status code
@@ -235,13 +237,13 @@ func (o *SearchStandAloneProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchStandAloneProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchStandAloneProfilesListUnauthorized) GetPayload() *SearchStandAloneProfilesListUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *SearchStandAloneProfilesListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchStandAloneProfilesListUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +264,7 @@ SearchStandAloneProfilesListForbidden describes a response with status code 403,
 Forbidden
 */
 type SearchStandAloneProfilesListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *SearchStandAloneProfilesListForbiddenBody
 }
 
 // IsSuccess returns true when this search stand alone profiles list forbidden response has a 2xx status code
@@ -298,13 +300,13 @@ func (o *SearchStandAloneProfilesListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchStandAloneProfilesListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchStandAloneProfilesListForbidden) GetPayload() *SearchStandAloneProfilesListForbiddenBody {
 	return o.Payload
 }
 
 func (o *SearchStandAloneProfilesListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchStandAloneProfilesListForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +327,7 @@ SearchStandAloneProfilesListNotFound describes a response with status code 404, 
 Not Found
 */
 type SearchStandAloneProfilesListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *SearchStandAloneProfilesListNotFoundBody
 }
 
 // IsSuccess returns true when this search stand alone profiles list not found response has a 2xx status code
@@ -361,13 +363,13 @@ func (o *SearchStandAloneProfilesListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchStandAloneProfilesListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchStandAloneProfilesListNotFound) GetPayload() *SearchStandAloneProfilesListNotFoundBody {
 	return o.Payload
 }
 
 func (o *SearchStandAloneProfilesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(SearchStandAloneProfilesListNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,5 +427,392 @@ func (o *SearchStandAloneProfilesListInternalServerError) String() string {
 
 func (o *SearchStandAloneProfilesListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+SearchStandAloneProfilesListBadRequestBodyItems0 search stand alone profiles list bad request body items0
+swagger:model SearchStandAloneProfilesListBadRequestBodyItems0
+*/
+type SearchStandAloneProfilesListBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this search stand alone profiles list bad request body items0
+func (o *SearchStandAloneProfilesListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search stand alone profiles list bad request body items0 based on context it is used
+func (o *SearchStandAloneProfilesListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchStandAloneProfilesListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchStandAloneProfilesListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res SearchStandAloneProfilesListBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchStandAloneProfilesListBody search stand alone profiles list body
+swagger:model SearchStandAloneProfilesListBody
+*/
+type SearchStandAloneProfilesListBody struct {
+
+	// limit
+	Limit int32 `json:"limit,omitempty"`
+
+	// offset
+	Offset int32 `json:"offset,omitempty"`
+
+	// search term
+	SearchTerm string `json:"searchTerm,omitempty"`
+}
+
+// Validate validates this search stand alone profiles list body
+func (o *SearchStandAloneProfilesListBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search stand alone profiles list body based on context it is used
+func (o *SearchStandAloneProfilesListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchStandAloneProfilesListBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchStandAloneProfilesListBody) UnmarshalBinary(b []byte) error {
+	var res SearchStandAloneProfilesListBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchStandAloneProfilesListForbiddenBody search stand alone profiles list forbidden body
+swagger:model SearchStandAloneProfilesListForbiddenBody
+*/
+type SearchStandAloneProfilesListForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search stand alone profiles list forbidden body
+func (o *SearchStandAloneProfilesListForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search stand alone profiles list forbidden body based on context it is used
+func (o *SearchStandAloneProfilesListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchStandAloneProfilesListForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchStandAloneProfilesListForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res SearchStandAloneProfilesListForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchStandAloneProfilesListNotFoundBody search stand alone profiles list not found body
+swagger:model SearchStandAloneProfilesListNotFoundBody
+*/
+type SearchStandAloneProfilesListNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search stand alone profiles list not found body
+func (o *SearchStandAloneProfilesListNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search stand alone profiles list not found body based on context it is used
+func (o *SearchStandAloneProfilesListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchStandAloneProfilesListNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchStandAloneProfilesListNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res SearchStandAloneProfilesListNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchStandAloneProfilesListOKBody search stand alone profiles list o k body
+swagger:model SearchStandAloneProfilesListOKBody
+*/
+type SearchStandAloneProfilesListOKBody struct {
+
+	// data
+	Data []*SearchStandAloneProfilesListOKBodyDataItems0 `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
+}
+
+// Validate validates this search stand alone profiles list o k body
+func (o *SearchStandAloneProfilesListOKBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchStandAloneProfilesListOKBody) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(o.Data) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(o.Data); i++ {
+		if swag.IsZero(o.Data[i]) { // not required
+			continue
+		}
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchStandAloneProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchStandAloneProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this search stand alone profiles list o k body based on the context it is used
+func (o *SearchStandAloneProfilesListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *SearchStandAloneProfilesListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(o.Data); i++ {
+
+		if o.Data[i] != nil {
+			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("searchStandAloneProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("searchStandAloneProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchStandAloneProfilesListOKBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchStandAloneProfilesListOKBody) UnmarshalBinary(b []byte) error {
+	var res SearchStandAloneProfilesListOKBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchStandAloneProfilesListOKBodyDataItems0 search stand alone profiles list o k body data items0
+swagger:model SearchStandAloneProfilesListOKBodyDataItems0
+*/
+type SearchStandAloneProfilesListOKBodyDataItems0 struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+}
+
+// Validate validates this search stand alone profiles list o k body data items0
+func (o *SearchStandAloneProfilesListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search stand alone profiles list o k body data items0 based on context it is used
+func (o *SearchStandAloneProfilesListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchStandAloneProfilesListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchStandAloneProfilesListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
+	var res SearchStandAloneProfilesListOKBodyDataItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+SearchStandAloneProfilesListUnauthorizedBody search stand alone profiles list unauthorized body
+swagger:model SearchStandAloneProfilesListUnauthorizedBody
+*/
+type SearchStandAloneProfilesListUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this search stand alone profiles list unauthorized body
+func (o *SearchStandAloneProfilesListUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this search stand alone profiles list unauthorized body based on context it is used
+func (o *SearchStandAloneProfilesListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *SearchStandAloneProfilesListUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *SearchStandAloneProfilesListUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res SearchStandAloneProfilesListUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

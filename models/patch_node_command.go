@@ -23,7 +23,7 @@ type PatchNodeCommand struct {
 	Name string `json:"name,omitempty"`
 
 	// parameters
-	Parameters []*PatchNodeLabelsDto `json:"parameters"`
+	Parameters []*PatchNodeCommandParametersItems0 `json:"parameters"`
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
@@ -114,6 +114,49 @@ func (m *PatchNodeCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PatchNodeCommand) UnmarshalBinary(b []byte) error {
 	var res PatchNodeCommand
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PatchNodeCommandParametersItems0 patch node command parameters items0
+//
+// swagger:model PatchNodeCommandParametersItems0
+type PatchNodeCommandParametersItems0 struct {
+
+	// key
+	Key string `json:"key,omitempty"`
+
+	// mode
+	Mode string `json:"mode,omitempty"`
+
+	// value
+	Value string `json:"value,omitempty"`
+}
+
+// Validate validates this patch node command parameters items0
+func (m *PatchNodeCommandParametersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this patch node command parameters items0 based on context it is used
+func (m *PatchNodeCommandParametersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PatchNodeCommandParametersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PatchNodeCommandParametersItems0) UnmarshalBinary(b []byte) error {
+	var res PatchNodeCommandParametersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAwsAwsZoneListParams creates a new AwsAwsZoneListParams object,
@@ -64,7 +62,7 @@ AwsAwsZoneListParams contains all the parameters to send to the API endpoint
 type AwsAwsZoneListParams struct {
 
 	// Body.
-	Body *models.AmazonAvailabilityZonesCommand
+	Body AwsAwsZoneListBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *AwsAwsZoneListParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the aws aws zone list params
-func (o *AwsAwsZoneListParams) WithBody(body *models.AmazonAvailabilityZonesCommand) *AwsAwsZoneListParams {
+func (o *AwsAwsZoneListParams) WithBody(body AwsAwsZoneListBody) *AwsAwsZoneListParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the aws aws zone list params
-func (o *AwsAwsZoneListParams) SetBody(body *models.AmazonAvailabilityZonesCommand) {
+func (o *AwsAwsZoneListParams) SetBody(body AwsAwsZoneListBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *AwsAwsZoneListParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v

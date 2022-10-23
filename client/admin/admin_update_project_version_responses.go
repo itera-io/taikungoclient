@@ -6,13 +6,13 @@ package admin
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/go-openapi/swag"
 )
 
 // AdminUpdateProjectVersionReader is a Reader for the AdminUpdateProjectVersion structure.
@@ -75,7 +75,7 @@ AdminUpdateProjectVersionOK describes a response with status code 200, with defa
 Success
 */
 type AdminUpdateProjectVersionOK struct {
-	Payload models.Unit
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin update project version o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AdminUpdateProjectVersionOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionOK  %+v", 200, o.Payload)
 }
 
-func (o *AdminUpdateProjectVersionOK) GetPayload() models.Unit {
+func (o *AdminUpdateProjectVersionOK) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AdminUpdateProjectVersionBadRequest describes a response with status code 400, w
 Bad Request
 */
 type AdminUpdateProjectVersionBadRequest struct {
-	Payload []*models.Error
+	Payload []*AdminUpdateProjectVersionBadRequestBodyItems0
 }
 
 // IsSuccess returns true when this admin update project version bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminUpdateProjectVersionBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminUpdateProjectVersionBadRequest) GetPayload() []*models.Error {
+func (o *AdminUpdateProjectVersionBadRequest) GetPayload() []*AdminUpdateProjectVersionBadRequestBodyItems0 {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AdminUpdateProjectVersionUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type AdminUpdateProjectVersionUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload *AdminUpdateProjectVersionUnauthorizedBody
 }
 
 // IsSuccess returns true when this admin update project version unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AdminUpdateProjectVersionUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminUpdateProjectVersionUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AdminUpdateProjectVersionUnauthorized) GetPayload() *AdminUpdateProjectVersionUnauthorizedBody {
 	return o.Payload
 }
 
 func (o *AdminUpdateProjectVersionUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AdminUpdateProjectVersionUnauthorizedBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AdminUpdateProjectVersionForbidden describes a response with status code 403, wi
 Forbidden
 */
 type AdminUpdateProjectVersionForbidden struct {
-	Payload *models.ProblemDetails
+	Payload *AdminUpdateProjectVersionForbiddenBody
 }
 
 // IsSuccess returns true when this admin update project version forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AdminUpdateProjectVersionForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminUpdateProjectVersionForbidden) GetPayload() *models.ProblemDetails {
+func (o *AdminUpdateProjectVersionForbidden) GetPayload() *AdminUpdateProjectVersionForbiddenBody {
 	return o.Payload
 }
 
 func (o *AdminUpdateProjectVersionForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AdminUpdateProjectVersionForbiddenBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AdminUpdateProjectVersionNotFound describes a response with status code 404, wit
 Not Found
 */
 type AdminUpdateProjectVersionNotFound struct {
-	Payload *models.ProblemDetails
+	Payload *AdminUpdateProjectVersionNotFoundBody
 }
 
 // IsSuccess returns true when this admin update project version not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AdminUpdateProjectVersionNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminUpdateProjectVersionNotFound) GetPayload() *models.ProblemDetails {
+func (o *AdminUpdateProjectVersionNotFound) GetPayload() *AdminUpdateProjectVersionNotFoundBody {
 	return o.Payload
 }
 
 func (o *AdminUpdateProjectVersionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(AdminUpdateProjectVersionNotFoundBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,5 +423,240 @@ func (o *AdminUpdateProjectVersionInternalServerError) String() string {
 
 func (o *AdminUpdateProjectVersionInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	return nil
+}
+
+/*
+AdminUpdateProjectVersionBadRequestBodyItems0 admin update project version bad request body items0
+swagger:model AdminUpdateProjectVersionBadRequestBodyItems0
+*/
+type AdminUpdateProjectVersionBadRequestBodyItems0 struct {
+
+	// code
+	Code string `json:"code,omitempty"`
+
+	// description
+	Description string `json:"description,omitempty"`
+}
+
+// Validate validates this admin update project version bad request body items0
+func (o *AdminUpdateProjectVersionBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin update project version bad request body items0 based on context it is used
+func (o *AdminUpdateProjectVersionBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminUpdateProjectVersionBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminUpdateProjectVersionBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
+	var res AdminUpdateProjectVersionBadRequestBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminUpdateProjectVersionBody admin update project version body
+swagger:model AdminUpdateProjectVersionBody
+*/
+type AdminUpdateProjectVersionBody struct {
+
+	// id
+	ID int32 `json:"id,omitempty"`
+
+	// kubernetes current version
+	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion,omitempty"`
+
+	// kubespray current version
+	KubesprayCurrentVersion string `json:"kubesprayCurrentVersion,omitempty"`
+}
+
+// Validate validates this admin update project version body
+func (o *AdminUpdateProjectVersionBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin update project version body based on context it is used
+func (o *AdminUpdateProjectVersionBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminUpdateProjectVersionBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminUpdateProjectVersionBody) UnmarshalBinary(b []byte) error {
+	var res AdminUpdateProjectVersionBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminUpdateProjectVersionForbiddenBody admin update project version forbidden body
+swagger:model AdminUpdateProjectVersionForbiddenBody
+*/
+type AdminUpdateProjectVersionForbiddenBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this admin update project version forbidden body
+func (o *AdminUpdateProjectVersionForbiddenBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin update project version forbidden body based on context it is used
+func (o *AdminUpdateProjectVersionForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminUpdateProjectVersionForbiddenBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminUpdateProjectVersionForbiddenBody) UnmarshalBinary(b []byte) error {
+	var res AdminUpdateProjectVersionForbiddenBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminUpdateProjectVersionNotFoundBody admin update project version not found body
+swagger:model AdminUpdateProjectVersionNotFoundBody
+*/
+type AdminUpdateProjectVersionNotFoundBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this admin update project version not found body
+func (o *AdminUpdateProjectVersionNotFoundBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin update project version not found body based on context it is used
+func (o *AdminUpdateProjectVersionNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminUpdateProjectVersionNotFoundBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminUpdateProjectVersionNotFoundBody) UnmarshalBinary(b []byte) error {
+	var res AdminUpdateProjectVersionNotFoundBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+AdminUpdateProjectVersionUnauthorizedBody admin update project version unauthorized body
+swagger:model AdminUpdateProjectVersionUnauthorizedBody
+*/
+type AdminUpdateProjectVersionUnauthorizedBody struct {
+
+	// detail
+	Detail string `json:"detail,omitempty"`
+
+	// instance
+	Instance string `json:"instance,omitempty"`
+
+	// status
+	Status int32 `json:"status,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// type
+	Type string `json:"type,omitempty"`
+}
+
+// Validate validates this admin update project version unauthorized body
+func (o *AdminUpdateProjectVersionUnauthorizedBody) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this admin update project version unauthorized body based on context it is used
+func (o *AdminUpdateProjectVersionUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *AdminUpdateProjectVersionUnauthorizedBody) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *AdminUpdateProjectVersionUnauthorizedBody) UnmarshalBinary(b []byte) error {
+	var res AdminUpdateProjectVersionUnauthorizedBody
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
 	return nil
 }

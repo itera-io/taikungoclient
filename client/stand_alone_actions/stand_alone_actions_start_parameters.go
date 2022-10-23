@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneActionsStartParams creates a new StandAloneActionsStartParams object,
@@ -64,7 +62,7 @@ StandAloneActionsStartParams contains all the parameters to send to the API endp
 type StandAloneActionsStartParams struct {
 
 	// Body.
-	Body *models.StartStandaloneVMCommand
+	Body StandAloneActionsStartBody
 
 	// V.
 	V string
@@ -123,13 +121,13 @@ func (o *StandAloneActionsStartParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone actions start params
-func (o *StandAloneActionsStartParams) WithBody(body *models.StartStandaloneVMCommand) *StandAloneActionsStartParams {
+func (o *StandAloneActionsStartParams) WithBody(body StandAloneActionsStartBody) *StandAloneActionsStartParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone actions start params
-func (o *StandAloneActionsStartParams) SetBody(body *models.StartStandaloneVMCommand) {
+func (o *StandAloneActionsStartParams) SetBody(body StandAloneActionsStartBody) {
 	o.Body = body
 }
 
@@ -151,10 +149,8 @@ func (o *StandAloneActionsStartParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Body); err != nil {
+		return err
 	}
 
 	// path param v
