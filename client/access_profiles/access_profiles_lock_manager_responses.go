@@ -197,7 +197,7 @@ AccessProfilesLockManagerUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type AccessProfilesLockManagerUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles lock manager unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *AccessProfilesLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AccessProfilesLockManagerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AccessProfilesLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ AccessProfilesLockManagerForbidden describes a response with status code 403, wi
 Forbidden
 */
 type AccessProfilesLockManagerForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles lock manager forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *AccessProfilesLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AccessProfilesLockManagerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AccessProfilesLockManagerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ AccessProfilesLockManagerNotFound describes a response with status code 404, wit
 Not Found
 */
 type AccessProfilesLockManagerNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles lock manager not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *AccessProfilesLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AccessProfilesLockManagerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AccessProfilesLockManagerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

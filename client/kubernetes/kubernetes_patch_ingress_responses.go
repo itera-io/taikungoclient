@@ -197,7 +197,7 @@ KubernetesPatchIngressUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesPatchIngressUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch ingress unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesPatchIngressUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/ingress][%d] kubernetesPatchIngressUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchIngressUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchIngressUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchIngressUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesPatchIngressForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesPatchIngressForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch ingress forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesPatchIngressForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/ingress][%d] kubernetesPatchIngressForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchIngressForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchIngressForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchIngressForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesPatchIngressNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesPatchIngressNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch ingress not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesPatchIngressNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/ingress][%d] kubernetesPatchIngressNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchIngressNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchIngressNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchIngressNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

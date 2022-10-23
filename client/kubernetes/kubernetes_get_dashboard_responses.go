@@ -197,7 +197,7 @@ KubernetesGetDashboardUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesGetDashboardUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get dashboard unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesGetDashboardUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetDashboardUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetDashboardUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetDashboardUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesGetDashboardForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesGetDashboardForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get dashboard forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesGetDashboardForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetDashboardForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetDashboardForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetDashboardForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesGetDashboardNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesGetDashboardNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get dashboard not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesGetDashboardNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetDashboardNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetDashboardNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetDashboardNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

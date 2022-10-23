@@ -197,7 +197,7 @@ AdminBillingOperationsUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type AdminBillingOperationsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin billing operations unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *AdminBillingOperationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminBillingOperationsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminBillingOperationsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminBillingOperationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ AdminBillingOperationsForbidden describes a response with status code 403, with 
 Forbidden
 */
 type AdminBillingOperationsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin billing operations forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *AdminBillingOperationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminBillingOperationsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminBillingOperationsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminBillingOperationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ AdminBillingOperationsNotFound describes a response with status code 404, with d
 Not Found
 */
 type AdminBillingOperationsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin billing operations not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *AdminBillingOperationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminBillingOperationsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminBillingOperationsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminBillingOperationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

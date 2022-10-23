@@ -199,7 +199,7 @@ StandAloneProfileListUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type StandAloneProfileListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone profile list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *StandAloneProfileListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile][%d] standAloneProfileListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneProfileListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneProfileListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneProfileListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ StandAloneProfileListForbidden describes a response with status code 403, with d
 Forbidden
 */
 type StandAloneProfileListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone profile list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *StandAloneProfileListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile][%d] standAloneProfileListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneProfileListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneProfileListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneProfileListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ StandAloneProfileListNotFound describes a response with status code 404, with de
 Not Found
 */
 type StandAloneProfileListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone profile list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *StandAloneProfileListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile][%d] standAloneProfileListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneProfileListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneProfileListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneProfileListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -138,7 +138,7 @@ ShowbackCredentialsCreateBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ShowbackCredentialsCreateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ValidationProblemDetails
 }
 
 // IsSuccess returns true when this showback credentials create bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *ShowbackCredentialsCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/create][%d] showbackCredentialsCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackCredentialsCreateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackCredentialsCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ValidationProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -199,7 +201,7 @@ ShowbackCredentialsCreateUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ShowbackCredentialsCreateUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback credentials create unauthorized response has a 2xx status code
@@ -235,14 +237,16 @@ func (o *ShowbackCredentialsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/create][%d] showbackCredentialsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackCredentialsCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackCredentialsCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +264,7 @@ ShowbackCredentialsCreateForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ShowbackCredentialsCreateForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback credentials create forbidden response has a 2xx status code
@@ -296,14 +300,16 @@ func (o *ShowbackCredentialsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/create][%d] showbackCredentialsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackCredentialsCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackCredentialsCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +327,7 @@ ShowbackCredentialsCreateNotFound describes a response with status code 404, wit
 Not Found
 */
 type ShowbackCredentialsCreateNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback credentials create not found response has a 2xx status code
@@ -357,14 +363,16 @@ func (o *ShowbackCredentialsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/create][%d] showbackCredentialsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackCredentialsCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackCredentialsCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

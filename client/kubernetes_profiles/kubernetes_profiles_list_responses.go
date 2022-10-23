@@ -199,7 +199,7 @@ KubernetesProfilesListUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesProfilesListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes profiles list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *KubernetesProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesProfilesListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ KubernetesProfilesListForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesProfilesListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes profiles list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *KubernetesProfilesListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesProfilesListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesProfilesListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ KubernetesProfilesListNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesProfilesListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes profiles list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *KubernetesProfilesListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesProfilesListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesProfilesListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

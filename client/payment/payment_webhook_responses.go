@@ -197,7 +197,7 @@ PaymentWebhookUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type PaymentWebhookUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment webhook unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *PaymentWebhookUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentWebhookUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PaymentWebhookUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentWebhookUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ PaymentWebhookForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type PaymentWebhookForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment webhook forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *PaymentWebhookForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentWebhookForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PaymentWebhookForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentWebhookForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ PaymentWebhookNotFound describes a response with status code 404, with default h
 Not Found
 */
 type PaymentWebhookNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment webhook not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *PaymentWebhookNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentWebhookNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PaymentWebhookNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentWebhookNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

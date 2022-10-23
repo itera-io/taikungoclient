@@ -199,7 +199,7 @@ SearchPartnersListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type SearchPartnersListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search partners list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *SearchPartnersListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/partners][%d] searchPartnersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchPartnersListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchPartnersListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchPartnersListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ SearchPartnersListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type SearchPartnersListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search partners list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *SearchPartnersListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/partners][%d] searchPartnersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchPartnersListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchPartnersListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchPartnersListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ SearchPartnersListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type SearchPartnersListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search partners list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *SearchPartnersListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/partners][%d] searchPartnersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchPartnersListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchPartnersListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchPartnersListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

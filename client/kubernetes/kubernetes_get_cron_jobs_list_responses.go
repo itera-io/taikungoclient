@@ -199,7 +199,7 @@ KubernetesGetCronJobsListUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type KubernetesGetCronJobsListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get cron jobs list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *KubernetesGetCronJobsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/cronjobs][%d] kubernetesGetCronJobsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetCronJobsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetCronJobsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetCronJobsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ KubernetesGetCronJobsListForbidden describes a response with status code 403, wi
 Forbidden
 */
 type KubernetesGetCronJobsListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get cron jobs list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *KubernetesGetCronJobsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/cronjobs][%d] kubernetesGetCronJobsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetCronJobsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetCronJobsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetCronJobsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ KubernetesGetCronJobsListNotFound describes a response with status code 404, wit
 Not Found
 */
 type KubernetesGetCronJobsListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get cron jobs list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *KubernetesGetCronJobsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/cronjobs][%d] kubernetesGetCronJobsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetCronJobsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetCronJobsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetCronJobsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

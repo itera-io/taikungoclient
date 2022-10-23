@@ -197,7 +197,7 @@ KubernetesProfilesLockManagerUnauthorized describes a response with status code 
 Unauthorized
 */
 type KubernetesProfilesLockManagerUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes profiles lock manager unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesProfilesLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesProfilesLockManagerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesProfilesLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesProfilesLockManagerForbidden describes a response with status code 403
 Forbidden
 */
 type KubernetesProfilesLockManagerForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes profiles lock manager forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesProfilesLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesProfilesLockManagerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesProfilesLockManagerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesProfilesLockManagerNotFound describes a response with status code 404,
 Not Found
 */
 type KubernetesProfilesLockManagerNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes profiles lock manager not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesProfilesLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesProfilesLockManagerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesProfilesLockManagerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

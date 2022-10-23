@@ -197,7 +197,7 @@ ProjectQuotasEditUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type ProjectQuotasEditUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project quotas edit unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *ProjectQuotasEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectQuotasEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectQuotasEditUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectQuotasEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ ProjectQuotasEditForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type ProjectQuotasEditForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project quotas edit forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *ProjectQuotasEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectQuotasEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectQuotasEditForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectQuotasEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ ProjectQuotasEditNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type ProjectQuotasEditNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project quotas edit not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *ProjectQuotasEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectQuotasEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectQuotasEditNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectQuotasEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

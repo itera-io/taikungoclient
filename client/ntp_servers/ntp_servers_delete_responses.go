@@ -254,7 +254,7 @@ NtpServersDeleteUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type NtpServersDeleteUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ntp servers delete unauthorized response has a 2xx status code
@@ -290,14 +290,16 @@ func (o *NtpServersDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NtpServersDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *NtpServersDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NtpServersDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -315,7 +317,7 @@ NtpServersDeleteForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type NtpServersDeleteForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ntp servers delete forbidden response has a 2xx status code
@@ -351,14 +353,16 @@ func (o *NtpServersDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NtpServersDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *NtpServersDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NtpServersDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -376,7 +380,7 @@ NtpServersDeleteNotFound describes a response with status code 404, with default
 Not Found
 */
 type NtpServersDeleteNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ntp servers delete not found response has a 2xx status code
@@ -412,14 +416,16 @@ func (o *NtpServersDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NtpServersDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *NtpServersDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NtpServersDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

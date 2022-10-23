@@ -197,7 +197,7 @@ ProjectAppUninstallUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ProjectAppUninstallUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app uninstall unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *ProjectAppUninstallUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectApp/uninstall/{projectAppId}][%d] projectAppUninstallUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppUninstallUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppUninstallUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppUninstallUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ ProjectAppUninstallForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ProjectAppUninstallForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app uninstall forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *ProjectAppUninstallForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectApp/uninstall/{projectAppId}][%d] projectAppUninstallForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppUninstallForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppUninstallForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppUninstallForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ ProjectAppUninstallNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ProjectAppUninstallNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app uninstall not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *ProjectAppUninstallNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectApp/uninstall/{projectAppId}][%d] projectAppUninstallNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppUninstallNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppUninstallNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppUninstallNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

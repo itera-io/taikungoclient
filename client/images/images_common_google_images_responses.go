@@ -197,7 +197,7 @@ ImagesCommonGoogleImagesUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type ImagesCommonGoogleImagesUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images common google images unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *ImagesCommonGoogleImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/common/{cloudId}][%d] imagesCommonGoogleImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesCommonGoogleImagesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ImagesCommonGoogleImagesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesCommonGoogleImagesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ ImagesCommonGoogleImagesForbidden describes a response with status code 403, wit
 Forbidden
 */
 type ImagesCommonGoogleImagesForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images common google images forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *ImagesCommonGoogleImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/common/{cloudId}][%d] imagesCommonGoogleImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesCommonGoogleImagesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ImagesCommonGoogleImagesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesCommonGoogleImagesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ ImagesCommonGoogleImagesNotFound describes a response with status code 404, with
 Not Found
 */
 type ImagesCommonGoogleImagesNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images common google images not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *ImagesCommonGoogleImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/common/{cloudId}][%d] imagesCommonGoogleImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesCommonGoogleImagesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ImagesCommonGoogleImagesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesCommonGoogleImagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

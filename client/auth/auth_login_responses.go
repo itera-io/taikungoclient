@@ -199,7 +199,7 @@ AuthLoginUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type AuthLoginUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth login unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *AuthLoginUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AuthLoginUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AuthLoginUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthLoginUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ AuthLoginForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type AuthLoginForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth login forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *AuthLoginForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AuthLoginForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AuthLoginForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthLoginForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ AuthLoginNotFound describes a response with status code 404, with default header
 Not Found
 */
 type AuthLoginNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth login not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *AuthLoginNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AuthLoginNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AuthLoginNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthLoginNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

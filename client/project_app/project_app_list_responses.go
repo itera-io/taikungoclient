@@ -199,7 +199,7 @@ ProjectAppListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type ProjectAppListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *ProjectAppListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/list][%d] projectAppListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ ProjectAppListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type ProjectAppListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *ProjectAppListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/list][%d] projectAppListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ ProjectAppListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type ProjectAppListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *ProjectAppListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/list][%d] projectAppListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

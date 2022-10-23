@@ -197,7 +197,7 @@ StandAloneVMDisksUpdateUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneVMDisksUpdateUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks update unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *StandAloneVMDisksUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update][%d] standAloneVmDisksUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneVMDisksUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ StandAloneVMDisksUpdateForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneVMDisksUpdateForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks update forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *StandAloneVMDisksUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update][%d] standAloneVmDisksUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneVMDisksUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ StandAloneVMDisksUpdateNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneVMDisksUpdateNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks update not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *StandAloneVMDisksUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update][%d] standAloneVmDisksUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneVMDisksUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

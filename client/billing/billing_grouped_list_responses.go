@@ -197,7 +197,7 @@ BillingGroupedListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type BillingGroupedListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this billing grouped list unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *BillingGroupedListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BillingGroupedListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BillingGroupedListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BillingGroupedListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ BillingGroupedListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type BillingGroupedListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this billing grouped list forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *BillingGroupedListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BillingGroupedListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BillingGroupedListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BillingGroupedListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ BillingGroupedListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type BillingGroupedListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this billing grouped list not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *BillingGroupedListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BillingGroupedListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BillingGroupedListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BillingGroupedListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

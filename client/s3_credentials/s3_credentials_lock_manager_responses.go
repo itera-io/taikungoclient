@@ -197,7 +197,7 @@ S3CredentialsLockManagerUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type S3CredentialsLockManagerUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials lock manager unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *S3CredentialsLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *S3CredentialsLockManagerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *S3CredentialsLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ S3CredentialsLockManagerForbidden describes a response with status code 403, wit
 Forbidden
 */
 type S3CredentialsLockManagerForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials lock manager forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *S3CredentialsLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *S3CredentialsLockManagerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *S3CredentialsLockManagerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ S3CredentialsLockManagerNotFound describes a response with status code 404, with
 Not Found
 */
 type S3CredentialsLockManagerNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials lock manager not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *S3CredentialsLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *S3CredentialsLockManagerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *S3CredentialsLockManagerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -199,7 +199,7 @@ OpsCredentialsListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type OpsCredentialsListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *OpsCredentialsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpsCredentialsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpsCredentialsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ OpsCredentialsListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type OpsCredentialsListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *OpsCredentialsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpsCredentialsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpsCredentialsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ OpsCredentialsListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type OpsCredentialsListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *OpsCredentialsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpsCredentialsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpsCredentialsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -197,7 +197,7 @@ ServersResetUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type ServersResetUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers reset unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *ServersResetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersResetUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ServersResetUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersResetUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ ServersResetForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type ServersResetForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers reset forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *ServersResetForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersResetForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ServersResetForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersResetForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ ServersResetNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type ServersResetNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers reset not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *ServersResetNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersResetNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ServersResetNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersResetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

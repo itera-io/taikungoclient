@@ -197,7 +197,7 @@ AlertingProfilesAttachUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type AlertingProfilesAttachUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles attach unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *AlertingProfilesAttachUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesAttachUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesAttachUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAttachUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ AlertingProfilesAttachForbidden describes a response with status code 403, with 
 Forbidden
 */
 type AlertingProfilesAttachForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles attach forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *AlertingProfilesAttachForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesAttachForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesAttachForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAttachForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ AlertingProfilesAttachNotFound describes a response with status code 404, with d
 Not Found
 */
 type AlertingProfilesAttachNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles attach not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *AlertingProfilesAttachNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesAttachNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesAttachNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAttachNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

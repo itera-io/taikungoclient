@@ -197,7 +197,7 @@ PartnerUpdateUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type PartnerUpdateUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner update unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *PartnerUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerUpdateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PartnerUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ PartnerUpdateForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type PartnerUpdateForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner update forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *PartnerUpdateForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerUpdateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PartnerUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ PartnerUpdateNotFound describes a response with status code 404, with default he
 Not Found
 */
 type PartnerUpdateNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner update not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *PartnerUpdateNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerUpdateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PartnerUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

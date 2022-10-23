@@ -197,7 +197,7 @@ CronJobRemindAlertsUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type CronJobRemindAlertsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job remind alerts unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CronJobRemindAlertsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/remind-alerts][%d] cronJobRemindAlertsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobRemindAlertsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobRemindAlertsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobRemindAlertsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CronJobRemindAlertsForbidden describes a response with status code 403, with def
 Forbidden
 */
 type CronJobRemindAlertsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job remind alerts forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CronJobRemindAlertsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/remind-alerts][%d] cronJobRemindAlertsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobRemindAlertsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobRemindAlertsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobRemindAlertsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CronJobRemindAlertsNotFound describes a response with status code 404, with defa
 Not Found
 */
 type CronJobRemindAlertsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job remind alerts not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CronJobRemindAlertsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/remind-alerts][%d] cronJobRemindAlertsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobRemindAlertsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobRemindAlertsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobRemindAlertsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

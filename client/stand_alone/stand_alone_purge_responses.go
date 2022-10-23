@@ -197,7 +197,7 @@ StandAlonePurgeUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type StandAlonePurgeUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone purge unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *StandAlonePurgeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAlonePurgeUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAlonePurgeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAlonePurgeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ StandAlonePurgeForbidden describes a response with status code 403, with default
 Forbidden
 */
 type StandAlonePurgeForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone purge forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *StandAlonePurgeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAlonePurgeForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAlonePurgeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAlonePurgeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ StandAlonePurgeNotFound describes a response with status code 404, with default 
 Not Found
 */
 type StandAlonePurgeNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone purge not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *StandAlonePurgeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAlonePurgeNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAlonePurgeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAlonePurgeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -197,7 +197,7 @@ ImagesBindImagesToProjectUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ImagesBindImagesToProjectUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images bind images to project unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *ImagesBindImagesToProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/bind][%d] imagesBindImagesToProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesBindImagesToProjectUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ImagesBindImagesToProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesBindImagesToProjectUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ ImagesBindImagesToProjectForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ImagesBindImagesToProjectForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images bind images to project forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *ImagesBindImagesToProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/bind][%d] imagesBindImagesToProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesBindImagesToProjectForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ImagesBindImagesToProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesBindImagesToProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ ImagesBindImagesToProjectNotFound describes a response with status code 404, wit
 Not Found
 */
 type ImagesBindImagesToProjectNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images bind images to project not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *ImagesBindImagesToProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/bind][%d] imagesBindImagesToProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesBindImagesToProjectNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ImagesBindImagesToProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesBindImagesToProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

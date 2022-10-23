@@ -197,7 +197,7 @@ OrganizationsCreateDefaultProfilersUnauthorized describes a response with status
 Unauthorized
 */
 type OrganizationsCreateDefaultProfilersUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations create default profilers unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *OrganizationsCreateDefaultProfilersUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsCreateDefaultProfilersUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsCreateDefaultProfilersUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsCreateDefaultProfilersUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ OrganizationsCreateDefaultProfilersForbidden describes a response with status co
 Forbidden
 */
 type OrganizationsCreateDefaultProfilersForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations create default profilers forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *OrganizationsCreateDefaultProfilersForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsCreateDefaultProfilersForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsCreateDefaultProfilersForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsCreateDefaultProfilersForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ OrganizationsCreateDefaultProfilersNotFound describes a response with status cod
 Not Found
 */
 type OrganizationsCreateDefaultProfilersNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations create default profilers not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *OrganizationsCreateDefaultProfilersNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsCreateDefaultProfilersNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsCreateDefaultProfilersNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsCreateDefaultProfilersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

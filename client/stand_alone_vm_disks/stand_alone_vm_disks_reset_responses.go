@@ -197,7 +197,7 @@ StandAloneVMDisksResetUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type StandAloneVMDisksResetUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks reset unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *StandAloneVMDisksResetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksResetUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneVMDisksResetUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksResetUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ StandAloneVMDisksResetForbidden describes a response with status code 403, with 
 Forbidden
 */
 type StandAloneVMDisksResetForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks reset forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *StandAloneVMDisksResetForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksResetForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneVMDisksResetForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksResetForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ StandAloneVMDisksResetNotFound describes a response with status code 404, with d
 Not Found
 */
 type StandAloneVMDisksResetNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks reset not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *StandAloneVMDisksResetNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksResetNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneVMDisksResetNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksResetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

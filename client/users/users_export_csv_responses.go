@@ -187,7 +187,7 @@ UsersExportCsvUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type UsersExportCsvUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users export csv unauthorized response has a 2xx status code
@@ -223,14 +223,16 @@ func (o *UsersExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersExportCsvUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersExportCsvUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -248,7 +250,7 @@ UsersExportCsvForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type UsersExportCsvForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users export csv forbidden response has a 2xx status code
@@ -284,14 +286,16 @@ func (o *UsersExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersExportCsvForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersExportCsvForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersExportCsvForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -309,7 +313,7 @@ UsersExportCsvNotFound describes a response with status code 404, with default h
 Not Found
 */
 type UsersExportCsvNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users export csv not found response has a 2xx status code
@@ -345,14 +349,16 @@ func (o *UsersExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersExportCsvNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersExportCsvNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersExportCsvNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

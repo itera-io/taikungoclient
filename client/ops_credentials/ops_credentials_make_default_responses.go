@@ -197,7 +197,7 @@ OpsCredentialsMakeDefaultUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type OpsCredentialsMakeDefaultUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials make default unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *OpsCredentialsMakeDefaultUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpsCredentialsMakeDefaultUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpsCredentialsMakeDefaultUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsMakeDefaultUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ OpsCredentialsMakeDefaultForbidden describes a response with status code 403, wi
 Forbidden
 */
 type OpsCredentialsMakeDefaultForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials make default forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *OpsCredentialsMakeDefaultForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpsCredentialsMakeDefaultForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpsCredentialsMakeDefaultForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsMakeDefaultForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ OpsCredentialsMakeDefaultNotFound describes a response with status code 404, wit
 Not Found
 */
 type OpsCredentialsMakeDefaultNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials make default not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *OpsCredentialsMakeDefaultNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpsCredentialsMakeDefaultNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpsCredentialsMakeDefaultNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsMakeDefaultNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

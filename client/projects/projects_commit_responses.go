@@ -197,7 +197,7 @@ ProjectsCommitUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type ProjectsCommitUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects commit unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *ProjectsCommitUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsCommitUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsCommitUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsCommitUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ ProjectsCommitForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type ProjectsCommitForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects commit forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *ProjectsCommitForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsCommitForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsCommitForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsCommitForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ ProjectsCommitNotFound describes a response with status code 404, with default h
 Not Found
 */
 type ProjectsCommitNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects commit not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *ProjectsCommitNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsCommitNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsCommitNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsCommitNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -197,7 +197,7 @@ OpsCredentialsOperationCredentialsForOrganizationListUnauthorized describes a re
 Unauthorized
 */
 type OpsCredentialsOperationCredentialsForOrganizationListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) Stri
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ OpsCredentialsOperationCredentialsForOrganizationListForbidden describes a respo
 Forbidden
 */
 type OpsCredentialsOperationCredentialsForOrganizationListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) String(
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ OpsCredentialsOperationCredentialsForOrganizationListNotFound describes a respon
 Not Found
 */
 type OpsCredentialsOperationCredentialsForOrganizationListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) String()
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

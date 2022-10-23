@@ -197,7 +197,7 @@ KubernetesRestartDaemonSetUnauthorized describes a response with status code 401
 Unauthorized
 */
 type KubernetesRestartDaemonSetUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes restart daemon set unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesRestartDaemonSetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesRestartDaemonSetUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesRestartDaemonSetUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesRestartDaemonSetUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesRestartDaemonSetForbidden describes a response with status code 403, w
 Forbidden
 */
 type KubernetesRestartDaemonSetForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes restart daemon set forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesRestartDaemonSetForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesRestartDaemonSetForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesRestartDaemonSetForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesRestartDaemonSetForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesRestartDaemonSetNotFound describes a response with status code 404, wi
 Not Found
 */
 type KubernetesRestartDaemonSetNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes restart daemon set not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesRestartDaemonSetNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesRestartDaemonSetNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesRestartDaemonSetNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesRestartDaemonSetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

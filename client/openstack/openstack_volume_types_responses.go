@@ -197,7 +197,7 @@ OpenstackVolumeTypesUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type OpenstackVolumeTypesUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack volume types unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *OpenstackVolumeTypesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackVolumeTypesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpenstackVolumeTypesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackVolumeTypesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ OpenstackVolumeTypesForbidden describes a response with status code 403, with de
 Forbidden
 */
 type OpenstackVolumeTypesForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack volume types forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *OpenstackVolumeTypesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackVolumeTypesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpenstackVolumeTypesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackVolumeTypesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ OpenstackVolumeTypesNotFound describes a response with status code 404, with def
 Not Found
 */
 type OpenstackVolumeTypesNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack volume types not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *OpenstackVolumeTypesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackVolumeTypesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpenstackVolumeTypesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackVolumeTypesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

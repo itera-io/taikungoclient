@@ -197,7 +197,7 @@ OpaProfilesSyncUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type OpaProfilesSyncUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles sync unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *OpaProfilesSyncUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesSyncUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpaProfilesSyncUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesSyncUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ OpaProfilesSyncForbidden describes a response with status code 403, with default
 Forbidden
 */
 type OpaProfilesSyncForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles sync forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *OpaProfilesSyncForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesSyncForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpaProfilesSyncForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesSyncForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ OpaProfilesSyncNotFound describes a response with status code 404, with default 
 Not Found
 */
 type OpaProfilesSyncNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles sync not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *OpaProfilesSyncNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesSyncNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpaProfilesSyncNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesSyncNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

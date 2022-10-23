@@ -197,7 +197,7 @@ KubernetesGetCrdListUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type KubernetesGetCrdListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get crd list unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesGetCrdListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetCrdListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetCrdListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetCrdListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesGetCrdListForbidden describes a response with status code 403, with de
 Forbidden
 */
 type KubernetesGetCrdListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get crd list forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesGetCrdListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetCrdListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetCrdListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetCrdListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesGetCrdListNotFound describes a response with status code 404, with def
 Not Found
 */
 type KubernetesGetCrdListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get crd list not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesGetCrdListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetCrdListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetCrdListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetCrdListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -197,7 +197,7 @@ InvoicesEditUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type InvoicesEditUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this invoices edit unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *InvoicesEditUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *InvoicesEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *InvoicesEditUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *InvoicesEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ InvoicesEditForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type InvoicesEditForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this invoices edit forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *InvoicesEditForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *InvoicesEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *InvoicesEditForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *InvoicesEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ InvoicesEditNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type InvoicesEditNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this invoices edit not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *InvoicesEditNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *InvoicesEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *InvoicesEditNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *InvoicesEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

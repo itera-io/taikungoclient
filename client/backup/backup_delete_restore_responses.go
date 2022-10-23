@@ -197,7 +197,7 @@ BackupDeleteRestoreUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type BackupDeleteRestoreUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup delete restore unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *BackupDeleteRestoreUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/restore][%d] backupDeleteRestoreUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupDeleteRestoreUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BackupDeleteRestoreUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupDeleteRestoreUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ BackupDeleteRestoreForbidden describes a response with status code 403, with def
 Forbidden
 */
 type BackupDeleteRestoreForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup delete restore forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *BackupDeleteRestoreForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/restore][%d] backupDeleteRestoreForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupDeleteRestoreForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BackupDeleteRestoreForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupDeleteRestoreForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ BackupDeleteRestoreNotFound describes a response with status code 404, with defa
 Not Found
 */
 type BackupDeleteRestoreNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup delete restore not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *BackupDeleteRestoreNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/restore][%d] backupDeleteRestoreNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupDeleteRestoreNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BackupDeleteRestoreNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupDeleteRestoreNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

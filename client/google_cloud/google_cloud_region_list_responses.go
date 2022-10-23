@@ -197,7 +197,7 @@ GoogleCloudRegionListUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type GoogleCloudRegionListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud region list unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *GoogleCloudRegionListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GoogleCloudRegionListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *GoogleCloudRegionListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudRegionListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ GoogleCloudRegionListForbidden describes a response with status code 403, with d
 Forbidden
 */
 type GoogleCloudRegionListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud region list forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *GoogleCloudRegionListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GoogleCloudRegionListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *GoogleCloudRegionListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudRegionListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ GoogleCloudRegionListNotFound describes a response with status code 404, with de
 Not Found
 */
 type GoogleCloudRegionListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud region list not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *GoogleCloudRegionListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GoogleCloudRegionListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *GoogleCloudRegionListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudRegionListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

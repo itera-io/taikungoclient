@@ -199,7 +199,7 @@ KubernetesGetSecretUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type KubernetesGetSecretUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get secret unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *KubernetesGetSecretUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetSecretUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetSecretUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetSecretUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ KubernetesGetSecretForbidden describes a response with status code 403, with def
 Forbidden
 */
 type KubernetesGetSecretForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get secret forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *KubernetesGetSecretForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetSecretForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetSecretForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetSecretForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ KubernetesGetSecretNotFound describes a response with status code 404, with defa
 Not Found
 */
 type KubernetesGetSecretNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get secret not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *KubernetesGetSecretNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetSecretNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetSecretNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetSecretNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

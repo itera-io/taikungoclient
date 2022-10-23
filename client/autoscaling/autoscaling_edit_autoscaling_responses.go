@@ -197,7 +197,7 @@ AutoscalingEditAutoscalingUnauthorized describes a response with status code 401
 Unauthorized
 */
 type AutoscalingEditAutoscalingUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this autoscaling edit autoscaling unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *AutoscalingEditAutoscalingUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/edit][%d] autoscalingEditAutoscalingUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AutoscalingEditAutoscalingUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AutoscalingEditAutoscalingUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AutoscalingEditAutoscalingUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ AutoscalingEditAutoscalingForbidden describes a response with status code 403, w
 Forbidden
 */
 type AutoscalingEditAutoscalingForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this autoscaling edit autoscaling forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *AutoscalingEditAutoscalingForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/edit][%d] autoscalingEditAutoscalingForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AutoscalingEditAutoscalingForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AutoscalingEditAutoscalingForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AutoscalingEditAutoscalingForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ AutoscalingEditAutoscalingNotFound describes a response with status code 404, wi
 Not Found
 */
 type AutoscalingEditAutoscalingNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this autoscaling edit autoscaling not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *AutoscalingEditAutoscalingNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/edit][%d] autoscalingEditAutoscalingNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AutoscalingEditAutoscalingNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AutoscalingEditAutoscalingNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AutoscalingEditAutoscalingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

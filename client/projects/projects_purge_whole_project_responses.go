@@ -197,7 +197,7 @@ ProjectsPurgeWholeProjectUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ProjectsPurgeWholeProjectUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects purge whole project unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *ProjectsPurgeWholeProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsPurgeWholeProjectUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsPurgeWholeProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsPurgeWholeProjectUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ ProjectsPurgeWholeProjectForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ProjectsPurgeWholeProjectForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects purge whole project forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *ProjectsPurgeWholeProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsPurgeWholeProjectForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsPurgeWholeProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsPurgeWholeProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ ProjectsPurgeWholeProjectNotFound describes a response with status code 404, wit
 Not Found
 */
 type ProjectsPurgeWholeProjectNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects purge whole project not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *ProjectsPurgeWholeProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsPurgeWholeProjectNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsPurgeWholeProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsPurgeWholeProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

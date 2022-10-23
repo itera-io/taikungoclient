@@ -199,7 +199,7 @@ UsersListUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type UsersListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *UsersListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users][%d] usersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ UsersListForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type UsersListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *UsersListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users][%d] usersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ UsersListNotFound describes a response with status code 404, with default header
 Not Found
 */
 type UsersListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *UsersListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users][%d] usersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

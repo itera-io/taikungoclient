@@ -197,7 +197,7 @@ ProjectAppLockManagerUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type ProjectAppLockManagerUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app lock manager unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *ProjectAppLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppLockManagerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ ProjectAppLockManagerForbidden describes a response with status code 403, with d
 Forbidden
 */
 type ProjectAppLockManagerForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app lock manager forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *ProjectAppLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppLockManagerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppLockManagerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ ProjectAppLockManagerNotFound describes a response with status code 404, with de
 Not Found
 */
 type ProjectAppLockManagerNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app lock manager not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *ProjectAppLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppLockManagerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppLockManagerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

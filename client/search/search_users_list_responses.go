@@ -199,7 +199,7 @@ SearchUsersListUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type SearchUsersListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search users list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *SearchUsersListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/users][%d] searchUsersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchUsersListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchUsersListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchUsersListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ SearchUsersListForbidden describes a response with status code 403, with default
 Forbidden
 */
 type SearchUsersListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search users list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *SearchUsersListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/users][%d] searchUsersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchUsersListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchUsersListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchUsersListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ SearchUsersListNotFound describes a response with status code 404, with default 
 Not Found
 */
 type SearchUsersListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search users list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *SearchUsersListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/users][%d] searchUsersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchUsersListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchUsersListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchUsersListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

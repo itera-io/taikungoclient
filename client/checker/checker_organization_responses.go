@@ -197,7 +197,7 @@ CheckerOrganizationUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type CheckerOrganizationUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker organization unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CheckerOrganizationUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerOrganizationUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerOrganizationUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerOrganizationUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CheckerOrganizationForbidden describes a response with status code 403, with def
 Forbidden
 */
 type CheckerOrganizationForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker organization forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CheckerOrganizationForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerOrganizationForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerOrganizationForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerOrganizationForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CheckerOrganizationNotFound describes a response with status code 404, with defa
 Not Found
 */
 type CheckerOrganizationNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker organization not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CheckerOrganizationNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerOrganizationNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerOrganizationNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerOrganizationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

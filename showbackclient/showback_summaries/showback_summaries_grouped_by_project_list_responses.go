@@ -138,7 +138,7 @@ ShowbackSummariesGroupedByProjectListBadRequest describes a response with status
 Bad Request
 */
 type ShowbackSummariesGroupedByProjectListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ValidationProblemDetails
 }
 
 // IsSuccess returns true when this showback summaries grouped by project list bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *ShowbackSummariesGroupedByProjectListBadRequest) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byProject][%d] showbackSummariesGroupedByProjectListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByProjectListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackSummariesGroupedByProjectListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedByProjectListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ValidationProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -199,7 +201,7 @@ ShowbackSummariesGroupedByProjectListUnauthorized describes a response with stat
 Unauthorized
 */
 type ShowbackSummariesGroupedByProjectListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback summaries grouped by project list unauthorized response has a 2xx status code
@@ -235,14 +237,16 @@ func (o *ShowbackSummariesGroupedByProjectListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byProject][%d] showbackSummariesGroupedByProjectListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByProjectListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackSummariesGroupedByProjectListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedByProjectListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +264,7 @@ ShowbackSummariesGroupedByProjectListForbidden describes a response with status 
 Forbidden
 */
 type ShowbackSummariesGroupedByProjectListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback summaries grouped by project list forbidden response has a 2xx status code
@@ -296,14 +300,16 @@ func (o *ShowbackSummariesGroupedByProjectListForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byProject][%d] showbackSummariesGroupedByProjectListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByProjectListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackSummariesGroupedByProjectListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedByProjectListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +327,7 @@ ShowbackSummariesGroupedByProjectListNotFound describes a response with status c
 Not Found
 */
 type ShowbackSummariesGroupedByProjectListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback summaries grouped by project list not found response has a 2xx status code
@@ -357,14 +363,16 @@ func (o *ShowbackSummariesGroupedByProjectListNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byProject][%d] showbackSummariesGroupedByProjectListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByProjectListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackSummariesGroupedByProjectListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedByProjectListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

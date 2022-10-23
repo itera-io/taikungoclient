@@ -187,7 +187,7 @@ ProjectsLokiLogsUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type ProjectsLokiLogsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects loki logs unauthorized response has a 2xx status code
@@ -223,14 +223,16 @@ func (o *ProjectsLokiLogsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsLokiLogsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsLokiLogsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsLokiLogsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -248,7 +250,7 @@ ProjectsLokiLogsForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type ProjectsLokiLogsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects loki logs forbidden response has a 2xx status code
@@ -284,14 +286,16 @@ func (o *ProjectsLokiLogsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsLokiLogsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsLokiLogsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsLokiLogsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -309,7 +313,7 @@ ProjectsLokiLogsNotFound describes a response with status code 404, with default
 Not Found
 */
 type ProjectsLokiLogsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects loki logs not found response has a 2xx status code
@@ -345,14 +349,16 @@ func (o *ProjectsLokiLogsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsLokiLogsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsLokiLogsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsLokiLogsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

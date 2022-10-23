@@ -197,7 +197,7 @@ KubernetesPatchJobUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubernetesPatchJobUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch job unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesPatchJobUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchJobUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchJobUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchJobUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesPatchJobForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubernetesPatchJobForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch job forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesPatchJobForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchJobForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchJobForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchJobForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesPatchJobNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubernetesPatchJobNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch job not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesPatchJobNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchJobNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchJobNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchJobNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -197,7 +197,7 @@ CatalogDeleteCatalogAppUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type CatalogDeleteCatalogAppUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog delete catalog app unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CatalogDeleteCatalogAppUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete-app/{id}][%d] catalogDeleteCatalogAppUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogAppUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogDeleteCatalogAppUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogDeleteCatalogAppUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CatalogDeleteCatalogAppForbidden describes a response with status code 403, with
 Forbidden
 */
 type CatalogDeleteCatalogAppForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog delete catalog app forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CatalogDeleteCatalogAppForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete-app/{id}][%d] catalogDeleteCatalogAppForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogAppForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogDeleteCatalogAppForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogDeleteCatalogAppForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CatalogDeleteCatalogAppNotFound describes a response with status code 404, with 
 Not Found
 */
 type CatalogDeleteCatalogAppNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog delete catalog app not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CatalogDeleteCatalogAppNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete-app/{id}][%d] catalogDeleteCatalogAppNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogAppNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogDeleteCatalogAppNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogDeleteCatalogAppNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

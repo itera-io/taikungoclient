@@ -199,7 +199,7 @@ AzureOffersUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type AzureOffersUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure offers unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *AzureOffersUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureOffersUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AzureOffersUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureOffersUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ AzureOffersForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type AzureOffersForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure offers forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *AzureOffersForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureOffersForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AzureOffersForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureOffersForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ AzureOffersNotFound describes a response with status code 404, with default head
 Not Found
 */
 type AzureOffersNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure offers not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *AzureOffersNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureOffersNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AzureOffersNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureOffersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

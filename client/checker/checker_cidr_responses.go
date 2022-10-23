@@ -197,7 +197,7 @@ CheckerCidrUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type CheckerCidrUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker cidr unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CheckerCidrUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerCidrUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerCidrUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerCidrUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CheckerCidrForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type CheckerCidrForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker cidr forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CheckerCidrForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerCidrForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerCidrForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerCidrForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CheckerCidrNotFound describes a response with status code 404, with default head
 Not Found
 */
 type CheckerCidrNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker cidr not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CheckerCidrNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerCidrNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerCidrNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerCidrNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

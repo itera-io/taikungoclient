@@ -197,7 +197,7 @@ CronJobFetchAzureEuroPricesUnauthorized describes a response with status code 40
 Unauthorized
 */
 type CronJobFetchAzureEuroPricesUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job fetch azure euro prices unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CronJobFetchAzureEuroPricesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-euro-prices][%d] cronJobFetchAzureEuroPricesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobFetchAzureEuroPricesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobFetchAzureEuroPricesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobFetchAzureEuroPricesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CronJobFetchAzureEuroPricesForbidden describes a response with status code 403, 
 Forbidden
 */
 type CronJobFetchAzureEuroPricesForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job fetch azure euro prices forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CronJobFetchAzureEuroPricesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-euro-prices][%d] cronJobFetchAzureEuroPricesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobFetchAzureEuroPricesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobFetchAzureEuroPricesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobFetchAzureEuroPricesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CronJobFetchAzureEuroPricesNotFound describes a response with status code 404, w
 Not Found
 */
 type CronJobFetchAzureEuroPricesNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job fetch azure euro prices not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CronJobFetchAzureEuroPricesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-euro-prices][%d] cronJobFetchAzureEuroPricesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobFetchAzureEuroPricesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobFetchAzureEuroPricesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobFetchAzureEuroPricesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -197,7 +197,7 @@ AdminUpdateUserEmailUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type AdminUpdateUserEmailUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin update user email unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *AdminUpdateUserEmailUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminUpdateUserEmailUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminUpdateUserEmailUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserEmailUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ AdminUpdateUserEmailForbidden describes a response with status code 403, with de
 Forbidden
 */
 type AdminUpdateUserEmailForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin update user email forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *AdminUpdateUserEmailForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminUpdateUserEmailForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminUpdateUserEmailForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserEmailForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ AdminUpdateUserEmailNotFound describes a response with status code 404, with def
 Not Found
 */
 type AdminUpdateUserEmailNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin update user email not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *AdminUpdateUserEmailNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminUpdateUserEmailNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminUpdateUserEmailNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserEmailNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

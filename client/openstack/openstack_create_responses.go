@@ -199,7 +199,7 @@ OpenstackCreateUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type OpenstackCreateUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack create unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *OpenstackCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpenstackCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ OpenstackCreateForbidden describes a response with status code 403, with default
 Forbidden
 */
 type OpenstackCreateForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack create forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *OpenstackCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpenstackCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ OpenstackCreateNotFound describes a response with status code 404, with default 
 Not Found
 */
 type OpenstackCreateNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack create not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *OpenstackCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpenstackCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

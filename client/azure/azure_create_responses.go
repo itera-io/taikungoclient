@@ -199,7 +199,7 @@ AzureCreateUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type AzureCreateUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure create unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *AzureCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AzureCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ AzureCreateForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type AzureCreateForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure create forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *AzureCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AzureCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ AzureCreateNotFound describes a response with status code 404, with default head
 Not Found
 */
 type AzureCreateNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure create not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *AzureCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AzureCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

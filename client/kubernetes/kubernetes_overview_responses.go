@@ -197,7 +197,7 @@ KubernetesOverviewUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubernetesOverviewUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes overview unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesOverviewUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesOverviewUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesOverviewUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesOverviewUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesOverviewForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubernetesOverviewForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes overview forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesOverviewForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesOverviewForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesOverviewForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesOverviewForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesOverviewNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubernetesOverviewNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes overview not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesOverviewNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesOverviewNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesOverviewNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesOverviewNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

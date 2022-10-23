@@ -199,7 +199,7 @@ AwsAwsZoneListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type AwsAwsZoneListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws aws zone list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *AwsAwsZoneListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsAwsZoneListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AwsAwsZoneListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsAwsZoneListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ AwsAwsZoneListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type AwsAwsZoneListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws aws zone list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *AwsAwsZoneListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsAwsZoneListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AwsAwsZoneListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsAwsZoneListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ AwsAwsZoneListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type AwsAwsZoneListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws aws zone list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *AwsAwsZoneListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsAwsZoneListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AwsAwsZoneListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsAwsZoneListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

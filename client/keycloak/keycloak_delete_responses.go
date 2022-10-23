@@ -197,7 +197,7 @@ KeycloakDeleteUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type KeycloakDeleteUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this keycloak delete unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KeycloakDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KeycloakDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KeycloakDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KeycloakDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KeycloakDeleteForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type KeycloakDeleteForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this keycloak delete forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KeycloakDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KeycloakDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KeycloakDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KeycloakDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KeycloakDeleteNotFound describes a response with status code 404, with default h
 Not Found
 */
 type KeycloakDeleteNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this keycloak delete not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KeycloakDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KeycloakDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KeycloakDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KeycloakDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

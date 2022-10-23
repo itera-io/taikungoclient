@@ -197,7 +197,7 @@ BackupEnableBackupUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type BackupEnableBackupUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup enable backup unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *BackupEnableBackupUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/enablebackup][%d] backupEnableBackupUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupEnableBackupUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BackupEnableBackupUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupEnableBackupUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ BackupEnableBackupForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type BackupEnableBackupForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup enable backup forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *BackupEnableBackupForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/enablebackup][%d] backupEnableBackupForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupEnableBackupForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BackupEnableBackupForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupEnableBackupForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ BackupEnableBackupNotFound describes a response with status code 404, with defau
 Not Found
 */
 type BackupEnableBackupNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup enable backup not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *BackupEnableBackupNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/enablebackup][%d] backupEnableBackupNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupEnableBackupNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BackupEnableBackupNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupEnableBackupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

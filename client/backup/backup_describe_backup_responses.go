@@ -197,7 +197,7 @@ BackupDescribeBackupUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type BackupDescribeBackupUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup describe backup unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *BackupDescribeBackupUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupDescribeBackupUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BackupDescribeBackupUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupDescribeBackupUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ BackupDescribeBackupForbidden describes a response with status code 403, with de
 Forbidden
 */
 type BackupDescribeBackupForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup describe backup forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *BackupDescribeBackupForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupDescribeBackupForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BackupDescribeBackupForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupDescribeBackupForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ BackupDescribeBackupNotFound describes a response with status code 404, with def
 Not Found
 */
 type BackupDescribeBackupNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup describe backup not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *BackupDescribeBackupNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupDescribeBackupNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BackupDescribeBackupNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupDescribeBackupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

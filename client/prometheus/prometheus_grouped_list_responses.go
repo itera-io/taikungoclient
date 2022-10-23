@@ -197,7 +197,7 @@ PrometheusGroupedListUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type PrometheusGroupedListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus grouped list unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *PrometheusGroupedListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusGroupedListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusGroupedListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusGroupedListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ PrometheusGroupedListForbidden describes a response with status code 403, with d
 Forbidden
 */
 type PrometheusGroupedListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus grouped list forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *PrometheusGroupedListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusGroupedListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusGroupedListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusGroupedListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ PrometheusGroupedListNotFound describes a response with status code 404, with de
 Not Found
 */
 type PrometheusGroupedListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus grouped list not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *PrometheusGroupedListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusGroupedListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusGroupedListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusGroupedListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

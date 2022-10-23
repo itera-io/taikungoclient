@@ -197,7 +197,7 @@ CatalogCatalogAppParamsDetailsUnauthorized describes a response with status code
 Unauthorized
 */
 type CatalogCatalogAppParamsDetailsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog catalog app params details unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CatalogCatalogAppParamsDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogCatalogAppParamsDetailsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogCatalogAppParamsDetailsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppParamsDetailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CatalogCatalogAppParamsDetailsForbidden describes a response with status code 40
 Forbidden
 */
 type CatalogCatalogAppParamsDetailsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog catalog app params details forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CatalogCatalogAppParamsDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogCatalogAppParamsDetailsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogCatalogAppParamsDetailsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppParamsDetailsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CatalogCatalogAppParamsDetailsNotFound describes a response with status code 404
 Not Found
 */
 type CatalogCatalogAppParamsDetailsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog catalog app params details not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CatalogCatalogAppParamsDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogCatalogAppParamsDetailsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogCatalogAppParamsDetailsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppParamsDetailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

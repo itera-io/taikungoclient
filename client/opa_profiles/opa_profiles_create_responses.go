@@ -199,7 +199,7 @@ OpaProfilesCreateUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpaProfilesCreateUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles create unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *OpaProfilesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpaProfilesCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ OpaProfilesCreateForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpaProfilesCreateForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles create forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *OpaProfilesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpaProfilesCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ OpaProfilesCreateNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpaProfilesCreateNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles create not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *OpaProfilesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpaProfilesCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

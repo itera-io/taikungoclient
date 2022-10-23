@@ -254,7 +254,7 @@ CloudCredentialsDeleteUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type CloudCredentialsDeleteUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials delete unauthorized response has a 2xx status code
@@ -290,14 +290,16 @@ func (o *CloudCredentialsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CloudCredentialsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -315,7 +317,7 @@ CloudCredentialsDeleteForbidden describes a response with status code 403, with 
 Forbidden
 */
 type CloudCredentialsDeleteForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials delete forbidden response has a 2xx status code
@@ -351,14 +353,16 @@ func (o *CloudCredentialsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CloudCredentialsDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -376,7 +380,7 @@ CloudCredentialsDeleteNotFound describes a response with status code 404, with d
 Not Found
 */
 type CloudCredentialsDeleteNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials delete not found response has a 2xx status code
@@ -412,14 +416,16 @@ func (o *CloudCredentialsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CloudCredentialsDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

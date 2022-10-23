@@ -197,7 +197,7 @@ SlackSlackConfigurationForOrganizationListUnauthorized describes a response with
 Unauthorized
 */
 type SlackSlackConfigurationForOrganizationListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack slack configuration for organization list unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *SlackSlackConfigurationForOrganizationListUnauthorized) String() string
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SlackSlackConfigurationForOrganizationListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SlackSlackConfigurationForOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackSlackConfigurationForOrganizationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ SlackSlackConfigurationForOrganizationListForbidden describes a response with st
 Forbidden
 */
 type SlackSlackConfigurationForOrganizationListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack slack configuration for organization list forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *SlackSlackConfigurationForOrganizationListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SlackSlackConfigurationForOrganizationListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SlackSlackConfigurationForOrganizationListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackSlackConfigurationForOrganizationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ SlackSlackConfigurationForOrganizationListNotFound describes a response with sta
 Not Found
 */
 type SlackSlackConfigurationForOrganizationListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack slack configuration for organization list not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *SlackSlackConfigurationForOrganizationListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SlackSlackConfigurationForOrganizationListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SlackSlackConfigurationForOrganizationListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackSlackConfigurationForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -197,7 +197,7 @@ CronJobDeleteKubeConfigsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type CronJobDeleteKubeConfigsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete kube configs unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CronJobDeleteKubeConfigsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteKubeConfigsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobDeleteKubeConfigsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteKubeConfigsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CronJobDeleteKubeConfigsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type CronJobDeleteKubeConfigsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete kube configs forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CronJobDeleteKubeConfigsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteKubeConfigsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobDeleteKubeConfigsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteKubeConfigsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CronJobDeleteKubeConfigsNotFound describes a response with status code 404, with
 Not Found
 */
 type CronJobDeleteKubeConfigsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete kube configs not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CronJobDeleteKubeConfigsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteKubeConfigsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobDeleteKubeConfigsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteKubeConfigsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

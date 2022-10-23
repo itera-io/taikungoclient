@@ -199,7 +199,7 @@ AlertingProfilesEditUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type AlertingProfilesEditUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles edit unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *AlertingProfilesEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesEditUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ AlertingProfilesEditForbidden describes a response with status code 403, with de
 Forbidden
 */
 type AlertingProfilesEditForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles edit forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *AlertingProfilesEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesEditForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ AlertingProfilesEditNotFound describes a response with status code 404, with def
 Not Found
 */
 type AlertingProfilesEditNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles edit not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *AlertingProfilesEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesEditNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

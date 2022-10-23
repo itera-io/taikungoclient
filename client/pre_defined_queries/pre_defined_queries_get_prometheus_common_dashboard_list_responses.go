@@ -197,7 +197,7 @@ PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized describes a respon
 Unauthorized
 */
 type PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus common dashboard list unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized) String()
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/common][%d] preDefinedQueriesGetPrometheusCommonDashboardListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ PreDefinedQueriesGetPrometheusCommonDashboardListForbidden describes a response 
 Forbidden
 */
 type PreDefinedQueriesGetPrometheusCommonDashboardListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus common dashboard list forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *PreDefinedQueriesGetPrometheusCommonDashboardListForbidden) String() st
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/common][%d] preDefinedQueriesGetPrometheusCommonDashboardListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusCommonDashboardListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PreDefinedQueriesGetPrometheusCommonDashboardListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesGetPrometheusCommonDashboardListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ PreDefinedQueriesGetPrometheusCommonDashboardListNotFound describes a response w
 Not Found
 */
 type PreDefinedQueriesGetPrometheusCommonDashboardListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus common dashboard list not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *PreDefinedQueriesGetPrometheusCommonDashboardListNotFound) String() str
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/common][%d] preDefinedQueriesGetPrometheusCommonDashboardListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusCommonDashboardListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PreDefinedQueriesGetPrometheusCommonDashboardListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesGetPrometheusCommonDashboardListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -197,7 +197,7 @@ StandAloneRepairUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type StandAloneRepairUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone repair unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *StandAloneRepairUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneRepairUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneRepairUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneRepairUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ StandAloneRepairForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type StandAloneRepairForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone repair forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *StandAloneRepairForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneRepairForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneRepairForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneRepairForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ StandAloneRepairNotFound describes a response with status code 404, with default
 Not Found
 */
 type StandAloneRepairNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone repair not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *StandAloneRepairNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneRepairNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneRepairNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneRepairNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

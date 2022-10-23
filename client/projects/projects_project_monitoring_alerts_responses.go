@@ -197,7 +197,7 @@ ProjectsProjectMonitoringAlertsUnauthorized describes a response with status cod
 Unauthorized
 */
 type ProjectsProjectMonitoringAlertsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects project monitoring alerts unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *ProjectsProjectMonitoringAlertsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsProjectMonitoringAlertsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsProjectMonitoringAlertsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsProjectMonitoringAlertsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ ProjectsProjectMonitoringAlertsForbidden describes a response with status code 4
 Forbidden
 */
 type ProjectsProjectMonitoringAlertsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects project monitoring alerts forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *ProjectsProjectMonitoringAlertsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsProjectMonitoringAlertsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsProjectMonitoringAlertsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsProjectMonitoringAlertsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ ProjectsProjectMonitoringAlertsNotFound describes a response with status code 40
 Not Found
 */
 type ProjectsProjectMonitoringAlertsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects project monitoring alerts not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *ProjectsProjectMonitoringAlertsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsProjectMonitoringAlertsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsProjectMonitoringAlertsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsProjectMonitoringAlertsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

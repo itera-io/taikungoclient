@@ -199,7 +199,7 @@ PaymentGetStripeInvoicesUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type PaymentGetStripeInvoicesUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment get stripe invoices unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *PaymentGetStripeInvoicesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentGetStripeInvoicesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PaymentGetStripeInvoicesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentGetStripeInvoicesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ PaymentGetStripeInvoicesForbidden describes a response with status code 403, wit
 Forbidden
 */
 type PaymentGetStripeInvoicesForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment get stripe invoices forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *PaymentGetStripeInvoicesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentGetStripeInvoicesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PaymentGetStripeInvoicesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentGetStripeInvoicesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ PaymentGetStripeInvoicesNotFound describes a response with status code 404, with
 Not Found
 */
 type PaymentGetStripeInvoicesNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment get stripe invoices not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *PaymentGetStripeInvoicesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentGetStripeInvoicesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PaymentGetStripeInvoicesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentGetStripeInvoicesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

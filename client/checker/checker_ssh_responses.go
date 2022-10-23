@@ -197,7 +197,7 @@ CheckerSSHUnauthorized describes a response with status code 401, with default h
 Unauthorized
 */
 type CheckerSSHUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker Ssh unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CheckerSSHUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerSSHUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerSSHUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerSSHUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CheckerSSHForbidden describes a response with status code 403, with default head
 Forbidden
 */
 type CheckerSSHForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker Ssh forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CheckerSSHForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerSSHForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerSSHForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerSSHForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CheckerSSHNotFound describes a response with status code 404, with default heade
 Not Found
 */
 type CheckerSSHNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker Ssh not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CheckerSSHNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerSSHNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerSSHNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerSSHNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

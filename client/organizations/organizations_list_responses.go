@@ -199,7 +199,7 @@ OrganizationsListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OrganizationsListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *OrganizationsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations][%d] organizationsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ OrganizationsListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OrganizationsListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *OrganizationsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations][%d] organizationsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ OrganizationsListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OrganizationsListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *OrganizationsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations][%d] organizationsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

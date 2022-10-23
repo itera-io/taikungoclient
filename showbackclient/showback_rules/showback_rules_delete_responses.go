@@ -193,7 +193,7 @@ ShowbackRulesDeleteBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type ShowbackRulesDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ValidationProblemDetails
 }
 
 // IsSuccess returns true when this showback rules delete bad request response has a 2xx status code
@@ -229,14 +229,16 @@ func (o *ShowbackRulesDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackRulesDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackRulesDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ValidationProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -254,7 +256,7 @@ ShowbackRulesDeleteUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ShowbackRulesDeleteUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback rules delete unauthorized response has a 2xx status code
@@ -290,14 +292,16 @@ func (o *ShowbackRulesDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackRulesDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackRulesDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -315,7 +319,7 @@ ShowbackRulesDeleteForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ShowbackRulesDeleteForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback rules delete forbidden response has a 2xx status code
@@ -351,14 +355,16 @@ func (o *ShowbackRulesDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackRulesDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackRulesDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -376,7 +382,7 @@ ShowbackRulesDeleteNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ShowbackRulesDeleteNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback rules delete not found response has a 2xx status code
@@ -412,14 +418,16 @@ func (o *ShowbackRulesDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackRulesDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackRulesDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

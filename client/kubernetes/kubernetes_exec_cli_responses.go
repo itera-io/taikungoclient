@@ -197,7 +197,7 @@ KubernetesExecCliUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type KubernetesExecCliUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes exec cli unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesExecCliUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesExecCliUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesExecCliUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesExecCliUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesExecCliForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type KubernetesExecCliForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes exec cli forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesExecCliForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesExecCliForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesExecCliForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesExecCliForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesExecCliNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type KubernetesExecCliNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes exec cli not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesExecCliNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesExecCliNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesExecCliNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesExecCliNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

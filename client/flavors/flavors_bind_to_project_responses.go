@@ -197,7 +197,7 @@ FlavorsBindToProjectUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type FlavorsBindToProjectUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors bind to project unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *FlavorsBindToProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsBindToProjectUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *FlavorsBindToProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsBindToProjectUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ FlavorsBindToProjectForbidden describes a response with status code 403, with de
 Forbidden
 */
 type FlavorsBindToProjectForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors bind to project forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *FlavorsBindToProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsBindToProjectForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *FlavorsBindToProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsBindToProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ FlavorsBindToProjectNotFound describes a response with status code 404, with def
 Not Found
 */
 type FlavorsBindToProjectNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors bind to project not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *FlavorsBindToProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsBindToProjectNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *FlavorsBindToProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsBindToProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

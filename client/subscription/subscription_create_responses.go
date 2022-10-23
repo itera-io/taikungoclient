@@ -136,7 +136,7 @@ SubscriptionCreateBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type SubscriptionCreateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription create bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *SubscriptionCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionCreateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SubscriptionCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -197,7 +199,7 @@ SubscriptionCreateUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type SubscriptionCreateUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription create unauthorized response has a 2xx status code
@@ -233,14 +235,16 @@ func (o *SubscriptionCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SubscriptionCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SubscriptionCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +262,7 @@ SubscriptionCreateForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type SubscriptionCreateForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription create forbidden response has a 2xx status code
@@ -294,14 +298,16 @@ func (o *SubscriptionCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SubscriptionCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SubscriptionCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +325,7 @@ SubscriptionCreateNotFound describes a response with status code 404, with defau
 Not Found
 */
 type SubscriptionCreateNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription create not found response has a 2xx status code
@@ -355,14 +361,16 @@ func (o *SubscriptionCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SubscriptionCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SubscriptionCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

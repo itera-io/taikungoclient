@@ -197,7 +197,7 @@ AlertingIntegrationsEditUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type AlertingIntegrationsEditUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting integrations edit unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *AlertingIntegrationsEditUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingIntegrationsEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingIntegrationsEditUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ AlertingIntegrationsEditForbidden describes a response with status code 403, wit
 Forbidden
 */
 type AlertingIntegrationsEditForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting integrations edit forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *AlertingIntegrationsEditForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingIntegrationsEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingIntegrationsEditForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ AlertingIntegrationsEditNotFound describes a response with status code 404, with
 Not Found
 */
 type AlertingIntegrationsEditNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting integrations edit not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *AlertingIntegrationsEditNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingIntegrationsEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingIntegrationsEditNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

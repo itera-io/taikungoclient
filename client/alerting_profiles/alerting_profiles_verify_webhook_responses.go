@@ -197,7 +197,7 @@ AlertingProfilesVerifyWebhookUnauthorized describes a response with status code 
 Unauthorized
 */
 type AlertingProfilesVerifyWebhookUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles verify webhook unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *AlertingProfilesVerifyWebhookUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesVerifyWebhookUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesVerifyWebhookUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesVerifyWebhookUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ AlertingProfilesVerifyWebhookForbidden describes a response with status code 403
 Forbidden
 */
 type AlertingProfilesVerifyWebhookForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles verify webhook forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *AlertingProfilesVerifyWebhookForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesVerifyWebhookForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesVerifyWebhookForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesVerifyWebhookForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ AlertingProfilesVerifyWebhookNotFound describes a response with status code 404,
 Not Found
 */
 type AlertingProfilesVerifyWebhookNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles verify webhook not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *AlertingProfilesVerifyWebhookNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesVerifyWebhookNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesVerifyWebhookNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesVerifyWebhookNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

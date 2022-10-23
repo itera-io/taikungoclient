@@ -197,7 +197,7 @@ KubernetesPatchCrdUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubernetesPatchCrdUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch crd unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesPatchCrdUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/crd][%d] kubernetesPatchCrdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchCrdUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchCrdUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchCrdUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesPatchCrdForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubernetesPatchCrdForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch crd forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesPatchCrdForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/crd][%d] kubernetesPatchCrdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchCrdForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchCrdForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchCrdForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesPatchCrdNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubernetesPatchCrdNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch crd not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesPatchCrdNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/crd][%d] kubernetesPatchCrdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchCrdNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchCrdNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchCrdNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

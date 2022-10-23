@@ -197,7 +197,7 @@ CronJobDeleteExpiredHistoryLogsUnauthorized describes a response with status cod
 Unauthorized
 */
 type CronJobDeleteExpiredHistoryLogsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete expired history logs unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CronJobDeleteExpiredHistoryLogsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredHistoryLogsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobDeleteExpiredHistoryLogsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredHistoryLogsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CronJobDeleteExpiredHistoryLogsForbidden describes a response with status code 4
 Forbidden
 */
 type CronJobDeleteExpiredHistoryLogsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete expired history logs forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CronJobDeleteExpiredHistoryLogsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredHistoryLogsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobDeleteExpiredHistoryLogsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredHistoryLogsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CronJobDeleteExpiredHistoryLogsNotFound describes a response with status code 40
 Not Found
 */
 type CronJobDeleteExpiredHistoryLogsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete expired history logs not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CronJobDeleteExpiredHistoryLogsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredHistoryLogsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobDeleteExpiredHistoryLogsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredHistoryLogsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

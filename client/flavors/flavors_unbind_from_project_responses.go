@@ -197,7 +197,7 @@ FlavorsUnbindFromProjectUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type FlavorsUnbindFromProjectUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors unbind from project unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *FlavorsUnbindFromProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/unbind][%d] flavorsUnbindFromProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsUnbindFromProjectUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *FlavorsUnbindFromProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsUnbindFromProjectUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ FlavorsUnbindFromProjectForbidden describes a response with status code 403, wit
 Forbidden
 */
 type FlavorsUnbindFromProjectForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors unbind from project forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *FlavorsUnbindFromProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/unbind][%d] flavorsUnbindFromProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsUnbindFromProjectForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *FlavorsUnbindFromProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsUnbindFromProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ FlavorsUnbindFromProjectNotFound describes a response with status code 404, with
 Not Found
 */
 type FlavorsUnbindFromProjectNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors unbind from project not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *FlavorsUnbindFromProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/unbind][%d] flavorsUnbindFromProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsUnbindFromProjectNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *FlavorsUnbindFromProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsUnbindFromProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

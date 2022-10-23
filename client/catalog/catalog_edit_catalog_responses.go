@@ -197,7 +197,7 @@ CatalogEditCatalogUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type CatalogEditCatalogUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog edit catalog unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CatalogEditCatalogUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogEditCatalogUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogEditCatalogUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CatalogEditCatalogForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type CatalogEditCatalogForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog edit catalog forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CatalogEditCatalogForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogEditCatalogForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogEditCatalogForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CatalogEditCatalogNotFound describes a response with status code 404, with defau
 Not Found
 */
 type CatalogEditCatalogNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog edit catalog not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CatalogEditCatalogNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogEditCatalogNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogEditCatalogNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

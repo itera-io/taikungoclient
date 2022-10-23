@@ -197,7 +197,7 @@ CheckerAzureCPUQuotaUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type CheckerAzureCPUQuotaUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker azure Cpu quota unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CheckerAzureCPUQuotaUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerAzureCPUQuotaUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerAzureCPUQuotaUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerAzureCPUQuotaUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CheckerAzureCPUQuotaForbidden describes a response with status code 403, with de
 Forbidden
 */
 type CheckerAzureCPUQuotaForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker azure Cpu quota forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CheckerAzureCPUQuotaForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerAzureCPUQuotaForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerAzureCPUQuotaForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerAzureCPUQuotaForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CheckerAzureCPUQuotaNotFound describes a response with status code 404, with def
 Not Found
 */
 type CheckerAzureCPUQuotaNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker azure Cpu quota not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CheckerAzureCPUQuotaNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerAzureCPUQuotaNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerAzureCPUQuotaNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerAzureCPUQuotaNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

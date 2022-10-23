@@ -197,7 +197,7 @@ SecurityGroupDeleteUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type SecurityGroupDeleteUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this security group delete unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *SecurityGroupDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SecurityGroupDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SecurityGroupDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SecurityGroupDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ SecurityGroupDeleteForbidden describes a response with status code 403, with def
 Forbidden
 */
 type SecurityGroupDeleteForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this security group delete forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *SecurityGroupDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SecurityGroupDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SecurityGroupDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SecurityGroupDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ SecurityGroupDeleteNotFound describes a response with status code 404, with defa
 Not Found
 */
 type SecurityGroupDeleteNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this security group delete not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *SecurityGroupDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SecurityGroupDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SecurityGroupDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SecurityGroupDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

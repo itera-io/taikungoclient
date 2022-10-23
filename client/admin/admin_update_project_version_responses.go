@@ -197,7 +197,7 @@ AdminUpdateProjectVersionUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type AdminUpdateProjectVersionUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin update project version unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *AdminUpdateProjectVersionUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminUpdateProjectVersionUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminUpdateProjectVersionUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUpdateProjectVersionUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ AdminUpdateProjectVersionForbidden describes a response with status code 403, wi
 Forbidden
 */
 type AdminUpdateProjectVersionForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin update project version forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *AdminUpdateProjectVersionForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminUpdateProjectVersionForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminUpdateProjectVersionForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUpdateProjectVersionForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ AdminUpdateProjectVersionNotFound describes a response with status code 404, wit
 Not Found
 */
 type AdminUpdateProjectVersionNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin update project version not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *AdminUpdateProjectVersionNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminUpdateProjectVersionNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminUpdateProjectVersionNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUpdateProjectVersionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

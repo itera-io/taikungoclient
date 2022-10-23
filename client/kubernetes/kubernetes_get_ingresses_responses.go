@@ -199,7 +199,7 @@ KubernetesGetIngressesUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesGetIngressesUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get ingresses unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *KubernetesGetIngressesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/ingress][%d] kubernetesGetIngressesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetIngressesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetIngressesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetIngressesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ KubernetesGetIngressesForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesGetIngressesForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get ingresses forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *KubernetesGetIngressesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/ingress][%d] kubernetesGetIngressesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetIngressesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetIngressesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetIngressesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ KubernetesGetIngressesNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesGetIngressesNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get ingresses not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *KubernetesGetIngressesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/ingress][%d] kubernetesGetIngressesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetIngressesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetIngressesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetIngressesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

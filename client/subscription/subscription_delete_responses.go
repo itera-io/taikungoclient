@@ -254,7 +254,7 @@ SubscriptionDeleteUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type SubscriptionDeleteUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription delete unauthorized response has a 2xx status code
@@ -290,14 +290,16 @@ func (o *SubscriptionDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SubscriptionDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SubscriptionDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -315,7 +317,7 @@ SubscriptionDeleteForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type SubscriptionDeleteForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription delete forbidden response has a 2xx status code
@@ -351,14 +353,16 @@ func (o *SubscriptionDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SubscriptionDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SubscriptionDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -376,7 +380,7 @@ SubscriptionDeleteNotFound describes a response with status code 404, with defau
 Not Found
 */
 type SubscriptionDeleteNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription delete not found response has a 2xx status code
@@ -412,14 +416,16 @@ func (o *SubscriptionDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SubscriptionDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SubscriptionDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -136,7 +136,7 @@ ShowbackCredentialsDropdownBadRequest describes a response with status code 400,
 Bad Request
 */
 type ShowbackCredentialsDropdownBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ValidationProblemDetails
 }
 
 // IsSuccess returns true when this showback credentials dropdown bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *ShowbackCredentialsDropdownBadRequest) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackCredentialsDropdownBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackCredentialsDropdownBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsDropdownBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ValidationProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -197,7 +199,7 @@ ShowbackCredentialsDropdownUnauthorized describes a response with status code 40
 Unauthorized
 */
 type ShowbackCredentialsDropdownUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback credentials dropdown unauthorized response has a 2xx status code
@@ -233,14 +235,16 @@ func (o *ShowbackCredentialsDropdownUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackCredentialsDropdownUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackCredentialsDropdownUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsDropdownUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +262,7 @@ ShowbackCredentialsDropdownForbidden describes a response with status code 403, 
 Forbidden
 */
 type ShowbackCredentialsDropdownForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback credentials dropdown forbidden response has a 2xx status code
@@ -294,14 +298,16 @@ func (o *ShowbackCredentialsDropdownForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackCredentialsDropdownForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackCredentialsDropdownForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsDropdownForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +325,7 @@ ShowbackCredentialsDropdownNotFound describes a response with status code 404, w
 Not Found
 */
 type ShowbackCredentialsDropdownNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback credentials dropdown not found response has a 2xx status code
@@ -355,14 +361,16 @@ func (o *ShowbackCredentialsDropdownNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackCredentialsDropdownNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackCredentialsDropdownNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsDropdownNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

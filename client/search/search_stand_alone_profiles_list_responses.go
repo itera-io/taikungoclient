@@ -199,7 +199,7 @@ SearchStandAloneProfilesListUnauthorized describes a response with status code 4
 Unauthorized
 */
 type SearchStandAloneProfilesListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search stand alone profiles list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *SearchStandAloneProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchStandAloneProfilesListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchStandAloneProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchStandAloneProfilesListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ SearchStandAloneProfilesListForbidden describes a response with status code 403,
 Forbidden
 */
 type SearchStandAloneProfilesListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search stand alone profiles list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *SearchStandAloneProfilesListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchStandAloneProfilesListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchStandAloneProfilesListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchStandAloneProfilesListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ SearchStandAloneProfilesListNotFound describes a response with status code 404, 
 Not Found
 */
 type SearchStandAloneProfilesListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search stand alone profiles list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *SearchStandAloneProfilesListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchStandAloneProfilesListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchStandAloneProfilesListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchStandAloneProfilesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -197,7 +197,7 @@ PreDefinedQueriesDeletePrometheusDashboardUnauthorized describes a response with
 Unauthorized
 */
 type PreDefinedQueriesDeletePrometheusDashboardUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this pre defined queries delete prometheus dashboard unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorized) String() string
 	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ PreDefinedQueriesDeletePrometheusDashboardForbidden describes a response with st
 Forbidden
 */
 type PreDefinedQueriesDeletePrometheusDashboardForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this pre defined queries delete prometheus dashboard forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PreDefinedQueriesDeletePrometheusDashboardForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PreDefinedQueriesDeletePrometheusDashboardForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesDeletePrometheusDashboardForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ PreDefinedQueriesDeletePrometheusDashboardNotFound describes a response with sta
 Not Found
 */
 type PreDefinedQueriesDeletePrometheusDashboardNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this pre defined queries delete prometheus dashboard not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PreDefinedQueriesDeletePrometheusDashboardNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PreDefinedQueriesDeletePrometheusDashboardNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesDeletePrometheusDashboardNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

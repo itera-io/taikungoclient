@@ -199,7 +199,7 @@ SearchBackupCredentialsListUnauthorized describes a response with status code 40
 Unauthorized
 */
 type SearchBackupCredentialsListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search backup credentials list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *SearchBackupCredentialsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchBackupCredentialsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchBackupCredentialsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchBackupCredentialsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ SearchBackupCredentialsListForbidden describes a response with status code 403, 
 Forbidden
 */
 type SearchBackupCredentialsListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search backup credentials list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *SearchBackupCredentialsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchBackupCredentialsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchBackupCredentialsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchBackupCredentialsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ SearchBackupCredentialsListNotFound describes a response with status code 404, w
 Not Found
 */
 type SearchBackupCredentialsListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search backup credentials list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *SearchBackupCredentialsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchBackupCredentialsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchBackupCredentialsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchBackupCredentialsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

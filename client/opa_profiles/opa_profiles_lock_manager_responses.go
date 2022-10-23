@@ -197,7 +197,7 @@ OpaProfilesLockManagerUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type OpaProfilesLockManagerUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles lock manager unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *OpaProfilesLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesLockManagerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpaProfilesLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ OpaProfilesLockManagerForbidden describes a response with status code 403, with 
 Forbidden
 */
 type OpaProfilesLockManagerForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles lock manager forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *OpaProfilesLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesLockManagerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpaProfilesLockManagerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ OpaProfilesLockManagerNotFound describes a response with status code 404, with d
 Not Found
 */
 type OpaProfilesLockManagerNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles lock manager not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *OpaProfilesLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesLockManagerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpaProfilesLockManagerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

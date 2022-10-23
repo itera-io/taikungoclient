@@ -197,7 +197,7 @@ UsersDisableUserUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type UsersDisableUserUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users disable user unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *UsersDisableUserUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/disable][%d] usersDisableUserUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersDisableUserUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersDisableUserUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersDisableUserUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ UsersDisableUserForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type UsersDisableUserForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users disable user forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *UsersDisableUserForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/disable][%d] usersDisableUserForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersDisableUserForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersDisableUserForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersDisableUserForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ UsersDisableUserNotFound describes a response with status code 404, with default
 Not Found
 */
 type UsersDisableUserNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users disable user not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *UsersDisableUserNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/disable][%d] usersDisableUserNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersDisableUserNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersDisableUserNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersDisableUserNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

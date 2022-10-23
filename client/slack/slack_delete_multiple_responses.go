@@ -197,7 +197,7 @@ SlackDeleteMultipleUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type SlackDeleteMultipleUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack delete multiple unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *SlackDeleteMultipleUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SlackDeleteMultipleUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SlackDeleteMultipleUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackDeleteMultipleUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ SlackDeleteMultipleForbidden describes a response with status code 403, with def
 Forbidden
 */
 type SlackDeleteMultipleForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack delete multiple forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *SlackDeleteMultipleForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SlackDeleteMultipleForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SlackDeleteMultipleForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackDeleteMultipleForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ SlackDeleteMultipleNotFound describes a response with status code 404, with defa
 Not Found
 */
 type SlackDeleteMultipleNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack delete multiple not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *SlackDeleteMultipleNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SlackDeleteMultipleNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SlackDeleteMultipleNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackDeleteMultipleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

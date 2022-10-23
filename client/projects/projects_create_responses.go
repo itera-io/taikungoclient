@@ -199,7 +199,7 @@ ProjectsCreateUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type ProjectsCreateUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects create unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *ProjectsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ ProjectsCreateForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type ProjectsCreateForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects create forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *ProjectsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ ProjectsCreateNotFound describes a response with status code 404, with default h
 Not Found
 */
 type ProjectsCreateNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects create not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *ProjectsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

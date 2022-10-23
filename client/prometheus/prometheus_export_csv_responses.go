@@ -187,7 +187,7 @@ PrometheusExportCsvUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type PrometheusExportCsvUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus export csv unauthorized response has a 2xx status code
@@ -223,14 +223,16 @@ func (o *PrometheusExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusExportCsvUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusExportCsvUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -248,7 +250,7 @@ PrometheusExportCsvForbidden describes a response with status code 403, with def
 Forbidden
 */
 type PrometheusExportCsvForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus export csv forbidden response has a 2xx status code
@@ -284,14 +286,16 @@ func (o *PrometheusExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusExportCsvForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusExportCsvForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusExportCsvForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -309,7 +313,7 @@ PrometheusExportCsvNotFound describes a response with status code 404, with defa
 Not Found
 */
 type PrometheusExportCsvNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus export csv not found response has a 2xx status code
@@ -345,14 +349,16 @@ func (o *PrometheusExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusExportCsvNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusExportCsvNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusExportCsvNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

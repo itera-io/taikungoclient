@@ -197,7 +197,7 @@ CloudCredentialsCloudCredentialsForOrganizationListUnauthorized describes a resp
 Unauthorized
 */
 type CloudCredentialsCloudCredentialsForOrganizationListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials cloud credentials for organization list unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListUnauthorized) String
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials][%d] cloudCredentialsCloudCredentialsForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsCloudCredentialsForOrganizationListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CloudCredentialsCloudCredentialsForOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsCloudCredentialsForOrganizationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CloudCredentialsCloudCredentialsForOrganizationListForbidden describes a respons
 Forbidden
 */
 type CloudCredentialsCloudCredentialsForOrganizationListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials cloud credentials for organization list forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListForbidden) String() 
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials][%d] cloudCredentialsCloudCredentialsForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsCloudCredentialsForOrganizationListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CloudCredentialsCloudCredentialsForOrganizationListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsCloudCredentialsForOrganizationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CloudCredentialsCloudCredentialsForOrganizationListNotFound describes a response
 Not Found
 */
 type CloudCredentialsCloudCredentialsForOrganizationListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials cloud credentials for organization list not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListNotFound) String() s
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials][%d] cloudCredentialsCloudCredentialsForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsCloudCredentialsForOrganizationListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CloudCredentialsCloudCredentialsForOrganizationListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsCloudCredentialsForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

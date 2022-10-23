@@ -197,7 +197,7 @@ CatalogCreateCatalogAppUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type CatalogCreateCatalogAppUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog create catalog app unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CatalogCreateCatalogAppUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-to-catalog][%d] catalogCreateCatalogAppUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogCreateCatalogAppUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogCreateCatalogAppUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogCreateCatalogAppUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CatalogCreateCatalogAppForbidden describes a response with status code 403, with
 Forbidden
 */
 type CatalogCreateCatalogAppForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog create catalog app forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CatalogCreateCatalogAppForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-to-catalog][%d] catalogCreateCatalogAppForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogCreateCatalogAppForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogCreateCatalogAppForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogCreateCatalogAppForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CatalogCreateCatalogAppNotFound describes a response with status code 404, with 
 Not Found
 */
 type CatalogCreateCatalogAppNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog create catalog app not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CatalogCreateCatalogAppNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-to-catalog][%d] catalogCreateCatalogAppNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogCreateCatalogAppNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogCreateCatalogAppNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogCreateCatalogAppNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

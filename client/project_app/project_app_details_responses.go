@@ -199,7 +199,7 @@ ProjectAppDetailsUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type ProjectAppDetailsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app details unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *ProjectAppDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/{id}][%d] projectAppDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppDetailsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppDetailsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppDetailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ ProjectAppDetailsForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type ProjectAppDetailsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app details forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *ProjectAppDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/{id}][%d] projectAppDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppDetailsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppDetailsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppDetailsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ ProjectAppDetailsNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type ProjectAppDetailsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app details not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *ProjectAppDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/{id}][%d] projectAppDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppDetailsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppDetailsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppDetailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

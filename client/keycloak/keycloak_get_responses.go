@@ -199,7 +199,7 @@ KeycloakGetUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type KeycloakGetUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this keycloak get unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *KeycloakGetUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Keycloak][%d] keycloakGetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KeycloakGetUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KeycloakGetUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KeycloakGetUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ KeycloakGetForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type KeycloakGetForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this keycloak get forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *KeycloakGetForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Keycloak][%d] keycloakGetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KeycloakGetForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KeycloakGetForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KeycloakGetForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ KeycloakGetNotFound describes a response with status code 404, with default head
 Not Found
 */
 type KeycloakGetNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this keycloak get not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *KeycloakGetNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Keycloak][%d] keycloakGetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KeycloakGetNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KeycloakGetNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KeycloakGetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

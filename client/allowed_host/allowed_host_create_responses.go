@@ -199,7 +199,7 @@ AllowedHostCreateUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type AllowedHostCreateUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this allowed host create unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *AllowedHostCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AllowedHost/create][%d] allowedHostCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AllowedHostCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AllowedHostCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AllowedHostCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ AllowedHostCreateForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type AllowedHostCreateForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this allowed host create forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *AllowedHostCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AllowedHost/create][%d] allowedHostCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AllowedHostCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AllowedHostCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AllowedHostCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ AllowedHostCreateNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type AllowedHostCreateNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this allowed host create not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *AllowedHostCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AllowedHost/create][%d] allowedHostCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AllowedHostCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AllowedHostCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AllowedHostCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

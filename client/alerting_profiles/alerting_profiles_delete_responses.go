@@ -254,7 +254,7 @@ AlertingProfilesDeleteUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type AlertingProfilesDeleteUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles delete unauthorized response has a 2xx status code
@@ -290,14 +290,16 @@ func (o *AlertingProfilesDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -315,7 +317,7 @@ AlertingProfilesDeleteForbidden describes a response with status code 403, with 
 Forbidden
 */
 type AlertingProfilesDeleteForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles delete forbidden response has a 2xx status code
@@ -351,14 +353,16 @@ func (o *AlertingProfilesDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -376,7 +380,7 @@ AlertingProfilesDeleteNotFound describes a response with status code 404, with d
 Not Found
 */
 type AlertingProfilesDeleteNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles delete not found response has a 2xx status code
@@ -412,14 +416,16 @@ func (o *AlertingProfilesDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

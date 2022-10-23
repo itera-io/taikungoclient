@@ -197,7 +197,7 @@ NtpServersListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type NtpServersListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ntp servers list unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *NtpServersListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NtpServersListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *NtpServersListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NtpServersListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ NtpServersListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type NtpServersListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ntp servers list forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *NtpServersListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NtpServersListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *NtpServersListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NtpServersListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ NtpServersListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type NtpServersListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ntp servers list not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *NtpServersListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NtpServersListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *NtpServersListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NtpServersListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

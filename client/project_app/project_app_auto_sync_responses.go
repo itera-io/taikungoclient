@@ -197,7 +197,7 @@ ProjectAppAutoSyncUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type ProjectAppAutoSyncUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app auto sync unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *ProjectAppAutoSyncUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppAutoSyncUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppAutoSyncUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppAutoSyncUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ ProjectAppAutoSyncForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type ProjectAppAutoSyncForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app auto sync forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *ProjectAppAutoSyncForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppAutoSyncForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppAutoSyncForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppAutoSyncForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ ProjectAppAutoSyncNotFound describes a response with status code 404, with defau
 Not Found
 */
 type ProjectAppAutoSyncNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app auto sync not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *ProjectAppAutoSyncNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppAutoSyncNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppAutoSyncNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppAutoSyncNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

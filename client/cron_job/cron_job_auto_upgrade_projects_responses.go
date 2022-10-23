@@ -197,7 +197,7 @@ CronJobAutoUpgradeProjectsUnauthorized describes a response with status code 401
 Unauthorized
 */
 type CronJobAutoUpgradeProjectsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job auto upgrade projects unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CronJobAutoUpgradeProjectsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobAutoUpgradeProjectsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobAutoUpgradeProjectsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobAutoUpgradeProjectsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CronJobAutoUpgradeProjectsForbidden describes a response with status code 403, w
 Forbidden
 */
 type CronJobAutoUpgradeProjectsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job auto upgrade projects forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CronJobAutoUpgradeProjectsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobAutoUpgradeProjectsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobAutoUpgradeProjectsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobAutoUpgradeProjectsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CronJobAutoUpgradeProjectsNotFound describes a response with status code 404, wi
 Not Found
 */
 type CronJobAutoUpgradeProjectsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job auto upgrade projects not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CronJobAutoUpgradeProjectsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobAutoUpgradeProjectsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobAutoUpgradeProjectsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobAutoUpgradeProjectsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

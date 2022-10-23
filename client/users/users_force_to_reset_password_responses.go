@@ -197,7 +197,7 @@ UsersForceToResetPasswordUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type UsersForceToResetPasswordUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users force to reset password unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *UsersForceToResetPasswordUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersForceToResetPasswordUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersForceToResetPasswordUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersForceToResetPasswordUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ UsersForceToResetPasswordForbidden describes a response with status code 403, wi
 Forbidden
 */
 type UsersForceToResetPasswordForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users force to reset password forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *UsersForceToResetPasswordForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersForceToResetPasswordForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersForceToResetPasswordForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersForceToResetPasswordForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ UsersForceToResetPasswordNotFound describes a response with status code 404, wit
 Not Found
 */
 type UsersForceToResetPasswordNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users force to reset password not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *UsersForceToResetPasswordNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersForceToResetPasswordNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersForceToResetPasswordNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersForceToResetPasswordNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

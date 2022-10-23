@@ -199,7 +199,7 @@ AlertingProfilesListUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type AlertingProfilesListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *AlertingProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles][%d] alertingProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ AlertingProfilesListForbidden describes a response with status code 403, with de
 Forbidden
 */
 type AlertingProfilesListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *AlertingProfilesListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles][%d] alertingProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ AlertingProfilesListNotFound describes a response with status code 404, with def
 Not Found
 */
 type AlertingProfilesListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *AlertingProfilesListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles][%d] alertingProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

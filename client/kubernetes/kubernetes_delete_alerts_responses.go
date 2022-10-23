@@ -197,7 +197,7 @@ KubernetesDeleteAlertsUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesDeleteAlertsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes delete alerts unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesDeleteAlertsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDeleteAlertsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDeleteAlertsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDeleteAlertsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesDeleteAlertsForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesDeleteAlertsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes delete alerts forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesDeleteAlertsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDeleteAlertsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDeleteAlertsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDeleteAlertsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesDeleteAlertsNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesDeleteAlertsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes delete alerts not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesDeleteAlertsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDeleteAlertsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDeleteAlertsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDeleteAlertsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

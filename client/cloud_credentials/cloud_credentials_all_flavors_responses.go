@@ -199,7 +199,7 @@ CloudCredentialsAllFlavorsUnauthorized describes a response with status code 401
 Unauthorized
 */
 type CloudCredentialsAllFlavorsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials all flavors unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *CloudCredentialsAllFlavorsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsAllFlavorsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CloudCredentialsAllFlavorsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsAllFlavorsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ CloudCredentialsAllFlavorsForbidden describes a response with status code 403, w
 Forbidden
 */
 type CloudCredentialsAllFlavorsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials all flavors forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *CloudCredentialsAllFlavorsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsAllFlavorsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CloudCredentialsAllFlavorsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsAllFlavorsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ CloudCredentialsAllFlavorsNotFound describes a response with status code 404, wi
 Not Found
 */
 type CloudCredentialsAllFlavorsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials all flavors not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *CloudCredentialsAllFlavorsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsAllFlavorsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CloudCredentialsAllFlavorsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsAllFlavorsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

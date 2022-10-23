@@ -197,7 +197,7 @@ PaymentCreateCustomerUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type PaymentCreateCustomerUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment create customer unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *PaymentCreateCustomerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentCreateCustomerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PaymentCreateCustomerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentCreateCustomerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ PaymentCreateCustomerForbidden describes a response with status code 403, with d
 Forbidden
 */
 type PaymentCreateCustomerForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment create customer forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *PaymentCreateCustomerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentCreateCustomerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PaymentCreateCustomerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentCreateCustomerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ PaymentCreateCustomerNotFound describes a response with status code 404, with de
 Not Found
 */
 type PaymentCreateCustomerNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment create customer not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *PaymentCreateCustomerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentCreateCustomerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PaymentCreateCustomerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentCreateCustomerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

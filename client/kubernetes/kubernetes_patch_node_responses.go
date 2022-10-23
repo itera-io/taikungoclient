@@ -197,7 +197,7 @@ KubernetesPatchNodeUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type KubernetesPatchNodeUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch node unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesPatchNodeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchNodeUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchNodeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchNodeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesPatchNodeForbidden describes a response with status code 403, with def
 Forbidden
 */
 type KubernetesPatchNodeForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch node forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesPatchNodeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchNodeForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchNodeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchNodeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesPatchNodeNotFound describes a response with status code 404, with defa
 Not Found
 */
 type KubernetesPatchNodeNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch node not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesPatchNodeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchNodeNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchNodeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchNodeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -197,7 +197,7 @@ OpenstackSubnetsUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type OpenstackSubnetsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack subnets unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *OpenstackSubnetsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackSubnetsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpenstackSubnetsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackSubnetsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ OpenstackSubnetsForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type OpenstackSubnetsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack subnets forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *OpenstackSubnetsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackSubnetsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpenstackSubnetsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackSubnetsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ OpenstackSubnetsNotFound describes a response with status code 404, with default
 Not Found
 */
 type OpenstackSubnetsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack subnets not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *OpenstackSubnetsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackSubnetsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpenstackSubnetsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackSubnetsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

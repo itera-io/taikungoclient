@@ -197,7 +197,7 @@ KubeConfigDeleteByProjectIDUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubeConfigDeleteByProjectIDUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kube config delete by project Id unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubeConfigDeleteByProjectIDUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubeConfigDeleteByProjectIDUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubeConfigDeleteByProjectIDUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubeConfigDeleteByProjectIDUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubeConfigDeleteByProjectIDForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubeConfigDeleteByProjectIDForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kube config delete by project Id forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubeConfigDeleteByProjectIDForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubeConfigDeleteByProjectIDForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubeConfigDeleteByProjectIDForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubeConfigDeleteByProjectIDForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubeConfigDeleteByProjectIDNotFound describes a response with status code 404, w
 Not Found
 */
 type KubeConfigDeleteByProjectIDNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kube config delete by project Id not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubeConfigDeleteByProjectIDNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubeConfigDeleteByProjectIDNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubeConfigDeleteByProjectIDNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubeConfigDeleteByProjectIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

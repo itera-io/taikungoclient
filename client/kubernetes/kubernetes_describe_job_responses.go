@@ -197,7 +197,7 @@ KubernetesDescribeJobUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesDescribeJobUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe job unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesDescribeJobUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeJobUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDescribeJobUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeJobUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesDescribeJobForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesDescribeJobForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe job forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesDescribeJobForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeJobForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDescribeJobForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeJobForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesDescribeJobNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesDescribeJobNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe job not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesDescribeJobNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeJobNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDescribeJobNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeJobNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

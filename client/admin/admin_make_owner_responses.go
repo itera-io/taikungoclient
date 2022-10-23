@@ -197,7 +197,7 @@ AdminMakeOwnerUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type AdminMakeOwnerUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin make owner unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *AdminMakeOwnerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminMakeOwnerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminMakeOwnerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminMakeOwnerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ AdminMakeOwnerForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type AdminMakeOwnerForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin make owner forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *AdminMakeOwnerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminMakeOwnerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminMakeOwnerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminMakeOwnerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ AdminMakeOwnerNotFound describes a response with status code 404, with default h
 Not Found
 */
 type AdminMakeOwnerNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin make owner not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *AdminMakeOwnerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminMakeOwnerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminMakeOwnerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminMakeOwnerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

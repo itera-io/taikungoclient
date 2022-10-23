@@ -197,7 +197,7 @@ PrometheusBindRulesUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type PrometheusBindRulesUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus bind rules unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *PrometheusBindRulesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusBindRulesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusBindRulesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusBindRulesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ PrometheusBindRulesForbidden describes a response with status code 403, with def
 Forbidden
 */
 type PrometheusBindRulesForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus bind rules forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *PrometheusBindRulesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusBindRulesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusBindRulesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusBindRulesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ PrometheusBindRulesNotFound describes a response with status code 404, with defa
 Not Found
 */
 type PrometheusBindRulesNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus bind rules not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *PrometheusBindRulesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusBindRulesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusBindRulesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusBindRulesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

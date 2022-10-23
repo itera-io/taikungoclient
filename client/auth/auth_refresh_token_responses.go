@@ -199,7 +199,7 @@ AuthRefreshTokenUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type AuthRefreshTokenUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth refresh token unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *AuthRefreshTokenUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AuthRefreshTokenUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AuthRefreshTokenUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthRefreshTokenUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ AuthRefreshTokenForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type AuthRefreshTokenForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth refresh token forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *AuthRefreshTokenForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AuthRefreshTokenForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AuthRefreshTokenForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthRefreshTokenForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ AuthRefreshTokenNotFound describes a response with status code 404, with default
 Not Found
 */
 type AuthRefreshTokenNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth refresh token not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *AuthRefreshTokenNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AuthRefreshTokenNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AuthRefreshTokenNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthRefreshTokenNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -197,7 +197,7 @@ KubernetesGetNodeListUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesGetNodeListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get node list unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesGetNodeListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetNodeListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetNodeListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetNodeListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesGetNodeListForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesGetNodeListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get node list forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesGetNodeListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetNodeListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetNodeListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetNodeListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesGetNodeListNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesGetNodeListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get node list not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesGetNodeListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetNodeListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetNodeListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetNodeListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

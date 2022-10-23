@@ -197,7 +197,7 @@ ProjectAppEditParamsUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type ProjectAppEditParamsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app edit params unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *ProjectAppEditParamsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppEditParamsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppEditParamsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppEditParamsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ ProjectAppEditParamsForbidden describes a response with status code 403, with de
 Forbidden
 */
 type ProjectAppEditParamsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app edit params forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *ProjectAppEditParamsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppEditParamsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppEditParamsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppEditParamsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ ProjectAppEditParamsNotFound describes a response with status code 404, with def
 Not Found
 */
 type ProjectAppEditParamsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app edit params not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *ProjectAppEditParamsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppEditParamsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppEditParamsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppEditParamsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -199,7 +199,7 @@ KubernetesGetConfigMapUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesGetConfigMapUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get config map unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *KubernetesGetConfigMapUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/configmap][%d] kubernetesGetConfigMapUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetConfigMapUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetConfigMapUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetConfigMapUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ KubernetesGetConfigMapForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesGetConfigMapForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get config map forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *KubernetesGetConfigMapForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/configmap][%d] kubernetesGetConfigMapForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetConfigMapForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetConfigMapForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetConfigMapForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ KubernetesGetConfigMapNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesGetConfigMapNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get config map not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *KubernetesGetConfigMapNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/configmap][%d] kubernetesGetConfigMapNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetConfigMapNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetConfigMapNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetConfigMapNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

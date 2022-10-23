@@ -197,7 +197,7 @@ ProjectsEditHealthStatusUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type ProjectsEditHealthStatusUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects edit health status unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *ProjectsEditHealthStatusUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsEditHealthStatusUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsEditHealthStatusUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsEditHealthStatusUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ ProjectsEditHealthStatusForbidden describes a response with status code 403, wit
 Forbidden
 */
 type ProjectsEditHealthStatusForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects edit health status forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *ProjectsEditHealthStatusForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsEditHealthStatusForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsEditHealthStatusForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsEditHealthStatusForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ ProjectsEditHealthStatusNotFound describes a response with status code 404, with
 Not Found
 */
 type ProjectsEditHealthStatusNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects edit health status not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *ProjectsEditHealthStatusNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsEditHealthStatusNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsEditHealthStatusNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsEditHealthStatusNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

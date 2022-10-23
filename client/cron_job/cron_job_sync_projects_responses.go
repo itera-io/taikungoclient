@@ -197,7 +197,7 @@ CronJobSyncProjectsUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type CronJobSyncProjectsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job sync projects unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CronJobSyncProjectsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-projects][%d] cronJobSyncProjectsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobSyncProjectsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobSyncProjectsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobSyncProjectsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CronJobSyncProjectsForbidden describes a response with status code 403, with def
 Forbidden
 */
 type CronJobSyncProjectsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job sync projects forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CronJobSyncProjectsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-projects][%d] cronJobSyncProjectsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobSyncProjectsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobSyncProjectsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobSyncProjectsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CronJobSyncProjectsNotFound describes a response with status code 404, with defa
 Not Found
 */
 type CronJobSyncProjectsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job sync projects not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CronJobSyncProjectsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-projects][%d] cronJobSyncProjectsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobSyncProjectsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobSyncProjectsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobSyncProjectsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

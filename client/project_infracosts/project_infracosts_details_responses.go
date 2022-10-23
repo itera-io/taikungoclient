@@ -199,7 +199,7 @@ ProjectInfracostsDetailsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type ProjectInfracostsDetailsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project infracosts details unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *ProjectInfracostsDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectInfracostsDetailsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectInfracostsDetailsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsDetailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ ProjectInfracostsDetailsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type ProjectInfracostsDetailsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project infracosts details forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *ProjectInfracostsDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectInfracostsDetailsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectInfracostsDetailsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsDetailsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ ProjectInfracostsDetailsNotFound describes a response with status code 404, with
 Not Found
 */
 type ProjectInfracostsDetailsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project infracosts details not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *ProjectInfracostsDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectInfracostsDetailsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectInfracostsDetailsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsDetailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

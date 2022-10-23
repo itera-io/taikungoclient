@@ -197,7 +197,7 @@ ProjectsListSelectorUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type ProjectsListSelectorUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects list selector unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *ProjectsListSelectorUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsListSelectorUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsListSelectorUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsListSelectorUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ ProjectsListSelectorForbidden describes a response with status code 403, with de
 Forbidden
 */
 type ProjectsListSelectorForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects list selector forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *ProjectsListSelectorForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsListSelectorForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsListSelectorForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsListSelectorForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ ProjectsListSelectorNotFound describes a response with status code 404, with def
 Not Found
 */
 type ProjectsListSelectorNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects list selector not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *ProjectsListSelectorNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsListSelectorNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsListSelectorNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsListSelectorNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -197,7 +197,7 @@ KubernetesCreateKubernetesEventUnauthorized describes a response with status cod
 Unauthorized
 */
 type KubernetesCreateKubernetesEventUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes create kubernetes event unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesCreateKubernetesEventUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/event/{projectId}][%d] kubernetesCreateKubernetesEventUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesCreateKubernetesEventUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesCreateKubernetesEventUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesCreateKubernetesEventUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesCreateKubernetesEventForbidden describes a response with status code 4
 Forbidden
 */
 type KubernetesCreateKubernetesEventForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes create kubernetes event forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesCreateKubernetesEventForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/event/{projectId}][%d] kubernetesCreateKubernetesEventForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesCreateKubernetesEventForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesCreateKubernetesEventForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesCreateKubernetesEventForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesCreateKubernetesEventNotFound describes a response with status code 40
 Not Found
 */
 type KubernetesCreateKubernetesEventNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes create kubernetes event not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesCreateKubernetesEventNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/event/{projectId}][%d] kubernetesCreateKubernetesEventNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesCreateKubernetesEventNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesCreateKubernetesEventNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesCreateKubernetesEventNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

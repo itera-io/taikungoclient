@@ -197,7 +197,7 @@ ProjectActionsEditUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type ProjectActionsEditUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project actions edit unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *ProjectActionsEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/update/{projectId}][%d] projectActionsEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectActionsEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectActionsEditUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectActionsEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ ProjectActionsEditForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type ProjectActionsEditForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project actions edit forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *ProjectActionsEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/update/{projectId}][%d] projectActionsEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectActionsEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectActionsEditForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectActionsEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ ProjectActionsEditNotFound describes a response with status code 404, with defau
 Not Found
 */
 type ProjectActionsEditNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project actions edit not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *ProjectActionsEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/update/{projectId}][%d] projectActionsEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectActionsEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectActionsEditNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectActionsEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

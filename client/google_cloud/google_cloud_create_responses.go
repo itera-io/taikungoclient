@@ -199,7 +199,7 @@ GoogleCloudCreateUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type GoogleCloudCreateUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud create unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *GoogleCloudCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GoogleCloudCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *GoogleCloudCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ GoogleCloudCreateForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type GoogleCloudCreateForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud create forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *GoogleCloudCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GoogleCloudCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *GoogleCloudCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ GoogleCloudCreateNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type GoogleCloudCreateNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud create not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *GoogleCloudCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GoogleCloudCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *GoogleCloudCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

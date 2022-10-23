@@ -199,7 +199,7 @@ S3CredentialsCreateUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type S3CredentialsCreateUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials create unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *S3CredentialsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *S3CredentialsCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *S3CredentialsCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ S3CredentialsCreateForbidden describes a response with status code 403, with def
 Forbidden
 */
 type S3CredentialsCreateForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials create forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *S3CredentialsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *S3CredentialsCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *S3CredentialsCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ S3CredentialsCreateNotFound describes a response with status code 404, with defa
 Not Found
 */
 type S3CredentialsCreateNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials create not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *S3CredentialsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *S3CredentialsCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *S3CredentialsCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

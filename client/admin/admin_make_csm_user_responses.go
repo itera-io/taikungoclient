@@ -197,7 +197,7 @@ AdminMakeCsmUserUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type AdminMakeCsmUserUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin make csm user unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *AdminMakeCsmUserUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminMakeCsmUserUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminMakeCsmUserUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminMakeCsmUserUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ AdminMakeCsmUserForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type AdminMakeCsmUserForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin make csm user forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *AdminMakeCsmUserForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminMakeCsmUserForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminMakeCsmUserForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminMakeCsmUserForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ AdminMakeCsmUserNotFound describes a response with status code 404, with default
 Not Found
 */
 type AdminMakeCsmUserNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin make csm user not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *AdminMakeCsmUserNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminMakeCsmUserNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminMakeCsmUserNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminMakeCsmUserNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -199,7 +199,7 @@ ImagesAwsImagesAsPostUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type ImagesAwsImagesAsPostUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images aws images as post unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *ImagesAwsImagesAsPostUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/aws][%d] imagesAwsImagesAsPostUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesAwsImagesAsPostUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ImagesAwsImagesAsPostUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesAwsImagesAsPostUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ ImagesAwsImagesAsPostForbidden describes a response with status code 403, with d
 Forbidden
 */
 type ImagesAwsImagesAsPostForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images aws images as post forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *ImagesAwsImagesAsPostForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/aws][%d] imagesAwsImagesAsPostForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesAwsImagesAsPostForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ImagesAwsImagesAsPostForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesAwsImagesAsPostForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ ImagesAwsImagesAsPostNotFound describes a response with status code 404, with de
 Not Found
 */
 type ImagesAwsImagesAsPostNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images aws images as post not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *ImagesAwsImagesAsPostNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/aws][%d] imagesAwsImagesAsPostNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesAwsImagesAsPostNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ImagesAwsImagesAsPostNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesAwsImagesAsPostNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

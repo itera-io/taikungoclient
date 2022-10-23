@@ -187,7 +187,7 @@ BillingExportCsvUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type BillingExportCsvUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this billing export csv unauthorized response has a 2xx status code
@@ -223,14 +223,16 @@ func (o *BillingExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BillingExportCsvUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BillingExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BillingExportCsvUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -248,7 +250,7 @@ BillingExportCsvForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type BillingExportCsvForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this billing export csv forbidden response has a 2xx status code
@@ -284,14 +286,16 @@ func (o *BillingExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BillingExportCsvForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BillingExportCsvForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BillingExportCsvForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -309,7 +313,7 @@ BillingExportCsvNotFound describes a response with status code 404, with default
 Not Found
 */
 type BillingExportCsvNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this billing export csv not found response has a 2xx status code
@@ -345,14 +349,16 @@ func (o *BillingExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BillingExportCsvNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BillingExportCsvNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BillingExportCsvNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

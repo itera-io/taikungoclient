@@ -199,7 +199,7 @@ AllowedHostListUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type AllowedHostListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this allowed host list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *AllowedHostListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AllowedHostListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AllowedHostListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AllowedHostListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ AllowedHostListForbidden describes a response with status code 403, with default
 Forbidden
 */
 type AllowedHostListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this allowed host list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *AllowedHostListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AllowedHostListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AllowedHostListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AllowedHostListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ AllowedHostListNotFound describes a response with status code 404, with default 
 Not Found
 */
 type AllowedHostListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this allowed host list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *AllowedHostListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AllowedHostListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AllowedHostListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AllowedHostListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

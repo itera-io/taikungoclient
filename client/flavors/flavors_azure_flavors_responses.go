@@ -199,7 +199,7 @@ FlavorsAzureFlavorsUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type FlavorsAzureFlavorsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors azure flavors unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *FlavorsAzureFlavorsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/azure/{cloudId}][%d] flavorsAzureFlavorsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsAzureFlavorsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *FlavorsAzureFlavorsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsAzureFlavorsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ FlavorsAzureFlavorsForbidden describes a response with status code 403, with def
 Forbidden
 */
 type FlavorsAzureFlavorsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors azure flavors forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *FlavorsAzureFlavorsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/azure/{cloudId}][%d] flavorsAzureFlavorsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsAzureFlavorsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *FlavorsAzureFlavorsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsAzureFlavorsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ FlavorsAzureFlavorsNotFound describes a response with status code 404, with defa
 Not Found
 */
 type FlavorsAzureFlavorsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors azure flavors not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *FlavorsAzureFlavorsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/azure/{cloudId}][%d] flavorsAzureFlavorsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsAzureFlavorsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *FlavorsAzureFlavorsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsAzureFlavorsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

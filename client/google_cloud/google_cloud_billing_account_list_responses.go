@@ -197,7 +197,7 @@ GoogleCloudBillingAccountListUnauthorized describes a response with status code 
 Unauthorized
 */
 type GoogleCloudBillingAccountListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud billing account list unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *GoogleCloudBillingAccountListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GoogleCloudBillingAccountListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *GoogleCloudBillingAccountListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudBillingAccountListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ GoogleCloudBillingAccountListForbidden describes a response with status code 403
 Forbidden
 */
 type GoogleCloudBillingAccountListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud billing account list forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *GoogleCloudBillingAccountListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GoogleCloudBillingAccountListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *GoogleCloudBillingAccountListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudBillingAccountListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ GoogleCloudBillingAccountListNotFound describes a response with status code 404,
 Not Found
 */
 type GoogleCloudBillingAccountListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud billing account list not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *GoogleCloudBillingAccountListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GoogleCloudBillingAccountListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *GoogleCloudBillingAccountListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudBillingAccountListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -199,7 +199,7 @@ SearchSecretListUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type SearchSecretListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search secret list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *SearchSecretListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchSecretListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchSecretListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchSecretListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ SearchSecretListForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type SearchSecretListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search secret list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *SearchSecretListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchSecretListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchSecretListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchSecretListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ SearchSecretListNotFound describes a response with status code 404, with default
 Not Found
 */
 type SearchSecretListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search secret list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *SearchSecretListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchSecretListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchSecretListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchSecretListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

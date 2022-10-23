@@ -197,7 +197,7 @@ CronJobDeletePendingOrganizationsUnauthorized describes a response with status c
 Unauthorized
 */
 type CronJobDeletePendingOrganizationsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete pending organizations unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CronJobDeletePendingOrganizationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeletePendingOrganizationsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobDeletePendingOrganizationsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeletePendingOrganizationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CronJobDeletePendingOrganizationsForbidden describes a response with status code
 Forbidden
 */
 type CronJobDeletePendingOrganizationsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete pending organizations forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CronJobDeletePendingOrganizationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeletePendingOrganizationsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobDeletePendingOrganizationsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeletePendingOrganizationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CronJobDeletePendingOrganizationsNotFound describes a response with status code 
 Not Found
 */
 type CronJobDeletePendingOrganizationsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete pending organizations not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CronJobDeletePendingOrganizationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeletePendingOrganizationsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobDeletePendingOrganizationsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeletePendingOrganizationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

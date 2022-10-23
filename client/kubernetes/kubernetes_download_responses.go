@@ -197,7 +197,7 @@ KubernetesDownloadUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubernetesDownloadUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes download unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesDownloadUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDownloadUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDownloadUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDownloadUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesDownloadForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubernetesDownloadForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes download forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesDownloadForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDownloadForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDownloadForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDownloadForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesDownloadNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubernetesDownloadNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes download not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesDownloadNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDownloadNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDownloadNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDownloadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

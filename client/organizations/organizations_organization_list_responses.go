@@ -197,7 +197,7 @@ OrganizationsOrganizationListUnauthorized describes a response with status code 
 Unauthorized
 */
 type OrganizationsOrganizationListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations organization list unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *OrganizationsOrganizationListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsOrganizationListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsOrganizationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ OrganizationsOrganizationListForbidden describes a response with status code 403
 Forbidden
 */
 type OrganizationsOrganizationListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations organization list forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *OrganizationsOrganizationListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsOrganizationListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsOrganizationListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsOrganizationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ OrganizationsOrganizationListNotFound describes a response with status code 404,
 Not Found
 */
 type OrganizationsOrganizationListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations organization list not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *OrganizationsOrganizationListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsOrganizationListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsOrganizationListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

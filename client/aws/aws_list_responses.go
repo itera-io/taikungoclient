@@ -199,7 +199,7 @@ AwsListUnauthorized describes a response with status code 401, with default head
 Unauthorized
 */
 type AwsListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *AwsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/list][%d] awsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AwsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ AwsListForbidden describes a response with status code 403, with default header 
 Forbidden
 */
 type AwsListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *AwsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/list][%d] awsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AwsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ AwsListNotFound describes a response with status code 404, with default header v
 Not Found
 */
 type AwsListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *AwsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/list][%d] awsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AwsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

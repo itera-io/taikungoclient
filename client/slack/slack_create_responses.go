@@ -199,7 +199,7 @@ SlackCreateUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type SlackCreateUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack create unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *SlackCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SlackCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SlackCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ SlackCreateForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type SlackCreateForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack create forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *SlackCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SlackCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SlackCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ SlackCreateNotFound describes a response with status code 404, with default head
 Not Found
 */
 type SlackCreateNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack create not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *SlackCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SlackCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SlackCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

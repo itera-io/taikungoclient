@@ -199,7 +199,7 @@ GoogleCloudZoneListUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type GoogleCloudZoneListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud zone list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *GoogleCloudZoneListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GoogleCloudZoneListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *GoogleCloudZoneListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudZoneListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ GoogleCloudZoneListForbidden describes a response with status code 403, with def
 Forbidden
 */
 type GoogleCloudZoneListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud zone list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *GoogleCloudZoneListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GoogleCloudZoneListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *GoogleCloudZoneListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudZoneListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ GoogleCloudZoneListNotFound describes a response with status code 404, with defa
 Not Found
 */
 type GoogleCloudZoneListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud zone list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *GoogleCloudZoneListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GoogleCloudZoneListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *GoogleCloudZoneListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudZoneListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

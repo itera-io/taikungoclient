@@ -197,7 +197,7 @@ KubernetesDescribeDeploymentUnauthorized describes a response with status code 4
 Unauthorized
 */
 type KubernetesDescribeDeploymentUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe deployment unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesDescribeDeploymentUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeDeploymentUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDescribeDeploymentUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeDeploymentUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesDescribeDeploymentForbidden describes a response with status code 403,
 Forbidden
 */
 type KubernetesDescribeDeploymentForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe deployment forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesDescribeDeploymentForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeDeploymentForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDescribeDeploymentForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeDeploymentForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesDescribeDeploymentNotFound describes a response with status code 404, 
 Not Found
 */
 type KubernetesDescribeDeploymentNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe deployment not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesDescribeDeploymentNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeDeploymentNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDescribeDeploymentNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeDeploymentNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

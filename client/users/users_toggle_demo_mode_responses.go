@@ -197,7 +197,7 @@ UsersToggleDemoModeUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type UsersToggleDemoModeUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users toggle demo mode unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *UsersToggleDemoModeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/toggle-demo-mode][%d] usersToggleDemoModeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersToggleDemoModeUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersToggleDemoModeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersToggleDemoModeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ UsersToggleDemoModeForbidden describes a response with status code 403, with def
 Forbidden
 */
 type UsersToggleDemoModeForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users toggle demo mode forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *UsersToggleDemoModeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/toggle-demo-mode][%d] usersToggleDemoModeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersToggleDemoModeForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersToggleDemoModeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersToggleDemoModeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ UsersToggleDemoModeNotFound describes a response with status code 404, with defa
 Not Found
 */
 type UsersToggleDemoModeNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users toggle demo mode not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *UsersToggleDemoModeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/toggle-demo-mode][%d] usersToggleDemoModeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersToggleDemoModeNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersToggleDemoModeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersToggleDemoModeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

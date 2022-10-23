@@ -197,7 +197,7 @@ OpaProfilesDeleteUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpaProfilesDeleteUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles delete unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *OpaProfilesDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpaProfilesDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ OpaProfilesDeleteForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpaProfilesDeleteForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles delete forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *OpaProfilesDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpaProfilesDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ OpaProfilesDeleteNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpaProfilesDeleteNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles delete not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *OpaProfilesDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpaProfilesDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -197,7 +197,7 @@ KubernetesPatchSecretUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesPatchSecretUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch secret unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *KubernetesPatchSecretUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchSecretUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchSecretUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchSecretUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ KubernetesPatchSecretForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesPatchSecretForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch secret forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *KubernetesPatchSecretForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchSecretForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchSecretForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchSecretForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ KubernetesPatchSecretNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesPatchSecretNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch secret not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *KubernetesPatchSecretNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchSecretNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchSecretNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchSecretNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

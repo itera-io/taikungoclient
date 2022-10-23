@@ -199,7 +199,7 @@ ImagesGetSelectedImagesForProjectUnauthorized describes a response with status c
 Unauthorized
 */
 type ImagesGetSelectedImagesForProjectUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images get selected images for project unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *ImagesGetSelectedImagesForProjectUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/projects/list][%d] imagesGetSelectedImagesForProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesGetSelectedImagesForProjectUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ImagesGetSelectedImagesForProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesGetSelectedImagesForProjectUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ ImagesGetSelectedImagesForProjectForbidden describes a response with status code
 Forbidden
 */
 type ImagesGetSelectedImagesForProjectForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images get selected images for project forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *ImagesGetSelectedImagesForProjectForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/projects/list][%d] imagesGetSelectedImagesForProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesGetSelectedImagesForProjectForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ImagesGetSelectedImagesForProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesGetSelectedImagesForProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ ImagesGetSelectedImagesForProjectNotFound describes a response with status code 
 Not Found
 */
 type ImagesGetSelectedImagesForProjectNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images get selected images for project not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *ImagesGetSelectedImagesForProjectNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/projects/list][%d] imagesGetSelectedImagesForProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesGetSelectedImagesForProjectNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ImagesGetSelectedImagesForProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesGetSelectedImagesForProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

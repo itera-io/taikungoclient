@@ -197,7 +197,7 @@ PrometheusCreateBillingUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type PrometheusCreateBillingUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus create billing unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *PrometheusCreateBillingUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusCreateBillingUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusCreateBillingUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusCreateBillingUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ PrometheusCreateBillingForbidden describes a response with status code 403, with
 Forbidden
 */
 type PrometheusCreateBillingForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus create billing forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *PrometheusCreateBillingForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusCreateBillingForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusCreateBillingForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusCreateBillingForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ PrometheusCreateBillingNotFound describes a response with status code 404, with 
 Not Found
 */
 type PrometheusCreateBillingNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus create billing not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *PrometheusCreateBillingNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusCreateBillingNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusCreateBillingNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusCreateBillingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -197,7 +197,7 @@ CatalogEditCatalogAppVersionUnauthorized describes a response with status code 4
 Unauthorized
 */
 type CatalogEditCatalogAppVersionUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog edit catalog app version unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CatalogEditCatalogAppVersionUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppVersionUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogEditCatalogAppVersionUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogAppVersionUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CatalogEditCatalogAppVersionForbidden describes a response with status code 403,
 Forbidden
 */
 type CatalogEditCatalogAppVersionForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog edit catalog app version forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CatalogEditCatalogAppVersionForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppVersionForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogEditCatalogAppVersionForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogAppVersionForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CatalogEditCatalogAppVersionNotFound describes a response with status code 404, 
 Not Found
 */
 type CatalogEditCatalogAppVersionNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog edit catalog app version not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CatalogEditCatalogAppVersionNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppVersionNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogEditCatalogAppVersionNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogAppVersionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

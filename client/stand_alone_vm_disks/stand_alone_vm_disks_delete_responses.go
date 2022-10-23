@@ -197,7 +197,7 @@ StandAloneVMDisksDeleteUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneVMDisksDeleteUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks delete unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *StandAloneVMDisksDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneVMDisksDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ StandAloneVMDisksDeleteForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneVMDisksDeleteForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks delete forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *StandAloneVMDisksDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneVMDisksDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ StandAloneVMDisksDeleteNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneVMDisksDeleteNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks delete not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *StandAloneVMDisksDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneVMDisksDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

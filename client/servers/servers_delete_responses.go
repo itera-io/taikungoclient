@@ -254,7 +254,7 @@ ServersDeleteUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type ServersDeleteUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers delete unauthorized response has a 2xx status code
@@ -290,14 +290,16 @@ func (o *ServersDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ServersDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -315,7 +317,7 @@ ServersDeleteForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type ServersDeleteForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers delete forbidden response has a 2xx status code
@@ -351,14 +353,16 @@ func (o *ServersDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ServersDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -376,7 +380,7 @@ ServersDeleteNotFound describes a response with status code 404, with default he
 Not Found
 */
 type ServersDeleteNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers delete not found response has a 2xx status code
@@ -412,14 +416,16 @@ func (o *ServersDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ServersDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

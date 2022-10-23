@@ -197,7 +197,7 @@ UsersToggleNotificationModeUnauthorized describes a response with status code 40
 Unauthorized
 */
 type UsersToggleNotificationModeUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users toggle notification mode unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *UsersToggleNotificationModeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersToggleNotificationModeUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersToggleNotificationModeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersToggleNotificationModeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ UsersToggleNotificationModeForbidden describes a response with status code 403, 
 Forbidden
 */
 type UsersToggleNotificationModeForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users toggle notification mode forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *UsersToggleNotificationModeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersToggleNotificationModeForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersToggleNotificationModeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersToggleNotificationModeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ UsersToggleNotificationModeNotFound describes a response with status code 404, w
 Not Found
 */
 type UsersToggleNotificationModeNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users toggle notification mode not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *UsersToggleNotificationModeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersToggleNotificationModeNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersToggleNotificationModeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersToggleNotificationModeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

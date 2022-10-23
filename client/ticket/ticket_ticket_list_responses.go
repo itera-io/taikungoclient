@@ -199,7 +199,7 @@ TicketTicketListUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type TicketTicketListUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket ticket list unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *TicketTicketListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/list][%d] ticketTicketListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketTicketListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *TicketTicketListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketTicketListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ TicketTicketListForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type TicketTicketListForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket ticket list forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *TicketTicketListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/list][%d] ticketTicketListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketTicketListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *TicketTicketListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketTicketListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ TicketTicketListNotFound describes a response with status code 404, with default
 Not Found
 */
 type TicketTicketListNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket ticket list not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *TicketTicketListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/list][%d] ticketTicketListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketTicketListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *TicketTicketListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketTicketListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -187,7 +187,7 @@ AuthRegisterUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type AuthRegisterUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth register unauthorized response has a 2xx status code
@@ -223,14 +223,16 @@ func (o *AuthRegisterUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/register][%d] authRegisterUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AuthRegisterUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AuthRegisterUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthRegisterUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -248,7 +250,7 @@ AuthRegisterForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type AuthRegisterForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth register forbidden response has a 2xx status code
@@ -284,14 +286,16 @@ func (o *AuthRegisterForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/register][%d] authRegisterForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AuthRegisterForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AuthRegisterForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthRegisterForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -309,7 +313,7 @@ AuthRegisterNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type AuthRegisterNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth register not found response has a 2xx status code
@@ -345,14 +349,16 @@ func (o *AuthRegisterNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/register][%d] authRegisterNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AuthRegisterNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AuthRegisterNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthRegisterNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

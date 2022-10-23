@@ -138,7 +138,7 @@ ShowbackRulesCreateBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type ShowbackRulesCreateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ValidationProblemDetails
 }
 
 // IsSuccess returns true when this showback rules create bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *ShowbackRulesCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackRulesCreateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackRulesCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ValidationProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -199,7 +201,7 @@ ShowbackRulesCreateUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ShowbackRulesCreateUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback rules create unauthorized response has a 2xx status code
@@ -235,14 +237,16 @@ func (o *ShowbackRulesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackRulesCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackRulesCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +264,7 @@ ShowbackRulesCreateForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ShowbackRulesCreateForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback rules create forbidden response has a 2xx status code
@@ -296,14 +300,16 @@ func (o *ShowbackRulesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackRulesCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackRulesCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +327,7 @@ ShowbackRulesCreateNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ShowbackRulesCreateNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback rules create not found response has a 2xx status code
@@ -357,14 +363,16 @@ func (o *ShowbackRulesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackRulesCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ShowbackRulesCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

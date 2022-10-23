@@ -199,7 +199,7 @@ OpsCredentialsCreateUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type OpsCredentialsCreateUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials create unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *OpsCredentialsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials][%d] opsCredentialsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpsCredentialsCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpsCredentialsCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ OpsCredentialsCreateForbidden describes a response with status code 403, with de
 Forbidden
 */
 type OpsCredentialsCreateForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials create forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *OpsCredentialsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials][%d] opsCredentialsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpsCredentialsCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpsCredentialsCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ OpsCredentialsCreateNotFound describes a response with status code 404, with def
 Not Found
 */
 type OpsCredentialsCreateNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials create not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *OpsCredentialsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials][%d] opsCredentialsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpsCredentialsCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpsCredentialsCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

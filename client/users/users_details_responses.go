@@ -199,7 +199,7 @@ UsersDetailsUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type UsersDetailsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users details unauthorized response has a 2xx status code
@@ -235,14 +235,16 @@ func (o *UsersDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/userinfo][%d] usersDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersDetailsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersDetailsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersDetailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -260,7 +262,7 @@ UsersDetailsForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type UsersDetailsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users details forbidden response has a 2xx status code
@@ -296,14 +298,16 @@ func (o *UsersDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/userinfo][%d] usersDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersDetailsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersDetailsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersDetailsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -321,7 +325,7 @@ UsersDetailsNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type UsersDetailsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users details not found response has a 2xx status code
@@ -357,14 +361,16 @@ func (o *UsersDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/userinfo][%d] usersDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersDetailsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersDetailsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersDetailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

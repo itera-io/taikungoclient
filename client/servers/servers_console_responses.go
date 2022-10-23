@@ -197,7 +197,7 @@ ServersConsoleUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type ServersConsoleUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers console unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *ServersConsoleUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersConsoleUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ServersConsoleUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersConsoleUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ ServersConsoleForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type ServersConsoleForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers console forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *ServersConsoleForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersConsoleForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ServersConsoleForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersConsoleForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ ServersConsoleNotFound describes a response with status code 404, with default h
 Not Found
 */
 type ServersConsoleNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers console not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *ServersConsoleNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersConsoleNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ServersConsoleNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersConsoleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

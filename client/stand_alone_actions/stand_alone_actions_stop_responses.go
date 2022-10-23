@@ -197,7 +197,7 @@ StandAloneActionsStopUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type StandAloneActionsStopUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions stop unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *StandAloneActionsStopUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsStopUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneActionsStopUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsStopUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ StandAloneActionsStopForbidden describes a response with status code 403, with d
 Forbidden
 */
 type StandAloneActionsStopForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions stop forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *StandAloneActionsStopForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsStopForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneActionsStopForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsStopForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ StandAloneActionsStopNotFound describes a response with status code 404, with de
 Not Found
 */
 type StandAloneActionsStopNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions stop not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *StandAloneActionsStopNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsStopNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneActionsStopNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsStopNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

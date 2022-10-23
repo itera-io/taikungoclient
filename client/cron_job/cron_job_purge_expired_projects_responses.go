@@ -197,7 +197,7 @@ CronJobPurgeExpiredProjectsUnauthorized describes a response with status code 40
 Unauthorized
 */
 type CronJobPurgeExpiredProjectsUnauthorized struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job purge expired projects unauthorized response has a 2xx status code
@@ -233,14 +233,16 @@ func (o *CronJobPurgeExpiredProjectsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobPurgeExpiredProjectsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobPurgeExpiredProjectsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobPurgeExpiredProjectsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -258,7 +260,7 @@ CronJobPurgeExpiredProjectsForbidden describes a response with status code 403, 
 Forbidden
 */
 type CronJobPurgeExpiredProjectsForbidden struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job purge expired projects forbidden response has a 2xx status code
@@ -294,14 +296,16 @@ func (o *CronJobPurgeExpiredProjectsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobPurgeExpiredProjectsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobPurgeExpiredProjectsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobPurgeExpiredProjectsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -319,7 +323,7 @@ CronJobPurgeExpiredProjectsNotFound describes a response with status code 404, w
 Not Found
 */
 type CronJobPurgeExpiredProjectsNotFound struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job purge expired projects not found response has a 2xx status code
@@ -355,14 +359,16 @@ func (o *CronJobPurgeExpiredProjectsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobPurgeExpiredProjectsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobPurgeExpiredProjectsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobPurgeExpiredProjectsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
