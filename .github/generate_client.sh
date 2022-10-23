@@ -11,7 +11,7 @@ showback_app_name="showbackgoclient"
 showback_package_name="showbackclient"
 
 # Swagger generate client options
-readonly swagger_generate_client_options="--with-expand" # --skip-validation
+readonly swagger_generate_client_options="" # --skip-validation
 
 # Temporary swagger patch files
 readonly swagger_patch_file="swagger-patch.json"
