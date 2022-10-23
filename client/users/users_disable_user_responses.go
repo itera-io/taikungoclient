@@ -136,7 +136,7 @@ UsersDisableUserBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type UsersDisableUserBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this users disable user bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UsersDisableUserBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/disable][%d] usersDisableUserBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersDisableUserBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersDisableUserBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

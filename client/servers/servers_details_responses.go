@@ -138,7 +138,7 @@ ServersDetailsBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type ServersDetailsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this servers details bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *ServersDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersDetailsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ServersDetailsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

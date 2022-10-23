@@ -136,7 +136,7 @@ UsersChangePasswordBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type UsersChangePasswordBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this users change password bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UsersChangePasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/changepassword][%d] usersChangePasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersChangePasswordBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersChangePasswordBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

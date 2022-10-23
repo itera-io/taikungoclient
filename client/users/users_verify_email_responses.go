@@ -136,7 +136,7 @@ UsersVerifyEmailBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type UsersVerifyEmailBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this users verify email bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UsersVerifyEmailBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersVerifyEmailBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersVerifyEmailBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

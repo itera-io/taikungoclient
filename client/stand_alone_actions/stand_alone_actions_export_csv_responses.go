@@ -126,7 +126,7 @@ StandAloneActionsExportCsvBadRequest describes a response with status code 400, 
 Bad Request
 */
 type StandAloneActionsExportCsvBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone actions export csv bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *StandAloneActionsExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsExportCsvBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneActionsExportCsvBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

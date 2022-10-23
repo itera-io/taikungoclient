@@ -136,7 +136,7 @@ AdminBillingOperationsBadRequest describes a response with status code 400, with
 Bad Request
 */
 type AdminBillingOperationsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this admin billing operations bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminBillingOperationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminBillingOperationsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminBillingOperationsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

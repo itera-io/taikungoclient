@@ -136,7 +136,7 @@ OrganizationsUpdatePaymentMethodBadRequest describes a response with status code
 Bad Request
 */
 type OrganizationsUpdatePaymentMethodBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this organizations update payment method bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OrganizationsUpdatePaymentMethodBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsUpdatePaymentMethodBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsUpdatePaymentMethodBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

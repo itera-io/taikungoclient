@@ -136,7 +136,7 @@ KubernetesProfilesLockManagerBadRequest describes a response with status code 40
 Bad Request
 */
 type KubernetesProfilesLockManagerBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes profiles lock manager bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesProfilesLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesProfilesLockManagerBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesProfilesLockManagerBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

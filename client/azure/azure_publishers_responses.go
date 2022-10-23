@@ -138,7 +138,7 @@ AzurePublishersBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type AzurePublishersBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this azure publishers bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AzurePublishersBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzurePublishersBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AzurePublishersBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -138,7 +138,7 @@ BackupScheduleByNameBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type BackupScheduleByNameBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this backup schedule by name bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *BackupScheduleByNameBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedule/{projectId}/{name}][%d] backupScheduleByNameBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupScheduleByNameBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BackupScheduleByNameBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

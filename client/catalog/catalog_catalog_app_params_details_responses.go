@@ -136,7 +136,7 @@ CatalogCatalogAppParamsDetailsBadRequest describes a response with status code 4
 Bad Request
 */
 type CatalogCatalogAppParamsDetailsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this catalog catalog app params details bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CatalogCatalogAppParamsDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogCatalogAppParamsDetailsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogCatalogAppParamsDetailsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

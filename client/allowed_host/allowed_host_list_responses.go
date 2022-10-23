@@ -138,7 +138,7 @@ AllowedHostListBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type AllowedHostListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this allowed host list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AllowedHostListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AllowedHostListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AllowedHostListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

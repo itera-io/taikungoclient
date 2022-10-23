@@ -138,7 +138,7 @@ CatalogAvailablePackageDetailsBadRequest describes a response with status code 4
 Bad Request
 */
 type CatalogAvailablePackageDetailsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this catalog available package details bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *CatalogAvailablePackageDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogAvailablePackageDetailsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogAvailablePackageDetailsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -138,7 +138,7 @@ SSHUsersCreateBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type SSHUsersCreateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this ssh users create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *SSHUsersCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/create][%d] sshUsersCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SSHUsersCreateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SSHUsersCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

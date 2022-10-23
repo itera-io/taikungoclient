@@ -136,7 +136,7 @@ StandAloneDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type StandAloneDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/delete][%d] standAloneDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

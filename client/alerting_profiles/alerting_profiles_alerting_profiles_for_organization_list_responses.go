@@ -136,7 +136,7 @@ AlertingProfilesAlertingProfilesForOrganizationListBadRequest describes a respon
 Bad Request
 */
 type AlertingProfilesAlertingProfilesForOrganizationListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this alerting profiles alerting profiles for organization list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AlertingProfilesAlertingProfilesForOrganizationListBadRequest) String()
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles/list][%d] alertingProfilesAlertingProfilesForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesAlertingProfilesForOrganizationListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesAlertingProfilesForOrganizationListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

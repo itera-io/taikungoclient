@@ -136,7 +136,7 @@ KubernetesDescribeIngressBadRequest describes a response with status code 400, w
 Bad Request
 */
 type KubernetesDescribeIngressBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes describe ingress bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeIngressBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeIngressBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDescribeIngressBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

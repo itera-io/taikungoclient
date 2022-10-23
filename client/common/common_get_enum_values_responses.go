@@ -138,7 +138,7 @@ CommonGetEnumValuesBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type CommonGetEnumValuesBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this common get enum values bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *CommonGetEnumValuesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CommonGetEnumValuesBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CommonGetEnumValuesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

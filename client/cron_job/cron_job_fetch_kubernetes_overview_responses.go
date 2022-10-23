@@ -136,7 +136,7 @@ CronJobFetchKubernetesOverviewBadRequest describes a response with status code 4
 Bad Request
 */
 type CronJobFetchKubernetesOverviewBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes overview bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobFetchKubernetesOverviewBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesOverviewBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobFetchKubernetesOverviewBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

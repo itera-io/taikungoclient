@@ -138,7 +138,7 @@ ProjectAppInstallBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type ProjectAppInstallBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this project app install bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *ProjectAppInstallBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/install][%d] projectAppInstallBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectAppInstallBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppInstallBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

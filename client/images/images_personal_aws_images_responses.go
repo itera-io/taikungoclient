@@ -136,7 +136,7 @@ ImagesPersonalAwsImagesBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type ImagesPersonalAwsImagesBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this images personal aws images bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ImagesPersonalAwsImagesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesPersonalAwsImagesBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ImagesPersonalAwsImagesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -126,7 +126,7 @@ PaymentPayInvoiceBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type PaymentPayInvoiceBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this payment pay invoice bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *PaymentPayInvoiceBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentPayInvoiceBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PaymentPayInvoiceBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

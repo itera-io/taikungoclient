@@ -138,7 +138,7 @@ AllowedHostCreateBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AllowedHostCreateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this allowed host create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AllowedHostCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AllowedHost/create][%d] allowedHostCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AllowedHostCreateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AllowedHostCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

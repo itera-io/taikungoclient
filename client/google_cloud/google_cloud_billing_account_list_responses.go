@@ -136,7 +136,7 @@ GoogleCloudBillingAccountListBadRequest describes a response with status code 40
 Bad Request
 */
 type GoogleCloudBillingAccountListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this google cloud billing account list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *GoogleCloudBillingAccountListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GoogleCloudBillingAccountListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *GoogleCloudBillingAccountListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

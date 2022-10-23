@@ -136,7 +136,7 @@ KubernetesOverviewBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubernetesOverviewBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes overview bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesOverviewBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesOverviewBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesOverviewBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

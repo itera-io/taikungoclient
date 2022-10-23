@@ -193,7 +193,7 @@ NtpServersDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type NtpServersDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this ntp servers delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *NtpServersDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NtpServersDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *NtpServersDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

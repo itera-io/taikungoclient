@@ -136,7 +136,7 @@ CronJobAutoUpgradeProjectsBadRequest describes a response with status code 400, 
 Bad Request
 */
 type CronJobAutoUpgradeProjectsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job auto upgrade projects bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobAutoUpgradeProjectsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobAutoUpgradeProjectsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobAutoUpgradeProjectsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

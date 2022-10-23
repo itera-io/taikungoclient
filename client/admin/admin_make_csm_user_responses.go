@@ -136,7 +136,7 @@ AdminMakeCsmUserBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type AdminMakeCsmUserBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this admin make csm user bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminMakeCsmUserBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminMakeCsmUserBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminMakeCsmUserBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

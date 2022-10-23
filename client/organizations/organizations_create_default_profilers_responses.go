@@ -136,7 +136,7 @@ OrganizationsCreateDefaultProfilersBadRequest describes a response with status c
 Bad Request
 */
 type OrganizationsCreateDefaultProfilersBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this organizations create default profilers bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OrganizationsCreateDefaultProfilersBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsCreateDefaultProfilersBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsCreateDefaultProfilersBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

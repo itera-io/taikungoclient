@@ -136,7 +136,7 @@ BackupDeleteBackupLocationBadRequest describes a response with status code 400, 
 Bad Request
 */
 type BackupDeleteBackupLocationBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this backup delete backup location bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *BackupDeleteBackupLocationBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupDeleteBackupLocationBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BackupDeleteBackupLocationBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

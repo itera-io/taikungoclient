@@ -136,7 +136,7 @@ KeycloakDeleteBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type KeycloakDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this keycloak delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KeycloakDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KeycloakDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KeycloakDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

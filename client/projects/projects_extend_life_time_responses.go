@@ -136,7 +136,7 @@ ProjectsExtendLifeTimeBadRequest describes a response with status code 400, with
 Bad Request
 */
 type ProjectsExtendLifeTimeBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects extend life time bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsExtendLifeTimeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsExtendLifeTimeBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsExtendLifeTimeBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

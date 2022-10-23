@@ -136,7 +136,7 @@ CronJobSyncOrganizationsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type CronJobSyncOrganizationsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job sync organizations bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobSyncOrganizationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-organizations][%d] cronJobSyncOrganizationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobSyncOrganizationsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobSyncOrganizationsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

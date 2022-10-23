@@ -136,7 +136,7 @@ KubernetesDescribePvcBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesDescribePvcBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes describe pvc bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribePvcBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribePvcBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDescribePvcBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

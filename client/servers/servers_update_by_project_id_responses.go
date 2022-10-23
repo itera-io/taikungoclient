@@ -136,7 +136,7 @@ ServersUpdateByProjectIDBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type ServersUpdateByProjectIDBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this servers update by project Id bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ServersUpdateByProjectIDBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersUpdateByProjectIDBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ServersUpdateByProjectIDBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

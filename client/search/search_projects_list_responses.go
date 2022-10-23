@@ -138,7 +138,7 @@ SearchProjectsListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type SearchProjectsListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this search projects list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *SearchProjectsListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/projects][%d] searchProjectsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchProjectsListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchProjectsListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

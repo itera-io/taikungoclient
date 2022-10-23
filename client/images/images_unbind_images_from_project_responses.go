@@ -136,7 +136,7 @@ ImagesUnbindImagesFromProjectBadRequest describes a response with status code 40
 Bad Request
 */
 type ImagesUnbindImagesFromProjectBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this images unbind images from project bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ImagesUnbindImagesFromProjectBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesUnbindImagesFromProjectBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ImagesUnbindImagesFromProjectBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

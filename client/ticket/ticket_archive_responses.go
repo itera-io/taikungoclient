@@ -136,7 +136,7 @@ TicketArchiveBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type TicketArchiveBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this ticket archive bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *TicketArchiveBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/archive][%d] ticketArchiveBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketArchiveBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *TicketArchiveBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

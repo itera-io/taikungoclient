@@ -136,7 +136,7 @@ OpsCredentialsMakeDefaultBadRequest describes a response with status code 400, w
 Bad Request
 */
 type OpsCredentialsMakeDefaultBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this ops credentials make default bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpsCredentialsMakeDefaultBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsMakeDefaultBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpsCredentialsMakeDefaultBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

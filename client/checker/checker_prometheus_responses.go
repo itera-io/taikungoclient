@@ -136,7 +136,7 @@ CheckerPrometheusBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type CheckerPrometheusBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this checker prometheus bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerPrometheusBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/prometheus][%d] checkerPrometheusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerPrometheusBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerPrometheusBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

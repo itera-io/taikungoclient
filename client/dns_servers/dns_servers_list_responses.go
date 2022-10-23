@@ -136,7 +136,7 @@ DNSServersListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type DNSServersListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this dns servers list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *DNSServersListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *DNSServersListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *DNSServersListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

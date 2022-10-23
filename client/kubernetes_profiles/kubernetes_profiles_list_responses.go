@@ -138,7 +138,7 @@ KubernetesProfilesListBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesProfilesListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes profiles list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubernetesProfilesListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesProfilesListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesProfilesListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

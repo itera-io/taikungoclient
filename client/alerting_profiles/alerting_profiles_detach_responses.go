@@ -136,7 +136,7 @@ AlertingProfilesDetachBadRequest describes a response with status code 400, with
 Bad Request
 */
 type AlertingProfilesDetachBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this alerting profiles detach bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AlertingProfilesDetachBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesDetachBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesDetachBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

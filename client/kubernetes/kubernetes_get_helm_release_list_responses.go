@@ -138,7 +138,7 @@ KubernetesGetHelmReleaseListBadRequest describes a response with status code 400
 Bad Request
 */
 type KubernetesGetHelmReleaseListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes get helm release list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubernetesGetHelmReleaseListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetHelmReleaseListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetHelmReleaseListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

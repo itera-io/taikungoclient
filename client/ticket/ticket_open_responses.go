@@ -136,7 +136,7 @@ TicketOpenBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type TicketOpenBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this ticket open bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *TicketOpenBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketOpenBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *TicketOpenBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

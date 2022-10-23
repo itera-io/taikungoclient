@@ -138,7 +138,7 @@ KubernetesGetPersistentVolumeClaimBadRequest describes a response with status co
 Bad Request
 */
 type KubernetesGetPersistentVolumeClaimBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes get persistent volume claim bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubernetesGetPersistentVolumeClaimBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetPersistentVolumeClaimBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetPersistentVolumeClaimBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

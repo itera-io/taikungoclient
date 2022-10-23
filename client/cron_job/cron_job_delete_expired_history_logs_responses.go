@@ -136,7 +136,7 @@ CronJobDeleteExpiredHistoryLogsBadRequest describes a response with status code 
 Bad Request
 */
 type CronJobDeleteExpiredHistoryLogsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job delete expired history logs bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobDeleteExpiredHistoryLogsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredHistoryLogsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobDeleteExpiredHistoryLogsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

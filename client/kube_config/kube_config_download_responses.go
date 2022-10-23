@@ -136,7 +136,7 @@ KubeConfigDownloadBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubeConfigDownloadBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kube config download bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubeConfigDownloadBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubeConfigDownloadBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubeConfigDownloadBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

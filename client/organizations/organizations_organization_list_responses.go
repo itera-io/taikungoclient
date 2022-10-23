@@ -136,7 +136,7 @@ OrganizationsOrganizationListBadRequest describes a response with status code 40
 Bad Request
 */
 type OrganizationsOrganizationListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this organizations organization list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OrganizationsOrganizationListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsOrganizationListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsOrganizationListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

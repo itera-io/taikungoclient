@@ -138,7 +138,7 @@ StandAloneProfileListBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type StandAloneProfileListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone profile list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *StandAloneProfileListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile][%d] standAloneProfileListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneProfileListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

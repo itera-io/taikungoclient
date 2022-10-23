@@ -136,7 +136,7 @@ ProjectAppSyncBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type ProjectAppSyncBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this project app sync bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectAppSyncBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectAppSyncBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppSyncBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

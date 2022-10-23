@@ -136,7 +136,7 @@ BackupClearProjectBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type BackupClearProjectBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this backup clear project bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *BackupClearProjectBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupClearProjectBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BackupClearProjectBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

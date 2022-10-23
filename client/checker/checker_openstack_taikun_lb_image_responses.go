@@ -136,7 +136,7 @@ CheckerOpenstackTaikunLbImageBadRequest describes a response with status code 40
 Bad Request
 */
 type CheckerOpenstackTaikunLbImageBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this checker openstack taikun lb image bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerOpenstackTaikunLbImageBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerOpenstackTaikunLbImageBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerOpenstackTaikunLbImageBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

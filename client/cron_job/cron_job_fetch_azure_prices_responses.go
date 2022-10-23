@@ -136,7 +136,7 @@ CronJobFetchAzurePricesBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type CronJobFetchAzurePricesBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job fetch azure prices bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobFetchAzurePricesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobFetchAzurePricesBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobFetchAzurePricesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

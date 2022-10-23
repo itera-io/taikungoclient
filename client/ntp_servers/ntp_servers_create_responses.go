@@ -138,7 +138,7 @@ NtpServersCreateBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type NtpServersCreateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this ntp servers create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *NtpServersCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/NtpServers/create][%d] ntpServersCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NtpServersCreateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *NtpServersCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

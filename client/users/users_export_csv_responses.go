@@ -126,7 +126,7 @@ UsersExportCsvBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type UsersExportCsvBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this users export csv bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *UsersExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersExportCsvBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersExportCsvBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

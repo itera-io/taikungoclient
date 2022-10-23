@@ -138,7 +138,7 @@ S3CredentialsListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type S3CredentialsListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this s3 credentials list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *S3CredentialsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/S3Credentials/list][%d] s3CredentialsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *S3CredentialsListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

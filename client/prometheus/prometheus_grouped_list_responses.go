@@ -136,7 +136,7 @@ PrometheusGroupedListBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type PrometheusGroupedListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this prometheus grouped list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PrometheusGroupedListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusGroupedListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusGroupedListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

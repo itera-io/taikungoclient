@@ -136,7 +136,7 @@ CronJobUpdateProjectQuotaMessageBadRequest describes a response with status code
 Bad Request
 */
 type CronJobUpdateProjectQuotaMessageBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job update project quota message bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobUpdateProjectQuotaMessageBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobUpdateProjectQuotaMessageBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobUpdateProjectQuotaMessageBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

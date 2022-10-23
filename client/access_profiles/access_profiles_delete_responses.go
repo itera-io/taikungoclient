@@ -193,7 +193,7 @@ AccessProfilesDeleteBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type AccessProfilesDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this access profiles delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *AccessProfilesDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AccessProfilesDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AccessProfilesDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

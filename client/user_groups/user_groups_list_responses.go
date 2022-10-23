@@ -138,7 +138,7 @@ UserGroupsListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type UserGroupsListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this user groups list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *UserGroupsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list][%d] userGroupsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserGroupsListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UserGroupsListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ AdminUpdateUserKubeConfigBadRequest describes a response with status code 400, w
 Bad Request
 */
 type AdminUpdateUserKubeConfigBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this admin update user kube config bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminUpdateUserKubeConfigBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/userkube][%d] adminUpdateUserKubeConfigBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminUpdateUserKubeConfigBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminUpdateUserKubeConfigBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

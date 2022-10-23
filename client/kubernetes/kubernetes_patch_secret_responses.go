@@ -136,7 +136,7 @@ KubernetesPatchSecretBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesPatchSecretBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes patch secret bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesPatchSecretBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchSecretBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchSecretBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ ProjectActionsEditBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type ProjectActionsEditBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this project actions edit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectActionsEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/update/{projectId}][%d] projectActionsEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectActionsEditBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectActionsEditBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

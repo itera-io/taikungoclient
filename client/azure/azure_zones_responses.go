@@ -138,7 +138,7 @@ AzureZonesBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type AzureZonesBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this azure zones bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AzureZonesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureZonesBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AzureZonesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

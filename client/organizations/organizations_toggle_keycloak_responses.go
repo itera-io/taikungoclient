@@ -136,7 +136,7 @@ OrganizationsToggleKeycloakBadRequest describes a response with status code 400,
 Bad Request
 */
 type OrganizationsToggleKeycloakBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this organizations toggle keycloak bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OrganizationsToggleKeycloakBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsToggleKeycloakBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsToggleKeycloakBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ UsersToggleNotificationModeBadRequest describes a response with status code 400,
 Bad Request
 */
 type UsersToggleNotificationModeBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this users toggle notification mode bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UsersToggleNotificationModeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersToggleNotificationModeBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersToggleNotificationModeBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

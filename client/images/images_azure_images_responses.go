@@ -138,7 +138,7 @@ ImagesAzureImagesBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type ImagesAzureImagesBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this images azure images bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *ImagesAzureImagesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/{cloudId}/{publisherName}/{offer}/{sku}][%d] imagesAzureImagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesAzureImagesBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ImagesAzureImagesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -138,7 +138,7 @@ KubernetesGetKubernetesAlertsListBadRequest describes a response with status cod
 Bad Request
 */
 type KubernetesGetKubernetesAlertsListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes get kubernetes alerts list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubernetesGetKubernetesAlertsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetKubernetesAlertsListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetKubernetesAlertsListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

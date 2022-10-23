@@ -136,7 +136,7 @@ CatalogLockManagerBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type CatalogLockManagerBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this catalog lock manager bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CatalogLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/lockmanager][%d] catalogLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogLockManagerBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogLockManagerBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

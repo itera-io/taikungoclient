@@ -136,7 +136,7 @@ UserTokenDeleteBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type UserTokenDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this user token delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UserTokenDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserToken/delete/{id}][%d] userTokenDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserTokenDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UserTokenDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

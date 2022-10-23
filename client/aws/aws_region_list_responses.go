@@ -136,7 +136,7 @@ AwsRegionListBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type AwsRegionListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this aws region list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AwsRegionListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsRegionListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AwsRegionListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

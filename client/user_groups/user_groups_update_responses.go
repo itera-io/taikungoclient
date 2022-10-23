@@ -136,7 +136,7 @@ UserGroupsUpdateBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type UserGroupsUpdateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this user groups update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UserGroupsUpdateBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserGroupsUpdateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UserGroupsUpdateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -126,7 +126,7 @@ AuthRegisterBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type AuthRegisterBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this auth register bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *AuthRegisterBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/register][%d] authRegisterBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AuthRegisterBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AuthRegisterBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

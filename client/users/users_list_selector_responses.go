@@ -136,7 +136,7 @@ UsersListSelectorBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type UsersListSelectorBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this users list selector bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UsersListSelectorBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersListSelectorBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersListSelectorBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

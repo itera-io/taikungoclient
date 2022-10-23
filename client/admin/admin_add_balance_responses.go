@@ -136,7 +136,7 @@ AdminAddBalanceBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type AdminAddBalanceBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this admin add balance bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminAddBalanceBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminAddBalanceBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminAddBalanceBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ CheckerYamlBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type CheckerYamlBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this checker yaml bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerYamlBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerYamlBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerYamlBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

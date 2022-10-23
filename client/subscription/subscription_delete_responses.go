@@ -193,7 +193,7 @@ SubscriptionDeleteBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type SubscriptionDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this subscription delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *SubscriptionDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SubscriptionDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

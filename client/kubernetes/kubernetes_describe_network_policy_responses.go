@@ -136,7 +136,7 @@ KubernetesDescribeNetworkPolicyBadRequest describes a response with status code 
 Bad Request
 */
 type KubernetesDescribeNetworkPolicyBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes describe network policy bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeNetworkPolicyBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeNetworkPolicyBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDescribeNetworkPolicyBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

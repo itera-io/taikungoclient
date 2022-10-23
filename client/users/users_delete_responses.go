@@ -193,7 +193,7 @@ UsersDeleteBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type UsersDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this users delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *UsersDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UsersDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

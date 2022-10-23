@@ -138,7 +138,7 @@ AzureListBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AzureListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this azure list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AzureListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AzureListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

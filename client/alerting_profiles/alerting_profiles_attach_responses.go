@@ -136,7 +136,7 @@ AlertingProfilesAttachBadRequest describes a response with status code 400, with
 Bad Request
 */
 type AlertingProfilesAttachBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this alerting profiles attach bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AlertingProfilesAttachBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesAttachBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingProfilesAttachBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

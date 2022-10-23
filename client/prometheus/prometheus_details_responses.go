@@ -136,7 +136,7 @@ PrometheusDetailsBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type PrometheusDetailsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this prometheus details bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PrometheusDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusDetailsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusDetailsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ PartnerUpdateBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type PartnerUpdateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this partner update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PartnerUpdateBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerUpdateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PartnerUpdateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

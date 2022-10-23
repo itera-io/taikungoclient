@@ -136,7 +136,7 @@ CatalogEditCatalogAppParamsBadRequest describes a response with status code 400,
 Bad Request
 */
 type CatalogEditCatalogAppParamsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this catalog edit catalog app params bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CatalogEditCatalogAppParamsBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-params][%d] catalogEditCatalogAppParamsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppParamsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogEditCatalogAppParamsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

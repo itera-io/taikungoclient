@@ -136,7 +136,7 @@ KubernetesDescribeDaemonSetBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesDescribeDaemonSetBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes describe daemon set bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeDaemonSetBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeDaemonSetBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDescribeDaemonSetBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

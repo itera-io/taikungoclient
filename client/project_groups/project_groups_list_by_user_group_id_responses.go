@@ -136,7 +136,7 @@ ProjectGroupsListByUserGroupIDBadRequest describes a response with status code 4
 Bad Request
 */
 type ProjectGroupsListByUserGroupIDBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this project groups list by user group Id bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectGroupsListByUserGroupIDBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectGroups/list-by-user-group-id][%d] projectGroupsListByUserGroupIdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectGroupsListByUserGroupIDBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectGroupsListByUserGroupIDBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

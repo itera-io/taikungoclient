@@ -136,7 +136,7 @@ AlertingIntegrationsListBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type AlertingIntegrationsListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this alerting integrations list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AlertingIntegrationsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingIntegrationsListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AlertingIntegrationsListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

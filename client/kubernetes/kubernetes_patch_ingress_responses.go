@@ -136,7 +136,7 @@ KubernetesPatchIngressBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesPatchIngressBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes patch ingress bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesPatchIngressBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/ingress][%d] kubernetesPatchIngressBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchIngressBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesPatchIngressBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

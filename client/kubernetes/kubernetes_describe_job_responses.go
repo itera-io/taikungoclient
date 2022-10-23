@@ -136,7 +136,7 @@ KubernetesDescribeJobBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesDescribeJobBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes describe job bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeJobBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeJobBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDescribeJobBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

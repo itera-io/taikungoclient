@@ -136,7 +136,7 @@ SlackUpdateBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type SlackUpdateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this slack update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SlackUpdateBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SlackUpdateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SlackUpdateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

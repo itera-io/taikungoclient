@@ -138,7 +138,7 @@ StandAloneListForPollerBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneListForPollerBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone list for poller bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *StandAloneListForPollerBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneListForPollerBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneListForPollerBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

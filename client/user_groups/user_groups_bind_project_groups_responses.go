@@ -136,7 +136,7 @@ UserGroupsBindProjectGroupsBadRequest describes a response with status code 400,
 Bad Request
 */
 type UserGroupsBindProjectGroupsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this user groups bind project groups bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UserGroupsBindProjectGroupsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserGroupsBindProjectGroupsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UserGroupsBindProjectGroupsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

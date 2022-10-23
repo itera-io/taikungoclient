@@ -136,7 +136,7 @@ NotificationsNotifyOwnerBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type NotificationsNotifyOwnerBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this notifications notify owner bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *NotificationsNotifyOwnerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NotificationsNotifyOwnerBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *NotificationsNotifyOwnerBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

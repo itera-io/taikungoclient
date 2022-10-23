@@ -136,7 +136,7 @@ PaymentWebhookBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type PaymentWebhookBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this payment webhook bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PaymentWebhookBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentWebhookBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PaymentWebhookBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

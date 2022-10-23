@@ -136,7 +136,7 @@ TicketDeleteBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type TicketDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this ticket delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *TicketDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/{ticketId}][%d] ticketDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *TicketDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

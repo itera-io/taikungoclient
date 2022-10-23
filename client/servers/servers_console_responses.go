@@ -136,7 +136,7 @@ ServersConsoleBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type ServersConsoleBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this servers console bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ServersConsoleBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersConsoleBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ServersConsoleBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ CronJobSendEmailAboutProjectExpirationBadRequest describes a response with statu
 Bad Request
 */
 type CronJobSendEmailAboutProjectExpirationBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job send email about project expiration bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobSendEmailAboutProjectExpirationBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobSendEmailAboutProjectExpirationBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobSendEmailAboutProjectExpirationBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

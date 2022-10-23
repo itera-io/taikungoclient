@@ -136,7 +136,7 @@ KubernetesDeleteAlertsBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesDeleteAlertsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes delete alerts bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDeleteAlertsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDeleteAlertsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesDeleteAlertsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

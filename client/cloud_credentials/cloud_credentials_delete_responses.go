@@ -193,7 +193,7 @@ CloudCredentialsDeleteBadRequest describes a response with status code 400, with
 Bad Request
 */
 type CloudCredentialsDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cloud credentials delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *CloudCredentialsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CloudCredentialsDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -138,7 +138,7 @@ FlavorsAzureFlavorsBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type FlavorsAzureFlavorsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this flavors azure flavors bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *FlavorsAzureFlavorsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/azure/{cloudId}][%d] flavorsAzureFlavorsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsAzureFlavorsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *FlavorsAzureFlavorsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

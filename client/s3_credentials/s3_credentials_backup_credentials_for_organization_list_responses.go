@@ -136,7 +136,7 @@ S3CredentialsBackupCredentialsForOrganizationListBadRequest describes a response
 Bad Request
 */
 type S3CredentialsBackupCredentialsForOrganizationListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this s3 credentials backup credentials for organization list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *S3CredentialsBackupCredentialsForOrganizationListBadRequest) String() s
 	return fmt.Sprintf("[GET /api/v{v}/S3Credentials][%d] s3CredentialsBackupCredentialsForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsBackupCredentialsForOrganizationListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *S3CredentialsBackupCredentialsForOrganizationListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

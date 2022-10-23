@@ -138,7 +138,7 @@ SearchConfigMapListBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type SearchConfigMapListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this search config map list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *SearchConfigMapListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchConfigMapListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchConfigMapListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

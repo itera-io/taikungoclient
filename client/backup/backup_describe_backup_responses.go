@@ -136,7 +136,7 @@ BackupDescribeBackupBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type BackupDescribeBackupBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this backup describe backup bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *BackupDescribeBackupBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupDescribeBackupBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BackupDescribeBackupBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

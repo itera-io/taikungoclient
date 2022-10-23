@@ -136,7 +136,7 @@ RepositoryDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type RepositoryDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this repository delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *RepositoryDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *RepositoryDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *RepositoryDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

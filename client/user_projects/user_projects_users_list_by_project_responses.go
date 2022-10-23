@@ -136,7 +136,7 @@ UserProjectsUsersListByProjectBadRequest describes a response with status code 4
 Bad Request
 */
 type UserProjectsUsersListByProjectBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this user projects users list by project bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UserProjectsUsersListByProjectBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserProjectsUsersListByProjectBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *UserProjectsUsersListByProjectBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

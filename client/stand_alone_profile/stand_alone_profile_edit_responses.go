@@ -136,7 +136,7 @@ StandAloneProfileEditBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type StandAloneProfileEditBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone profile edit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneProfileEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileEditBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneProfileEditBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

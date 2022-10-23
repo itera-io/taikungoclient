@@ -136,7 +136,7 @@ AuthTryDemoBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type AuthTryDemoBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this auth try demo bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AuthTryDemoBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AuthTryDemoBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AuthTryDemoBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

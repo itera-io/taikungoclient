@@ -136,7 +136,7 @@ CronJobFetchOrganizationDetailsBadRequest describes a response with status code 
 Bad Request
 */
 type CronJobFetchOrganizationDetailsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job fetch organization details bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobFetchOrganizationDetailsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobFetchOrganizationDetailsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobFetchOrganizationDetailsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

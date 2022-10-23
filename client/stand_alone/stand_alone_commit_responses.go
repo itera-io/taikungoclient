@@ -136,7 +136,7 @@ StandAloneCommitBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type StandAloneCommitBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone commit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneCommitBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneCommitBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneCommitBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

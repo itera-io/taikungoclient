@@ -136,7 +136,7 @@ OrganizationsAcceptOfferBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type OrganizationsAcceptOfferBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this organizations accept offer bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OrganizationsAcceptOfferBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsAcceptOfferBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsAcceptOfferBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

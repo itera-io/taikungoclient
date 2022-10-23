@@ -136,7 +136,7 @@ BillingGroupedListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type BillingGroupedListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this billing grouped list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *BillingGroupedListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BillingGroupedListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *BillingGroupedListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

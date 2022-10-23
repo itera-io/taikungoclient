@@ -136,7 +136,7 @@ ProjectsProjectMonitoringAlertsBadRequest describes a response with status code 
 Bad Request
 */
 type ProjectsProjectMonitoringAlertsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects project monitoring alerts bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsProjectMonitoringAlertsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsProjectMonitoringAlertsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsProjectMonitoringAlertsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

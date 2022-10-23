@@ -136,7 +136,7 @@ StandAloneUpdateBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type StandAloneUpdateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update][%d] standAloneUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneUpdateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneUpdateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

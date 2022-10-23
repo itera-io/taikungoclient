@@ -138,7 +138,7 @@ ProjectsCreateBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type ProjectsCreateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *ProjectsCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsCreateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

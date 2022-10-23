@@ -136,7 +136,7 @@ CatalogCatalogDropdownBadRequest describes a response with status code 400, with
 Bad Request
 */
 type CatalogCatalogDropdownBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this catalog catalog dropdown bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CatalogCatalogDropdownBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/dropdown-list][%d] catalogCatalogDropdownBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogCatalogDropdownBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CatalogCatalogDropdownBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

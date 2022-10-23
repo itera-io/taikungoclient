@@ -138,7 +138,7 @@ SearchUsersListBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type SearchUsersListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this search users list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *SearchUsersListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/users][%d] searchUsersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchUsersListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SearchUsersListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

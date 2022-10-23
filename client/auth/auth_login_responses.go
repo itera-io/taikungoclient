@@ -138,7 +138,7 @@ AuthLoginBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AuthLoginBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this auth login bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AuthLoginBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AuthLoginBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AuthLoginBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

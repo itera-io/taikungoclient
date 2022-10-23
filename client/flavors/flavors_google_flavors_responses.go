@@ -138,7 +138,7 @@ FlavorsGoogleFlavorsBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type FlavorsGoogleFlavorsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this flavors google flavors bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *FlavorsGoogleFlavorsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsGoogleFlavorsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *FlavorsGoogleFlavorsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ OpenstackSubnetsBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type OpenstackSubnetsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this openstack subnets bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpenstackSubnetsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackSubnetsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpenstackSubnetsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

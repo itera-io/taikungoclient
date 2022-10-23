@@ -136,7 +136,7 @@ OpsCredentialsOperationCredentialsForOrganizationListBadRequest describes a resp
 Bad Request
 */
 type OpsCredentialsOperationCredentialsForOrganizationListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) String
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

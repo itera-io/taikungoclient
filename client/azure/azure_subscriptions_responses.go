@@ -136,7 +136,7 @@ AzureSubscriptionsBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type AzureSubscriptionsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this azure subscriptions bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AzureSubscriptionsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureSubscriptionsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AzureSubscriptionsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

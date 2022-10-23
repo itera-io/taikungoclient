@@ -136,7 +136,7 @@ AzureDashboardBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AzureDashboardBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this azure dashboard bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AzureDashboardBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureDashboardBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AzureDashboardBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ PrometheusDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type PrometheusDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this prometheus delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PrometheusDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Prometheus/{id}][%d] prometheusDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

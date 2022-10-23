@@ -138,7 +138,7 @@ AccessProfilesCreateBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type AccessProfilesCreateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this access profiles create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AccessProfilesCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AccessProfilesCreateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AccessProfilesCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

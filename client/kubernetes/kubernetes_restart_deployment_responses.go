@@ -136,7 +136,7 @@ KubernetesRestartDeploymentBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesRestartDeploymentBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes restart deployment bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesRestartDeploymentBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesRestartDeploymentBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesRestartDeploymentBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

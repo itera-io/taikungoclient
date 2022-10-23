@@ -138,7 +138,7 @@ PaymentGetStripeInvoicesBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type PaymentGetStripeInvoicesBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this payment get stripe invoices bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *PaymentGetStripeInvoicesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentGetStripeInvoicesBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PaymentGetStripeInvoicesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -138,7 +138,7 @@ AdminProjectsListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AdminProjectsListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this admin projects list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AdminProjectsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminProjectsListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AdminProjectsListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

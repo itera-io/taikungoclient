@@ -183,7 +183,7 @@ ProjectActionsDeleteBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type ProjectActionsDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this project actions delete bad request response has a 2xx status code
@@ -219,7 +219,7 @@ func (o *ProjectActionsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectActionsDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectActionsDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

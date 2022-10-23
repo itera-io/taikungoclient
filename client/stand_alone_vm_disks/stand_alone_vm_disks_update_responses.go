@@ -136,7 +136,7 @@ StandAloneVMDisksUpdateBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneVMDisksUpdateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone Vm disks update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneVMDisksUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update][%d] standAloneVmDisksUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneVMDisksUpdateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

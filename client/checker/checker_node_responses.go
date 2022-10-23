@@ -136,7 +136,7 @@ CheckerNodeBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type CheckerNodeBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this checker node bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerNodeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/node][%d] checkerNodeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerNodeBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CheckerNodeBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

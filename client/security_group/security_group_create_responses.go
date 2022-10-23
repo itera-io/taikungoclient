@@ -138,7 +138,7 @@ SecurityGroupCreateBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type SecurityGroupCreateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this security group create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *SecurityGroupCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SecurityGroupCreateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SecurityGroupCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -138,7 +138,7 @@ PrometheusListOfRulesBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type PrometheusListOfRulesBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this prometheus list of rules bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *PrometheusListOfRulesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus][%d] prometheusListOfRulesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusListOfRulesBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *PrometheusListOfRulesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

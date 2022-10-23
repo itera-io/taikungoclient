@@ -136,7 +136,7 @@ KubernetesGetSupportedListBadRequest describes a response with status code 400, 
 Bad Request
 */
 type KubernetesGetSupportedListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes get supported list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesGetSupportedListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetSupportedListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetSupportedListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

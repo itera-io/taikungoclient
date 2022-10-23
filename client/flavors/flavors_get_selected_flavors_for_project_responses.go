@@ -138,7 +138,7 @@ FlavorsGetSelectedFlavorsForProjectBadRequest describes a response with status c
 Bad Request
 */
 type FlavorsGetSelectedFlavorsForProjectBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this flavors get selected flavors for project bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

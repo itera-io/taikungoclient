@@ -136,7 +136,7 @@ KubernetesGetStreamPodLogsListBadRequest describes a response with status code 4
 Bad Request
 */
 type KubernetesGetStreamPodLogsListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes get stream pod logs list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesGetStreamPodLogsListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/podlogs-stream][%d] kubernetesGetStreamPodLogsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetStreamPodLogsListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesGetStreamPodLogsListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

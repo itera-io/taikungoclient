@@ -136,7 +136,7 @@ AccessProfilesLockManagerBadRequest describes a response with status code 400, w
 Bad Request
 */
 type AccessProfilesLockManagerBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this access profiles lock manager bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AccessProfilesLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AccessProfilesLockManagerBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AccessProfilesLockManagerBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

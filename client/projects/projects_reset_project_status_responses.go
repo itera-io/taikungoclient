@@ -136,7 +136,7 @@ ProjectsResetProjectStatusBadRequest describes a response with status code 400, 
 Bad Request
 */
 type ProjectsResetProjectStatusBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects reset project status bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsResetProjectStatusBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsResetProjectStatusBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsResetProjectStatusBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

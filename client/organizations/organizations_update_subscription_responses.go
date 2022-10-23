@@ -136,7 +136,7 @@ OrganizationsUpdateSubscriptionBadRequest describes a response with status code 
 Bad Request
 */
 type OrganizationsUpdateSubscriptionBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this organizations update subscription bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OrganizationsUpdateSubscriptionBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsUpdateSubscriptionBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsUpdateSubscriptionBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

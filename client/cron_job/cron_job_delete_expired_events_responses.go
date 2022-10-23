@@ -136,7 +136,7 @@ CronJobDeleteExpiredEventsBadRequest describes a response with status code 400, 
 Bad Request
 */
 type CronJobDeleteExpiredEventsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job delete expired events bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobDeleteExpiredEventsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/events][%d] cronJobDeleteExpiredEventsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredEventsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobDeleteExpiredEventsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ ProjectsListForBillingBadRequest describes a response with status code 400, with
 Bad Request
 */
 type ProjectsListForBillingBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects list for billing bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsListForBillingBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forbilling][%d] projectsListForBillingBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsListForBillingBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsListForBillingBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

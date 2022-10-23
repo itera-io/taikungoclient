@@ -138,7 +138,7 @@ AwsListBadRequest describes a response with status code 400, with default header
 Bad Request
 */
 type AwsListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this aws list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AwsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/list][%d] awsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AwsListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

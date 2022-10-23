@@ -136,7 +136,7 @@ SecurityGroupDeleteBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type SecurityGroupDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this security group delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SecurityGroupDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SecurityGroupDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SecurityGroupDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

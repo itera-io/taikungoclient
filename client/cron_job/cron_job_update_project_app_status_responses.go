@@ -136,7 +136,7 @@ CronJobUpdateProjectAppStatusBadRequest describes a response with status code 40
 Bad Request
 */
 type CronJobUpdateProjectAppStatusBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job update project app status bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobUpdateProjectAppStatusBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobUpdateProjectAppStatusBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobUpdateProjectAppStatusBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

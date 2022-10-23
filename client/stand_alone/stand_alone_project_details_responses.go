@@ -138,7 +138,7 @@ StandAloneProjectDetailsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type StandAloneProjectDetailsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone project details bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *StandAloneProjectDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProjectDetailsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneProjectDetailsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

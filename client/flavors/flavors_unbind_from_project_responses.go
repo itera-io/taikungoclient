@@ -136,7 +136,7 @@ FlavorsUnbindFromProjectBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type FlavorsUnbindFromProjectBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this flavors unbind from project bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *FlavorsUnbindFromProjectBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/unbind][%d] flavorsUnbindFromProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsUnbindFromProjectBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *FlavorsUnbindFromProjectBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

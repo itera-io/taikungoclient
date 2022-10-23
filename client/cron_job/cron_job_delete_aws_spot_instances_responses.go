@@ -136,7 +136,7 @@ CronJobDeleteAwsSpotInstancesBadRequest describes a response with status code 40
 Bad Request
 */
 type CronJobDeleteAwsSpotInstancesBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job delete aws spot instances bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobDeleteAwsSpotInstancesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteAwsSpotInstancesBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CronJobDeleteAwsSpotInstancesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

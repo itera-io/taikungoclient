@@ -136,7 +136,7 @@ ProjectsFullSpotWorkersOperationsBadRequest describes a response with status cod
 Bad Request
 */
 type ProjectsFullSpotWorkersOperationsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects full spot workers operations bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsFullSpotWorkersOperationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsFullSpotWorkersOperationsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsFullSpotWorkersOperationsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

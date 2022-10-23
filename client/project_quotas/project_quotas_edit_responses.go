@@ -136,7 +136,7 @@ ProjectQuotasEditBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type ProjectQuotasEditBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this project quotas edit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectQuotasEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectQuotasEditBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectQuotasEditBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

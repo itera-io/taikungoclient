@@ -136,7 +136,7 @@ SecurityGroupEditBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type SecurityGroupEditBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this security group edit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SecurityGroupEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SecurityGroupEditBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *SecurityGroupEditBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

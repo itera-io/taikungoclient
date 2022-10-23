@@ -136,7 +136,7 @@ CommonGetSortingElementsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type CommonGetSortingElementsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this common get sorting elements bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CommonGetSortingElementsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CommonGetSortingElementsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *CommonGetSortingElementsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

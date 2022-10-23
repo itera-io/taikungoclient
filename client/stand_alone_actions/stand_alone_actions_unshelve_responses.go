@@ -136,7 +136,7 @@ StandAloneActionsUnshelveBadRequest describes a response with status code 400, w
 Bad Request
 */
 type StandAloneActionsUnshelveBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone actions unshelve bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneActionsUnshelveBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsUnshelveBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneActionsUnshelveBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

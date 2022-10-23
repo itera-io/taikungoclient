@@ -138,7 +138,7 @@ AzureCreateBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type AzureCreateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this azure create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AzureCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureCreateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *AzureCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

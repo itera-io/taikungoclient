@@ -138,7 +138,7 @@ KubesprayCreateBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type KubesprayCreateBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubespray create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubesprayCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubesprayCreateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubesprayCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

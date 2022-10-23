@@ -138,7 +138,7 @@ ProjectAppListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type ProjectAppListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this project app list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *ProjectAppListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/list][%d] projectAppListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectAppListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectAppListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

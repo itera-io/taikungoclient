@@ -193,7 +193,7 @@ KubernetesProfilesDeleteBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type KubernetesProfilesDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes profiles delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *KubernetesProfilesDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesProfilesDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *KubernetesProfilesDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

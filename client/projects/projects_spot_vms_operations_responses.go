@@ -136,7 +136,7 @@ ProjectsSpotVmsOperationsBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ProjectsSpotVmsOperationsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects spot vms operations bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsSpotVmsOperationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsSpotVmsOperationsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *ProjectsSpotVmsOperationsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ DNSServersEditBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type DNSServersEditBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this dns servers edit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *DNSServersEditBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *DNSServersEditBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *DNSServersEditBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ OpenstackZoneListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type OpenstackZoneListBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this openstack zone list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpenstackZoneListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackZoneListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OpenstackZoneListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

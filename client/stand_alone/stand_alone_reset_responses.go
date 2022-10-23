@@ -136,7 +136,7 @@ StandAloneResetBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type StandAloneResetBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone reset bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneResetBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneResetBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *StandAloneResetBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

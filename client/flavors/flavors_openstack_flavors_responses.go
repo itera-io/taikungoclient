@@ -138,7 +138,7 @@ FlavorsOpenstackFlavorsBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type FlavorsOpenstackFlavorsBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this flavors openstack flavors bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *FlavorsOpenstackFlavorsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsOpenstackFlavorsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *FlavorsOpenstackFlavorsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 

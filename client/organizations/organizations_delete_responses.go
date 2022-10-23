@@ -193,7 +193,7 @@ OrganizationsDeleteBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type OrganizationsDeleteBadRequest struct {
-	Payload []*models.CustomProblemDetailsMg
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this organizations delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *OrganizationsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
+func (o *OrganizationsDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
