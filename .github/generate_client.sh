@@ -51,6 +51,10 @@ refline="\"type\": \"boolean\""
 sed -i "s/${refline}/\"x-omitempty\": false,${refline}/g" "${swagger_patch_file}"
 sed -i "s/${refline}/\"x-omitempty\": false,${refline}/g" "${showback_swagger_patch_file}"
 
+# Replace Error arrays with free-form objects
+perl -0777 -i -pe 's/ *"type": *"array",\n *"items": *{\n *"\$ref": *"#\/definitions\/Error"\n *}/"type":"object"/g' "${swagger_patch_file}"
+perl -0777 -i -pe 's/ *"type": *"array",\n *"items": *{\n *"\$ref": *"#\/definitions\/Error"\n *}/"type":"object"/g' "${showback_swagger_patch_file}"
+
 # Initialize go module
 go mod init "${module_name}"
 
