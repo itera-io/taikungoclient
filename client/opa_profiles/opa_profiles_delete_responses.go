@@ -136,7 +136,7 @@ OpaProfilesDeleteBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type OpaProfilesDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpaProfilesDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesDeleteBadRequest) GetPayload() []*models.Error {
+func (o *OpaProfilesDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

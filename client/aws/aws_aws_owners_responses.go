@@ -136,7 +136,7 @@ AwsAwsOwnersBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type AwsAwsOwnersBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws aws owners bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AwsAwsOwnersBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsAwsOwnersBadRequest) GetPayload() []*models.Error {
+func (o *AwsAwsOwnersBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

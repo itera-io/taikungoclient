@@ -138,7 +138,7 @@ SearchAccessProfilesListBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type SearchAccessProfilesListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search access profiles list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *SearchAccessProfilesListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchAccessProfilesListBadRequest) GetPayload() []*models.Error {
+func (o *SearchAccessProfilesListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

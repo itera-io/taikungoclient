@@ -64,7 +64,7 @@ RepositoryDeleteParams contains all the parameters to send to the API endpoint
 type RepositoryDeleteParams struct {
 
 	// Body.
-	Body *models.UnbindAppRepositoryCommand
+	Body *models.DeleteRepositoryCommand
 
 	// V.
 	V string
@@ -123,13 +123,13 @@ func (o *RepositoryDeleteParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the repository delete params
-func (o *RepositoryDeleteParams) WithBody(body *models.UnbindAppRepositoryCommand) *RepositoryDeleteParams {
+func (o *RepositoryDeleteParams) WithBody(body *models.DeleteRepositoryCommand) *RepositoryDeleteParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the repository delete params
-func (o *RepositoryDeleteParams) SetBody(body *models.UnbindAppRepositoryCommand) {
+func (o *RepositoryDeleteParams) SetBody(body *models.DeleteRepositoryCommand) {
 	o.Body = body
 }
 

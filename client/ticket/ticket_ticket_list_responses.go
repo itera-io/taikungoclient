@@ -138,7 +138,7 @@ TicketTicketListBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type TicketTicketListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket ticket list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *TicketTicketListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/list][%d] ticketTicketListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketTicketListBadRequest) GetPayload() []*models.Error {
+func (o *TicketTicketListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

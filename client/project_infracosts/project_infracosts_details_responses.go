@@ -104,11 +104,11 @@ func (o *ProjectInfracostsDetailsOK) IsCode(code int) bool {
 }
 
 func (o *ProjectInfracostsDetailsOK) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectInfracostsDetailsOK) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectInfracostsDetailsOK) GetPayload() *models.EstimatedInfracost {
@@ -138,7 +138,7 @@ ProjectInfracostsDetailsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type ProjectInfracostsDetailsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project infracosts details bad request response has a 2xx status code
@@ -167,14 +167,14 @@ func (o *ProjectInfracostsDetailsBadRequest) IsCode(code int) bool {
 }
 
 func (o *ProjectInfracostsDetailsBadRequest) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectInfracostsDetailsBadRequest) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectInfracostsDetailsBadRequest) GetPayload() []*models.Error {
+func (o *ProjectInfracostsDetailsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
@@ -228,11 +228,11 @@ func (o *ProjectInfracostsDetailsUnauthorized) IsCode(code int) bool {
 }
 
 func (o *ProjectInfracostsDetailsUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ProjectInfracostsDetailsUnauthorized) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ProjectInfracostsDetailsUnauthorized) GetPayload() *models.ProblemDetails {
@@ -291,11 +291,11 @@ func (o *ProjectInfracostsDetailsForbidden) IsCode(code int) bool {
 }
 
 func (o *ProjectInfracostsDetailsForbidden) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ProjectInfracostsDetailsForbidden) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ProjectInfracostsDetailsForbidden) GetPayload() *models.ProblemDetails {
@@ -354,11 +354,11 @@ func (o *ProjectInfracostsDetailsNotFound) IsCode(code int) bool {
 }
 
 func (o *ProjectInfracostsDetailsNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectInfracostsDetailsNotFound) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectInfracostsDetailsNotFound) GetPayload() *models.ProblemDetails {
@@ -416,11 +416,11 @@ func (o *ProjectInfracostsDetailsInternalServerError) IsCode(code int) bool {
 }
 
 func (o *ProjectInfracostsDetailsInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsInternalServerError ", 500)
 }
 
 func (o *ProjectInfracostsDetailsInternalServerError) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsInternalServerError ", 500)
 }
 
 func (o *ProjectInfracostsDetailsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

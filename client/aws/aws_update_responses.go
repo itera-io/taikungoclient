@@ -136,7 +136,7 @@ AwsUpdateBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AwsUpdateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AwsUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsUpdateBadRequest) GetPayload() []*models.Error {
+func (o *AwsUpdateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

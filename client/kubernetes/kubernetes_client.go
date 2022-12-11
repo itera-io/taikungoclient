@@ -116,8 +116,6 @@ type ClientService interface {
 
 	KubernetesGetStorageClasses(params *KubernetesGetStorageClassesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStorageClassesOK, error)
 
-	KubernetesGetStreamPodLogsList(params *KubernetesGetStreamPodLogsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStreamPodLogsListOK, error)
-
 	KubernetesGetSts(params *KubernetesGetStsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStsOK, error)
 
 	KubernetesGetSupportedList(params *KubernetesGetSupportedListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetSupportedListOK, error)
@@ -1835,45 +1833,6 @@ func (a *Client) KubernetesGetStorageClasses(params *KubernetesGetStorageClasses
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetStorageClasses: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-KubernetesGetStreamPodLogsList retrieves k8s pod logs as stream
-*/
-func (a *Client) KubernetesGetStreamPodLogsList(params *KubernetesGetStreamPodLogsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStreamPodLogsListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewKubernetesGetStreamPodLogsListParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Kubernetes_GetStreamPodLogsList",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/Kubernetes/podlogs-stream",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &KubernetesGetStreamPodLogsListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*KubernetesGetStreamPodLogsListOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetStreamPodLogsList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

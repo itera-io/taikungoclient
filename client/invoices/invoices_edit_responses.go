@@ -136,7 +136,7 @@ InvoicesEditBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type InvoicesEditBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this invoices edit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *InvoicesEditBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *InvoicesEditBadRequest) GetPayload() []*models.Error {
+func (o *InvoicesEditBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

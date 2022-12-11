@@ -136,7 +136,7 @@ StandAloneActionsShowStandaloneVMStatusBadRequest describes a response with stat
 Bad Request
 */
 type StandAloneActionsShowStandaloneVMStatusBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions show standalone Vm status bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneActionsShowStandaloneVMStatusBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsShowStandaloneVMStatusBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneActionsShowStandaloneVMStatusBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

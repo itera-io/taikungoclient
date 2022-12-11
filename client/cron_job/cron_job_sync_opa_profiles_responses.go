@@ -136,7 +136,7 @@ CronJobSyncOpaProfilesBadRequest describes a response with status code 400, with
 Bad Request
 */
 type CronJobSyncOpaProfilesBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync opa profiles bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobSyncOpaProfilesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobSyncOpaProfilesBadRequest) GetPayload() []*models.Error {
+func (o *CronJobSyncOpaProfilesBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

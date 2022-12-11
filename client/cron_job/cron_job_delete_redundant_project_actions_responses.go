@@ -136,7 +136,7 @@ CronJobDeleteRedundantProjectActionsBadRequest describes a response with status 
 Bad Request
 */
 type CronJobDeleteRedundantProjectActionsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job delete redundant project actions bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobDeleteRedundantProjectActionsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteRedundantProjectActionsBadRequest) GetPayload() []*models.Error {
+func (o *CronJobDeleteRedundantProjectActionsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

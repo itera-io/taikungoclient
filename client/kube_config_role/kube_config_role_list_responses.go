@@ -138,7 +138,7 @@ KubeConfigRoleListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubeConfigRoleListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kube config role list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubeConfigRoleListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubeConfigRoleListBadRequest) GetPayload() []*models.Error {
+func (o *KubeConfigRoleListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -138,7 +138,7 @@ PaymentGetFinalPriceBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type PaymentGetFinalPriceBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment get final price bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *PaymentGetFinalPriceBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentGetFinalPriceBadRequest) GetPayload() []*models.Error {
+func (o *PaymentGetFinalPriceBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

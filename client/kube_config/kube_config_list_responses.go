@@ -138,7 +138,7 @@ KubeConfigListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type KubeConfigListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kube config list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubeConfigListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubeConfigListBadRequest) GetPayload() []*models.Error {
+func (o *KubeConfigListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

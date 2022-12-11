@@ -136,7 +136,7 @@ CheckerAzureCPUQuotaBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type CheckerAzureCPUQuotaBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker azure Cpu quota bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerAzureCPUQuotaBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerAzureCPUQuotaBadRequest) GetPayload() []*models.Error {
+func (o *CheckerAzureCPUQuotaBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

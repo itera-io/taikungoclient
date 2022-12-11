@@ -136,7 +136,7 @@ KubernetesDescribeStorageClassBadRequest describes a response with status code 4
 Bad Request
 */
 type KubernetesDescribeStorageClassBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe storage class bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeStorageClassBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/storageclass][%d] kubernetesDescribeStorageClassBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeStorageClassBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesDescribeStorageClassBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

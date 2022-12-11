@@ -138,7 +138,7 @@ KubernetesGetSecretBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type KubernetesGetSecretBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get secret bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubernetesGetSecretBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetSecretBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetSecretBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -138,7 +138,7 @@ ProjectQuotasListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type ProjectQuotasListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project quotas list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *ProjectQuotasListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectQuotasListBadRequest) GetPayload() []*models.Error {
+func (o *ProjectQuotasListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -138,7 +138,7 @@ SearchPrometheusRulesListBadRequest describes a response with status code 400, w
 Bad Request
 */
 type SearchPrometheusRulesListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search prometheus rules list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *SearchPrometheusRulesListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchPrometheusRulesListBadRequest) GetPayload() []*models.Error {
+func (o *SearchPrometheusRulesListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

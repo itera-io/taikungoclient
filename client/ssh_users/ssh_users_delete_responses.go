@@ -136,7 +136,7 @@ SSHUsersDeleteBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type SSHUsersDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ssh users delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SSHUsersDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SSHUsersDeleteBadRequest) GetPayload() []*models.Error {
+func (o *SSHUsersDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

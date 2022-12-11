@@ -136,7 +136,7 @@ OrganizationsUpdateBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type OrganizationsUpdateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OrganizationsUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsUpdateBadRequest) GetPayload() []*models.Error {
+func (o *OrganizationsUpdateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

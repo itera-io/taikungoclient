@@ -136,7 +136,7 @@ PaymentClearBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type PaymentClearBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment clear bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PaymentClearBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/clear][%d] paymentClearBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentClearBadRequest) GetPayload() []*models.Error {
+func (o *PaymentClearBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

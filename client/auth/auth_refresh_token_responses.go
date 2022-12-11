@@ -138,7 +138,7 @@ AuthRefreshTokenBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type AuthRefreshTokenBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this auth refresh token bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AuthRefreshTokenBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AuthRefreshTokenBadRequest) GetPayload() []*models.Error {
+func (o *AuthRefreshTokenBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

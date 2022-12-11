@@ -193,7 +193,7 @@ ProjectsDeleteWholeProjectBadRequest describes a response with status code 400, 
 Bad Request
 */
 type ProjectsDeleteWholeProjectBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects delete whole project bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *ProjectsDeleteWholeProjectBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsDeleteWholeProjectBadRequest) GetPayload() []*models.Error {
+func (o *ProjectsDeleteWholeProjectBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

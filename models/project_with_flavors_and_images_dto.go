@@ -26,6 +26,9 @@ type ProjectWithFlavorsAndImagesDto struct {
 	// images
 	Images []string `json:"images"`
 
+	// is ready
+	IsReady bool `json:"isReady"`
+
 	// name
 	Name string `json:"name,omitempty"`
 }

@@ -136,7 +136,7 @@ CatalogBindProjectsBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type CatalogBindProjectsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog bind projects bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CatalogBindProjectsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogBindProjectsBadRequest) GetPayload() []*models.Error {
+func (o *CatalogBindProjectsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

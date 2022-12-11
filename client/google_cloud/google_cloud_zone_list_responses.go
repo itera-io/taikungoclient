@@ -138,7 +138,7 @@ GoogleCloudZoneListBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type GoogleCloudZoneListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this google cloud zone list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *GoogleCloudZoneListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GoogleCloudZoneListBadRequest) GetPayload() []*models.Error {
+func (o *GoogleCloudZoneListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

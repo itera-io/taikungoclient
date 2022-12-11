@@ -136,7 +136,7 @@ SSHUsersListBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type SSHUsersListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ssh users list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SSHUsersListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/SshUsers/list/{accessProfileId}][%d] sshUsersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SSHUsersListBadRequest) GetPayload() []*models.Error {
+func (o *SSHUsersListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

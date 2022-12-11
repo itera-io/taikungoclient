@@ -138,7 +138,7 @@ KubernetesGetDeploymentListBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesGetDeploymentListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get deployment list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubernetesGetDeploymentListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetDeploymentListBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetDeploymentListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

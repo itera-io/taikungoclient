@@ -138,7 +138,7 @@ KubernetesGetIngressesBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesGetIngressesBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get ingresses bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubernetesGetIngressesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/ingress][%d] kubernetesGetIngressesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetIngressesBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetIngressesBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

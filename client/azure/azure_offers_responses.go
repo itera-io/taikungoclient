@@ -138,7 +138,7 @@ AzureOffersBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type AzureOffersBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure offers bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AzureOffersBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureOffersBadRequest) GetPayload() []*models.Error {
+func (o *AzureOffersBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

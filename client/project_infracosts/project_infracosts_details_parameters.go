@@ -62,16 +62,13 @@ ProjectInfracostsDetailsParams contains all the parameters to send to the API en
 */
 type ProjectInfracostsDetailsParams struct {
 
-	// ID.
-	ID string
-
 	/* ProjectID.
 
 	   Project Id
 
 	   Format: int32
 	*/
-	ProjectID *int32
+	ProjectID int32
 
 	// V.
 	V string
@@ -129,25 +126,14 @@ func (o *ProjectInfracostsDetailsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the project infracosts details params
-func (o *ProjectInfracostsDetailsParams) WithID(id string) *ProjectInfracostsDetailsParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the project infracosts details params
-func (o *ProjectInfracostsDetailsParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithProjectID adds the projectID to the project infracosts details params
-func (o *ProjectInfracostsDetailsParams) WithProjectID(projectID *int32) *ProjectInfracostsDetailsParams {
+func (o *ProjectInfracostsDetailsParams) WithProjectID(projectID int32) *ProjectInfracostsDetailsParams {
 	o.SetProjectID(projectID)
 	return o
 }
 
 // SetProjectID adds the projectId to the project infracosts details params
-func (o *ProjectInfracostsDetailsParams) SetProjectID(projectID *int32) {
+func (o *ProjectInfracostsDetailsParams) SetProjectID(projectID int32) {
 	o.ProjectID = projectID
 }
 
@@ -170,26 +156,9 @@ func (o *ProjectInfracostsDetailsParams) WriteToRequest(r runtime.ClientRequest,
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	// path param projectId
+	if err := r.SetPathParam("projectId", swag.FormatInt32(o.ProjectID)); err != nil {
 		return err
-	}
-
-	if o.ProjectID != nil {
-
-		// query param projectId
-		var qrProjectID int32
-
-		if o.ProjectID != nil {
-			qrProjectID = *o.ProjectID
-		}
-		qProjectID := swag.FormatInt32(qrProjectID)
-		if qProjectID != "" {
-
-			if err := r.SetQueryParam("projectId", qProjectID); err != nil {
-				return err
-			}
-		}
 	}
 
 	// path param v

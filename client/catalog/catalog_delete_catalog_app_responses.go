@@ -136,7 +136,7 @@ CatalogDeleteCatalogAppBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type CatalogDeleteCatalogAppBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog delete catalog app bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CatalogDeleteCatalogAppBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete-app/{id}][%d] catalogDeleteCatalogAppBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogAppBadRequest) GetPayload() []*models.Error {
+func (o *CatalogDeleteCatalogAppBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

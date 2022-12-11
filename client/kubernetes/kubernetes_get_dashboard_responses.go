@@ -136,7 +136,7 @@ KubernetesGetDashboardBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesGetDashboardBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get dashboard bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesGetDashboardBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetDashboardBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetDashboardBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

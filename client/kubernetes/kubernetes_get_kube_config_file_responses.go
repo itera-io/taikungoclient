@@ -138,7 +138,7 @@ KubernetesGetKubeConfigFileBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesGetKubeConfigFileBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get kube config file bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubernetesGetKubeConfigFileBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetKubeConfigFileBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetKubeConfigFileBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

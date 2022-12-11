@@ -136,7 +136,7 @@ NtpServersEditBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type NtpServersEditBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ntp servers edit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *NtpServersEditBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NtpServersEditBadRequest) GetPayload() []*models.Error {
+func (o *NtpServersEditBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

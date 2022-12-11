@@ -136,7 +136,7 @@ AccessProfilesUpdateBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type AccessProfilesUpdateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AccessProfilesUpdateBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AccessProfilesUpdateBadRequest) GetPayload() []*models.Error {
+func (o *AccessProfilesUpdateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

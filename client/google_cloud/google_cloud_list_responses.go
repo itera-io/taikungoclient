@@ -138,7 +138,7 @@ GoogleCloudListBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type GoogleCloudListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this google cloud list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *GoogleCloudListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GoogleCloudListBadRequest) GetPayload() []*models.Error {
+func (o *GoogleCloudListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

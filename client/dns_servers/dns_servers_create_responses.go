@@ -138,7 +138,7 @@ DNSServersCreateBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type DNSServersCreateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *DNSServersCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/DnsServers/create][%d] dnsServersCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *DNSServersCreateBadRequest) GetPayload() []*models.Error {
+func (o *DNSServersCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

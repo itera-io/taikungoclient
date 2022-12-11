@@ -138,7 +138,7 @@ AwsCreateBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AwsCreateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AwsCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsCreateBadRequest) GetPayload() []*models.Error {
+func (o *AwsCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

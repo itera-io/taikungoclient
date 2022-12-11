@@ -126,7 +126,7 @@ ProjectsLokiLogsBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type ProjectsLokiLogsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects loki logs bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *ProjectsLokiLogsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsLokiLogsBadRequest) GetPayload() []*models.Error {
+func (o *ProjectsLokiLogsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

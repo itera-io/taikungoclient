@@ -126,7 +126,7 @@ BillingExportCsvBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type BillingExportCsvBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this billing export csv bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *BillingExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BillingExportCsvBadRequest) GetPayload() []*models.Error {
+func (o *BillingExportCsvBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

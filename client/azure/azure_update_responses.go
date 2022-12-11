@@ -136,7 +136,7 @@ AzureUpdateBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type AzureUpdateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AzureUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureUpdateBadRequest) GetPayload() []*models.Error {
+func (o *AzureUpdateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ CloudCredentialsCloudCredentialsForOrganizationListBadRequest describes a respon
 Bad Request
 */
 type CloudCredentialsCloudCredentialsForOrganizationListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials cloud credentials for organization list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListBadRequest) String()
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials][%d] cloudCredentialsCloudCredentialsForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsCloudCredentialsForOrganizationListBadRequest) GetPayload() []*models.Error {
+func (o *CloudCredentialsCloudCredentialsForOrganizationListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

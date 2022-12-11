@@ -138,7 +138,7 @@ BillingListBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type BillingListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this billing list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *BillingListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BillingListBadRequest) GetPayload() []*models.Error {
+func (o *BillingListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

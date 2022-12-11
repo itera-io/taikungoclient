@@ -136,7 +136,7 @@ StandAloneActionsShelveBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneActionsShelveBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions shelve bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneActionsShelveBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/shelve][%d] standAloneActionsShelveBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsShelveBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneActionsShelveBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -67,6 +67,9 @@ type ProjectListDetailDto struct {
 	// id
 	ID int32 `json:"id,omitempty"`
 
+	// is autoscaling enabled
+	IsAutoscalingEnabled bool `json:"isAutoscalingEnabled"`
+
 	// is kubernetes
 	IsKubernetes bool `json:"isKubernetes"`
 

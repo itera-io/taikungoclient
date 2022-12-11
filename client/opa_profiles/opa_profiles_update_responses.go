@@ -136,7 +136,7 @@ OpaProfilesUpdateBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type OpaProfilesUpdateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpaProfilesUpdateBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/OpaProfiles][%d] opaProfilesUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesUpdateBadRequest) GetPayload() []*models.Error {
+func (o *OpaProfilesUpdateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

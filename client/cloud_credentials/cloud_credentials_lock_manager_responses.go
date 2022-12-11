@@ -136,7 +136,7 @@ CloudCredentialsLockManagerBadRequest describes a response with status code 400,
 Bad Request
 */
 type CloudCredentialsLockManagerBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials lock manager bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CloudCredentialsLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsLockManagerBadRequest) GetPayload() []*models.Error {
+func (o *CloudCredentialsLockManagerBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

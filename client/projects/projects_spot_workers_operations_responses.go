@@ -136,7 +136,7 @@ ProjectsSpotWorkersOperationsBadRequest describes a response with status code 40
 Bad Request
 */
 type ProjectsSpotWorkersOperationsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects spot workers operations bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsSpotWorkersOperationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsSpotWorkersOperationsBadRequest) GetPayload() []*models.Error {
+func (o *ProjectsSpotWorkersOperationsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

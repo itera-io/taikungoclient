@@ -136,7 +136,7 @@ BackupImportBackupStorageBadRequest describes a response with status code 400, w
 Bad Request
 */
 type BackupImportBackupStorageBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup import backup storage bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *BackupImportBackupStorageBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupImportBackupStorageBadRequest) GetPayload() []*models.Error {
+func (o *BackupImportBackupStorageBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

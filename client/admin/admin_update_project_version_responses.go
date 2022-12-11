@@ -136,7 +136,7 @@ AdminUpdateProjectVersionBadRequest describes a response with status code 400, w
 Bad Request
 */
 type AdminUpdateProjectVersionBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin update project version bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminUpdateProjectVersionBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminUpdateProjectVersionBadRequest) GetPayload() []*models.Error {
+func (o *AdminUpdateProjectVersionBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

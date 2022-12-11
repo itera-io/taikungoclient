@@ -138,7 +138,7 @@ UserTokenAvailableEndpointListBadRequest describes a response with status code 4
 Bad Request
 */
 type UserTokenAvailableEndpointListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token available endpoint list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *UserTokenAvailableEndpointListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserTokenAvailableEndpointListBadRequest) GetPayload() []*models.Error {
+func (o *UserTokenAvailableEndpointListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

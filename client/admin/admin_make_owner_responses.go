@@ -136,7 +136,7 @@ AdminMakeOwnerBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AdminMakeOwnerBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin make owner bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminMakeOwnerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminMakeOwnerBadRequest) GetPayload() []*models.Error {
+func (o *AdminMakeOwnerBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

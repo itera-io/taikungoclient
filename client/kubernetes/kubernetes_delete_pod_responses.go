@@ -136,7 +136,7 @@ KubernetesDeletePodBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type KubernetesDeletePodBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes delete pod bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDeletePodBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDeletePodBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesDeletePodBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

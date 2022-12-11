@@ -136,7 +136,7 @@ CheckerUserCheckerBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type CheckerUserCheckerBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker user checker bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerUserCheckerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerUserCheckerBadRequest) GetPayload() []*models.Error {
+func (o *CheckerUserCheckerBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

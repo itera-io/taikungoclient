@@ -136,7 +136,7 @@ RepositoryCreateBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type RepositoryCreateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository create bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *RepositoryCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/bind][%d] repositoryCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *RepositoryCreateBadRequest) GetPayload() []*models.Error {
+func (o *RepositoryCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

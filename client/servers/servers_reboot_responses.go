@@ -136,7 +136,7 @@ ServersRebootBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type ServersRebootBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers reboot bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ServersRebootBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersRebootBadRequest) GetPayload() []*models.Error {
+func (o *ServersRebootBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

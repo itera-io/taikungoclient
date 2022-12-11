@@ -126,7 +126,7 @@ UsersUpdateUserBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type UsersUpdateUserBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users update user bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *UsersUpdateUserBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersUpdateUserBadRequest) GetPayload() []*models.Error {
+func (o *UsersUpdateUserBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

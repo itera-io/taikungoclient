@@ -136,7 +136,7 @@ KubernetesPatchJobBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubernetesPatchJobBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch job bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesPatchJobBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchJobBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesPatchJobBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

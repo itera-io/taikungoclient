@@ -20,6 +20,9 @@ type CatalogAppParamsDto struct {
 	// is changeable
 	IsChangeable bool `json:"isChangeable"`
 
+	// is mandatory
+	IsMandatory bool `json:"isMandatory"`
+
 	// is readonly
 	IsReadonly bool `json:"isReadonly"`
 

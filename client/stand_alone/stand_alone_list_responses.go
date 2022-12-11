@@ -138,7 +138,7 @@ StandAloneListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type StandAloneListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *StandAloneListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneListBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

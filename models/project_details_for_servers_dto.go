@@ -47,6 +47,9 @@ type ProjectDetailsForServersDto struct {
 	// allow spot workers
 	AllowSpotWorkers bool `json:"allowSpotWorkers"`
 
+	// autoscaling group name
+	AutoscalingGroupName string `json:"autoscalingGroupName,omitempty"`
+
 	// bastion
 	Bastion int32 `json:"bastion,omitempty"`
 
@@ -74,6 +77,9 @@ type ProjectDetailsForServersDto struct {
 	// delete on expiration
 	DeleteOnExpiration bool `json:"deleteOnExpiration"`
 
+	// disk size
+	DiskSize float64 `json:"diskSize,omitempty"`
+
 	// disk size limit
 	DiskSizeLimit int64 `json:"diskSizeLimit,omitempty"`
 
@@ -83,8 +89,14 @@ type ProjectDetailsForServersDto struct {
 	// failure reason
 	FailureReason string `json:"failureReason,omitempty"`
 
+	// flavor
+	Flavor string `json:"flavor,omitempty"`
+
 	// has alerting profile
 	HasAlertingProfile bool `json:"hasAlertingProfile"`
+
+	// has expiration warning
+	HasExpirationWarning bool `json:"hasExpirationWarning"`
 
 	// has kube config file
 	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
@@ -103,6 +115,9 @@ type ProjectDetailsForServersDto struct {
 
 	// is auto upgrade
 	IsAutoUpgrade bool `json:"isAutoUpgrade"`
+
+	// is autoscaling enabled
+	IsAutoscalingEnabled bool `json:"isAutoscalingEnabled"`
 
 	// is backup enabled
 	IsBackupEnabled bool `json:"isBackupEnabled"`
@@ -149,8 +164,14 @@ type ProjectDetailsForServersDto struct {
 	// master ready
 	MasterReady int32 `json:"masterReady,omitempty"`
 
+	// max size
+	MaxSize int32 `json:"maxSize,omitempty"`
+
 	// max spot price
 	MaxSpotPrice float64 `json:"maxSpotPrice,omitempty"`
+
+	// min size
+	MinSize int32 `json:"minSize,omitempty"`
 
 	// opa profile Id
 	OpaProfileID int32 `json:"opaProfileId,omitempty"`
@@ -193,6 +214,9 @@ type ProjectDetailsForServersDto struct {
 
 	// s3 credential Id
 	S3CredentialID int32 `json:"s3CredentialId,omitempty"`
+
+	// spot enabled
+	SpotEnabled bool `json:"spotEnabled"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`

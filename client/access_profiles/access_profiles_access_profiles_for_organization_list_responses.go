@@ -136,7 +136,7 @@ AccessProfilesAccessProfilesForOrganizationListBadRequest describes a response w
 Bad Request
 */
 type AccessProfilesAccessProfilesForOrganizationListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles access profiles for organization list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AccessProfilesAccessProfilesForOrganizationListBadRequest) String() str
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles/list][%d] accessProfilesAccessProfilesForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AccessProfilesAccessProfilesForOrganizationListBadRequest) GetPayload() []*models.Error {
+func (o *AccessProfilesAccessProfilesForOrganizationListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

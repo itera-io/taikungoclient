@@ -138,7 +138,7 @@ OpaProfilesCreateBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type OpaProfilesCreateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *OpaProfilesCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesCreateBadRequest) GetPayload() []*models.Error {
+func (o *OpaProfilesCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

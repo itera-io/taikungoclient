@@ -138,7 +138,7 @@ OpsCredentialsListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type OpsCredentialsListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ops credentials list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *OpsCredentialsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsListBadRequest) GetPayload() []*models.Error {
+func (o *OpsCredentialsListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

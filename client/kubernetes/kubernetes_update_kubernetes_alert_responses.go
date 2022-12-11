@@ -136,7 +136,7 @@ KubernetesUpdateKubernetesAlertBadRequest describes a response with status code 
 Bad Request
 */
 type KubernetesUpdateKubernetesAlertBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes update kubernetes alert bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesUpdateKubernetesAlertBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesUpdateKubernetesAlertBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesUpdateKubernetesAlertBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

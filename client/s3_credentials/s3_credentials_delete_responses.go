@@ -193,7 +193,7 @@ S3CredentialsDeleteBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type S3CredentialsDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this s3 credentials delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *S3CredentialsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsDeleteBadRequest) GetPayload() []*models.Error {
+func (o *S3CredentialsDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ KubernetesGetNodeListBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesGetNodeListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get node list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesGetNodeListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetNodeListBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetNodeListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

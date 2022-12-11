@@ -34,9 +34,15 @@ type ClientService interface {
 
 	RepositoryDelete(params *RepositoryDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryDeleteOK, error)
 
+	RepositoryDisable(params *RepositoryDisableParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryDisableOK, error)
+
+	RepositoryImport(params *RepositoryImportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryImportOK, error)
+
 	RepositoryList(params *RepositoryListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryListOK, error)
 
 	RepositoryTaikunRecommendedRepositoryList(params *RepositoryTaikunRecommendedRepositoryListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryTaikunRecommendedRepositoryListOK, error)
+
+	RepositoryUnbind(params *RepositoryUnbindParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryUnbindOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -81,7 +87,7 @@ func (a *Client) RepositoryCreate(params *RepositoryCreateParams, authInfo runti
 }
 
 /*
-RepositoryDelete unbinds repo from organization
+RepositoryDelete deletes repo from organization
 */
 func (a *Client) RepositoryDelete(params *RepositoryDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -91,7 +97,7 @@ func (a *Client) RepositoryDelete(params *RepositoryDeleteParams, authInfo runti
 	op := &runtime.ClientOperation{
 		ID:                 "Repository_Delete",
 		Method:             "POST",
-		PathPattern:        "/api/v{v}/Repository/unbind",
+		PathPattern:        "/api/v{v}/Repository/delete",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
 		Schemes:            []string{"https"},
@@ -116,6 +122,84 @@ func (a *Client) RepositoryDelete(params *RepositoryDeleteParams, authInfo runti
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Repository_Delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+RepositoryDisable disables repo from organization
+*/
+func (a *Client) RepositoryDisable(params *RepositoryDisableParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryDisableOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRepositoryDisableParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Repository_Disable",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Repository/disable",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &RepositoryDisableReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RepositoryDisableOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Repository_Disable: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+RepositoryImport imports repo to artifact
+*/
+func (a *Client) RepositoryImport(params *RepositoryImportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryImportOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRepositoryImportParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Repository_Import",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Repository/import",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &RepositoryImportReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RepositoryImportOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Repository_Import: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -194,6 +278,45 @@ func (a *Client) RepositoryTaikunRecommendedRepositoryList(params *RepositoryTai
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Repository_TaikunRecommendedRepositoryList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+RepositoryUnbind unbinds repo from organization
+*/
+func (a *Client) RepositoryUnbind(params *RepositoryUnbindParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryUnbindOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRepositoryUnbindParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Repository_Unbind",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Repository/unbind",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &RepositoryUnbindReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RepositoryUnbindOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Repository_Unbind: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

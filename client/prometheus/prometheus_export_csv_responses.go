@@ -126,7 +126,7 @@ PrometheusExportCsvBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type PrometheusExportCsvBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this prometheus export csv bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *PrometheusExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusExportCsvBadRequest) GetPayload() []*models.Error {
+func (o *PrometheusExportCsvBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

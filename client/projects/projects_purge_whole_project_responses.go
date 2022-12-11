@@ -136,7 +136,7 @@ ProjectsPurgeWholeProjectBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ProjectsPurgeWholeProjectBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects purge whole project bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsPurgeWholeProjectBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsPurgeWholeProjectBadRequest) GetPayload() []*models.Error {
+func (o *ProjectsPurgeWholeProjectBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

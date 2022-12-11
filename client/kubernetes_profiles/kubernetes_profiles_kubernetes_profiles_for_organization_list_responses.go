@@ -136,7 +136,7 @@ KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest describes a re
 Bad Request
 */
 type KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes profiles kubernetes profiles for organization list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest) Stri
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

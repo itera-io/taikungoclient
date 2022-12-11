@@ -138,7 +138,7 @@ KeycloakGetBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type KeycloakGetBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this keycloak get bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KeycloakGetBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Keycloak][%d] keycloakGetBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KeycloakGetBadRequest) GetPayload() []*models.Error {
+func (o *KeycloakGetBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

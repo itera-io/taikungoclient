@@ -136,7 +136,7 @@ OpaProfilesMakeDefaultBadRequest describes a response with status code 400, with
 Bad Request
 */
 type OpaProfilesMakeDefaultBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles make default bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpaProfilesMakeDefaultBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesMakeDefaultBadRequest) GetPayload() []*models.Error {
+func (o *OpaProfilesMakeDefaultBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

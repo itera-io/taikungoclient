@@ -138,7 +138,7 @@ KubernetesGetServiceBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type KubernetesGetServiceBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get service bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubernetesGetServiceBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetServiceBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetServiceBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

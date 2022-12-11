@@ -136,7 +136,7 @@ ProjectsEditHealthStatusBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type ProjectsEditHealthStatusBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects edit health status bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsEditHealthStatusBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsEditHealthStatusBadRequest) GetPayload() []*models.Error {
+func (o *ProjectsEditHealthStatusBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

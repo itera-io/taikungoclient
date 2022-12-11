@@ -136,7 +136,7 @@ KubernetesDownloadBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubernetesDownloadBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes download bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDownloadBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDownloadBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesDownloadBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

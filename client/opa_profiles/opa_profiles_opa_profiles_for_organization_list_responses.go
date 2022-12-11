@@ -136,7 +136,7 @@ OpaProfilesOpaProfilesForOrganizationListBadRequest describes a response with st
 Bad Request
 */
 type OpaProfilesOpaProfilesForOrganizationListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles opa profiles for organization list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpaProfilesOpaProfilesForOrganizationListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles/list][%d] opaProfilesOpaProfilesForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesOpaProfilesForOrganizationListBadRequest) GetPayload() []*models.Error {
+func (o *OpaProfilesOpaProfilesForOrganizationListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

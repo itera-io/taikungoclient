@@ -136,7 +136,7 @@ KubernetesDescribeSecretBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type KubernetesDescribeSecretBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe secret bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeSecretBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/secret][%d] kubernetesDescribeSecretBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeSecretBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesDescribeSecretBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

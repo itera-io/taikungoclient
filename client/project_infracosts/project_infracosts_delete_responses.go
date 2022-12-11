@@ -183,7 +183,7 @@ ProjectInfracostsDeleteBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type ProjectInfracostsDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project infracosts delete bad request response has a 2xx status code
@@ -219,7 +219,7 @@ func (o *ProjectInfracostsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectInfracosts/delete][%d] projectInfracostsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectInfracostsDeleteBadRequest) GetPayload() []*models.Error {
+func (o *ProjectInfracostsDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

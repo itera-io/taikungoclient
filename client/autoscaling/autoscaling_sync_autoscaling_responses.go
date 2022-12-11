@@ -136,7 +136,7 @@ AutoscalingSyncAutoscalingBadRequest describes a response with status code 400, 
 Bad Request
 */
 type AutoscalingSyncAutoscalingBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this autoscaling sync autoscaling bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AutoscalingSyncAutoscalingBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/sync][%d] autoscalingSyncAutoscalingBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AutoscalingSyncAutoscalingBadRequest) GetPayload() []*models.Error {
+func (o *AutoscalingSyncAutoscalingBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

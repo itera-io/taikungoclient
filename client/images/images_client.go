@@ -294,7 +294,7 @@ func (a *Client) ImagesCommonGoogleImages(params *ImagesCommonGoogleImagesParams
 }
 
 /*
-ImagesGetImageDetailsByID unbinds images from project
+ImagesGetImageDetailsByID gets image details
 */
 func (a *Client) ImagesGetImageDetailsByID(params *ImagesGetImageDetailsByIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesGetImageDetailsByIDOK, error) {
 	// TODO: Validate the params before sending

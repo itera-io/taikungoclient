@@ -138,7 +138,7 @@ KubernetesGetStsBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type KubernetesGetStsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get sts bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubernetesGetStsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/sts][%d] kubernetesGetStsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetStsBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetStsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

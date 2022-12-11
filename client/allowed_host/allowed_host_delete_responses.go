@@ -193,7 +193,7 @@ AllowedHostDeleteBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AllowedHostDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this allowed host delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *AllowedHostDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AllowedHostDeleteBadRequest) GetPayload() []*models.Error {
+func (o *AllowedHostDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

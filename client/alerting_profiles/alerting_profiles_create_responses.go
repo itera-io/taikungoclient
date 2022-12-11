@@ -138,7 +138,7 @@ AlertingProfilesCreateBadRequest describes a response with status code 400, with
 Bad Request
 */
 type AlertingProfilesCreateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AlertingProfilesCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesCreateBadRequest) GetPayload() []*models.Error {
+func (o *AlertingProfilesCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

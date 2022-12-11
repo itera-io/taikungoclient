@@ -17,12 +17,6 @@ import (
 // swagger:model EditAutoscalingCommand
 type EditAutoscalingCommand struct {
 
-	// disk size
-	DiskSize float64 `json:"diskSize,omitempty"`
-
-	// flavor
-	Flavor string `json:"flavor,omitempty"`
-
 	// max size
 	MaxSize int32 `json:"maxSize,omitempty"`
 
@@ -31,9 +25,6 @@ type EditAutoscalingCommand struct {
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
-
-	// spot enabled
-	SpotEnabled bool `json:"spotEnabled"`
 }
 
 // Validate validates this edit autoscaling command

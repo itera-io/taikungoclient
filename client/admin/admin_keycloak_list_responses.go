@@ -138,7 +138,7 @@ AdminKeycloakListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AdminKeycloakListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin keycloak list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AdminKeycloakListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminKeycloakListBadRequest) GetPayload() []*models.Error {
+func (o *AdminKeycloakListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

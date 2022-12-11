@@ -136,7 +136,7 @@ CloudCredentialsMakeDefaultBadRequest describes a response with status code 400,
 Bad Request
 */
 type CloudCredentialsMakeDefaultBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials make default bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CloudCredentialsMakeDefaultBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsMakeDefaultBadRequest) GetPayload() []*models.Error {
+func (o *CloudCredentialsMakeDefaultBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

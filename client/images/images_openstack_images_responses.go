@@ -138,7 +138,7 @@ ImagesOpenstackImagesBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type ImagesOpenstackImagesBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images openstack images bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *ImagesOpenstackImagesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesOpenstackImagesBadRequest) GetPayload() []*models.Error {
+func (o *ImagesOpenstackImagesBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

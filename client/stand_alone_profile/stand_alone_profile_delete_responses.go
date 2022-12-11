@@ -136,7 +136,7 @@ StandAloneProfileDeleteBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneProfileDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneProfileDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileDeleteBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneProfileDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

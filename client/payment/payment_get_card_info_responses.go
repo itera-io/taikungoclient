@@ -138,7 +138,7 @@ PaymentGetCardInfoBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type PaymentGetCardInfoBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment get card info bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *PaymentGetCardInfoBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/cardinfo][%d] paymentGetCardInfoBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentGetCardInfoBadRequest) GetPayload() []*models.Error {
+func (o *PaymentGetCardInfoBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

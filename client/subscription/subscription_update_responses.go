@@ -136,7 +136,7 @@ SubscriptionUpdateBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type SubscriptionUpdateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this subscription update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SubscriptionUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/update][%d] subscriptionUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionUpdateBadRequest) GetPayload() []*models.Error {
+func (o *SubscriptionUpdateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ CronJobFetchKubernetesAlertsBadRequest describes a response with status code 400
 Bad Request
 */
 type CronJobFetchKubernetesAlertsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes alerts bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobFetchKubernetesAlertsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesAlertsBadRequest) GetPayload() []*models.Error {
+func (o *CronJobFetchKubernetesAlertsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

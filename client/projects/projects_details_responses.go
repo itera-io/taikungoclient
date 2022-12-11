@@ -138,7 +138,7 @@ ProjectsDetailsBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type ProjectsDetailsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects details bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *ProjectsDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/{projectId}][%d] projectsDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsDetailsBadRequest) GetPayload() []*models.Error {
+func (o *ProjectsDetailsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

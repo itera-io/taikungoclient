@@ -136,7 +136,7 @@ KubernetesDescribePdbBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesDescribePdbBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe pdb bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribePdbBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribePdbBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesDescribePdbBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

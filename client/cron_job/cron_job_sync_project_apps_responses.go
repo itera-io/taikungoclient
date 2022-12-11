@@ -136,7 +136,7 @@ CronJobSyncProjectAppsBadRequest describes a response with status code 400, with
 Bad Request
 */
 type CronJobSyncProjectAppsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync project apps bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobSyncProjectAppsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobSyncProjectAppsBadRequest) GetPayload() []*models.Error {
+func (o *CronJobSyncProjectAppsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

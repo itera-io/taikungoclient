@@ -126,7 +126,7 @@ NotificationsExportCsvBadRequest describes a response with status code 400, with
 Bad Request
 */
 type NotificationsExportCsvBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications export csv bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *NotificationsExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NotificationsExportCsvBadRequest) GetPayload() []*models.Error {
+func (o *NotificationsExportCsvBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ KubernetesExecCliBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type KubernetesExecCliBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes exec cli bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesExecCliBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesExecCliBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesExecCliBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

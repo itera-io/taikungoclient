@@ -138,7 +138,7 @@ DocumentationListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type DocumentationListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this documentation list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *DocumentationListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Documentation][%d] documentationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *DocumentationListBadRequest) GetPayload() []*models.Error {
+func (o *DocumentationListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

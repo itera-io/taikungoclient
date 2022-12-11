@@ -136,7 +136,7 @@ StandAloneActionsRebootBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneActionsRebootBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions reboot bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneActionsRebootBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsRebootBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneActionsRebootBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

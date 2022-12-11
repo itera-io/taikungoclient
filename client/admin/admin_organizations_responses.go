@@ -138,7 +138,7 @@ AdminOrganizationsBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type AdminOrganizationsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin organizations bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AdminOrganizationsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminOrganizationsBadRequest) GetPayload() []*models.Error {
+func (o *AdminOrganizationsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

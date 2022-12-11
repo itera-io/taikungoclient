@@ -136,7 +136,7 @@ CheckerOrganizationBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type CheckerOrganizationBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker organization bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerOrganizationBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerOrganizationBadRequest) GetPayload() []*models.Error {
+func (o *CheckerOrganizationBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

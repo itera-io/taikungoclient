@@ -138,7 +138,7 @@ AdminUsersListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AdminUsersListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin users list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AdminUsersListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminUsersListBadRequest) GetPayload() []*models.Error {
+func (o *AdminUsersListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

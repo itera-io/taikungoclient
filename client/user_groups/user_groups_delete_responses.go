@@ -193,7 +193,7 @@ UserGroupsDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type UserGroupsDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *UserGroupsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserGroupsDeleteBadRequest) GetPayload() []*models.Error {
+func (o *UserGroupsDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

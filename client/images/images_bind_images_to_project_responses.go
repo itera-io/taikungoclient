@@ -136,7 +136,7 @@ ImagesBindImagesToProjectBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ImagesBindImagesToProjectBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images bind images to project bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ImagesBindImagesToProjectBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/bind][%d] imagesBindImagesToProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesBindImagesToProjectBadRequest) GetPayload() []*models.Error {
+func (o *ImagesBindImagesToProjectBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

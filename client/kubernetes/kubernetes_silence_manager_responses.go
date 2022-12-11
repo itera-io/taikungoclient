@@ -136,7 +136,7 @@ KubernetesSilenceManagerBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type KubernetesSilenceManagerBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes silence manager bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesSilenceManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesSilenceManagerBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesSilenceManagerBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

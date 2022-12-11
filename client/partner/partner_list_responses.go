@@ -138,7 +138,7 @@ PartnerListBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type PartnerListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *PartnerListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner][%d] partnerListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerListBadRequest) GetPayload() []*models.Error {
+func (o *PartnerListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ AzureLocationsBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AzureLocationsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure locations bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AzureLocationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureLocationsBadRequest) GetPayload() []*models.Error {
+func (o *AzureLocationsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

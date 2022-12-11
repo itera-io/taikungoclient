@@ -43,6 +43,9 @@ type OpenstackCredentialsListDto struct {
 	// internal subnet Id
 	InternalSubnetID string `json:"internalSubnetId,omitempty"`
 
+	// is admin
+	IsAdmin bool `json:"isAdmin"`
+
 	// is default
 	IsDefault bool `json:"isDefault"`
 

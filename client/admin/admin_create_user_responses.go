@@ -136,7 +136,7 @@ AdminCreateUserBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type AdminCreateUserBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin create user bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminCreateUserBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminCreateUserBadRequest) GetPayload() []*models.Error {
+func (o *AdminCreateUserBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

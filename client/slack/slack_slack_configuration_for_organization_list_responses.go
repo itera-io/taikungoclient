@@ -136,7 +136,7 @@ SlackSlackConfigurationForOrganizationListBadRequest describes a response with s
 Bad Request
 */
 type SlackSlackConfigurationForOrganizationListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this slack slack configuration for organization list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SlackSlackConfigurationForOrganizationListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SlackSlackConfigurationForOrganizationListBadRequest) GetPayload() []*models.Error {
+func (o *SlackSlackConfigurationForOrganizationListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

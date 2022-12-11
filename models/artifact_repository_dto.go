@@ -41,6 +41,9 @@ type ArtifactRepositoryDto struct {
 	// repository Id
 	RepositoryID string `json:"repositoryId,omitempty"`
 
+	// true Url
+	TrueURL string `json:"trueUrl,omitempty"`
+
 	// url
 	URL string `json:"url,omitempty"`
 

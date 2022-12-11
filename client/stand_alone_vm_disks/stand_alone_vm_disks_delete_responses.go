@@ -136,7 +136,7 @@ StandAloneVMDisksDeleteBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneVMDisksDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneVMDisksDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneVMDisksDeleteBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneVMDisksDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

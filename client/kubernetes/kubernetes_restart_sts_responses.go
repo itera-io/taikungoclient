@@ -136,7 +136,7 @@ KubernetesRestartStsBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type KubernetesRestartStsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes restart sts bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesRestartStsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/sts][%d] kubernetesRestartStsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesRestartStsBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesRestartStsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

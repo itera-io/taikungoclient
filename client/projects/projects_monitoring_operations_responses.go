@@ -136,7 +136,7 @@ ProjectsMonitoringOperationsBadRequest describes a response with status code 400
 Bad Request
 */
 type ProjectsMonitoringOperationsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects monitoring operations bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsMonitoringOperationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsMonitoringOperationsBadRequest) GetPayload() []*models.Error {
+func (o *ProjectsMonitoringOperationsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

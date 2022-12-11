@@ -136,7 +136,7 @@ UserProjectsBindProjectsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type UserProjectsBindProjectsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user projects bind projects bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UserProjectsBindProjectsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserProjectsBindProjectsBadRequest) GetPayload() []*models.Error {
+func (o *UserProjectsBindProjectsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

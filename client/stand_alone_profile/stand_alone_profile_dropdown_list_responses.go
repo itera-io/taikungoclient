@@ -136,7 +136,7 @@ StandAloneProfileDropdownListBadRequest describes a response with status code 40
 Bad Request
 */
 type StandAloneProfileDropdownListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile dropdown list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneProfileDropdownListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile/list][%d] standAloneProfileDropdownListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileDropdownListBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneProfileDropdownListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

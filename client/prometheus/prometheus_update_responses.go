@@ -136,7 +136,7 @@ PrometheusUpdateBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type PrometheusUpdateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this prometheus update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PrometheusUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/update/{id}][%d] prometheusUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusUpdateBadRequest) GetPayload() []*models.Error {
+func (o *PrometheusUpdateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -138,7 +138,7 @@ KubernetesGetNetworkPoliciesBadRequest describes a response with status code 400
 Bad Request
 */
 type KubernetesGetNetworkPoliciesBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get network policies bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubernetesGetNetworkPoliciesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/network-policies][%d] kubernetesGetNetworkPoliciesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetNetworkPoliciesBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetNetworkPoliciesBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -138,7 +138,7 @@ SearchPersistenceVolumeClaimListBadRequest describes a response with status code
 Bad Request
 */
 type SearchPersistenceVolumeClaimListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search persistence volume claim list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *SearchPersistenceVolumeClaimListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchPersistenceVolumeClaimListBadRequest) GetPayload() []*models.Error {
+func (o *SearchPersistenceVolumeClaimListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

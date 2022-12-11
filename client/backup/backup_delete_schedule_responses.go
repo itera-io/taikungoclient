@@ -136,7 +136,7 @@ BackupDeleteScheduleBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type BackupDeleteScheduleBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup delete schedule bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *BackupDeleteScheduleBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupDeleteScheduleBadRequest) GetPayload() []*models.Error {
+func (o *BackupDeleteScheduleBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

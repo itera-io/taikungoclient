@@ -138,7 +138,7 @@ SearchDaemonSetListBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type SearchDaemonSetListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search daemon set list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *SearchDaemonSetListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchDaemonSetListBadRequest) GetPayload() []*models.Error {
+func (o *SearchDaemonSetListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

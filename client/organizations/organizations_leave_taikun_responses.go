@@ -138,7 +138,7 @@ OrganizationsLeaveTaikunBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type OrganizationsLeaveTaikunBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations leave taikun bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *OrganizationsLeaveTaikunBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsLeaveTaikunBadRequest) GetPayload() []*models.Error {
+func (o *OrganizationsLeaveTaikunBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

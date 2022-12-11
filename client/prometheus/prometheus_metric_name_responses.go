@@ -136,7 +136,7 @@ PrometheusMetricNameBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type PrometheusMetricNameBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this prometheus metric name bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PrometheusMetricNameBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusMetricNameBadRequest) GetPayload() []*models.Error {
+func (o *PrometheusMetricNameBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ KubernetesDescribeConfigMapBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesDescribeConfigMapBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe config map bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeConfigMapBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeConfigMapBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesDescribeConfigMapBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

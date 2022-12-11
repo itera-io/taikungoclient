@@ -136,7 +136,7 @@ PartnerBindOrganizationsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type PartnerBindOrganizationsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner bind organizations bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PartnerBindOrganizationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerBindOrganizationsBadRequest) GetPayload() []*models.Error {
+func (o *PartnerBindOrganizationsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

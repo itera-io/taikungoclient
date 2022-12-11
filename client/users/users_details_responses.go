@@ -138,7 +138,7 @@ UsersDetailsBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type UsersDetailsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users details bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *UsersDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/userinfo][%d] usersDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersDetailsBadRequest) GetPayload() []*models.Error {
+func (o *UsersDetailsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

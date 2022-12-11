@@ -90,7 +90,7 @@ func (a *Client) ProjectInfracostsDetails(params *ProjectInfracostsDetailsParams
 	op := &runtime.ClientOperation{
 		ID:                 "ProjectInfracosts_Details",
 		Method:             "GET",
-		PathPattern:        "/api/v{v}/ProjectInfracosts/{id}",
+		PathPattern:        "/api/v{v}/ProjectInfracosts/{projectId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},

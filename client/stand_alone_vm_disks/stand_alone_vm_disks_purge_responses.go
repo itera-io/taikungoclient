@@ -136,7 +136,7 @@ StandAloneVMDisksPurgeBadRequest describes a response with status code 400, with
 Bad Request
 */
 type StandAloneVMDisksPurgeBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks purge bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneVMDisksPurgeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneVMDisksPurgeBadRequest) GetPayload() []*models.Error {
+func (o *StandAloneVMDisksPurgeBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

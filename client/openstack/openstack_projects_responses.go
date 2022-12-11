@@ -136,7 +136,7 @@ OpenstackProjectsBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type OpenstackProjectsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack projects bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpenstackProjectsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/projects][%d] openstackProjectsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackProjectsBadRequest) GetPayload() []*models.Error {
+func (o *OpenstackProjectsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

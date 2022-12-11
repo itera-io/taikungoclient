@@ -138,7 +138,7 @@ SearchCloudCredentialsListBadRequest describes a response with status code 400, 
 Bad Request
 */
 type SearchCloudCredentialsListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search cloud credentials list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *SearchCloudCredentialsListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchCloudCredentialsListBadRequest) GetPayload() []*models.Error {
+func (o *SearchCloudCredentialsListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ PaymentCreateCustomerBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type PaymentCreateCustomerBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment create customer bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PaymentCreateCustomerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentCreateCustomerBadRequest) GetPayload() []*models.Error {
+func (o *PaymentCreateCustomerBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

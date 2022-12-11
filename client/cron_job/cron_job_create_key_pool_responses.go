@@ -136,7 +136,7 @@ CronJobCreateKeyPoolBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type CronJobCreateKeyPoolBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job create key pool bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobCreateKeyPoolBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobCreateKeyPoolBadRequest) GetPayload() []*models.Error {
+func (o *CronJobCreateKeyPoolBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

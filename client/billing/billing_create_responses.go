@@ -136,7 +136,7 @@ BillingCreateBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type BillingCreateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this billing create bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *BillingCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BillingCreateBadRequest) GetPayload() []*models.Error {
+func (o *BillingCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

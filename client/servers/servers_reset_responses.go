@@ -136,7 +136,7 @@ ServersResetBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type ServersResetBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers reset bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ServersResetBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersResetBadRequest) GetPayload() []*models.Error {
+func (o *ServersResetBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -138,7 +138,7 @@ SubscriptionListBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type SubscriptionListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this subscription list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *SubscriptionListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription][%d] subscriptionListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionListBadRequest) GetPayload() []*models.Error {
+func (o *SubscriptionListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

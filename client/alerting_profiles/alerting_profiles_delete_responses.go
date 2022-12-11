@@ -193,7 +193,7 @@ AlertingProfilesDeleteBadRequest describes a response with status code 400, with
 Bad Request
 */
 type AlertingProfilesDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *AlertingProfilesDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesDeleteBadRequest) GetPayload() []*models.Error {
+func (o *AlertingProfilesDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

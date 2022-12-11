@@ -136,7 +136,7 @@ NotificationsCreateBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type NotificationsCreateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications create bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *NotificationsCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NotificationsCreateBadRequest) GetPayload() []*models.Error {
+func (o *NotificationsCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

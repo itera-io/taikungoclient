@@ -136,7 +136,7 @@ KubernetesGetNamespacesListBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesGetNamespacesListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get namespaces list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesGetNamespacesListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetNamespacesListBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesGetNamespacesListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

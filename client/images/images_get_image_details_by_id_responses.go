@@ -136,7 +136,7 @@ ImagesGetImageDetailsByIDBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ImagesGetImageDetailsByIDBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images get image details by Id bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ImagesGetImageDetailsByIDBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesGetImageDetailsByIDBadRequest) GetPayload() []*models.Error {
+func (o *ImagesGetImageDetailsByIDBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -138,7 +138,7 @@ FlavorsAwsFlavorsBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type FlavorsAwsFlavorsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors aws flavors bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *FlavorsAwsFlavorsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsAwsFlavorsBadRequest) GetPayload() []*models.Error {
+func (o *FlavorsAwsFlavorsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

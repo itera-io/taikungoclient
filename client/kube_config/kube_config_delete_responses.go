@@ -136,7 +136,7 @@ KubeConfigDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type KubeConfigDeleteBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kube config delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubeConfigDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete][%d] kubeConfigDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubeConfigDeleteBadRequest) GetPayload() []*models.Error {
+func (o *KubeConfigDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

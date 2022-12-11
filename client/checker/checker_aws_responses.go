@@ -136,7 +136,7 @@ CheckerAwsBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type CheckerAwsBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker aws bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerAwsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerAwsBadRequest) GetPayload() []*models.Error {
+func (o *CheckerAwsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

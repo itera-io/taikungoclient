@@ -136,7 +136,7 @@ ProjectAppLockManagerBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type ProjectAppLockManagerBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project app lock manager bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectAppLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectAppLockManagerBadRequest) GetPayload() []*models.Error {
+func (o *ProjectAppLockManagerBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

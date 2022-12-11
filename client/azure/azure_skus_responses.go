@@ -138,7 +138,7 @@ AzureSkusBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AzureSkusBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure skus bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AzureSkusBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureSkusBadRequest) GetPayload() []*models.Error {
+func (o *AzureSkusBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

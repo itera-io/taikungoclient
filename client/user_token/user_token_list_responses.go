@@ -136,7 +136,7 @@ UserTokenListBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type UserTokenListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UserTokenListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserTokenListBadRequest) GetPayload() []*models.Error {
+func (o *UserTokenListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

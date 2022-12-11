@@ -136,7 +136,7 @@ PreDefinedQueriesUpdatePrometheusDashboardBadRequest describes a response with s
 Bad Request
 */
 type PreDefinedQueriesUpdatePrometheusDashboardBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this pre defined queries update prometheus dashboard bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PreDefinedQueriesUpdatePrometheusDashboardBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/update][%d] preDefinedQueriesUpdatePrometheusDashboardBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PreDefinedQueriesUpdatePrometheusDashboardBadRequest) GetPayload() []*models.Error {
+func (o *PreDefinedQueriesUpdatePrometheusDashboardBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

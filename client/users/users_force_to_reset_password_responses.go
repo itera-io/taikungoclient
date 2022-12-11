@@ -136,7 +136,7 @@ UsersForceToResetPasswordBadRequest describes a response with status code 400, w
 Bad Request
 */
 type UsersForceToResetPasswordBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users force to reset password bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UsersForceToResetPasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersForceToResetPasswordBadRequest) GetPayload() []*models.Error {
+func (o *UsersForceToResetPasswordBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

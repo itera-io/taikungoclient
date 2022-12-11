@@ -136,7 +136,7 @@ CatalogCatalogAppValueAutocompleteBadRequest describes a response with status co
 Bad Request
 */
 type CatalogCatalogAppValueAutocompleteBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog catalog app value autocomplete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CatalogCatalogAppValueAutocompleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueAutocompleteBadRequest) GetPayload() []*models.Error {
+func (o *CatalogCatalogAppValueAutocompleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

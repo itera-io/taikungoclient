@@ -138,7 +138,7 @@ CloudCredentialsExceededQuotasBadRequest describes a response with status code 4
 Bad Request
 */
 type CloudCredentialsExceededQuotasBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials exceeded quotas bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *CloudCredentialsExceededQuotasBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsExceededQuotasBadRequest) GetPayload() []*models.Error {
+func (o *CloudCredentialsExceededQuotasBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

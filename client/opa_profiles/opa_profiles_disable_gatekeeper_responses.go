@@ -136,7 +136,7 @@ OpaProfilesDisableGatekeeperBadRequest describes a response with status code 400
 Bad Request
 */
 type OpaProfilesDisableGatekeeperBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles disable gatekeeper bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpaProfilesDisableGatekeeperBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesDisableGatekeeperBadRequest) GetPayload() []*models.Error {
+func (o *OpaProfilesDisableGatekeeperBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ NtpServersListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type NtpServersListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ntp servers list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *NtpServersListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NtpServersListBadRequest) GetPayload() []*models.Error {
+func (o *NtpServersListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ KubernetesPatchCrdBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubernetesPatchCrdBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch crd bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesPatchCrdBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/crd][%d] kubernetesPatchCrdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchCrdBadRequest) GetPayload() []*models.Error {
+func (o *KubernetesPatchCrdBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

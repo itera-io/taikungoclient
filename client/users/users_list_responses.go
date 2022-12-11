@@ -138,7 +138,7 @@ UsersListBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type UsersListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *UsersListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users][%d] usersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersListBadRequest) GetPayload() []*models.Error {
+func (o *UsersListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

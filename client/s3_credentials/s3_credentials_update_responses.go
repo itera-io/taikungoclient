@@ -136,7 +136,7 @@ S3CredentialsUpdateBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type S3CredentialsUpdateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this s3 credentials update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *S3CredentialsUpdateBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsUpdateBadRequest) GetPayload() []*models.Error {
+func (o *S3CredentialsUpdateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

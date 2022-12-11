@@ -136,7 +136,7 @@ AuthForgotPasswordBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type AuthForgotPasswordBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this auth forgot password bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AuthForgotPasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/forgotpassword][%d] authForgotPasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AuthForgotPasswordBadRequest) GetPayload() []*models.Error {
+func (o *AuthForgotPasswordBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

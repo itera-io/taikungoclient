@@ -62,10 +62,20 @@ ShowbackSummariesGroupedShowbackSummaryListParams contains all the parameters to
 */
 type ShowbackSummariesGroupedShowbackSummaryListParams struct {
 
+	// FromDate.
+	//
+	// Format: date-time
+	FromDate *strfmt.DateTime
+
 	// OrganizationID.
 	//
 	// Format: int32
 	OrganizationID *int32
+
+	// ToDate.
+	//
+	// Format: date-time
+	ToDate *strfmt.DateTime
 
 	// V.
 	V string
@@ -123,6 +133,17 @@ func (o *ShowbackSummariesGroupedShowbackSummaryListParams) SetHTTPClient(client
 	o.HTTPClient = client
 }
 
+// WithFromDate adds the fromDate to the showback summaries grouped showback summary list params
+func (o *ShowbackSummariesGroupedShowbackSummaryListParams) WithFromDate(fromDate *strfmt.DateTime) *ShowbackSummariesGroupedShowbackSummaryListParams {
+	o.SetFromDate(fromDate)
+	return o
+}
+
+// SetFromDate adds the fromDate to the showback summaries grouped showback summary list params
+func (o *ShowbackSummariesGroupedShowbackSummaryListParams) SetFromDate(fromDate *strfmt.DateTime) {
+	o.FromDate = fromDate
+}
+
 // WithOrganizationID adds the organizationID to the showback summaries grouped showback summary list params
 func (o *ShowbackSummariesGroupedShowbackSummaryListParams) WithOrganizationID(organizationID *int32) *ShowbackSummariesGroupedShowbackSummaryListParams {
 	o.SetOrganizationID(organizationID)
@@ -132,6 +153,17 @@ func (o *ShowbackSummariesGroupedShowbackSummaryListParams) WithOrganizationID(o
 // SetOrganizationID adds the organizationId to the showback summaries grouped showback summary list params
 func (o *ShowbackSummariesGroupedShowbackSummaryListParams) SetOrganizationID(organizationID *int32) {
 	o.OrganizationID = organizationID
+}
+
+// WithToDate adds the toDate to the showback summaries grouped showback summary list params
+func (o *ShowbackSummariesGroupedShowbackSummaryListParams) WithToDate(toDate *strfmt.DateTime) *ShowbackSummariesGroupedShowbackSummaryListParams {
+	o.SetToDate(toDate)
+	return o
+}
+
+// SetToDate adds the toDate to the showback summaries grouped showback summary list params
+func (o *ShowbackSummariesGroupedShowbackSummaryListParams) SetToDate(toDate *strfmt.DateTime) {
+	o.ToDate = toDate
 }
 
 // WithV adds the v to the showback summaries grouped showback summary list params
@@ -153,6 +185,23 @@ func (o *ShowbackSummariesGroupedShowbackSummaryListParams) WriteToRequest(r run
 	}
 	var res []error
 
+	if o.FromDate != nil {
+
+		// query param fromDate
+		var qrFromDate strfmt.DateTime
+
+		if o.FromDate != nil {
+			qrFromDate = *o.FromDate
+		}
+		qFromDate := qrFromDate.String()
+		if qFromDate != "" {
+
+			if err := r.SetQueryParam("fromDate", qFromDate); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.OrganizationID != nil {
 
 		// query param organizationId
@@ -165,6 +214,23 @@ func (o *ShowbackSummariesGroupedShowbackSummaryListParams) WriteToRequest(r run
 		if qOrganizationID != "" {
 
 			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ToDate != nil {
+
+		// query param toDate
+		var qrToDate strfmt.DateTime
+
+		if o.ToDate != nil {
+			qrToDate = *o.ToDate
+		}
+		qToDate := qrToDate.String()
+		if qToDate != "" {
+
+			if err := r.SetQueryParam("toDate", qToDate); err != nil {
 				return err
 			}
 		}

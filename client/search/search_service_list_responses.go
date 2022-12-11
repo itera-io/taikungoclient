@@ -138,7 +138,7 @@ SearchServiceListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type SearchServiceListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search service list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *SearchServiceListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/services][%d] searchServiceListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchServiceListBadRequest) GetPayload() []*models.Error {
+func (o *SearchServiceListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

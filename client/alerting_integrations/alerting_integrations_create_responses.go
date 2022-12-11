@@ -138,7 +138,7 @@ AlertingIntegrationsCreateBadRequest describes a response with status code 400, 
 Bad Request
 */
 type AlertingIntegrationsCreateBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting integrations create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AlertingIntegrationsCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingIntegrationsCreateBadRequest) GetPayload() []*models.Error {
+func (o *AlertingIntegrationsCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

@@ -136,7 +136,7 @@ SecurityGroupListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type SecurityGroupListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this security group list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SecurityGroupListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SecurityGroupListBadRequest) GetPayload() []*models.Error {
+func (o *SecurityGroupListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

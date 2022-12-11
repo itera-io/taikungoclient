@@ -136,7 +136,7 @@ AdminDeleteOrganizationBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type AdminDeleteOrganizationBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin delete organization bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminDeleteOrganizationBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminDeleteOrganizationBadRequest) GetPayload() []*models.Error {
+func (o *AdminDeleteOrganizationBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 

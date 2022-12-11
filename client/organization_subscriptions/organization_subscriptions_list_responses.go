@@ -138,7 +138,7 @@ OrganizationSubscriptionsListBadRequest describes a response with status code 40
 Bad Request
 */
 type OrganizationSubscriptionsListBadRequest struct {
-	Payload []*models.Error
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organization subscriptions list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *OrganizationSubscriptionsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationSubscriptionsListBadRequest) GetPayload() []*models.Error {
+func (o *OrganizationSubscriptionsListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
