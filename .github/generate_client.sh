@@ -10,8 +10,18 @@ app_name="taikungoclient"
 showback_app_name="showbackgoclient"
 showback_package_name="showbackclient"
 
+# Swagger generate client options
+readonly swagger_generate_client_options="" # --skip-validation
+
+# Temporary swagger patch files
+readonly swagger_patch_file="swagger-patch.json"
+readonly showback_swagger_patch_file="showback-swagger-patch.json"
+
+# Delete swagger patch files if leftover from previous run
+rm -fv ${swagger_patch_file} ${showback_swagger_patch_file}
+
 # Delete client/ and models/ directories if they already exist
-rm -rfv client/
+rm -rfv client/ showbackclient/
 rm -rfv models/
 
 # Delete go.mod and go.sum files if they already exist
@@ -19,36 +29,49 @@ rm -rfv go.mod
 rm -rfv go.sum
 
 # Ensure go-swagger names the package for the 'Documentation' endpoint 'doc' instead of 'documentation'
-sed 's/"Documentation"/"Doc"/g' swagger.json >swagger-patch.json
-sed 's/"Documentation"/"Doc"/g' showback-swagger.json >showback-swagger-patch.json
+sed 's/"Documentation"/"Doc"/g' swagger.json >"${swagger_patch_file}"
+sed 's/"Documentation"/"Doc"/g' showback-swagger.json >"${showback_swagger_patch_file}"
 
 # Make all datetimes nullable
-sed -i 's/"format": "date-time"/"x-nullable": true, "format": "date-time"/g' swagger-patch.json
-sed -i 's/"format": "date-time"/"x-nullable": true, "format": "date-time"/g' showback-swagger-patch.json
+sed -i 's/"format": "date-time"/"x-nullable": true, "format": "date-time"/g' "${swagger_patch_file}"
+sed -i 's/"format": "date-time"/"x-nullable": true, "format": "date-time"/g' "${showback_swagger_patch_file}"
 
 # Make showback_credential_id nullable
 refline="\"showbackCredentialId\":"
-sed -i "/${refline}/a \"x-nullable\": true," swagger-patch.json
-sed -i "/${refline}/a \"x-nullable\": true," showback-swagger-patch.json
+sed -i "/${refline}/a \"x-nullable\": true," "${swagger_patch_file}"
+sed -i "/${refline}/a \"x-nullable\": true," "${showback_swagger_patch_file}"
 
 # Remove omitempty
 refline="\"(ruleDiscountRate|globalDiscountRate|discountRate|displayName)\":"
-sed -Ei "/${refline}/a \"x-omitempty\": false," swagger-patch.json
-sed -Ei "/${refline}/a \"x-omitempty\": false," showback-swagger-patch.json
+sed -Ei "/${refline}/a \"x-omitempty\": false," "${swagger_patch_file}"
+sed -Ei "/${refline}/a \"x-omitempty\": false," "${showback_swagger_patch_file}"
 
 # Remove omitempty
 refline="\"type\": \"boolean\""
-sed -i "s/${refline}/\"x-omitempty\": false,${refline}/g" swagger-patch.json
-sed -i "s/${refline}/\"x-omitempty\": false,${refline}/g" showback-swagger-patch.json
+sed -i "s/${refline}/\"x-omitempty\": false,${refline}/g" "${swagger_patch_file}"
+sed -i "s/${refline}/\"x-omitempty\": false,${refline}/g" "${showback_swagger_patch_file}"
+
+# Replace Error arrays with free-form objects
+perl -0777 -i -pe 's/ *"type": *"array",\n *"items": *{\n *"\$ref": *"#\/definitions\/Error"\n *}/"type":"object"/g' "${swagger_patch_file}"
+perl -0777 -i -pe 's/ *"type": *"array",\n *"items": *{\n *"\$ref": *"#\/definitions\/Error"\n *}/"type":"object"/g' "${showback_swagger_patch_file}"
 
 # Initialize go module
 go mod init "${module_name}"
 
 # Generate the client
-./swagger generate client -f swagger-patch.json -A "${app_name}" $@
-./swagger generate client -f showback-swagger-patch.json -c "${showback_package_name}" -A "${showback_app_name}" $@
-rm -f swagger-patch.json
-rm -f showback-swagger-patch.json
+./swagger generate client \
+  -f "${swagger_patch_file}" \
+  -A "${app_name}" ${swagger_generate_client_options} $@
+
+# Generate showback client
+./swagger generate client \
+  -f "${showback_swagger_patch_file}" \
+  -c "${showback_package_name}" \
+  -A "${showback_app_name}" ${swagger_generate_client_options} $@
+
+# Remove swagger patch files
+rm -f "${swagger_patch_file}"
+rm -f "${showback_swagger_patch_file}"
 
 # Insert code to support extra media types
 refline="transport := httptransport.New"
