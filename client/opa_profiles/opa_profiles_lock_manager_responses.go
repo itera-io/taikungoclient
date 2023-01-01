@@ -136,7 +136,7 @@ OpaProfilesLockManagerBadRequest describes a response with status code 400, with
 Bad Request
 */
 type OpaProfilesLockManagerBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles lock manager bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *OpaProfilesLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesLockManagerBadRequest) GetPayload() interface{} {
+func (o *OpaProfilesLockManagerBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

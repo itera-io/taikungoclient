@@ -136,7 +136,7 @@ ProjectRevisionsEditBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type ProjectRevisionsEditBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project revisions edit bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *ProjectRevisionsEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectRevisionsEditBadRequest) GetPayload() interface{} {
+func (o *ProjectRevisionsEditBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectRevisionsEditBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

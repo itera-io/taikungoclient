@@ -136,7 +136,7 @@ CheckerDNSBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type CheckerDNSBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker Dns bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *CheckerDNSBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/dns][%d] checkerDnsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerDNSBadRequest) GetPayload() interface{} {
+func (o *CheckerDNSBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerDNSBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

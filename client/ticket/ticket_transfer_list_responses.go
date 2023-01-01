@@ -136,7 +136,7 @@ TicketTransferListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type TicketTransferListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket transfer list bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *TicketTransferListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketTransferListBadRequest) GetPayload() interface{} {
+func (o *TicketTransferListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketTransferListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

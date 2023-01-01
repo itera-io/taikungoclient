@@ -138,7 +138,7 @@ ImagesGoogleImagesBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type ImagesGoogleImagesBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images google images bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *ImagesGoogleImagesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesGoogleImagesBadRequest) GetPayload() interface{} {
+func (o *ImagesGoogleImagesBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesGoogleImagesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

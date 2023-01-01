@@ -138,7 +138,7 @@ PartnerPartnerInfoRegistrationBadRequest describes a response with status code 4
 Bad Request
 */
 type PartnerPartnerInfoRegistrationBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner partner info registration bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *PartnerPartnerInfoRegistrationBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerPartnerInfoRegistrationBadRequest) GetPayload() interface{} {
+func (o *PartnerPartnerInfoRegistrationBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerPartnerInfoRegistrationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

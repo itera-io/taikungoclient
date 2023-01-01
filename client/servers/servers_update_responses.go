@@ -136,7 +136,7 @@ ServersUpdateBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type ServersUpdateBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers update bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *ServersUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersUpdateBadRequest) GetPayload() interface{} {
+func (o *ServersUpdateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

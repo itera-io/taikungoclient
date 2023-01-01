@@ -136,7 +136,7 @@ PartnerDeleteWhiteListDomainBadRequest describes a response with status code 400
 Bad Request
 */
 type PartnerDeleteWhiteListDomainBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner delete white list domain bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *PartnerDeleteWhiteListDomainBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerDeleteWhiteListDomainBadRequest) GetPayload() interface{} {
+func (o *PartnerDeleteWhiteListDomainBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerDeleteWhiteListDomainBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

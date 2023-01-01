@@ -138,7 +138,7 @@ OpenstackCreateBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type OpenstackCreateBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack create bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *OpenstackCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackCreateBadRequest) GetPayload() interface{} {
+func (o *OpenstackCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

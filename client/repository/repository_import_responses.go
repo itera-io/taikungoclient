@@ -136,7 +136,7 @@ RepositoryImportBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type RepositoryImportBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this repository import bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *RepositoryImportBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/import][%d] repositoryImportBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *RepositoryImportBadRequest) GetPayload() interface{} {
+func (o *RepositoryImportBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *RepositoryImportBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

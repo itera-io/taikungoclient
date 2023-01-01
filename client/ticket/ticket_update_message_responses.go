@@ -136,7 +136,7 @@ TicketUpdateMessageBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type TicketUpdateMessageBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket update message bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *TicketUpdateMessageBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketUpdateMessageBadRequest) GetPayload() interface{} {
+func (o *TicketUpdateMessageBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketUpdateMessageBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

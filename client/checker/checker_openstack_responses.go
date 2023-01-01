@@ -136,7 +136,7 @@ CheckerOpenstackBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type CheckerOpenstackBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker openstack bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *CheckerOpenstackBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack][%d] checkerOpenstackBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerOpenstackBadRequest) GetPayload() interface{} {
+func (o *CheckerOpenstackBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerOpenstackBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

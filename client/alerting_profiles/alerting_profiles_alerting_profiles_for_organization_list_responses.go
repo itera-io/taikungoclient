@@ -136,7 +136,7 @@ AlertingProfilesAlertingProfilesForOrganizationListBadRequest describes a respon
 Bad Request
 */
 type AlertingProfilesAlertingProfilesForOrganizationListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles alerting profiles for organization list bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *AlertingProfilesAlertingProfilesForOrganizationListBadRequest) String()
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles/list][%d] alertingProfilesAlertingProfilesForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesAlertingProfilesForOrganizationListBadRequest) GetPayload() interface{} {
+func (o *AlertingProfilesAlertingProfilesForOrganizationListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAlertingProfilesForOrganizationListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

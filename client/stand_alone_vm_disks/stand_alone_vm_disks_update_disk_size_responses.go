@@ -136,7 +136,7 @@ StandAloneVMDisksUpdateDiskSizeBadRequest describes a response with status code 
 Bad Request
 */
 type StandAloneVMDisksUpdateDiskSizeBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks update disk size bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *StandAloneVMDisksUpdateDiskSizeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update-size][%d] standAloneVmDisksUpdateDiskSizeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateDiskSizeBadRequest) GetPayload() interface{} {
+func (o *StandAloneVMDisksUpdateDiskSizeBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksUpdateDiskSizeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

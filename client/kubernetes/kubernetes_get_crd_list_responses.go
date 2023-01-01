@@ -136,7 +136,7 @@ KubernetesGetCrdListBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type KubernetesGetCrdListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get crd list bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *KubernetesGetCrdListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetCrdListBadRequest) GetPayload() interface{} {
+func (o *KubernetesGetCrdListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetCrdListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

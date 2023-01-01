@@ -136,7 +136,7 @@ StandAloneIPManagementBadRequest describes a response with status code 400, with
 Bad Request
 */
 type StandAloneIPManagementBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Ip management bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *StandAloneIPManagementBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneIPManagementBadRequest) GetPayload() interface{} {
+func (o *StandAloneIPManagementBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneIPManagementBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

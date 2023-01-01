@@ -136,7 +136,7 @@ StandAloneActionsStopBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type StandAloneActionsStopBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions stop bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *StandAloneActionsStopBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsStopBadRequest) GetPayload() interface{} {
+func (o *StandAloneActionsStopBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsStopBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

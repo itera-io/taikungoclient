@@ -136,7 +136,7 @@ KubernetesGetPodLogsListBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type KubernetesGetPodLogsListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get pod logs list bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *KubernetesGetPodLogsListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/podlogs][%d] kubernetesGetPodLogsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetPodLogsListBadRequest) GetPayload() interface{} {
+func (o *KubernetesGetPodLogsListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetPodLogsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

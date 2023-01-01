@@ -136,7 +136,7 @@ AlertingProfilesVerifyWebhookBadRequest describes a response with status code 40
 Bad Request
 */
 type AlertingProfilesVerifyWebhookBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles verify webhook bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *AlertingProfilesVerifyWebhookBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesVerifyWebhookBadRequest) GetPayload() interface{} {
+func (o *AlertingProfilesVerifyWebhookBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesVerifyWebhookBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

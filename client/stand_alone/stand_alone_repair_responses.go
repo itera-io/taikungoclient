@@ -136,7 +136,7 @@ StandAloneRepairBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type StandAloneRepairBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone repair bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *StandAloneRepairBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneRepairBadRequest) GetPayload() interface{} {
+func (o *StandAloneRepairBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneRepairBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

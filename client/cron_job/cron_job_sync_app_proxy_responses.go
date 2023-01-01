@@ -136,7 +136,7 @@ CronJobSyncAppProxyBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type CronJobSyncAppProxyBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job sync app proxy bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *CronJobSyncAppProxyBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-app-proxy][%d] cronJobSyncAppProxyBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobSyncAppProxyBadRequest) GetPayload() interface{} {
+func (o *CronJobSyncAppProxyBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobSyncAppProxyBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -138,7 +138,7 @@ PrometheusBillingListBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type PrometheusBillingListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus billing list bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *PrometheusBillingListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusBillingListBadRequest) GetPayload() interface{} {
+func (o *PrometheusBillingListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusBillingListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -138,7 +138,7 @@ AccessProfilesListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type AccessProfilesListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles list bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *AccessProfilesListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AccessProfilesListBadRequest) GetPayload() interface{} {
+func (o *AccessProfilesListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

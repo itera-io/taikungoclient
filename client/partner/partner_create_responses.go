@@ -136,7 +136,7 @@ PartnerCreateBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type PartnerCreateBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner create bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *PartnerCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerCreateBadRequest) GetPayload() interface{} {
+func (o *PartnerCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -136,7 +136,7 @@ PreDefinedQueriesDeletePrometheusDashboardBadRequest describes a response with s
 Bad Request
 */
 type PreDefinedQueriesDeletePrometheusDashboardBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this pre defined queries delete prometheus dashboard bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PreDefinedQueriesDeletePrometheusDashboardBadRequest) GetPayload() interface{} {
+func (o *PreDefinedQueriesDeletePrometheusDashboardBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesDeletePrometheusDashboardBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

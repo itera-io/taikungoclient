@@ -126,7 +126,7 @@ OrganizationsExportCsvBadRequest describes a response with status code 400, with
 Bad Request
 */
 type OrganizationsExportCsvBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations export csv bad request response has a 2xx status code
@@ -162,14 +162,16 @@ func (o *OrganizationsExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsExportCsvBadRequest) GetPayload() interface{} {
+func (o *OrganizationsExportCsvBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsExportCsvBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

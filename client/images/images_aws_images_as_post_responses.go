@@ -138,7 +138,7 @@ ImagesAwsImagesAsPostBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type ImagesAwsImagesAsPostBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images aws images as post bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *ImagesAwsImagesAsPostBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/aws][%d] imagesAwsImagesAsPostBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesAwsImagesAsPostBadRequest) GetPayload() interface{} {
+func (o *ImagesAwsImagesAsPostBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesAwsImagesAsPostBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

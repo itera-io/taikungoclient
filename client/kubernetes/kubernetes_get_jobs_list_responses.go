@@ -138,7 +138,7 @@ KubernetesGetJobsListBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesGetJobsListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get jobs list bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *KubernetesGetJobsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/jobs][%d] kubernetesGetJobsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetJobsListBadRequest) GetPayload() interface{} {
+func (o *KubernetesGetJobsListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetJobsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

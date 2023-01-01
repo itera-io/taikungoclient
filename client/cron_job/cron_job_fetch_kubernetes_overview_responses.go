@@ -136,7 +136,7 @@ CronJobFetchKubernetesOverviewBadRequest describes a response with status code 4
 Bad Request
 */
 type CronJobFetchKubernetesOverviewBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes overview bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *CronJobFetchKubernetesOverviewBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesOverviewBadRequest) GetPayload() interface{} {
+func (o *CronJobFetchKubernetesOverviewBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobFetchKubernetesOverviewBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

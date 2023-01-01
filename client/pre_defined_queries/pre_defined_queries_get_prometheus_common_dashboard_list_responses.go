@@ -136,7 +136,7 @@ PreDefinedQueriesGetPrometheusCommonDashboardListBadRequest describes a response
 Bad Request
 */
 type PreDefinedQueriesGetPrometheusCommonDashboardListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus common dashboard list bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *PreDefinedQueriesGetPrometheusCommonDashboardListBadRequest) String() s
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/common][%d] preDefinedQueriesGetPrometheusCommonDashboardListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusCommonDashboardListBadRequest) GetPayload() interface{} {
+func (o *PreDefinedQueriesGetPrometheusCommonDashboardListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesGetPrometheusCommonDashboardListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

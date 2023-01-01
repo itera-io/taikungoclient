@@ -136,7 +136,7 @@ UsersToggleDemoModeBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type UsersToggleDemoModeBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users toggle demo mode bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *UsersToggleDemoModeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/toggle-demo-mode][%d] usersToggleDemoModeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersToggleDemoModeBadRequest) GetPayload() interface{} {
+func (o *UsersToggleDemoModeBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersToggleDemoModeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

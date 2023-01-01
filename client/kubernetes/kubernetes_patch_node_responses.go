@@ -136,7 +136,7 @@ KubernetesPatchNodeBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type KubernetesPatchNodeBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch node bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *KubernetesPatchNodeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchNodeBadRequest) GetPayload() interface{} {
+func (o *KubernetesPatchNodeBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchNodeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -136,7 +136,7 @@ ProjectAppUninstallBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type ProjectAppUninstallBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app uninstall bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *ProjectAppUninstallBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectApp/uninstall/{projectAppId}][%d] projectAppUninstallBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectAppUninstallBadRequest) GetPayload() interface{} {
+func (o *ProjectAppUninstallBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppUninstallBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

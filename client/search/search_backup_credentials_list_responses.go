@@ -138,7 +138,7 @@ SearchBackupCredentialsListBadRequest describes a response with status code 400,
 Bad Request
 */
 type SearchBackupCredentialsListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search backup credentials list bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *SearchBackupCredentialsListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchBackupCredentialsListBadRequest) GetPayload() interface{} {
+func (o *SearchBackupCredentialsListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchBackupCredentialsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

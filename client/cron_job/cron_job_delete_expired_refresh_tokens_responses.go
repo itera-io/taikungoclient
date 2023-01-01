@@ -136,7 +136,7 @@ CronJobDeleteExpiredRefreshTokensBadRequest describes a response with status cod
 Bad Request
 */
 type CronJobDeleteExpiredRefreshTokensBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete expired refresh tokens bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *CronJobDeleteExpiredRefreshTokensBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/refresh-tokens][%d] cronJobDeleteExpiredRefreshTokensBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredRefreshTokensBadRequest) GetPayload() interface{} {
+func (o *CronJobDeleteExpiredRefreshTokensBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredRefreshTokensBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -136,7 +136,7 @@ AutoscalingDisableAutoscalingBadRequest describes a response with status code 40
 Bad Request
 */
 type AutoscalingDisableAutoscalingBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this autoscaling disable autoscaling bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *AutoscalingDisableAutoscalingBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/disable][%d] autoscalingDisableAutoscalingBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AutoscalingDisableAutoscalingBadRequest) GetPayload() interface{} {
+func (o *AutoscalingDisableAutoscalingBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AutoscalingDisableAutoscalingBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -193,7 +193,7 @@ DNSServersDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type DNSServersDeleteBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this dns servers delete bad request response has a 2xx status code
@@ -229,14 +229,16 @@ func (o *DNSServersDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *DNSServersDeleteBadRequest) GetPayload() interface{} {
+func (o *DNSServersDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *DNSServersDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

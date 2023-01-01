@@ -138,7 +138,7 @@ ProjectGroupsCreateBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type ProjectGroupsCreateBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project groups create bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *ProjectGroupsCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectGroupsCreateBadRequest) GetPayload() interface{} {
+func (o *ProjectGroupsCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectGroupsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

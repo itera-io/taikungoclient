@@ -138,7 +138,7 @@ ImagesGetSelectedImagesForProjectBadRequest describes a response with status cod
 Bad Request
 */
 type ImagesGetSelectedImagesForProjectBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images get selected images for project bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *ImagesGetSelectedImagesForProjectBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/projects/list][%d] imagesGetSelectedImagesForProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesGetSelectedImagesForProjectBadRequest) GetPayload() interface{} {
+func (o *ImagesGetSelectedImagesForProjectBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesGetSelectedImagesForProjectBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

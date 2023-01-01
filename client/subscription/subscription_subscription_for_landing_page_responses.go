@@ -136,7 +136,7 @@ SubscriptionSubscriptionForLandingPageBadRequest describes a response with statu
 Bad Request
 */
 type SubscriptionSubscriptionForLandingPageBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription subscription for landing page bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *SubscriptionSubscriptionForLandingPageBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForLandingPageBadRequest) GetPayload() interface{} {
+func (o *SubscriptionSubscriptionForLandingPageBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionSubscriptionForLandingPageBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

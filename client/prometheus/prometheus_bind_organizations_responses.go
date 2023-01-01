@@ -136,7 +136,7 @@ PrometheusBindOrganizationsBadRequest describes a response with status code 400,
 Bad Request
 */
 type PrometheusBindOrganizationsBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus bind organizations bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *PrometheusBindOrganizationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusBindOrganizationsBadRequest) GetPayload() interface{} {
+func (o *PrometheusBindOrganizationsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusBindOrganizationsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

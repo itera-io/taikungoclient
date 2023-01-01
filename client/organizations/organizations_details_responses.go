@@ -138,7 +138,7 @@ OrganizationsDetailsBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type OrganizationsDetailsBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations details bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *OrganizationsDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsDetailsBadRequest) GetPayload() interface{} {
+func (o *OrganizationsDetailsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsDetailsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -138,7 +138,7 @@ KubernetesGetStorageClassesBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesGetStorageClassesBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get storage classes bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *KubernetesGetStorageClassesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetStorageClassesBadRequest) GetPayload() interface{} {
+func (o *KubernetesGetStorageClassesBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetStorageClassesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

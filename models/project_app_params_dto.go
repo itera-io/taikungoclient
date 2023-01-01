@@ -17,14 +17,14 @@ import (
 // swagger:model ProjectAppParamsDto
 type ProjectAppParamsDto struct {
 
-	// is changeable
-	IsChangeable bool `json:"isChangeable"`
+	// is editable after installation
+	IsEditableAfterInstallation bool `json:"isEditableAfterInstallation"`
+
+	// is editable when installing
+	IsEditableWhenInstalling bool `json:"isEditableWhenInstalling"`
 
 	// is mandatory
 	IsMandatory bool `json:"isMandatory"`
-
-	// is readonly
-	IsReadonly bool `json:"isReadonly"`
 
 	// key
 	Key string `json:"key,omitempty"`

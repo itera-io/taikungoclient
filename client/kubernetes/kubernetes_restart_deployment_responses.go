@@ -136,7 +136,7 @@ KubernetesRestartDeploymentBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesRestartDeploymentBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes restart deployment bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *KubernetesRestartDeploymentBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesRestartDeploymentBadRequest) GetPayload() interface{} {
+func (o *KubernetesRestartDeploymentBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesRestartDeploymentBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

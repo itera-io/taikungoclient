@@ -136,7 +136,7 @@ CheckerSSHBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type CheckerSSHBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker Ssh bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *CheckerSSHBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerSSHBadRequest) GetPayload() interface{} {
+func (o *CheckerSSHBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerSSHBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

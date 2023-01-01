@@ -138,7 +138,7 @@ OpenstackQuotasBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type OpenstackQuotasBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack quotas bad request response has a 2xx status code
@@ -174,14 +174,16 @@ func (o *OpenstackQuotasBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackQuotasBadRequest) GetPayload() interface{} {
+func (o *OpenstackQuotasBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackQuotasBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -75,7 +75,7 @@ KubernetesGetSupportedListOK describes a response with status code 200, with def
 Success
 */
 type KubernetesGetSupportedListOK struct {
-	Payload []string
+	Payload []*models.KubernetesVersionListDto
 }
 
 // IsSuccess returns true when this kubernetes get supported list o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KubernetesGetSupportedListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesGetSupportedListOK) GetPayload() []string {
+func (o *KubernetesGetSupportedListOK) GetPayload() []*models.KubernetesVersionListDto {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KubernetesGetSupportedListBadRequest describes a response with status code 400, 
 Bad Request
 */
 type KubernetesGetSupportedListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get supported list bad request response has a 2xx status code
@@ -172,14 +172,16 @@ func (o *KubernetesGetSupportedListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetSupportedListBadRequest) GetPayload() interface{} {
+func (o *KubernetesGetSupportedListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetSupportedListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

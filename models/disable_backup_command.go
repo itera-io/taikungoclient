@@ -19,9 +19,6 @@ type DisableBackupCommand struct {
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
-
-	// s3 credential Id
-	S3CredentialID int32 `json:"s3CredentialId,omitempty"`
 }
 
 // Validate validates this disable backup command
