@@ -7,7 +7,7 @@ on:
         required: true
         type: string
       force:
-        required: true
+        required: false
         type: boolean
         description: 'Force client generation'
         default: false
