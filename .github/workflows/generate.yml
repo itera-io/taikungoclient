@@ -6,6 +6,11 @@ on:
       branch:
         required: true
         type: string
+      force:
+        required: false
+        type: boolean
+        description: 'Force client generation'
+        default: false
     secrets:
       username:
         required: true
@@ -20,9 +25,9 @@ jobs:
   build:
     name: Generate
     runs-on: self-hosted
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ inputs.branch }}
 
@@ -45,7 +50,8 @@ jobs:
       - name: Should regenerate client
         id: check
         shell: bash
-        run: ./.github/should_regenerate_client.sh
+        run: |
+          [[ ${{ inputs.force }} = true ]] || ./.github/should_regenerate_client.sh
         continue-on-error: true
 
       - name: Setup Git
@@ -57,7 +63,7 @@ jobs:
 
       - name: Set up Go
         if: steps.check.outcome == 'success'
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
           go-version: '1.17'
 
