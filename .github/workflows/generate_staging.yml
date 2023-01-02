@@ -15,7 +15,7 @@ jobs:
     uses: itera-io/taikungoclient/.github/workflows/generate.yml@main
     with:
       branch: staging
-      force: ${{ inputs.force }}
+      force: ${{ inputs.force != '' && inputs.force }}
     secrets:
       username: ${{ secrets.SWAGGER_USERNAME }}
       password: ${{ secrets.SWAGGER_PASSWORD }}
