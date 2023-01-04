@@ -136,7 +136,7 @@ CheckerCronBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type CheckerCronBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker cron bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *CheckerCronBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerCronBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CheckerCronBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerCronBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

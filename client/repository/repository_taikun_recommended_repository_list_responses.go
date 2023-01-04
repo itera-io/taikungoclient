@@ -136,7 +136,7 @@ RepositoryTaikunRecommendedRepositoryListBadRequest describes a response with st
 Bad Request
 */
 type RepositoryTaikunRecommendedRepositoryListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository taikun recommended repository list bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

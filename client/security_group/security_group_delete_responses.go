@@ -136,7 +136,7 @@ SecurityGroupDeleteBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type SecurityGroupDeleteBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this security group delete bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *SecurityGroupDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SecurityGroupDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SecurityGroupDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SecurityGroupDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -136,7 +136,7 @@ SlackDeleteMultipleBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type SlackDeleteMultipleBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this slack delete multiple bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *SlackDeleteMultipleBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SlackDeleteMultipleBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SlackDeleteMultipleBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SlackDeleteMultipleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

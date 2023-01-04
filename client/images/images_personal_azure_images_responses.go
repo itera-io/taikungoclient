@@ -136,7 +136,7 @@ ImagesPersonalAzureImagesBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ImagesPersonalAzureImagesBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images personal azure images bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *ImagesPersonalAzureImagesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesPersonalAzureImagesBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ImagesPersonalAzureImagesBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesPersonalAzureImagesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

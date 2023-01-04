@@ -138,7 +138,7 @@ CloudCredentialsAllFlavorsBadRequest describes a response with status code 400, 
 Bad Request
 */
 type CloudCredentialsAllFlavorsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials all flavors bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *CloudCredentialsAllFlavorsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsAllFlavorsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CloudCredentialsAllFlavorsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsAllFlavorsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -22,6 +22,9 @@ type OpenstackCredentialsListDto struct {
 	// availability zone
 	AvailabilityZone string `json:"availabilityZone,omitempty"`
 
+	// continent name
+	ContinentName string `json:"continentName,omitempty"`
+
 	// created at
 	CreatedAt string `json:"createdAt,omitempty"`
 
@@ -39,6 +42,9 @@ type OpenstackCredentialsListDto struct {
 
 	// internal subnet Id
 	InternalSubnetID string `json:"internalSubnetId,omitempty"`
+
+	// is admin
+	IsAdmin bool `json:"isAdmin"`
 
 	// is default
 	IsDefault bool `json:"isDefault"`

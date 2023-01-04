@@ -22,6 +22,9 @@ type ServerListDto struct {
 	// autoscaling group
 	AutoscalingGroup string `json:"autoscalingGroup,omitempty"`
 
+	// availability zone
+	AvailabilityZone string `json:"availabilityZone,omitempty"`
+
 	// aws host name
 	AwsHostName string `json:"awsHostName,omitempty"`
 

@@ -136,7 +136,7 @@ BackupDisableBackupBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type BackupDisableBackupBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup disable backup bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *BackupDisableBackupBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/disablebackup][%d] backupDisableBackupBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupDisableBackupBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *BackupDisableBackupBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupDisableBackupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

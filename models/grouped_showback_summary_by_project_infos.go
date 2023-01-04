@@ -14,20 +14,26 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// KubernetesEventsList kubernetes events list
+// GroupedShowbackSummaryByProjectInfos grouped showback summary by project infos
 //
-// swagger:model KubernetesEventsList
-type KubernetesEventsList struct {
+// swagger:model GroupedShowbackSummaryByProjectInfos
+type GroupedShowbackSummaryByProjectInfos struct {
+
+	// credential name
+	CredentialName string `json:"credentialName,omitempty"`
 
 	// data
-	Data []*KubernetesEventsDto `json:"data"`
+	Data []*GroupedShowbackSummariesByProjectDto `json:"data"`
 
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
+	// rule name
+	RuleName string `json:"ruleName,omitempty"`
+
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
 }
 
-// Validate validates this kubernetes events list
-func (m *KubernetesEventsList) Validate(formats strfmt.Registry) error {
+// Validate validates this grouped showback summary by project infos
+func (m *GroupedShowbackSummaryByProjectInfos) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateData(formats); err != nil {
@@ -40,7 +46,7 @@ func (m *KubernetesEventsList) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *KubernetesEventsList) validateData(formats strfmt.Registry) error {
+func (m *GroupedShowbackSummaryByProjectInfos) validateData(formats strfmt.Registry) error {
 	if swag.IsZero(m.Data) { // not required
 		return nil
 	}
@@ -66,8 +72,8 @@ func (m *KubernetesEventsList) validateData(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this kubernetes events list based on the context it is used
-func (m *KubernetesEventsList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this grouped showback summary by project infos based on the context it is used
+func (m *GroupedShowbackSummaryByProjectInfos) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateData(ctx, formats); err != nil {
@@ -80,7 +86,7 @@ func (m *KubernetesEventsList) ContextValidate(ctx context.Context, formats strf
 	return nil
 }
 
-func (m *KubernetesEventsList) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+func (m *GroupedShowbackSummaryByProjectInfos) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Data); i++ {
 
@@ -101,7 +107,7 @@ func (m *KubernetesEventsList) contextValidateData(ctx context.Context, formats 
 }
 
 // MarshalBinary interface implementation
-func (m *KubernetesEventsList) MarshalBinary() ([]byte, error) {
+func (m *GroupedShowbackSummaryByProjectInfos) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -109,8 +115,8 @@ func (m *KubernetesEventsList) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *KubernetesEventsList) UnmarshalBinary(b []byte) error {
-	var res KubernetesEventsList
+func (m *GroupedShowbackSummaryByProjectInfos) UnmarshalBinary(b []byte) error {
+	var res GroupedShowbackSummaryByProjectInfos
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

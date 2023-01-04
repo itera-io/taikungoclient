@@ -40,8 +40,6 @@ type ClientService interface {
 
 	ProjectsDescribe(params *ProjectsDescribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsDescribeOK, error)
 
-	ProjectsEnableAutoscaling(params *ProjectsEnableAutoscalingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsEnableAutoscalingOK, error)
-
 	ProjectsExtendLifeTime(params *ProjectsExtendLifeTimeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsExtendLifeTimeOK, error)
 
 	ProjectsFullSpotWorkersOperations(params *ProjectsFullSpotWorkersOperationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsFullSpotWorkersOperationsOK, error)
@@ -261,45 +259,6 @@ func (a *Client) ProjectsDescribe(params *ProjectsDescribeParams, authInfo runti
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Projects_Describe: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-ProjectsEnableAutoscaling enables autoscaling
-*/
-func (a *Client) ProjectsEnableAutoscaling(params *ProjectsEnableAutoscalingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsEnableAutoscalingOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsEnableAutoscalingParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Projects_EnableAutoscaling",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/Projects/enable/autoscaling",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &ProjectsEnableAutoscalingReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*ProjectsEnableAutoscalingOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Projects_EnableAutoscaling: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

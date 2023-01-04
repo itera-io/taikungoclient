@@ -15,6 +15,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/alerting_profiles"
 	"github.com/itera-io/taikungoclient/client/allowed_host"
 	"github.com/itera-io/taikungoclient/client/auth"
+	"github.com/itera-io/taikungoclient/client/autoscaling"
 	"github.com/itera-io/taikungoclient/client/aws"
 	"github.com/itera-io/taikungoclient/client/azure"
 	"github.com/itera-io/taikungoclient/client/backup"
@@ -40,6 +41,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/pre_defined_queries"
 	"github.com/itera-io/taikungoclient/client/project_app"
 	"github.com/itera-io/taikungoclient/client/project_groups"
+	"github.com/itera-io/taikungoclient/client/project_infracosts"
 	"github.com/itera-io/taikungoclient/client/project_quotas"
 	"github.com/itera-io/taikungoclient/client/projects"
 	"github.com/itera-io/taikungoclient/client/prometheus"
@@ -124,6 +126,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.AlertingProfiles = alerting_profiles.New(transport, formats)
 	cli.AllowedHost = allowed_host.New(transport, formats)
 	cli.Auth = auth.New(transport, formats)
+	cli.Autoscaling = autoscaling.New(transport, formats)
 	cli.Aws = aws.New(transport, formats)
 	cli.Azure = azure.New(transport, formats)
 	cli.Backup = backup.New(transport, formats)
@@ -149,6 +152,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.PreDefinedQueries = pre_defined_queries.New(transport, formats)
 	cli.ProjectApp = project_app.New(transport, formats)
 	cli.ProjectGroups = project_groups.New(transport, formats)
+	cli.ProjectInfracosts = project_infracosts.New(transport, formats)
 	cli.ProjectQuotas = project_quotas.New(transport, formats)
 	cli.Projects = projects.New(transport, formats)
 	cli.Prometheus = prometheus.New(transport, formats)
@@ -221,6 +225,8 @@ type Taikungoclient struct {
 
 	Auth auth.ClientService
 
+	Autoscaling autoscaling.ClientService
+
 	Aws aws.ClientService
 
 	Azure azure.ClientService
@@ -271,6 +277,8 @@ type Taikungoclient struct {
 
 	ProjectGroups project_groups.ClientService
 
+	ProjectInfracosts project_infracosts.ClientService
+
 	ProjectQuotas project_quotas.ClientService
 
 	Projects projects.ClientService
@@ -318,6 +326,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.AlertingProfiles.SetTransport(transport)
 	c.AllowedHost.SetTransport(transport)
 	c.Auth.SetTransport(transport)
+	c.Autoscaling.SetTransport(transport)
 	c.Aws.SetTransport(transport)
 	c.Azure.SetTransport(transport)
 	c.Backup.SetTransport(transport)
@@ -343,6 +352,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.PreDefinedQueries.SetTransport(transport)
 	c.ProjectApp.SetTransport(transport)
 	c.ProjectGroups.SetTransport(transport)
+	c.ProjectInfracosts.SetTransport(transport)
 	c.ProjectQuotas.SetTransport(transport)
 	c.Projects.SetTransport(transport)
 	c.Prometheus.SetTransport(transport)

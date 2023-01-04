@@ -193,7 +193,7 @@ ProjectGroupsDeleteBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type ProjectGroupsDeleteBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project groups delete bad request response has a 2xx status code
@@ -229,16 +229,14 @@ func (o *ProjectGroupsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectGroupsDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ProjectGroupsDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectGroupsDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

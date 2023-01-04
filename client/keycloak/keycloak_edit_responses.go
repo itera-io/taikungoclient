@@ -136,7 +136,7 @@ KeycloakEditBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type KeycloakEditBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this keycloak edit bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *KeycloakEditBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KeycloakEditBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KeycloakEditBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KeycloakEditBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

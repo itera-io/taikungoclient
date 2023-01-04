@@ -28,6 +28,9 @@ type UserForListDto struct {
 	// customer Id
 	CustomerID string `json:"customerId,omitempty"`
 
+	// demo mode enabled
+	DemoModeEnabled bool `json:"demoModeEnabled"`
+
 	// display name
 	DisplayName string `json:"displayName"`
 

@@ -136,7 +136,7 @@ CheckerAzureBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type CheckerAzureBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker azure bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *CheckerAzureBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerAzureBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CheckerAzureBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerAzureBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

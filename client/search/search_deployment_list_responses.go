@@ -138,7 +138,7 @@ SearchDeploymentListBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type SearchDeploymentListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search deployment list bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *SearchDeploymentListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/deployments][%d] searchDeploymentListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchDeploymentListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SearchDeploymentListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchDeploymentListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

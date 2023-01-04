@@ -193,7 +193,7 @@ ServersDeleteBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type ServersDeleteBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers delete bad request response has a 2xx status code
@@ -229,16 +229,14 @@ func (o *ServersDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ServersDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ServersDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -22,6 +22,9 @@ type ServerForCreateDto struct {
 	// autoscaling group
 	AutoscalingGroup string `json:"autoscalingGroup,omitempty"`
 
+	// availability zone
+	AvailabilityZone string `json:"availabilityZone,omitempty"`
+
 	// count
 	Count int32 `json:"count,omitempty"`
 

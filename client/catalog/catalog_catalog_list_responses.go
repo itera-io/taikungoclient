@@ -138,7 +138,7 @@ CatalogCatalogListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type CatalogCatalogListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog catalog list bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *CatalogCatalogListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/list][%d] catalogCatalogListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogCatalogListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CatalogCatalogListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCatalogListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

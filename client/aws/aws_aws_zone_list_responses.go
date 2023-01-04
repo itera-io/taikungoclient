@@ -75,7 +75,7 @@ AwsAwsZoneListOK describes a response with status code 200, with default header 
 Success
 */
 type AwsAwsZoneListOK struct {
-	Payload []string
+	Payload *models.AzResult
 }
 
 // IsSuccess returns true when this aws aws zone list o k response has a 2xx status code
@@ -111,14 +111,16 @@ func (o *AwsAwsZoneListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListOK  %+v", 200, o.Payload)
 }
 
-func (o *AwsAwsZoneListOK) GetPayload() []string {
+func (o *AwsAwsZoneListOK) GetPayload() *models.AzResult {
 	return o.Payload
 }
 
 func (o *AwsAwsZoneListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.AzResult)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -136,7 +138,7 @@ AwsAwsZoneListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AwsAwsZoneListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws aws zone list bad request response has a 2xx status code
@@ -172,16 +174,14 @@ func (o *AwsAwsZoneListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsAwsZoneListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AwsAwsZoneListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsAwsZoneListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

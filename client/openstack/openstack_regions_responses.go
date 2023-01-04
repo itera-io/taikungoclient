@@ -136,7 +136,7 @@ OpenstackRegionsBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type OpenstackRegionsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack regions bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *OpenstackRegionsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackRegionsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OpenstackRegionsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackRegionsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

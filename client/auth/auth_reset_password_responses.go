@@ -136,7 +136,7 @@ AuthResetPasswordBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AuthResetPasswordBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this auth reset password bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *AuthResetPasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AuthResetPasswordBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AuthResetPasswordBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AuthResetPasswordBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

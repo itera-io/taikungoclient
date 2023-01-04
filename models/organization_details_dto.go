@@ -65,7 +65,7 @@ type OrganizationDetailsDto struct {
 	Name string `json:"name,omitempty"`
 
 	// partner
-	Partner *PartnerDetailsDto `json:"partner,omitempty"`
+	Partner *PartnerDetailsForOrganizationsDto `json:"partner,omitempty"`
 
 	// partner Id
 	PartnerID int32 `json:"partnerId,omitempty"`

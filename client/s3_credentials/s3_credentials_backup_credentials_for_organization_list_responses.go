@@ -136,7 +136,7 @@ S3CredentialsBackupCredentialsForOrganizationListBadRequest describes a response
 Bad Request
 */
 type S3CredentialsBackupCredentialsForOrganizationListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this s3 credentials backup credentials for organization list bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *S3CredentialsBackupCredentialsForOrganizationListBadRequest) String() s
 	return fmt.Sprintf("[GET /api/v{v}/S3Credentials][%d] s3CredentialsBackupCredentialsForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsBackupCredentialsForOrganizationListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *S3CredentialsBackupCredentialsForOrganizationListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *S3CredentialsBackupCredentialsForOrganizationListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

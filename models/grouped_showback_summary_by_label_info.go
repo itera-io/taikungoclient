@@ -14,20 +14,26 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ListUserNotifications list user notifications
+// GroupedShowbackSummaryByLabelInfo grouped showback summary by label info
 //
-// swagger:model ListUserNotifications
-type ListUserNotifications struct {
+// swagger:model GroupedShowbackSummaryByLabelInfo
+type GroupedShowbackSummaryByLabelInfo struct {
+
+	// credential name
+	CredentialName string `json:"credentialName,omitempty"`
 
 	// data
-	Data []*TaikunNotification `json:"data"`
+	Data []*GroupedShowbackSummariesByLabelDto `json:"data"`
 
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
+	// rule name
+	RuleName string `json:"ruleName,omitempty"`
+
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
 }
 
-// Validate validates this list user notifications
-func (m *ListUserNotifications) Validate(formats strfmt.Registry) error {
+// Validate validates this grouped showback summary by label info
+func (m *GroupedShowbackSummaryByLabelInfo) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateData(formats); err != nil {
@@ -40,7 +46,7 @@ func (m *ListUserNotifications) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ListUserNotifications) validateData(formats strfmt.Registry) error {
+func (m *GroupedShowbackSummaryByLabelInfo) validateData(formats strfmt.Registry) error {
 	if swag.IsZero(m.Data) { // not required
 		return nil
 	}
@@ -66,8 +72,8 @@ func (m *ListUserNotifications) validateData(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this list user notifications based on the context it is used
-func (m *ListUserNotifications) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this grouped showback summary by label info based on the context it is used
+func (m *GroupedShowbackSummaryByLabelInfo) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateData(ctx, formats); err != nil {
@@ -80,7 +86,7 @@ func (m *ListUserNotifications) ContextValidate(ctx context.Context, formats str
 	return nil
 }
 
-func (m *ListUserNotifications) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+func (m *GroupedShowbackSummaryByLabelInfo) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Data); i++ {
 
@@ -101,7 +107,7 @@ func (m *ListUserNotifications) contextValidateData(ctx context.Context, formats
 }
 
 // MarshalBinary interface implementation
-func (m *ListUserNotifications) MarshalBinary() ([]byte, error) {
+func (m *GroupedShowbackSummaryByLabelInfo) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -109,8 +115,8 @@ func (m *ListUserNotifications) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *ListUserNotifications) UnmarshalBinary(b []byte) error {
-	var res ListUserNotifications
+func (m *GroupedShowbackSummaryByLabelInfo) UnmarshalBinary(b []byte) error {
+	var res GroupedShowbackSummaryByLabelInfo
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

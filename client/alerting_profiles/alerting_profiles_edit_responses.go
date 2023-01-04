@@ -138,7 +138,7 @@ AlertingProfilesEditBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type AlertingProfilesEditBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles edit bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *AlertingProfilesEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesEditBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AlertingProfilesEditBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingProfilesEditBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

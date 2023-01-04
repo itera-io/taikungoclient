@@ -138,7 +138,7 @@ UserGroupsListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type UserGroupsListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups list bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *UserGroupsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list][%d] userGroupsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserGroupsListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *UserGroupsListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -19,8 +19,14 @@ import (
 // swagger:model AzureCredentialsListDto
 type AzureCredentialsListDto struct {
 
-	// availability zone
-	AvailabilityZone string `json:"availabilityZone,omitempty"`
+	// availability zones
+	AvailabilityZones []string `json:"availabilityZones"`
+
+	// continent name
+	ContinentName string `json:"continentName,omitempty"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
 
 	// created by
 	CreatedBy string `json:"createdBy,omitempty"`

@@ -136,7 +136,7 @@ UserTokenBindUnbindBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type UserTokenBindUnbindBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token bind unbind bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *UserTokenBindUnbindBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserTokenBindUnbindBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *UserTokenBindUnbindBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserTokenBindUnbindBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -62,6 +62,11 @@ ShowbackSummariesGroupedListParams contains all the parameters to send to the AP
 */
 type ShowbackSummariesGroupedListParams struct {
 
+	// FromDate.
+	//
+	// Format: date-time
+	FromDate *strfmt.DateTime
+
 	// IsDeleted.
 	IsDeleted *bool
 
@@ -72,6 +77,11 @@ type ShowbackSummariesGroupedListParams struct {
 
 	// PeriodDuration.
 	PeriodDuration *string
+
+	// ToDate.
+	//
+	// Format: date-time
+	ToDate *strfmt.DateTime
 
 	// V.
 	V string
@@ -129,6 +139,17 @@ func (o *ShowbackSummariesGroupedListParams) SetHTTPClient(client *http.Client) 
 	o.HTTPClient = client
 }
 
+// WithFromDate adds the fromDate to the showback summaries grouped list params
+func (o *ShowbackSummariesGroupedListParams) WithFromDate(fromDate *strfmt.DateTime) *ShowbackSummariesGroupedListParams {
+	o.SetFromDate(fromDate)
+	return o
+}
+
+// SetFromDate adds the fromDate to the showback summaries grouped list params
+func (o *ShowbackSummariesGroupedListParams) SetFromDate(fromDate *strfmt.DateTime) {
+	o.FromDate = fromDate
+}
+
 // WithIsDeleted adds the isDeleted to the showback summaries grouped list params
 func (o *ShowbackSummariesGroupedListParams) WithIsDeleted(isDeleted *bool) *ShowbackSummariesGroupedListParams {
 	o.SetIsDeleted(isDeleted)
@@ -162,6 +183,17 @@ func (o *ShowbackSummariesGroupedListParams) SetPeriodDuration(periodDuration *s
 	o.PeriodDuration = periodDuration
 }
 
+// WithToDate adds the toDate to the showback summaries grouped list params
+func (o *ShowbackSummariesGroupedListParams) WithToDate(toDate *strfmt.DateTime) *ShowbackSummariesGroupedListParams {
+	o.SetToDate(toDate)
+	return o
+}
+
+// SetToDate adds the toDate to the showback summaries grouped list params
+func (o *ShowbackSummariesGroupedListParams) SetToDate(toDate *strfmt.DateTime) {
+	o.ToDate = toDate
+}
+
 // WithV adds the v to the showback summaries grouped list params
 func (o *ShowbackSummariesGroupedListParams) WithV(v string) *ShowbackSummariesGroupedListParams {
 	o.SetV(v)
@@ -180,6 +212,23 @@ func (o *ShowbackSummariesGroupedListParams) WriteToRequest(r runtime.ClientRequ
 		return err
 	}
 	var res []error
+
+	if o.FromDate != nil {
+
+		// query param fromDate
+		var qrFromDate strfmt.DateTime
+
+		if o.FromDate != nil {
+			qrFromDate = *o.FromDate
+		}
+		qFromDate := qrFromDate.String()
+		if qFromDate != "" {
+
+			if err := r.SetQueryParam("fromDate", qFromDate); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.IsDeleted != nil {
 
@@ -227,6 +276,23 @@ func (o *ShowbackSummariesGroupedListParams) WriteToRequest(r runtime.ClientRequ
 		if qPeriodDuration != "" {
 
 			if err := r.SetQueryParam("periodDuration", qPeriodDuration); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ToDate != nil {
+
+		// query param toDate
+		var qrToDate strfmt.DateTime
+
+		if o.ToDate != nil {
+			qrToDate = *o.ToDate
+		}
+		qToDate := qrToDate.String()
+		if qToDate != "" {
+
+			if err := r.SetQueryParam("toDate", qToDate); err != nil {
 				return err
 			}
 		}

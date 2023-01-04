@@ -40,8 +40,8 @@ type ProjectListForAlert struct {
 	// kubernetes alerts
 	KubernetesAlerts []*KubernetesAlertDto `json:"kubernetesAlerts"`
 
-	// monitoring credentials
-	MonitoringCredentials []*MonitoringCredentialsListDto `json:"monitoringCredentials"`
+	// monitoring credential
+	MonitoringCredential *MonitoringCredentialsListDto `json:"monitoringCredential,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`
@@ -64,7 +64,7 @@ func (m *ProjectListForAlert) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateMonitoringCredentials(formats); err != nil {
+	if err := m.validateMonitoringCredential(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -100,27 +100,20 @@ func (m *ProjectListForAlert) validateKubernetesAlerts(formats strfmt.Registry) 
 	return nil
 }
 
-func (m *ProjectListForAlert) validateMonitoringCredentials(formats strfmt.Registry) error {
-	if swag.IsZero(m.MonitoringCredentials) { // not required
+func (m *ProjectListForAlert) validateMonitoringCredential(formats strfmt.Registry) error {
+	if swag.IsZero(m.MonitoringCredential) { // not required
 		return nil
 	}
 
-	for i := 0; i < len(m.MonitoringCredentials); i++ {
-		if swag.IsZero(m.MonitoringCredentials[i]) { // not required
-			continue
-		}
-
-		if m.MonitoringCredentials[i] != nil {
-			if err := m.MonitoringCredentials[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
-				}
-				return err
+	if m.MonitoringCredential != nil {
+		if err := m.MonitoringCredential.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("monitoringCredential")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("monitoringCredential")
 			}
+			return err
 		}
-
 	}
 
 	return nil
@@ -134,7 +127,7 @@ func (m *ProjectListForAlert) ContextValidate(ctx context.Context, formats strfm
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateMonitoringCredentials(ctx, formats); err != nil {
+	if err := m.contextValidateMonitoringCredential(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -164,21 +157,17 @@ func (m *ProjectListForAlert) contextValidateKubernetesAlerts(ctx context.Contex
 	return nil
 }
 
-func (m *ProjectListForAlert) contextValidateMonitoringCredentials(ctx context.Context, formats strfmt.Registry) error {
+func (m *ProjectListForAlert) contextValidateMonitoringCredential(ctx context.Context, formats strfmt.Registry) error {
 
-	for i := 0; i < len(m.MonitoringCredentials); i++ {
-
-		if m.MonitoringCredentials[i] != nil {
-			if err := m.MonitoringCredentials[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
-				}
-				return err
+	if m.MonitoringCredential != nil {
+		if err := m.MonitoringCredential.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("monitoringCredential")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("monitoringCredential")
 			}
+			return err
 		}
-
 	}
 
 	return nil

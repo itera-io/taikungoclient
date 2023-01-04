@@ -118,6 +118,9 @@ type CreateProjectCommand struct {
 
 	// taikun l b flavor
 	TaikunLBFlavor string `json:"taikunLBFlavor,omitempty"`
+
+	// users
+	Users []string `json:"users"`
 }
 
 // Validate validates this create project command

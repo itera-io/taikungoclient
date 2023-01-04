@@ -36,8 +36,6 @@ type ClientService interface {
 
 	NotificationsList(params *NotificationsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsListOK, error)
 
-	NotificationsListByUser(params *NotificationsListByUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsListByUserOK, error)
-
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -155,45 +153,6 @@ func (a *Client) NotificationsList(params *NotificationsListParams, authInfo run
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Notifications_List: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-NotificationsListByUser gets notification for current user
-*/
-func (a *Client) NotificationsListByUser(params *NotificationsListByUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsListByUserOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewNotificationsListByUserParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Notifications_ListByUser",
-		Method:             "GET",
-		PathPattern:        "/api/v{v}/Notifications/list",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &NotificationsListByUserReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*NotificationsListByUserOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Notifications_ListByUser: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

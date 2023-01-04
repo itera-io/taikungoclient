@@ -138,7 +138,7 @@ GoogleCloudCreateBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type GoogleCloudCreateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this google cloud create bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *GoogleCloudCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GoogleCloudCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *GoogleCloudCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *GoogleCloudCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -136,7 +136,7 @@ StandAloneVMDisksResetBadRequest describes a response with status code 400, with
 Bad Request
 */
 type StandAloneVMDisksResetBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks reset bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *StandAloneVMDisksResetBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneVMDisksResetBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *StandAloneVMDisksResetBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksResetBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

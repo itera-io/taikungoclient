@@ -136,7 +136,7 @@ ProjectsPrometheusMetricsBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ProjectsPrometheusMetricsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects prometheus metrics bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *ProjectsPrometheusMetricsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsPrometheusMetricsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ProjectsPrometheusMetricsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsPrometheusMetricsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

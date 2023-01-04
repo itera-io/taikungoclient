@@ -136,7 +136,7 @@ CheckerGoogleBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type CheckerGoogleBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker google bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *CheckerGoogleBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerGoogleBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CheckerGoogleBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerGoogleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

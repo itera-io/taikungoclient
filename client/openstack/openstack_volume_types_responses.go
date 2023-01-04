@@ -136,7 +136,7 @@ OpenstackVolumeTypesBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type OpenstackVolumeTypesBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack volume types bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *OpenstackVolumeTypesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackVolumeTypesBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OpenstackVolumeTypesBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackVolumeTypesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

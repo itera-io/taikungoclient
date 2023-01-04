@@ -138,7 +138,7 @@ UsersDetailsBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type UsersDetailsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users details bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *UsersDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/userinfo][%d] usersDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersDetailsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *UsersDetailsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UsersDetailsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -136,7 +136,7 @@ CheckerCidrBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type CheckerCidrBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker cidr bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *CheckerCidrBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerCidrBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CheckerCidrBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerCidrBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

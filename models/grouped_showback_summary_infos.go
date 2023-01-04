@@ -27,6 +27,9 @@ type GroupedShowbackSummaryInfos struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
 }
 
 // Validate validates this grouped showback summary infos

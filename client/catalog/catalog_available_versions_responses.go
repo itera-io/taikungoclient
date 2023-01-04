@@ -136,7 +136,7 @@ CatalogAvailableVersionsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type CatalogAvailableVersionsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog available versions bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *CatalogAvailableVersionsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogAvailableVersionsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CatalogAvailableVersionsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogAvailableVersionsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

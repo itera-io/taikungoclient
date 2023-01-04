@@ -33,11 +33,17 @@ type CredentialsForProjectList struct {
 	// cloud type
 	CloudType CloudType `json:"cloudType,omitempty"`
 
+	// continent name
+	ContinentName string `json:"continentName,omitempty"`
+
 	// google
 	Google *GoogleCredentialForProjectDto `json:"google,omitempty"`
 
 	// openstack
 	Openstack *OpenstackCredentialsForProjectDto `json:"openstack,omitempty"`
+
+	// requires v p n
+	RequiresVPN bool `json:"requiresVPN"`
 }
 
 // Validate validates this credentials for project list

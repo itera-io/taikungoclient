@@ -17,9 +17,6 @@ import (
 // swagger:model AzureCredentialsForProjectDto
 type AzureCredentialsForProjectDto struct {
 
-	// azure availability zone
-	AzureAvailabilityZone string `json:"azureAvailabilityZone,omitempty"`
-
 	// azure client Id
 	AzureClientID string `json:"azureClientId,omitempty"`
 
