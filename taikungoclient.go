@@ -147,6 +147,8 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
                         apiClient.refreshToken = loginResult.Payload.RefreshToken
 
                 case "token":
+                        content := models.LoginCommand{AccessKey: accessKey, SecretKey: secretKey, Mode: "token"}
+                        fmt.Println(content)
                         loginResult, err := apiClient.Client.Auth.AuthLogin(
                                 auth.NewAuthLoginParams().WithV(Version).WithBody(
                                         &models.LoginCommand{AccessKey: accessKey, SecretKey: secretKey, Mode: "token"},
@@ -162,7 +164,7 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
                 default:
                         loginResult, err := apiClient.Client.Auth.AuthLogin(
                                 auth.NewAuthLoginParams().WithV(Version).WithBody(
-                                    &models.LoginCommand{Email: apiClient.email, Password: apiClient.password, Mode: "autoscaling"},
+                                    &models.LoginCommand{Email: apiClient.email, Password: apiClient.password},
                                 ), nil,
                         )
                         if err != nil {
