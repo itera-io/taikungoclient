@@ -26,6 +26,9 @@ const TaikunPasswordEnvVar = "TAIKUN_PASSWORD"
 const TaikunKeycloakEmailEnvVar = "TAIKUN_KEYCLOAK_EMAIL"
 const TaikunKeycloakPasswordEnvVar = "TAIKUN_KEYCLOAK_PASSWORD"
 const TaikunApiHostEnvVar = "TAIKUN_API_HOST"
+const TaikunAuthMethodEnvVar = "TAIKUN_AUTH_METHOD"
+const TaikunAccessKeyEnvVar = "TAIKUN_ACCESS_KEY"
+const TaikunSecretkeyEnvVar = "TAIKUN_SECRET_KEY"
 
 // Wrapper around the generated Taikungoclient to include authentication
 type Client struct {
@@ -111,6 +114,10 @@ type jwtData struct {
 // its runtime.ClientAuthInfoWriter.
 func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ strfmt.Registry) error {
 	if len(apiClient.token) == 0 {
+
+            authMethod := os.Getenv(TaikunAuthMethodEnvVar)
+
+            /*
 		if !apiClient.useKeycloakEndpoint {
 			loginResult, err := apiClient.Client.Auth.AuthLogin(
 				auth.NewAuthLoginParams().WithV(Version).WithBody(
@@ -135,7 +142,39 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
 
 			apiClient.token = loginResult.Payload.Token
 			apiClient.refreshToken = loginResult.Payload.RefreshToken
-		}
+		}*/
+
+                switch authMethod {
+
+                case "normal":
+                        loginResult, err := apiClient.Client.Auth.AuthLogin(
+                                auth.NewAuthLoginParams().WithV(Version).WithBody(
+                                        &models.LoginCommand{Email: apiClient.email, Password: apiClient.password},
+                                ), nil,
+                        )
+                        if err != nil {
+                                return err
+                        }
+
+                        apiClient.token = loginResult.Payload.Token
+                        apiClient.refreshToken = loginResult.Payload.RefreshToken
+
+                default:
+                        loginResult, err := apiClient.Client.Auth.AuthLogin(
+                                keycloak.NewKeycloakLoginParams().WithV(Version).WithBody(
+                                    &models.LoginWithKeycloakCommand{Email: apiClient.email, Password: apiClient.password, Mode: "keycloak"},
+                                ), nil,
+                        )
+                        if err != nil {
+                                return err
+                        }
+
+                        apiClient.token = loginResult.Payload.Token
+                        apiClient.refreshToken = loginResult.Payload.RefreshToken
+
+                }
+
+
 	}
 
 	if apiClient.hasTokenExpired() {
