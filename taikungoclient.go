@@ -123,7 +123,7 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
                 case "keycloak":
                         loginResult, err := apiClient.Client.Auth.AuthLogin(
                                 auth.NewAuthLoginParams().WithV(Version).WithBody(
-                                        &models.LoginCommand{Email: apiClient.email, Password: apiClient.password, Mode: "keycloak"},
+                                        &models.LoginCommand{Email: apiClient.email, Password: apiClient.password},
                                 ), nil,
                         )
                         if err != nil {
