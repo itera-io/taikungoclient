@@ -65,12 +65,22 @@ To authenticate with Keycloak, set the following environment variables:
 %s
 %s
 
+Please also specify a mode (normal, keycloak, autoscaling or token):
+%s
+
+If needed, provide taikun access and secret keys:
+%s
+%s
+
 To override the default API host, set the following environment variable:
 %s (default value is: %s)`,
 			TaikunEmailEnvVar,
 			TaikunPasswordEnvVar,
 			TaikunKeycloakEmailEnvVar,
 			TaikunKeycloakPasswordEnvVar,
+                        TaikunAuthMethodEnvVar,
+                        TaikunAccessKeyEnvVar,
+                        TaikunSecretKeyEnvVar,
 			TaikunApiHostEnvVar,
 			client.DefaultHost,
 		)
@@ -123,7 +133,7 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
                 case "keycloak":
                         loginResult, err := apiClient.Client.Auth.AuthLogin(
                                 auth.NewAuthLoginParams().WithV(Version).WithBody(
-                                        &models.LoginCommand{Email: apiClient.email, Password: apiClient.password},
+                                    &models.LoginCommand{Email: apiClient.email, Password: apiClient.password, Mode: "keycloak"},
                                 ), nil,
                         )
                         if err != nil {
@@ -175,8 +185,6 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
                         apiClient.refreshToken = loginResult.Payload.RefreshToken
 
             }
-
-
 	}
 
 	if apiClient.hasTokenExpired() {
