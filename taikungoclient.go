@@ -27,7 +27,7 @@ const TaikunKeycloakPasswordEnvVar = "TAIKUN_KEYCLOAK_PASSWORD"
 const TaikunApiHostEnvVar = "TAIKUN_API_HOST"
 const TaikunAuthMethodEnvVar = "TAIKUN_AUTH_METHOD"
 const TaikunAccessKeyEnvVar = "TAIKUN_ACCESS_KEY"
-const TaikunSecretkeyEnvVar = "TAIKUN_SECRET_KEY"
+const TaikunSecretKeyEnvVar = "TAIKUN_SECRET_KEY"
 
 // Wrapper around the generated Taikungoclient to include authentication
 type Client struct {
@@ -115,50 +115,12 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
 	if len(apiClient.token) == 0 {
 
             authMethod := os.Getenv(TaikunAuthMethodEnvVar)
+            accessKey := os.Getenv(TaikunAccessKeyEnvVar)
+            secretKey := os.Getenv(TaikunSecretKeyEnvVar)
 
-            /*
-		if !apiClient.useKeycloakEndpoint {
-			loginResult, err := apiClient.Client.Auth.AuthLogin(
-				auth.NewAuthLoginParams().WithV(Version).WithBody(
-					&models.LoginCommand{Email: apiClient.email, Password: apiClient.password},
-				), nil,
-			)
-			if err != nil {
-				return err
-			}
+            switch authMethod {
 
-			apiClient.token = loginResult.Payload.Token
-			apiClient.refreshToken = loginResult.Payload.RefreshToken
-		} else {
-			loginResult, err := apiClient.Client.Keycloak.KeycloakLogin(
-				keycloak.NewKeycloakLoginParams().WithV(Version).WithBody(
-					&models.LoginWithKeycloakCommand{Email: apiClient.email, Password: apiClient.password},
-				), nil,
-			)
-			if err != nil {
-				return err
-			}
-
-			apiClient.token = loginResult.Payload.Token
-			apiClient.refreshToken = loginResult.Payload.RefreshToken
-		}*/
-
-                switch authMethod {
-
-                case "normal":
-                        loginResult, err := apiClient.Client.Auth.AuthLogin(
-                                auth.NewAuthLoginParams().WithV(Version).WithBody(
-                                        &models.LoginCommand{Email: apiClient.email, Password: apiClient.password},
-                                ), nil,
-                        )
-                        if err != nil {
-                                return err
-                        }
-
-                        apiClient.token = loginResult.Payload.Token
-                        apiClient.refreshToken = loginResult.Payload.RefreshToken
-
-                default:
+                case "keycloak":
                         loginResult, err := apiClient.Client.Auth.AuthLogin(
                                 auth.NewAuthLoginParams().WithV(Version).WithBody(
                                         &models.LoginCommand{Email: apiClient.email, Password: apiClient.password, Mode: "keycloak"},
@@ -171,7 +133,46 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
                         apiClient.token = loginResult.Payload.Token
                         apiClient.refreshToken = loginResult.Payload.RefreshToken
 
-                }
+                case "autoscaling":
+                        loginResult, err := apiClient.Client.Auth.AuthLogin(
+                                auth.NewAuthLoginParams().WithV(Version).WithBody(
+                                        &models.LoginCommand{AccessKey: accessKey, SecretKey: secretKey, Mode: "autoscaling"},
+                                ), nil,
+                        )
+                        if err != nil {
+                                return err
+                        }
+
+                        apiClient.token = loginResult.Payload.Token
+                        apiClient.refreshToken = loginResult.Payload.RefreshToken
+
+                case "token":
+                        loginResult, err := apiClient.Client.Auth.AuthLogin(
+                                auth.NewAuthLoginParams().WithV(Version).WithBody(
+                                        &models.LoginCommand{AccessKey: accessKey, SecretKey: secretKey, Mode: "token"},
+                                ), nil,
+                        )
+                        if err != nil {
+                                return err
+                        }
+
+                        apiClient.token = loginResult.Payload.Token
+                        apiClient.refreshToken = loginResult.Payload.RefreshToken
+
+                default:
+                        loginResult, err := apiClient.Client.Auth.AuthLogin(
+                                auth.NewAuthLoginParams().WithV(Version).WithBody(
+                                        &models.LoginCommand{Email: apiClient.email, Password: apiClient.password},
+                                ), nil,
+                        )
+                        if err != nil {
+                                return err
+                        }
+
+                        apiClient.token = loginResult.Payload.Token
+                        apiClient.refreshToken = loginResult.Payload.RefreshToken
+
+            }
 
 
 	}
