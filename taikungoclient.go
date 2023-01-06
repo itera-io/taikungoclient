@@ -12,7 +12,6 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/itera-io/taikungoclient/client"
 	"github.com/itera-io/taikungoclient/client/auth"
-	"github.com/itera-io/taikungoclient/client/keycloak"
 	"github.com/itera-io/taikungoclient/models"
 	"github.com/itera-io/taikungoclient/showbackclient"
 )
