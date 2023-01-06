@@ -161,8 +161,8 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
 
                 default:
                         loginResult, err := apiClient.Client.Auth.AuthLogin(
-                                keycloak.NewKeycloakLoginParams().WithV(Version).WithBody(
-                                    &models.LoginWithKeycloakCommand{Email: apiClient.email, Password: apiClient.password, Mode: "keycloak"},
+                                auth.NewAuthLoginParams().WithV(Version).WithBody(
+                                        &models.LoginCommand{Email: apiClient.email, Password: apiClient.password, Mode: "keycloak"},
                                 ), nil,
                         )
                         if err != nil {
