@@ -162,7 +162,7 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
                 default:
                         loginResult, err := apiClient.Client.Auth.AuthLogin(
                                 auth.NewAuthLoginParams().WithV(Version).WithBody(
-                                        &models.LoginCommand{Email: apiClient.email, Password: apiClient.password},
+                                    &models.LoginCommand{Email: apiClient.email, Password: apiClient.password, Mode: "autoscaling"},
                                 ), nil,
                         )
                         if err != nil {
