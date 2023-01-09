@@ -139,6 +139,7 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
 
 		switch apiClient.authMode {
 		case "taikun":
+			// Mode is null when authenticating with Taikun credentials
 			loginCommand = models.LoginCommand{Email: apiClient.email, Password: apiClient.password}
 		case "keycloak":
 			loginCommand = models.LoginCommand{Email: apiClient.email, Password: apiClient.password, Mode: apiClient.authMode}
