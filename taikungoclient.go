@@ -25,19 +25,28 @@ const TaikunPasswordEnvVar = "TAIKUN_PASSWORD"
 const TaikunKeycloakEmailEnvVar = "TAIKUN_KEYCLOAK_EMAIL"
 const TaikunKeycloakPasswordEnvVar = "TAIKUN_KEYCLOAK_PASSWORD"
 const TaikunApiHostEnvVar = "TAIKUN_API_HOST"
-const TaikunAuthMethodEnvVar = "TAIKUN_AUTH_METHOD"
+const TaikunAuthModeEnvVar = "TAIKUN_AUTH_MODE"
 const TaikunAccessKeyEnvVar = "TAIKUN_ACCESS_KEY"
 const TaikunSecretKeyEnvVar = "TAIKUN_SECRET_KEY"
 
 // Wrapper around the generated Taikungoclient to include authentication
 type Client struct {
+	// Client structures
 	Client         *client.Taikungoclient
 	ShowbackClient *showbackclient.Showbackgoclient
 
-	email               string
-	password            string
-	useKeycloakEndpoint bool
+	// Authentication mode, one of : taikun, keycloak, autoscaling, token
+	authMode string
 
+	// Taikun or Keycloak credentials
+	email    string
+	password string
+
+	// Access and secret keys for autoscaling or token authentication mode
+	accessKey string
+	secretKey string
+
+	// Taikun JWT tokens
 	token        string
 	refreshToken string
 }
@@ -45,17 +54,24 @@ type Client struct {
 // Create a new authenticated Taikungoclient from environment variables.
 // Taikun or Keycloak credentials environment variables must be set
 func NewClient() (*Client, error) {
-	email, keycloakEnabled := os.LookupEnv(TaikunKeycloakEmailEnvVar)
-	password := os.Getenv(TaikunKeycloakPasswordEnvVar)
-
-	if !keycloakEnabled {
-		email = os.Getenv(TaikunEmailEnvVar)
-		password = os.Getenv(TaikunPasswordEnvVar)
+	taikunGoClient := Client{
+		authMode: strings.ToLower(os.Getenv(TaikunAuthModeEnvVar)),
 	}
 
-	if email == "" || password == "" {
+	switch taikunGoClient.authMode {
+	case "taikun":
+		taikunGoClient.email = os.Getenv(TaikunEmailEnvVar)
+		taikunGoClient.password = os.Getenv(TaikunPasswordEnvVar)
+	case "keycloak":
+		taikunGoClient.email = os.Getenv(TaikunKeycloakEmailEnvVar)
+		taikunGoClient.password = os.Getenv(TaikunKeycloakPasswordEnvVar)
+	case "autoscaling", "token":
+		taikunGoClient.accessKey = os.Getenv(TaikunAccessKeyEnvVar)
+		taikunGoClient.secretKey = os.Getenv(TaikunSecretKeyEnvVar)
+	default:
 		return nil, fmt.Errorf(
-			`Please set your authentication method (normal, keycloak, autoscaling or token) with the following environment variable:
+			`Authentication mode must be one of normal, keycloak, autoscaling or token.
+Set your authentication with the following environment variable:
 %s
 
 For normal mode, please set your Taikun credentials with the variables:
@@ -72,7 +88,7 @@ To authenticate in autoscaling or token mode, set the access and secret keys wit
 
 To override the default API host, set the following environment variable:
 %s (default value is: %s)`,
-			TaikunAuthMethodEnvVar,
+			TaikunAuthModeEnvVar,
 			TaikunEmailEnvVar,
 			TaikunPasswordEnvVar,
 			TaikunKeycloakEmailEnvVar,
@@ -86,10 +102,10 @@ To override the default API host, set the following environment variable:
 
 	apiHost := os.Getenv(TaikunApiHostEnvVar)
 
-	return NewClientFromCredentials(email, password, keycloakEnabled, apiHost)
+	return InitializeClient(&taikunGoClient, apiHost), nil
 }
 
-func NewClientFromCredentials(email string, password string, keycloakEnabled bool, apiHost string) (*Client, error) {
+func InitializeClient(taikunGoClient *Client, apiHost string) *Client {
 	transportConfig := client.DefaultTransportConfig()
 	showbackTransportConfig := showbackclient.DefaultTransportConfig()
 	if apiHost != "" {
@@ -97,13 +113,10 @@ func NewClientFromCredentials(email string, password string, keycloakEnabled boo
 		showbackTransportConfig = showbackTransportConfig.WithHost(apiHost)
 	}
 
-	return &Client{
-		Client:              client.NewHTTPClientWithConfig(nil, transportConfig),
-		ShowbackClient:      showbackclient.NewHTTPClientWithConfig(nil, showbackTransportConfig),
-		email:               email,
-		password:            password,
-		useKeycloakEndpoint: keycloakEnabled,
-	}, nil
+	taikunGoClient.Client = client.NewHTTPClientWithConfig(nil, transportConfig)
+	taikunGoClient.ShowbackClient = showbackclient.NewHTTPClientWithConfig(nil, showbackTransportConfig)
+
+	return taikunGoClient
 }
 
 type jwtData struct {
@@ -122,67 +135,67 @@ type jwtData struct {
 func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ strfmt.Registry) error {
 	if len(apiClient.token) == 0 {
 
-            authMethod := os.Getenv(TaikunAuthMethodEnvVar)
-            accessKey := os.Getenv(TaikunAccessKeyEnvVar)
-            secretKey := os.Getenv(TaikunSecretKeyEnvVar)
+		authMode := os.Getenv(TaikunAuthModeEnvVar)
+		accessKey := os.Getenv(TaikunAccessKeyEnvVar)
+		secretKey := os.Getenv(TaikunSecretKeyEnvVar)
 
-            switch authMethod {
+		switch authMode {
 
-                case "keycloak":
-                        loginResult, err := apiClient.Client.Auth.AuthLogin(
-                                auth.NewAuthLoginParams().WithV(Version).WithBody(
-                                    &models.LoginCommand{Email: apiClient.email, Password: apiClient.password, Mode: "keycloak"},
-                                ), nil,
-                        )
-                        if err != nil {
-                                return err
-                        }
+		case "keycloak":
+			loginResult, err := apiClient.Client.Auth.AuthLogin(
+				auth.NewAuthLoginParams().WithV(Version).WithBody(
+					&models.LoginCommand{Email: apiClient.email, Password: apiClient.password, Mode: "keycloak"},
+				), nil,
+			)
+			if err != nil {
+				return err
+			}
 
-                        apiClient.token = loginResult.Payload.Token
-                        apiClient.refreshToken = loginResult.Payload.RefreshToken
+			apiClient.token = loginResult.Payload.Token
+			apiClient.refreshToken = loginResult.Payload.RefreshToken
 
-                case "autoscaling":
-                        loginResult, err := apiClient.Client.Auth.AuthLogin(
-                                auth.NewAuthLoginParams().WithV(Version).WithBody(
-                                        &models.LoginCommand{AccessKey: accessKey, SecretKey: secretKey, Mode: "autoscaling"},
-                                ), nil,
-                        )
-                        if err != nil {
-                                return err
-                        }
+		case "autoscaling":
+			loginResult, err := apiClient.Client.Auth.AuthLogin(
+				auth.NewAuthLoginParams().WithV(Version).WithBody(
+					&models.LoginCommand{AccessKey: accessKey, SecretKey: secretKey, Mode: "autoscaling"},
+				), nil,
+			)
+			if err != nil {
+				return err
+			}
 
-                        apiClient.token = loginResult.Payload.Token
-                        apiClient.refreshToken = loginResult.Payload.RefreshToken
+			apiClient.token = loginResult.Payload.Token
+			apiClient.refreshToken = loginResult.Payload.RefreshToken
 
-                case "token":
-                        content := models.LoginCommand{AccessKey: accessKey, SecretKey: secretKey, Mode: "token"}
-                        fmt.Println(content)
-                        loginResult, err := apiClient.Client.Auth.AuthLogin(
-                                auth.NewAuthLoginParams().WithV(Version).WithBody(
-                                        &models.LoginCommand{AccessKey: accessKey, SecretKey: secretKey, Mode: "token"},
-                                ), nil,
-                        )
-                        if err != nil {
-                                return err
-                        }
+		case "token":
+			content := models.LoginCommand{AccessKey: accessKey, SecretKey: secretKey, Mode: "token"}
+			fmt.Println(content)
+			loginResult, err := apiClient.Client.Auth.AuthLogin(
+				auth.NewAuthLoginParams().WithV(Version).WithBody(
+					&models.LoginCommand{AccessKey: accessKey, SecretKey: secretKey, Mode: "token"},
+				), nil,
+			)
+			if err != nil {
+				return err
+			}
 
-                        apiClient.token = loginResult.Payload.Token
-                        apiClient.refreshToken = loginResult.Payload.RefreshToken
+			apiClient.token = loginResult.Payload.Token
+			apiClient.refreshToken = loginResult.Payload.RefreshToken
 
-                default:
-                        loginResult, err := apiClient.Client.Auth.AuthLogin(
-                                auth.NewAuthLoginParams().WithV(Version).WithBody(
-                                    &models.LoginCommand{Email: apiClient.email, Password: apiClient.password},
-                                ), nil,
-                        )
-                        if err != nil {
-                                return err
-                        }
+		default:
+			loginResult, err := apiClient.Client.Auth.AuthLogin(
+				auth.NewAuthLoginParams().WithV(Version).WithBody(
+					&models.LoginCommand{Email: apiClient.email, Password: apiClient.password},
+				), nil,
+			)
+			if err != nil {
+				return err
+			}
 
-                        apiClient.token = loginResult.Payload.Token
-                        apiClient.refreshToken = loginResult.Payload.RefreshToken
+			apiClient.token = loginResult.Payload.Token
+			apiClient.refreshToken = loginResult.Payload.RefreshToken
 
-            }
+		}
 	}
 
 	if apiClient.hasTokenExpired() {
