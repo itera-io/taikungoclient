@@ -8,7 +8,7 @@ on:
         description: 'Force client generation'
         default: false
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "*/5 * * * *"
 
 jobs:
   generate-client:
