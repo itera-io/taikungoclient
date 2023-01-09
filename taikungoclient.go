@@ -55,32 +55,30 @@ func NewClient() (*Client, error) {
 
 	if email == "" || password == "" {
 		return nil, fmt.Errorf(
-			`Please set your Taikun credentials.
-
-To authenticate with your Taikun account, set the following environment variables:
-%s
+			`Please set your authentication method (normal, keycloak, autoscaling or token) with the following environment variable:
 %s
 
-To authenticate with Keycloak, set the following environment variables:
+For normal mode, please set your Taikun credentials with the variables:
 %s
 %s
 
-Please also specify a mode (normal, keycloak, autoscaling or token):
+To authenticate with Keycloak, set the following variables:
+%s
 %s
 
-If needed, provide taikun access and secret keys:
+To authenticate in autoscaling or token mode, set the access and secret keys with the following variables:
 %s
 %s
 
 To override the default API host, set the following environment variable:
 %s (default value is: %s)`,
+			TaikunAuthMethodEnvVar,
 			TaikunEmailEnvVar,
 			TaikunPasswordEnvVar,
 			TaikunKeycloakEmailEnvVar,
 			TaikunKeycloakPasswordEnvVar,
-                        TaikunAuthMethodEnvVar,
-                        TaikunAccessKeyEnvVar,
-                        TaikunSecretKeyEnvVar,
+			TaikunAccessKeyEnvVar,
+			TaikunSecretKeyEnvVar,
 			TaikunApiHostEnvVar,
 			client.DefaultHost,
 		)
