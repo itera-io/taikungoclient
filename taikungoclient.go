@@ -54,20 +54,20 @@ type Client struct {
 // Create a new authenticated Taikungoclient from environment variables.
 // Taikun or Keycloak credentials environment variables must be set
 func NewClient() (*Client, error) {
-	taikunGoClient := Client{
+	apiClient := Client{
 		authMode: strings.ToLower(os.Getenv(TaikunAuthModeEnvVar)),
 	}
 
-	switch taikunGoClient.authMode {
+	switch apiClient.authMode {
 	case "taikun":
-		taikunGoClient.email = os.Getenv(TaikunEmailEnvVar)
-		taikunGoClient.password = os.Getenv(TaikunPasswordEnvVar)
+		apiClient.email = os.Getenv(TaikunEmailEnvVar)
+		apiClient.password = os.Getenv(TaikunPasswordEnvVar)
 	case "keycloak":
-		taikunGoClient.email = os.Getenv(TaikunKeycloakEmailEnvVar)
-		taikunGoClient.password = os.Getenv(TaikunKeycloakPasswordEnvVar)
+		apiClient.email = os.Getenv(TaikunKeycloakEmailEnvVar)
+		apiClient.password = os.Getenv(TaikunKeycloakPasswordEnvVar)
 	case "autoscaling", "token":
-		taikunGoClient.accessKey = os.Getenv(TaikunAccessKeyEnvVar)
-		taikunGoClient.secretKey = os.Getenv(TaikunSecretKeyEnvVar)
+		apiClient.accessKey = os.Getenv(TaikunAccessKeyEnvVar)
+		apiClient.secretKey = os.Getenv(TaikunSecretKeyEnvVar)
 	default:
 		return nil, fmt.Errorf(
 			`Authentication mode must be one of normal, keycloak, autoscaling or token.
@@ -102,10 +102,10 @@ To override the default API host, set the following environment variable:
 
 	apiHost := os.Getenv(TaikunApiHostEnvVar)
 
-	return InitializeClient(&taikunGoClient, apiHost), nil
+	return InitializeClient(&apiClient, apiHost), nil
 }
 
-func InitializeClient(taikunGoClient *Client, apiHost string) *Client {
+func InitializeClient(apiClient *Client, apiHost string) *Client {
 	transportConfig := client.DefaultTransportConfig()
 	showbackTransportConfig := showbackclient.DefaultTransportConfig()
 	if apiHost != "" {
@@ -113,10 +113,10 @@ func InitializeClient(taikunGoClient *Client, apiHost string) *Client {
 		showbackTransportConfig = showbackTransportConfig.WithHost(apiHost)
 	}
 
-	taikunGoClient.Client = client.NewHTTPClientWithConfig(nil, transportConfig)
-	taikunGoClient.ShowbackClient = showbackclient.NewHTTPClientWithConfig(nil, showbackTransportConfig)
+	apiClient.Client = client.NewHTTPClientWithConfig(nil, transportConfig)
+	apiClient.ShowbackClient = showbackclient.NewHTTPClientWithConfig(nil, showbackTransportConfig)
 
-	return taikunGoClient
+	return apiClient
 }
 
 type jwtData struct {
