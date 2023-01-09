@@ -135,89 +135,55 @@ type jwtData struct {
 func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ strfmt.Registry) error {
 	if len(apiClient.token) == 0 {
 
-		authMode := os.Getenv(TaikunAuthModeEnvVar)
-		accessKey := os.Getenv(TaikunAccessKeyEnvVar)
-		secretKey := os.Getenv(TaikunSecretKeyEnvVar)
+		var loginCommand models.LoginCommand
 
-		switch authMode {
-
+		switch apiClient.authMode {
+		case "taikun":
+			loginCommand = models.LoginCommand{Email: apiClient.email, Password: apiClient.password}
 		case "keycloak":
-			loginResult, err := apiClient.Client.Auth.AuthLogin(
-				auth.NewAuthLoginParams().WithV(Version).WithBody(
-					&models.LoginCommand{Email: apiClient.email, Password: apiClient.password, Mode: "keycloak"},
-				), nil,
-			)
-			if err != nil {
-				return err
-			}
-
-			apiClient.token = loginResult.Payload.Token
-			apiClient.refreshToken = loginResult.Payload.RefreshToken
-
-		case "autoscaling":
-			loginResult, err := apiClient.Client.Auth.AuthLogin(
-				auth.NewAuthLoginParams().WithV(Version).WithBody(
-					&models.LoginCommand{AccessKey: accessKey, SecretKey: secretKey, Mode: "autoscaling"},
-				), nil,
-			)
-			if err != nil {
-				return err
-			}
-
-			apiClient.token = loginResult.Payload.Token
-			apiClient.refreshToken = loginResult.Payload.RefreshToken
-
-		case "token":
-			content := models.LoginCommand{AccessKey: accessKey, SecretKey: secretKey, Mode: "token"}
-			fmt.Println(content)
-			loginResult, err := apiClient.Client.Auth.AuthLogin(
-				auth.NewAuthLoginParams().WithV(Version).WithBody(
-					&models.LoginCommand{AccessKey: accessKey, SecretKey: secretKey, Mode: "token"},
-				), nil,
-			)
-			if err != nil {
-				return err
-			}
-
-			apiClient.token = loginResult.Payload.Token
-			apiClient.refreshToken = loginResult.Payload.RefreshToken
-
-		default:
-			loginResult, err := apiClient.Client.Auth.AuthLogin(
-				auth.NewAuthLoginParams().WithV(Version).WithBody(
-					&models.LoginCommand{Email: apiClient.email, Password: apiClient.password},
-				), nil,
-			)
-			if err != nil {
-				return err
-			}
-
-			apiClient.token = loginResult.Payload.Token
-			apiClient.refreshToken = loginResult.Payload.RefreshToken
-
+			loginCommand = models.LoginCommand{Email: apiClient.email, Password: apiClient.password, Mode: apiClient.authMode}
+		default: // autoscaling or token
+			loginCommand = models.LoginCommand{AccessKey: apiClient.accessKey, SecretKey: apiClient.secretKey, Mode: apiClient.authMode}
 		}
-	}
 
-	if apiClient.hasTokenExpired() {
-		refreshResult, err := apiClient.Client.Auth.AuthRefreshToken(
-			auth.NewAuthRefreshTokenParams().WithV(Version).WithBody(
-				&models.RefreshTokenCommand{
-					RefreshToken: apiClient.refreshToken,
-					Token:        apiClient.token,
-				}), nil,
-		)
+		loginParams := auth.NewAuthLoginParams().WithV(Version).WithBody(&loginCommand)
+		loginResult, err := apiClient.Client.Auth.AuthLogin(loginParams, nil)
 		if err != nil {
 			return err
 		}
 
-		apiClient.token = refreshResult.Payload.Token
-		apiClient.refreshToken = refreshResult.Payload.RefreshToken
+		apiClient.token = loginResult.Payload.Token
+		apiClient.refreshToken = loginResult.Payload.RefreshToken
+	}
+
+	if apiClient.hasTokenExpired() {
+		if err := apiClient.refresh(); err != nil {
+			return err
+		}
 	}
 
 	err := request.SetHeaderParam("Authorization", fmt.Sprintf("Bearer %s", apiClient.token))
 	if err != nil {
 		return err
 	}
+
+	return nil
+}
+
+func (apiClient *Client) refresh() error {
+	refreshResult, err := apiClient.Client.Auth.AuthRefreshToken(
+		auth.NewAuthRefreshTokenParams().WithV(Version).WithBody(
+			&models.RefreshTokenCommand{
+				RefreshToken: apiClient.refreshToken,
+				Token:        apiClient.token,
+			}), nil,
+	)
+	if err != nil {
+		return err
+	}
+
+	apiClient.token = refreshResult.Payload.Token
+	apiClient.refreshToken = refreshResult.Payload.RefreshToken
 
 	return nil
 }
