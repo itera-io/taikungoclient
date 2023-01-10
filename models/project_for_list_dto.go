@@ -114,7 +114,7 @@ type ProjectForListDto struct {
 	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion,omitempty"`
 
 	// kubernetes profiles
-	KubernetesProfiles *KubernetesProfilesListDto `json:"kubernetesProfiles,omitempty"`
+	KubernetesProfiles *KubernetesProfilesLisForPollerDto `json:"kubernetesProfiles,omitempty"`
 
 	// kubernetes target version
 	KubernetesTargetVersion string `json:"kubernetesTargetVersion,omitempty"`

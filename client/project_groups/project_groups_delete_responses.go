@@ -110,11 +110,11 @@ func (o *ProjectGroupsDeleteOK) IsCode(code int) bool {
 }
 
 func (o *ProjectGroupsDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectGroupsDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectGroupsDeleteOK) GetPayload() models.Unit {
@@ -170,11 +170,11 @@ func (o *ProjectGroupsDeleteNoContent) IsCode(code int) bool {
 }
 
 func (o *ProjectGroupsDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteNoContent ", 204)
 }
 
 func (o *ProjectGroupsDeleteNoContent) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteNoContent ", 204)
 }
 
 func (o *ProjectGroupsDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -222,11 +222,11 @@ func (o *ProjectGroupsDeleteBadRequest) IsCode(code int) bool {
 }
 
 func (o *ProjectGroupsDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectGroupsDeleteBadRequest) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectGroupsDeleteBadRequest) GetPayload() *models.ProblemDetails {
@@ -285,11 +285,11 @@ func (o *ProjectGroupsDeleteUnauthorized) IsCode(code int) bool {
 }
 
 func (o *ProjectGroupsDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ProjectGroupsDeleteUnauthorized) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ProjectGroupsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
@@ -348,11 +348,11 @@ func (o *ProjectGroupsDeleteForbidden) IsCode(code int) bool {
 }
 
 func (o *ProjectGroupsDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ProjectGroupsDeleteForbidden) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ProjectGroupsDeleteForbidden) GetPayload() *models.ProblemDetails {
@@ -411,11 +411,11 @@ func (o *ProjectGroupsDeleteNotFound) IsCode(code int) bool {
 }
 
 func (o *ProjectGroupsDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectGroupsDeleteNotFound) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectGroupsDeleteNotFound) GetPayload() *models.ProblemDetails {
@@ -473,11 +473,11 @@ func (o *ProjectGroupsDeleteInternalServerError) IsCode(code int) bool {
 }
 
 func (o *ProjectGroupsDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteInternalServerError ", 500)
+	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteInternalServerError ", 500)
 }
 
 func (o *ProjectGroupsDeleteInternalServerError) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteInternalServerError ", 500)
+	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteInternalServerError ", 500)
 }
 
 func (o *ProjectGroupsDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

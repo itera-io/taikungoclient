@@ -104,11 +104,11 @@ func (o *OrganizationsDetailsOK) IsCode(code int) bool {
 }
 
 func (o *OrganizationsDetailsOK) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsOK  %+v", 200, o.Payload)
 }
 
 func (o *OrganizationsDetailsOK) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsOK  %+v", 200, o.Payload)
 }
 
 func (o *OrganizationsDetailsOK) GetPayload() *models.DashboardChart {
@@ -167,11 +167,11 @@ func (o *OrganizationsDetailsBadRequest) IsCode(code int) bool {
 }
 
 func (o *OrganizationsDetailsBadRequest) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *OrganizationsDetailsBadRequest) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *OrganizationsDetailsBadRequest) GetPayload() *models.ProblemDetails {
@@ -230,11 +230,11 @@ func (o *OrganizationsDetailsUnauthorized) IsCode(code int) bool {
 }
 
 func (o *OrganizationsDetailsUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *OrganizationsDetailsUnauthorized) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *OrganizationsDetailsUnauthorized) GetPayload() *models.ProblemDetails {
@@ -293,11 +293,11 @@ func (o *OrganizationsDetailsForbidden) IsCode(code int) bool {
 }
 
 func (o *OrganizationsDetailsForbidden) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsForbidden  %+v", 403, o.Payload)
 }
 
 func (o *OrganizationsDetailsForbidden) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsForbidden  %+v", 403, o.Payload)
 }
 
 func (o *OrganizationsDetailsForbidden) GetPayload() *models.ProblemDetails {
@@ -356,11 +356,11 @@ func (o *OrganizationsDetailsNotFound) IsCode(code int) bool {
 }
 
 func (o *OrganizationsDetailsNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsNotFound  %+v", 404, o.Payload)
 }
 
 func (o *OrganizationsDetailsNotFound) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsNotFound  %+v", 404, o.Payload)
 }
 
 func (o *OrganizationsDetailsNotFound) GetPayload() *models.ProblemDetails {
@@ -418,11 +418,11 @@ func (o *OrganizationsDetailsInternalServerError) IsCode(code int) bool {
 }
 
 func (o *OrganizationsDetailsInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsInternalServerError ", 500)
 }
 
 func (o *OrganizationsDetailsInternalServerError) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsInternalServerError ", 500)
 }
 
 func (o *OrganizationsDetailsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

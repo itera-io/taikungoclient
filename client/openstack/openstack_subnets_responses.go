@@ -75,7 +75,7 @@ OpenstackSubnetsOK describes a response with status code 200, with default heade
 Success
 */
 type OpenstackSubnetsOK struct {
-	Payload []*models.CommonStringBasedDropdownDto
+	Payload []*models.Subnet
 }
 
 // IsSuccess returns true when this openstack subnets o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OpenstackSubnetsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsOK  %+v", 200, o.Payload)
 }
 
-func (o *OpenstackSubnetsOK) GetPayload() []*models.CommonStringBasedDropdownDto {
+func (o *OpenstackSubnetsOK) GetPayload() []*models.Subnet {
 	return o.Payload
 }
 

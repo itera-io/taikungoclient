@@ -104,11 +104,11 @@ func (o *CloudCredentialsExceededQuotasOK) IsCode(code int) bool {
 }
 
 func (o *CloudCredentialsExceededQuotasOK) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasOK  %+v", 200, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasOK) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasOK  %+v", 200, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasOK) GetPayload() *models.ExceededQuotaList {
@@ -167,11 +167,11 @@ func (o *CloudCredentialsExceededQuotasBadRequest) IsCode(code int) bool {
 }
 
 func (o *CloudCredentialsExceededQuotasBadRequest) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasBadRequest) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasBadRequest) GetPayload() *models.ProblemDetails {
@@ -230,11 +230,11 @@ func (o *CloudCredentialsExceededQuotasUnauthorized) IsCode(code int) bool {
 }
 
 func (o *CloudCredentialsExceededQuotasUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasUnauthorized) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasUnauthorized) GetPayload() *models.ProblemDetails {
@@ -293,11 +293,11 @@ func (o *CloudCredentialsExceededQuotasForbidden) IsCode(code int) bool {
 }
 
 func (o *CloudCredentialsExceededQuotasForbidden) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasForbidden  %+v", 403, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasForbidden) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasForbidden  %+v", 403, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasForbidden) GetPayload() *models.ProblemDetails {
@@ -356,11 +356,11 @@ func (o *CloudCredentialsExceededQuotasNotFound) IsCode(code int) bool {
 }
 
 func (o *CloudCredentialsExceededQuotasNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasNotFound  %+v", 404, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasNotFound) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasNotFound  %+v", 404, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasNotFound) GetPayload() *models.ProblemDetails {
@@ -418,11 +418,11 @@ func (o *CloudCredentialsExceededQuotasInternalServerError) IsCode(code int) boo
 }
 
 func (o *CloudCredentialsExceededQuotasInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasInternalServerError ", 500)
 }
 
 func (o *CloudCredentialsExceededQuotasInternalServerError) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasInternalServerError ", 500)
 }
 
 func (o *CloudCredentialsExceededQuotasInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

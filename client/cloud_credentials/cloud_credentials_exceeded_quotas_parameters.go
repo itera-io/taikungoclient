@@ -65,7 +65,7 @@ type CloudCredentialsExceededQuotasParams struct {
 	// OrganizationID.
 	//
 	// Format: int32
-	OrganizationID int32
+	OrganizationID *int32
 
 	// V.
 	V string
@@ -124,13 +124,13 @@ func (o *CloudCredentialsExceededQuotasParams) SetHTTPClient(client *http.Client
 }
 
 // WithOrganizationID adds the organizationID to the cloud credentials exceeded quotas params
-func (o *CloudCredentialsExceededQuotasParams) WithOrganizationID(organizationID int32) *CloudCredentialsExceededQuotasParams {
+func (o *CloudCredentialsExceededQuotasParams) WithOrganizationID(organizationID *int32) *CloudCredentialsExceededQuotasParams {
 	o.SetOrganizationID(organizationID)
 	return o
 }
 
 // SetOrganizationID adds the organizationId to the cloud credentials exceeded quotas params
-func (o *CloudCredentialsExceededQuotasParams) SetOrganizationID(organizationID int32) {
+func (o *CloudCredentialsExceededQuotasParams) SetOrganizationID(organizationID *int32) {
 	o.OrganizationID = organizationID
 }
 
@@ -153,9 +153,21 @@ func (o *CloudCredentialsExceededQuotasParams) WriteToRequest(r runtime.ClientRe
 	}
 	var res []error
 
-	// path param organizationId
-	if err := r.SetPathParam("organizationId", swag.FormatInt32(o.OrganizationID)); err != nil {
-		return err
+	if o.OrganizationID != nil {
+
+		// query param organizationId
+		var qrOrganizationID int32
+
+		if o.OrganizationID != nil {
+			qrOrganizationID = *o.OrganizationID
+		}
+		qOrganizationID := swag.FormatInt32(qrOrganizationID)
+		if qOrganizationID != "" {
+
+			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
+				return err
+			}
+		}
 	}
 
 	// path param v

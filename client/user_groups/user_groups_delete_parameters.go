@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewUserGroupsDeleteParams creates a new UserGroupsDeleteParams object,
@@ -62,10 +61,8 @@ UserGroupsDeleteParams contains all the parameters to send to the API endpoint
 */
 type UserGroupsDeleteParams struct {
 
-	// UserGroupID.
-	//
-	// Format: int32
-	UserGroupID int32
+	// Body.
+	Body []int32
 
 	// V.
 	V string
@@ -123,15 +120,15 @@ func (o *UserGroupsDeleteParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithUserGroupID adds the userGroupID to the user groups delete params
-func (o *UserGroupsDeleteParams) WithUserGroupID(userGroupID int32) *UserGroupsDeleteParams {
-	o.SetUserGroupID(userGroupID)
+// WithBody adds the body to the user groups delete params
+func (o *UserGroupsDeleteParams) WithBody(body []int32) *UserGroupsDeleteParams {
+	o.SetBody(body)
 	return o
 }
 
-// SetUserGroupID adds the userGroupId to the user groups delete params
-func (o *UserGroupsDeleteParams) SetUserGroupID(userGroupID int32) {
-	o.UserGroupID = userGroupID
+// SetBody adds the body to the user groups delete params
+func (o *UserGroupsDeleteParams) SetBody(body []int32) {
+	o.Body = body
 }
 
 // WithV adds the v to the user groups delete params
@@ -152,10 +149,10 @@ func (o *UserGroupsDeleteParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-
-	// path param userGroupId
-	if err := r.SetPathParam("userGroupId", swag.FormatInt32(o.UserGroupID)); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

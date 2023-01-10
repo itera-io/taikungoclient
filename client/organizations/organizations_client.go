@@ -227,7 +227,7 @@ func (a *Client) OrganizationsDetails(params *OrganizationsDetailsParams, authIn
 	op := &runtime.ClientOperation{
 		ID:                 "Organizations_Details",
 		Method:             "GET",
-		PathPattern:        "/api/v{v}/Organizations/details/{organizationId}",
+		PathPattern:        "/api/v{v}/Organizations/details",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},

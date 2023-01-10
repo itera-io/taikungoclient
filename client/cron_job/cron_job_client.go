@@ -84,6 +84,8 @@ type ClientService interface {
 
 	CronJobSyncProjects(params *CronJobSyncProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobSyncProjectsOK, error)
 
+	CronJobTriggerTemplates(params *CronJobTriggerTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobTriggerTemplatesOK, error)
+
 	CronJobUpdateProjectAppStatus(params *CronJobUpdateProjectAppStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobUpdateProjectAppStatusOK, error)
 
 	CronJobUpdateProjectQuotaMessage(params *CronJobUpdateProjectQuotaMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobUpdateProjectQuotaMessageOK, error)
@@ -1141,6 +1143,45 @@ func (a *Client) CronJobSyncProjects(params *CronJobSyncProjectsParams, authInfo
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for CronJob_SyncProjects: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CronJobTriggerTemplates triggers scheduled templates
+*/
+func (a *Client) CronJobTriggerTemplates(params *CronJobTriggerTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobTriggerTemplatesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCronJobTriggerTemplatesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CronJob_TriggerTemplates",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/CronJob/trigger-templates",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CronJobTriggerTemplatesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CronJobTriggerTemplatesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CronJob_TriggerTemplates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

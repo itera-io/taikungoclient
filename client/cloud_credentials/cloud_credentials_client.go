@@ -219,7 +219,7 @@ func (a *Client) CloudCredentialsExceededQuotas(params *CloudCredentialsExceeded
 	op := &runtime.ClientOperation{
 		ID:                 "CloudCredentials_ExceededQuotas",
 		Method:             "GET",
-		PathPattern:        "/api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}",
+		PathPattern:        "/api/v{v}/CloudCredentials/exceeded-quotas",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
