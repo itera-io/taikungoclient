@@ -58,6 +58,8 @@ func NewClient() (*Client, error) {
 		authMode: strings.ToLower(os.Getenv(TaikunAuthModeEnvVar)),
 	}
 
+        os.Setenv("MODE_SELECTED", apiClient.authMode)
+
 	switch apiClient.authMode {
 	case "taikun":
 		apiClient.email = os.Getenv(TaikunEmailEnvVar)
