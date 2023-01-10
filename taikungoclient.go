@@ -153,6 +153,8 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
 			// Mode is null when authenticating with Taikun credentials
 			loginCommand = models.LoginCommand{Email: apiClient.email, Password: apiClient.password}
 		case "keycloak":
+                        return nil, fmt.Errorf(`%s`, apiClient.email)
+
 			loginCommand = models.LoginCommand{Email: apiClient.email, Password: apiClient.password, Mode: apiClient.authMode}
 		default: // autoscaling or token
 			loginCommand = models.LoginCommand{AccessKey: apiClient.accessKey, SecretKey: apiClient.secretKey, Mode: apiClient.authMode}
