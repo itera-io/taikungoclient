@@ -154,6 +154,8 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
 			loginCommand = models.LoginCommand{Email: apiClient.email, Password: apiClient.password}
 		case "keycloak":
                         fmt.Println(`%s`, apiClient.email)
+                        fmt.Println(`%s`, apiClient.password)
+                        fmt.Println(`%s`, apiClient.authMode)
 
 			loginCommand = models.LoginCommand{Email: apiClient.email, Password: apiClient.password, Mode: apiClient.authMode}
 		default: // autoscaling or token
