@@ -165,6 +165,7 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
 		loginParams := auth.NewAuthLoginParams().WithV(Version).WithBody(&loginCommand)
 		loginResult, err := apiClient.Client.Auth.AuthLogin(loginParams, nil)
 		if err != nil {
+                        fmt.Println("error on login")
 			return err
 		}
 
@@ -174,12 +175,14 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
 
 	if apiClient.hasTokenExpired() {
 		if err := apiClient.refresh(); err != nil {
+                        fmt.Println("token expired")
 			return err
 		}
 	}
 
 	err := request.SetHeaderParam("Authorization", fmt.Sprintf("Bearer %s", apiClient.token))
 	if err != nil {
+                fmt.Println("set header failed")
 		return err
 	}
 
