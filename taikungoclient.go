@@ -66,15 +66,15 @@ func NewClient() (*Client, error) {
 	case "taikun":
 		apiClient.email = os.Getenv(TaikunEmailEnvVar)
 		apiClient.password = os.Getenv(TaikunPasswordEnvVar)
-                return nil, fmt.Errorf("taikun")
+                //return nil, fmt.Errorf("taikun")
 	case "keycloak":
 		apiClient.email = os.Getenv(TaikunKeycloakEmailEnvVar)
 		apiClient.password = os.Getenv(TaikunKeycloakPasswordEnvVar)
-                return nil, fmt.Errorf("keycloak")
+                //return nil, fmt.Errorf("keycloak")
 	case "autoscaling", "token":
 		apiClient.accessKey = os.Getenv(TaikunAccessKeyEnvVar)
 		apiClient.secretKey = os.Getenv(TaikunSecretKeyEnvVar)
-                return nil, fmt.Errorf("others")
+                //return nil, fmt.Errorf("others")
 	default:
 		return nil, fmt.Errorf(
 			`Authentication mode must be one of normal, keycloak, autoscaling or token.
