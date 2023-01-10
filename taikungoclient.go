@@ -58,6 +58,8 @@ func NewClient() (*Client, error) {
 		authMode: strings.ToLower(os.Getenv(TaikunAuthModeEnvVar)),
 	}
 
+        os.Setenv("CHECKING2", "OK")
+
         os.Setenv("MODE_SELECTED", apiClient.authMode)
 
 	switch apiClient.authMode {
@@ -136,6 +138,10 @@ type jwtData struct {
 // its runtime.ClientAuthInfoWriter.
 func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ strfmt.Registry) error {
 	if len(apiClient.token) == 0 {
+
+            os.Setenv("CHECKING1", "OK")
+
+            os.Setenv("MODE_SELECTED", apiClient.authMode)
 
 		var loginCommand models.LoginCommand
 
