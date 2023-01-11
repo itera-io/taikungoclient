@@ -19,6 +19,9 @@ type UpdateProjectGroupDto struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	// project ids
+	ProjectIds []int32 `json:"projectIds"`
 }
 
 // Validate validates this update project group dto
