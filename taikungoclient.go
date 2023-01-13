@@ -19,6 +19,37 @@ import (
 // API version
 const Version = "1"
 
+// Help message displayed when user is not authenticated
+var helpMessage = fmt.Errorf(
+	`Authentication mode must be one of taikun, keycloak, autoscaling or token.
+Set your authentication with the following environment variable:
+%s (default value is taikun if not defined)
+
+For normal mode, please set your Taikun credentials with the variables:
+%s
+%s
+
+To authenticate with Keycloak, set the following variables:
+%s
+%s
+
+To authenticate in autoscaling or token mode, set the access and secret keys with the following variables:
+%s
+%s
+
+To override the default API host, set the following environment variable:
+%s (default value is: %s)`,
+	TaikunAuthModeEnvVar,
+	TaikunEmailEnvVar,
+	TaikunPasswordEnvVar,
+	TaikunKeycloakEmailEnvVar,
+	TaikunKeycloakPasswordEnvVar,
+	TaikunAccessKeyEnvVar,
+	TaikunSecretKeyEnvVar,
+	TaikunApiHostEnvVar,
+	client.DefaultHost,
+)
+
 // Credential environment variables
 const TaikunEmailEnvVar = "TAIKUN_EMAIL"
 const TaikunPasswordEnvVar = "TAIKUN_PASSWORD"
@@ -58,46 +89,32 @@ func NewClient() (*Client, error) {
 		authMode: strings.ToLower(os.Getenv(TaikunAuthModeEnvVar)),
 	}
 
+	// Set default auth mode to taikun
+	if apiClient.authMode == "" {
+		apiClient.authMode = "taikun"
+	}
+
 	switch apiClient.authMode {
 	case "taikun":
 		apiClient.email = os.Getenv(TaikunEmailEnvVar)
 		apiClient.password = os.Getenv(TaikunPasswordEnvVar)
+		if apiClient.email == "" || apiClient.password == "" {
+			return nil, helpMessage
+		}
 	case "keycloak":
 		apiClient.email = os.Getenv(TaikunKeycloakEmailEnvVar)
 		apiClient.password = os.Getenv(TaikunKeycloakPasswordEnvVar)
+		if apiClient.email == "" || apiClient.password == "" {
+			return nil, helpMessage
+		}
 	case "autoscaling", "token":
 		apiClient.accessKey = os.Getenv(TaikunAccessKeyEnvVar)
 		apiClient.secretKey = os.Getenv(TaikunSecretKeyEnvVar)
+		if apiClient.accessKey == "" || apiClient.secretKey == "" {
+			return nil, helpMessage
+		}
 	default:
-		return nil, fmt.Errorf(
-			`Authentication mode must be one of normal, keycloak, autoscaling or token.
-Set your authentication with the following environment variable:
-%s
-
-For normal mode, please set your Taikun credentials with the variables:
-%s
-%s
-
-To authenticate with Keycloak, set the following variables:
-%s
-%s
-
-To authenticate in autoscaling or token mode, set the access and secret keys with the following variables:
-%s
-%s
-
-To override the default API host, set the following environment variable:
-%s (default value is: %s)`,
-			TaikunAuthModeEnvVar,
-			TaikunEmailEnvVar,
-			TaikunPasswordEnvVar,
-			TaikunKeycloakEmailEnvVar,
-			TaikunKeycloakPasswordEnvVar,
-			TaikunAccessKeyEnvVar,
-			TaikunSecretKeyEnvVar,
-			TaikunApiHostEnvVar,
-			client.DefaultHost,
-		)
+		return nil, helpMessage
 	}
 
 	apiHost := os.Getenv(TaikunApiHostEnvVar)
