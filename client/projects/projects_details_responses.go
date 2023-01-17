@@ -103,6 +103,11 @@ func (o *ProjectsDetailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects details o k response
+func (o *ProjectsDetailsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/{projectId}][%d] projectsDetailsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ProjectsDetailsBadRequest) IsServerError() bool {
 // IsCode returns true when this projects details bad request response a status code equal to that given
 func (o *ProjectsDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the projects details bad request response
+func (o *ProjectsDetailsBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectsDetailsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ProjectsDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the projects details unauthorized response
+func (o *ProjectsDetailsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectsDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/{projectId}][%d] projectsDetailsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ProjectsDetailsForbidden) IsServerError() bool {
 // IsCode returns true when this projects details forbidden response a status code equal to that given
 func (o *ProjectsDetailsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the projects details forbidden response
+func (o *ProjectsDetailsForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectsDetailsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ProjectsDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects details not found response
+func (o *ProjectsDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/{projectId}][%d] projectsDetailsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ProjectsDetailsInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects details internal server error response a status code equal to that given
 func (o *ProjectsDetailsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects details internal server error response
+func (o *ProjectsDetailsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsDetailsInternalServerError) Error() string {

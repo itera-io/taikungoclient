@@ -103,6 +103,11 @@ func (o *OrganizationsLeaveTaikunOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organizations leave taikun o k response
+func (o *OrganizationsLeaveTaikunOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationsLeaveTaikunOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *OrganizationsLeaveTaikunBadRequest) IsServerError() bool {
 // IsCode returns true when this organizations leave taikun bad request response a status code equal to that given
 func (o *OrganizationsLeaveTaikunBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the organizations leave taikun bad request response
+func (o *OrganizationsLeaveTaikunBadRequest) Code() int {
+	return 400
 }
 
 func (o *OrganizationsLeaveTaikunBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *OrganizationsLeaveTaikunUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the organizations leave taikun unauthorized response
+func (o *OrganizationsLeaveTaikunUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OrganizationsLeaveTaikunUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *OrganizationsLeaveTaikunForbidden) IsServerError() bool {
 // IsCode returns true when this organizations leave taikun forbidden response a status code equal to that given
 func (o *OrganizationsLeaveTaikunForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the organizations leave taikun forbidden response
+func (o *OrganizationsLeaveTaikunForbidden) Code() int {
+	return 403
 }
 
 func (o *OrganizationsLeaveTaikunForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *OrganizationsLeaveTaikunNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organizations leave taikun not found response
+func (o *OrganizationsLeaveTaikunNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationsLeaveTaikunNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *OrganizationsLeaveTaikunInternalServerError) IsServerError() bool {
 // IsCode returns true when this organizations leave taikun internal server error response a status code equal to that given
 func (o *OrganizationsLeaveTaikunInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the organizations leave taikun internal server error response
+func (o *OrganizationsLeaveTaikunInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrganizationsLeaveTaikunInternalServerError) Error() string {

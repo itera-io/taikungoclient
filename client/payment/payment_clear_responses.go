@@ -103,6 +103,11 @@ func (o *PaymentClearOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the payment clear o k response
+func (o *PaymentClearOK) Code() int {
+	return 200
+}
+
 func (o *PaymentClearOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/clear][%d] paymentClearOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *PaymentClearBadRequest) IsServerError() bool {
 // IsCode returns true when this payment clear bad request response a status code equal to that given
 func (o *PaymentClearBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the payment clear bad request response
+func (o *PaymentClearBadRequest) Code() int {
+	return 400
 }
 
 func (o *PaymentClearBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *PaymentClearUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the payment clear unauthorized response
+func (o *PaymentClearUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PaymentClearUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/clear][%d] paymentClearUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *PaymentClearForbidden) IsServerError() bool {
 // IsCode returns true when this payment clear forbidden response a status code equal to that given
 func (o *PaymentClearForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the payment clear forbidden response
+func (o *PaymentClearForbidden) Code() int {
+	return 403
 }
 
 func (o *PaymentClearForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *PaymentClearNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the payment clear not found response
+func (o *PaymentClearNotFound) Code() int {
+	return 404
+}
+
 func (o *PaymentClearNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/clear][%d] paymentClearNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PaymentClearInternalServerError) IsServerError() bool {
 // IsCode returns true when this payment clear internal server error response a status code equal to that given
 func (o *PaymentClearInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the payment clear internal server error response
+func (o *PaymentClearInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PaymentClearInternalServerError) Error() string {

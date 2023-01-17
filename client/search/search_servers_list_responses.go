@@ -103,6 +103,11 @@ func (o *SearchServersListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search servers list o k response
+func (o *SearchServersListOK) Code() int {
+	return 200
+}
+
 func (o *SearchServersListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/servers][%d] searchServersListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SearchServersListBadRequest) IsServerError() bool {
 // IsCode returns true when this search servers list bad request response a status code equal to that given
 func (o *SearchServersListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the search servers list bad request response
+func (o *SearchServersListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SearchServersListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SearchServersListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the search servers list unauthorized response
+func (o *SearchServersListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SearchServersListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/servers][%d] searchServersListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SearchServersListForbidden) IsServerError() bool {
 // IsCode returns true when this search servers list forbidden response a status code equal to that given
 func (o *SearchServersListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the search servers list forbidden response
+func (o *SearchServersListForbidden) Code() int {
+	return 403
 }
 
 func (o *SearchServersListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SearchServersListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search servers list not found response
+func (o *SearchServersListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchServersListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/servers][%d] searchServersListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchServersListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search servers list internal server error response a status code equal to that given
 func (o *SearchServersListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search servers list internal server error response
+func (o *SearchServersListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchServersListInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *CheckerSSHOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker Ssh o k response
+func (o *CheckerSSHOK) Code() int {
+	return 200
+}
+
 func (o *CheckerSSHOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CheckerSSHBadRequest) IsServerError() bool {
 // IsCode returns true when this checker Ssh bad request response a status code equal to that given
 func (o *CheckerSSHBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the checker Ssh bad request response
+func (o *CheckerSSHBadRequest) Code() int {
+	return 400
 }
 
 func (o *CheckerSSHBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CheckerSSHUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the checker Ssh unauthorized response
+func (o *CheckerSSHUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CheckerSSHUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CheckerSSHForbidden) IsServerError() bool {
 // IsCode returns true when this checker Ssh forbidden response a status code equal to that given
 func (o *CheckerSSHForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the checker Ssh forbidden response
+func (o *CheckerSSHForbidden) Code() int {
+	return 403
 }
 
 func (o *CheckerSSHForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CheckerSSHNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker Ssh not found response
+func (o *CheckerSSHNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerSSHNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerSSHInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker Ssh internal server error response a status code equal to that given
 func (o *CheckerSSHInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker Ssh internal server error response
+func (o *CheckerSSHInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerSSHInternalServerError) Error() string {

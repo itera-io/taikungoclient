@@ -103,6 +103,11 @@ func (o *UserTokenDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the user token delete o k response
+func (o *UserTokenDeleteOK) Code() int {
+	return 200
+}
+
 func (o *UserTokenDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserToken/delete/{id}][%d] userTokenDeleteOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *UserTokenDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this user token delete bad request response a status code equal to that given
 func (o *UserTokenDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the user token delete bad request response
+func (o *UserTokenDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *UserTokenDeleteBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *UserTokenDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the user token delete unauthorized response
+func (o *UserTokenDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UserTokenDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserToken/delete/{id}][%d] userTokenDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *UserTokenDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this user token delete forbidden response a status code equal to that given
 func (o *UserTokenDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the user token delete forbidden response
+func (o *UserTokenDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *UserTokenDeleteForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *UserTokenDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user token delete not found response
+func (o *UserTokenDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *UserTokenDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserToken/delete/{id}][%d] userTokenDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UserTokenDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this user token delete internal server error response a status code equal to that given
 func (o *UserTokenDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the user token delete internal server error response
+func (o *UserTokenDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UserTokenDeleteInternalServerError) Error() string {

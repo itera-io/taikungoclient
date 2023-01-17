@@ -103,6 +103,11 @@ func (o *SSHUsersEditOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ssh users edit o k response
+func (o *SSHUsersEditOK) Code() int {
+	return 200
+}
+
 func (o *SSHUsersEditOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/edit][%d] sshUsersEditOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *SSHUsersEditBadRequest) IsServerError() bool {
 // IsCode returns true when this ssh users edit bad request response a status code equal to that given
 func (o *SSHUsersEditBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ssh users edit bad request response
+func (o *SSHUsersEditBadRequest) Code() int {
+	return 400
 }
 
 func (o *SSHUsersEditBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *SSHUsersEditUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ssh users edit unauthorized response
+func (o *SSHUsersEditUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SSHUsersEditUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/edit][%d] sshUsersEditUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *SSHUsersEditForbidden) IsServerError() bool {
 // IsCode returns true when this ssh users edit forbidden response a status code equal to that given
 func (o *SSHUsersEditForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ssh users edit forbidden response
+func (o *SSHUsersEditForbidden) Code() int {
+	return 403
 }
 
 func (o *SSHUsersEditForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *SSHUsersEditNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ssh users edit not found response
+func (o *SSHUsersEditNotFound) Code() int {
+	return 404
+}
+
 func (o *SSHUsersEditNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/edit][%d] sshUsersEditNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *SSHUsersEditInternalServerError) IsServerError() bool {
 // IsCode returns true when this ssh users edit internal server error response a status code equal to that given
 func (o *SSHUsersEditInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ssh users edit internal server error response
+func (o *SSHUsersEditInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SSHUsersEditInternalServerError) Error() string {

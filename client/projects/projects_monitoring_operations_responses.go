@@ -103,6 +103,11 @@ func (o *ProjectsMonitoringOperationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects monitoring operations o k response
+func (o *ProjectsMonitoringOperationsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsMonitoringOperationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectsMonitoringOperationsBadRequest) IsServerError() bool {
 // IsCode returns true when this projects monitoring operations bad request response a status code equal to that given
 func (o *ProjectsMonitoringOperationsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the projects monitoring operations bad request response
+func (o *ProjectsMonitoringOperationsBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectsMonitoringOperationsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectsMonitoringOperationsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the projects monitoring operations unauthorized response
+func (o *ProjectsMonitoringOperationsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectsMonitoringOperationsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectsMonitoringOperationsForbidden) IsServerError() bool {
 // IsCode returns true when this projects monitoring operations forbidden response a status code equal to that given
 func (o *ProjectsMonitoringOperationsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the projects monitoring operations forbidden response
+func (o *ProjectsMonitoringOperationsForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectsMonitoringOperationsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectsMonitoringOperationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects monitoring operations not found response
+func (o *ProjectsMonitoringOperationsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsMonitoringOperationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsMonitoringOperationsInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects monitoring operations internal server error response a status code equal to that given
 func (o *ProjectsMonitoringOperationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects monitoring operations internal server error response
+func (o *ProjectsMonitoringOperationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsMonitoringOperationsInternalServerError) Error() string {

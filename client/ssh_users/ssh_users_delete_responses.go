@@ -103,6 +103,11 @@ func (o *SSHUsersDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ssh users delete o k response
+func (o *SSHUsersDeleteOK) Code() int {
+	return 200
+}
+
 func (o *SSHUsersDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *SSHUsersDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this ssh users delete bad request response a status code equal to that given
 func (o *SSHUsersDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ssh users delete bad request response
+func (o *SSHUsersDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *SSHUsersDeleteBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *SSHUsersDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ssh users delete unauthorized response
+func (o *SSHUsersDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SSHUsersDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *SSHUsersDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this ssh users delete forbidden response a status code equal to that given
 func (o *SSHUsersDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ssh users delete forbidden response
+func (o *SSHUsersDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *SSHUsersDeleteForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *SSHUsersDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ssh users delete not found response
+func (o *SSHUsersDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *SSHUsersDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *SSHUsersDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this ssh users delete internal server error response a status code equal to that given
 func (o *SSHUsersDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ssh users delete internal server error response
+func (o *SSHUsersDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SSHUsersDeleteInternalServerError) Error() string {

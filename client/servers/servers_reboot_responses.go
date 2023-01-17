@@ -103,6 +103,11 @@ func (o *ServersRebootOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the servers reboot o k response
+func (o *ServersRebootOK) Code() int {
+	return 200
+}
+
 func (o *ServersRebootOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ServersRebootBadRequest) IsServerError() bool {
 // IsCode returns true when this servers reboot bad request response a status code equal to that given
 func (o *ServersRebootBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the servers reboot bad request response
+func (o *ServersRebootBadRequest) Code() int {
+	return 400
 }
 
 func (o *ServersRebootBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ServersRebootUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the servers reboot unauthorized response
+func (o *ServersRebootUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ServersRebootUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ServersRebootForbidden) IsServerError() bool {
 // IsCode returns true when this servers reboot forbidden response a status code equal to that given
 func (o *ServersRebootForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the servers reboot forbidden response
+func (o *ServersRebootForbidden) Code() int {
+	return 403
 }
 
 func (o *ServersRebootForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ServersRebootNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the servers reboot not found response
+func (o *ServersRebootNotFound) Code() int {
+	return 404
+}
+
 func (o *ServersRebootNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ServersRebootInternalServerError) IsServerError() bool {
 // IsCode returns true when this servers reboot internal server error response a status code equal to that given
 func (o *ServersRebootInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the servers reboot internal server error response
+func (o *ServersRebootInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ServersRebootInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *UsersToggleNotificationModeOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users toggle notification mode o k response
+func (o *UsersToggleNotificationModeOK) Code() int {
+	return 200
+}
+
 func (o *UsersToggleNotificationModeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *UsersToggleNotificationModeBadRequest) IsServerError() bool {
 // IsCode returns true when this users toggle notification mode bad request response a status code equal to that given
 func (o *UsersToggleNotificationModeBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the users toggle notification mode bad request response
+func (o *UsersToggleNotificationModeBadRequest) Code() int {
+	return 400
 }
 
 func (o *UsersToggleNotificationModeBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *UsersToggleNotificationModeUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the users toggle notification mode unauthorized response
+func (o *UsersToggleNotificationModeUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UsersToggleNotificationModeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *UsersToggleNotificationModeForbidden) IsServerError() bool {
 // IsCode returns true when this users toggle notification mode forbidden response a status code equal to that given
 func (o *UsersToggleNotificationModeForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the users toggle notification mode forbidden response
+func (o *UsersToggleNotificationModeForbidden) Code() int {
+	return 403
 }
 
 func (o *UsersToggleNotificationModeForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *UsersToggleNotificationModeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users toggle notification mode not found response
+func (o *UsersToggleNotificationModeNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersToggleNotificationModeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UsersToggleNotificationModeInternalServerError) IsServerError() bool {
 // IsCode returns true when this users toggle notification mode internal server error response a status code equal to that given
 func (o *UsersToggleNotificationModeInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users toggle notification mode internal server error response
+func (o *UsersToggleNotificationModeInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersToggleNotificationModeInternalServerError) Error() string {

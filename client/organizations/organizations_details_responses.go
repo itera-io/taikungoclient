@@ -103,6 +103,11 @@ func (o *OrganizationsDetailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organizations details o k response
+func (o *OrganizationsDetailsOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationsDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *OrganizationsDetailsBadRequest) IsServerError() bool {
 // IsCode returns true when this organizations details bad request response a status code equal to that given
 func (o *OrganizationsDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the organizations details bad request response
+func (o *OrganizationsDetailsBadRequest) Code() int {
+	return 400
 }
 
 func (o *OrganizationsDetailsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *OrganizationsDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the organizations details unauthorized response
+func (o *OrganizationsDetailsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OrganizationsDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *OrganizationsDetailsForbidden) IsServerError() bool {
 // IsCode returns true when this organizations details forbidden response a status code equal to that given
 func (o *OrganizationsDetailsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the organizations details forbidden response
+func (o *OrganizationsDetailsForbidden) Code() int {
+	return 403
 }
 
 func (o *OrganizationsDetailsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *OrganizationsDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organizations details not found response
+func (o *OrganizationsDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationsDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *OrganizationsDetailsInternalServerError) IsServerError() bool {
 // IsCode returns true when this organizations details internal server error response a status code equal to that given
 func (o *OrganizationsDetailsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the organizations details internal server error response
+func (o *OrganizationsDetailsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrganizationsDetailsInternalServerError) Error() string {

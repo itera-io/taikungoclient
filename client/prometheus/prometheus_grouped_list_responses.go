@@ -103,6 +103,11 @@ func (o *PrometheusGroupedListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the prometheus grouped list o k response
+func (o *PrometheusGroupedListOK) Code() int {
+	return 200
+}
+
 func (o *PrometheusGroupedListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *PrometheusGroupedListBadRequest) IsServerError() bool {
 // IsCode returns true when this prometheus grouped list bad request response a status code equal to that given
 func (o *PrometheusGroupedListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the prometheus grouped list bad request response
+func (o *PrometheusGroupedListBadRequest) Code() int {
+	return 400
 }
 
 func (o *PrometheusGroupedListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *PrometheusGroupedListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the prometheus grouped list unauthorized response
+func (o *PrometheusGroupedListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PrometheusGroupedListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *PrometheusGroupedListForbidden) IsServerError() bool {
 // IsCode returns true when this prometheus grouped list forbidden response a status code equal to that given
 func (o *PrometheusGroupedListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the prometheus grouped list forbidden response
+func (o *PrometheusGroupedListForbidden) Code() int {
+	return 403
 }
 
 func (o *PrometheusGroupedListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *PrometheusGroupedListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the prometheus grouped list not found response
+func (o *PrometheusGroupedListNotFound) Code() int {
+	return 404
+}
+
 func (o *PrometheusGroupedListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PrometheusGroupedListInternalServerError) IsServerError() bool {
 // IsCode returns true when this prometheus grouped list internal server error response a status code equal to that given
 func (o *PrometheusGroupedListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the prometheus grouped list internal server error response
+func (o *PrometheusGroupedListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PrometheusGroupedListInternalServerError) Error() string {

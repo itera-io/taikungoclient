@@ -103,6 +103,11 @@ func (o *KubernetesDescribeIngressOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe ingress o k response
+func (o *KubernetesDescribeIngressOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribeIngressOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesDescribeIngressBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes describe ingress bad request response a status code equal to that given
 func (o *KubernetesDescribeIngressBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes describe ingress bad request response
+func (o *KubernetesDescribeIngressBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesDescribeIngressBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesDescribeIngressUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes describe ingress unauthorized response
+func (o *KubernetesDescribeIngressUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesDescribeIngressUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesDescribeIngressForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes describe ingress forbidden response a status code equal to that given
 func (o *KubernetesDescribeIngressForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes describe ingress forbidden response
+func (o *KubernetesDescribeIngressForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesDescribeIngressForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesDescribeIngressNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe ingress not found response
+func (o *KubernetesDescribeIngressNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribeIngressNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesDescribeIngressInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe ingress internal server error response a status code equal to that given
 func (o *KubernetesDescribeIngressInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe ingress internal server error response
+func (o *KubernetesDescribeIngressInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribeIngressInternalServerError) Error() string {

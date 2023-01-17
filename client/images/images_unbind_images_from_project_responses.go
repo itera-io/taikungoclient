@@ -103,6 +103,11 @@ func (o *ImagesUnbindImagesFromProjectOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the images unbind images from project o k response
+func (o *ImagesUnbindImagesFromProjectOK) Code() int {
+	return 200
+}
+
 func (o *ImagesUnbindImagesFromProjectOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ImagesUnbindImagesFromProjectBadRequest) IsServerError() bool {
 // IsCode returns true when this images unbind images from project bad request response a status code equal to that given
 func (o *ImagesUnbindImagesFromProjectBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the images unbind images from project bad request response
+func (o *ImagesUnbindImagesFromProjectBadRequest) Code() int {
+	return 400
 }
 
 func (o *ImagesUnbindImagesFromProjectBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ImagesUnbindImagesFromProjectUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the images unbind images from project unauthorized response
+func (o *ImagesUnbindImagesFromProjectUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ImagesUnbindImagesFromProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ImagesUnbindImagesFromProjectForbidden) IsServerError() bool {
 // IsCode returns true when this images unbind images from project forbidden response a status code equal to that given
 func (o *ImagesUnbindImagesFromProjectForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the images unbind images from project forbidden response
+func (o *ImagesUnbindImagesFromProjectForbidden) Code() int {
+	return 403
 }
 
 func (o *ImagesUnbindImagesFromProjectForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ImagesUnbindImagesFromProjectNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the images unbind images from project not found response
+func (o *ImagesUnbindImagesFromProjectNotFound) Code() int {
+	return 404
+}
+
 func (o *ImagesUnbindImagesFromProjectNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ImagesUnbindImagesFromProjectInternalServerError) IsServerError() bool 
 // IsCode returns true when this images unbind images from project internal server error response a status code equal to that given
 func (o *ImagesUnbindImagesFromProjectInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the images unbind images from project internal server error response
+func (o *ImagesUnbindImagesFromProjectInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ImagesUnbindImagesFromProjectInternalServerError) Error() string {

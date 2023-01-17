@@ -103,6 +103,11 @@ func (o *S3CredentialsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the s3 credentials list o k response
+func (o *S3CredentialsListOK) Code() int {
+	return 200
+}
+
 func (o *S3CredentialsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/S3Credentials/list][%d] s3CredentialsListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *S3CredentialsListBadRequest) IsServerError() bool {
 // IsCode returns true when this s3 credentials list bad request response a status code equal to that given
 func (o *S3CredentialsListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the s3 credentials list bad request response
+func (o *S3CredentialsListBadRequest) Code() int {
+	return 400
 }
 
 func (o *S3CredentialsListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *S3CredentialsListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the s3 credentials list unauthorized response
+func (o *S3CredentialsListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *S3CredentialsListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/S3Credentials/list][%d] s3CredentialsListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *S3CredentialsListForbidden) IsServerError() bool {
 // IsCode returns true when this s3 credentials list forbidden response a status code equal to that given
 func (o *S3CredentialsListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the s3 credentials list forbidden response
+func (o *S3CredentialsListForbidden) Code() int {
+	return 403
 }
 
 func (o *S3CredentialsListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *S3CredentialsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the s3 credentials list not found response
+func (o *S3CredentialsListNotFound) Code() int {
+	return 404
+}
+
 func (o *S3CredentialsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/S3Credentials/list][%d] s3CredentialsListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *S3CredentialsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this s3 credentials list internal server error response a status code equal to that given
 func (o *S3CredentialsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the s3 credentials list internal server error response
+func (o *S3CredentialsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *S3CredentialsListInternalServerError) Error() string {

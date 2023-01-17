@@ -103,6 +103,11 @@ func (o *TicketEditOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ticket edit o k response
+func (o *TicketEditOK) Code() int {
+	return 200
+}
+
 func (o *TicketEditOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit][%d] ticketEditOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *TicketEditBadRequest) IsServerError() bool {
 // IsCode returns true when this ticket edit bad request response a status code equal to that given
 func (o *TicketEditBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ticket edit bad request response
+func (o *TicketEditBadRequest) Code() int {
+	return 400
 }
 
 func (o *TicketEditBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *TicketEditUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ticket edit unauthorized response
+func (o *TicketEditUnauthorized) Code() int {
+	return 401
+}
+
 func (o *TicketEditUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit][%d] ticketEditUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *TicketEditForbidden) IsServerError() bool {
 // IsCode returns true when this ticket edit forbidden response a status code equal to that given
 func (o *TicketEditForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ticket edit forbidden response
+func (o *TicketEditForbidden) Code() int {
+	return 403
 }
 
 func (o *TicketEditForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *TicketEditNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ticket edit not found response
+func (o *TicketEditNotFound) Code() int {
+	return 404
+}
+
 func (o *TicketEditNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit][%d] ticketEditNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *TicketEditInternalServerError) IsServerError() bool {
 // IsCode returns true when this ticket edit internal server error response a status code equal to that given
 func (o *TicketEditInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ticket edit internal server error response
+func (o *TicketEditInternalServerError) Code() int {
+	return 500
 }
 
 func (o *TicketEditInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *KubernetesGetHelmReleaseListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get helm release list o k response
+func (o *KubernetesGetHelmReleaseListOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetHelmReleaseListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *KubernetesGetHelmReleaseListBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes get helm release list bad request response a status code equal to that given
 func (o *KubernetesGetHelmReleaseListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes get helm release list bad request response
+func (o *KubernetesGetHelmReleaseListBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesGetHelmReleaseListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *KubernetesGetHelmReleaseListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes get helm release list unauthorized response
+func (o *KubernetesGetHelmReleaseListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesGetHelmReleaseListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *KubernetesGetHelmReleaseListForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes get helm release list forbidden response a status code equal to that given
 func (o *KubernetesGetHelmReleaseListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes get helm release list forbidden response
+func (o *KubernetesGetHelmReleaseListForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesGetHelmReleaseListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *KubernetesGetHelmReleaseListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get helm release list not found response
+func (o *KubernetesGetHelmReleaseListNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetHelmReleaseListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubernetesGetHelmReleaseListInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get helm release list internal server error response a status code equal to that given
 func (o *KubernetesGetHelmReleaseListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get helm release list internal server error response
+func (o *KubernetesGetHelmReleaseListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetHelmReleaseListInternalServerError) Error() string {

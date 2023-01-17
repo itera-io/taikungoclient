@@ -103,6 +103,11 @@ func (o *KubernetesPatchPvcOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes patch pvc o k response
+func (o *KubernetesPatchPvcOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesPatchPvcOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pvc][%d] kubernetesPatchPvcOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesPatchPvcBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes patch pvc bad request response a status code equal to that given
 func (o *KubernetesPatchPvcBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes patch pvc bad request response
+func (o *KubernetesPatchPvcBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesPatchPvcBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesPatchPvcUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes patch pvc unauthorized response
+func (o *KubernetesPatchPvcUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesPatchPvcUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pvc][%d] kubernetesPatchPvcUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesPatchPvcForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes patch pvc forbidden response a status code equal to that given
 func (o *KubernetesPatchPvcForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes patch pvc forbidden response
+func (o *KubernetesPatchPvcForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesPatchPvcForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesPatchPvcNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes patch pvc not found response
+func (o *KubernetesPatchPvcNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesPatchPvcNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pvc][%d] kubernetesPatchPvcNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesPatchPvcInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes patch pvc internal server error response a status code equal to that given
 func (o *KubernetesPatchPvcInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes patch pvc internal server error response
+func (o *KubernetesPatchPvcInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesPatchPvcInternalServerError) Error() string {

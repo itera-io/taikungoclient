@@ -103,6 +103,11 @@ func (o *StandAloneUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone update o k response
+func (o *StandAloneUpdateOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update][%d] standAloneUpdateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *StandAloneUpdateBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone update bad request response a status code equal to that given
 func (o *StandAloneUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone update bad request response
+func (o *StandAloneUpdateBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneUpdateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *StandAloneUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone update unauthorized response
+func (o *StandAloneUpdateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update][%d] standAloneUpdateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *StandAloneUpdateForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone update forbidden response a status code equal to that given
 func (o *StandAloneUpdateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone update forbidden response
+func (o *StandAloneUpdateForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneUpdateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *StandAloneUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone update not found response
+func (o *StandAloneUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update][%d] standAloneUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone update internal server error response a status code equal to that given
 func (o *StandAloneUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone update internal server error response
+func (o *StandAloneUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneUpdateInternalServerError) Error() string {

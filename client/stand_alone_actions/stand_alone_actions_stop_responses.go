@@ -103,6 +103,11 @@ func (o *StandAloneActionsStopOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone actions stop o k response
+func (o *StandAloneActionsStopOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneActionsStopOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *StandAloneActionsStopBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone actions stop bad request response a status code equal to that given
 func (o *StandAloneActionsStopBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone actions stop bad request response
+func (o *StandAloneActionsStopBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneActionsStopBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *StandAloneActionsStopUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone actions stop unauthorized response
+func (o *StandAloneActionsStopUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneActionsStopUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *StandAloneActionsStopForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone actions stop forbidden response a status code equal to that given
 func (o *StandAloneActionsStopForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone actions stop forbidden response
+func (o *StandAloneActionsStopForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneActionsStopForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *StandAloneActionsStopNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone actions stop not found response
+func (o *StandAloneActionsStopNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneActionsStopNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneActionsStopInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone actions stop internal server error response a status code equal to that given
 func (o *StandAloneActionsStopInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone actions stop internal server error response
+func (o *StandAloneActionsStopInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneActionsStopInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *CatalogDeleteCatalogAppOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog delete catalog app o k response
+func (o *CatalogDeleteCatalogAppOK) Code() int {
+	return 200
+}
+
 func (o *CatalogDeleteCatalogAppOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete-app/{id}][%d] catalogDeleteCatalogAppOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CatalogDeleteCatalogAppBadRequest) IsServerError() bool {
 // IsCode returns true when this catalog delete catalog app bad request response a status code equal to that given
 func (o *CatalogDeleteCatalogAppBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the catalog delete catalog app bad request response
+func (o *CatalogDeleteCatalogAppBadRequest) Code() int {
+	return 400
 }
 
 func (o *CatalogDeleteCatalogAppBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CatalogDeleteCatalogAppUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the catalog delete catalog app unauthorized response
+func (o *CatalogDeleteCatalogAppUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CatalogDeleteCatalogAppUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete-app/{id}][%d] catalogDeleteCatalogAppUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CatalogDeleteCatalogAppForbidden) IsServerError() bool {
 // IsCode returns true when this catalog delete catalog app forbidden response a status code equal to that given
 func (o *CatalogDeleteCatalogAppForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the catalog delete catalog app forbidden response
+func (o *CatalogDeleteCatalogAppForbidden) Code() int {
+	return 403
 }
 
 func (o *CatalogDeleteCatalogAppForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CatalogDeleteCatalogAppNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog delete catalog app not found response
+func (o *CatalogDeleteCatalogAppNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogDeleteCatalogAppNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete-app/{id}][%d] catalogDeleteCatalogAppNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CatalogDeleteCatalogAppInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog delete catalog app internal server error response a status code equal to that given
 func (o *CatalogDeleteCatalogAppInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog delete catalog app internal server error response
+func (o *CatalogDeleteCatalogAppInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogDeleteCatalogAppInternalServerError) Error() string {

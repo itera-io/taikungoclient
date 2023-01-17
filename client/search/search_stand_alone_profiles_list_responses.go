@@ -103,6 +103,11 @@ func (o *SearchStandAloneProfilesListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search stand alone profiles list o k response
+func (o *SearchStandAloneProfilesListOK) Code() int {
+	return 200
+}
+
 func (o *SearchStandAloneProfilesListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SearchStandAloneProfilesListBadRequest) IsServerError() bool {
 // IsCode returns true when this search stand alone profiles list bad request response a status code equal to that given
 func (o *SearchStandAloneProfilesListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the search stand alone profiles list bad request response
+func (o *SearchStandAloneProfilesListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SearchStandAloneProfilesListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SearchStandAloneProfilesListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the search stand alone profiles list unauthorized response
+func (o *SearchStandAloneProfilesListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SearchStandAloneProfilesListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SearchStandAloneProfilesListForbidden) IsServerError() bool {
 // IsCode returns true when this search stand alone profiles list forbidden response a status code equal to that given
 func (o *SearchStandAloneProfilesListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the search stand alone profiles list forbidden response
+func (o *SearchStandAloneProfilesListForbidden) Code() int {
+	return 403
 }
 
 func (o *SearchStandAloneProfilesListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SearchStandAloneProfilesListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search stand alone profiles list not found response
+func (o *SearchStandAloneProfilesListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchStandAloneProfilesListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchStandAloneProfilesListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search stand alone profiles list internal server error response a status code equal to that given
 func (o *SearchStandAloneProfilesListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search stand alone profiles list internal server error response
+func (o *SearchStandAloneProfilesListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchStandAloneProfilesListInternalServerError) Error() string {

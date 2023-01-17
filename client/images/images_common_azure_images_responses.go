@@ -103,6 +103,11 @@ func (o *ImagesCommonAzureImagesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the images common azure images o k response
+func (o *ImagesCommonAzureImagesOK) Code() int {
+	return 200
+}
+
 func (o *ImagesCommonAzureImagesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/common/{cloudId}][%d] imagesCommonAzureImagesOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ImagesCommonAzureImagesBadRequest) IsServerError() bool {
 // IsCode returns true when this images common azure images bad request response a status code equal to that given
 func (o *ImagesCommonAzureImagesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the images common azure images bad request response
+func (o *ImagesCommonAzureImagesBadRequest) Code() int {
+	return 400
 }
 
 func (o *ImagesCommonAzureImagesBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ImagesCommonAzureImagesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the images common azure images unauthorized response
+func (o *ImagesCommonAzureImagesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ImagesCommonAzureImagesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/common/{cloudId}][%d] imagesCommonAzureImagesUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ImagesCommonAzureImagesForbidden) IsServerError() bool {
 // IsCode returns true when this images common azure images forbidden response a status code equal to that given
 func (o *ImagesCommonAzureImagesForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the images common azure images forbidden response
+func (o *ImagesCommonAzureImagesForbidden) Code() int {
+	return 403
 }
 
 func (o *ImagesCommonAzureImagesForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ImagesCommonAzureImagesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the images common azure images not found response
+func (o *ImagesCommonAzureImagesNotFound) Code() int {
+	return 404
+}
+
 func (o *ImagesCommonAzureImagesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/common/{cloudId}][%d] imagesCommonAzureImagesNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ImagesCommonAzureImagesInternalServerError) IsServerError() bool {
 // IsCode returns true when this images common azure images internal server error response a status code equal to that given
 func (o *ImagesCommonAzureImagesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the images common azure images internal server error response
+func (o *ImagesCommonAzureImagesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ImagesCommonAzureImagesInternalServerError) Error() string {

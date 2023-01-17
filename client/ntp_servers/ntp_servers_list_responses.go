@@ -103,6 +103,11 @@ func (o *NtpServersListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ntp servers list o k response
+func (o *NtpServersListOK) Code() int {
+	return 200
+}
+
 func (o *NtpServersListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *NtpServersListBadRequest) IsServerError() bool {
 // IsCode returns true when this ntp servers list bad request response a status code equal to that given
 func (o *NtpServersListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ntp servers list bad request response
+func (o *NtpServersListBadRequest) Code() int {
+	return 400
 }
 
 func (o *NtpServersListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *NtpServersListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ntp servers list unauthorized response
+func (o *NtpServersListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *NtpServersListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *NtpServersListForbidden) IsServerError() bool {
 // IsCode returns true when this ntp servers list forbidden response a status code equal to that given
 func (o *NtpServersListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ntp servers list forbidden response
+func (o *NtpServersListForbidden) Code() int {
+	return 403
 }
 
 func (o *NtpServersListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *NtpServersListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ntp servers list not found response
+func (o *NtpServersListNotFound) Code() int {
+	return 404
+}
+
 func (o *NtpServersListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *NtpServersListInternalServerError) IsServerError() bool {
 // IsCode returns true when this ntp servers list internal server error response a status code equal to that given
 func (o *NtpServersListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ntp servers list internal server error response
+func (o *NtpServersListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *NtpServersListInternalServerError) Error() string {

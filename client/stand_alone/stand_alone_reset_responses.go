@@ -103,6 +103,11 @@ func (o *StandAloneResetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone reset o k response
+func (o *StandAloneResetOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneResetOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *StandAloneResetBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone reset bad request response a status code equal to that given
 func (o *StandAloneResetBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone reset bad request response
+func (o *StandAloneResetBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneResetBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *StandAloneResetUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone reset unauthorized response
+func (o *StandAloneResetUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneResetUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *StandAloneResetForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone reset forbidden response a status code equal to that given
 func (o *StandAloneResetForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone reset forbidden response
+func (o *StandAloneResetForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneResetForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *StandAloneResetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone reset not found response
+func (o *StandAloneResetNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneResetNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneResetInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone reset internal server error response a status code equal to that given
 func (o *StandAloneResetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone reset internal server error response
+func (o *StandAloneResetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneResetInternalServerError) Error() string {

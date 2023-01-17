@@ -103,6 +103,11 @@ func (o *SlackCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the slack create o k response
+func (o *SlackCreateOK) Code() int {
+	return 200
+}
+
 func (o *SlackCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SlackCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this slack create bad request response a status code equal to that given
 func (o *SlackCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the slack create bad request response
+func (o *SlackCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *SlackCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SlackCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the slack create unauthorized response
+func (o *SlackCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SlackCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SlackCreateForbidden) IsServerError() bool {
 // IsCode returns true when this slack create forbidden response a status code equal to that given
 func (o *SlackCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the slack create forbidden response
+func (o *SlackCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *SlackCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SlackCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the slack create not found response
+func (o *SlackCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *SlackCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SlackCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this slack create internal server error response a status code equal to that given
 func (o *SlackCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the slack create internal server error response
+func (o *SlackCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SlackCreateInternalServerError) Error() string {

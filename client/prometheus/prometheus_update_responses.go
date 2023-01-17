@@ -103,6 +103,11 @@ func (o *PrometheusUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the prometheus update o k response
+func (o *PrometheusUpdateOK) Code() int {
+	return 200
+}
+
 func (o *PrometheusUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/update/{id}][%d] prometheusUpdateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *PrometheusUpdateBadRequest) IsServerError() bool {
 // IsCode returns true when this prometheus update bad request response a status code equal to that given
 func (o *PrometheusUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the prometheus update bad request response
+func (o *PrometheusUpdateBadRequest) Code() int {
+	return 400
 }
 
 func (o *PrometheusUpdateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *PrometheusUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the prometheus update unauthorized response
+func (o *PrometheusUpdateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PrometheusUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/update/{id}][%d] prometheusUpdateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *PrometheusUpdateForbidden) IsServerError() bool {
 // IsCode returns true when this prometheus update forbidden response a status code equal to that given
 func (o *PrometheusUpdateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the prometheus update forbidden response
+func (o *PrometheusUpdateForbidden) Code() int {
+	return 403
 }
 
 func (o *PrometheusUpdateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *PrometheusUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the prometheus update not found response
+func (o *PrometheusUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *PrometheusUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/update/{id}][%d] prometheusUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PrometheusUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this prometheus update internal server error response a status code equal to that given
 func (o *PrometheusUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the prometheus update internal server error response
+func (o *PrometheusUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PrometheusUpdateInternalServerError) Error() string {

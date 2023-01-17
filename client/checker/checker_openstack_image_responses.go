@@ -103,6 +103,11 @@ func (o *CheckerOpenstackImageOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker openstack image o k response
+func (o *CheckerOpenstackImageOK) Code() int {
+	return 200
+}
+
 func (o *CheckerOpenstackImageOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CheckerOpenstackImageBadRequest) IsServerError() bool {
 // IsCode returns true when this checker openstack image bad request response a status code equal to that given
 func (o *CheckerOpenstackImageBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the checker openstack image bad request response
+func (o *CheckerOpenstackImageBadRequest) Code() int {
+	return 400
 }
 
 func (o *CheckerOpenstackImageBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CheckerOpenstackImageUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the checker openstack image unauthorized response
+func (o *CheckerOpenstackImageUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CheckerOpenstackImageUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CheckerOpenstackImageForbidden) IsServerError() bool {
 // IsCode returns true when this checker openstack image forbidden response a status code equal to that given
 func (o *CheckerOpenstackImageForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the checker openstack image forbidden response
+func (o *CheckerOpenstackImageForbidden) Code() int {
+	return 403
 }
 
 func (o *CheckerOpenstackImageForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CheckerOpenstackImageNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker openstack image not found response
+func (o *CheckerOpenstackImageNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerOpenstackImageNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerOpenstackImageInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker openstack image internal server error response a status code equal to that given
 func (o *CheckerOpenstackImageInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker openstack image internal server error response
+func (o *CheckerOpenstackImageInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerOpenstackImageInternalServerError) Error() string {

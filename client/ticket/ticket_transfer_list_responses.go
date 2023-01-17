@@ -103,6 +103,11 @@ func (o *TicketTransferListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ticket transfer list o k response
+func (o *TicketTransferListOK) Code() int {
+	return 200
+}
+
 func (o *TicketTransferListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *TicketTransferListBadRequest) IsServerError() bool {
 // IsCode returns true when this ticket transfer list bad request response a status code equal to that given
 func (o *TicketTransferListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ticket transfer list bad request response
+func (o *TicketTransferListBadRequest) Code() int {
+	return 400
 }
 
 func (o *TicketTransferListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *TicketTransferListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ticket transfer list unauthorized response
+func (o *TicketTransferListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *TicketTransferListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *TicketTransferListForbidden) IsServerError() bool {
 // IsCode returns true when this ticket transfer list forbidden response a status code equal to that given
 func (o *TicketTransferListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ticket transfer list forbidden response
+func (o *TicketTransferListForbidden) Code() int {
+	return 403
 }
 
 func (o *TicketTransferListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *TicketTransferListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ticket transfer list not found response
+func (o *TicketTransferListNotFound) Code() int {
+	return 404
+}
+
 func (o *TicketTransferListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *TicketTransferListInternalServerError) IsServerError() bool {
 // IsCode returns true when this ticket transfer list internal server error response a status code equal to that given
 func (o *TicketTransferListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ticket transfer list internal server error response
+func (o *TicketTransferListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *TicketTransferListInternalServerError) Error() string {

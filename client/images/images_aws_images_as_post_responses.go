@@ -103,6 +103,11 @@ func (o *ImagesAwsImagesAsPostOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the images aws images as post o k response
+func (o *ImagesAwsImagesAsPostOK) Code() int {
+	return 200
+}
+
 func (o *ImagesAwsImagesAsPostOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/aws][%d] imagesAwsImagesAsPostOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ImagesAwsImagesAsPostBadRequest) IsServerError() bool {
 // IsCode returns true when this images aws images as post bad request response a status code equal to that given
 func (o *ImagesAwsImagesAsPostBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the images aws images as post bad request response
+func (o *ImagesAwsImagesAsPostBadRequest) Code() int {
+	return 400
 }
 
 func (o *ImagesAwsImagesAsPostBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ImagesAwsImagesAsPostUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the images aws images as post unauthorized response
+func (o *ImagesAwsImagesAsPostUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ImagesAwsImagesAsPostUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/aws][%d] imagesAwsImagesAsPostUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ImagesAwsImagesAsPostForbidden) IsServerError() bool {
 // IsCode returns true when this images aws images as post forbidden response a status code equal to that given
 func (o *ImagesAwsImagesAsPostForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the images aws images as post forbidden response
+func (o *ImagesAwsImagesAsPostForbidden) Code() int {
+	return 403
 }
 
 func (o *ImagesAwsImagesAsPostForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ImagesAwsImagesAsPostNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the images aws images as post not found response
+func (o *ImagesAwsImagesAsPostNotFound) Code() int {
+	return 404
+}
+
 func (o *ImagesAwsImagesAsPostNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/aws][%d] imagesAwsImagesAsPostNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ImagesAwsImagesAsPostInternalServerError) IsServerError() bool {
 // IsCode returns true when this images aws images as post internal server error response a status code equal to that given
 func (o *ImagesAwsImagesAsPostInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the images aws images as post internal server error response
+func (o *ImagesAwsImagesAsPostInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ImagesAwsImagesAsPostInternalServerError) Error() string {

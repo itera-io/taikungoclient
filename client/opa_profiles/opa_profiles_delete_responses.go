@@ -103,6 +103,11 @@ func (o *OpaProfilesDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the opa profiles delete o k response
+func (o *OpaProfilesDeleteOK) Code() int {
+	return 200
+}
+
 func (o *OpaProfilesDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *OpaProfilesDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this opa profiles delete bad request response a status code equal to that given
 func (o *OpaProfilesDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the opa profiles delete bad request response
+func (o *OpaProfilesDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *OpaProfilesDeleteBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *OpaProfilesDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the opa profiles delete unauthorized response
+func (o *OpaProfilesDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OpaProfilesDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *OpaProfilesDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this opa profiles delete forbidden response a status code equal to that given
 func (o *OpaProfilesDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the opa profiles delete forbidden response
+func (o *OpaProfilesDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *OpaProfilesDeleteForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *OpaProfilesDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the opa profiles delete not found response
+func (o *OpaProfilesDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *OpaProfilesDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpaProfilesDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this opa profiles delete internal server error response a status code equal to that given
 func (o *OpaProfilesDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the opa profiles delete internal server error response
+func (o *OpaProfilesDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpaProfilesDeleteInternalServerError) Error() string {

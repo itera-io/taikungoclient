@@ -103,6 +103,11 @@ func (o *AdminOrganizationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin organizations o k response
+func (o *AdminOrganizationsOK) Code() int {
+	return 200
+}
+
 func (o *AdminOrganizationsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AdminOrganizationsBadRequest) IsServerError() bool {
 // IsCode returns true when this admin organizations bad request response a status code equal to that given
 func (o *AdminOrganizationsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the admin organizations bad request response
+func (o *AdminOrganizationsBadRequest) Code() int {
+	return 400
 }
 
 func (o *AdminOrganizationsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *AdminOrganizationsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the admin organizations unauthorized response
+func (o *AdminOrganizationsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AdminOrganizationsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *AdminOrganizationsForbidden) IsServerError() bool {
 // IsCode returns true when this admin organizations forbidden response a status code equal to that given
 func (o *AdminOrganizationsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the admin organizations forbidden response
+func (o *AdminOrganizationsForbidden) Code() int {
+	return 403
 }
 
 func (o *AdminOrganizationsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *AdminOrganizationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin organizations not found response
+func (o *AdminOrganizationsNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminOrganizationsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AdminOrganizationsInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin organizations internal server error response a status code equal to that given
 func (o *AdminOrganizationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin organizations internal server error response
+func (o *AdminOrganizationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminOrganizationsInternalServerError) Error() string {

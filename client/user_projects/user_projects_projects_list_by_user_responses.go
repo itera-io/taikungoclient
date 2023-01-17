@@ -103,6 +103,11 @@ func (o *UserProjectsProjectsListByUserOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the user projects projects list by user o k response
+func (o *UserProjectsProjectsListByUserOK) Code() int {
+	return 200
+}
+
 func (o *UserProjectsProjectsListByUserOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/projects/list][%d] userProjectsProjectsListByUserOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *UserProjectsProjectsListByUserBadRequest) IsServerError() bool {
 // IsCode returns true when this user projects projects list by user bad request response a status code equal to that given
 func (o *UserProjectsProjectsListByUserBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the user projects projects list by user bad request response
+func (o *UserProjectsProjectsListByUserBadRequest) Code() int {
+	return 400
 }
 
 func (o *UserProjectsProjectsListByUserBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *UserProjectsProjectsListByUserUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the user projects projects list by user unauthorized response
+func (o *UserProjectsProjectsListByUserUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UserProjectsProjectsListByUserUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/projects/list][%d] userProjectsProjectsListByUserUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *UserProjectsProjectsListByUserForbidden) IsServerError() bool {
 // IsCode returns true when this user projects projects list by user forbidden response a status code equal to that given
 func (o *UserProjectsProjectsListByUserForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the user projects projects list by user forbidden response
+func (o *UserProjectsProjectsListByUserForbidden) Code() int {
+	return 403
 }
 
 func (o *UserProjectsProjectsListByUserForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *UserProjectsProjectsListByUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user projects projects list by user not found response
+func (o *UserProjectsProjectsListByUserNotFound) Code() int {
+	return 404
+}
+
 func (o *UserProjectsProjectsListByUserNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/projects/list][%d] userProjectsProjectsListByUserNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UserProjectsProjectsListByUserInternalServerError) IsServerError() bool
 // IsCode returns true when this user projects projects list by user internal server error response a status code equal to that given
 func (o *UserProjectsProjectsListByUserInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the user projects projects list by user internal server error response
+func (o *UserProjectsProjectsListByUserInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UserProjectsProjectsListByUserInternalServerError) Error() string {

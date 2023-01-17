@@ -103,6 +103,11 @@ func (o *CheckerCronOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker cron o k response
+func (o *CheckerCronOK) Code() int {
+	return 200
+}
+
 func (o *CheckerCronOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CheckerCronBadRequest) IsServerError() bool {
 // IsCode returns true when this checker cron bad request response a status code equal to that given
 func (o *CheckerCronBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the checker cron bad request response
+func (o *CheckerCronBadRequest) Code() int {
+	return 400
 }
 
 func (o *CheckerCronBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CheckerCronUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the checker cron unauthorized response
+func (o *CheckerCronUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CheckerCronUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CheckerCronForbidden) IsServerError() bool {
 // IsCode returns true when this checker cron forbidden response a status code equal to that given
 func (o *CheckerCronForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the checker cron forbidden response
+func (o *CheckerCronForbidden) Code() int {
+	return 403
 }
 
 func (o *CheckerCronForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CheckerCronNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker cron not found response
+func (o *CheckerCronNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerCronNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerCronInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker cron internal server error response a status code equal to that given
 func (o *CheckerCronInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker cron internal server error response
+func (o *CheckerCronInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerCronInternalServerError) Error() string {

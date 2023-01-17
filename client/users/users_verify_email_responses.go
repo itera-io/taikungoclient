@@ -103,6 +103,11 @@ func (o *UsersVerifyEmailOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users verify email o k response
+func (o *UsersVerifyEmailOK) Code() int {
+	return 200
+}
+
 func (o *UsersVerifyEmailOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *UsersVerifyEmailBadRequest) IsServerError() bool {
 // IsCode returns true when this users verify email bad request response a status code equal to that given
 func (o *UsersVerifyEmailBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the users verify email bad request response
+func (o *UsersVerifyEmailBadRequest) Code() int {
+	return 400
 }
 
 func (o *UsersVerifyEmailBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *UsersVerifyEmailUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the users verify email unauthorized response
+func (o *UsersVerifyEmailUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UsersVerifyEmailUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *UsersVerifyEmailForbidden) IsServerError() bool {
 // IsCode returns true when this users verify email forbidden response a status code equal to that given
 func (o *UsersVerifyEmailForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the users verify email forbidden response
+func (o *UsersVerifyEmailForbidden) Code() int {
+	return 403
 }
 
 func (o *UsersVerifyEmailForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *UsersVerifyEmailNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users verify email not found response
+func (o *UsersVerifyEmailNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersVerifyEmailNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UsersVerifyEmailInternalServerError) IsServerError() bool {
 // IsCode returns true when this users verify email internal server error response a status code equal to that given
 func (o *UsersVerifyEmailInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users verify email internal server error response
+func (o *UsersVerifyEmailInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersVerifyEmailInternalServerError) Error() string {

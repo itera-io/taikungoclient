@@ -102,6 +102,11 @@ func (o *AuthRegisterOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the auth register o k response
+func (o *AuthRegisterOK) Code() int {
+	return 200
+}
+
 func (o *AuthRegisterOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/register][%d] authRegisterOK ", 200)
 }
@@ -152,6 +157,11 @@ func (o *AuthRegisterBadRequest) IsServerError() bool {
 // IsCode returns true when this auth register bad request response a status code equal to that given
 func (o *AuthRegisterBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the auth register bad request response
+func (o *AuthRegisterBadRequest) Code() int {
+	return 400
 }
 
 func (o *AuthRegisterBadRequest) Error() string {
@@ -217,6 +227,11 @@ func (o *AuthRegisterUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the auth register unauthorized response
+func (o *AuthRegisterUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AuthRegisterUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/register][%d] authRegisterUnauthorized  %+v", 401, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *AuthRegisterForbidden) IsServerError() bool {
 // IsCode returns true when this auth register forbidden response a status code equal to that given
 func (o *AuthRegisterForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the auth register forbidden response
+func (o *AuthRegisterForbidden) Code() int {
+	return 403
 }
 
 func (o *AuthRegisterForbidden) Error() string {
@@ -343,6 +363,11 @@ func (o *AuthRegisterNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the auth register not found response
+func (o *AuthRegisterNotFound) Code() int {
+	return 404
+}
+
 func (o *AuthRegisterNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/register][%d] authRegisterNotFound  %+v", 404, o.Payload)
 }
@@ -403,6 +428,11 @@ func (o *AuthRegisterInternalServerError) IsServerError() bool {
 // IsCode returns true when this auth register internal server error response a status code equal to that given
 func (o *AuthRegisterInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the auth register internal server error response
+func (o *AuthRegisterInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AuthRegisterInternalServerError) Error() string {

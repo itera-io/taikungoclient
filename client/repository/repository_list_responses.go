@@ -103,6 +103,11 @@ func (o *RepositoryListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the repository list o k response
+func (o *RepositoryListOK) Code() int {
+	return 200
+}
+
 func (o *RepositoryListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *RepositoryListBadRequest) IsServerError() bool {
 // IsCode returns true when this repository list bad request response a status code equal to that given
 func (o *RepositoryListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the repository list bad request response
+func (o *RepositoryListBadRequest) Code() int {
+	return 400
 }
 
 func (o *RepositoryListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *RepositoryListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the repository list unauthorized response
+func (o *RepositoryListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *RepositoryListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *RepositoryListForbidden) IsServerError() bool {
 // IsCode returns true when this repository list forbidden response a status code equal to that given
 func (o *RepositoryListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the repository list forbidden response
+func (o *RepositoryListForbidden) Code() int {
+	return 403
 }
 
 func (o *RepositoryListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *RepositoryListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the repository list not found response
+func (o *RepositoryListNotFound) Code() int {
+	return 404
+}
+
 func (o *RepositoryListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *RepositoryListInternalServerError) IsServerError() bool {
 // IsCode returns true when this repository list internal server error response a status code equal to that given
 func (o *RepositoryListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the repository list internal server error response
+func (o *RepositoryListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *RepositoryListInternalServerError) Error() string {

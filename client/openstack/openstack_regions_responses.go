@@ -103,6 +103,11 @@ func (o *OpenstackRegionsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the openstack regions o k response
+func (o *OpenstackRegionsOK) Code() int {
+	return 200
+}
+
 func (o *OpenstackRegionsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *OpenstackRegionsBadRequest) IsServerError() bool {
 // IsCode returns true when this openstack regions bad request response a status code equal to that given
 func (o *OpenstackRegionsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the openstack regions bad request response
+func (o *OpenstackRegionsBadRequest) Code() int {
+	return 400
 }
 
 func (o *OpenstackRegionsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *OpenstackRegionsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the openstack regions unauthorized response
+func (o *OpenstackRegionsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OpenstackRegionsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *OpenstackRegionsForbidden) IsServerError() bool {
 // IsCode returns true when this openstack regions forbidden response a status code equal to that given
 func (o *OpenstackRegionsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the openstack regions forbidden response
+func (o *OpenstackRegionsForbidden) Code() int {
+	return 403
 }
 
 func (o *OpenstackRegionsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *OpenstackRegionsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the openstack regions not found response
+func (o *OpenstackRegionsNotFound) Code() int {
+	return 404
+}
+
 func (o *OpenstackRegionsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpenstackRegionsInternalServerError) IsServerError() bool {
 // IsCode returns true when this openstack regions internal server error response a status code equal to that given
 func (o *OpenstackRegionsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the openstack regions internal server error response
+func (o *OpenstackRegionsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpenstackRegionsInternalServerError) Error() string {

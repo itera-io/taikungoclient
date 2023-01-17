@@ -108,6 +108,11 @@ func (o *ProjectInfracostsDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project infracosts delete o k response
+func (o *ProjectInfracostsDeleteOK) Code() int {
+	return 200
+}
+
 func (o *ProjectInfracostsDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectInfracosts/delete][%d] projectInfracostsDeleteOK ", 200)
 }
@@ -157,6 +162,11 @@ func (o *ProjectInfracostsDeleteNoContent) IsServerError() bool {
 // IsCode returns true when this project infracosts delete no content response a status code equal to that given
 func (o *ProjectInfracostsDeleteNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the project infracosts delete no content response
+func (o *ProjectInfracostsDeleteNoContent) Code() int {
+	return 204
 }
 
 func (o *ProjectInfracostsDeleteNoContent) Error() string {
@@ -209,6 +219,11 @@ func (o *ProjectInfracostsDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this project infracosts delete bad request response a status code equal to that given
 func (o *ProjectInfracostsDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project infracosts delete bad request response
+func (o *ProjectInfracostsDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectInfracostsDeleteBadRequest) Error() string {
@@ -274,6 +289,11 @@ func (o *ProjectInfracostsDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project infracosts delete unauthorized response
+func (o *ProjectInfracostsDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectInfracostsDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectInfracosts/delete][%d] projectInfracostsDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -335,6 +355,11 @@ func (o *ProjectInfracostsDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this project infracosts delete forbidden response a status code equal to that given
 func (o *ProjectInfracostsDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project infracosts delete forbidden response
+func (o *ProjectInfracostsDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectInfracostsDeleteForbidden) Error() string {
@@ -400,6 +425,11 @@ func (o *ProjectInfracostsDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project infracosts delete not found response
+func (o *ProjectInfracostsDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectInfracostsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectInfracosts/delete][%d] projectInfracostsDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -460,6 +490,11 @@ func (o *ProjectInfracostsDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this project infracosts delete internal server error response a status code equal to that given
 func (o *ProjectInfracostsDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project infracosts delete internal server error response
+func (o *ProjectInfracostsDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectInfracostsDeleteInternalServerError) Error() string {

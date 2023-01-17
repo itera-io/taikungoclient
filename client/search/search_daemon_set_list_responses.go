@@ -103,6 +103,11 @@ func (o *SearchDaemonSetListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search daemon set list o k response
+func (o *SearchDaemonSetListOK) Code() int {
+	return 200
+}
+
 func (o *SearchDaemonSetListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SearchDaemonSetListBadRequest) IsServerError() bool {
 // IsCode returns true when this search daemon set list bad request response a status code equal to that given
 func (o *SearchDaemonSetListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the search daemon set list bad request response
+func (o *SearchDaemonSetListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SearchDaemonSetListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SearchDaemonSetListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the search daemon set list unauthorized response
+func (o *SearchDaemonSetListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SearchDaemonSetListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SearchDaemonSetListForbidden) IsServerError() bool {
 // IsCode returns true when this search daemon set list forbidden response a status code equal to that given
 func (o *SearchDaemonSetListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the search daemon set list forbidden response
+func (o *SearchDaemonSetListForbidden) Code() int {
+	return 403
 }
 
 func (o *SearchDaemonSetListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SearchDaemonSetListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search daemon set list not found response
+func (o *SearchDaemonSetListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchDaemonSetListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchDaemonSetListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search daemon set list internal server error response a status code equal to that given
 func (o *SearchDaemonSetListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search daemon set list internal server error response
+func (o *SearchDaemonSetListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchDaemonSetListInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *PreDefinedQueriesUpdatePrometheusDashboardOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pre defined queries update prometheus dashboard o k response
+func (o *PreDefinedQueriesUpdatePrometheusDashboardOK) Code() int {
+	return 200
+}
+
 func (o *PreDefinedQueriesUpdatePrometheusDashboardOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/update][%d] preDefinedQueriesUpdatePrometheusDashboardOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *PreDefinedQueriesUpdatePrometheusDashboardBadRequest) IsServerError() b
 // IsCode returns true when this pre defined queries update prometheus dashboard bad request response a status code equal to that given
 func (o *PreDefinedQueriesUpdatePrometheusDashboardBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pre defined queries update prometheus dashboard bad request response
+func (o *PreDefinedQueriesUpdatePrometheusDashboardBadRequest) Code() int {
+	return 400
 }
 
 func (o *PreDefinedQueriesUpdatePrometheusDashboardBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *PreDefinedQueriesUpdatePrometheusDashboardUnauthorized) IsCode(code int
 	return code == 401
 }
 
+// Code gets the status code for the pre defined queries update prometheus dashboard unauthorized response
+func (o *PreDefinedQueriesUpdatePrometheusDashboardUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PreDefinedQueriesUpdatePrometheusDashboardUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/update][%d] preDefinedQueriesUpdatePrometheusDashboardUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *PreDefinedQueriesUpdatePrometheusDashboardForbidden) IsServerError() bo
 // IsCode returns true when this pre defined queries update prometheus dashboard forbidden response a status code equal to that given
 func (o *PreDefinedQueriesUpdatePrometheusDashboardForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the pre defined queries update prometheus dashboard forbidden response
+func (o *PreDefinedQueriesUpdatePrometheusDashboardForbidden) Code() int {
+	return 403
 }
 
 func (o *PreDefinedQueriesUpdatePrometheusDashboardForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *PreDefinedQueriesUpdatePrometheusDashboardNotFound) IsCode(code int) bo
 	return code == 404
 }
 
+// Code gets the status code for the pre defined queries update prometheus dashboard not found response
+func (o *PreDefinedQueriesUpdatePrometheusDashboardNotFound) Code() int {
+	return 404
+}
+
 func (o *PreDefinedQueriesUpdatePrometheusDashboardNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/update][%d] preDefinedQueriesUpdatePrometheusDashboardNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PreDefinedQueriesUpdatePrometheusDashboardInternalServerError) IsServer
 // IsCode returns true when this pre defined queries update prometheus dashboard internal server error response a status code equal to that given
 func (o *PreDefinedQueriesUpdatePrometheusDashboardInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pre defined queries update prometheus dashboard internal server error response
+func (o *PreDefinedQueriesUpdatePrometheusDashboardInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PreDefinedQueriesUpdatePrometheusDashboardInternalServerError) Error() string {

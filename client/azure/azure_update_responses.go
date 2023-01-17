@@ -103,6 +103,11 @@ func (o *AzureUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the azure update o k response
+func (o *AzureUpdateOK) Code() int {
+	return 200
+}
+
 func (o *AzureUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AzureUpdateBadRequest) IsServerError() bool {
 // IsCode returns true when this azure update bad request response a status code equal to that given
 func (o *AzureUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the azure update bad request response
+func (o *AzureUpdateBadRequest) Code() int {
+	return 400
 }
 
 func (o *AzureUpdateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AzureUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the azure update unauthorized response
+func (o *AzureUpdateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AzureUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AzureUpdateForbidden) IsServerError() bool {
 // IsCode returns true when this azure update forbidden response a status code equal to that given
 func (o *AzureUpdateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the azure update forbidden response
+func (o *AzureUpdateForbidden) Code() int {
+	return 403
 }
 
 func (o *AzureUpdateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AzureUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the azure update not found response
+func (o *AzureUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *AzureUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AzureUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this azure update internal server error response a status code equal to that given
 func (o *AzureUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the azure update internal server error response
+func (o *AzureUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AzureUpdateInternalServerError) Error() string {

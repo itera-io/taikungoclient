@@ -103,6 +103,11 @@ func (o *ShowbackCredentialsCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the showback credentials create o k response
+func (o *ShowbackCredentialsCreateOK) Code() int {
+	return 200
+}
+
 func (o *ShowbackCredentialsCreateOK) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/create][%d] showbackCredentialsCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ShowbackCredentialsCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this showback credentials create bad request response a status code equal to that given
 func (o *ShowbackCredentialsCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the showback credentials create bad request response
+func (o *ShowbackCredentialsCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *ShowbackCredentialsCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ShowbackCredentialsCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the showback credentials create unauthorized response
+func (o *ShowbackCredentialsCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ShowbackCredentialsCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/create][%d] showbackCredentialsCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ShowbackCredentialsCreateForbidden) IsServerError() bool {
 // IsCode returns true when this showback credentials create forbidden response a status code equal to that given
 func (o *ShowbackCredentialsCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the showback credentials create forbidden response
+func (o *ShowbackCredentialsCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *ShowbackCredentialsCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ShowbackCredentialsCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the showback credentials create not found response
+func (o *ShowbackCredentialsCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *ShowbackCredentialsCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/create][%d] showbackCredentialsCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ShowbackCredentialsCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this showback credentials create internal server error response a status code equal to that given
 func (o *ShowbackCredentialsCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the showback credentials create internal server error response
+func (o *ShowbackCredentialsCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ShowbackCredentialsCreateInternalServerError) Error() string {

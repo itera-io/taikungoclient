@@ -103,6 +103,11 @@ func (o *CatalogAvailableVersionsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog available versions o k response
+func (o *CatalogAvailableVersionsOK) Code() int {
+	return 200
+}
+
 func (o *CatalogAvailableVersionsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CatalogAvailableVersionsBadRequest) IsServerError() bool {
 // IsCode returns true when this catalog available versions bad request response a status code equal to that given
 func (o *CatalogAvailableVersionsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the catalog available versions bad request response
+func (o *CatalogAvailableVersionsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CatalogAvailableVersionsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CatalogAvailableVersionsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the catalog available versions unauthorized response
+func (o *CatalogAvailableVersionsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CatalogAvailableVersionsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CatalogAvailableVersionsForbidden) IsServerError() bool {
 // IsCode returns true when this catalog available versions forbidden response a status code equal to that given
 func (o *CatalogAvailableVersionsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the catalog available versions forbidden response
+func (o *CatalogAvailableVersionsForbidden) Code() int {
+	return 403
 }
 
 func (o *CatalogAvailableVersionsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CatalogAvailableVersionsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog available versions not found response
+func (o *CatalogAvailableVersionsNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogAvailableVersionsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CatalogAvailableVersionsInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog available versions internal server error response a status code equal to that given
 func (o *CatalogAvailableVersionsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog available versions internal server error response
+func (o *CatalogAvailableVersionsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogAvailableVersionsInternalServerError) Error() string {

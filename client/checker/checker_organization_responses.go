@@ -103,6 +103,11 @@ func (o *CheckerOrganizationOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker organization o k response
+func (o *CheckerOrganizationOK) Code() int {
+	return 200
+}
+
 func (o *CheckerOrganizationOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CheckerOrganizationBadRequest) IsServerError() bool {
 // IsCode returns true when this checker organization bad request response a status code equal to that given
 func (o *CheckerOrganizationBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the checker organization bad request response
+func (o *CheckerOrganizationBadRequest) Code() int {
+	return 400
 }
 
 func (o *CheckerOrganizationBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CheckerOrganizationUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the checker organization unauthorized response
+func (o *CheckerOrganizationUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CheckerOrganizationUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CheckerOrganizationForbidden) IsServerError() bool {
 // IsCode returns true when this checker organization forbidden response a status code equal to that given
 func (o *CheckerOrganizationForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the checker organization forbidden response
+func (o *CheckerOrganizationForbidden) Code() int {
+	return 403
 }
 
 func (o *CheckerOrganizationForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CheckerOrganizationNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker organization not found response
+func (o *CheckerOrganizationNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerOrganizationNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerOrganizationInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker organization internal server error response a status code equal to that given
 func (o *CheckerOrganizationInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker organization internal server error response
+func (o *CheckerOrganizationInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerOrganizationInternalServerError) Error() string {

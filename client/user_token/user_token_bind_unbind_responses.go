@@ -103,6 +103,11 @@ func (o *UserTokenBindUnbindOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the user token bind unbind o k response
+func (o *UserTokenBindUnbindOK) Code() int {
+	return 200
+}
+
 func (o *UserTokenBindUnbindOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *UserTokenBindUnbindBadRequest) IsServerError() bool {
 // IsCode returns true when this user token bind unbind bad request response a status code equal to that given
 func (o *UserTokenBindUnbindBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the user token bind unbind bad request response
+func (o *UserTokenBindUnbindBadRequest) Code() int {
+	return 400
 }
 
 func (o *UserTokenBindUnbindBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *UserTokenBindUnbindUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the user token bind unbind unauthorized response
+func (o *UserTokenBindUnbindUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UserTokenBindUnbindUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *UserTokenBindUnbindForbidden) IsServerError() bool {
 // IsCode returns true when this user token bind unbind forbidden response a status code equal to that given
 func (o *UserTokenBindUnbindForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the user token bind unbind forbidden response
+func (o *UserTokenBindUnbindForbidden) Code() int {
+	return 403
 }
 
 func (o *UserTokenBindUnbindForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *UserTokenBindUnbindNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user token bind unbind not found response
+func (o *UserTokenBindUnbindNotFound) Code() int {
+	return 404
+}
+
 func (o *UserTokenBindUnbindNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UserTokenBindUnbindInternalServerError) IsServerError() bool {
 // IsCode returns true when this user token bind unbind internal server error response a status code equal to that given
 func (o *UserTokenBindUnbindInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the user token bind unbind internal server error response
+func (o *UserTokenBindUnbindInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UserTokenBindUnbindInternalServerError) Error() string {

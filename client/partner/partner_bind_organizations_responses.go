@@ -103,6 +103,11 @@ func (o *PartnerBindOrganizationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the partner bind organizations o k response
+func (o *PartnerBindOrganizationsOK) Code() int {
+	return 200
+}
+
 func (o *PartnerBindOrganizationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *PartnerBindOrganizationsBadRequest) IsServerError() bool {
 // IsCode returns true when this partner bind organizations bad request response a status code equal to that given
 func (o *PartnerBindOrganizationsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the partner bind organizations bad request response
+func (o *PartnerBindOrganizationsBadRequest) Code() int {
+	return 400
 }
 
 func (o *PartnerBindOrganizationsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *PartnerBindOrganizationsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the partner bind organizations unauthorized response
+func (o *PartnerBindOrganizationsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PartnerBindOrganizationsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *PartnerBindOrganizationsForbidden) IsServerError() bool {
 // IsCode returns true when this partner bind organizations forbidden response a status code equal to that given
 func (o *PartnerBindOrganizationsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the partner bind organizations forbidden response
+func (o *PartnerBindOrganizationsForbidden) Code() int {
+	return 403
 }
 
 func (o *PartnerBindOrganizationsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *PartnerBindOrganizationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the partner bind organizations not found response
+func (o *PartnerBindOrganizationsNotFound) Code() int {
+	return 404
+}
+
 func (o *PartnerBindOrganizationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PartnerBindOrganizationsInternalServerError) IsServerError() bool {
 // IsCode returns true when this partner bind organizations internal server error response a status code equal to that given
 func (o *PartnerBindOrganizationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the partner bind organizations internal server error response
+func (o *PartnerBindOrganizationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PartnerBindOrganizationsInternalServerError) Error() string {

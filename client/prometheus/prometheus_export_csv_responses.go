@@ -102,6 +102,11 @@ func (o *PrometheusExportCsvOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the prometheus export csv o k response
+func (o *PrometheusExportCsvOK) Code() int {
+	return 200
+}
+
 func (o *PrometheusExportCsvOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvOK ", 200)
 }
@@ -152,6 +157,11 @@ func (o *PrometheusExportCsvBadRequest) IsServerError() bool {
 // IsCode returns true when this prometheus export csv bad request response a status code equal to that given
 func (o *PrometheusExportCsvBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the prometheus export csv bad request response
+func (o *PrometheusExportCsvBadRequest) Code() int {
+	return 400
 }
 
 func (o *PrometheusExportCsvBadRequest) Error() string {
@@ -217,6 +227,11 @@ func (o *PrometheusExportCsvUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the prometheus export csv unauthorized response
+func (o *PrometheusExportCsvUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PrometheusExportCsvUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvUnauthorized  %+v", 401, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *PrometheusExportCsvForbidden) IsServerError() bool {
 // IsCode returns true when this prometheus export csv forbidden response a status code equal to that given
 func (o *PrometheusExportCsvForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the prometheus export csv forbidden response
+func (o *PrometheusExportCsvForbidden) Code() int {
+	return 403
 }
 
 func (o *PrometheusExportCsvForbidden) Error() string {
@@ -343,6 +363,11 @@ func (o *PrometheusExportCsvNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the prometheus export csv not found response
+func (o *PrometheusExportCsvNotFound) Code() int {
+	return 404
+}
+
 func (o *PrometheusExportCsvNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvNotFound  %+v", 404, o.Payload)
 }
@@ -403,6 +428,11 @@ func (o *PrometheusExportCsvInternalServerError) IsServerError() bool {
 // IsCode returns true when this prometheus export csv internal server error response a status code equal to that given
 func (o *PrometheusExportCsvInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the prometheus export csv internal server error response
+func (o *PrometheusExportCsvInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PrometheusExportCsvInternalServerError) Error() string {

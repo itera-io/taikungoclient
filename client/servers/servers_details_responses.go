@@ -103,6 +103,11 @@ func (o *ServersDetailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the servers details o k response
+func (o *ServersDetailsOK) Code() int {
+	return 200
+}
+
 func (o *ServersDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ServersDetailsBadRequest) IsServerError() bool {
 // IsCode returns true when this servers details bad request response a status code equal to that given
 func (o *ServersDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the servers details bad request response
+func (o *ServersDetailsBadRequest) Code() int {
+	return 400
 }
 
 func (o *ServersDetailsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ServersDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the servers details unauthorized response
+func (o *ServersDetailsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ServersDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ServersDetailsForbidden) IsServerError() bool {
 // IsCode returns true when this servers details forbidden response a status code equal to that given
 func (o *ServersDetailsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the servers details forbidden response
+func (o *ServersDetailsForbidden) Code() int {
+	return 403
 }
 
 func (o *ServersDetailsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ServersDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the servers details not found response
+func (o *ServersDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *ServersDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ServersDetailsInternalServerError) IsServerError() bool {
 // IsCode returns true when this servers details internal server error response a status code equal to that given
 func (o *ServersDetailsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the servers details internal server error response
+func (o *ServersDetailsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ServersDetailsInternalServerError) Error() string {

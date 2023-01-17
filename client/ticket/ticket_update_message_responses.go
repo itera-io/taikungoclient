@@ -103,6 +103,11 @@ func (o *TicketUpdateMessageOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ticket update message o k response
+func (o *TicketUpdateMessageOK) Code() int {
+	return 200
+}
+
 func (o *TicketUpdateMessageOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *TicketUpdateMessageBadRequest) IsServerError() bool {
 // IsCode returns true when this ticket update message bad request response a status code equal to that given
 func (o *TicketUpdateMessageBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ticket update message bad request response
+func (o *TicketUpdateMessageBadRequest) Code() int {
+	return 400
 }
 
 func (o *TicketUpdateMessageBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *TicketUpdateMessageUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ticket update message unauthorized response
+func (o *TicketUpdateMessageUnauthorized) Code() int {
+	return 401
+}
+
 func (o *TicketUpdateMessageUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *TicketUpdateMessageForbidden) IsServerError() bool {
 // IsCode returns true when this ticket update message forbidden response a status code equal to that given
 func (o *TicketUpdateMessageForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ticket update message forbidden response
+func (o *TicketUpdateMessageForbidden) Code() int {
+	return 403
 }
 
 func (o *TicketUpdateMessageForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *TicketUpdateMessageNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ticket update message not found response
+func (o *TicketUpdateMessageNotFound) Code() int {
+	return 404
+}
+
 func (o *TicketUpdateMessageNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *TicketUpdateMessageInternalServerError) IsServerError() bool {
 // IsCode returns true when this ticket update message internal server error response a status code equal to that given
 func (o *TicketUpdateMessageInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ticket update message internal server error response
+func (o *TicketUpdateMessageInternalServerError) Code() int {
+	return 500
 }
 
 func (o *TicketUpdateMessageInternalServerError) Error() string {

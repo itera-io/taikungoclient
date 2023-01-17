@@ -103,6 +103,11 @@ func (o *CheckerGoogleOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker google o k response
+func (o *CheckerGoogleOK) Code() int {
+	return 200
+}
+
 func (o *CheckerGoogleOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CheckerGoogleBadRequest) IsServerError() bool {
 // IsCode returns true when this checker google bad request response a status code equal to that given
 func (o *CheckerGoogleBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the checker google bad request response
+func (o *CheckerGoogleBadRequest) Code() int {
+	return 400
 }
 
 func (o *CheckerGoogleBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CheckerGoogleUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the checker google unauthorized response
+func (o *CheckerGoogleUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CheckerGoogleUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CheckerGoogleForbidden) IsServerError() bool {
 // IsCode returns true when this checker google forbidden response a status code equal to that given
 func (o *CheckerGoogleForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the checker google forbidden response
+func (o *CheckerGoogleForbidden) Code() int {
+	return 403
 }
 
 func (o *CheckerGoogleForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CheckerGoogleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker google not found response
+func (o *CheckerGoogleNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerGoogleNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerGoogleInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker google internal server error response a status code equal to that given
 func (o *CheckerGoogleInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker google internal server error response
+func (o *CheckerGoogleInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerGoogleInternalServerError) Error() string {

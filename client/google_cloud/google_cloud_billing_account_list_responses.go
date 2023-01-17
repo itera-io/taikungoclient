@@ -103,6 +103,11 @@ func (o *GoogleCloudBillingAccountListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the google cloud billing account list o k response
+func (o *GoogleCloudBillingAccountListOK) Code() int {
+	return 200
+}
+
 func (o *GoogleCloudBillingAccountListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *GoogleCloudBillingAccountListBadRequest) IsServerError() bool {
 // IsCode returns true when this google cloud billing account list bad request response a status code equal to that given
 func (o *GoogleCloudBillingAccountListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the google cloud billing account list bad request response
+func (o *GoogleCloudBillingAccountListBadRequest) Code() int {
+	return 400
 }
 
 func (o *GoogleCloudBillingAccountListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *GoogleCloudBillingAccountListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the google cloud billing account list unauthorized response
+func (o *GoogleCloudBillingAccountListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GoogleCloudBillingAccountListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *GoogleCloudBillingAccountListForbidden) IsServerError() bool {
 // IsCode returns true when this google cloud billing account list forbidden response a status code equal to that given
 func (o *GoogleCloudBillingAccountListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the google cloud billing account list forbidden response
+func (o *GoogleCloudBillingAccountListForbidden) Code() int {
+	return 403
 }
 
 func (o *GoogleCloudBillingAccountListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *GoogleCloudBillingAccountListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the google cloud billing account list not found response
+func (o *GoogleCloudBillingAccountListNotFound) Code() int {
+	return 404
+}
+
 func (o *GoogleCloudBillingAccountListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *GoogleCloudBillingAccountListInternalServerError) IsServerError() bool 
 // IsCode returns true when this google cloud billing account list internal server error response a status code equal to that given
 func (o *GoogleCloudBillingAccountListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the google cloud billing account list internal server error response
+func (o *GoogleCloudBillingAccountListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GoogleCloudBillingAccountListInternalServerError) Error() string {

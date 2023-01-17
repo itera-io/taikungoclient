@@ -103,6 +103,11 @@ func (o *OrganizationsOrganizationListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organizations organization list o k response
+func (o *OrganizationsOrganizationListOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationsOrganizationListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *OrganizationsOrganizationListBadRequest) IsServerError() bool {
 // IsCode returns true when this organizations organization list bad request response a status code equal to that given
 func (o *OrganizationsOrganizationListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the organizations organization list bad request response
+func (o *OrganizationsOrganizationListBadRequest) Code() int {
+	return 400
 }
 
 func (o *OrganizationsOrganizationListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *OrganizationsOrganizationListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the organizations organization list unauthorized response
+func (o *OrganizationsOrganizationListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OrganizationsOrganizationListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *OrganizationsOrganizationListForbidden) IsServerError() bool {
 // IsCode returns true when this organizations organization list forbidden response a status code equal to that given
 func (o *OrganizationsOrganizationListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the organizations organization list forbidden response
+func (o *OrganizationsOrganizationListForbidden) Code() int {
+	return 403
 }
 
 func (o *OrganizationsOrganizationListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *OrganizationsOrganizationListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organizations organization list not found response
+func (o *OrganizationsOrganizationListNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationsOrganizationListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OrganizationsOrganizationListInternalServerError) IsServerError() bool 
 // IsCode returns true when this organizations organization list internal server error response a status code equal to that given
 func (o *OrganizationsOrganizationListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the organizations organization list internal server error response
+func (o *OrganizationsOrganizationListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrganizationsOrganizationListInternalServerError) Error() string {

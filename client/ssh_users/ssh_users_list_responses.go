@@ -103,6 +103,11 @@ func (o *SSHUsersListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ssh users list o k response
+func (o *SSHUsersListOK) Code() int {
+	return 200
+}
+
 func (o *SSHUsersListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/SshUsers/list/{accessProfileId}][%d] sshUsersListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *SSHUsersListBadRequest) IsServerError() bool {
 // IsCode returns true when this ssh users list bad request response a status code equal to that given
 func (o *SSHUsersListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ssh users list bad request response
+func (o *SSHUsersListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SSHUsersListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *SSHUsersListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ssh users list unauthorized response
+func (o *SSHUsersListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SSHUsersListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/SshUsers/list/{accessProfileId}][%d] sshUsersListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *SSHUsersListForbidden) IsServerError() bool {
 // IsCode returns true when this ssh users list forbidden response a status code equal to that given
 func (o *SSHUsersListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ssh users list forbidden response
+func (o *SSHUsersListForbidden) Code() int {
+	return 403
 }
 
 func (o *SSHUsersListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *SSHUsersListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ssh users list not found response
+func (o *SSHUsersListNotFound) Code() int {
+	return 404
+}
+
 func (o *SSHUsersListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/SshUsers/list/{accessProfileId}][%d] sshUsersListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *SSHUsersListInternalServerError) IsServerError() bool {
 // IsCode returns true when this ssh users list internal server error response a status code equal to that given
 func (o *SSHUsersListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ssh users list internal server error response
+func (o *SSHUsersListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SSHUsersListInternalServerError) Error() string {

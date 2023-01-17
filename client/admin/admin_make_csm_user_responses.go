@@ -103,6 +103,11 @@ func (o *AdminMakeCsmUserOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin make csm user o k response
+func (o *AdminMakeCsmUserOK) Code() int {
+	return 200
+}
+
 func (o *AdminMakeCsmUserOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AdminMakeCsmUserBadRequest) IsServerError() bool {
 // IsCode returns true when this admin make csm user bad request response a status code equal to that given
 func (o *AdminMakeCsmUserBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the admin make csm user bad request response
+func (o *AdminMakeCsmUserBadRequest) Code() int {
+	return 400
 }
 
 func (o *AdminMakeCsmUserBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AdminMakeCsmUserUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the admin make csm user unauthorized response
+func (o *AdminMakeCsmUserUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AdminMakeCsmUserUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AdminMakeCsmUserForbidden) IsServerError() bool {
 // IsCode returns true when this admin make csm user forbidden response a status code equal to that given
 func (o *AdminMakeCsmUserForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the admin make csm user forbidden response
+func (o *AdminMakeCsmUserForbidden) Code() int {
+	return 403
 }
 
 func (o *AdminMakeCsmUserForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AdminMakeCsmUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin make csm user not found response
+func (o *AdminMakeCsmUserNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminMakeCsmUserNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AdminMakeCsmUserInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin make csm user internal server error response a status code equal to that given
 func (o *AdminMakeCsmUserInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin make csm user internal server error response
+func (o *AdminMakeCsmUserInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminMakeCsmUserInternalServerError) Error() string {

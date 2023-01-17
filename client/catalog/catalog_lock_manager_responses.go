@@ -103,6 +103,11 @@ func (o *CatalogLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog lock manager o k response
+func (o *CatalogLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *CatalogLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/lockmanager][%d] catalogLockManagerOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CatalogLockManagerBadRequest) IsServerError() bool {
 // IsCode returns true when this catalog lock manager bad request response a status code equal to that given
 func (o *CatalogLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the catalog lock manager bad request response
+func (o *CatalogLockManagerBadRequest) Code() int {
+	return 400
 }
 
 func (o *CatalogLockManagerBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CatalogLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the catalog lock manager unauthorized response
+func (o *CatalogLockManagerUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CatalogLockManagerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/lockmanager][%d] catalogLockManagerUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CatalogLockManagerForbidden) IsServerError() bool {
 // IsCode returns true when this catalog lock manager forbidden response a status code equal to that given
 func (o *CatalogLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the catalog lock manager forbidden response
+func (o *CatalogLockManagerForbidden) Code() int {
+	return 403
 }
 
 func (o *CatalogLockManagerForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CatalogLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog lock manager not found response
+func (o *CatalogLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/lockmanager][%d] catalogLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CatalogLockManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog lock manager internal server error response a status code equal to that given
 func (o *CatalogLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog lock manager internal server error response
+func (o *CatalogLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogLockManagerInternalServerError) Error() string {

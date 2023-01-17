@@ -103,6 +103,11 @@ func (o *StandAloneIPManagementOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone Ip management o k response
+func (o *StandAloneIPManagementOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneIPManagementOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *StandAloneIPManagementBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone Ip management bad request response a status code equal to that given
 func (o *StandAloneIPManagementBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone Ip management bad request response
+func (o *StandAloneIPManagementBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneIPManagementBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *StandAloneIPManagementUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone Ip management unauthorized response
+func (o *StandAloneIPManagementUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneIPManagementUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *StandAloneIPManagementForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone Ip management forbidden response a status code equal to that given
 func (o *StandAloneIPManagementForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone Ip management forbidden response
+func (o *StandAloneIPManagementForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneIPManagementForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *StandAloneIPManagementNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone Ip management not found response
+func (o *StandAloneIPManagementNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneIPManagementNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneIPManagementInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone Ip management internal server error response a status code equal to that given
 func (o *StandAloneIPManagementInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone Ip management internal server error response
+func (o *StandAloneIPManagementInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneIPManagementInternalServerError) Error() string {

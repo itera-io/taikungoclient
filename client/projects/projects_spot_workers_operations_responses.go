@@ -103,6 +103,11 @@ func (o *ProjectsSpotWorkersOperationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects spot workers operations o k response
+func (o *ProjectsSpotWorkersOperationsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsSpotWorkersOperationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectsSpotWorkersOperationsBadRequest) IsServerError() bool {
 // IsCode returns true when this projects spot workers operations bad request response a status code equal to that given
 func (o *ProjectsSpotWorkersOperationsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the projects spot workers operations bad request response
+func (o *ProjectsSpotWorkersOperationsBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectsSpotWorkersOperationsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectsSpotWorkersOperationsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the projects spot workers operations unauthorized response
+func (o *ProjectsSpotWorkersOperationsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectsSpotWorkersOperationsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectsSpotWorkersOperationsForbidden) IsServerError() bool {
 // IsCode returns true when this projects spot workers operations forbidden response a status code equal to that given
 func (o *ProjectsSpotWorkersOperationsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the projects spot workers operations forbidden response
+func (o *ProjectsSpotWorkersOperationsForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectsSpotWorkersOperationsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectsSpotWorkersOperationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects spot workers operations not found response
+func (o *ProjectsSpotWorkersOperationsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsSpotWorkersOperationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsSpotWorkersOperationsInternalServerError) IsServerError() bool 
 // IsCode returns true when this projects spot workers operations internal server error response a status code equal to that given
 func (o *ProjectsSpotWorkersOperationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects spot workers operations internal server error response
+func (o *ProjectsSpotWorkersOperationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsSpotWorkersOperationsInternalServerError) Error() string {

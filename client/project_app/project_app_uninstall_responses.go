@@ -103,6 +103,11 @@ func (o *ProjectAppUninstallOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project app uninstall o k response
+func (o *ProjectAppUninstallOK) Code() int {
+	return 200
+}
+
 func (o *ProjectAppUninstallOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectApp/uninstall/{projectAppId}][%d] projectAppUninstallOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectAppUninstallBadRequest) IsServerError() bool {
 // IsCode returns true when this project app uninstall bad request response a status code equal to that given
 func (o *ProjectAppUninstallBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project app uninstall bad request response
+func (o *ProjectAppUninstallBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectAppUninstallBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectAppUninstallUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project app uninstall unauthorized response
+func (o *ProjectAppUninstallUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectAppUninstallUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectApp/uninstall/{projectAppId}][%d] projectAppUninstallUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectAppUninstallForbidden) IsServerError() bool {
 // IsCode returns true when this project app uninstall forbidden response a status code equal to that given
 func (o *ProjectAppUninstallForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project app uninstall forbidden response
+func (o *ProjectAppUninstallForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectAppUninstallForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectAppUninstallNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project app uninstall not found response
+func (o *ProjectAppUninstallNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectAppUninstallNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectApp/uninstall/{projectAppId}][%d] projectAppUninstallNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectAppUninstallInternalServerError) IsServerError() bool {
 // IsCode returns true when this project app uninstall internal server error response a status code equal to that given
 func (o *ProjectAppUninstallInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project app uninstall internal server error response
+func (o *ProjectAppUninstallInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectAppUninstallInternalServerError) Error() string {

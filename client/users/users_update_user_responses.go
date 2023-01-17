@@ -102,6 +102,11 @@ func (o *UsersUpdateUserOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users update user o k response
+func (o *UsersUpdateUserOK) Code() int {
+	return 200
+}
+
 func (o *UsersUpdateUserOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserOK ", 200)
 }
@@ -152,6 +157,11 @@ func (o *UsersUpdateUserBadRequest) IsServerError() bool {
 // IsCode returns true when this users update user bad request response a status code equal to that given
 func (o *UsersUpdateUserBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the users update user bad request response
+func (o *UsersUpdateUserBadRequest) Code() int {
+	return 400
 }
 
 func (o *UsersUpdateUserBadRequest) Error() string {
@@ -217,6 +227,11 @@ func (o *UsersUpdateUserUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the users update user unauthorized response
+func (o *UsersUpdateUserUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UsersUpdateUserUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserUnauthorized  %+v", 401, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *UsersUpdateUserForbidden) IsServerError() bool {
 // IsCode returns true when this users update user forbidden response a status code equal to that given
 func (o *UsersUpdateUserForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the users update user forbidden response
+func (o *UsersUpdateUserForbidden) Code() int {
+	return 403
 }
 
 func (o *UsersUpdateUserForbidden) Error() string {
@@ -343,6 +363,11 @@ func (o *UsersUpdateUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users update user not found response
+func (o *UsersUpdateUserNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersUpdateUserNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserNotFound  %+v", 404, o.Payload)
 }
@@ -403,6 +428,11 @@ func (o *UsersUpdateUserInternalServerError) IsServerError() bool {
 // IsCode returns true when this users update user internal server error response a status code equal to that given
 func (o *UsersUpdateUserInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users update user internal server error response
+func (o *UsersUpdateUserInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersUpdateUserInternalServerError) Error() string {

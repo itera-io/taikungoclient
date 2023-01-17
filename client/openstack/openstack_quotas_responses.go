@@ -103,6 +103,11 @@ func (o *OpenstackQuotasOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the openstack quotas o k response
+func (o *OpenstackQuotasOK) Code() int {
+	return 200
+}
+
 func (o *OpenstackQuotasOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *OpenstackQuotasBadRequest) IsServerError() bool {
 // IsCode returns true when this openstack quotas bad request response a status code equal to that given
 func (o *OpenstackQuotasBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the openstack quotas bad request response
+func (o *OpenstackQuotasBadRequest) Code() int {
+	return 400
 }
 
 func (o *OpenstackQuotasBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *OpenstackQuotasUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the openstack quotas unauthorized response
+func (o *OpenstackQuotasUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OpenstackQuotasUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *OpenstackQuotasForbidden) IsServerError() bool {
 // IsCode returns true when this openstack quotas forbidden response a status code equal to that given
 func (o *OpenstackQuotasForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the openstack quotas forbidden response
+func (o *OpenstackQuotasForbidden) Code() int {
+	return 403
 }
 
 func (o *OpenstackQuotasForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *OpenstackQuotasNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the openstack quotas not found response
+func (o *OpenstackQuotasNotFound) Code() int {
+	return 404
+}
+
 func (o *OpenstackQuotasNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *OpenstackQuotasInternalServerError) IsServerError() bool {
 // IsCode returns true when this openstack quotas internal server error response a status code equal to that given
 func (o *OpenstackQuotasInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the openstack quotas internal server error response
+func (o *OpenstackQuotasInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpenstackQuotasInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *CronJobSyncOpaProfilesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job sync opa profiles o k response
+func (o *CronJobSyncOpaProfilesOK) Code() int {
+	return 200
+}
+
 func (o *CronJobSyncOpaProfilesOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobSyncOpaProfilesBadRequest) IsServerError() bool {
 // IsCode returns true when this cron job sync opa profiles bad request response a status code equal to that given
 func (o *CronJobSyncOpaProfilesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job sync opa profiles bad request response
+func (o *CronJobSyncOpaProfilesBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobSyncOpaProfilesBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobSyncOpaProfilesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cron job sync opa profiles unauthorized response
+func (o *CronJobSyncOpaProfilesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobSyncOpaProfilesUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobSyncOpaProfilesForbidden) IsServerError() bool {
 // IsCode returns true when this cron job sync opa profiles forbidden response a status code equal to that given
 func (o *CronJobSyncOpaProfilesForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job sync opa profiles forbidden response
+func (o *CronJobSyncOpaProfilesForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobSyncOpaProfilesForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobSyncOpaProfilesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job sync opa profiles not found response
+func (o *CronJobSyncOpaProfilesNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobSyncOpaProfilesNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobSyncOpaProfilesInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job sync opa profiles internal server error response a status code equal to that given
 func (o *CronJobSyncOpaProfilesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job sync opa profiles internal server error response
+func (o *CronJobSyncOpaProfilesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobSyncOpaProfilesInternalServerError) Error() string {

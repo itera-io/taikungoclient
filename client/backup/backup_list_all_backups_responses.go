@@ -103,6 +103,11 @@ func (o *BackupListAllBackupsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the backup list all backups o k response
+func (o *BackupListAllBackupsOK) Code() int {
+	return 200
+}
+
 func (o *BackupListAllBackupsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/backups/{projectId}][%d] backupListAllBackupsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *BackupListAllBackupsBadRequest) IsServerError() bool {
 // IsCode returns true when this backup list all backups bad request response a status code equal to that given
 func (o *BackupListAllBackupsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the backup list all backups bad request response
+func (o *BackupListAllBackupsBadRequest) Code() int {
+	return 400
 }
 
 func (o *BackupListAllBackupsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *BackupListAllBackupsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the backup list all backups unauthorized response
+func (o *BackupListAllBackupsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *BackupListAllBackupsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/backups/{projectId}][%d] backupListAllBackupsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *BackupListAllBackupsForbidden) IsServerError() bool {
 // IsCode returns true when this backup list all backups forbidden response a status code equal to that given
 func (o *BackupListAllBackupsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the backup list all backups forbidden response
+func (o *BackupListAllBackupsForbidden) Code() int {
+	return 403
 }
 
 func (o *BackupListAllBackupsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *BackupListAllBackupsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the backup list all backups not found response
+func (o *BackupListAllBackupsNotFound) Code() int {
+	return 404
+}
+
 func (o *BackupListAllBackupsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/backups/{projectId}][%d] backupListAllBackupsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *BackupListAllBackupsInternalServerError) IsServerError() bool {
 // IsCode returns true when this backup list all backups internal server error response a status code equal to that given
 func (o *BackupListAllBackupsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the backup list all backups internal server error response
+func (o *BackupListAllBackupsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BackupListAllBackupsInternalServerError) Error() string {

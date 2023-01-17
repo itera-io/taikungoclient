@@ -103,6 +103,11 @@ func (o *ProjectsEditHealthStatusOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects edit health status o k response
+func (o *ProjectsEditHealthStatusOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsEditHealthStatusOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectsEditHealthStatusBadRequest) IsServerError() bool {
 // IsCode returns true when this projects edit health status bad request response a status code equal to that given
 func (o *ProjectsEditHealthStatusBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the projects edit health status bad request response
+func (o *ProjectsEditHealthStatusBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectsEditHealthStatusBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectsEditHealthStatusUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the projects edit health status unauthorized response
+func (o *ProjectsEditHealthStatusUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectsEditHealthStatusUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectsEditHealthStatusForbidden) IsServerError() bool {
 // IsCode returns true when this projects edit health status forbidden response a status code equal to that given
 func (o *ProjectsEditHealthStatusForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the projects edit health status forbidden response
+func (o *ProjectsEditHealthStatusForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectsEditHealthStatusForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectsEditHealthStatusNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects edit health status not found response
+func (o *ProjectsEditHealthStatusNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsEditHealthStatusNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsEditHealthStatusInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects edit health status internal server error response a status code equal to that given
 func (o *ProjectsEditHealthStatusInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects edit health status internal server error response
+func (o *ProjectsEditHealthStatusInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsEditHealthStatusInternalServerError) Error() string {

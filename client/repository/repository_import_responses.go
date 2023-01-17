@@ -103,6 +103,11 @@ func (o *RepositoryImportOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the repository import o k response
+func (o *RepositoryImportOK) Code() int {
+	return 200
+}
+
 func (o *RepositoryImportOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/import][%d] repositoryImportOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *RepositoryImportBadRequest) IsServerError() bool {
 // IsCode returns true when this repository import bad request response a status code equal to that given
 func (o *RepositoryImportBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the repository import bad request response
+func (o *RepositoryImportBadRequest) Code() int {
+	return 400
 }
 
 func (o *RepositoryImportBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *RepositoryImportUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the repository import unauthorized response
+func (o *RepositoryImportUnauthorized) Code() int {
+	return 401
+}
+
 func (o *RepositoryImportUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/import][%d] repositoryImportUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *RepositoryImportForbidden) IsServerError() bool {
 // IsCode returns true when this repository import forbidden response a status code equal to that given
 func (o *RepositoryImportForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the repository import forbidden response
+func (o *RepositoryImportForbidden) Code() int {
+	return 403
 }
 
 func (o *RepositoryImportForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *RepositoryImportNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the repository import not found response
+func (o *RepositoryImportNotFound) Code() int {
+	return 404
+}
+
 func (o *RepositoryImportNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/import][%d] repositoryImportNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *RepositoryImportInternalServerError) IsServerError() bool {
 // IsCode returns true when this repository import internal server error response a status code equal to that given
 func (o *RepositoryImportInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the repository import internal server error response
+func (o *RepositoryImportInternalServerError) Code() int {
+	return 500
 }
 
 func (o *RepositoryImportInternalServerError) Error() string {

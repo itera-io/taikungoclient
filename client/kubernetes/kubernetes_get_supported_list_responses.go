@@ -103,6 +103,11 @@ func (o *KubernetesGetSupportedListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get supported list o k response
+func (o *KubernetesGetSupportedListOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetSupportedListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesGetSupportedListBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes get supported list bad request response a status code equal to that given
 func (o *KubernetesGetSupportedListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes get supported list bad request response
+func (o *KubernetesGetSupportedListBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesGetSupportedListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesGetSupportedListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes get supported list unauthorized response
+func (o *KubernetesGetSupportedListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesGetSupportedListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesGetSupportedListForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes get supported list forbidden response a status code equal to that given
 func (o *KubernetesGetSupportedListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes get supported list forbidden response
+func (o *KubernetesGetSupportedListForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesGetSupportedListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesGetSupportedListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get supported list not found response
+func (o *KubernetesGetSupportedListNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetSupportedListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesGetSupportedListInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get supported list internal server error response a status code equal to that given
 func (o *KubernetesGetSupportedListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get supported list internal server error response
+func (o *KubernetesGetSupportedListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetSupportedListInternalServerError) Error() string {

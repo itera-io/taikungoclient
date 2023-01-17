@@ -103,6 +103,11 @@ func (o *FlavorsGetSelectedFlavorsForProjectOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the flavors get selected flavors for project o k response
+func (o *FlavorsGetSelectedFlavorsForProjectOK) Code() int {
+	return 200
+}
+
 func (o *FlavorsGetSelectedFlavorsForProjectOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) IsServerError() bool {
 // IsCode returns true when this flavors get selected flavors for project bad request response a status code equal to that given
 func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the flavors get selected flavors for project bad request response
+func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) Code() int {
+	return 400
 }
 
 func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) IsCode(code int) bool 
 	return code == 401
 }
 
+// Code gets the status code for the flavors get selected flavors for project unauthorized response
+func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) Code() int {
+	return 401
+}
+
 func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *FlavorsGetSelectedFlavorsForProjectForbidden) IsServerError() bool {
 // IsCode returns true when this flavors get selected flavors for project forbidden response a status code equal to that given
 func (o *FlavorsGetSelectedFlavorsForProjectForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the flavors get selected flavors for project forbidden response
+func (o *FlavorsGetSelectedFlavorsForProjectForbidden) Code() int {
+	return 403
 }
 
 func (o *FlavorsGetSelectedFlavorsForProjectForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *FlavorsGetSelectedFlavorsForProjectNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the flavors get selected flavors for project not found response
+func (o *FlavorsGetSelectedFlavorsForProjectNotFound) Code() int {
+	return 404
+}
+
 func (o *FlavorsGetSelectedFlavorsForProjectNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *FlavorsGetSelectedFlavorsForProjectInternalServerError) IsServerError()
 // IsCode returns true when this flavors get selected flavors for project internal server error response a status code equal to that given
 func (o *FlavorsGetSelectedFlavorsForProjectInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the flavors get selected flavors for project internal server error response
+func (o *FlavorsGetSelectedFlavorsForProjectInternalServerError) Code() int {
+	return 500
 }
 
 func (o *FlavorsGetSelectedFlavorsForProjectInternalServerError) Error() string {

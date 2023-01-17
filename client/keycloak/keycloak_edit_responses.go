@@ -103,6 +103,11 @@ func (o *KeycloakEditOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the keycloak edit o k response
+func (o *KeycloakEditOK) Code() int {
+	return 200
+}
+
 func (o *KeycloakEditOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KeycloakEditBadRequest) IsServerError() bool {
 // IsCode returns true when this keycloak edit bad request response a status code equal to that given
 func (o *KeycloakEditBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the keycloak edit bad request response
+func (o *KeycloakEditBadRequest) Code() int {
+	return 400
 }
 
 func (o *KeycloakEditBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KeycloakEditUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the keycloak edit unauthorized response
+func (o *KeycloakEditUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KeycloakEditUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KeycloakEditForbidden) IsServerError() bool {
 // IsCode returns true when this keycloak edit forbidden response a status code equal to that given
 func (o *KeycloakEditForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the keycloak edit forbidden response
+func (o *KeycloakEditForbidden) Code() int {
+	return 403
 }
 
 func (o *KeycloakEditForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KeycloakEditNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the keycloak edit not found response
+func (o *KeycloakEditNotFound) Code() int {
+	return 404
+}
+
 func (o *KeycloakEditNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KeycloakEditInternalServerError) IsServerError() bool {
 // IsCode returns true when this keycloak edit internal server error response a status code equal to that given
 func (o *KeycloakEditInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the keycloak edit internal server error response
+func (o *KeycloakEditInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KeycloakEditInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *AwsRegionListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the aws region list o k response
+func (o *AwsRegionListOK) Code() int {
+	return 200
+}
+
 func (o *AwsRegionListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AwsRegionListBadRequest) IsServerError() bool {
 // IsCode returns true when this aws region list bad request response a status code equal to that given
 func (o *AwsRegionListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the aws region list bad request response
+func (o *AwsRegionListBadRequest) Code() int {
+	return 400
 }
 
 func (o *AwsRegionListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AwsRegionListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the aws region list unauthorized response
+func (o *AwsRegionListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AwsRegionListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AwsRegionListForbidden) IsServerError() bool {
 // IsCode returns true when this aws region list forbidden response a status code equal to that given
 func (o *AwsRegionListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the aws region list forbidden response
+func (o *AwsRegionListForbidden) Code() int {
+	return 403
 }
 
 func (o *AwsRegionListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AwsRegionListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the aws region list not found response
+func (o *AwsRegionListNotFound) Code() int {
+	return 404
+}
+
 func (o *AwsRegionListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AwsRegionListInternalServerError) IsServerError() bool {
 // IsCode returns true when this aws region list internal server error response a status code equal to that given
 func (o *AwsRegionListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the aws region list internal server error response
+func (o *AwsRegionListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AwsRegionListInternalServerError) Error() string {

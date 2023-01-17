@@ -103,6 +103,11 @@ func (o *OpenstackUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the openstack update o k response
+func (o *OpenstackUpdateOK) Code() int {
+	return 200
+}
+
 func (o *OpenstackUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/update][%d] openstackUpdateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *OpenstackUpdateBadRequest) IsServerError() bool {
 // IsCode returns true when this openstack update bad request response a status code equal to that given
 func (o *OpenstackUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the openstack update bad request response
+func (o *OpenstackUpdateBadRequest) Code() int {
+	return 400
 }
 
 func (o *OpenstackUpdateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *OpenstackUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the openstack update unauthorized response
+func (o *OpenstackUpdateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OpenstackUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/update][%d] openstackUpdateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *OpenstackUpdateForbidden) IsServerError() bool {
 // IsCode returns true when this openstack update forbidden response a status code equal to that given
 func (o *OpenstackUpdateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the openstack update forbidden response
+func (o *OpenstackUpdateForbidden) Code() int {
+	return 403
 }
 
 func (o *OpenstackUpdateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *OpenstackUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the openstack update not found response
+func (o *OpenstackUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *OpenstackUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/update][%d] openstackUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpenstackUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this openstack update internal server error response a status code equal to that given
 func (o *OpenstackUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the openstack update internal server error response
+func (o *OpenstackUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpenstackUpdateInternalServerError) Error() string {

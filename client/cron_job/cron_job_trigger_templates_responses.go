@@ -103,6 +103,11 @@ func (o *CronJobTriggerTemplatesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job trigger templates o k response
+func (o *CronJobTriggerTemplatesOK) Code() int {
+	return 200
+}
+
 func (o *CronJobTriggerTemplatesOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/trigger-templates][%d] cronJobTriggerTemplatesOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobTriggerTemplatesBadRequest) IsServerError() bool {
 // IsCode returns true when this cron job trigger templates bad request response a status code equal to that given
 func (o *CronJobTriggerTemplatesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job trigger templates bad request response
+func (o *CronJobTriggerTemplatesBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobTriggerTemplatesBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobTriggerTemplatesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cron job trigger templates unauthorized response
+func (o *CronJobTriggerTemplatesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobTriggerTemplatesUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/trigger-templates][%d] cronJobTriggerTemplatesUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobTriggerTemplatesForbidden) IsServerError() bool {
 // IsCode returns true when this cron job trigger templates forbidden response a status code equal to that given
 func (o *CronJobTriggerTemplatesForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job trigger templates forbidden response
+func (o *CronJobTriggerTemplatesForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobTriggerTemplatesForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobTriggerTemplatesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job trigger templates not found response
+func (o *CronJobTriggerTemplatesNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobTriggerTemplatesNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/trigger-templates][%d] cronJobTriggerTemplatesNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobTriggerTemplatesInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job trigger templates internal server error response a status code equal to that given
 func (o *CronJobTriggerTemplatesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job trigger templates internal server error response
+func (o *CronJobTriggerTemplatesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobTriggerTemplatesInternalServerError) Error() string {

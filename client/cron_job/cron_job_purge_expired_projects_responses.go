@@ -103,6 +103,11 @@ func (o *CronJobPurgeExpiredProjectsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job purge expired projects o k response
+func (o *CronJobPurgeExpiredProjectsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobPurgeExpiredProjectsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobPurgeExpiredProjectsBadRequest) IsServerError() bool {
 // IsCode returns true when this cron job purge expired projects bad request response a status code equal to that given
 func (o *CronJobPurgeExpiredProjectsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job purge expired projects bad request response
+func (o *CronJobPurgeExpiredProjectsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobPurgeExpiredProjectsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobPurgeExpiredProjectsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cron job purge expired projects unauthorized response
+func (o *CronJobPurgeExpiredProjectsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobPurgeExpiredProjectsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobPurgeExpiredProjectsForbidden) IsServerError() bool {
 // IsCode returns true when this cron job purge expired projects forbidden response a status code equal to that given
 func (o *CronJobPurgeExpiredProjectsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job purge expired projects forbidden response
+func (o *CronJobPurgeExpiredProjectsForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobPurgeExpiredProjectsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobPurgeExpiredProjectsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job purge expired projects not found response
+func (o *CronJobPurgeExpiredProjectsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobPurgeExpiredProjectsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobPurgeExpiredProjectsInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job purge expired projects internal server error response a status code equal to that given
 func (o *CronJobPurgeExpiredProjectsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job purge expired projects internal server error response
+func (o *CronJobPurgeExpiredProjectsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobPurgeExpiredProjectsInternalServerError) Error() string {

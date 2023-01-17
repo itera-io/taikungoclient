@@ -103,6 +103,11 @@ func (o *SearchDeploymentListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search deployment list o k response
+func (o *SearchDeploymentListOK) Code() int {
+	return 200
+}
+
 func (o *SearchDeploymentListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/deployments][%d] searchDeploymentListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SearchDeploymentListBadRequest) IsServerError() bool {
 // IsCode returns true when this search deployment list bad request response a status code equal to that given
 func (o *SearchDeploymentListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the search deployment list bad request response
+func (o *SearchDeploymentListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SearchDeploymentListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SearchDeploymentListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the search deployment list unauthorized response
+func (o *SearchDeploymentListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SearchDeploymentListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/deployments][%d] searchDeploymentListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SearchDeploymentListForbidden) IsServerError() bool {
 // IsCode returns true when this search deployment list forbidden response a status code equal to that given
 func (o *SearchDeploymentListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the search deployment list forbidden response
+func (o *SearchDeploymentListForbidden) Code() int {
+	return 403
 }
 
 func (o *SearchDeploymentListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SearchDeploymentListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search deployment list not found response
+func (o *SearchDeploymentListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchDeploymentListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/deployments][%d] searchDeploymentListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchDeploymentListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search deployment list internal server error response a status code equal to that given
 func (o *SearchDeploymentListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search deployment list internal server error response
+func (o *SearchDeploymentListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchDeploymentListInternalServerError) Error() string {

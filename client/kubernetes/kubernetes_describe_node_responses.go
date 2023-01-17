@@ -103,6 +103,11 @@ func (o *KubernetesDescribeNodeOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe node o k response
+func (o *KubernetesDescribeNodeOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribeNodeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/node][%d] kubernetesDescribeNodeOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesDescribeNodeBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes describe node bad request response a status code equal to that given
 func (o *KubernetesDescribeNodeBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes describe node bad request response
+func (o *KubernetesDescribeNodeBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesDescribeNodeBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesDescribeNodeUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes describe node unauthorized response
+func (o *KubernetesDescribeNodeUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesDescribeNodeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/node][%d] kubernetesDescribeNodeUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesDescribeNodeForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes describe node forbidden response a status code equal to that given
 func (o *KubernetesDescribeNodeForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes describe node forbidden response
+func (o *KubernetesDescribeNodeForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesDescribeNodeForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesDescribeNodeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe node not found response
+func (o *KubernetesDescribeNodeNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribeNodeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/node][%d] kubernetesDescribeNodeNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesDescribeNodeInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe node internal server error response a status code equal to that given
 func (o *KubernetesDescribeNodeInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe node internal server error response
+func (o *KubernetesDescribeNodeInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribeNodeInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *PrometheusBillingListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the prometheus billing list o k response
+func (o *PrometheusBillingListOK) Code() int {
+	return 200
+}
+
 func (o *PrometheusBillingListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *PrometheusBillingListBadRequest) IsServerError() bool {
 // IsCode returns true when this prometheus billing list bad request response a status code equal to that given
 func (o *PrometheusBillingListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the prometheus billing list bad request response
+func (o *PrometheusBillingListBadRequest) Code() int {
+	return 400
 }
 
 func (o *PrometheusBillingListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *PrometheusBillingListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the prometheus billing list unauthorized response
+func (o *PrometheusBillingListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PrometheusBillingListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *PrometheusBillingListForbidden) IsServerError() bool {
 // IsCode returns true when this prometheus billing list forbidden response a status code equal to that given
 func (o *PrometheusBillingListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the prometheus billing list forbidden response
+func (o *PrometheusBillingListForbidden) Code() int {
+	return 403
 }
 
 func (o *PrometheusBillingListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *PrometheusBillingListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the prometheus billing list not found response
+func (o *PrometheusBillingListNotFound) Code() int {
+	return 404
+}
+
 func (o *PrometheusBillingListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *PrometheusBillingListInternalServerError) IsServerError() bool {
 // IsCode returns true when this prometheus billing list internal server error response a status code equal to that given
 func (o *PrometheusBillingListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the prometheus billing list internal server error response
+func (o *PrometheusBillingListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PrometheusBillingListInternalServerError) Error() string {

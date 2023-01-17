@@ -103,6 +103,11 @@ func (o *KubernetesCreateKubernetesEventOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes create kubernetes event o k response
+func (o *KubernetesCreateKubernetesEventOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesCreateKubernetesEventOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/event/{projectId}][%d] kubernetesCreateKubernetesEventOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesCreateKubernetesEventBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes create kubernetes event bad request response a status code equal to that given
 func (o *KubernetesCreateKubernetesEventBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes create kubernetes event bad request response
+func (o *KubernetesCreateKubernetesEventBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesCreateKubernetesEventBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesCreateKubernetesEventUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes create kubernetes event unauthorized response
+func (o *KubernetesCreateKubernetesEventUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesCreateKubernetesEventUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/event/{projectId}][%d] kubernetesCreateKubernetesEventUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesCreateKubernetesEventForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes create kubernetes event forbidden response a status code equal to that given
 func (o *KubernetesCreateKubernetesEventForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes create kubernetes event forbidden response
+func (o *KubernetesCreateKubernetesEventForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesCreateKubernetesEventForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesCreateKubernetesEventNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes create kubernetes event not found response
+func (o *KubernetesCreateKubernetesEventNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesCreateKubernetesEventNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/event/{projectId}][%d] kubernetesCreateKubernetesEventNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesCreateKubernetesEventInternalServerError) IsServerError() boo
 // IsCode returns true when this kubernetes create kubernetes event internal server error response a status code equal to that given
 func (o *KubernetesCreateKubernetesEventInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes create kubernetes event internal server error response
+func (o *KubernetesCreateKubernetesEventInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesCreateKubernetesEventInternalServerError) Error() string {

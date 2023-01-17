@@ -103,6 +103,11 @@ func (o *ServersResetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the servers reset o k response
+func (o *ServersResetOK) Code() int {
+	return 200
+}
+
 func (o *ServersResetOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ServersResetBadRequest) IsServerError() bool {
 // IsCode returns true when this servers reset bad request response a status code equal to that given
 func (o *ServersResetBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the servers reset bad request response
+func (o *ServersResetBadRequest) Code() int {
+	return 400
 }
 
 func (o *ServersResetBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ServersResetUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the servers reset unauthorized response
+func (o *ServersResetUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ServersResetUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ServersResetForbidden) IsServerError() bool {
 // IsCode returns true when this servers reset forbidden response a status code equal to that given
 func (o *ServersResetForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the servers reset forbidden response
+func (o *ServersResetForbidden) Code() int {
+	return 403
 }
 
 func (o *ServersResetForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ServersResetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the servers reset not found response
+func (o *ServersResetNotFound) Code() int {
+	return 404
+}
+
 func (o *ServersResetNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ServersResetInternalServerError) IsServerError() bool {
 // IsCode returns true when this servers reset internal server error response a status code equal to that given
 func (o *ServersResetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the servers reset internal server error response
+func (o *ServersResetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ServersResetInternalServerError) Error() string {

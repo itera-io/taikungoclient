@@ -103,6 +103,11 @@ func (o *ProjectAppDetailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project app details o k response
+func (o *ProjectAppDetailsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectAppDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/{id}][%d] projectAppDetailsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ProjectAppDetailsBadRequest) IsServerError() bool {
 // IsCode returns true when this project app details bad request response a status code equal to that given
 func (o *ProjectAppDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project app details bad request response
+func (o *ProjectAppDetailsBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectAppDetailsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ProjectAppDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project app details unauthorized response
+func (o *ProjectAppDetailsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectAppDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/{id}][%d] projectAppDetailsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ProjectAppDetailsForbidden) IsServerError() bool {
 // IsCode returns true when this project app details forbidden response a status code equal to that given
 func (o *ProjectAppDetailsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project app details forbidden response
+func (o *ProjectAppDetailsForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectAppDetailsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ProjectAppDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project app details not found response
+func (o *ProjectAppDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectAppDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/{id}][%d] projectAppDetailsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ProjectAppDetailsInternalServerError) IsServerError() bool {
 // IsCode returns true when this project app details internal server error response a status code equal to that given
 func (o *ProjectAppDetailsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project app details internal server error response
+func (o *ProjectAppDetailsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectAppDetailsInternalServerError) Error() string {

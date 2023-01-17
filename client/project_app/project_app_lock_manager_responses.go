@@ -103,6 +103,11 @@ func (o *ProjectAppLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project app lock manager o k response
+func (o *ProjectAppLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *ProjectAppLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectAppLockManagerBadRequest) IsServerError() bool {
 // IsCode returns true when this project app lock manager bad request response a status code equal to that given
 func (o *ProjectAppLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project app lock manager bad request response
+func (o *ProjectAppLockManagerBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectAppLockManagerBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectAppLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project app lock manager unauthorized response
+func (o *ProjectAppLockManagerUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectAppLockManagerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectAppLockManagerForbidden) IsServerError() bool {
 // IsCode returns true when this project app lock manager forbidden response a status code equal to that given
 func (o *ProjectAppLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project app lock manager forbidden response
+func (o *ProjectAppLockManagerForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectAppLockManagerForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectAppLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project app lock manager not found response
+func (o *ProjectAppLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectAppLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectAppLockManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this project app lock manager internal server error response a status code equal to that given
 func (o *ProjectAppLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project app lock manager internal server error response
+func (o *ProjectAppLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectAppLockManagerInternalServerError) Error() string {

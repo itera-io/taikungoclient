@@ -103,6 +103,11 @@ func (o *ProjectsUpgradeOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects upgrade o k response
+func (o *ProjectsUpgradeOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsUpgradeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectsUpgradeBadRequest) IsServerError() bool {
 // IsCode returns true when this projects upgrade bad request response a status code equal to that given
 func (o *ProjectsUpgradeBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the projects upgrade bad request response
+func (o *ProjectsUpgradeBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectsUpgradeBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectsUpgradeUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the projects upgrade unauthorized response
+func (o *ProjectsUpgradeUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectsUpgradeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectsUpgradeForbidden) IsServerError() bool {
 // IsCode returns true when this projects upgrade forbidden response a status code equal to that given
 func (o *ProjectsUpgradeForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the projects upgrade forbidden response
+func (o *ProjectsUpgradeForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectsUpgradeForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectsUpgradeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects upgrade not found response
+func (o *ProjectsUpgradeNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsUpgradeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsUpgradeInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects upgrade internal server error response a status code equal to that given
 func (o *ProjectsUpgradeInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects upgrade internal server error response
+func (o *ProjectsUpgradeInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsUpgradeInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *OpaProfilesListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the opa profiles list o k response
+func (o *OpaProfilesListOK) Code() int {
+	return 200
+}
+
 func (o *OpaProfilesListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *OpaProfilesListBadRequest) IsServerError() bool {
 // IsCode returns true when this opa profiles list bad request response a status code equal to that given
 func (o *OpaProfilesListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the opa profiles list bad request response
+func (o *OpaProfilesListBadRequest) Code() int {
+	return 400
 }
 
 func (o *OpaProfilesListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *OpaProfilesListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the opa profiles list unauthorized response
+func (o *OpaProfilesListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OpaProfilesListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *OpaProfilesListForbidden) IsServerError() bool {
 // IsCode returns true when this opa profiles list forbidden response a status code equal to that given
 func (o *OpaProfilesListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the opa profiles list forbidden response
+func (o *OpaProfilesListForbidden) Code() int {
+	return 403
 }
 
 func (o *OpaProfilesListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *OpaProfilesListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the opa profiles list not found response
+func (o *OpaProfilesListNotFound) Code() int {
+	return 404
+}
+
 func (o *OpaProfilesListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *OpaProfilesListInternalServerError) IsServerError() bool {
 // IsCode returns true when this opa profiles list internal server error response a status code equal to that given
 func (o *OpaProfilesListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the opa profiles list internal server error response
+func (o *OpaProfilesListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpaProfilesListInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *BackupListAllDeleteBackupRequestsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the backup list all delete backup requests o k response
+func (o *BackupListAllDeleteBackupRequestsOK) Code() int {
+	return 200
+}
+
 func (o *BackupListAllDeleteBackupRequestsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *BackupListAllDeleteBackupRequestsBadRequest) IsServerError() bool {
 // IsCode returns true when this backup list all delete backup requests bad request response a status code equal to that given
 func (o *BackupListAllDeleteBackupRequestsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the backup list all delete backup requests bad request response
+func (o *BackupListAllDeleteBackupRequestsBadRequest) Code() int {
+	return 400
 }
 
 func (o *BackupListAllDeleteBackupRequestsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *BackupListAllDeleteBackupRequestsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the backup list all delete backup requests unauthorized response
+func (o *BackupListAllDeleteBackupRequestsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *BackupListAllDeleteBackupRequestsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *BackupListAllDeleteBackupRequestsForbidden) IsServerError() bool {
 // IsCode returns true when this backup list all delete backup requests forbidden response a status code equal to that given
 func (o *BackupListAllDeleteBackupRequestsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the backup list all delete backup requests forbidden response
+func (o *BackupListAllDeleteBackupRequestsForbidden) Code() int {
+	return 403
 }
 
 func (o *BackupListAllDeleteBackupRequestsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *BackupListAllDeleteBackupRequestsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the backup list all delete backup requests not found response
+func (o *BackupListAllDeleteBackupRequestsNotFound) Code() int {
+	return 404
+}
+
 func (o *BackupListAllDeleteBackupRequestsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *BackupListAllDeleteBackupRequestsInternalServerError) IsServerError() b
 // IsCode returns true when this backup list all delete backup requests internal server error response a status code equal to that given
 func (o *BackupListAllDeleteBackupRequestsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the backup list all delete backup requests internal server error response
+func (o *BackupListAllDeleteBackupRequestsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BackupListAllDeleteBackupRequestsInternalServerError) Error() string {

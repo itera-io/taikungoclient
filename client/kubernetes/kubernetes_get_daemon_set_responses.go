@@ -103,6 +103,11 @@ func (o *KubernetesGetDaemonSetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get daemon set o k response
+func (o *KubernetesGetDaemonSetOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetDaemonSetOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *KubernetesGetDaemonSetBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes get daemon set bad request response a status code equal to that given
 func (o *KubernetesGetDaemonSetBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes get daemon set bad request response
+func (o *KubernetesGetDaemonSetBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesGetDaemonSetBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *KubernetesGetDaemonSetUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes get daemon set unauthorized response
+func (o *KubernetesGetDaemonSetUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesGetDaemonSetUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *KubernetesGetDaemonSetForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes get daemon set forbidden response a status code equal to that given
 func (o *KubernetesGetDaemonSetForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes get daemon set forbidden response
+func (o *KubernetesGetDaemonSetForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesGetDaemonSetForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *KubernetesGetDaemonSetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get daemon set not found response
+func (o *KubernetesGetDaemonSetNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetDaemonSetNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubernetesGetDaemonSetInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get daemon set internal server error response a status code equal to that given
 func (o *KubernetesGetDaemonSetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get daemon set internal server error response
+func (o *KubernetesGetDaemonSetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetDaemonSetInternalServerError) Error() string {

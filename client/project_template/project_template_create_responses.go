@@ -103,6 +103,11 @@ func (o *ProjectTemplateCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project template create o k response
+func (o *ProjectTemplateCreateOK) Code() int {
+	return 200
+}
+
 func (o *ProjectTemplateCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectTemplate/create-project][%d] projectTemplateCreateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectTemplateCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this project template create bad request response a status code equal to that given
 func (o *ProjectTemplateCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project template create bad request response
+func (o *ProjectTemplateCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectTemplateCreateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectTemplateCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project template create unauthorized response
+func (o *ProjectTemplateCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectTemplateCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectTemplate/create-project][%d] projectTemplateCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectTemplateCreateForbidden) IsServerError() bool {
 // IsCode returns true when this project template create forbidden response a status code equal to that given
 func (o *ProjectTemplateCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project template create forbidden response
+func (o *ProjectTemplateCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectTemplateCreateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectTemplateCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project template create not found response
+func (o *ProjectTemplateCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectTemplateCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectTemplate/create-project][%d] projectTemplateCreateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectTemplateCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this project template create internal server error response a status code equal to that given
 func (o *ProjectTemplateCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project template create internal server error response
+func (o *ProjectTemplateCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectTemplateCreateInternalServerError) Error() string {

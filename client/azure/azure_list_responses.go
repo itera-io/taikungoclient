@@ -103,6 +103,11 @@ func (o *AzureListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the azure list o k response
+func (o *AzureListOK) Code() int {
+	return 200
+}
+
 func (o *AzureListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AzureListBadRequest) IsServerError() bool {
 // IsCode returns true when this azure list bad request response a status code equal to that given
 func (o *AzureListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the azure list bad request response
+func (o *AzureListBadRequest) Code() int {
+	return 400
 }
 
 func (o *AzureListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *AzureListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the azure list unauthorized response
+func (o *AzureListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AzureListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *AzureListForbidden) IsServerError() bool {
 // IsCode returns true when this azure list forbidden response a status code equal to that given
 func (o *AzureListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the azure list forbidden response
+func (o *AzureListForbidden) Code() int {
+	return 403
 }
 
 func (o *AzureListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *AzureListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the azure list not found response
+func (o *AzureListNotFound) Code() int {
+	return 404
+}
+
 func (o *AzureListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AzureListInternalServerError) IsServerError() bool {
 // IsCode returns true when this azure list internal server error response a status code equal to that given
 func (o *AzureListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the azure list internal server error response
+func (o *AzureListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AzureListInternalServerError) Error() string {

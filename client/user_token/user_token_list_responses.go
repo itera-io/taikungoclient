@@ -103,6 +103,11 @@ func (o *UserTokenListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the user token list o k response
+func (o *UserTokenListOK) Code() int {
+	return 200
+}
+
 func (o *UserTokenListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *UserTokenListBadRequest) IsServerError() bool {
 // IsCode returns true when this user token list bad request response a status code equal to that given
 func (o *UserTokenListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the user token list bad request response
+func (o *UserTokenListBadRequest) Code() int {
+	return 400
 }
 
 func (o *UserTokenListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *UserTokenListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the user token list unauthorized response
+func (o *UserTokenListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UserTokenListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *UserTokenListForbidden) IsServerError() bool {
 // IsCode returns true when this user token list forbidden response a status code equal to that given
 func (o *UserTokenListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the user token list forbidden response
+func (o *UserTokenListForbidden) Code() int {
+	return 403
 }
 
 func (o *UserTokenListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *UserTokenListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user token list not found response
+func (o *UserTokenListNotFound) Code() int {
+	return 404
+}
+
 func (o *UserTokenListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UserTokenListInternalServerError) IsServerError() bool {
 // IsCode returns true when this user token list internal server error response a status code equal to that given
 func (o *UserTokenListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the user token list internal server error response
+func (o *UserTokenListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UserTokenListInternalServerError) Error() string {

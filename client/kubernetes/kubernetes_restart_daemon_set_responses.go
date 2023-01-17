@@ -103,6 +103,11 @@ func (o *KubernetesRestartDaemonSetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes restart daemon set o k response
+func (o *KubernetesRestartDaemonSetOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesRestartDaemonSetOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesRestartDaemonSetBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes restart daemon set bad request response a status code equal to that given
 func (o *KubernetesRestartDaemonSetBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes restart daemon set bad request response
+func (o *KubernetesRestartDaemonSetBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesRestartDaemonSetBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesRestartDaemonSetUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes restart daemon set unauthorized response
+func (o *KubernetesRestartDaemonSetUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesRestartDaemonSetUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesRestartDaemonSetForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes restart daemon set forbidden response a status code equal to that given
 func (o *KubernetesRestartDaemonSetForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes restart daemon set forbidden response
+func (o *KubernetesRestartDaemonSetForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesRestartDaemonSetForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesRestartDaemonSetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes restart daemon set not found response
+func (o *KubernetesRestartDaemonSetNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesRestartDaemonSetNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesRestartDaemonSetInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes restart daemon set internal server error response a status code equal to that given
 func (o *KubernetesRestartDaemonSetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes restart daemon set internal server error response
+func (o *KubernetesRestartDaemonSetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesRestartDaemonSetInternalServerError) Error() string {

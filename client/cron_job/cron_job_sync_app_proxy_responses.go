@@ -103,6 +103,11 @@ func (o *CronJobSyncAppProxyOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job sync app proxy o k response
+func (o *CronJobSyncAppProxyOK) Code() int {
+	return 200
+}
+
 func (o *CronJobSyncAppProxyOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-app-proxy][%d] cronJobSyncAppProxyOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobSyncAppProxyBadRequest) IsServerError() bool {
 // IsCode returns true when this cron job sync app proxy bad request response a status code equal to that given
 func (o *CronJobSyncAppProxyBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job sync app proxy bad request response
+func (o *CronJobSyncAppProxyBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobSyncAppProxyBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobSyncAppProxyUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cron job sync app proxy unauthorized response
+func (o *CronJobSyncAppProxyUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobSyncAppProxyUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-app-proxy][%d] cronJobSyncAppProxyUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobSyncAppProxyForbidden) IsServerError() bool {
 // IsCode returns true when this cron job sync app proxy forbidden response a status code equal to that given
 func (o *CronJobSyncAppProxyForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job sync app proxy forbidden response
+func (o *CronJobSyncAppProxyForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobSyncAppProxyForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobSyncAppProxyNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job sync app proxy not found response
+func (o *CronJobSyncAppProxyNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobSyncAppProxyNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-app-proxy][%d] cronJobSyncAppProxyNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobSyncAppProxyInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job sync app proxy internal server error response a status code equal to that given
 func (o *CronJobSyncAppProxyInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job sync app proxy internal server error response
+func (o *CronJobSyncAppProxyInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobSyncAppProxyInternalServerError) Error() string {

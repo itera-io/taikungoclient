@@ -103,6 +103,11 @@ func (o *ProjectsListSelectorOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects list selector o k response
+func (o *ProjectsListSelectorOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsListSelectorOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectsListSelectorBadRequest) IsServerError() bool {
 // IsCode returns true when this projects list selector bad request response a status code equal to that given
 func (o *ProjectsListSelectorBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the projects list selector bad request response
+func (o *ProjectsListSelectorBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectsListSelectorBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectsListSelectorUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the projects list selector unauthorized response
+func (o *ProjectsListSelectorUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectsListSelectorUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectsListSelectorForbidden) IsServerError() bool {
 // IsCode returns true when this projects list selector forbidden response a status code equal to that given
 func (o *ProjectsListSelectorForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the projects list selector forbidden response
+func (o *ProjectsListSelectorForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectsListSelectorForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectsListSelectorNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects list selector not found response
+func (o *ProjectsListSelectorNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsListSelectorNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsListSelectorInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects list selector internal server error response a status code equal to that given
 func (o *ProjectsListSelectorInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects list selector internal server error response
+func (o *ProjectsListSelectorInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsListSelectorInternalServerError) Error() string {

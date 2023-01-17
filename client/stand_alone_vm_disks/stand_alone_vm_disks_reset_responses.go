@@ -103,6 +103,11 @@ func (o *StandAloneVMDisksResetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone Vm disks reset o k response
+func (o *StandAloneVMDisksResetOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneVMDisksResetOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *StandAloneVMDisksResetBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone Vm disks reset bad request response a status code equal to that given
 func (o *StandAloneVMDisksResetBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone Vm disks reset bad request response
+func (o *StandAloneVMDisksResetBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneVMDisksResetBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *StandAloneVMDisksResetUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone Vm disks reset unauthorized response
+func (o *StandAloneVMDisksResetUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneVMDisksResetUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *StandAloneVMDisksResetForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone Vm disks reset forbidden response a status code equal to that given
 func (o *StandAloneVMDisksResetForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone Vm disks reset forbidden response
+func (o *StandAloneVMDisksResetForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneVMDisksResetForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *StandAloneVMDisksResetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone Vm disks reset not found response
+func (o *StandAloneVMDisksResetNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneVMDisksResetNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneVMDisksResetInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone Vm disks reset internal server error response a status code equal to that given
 func (o *StandAloneVMDisksResetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone Vm disks reset internal server error response
+func (o *StandAloneVMDisksResetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneVMDisksResetInternalServerError) Error() string {

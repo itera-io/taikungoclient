@@ -103,6 +103,11 @@ func (o *KubernetesProfilesListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes profiles list o k response
+func (o *KubernetesProfilesListOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesProfilesListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *KubernetesProfilesListBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes profiles list bad request response a status code equal to that given
 func (o *KubernetesProfilesListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes profiles list bad request response
+func (o *KubernetesProfilesListBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesProfilesListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *KubernetesProfilesListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes profiles list unauthorized response
+func (o *KubernetesProfilesListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesProfilesListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *KubernetesProfilesListForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes profiles list forbidden response a status code equal to that given
 func (o *KubernetesProfilesListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes profiles list forbidden response
+func (o *KubernetesProfilesListForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesProfilesListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *KubernetesProfilesListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes profiles list not found response
+func (o *KubernetesProfilesListNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesProfilesListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubernetesProfilesListInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes profiles list internal server error response a status code equal to that given
 func (o *KubernetesProfilesListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes profiles list internal server error response
+func (o *KubernetesProfilesListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesProfilesListInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *SearchIngressListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search ingress list o k response
+func (o *SearchIngressListOK) Code() int {
+	return 200
+}
+
 func (o *SearchIngressListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/ingress][%d] searchIngressListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SearchIngressListBadRequest) IsServerError() bool {
 // IsCode returns true when this search ingress list bad request response a status code equal to that given
 func (o *SearchIngressListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the search ingress list bad request response
+func (o *SearchIngressListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SearchIngressListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SearchIngressListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the search ingress list unauthorized response
+func (o *SearchIngressListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SearchIngressListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/ingress][%d] searchIngressListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SearchIngressListForbidden) IsServerError() bool {
 // IsCode returns true when this search ingress list forbidden response a status code equal to that given
 func (o *SearchIngressListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the search ingress list forbidden response
+func (o *SearchIngressListForbidden) Code() int {
+	return 403
 }
 
 func (o *SearchIngressListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SearchIngressListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search ingress list not found response
+func (o *SearchIngressListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchIngressListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/ingress][%d] searchIngressListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchIngressListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search ingress list internal server error response a status code equal to that given
 func (o *SearchIngressListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search ingress list internal server error response
+func (o *SearchIngressListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchIngressListInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *AccessProfilesCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the access profiles create o k response
+func (o *AccessProfilesCreateOK) Code() int {
+	return 200
+}
+
 func (o *AccessProfilesCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AccessProfilesCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this access profiles create bad request response a status code equal to that given
 func (o *AccessProfilesCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the access profiles create bad request response
+func (o *AccessProfilesCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *AccessProfilesCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *AccessProfilesCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the access profiles create unauthorized response
+func (o *AccessProfilesCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AccessProfilesCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *AccessProfilesCreateForbidden) IsServerError() bool {
 // IsCode returns true when this access profiles create forbidden response a status code equal to that given
 func (o *AccessProfilesCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the access profiles create forbidden response
+func (o *AccessProfilesCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *AccessProfilesCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *AccessProfilesCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the access profiles create not found response
+func (o *AccessProfilesCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *AccessProfilesCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AccessProfilesCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this access profiles create internal server error response a status code equal to that given
 func (o *AccessProfilesCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the access profiles create internal server error response
+func (o *AccessProfilesCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AccessProfilesCreateInternalServerError) Error() string {

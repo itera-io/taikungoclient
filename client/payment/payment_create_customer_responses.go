@@ -103,6 +103,11 @@ func (o *PaymentCreateCustomerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the payment create customer o k response
+func (o *PaymentCreateCustomerOK) Code() int {
+	return 200
+}
+
 func (o *PaymentCreateCustomerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *PaymentCreateCustomerBadRequest) IsServerError() bool {
 // IsCode returns true when this payment create customer bad request response a status code equal to that given
 func (o *PaymentCreateCustomerBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the payment create customer bad request response
+func (o *PaymentCreateCustomerBadRequest) Code() int {
+	return 400
 }
 
 func (o *PaymentCreateCustomerBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *PaymentCreateCustomerUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the payment create customer unauthorized response
+func (o *PaymentCreateCustomerUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PaymentCreateCustomerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *PaymentCreateCustomerForbidden) IsServerError() bool {
 // IsCode returns true when this payment create customer forbidden response a status code equal to that given
 func (o *PaymentCreateCustomerForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the payment create customer forbidden response
+func (o *PaymentCreateCustomerForbidden) Code() int {
+	return 403
 }
 
 func (o *PaymentCreateCustomerForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *PaymentCreateCustomerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the payment create customer not found response
+func (o *PaymentCreateCustomerNotFound) Code() int {
+	return 404
+}
+
 func (o *PaymentCreateCustomerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PaymentCreateCustomerInternalServerError) IsServerError() bool {
 // IsCode returns true when this payment create customer internal server error response a status code equal to that given
 func (o *PaymentCreateCustomerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the payment create customer internal server error response
+func (o *PaymentCreateCustomerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PaymentCreateCustomerInternalServerError) Error() string {

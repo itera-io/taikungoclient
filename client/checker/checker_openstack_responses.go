@@ -103,6 +103,11 @@ func (o *CheckerOpenstackOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker openstack o k response
+func (o *CheckerOpenstackOK) Code() int {
+	return 200
+}
+
 func (o *CheckerOpenstackOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack][%d] checkerOpenstackOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CheckerOpenstackBadRequest) IsServerError() bool {
 // IsCode returns true when this checker openstack bad request response a status code equal to that given
 func (o *CheckerOpenstackBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the checker openstack bad request response
+func (o *CheckerOpenstackBadRequest) Code() int {
+	return 400
 }
 
 func (o *CheckerOpenstackBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CheckerOpenstackUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the checker openstack unauthorized response
+func (o *CheckerOpenstackUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CheckerOpenstackUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack][%d] checkerOpenstackUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CheckerOpenstackForbidden) IsServerError() bool {
 // IsCode returns true when this checker openstack forbidden response a status code equal to that given
 func (o *CheckerOpenstackForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the checker openstack forbidden response
+func (o *CheckerOpenstackForbidden) Code() int {
+	return 403
 }
 
 func (o *CheckerOpenstackForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CheckerOpenstackNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker openstack not found response
+func (o *CheckerOpenstackNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerOpenstackNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack][%d] checkerOpenstackNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerOpenstackInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker openstack internal server error response a status code equal to that given
 func (o *CheckerOpenstackInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker openstack internal server error response
+func (o *CheckerOpenstackInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerOpenstackInternalServerError) Error() string {

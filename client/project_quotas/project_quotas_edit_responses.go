@@ -103,6 +103,11 @@ func (o *ProjectQuotasEditOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project quotas edit o k response
+func (o *ProjectQuotasEditOK) Code() int {
+	return 200
+}
+
 func (o *ProjectQuotasEditOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectQuotasEditBadRequest) IsServerError() bool {
 // IsCode returns true when this project quotas edit bad request response a status code equal to that given
 func (o *ProjectQuotasEditBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project quotas edit bad request response
+func (o *ProjectQuotasEditBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectQuotasEditBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectQuotasEditUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project quotas edit unauthorized response
+func (o *ProjectQuotasEditUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectQuotasEditUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectQuotasEditForbidden) IsServerError() bool {
 // IsCode returns true when this project quotas edit forbidden response a status code equal to that given
 func (o *ProjectQuotasEditForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project quotas edit forbidden response
+func (o *ProjectQuotasEditForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectQuotasEditForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectQuotasEditNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project quotas edit not found response
+func (o *ProjectQuotasEditNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectQuotasEditNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectQuotasEditInternalServerError) IsServerError() bool {
 // IsCode returns true when this project quotas edit internal server error response a status code equal to that given
 func (o *ProjectQuotasEditInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project quotas edit internal server error response
+func (o *ProjectQuotasEditInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectQuotasEditInternalServerError) Error() string {

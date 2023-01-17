@@ -103,6 +103,11 @@ func (o *FlavorsAzureFlavorsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the flavors azure flavors o k response
+func (o *FlavorsAzureFlavorsOK) Code() int {
+	return 200
+}
+
 func (o *FlavorsAzureFlavorsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/azure/{cloudId}][%d] flavorsAzureFlavorsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *FlavorsAzureFlavorsBadRequest) IsServerError() bool {
 // IsCode returns true when this flavors azure flavors bad request response a status code equal to that given
 func (o *FlavorsAzureFlavorsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the flavors azure flavors bad request response
+func (o *FlavorsAzureFlavorsBadRequest) Code() int {
+	return 400
 }
 
 func (o *FlavorsAzureFlavorsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *FlavorsAzureFlavorsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the flavors azure flavors unauthorized response
+func (o *FlavorsAzureFlavorsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *FlavorsAzureFlavorsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/azure/{cloudId}][%d] flavorsAzureFlavorsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *FlavorsAzureFlavorsForbidden) IsServerError() bool {
 // IsCode returns true when this flavors azure flavors forbidden response a status code equal to that given
 func (o *FlavorsAzureFlavorsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the flavors azure flavors forbidden response
+func (o *FlavorsAzureFlavorsForbidden) Code() int {
+	return 403
 }
 
 func (o *FlavorsAzureFlavorsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *FlavorsAzureFlavorsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the flavors azure flavors not found response
+func (o *FlavorsAzureFlavorsNotFound) Code() int {
+	return 404
+}
+
 func (o *FlavorsAzureFlavorsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/azure/{cloudId}][%d] flavorsAzureFlavorsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *FlavorsAzureFlavorsInternalServerError) IsServerError() bool {
 // IsCode returns true when this flavors azure flavors internal server error response a status code equal to that given
 func (o *FlavorsAzureFlavorsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the flavors azure flavors internal server error response
+func (o *FlavorsAzureFlavorsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *FlavorsAzureFlavorsInternalServerError) Error() string {

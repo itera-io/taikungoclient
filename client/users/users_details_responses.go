@@ -103,6 +103,11 @@ func (o *UsersDetailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users details o k response
+func (o *UsersDetailsOK) Code() int {
+	return 200
+}
+
 func (o *UsersDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/userinfo][%d] usersDetailsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *UsersDetailsBadRequest) IsServerError() bool {
 // IsCode returns true when this users details bad request response a status code equal to that given
 func (o *UsersDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the users details bad request response
+func (o *UsersDetailsBadRequest) Code() int {
+	return 400
 }
 
 func (o *UsersDetailsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *UsersDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the users details unauthorized response
+func (o *UsersDetailsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UsersDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/userinfo][%d] usersDetailsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *UsersDetailsForbidden) IsServerError() bool {
 // IsCode returns true when this users details forbidden response a status code equal to that given
 func (o *UsersDetailsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the users details forbidden response
+func (o *UsersDetailsForbidden) Code() int {
+	return 403
 }
 
 func (o *UsersDetailsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *UsersDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users details not found response
+func (o *UsersDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/userinfo][%d] usersDetailsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *UsersDetailsInternalServerError) IsServerError() bool {
 // IsCode returns true when this users details internal server error response a status code equal to that given
 func (o *UsersDetailsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users details internal server error response
+func (o *UsersDetailsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersDetailsInternalServerError) Error() string {

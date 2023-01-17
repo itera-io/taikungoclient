@@ -103,6 +103,11 @@ func (o *OrganizationsToggleKeycloakOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organizations toggle keycloak o k response
+func (o *OrganizationsToggleKeycloakOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationsToggleKeycloakOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *OrganizationsToggleKeycloakBadRequest) IsServerError() bool {
 // IsCode returns true when this organizations toggle keycloak bad request response a status code equal to that given
 func (o *OrganizationsToggleKeycloakBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the organizations toggle keycloak bad request response
+func (o *OrganizationsToggleKeycloakBadRequest) Code() int {
+	return 400
 }
 
 func (o *OrganizationsToggleKeycloakBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *OrganizationsToggleKeycloakUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the organizations toggle keycloak unauthorized response
+func (o *OrganizationsToggleKeycloakUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OrganizationsToggleKeycloakUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *OrganizationsToggleKeycloakForbidden) IsServerError() bool {
 // IsCode returns true when this organizations toggle keycloak forbidden response a status code equal to that given
 func (o *OrganizationsToggleKeycloakForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the organizations toggle keycloak forbidden response
+func (o *OrganizationsToggleKeycloakForbidden) Code() int {
+	return 403
 }
 
 func (o *OrganizationsToggleKeycloakForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *OrganizationsToggleKeycloakNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organizations toggle keycloak not found response
+func (o *OrganizationsToggleKeycloakNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationsToggleKeycloakNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OrganizationsToggleKeycloakInternalServerError) IsServerError() bool {
 // IsCode returns true when this organizations toggle keycloak internal server error response a status code equal to that given
 func (o *OrganizationsToggleKeycloakInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the organizations toggle keycloak internal server error response
+func (o *OrganizationsToggleKeycloakInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrganizationsToggleKeycloakInternalServerError) Error() string {

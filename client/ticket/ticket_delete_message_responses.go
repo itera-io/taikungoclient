@@ -103,6 +103,11 @@ func (o *TicketDeleteMessageOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ticket delete message o k response
+func (o *TicketDeleteMessageOK) Code() int {
+	return 200
+}
+
 func (o *TicketDeleteMessageOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *TicketDeleteMessageBadRequest) IsServerError() bool {
 // IsCode returns true when this ticket delete message bad request response a status code equal to that given
 func (o *TicketDeleteMessageBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ticket delete message bad request response
+func (o *TicketDeleteMessageBadRequest) Code() int {
+	return 400
 }
 
 func (o *TicketDeleteMessageBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *TicketDeleteMessageUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ticket delete message unauthorized response
+func (o *TicketDeleteMessageUnauthorized) Code() int {
+	return 401
+}
+
 func (o *TicketDeleteMessageUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *TicketDeleteMessageForbidden) IsServerError() bool {
 // IsCode returns true when this ticket delete message forbidden response a status code equal to that given
 func (o *TicketDeleteMessageForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ticket delete message forbidden response
+func (o *TicketDeleteMessageForbidden) Code() int {
+	return 403
 }
 
 func (o *TicketDeleteMessageForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *TicketDeleteMessageNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ticket delete message not found response
+func (o *TicketDeleteMessageNotFound) Code() int {
+	return 404
+}
+
 func (o *TicketDeleteMessageNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *TicketDeleteMessageInternalServerError) IsServerError() bool {
 // IsCode returns true when this ticket delete message internal server error response a status code equal to that given
 func (o *TicketDeleteMessageInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ticket delete message internal server error response
+func (o *TicketDeleteMessageInternalServerError) Code() int {
+	return 500
 }
 
 func (o *TicketDeleteMessageInternalServerError) Error() string {

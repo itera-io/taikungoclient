@@ -103,6 +103,11 @@ func (o *AlertingIntegrationsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting integrations list o k response
+func (o *AlertingIntegrationsListOK) Code() int {
+	return 200
+}
+
 func (o *AlertingIntegrationsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AlertingIntegrationsListBadRequest) IsServerError() bool {
 // IsCode returns true when this alerting integrations list bad request response a status code equal to that given
 func (o *AlertingIntegrationsListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the alerting integrations list bad request response
+func (o *AlertingIntegrationsListBadRequest) Code() int {
+	return 400
 }
 
 func (o *AlertingIntegrationsListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AlertingIntegrationsListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the alerting integrations list unauthorized response
+func (o *AlertingIntegrationsListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AlertingIntegrationsListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AlertingIntegrationsListForbidden) IsServerError() bool {
 // IsCode returns true when this alerting integrations list forbidden response a status code equal to that given
 func (o *AlertingIntegrationsListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the alerting integrations list forbidden response
+func (o *AlertingIntegrationsListForbidden) Code() int {
+	return 403
 }
 
 func (o *AlertingIntegrationsListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AlertingIntegrationsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting integrations list not found response
+func (o *AlertingIntegrationsListNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingIntegrationsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AlertingIntegrationsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this alerting integrations list internal server error response a status code equal to that given
 func (o *AlertingIntegrationsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting integrations list internal server error response
+func (o *AlertingIntegrationsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingIntegrationsListInternalServerError) Error() string {

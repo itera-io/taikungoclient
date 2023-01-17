@@ -103,6 +103,11 @@ func (o *SearchKubernetesProfilesListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search kubernetes profiles list o k response
+func (o *SearchKubernetesProfilesListOK) Code() int {
+	return 200
+}
+
 func (o *SearchKubernetesProfilesListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SearchKubernetesProfilesListBadRequest) IsServerError() bool {
 // IsCode returns true when this search kubernetes profiles list bad request response a status code equal to that given
 func (o *SearchKubernetesProfilesListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the search kubernetes profiles list bad request response
+func (o *SearchKubernetesProfilesListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SearchKubernetesProfilesListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SearchKubernetesProfilesListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the search kubernetes profiles list unauthorized response
+func (o *SearchKubernetesProfilesListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SearchKubernetesProfilesListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SearchKubernetesProfilesListForbidden) IsServerError() bool {
 // IsCode returns true when this search kubernetes profiles list forbidden response a status code equal to that given
 func (o *SearchKubernetesProfilesListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the search kubernetes profiles list forbidden response
+func (o *SearchKubernetesProfilesListForbidden) Code() int {
+	return 403
 }
 
 func (o *SearchKubernetesProfilesListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SearchKubernetesProfilesListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search kubernetes profiles list not found response
+func (o *SearchKubernetesProfilesListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchKubernetesProfilesListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchKubernetesProfilesListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search kubernetes profiles list internal server error response a status code equal to that given
 func (o *SearchKubernetesProfilesListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search kubernetes profiles list internal server error response
+func (o *SearchKubernetesProfilesListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchKubernetesProfilesListInternalServerError) Error() string {

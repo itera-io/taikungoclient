@@ -103,6 +103,11 @@ func (o *AlertingProfilesEditOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting profiles edit o k response
+func (o *AlertingProfilesEditOK) Code() int {
+	return 200
+}
+
 func (o *AlertingProfilesEditOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AlertingProfilesEditBadRequest) IsServerError() bool {
 // IsCode returns true when this alerting profiles edit bad request response a status code equal to that given
 func (o *AlertingProfilesEditBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the alerting profiles edit bad request response
+func (o *AlertingProfilesEditBadRequest) Code() int {
+	return 400
 }
 
 func (o *AlertingProfilesEditBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *AlertingProfilesEditUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the alerting profiles edit unauthorized response
+func (o *AlertingProfilesEditUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AlertingProfilesEditUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *AlertingProfilesEditForbidden) IsServerError() bool {
 // IsCode returns true when this alerting profiles edit forbidden response a status code equal to that given
 func (o *AlertingProfilesEditForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the alerting profiles edit forbidden response
+func (o *AlertingProfilesEditForbidden) Code() int {
+	return 403
 }
 
 func (o *AlertingProfilesEditForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *AlertingProfilesEditNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting profiles edit not found response
+func (o *AlertingProfilesEditNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingProfilesEditNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AlertingProfilesEditInternalServerError) IsServerError() bool {
 // IsCode returns true when this alerting profiles edit internal server error response a status code equal to that given
 func (o *AlertingProfilesEditInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting profiles edit internal server error response
+func (o *AlertingProfilesEditInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingProfilesEditInternalServerError) Error() string {

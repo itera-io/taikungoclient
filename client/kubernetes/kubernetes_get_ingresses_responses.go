@@ -103,6 +103,11 @@ func (o *KubernetesGetIngressesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get ingresses o k response
+func (o *KubernetesGetIngressesOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetIngressesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/ingress][%d] kubernetesGetIngressesOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *KubernetesGetIngressesBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes get ingresses bad request response a status code equal to that given
 func (o *KubernetesGetIngressesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes get ingresses bad request response
+func (o *KubernetesGetIngressesBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesGetIngressesBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *KubernetesGetIngressesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes get ingresses unauthorized response
+func (o *KubernetesGetIngressesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesGetIngressesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/ingress][%d] kubernetesGetIngressesUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *KubernetesGetIngressesForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes get ingresses forbidden response a status code equal to that given
 func (o *KubernetesGetIngressesForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes get ingresses forbidden response
+func (o *KubernetesGetIngressesForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesGetIngressesForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *KubernetesGetIngressesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get ingresses not found response
+func (o *KubernetesGetIngressesNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetIngressesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/ingress][%d] kubernetesGetIngressesNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubernetesGetIngressesInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get ingresses internal server error response a status code equal to that given
 func (o *KubernetesGetIngressesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get ingresses internal server error response
+func (o *KubernetesGetIngressesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetIngressesInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *SearchAccessProfilesListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search access profiles list o k response
+func (o *SearchAccessProfilesListOK) Code() int {
+	return 200
+}
+
 func (o *SearchAccessProfilesListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SearchAccessProfilesListBadRequest) IsServerError() bool {
 // IsCode returns true when this search access profiles list bad request response a status code equal to that given
 func (o *SearchAccessProfilesListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the search access profiles list bad request response
+func (o *SearchAccessProfilesListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SearchAccessProfilesListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SearchAccessProfilesListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the search access profiles list unauthorized response
+func (o *SearchAccessProfilesListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SearchAccessProfilesListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SearchAccessProfilesListForbidden) IsServerError() bool {
 // IsCode returns true when this search access profiles list forbidden response a status code equal to that given
 func (o *SearchAccessProfilesListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the search access profiles list forbidden response
+func (o *SearchAccessProfilesListForbidden) Code() int {
+	return 403
 }
 
 func (o *SearchAccessProfilesListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SearchAccessProfilesListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search access profiles list not found response
+func (o *SearchAccessProfilesListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchAccessProfilesListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchAccessProfilesListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search access profiles list internal server error response a status code equal to that given
 func (o *SearchAccessProfilesListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search access profiles list internal server error response
+func (o *SearchAccessProfilesListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchAccessProfilesListInternalServerError) Error() string {

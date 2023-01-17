@@ -103,6 +103,11 @@ func (o *StandAloneVMDisksPurgeOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone Vm disks purge o k response
+func (o *StandAloneVMDisksPurgeOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneVMDisksPurgeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *StandAloneVMDisksPurgeBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone Vm disks purge bad request response a status code equal to that given
 func (o *StandAloneVMDisksPurgeBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone Vm disks purge bad request response
+func (o *StandAloneVMDisksPurgeBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneVMDisksPurgeBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *StandAloneVMDisksPurgeUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone Vm disks purge unauthorized response
+func (o *StandAloneVMDisksPurgeUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneVMDisksPurgeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *StandAloneVMDisksPurgeForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone Vm disks purge forbidden response a status code equal to that given
 func (o *StandAloneVMDisksPurgeForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone Vm disks purge forbidden response
+func (o *StandAloneVMDisksPurgeForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneVMDisksPurgeForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *StandAloneVMDisksPurgeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone Vm disks purge not found response
+func (o *StandAloneVMDisksPurgeNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneVMDisksPurgeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneVMDisksPurgeInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone Vm disks purge internal server error response a status code equal to that given
 func (o *StandAloneVMDisksPurgeInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone Vm disks purge internal server error response
+func (o *StandAloneVMDisksPurgeInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneVMDisksPurgeInternalServerError) Error() string {

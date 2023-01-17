@@ -103,6 +103,11 @@ func (o *KubernetesDeleteAlertsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes delete alerts o k response
+func (o *KubernetesDeleteAlertsOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDeleteAlertsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesDeleteAlertsBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes delete alerts bad request response a status code equal to that given
 func (o *KubernetesDeleteAlertsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes delete alerts bad request response
+func (o *KubernetesDeleteAlertsBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesDeleteAlertsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesDeleteAlertsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes delete alerts unauthorized response
+func (o *KubernetesDeleteAlertsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesDeleteAlertsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesDeleteAlertsForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes delete alerts forbidden response a status code equal to that given
 func (o *KubernetesDeleteAlertsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes delete alerts forbidden response
+func (o *KubernetesDeleteAlertsForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesDeleteAlertsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesDeleteAlertsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes delete alerts not found response
+func (o *KubernetesDeleteAlertsNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDeleteAlertsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesDeleteAlertsInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes delete alerts internal server error response a status code equal to that given
 func (o *KubernetesDeleteAlertsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes delete alerts internal server error response
+func (o *KubernetesDeleteAlertsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDeleteAlertsInternalServerError) Error() string {

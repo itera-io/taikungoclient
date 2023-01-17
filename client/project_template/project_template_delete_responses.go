@@ -109,6 +109,11 @@ func (o *ProjectTemplateDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project template delete o k response
+func (o *ProjectTemplateDeleteOK) Code() int {
+	return 200
+}
+
 func (o *ProjectTemplateDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectTemplate/{id}][%d] projectTemplateDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *ProjectTemplateDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the project template delete no content response
+func (o *ProjectTemplateDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *ProjectTemplateDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectTemplate/{id}][%d] projectTemplateDeleteNoContent ", 204)
 }
@@ -219,6 +229,11 @@ func (o *ProjectTemplateDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this project template delete bad request response a status code equal to that given
 func (o *ProjectTemplateDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project template delete bad request response
+func (o *ProjectTemplateDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectTemplateDeleteBadRequest) Error() string {
@@ -284,6 +299,11 @@ func (o *ProjectTemplateDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project template delete unauthorized response
+func (o *ProjectTemplateDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectTemplateDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectTemplate/{id}][%d] projectTemplateDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -345,6 +365,11 @@ func (o *ProjectTemplateDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this project template delete forbidden response a status code equal to that given
 func (o *ProjectTemplateDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project template delete forbidden response
+func (o *ProjectTemplateDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectTemplateDeleteForbidden) Error() string {
@@ -410,6 +435,11 @@ func (o *ProjectTemplateDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project template delete not found response
+func (o *ProjectTemplateDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectTemplateDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectTemplate/{id}][%d] projectTemplateDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *ProjectTemplateDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this project template delete internal server error response a status code equal to that given
 func (o *ProjectTemplateDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project template delete internal server error response
+func (o *ProjectTemplateDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectTemplateDeleteInternalServerError) Error() string {

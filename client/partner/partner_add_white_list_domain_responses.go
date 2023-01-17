@@ -103,6 +103,11 @@ func (o *PartnerAddWhiteListDomainOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the partner add white list domain o k response
+func (o *PartnerAddWhiteListDomainOK) Code() int {
+	return 200
+}
+
 func (o *PartnerAddWhiteListDomainOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *PartnerAddWhiteListDomainBadRequest) IsServerError() bool {
 // IsCode returns true when this partner add white list domain bad request response a status code equal to that given
 func (o *PartnerAddWhiteListDomainBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the partner add white list domain bad request response
+func (o *PartnerAddWhiteListDomainBadRequest) Code() int {
+	return 400
 }
 
 func (o *PartnerAddWhiteListDomainBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *PartnerAddWhiteListDomainUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the partner add white list domain unauthorized response
+func (o *PartnerAddWhiteListDomainUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PartnerAddWhiteListDomainUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *PartnerAddWhiteListDomainForbidden) IsServerError() bool {
 // IsCode returns true when this partner add white list domain forbidden response a status code equal to that given
 func (o *PartnerAddWhiteListDomainForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the partner add white list domain forbidden response
+func (o *PartnerAddWhiteListDomainForbidden) Code() int {
+	return 403
 }
 
 func (o *PartnerAddWhiteListDomainForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *PartnerAddWhiteListDomainNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the partner add white list domain not found response
+func (o *PartnerAddWhiteListDomainNotFound) Code() int {
+	return 404
+}
+
 func (o *PartnerAddWhiteListDomainNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PartnerAddWhiteListDomainInternalServerError) IsServerError() bool {
 // IsCode returns true when this partner add white list domain internal server error response a status code equal to that given
 func (o *PartnerAddWhiteListDomainInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the partner add white list domain internal server error response
+func (o *PartnerAddWhiteListDomainInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PartnerAddWhiteListDomainInternalServerError) Error() string {

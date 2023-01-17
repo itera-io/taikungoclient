@@ -103,6 +103,11 @@ func (o *OrganizationsUpdateSubscriptionOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organizations update subscription o k response
+func (o *OrganizationsUpdateSubscriptionOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationsUpdateSubscriptionOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *OrganizationsUpdateSubscriptionBadRequest) IsServerError() bool {
 // IsCode returns true when this organizations update subscription bad request response a status code equal to that given
 func (o *OrganizationsUpdateSubscriptionBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the organizations update subscription bad request response
+func (o *OrganizationsUpdateSubscriptionBadRequest) Code() int {
+	return 400
 }
 
 func (o *OrganizationsUpdateSubscriptionBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *OrganizationsUpdateSubscriptionUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the organizations update subscription unauthorized response
+func (o *OrganizationsUpdateSubscriptionUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OrganizationsUpdateSubscriptionUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *OrganizationsUpdateSubscriptionForbidden) IsServerError() bool {
 // IsCode returns true when this organizations update subscription forbidden response a status code equal to that given
 func (o *OrganizationsUpdateSubscriptionForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the organizations update subscription forbidden response
+func (o *OrganizationsUpdateSubscriptionForbidden) Code() int {
+	return 403
 }
 
 func (o *OrganizationsUpdateSubscriptionForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *OrganizationsUpdateSubscriptionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organizations update subscription not found response
+func (o *OrganizationsUpdateSubscriptionNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationsUpdateSubscriptionNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OrganizationsUpdateSubscriptionInternalServerError) IsServerError() boo
 // IsCode returns true when this organizations update subscription internal server error response a status code equal to that given
 func (o *OrganizationsUpdateSubscriptionInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the organizations update subscription internal server error response
+func (o *OrganizationsUpdateSubscriptionInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrganizationsUpdateSubscriptionInternalServerError) Error() string {

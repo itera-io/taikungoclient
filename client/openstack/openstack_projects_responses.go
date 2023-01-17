@@ -103,6 +103,11 @@ func (o *OpenstackProjectsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the openstack projects o k response
+func (o *OpenstackProjectsOK) Code() int {
+	return 200
+}
+
 func (o *OpenstackProjectsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/projects][%d] openstackProjectsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *OpenstackProjectsBadRequest) IsServerError() bool {
 // IsCode returns true when this openstack projects bad request response a status code equal to that given
 func (o *OpenstackProjectsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the openstack projects bad request response
+func (o *OpenstackProjectsBadRequest) Code() int {
+	return 400
 }
 
 func (o *OpenstackProjectsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *OpenstackProjectsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the openstack projects unauthorized response
+func (o *OpenstackProjectsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OpenstackProjectsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/projects][%d] openstackProjectsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *OpenstackProjectsForbidden) IsServerError() bool {
 // IsCode returns true when this openstack projects forbidden response a status code equal to that given
 func (o *OpenstackProjectsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the openstack projects forbidden response
+func (o *OpenstackProjectsForbidden) Code() int {
+	return 403
 }
 
 func (o *OpenstackProjectsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *OpenstackProjectsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the openstack projects not found response
+func (o *OpenstackProjectsNotFound) Code() int {
+	return 404
+}
+
 func (o *OpenstackProjectsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/projects][%d] openstackProjectsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpenstackProjectsInternalServerError) IsServerError() bool {
 // IsCode returns true when this openstack projects internal server error response a status code equal to that given
 func (o *OpenstackProjectsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the openstack projects internal server error response
+func (o *OpenstackProjectsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpenstackProjectsInternalServerError) Error() string {

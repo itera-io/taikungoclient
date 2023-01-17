@@ -103,6 +103,11 @@ func (o *BackupDeleteScheduleOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the backup delete schedule o k response
+func (o *BackupDeleteScheduleOK) Code() int {
+	return 200
+}
+
 func (o *BackupDeleteScheduleOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *BackupDeleteScheduleBadRequest) IsServerError() bool {
 // IsCode returns true when this backup delete schedule bad request response a status code equal to that given
 func (o *BackupDeleteScheduleBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the backup delete schedule bad request response
+func (o *BackupDeleteScheduleBadRequest) Code() int {
+	return 400
 }
 
 func (o *BackupDeleteScheduleBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *BackupDeleteScheduleUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the backup delete schedule unauthorized response
+func (o *BackupDeleteScheduleUnauthorized) Code() int {
+	return 401
+}
+
 func (o *BackupDeleteScheduleUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *BackupDeleteScheduleForbidden) IsServerError() bool {
 // IsCode returns true when this backup delete schedule forbidden response a status code equal to that given
 func (o *BackupDeleteScheduleForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the backup delete schedule forbidden response
+func (o *BackupDeleteScheduleForbidden) Code() int {
+	return 403
 }
 
 func (o *BackupDeleteScheduleForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *BackupDeleteScheduleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the backup delete schedule not found response
+func (o *BackupDeleteScheduleNotFound) Code() int {
+	return 404
+}
+
 func (o *BackupDeleteScheduleNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *BackupDeleteScheduleInternalServerError) IsServerError() bool {
 // IsCode returns true when this backup delete schedule internal server error response a status code equal to that given
 func (o *BackupDeleteScheduleInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the backup delete schedule internal server error response
+func (o *BackupDeleteScheduleInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BackupDeleteScheduleInternalServerError) Error() string {

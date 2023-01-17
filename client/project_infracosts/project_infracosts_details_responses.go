@@ -103,6 +103,11 @@ func (o *ProjectInfracostsDetailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project infracosts details o k response
+func (o *ProjectInfracostsDetailsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectInfracostsDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ProjectInfracostsDetailsBadRequest) IsServerError() bool {
 // IsCode returns true when this project infracosts details bad request response a status code equal to that given
 func (o *ProjectInfracostsDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project infracosts details bad request response
+func (o *ProjectInfracostsDetailsBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectInfracostsDetailsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ProjectInfracostsDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project infracosts details unauthorized response
+func (o *ProjectInfracostsDetailsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectInfracostsDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ProjectInfracostsDetailsForbidden) IsServerError() bool {
 // IsCode returns true when this project infracosts details forbidden response a status code equal to that given
 func (o *ProjectInfracostsDetailsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project infracosts details forbidden response
+func (o *ProjectInfracostsDetailsForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectInfracostsDetailsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ProjectInfracostsDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project infracosts details not found response
+func (o *ProjectInfracostsDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectInfracostsDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ProjectInfracostsDetailsInternalServerError) IsServerError() bool {
 // IsCode returns true when this project infracosts details internal server error response a status code equal to that given
 func (o *ProjectInfracostsDetailsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project infracosts details internal server error response
+func (o *ProjectInfracostsDetailsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectInfracostsDetailsInternalServerError) Error() string {

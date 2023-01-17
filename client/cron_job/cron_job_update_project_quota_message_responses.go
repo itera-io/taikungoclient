@@ -103,6 +103,11 @@ func (o *CronJobUpdateProjectQuotaMessageOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job update project quota message o k response
+func (o *CronJobUpdateProjectQuotaMessageOK) Code() int {
+	return 200
+}
+
 func (o *CronJobUpdateProjectQuotaMessageOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobUpdateProjectQuotaMessageBadRequest) IsServerError() bool {
 // IsCode returns true when this cron job update project quota message bad request response a status code equal to that given
 func (o *CronJobUpdateProjectQuotaMessageBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job update project quota message bad request response
+func (o *CronJobUpdateProjectQuotaMessageBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobUpdateProjectQuotaMessageBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobUpdateProjectQuotaMessageUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cron job update project quota message unauthorized response
+func (o *CronJobUpdateProjectQuotaMessageUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobUpdateProjectQuotaMessageUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobUpdateProjectQuotaMessageForbidden) IsServerError() bool {
 // IsCode returns true when this cron job update project quota message forbidden response a status code equal to that given
 func (o *CronJobUpdateProjectQuotaMessageForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job update project quota message forbidden response
+func (o *CronJobUpdateProjectQuotaMessageForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobUpdateProjectQuotaMessageForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobUpdateProjectQuotaMessageNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job update project quota message not found response
+func (o *CronJobUpdateProjectQuotaMessageNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobUpdateProjectQuotaMessageNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobUpdateProjectQuotaMessageInternalServerError) IsServerError() bo
 // IsCode returns true when this cron job update project quota message internal server error response a status code equal to that given
 func (o *CronJobUpdateProjectQuotaMessageInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job update project quota message internal server error response
+func (o *CronJobUpdateProjectQuotaMessageInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobUpdateProjectQuotaMessageInternalServerError) Error() string {

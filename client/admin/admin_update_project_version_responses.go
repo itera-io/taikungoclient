@@ -103,6 +103,11 @@ func (o *AdminUpdateProjectVersionOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin update project version o k response
+func (o *AdminUpdateProjectVersionOK) Code() int {
+	return 200
+}
+
 func (o *AdminUpdateProjectVersionOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AdminUpdateProjectVersionBadRequest) IsServerError() bool {
 // IsCode returns true when this admin update project version bad request response a status code equal to that given
 func (o *AdminUpdateProjectVersionBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the admin update project version bad request response
+func (o *AdminUpdateProjectVersionBadRequest) Code() int {
+	return 400
 }
 
 func (o *AdminUpdateProjectVersionBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AdminUpdateProjectVersionUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the admin update project version unauthorized response
+func (o *AdminUpdateProjectVersionUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AdminUpdateProjectVersionUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AdminUpdateProjectVersionForbidden) IsServerError() bool {
 // IsCode returns true when this admin update project version forbidden response a status code equal to that given
 func (o *AdminUpdateProjectVersionForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the admin update project version forbidden response
+func (o *AdminUpdateProjectVersionForbidden) Code() int {
+	return 403
 }
 
 func (o *AdminUpdateProjectVersionForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AdminUpdateProjectVersionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin update project version not found response
+func (o *AdminUpdateProjectVersionNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminUpdateProjectVersionNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AdminUpdateProjectVersionInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin update project version internal server error response a status code equal to that given
 func (o *AdminUpdateProjectVersionInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin update project version internal server error response
+func (o *AdminUpdateProjectVersionInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminUpdateProjectVersionInternalServerError) Error() string {

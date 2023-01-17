@@ -103,6 +103,11 @@ func (o *UsersForceToResetPasswordOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users force to reset password o k response
+func (o *UsersForceToResetPasswordOK) Code() int {
+	return 200
+}
+
 func (o *UsersForceToResetPasswordOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *UsersForceToResetPasswordBadRequest) IsServerError() bool {
 // IsCode returns true when this users force to reset password bad request response a status code equal to that given
 func (o *UsersForceToResetPasswordBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the users force to reset password bad request response
+func (o *UsersForceToResetPasswordBadRequest) Code() int {
+	return 400
 }
 
 func (o *UsersForceToResetPasswordBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *UsersForceToResetPasswordUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the users force to reset password unauthorized response
+func (o *UsersForceToResetPasswordUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UsersForceToResetPasswordUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *UsersForceToResetPasswordForbidden) IsServerError() bool {
 // IsCode returns true when this users force to reset password forbidden response a status code equal to that given
 func (o *UsersForceToResetPasswordForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the users force to reset password forbidden response
+func (o *UsersForceToResetPasswordForbidden) Code() int {
+	return 403
 }
 
 func (o *UsersForceToResetPasswordForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *UsersForceToResetPasswordNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users force to reset password not found response
+func (o *UsersForceToResetPasswordNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersForceToResetPasswordNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UsersForceToResetPasswordInternalServerError) IsServerError() bool {
 // IsCode returns true when this users force to reset password internal server error response a status code equal to that given
 func (o *UsersForceToResetPasswordInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users force to reset password internal server error response
+func (o *UsersForceToResetPasswordInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersForceToResetPasswordInternalServerError) Error() string {

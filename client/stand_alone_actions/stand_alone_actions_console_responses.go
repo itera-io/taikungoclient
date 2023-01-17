@@ -103,6 +103,11 @@ func (o *StandAloneActionsConsoleOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone actions console o k response
+func (o *StandAloneActionsConsoleOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneActionsConsoleOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *StandAloneActionsConsoleBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone actions console bad request response a status code equal to that given
 func (o *StandAloneActionsConsoleBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone actions console bad request response
+func (o *StandAloneActionsConsoleBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneActionsConsoleBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *StandAloneActionsConsoleUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone actions console unauthorized response
+func (o *StandAloneActionsConsoleUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneActionsConsoleUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *StandAloneActionsConsoleForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone actions console forbidden response a status code equal to that given
 func (o *StandAloneActionsConsoleForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone actions console forbidden response
+func (o *StandAloneActionsConsoleForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneActionsConsoleForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *StandAloneActionsConsoleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone actions console not found response
+func (o *StandAloneActionsConsoleNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneActionsConsoleNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneActionsConsoleInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone actions console internal server error response a status code equal to that given
 func (o *StandAloneActionsConsoleInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone actions console internal server error response
+func (o *StandAloneActionsConsoleInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneActionsConsoleInternalServerError) Error() string {

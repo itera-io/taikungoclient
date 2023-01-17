@@ -103,6 +103,11 @@ func (o *PrometheusMetricNameOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the prometheus metric name o k response
+func (o *PrometheusMetricNameOK) Code() int {
+	return 200
+}
+
 func (o *PrometheusMetricNameOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *PrometheusMetricNameBadRequest) IsServerError() bool {
 // IsCode returns true when this prometheus metric name bad request response a status code equal to that given
 func (o *PrometheusMetricNameBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the prometheus metric name bad request response
+func (o *PrometheusMetricNameBadRequest) Code() int {
+	return 400
 }
 
 func (o *PrometheusMetricNameBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *PrometheusMetricNameUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the prometheus metric name unauthorized response
+func (o *PrometheusMetricNameUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PrometheusMetricNameUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *PrometheusMetricNameForbidden) IsServerError() bool {
 // IsCode returns true when this prometheus metric name forbidden response a status code equal to that given
 func (o *PrometheusMetricNameForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the prometheus metric name forbidden response
+func (o *PrometheusMetricNameForbidden) Code() int {
+	return 403
 }
 
 func (o *PrometheusMetricNameForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *PrometheusMetricNameNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the prometheus metric name not found response
+func (o *PrometheusMetricNameNotFound) Code() int {
+	return 404
+}
+
 func (o *PrometheusMetricNameNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PrometheusMetricNameInternalServerError) IsServerError() bool {
 // IsCode returns true when this prometheus metric name internal server error response a status code equal to that given
 func (o *PrometheusMetricNameInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the prometheus metric name internal server error response
+func (o *PrometheusMetricNameInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PrometheusMetricNameInternalServerError) Error() string {

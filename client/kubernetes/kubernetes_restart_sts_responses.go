@@ -103,6 +103,11 @@ func (o *KubernetesRestartStsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes restart sts o k response
+func (o *KubernetesRestartStsOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesRestartStsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/sts][%d] kubernetesRestartStsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesRestartStsBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes restart sts bad request response a status code equal to that given
 func (o *KubernetesRestartStsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes restart sts bad request response
+func (o *KubernetesRestartStsBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesRestartStsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesRestartStsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes restart sts unauthorized response
+func (o *KubernetesRestartStsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesRestartStsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/sts][%d] kubernetesRestartStsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesRestartStsForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes restart sts forbidden response a status code equal to that given
 func (o *KubernetesRestartStsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes restart sts forbidden response
+func (o *KubernetesRestartStsForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesRestartStsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesRestartStsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes restart sts not found response
+func (o *KubernetesRestartStsNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesRestartStsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/sts][%d] kubernetesRestartStsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesRestartStsInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes restart sts internal server error response a status code equal to that given
 func (o *KubernetesRestartStsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes restart sts internal server error response
+func (o *KubernetesRestartStsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesRestartStsInternalServerError) Error() string {

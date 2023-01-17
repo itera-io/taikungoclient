@@ -103,6 +103,11 @@ func (o *AuthLoginOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the auth login o k response
+func (o *AuthLoginOK) Code() int {
+	return 200
+}
+
 func (o *AuthLoginOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AuthLoginBadRequest) IsServerError() bool {
 // IsCode returns true when this auth login bad request response a status code equal to that given
 func (o *AuthLoginBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the auth login bad request response
+func (o *AuthLoginBadRequest) Code() int {
+	return 400
 }
 
 func (o *AuthLoginBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *AuthLoginUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the auth login unauthorized response
+func (o *AuthLoginUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AuthLoginUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *AuthLoginForbidden) IsServerError() bool {
 // IsCode returns true when this auth login forbidden response a status code equal to that given
 func (o *AuthLoginForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the auth login forbidden response
+func (o *AuthLoginForbidden) Code() int {
+	return 403
 }
 
 func (o *AuthLoginForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *AuthLoginNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the auth login not found response
+func (o *AuthLoginNotFound) Code() int {
+	return 404
+}
+
 func (o *AuthLoginNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AuthLoginInternalServerError) IsServerError() bool {
 // IsCode returns true when this auth login internal server error response a status code equal to that given
 func (o *AuthLoginInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the auth login internal server error response
+func (o *AuthLoginInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AuthLoginInternalServerError) Error() string {

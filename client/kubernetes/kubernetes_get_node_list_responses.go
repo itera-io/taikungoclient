@@ -103,6 +103,11 @@ func (o *KubernetesGetNodeListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get node list o k response
+func (o *KubernetesGetNodeListOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetNodeListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesGetNodeListBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes get node list bad request response a status code equal to that given
 func (o *KubernetesGetNodeListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes get node list bad request response
+func (o *KubernetesGetNodeListBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesGetNodeListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesGetNodeListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes get node list unauthorized response
+func (o *KubernetesGetNodeListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesGetNodeListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesGetNodeListForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes get node list forbidden response a status code equal to that given
 func (o *KubernetesGetNodeListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes get node list forbidden response
+func (o *KubernetesGetNodeListForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesGetNodeListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesGetNodeListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get node list not found response
+func (o *KubernetesGetNodeListNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetNodeListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesGetNodeListInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get node list internal server error response a status code equal to that given
 func (o *KubernetesGetNodeListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get node list internal server error response
+func (o *KubernetesGetNodeListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetNodeListInternalServerError) Error() string {

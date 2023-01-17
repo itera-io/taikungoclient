@@ -103,6 +103,11 @@ func (o *ProjectAppAutoSyncOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project app auto sync o k response
+func (o *ProjectAppAutoSyncOK) Code() int {
+	return 200
+}
+
 func (o *ProjectAppAutoSyncOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectAppAutoSyncBadRequest) IsServerError() bool {
 // IsCode returns true when this project app auto sync bad request response a status code equal to that given
 func (o *ProjectAppAutoSyncBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project app auto sync bad request response
+func (o *ProjectAppAutoSyncBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectAppAutoSyncBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectAppAutoSyncUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project app auto sync unauthorized response
+func (o *ProjectAppAutoSyncUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectAppAutoSyncUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectAppAutoSyncForbidden) IsServerError() bool {
 // IsCode returns true when this project app auto sync forbidden response a status code equal to that given
 func (o *ProjectAppAutoSyncForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project app auto sync forbidden response
+func (o *ProjectAppAutoSyncForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectAppAutoSyncForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectAppAutoSyncNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project app auto sync not found response
+func (o *ProjectAppAutoSyncNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectAppAutoSyncNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectAppAutoSyncInternalServerError) IsServerError() bool {
 // IsCode returns true when this project app auto sync internal server error response a status code equal to that given
 func (o *ProjectAppAutoSyncInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project app auto sync internal server error response
+func (o *ProjectAppAutoSyncInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectAppAutoSyncInternalServerError) Error() string {

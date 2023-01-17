@@ -102,6 +102,11 @@ func (o *NotificationsExportCsvOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the notifications export csv o k response
+func (o *NotificationsExportCsvOK) Code() int {
+	return 200
+}
+
 func (o *NotificationsExportCsvOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvOK ", 200)
 }
@@ -152,6 +157,11 @@ func (o *NotificationsExportCsvBadRequest) IsServerError() bool {
 // IsCode returns true when this notifications export csv bad request response a status code equal to that given
 func (o *NotificationsExportCsvBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the notifications export csv bad request response
+func (o *NotificationsExportCsvBadRequest) Code() int {
+	return 400
 }
 
 func (o *NotificationsExportCsvBadRequest) Error() string {
@@ -217,6 +227,11 @@ func (o *NotificationsExportCsvUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the notifications export csv unauthorized response
+func (o *NotificationsExportCsvUnauthorized) Code() int {
+	return 401
+}
+
 func (o *NotificationsExportCsvUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvUnauthorized  %+v", 401, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *NotificationsExportCsvForbidden) IsServerError() bool {
 // IsCode returns true when this notifications export csv forbidden response a status code equal to that given
 func (o *NotificationsExportCsvForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the notifications export csv forbidden response
+func (o *NotificationsExportCsvForbidden) Code() int {
+	return 403
 }
 
 func (o *NotificationsExportCsvForbidden) Error() string {
@@ -343,6 +363,11 @@ func (o *NotificationsExportCsvNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the notifications export csv not found response
+func (o *NotificationsExportCsvNotFound) Code() int {
+	return 404
+}
+
 func (o *NotificationsExportCsvNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvNotFound  %+v", 404, o.Payload)
 }
@@ -403,6 +428,11 @@ func (o *NotificationsExportCsvInternalServerError) IsServerError() bool {
 // IsCode returns true when this notifications export csv internal server error response a status code equal to that given
 func (o *NotificationsExportCsvInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the notifications export csv internal server error response
+func (o *NotificationsExportCsvInternalServerError) Code() int {
+	return 500
 }
 
 func (o *NotificationsExportCsvInternalServerError) Error() string {

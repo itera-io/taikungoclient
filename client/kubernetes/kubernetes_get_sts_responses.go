@@ -103,6 +103,11 @@ func (o *KubernetesGetStsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get sts o k response
+func (o *KubernetesGetStsOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetStsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/sts][%d] kubernetesGetStsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *KubernetesGetStsBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes get sts bad request response a status code equal to that given
 func (o *KubernetesGetStsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes get sts bad request response
+func (o *KubernetesGetStsBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesGetStsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *KubernetesGetStsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes get sts unauthorized response
+func (o *KubernetesGetStsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesGetStsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/sts][%d] kubernetesGetStsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *KubernetesGetStsForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes get sts forbidden response a status code equal to that given
 func (o *KubernetesGetStsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes get sts forbidden response
+func (o *KubernetesGetStsForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesGetStsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *KubernetesGetStsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get sts not found response
+func (o *KubernetesGetStsNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetStsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/sts][%d] kubernetesGetStsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubernetesGetStsInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get sts internal server error response a status code equal to that given
 func (o *KubernetesGetStsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get sts internal server error response
+func (o *KubernetesGetStsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetStsInternalServerError) Error() string {

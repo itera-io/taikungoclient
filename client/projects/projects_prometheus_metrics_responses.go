@@ -103,6 +103,11 @@ func (o *ProjectsPrometheusMetricsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects prometheus metrics o k response
+func (o *ProjectsPrometheusMetricsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsPrometheusMetricsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectsPrometheusMetricsBadRequest) IsServerError() bool {
 // IsCode returns true when this projects prometheus metrics bad request response a status code equal to that given
 func (o *ProjectsPrometheusMetricsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the projects prometheus metrics bad request response
+func (o *ProjectsPrometheusMetricsBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectsPrometheusMetricsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectsPrometheusMetricsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the projects prometheus metrics unauthorized response
+func (o *ProjectsPrometheusMetricsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectsPrometheusMetricsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectsPrometheusMetricsForbidden) IsServerError() bool {
 // IsCode returns true when this projects prometheus metrics forbidden response a status code equal to that given
 func (o *ProjectsPrometheusMetricsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the projects prometheus metrics forbidden response
+func (o *ProjectsPrometheusMetricsForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectsPrometheusMetricsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectsPrometheusMetricsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects prometheus metrics not found response
+func (o *ProjectsPrometheusMetricsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsPrometheusMetricsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsPrometheusMetricsInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects prometheus metrics internal server error response a status code equal to that given
 func (o *ProjectsPrometheusMetricsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects prometheus metrics internal server error response
+func (o *ProjectsPrometheusMetricsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsPrometheusMetricsInternalServerError) Error() string {

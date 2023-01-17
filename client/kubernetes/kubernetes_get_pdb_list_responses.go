@@ -103,6 +103,11 @@ func (o *KubernetesGetPdbListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get pdb list o k response
+func (o *KubernetesGetPdbListOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetPdbListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pdb][%d] kubernetesGetPdbListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *KubernetesGetPdbListBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes get pdb list bad request response a status code equal to that given
 func (o *KubernetesGetPdbListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes get pdb list bad request response
+func (o *KubernetesGetPdbListBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesGetPdbListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *KubernetesGetPdbListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes get pdb list unauthorized response
+func (o *KubernetesGetPdbListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesGetPdbListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pdb][%d] kubernetesGetPdbListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *KubernetesGetPdbListForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes get pdb list forbidden response a status code equal to that given
 func (o *KubernetesGetPdbListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes get pdb list forbidden response
+func (o *KubernetesGetPdbListForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesGetPdbListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *KubernetesGetPdbListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get pdb list not found response
+func (o *KubernetesGetPdbListNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetPdbListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pdb][%d] kubernetesGetPdbListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubernetesGetPdbListInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get pdb list internal server error response a status code equal to that given
 func (o *KubernetesGetPdbListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get pdb list internal server error response
+func (o *KubernetesGetPdbListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetPdbListInternalServerError) Error() string {

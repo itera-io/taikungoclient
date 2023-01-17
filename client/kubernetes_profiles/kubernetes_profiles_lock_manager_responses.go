@@ -103,6 +103,11 @@ func (o *KubernetesProfilesLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes profiles lock manager o k response
+func (o *KubernetesProfilesLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesProfilesLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesProfilesLockManagerBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes profiles lock manager bad request response a status code equal to that given
 func (o *KubernetesProfilesLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes profiles lock manager bad request response
+func (o *KubernetesProfilesLockManagerBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesProfilesLockManagerBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesProfilesLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes profiles lock manager unauthorized response
+func (o *KubernetesProfilesLockManagerUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesProfilesLockManagerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesProfilesLockManagerForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes profiles lock manager forbidden response a status code equal to that given
 func (o *KubernetesProfilesLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes profiles lock manager forbidden response
+func (o *KubernetesProfilesLockManagerForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesProfilesLockManagerForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesProfilesLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes profiles lock manager not found response
+func (o *KubernetesProfilesLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesProfilesLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesProfilesLockManagerInternalServerError) IsServerError() bool 
 // IsCode returns true when this kubernetes profiles lock manager internal server error response a status code equal to that given
 func (o *KubernetesProfilesLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes profiles lock manager internal server error response
+func (o *KubernetesProfilesLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesProfilesLockManagerInternalServerError) Error() string {

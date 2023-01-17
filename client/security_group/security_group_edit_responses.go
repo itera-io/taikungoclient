@@ -103,6 +103,11 @@ func (o *SecurityGroupEditOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the security group edit o k response
+func (o *SecurityGroupEditOK) Code() int {
+	return 200
+}
+
 func (o *SecurityGroupEditOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *SecurityGroupEditBadRequest) IsServerError() bool {
 // IsCode returns true when this security group edit bad request response a status code equal to that given
 func (o *SecurityGroupEditBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the security group edit bad request response
+func (o *SecurityGroupEditBadRequest) Code() int {
+	return 400
 }
 
 func (o *SecurityGroupEditBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *SecurityGroupEditUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the security group edit unauthorized response
+func (o *SecurityGroupEditUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SecurityGroupEditUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *SecurityGroupEditForbidden) IsServerError() bool {
 // IsCode returns true when this security group edit forbidden response a status code equal to that given
 func (o *SecurityGroupEditForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the security group edit forbidden response
+func (o *SecurityGroupEditForbidden) Code() int {
+	return 403
 }
 
 func (o *SecurityGroupEditForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *SecurityGroupEditNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the security group edit not found response
+func (o *SecurityGroupEditNotFound) Code() int {
+	return 404
+}
+
 func (o *SecurityGroupEditNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *SecurityGroupEditInternalServerError) IsServerError() bool {
 // IsCode returns true when this security group edit internal server error response a status code equal to that given
 func (o *SecurityGroupEditInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the security group edit internal server error response
+func (o *SecurityGroupEditInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SecurityGroupEditInternalServerError) Error() string {

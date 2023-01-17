@@ -103,6 +103,11 @@ func (o *CronJobRemindAlertsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job remind alerts o k response
+func (o *CronJobRemindAlertsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobRemindAlertsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/remind-alerts][%d] cronJobRemindAlertsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobRemindAlertsBadRequest) IsServerError() bool {
 // IsCode returns true when this cron job remind alerts bad request response a status code equal to that given
 func (o *CronJobRemindAlertsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job remind alerts bad request response
+func (o *CronJobRemindAlertsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobRemindAlertsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobRemindAlertsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cron job remind alerts unauthorized response
+func (o *CronJobRemindAlertsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobRemindAlertsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/remind-alerts][%d] cronJobRemindAlertsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobRemindAlertsForbidden) IsServerError() bool {
 // IsCode returns true when this cron job remind alerts forbidden response a status code equal to that given
 func (o *CronJobRemindAlertsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job remind alerts forbidden response
+func (o *CronJobRemindAlertsForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobRemindAlertsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobRemindAlertsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job remind alerts not found response
+func (o *CronJobRemindAlertsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobRemindAlertsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/remind-alerts][%d] cronJobRemindAlertsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobRemindAlertsInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job remind alerts internal server error response a status code equal to that given
 func (o *CronJobRemindAlertsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job remind alerts internal server error response
+func (o *CronJobRemindAlertsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobRemindAlertsInternalServerError) Error() string {

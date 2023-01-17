@@ -103,6 +103,11 @@ func (o *SearchPrometheusRulesListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search prometheus rules list o k response
+func (o *SearchPrometheusRulesListOK) Code() int {
+	return 200
+}
+
 func (o *SearchPrometheusRulesListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SearchPrometheusRulesListBadRequest) IsServerError() bool {
 // IsCode returns true when this search prometheus rules list bad request response a status code equal to that given
 func (o *SearchPrometheusRulesListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the search prometheus rules list bad request response
+func (o *SearchPrometheusRulesListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SearchPrometheusRulesListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SearchPrometheusRulesListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the search prometheus rules list unauthorized response
+func (o *SearchPrometheusRulesListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SearchPrometheusRulesListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SearchPrometheusRulesListForbidden) IsServerError() bool {
 // IsCode returns true when this search prometheus rules list forbidden response a status code equal to that given
 func (o *SearchPrometheusRulesListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the search prometheus rules list forbidden response
+func (o *SearchPrometheusRulesListForbidden) Code() int {
+	return 403
 }
 
 func (o *SearchPrometheusRulesListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SearchPrometheusRulesListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search prometheus rules list not found response
+func (o *SearchPrometheusRulesListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchPrometheusRulesListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchPrometheusRulesListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search prometheus rules list internal server error response a status code equal to that given
 func (o *SearchPrometheusRulesListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search prometheus rules list internal server error response
+func (o *SearchPrometheusRulesListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchPrometheusRulesListInternalServerError) Error() string {

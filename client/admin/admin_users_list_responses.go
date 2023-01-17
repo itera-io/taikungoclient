@@ -103,6 +103,11 @@ func (o *AdminUsersListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin users list o k response
+func (o *AdminUsersListOK) Code() int {
+	return 200
+}
+
 func (o *AdminUsersListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AdminUsersListBadRequest) IsServerError() bool {
 // IsCode returns true when this admin users list bad request response a status code equal to that given
 func (o *AdminUsersListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the admin users list bad request response
+func (o *AdminUsersListBadRequest) Code() int {
+	return 400
 }
 
 func (o *AdminUsersListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *AdminUsersListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the admin users list unauthorized response
+func (o *AdminUsersListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AdminUsersListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *AdminUsersListForbidden) IsServerError() bool {
 // IsCode returns true when this admin users list forbidden response a status code equal to that given
 func (o *AdminUsersListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the admin users list forbidden response
+func (o *AdminUsersListForbidden) Code() int {
+	return 403
 }
 
 func (o *AdminUsersListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *AdminUsersListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin users list not found response
+func (o *AdminUsersListNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminUsersListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AdminUsersListInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin users list internal server error response a status code equal to that given
 func (o *AdminUsersListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin users list internal server error response
+func (o *AdminUsersListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminUsersListInternalServerError) Error() string {

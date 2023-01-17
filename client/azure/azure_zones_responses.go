@@ -103,6 +103,11 @@ func (o *AzureZonesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the azure zones o k response
+func (o *AzureZonesOK) Code() int {
+	return 200
+}
+
 func (o *AzureZonesOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AzureZonesBadRequest) IsServerError() bool {
 // IsCode returns true when this azure zones bad request response a status code equal to that given
 func (o *AzureZonesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the azure zones bad request response
+func (o *AzureZonesBadRequest) Code() int {
+	return 400
 }
 
 func (o *AzureZonesBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *AzureZonesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the azure zones unauthorized response
+func (o *AzureZonesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AzureZonesUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *AzureZonesForbidden) IsServerError() bool {
 // IsCode returns true when this azure zones forbidden response a status code equal to that given
 func (o *AzureZonesForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the azure zones forbidden response
+func (o *AzureZonesForbidden) Code() int {
+	return 403
 }
 
 func (o *AzureZonesForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *AzureZonesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the azure zones not found response
+func (o *AzureZonesNotFound) Code() int {
+	return 404
+}
+
 func (o *AzureZonesNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AzureZonesInternalServerError) IsServerError() bool {
 // IsCode returns true when this azure zones internal server error response a status code equal to that given
 func (o *AzureZonesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the azure zones internal server error response
+func (o *AzureZonesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AzureZonesInternalServerError) Error() string {

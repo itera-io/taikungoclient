@@ -103,6 +103,11 @@ func (o *ProjectsFullSpotWorkersOperationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects full spot workers operations o k response
+func (o *ProjectsFullSpotWorkersOperationsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsFullSpotWorkersOperationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectsFullSpotWorkersOperationsBadRequest) IsServerError() bool {
 // IsCode returns true when this projects full spot workers operations bad request response a status code equal to that given
 func (o *ProjectsFullSpotWorkersOperationsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the projects full spot workers operations bad request response
+func (o *ProjectsFullSpotWorkersOperationsBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectsFullSpotWorkersOperationsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectsFullSpotWorkersOperationsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the projects full spot workers operations unauthorized response
+func (o *ProjectsFullSpotWorkersOperationsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectsFullSpotWorkersOperationsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectsFullSpotWorkersOperationsForbidden) IsServerError() bool {
 // IsCode returns true when this projects full spot workers operations forbidden response a status code equal to that given
 func (o *ProjectsFullSpotWorkersOperationsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the projects full spot workers operations forbidden response
+func (o *ProjectsFullSpotWorkersOperationsForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectsFullSpotWorkersOperationsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectsFullSpotWorkersOperationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects full spot workers operations not found response
+func (o *ProjectsFullSpotWorkersOperationsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsFullSpotWorkersOperationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsFullSpotWorkersOperationsInternalServerError) IsServerError() b
 // IsCode returns true when this projects full spot workers operations internal server error response a status code equal to that given
 func (o *ProjectsFullSpotWorkersOperationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects full spot workers operations internal server error response
+func (o *ProjectsFullSpotWorkersOperationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsFullSpotWorkersOperationsInternalServerError) Error() string {

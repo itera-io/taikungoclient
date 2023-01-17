@@ -103,6 +103,11 @@ func (o *PaymentWebhookOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the payment webhook o k response
+func (o *PaymentWebhookOK) Code() int {
+	return 200
+}
+
 func (o *PaymentWebhookOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *PaymentWebhookBadRequest) IsServerError() bool {
 // IsCode returns true when this payment webhook bad request response a status code equal to that given
 func (o *PaymentWebhookBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the payment webhook bad request response
+func (o *PaymentWebhookBadRequest) Code() int {
+	return 400
 }
 
 func (o *PaymentWebhookBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *PaymentWebhookUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the payment webhook unauthorized response
+func (o *PaymentWebhookUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PaymentWebhookUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *PaymentWebhookForbidden) IsServerError() bool {
 // IsCode returns true when this payment webhook forbidden response a status code equal to that given
 func (o *PaymentWebhookForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the payment webhook forbidden response
+func (o *PaymentWebhookForbidden) Code() int {
+	return 403
 }
 
 func (o *PaymentWebhookForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *PaymentWebhookNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the payment webhook not found response
+func (o *PaymentWebhookNotFound) Code() int {
+	return 404
+}
+
 func (o *PaymentWebhookNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PaymentWebhookInternalServerError) IsServerError() bool {
 // IsCode returns true when this payment webhook internal server error response a status code equal to that given
 func (o *PaymentWebhookInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the payment webhook internal server error response
+func (o *PaymentWebhookInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PaymentWebhookInternalServerError) Error() string {

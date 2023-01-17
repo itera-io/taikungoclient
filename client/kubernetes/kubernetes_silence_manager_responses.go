@@ -103,6 +103,11 @@ func (o *KubernetesSilenceManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes silence manager o k response
+func (o *KubernetesSilenceManagerOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesSilenceManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesSilenceManagerBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes silence manager bad request response a status code equal to that given
 func (o *KubernetesSilenceManagerBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes silence manager bad request response
+func (o *KubernetesSilenceManagerBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesSilenceManagerBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesSilenceManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes silence manager unauthorized response
+func (o *KubernetesSilenceManagerUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesSilenceManagerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesSilenceManagerForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes silence manager forbidden response a status code equal to that given
 func (o *KubernetesSilenceManagerForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes silence manager forbidden response
+func (o *KubernetesSilenceManagerForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesSilenceManagerForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesSilenceManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes silence manager not found response
+func (o *KubernetesSilenceManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesSilenceManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesSilenceManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes silence manager internal server error response a status code equal to that given
 func (o *KubernetesSilenceManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes silence manager internal server error response
+func (o *KubernetesSilenceManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesSilenceManagerInternalServerError) Error() string {

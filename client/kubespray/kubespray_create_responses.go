@@ -103,6 +103,11 @@ func (o *KubesprayCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubespray create o k response
+func (o *KubesprayCreateOK) Code() int {
+	return 200
+}
+
 func (o *KubesprayCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *KubesprayCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this kubespray create bad request response a status code equal to that given
 func (o *KubesprayCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubespray create bad request response
+func (o *KubesprayCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubesprayCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *KubesprayCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubespray create unauthorized response
+func (o *KubesprayCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubesprayCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *KubesprayCreateForbidden) IsServerError() bool {
 // IsCode returns true when this kubespray create forbidden response a status code equal to that given
 func (o *KubesprayCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubespray create forbidden response
+func (o *KubesprayCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *KubesprayCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *KubesprayCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubespray create not found response
+func (o *KubesprayCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *KubesprayCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubesprayCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubespray create internal server error response a status code equal to that given
 func (o *KubesprayCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubespray create internal server error response
+func (o *KubesprayCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubesprayCreateInternalServerError) Error() string {

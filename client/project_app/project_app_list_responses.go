@@ -103,6 +103,11 @@ func (o *ProjectAppListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project app list o k response
+func (o *ProjectAppListOK) Code() int {
+	return 200
+}
+
 func (o *ProjectAppListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/list][%d] projectAppListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ProjectAppListBadRequest) IsServerError() bool {
 // IsCode returns true when this project app list bad request response a status code equal to that given
 func (o *ProjectAppListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project app list bad request response
+func (o *ProjectAppListBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectAppListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ProjectAppListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project app list unauthorized response
+func (o *ProjectAppListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectAppListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/list][%d] projectAppListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ProjectAppListForbidden) IsServerError() bool {
 // IsCode returns true when this project app list forbidden response a status code equal to that given
 func (o *ProjectAppListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project app list forbidden response
+func (o *ProjectAppListForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectAppListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ProjectAppListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project app list not found response
+func (o *ProjectAppListNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectAppListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/list][%d] projectAppListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ProjectAppListInternalServerError) IsServerError() bool {
 // IsCode returns true when this project app list internal server error response a status code equal to that given
 func (o *ProjectAppListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project app list internal server error response
+func (o *ProjectAppListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectAppListInternalServerError) Error() string {

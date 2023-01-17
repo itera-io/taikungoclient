@@ -103,6 +103,11 @@ func (o *UserGroupsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the user groups list o k response
+func (o *UserGroupsListOK) Code() int {
+	return 200
+}
+
 func (o *UserGroupsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list][%d] userGroupsListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *UserGroupsListBadRequest) IsServerError() bool {
 // IsCode returns true when this user groups list bad request response a status code equal to that given
 func (o *UserGroupsListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the user groups list bad request response
+func (o *UserGroupsListBadRequest) Code() int {
+	return 400
 }
 
 func (o *UserGroupsListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *UserGroupsListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the user groups list unauthorized response
+func (o *UserGroupsListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UserGroupsListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list][%d] userGroupsListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *UserGroupsListForbidden) IsServerError() bool {
 // IsCode returns true when this user groups list forbidden response a status code equal to that given
 func (o *UserGroupsListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the user groups list forbidden response
+func (o *UserGroupsListForbidden) Code() int {
+	return 403
 }
 
 func (o *UserGroupsListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *UserGroupsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user groups list not found response
+func (o *UserGroupsListNotFound) Code() int {
+	return 404
+}
+
 func (o *UserGroupsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list][%d] userGroupsListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *UserGroupsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this user groups list internal server error response a status code equal to that given
 func (o *UserGroupsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the user groups list internal server error response
+func (o *UserGroupsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UserGroupsListInternalServerError) Error() string {

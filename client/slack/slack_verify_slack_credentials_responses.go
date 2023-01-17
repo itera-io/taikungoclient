@@ -103,6 +103,11 @@ func (o *SlackVerifySlackCredentialsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the slack verify slack credentials o k response
+func (o *SlackVerifySlackCredentialsOK) Code() int {
+	return 200
+}
+
 func (o *SlackVerifySlackCredentialsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *SlackVerifySlackCredentialsBadRequest) IsServerError() bool {
 // IsCode returns true when this slack verify slack credentials bad request response a status code equal to that given
 func (o *SlackVerifySlackCredentialsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the slack verify slack credentials bad request response
+func (o *SlackVerifySlackCredentialsBadRequest) Code() int {
+	return 400
 }
 
 func (o *SlackVerifySlackCredentialsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *SlackVerifySlackCredentialsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the slack verify slack credentials unauthorized response
+func (o *SlackVerifySlackCredentialsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SlackVerifySlackCredentialsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *SlackVerifySlackCredentialsForbidden) IsServerError() bool {
 // IsCode returns true when this slack verify slack credentials forbidden response a status code equal to that given
 func (o *SlackVerifySlackCredentialsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the slack verify slack credentials forbidden response
+func (o *SlackVerifySlackCredentialsForbidden) Code() int {
+	return 403
 }
 
 func (o *SlackVerifySlackCredentialsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *SlackVerifySlackCredentialsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the slack verify slack credentials not found response
+func (o *SlackVerifySlackCredentialsNotFound) Code() int {
+	return 404
+}
+
 func (o *SlackVerifySlackCredentialsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *SlackVerifySlackCredentialsInternalServerError) IsServerError() bool {
 // IsCode returns true when this slack verify slack credentials internal server error response a status code equal to that given
 func (o *SlackVerifySlackCredentialsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the slack verify slack credentials internal server error response
+func (o *SlackVerifySlackCredentialsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SlackVerifySlackCredentialsInternalServerError) Error() string {

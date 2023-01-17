@@ -103,6 +103,11 @@ func (o *CronJobDeleteRedundantProjectActionsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job delete redundant project actions o k response
+func (o *CronJobDeleteRedundantProjectActionsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobDeleteRedundantProjectActionsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobDeleteRedundantProjectActionsBadRequest) IsServerError() bool {
 // IsCode returns true when this cron job delete redundant project actions bad request response a status code equal to that given
 func (o *CronJobDeleteRedundantProjectActionsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job delete redundant project actions bad request response
+func (o *CronJobDeleteRedundantProjectActionsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobDeleteRedundantProjectActionsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobDeleteRedundantProjectActionsUnauthorized) IsCode(code int) bool
 	return code == 401
 }
 
+// Code gets the status code for the cron job delete redundant project actions unauthorized response
+func (o *CronJobDeleteRedundantProjectActionsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobDeleteRedundantProjectActionsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobDeleteRedundantProjectActionsForbidden) IsServerError() bool {
 // IsCode returns true when this cron job delete redundant project actions forbidden response a status code equal to that given
 func (o *CronJobDeleteRedundantProjectActionsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job delete redundant project actions forbidden response
+func (o *CronJobDeleteRedundantProjectActionsForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobDeleteRedundantProjectActionsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobDeleteRedundantProjectActionsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job delete redundant project actions not found response
+func (o *CronJobDeleteRedundantProjectActionsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobDeleteRedundantProjectActionsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobDeleteRedundantProjectActionsInternalServerError) IsServerError(
 // IsCode returns true when this cron job delete redundant project actions internal server error response a status code equal to that given
 func (o *CronJobDeleteRedundantProjectActionsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job delete redundant project actions internal server error response
+func (o *CronJobDeleteRedundantProjectActionsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobDeleteRedundantProjectActionsInternalServerError) Error() string {

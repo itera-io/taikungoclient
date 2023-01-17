@@ -103,6 +103,11 @@ func (o *UsersToggleDemoModeOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users toggle demo mode o k response
+func (o *UsersToggleDemoModeOK) Code() int {
+	return 200
+}
+
 func (o *UsersToggleDemoModeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/toggle-demo-mode][%d] usersToggleDemoModeOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *UsersToggleDemoModeBadRequest) IsServerError() bool {
 // IsCode returns true when this users toggle demo mode bad request response a status code equal to that given
 func (o *UsersToggleDemoModeBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the users toggle demo mode bad request response
+func (o *UsersToggleDemoModeBadRequest) Code() int {
+	return 400
 }
 
 func (o *UsersToggleDemoModeBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *UsersToggleDemoModeUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the users toggle demo mode unauthorized response
+func (o *UsersToggleDemoModeUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UsersToggleDemoModeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/toggle-demo-mode][%d] usersToggleDemoModeUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *UsersToggleDemoModeForbidden) IsServerError() bool {
 // IsCode returns true when this users toggle demo mode forbidden response a status code equal to that given
 func (o *UsersToggleDemoModeForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the users toggle demo mode forbidden response
+func (o *UsersToggleDemoModeForbidden) Code() int {
+	return 403
 }
 
 func (o *UsersToggleDemoModeForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *UsersToggleDemoModeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users toggle demo mode not found response
+func (o *UsersToggleDemoModeNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersToggleDemoModeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/toggle-demo-mode][%d] usersToggleDemoModeNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UsersToggleDemoModeInternalServerError) IsServerError() bool {
 // IsCode returns true when this users toggle demo mode internal server error response a status code equal to that given
 func (o *UsersToggleDemoModeInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users toggle demo mode internal server error response
+func (o *UsersToggleDemoModeInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersToggleDemoModeInternalServerError) Error() string {

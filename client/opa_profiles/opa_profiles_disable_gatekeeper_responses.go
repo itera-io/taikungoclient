@@ -103,6 +103,11 @@ func (o *OpaProfilesDisableGatekeeperOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the opa profiles disable gatekeeper o k response
+func (o *OpaProfilesDisableGatekeeperOK) Code() int {
+	return 200
+}
+
 func (o *OpaProfilesDisableGatekeeperOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *OpaProfilesDisableGatekeeperBadRequest) IsServerError() bool {
 // IsCode returns true when this opa profiles disable gatekeeper bad request response a status code equal to that given
 func (o *OpaProfilesDisableGatekeeperBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the opa profiles disable gatekeeper bad request response
+func (o *OpaProfilesDisableGatekeeperBadRequest) Code() int {
+	return 400
 }
 
 func (o *OpaProfilesDisableGatekeeperBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *OpaProfilesDisableGatekeeperUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the opa profiles disable gatekeeper unauthorized response
+func (o *OpaProfilesDisableGatekeeperUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OpaProfilesDisableGatekeeperUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *OpaProfilesDisableGatekeeperForbidden) IsServerError() bool {
 // IsCode returns true when this opa profiles disable gatekeeper forbidden response a status code equal to that given
 func (o *OpaProfilesDisableGatekeeperForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the opa profiles disable gatekeeper forbidden response
+func (o *OpaProfilesDisableGatekeeperForbidden) Code() int {
+	return 403
 }
 
 func (o *OpaProfilesDisableGatekeeperForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *OpaProfilesDisableGatekeeperNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the opa profiles disable gatekeeper not found response
+func (o *OpaProfilesDisableGatekeeperNotFound) Code() int {
+	return 404
+}
+
 func (o *OpaProfilesDisableGatekeeperNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpaProfilesDisableGatekeeperInternalServerError) IsServerError() bool {
 // IsCode returns true when this opa profiles disable gatekeeper internal server error response a status code equal to that given
 func (o *OpaProfilesDisableGatekeeperInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the opa profiles disable gatekeeper internal server error response
+func (o *OpaProfilesDisableGatekeeperInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpaProfilesDisableGatekeeperInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *BackupClearProjectOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the backup clear project o k response
+func (o *BackupClearProjectOK) Code() int {
+	return 200
+}
+
 func (o *BackupClearProjectOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *BackupClearProjectBadRequest) IsServerError() bool {
 // IsCode returns true when this backup clear project bad request response a status code equal to that given
 func (o *BackupClearProjectBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the backup clear project bad request response
+func (o *BackupClearProjectBadRequest) Code() int {
+	return 400
 }
 
 func (o *BackupClearProjectBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *BackupClearProjectUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the backup clear project unauthorized response
+func (o *BackupClearProjectUnauthorized) Code() int {
+	return 401
+}
+
 func (o *BackupClearProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *BackupClearProjectForbidden) IsServerError() bool {
 // IsCode returns true when this backup clear project forbidden response a status code equal to that given
 func (o *BackupClearProjectForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the backup clear project forbidden response
+func (o *BackupClearProjectForbidden) Code() int {
+	return 403
 }
 
 func (o *BackupClearProjectForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *BackupClearProjectNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the backup clear project not found response
+func (o *BackupClearProjectNotFound) Code() int {
+	return 404
+}
+
 func (o *BackupClearProjectNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *BackupClearProjectInternalServerError) IsServerError() bool {
 // IsCode returns true when this backup clear project internal server error response a status code equal to that given
 func (o *BackupClearProjectInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the backup clear project internal server error response
+func (o *BackupClearProjectInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BackupClearProjectInternalServerError) Error() string {

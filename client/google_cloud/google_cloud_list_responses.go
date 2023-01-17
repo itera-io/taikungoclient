@@ -103,6 +103,11 @@ func (o *GoogleCloudListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the google cloud list o k response
+func (o *GoogleCloudListOK) Code() int {
+	return 200
+}
+
 func (o *GoogleCloudListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *GoogleCloudListBadRequest) IsServerError() bool {
 // IsCode returns true when this google cloud list bad request response a status code equal to that given
 func (o *GoogleCloudListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the google cloud list bad request response
+func (o *GoogleCloudListBadRequest) Code() int {
+	return 400
 }
 
 func (o *GoogleCloudListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *GoogleCloudListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the google cloud list unauthorized response
+func (o *GoogleCloudListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GoogleCloudListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *GoogleCloudListForbidden) IsServerError() bool {
 // IsCode returns true when this google cloud list forbidden response a status code equal to that given
 func (o *GoogleCloudListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the google cloud list forbidden response
+func (o *GoogleCloudListForbidden) Code() int {
+	return 403
 }
 
 func (o *GoogleCloudListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *GoogleCloudListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the google cloud list not found response
+func (o *GoogleCloudListNotFound) Code() int {
+	return 404
+}
+
 func (o *GoogleCloudListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *GoogleCloudListInternalServerError) IsServerError() bool {
 // IsCode returns true when this google cloud list internal server error response a status code equal to that given
 func (o *GoogleCloudListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the google cloud list internal server error response
+func (o *GoogleCloudListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GoogleCloudListInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *InvoicesEditOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the invoices edit o k response
+func (o *InvoicesEditOK) Code() int {
+	return 200
+}
+
 func (o *InvoicesEditOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *InvoicesEditBadRequest) IsServerError() bool {
 // IsCode returns true when this invoices edit bad request response a status code equal to that given
 func (o *InvoicesEditBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the invoices edit bad request response
+func (o *InvoicesEditBadRequest) Code() int {
+	return 400
 }
 
 func (o *InvoicesEditBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *InvoicesEditUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the invoices edit unauthorized response
+func (o *InvoicesEditUnauthorized) Code() int {
+	return 401
+}
+
 func (o *InvoicesEditUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *InvoicesEditForbidden) IsServerError() bool {
 // IsCode returns true when this invoices edit forbidden response a status code equal to that given
 func (o *InvoicesEditForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the invoices edit forbidden response
+func (o *InvoicesEditForbidden) Code() int {
+	return 403
 }
 
 func (o *InvoicesEditForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *InvoicesEditNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the invoices edit not found response
+func (o *InvoicesEditNotFound) Code() int {
+	return 404
+}
+
 func (o *InvoicesEditNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *InvoicesEditInternalServerError) IsServerError() bool {
 // IsCode returns true when this invoices edit internal server error response a status code equal to that given
 func (o *InvoicesEditInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the invoices edit internal server error response
+func (o *InvoicesEditInternalServerError) Code() int {
+	return 500
 }
 
 func (o *InvoicesEditInternalServerError) Error() string {

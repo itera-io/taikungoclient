@@ -103,6 +103,11 @@ func (o *AdminUpdateUserPasswordOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin update user password o k response
+func (o *AdminUpdateUserPasswordOK) Code() int {
+	return 200
+}
+
 func (o *AdminUpdateUserPasswordOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AdminUpdateUserPasswordBadRequest) IsServerError() bool {
 // IsCode returns true when this admin update user password bad request response a status code equal to that given
 func (o *AdminUpdateUserPasswordBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the admin update user password bad request response
+func (o *AdminUpdateUserPasswordBadRequest) Code() int {
+	return 400
 }
 
 func (o *AdminUpdateUserPasswordBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AdminUpdateUserPasswordUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the admin update user password unauthorized response
+func (o *AdminUpdateUserPasswordUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AdminUpdateUserPasswordUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AdminUpdateUserPasswordForbidden) IsServerError() bool {
 // IsCode returns true when this admin update user password forbidden response a status code equal to that given
 func (o *AdminUpdateUserPasswordForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the admin update user password forbidden response
+func (o *AdminUpdateUserPasswordForbidden) Code() int {
+	return 403
 }
 
 func (o *AdminUpdateUserPasswordForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AdminUpdateUserPasswordNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin update user password not found response
+func (o *AdminUpdateUserPasswordNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminUpdateUserPasswordNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AdminUpdateUserPasswordInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin update user password internal server error response a status code equal to that given
 func (o *AdminUpdateUserPasswordInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin update user password internal server error response
+func (o *AdminUpdateUserPasswordInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminUpdateUserPasswordInternalServerError) Error() string {

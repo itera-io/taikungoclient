@@ -103,6 +103,11 @@ func (o *UsersListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users list o k response
+func (o *UsersListOK) Code() int {
+	return 200
+}
+
 func (o *UsersListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users][%d] usersListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *UsersListBadRequest) IsServerError() bool {
 // IsCode returns true when this users list bad request response a status code equal to that given
 func (o *UsersListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the users list bad request response
+func (o *UsersListBadRequest) Code() int {
+	return 400
 }
 
 func (o *UsersListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *UsersListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the users list unauthorized response
+func (o *UsersListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UsersListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users][%d] usersListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *UsersListForbidden) IsServerError() bool {
 // IsCode returns true when this users list forbidden response a status code equal to that given
 func (o *UsersListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the users list forbidden response
+func (o *UsersListForbidden) Code() int {
+	return 403
 }
 
 func (o *UsersListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *UsersListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users list not found response
+func (o *UsersListNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users][%d] usersListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *UsersListInternalServerError) IsServerError() bool {
 // IsCode returns true when this users list internal server error response a status code equal to that given
 func (o *UsersListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users list internal server error response
+func (o *UsersListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersListInternalServerError) Error() string {

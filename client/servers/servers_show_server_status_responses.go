@@ -103,6 +103,11 @@ func (o *ServersShowServerStatusOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the servers show server status o k response
+func (o *ServersShowServerStatusOK) Code() int {
+	return 200
+}
+
 func (o *ServersShowServerStatusOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/status/{serverId}][%d] serversShowServerStatusOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ServersShowServerStatusBadRequest) IsServerError() bool {
 // IsCode returns true when this servers show server status bad request response a status code equal to that given
 func (o *ServersShowServerStatusBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the servers show server status bad request response
+func (o *ServersShowServerStatusBadRequest) Code() int {
+	return 400
 }
 
 func (o *ServersShowServerStatusBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ServersShowServerStatusUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the servers show server status unauthorized response
+func (o *ServersShowServerStatusUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ServersShowServerStatusUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/status/{serverId}][%d] serversShowServerStatusUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ServersShowServerStatusForbidden) IsServerError() bool {
 // IsCode returns true when this servers show server status forbidden response a status code equal to that given
 func (o *ServersShowServerStatusForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the servers show server status forbidden response
+func (o *ServersShowServerStatusForbidden) Code() int {
+	return 403
 }
 
 func (o *ServersShowServerStatusForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ServersShowServerStatusNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the servers show server status not found response
+func (o *ServersShowServerStatusNotFound) Code() int {
+	return 404
+}
+
 func (o *ServersShowServerStatusNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/status/{serverId}][%d] serversShowServerStatusNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ServersShowServerStatusInternalServerError) IsServerError() bool {
 // IsCode returns true when this servers show server status internal server error response a status code equal to that given
 func (o *ServersShowServerStatusInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the servers show server status internal server error response
+func (o *ServersShowServerStatusInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ServersShowServerStatusInternalServerError) Error() string {

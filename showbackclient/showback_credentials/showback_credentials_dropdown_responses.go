@@ -103,6 +103,11 @@ func (o *ShowbackCredentialsDropdownOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the showback credentials dropdown o k response
+func (o *ShowbackCredentialsDropdownOK) Code() int {
+	return 200
+}
+
 func (o *ShowbackCredentialsDropdownOK) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ShowbackCredentialsDropdownBadRequest) IsServerError() bool {
 // IsCode returns true when this showback credentials dropdown bad request response a status code equal to that given
 func (o *ShowbackCredentialsDropdownBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the showback credentials dropdown bad request response
+func (o *ShowbackCredentialsDropdownBadRequest) Code() int {
+	return 400
 }
 
 func (o *ShowbackCredentialsDropdownBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ShowbackCredentialsDropdownUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the showback credentials dropdown unauthorized response
+func (o *ShowbackCredentialsDropdownUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ShowbackCredentialsDropdownUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ShowbackCredentialsDropdownForbidden) IsServerError() bool {
 // IsCode returns true when this showback credentials dropdown forbidden response a status code equal to that given
 func (o *ShowbackCredentialsDropdownForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the showback credentials dropdown forbidden response
+func (o *ShowbackCredentialsDropdownForbidden) Code() int {
+	return 403
 }
 
 func (o *ShowbackCredentialsDropdownForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ShowbackCredentialsDropdownNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the showback credentials dropdown not found response
+func (o *ShowbackCredentialsDropdownNotFound) Code() int {
+	return 404
+}
+
 func (o *ShowbackCredentialsDropdownNotFound) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ShowbackCredentialsDropdownInternalServerError) IsServerError() bool {
 // IsCode returns true when this showback credentials dropdown internal server error response a status code equal to that given
 func (o *ShowbackCredentialsDropdownInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the showback credentials dropdown internal server error response
+func (o *ShowbackCredentialsDropdownInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ShowbackCredentialsDropdownInternalServerError) Error() string {

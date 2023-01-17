@@ -103,6 +103,11 @@ func (o *StandAloneActionsUnshelveOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone actions unshelve o k response
+func (o *StandAloneActionsUnshelveOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneActionsUnshelveOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *StandAloneActionsUnshelveBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone actions unshelve bad request response a status code equal to that given
 func (o *StandAloneActionsUnshelveBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone actions unshelve bad request response
+func (o *StandAloneActionsUnshelveBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneActionsUnshelveBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *StandAloneActionsUnshelveUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone actions unshelve unauthorized response
+func (o *StandAloneActionsUnshelveUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneActionsUnshelveUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *StandAloneActionsUnshelveForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone actions unshelve forbidden response a status code equal to that given
 func (o *StandAloneActionsUnshelveForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone actions unshelve forbidden response
+func (o *StandAloneActionsUnshelveForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneActionsUnshelveForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *StandAloneActionsUnshelveNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone actions unshelve not found response
+func (o *StandAloneActionsUnshelveNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneActionsUnshelveNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneActionsUnshelveInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone actions unshelve internal server error response a status code equal to that given
 func (o *StandAloneActionsUnshelveInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone actions unshelve internal server error response
+func (o *StandAloneActionsUnshelveInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneActionsUnshelveInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *AzureOffersOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the azure offers o k response
+func (o *AzureOffersOK) Code() int {
+	return 200
+}
+
 func (o *AzureOffersOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AzureOffersBadRequest) IsServerError() bool {
 // IsCode returns true when this azure offers bad request response a status code equal to that given
 func (o *AzureOffersBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the azure offers bad request response
+func (o *AzureOffersBadRequest) Code() int {
+	return 400
 }
 
 func (o *AzureOffersBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *AzureOffersUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the azure offers unauthorized response
+func (o *AzureOffersUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AzureOffersUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *AzureOffersForbidden) IsServerError() bool {
 // IsCode returns true when this azure offers forbidden response a status code equal to that given
 func (o *AzureOffersForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the azure offers forbidden response
+func (o *AzureOffersForbidden) Code() int {
+	return 403
 }
 
 func (o *AzureOffersForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *AzureOffersNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the azure offers not found response
+func (o *AzureOffersNotFound) Code() int {
+	return 404
+}
+
 func (o *AzureOffersNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AzureOffersInternalServerError) IsServerError() bool {
 // IsCode returns true when this azure offers internal server error response a status code equal to that given
 func (o *AzureOffersInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the azure offers internal server error response
+func (o *AzureOffersInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AzureOffersInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *CheckerPrometheusOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker prometheus o k response
+func (o *CheckerPrometheusOK) Code() int {
+	return 200
+}
+
 func (o *CheckerPrometheusOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/prometheus][%d] checkerPrometheusOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CheckerPrometheusBadRequest) IsServerError() bool {
 // IsCode returns true when this checker prometheus bad request response a status code equal to that given
 func (o *CheckerPrometheusBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the checker prometheus bad request response
+func (o *CheckerPrometheusBadRequest) Code() int {
+	return 400
 }
 
 func (o *CheckerPrometheusBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CheckerPrometheusUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the checker prometheus unauthorized response
+func (o *CheckerPrometheusUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CheckerPrometheusUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/prometheus][%d] checkerPrometheusUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CheckerPrometheusForbidden) IsServerError() bool {
 // IsCode returns true when this checker prometheus forbidden response a status code equal to that given
 func (o *CheckerPrometheusForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the checker prometheus forbidden response
+func (o *CheckerPrometheusForbidden) Code() int {
+	return 403
 }
 
 func (o *CheckerPrometheusForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CheckerPrometheusNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker prometheus not found response
+func (o *CheckerPrometheusNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerPrometheusNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/prometheus][%d] checkerPrometheusNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerPrometheusInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker prometheus internal server error response a status code equal to that given
 func (o *CheckerPrometheusInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker prometheus internal server error response
+func (o *CheckerPrometheusInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerPrometheusInternalServerError) Error() string {

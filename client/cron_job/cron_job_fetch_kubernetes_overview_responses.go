@@ -103,6 +103,11 @@ func (o *CronJobFetchKubernetesOverviewOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job fetch kubernetes overview o k response
+func (o *CronJobFetchKubernetesOverviewOK) Code() int {
+	return 200
+}
+
 func (o *CronJobFetchKubernetesOverviewOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobFetchKubernetesOverviewBadRequest) IsServerError() bool {
 // IsCode returns true when this cron job fetch kubernetes overview bad request response a status code equal to that given
 func (o *CronJobFetchKubernetesOverviewBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job fetch kubernetes overview bad request response
+func (o *CronJobFetchKubernetesOverviewBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobFetchKubernetesOverviewBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobFetchKubernetesOverviewUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cron job fetch kubernetes overview unauthorized response
+func (o *CronJobFetchKubernetesOverviewUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobFetchKubernetesOverviewUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobFetchKubernetesOverviewForbidden) IsServerError() bool {
 // IsCode returns true when this cron job fetch kubernetes overview forbidden response a status code equal to that given
 func (o *CronJobFetchKubernetesOverviewForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job fetch kubernetes overview forbidden response
+func (o *CronJobFetchKubernetesOverviewForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobFetchKubernetesOverviewForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobFetchKubernetesOverviewNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job fetch kubernetes overview not found response
+func (o *CronJobFetchKubernetesOverviewNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobFetchKubernetesOverviewNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobFetchKubernetesOverviewInternalServerError) IsServerError() bool
 // IsCode returns true when this cron job fetch kubernetes overview internal server error response a status code equal to that given
 func (o *CronJobFetchKubernetesOverviewInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job fetch kubernetes overview internal server error response
+func (o *CronJobFetchKubernetesOverviewInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobFetchKubernetesOverviewInternalServerError) Error() string {

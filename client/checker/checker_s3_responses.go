@@ -103,6 +103,11 @@ func (o *CheckerS3OK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker s3 o k response
+func (o *CheckerS3OK) Code() int {
+	return 200
+}
+
 func (o *CheckerS3OK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/s3][%d] checkerS3OK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CheckerS3BadRequest) IsServerError() bool {
 // IsCode returns true when this checker s3 bad request response a status code equal to that given
 func (o *CheckerS3BadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the checker s3 bad request response
+func (o *CheckerS3BadRequest) Code() int {
+	return 400
 }
 
 func (o *CheckerS3BadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CheckerS3Unauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the checker s3 unauthorized response
+func (o *CheckerS3Unauthorized) Code() int {
+	return 401
+}
+
 func (o *CheckerS3Unauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/s3][%d] checkerS3Unauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CheckerS3Forbidden) IsServerError() bool {
 // IsCode returns true when this checker s3 forbidden response a status code equal to that given
 func (o *CheckerS3Forbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the checker s3 forbidden response
+func (o *CheckerS3Forbidden) Code() int {
+	return 403
 }
 
 func (o *CheckerS3Forbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CheckerS3NotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker s3 not found response
+func (o *CheckerS3NotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerS3NotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/s3][%d] checkerS3NotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerS3InternalServerError) IsServerError() bool {
 // IsCode returns true when this checker s3 internal server error response a status code equal to that given
 func (o *CheckerS3InternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker s3 internal server error response
+func (o *CheckerS3InternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerS3InternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *SecurityGroupListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the security group list o k response
+func (o *SecurityGroupListOK) Code() int {
+	return 200
+}
+
 func (o *SecurityGroupListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *SecurityGroupListBadRequest) IsServerError() bool {
 // IsCode returns true when this security group list bad request response a status code equal to that given
 func (o *SecurityGroupListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the security group list bad request response
+func (o *SecurityGroupListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SecurityGroupListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *SecurityGroupListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the security group list unauthorized response
+func (o *SecurityGroupListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SecurityGroupListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *SecurityGroupListForbidden) IsServerError() bool {
 // IsCode returns true when this security group list forbidden response a status code equal to that given
 func (o *SecurityGroupListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the security group list forbidden response
+func (o *SecurityGroupListForbidden) Code() int {
+	return 403
 }
 
 func (o *SecurityGroupListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *SecurityGroupListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the security group list not found response
+func (o *SecurityGroupListNotFound) Code() int {
+	return 404
+}
+
 func (o *SecurityGroupListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *SecurityGroupListInternalServerError) IsServerError() bool {
 // IsCode returns true when this security group list internal server error response a status code equal to that given
 func (o *SecurityGroupListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the security group list internal server error response
+func (o *SecurityGroupListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SecurityGroupListInternalServerError) Error() string {

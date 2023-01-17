@@ -103,6 +103,11 @@ func (o *AlertingProfilesAttachOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting profiles attach o k response
+func (o *AlertingProfilesAttachOK) Code() int {
+	return 200
+}
+
 func (o *AlertingProfilesAttachOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AlertingProfilesAttachBadRequest) IsServerError() bool {
 // IsCode returns true when this alerting profiles attach bad request response a status code equal to that given
 func (o *AlertingProfilesAttachBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the alerting profiles attach bad request response
+func (o *AlertingProfilesAttachBadRequest) Code() int {
+	return 400
 }
 
 func (o *AlertingProfilesAttachBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AlertingProfilesAttachUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the alerting profiles attach unauthorized response
+func (o *AlertingProfilesAttachUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AlertingProfilesAttachUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AlertingProfilesAttachForbidden) IsServerError() bool {
 // IsCode returns true when this alerting profiles attach forbidden response a status code equal to that given
 func (o *AlertingProfilesAttachForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the alerting profiles attach forbidden response
+func (o *AlertingProfilesAttachForbidden) Code() int {
+	return 403
 }
 
 func (o *AlertingProfilesAttachForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AlertingProfilesAttachNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting profiles attach not found response
+func (o *AlertingProfilesAttachNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingProfilesAttachNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AlertingProfilesAttachInternalServerError) IsServerError() bool {
 // IsCode returns true when this alerting profiles attach internal server error response a status code equal to that given
 func (o *AlertingProfilesAttachInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting profiles attach internal server error response
+func (o *AlertingProfilesAttachInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingProfilesAttachInternalServerError) Error() string {

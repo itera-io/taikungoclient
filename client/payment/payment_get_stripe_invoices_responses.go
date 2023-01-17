@@ -103,6 +103,11 @@ func (o *PaymentGetStripeInvoicesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the payment get stripe invoices o k response
+func (o *PaymentGetStripeInvoicesOK) Code() int {
+	return 200
+}
+
 func (o *PaymentGetStripeInvoicesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *PaymentGetStripeInvoicesBadRequest) IsServerError() bool {
 // IsCode returns true when this payment get stripe invoices bad request response a status code equal to that given
 func (o *PaymentGetStripeInvoicesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the payment get stripe invoices bad request response
+func (o *PaymentGetStripeInvoicesBadRequest) Code() int {
+	return 400
 }
 
 func (o *PaymentGetStripeInvoicesBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *PaymentGetStripeInvoicesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the payment get stripe invoices unauthorized response
+func (o *PaymentGetStripeInvoicesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PaymentGetStripeInvoicesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *PaymentGetStripeInvoicesForbidden) IsServerError() bool {
 // IsCode returns true when this payment get stripe invoices forbidden response a status code equal to that given
 func (o *PaymentGetStripeInvoicesForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the payment get stripe invoices forbidden response
+func (o *PaymentGetStripeInvoicesForbidden) Code() int {
+	return 403
 }
 
 func (o *PaymentGetStripeInvoicesForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *PaymentGetStripeInvoicesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the payment get stripe invoices not found response
+func (o *PaymentGetStripeInvoicesNotFound) Code() int {
+	return 404
+}
+
 func (o *PaymentGetStripeInvoicesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *PaymentGetStripeInvoicesInternalServerError) IsServerError() bool {
 // IsCode returns true when this payment get stripe invoices internal server error response a status code equal to that given
 func (o *PaymentGetStripeInvoicesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the payment get stripe invoices internal server error response
+func (o *PaymentGetStripeInvoicesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PaymentGetStripeInvoicesInternalServerError) Error() string {

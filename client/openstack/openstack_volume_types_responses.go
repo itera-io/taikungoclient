@@ -103,6 +103,11 @@ func (o *OpenstackVolumeTypesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the openstack volume types o k response
+func (o *OpenstackVolumeTypesOK) Code() int {
+	return 200
+}
+
 func (o *OpenstackVolumeTypesOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *OpenstackVolumeTypesBadRequest) IsServerError() bool {
 // IsCode returns true when this openstack volume types bad request response a status code equal to that given
 func (o *OpenstackVolumeTypesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the openstack volume types bad request response
+func (o *OpenstackVolumeTypesBadRequest) Code() int {
+	return 400
 }
 
 func (o *OpenstackVolumeTypesBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *OpenstackVolumeTypesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the openstack volume types unauthorized response
+func (o *OpenstackVolumeTypesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OpenstackVolumeTypesUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *OpenstackVolumeTypesForbidden) IsServerError() bool {
 // IsCode returns true when this openstack volume types forbidden response a status code equal to that given
 func (o *OpenstackVolumeTypesForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the openstack volume types forbidden response
+func (o *OpenstackVolumeTypesForbidden) Code() int {
+	return 403
 }
 
 func (o *OpenstackVolumeTypesForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *OpenstackVolumeTypesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the openstack volume types not found response
+func (o *OpenstackVolumeTypesNotFound) Code() int {
+	return 404
+}
+
 func (o *OpenstackVolumeTypesNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpenstackVolumeTypesInternalServerError) IsServerError() bool {
 // IsCode returns true when this openstack volume types internal server error response a status code equal to that given
 func (o *OpenstackVolumeTypesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the openstack volume types internal server error response
+func (o *OpenstackVolumeTypesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpenstackVolumeTypesInternalServerError) Error() string {

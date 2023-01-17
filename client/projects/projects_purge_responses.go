@@ -103,6 +103,11 @@ func (o *ProjectsPurgeOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects purge o k response
+func (o *ProjectsPurgeOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsPurgeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectsPurgeBadRequest) IsServerError() bool {
 // IsCode returns true when this projects purge bad request response a status code equal to that given
 func (o *ProjectsPurgeBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the projects purge bad request response
+func (o *ProjectsPurgeBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectsPurgeBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectsPurgeUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the projects purge unauthorized response
+func (o *ProjectsPurgeUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectsPurgeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectsPurgeForbidden) IsServerError() bool {
 // IsCode returns true when this projects purge forbidden response a status code equal to that given
 func (o *ProjectsPurgeForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the projects purge forbidden response
+func (o *ProjectsPurgeForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectsPurgeForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectsPurgeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects purge not found response
+func (o *ProjectsPurgeNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsPurgeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsPurgeInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects purge internal server error response a status code equal to that given
 func (o *ProjectsPurgeInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects purge internal server error response
+func (o *ProjectsPurgeInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsPurgeInternalServerError) Error() string {

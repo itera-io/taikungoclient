@@ -103,6 +103,11 @@ func (o *PrometheusDetailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the prometheus details o k response
+func (o *PrometheusDetailsOK) Code() int {
+	return 200
+}
+
 func (o *PrometheusDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *PrometheusDetailsBadRequest) IsServerError() bool {
 // IsCode returns true when this prometheus details bad request response a status code equal to that given
 func (o *PrometheusDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the prometheus details bad request response
+func (o *PrometheusDetailsBadRequest) Code() int {
+	return 400
 }
 
 func (o *PrometheusDetailsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *PrometheusDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the prometheus details unauthorized response
+func (o *PrometheusDetailsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PrometheusDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *PrometheusDetailsForbidden) IsServerError() bool {
 // IsCode returns true when this prometheus details forbidden response a status code equal to that given
 func (o *PrometheusDetailsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the prometheus details forbidden response
+func (o *PrometheusDetailsForbidden) Code() int {
+	return 403
 }
 
 func (o *PrometheusDetailsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *PrometheusDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the prometheus details not found response
+func (o *PrometheusDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *PrometheusDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PrometheusDetailsInternalServerError) IsServerError() bool {
 // IsCode returns true when this prometheus details internal server error response a status code equal to that given
 func (o *PrometheusDetailsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the prometheus details internal server error response
+func (o *PrometheusDetailsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PrometheusDetailsInternalServerError) Error() string {

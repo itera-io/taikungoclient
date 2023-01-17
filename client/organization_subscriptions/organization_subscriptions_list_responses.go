@@ -103,6 +103,11 @@ func (o *OrganizationSubscriptionsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organization subscriptions list o k response
+func (o *OrganizationSubscriptionsListOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationSubscriptionsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *OrganizationSubscriptionsListBadRequest) IsServerError() bool {
 // IsCode returns true when this organization subscriptions list bad request response a status code equal to that given
 func (o *OrganizationSubscriptionsListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the organization subscriptions list bad request response
+func (o *OrganizationSubscriptionsListBadRequest) Code() int {
+	return 400
 }
 
 func (o *OrganizationSubscriptionsListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *OrganizationSubscriptionsListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the organization subscriptions list unauthorized response
+func (o *OrganizationSubscriptionsListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OrganizationSubscriptionsListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *OrganizationSubscriptionsListForbidden) IsServerError() bool {
 // IsCode returns true when this organization subscriptions list forbidden response a status code equal to that given
 func (o *OrganizationSubscriptionsListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the organization subscriptions list forbidden response
+func (o *OrganizationSubscriptionsListForbidden) Code() int {
+	return 403
 }
 
 func (o *OrganizationSubscriptionsListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *OrganizationSubscriptionsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organization subscriptions list not found response
+func (o *OrganizationSubscriptionsListNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationSubscriptionsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *OrganizationSubscriptionsListInternalServerError) IsServerError() bool 
 // IsCode returns true when this organization subscriptions list internal server error response a status code equal to that given
 func (o *OrganizationSubscriptionsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the organization subscriptions list internal server error response
+func (o *OrganizationSubscriptionsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrganizationSubscriptionsListInternalServerError) Error() string {

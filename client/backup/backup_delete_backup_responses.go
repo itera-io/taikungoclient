@@ -103,6 +103,11 @@ func (o *BackupDeleteBackupOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the backup delete backup o k response
+func (o *BackupDeleteBackupOK) Code() int {
+	return 200
+}
+
 func (o *BackupDeleteBackupOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/backup][%d] backupDeleteBackupOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *BackupDeleteBackupBadRequest) IsServerError() bool {
 // IsCode returns true when this backup delete backup bad request response a status code equal to that given
 func (o *BackupDeleteBackupBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the backup delete backup bad request response
+func (o *BackupDeleteBackupBadRequest) Code() int {
+	return 400
 }
 
 func (o *BackupDeleteBackupBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *BackupDeleteBackupUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the backup delete backup unauthorized response
+func (o *BackupDeleteBackupUnauthorized) Code() int {
+	return 401
+}
+
 func (o *BackupDeleteBackupUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/backup][%d] backupDeleteBackupUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *BackupDeleteBackupForbidden) IsServerError() bool {
 // IsCode returns true when this backup delete backup forbidden response a status code equal to that given
 func (o *BackupDeleteBackupForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the backup delete backup forbidden response
+func (o *BackupDeleteBackupForbidden) Code() int {
+	return 403
 }
 
 func (o *BackupDeleteBackupForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *BackupDeleteBackupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the backup delete backup not found response
+func (o *BackupDeleteBackupNotFound) Code() int {
+	return 404
+}
+
 func (o *BackupDeleteBackupNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/backup][%d] backupDeleteBackupNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *BackupDeleteBackupInternalServerError) IsServerError() bool {
 // IsCode returns true when this backup delete backup internal server error response a status code equal to that given
 func (o *BackupDeleteBackupInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the backup delete backup internal server error response
+func (o *BackupDeleteBackupInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BackupDeleteBackupInternalServerError) Error() string {

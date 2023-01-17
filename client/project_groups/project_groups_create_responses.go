@@ -103,6 +103,11 @@ func (o *ProjectGroupsCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project groups create o k response
+func (o *ProjectGroupsCreateOK) Code() int {
+	return 200
+}
+
 func (o *ProjectGroupsCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ProjectGroupsCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this project groups create bad request response a status code equal to that given
 func (o *ProjectGroupsCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project groups create bad request response
+func (o *ProjectGroupsCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectGroupsCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ProjectGroupsCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project groups create unauthorized response
+func (o *ProjectGroupsCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectGroupsCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ProjectGroupsCreateForbidden) IsServerError() bool {
 // IsCode returns true when this project groups create forbidden response a status code equal to that given
 func (o *ProjectGroupsCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project groups create forbidden response
+func (o *ProjectGroupsCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectGroupsCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ProjectGroupsCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project groups create not found response
+func (o *ProjectGroupsCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectGroupsCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ProjectGroupsCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this project groups create internal server error response a status code equal to that given
 func (o *ProjectGroupsCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project groups create internal server error response
+func (o *ProjectGroupsCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectGroupsCreateInternalServerError) Error() string {

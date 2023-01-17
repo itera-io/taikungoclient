@@ -103,6 +103,11 @@ func (o *CatalogCatalogAppDetailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog catalog app details o k response
+func (o *CatalogCatalogAppDetailsOK) Code() int {
+	return 200
+}
+
 func (o *CatalogCatalogAppDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app/{id}][%d] catalogCatalogAppDetailsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CatalogCatalogAppDetailsBadRequest) IsServerError() bool {
 // IsCode returns true when this catalog catalog app details bad request response a status code equal to that given
 func (o *CatalogCatalogAppDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the catalog catalog app details bad request response
+func (o *CatalogCatalogAppDetailsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CatalogCatalogAppDetailsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *CatalogCatalogAppDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the catalog catalog app details unauthorized response
+func (o *CatalogCatalogAppDetailsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CatalogCatalogAppDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app/{id}][%d] catalogCatalogAppDetailsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *CatalogCatalogAppDetailsForbidden) IsServerError() bool {
 // IsCode returns true when this catalog catalog app details forbidden response a status code equal to that given
 func (o *CatalogCatalogAppDetailsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the catalog catalog app details forbidden response
+func (o *CatalogCatalogAppDetailsForbidden) Code() int {
+	return 403
 }
 
 func (o *CatalogCatalogAppDetailsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *CatalogCatalogAppDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog catalog app details not found response
+func (o *CatalogCatalogAppDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogCatalogAppDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app/{id}][%d] catalogCatalogAppDetailsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *CatalogCatalogAppDetailsInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog catalog app details internal server error response a status code equal to that given
 func (o *CatalogCatalogAppDetailsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog catalog app details internal server error response
+func (o *CatalogCatalogAppDetailsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogCatalogAppDetailsInternalServerError) Error() string {

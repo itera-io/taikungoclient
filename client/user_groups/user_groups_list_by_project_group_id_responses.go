@@ -103,6 +103,11 @@ func (o *UserGroupsListByProjectGroupIDOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the user groups list by project group Id o k response
+func (o *UserGroupsListByProjectGroupIDOK) Code() int {
+	return 200
+}
+
 func (o *UserGroupsListByProjectGroupIDOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list-by-project-group-id][%d] userGroupsListByProjectGroupIdOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *UserGroupsListByProjectGroupIDBadRequest) IsServerError() bool {
 // IsCode returns true when this user groups list by project group Id bad request response a status code equal to that given
 func (o *UserGroupsListByProjectGroupIDBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the user groups list by project group Id bad request response
+func (o *UserGroupsListByProjectGroupIDBadRequest) Code() int {
+	return 400
 }
 
 func (o *UserGroupsListByProjectGroupIDBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *UserGroupsListByProjectGroupIDUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the user groups list by project group Id unauthorized response
+func (o *UserGroupsListByProjectGroupIDUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UserGroupsListByProjectGroupIDUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list-by-project-group-id][%d] userGroupsListByProjectGroupIdUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *UserGroupsListByProjectGroupIDForbidden) IsServerError() bool {
 // IsCode returns true when this user groups list by project group Id forbidden response a status code equal to that given
 func (o *UserGroupsListByProjectGroupIDForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the user groups list by project group Id forbidden response
+func (o *UserGroupsListByProjectGroupIDForbidden) Code() int {
+	return 403
 }
 
 func (o *UserGroupsListByProjectGroupIDForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *UserGroupsListByProjectGroupIDNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user groups list by project group Id not found response
+func (o *UserGroupsListByProjectGroupIDNotFound) Code() int {
+	return 404
+}
+
 func (o *UserGroupsListByProjectGroupIDNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list-by-project-group-id][%d] userGroupsListByProjectGroupIdNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UserGroupsListByProjectGroupIDInternalServerError) IsServerError() bool
 // IsCode returns true when this user groups list by project group Id internal server error response a status code equal to that given
 func (o *UserGroupsListByProjectGroupIDInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the user groups list by project group Id internal server error response
+func (o *UserGroupsListByProjectGroupIDInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UserGroupsListByProjectGroupIDInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *RepositoryDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the repository delete o k response
+func (o *RepositoryDeleteOK) Code() int {
+	return 200
+}
+
 func (o *RepositoryDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/delete][%d] repositoryDeleteOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *RepositoryDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this repository delete bad request response a status code equal to that given
 func (o *RepositoryDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the repository delete bad request response
+func (o *RepositoryDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *RepositoryDeleteBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *RepositoryDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the repository delete unauthorized response
+func (o *RepositoryDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *RepositoryDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/delete][%d] repositoryDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *RepositoryDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this repository delete forbidden response a status code equal to that given
 func (o *RepositoryDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the repository delete forbidden response
+func (o *RepositoryDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *RepositoryDeleteForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *RepositoryDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the repository delete not found response
+func (o *RepositoryDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *RepositoryDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/delete][%d] repositoryDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *RepositoryDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this repository delete internal server error response a status code equal to that given
 func (o *RepositoryDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the repository delete internal server error response
+func (o *RepositoryDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *RepositoryDeleteInternalServerError) Error() string {

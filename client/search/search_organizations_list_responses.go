@@ -103,6 +103,11 @@ func (o *SearchOrganizationsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search organizations list o k response
+func (o *SearchOrganizationsListOK) Code() int {
+	return 200
+}
+
 func (o *SearchOrganizationsListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SearchOrganizationsListBadRequest) IsServerError() bool {
 // IsCode returns true when this search organizations list bad request response a status code equal to that given
 func (o *SearchOrganizationsListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the search organizations list bad request response
+func (o *SearchOrganizationsListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SearchOrganizationsListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SearchOrganizationsListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the search organizations list unauthorized response
+func (o *SearchOrganizationsListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SearchOrganizationsListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SearchOrganizationsListForbidden) IsServerError() bool {
 // IsCode returns true when this search organizations list forbidden response a status code equal to that given
 func (o *SearchOrganizationsListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the search organizations list forbidden response
+func (o *SearchOrganizationsListForbidden) Code() int {
+	return 403
 }
 
 func (o *SearchOrganizationsListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SearchOrganizationsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search organizations list not found response
+func (o *SearchOrganizationsListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchOrganizationsListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchOrganizationsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search organizations list internal server error response a status code equal to that given
 func (o *SearchOrganizationsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search organizations list internal server error response
+func (o *SearchOrganizationsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchOrganizationsListInternalServerError) Error() string {

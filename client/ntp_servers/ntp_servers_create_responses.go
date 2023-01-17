@@ -103,6 +103,11 @@ func (o *NtpServersCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ntp servers create o k response
+func (o *NtpServersCreateOK) Code() int {
+	return 200
+}
+
 func (o *NtpServersCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/NtpServers/create][%d] ntpServersCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *NtpServersCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this ntp servers create bad request response a status code equal to that given
 func (o *NtpServersCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ntp servers create bad request response
+func (o *NtpServersCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *NtpServersCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *NtpServersCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ntp servers create unauthorized response
+func (o *NtpServersCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *NtpServersCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/NtpServers/create][%d] ntpServersCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *NtpServersCreateForbidden) IsServerError() bool {
 // IsCode returns true when this ntp servers create forbidden response a status code equal to that given
 func (o *NtpServersCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ntp servers create forbidden response
+func (o *NtpServersCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *NtpServersCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *NtpServersCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ntp servers create not found response
+func (o *NtpServersCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *NtpServersCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/NtpServers/create][%d] ntpServersCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *NtpServersCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this ntp servers create internal server error response a status code equal to that given
 func (o *NtpServersCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ntp servers create internal server error response
+func (o *NtpServersCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *NtpServersCreateInternalServerError) Error() string {

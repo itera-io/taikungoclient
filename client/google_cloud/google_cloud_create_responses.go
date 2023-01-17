@@ -103,6 +103,11 @@ func (o *GoogleCloudCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the google cloud create o k response
+func (o *GoogleCloudCreateOK) Code() int {
+	return 200
+}
+
 func (o *GoogleCloudCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *GoogleCloudCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this google cloud create bad request response a status code equal to that given
 func (o *GoogleCloudCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the google cloud create bad request response
+func (o *GoogleCloudCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *GoogleCloudCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *GoogleCloudCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the google cloud create unauthorized response
+func (o *GoogleCloudCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GoogleCloudCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *GoogleCloudCreateForbidden) IsServerError() bool {
 // IsCode returns true when this google cloud create forbidden response a status code equal to that given
 func (o *GoogleCloudCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the google cloud create forbidden response
+func (o *GoogleCloudCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *GoogleCloudCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *GoogleCloudCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the google cloud create not found response
+func (o *GoogleCloudCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *GoogleCloudCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *GoogleCloudCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this google cloud create internal server error response a status code equal to that given
 func (o *GoogleCloudCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the google cloud create internal server error response
+func (o *GoogleCloudCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GoogleCloudCreateInternalServerError) Error() string {

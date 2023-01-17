@@ -103,6 +103,11 @@ func (o *KubesprayListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubespray list o k response
+func (o *KubesprayListOK) Code() int {
+	return 200
+}
+
 func (o *KubesprayListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubespray][%d] kubesprayListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *KubesprayListBadRequest) IsServerError() bool {
 // IsCode returns true when this kubespray list bad request response a status code equal to that given
 func (o *KubesprayListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubespray list bad request response
+func (o *KubesprayListBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubesprayListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *KubesprayListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubespray list unauthorized response
+func (o *KubesprayListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubesprayListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubespray][%d] kubesprayListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *KubesprayListForbidden) IsServerError() bool {
 // IsCode returns true when this kubespray list forbidden response a status code equal to that given
 func (o *KubesprayListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubespray list forbidden response
+func (o *KubesprayListForbidden) Code() int {
+	return 403
 }
 
 func (o *KubesprayListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *KubesprayListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubespray list not found response
+func (o *KubesprayListNotFound) Code() int {
+	return 404
+}
+
 func (o *KubesprayListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubespray][%d] kubesprayListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubesprayListInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubespray list internal server error response a status code equal to that given
 func (o *KubesprayListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubespray list internal server error response
+func (o *KubesprayListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubesprayListInternalServerError) Error() string {

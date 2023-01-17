@@ -103,6 +103,11 @@ func (o *NtpServersEditOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ntp servers edit o k response
+func (o *NtpServersEditOK) Code() int {
+	return 200
+}
+
 func (o *NtpServersEditOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *NtpServersEditBadRequest) IsServerError() bool {
 // IsCode returns true when this ntp servers edit bad request response a status code equal to that given
 func (o *NtpServersEditBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ntp servers edit bad request response
+func (o *NtpServersEditBadRequest) Code() int {
+	return 400
 }
 
 func (o *NtpServersEditBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *NtpServersEditUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ntp servers edit unauthorized response
+func (o *NtpServersEditUnauthorized) Code() int {
+	return 401
+}
+
 func (o *NtpServersEditUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *NtpServersEditForbidden) IsServerError() bool {
 // IsCode returns true when this ntp servers edit forbidden response a status code equal to that given
 func (o *NtpServersEditForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ntp servers edit forbidden response
+func (o *NtpServersEditForbidden) Code() int {
+	return 403
 }
 
 func (o *NtpServersEditForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *NtpServersEditNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ntp servers edit not found response
+func (o *NtpServersEditNotFound) Code() int {
+	return 404
+}
+
 func (o *NtpServersEditNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *NtpServersEditInternalServerError) IsServerError() bool {
 // IsCode returns true when this ntp servers edit internal server error response a status code equal to that given
 func (o *NtpServersEditInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ntp servers edit internal server error response
+func (o *NtpServersEditInternalServerError) Code() int {
+	return 500
 }
 
 func (o *NtpServersEditInternalServerError) Error() string {

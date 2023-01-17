@@ -103,6 +103,11 @@ func (o *KubernetesDescribeJobOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe job o k response
+func (o *KubernetesDescribeJobOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribeJobOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesDescribeJobBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes describe job bad request response a status code equal to that given
 func (o *KubernetesDescribeJobBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes describe job bad request response
+func (o *KubernetesDescribeJobBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesDescribeJobBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesDescribeJobUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes describe job unauthorized response
+func (o *KubernetesDescribeJobUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesDescribeJobUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesDescribeJobForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes describe job forbidden response a status code equal to that given
 func (o *KubernetesDescribeJobForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes describe job forbidden response
+func (o *KubernetesDescribeJobForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesDescribeJobForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesDescribeJobNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe job not found response
+func (o *KubernetesDescribeJobNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribeJobNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesDescribeJobInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe job internal server error response a status code equal to that given
 func (o *KubernetesDescribeJobInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe job internal server error response
+func (o *KubernetesDescribeJobInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribeJobInternalServerError) Error() string {

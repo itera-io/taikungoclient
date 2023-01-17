@@ -103,6 +103,11 @@ func (o *KubernetesDescribePdbOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe pdb o k response
+func (o *KubernetesDescribePdbOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribePdbOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesDescribePdbBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes describe pdb bad request response a status code equal to that given
 func (o *KubernetesDescribePdbBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes describe pdb bad request response
+func (o *KubernetesDescribePdbBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesDescribePdbBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesDescribePdbUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes describe pdb unauthorized response
+func (o *KubernetesDescribePdbUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesDescribePdbUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesDescribePdbForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes describe pdb forbidden response a status code equal to that given
 func (o *KubernetesDescribePdbForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes describe pdb forbidden response
+func (o *KubernetesDescribePdbForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesDescribePdbForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesDescribePdbNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe pdb not found response
+func (o *KubernetesDescribePdbNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribePdbNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesDescribePdbInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe pdb internal server error response a status code equal to that given
 func (o *KubernetesDescribePdbInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe pdb internal server error response
+func (o *KubernetesDescribePdbInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribePdbInternalServerError) Error() string {

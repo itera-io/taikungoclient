@@ -103,6 +103,11 @@ func (o *CronJobSendEmailAboutProjectExpirationOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job send email about project expiration o k response
+func (o *CronJobSendEmailAboutProjectExpirationOK) Code() int {
+	return 200
+}
+
 func (o *CronJobSendEmailAboutProjectExpirationOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobSendEmailAboutProjectExpirationBadRequest) IsServerError() bool 
 // IsCode returns true when this cron job send email about project expiration bad request response a status code equal to that given
 func (o *CronJobSendEmailAboutProjectExpirationBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job send email about project expiration bad request response
+func (o *CronJobSendEmailAboutProjectExpirationBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobSendEmailAboutProjectExpirationBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobSendEmailAboutProjectExpirationUnauthorized) IsCode(code int) bo
 	return code == 401
 }
 
+// Code gets the status code for the cron job send email about project expiration unauthorized response
+func (o *CronJobSendEmailAboutProjectExpirationUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobSendEmailAboutProjectExpirationUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobSendEmailAboutProjectExpirationForbidden) IsServerError() bool {
 // IsCode returns true when this cron job send email about project expiration forbidden response a status code equal to that given
 func (o *CronJobSendEmailAboutProjectExpirationForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job send email about project expiration forbidden response
+func (o *CronJobSendEmailAboutProjectExpirationForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobSendEmailAboutProjectExpirationForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobSendEmailAboutProjectExpirationNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job send email about project expiration not found response
+func (o *CronJobSendEmailAboutProjectExpirationNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobSendEmailAboutProjectExpirationNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobSendEmailAboutProjectExpirationInternalServerError) IsServerErro
 // IsCode returns true when this cron job send email about project expiration internal server error response a status code equal to that given
 func (o *CronJobSendEmailAboutProjectExpirationInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job send email about project expiration internal server error response
+func (o *CronJobSendEmailAboutProjectExpirationInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobSendEmailAboutProjectExpirationInternalServerError) Error() string {

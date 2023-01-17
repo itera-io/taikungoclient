@@ -103,6 +103,11 @@ func (o *CheckerAwsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker aws o k response
+func (o *CheckerAwsOK) Code() int {
+	return 200
+}
+
 func (o *CheckerAwsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CheckerAwsBadRequest) IsServerError() bool {
 // IsCode returns true when this checker aws bad request response a status code equal to that given
 func (o *CheckerAwsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the checker aws bad request response
+func (o *CheckerAwsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CheckerAwsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CheckerAwsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the checker aws unauthorized response
+func (o *CheckerAwsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CheckerAwsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CheckerAwsForbidden) IsServerError() bool {
 // IsCode returns true when this checker aws forbidden response a status code equal to that given
 func (o *CheckerAwsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the checker aws forbidden response
+func (o *CheckerAwsForbidden) Code() int {
+	return 403
 }
 
 func (o *CheckerAwsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CheckerAwsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker aws not found response
+func (o *CheckerAwsNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerAwsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerAwsInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker aws internal server error response a status code equal to that given
 func (o *CheckerAwsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker aws internal server error response
+func (o *CheckerAwsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerAwsInternalServerError) Error() string {

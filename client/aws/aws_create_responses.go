@@ -103,6 +103,11 @@ func (o *AwsCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the aws create o k response
+func (o *AwsCreateOK) Code() int {
+	return 200
+}
+
 func (o *AwsCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AwsCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this aws create bad request response a status code equal to that given
 func (o *AwsCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the aws create bad request response
+func (o *AwsCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *AwsCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *AwsCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the aws create unauthorized response
+func (o *AwsCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AwsCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *AwsCreateForbidden) IsServerError() bool {
 // IsCode returns true when this aws create forbidden response a status code equal to that given
 func (o *AwsCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the aws create forbidden response
+func (o *AwsCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *AwsCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *AwsCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the aws create not found response
+func (o *AwsCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *AwsCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AwsCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this aws create internal server error response a status code equal to that given
 func (o *AwsCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the aws create internal server error response
+func (o *AwsCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AwsCreateInternalServerError) Error() string {

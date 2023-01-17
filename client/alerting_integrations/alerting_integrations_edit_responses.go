@@ -103,6 +103,11 @@ func (o *AlertingIntegrationsEditOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting integrations edit o k response
+func (o *AlertingIntegrationsEditOK) Code() int {
+	return 200
+}
+
 func (o *AlertingIntegrationsEditOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AlertingIntegrationsEditBadRequest) IsServerError() bool {
 // IsCode returns true when this alerting integrations edit bad request response a status code equal to that given
 func (o *AlertingIntegrationsEditBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the alerting integrations edit bad request response
+func (o *AlertingIntegrationsEditBadRequest) Code() int {
+	return 400
 }
 
 func (o *AlertingIntegrationsEditBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AlertingIntegrationsEditUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the alerting integrations edit unauthorized response
+func (o *AlertingIntegrationsEditUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AlertingIntegrationsEditUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AlertingIntegrationsEditForbidden) IsServerError() bool {
 // IsCode returns true when this alerting integrations edit forbidden response a status code equal to that given
 func (o *AlertingIntegrationsEditForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the alerting integrations edit forbidden response
+func (o *AlertingIntegrationsEditForbidden) Code() int {
+	return 403
 }
 
 func (o *AlertingIntegrationsEditForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AlertingIntegrationsEditNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting integrations edit not found response
+func (o *AlertingIntegrationsEditNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingIntegrationsEditNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AlertingIntegrationsEditInternalServerError) IsServerError() bool {
 // IsCode returns true when this alerting integrations edit internal server error response a status code equal to that given
 func (o *AlertingIntegrationsEditInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting integrations edit internal server error response
+func (o *AlertingIntegrationsEditInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingIntegrationsEditInternalServerError) Error() string {

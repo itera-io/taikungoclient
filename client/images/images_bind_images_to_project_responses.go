@@ -103,6 +103,11 @@ func (o *ImagesBindImagesToProjectOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the images bind images to project o k response
+func (o *ImagesBindImagesToProjectOK) Code() int {
+	return 200
+}
+
 func (o *ImagesBindImagesToProjectOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/bind][%d] imagesBindImagesToProjectOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ImagesBindImagesToProjectBadRequest) IsServerError() bool {
 // IsCode returns true when this images bind images to project bad request response a status code equal to that given
 func (o *ImagesBindImagesToProjectBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the images bind images to project bad request response
+func (o *ImagesBindImagesToProjectBadRequest) Code() int {
+	return 400
 }
 
 func (o *ImagesBindImagesToProjectBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ImagesBindImagesToProjectUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the images bind images to project unauthorized response
+func (o *ImagesBindImagesToProjectUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ImagesBindImagesToProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/bind][%d] imagesBindImagesToProjectUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ImagesBindImagesToProjectForbidden) IsServerError() bool {
 // IsCode returns true when this images bind images to project forbidden response a status code equal to that given
 func (o *ImagesBindImagesToProjectForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the images bind images to project forbidden response
+func (o *ImagesBindImagesToProjectForbidden) Code() int {
+	return 403
 }
 
 func (o *ImagesBindImagesToProjectForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ImagesBindImagesToProjectNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the images bind images to project not found response
+func (o *ImagesBindImagesToProjectNotFound) Code() int {
+	return 404
+}
+
 func (o *ImagesBindImagesToProjectNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/bind][%d] imagesBindImagesToProjectNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ImagesBindImagesToProjectInternalServerError) IsServerError() bool {
 // IsCode returns true when this images bind images to project internal server error response a status code equal to that given
 func (o *ImagesBindImagesToProjectInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the images bind images to project internal server error response
+func (o *ImagesBindImagesToProjectInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ImagesBindImagesToProjectInternalServerError) Error() string {

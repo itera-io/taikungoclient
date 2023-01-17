@@ -109,6 +109,11 @@ func (o *AccessProfilesDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the access profiles delete o k response
+func (o *AccessProfilesDeleteOK) Code() int {
+	return 200
+}
+
 func (o *AccessProfilesDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *AccessProfilesDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the access profiles delete no content response
+func (o *AccessProfilesDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *AccessProfilesDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteNoContent ", 204)
 }
@@ -219,6 +229,11 @@ func (o *AccessProfilesDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this access profiles delete bad request response a status code equal to that given
 func (o *AccessProfilesDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the access profiles delete bad request response
+func (o *AccessProfilesDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *AccessProfilesDeleteBadRequest) Error() string {
@@ -284,6 +299,11 @@ func (o *AccessProfilesDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the access profiles delete unauthorized response
+func (o *AccessProfilesDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AccessProfilesDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -345,6 +365,11 @@ func (o *AccessProfilesDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this access profiles delete forbidden response a status code equal to that given
 func (o *AccessProfilesDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the access profiles delete forbidden response
+func (o *AccessProfilesDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *AccessProfilesDeleteForbidden) Error() string {
@@ -410,6 +435,11 @@ func (o *AccessProfilesDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the access profiles delete not found response
+func (o *AccessProfilesDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *AccessProfilesDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *AccessProfilesDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this access profiles delete internal server error response a status code equal to that given
 func (o *AccessProfilesDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the access profiles delete internal server error response
+func (o *AccessProfilesDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AccessProfilesDeleteInternalServerError) Error() string {

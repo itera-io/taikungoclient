@@ -103,6 +103,11 @@ func (o *FlavorsDropdownRecordDtosOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the flavors dropdown record dtos o k response
+func (o *FlavorsDropdownRecordDtosOK) Code() int {
+	return 200
+}
+
 func (o *FlavorsDropdownRecordDtosOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *FlavorsDropdownRecordDtosBadRequest) IsServerError() bool {
 // IsCode returns true when this flavors dropdown record dtos bad request response a status code equal to that given
 func (o *FlavorsDropdownRecordDtosBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the flavors dropdown record dtos bad request response
+func (o *FlavorsDropdownRecordDtosBadRequest) Code() int {
+	return 400
 }
 
 func (o *FlavorsDropdownRecordDtosBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *FlavorsDropdownRecordDtosUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the flavors dropdown record dtos unauthorized response
+func (o *FlavorsDropdownRecordDtosUnauthorized) Code() int {
+	return 401
+}
+
 func (o *FlavorsDropdownRecordDtosUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *FlavorsDropdownRecordDtosForbidden) IsServerError() bool {
 // IsCode returns true when this flavors dropdown record dtos forbidden response a status code equal to that given
 func (o *FlavorsDropdownRecordDtosForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the flavors dropdown record dtos forbidden response
+func (o *FlavorsDropdownRecordDtosForbidden) Code() int {
+	return 403
 }
 
 func (o *FlavorsDropdownRecordDtosForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *FlavorsDropdownRecordDtosNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the flavors dropdown record dtos not found response
+func (o *FlavorsDropdownRecordDtosNotFound) Code() int {
+	return 404
+}
+
 func (o *FlavorsDropdownRecordDtosNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *FlavorsDropdownRecordDtosInternalServerError) IsServerError() bool {
 // IsCode returns true when this flavors dropdown record dtos internal server error response a status code equal to that given
 func (o *FlavorsDropdownRecordDtosInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the flavors dropdown record dtos internal server error response
+func (o *FlavorsDropdownRecordDtosInternalServerError) Code() int {
+	return 500
 }
 
 func (o *FlavorsDropdownRecordDtosInternalServerError) Error() string {

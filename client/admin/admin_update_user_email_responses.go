@@ -103,6 +103,11 @@ func (o *AdminUpdateUserEmailOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin update user email o k response
+func (o *AdminUpdateUserEmailOK) Code() int {
+	return 200
+}
+
 func (o *AdminUpdateUserEmailOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AdminUpdateUserEmailBadRequest) IsServerError() bool {
 // IsCode returns true when this admin update user email bad request response a status code equal to that given
 func (o *AdminUpdateUserEmailBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the admin update user email bad request response
+func (o *AdminUpdateUserEmailBadRequest) Code() int {
+	return 400
 }
 
 func (o *AdminUpdateUserEmailBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AdminUpdateUserEmailUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the admin update user email unauthorized response
+func (o *AdminUpdateUserEmailUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AdminUpdateUserEmailUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AdminUpdateUserEmailForbidden) IsServerError() bool {
 // IsCode returns true when this admin update user email forbidden response a status code equal to that given
 func (o *AdminUpdateUserEmailForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the admin update user email forbidden response
+func (o *AdminUpdateUserEmailForbidden) Code() int {
+	return 403
 }
 
 func (o *AdminUpdateUserEmailForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AdminUpdateUserEmailNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin update user email not found response
+func (o *AdminUpdateUserEmailNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminUpdateUserEmailNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AdminUpdateUserEmailInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin update user email internal server error response a status code equal to that given
 func (o *AdminUpdateUserEmailInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin update user email internal server error response
+func (o *AdminUpdateUserEmailInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminUpdateUserEmailInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *AlertingProfilesLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting profiles lock manager o k response
+func (o *AlertingProfilesLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *AlertingProfilesLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/lockmanager][%d] alertingProfilesLockManagerOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AlertingProfilesLockManagerBadRequest) IsServerError() bool {
 // IsCode returns true when this alerting profiles lock manager bad request response a status code equal to that given
 func (o *AlertingProfilesLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the alerting profiles lock manager bad request response
+func (o *AlertingProfilesLockManagerBadRequest) Code() int {
+	return 400
 }
 
 func (o *AlertingProfilesLockManagerBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AlertingProfilesLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the alerting profiles lock manager unauthorized response
+func (o *AlertingProfilesLockManagerUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AlertingProfilesLockManagerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/lockmanager][%d] alertingProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AlertingProfilesLockManagerForbidden) IsServerError() bool {
 // IsCode returns true when this alerting profiles lock manager forbidden response a status code equal to that given
 func (o *AlertingProfilesLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the alerting profiles lock manager forbidden response
+func (o *AlertingProfilesLockManagerForbidden) Code() int {
+	return 403
 }
 
 func (o *AlertingProfilesLockManagerForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AlertingProfilesLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting profiles lock manager not found response
+func (o *AlertingProfilesLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingProfilesLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/lockmanager][%d] alertingProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AlertingProfilesLockManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this alerting profiles lock manager internal server error response a status code equal to that given
 func (o *AlertingProfilesLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting profiles lock manager internal server error response
+func (o *AlertingProfilesLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingProfilesLockManagerInternalServerError) Error() string {

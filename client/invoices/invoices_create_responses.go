@@ -103,6 +103,11 @@ func (o *InvoicesCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the invoices create o k response
+func (o *InvoicesCreateOK) Code() int {
+	return 200
+}
+
 func (o *InvoicesCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/create][%d] invoicesCreateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *InvoicesCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this invoices create bad request response a status code equal to that given
 func (o *InvoicesCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the invoices create bad request response
+func (o *InvoicesCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *InvoicesCreateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *InvoicesCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the invoices create unauthorized response
+func (o *InvoicesCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *InvoicesCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/create][%d] invoicesCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *InvoicesCreateForbidden) IsServerError() bool {
 // IsCode returns true when this invoices create forbidden response a status code equal to that given
 func (o *InvoicesCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the invoices create forbidden response
+func (o *InvoicesCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *InvoicesCreateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *InvoicesCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the invoices create not found response
+func (o *InvoicesCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *InvoicesCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/create][%d] invoicesCreateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *InvoicesCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this invoices create internal server error response a status code equal to that given
 func (o *InvoicesCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the invoices create internal server error response
+func (o *InvoicesCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *InvoicesCreateInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *ProjectsEditOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects edit o k response
+func (o *ProjectsEditOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsEditOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectsEditBadRequest) IsServerError() bool {
 // IsCode returns true when this projects edit bad request response a status code equal to that given
 func (o *ProjectsEditBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the projects edit bad request response
+func (o *ProjectsEditBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectsEditBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectsEditUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the projects edit unauthorized response
+func (o *ProjectsEditUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectsEditUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectsEditForbidden) IsServerError() bool {
 // IsCode returns true when this projects edit forbidden response a status code equal to that given
 func (o *ProjectsEditForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the projects edit forbidden response
+func (o *ProjectsEditForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectsEditForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectsEditNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects edit not found response
+func (o *ProjectsEditNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsEditNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsEditInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects edit internal server error response a status code equal to that given
 func (o *ProjectsEditInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects edit internal server error response
+func (o *ProjectsEditInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsEditInternalServerError) Error() string {

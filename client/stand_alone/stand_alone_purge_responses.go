@@ -103,6 +103,11 @@ func (o *StandAlonePurgeOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone purge o k response
+func (o *StandAlonePurgeOK) Code() int {
+	return 200
+}
+
 func (o *StandAlonePurgeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *StandAlonePurgeBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone purge bad request response a status code equal to that given
 func (o *StandAlonePurgeBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone purge bad request response
+func (o *StandAlonePurgeBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAlonePurgeBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *StandAlonePurgeUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone purge unauthorized response
+func (o *StandAlonePurgeUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAlonePurgeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *StandAlonePurgeForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone purge forbidden response a status code equal to that given
 func (o *StandAlonePurgeForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone purge forbidden response
+func (o *StandAlonePurgeForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAlonePurgeForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *StandAlonePurgeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone purge not found response
+func (o *StandAlonePurgeNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAlonePurgeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAlonePurgeInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone purge internal server error response a status code equal to that given
 func (o *StandAlonePurgeInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone purge internal server error response
+func (o *StandAlonePurgeInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAlonePurgeInternalServerError) Error() string {

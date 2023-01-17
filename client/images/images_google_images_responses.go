@@ -103,6 +103,11 @@ func (o *ImagesGoogleImagesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the images google images o k response
+func (o *ImagesGoogleImagesOK) Code() int {
+	return 200
+}
+
 func (o *ImagesGoogleImagesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ImagesGoogleImagesBadRequest) IsServerError() bool {
 // IsCode returns true when this images google images bad request response a status code equal to that given
 func (o *ImagesGoogleImagesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the images google images bad request response
+func (o *ImagesGoogleImagesBadRequest) Code() int {
+	return 400
 }
 
 func (o *ImagesGoogleImagesBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ImagesGoogleImagesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the images google images unauthorized response
+func (o *ImagesGoogleImagesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ImagesGoogleImagesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ImagesGoogleImagesForbidden) IsServerError() bool {
 // IsCode returns true when this images google images forbidden response a status code equal to that given
 func (o *ImagesGoogleImagesForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the images google images forbidden response
+func (o *ImagesGoogleImagesForbidden) Code() int {
+	return 403
 }
 
 func (o *ImagesGoogleImagesForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ImagesGoogleImagesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the images google images not found response
+func (o *ImagesGoogleImagesNotFound) Code() int {
+	return 404
+}
+
 func (o *ImagesGoogleImagesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ImagesGoogleImagesInternalServerError) IsServerError() bool {
 // IsCode returns true when this images google images internal server error response a status code equal to that given
 func (o *ImagesGoogleImagesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the images google images internal server error response
+func (o *ImagesGoogleImagesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ImagesGoogleImagesInternalServerError) Error() string {

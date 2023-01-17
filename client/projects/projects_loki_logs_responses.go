@@ -102,6 +102,11 @@ func (o *ProjectsLokiLogsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects loki logs o k response
+func (o *ProjectsLokiLogsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsLokiLogsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsOK ", 200)
 }
@@ -152,6 +157,11 @@ func (o *ProjectsLokiLogsBadRequest) IsServerError() bool {
 // IsCode returns true when this projects loki logs bad request response a status code equal to that given
 func (o *ProjectsLokiLogsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the projects loki logs bad request response
+func (o *ProjectsLokiLogsBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectsLokiLogsBadRequest) Error() string {
@@ -217,6 +227,11 @@ func (o *ProjectsLokiLogsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the projects loki logs unauthorized response
+func (o *ProjectsLokiLogsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectsLokiLogsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsUnauthorized  %+v", 401, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *ProjectsLokiLogsForbidden) IsServerError() bool {
 // IsCode returns true when this projects loki logs forbidden response a status code equal to that given
 func (o *ProjectsLokiLogsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the projects loki logs forbidden response
+func (o *ProjectsLokiLogsForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectsLokiLogsForbidden) Error() string {
@@ -343,6 +363,11 @@ func (o *ProjectsLokiLogsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects loki logs not found response
+func (o *ProjectsLokiLogsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsLokiLogsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsNotFound  %+v", 404, o.Payload)
 }
@@ -403,6 +428,11 @@ func (o *ProjectsLokiLogsInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects loki logs internal server error response a status code equal to that given
 func (o *ProjectsLokiLogsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects loki logs internal server error response
+func (o *ProjectsLokiLogsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsLokiLogsInternalServerError) Error() string {

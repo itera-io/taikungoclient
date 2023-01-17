@@ -103,6 +103,11 @@ func (o *DocumentationListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the documentation list o k response
+func (o *DocumentationListOK) Code() int {
+	return 200
+}
+
 func (o *DocumentationListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Documentation][%d] documentationListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *DocumentationListBadRequest) IsServerError() bool {
 // IsCode returns true when this documentation list bad request response a status code equal to that given
 func (o *DocumentationListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the documentation list bad request response
+func (o *DocumentationListBadRequest) Code() int {
+	return 400
 }
 
 func (o *DocumentationListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *DocumentationListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the documentation list unauthorized response
+func (o *DocumentationListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *DocumentationListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Documentation][%d] documentationListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *DocumentationListForbidden) IsServerError() bool {
 // IsCode returns true when this documentation list forbidden response a status code equal to that given
 func (o *DocumentationListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the documentation list forbidden response
+func (o *DocumentationListForbidden) Code() int {
+	return 403
 }
 
 func (o *DocumentationListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *DocumentationListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the documentation list not found response
+func (o *DocumentationListNotFound) Code() int {
+	return 404
+}
+
 func (o *DocumentationListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Documentation][%d] documentationListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *DocumentationListInternalServerError) IsServerError() bool {
 // IsCode returns true when this documentation list internal server error response a status code equal to that given
 func (o *DocumentationListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the documentation list internal server error response
+func (o *DocumentationListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *DocumentationListInternalServerError) Error() string {

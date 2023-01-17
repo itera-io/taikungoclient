@@ -103,6 +103,11 @@ func (o *StandAloneProfileCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone profile create o k response
+func (o *StandAloneProfileCreateOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneProfileCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *StandAloneProfileCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone profile create bad request response a status code equal to that given
 func (o *StandAloneProfileCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone profile create bad request response
+func (o *StandAloneProfileCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneProfileCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *StandAloneProfileCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone profile create unauthorized response
+func (o *StandAloneProfileCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneProfileCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *StandAloneProfileCreateForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone profile create forbidden response a status code equal to that given
 func (o *StandAloneProfileCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone profile create forbidden response
+func (o *StandAloneProfileCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneProfileCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *StandAloneProfileCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone profile create not found response
+func (o *StandAloneProfileCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneProfileCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *StandAloneProfileCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone profile create internal server error response a status code equal to that given
 func (o *StandAloneProfileCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone profile create internal server error response
+func (o *StandAloneProfileCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneProfileCreateInternalServerError) Error() string {

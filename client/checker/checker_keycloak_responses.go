@@ -103,6 +103,11 @@ func (o *CheckerKeycloakOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker keycloak o k response
+func (o *CheckerKeycloakOK) Code() int {
+	return 200
+}
+
 func (o *CheckerKeycloakOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/keycloak][%d] checkerKeycloakOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CheckerKeycloakBadRequest) IsServerError() bool {
 // IsCode returns true when this checker keycloak bad request response a status code equal to that given
 func (o *CheckerKeycloakBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the checker keycloak bad request response
+func (o *CheckerKeycloakBadRequest) Code() int {
+	return 400
 }
 
 func (o *CheckerKeycloakBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CheckerKeycloakUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the checker keycloak unauthorized response
+func (o *CheckerKeycloakUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CheckerKeycloakUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/keycloak][%d] checkerKeycloakUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CheckerKeycloakForbidden) IsServerError() bool {
 // IsCode returns true when this checker keycloak forbidden response a status code equal to that given
 func (o *CheckerKeycloakForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the checker keycloak forbidden response
+func (o *CheckerKeycloakForbidden) Code() int {
+	return 403
 }
 
 func (o *CheckerKeycloakForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CheckerKeycloakNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker keycloak not found response
+func (o *CheckerKeycloakNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerKeycloakNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/keycloak][%d] checkerKeycloakNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerKeycloakInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker keycloak internal server error response a status code equal to that given
 func (o *CheckerKeycloakInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker keycloak internal server error response
+func (o *CheckerKeycloakInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerKeycloakInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *ProjectsPurgeWholeProjectOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects purge whole project o k response
+func (o *ProjectsPurgeWholeProjectOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsPurgeWholeProjectOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectsPurgeWholeProjectBadRequest) IsServerError() bool {
 // IsCode returns true when this projects purge whole project bad request response a status code equal to that given
 func (o *ProjectsPurgeWholeProjectBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the projects purge whole project bad request response
+func (o *ProjectsPurgeWholeProjectBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectsPurgeWholeProjectBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectsPurgeWholeProjectUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the projects purge whole project unauthorized response
+func (o *ProjectsPurgeWholeProjectUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectsPurgeWholeProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectsPurgeWholeProjectForbidden) IsServerError() bool {
 // IsCode returns true when this projects purge whole project forbidden response a status code equal to that given
 func (o *ProjectsPurgeWholeProjectForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the projects purge whole project forbidden response
+func (o *ProjectsPurgeWholeProjectForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectsPurgeWholeProjectForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectsPurgeWholeProjectNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects purge whole project not found response
+func (o *ProjectsPurgeWholeProjectNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsPurgeWholeProjectNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsPurgeWholeProjectInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects purge whole project internal server error response a status code equal to that given
 func (o *ProjectsPurgeWholeProjectInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects purge whole project internal server error response
+func (o *ProjectsPurgeWholeProjectInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsPurgeWholeProjectInternalServerError) Error() string {

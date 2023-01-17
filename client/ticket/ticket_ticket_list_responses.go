@@ -103,6 +103,11 @@ func (o *TicketTicketListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ticket ticket list o k response
+func (o *TicketTicketListOK) Code() int {
+	return 200
+}
+
 func (o *TicketTicketListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/list][%d] ticketTicketListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *TicketTicketListBadRequest) IsServerError() bool {
 // IsCode returns true when this ticket ticket list bad request response a status code equal to that given
 func (o *TicketTicketListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ticket ticket list bad request response
+func (o *TicketTicketListBadRequest) Code() int {
+	return 400
 }
 
 func (o *TicketTicketListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *TicketTicketListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ticket ticket list unauthorized response
+func (o *TicketTicketListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *TicketTicketListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/list][%d] ticketTicketListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *TicketTicketListForbidden) IsServerError() bool {
 // IsCode returns true when this ticket ticket list forbidden response a status code equal to that given
 func (o *TicketTicketListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ticket ticket list forbidden response
+func (o *TicketTicketListForbidden) Code() int {
+	return 403
 }
 
 func (o *TicketTicketListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *TicketTicketListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ticket ticket list not found response
+func (o *TicketTicketListNotFound) Code() int {
+	return 404
+}
+
 func (o *TicketTicketListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/list][%d] ticketTicketListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *TicketTicketListInternalServerError) IsServerError() bool {
 // IsCode returns true when this ticket ticket list internal server error response a status code equal to that given
 func (o *TicketTicketListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ticket ticket list internal server error response
+func (o *TicketTicketListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *TicketTicketListInternalServerError) Error() string {

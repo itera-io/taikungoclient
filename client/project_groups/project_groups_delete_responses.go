@@ -109,6 +109,11 @@ func (o *ProjectGroupsDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project groups delete o k response
+func (o *ProjectGroupsDeleteOK) Code() int {
+	return 200
+}
+
 func (o *ProjectGroupsDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *ProjectGroupsDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the project groups delete no content response
+func (o *ProjectGroupsDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *ProjectGroupsDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteNoContent ", 204)
 }
@@ -219,6 +229,11 @@ func (o *ProjectGroupsDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this project groups delete bad request response a status code equal to that given
 func (o *ProjectGroupsDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project groups delete bad request response
+func (o *ProjectGroupsDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectGroupsDeleteBadRequest) Error() string {
@@ -284,6 +299,11 @@ func (o *ProjectGroupsDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project groups delete unauthorized response
+func (o *ProjectGroupsDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectGroupsDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -345,6 +365,11 @@ func (o *ProjectGroupsDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this project groups delete forbidden response a status code equal to that given
 func (o *ProjectGroupsDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project groups delete forbidden response
+func (o *ProjectGroupsDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectGroupsDeleteForbidden) Error() string {
@@ -410,6 +435,11 @@ func (o *ProjectGroupsDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project groups delete not found response
+func (o *ProjectGroupsDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectGroupsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups][%d] projectGroupsDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *ProjectGroupsDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this project groups delete internal server error response a status code equal to that given
 func (o *ProjectGroupsDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project groups delete internal server error response
+func (o *ProjectGroupsDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectGroupsDeleteInternalServerError) Error() string {

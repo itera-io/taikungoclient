@@ -103,6 +103,11 @@ func (o *StandAloneActionsShelveOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone actions shelve o k response
+func (o *StandAloneActionsShelveOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneActionsShelveOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/shelve][%d] standAloneActionsShelveOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *StandAloneActionsShelveBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone actions shelve bad request response a status code equal to that given
 func (o *StandAloneActionsShelveBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone actions shelve bad request response
+func (o *StandAloneActionsShelveBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneActionsShelveBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *StandAloneActionsShelveUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone actions shelve unauthorized response
+func (o *StandAloneActionsShelveUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneActionsShelveUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/shelve][%d] standAloneActionsShelveUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *StandAloneActionsShelveForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone actions shelve forbidden response a status code equal to that given
 func (o *StandAloneActionsShelveForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone actions shelve forbidden response
+func (o *StandAloneActionsShelveForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneActionsShelveForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *StandAloneActionsShelveNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone actions shelve not found response
+func (o *StandAloneActionsShelveNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneActionsShelveNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/shelve][%d] standAloneActionsShelveNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneActionsShelveInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone actions shelve internal server error response a status code equal to that given
 func (o *StandAloneActionsShelveInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone actions shelve internal server error response
+func (o *StandAloneActionsShelveInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneActionsShelveInternalServerError) Error() string {

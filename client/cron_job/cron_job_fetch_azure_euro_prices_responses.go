@@ -103,6 +103,11 @@ func (o *CronJobFetchAzureEuroPricesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job fetch azure euro prices o k response
+func (o *CronJobFetchAzureEuroPricesOK) Code() int {
+	return 200
+}
+
 func (o *CronJobFetchAzureEuroPricesOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-euro-prices][%d] cronJobFetchAzureEuroPricesOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobFetchAzureEuroPricesBadRequest) IsServerError() bool {
 // IsCode returns true when this cron job fetch azure euro prices bad request response a status code equal to that given
 func (o *CronJobFetchAzureEuroPricesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job fetch azure euro prices bad request response
+func (o *CronJobFetchAzureEuroPricesBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobFetchAzureEuroPricesBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobFetchAzureEuroPricesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cron job fetch azure euro prices unauthorized response
+func (o *CronJobFetchAzureEuroPricesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobFetchAzureEuroPricesUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-euro-prices][%d] cronJobFetchAzureEuroPricesUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobFetchAzureEuroPricesForbidden) IsServerError() bool {
 // IsCode returns true when this cron job fetch azure euro prices forbidden response a status code equal to that given
 func (o *CronJobFetchAzureEuroPricesForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job fetch azure euro prices forbidden response
+func (o *CronJobFetchAzureEuroPricesForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobFetchAzureEuroPricesForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobFetchAzureEuroPricesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job fetch azure euro prices not found response
+func (o *CronJobFetchAzureEuroPricesNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobFetchAzureEuroPricesNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-euro-prices][%d] cronJobFetchAzureEuroPricesNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobFetchAzureEuroPricesInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job fetch azure euro prices internal server error response a status code equal to that given
 func (o *CronJobFetchAzureEuroPricesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job fetch azure euro prices internal server error response
+func (o *CronJobFetchAzureEuroPricesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobFetchAzureEuroPricesInternalServerError) Error() string {

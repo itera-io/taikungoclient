@@ -103,6 +103,11 @@ func (o *AlertingProfilesAssignWebhooksOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting profiles assign webhooks o k response
+func (o *AlertingProfilesAssignWebhooksOK) Code() int {
+	return 200
+}
+
 func (o *AlertingProfilesAssignWebhooksOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignwebhooks/{id}][%d] alertingProfilesAssignWebhooksOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AlertingProfilesAssignWebhooksBadRequest) IsServerError() bool {
 // IsCode returns true when this alerting profiles assign webhooks bad request response a status code equal to that given
 func (o *AlertingProfilesAssignWebhooksBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the alerting profiles assign webhooks bad request response
+func (o *AlertingProfilesAssignWebhooksBadRequest) Code() int {
+	return 400
 }
 
 func (o *AlertingProfilesAssignWebhooksBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AlertingProfilesAssignWebhooksUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the alerting profiles assign webhooks unauthorized response
+func (o *AlertingProfilesAssignWebhooksUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AlertingProfilesAssignWebhooksUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignwebhooks/{id}][%d] alertingProfilesAssignWebhooksUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AlertingProfilesAssignWebhooksForbidden) IsServerError() bool {
 // IsCode returns true when this alerting profiles assign webhooks forbidden response a status code equal to that given
 func (o *AlertingProfilesAssignWebhooksForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the alerting profiles assign webhooks forbidden response
+func (o *AlertingProfilesAssignWebhooksForbidden) Code() int {
+	return 403
 }
 
 func (o *AlertingProfilesAssignWebhooksForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AlertingProfilesAssignWebhooksNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting profiles assign webhooks not found response
+func (o *AlertingProfilesAssignWebhooksNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingProfilesAssignWebhooksNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignwebhooks/{id}][%d] alertingProfilesAssignWebhooksNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AlertingProfilesAssignWebhooksInternalServerError) IsServerError() bool
 // IsCode returns true when this alerting profiles assign webhooks internal server error response a status code equal to that given
 func (o *AlertingProfilesAssignWebhooksInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting profiles assign webhooks internal server error response
+func (o *AlertingProfilesAssignWebhooksInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingProfilesAssignWebhooksInternalServerError) Error() string {

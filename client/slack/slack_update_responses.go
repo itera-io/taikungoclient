@@ -103,6 +103,11 @@ func (o *SlackUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the slack update o k response
+func (o *SlackUpdateOK) Code() int {
+	return 200
+}
+
 func (o *SlackUpdateOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *SlackUpdateBadRequest) IsServerError() bool {
 // IsCode returns true when this slack update bad request response a status code equal to that given
 func (o *SlackUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the slack update bad request response
+func (o *SlackUpdateBadRequest) Code() int {
+	return 400
 }
 
 func (o *SlackUpdateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *SlackUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the slack update unauthorized response
+func (o *SlackUpdateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SlackUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *SlackUpdateForbidden) IsServerError() bool {
 // IsCode returns true when this slack update forbidden response a status code equal to that given
 func (o *SlackUpdateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the slack update forbidden response
+func (o *SlackUpdateForbidden) Code() int {
+	return 403
 }
 
 func (o *SlackUpdateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *SlackUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the slack update not found response
+func (o *SlackUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *SlackUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *SlackUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this slack update internal server error response a status code equal to that given
 func (o *SlackUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the slack update internal server error response
+func (o *SlackUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SlackUpdateInternalServerError) Error() string {

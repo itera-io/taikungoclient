@@ -103,6 +103,11 @@ func (o *CloudCredentialsForProjectOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cloud credentials for project o k response
+func (o *CloudCredentialsForProjectOK) Code() int {
+	return 200
+}
+
 func (o *CloudCredentialsForProjectOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CloudCredentialsForProjectBadRequest) IsServerError() bool {
 // IsCode returns true when this cloud credentials for project bad request response a status code equal to that given
 func (o *CloudCredentialsForProjectBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cloud credentials for project bad request response
+func (o *CloudCredentialsForProjectBadRequest) Code() int {
+	return 400
 }
 
 func (o *CloudCredentialsForProjectBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *CloudCredentialsForProjectUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cloud credentials for project unauthorized response
+func (o *CloudCredentialsForProjectUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CloudCredentialsForProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *CloudCredentialsForProjectForbidden) IsServerError() bool {
 // IsCode returns true when this cloud credentials for project forbidden response a status code equal to that given
 func (o *CloudCredentialsForProjectForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cloud credentials for project forbidden response
+func (o *CloudCredentialsForProjectForbidden) Code() int {
+	return 403
 }
 
 func (o *CloudCredentialsForProjectForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *CloudCredentialsForProjectNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cloud credentials for project not found response
+func (o *CloudCredentialsForProjectNotFound) Code() int {
+	return 404
+}
+
 func (o *CloudCredentialsForProjectNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *CloudCredentialsForProjectInternalServerError) IsServerError() bool {
 // IsCode returns true when this cloud credentials for project internal server error response a status code equal to that given
 func (o *CloudCredentialsForProjectInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cloud credentials for project internal server error response
+func (o *CloudCredentialsForProjectInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CloudCredentialsForProjectInternalServerError) Error() string {

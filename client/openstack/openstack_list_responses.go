@@ -103,6 +103,11 @@ func (o *OpenstackListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the openstack list o k response
+func (o *OpenstackListOK) Code() int {
+	return 200
+}
+
 func (o *OpenstackListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *OpenstackListBadRequest) IsServerError() bool {
 // IsCode returns true when this openstack list bad request response a status code equal to that given
 func (o *OpenstackListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the openstack list bad request response
+func (o *OpenstackListBadRequest) Code() int {
+	return 400
 }
 
 func (o *OpenstackListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *OpenstackListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the openstack list unauthorized response
+func (o *OpenstackListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OpenstackListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *OpenstackListForbidden) IsServerError() bool {
 // IsCode returns true when this openstack list forbidden response a status code equal to that given
 func (o *OpenstackListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the openstack list forbidden response
+func (o *OpenstackListForbidden) Code() int {
+	return 403
 }
 
 func (o *OpenstackListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *OpenstackListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the openstack list not found response
+func (o *OpenstackListNotFound) Code() int {
+	return 404
+}
+
 func (o *OpenstackListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *OpenstackListInternalServerError) IsServerError() bool {
 // IsCode returns true when this openstack list internal server error response a status code equal to that given
 func (o *OpenstackListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the openstack list internal server error response
+func (o *OpenstackListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpenstackListInternalServerError) Error() string {

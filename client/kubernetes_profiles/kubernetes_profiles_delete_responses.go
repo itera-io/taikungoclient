@@ -109,6 +109,11 @@ func (o *KubernetesProfilesDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes profiles delete o k response
+func (o *KubernetesProfilesDeleteOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesProfilesDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *KubernetesProfilesDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the kubernetes profiles delete no content response
+func (o *KubernetesProfilesDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *KubernetesProfilesDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteNoContent ", 204)
 }
@@ -219,6 +229,11 @@ func (o *KubernetesProfilesDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes profiles delete bad request response a status code equal to that given
 func (o *KubernetesProfilesDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes profiles delete bad request response
+func (o *KubernetesProfilesDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesProfilesDeleteBadRequest) Error() string {
@@ -284,6 +299,11 @@ func (o *KubernetesProfilesDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes profiles delete unauthorized response
+func (o *KubernetesProfilesDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesProfilesDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -345,6 +365,11 @@ func (o *KubernetesProfilesDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes profiles delete forbidden response a status code equal to that given
 func (o *KubernetesProfilesDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes profiles delete forbidden response
+func (o *KubernetesProfilesDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesProfilesDeleteForbidden) Error() string {
@@ -410,6 +435,11 @@ func (o *KubernetesProfilesDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes profiles delete not found response
+func (o *KubernetesProfilesDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesProfilesDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *KubernetesProfilesDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes profiles delete internal server error response a status code equal to that given
 func (o *KubernetesProfilesDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes profiles delete internal server error response
+func (o *KubernetesProfilesDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesProfilesDeleteInternalServerError) Error() string {

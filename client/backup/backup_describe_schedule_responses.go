@@ -103,6 +103,11 @@ func (o *BackupDescribeScheduleOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the backup describe schedule o k response
+func (o *BackupDescribeScheduleOK) Code() int {
+	return 200
+}
+
 func (o *BackupDescribeScheduleOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *BackupDescribeScheduleBadRequest) IsServerError() bool {
 // IsCode returns true when this backup describe schedule bad request response a status code equal to that given
 func (o *BackupDescribeScheduleBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the backup describe schedule bad request response
+func (o *BackupDescribeScheduleBadRequest) Code() int {
+	return 400
 }
 
 func (o *BackupDescribeScheduleBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *BackupDescribeScheduleUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the backup describe schedule unauthorized response
+func (o *BackupDescribeScheduleUnauthorized) Code() int {
+	return 401
+}
+
 func (o *BackupDescribeScheduleUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *BackupDescribeScheduleForbidden) IsServerError() bool {
 // IsCode returns true when this backup describe schedule forbidden response a status code equal to that given
 func (o *BackupDescribeScheduleForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the backup describe schedule forbidden response
+func (o *BackupDescribeScheduleForbidden) Code() int {
+	return 403
 }
 
 func (o *BackupDescribeScheduleForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *BackupDescribeScheduleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the backup describe schedule not found response
+func (o *BackupDescribeScheduleNotFound) Code() int {
+	return 404
+}
+
 func (o *BackupDescribeScheduleNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *BackupDescribeScheduleInternalServerError) IsServerError() bool {
 // IsCode returns true when this backup describe schedule internal server error response a status code equal to that given
 func (o *BackupDescribeScheduleInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the backup describe schedule internal server error response
+func (o *BackupDescribeScheduleInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BackupDescribeScheduleInternalServerError) Error() string {

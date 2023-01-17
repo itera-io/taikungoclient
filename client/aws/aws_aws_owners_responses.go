@@ -103,6 +103,11 @@ func (o *AwsAwsOwnersOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the aws aws owners o k response
+func (o *AwsAwsOwnersOK) Code() int {
+	return 200
+}
+
 func (o *AwsAwsOwnersOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AwsAwsOwnersBadRequest) IsServerError() bool {
 // IsCode returns true when this aws aws owners bad request response a status code equal to that given
 func (o *AwsAwsOwnersBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the aws aws owners bad request response
+func (o *AwsAwsOwnersBadRequest) Code() int {
+	return 400
 }
 
 func (o *AwsAwsOwnersBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AwsAwsOwnersUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the aws aws owners unauthorized response
+func (o *AwsAwsOwnersUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AwsAwsOwnersUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AwsAwsOwnersForbidden) IsServerError() bool {
 // IsCode returns true when this aws aws owners forbidden response a status code equal to that given
 func (o *AwsAwsOwnersForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the aws aws owners forbidden response
+func (o *AwsAwsOwnersForbidden) Code() int {
+	return 403
 }
 
 func (o *AwsAwsOwnersForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AwsAwsOwnersNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the aws aws owners not found response
+func (o *AwsAwsOwnersNotFound) Code() int {
+	return 404
+}
+
 func (o *AwsAwsOwnersNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AwsAwsOwnersInternalServerError) IsServerError() bool {
 // IsCode returns true when this aws aws owners internal server error response a status code equal to that given
 func (o *AwsAwsOwnersInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the aws aws owners internal server error response
+func (o *AwsAwsOwnersInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AwsAwsOwnersInternalServerError) Error() string {

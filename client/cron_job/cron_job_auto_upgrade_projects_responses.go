@@ -103,6 +103,11 @@ func (o *CronJobAutoUpgradeProjectsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job auto upgrade projects o k response
+func (o *CronJobAutoUpgradeProjectsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobAutoUpgradeProjectsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobAutoUpgradeProjectsBadRequest) IsServerError() bool {
 // IsCode returns true when this cron job auto upgrade projects bad request response a status code equal to that given
 func (o *CronJobAutoUpgradeProjectsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job auto upgrade projects bad request response
+func (o *CronJobAutoUpgradeProjectsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobAutoUpgradeProjectsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobAutoUpgradeProjectsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cron job auto upgrade projects unauthorized response
+func (o *CronJobAutoUpgradeProjectsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobAutoUpgradeProjectsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobAutoUpgradeProjectsForbidden) IsServerError() bool {
 // IsCode returns true when this cron job auto upgrade projects forbidden response a status code equal to that given
 func (o *CronJobAutoUpgradeProjectsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job auto upgrade projects forbidden response
+func (o *CronJobAutoUpgradeProjectsForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobAutoUpgradeProjectsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobAutoUpgradeProjectsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job auto upgrade projects not found response
+func (o *CronJobAutoUpgradeProjectsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobAutoUpgradeProjectsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobAutoUpgradeProjectsInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job auto upgrade projects internal server error response a status code equal to that given
 func (o *CronJobAutoUpgradeProjectsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job auto upgrade projects internal server error response
+func (o *CronJobAutoUpgradeProjectsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobAutoUpgradeProjectsInternalServerError) Error() string {

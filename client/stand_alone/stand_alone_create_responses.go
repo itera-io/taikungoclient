@@ -103,6 +103,11 @@ func (o *StandAloneCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone create o k response
+func (o *StandAloneCreateOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/create][%d] standAloneCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *StandAloneCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone create bad request response a status code equal to that given
 func (o *StandAloneCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone create bad request response
+func (o *StandAloneCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *StandAloneCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone create unauthorized response
+func (o *StandAloneCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/create][%d] standAloneCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *StandAloneCreateForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone create forbidden response a status code equal to that given
 func (o *StandAloneCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone create forbidden response
+func (o *StandAloneCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *StandAloneCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone create not found response
+func (o *StandAloneCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/create][%d] standAloneCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *StandAloneCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone create internal server error response a status code equal to that given
 func (o *StandAloneCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone create internal server error response
+func (o *StandAloneCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneCreateInternalServerError) Error() string {

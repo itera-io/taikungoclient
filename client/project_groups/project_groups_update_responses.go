@@ -103,6 +103,11 @@ func (o *ProjectGroupsUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project groups update o k response
+func (o *ProjectGroupsUpdateOK) Code() int {
+	return 200
+}
+
 func (o *ProjectGroupsUpdateOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/ProjectGroups/update][%d] projectGroupsUpdateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectGroupsUpdateBadRequest) IsServerError() bool {
 // IsCode returns true when this project groups update bad request response a status code equal to that given
 func (o *ProjectGroupsUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project groups update bad request response
+func (o *ProjectGroupsUpdateBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectGroupsUpdateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectGroupsUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project groups update unauthorized response
+func (o *ProjectGroupsUpdateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectGroupsUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/ProjectGroups/update][%d] projectGroupsUpdateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectGroupsUpdateForbidden) IsServerError() bool {
 // IsCode returns true when this project groups update forbidden response a status code equal to that given
 func (o *ProjectGroupsUpdateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project groups update forbidden response
+func (o *ProjectGroupsUpdateForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectGroupsUpdateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectGroupsUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project groups update not found response
+func (o *ProjectGroupsUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectGroupsUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/ProjectGroups/update][%d] projectGroupsUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectGroupsUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this project groups update internal server error response a status code equal to that given
 func (o *ProjectGroupsUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project groups update internal server error response
+func (o *ProjectGroupsUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectGroupsUpdateInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *SecurityGroupDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the security group delete o k response
+func (o *SecurityGroupDeleteOK) Code() int {
+	return 200
+}
+
 func (o *SecurityGroupDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *SecurityGroupDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this security group delete bad request response a status code equal to that given
 func (o *SecurityGroupDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the security group delete bad request response
+func (o *SecurityGroupDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *SecurityGroupDeleteBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *SecurityGroupDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the security group delete unauthorized response
+func (o *SecurityGroupDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SecurityGroupDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *SecurityGroupDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this security group delete forbidden response a status code equal to that given
 func (o *SecurityGroupDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the security group delete forbidden response
+func (o *SecurityGroupDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *SecurityGroupDeleteForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *SecurityGroupDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the security group delete not found response
+func (o *SecurityGroupDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *SecurityGroupDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *SecurityGroupDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this security group delete internal server error response a status code equal to that given
 func (o *SecurityGroupDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the security group delete internal server error response
+func (o *SecurityGroupDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SecurityGroupDeleteInternalServerError) Error() string {

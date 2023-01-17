@@ -103,6 +103,11 @@ func (o *StandAloneActionsStartOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone actions start o k response
+func (o *StandAloneActionsStartOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneActionsStartOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/start][%d] standAloneActionsStartOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *StandAloneActionsStartBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone actions start bad request response a status code equal to that given
 func (o *StandAloneActionsStartBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone actions start bad request response
+func (o *StandAloneActionsStartBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneActionsStartBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *StandAloneActionsStartUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone actions start unauthorized response
+func (o *StandAloneActionsStartUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneActionsStartUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/start][%d] standAloneActionsStartUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *StandAloneActionsStartForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone actions start forbidden response a status code equal to that given
 func (o *StandAloneActionsStartForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone actions start forbidden response
+func (o *StandAloneActionsStartForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneActionsStartForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *StandAloneActionsStartNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone actions start not found response
+func (o *StandAloneActionsStartNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneActionsStartNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/start][%d] standAloneActionsStartNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneActionsStartInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone actions start internal server error response a status code equal to that given
 func (o *StandAloneActionsStartInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone actions start internal server error response
+func (o *StandAloneActionsStartInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneActionsStartInternalServerError) Error() string {

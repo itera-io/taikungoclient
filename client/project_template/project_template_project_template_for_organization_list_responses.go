@@ -103,6 +103,11 @@ func (o *ProjectTemplateProjectTemplateForOrganizationListOK) IsCode(code int) b
 	return code == 200
 }
 
+// Code gets the status code for the project template project template for organization list o k response
+func (o *ProjectTemplateProjectTemplateForOrganizationListOK) Code() int {
+	return 200
+}
+
 func (o *ProjectTemplateProjectTemplateForOrganizationListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectTemplate/list][%d] projectTemplateProjectTemplateForOrganizationListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectTemplateProjectTemplateForOrganizationListBadRequest) IsServerEr
 // IsCode returns true when this project template project template for organization list bad request response a status code equal to that given
 func (o *ProjectTemplateProjectTemplateForOrganizationListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project template project template for organization list bad request response
+func (o *ProjectTemplateProjectTemplateForOrganizationListBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectTemplateProjectTemplateForOrganizationListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectTemplateProjectTemplateForOrganizationListUnauthorized) IsCode(c
 	return code == 401
 }
 
+// Code gets the status code for the project template project template for organization list unauthorized response
+func (o *ProjectTemplateProjectTemplateForOrganizationListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectTemplateProjectTemplateForOrganizationListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectTemplate/list][%d] projectTemplateProjectTemplateForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectTemplateProjectTemplateForOrganizationListForbidden) IsServerErr
 // IsCode returns true when this project template project template for organization list forbidden response a status code equal to that given
 func (o *ProjectTemplateProjectTemplateForOrganizationListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project template project template for organization list forbidden response
+func (o *ProjectTemplateProjectTemplateForOrganizationListForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectTemplateProjectTemplateForOrganizationListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectTemplateProjectTemplateForOrganizationListNotFound) IsCode(code 
 	return code == 404
 }
 
+// Code gets the status code for the project template project template for organization list not found response
+func (o *ProjectTemplateProjectTemplateForOrganizationListNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectTemplateProjectTemplateForOrganizationListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectTemplate/list][%d] projectTemplateProjectTemplateForOrganizationListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectTemplateProjectTemplateForOrganizationListInternalServerError) I
 // IsCode returns true when this project template project template for organization list internal server error response a status code equal to that given
 func (o *ProjectTemplateProjectTemplateForOrganizationListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project template project template for organization list internal server error response
+func (o *ProjectTemplateProjectTemplateForOrganizationListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectTemplateProjectTemplateForOrganizationListInternalServerError) Error() string {

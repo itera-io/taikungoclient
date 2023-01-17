@@ -109,6 +109,11 @@ func (o *AlertingIntegrationsDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting integrations delete o k response
+func (o *AlertingIntegrationsDeleteOK) Code() int {
+	return 200
+}
+
 func (o *AlertingIntegrationsDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *AlertingIntegrationsDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the alerting integrations delete no content response
+func (o *AlertingIntegrationsDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *AlertingIntegrationsDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteNoContent ", 204)
 }
@@ -219,6 +229,11 @@ func (o *AlertingIntegrationsDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this alerting integrations delete bad request response a status code equal to that given
 func (o *AlertingIntegrationsDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the alerting integrations delete bad request response
+func (o *AlertingIntegrationsDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *AlertingIntegrationsDeleteBadRequest) Error() string {
@@ -284,6 +299,11 @@ func (o *AlertingIntegrationsDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the alerting integrations delete unauthorized response
+func (o *AlertingIntegrationsDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AlertingIntegrationsDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -345,6 +365,11 @@ func (o *AlertingIntegrationsDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this alerting integrations delete forbidden response a status code equal to that given
 func (o *AlertingIntegrationsDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the alerting integrations delete forbidden response
+func (o *AlertingIntegrationsDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *AlertingIntegrationsDeleteForbidden) Error() string {
@@ -410,6 +435,11 @@ func (o *AlertingIntegrationsDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting integrations delete not found response
+func (o *AlertingIntegrationsDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingIntegrationsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *AlertingIntegrationsDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this alerting integrations delete internal server error response a status code equal to that given
 func (o *AlertingIntegrationsDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting integrations delete internal server error response
+func (o *AlertingIntegrationsDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingIntegrationsDeleteInternalServerError) Error() string {

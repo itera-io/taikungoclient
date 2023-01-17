@@ -103,6 +103,11 @@ func (o *RepositoryCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the repository create o k response
+func (o *RepositoryCreateOK) Code() int {
+	return 200
+}
+
 func (o *RepositoryCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/bind][%d] repositoryCreateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *RepositoryCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this repository create bad request response a status code equal to that given
 func (o *RepositoryCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the repository create bad request response
+func (o *RepositoryCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *RepositoryCreateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *RepositoryCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the repository create unauthorized response
+func (o *RepositoryCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *RepositoryCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/bind][%d] repositoryCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *RepositoryCreateForbidden) IsServerError() bool {
 // IsCode returns true when this repository create forbidden response a status code equal to that given
 func (o *RepositoryCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the repository create forbidden response
+func (o *RepositoryCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *RepositoryCreateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *RepositoryCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the repository create not found response
+func (o *RepositoryCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *RepositoryCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/bind][%d] repositoryCreateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *RepositoryCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this repository create internal server error response a status code equal to that given
 func (o *RepositoryCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the repository create internal server error response
+func (o *RepositoryCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *RepositoryCreateInternalServerError) Error() string {

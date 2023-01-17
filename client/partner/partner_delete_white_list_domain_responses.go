@@ -103,6 +103,11 @@ func (o *PartnerDeleteWhiteListDomainOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the partner delete white list domain o k response
+func (o *PartnerDeleteWhiteListDomainOK) Code() int {
+	return 200
+}
+
 func (o *PartnerDeleteWhiteListDomainOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *PartnerDeleteWhiteListDomainBadRequest) IsServerError() bool {
 // IsCode returns true when this partner delete white list domain bad request response a status code equal to that given
 func (o *PartnerDeleteWhiteListDomainBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the partner delete white list domain bad request response
+func (o *PartnerDeleteWhiteListDomainBadRequest) Code() int {
+	return 400
 }
 
 func (o *PartnerDeleteWhiteListDomainBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *PartnerDeleteWhiteListDomainUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the partner delete white list domain unauthorized response
+func (o *PartnerDeleteWhiteListDomainUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PartnerDeleteWhiteListDomainUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *PartnerDeleteWhiteListDomainForbidden) IsServerError() bool {
 // IsCode returns true when this partner delete white list domain forbidden response a status code equal to that given
 func (o *PartnerDeleteWhiteListDomainForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the partner delete white list domain forbidden response
+func (o *PartnerDeleteWhiteListDomainForbidden) Code() int {
+	return 403
 }
 
 func (o *PartnerDeleteWhiteListDomainForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *PartnerDeleteWhiteListDomainNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the partner delete white list domain not found response
+func (o *PartnerDeleteWhiteListDomainNotFound) Code() int {
+	return 404
+}
+
 func (o *PartnerDeleteWhiteListDomainNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PartnerDeleteWhiteListDomainInternalServerError) IsServerError() bool {
 // IsCode returns true when this partner delete white list domain internal server error response a status code equal to that given
 func (o *PartnerDeleteWhiteListDomainInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the partner delete white list domain internal server error response
+func (o *PartnerDeleteWhiteListDomainInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PartnerDeleteWhiteListDomainInternalServerError) Error() string {

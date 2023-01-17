@@ -103,6 +103,11 @@ func (o *AwsUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the aws update o k response
+func (o *AwsUpdateOK) Code() int {
+	return 200
+}
+
 func (o *AwsUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AwsUpdateBadRequest) IsServerError() bool {
 // IsCode returns true when this aws update bad request response a status code equal to that given
 func (o *AwsUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the aws update bad request response
+func (o *AwsUpdateBadRequest) Code() int {
+	return 400
 }
 
 func (o *AwsUpdateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AwsUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the aws update unauthorized response
+func (o *AwsUpdateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AwsUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AwsUpdateForbidden) IsServerError() bool {
 // IsCode returns true when this aws update forbidden response a status code equal to that given
 func (o *AwsUpdateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the aws update forbidden response
+func (o *AwsUpdateForbidden) Code() int {
+	return 403
 }
 
 func (o *AwsUpdateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AwsUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the aws update not found response
+func (o *AwsUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *AwsUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AwsUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this aws update internal server error response a status code equal to that given
 func (o *AwsUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the aws update internal server error response
+func (o *AwsUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AwsUpdateInternalServerError) Error() string {

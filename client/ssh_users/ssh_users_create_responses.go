@@ -103,6 +103,11 @@ func (o *SSHUsersCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ssh users create o k response
+func (o *SSHUsersCreateOK) Code() int {
+	return 200
+}
+
 func (o *SSHUsersCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/create][%d] sshUsersCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SSHUsersCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this ssh users create bad request response a status code equal to that given
 func (o *SSHUsersCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ssh users create bad request response
+func (o *SSHUsersCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *SSHUsersCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SSHUsersCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ssh users create unauthorized response
+func (o *SSHUsersCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SSHUsersCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/create][%d] sshUsersCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SSHUsersCreateForbidden) IsServerError() bool {
 // IsCode returns true when this ssh users create forbidden response a status code equal to that given
 func (o *SSHUsersCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ssh users create forbidden response
+func (o *SSHUsersCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *SSHUsersCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SSHUsersCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ssh users create not found response
+func (o *SSHUsersCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *SSHUsersCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/create][%d] sshUsersCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SSHUsersCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this ssh users create internal server error response a status code equal to that given
 func (o *SSHUsersCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ssh users create internal server error response
+func (o *SSHUsersCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SSHUsersCreateInternalServerError) Error() string {

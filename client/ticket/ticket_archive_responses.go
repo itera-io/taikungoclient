@@ -103,6 +103,11 @@ func (o *TicketArchiveOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ticket archive o k response
+func (o *TicketArchiveOK) Code() int {
+	return 200
+}
+
 func (o *TicketArchiveOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/archive][%d] ticketArchiveOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *TicketArchiveBadRequest) IsServerError() bool {
 // IsCode returns true when this ticket archive bad request response a status code equal to that given
 func (o *TicketArchiveBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ticket archive bad request response
+func (o *TicketArchiveBadRequest) Code() int {
+	return 400
 }
 
 func (o *TicketArchiveBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *TicketArchiveUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ticket archive unauthorized response
+func (o *TicketArchiveUnauthorized) Code() int {
+	return 401
+}
+
 func (o *TicketArchiveUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/archive][%d] ticketArchiveUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *TicketArchiveForbidden) IsServerError() bool {
 // IsCode returns true when this ticket archive forbidden response a status code equal to that given
 func (o *TicketArchiveForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ticket archive forbidden response
+func (o *TicketArchiveForbidden) Code() int {
+	return 403
 }
 
 func (o *TicketArchiveForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *TicketArchiveNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ticket archive not found response
+func (o *TicketArchiveNotFound) Code() int {
+	return 404
+}
+
 func (o *TicketArchiveNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/archive][%d] ticketArchiveNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *TicketArchiveInternalServerError) IsServerError() bool {
 // IsCode returns true when this ticket archive internal server error response a status code equal to that given
 func (o *TicketArchiveInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ticket archive internal server error response
+func (o *TicketArchiveInternalServerError) Code() int {
+	return 500
 }
 
 func (o *TicketArchiveInternalServerError) Error() string {

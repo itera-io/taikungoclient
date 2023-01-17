@@ -103,6 +103,11 @@ func (o *ImagesGetSelectedImagesForProjectOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the images get selected images for project o k response
+func (o *ImagesGetSelectedImagesForProjectOK) Code() int {
+	return 200
+}
+
 func (o *ImagesGetSelectedImagesForProjectOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/projects/list][%d] imagesGetSelectedImagesForProjectOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ImagesGetSelectedImagesForProjectBadRequest) IsServerError() bool {
 // IsCode returns true when this images get selected images for project bad request response a status code equal to that given
 func (o *ImagesGetSelectedImagesForProjectBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the images get selected images for project bad request response
+func (o *ImagesGetSelectedImagesForProjectBadRequest) Code() int {
+	return 400
 }
 
 func (o *ImagesGetSelectedImagesForProjectBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ImagesGetSelectedImagesForProjectUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the images get selected images for project unauthorized response
+func (o *ImagesGetSelectedImagesForProjectUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ImagesGetSelectedImagesForProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/projects/list][%d] imagesGetSelectedImagesForProjectUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ImagesGetSelectedImagesForProjectForbidden) IsServerError() bool {
 // IsCode returns true when this images get selected images for project forbidden response a status code equal to that given
 func (o *ImagesGetSelectedImagesForProjectForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the images get selected images for project forbidden response
+func (o *ImagesGetSelectedImagesForProjectForbidden) Code() int {
+	return 403
 }
 
 func (o *ImagesGetSelectedImagesForProjectForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ImagesGetSelectedImagesForProjectNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the images get selected images for project not found response
+func (o *ImagesGetSelectedImagesForProjectNotFound) Code() int {
+	return 404
+}
+
 func (o *ImagesGetSelectedImagesForProjectNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/projects/list][%d] imagesGetSelectedImagesForProjectNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ImagesGetSelectedImagesForProjectInternalServerError) IsServerError() b
 // IsCode returns true when this images get selected images for project internal server error response a status code equal to that given
 func (o *ImagesGetSelectedImagesForProjectInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the images get selected images for project internal server error response
+func (o *ImagesGetSelectedImagesForProjectInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ImagesGetSelectedImagesForProjectInternalServerError) Error() string {

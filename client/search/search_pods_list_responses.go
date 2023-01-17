@@ -103,6 +103,11 @@ func (o *SearchPodsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search pods list o k response
+func (o *SearchPodsListOK) Code() int {
+	return 200
+}
+
 func (o *SearchPodsListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SearchPodsListBadRequest) IsServerError() bool {
 // IsCode returns true when this search pods list bad request response a status code equal to that given
 func (o *SearchPodsListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the search pods list bad request response
+func (o *SearchPodsListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SearchPodsListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SearchPodsListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the search pods list unauthorized response
+func (o *SearchPodsListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SearchPodsListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SearchPodsListForbidden) IsServerError() bool {
 // IsCode returns true when this search pods list forbidden response a status code equal to that given
 func (o *SearchPodsListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the search pods list forbidden response
+func (o *SearchPodsListForbidden) Code() int {
+	return 403
 }
 
 func (o *SearchPodsListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SearchPodsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search pods list not found response
+func (o *SearchPodsListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchPodsListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchPodsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search pods list internal server error response a status code equal to that given
 func (o *SearchPodsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search pods list internal server error response
+func (o *SearchPodsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchPodsListInternalServerError) Error() string {

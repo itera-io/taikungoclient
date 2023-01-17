@@ -103,6 +103,11 @@ func (o *KubernetesPatchDeploymentOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes patch deployment o k response
+func (o *KubernetesPatchDeploymentOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesPatchDeploymentOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/deployment][%d] kubernetesPatchDeploymentOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesPatchDeploymentBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes patch deployment bad request response a status code equal to that given
 func (o *KubernetesPatchDeploymentBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes patch deployment bad request response
+func (o *KubernetesPatchDeploymentBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesPatchDeploymentBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesPatchDeploymentUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes patch deployment unauthorized response
+func (o *KubernetesPatchDeploymentUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesPatchDeploymentUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/deployment][%d] kubernetesPatchDeploymentUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesPatchDeploymentForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes patch deployment forbidden response a status code equal to that given
 func (o *KubernetesPatchDeploymentForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes patch deployment forbidden response
+func (o *KubernetesPatchDeploymentForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesPatchDeploymentForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesPatchDeploymentNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes patch deployment not found response
+func (o *KubernetesPatchDeploymentNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesPatchDeploymentNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/deployment][%d] kubernetesPatchDeploymentNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesPatchDeploymentInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes patch deployment internal server error response a status code equal to that given
 func (o *KubernetesPatchDeploymentInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes patch deployment internal server error response
+func (o *KubernetesPatchDeploymentInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesPatchDeploymentInternalServerError) Error() string {

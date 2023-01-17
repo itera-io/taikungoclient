@@ -103,6 +103,11 @@ func (o *ProjectQuotasListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project quotas list o k response
+func (o *ProjectQuotasListOK) Code() int {
+	return 200
+}
+
 func (o *ProjectQuotasListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ProjectQuotasListBadRequest) IsServerError() bool {
 // IsCode returns true when this project quotas list bad request response a status code equal to that given
 func (o *ProjectQuotasListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project quotas list bad request response
+func (o *ProjectQuotasListBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectQuotasListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ProjectQuotasListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project quotas list unauthorized response
+func (o *ProjectQuotasListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectQuotasListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ProjectQuotasListForbidden) IsServerError() bool {
 // IsCode returns true when this project quotas list forbidden response a status code equal to that given
 func (o *ProjectQuotasListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project quotas list forbidden response
+func (o *ProjectQuotasListForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectQuotasListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ProjectQuotasListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project quotas list not found response
+func (o *ProjectQuotasListNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectQuotasListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ProjectQuotasListInternalServerError) IsServerError() bool {
 // IsCode returns true when this project quotas list internal server error response a status code equal to that given
 func (o *ProjectQuotasListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project quotas list internal server error response
+func (o *ProjectQuotasListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectQuotasListInternalServerError) Error() string {

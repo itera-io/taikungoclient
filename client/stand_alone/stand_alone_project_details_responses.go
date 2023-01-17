@@ -103,6 +103,11 @@ func (o *StandAloneProjectDetailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone project details o k response
+func (o *StandAloneProjectDetailsOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneProjectDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *StandAloneProjectDetailsBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone project details bad request response a status code equal to that given
 func (o *StandAloneProjectDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone project details bad request response
+func (o *StandAloneProjectDetailsBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneProjectDetailsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *StandAloneProjectDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone project details unauthorized response
+func (o *StandAloneProjectDetailsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneProjectDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *StandAloneProjectDetailsForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone project details forbidden response a status code equal to that given
 func (o *StandAloneProjectDetailsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone project details forbidden response
+func (o *StandAloneProjectDetailsForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneProjectDetailsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *StandAloneProjectDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone project details not found response
+func (o *StandAloneProjectDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneProjectDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *StandAloneProjectDetailsInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone project details internal server error response a status code equal to that given
 func (o *StandAloneProjectDetailsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone project details internal server error response
+func (o *StandAloneProjectDetailsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneProjectDetailsInternalServerError) Error() string {

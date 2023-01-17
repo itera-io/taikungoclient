@@ -103,6 +103,11 @@ func (o *KubernetesExecCliOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes exec cli o k response
+func (o *KubernetesExecCliOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesExecCliOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesExecCliBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes exec cli bad request response a status code equal to that given
 func (o *KubernetesExecCliBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes exec cli bad request response
+func (o *KubernetesExecCliBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesExecCliBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesExecCliUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes exec cli unauthorized response
+func (o *KubernetesExecCliUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesExecCliUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesExecCliForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes exec cli forbidden response a status code equal to that given
 func (o *KubernetesExecCliForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes exec cli forbidden response
+func (o *KubernetesExecCliForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesExecCliForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesExecCliNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes exec cli not found response
+func (o *KubernetesExecCliNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesExecCliNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesExecCliInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes exec cli internal server error response a status code equal to that given
 func (o *KubernetesExecCliInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes exec cli internal server error response
+func (o *KubernetesExecCliInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesExecCliInternalServerError) Error() string {

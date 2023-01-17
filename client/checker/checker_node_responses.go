@@ -103,6 +103,11 @@ func (o *CheckerNodeOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker node o k response
+func (o *CheckerNodeOK) Code() int {
+	return 200
+}
+
 func (o *CheckerNodeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/node][%d] checkerNodeOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CheckerNodeBadRequest) IsServerError() bool {
 // IsCode returns true when this checker node bad request response a status code equal to that given
 func (o *CheckerNodeBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the checker node bad request response
+func (o *CheckerNodeBadRequest) Code() int {
+	return 400
 }
 
 func (o *CheckerNodeBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CheckerNodeUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the checker node unauthorized response
+func (o *CheckerNodeUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CheckerNodeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/node][%d] checkerNodeUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CheckerNodeForbidden) IsServerError() bool {
 // IsCode returns true when this checker node forbidden response a status code equal to that given
 func (o *CheckerNodeForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the checker node forbidden response
+func (o *CheckerNodeForbidden) Code() int {
+	return 403
 }
 
 func (o *CheckerNodeForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CheckerNodeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker node not found response
+func (o *CheckerNodeNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerNodeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/node][%d] checkerNodeNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerNodeInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker node internal server error response a status code equal to that given
 func (o *CheckerNodeInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker node internal server error response
+func (o *CheckerNodeInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerNodeInternalServerError) Error() string {

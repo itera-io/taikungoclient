@@ -103,6 +103,11 @@ func (o *AwsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the aws list o k response
+func (o *AwsListOK) Code() int {
+	return 200
+}
+
 func (o *AwsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/list][%d] awsListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AwsListBadRequest) IsServerError() bool {
 // IsCode returns true when this aws list bad request response a status code equal to that given
 func (o *AwsListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the aws list bad request response
+func (o *AwsListBadRequest) Code() int {
+	return 400
 }
 
 func (o *AwsListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *AwsListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the aws list unauthorized response
+func (o *AwsListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AwsListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/list][%d] awsListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *AwsListForbidden) IsServerError() bool {
 // IsCode returns true when this aws list forbidden response a status code equal to that given
 func (o *AwsListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the aws list forbidden response
+func (o *AwsListForbidden) Code() int {
+	return 403
 }
 
 func (o *AwsListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *AwsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the aws list not found response
+func (o *AwsListNotFound) Code() int {
+	return 404
+}
+
 func (o *AwsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/list][%d] awsListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AwsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this aws list internal server error response a status code equal to that given
 func (o *AwsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the aws list internal server error response
+func (o *AwsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AwsListInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *CheckerDNSOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker Dns o k response
+func (o *CheckerDNSOK) Code() int {
+	return 200
+}
+
 func (o *CheckerDNSOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/dns][%d] checkerDnsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CheckerDNSBadRequest) IsServerError() bool {
 // IsCode returns true when this checker Dns bad request response a status code equal to that given
 func (o *CheckerDNSBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the checker Dns bad request response
+func (o *CheckerDNSBadRequest) Code() int {
+	return 400
 }
 
 func (o *CheckerDNSBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CheckerDNSUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the checker Dns unauthorized response
+func (o *CheckerDNSUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CheckerDNSUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/dns][%d] checkerDnsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CheckerDNSForbidden) IsServerError() bool {
 // IsCode returns true when this checker Dns forbidden response a status code equal to that given
 func (o *CheckerDNSForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the checker Dns forbidden response
+func (o *CheckerDNSForbidden) Code() int {
+	return 403
 }
 
 func (o *CheckerDNSForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CheckerDNSNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker Dns not found response
+func (o *CheckerDNSNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerDNSNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/dns][%d] checkerDnsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerDNSInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker Dns internal server error response a status code equal to that given
 func (o *CheckerDNSInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker Dns internal server error response
+func (o *CheckerDNSInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerDNSInternalServerError) Error() string {

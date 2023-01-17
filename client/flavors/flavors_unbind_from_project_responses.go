@@ -103,6 +103,11 @@ func (o *FlavorsUnbindFromProjectOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the flavors unbind from project o k response
+func (o *FlavorsUnbindFromProjectOK) Code() int {
+	return 200
+}
+
 func (o *FlavorsUnbindFromProjectOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/unbind][%d] flavorsUnbindFromProjectOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *FlavorsUnbindFromProjectBadRequest) IsServerError() bool {
 // IsCode returns true when this flavors unbind from project bad request response a status code equal to that given
 func (o *FlavorsUnbindFromProjectBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the flavors unbind from project bad request response
+func (o *FlavorsUnbindFromProjectBadRequest) Code() int {
+	return 400
 }
 
 func (o *FlavorsUnbindFromProjectBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *FlavorsUnbindFromProjectUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the flavors unbind from project unauthorized response
+func (o *FlavorsUnbindFromProjectUnauthorized) Code() int {
+	return 401
+}
+
 func (o *FlavorsUnbindFromProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/unbind][%d] flavorsUnbindFromProjectUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *FlavorsUnbindFromProjectForbidden) IsServerError() bool {
 // IsCode returns true when this flavors unbind from project forbidden response a status code equal to that given
 func (o *FlavorsUnbindFromProjectForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the flavors unbind from project forbidden response
+func (o *FlavorsUnbindFromProjectForbidden) Code() int {
+	return 403
 }
 
 func (o *FlavorsUnbindFromProjectForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *FlavorsUnbindFromProjectNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the flavors unbind from project not found response
+func (o *FlavorsUnbindFromProjectNotFound) Code() int {
+	return 404
+}
+
 func (o *FlavorsUnbindFromProjectNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/unbind][%d] flavorsUnbindFromProjectNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *FlavorsUnbindFromProjectInternalServerError) IsServerError() bool {
 // IsCode returns true when this flavors unbind from project internal server error response a status code equal to that given
 func (o *FlavorsUnbindFromProjectInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the flavors unbind from project internal server error response
+func (o *FlavorsUnbindFromProjectInternalServerError) Code() int {
+	return 500
 }
 
 func (o *FlavorsUnbindFromProjectInternalServerError) Error() string {

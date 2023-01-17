@@ -103,6 +103,11 @@ func (o *UsersCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users create o k response
+func (o *UsersCreateOK) Code() int {
+	return 200
+}
+
 func (o *UsersCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *UsersCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this users create bad request response a status code equal to that given
 func (o *UsersCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the users create bad request response
+func (o *UsersCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *UsersCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *UsersCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the users create unauthorized response
+func (o *UsersCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UsersCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *UsersCreateForbidden) IsServerError() bool {
 // IsCode returns true when this users create forbidden response a status code equal to that given
 func (o *UsersCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the users create forbidden response
+func (o *UsersCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *UsersCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *UsersCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users create not found response
+func (o *UsersCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *UsersCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this users create internal server error response a status code equal to that given
 func (o *UsersCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users create internal server error response
+func (o *UsersCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersCreateInternalServerError) Error() string {

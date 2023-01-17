@@ -103,6 +103,11 @@ func (o *CheckerArtifactOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker artifact o k response
+func (o *CheckerArtifactOK) Code() int {
+	return 200
+}
+
 func (o *CheckerArtifactOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/artifact][%d] checkerArtifactOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CheckerArtifactBadRequest) IsServerError() bool {
 // IsCode returns true when this checker artifact bad request response a status code equal to that given
 func (o *CheckerArtifactBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the checker artifact bad request response
+func (o *CheckerArtifactBadRequest) Code() int {
+	return 400
 }
 
 func (o *CheckerArtifactBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CheckerArtifactUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the checker artifact unauthorized response
+func (o *CheckerArtifactUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CheckerArtifactUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/artifact][%d] checkerArtifactUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CheckerArtifactForbidden) IsServerError() bool {
 // IsCode returns true when this checker artifact forbidden response a status code equal to that given
 func (o *CheckerArtifactForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the checker artifact forbidden response
+func (o *CheckerArtifactForbidden) Code() int {
+	return 403
 }
 
 func (o *CheckerArtifactForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CheckerArtifactNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker artifact not found response
+func (o *CheckerArtifactNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerArtifactNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/artifact][%d] checkerArtifactNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerArtifactInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker artifact internal server error response a status code equal to that given
 func (o *CheckerArtifactInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker artifact internal server error response
+func (o *CheckerArtifactInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerArtifactInternalServerError) Error() string {

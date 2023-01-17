@@ -102,6 +102,11 @@ func (o *UsersExportCsvOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users export csv o k response
+func (o *UsersExportCsvOK) Code() int {
+	return 200
+}
+
 func (o *UsersExportCsvOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvOK ", 200)
 }
@@ -152,6 +157,11 @@ func (o *UsersExportCsvBadRequest) IsServerError() bool {
 // IsCode returns true when this users export csv bad request response a status code equal to that given
 func (o *UsersExportCsvBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the users export csv bad request response
+func (o *UsersExportCsvBadRequest) Code() int {
+	return 400
 }
 
 func (o *UsersExportCsvBadRequest) Error() string {
@@ -217,6 +227,11 @@ func (o *UsersExportCsvUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the users export csv unauthorized response
+func (o *UsersExportCsvUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UsersExportCsvUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvUnauthorized  %+v", 401, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *UsersExportCsvForbidden) IsServerError() bool {
 // IsCode returns true when this users export csv forbidden response a status code equal to that given
 func (o *UsersExportCsvForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the users export csv forbidden response
+func (o *UsersExportCsvForbidden) Code() int {
+	return 403
 }
 
 func (o *UsersExportCsvForbidden) Error() string {
@@ -343,6 +363,11 @@ func (o *UsersExportCsvNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users export csv not found response
+func (o *UsersExportCsvNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersExportCsvNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvNotFound  %+v", 404, o.Payload)
 }
@@ -403,6 +428,11 @@ func (o *UsersExportCsvInternalServerError) IsServerError() bool {
 // IsCode returns true when this users export csv internal server error response a status code equal to that given
 func (o *UsersExportCsvInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users export csv internal server error response
+func (o *UsersExportCsvInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersExportCsvInternalServerError) Error() string {

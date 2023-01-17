@@ -103,6 +103,11 @@ func (o *OpaProfilesCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the opa profiles create o k response
+func (o *OpaProfilesCreateOK) Code() int {
+	return 200
+}
+
 func (o *OpaProfilesCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *OpaProfilesCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this opa profiles create bad request response a status code equal to that given
 func (o *OpaProfilesCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the opa profiles create bad request response
+func (o *OpaProfilesCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *OpaProfilesCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *OpaProfilesCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the opa profiles create unauthorized response
+func (o *OpaProfilesCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OpaProfilesCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *OpaProfilesCreateForbidden) IsServerError() bool {
 // IsCode returns true when this opa profiles create forbidden response a status code equal to that given
 func (o *OpaProfilesCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the opa profiles create forbidden response
+func (o *OpaProfilesCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *OpaProfilesCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *OpaProfilesCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the opa profiles create not found response
+func (o *OpaProfilesCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *OpaProfilesCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *OpaProfilesCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this opa profiles create internal server error response a status code equal to that given
 func (o *OpaProfilesCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the opa profiles create internal server error response
+func (o *OpaProfilesCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpaProfilesCreateInternalServerError) Error() string {

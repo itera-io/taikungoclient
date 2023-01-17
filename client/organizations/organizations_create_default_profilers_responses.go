@@ -103,6 +103,11 @@ func (o *OrganizationsCreateDefaultProfilersOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organizations create default profilers o k response
+func (o *OrganizationsCreateDefaultProfilersOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationsCreateDefaultProfilersOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *OrganizationsCreateDefaultProfilersBadRequest) IsServerError() bool {
 // IsCode returns true when this organizations create default profilers bad request response a status code equal to that given
 func (o *OrganizationsCreateDefaultProfilersBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the organizations create default profilers bad request response
+func (o *OrganizationsCreateDefaultProfilersBadRequest) Code() int {
+	return 400
 }
 
 func (o *OrganizationsCreateDefaultProfilersBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *OrganizationsCreateDefaultProfilersUnauthorized) IsCode(code int) bool 
 	return code == 401
 }
 
+// Code gets the status code for the organizations create default profilers unauthorized response
+func (o *OrganizationsCreateDefaultProfilersUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OrganizationsCreateDefaultProfilersUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *OrganizationsCreateDefaultProfilersForbidden) IsServerError() bool {
 // IsCode returns true when this organizations create default profilers forbidden response a status code equal to that given
 func (o *OrganizationsCreateDefaultProfilersForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the organizations create default profilers forbidden response
+func (o *OrganizationsCreateDefaultProfilersForbidden) Code() int {
+	return 403
 }
 
 func (o *OrganizationsCreateDefaultProfilersForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *OrganizationsCreateDefaultProfilersNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organizations create default profilers not found response
+func (o *OrganizationsCreateDefaultProfilersNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationsCreateDefaultProfilersNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OrganizationsCreateDefaultProfilersInternalServerError) IsServerError()
 // IsCode returns true when this organizations create default profilers internal server error response a status code equal to that given
 func (o *OrganizationsCreateDefaultProfilersInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the organizations create default profilers internal server error response
+func (o *OrganizationsCreateDefaultProfilersInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrganizationsCreateDefaultProfilersInternalServerError) Error() string {

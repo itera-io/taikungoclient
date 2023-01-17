@@ -103,6 +103,11 @@ func (o *TicketCloseOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ticket close o k response
+func (o *TicketCloseOK) Code() int {
+	return 200
+}
+
 func (o *TicketCloseOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/close][%d] ticketCloseOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *TicketCloseBadRequest) IsServerError() bool {
 // IsCode returns true when this ticket close bad request response a status code equal to that given
 func (o *TicketCloseBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ticket close bad request response
+func (o *TicketCloseBadRequest) Code() int {
+	return 400
 }
 
 func (o *TicketCloseBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *TicketCloseUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ticket close unauthorized response
+func (o *TicketCloseUnauthorized) Code() int {
+	return 401
+}
+
 func (o *TicketCloseUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/close][%d] ticketCloseUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *TicketCloseForbidden) IsServerError() bool {
 // IsCode returns true when this ticket close forbidden response a status code equal to that given
 func (o *TicketCloseForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ticket close forbidden response
+func (o *TicketCloseForbidden) Code() int {
+	return 403
 }
 
 func (o *TicketCloseForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *TicketCloseNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ticket close not found response
+func (o *TicketCloseNotFound) Code() int {
+	return 404
+}
+
 func (o *TicketCloseNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/close][%d] ticketCloseNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *TicketCloseInternalServerError) IsServerError() bool {
 // IsCode returns true when this ticket close internal server error response a status code equal to that given
 func (o *TicketCloseInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ticket close internal server error response
+func (o *TicketCloseInternalServerError) Code() int {
+	return 500
 }
 
 func (o *TicketCloseInternalServerError) Error() string {

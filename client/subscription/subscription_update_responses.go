@@ -103,6 +103,11 @@ func (o *SubscriptionUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the subscription update o k response
+func (o *SubscriptionUpdateOK) Code() int {
+	return 200
+}
+
 func (o *SubscriptionUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/update][%d] subscriptionUpdateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *SubscriptionUpdateBadRequest) IsServerError() bool {
 // IsCode returns true when this subscription update bad request response a status code equal to that given
 func (o *SubscriptionUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the subscription update bad request response
+func (o *SubscriptionUpdateBadRequest) Code() int {
+	return 400
 }
 
 func (o *SubscriptionUpdateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *SubscriptionUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the subscription update unauthorized response
+func (o *SubscriptionUpdateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SubscriptionUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/update][%d] subscriptionUpdateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *SubscriptionUpdateForbidden) IsServerError() bool {
 // IsCode returns true when this subscription update forbidden response a status code equal to that given
 func (o *SubscriptionUpdateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the subscription update forbidden response
+func (o *SubscriptionUpdateForbidden) Code() int {
+	return 403
 }
 
 func (o *SubscriptionUpdateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *SubscriptionUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the subscription update not found response
+func (o *SubscriptionUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *SubscriptionUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/update][%d] subscriptionUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *SubscriptionUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this subscription update internal server error response a status code equal to that given
 func (o *SubscriptionUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the subscription update internal server error response
+func (o *SubscriptionUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SubscriptionUpdateInternalServerError) Error() string {

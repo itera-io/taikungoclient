@@ -103,6 +103,11 @@ func (o *AdminAddBalanceOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin add balance o k response
+func (o *AdminAddBalanceOK) Code() int {
+	return 200
+}
+
 func (o *AdminAddBalanceOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AdminAddBalanceBadRequest) IsServerError() bool {
 // IsCode returns true when this admin add balance bad request response a status code equal to that given
 func (o *AdminAddBalanceBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the admin add balance bad request response
+func (o *AdminAddBalanceBadRequest) Code() int {
+	return 400
 }
 
 func (o *AdminAddBalanceBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AdminAddBalanceUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the admin add balance unauthorized response
+func (o *AdminAddBalanceUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AdminAddBalanceUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AdminAddBalanceForbidden) IsServerError() bool {
 // IsCode returns true when this admin add balance forbidden response a status code equal to that given
 func (o *AdminAddBalanceForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the admin add balance forbidden response
+func (o *AdminAddBalanceForbidden) Code() int {
+	return 403
 }
 
 func (o *AdminAddBalanceForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AdminAddBalanceNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin add balance not found response
+func (o *AdminAddBalanceNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminAddBalanceNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AdminAddBalanceInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin add balance internal server error response a status code equal to that given
 func (o *AdminAddBalanceInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin add balance internal server error response
+func (o *AdminAddBalanceInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminAddBalanceInternalServerError) Error() string {

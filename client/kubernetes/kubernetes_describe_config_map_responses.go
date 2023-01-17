@@ -103,6 +103,11 @@ func (o *KubernetesDescribeConfigMapOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe config map o k response
+func (o *KubernetesDescribeConfigMapOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribeConfigMapOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesDescribeConfigMapBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes describe config map bad request response a status code equal to that given
 func (o *KubernetesDescribeConfigMapBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes describe config map bad request response
+func (o *KubernetesDescribeConfigMapBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesDescribeConfigMapBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesDescribeConfigMapUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes describe config map unauthorized response
+func (o *KubernetesDescribeConfigMapUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesDescribeConfigMapUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesDescribeConfigMapForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes describe config map forbidden response a status code equal to that given
 func (o *KubernetesDescribeConfigMapForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes describe config map forbidden response
+func (o *KubernetesDescribeConfigMapForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesDescribeConfigMapForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesDescribeConfigMapNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe config map not found response
+func (o *KubernetesDescribeConfigMapNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribeConfigMapNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesDescribeConfigMapInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe config map internal server error response a status code equal to that given
 func (o *KubernetesDescribeConfigMapInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe config map internal server error response
+func (o *KubernetesDescribeConfigMapInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribeConfigMapInternalServerError) Error() string {

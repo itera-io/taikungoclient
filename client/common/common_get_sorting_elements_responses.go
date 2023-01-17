@@ -103,6 +103,11 @@ func (o *CommonGetSortingElementsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the common get sorting elements o k response
+func (o *CommonGetSortingElementsOK) Code() int {
+	return 200
+}
+
 func (o *CommonGetSortingElementsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CommonGetSortingElementsBadRequest) IsServerError() bool {
 // IsCode returns true when this common get sorting elements bad request response a status code equal to that given
 func (o *CommonGetSortingElementsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the common get sorting elements bad request response
+func (o *CommonGetSortingElementsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CommonGetSortingElementsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CommonGetSortingElementsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the common get sorting elements unauthorized response
+func (o *CommonGetSortingElementsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CommonGetSortingElementsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CommonGetSortingElementsForbidden) IsServerError() bool {
 // IsCode returns true when this common get sorting elements forbidden response a status code equal to that given
 func (o *CommonGetSortingElementsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the common get sorting elements forbidden response
+func (o *CommonGetSortingElementsForbidden) Code() int {
+	return 403
 }
 
 func (o *CommonGetSortingElementsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CommonGetSortingElementsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the common get sorting elements not found response
+func (o *CommonGetSortingElementsNotFound) Code() int {
+	return 404
+}
+
 func (o *CommonGetSortingElementsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CommonGetSortingElementsInternalServerError) IsServerError() bool {
 // IsCode returns true when this common get sorting elements internal server error response a status code equal to that given
 func (o *CommonGetSortingElementsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the common get sorting elements internal server error response
+func (o *CommonGetSortingElementsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CommonGetSortingElementsInternalServerError) Error() string {

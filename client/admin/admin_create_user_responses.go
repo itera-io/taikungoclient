@@ -103,6 +103,11 @@ func (o *AdminCreateUserOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin create user o k response
+func (o *AdminCreateUserOK) Code() int {
+	return 200
+}
+
 func (o *AdminCreateUserOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AdminCreateUserBadRequest) IsServerError() bool {
 // IsCode returns true when this admin create user bad request response a status code equal to that given
 func (o *AdminCreateUserBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the admin create user bad request response
+func (o *AdminCreateUserBadRequest) Code() int {
+	return 400
 }
 
 func (o *AdminCreateUserBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AdminCreateUserUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the admin create user unauthorized response
+func (o *AdminCreateUserUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AdminCreateUserUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AdminCreateUserForbidden) IsServerError() bool {
 // IsCode returns true when this admin create user forbidden response a status code equal to that given
 func (o *AdminCreateUserForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the admin create user forbidden response
+func (o *AdminCreateUserForbidden) Code() int {
+	return 403
 }
 
 func (o *AdminCreateUserForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AdminCreateUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin create user not found response
+func (o *AdminCreateUserNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminCreateUserNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AdminCreateUserInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin create user internal server error response a status code equal to that given
 func (o *AdminCreateUserInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin create user internal server error response
+func (o *AdminCreateUserInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminCreateUserInternalServerError) Error() string {

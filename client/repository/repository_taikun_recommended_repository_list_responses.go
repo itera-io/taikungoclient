@@ -103,6 +103,11 @@ func (o *RepositoryTaikunRecommendedRepositoryListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the repository taikun recommended repository list o k response
+func (o *RepositoryTaikunRecommendedRepositoryListOK) Code() int {
+	return 200
+}
+
 func (o *RepositoryTaikunRecommendedRepositoryListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) IsServerError() bo
 // IsCode returns true when this repository taikun recommended repository list bad request response a status code equal to that given
 func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the repository taikun recommended repository list bad request response
+func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) Code() int {
+	return 400
 }
 
 func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) IsCode(code int)
 	return code == 401
 }
 
+// Code gets the status code for the repository taikun recommended repository list unauthorized response
+func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *RepositoryTaikunRecommendedRepositoryListForbidden) IsServerError() boo
 // IsCode returns true when this repository taikun recommended repository list forbidden response a status code equal to that given
 func (o *RepositoryTaikunRecommendedRepositoryListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the repository taikun recommended repository list forbidden response
+func (o *RepositoryTaikunRecommendedRepositoryListForbidden) Code() int {
+	return 403
 }
 
 func (o *RepositoryTaikunRecommendedRepositoryListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *RepositoryTaikunRecommendedRepositoryListNotFound) IsCode(code int) boo
 	return code == 404
 }
 
+// Code gets the status code for the repository taikun recommended repository list not found response
+func (o *RepositoryTaikunRecommendedRepositoryListNotFound) Code() int {
+	return 404
+}
+
 func (o *RepositoryTaikunRecommendedRepositoryListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *RepositoryTaikunRecommendedRepositoryListInternalServerError) IsServerE
 // IsCode returns true when this repository taikun recommended repository list internal server error response a status code equal to that given
 func (o *RepositoryTaikunRecommendedRepositoryListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the repository taikun recommended repository list internal server error response
+func (o *RepositoryTaikunRecommendedRepositoryListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *RepositoryTaikunRecommendedRepositoryListInternalServerError) Error() string {

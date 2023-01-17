@@ -103,6 +103,11 @@ func (o *OrganizationsUpdatePaymentMethodOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organizations update payment method o k response
+func (o *OrganizationsUpdatePaymentMethodOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationsUpdatePaymentMethodOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *OrganizationsUpdatePaymentMethodBadRequest) IsServerError() bool {
 // IsCode returns true when this organizations update payment method bad request response a status code equal to that given
 func (o *OrganizationsUpdatePaymentMethodBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the organizations update payment method bad request response
+func (o *OrganizationsUpdatePaymentMethodBadRequest) Code() int {
+	return 400
 }
 
 func (o *OrganizationsUpdatePaymentMethodBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *OrganizationsUpdatePaymentMethodUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the organizations update payment method unauthorized response
+func (o *OrganizationsUpdatePaymentMethodUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OrganizationsUpdatePaymentMethodUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *OrganizationsUpdatePaymentMethodForbidden) IsServerError() bool {
 // IsCode returns true when this organizations update payment method forbidden response a status code equal to that given
 func (o *OrganizationsUpdatePaymentMethodForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the organizations update payment method forbidden response
+func (o *OrganizationsUpdatePaymentMethodForbidden) Code() int {
+	return 403
 }
 
 func (o *OrganizationsUpdatePaymentMethodForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *OrganizationsUpdatePaymentMethodNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organizations update payment method not found response
+func (o *OrganizationsUpdatePaymentMethodNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationsUpdatePaymentMethodNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OrganizationsUpdatePaymentMethodInternalServerError) IsServerError() bo
 // IsCode returns true when this organizations update payment method internal server error response a status code equal to that given
 func (o *OrganizationsUpdatePaymentMethodInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the organizations update payment method internal server error response
+func (o *OrganizationsUpdatePaymentMethodInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrganizationsUpdatePaymentMethodInternalServerError) Error() string {

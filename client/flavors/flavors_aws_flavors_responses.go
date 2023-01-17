@@ -103,6 +103,11 @@ func (o *FlavorsAwsFlavorsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the flavors aws flavors o k response
+func (o *FlavorsAwsFlavorsOK) Code() int {
+	return 200
+}
+
 func (o *FlavorsAwsFlavorsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *FlavorsAwsFlavorsBadRequest) IsServerError() bool {
 // IsCode returns true when this flavors aws flavors bad request response a status code equal to that given
 func (o *FlavorsAwsFlavorsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the flavors aws flavors bad request response
+func (o *FlavorsAwsFlavorsBadRequest) Code() int {
+	return 400
 }
 
 func (o *FlavorsAwsFlavorsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *FlavorsAwsFlavorsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the flavors aws flavors unauthorized response
+func (o *FlavorsAwsFlavorsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *FlavorsAwsFlavorsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *FlavorsAwsFlavorsForbidden) IsServerError() bool {
 // IsCode returns true when this flavors aws flavors forbidden response a status code equal to that given
 func (o *FlavorsAwsFlavorsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the flavors aws flavors forbidden response
+func (o *FlavorsAwsFlavorsForbidden) Code() int {
+	return 403
 }
 
 func (o *FlavorsAwsFlavorsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *FlavorsAwsFlavorsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the flavors aws flavors not found response
+func (o *FlavorsAwsFlavorsNotFound) Code() int {
+	return 404
+}
+
 func (o *FlavorsAwsFlavorsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *FlavorsAwsFlavorsInternalServerError) IsServerError() bool {
 // IsCode returns true when this flavors aws flavors internal server error response a status code equal to that given
 func (o *FlavorsAwsFlavorsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the flavors aws flavors internal server error response
+func (o *FlavorsAwsFlavorsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *FlavorsAwsFlavorsInternalServerError) Error() string {

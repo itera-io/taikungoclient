@@ -103,6 +103,11 @@ func (o *ProjectRevisionsEditOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project revisions edit o k response
+func (o *ProjectRevisionsEditOK) Code() int {
+	return 200
+}
+
 func (o *ProjectRevisionsEditOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectRevisionsEditBadRequest) IsServerError() bool {
 // IsCode returns true when this project revisions edit bad request response a status code equal to that given
 func (o *ProjectRevisionsEditBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project revisions edit bad request response
+func (o *ProjectRevisionsEditBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectRevisionsEditBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectRevisionsEditUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project revisions edit unauthorized response
+func (o *ProjectRevisionsEditUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectRevisionsEditUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectRevisionsEditForbidden) IsServerError() bool {
 // IsCode returns true when this project revisions edit forbidden response a status code equal to that given
 func (o *ProjectRevisionsEditForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project revisions edit forbidden response
+func (o *ProjectRevisionsEditForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectRevisionsEditForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectRevisionsEditNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project revisions edit not found response
+func (o *ProjectRevisionsEditNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectRevisionsEditNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectRevisionsEditInternalServerError) IsServerError() bool {
 // IsCode returns true when this project revisions edit internal server error response a status code equal to that given
 func (o *ProjectRevisionsEditInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project revisions edit internal server error response
+func (o *ProjectRevisionsEditInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectRevisionsEditInternalServerError) Error() string {

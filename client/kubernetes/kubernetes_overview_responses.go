@@ -103,6 +103,11 @@ func (o *KubernetesOverviewOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes overview o k response
+func (o *KubernetesOverviewOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesOverviewOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesOverviewBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes overview bad request response a status code equal to that given
 func (o *KubernetesOverviewBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes overview bad request response
+func (o *KubernetesOverviewBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesOverviewBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesOverviewUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes overview unauthorized response
+func (o *KubernetesOverviewUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesOverviewUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesOverviewForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes overview forbidden response a status code equal to that given
 func (o *KubernetesOverviewForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes overview forbidden response
+func (o *KubernetesOverviewForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesOverviewForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesOverviewNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes overview not found response
+func (o *KubernetesOverviewNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesOverviewNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesOverviewInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes overview internal server error response a status code equal to that given
 func (o *KubernetesOverviewInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes overview internal server error response
+func (o *KubernetesOverviewInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesOverviewInternalServerError) Error() string {

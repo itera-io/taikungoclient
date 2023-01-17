@@ -103,6 +103,11 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pre defined queries delete prometheus dashboard o k response
+func (o *PreDefinedQueriesDeletePrometheusDashboardOK) Code() int {
+	return 200
+}
+
 func (o *PreDefinedQueriesDeletePrometheusDashboardOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardBadRequest) IsServerError() b
 // IsCode returns true when this pre defined queries delete prometheus dashboard bad request response a status code equal to that given
 func (o *PreDefinedQueriesDeletePrometheusDashboardBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pre defined queries delete prometheus dashboard bad request response
+func (o *PreDefinedQueriesDeletePrometheusDashboardBadRequest) Code() int {
+	return 400
 }
 
 func (o *PreDefinedQueriesDeletePrometheusDashboardBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorized) IsCode(code int
 	return code == 401
 }
 
+// Code gets the status code for the pre defined queries delete prometheus dashboard unauthorized response
+func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardForbidden) IsServerError() bo
 // IsCode returns true when this pre defined queries delete prometheus dashboard forbidden response a status code equal to that given
 func (o *PreDefinedQueriesDeletePrometheusDashboardForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the pre defined queries delete prometheus dashboard forbidden response
+func (o *PreDefinedQueriesDeletePrometheusDashboardForbidden) Code() int {
+	return 403
 }
 
 func (o *PreDefinedQueriesDeletePrometheusDashboardForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardNotFound) IsCode(code int) bo
 	return code == 404
 }
 
+// Code gets the status code for the pre defined queries delete prometheus dashboard not found response
+func (o *PreDefinedQueriesDeletePrometheusDashboardNotFound) Code() int {
+	return 404
+}
+
 func (o *PreDefinedQueriesDeletePrometheusDashboardNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardInternalServerError) IsServer
 // IsCode returns true when this pre defined queries delete prometheus dashboard internal server error response a status code equal to that given
 func (o *PreDefinedQueriesDeletePrometheusDashboardInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pre defined queries delete prometheus dashboard internal server error response
+func (o *PreDefinedQueriesDeletePrometheusDashboardInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PreDefinedQueriesDeletePrometheusDashboardInternalServerError) Error() string {

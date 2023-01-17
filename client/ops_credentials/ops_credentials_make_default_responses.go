@@ -103,6 +103,11 @@ func (o *OpsCredentialsMakeDefaultOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ops credentials make default o k response
+func (o *OpsCredentialsMakeDefaultOK) Code() int {
+	return 200
+}
+
 func (o *OpsCredentialsMakeDefaultOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *OpsCredentialsMakeDefaultBadRequest) IsServerError() bool {
 // IsCode returns true when this ops credentials make default bad request response a status code equal to that given
 func (o *OpsCredentialsMakeDefaultBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ops credentials make default bad request response
+func (o *OpsCredentialsMakeDefaultBadRequest) Code() int {
+	return 400
 }
 
 func (o *OpsCredentialsMakeDefaultBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *OpsCredentialsMakeDefaultUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ops credentials make default unauthorized response
+func (o *OpsCredentialsMakeDefaultUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OpsCredentialsMakeDefaultUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *OpsCredentialsMakeDefaultForbidden) IsServerError() bool {
 // IsCode returns true when this ops credentials make default forbidden response a status code equal to that given
 func (o *OpsCredentialsMakeDefaultForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ops credentials make default forbidden response
+func (o *OpsCredentialsMakeDefaultForbidden) Code() int {
+	return 403
 }
 
 func (o *OpsCredentialsMakeDefaultForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *OpsCredentialsMakeDefaultNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ops credentials make default not found response
+func (o *OpsCredentialsMakeDefaultNotFound) Code() int {
+	return 404
+}
+
 func (o *OpsCredentialsMakeDefaultNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpsCredentialsMakeDefaultInternalServerError) IsServerError() bool {
 // IsCode returns true when this ops credentials make default internal server error response a status code equal to that given
 func (o *OpsCredentialsMakeDefaultInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ops credentials make default internal server error response
+func (o *OpsCredentialsMakeDefaultInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpsCredentialsMakeDefaultInternalServerError) Error() string {

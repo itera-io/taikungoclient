@@ -103,6 +103,11 @@ func (o *CloudCredentialsExceededQuotasOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cloud credentials exceeded quotas o k response
+func (o *CloudCredentialsExceededQuotasOK) Code() int {
+	return 200
+}
+
 func (o *CloudCredentialsExceededQuotasOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CloudCredentialsExceededQuotasBadRequest) IsServerError() bool {
 // IsCode returns true when this cloud credentials exceeded quotas bad request response a status code equal to that given
 func (o *CloudCredentialsExceededQuotasBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cloud credentials exceeded quotas bad request response
+func (o *CloudCredentialsExceededQuotasBadRequest) Code() int {
+	return 400
 }
 
 func (o *CloudCredentialsExceededQuotasBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *CloudCredentialsExceededQuotasUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cloud credentials exceeded quotas unauthorized response
+func (o *CloudCredentialsExceededQuotasUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CloudCredentialsExceededQuotasUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *CloudCredentialsExceededQuotasForbidden) IsServerError() bool {
 // IsCode returns true when this cloud credentials exceeded quotas forbidden response a status code equal to that given
 func (o *CloudCredentialsExceededQuotasForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cloud credentials exceeded quotas forbidden response
+func (o *CloudCredentialsExceededQuotasForbidden) Code() int {
+	return 403
 }
 
 func (o *CloudCredentialsExceededQuotasForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *CloudCredentialsExceededQuotasNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cloud credentials exceeded quotas not found response
+func (o *CloudCredentialsExceededQuotasNotFound) Code() int {
+	return 404
+}
+
 func (o *CloudCredentialsExceededQuotasNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *CloudCredentialsExceededQuotasInternalServerError) IsServerError() bool
 // IsCode returns true when this cloud credentials exceeded quotas internal server error response a status code equal to that given
 func (o *CloudCredentialsExceededQuotasInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cloud credentials exceeded quotas internal server error response
+func (o *CloudCredentialsExceededQuotasInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CloudCredentialsExceededQuotasInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *DNSServersListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the dns servers list o k response
+func (o *DNSServersListOK) Code() int {
+	return 200
+}
+
 func (o *DNSServersListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *DNSServersListBadRequest) IsServerError() bool {
 // IsCode returns true when this dns servers list bad request response a status code equal to that given
 func (o *DNSServersListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the dns servers list bad request response
+func (o *DNSServersListBadRequest) Code() int {
+	return 400
 }
 
 func (o *DNSServersListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *DNSServersListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the dns servers list unauthorized response
+func (o *DNSServersListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *DNSServersListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *DNSServersListForbidden) IsServerError() bool {
 // IsCode returns true when this dns servers list forbidden response a status code equal to that given
 func (o *DNSServersListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the dns servers list forbidden response
+func (o *DNSServersListForbidden) Code() int {
+	return 403
 }
 
 func (o *DNSServersListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *DNSServersListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the dns servers list not found response
+func (o *DNSServersListNotFound) Code() int {
+	return 404
+}
+
 func (o *DNSServersListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *DNSServersListInternalServerError) IsServerError() bool {
 // IsCode returns true when this dns servers list internal server error response a status code equal to that given
 func (o *DNSServersListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the dns servers list internal server error response
+func (o *DNSServersListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *DNSServersListInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *SearchCloudCredentialsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search cloud credentials list o k response
+func (o *SearchCloudCredentialsListOK) Code() int {
+	return 200
+}
+
 func (o *SearchCloudCredentialsListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SearchCloudCredentialsListBadRequest) IsServerError() bool {
 // IsCode returns true when this search cloud credentials list bad request response a status code equal to that given
 func (o *SearchCloudCredentialsListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the search cloud credentials list bad request response
+func (o *SearchCloudCredentialsListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SearchCloudCredentialsListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SearchCloudCredentialsListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the search cloud credentials list unauthorized response
+func (o *SearchCloudCredentialsListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SearchCloudCredentialsListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SearchCloudCredentialsListForbidden) IsServerError() bool {
 // IsCode returns true when this search cloud credentials list forbidden response a status code equal to that given
 func (o *SearchCloudCredentialsListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the search cloud credentials list forbidden response
+func (o *SearchCloudCredentialsListForbidden) Code() int {
+	return 403
 }
 
 func (o *SearchCloudCredentialsListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SearchCloudCredentialsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search cloud credentials list not found response
+func (o *SearchCloudCredentialsListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchCloudCredentialsListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchCloudCredentialsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search cloud credentials list internal server error response a status code equal to that given
 func (o *SearchCloudCredentialsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search cloud credentials list internal server error response
+func (o *SearchCloudCredentialsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchCloudCredentialsListInternalServerError) Error() string {

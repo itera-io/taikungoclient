@@ -103,6 +103,11 @@ func (o *NotificationsGetProjectOperationMessagesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the notifications get project operation messages o k response
+func (o *NotificationsGetProjectOperationMessagesOK) Code() int {
+	return 200
+}
+
 func (o *NotificationsGetProjectOperationMessagesOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *NotificationsGetProjectOperationMessagesBadRequest) IsServerError() boo
 // IsCode returns true when this notifications get project operation messages bad request response a status code equal to that given
 func (o *NotificationsGetProjectOperationMessagesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the notifications get project operation messages bad request response
+func (o *NotificationsGetProjectOperationMessagesBadRequest) Code() int {
+	return 400
 }
 
 func (o *NotificationsGetProjectOperationMessagesBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *NotificationsGetProjectOperationMessagesUnauthorized) IsCode(code int) 
 	return code == 401
 }
 
+// Code gets the status code for the notifications get project operation messages unauthorized response
+func (o *NotificationsGetProjectOperationMessagesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *NotificationsGetProjectOperationMessagesUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *NotificationsGetProjectOperationMessagesForbidden) IsServerError() bool
 // IsCode returns true when this notifications get project operation messages forbidden response a status code equal to that given
 func (o *NotificationsGetProjectOperationMessagesForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the notifications get project operation messages forbidden response
+func (o *NotificationsGetProjectOperationMessagesForbidden) Code() int {
+	return 403
 }
 
 func (o *NotificationsGetProjectOperationMessagesForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *NotificationsGetProjectOperationMessagesNotFound) IsCode(code int) bool
 	return code == 404
 }
 
+// Code gets the status code for the notifications get project operation messages not found response
+func (o *NotificationsGetProjectOperationMessagesNotFound) Code() int {
+	return 404
+}
+
 func (o *NotificationsGetProjectOperationMessagesNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *NotificationsGetProjectOperationMessagesInternalServerError) IsServerEr
 // IsCode returns true when this notifications get project operation messages internal server error response a status code equal to that given
 func (o *NotificationsGetProjectOperationMessagesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the notifications get project operation messages internal server error response
+func (o *NotificationsGetProjectOperationMessagesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *NotificationsGetProjectOperationMessagesInternalServerError) Error() string {

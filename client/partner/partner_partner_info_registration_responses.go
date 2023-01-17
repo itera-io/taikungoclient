@@ -103,6 +103,11 @@ func (o *PartnerPartnerInfoRegistrationOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the partner partner info registration o k response
+func (o *PartnerPartnerInfoRegistrationOK) Code() int {
+	return 200
+}
+
 func (o *PartnerPartnerInfoRegistrationOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *PartnerPartnerInfoRegistrationBadRequest) IsServerError() bool {
 // IsCode returns true when this partner partner info registration bad request response a status code equal to that given
 func (o *PartnerPartnerInfoRegistrationBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the partner partner info registration bad request response
+func (o *PartnerPartnerInfoRegistrationBadRequest) Code() int {
+	return 400
 }
 
 func (o *PartnerPartnerInfoRegistrationBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *PartnerPartnerInfoRegistrationUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the partner partner info registration unauthorized response
+func (o *PartnerPartnerInfoRegistrationUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PartnerPartnerInfoRegistrationUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *PartnerPartnerInfoRegistrationForbidden) IsServerError() bool {
 // IsCode returns true when this partner partner info registration forbidden response a status code equal to that given
 func (o *PartnerPartnerInfoRegistrationForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the partner partner info registration forbidden response
+func (o *PartnerPartnerInfoRegistrationForbidden) Code() int {
+	return 403
 }
 
 func (o *PartnerPartnerInfoRegistrationForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *PartnerPartnerInfoRegistrationNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the partner partner info registration not found response
+func (o *PartnerPartnerInfoRegistrationNotFound) Code() int {
+	return 404
+}
+
 func (o *PartnerPartnerInfoRegistrationNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *PartnerPartnerInfoRegistrationInternalServerError) IsServerError() bool
 // IsCode returns true when this partner partner info registration internal server error response a status code equal to that given
 func (o *PartnerPartnerInfoRegistrationInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the partner partner info registration internal server error response
+func (o *PartnerPartnerInfoRegistrationInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PartnerPartnerInfoRegistrationInternalServerError) Error() string {

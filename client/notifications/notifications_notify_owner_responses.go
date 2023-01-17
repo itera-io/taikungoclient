@@ -103,6 +103,11 @@ func (o *NotificationsNotifyOwnerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the notifications notify owner o k response
+func (o *NotificationsNotifyOwnerOK) Code() int {
+	return 200
+}
+
 func (o *NotificationsNotifyOwnerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *NotificationsNotifyOwnerBadRequest) IsServerError() bool {
 // IsCode returns true when this notifications notify owner bad request response a status code equal to that given
 func (o *NotificationsNotifyOwnerBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the notifications notify owner bad request response
+func (o *NotificationsNotifyOwnerBadRequest) Code() int {
+	return 400
 }
 
 func (o *NotificationsNotifyOwnerBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *NotificationsNotifyOwnerUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the notifications notify owner unauthorized response
+func (o *NotificationsNotifyOwnerUnauthorized) Code() int {
+	return 401
+}
+
 func (o *NotificationsNotifyOwnerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *NotificationsNotifyOwnerForbidden) IsServerError() bool {
 // IsCode returns true when this notifications notify owner forbidden response a status code equal to that given
 func (o *NotificationsNotifyOwnerForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the notifications notify owner forbidden response
+func (o *NotificationsNotifyOwnerForbidden) Code() int {
+	return 403
 }
 
 func (o *NotificationsNotifyOwnerForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *NotificationsNotifyOwnerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the notifications notify owner not found response
+func (o *NotificationsNotifyOwnerNotFound) Code() int {
+	return 404
+}
+
 func (o *NotificationsNotifyOwnerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *NotificationsNotifyOwnerInternalServerError) IsServerError() bool {
 // IsCode returns true when this notifications notify owner internal server error response a status code equal to that given
 func (o *NotificationsNotifyOwnerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the notifications notify owner internal server error response
+func (o *NotificationsNotifyOwnerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *NotificationsNotifyOwnerInternalServerError) Error() string {

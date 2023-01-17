@@ -103,6 +103,11 @@ func (o *OpaProfilesLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the opa profiles lock manager o k response
+func (o *OpaProfilesLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *OpaProfilesLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *OpaProfilesLockManagerBadRequest) IsServerError() bool {
 // IsCode returns true when this opa profiles lock manager bad request response a status code equal to that given
 func (o *OpaProfilesLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the opa profiles lock manager bad request response
+func (o *OpaProfilesLockManagerBadRequest) Code() int {
+	return 400
 }
 
 func (o *OpaProfilesLockManagerBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *OpaProfilesLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the opa profiles lock manager unauthorized response
+func (o *OpaProfilesLockManagerUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OpaProfilesLockManagerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *OpaProfilesLockManagerForbidden) IsServerError() bool {
 // IsCode returns true when this opa profiles lock manager forbidden response a status code equal to that given
 func (o *OpaProfilesLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the opa profiles lock manager forbidden response
+func (o *OpaProfilesLockManagerForbidden) Code() int {
+	return 403
 }
 
 func (o *OpaProfilesLockManagerForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *OpaProfilesLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the opa profiles lock manager not found response
+func (o *OpaProfilesLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *OpaProfilesLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpaProfilesLockManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this opa profiles lock manager internal server error response a status code equal to that given
 func (o *OpaProfilesLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the opa profiles lock manager internal server error response
+func (o *OpaProfilesLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpaProfilesLockManagerInternalServerError) Error() string {

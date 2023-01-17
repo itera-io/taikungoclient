@@ -103,6 +103,11 @@ func (o *BackupDescribeRestoreOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the backup describe restore o k response
+func (o *BackupDescribeRestoreOK) Code() int {
+	return 200
+}
+
 func (o *BackupDescribeRestoreOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/restore/{projectId}/{name}][%d] backupDescribeRestoreOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *BackupDescribeRestoreBadRequest) IsServerError() bool {
 // IsCode returns true when this backup describe restore bad request response a status code equal to that given
 func (o *BackupDescribeRestoreBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the backup describe restore bad request response
+func (o *BackupDescribeRestoreBadRequest) Code() int {
+	return 400
 }
 
 func (o *BackupDescribeRestoreBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *BackupDescribeRestoreUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the backup describe restore unauthorized response
+func (o *BackupDescribeRestoreUnauthorized) Code() int {
+	return 401
+}
+
 func (o *BackupDescribeRestoreUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/restore/{projectId}/{name}][%d] backupDescribeRestoreUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *BackupDescribeRestoreForbidden) IsServerError() bool {
 // IsCode returns true when this backup describe restore forbidden response a status code equal to that given
 func (o *BackupDescribeRestoreForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the backup describe restore forbidden response
+func (o *BackupDescribeRestoreForbidden) Code() int {
+	return 403
 }
 
 func (o *BackupDescribeRestoreForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *BackupDescribeRestoreNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the backup describe restore not found response
+func (o *BackupDescribeRestoreNotFound) Code() int {
+	return 404
+}
+
 func (o *BackupDescribeRestoreNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/restore/{projectId}/{name}][%d] backupDescribeRestoreNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *BackupDescribeRestoreInternalServerError) IsServerError() bool {
 // IsCode returns true when this backup describe restore internal server error response a status code equal to that given
 func (o *BackupDescribeRestoreInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the backup describe restore internal server error response
+func (o *BackupDescribeRestoreInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BackupDescribeRestoreInternalServerError) Error() string {

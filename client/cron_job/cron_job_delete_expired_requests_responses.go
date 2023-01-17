@@ -103,6 +103,11 @@ func (o *CronJobDeleteExpiredRequestsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job delete expired requests o k response
+func (o *CronJobDeleteExpiredRequestsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobDeleteExpiredRequestsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobDeleteExpiredRequestsBadRequest) IsServerError() bool {
 // IsCode returns true when this cron job delete expired requests bad request response a status code equal to that given
 func (o *CronJobDeleteExpiredRequestsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job delete expired requests bad request response
+func (o *CronJobDeleteExpiredRequestsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobDeleteExpiredRequestsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobDeleteExpiredRequestsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cron job delete expired requests unauthorized response
+func (o *CronJobDeleteExpiredRequestsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobDeleteExpiredRequestsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobDeleteExpiredRequestsForbidden) IsServerError() bool {
 // IsCode returns true when this cron job delete expired requests forbidden response a status code equal to that given
 func (o *CronJobDeleteExpiredRequestsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job delete expired requests forbidden response
+func (o *CronJobDeleteExpiredRequestsForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobDeleteExpiredRequestsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobDeleteExpiredRequestsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job delete expired requests not found response
+func (o *CronJobDeleteExpiredRequestsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobDeleteExpiredRequestsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobDeleteExpiredRequestsInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job delete expired requests internal server error response a status code equal to that given
 func (o *CronJobDeleteExpiredRequestsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job delete expired requests internal server error response
+func (o *CronJobDeleteExpiredRequestsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobDeleteExpiredRequestsInternalServerError) Error() string {

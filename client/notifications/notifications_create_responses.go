@@ -103,6 +103,11 @@ func (o *NotificationsCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the notifications create o k response
+func (o *NotificationsCreateOK) Code() int {
+	return 200
+}
+
 func (o *NotificationsCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *NotificationsCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this notifications create bad request response a status code equal to that given
 func (o *NotificationsCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the notifications create bad request response
+func (o *NotificationsCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *NotificationsCreateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *NotificationsCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the notifications create unauthorized response
+func (o *NotificationsCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *NotificationsCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *NotificationsCreateForbidden) IsServerError() bool {
 // IsCode returns true when this notifications create forbidden response a status code equal to that given
 func (o *NotificationsCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the notifications create forbidden response
+func (o *NotificationsCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *NotificationsCreateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *NotificationsCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the notifications create not found response
+func (o *NotificationsCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *NotificationsCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *NotificationsCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this notifications create internal server error response a status code equal to that given
 func (o *NotificationsCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the notifications create internal server error response
+func (o *NotificationsCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *NotificationsCreateInternalServerError) Error() string {

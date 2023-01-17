@@ -103,6 +103,11 @@ func (o *CronJobSyncOrganizationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job sync organizations o k response
+func (o *CronJobSyncOrganizationsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobSyncOrganizationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-organizations][%d] cronJobSyncOrganizationsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobSyncOrganizationsBadRequest) IsServerError() bool {
 // IsCode returns true when this cron job sync organizations bad request response a status code equal to that given
 func (o *CronJobSyncOrganizationsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job sync organizations bad request response
+func (o *CronJobSyncOrganizationsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobSyncOrganizationsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobSyncOrganizationsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cron job sync organizations unauthorized response
+func (o *CronJobSyncOrganizationsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobSyncOrganizationsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-organizations][%d] cronJobSyncOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobSyncOrganizationsForbidden) IsServerError() bool {
 // IsCode returns true when this cron job sync organizations forbidden response a status code equal to that given
 func (o *CronJobSyncOrganizationsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job sync organizations forbidden response
+func (o *CronJobSyncOrganizationsForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobSyncOrganizationsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobSyncOrganizationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job sync organizations not found response
+func (o *CronJobSyncOrganizationsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobSyncOrganizationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-organizations][%d] cronJobSyncOrganizationsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobSyncOrganizationsInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job sync organizations internal server error response a status code equal to that given
 func (o *CronJobSyncOrganizationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job sync organizations internal server error response
+func (o *CronJobSyncOrganizationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobSyncOrganizationsInternalServerError) Error() string {

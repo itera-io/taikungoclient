@@ -103,6 +103,11 @@ func (o *StandAloneVMDisksUpdateDiskSizeOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone Vm disks update disk size o k response
+func (o *StandAloneVMDisksUpdateDiskSizeOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneVMDisksUpdateDiskSizeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update-size][%d] standAloneVmDisksUpdateDiskSizeOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *StandAloneVMDisksUpdateDiskSizeBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone Vm disks update disk size bad request response a status code equal to that given
 func (o *StandAloneVMDisksUpdateDiskSizeBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone Vm disks update disk size bad request response
+func (o *StandAloneVMDisksUpdateDiskSizeBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneVMDisksUpdateDiskSizeBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *StandAloneVMDisksUpdateDiskSizeUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone Vm disks update disk size unauthorized response
+func (o *StandAloneVMDisksUpdateDiskSizeUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneVMDisksUpdateDiskSizeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update-size][%d] standAloneVmDisksUpdateDiskSizeUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *StandAloneVMDisksUpdateDiskSizeForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone Vm disks update disk size forbidden response a status code equal to that given
 func (o *StandAloneVMDisksUpdateDiskSizeForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone Vm disks update disk size forbidden response
+func (o *StandAloneVMDisksUpdateDiskSizeForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneVMDisksUpdateDiskSizeForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *StandAloneVMDisksUpdateDiskSizeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone Vm disks update disk size not found response
+func (o *StandAloneVMDisksUpdateDiskSizeNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneVMDisksUpdateDiskSizeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update-size][%d] standAloneVmDisksUpdateDiskSizeNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneVMDisksUpdateDiskSizeInternalServerError) IsServerError() boo
 // IsCode returns true when this stand alone Vm disks update disk size internal server error response a status code equal to that given
 func (o *StandAloneVMDisksUpdateDiskSizeInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone Vm disks update disk size internal server error response
+func (o *StandAloneVMDisksUpdateDiskSizeInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneVMDisksUpdateDiskSizeInternalServerError) Error() string {

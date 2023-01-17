@@ -103,6 +103,11 @@ func (o *AwsAwsZoneListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the aws aws zone list o k response
+func (o *AwsAwsZoneListOK) Code() int {
+	return 200
+}
+
 func (o *AwsAwsZoneListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AwsAwsZoneListBadRequest) IsServerError() bool {
 // IsCode returns true when this aws aws zone list bad request response a status code equal to that given
 func (o *AwsAwsZoneListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the aws aws zone list bad request response
+func (o *AwsAwsZoneListBadRequest) Code() int {
+	return 400
 }
 
 func (o *AwsAwsZoneListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *AwsAwsZoneListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the aws aws zone list unauthorized response
+func (o *AwsAwsZoneListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AwsAwsZoneListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *AwsAwsZoneListForbidden) IsServerError() bool {
 // IsCode returns true when this aws aws zone list forbidden response a status code equal to that given
 func (o *AwsAwsZoneListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the aws aws zone list forbidden response
+func (o *AwsAwsZoneListForbidden) Code() int {
+	return 403
 }
 
 func (o *AwsAwsZoneListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *AwsAwsZoneListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the aws aws zone list not found response
+func (o *AwsAwsZoneListNotFound) Code() int {
+	return 404
+}
+
 func (o *AwsAwsZoneListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AwsAwsZoneListInternalServerError) IsServerError() bool {
 // IsCode returns true when this aws aws zone list internal server error response a status code equal to that given
 func (o *AwsAwsZoneListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the aws aws zone list internal server error response
+func (o *AwsAwsZoneListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AwsAwsZoneListInternalServerError) Error() string {

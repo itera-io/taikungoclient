@@ -103,6 +103,11 @@ func (o *StandAloneProfileLockManagementOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone profile lock management o k response
+func (o *StandAloneProfileLockManagementOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneProfileLockManagementOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/lockmanager][%d] standAloneProfileLockManagementOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *StandAloneProfileLockManagementBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone profile lock management bad request response a status code equal to that given
 func (o *StandAloneProfileLockManagementBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone profile lock management bad request response
+func (o *StandAloneProfileLockManagementBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneProfileLockManagementBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *StandAloneProfileLockManagementUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone profile lock management unauthorized response
+func (o *StandAloneProfileLockManagementUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneProfileLockManagementUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/lockmanager][%d] standAloneProfileLockManagementUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *StandAloneProfileLockManagementForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone profile lock management forbidden response a status code equal to that given
 func (o *StandAloneProfileLockManagementForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone profile lock management forbidden response
+func (o *StandAloneProfileLockManagementForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneProfileLockManagementForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *StandAloneProfileLockManagementNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone profile lock management not found response
+func (o *StandAloneProfileLockManagementNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneProfileLockManagementNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/lockmanager][%d] standAloneProfileLockManagementNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneProfileLockManagementInternalServerError) IsServerError() boo
 // IsCode returns true when this stand alone profile lock management internal server error response a status code equal to that given
 func (o *StandAloneProfileLockManagementInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone profile lock management internal server error response
+func (o *StandAloneProfileLockManagementInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneProfileLockManagementInternalServerError) Error() string {

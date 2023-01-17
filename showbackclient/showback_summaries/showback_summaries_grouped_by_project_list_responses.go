@@ -103,6 +103,11 @@ func (o *ShowbackSummariesGroupedByProjectListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the showback summaries grouped by project list o k response
+func (o *ShowbackSummariesGroupedByProjectListOK) Code() int {
+	return 200
+}
+
 func (o *ShowbackSummariesGroupedByProjectListOK) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byProject][%d] showbackSummariesGroupedByProjectListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ShowbackSummariesGroupedByProjectListBadRequest) IsServerError() bool {
 // IsCode returns true when this showback summaries grouped by project list bad request response a status code equal to that given
 func (o *ShowbackSummariesGroupedByProjectListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the showback summaries grouped by project list bad request response
+func (o *ShowbackSummariesGroupedByProjectListBadRequest) Code() int {
+	return 400
 }
 
 func (o *ShowbackSummariesGroupedByProjectListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ShowbackSummariesGroupedByProjectListUnauthorized) IsCode(code int) boo
 	return code == 401
 }
 
+// Code gets the status code for the showback summaries grouped by project list unauthorized response
+func (o *ShowbackSummariesGroupedByProjectListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ShowbackSummariesGroupedByProjectListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byProject][%d] showbackSummariesGroupedByProjectListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ShowbackSummariesGroupedByProjectListForbidden) IsServerError() bool {
 // IsCode returns true when this showback summaries grouped by project list forbidden response a status code equal to that given
 func (o *ShowbackSummariesGroupedByProjectListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the showback summaries grouped by project list forbidden response
+func (o *ShowbackSummariesGroupedByProjectListForbidden) Code() int {
+	return 403
 }
 
 func (o *ShowbackSummariesGroupedByProjectListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ShowbackSummariesGroupedByProjectListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the showback summaries grouped by project list not found response
+func (o *ShowbackSummariesGroupedByProjectListNotFound) Code() int {
+	return 404
+}
+
 func (o *ShowbackSummariesGroupedByProjectListNotFound) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byProject][%d] showbackSummariesGroupedByProjectListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ShowbackSummariesGroupedByProjectListInternalServerError) IsServerError
 // IsCode returns true when this showback summaries grouped by project list internal server error response a status code equal to that given
 func (o *ShowbackSummariesGroupedByProjectListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the showback summaries grouped by project list internal server error response
+func (o *ShowbackSummariesGroupedByProjectListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ShowbackSummariesGroupedByProjectListInternalServerError) Error() string {

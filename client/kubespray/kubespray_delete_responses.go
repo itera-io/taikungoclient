@@ -109,6 +109,11 @@ func (o *KubesprayDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubespray delete o k response
+func (o *KubesprayDeleteOK) Code() int {
+	return 200
+}
+
 func (o *KubesprayDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *KubesprayDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the kubespray delete no content response
+func (o *KubesprayDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *KubesprayDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteNoContent ", 204)
 }
@@ -219,6 +229,11 @@ func (o *KubesprayDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this kubespray delete bad request response a status code equal to that given
 func (o *KubesprayDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubespray delete bad request response
+func (o *KubesprayDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubesprayDeleteBadRequest) Error() string {
@@ -284,6 +299,11 @@ func (o *KubesprayDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubespray delete unauthorized response
+func (o *KubesprayDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubesprayDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -345,6 +365,11 @@ func (o *KubesprayDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this kubespray delete forbidden response a status code equal to that given
 func (o *KubesprayDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubespray delete forbidden response
+func (o *KubesprayDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *KubesprayDeleteForbidden) Error() string {
@@ -410,6 +435,11 @@ func (o *KubesprayDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubespray delete not found response
+func (o *KubesprayDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *KubesprayDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *KubesprayDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubespray delete internal server error response a status code equal to that given
 func (o *KubesprayDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubespray delete internal server error response
+func (o *KubesprayDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubesprayDeleteInternalServerError) Error() string {

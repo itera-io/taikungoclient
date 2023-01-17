@@ -103,6 +103,11 @@ func (o *AuthForgotPasswordOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the auth forgot password o k response
+func (o *AuthForgotPasswordOK) Code() int {
+	return 200
+}
+
 func (o *AuthForgotPasswordOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/forgotpassword][%d] authForgotPasswordOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AuthForgotPasswordBadRequest) IsServerError() bool {
 // IsCode returns true when this auth forgot password bad request response a status code equal to that given
 func (o *AuthForgotPasswordBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the auth forgot password bad request response
+func (o *AuthForgotPasswordBadRequest) Code() int {
+	return 400
 }
 
 func (o *AuthForgotPasswordBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AuthForgotPasswordUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the auth forgot password unauthorized response
+func (o *AuthForgotPasswordUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AuthForgotPasswordUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/forgotpassword][%d] authForgotPasswordUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AuthForgotPasswordForbidden) IsServerError() bool {
 // IsCode returns true when this auth forgot password forbidden response a status code equal to that given
 func (o *AuthForgotPasswordForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the auth forgot password forbidden response
+func (o *AuthForgotPasswordForbidden) Code() int {
+	return 403
 }
 
 func (o *AuthForgotPasswordForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AuthForgotPasswordNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the auth forgot password not found response
+func (o *AuthForgotPasswordNotFound) Code() int {
+	return 404
+}
+
 func (o *AuthForgotPasswordNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/forgotpassword][%d] authForgotPasswordNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AuthForgotPasswordInternalServerError) IsServerError() bool {
 // IsCode returns true when this auth forgot password internal server error response a status code equal to that given
 func (o *AuthForgotPasswordInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the auth forgot password internal server error response
+func (o *AuthForgotPasswordInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AuthForgotPasswordInternalServerError) Error() string {

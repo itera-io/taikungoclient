@@ -103,6 +103,11 @@ func (o *AuthRefreshTokenOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the auth refresh token o k response
+func (o *AuthRefreshTokenOK) Code() int {
+	return 200
+}
+
 func (o *AuthRefreshTokenOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AuthRefreshTokenBadRequest) IsServerError() bool {
 // IsCode returns true when this auth refresh token bad request response a status code equal to that given
 func (o *AuthRefreshTokenBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the auth refresh token bad request response
+func (o *AuthRefreshTokenBadRequest) Code() int {
+	return 400
 }
 
 func (o *AuthRefreshTokenBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *AuthRefreshTokenUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the auth refresh token unauthorized response
+func (o *AuthRefreshTokenUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AuthRefreshTokenUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *AuthRefreshTokenForbidden) IsServerError() bool {
 // IsCode returns true when this auth refresh token forbidden response a status code equal to that given
 func (o *AuthRefreshTokenForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the auth refresh token forbidden response
+func (o *AuthRefreshTokenForbidden) Code() int {
+	return 403
 }
 
 func (o *AuthRefreshTokenForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *AuthRefreshTokenNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the auth refresh token not found response
+func (o *AuthRefreshTokenNotFound) Code() int {
+	return 404
+}
+
 func (o *AuthRefreshTokenNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AuthRefreshTokenInternalServerError) IsServerError() bool {
 // IsCode returns true when this auth refresh token internal server error response a status code equal to that given
 func (o *AuthRefreshTokenInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the auth refresh token internal server error response
+func (o *AuthRefreshTokenInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AuthRefreshTokenInternalServerError) Error() string {

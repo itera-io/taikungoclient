@@ -103,6 +103,11 @@ func (o *AdminProjectsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin projects list o k response
+func (o *AdminProjectsListOK) Code() int {
+	return 200
+}
+
 func (o *AdminProjectsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AdminProjectsListBadRequest) IsServerError() bool {
 // IsCode returns true when this admin projects list bad request response a status code equal to that given
 func (o *AdminProjectsListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the admin projects list bad request response
+func (o *AdminProjectsListBadRequest) Code() int {
+	return 400
 }
 
 func (o *AdminProjectsListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *AdminProjectsListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the admin projects list unauthorized response
+func (o *AdminProjectsListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AdminProjectsListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *AdminProjectsListForbidden) IsServerError() bool {
 // IsCode returns true when this admin projects list forbidden response a status code equal to that given
 func (o *AdminProjectsListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the admin projects list forbidden response
+func (o *AdminProjectsListForbidden) Code() int {
+	return 403
 }
 
 func (o *AdminProjectsListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *AdminProjectsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin projects list not found response
+func (o *AdminProjectsListNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminProjectsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AdminProjectsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin projects list internal server error response a status code equal to that given
 func (o *AdminProjectsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin projects list internal server error response
+func (o *AdminProjectsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminProjectsListInternalServerError) Error() string {

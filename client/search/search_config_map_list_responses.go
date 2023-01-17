@@ -103,6 +103,11 @@ func (o *SearchConfigMapListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search config map list o k response
+func (o *SearchConfigMapListOK) Code() int {
+	return 200
+}
+
 func (o *SearchConfigMapListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SearchConfigMapListBadRequest) IsServerError() bool {
 // IsCode returns true when this search config map list bad request response a status code equal to that given
 func (o *SearchConfigMapListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the search config map list bad request response
+func (o *SearchConfigMapListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SearchConfigMapListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SearchConfigMapListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the search config map list unauthorized response
+func (o *SearchConfigMapListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SearchConfigMapListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SearchConfigMapListForbidden) IsServerError() bool {
 // IsCode returns true when this search config map list forbidden response a status code equal to that given
 func (o *SearchConfigMapListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the search config map list forbidden response
+func (o *SearchConfigMapListForbidden) Code() int {
+	return 403
 }
 
 func (o *SearchConfigMapListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SearchConfigMapListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search config map list not found response
+func (o *SearchConfigMapListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchConfigMapListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchConfigMapListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search config map list internal server error response a status code equal to that given
 func (o *SearchConfigMapListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search config map list internal server error response
+func (o *SearchConfigMapListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchConfigMapListInternalServerError) Error() string {

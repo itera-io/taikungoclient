@@ -103,6 +103,11 @@ func (o *CheckerAzureCPUQuotaOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker azure Cpu quota o k response
+func (o *CheckerAzureCPUQuotaOK) Code() int {
+	return 200
+}
+
 func (o *CheckerAzureCPUQuotaOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CheckerAzureCPUQuotaBadRequest) IsServerError() bool {
 // IsCode returns true when this checker azure Cpu quota bad request response a status code equal to that given
 func (o *CheckerAzureCPUQuotaBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the checker azure Cpu quota bad request response
+func (o *CheckerAzureCPUQuotaBadRequest) Code() int {
+	return 400
 }
 
 func (o *CheckerAzureCPUQuotaBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CheckerAzureCPUQuotaUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the checker azure Cpu quota unauthorized response
+func (o *CheckerAzureCPUQuotaUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CheckerAzureCPUQuotaUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CheckerAzureCPUQuotaForbidden) IsServerError() bool {
 // IsCode returns true when this checker azure Cpu quota forbidden response a status code equal to that given
 func (o *CheckerAzureCPUQuotaForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the checker azure Cpu quota forbidden response
+func (o *CheckerAzureCPUQuotaForbidden) Code() int {
+	return 403
 }
 
 func (o *CheckerAzureCPUQuotaForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CheckerAzureCPUQuotaNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker azure Cpu quota not found response
+func (o *CheckerAzureCPUQuotaNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerAzureCPUQuotaNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerAzureCPUQuotaInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker azure Cpu quota internal server error response a status code equal to that given
 func (o *CheckerAzureCPUQuotaInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker azure Cpu quota internal server error response
+func (o *CheckerAzureCPUQuotaInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerAzureCPUQuotaInternalServerError) Error() string {

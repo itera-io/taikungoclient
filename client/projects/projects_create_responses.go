@@ -103,6 +103,11 @@ func (o *ProjectsCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects create o k response
+func (o *ProjectsCreateOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ProjectsCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this projects create bad request response a status code equal to that given
 func (o *ProjectsCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the projects create bad request response
+func (o *ProjectsCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectsCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ProjectsCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the projects create unauthorized response
+func (o *ProjectsCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectsCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ProjectsCreateForbidden) IsServerError() bool {
 // IsCode returns true when this projects create forbidden response a status code equal to that given
 func (o *ProjectsCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the projects create forbidden response
+func (o *ProjectsCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectsCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ProjectsCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects create not found response
+func (o *ProjectsCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ProjectsCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects create internal server error response a status code equal to that given
 func (o *ProjectsCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects create internal server error response
+func (o *ProjectsCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsCreateInternalServerError) Error() string {

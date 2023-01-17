@@ -103,6 +103,11 @@ func (o *GoogleCloudRegionListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the google cloud region list o k response
+func (o *GoogleCloudRegionListOK) Code() int {
+	return 200
+}
+
 func (o *GoogleCloudRegionListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *GoogleCloudRegionListBadRequest) IsServerError() bool {
 // IsCode returns true when this google cloud region list bad request response a status code equal to that given
 func (o *GoogleCloudRegionListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the google cloud region list bad request response
+func (o *GoogleCloudRegionListBadRequest) Code() int {
+	return 400
 }
 
 func (o *GoogleCloudRegionListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *GoogleCloudRegionListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the google cloud region list unauthorized response
+func (o *GoogleCloudRegionListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *GoogleCloudRegionListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *GoogleCloudRegionListForbidden) IsServerError() bool {
 // IsCode returns true when this google cloud region list forbidden response a status code equal to that given
 func (o *GoogleCloudRegionListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the google cloud region list forbidden response
+func (o *GoogleCloudRegionListForbidden) Code() int {
+	return 403
 }
 
 func (o *GoogleCloudRegionListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *GoogleCloudRegionListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the google cloud region list not found response
+func (o *GoogleCloudRegionListNotFound) Code() int {
+	return 404
+}
+
 func (o *GoogleCloudRegionListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *GoogleCloudRegionListInternalServerError) IsServerError() bool {
 // IsCode returns true when this google cloud region list internal server error response a status code equal to that given
 func (o *GoogleCloudRegionListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the google cloud region list internal server error response
+func (o *GoogleCloudRegionListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GoogleCloudRegionListInternalServerError) Error() string {

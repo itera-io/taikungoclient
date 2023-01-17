@@ -103,6 +103,11 @@ func (o *KubernetesGetNetworkPoliciesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get network policies o k response
+func (o *KubernetesGetNetworkPoliciesOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetNetworkPoliciesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/network-policies][%d] kubernetesGetNetworkPoliciesOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *KubernetesGetNetworkPoliciesBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes get network policies bad request response a status code equal to that given
 func (o *KubernetesGetNetworkPoliciesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes get network policies bad request response
+func (o *KubernetesGetNetworkPoliciesBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesGetNetworkPoliciesBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *KubernetesGetNetworkPoliciesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes get network policies unauthorized response
+func (o *KubernetesGetNetworkPoliciesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesGetNetworkPoliciesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/network-policies][%d] kubernetesGetNetworkPoliciesUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *KubernetesGetNetworkPoliciesForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes get network policies forbidden response a status code equal to that given
 func (o *KubernetesGetNetworkPoliciesForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes get network policies forbidden response
+func (o *KubernetesGetNetworkPoliciesForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesGetNetworkPoliciesForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *KubernetesGetNetworkPoliciesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get network policies not found response
+func (o *KubernetesGetNetworkPoliciesNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetNetworkPoliciesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/network-policies][%d] kubernetesGetNetworkPoliciesNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubernetesGetNetworkPoliciesInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get network policies internal server error response a status code equal to that given
 func (o *KubernetesGetNetworkPoliciesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get network policies internal server error response
+func (o *KubernetesGetNetworkPoliciesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetNetworkPoliciesInternalServerError) Error() string {

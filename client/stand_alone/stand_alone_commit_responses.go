@@ -103,6 +103,11 @@ func (o *StandAloneCommitOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone commit o k response
+func (o *StandAloneCommitOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneCommitOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *StandAloneCommitBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone commit bad request response a status code equal to that given
 func (o *StandAloneCommitBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone commit bad request response
+func (o *StandAloneCommitBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneCommitBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *StandAloneCommitUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone commit unauthorized response
+func (o *StandAloneCommitUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneCommitUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *StandAloneCommitForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone commit forbidden response a status code equal to that given
 func (o *StandAloneCommitForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone commit forbidden response
+func (o *StandAloneCommitForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneCommitForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *StandAloneCommitNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone commit not found response
+func (o *StandAloneCommitNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneCommitNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneCommitInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone commit internal server error response a status code equal to that given
 func (o *StandAloneCommitInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone commit internal server error response
+func (o *StandAloneCommitInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneCommitInternalServerError) Error() string {

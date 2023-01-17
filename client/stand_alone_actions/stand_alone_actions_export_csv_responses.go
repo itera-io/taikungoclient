@@ -102,6 +102,11 @@ func (o *StandAloneActionsExportCsvOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone actions export csv o k response
+func (o *StandAloneActionsExportCsvOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneActionsExportCsvOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvOK ", 200)
 }
@@ -152,6 +157,11 @@ func (o *StandAloneActionsExportCsvBadRequest) IsServerError() bool {
 // IsCode returns true when this stand alone actions export csv bad request response a status code equal to that given
 func (o *StandAloneActionsExportCsvBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the stand alone actions export csv bad request response
+func (o *StandAloneActionsExportCsvBadRequest) Code() int {
+	return 400
 }
 
 func (o *StandAloneActionsExportCsvBadRequest) Error() string {
@@ -217,6 +227,11 @@ func (o *StandAloneActionsExportCsvUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the stand alone actions export csv unauthorized response
+func (o *StandAloneActionsExportCsvUnauthorized) Code() int {
+	return 401
+}
+
 func (o *StandAloneActionsExportCsvUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvUnauthorized  %+v", 401, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *StandAloneActionsExportCsvForbidden) IsServerError() bool {
 // IsCode returns true when this stand alone actions export csv forbidden response a status code equal to that given
 func (o *StandAloneActionsExportCsvForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the stand alone actions export csv forbidden response
+func (o *StandAloneActionsExportCsvForbidden) Code() int {
+	return 403
 }
 
 func (o *StandAloneActionsExportCsvForbidden) Error() string {
@@ -343,6 +363,11 @@ func (o *StandAloneActionsExportCsvNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone actions export csv not found response
+func (o *StandAloneActionsExportCsvNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneActionsExportCsvNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvNotFound  %+v", 404, o.Payload)
 }
@@ -403,6 +428,11 @@ func (o *StandAloneActionsExportCsvInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone actions export csv internal server error response a status code equal to that given
 func (o *StandAloneActionsExportCsvInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone actions export csv internal server error response
+func (o *StandAloneActionsExportCsvInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneActionsExportCsvInternalServerError) Error() string {

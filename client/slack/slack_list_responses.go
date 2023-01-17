@@ -103,6 +103,11 @@ func (o *SlackListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the slack list o k response
+func (o *SlackListOK) Code() int {
+	return 200
+}
+
 func (o *SlackListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SlackListBadRequest) IsServerError() bool {
 // IsCode returns true when this slack list bad request response a status code equal to that given
 func (o *SlackListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the slack list bad request response
+func (o *SlackListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SlackListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SlackListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the slack list unauthorized response
+func (o *SlackListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SlackListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SlackListForbidden) IsServerError() bool {
 // IsCode returns true when this slack list forbidden response a status code equal to that given
 func (o *SlackListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the slack list forbidden response
+func (o *SlackListForbidden) Code() int {
+	return 403
 }
 
 func (o *SlackListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SlackListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the slack list not found response
+func (o *SlackListNotFound) Code() int {
+	return 404
+}
+
 func (o *SlackListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SlackListInternalServerError) IsServerError() bool {
 // IsCode returns true when this slack list internal server error response a status code equal to that given
 func (o *SlackListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the slack list internal server error response
+func (o *SlackListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SlackListInternalServerError) Error() string {

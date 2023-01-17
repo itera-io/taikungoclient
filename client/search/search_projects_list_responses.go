@@ -103,6 +103,11 @@ func (o *SearchProjectsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search projects list o k response
+func (o *SearchProjectsListOK) Code() int {
+	return 200
+}
+
 func (o *SearchProjectsListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/projects][%d] searchProjectsListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SearchProjectsListBadRequest) IsServerError() bool {
 // IsCode returns true when this search projects list bad request response a status code equal to that given
 func (o *SearchProjectsListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the search projects list bad request response
+func (o *SearchProjectsListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SearchProjectsListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SearchProjectsListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the search projects list unauthorized response
+func (o *SearchProjectsListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SearchProjectsListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/projects][%d] searchProjectsListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SearchProjectsListForbidden) IsServerError() bool {
 // IsCode returns true when this search projects list forbidden response a status code equal to that given
 func (o *SearchProjectsListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the search projects list forbidden response
+func (o *SearchProjectsListForbidden) Code() int {
+	return 403
 }
 
 func (o *SearchProjectsListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SearchProjectsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search projects list not found response
+func (o *SearchProjectsListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchProjectsListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/projects][%d] searchProjectsListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchProjectsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search projects list internal server error response a status code equal to that given
 func (o *SearchProjectsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search projects list internal server error response
+func (o *SearchProjectsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchProjectsListInternalServerError) Error() string {

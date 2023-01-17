@@ -103,6 +103,11 @@ func (o *KubeConfigCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kube config create o k response
+func (o *KubeConfigCreateOK) Code() int {
+	return 200
+}
+
 func (o *KubeConfigCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig][%d] kubeConfigCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *KubeConfigCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this kube config create bad request response a status code equal to that given
 func (o *KubeConfigCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kube config create bad request response
+func (o *KubeConfigCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubeConfigCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *KubeConfigCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kube config create unauthorized response
+func (o *KubeConfigCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubeConfigCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig][%d] kubeConfigCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *KubeConfigCreateForbidden) IsServerError() bool {
 // IsCode returns true when this kube config create forbidden response a status code equal to that given
 func (o *KubeConfigCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kube config create forbidden response
+func (o *KubeConfigCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *KubeConfigCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *KubeConfigCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kube config create not found response
+func (o *KubeConfigCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *KubeConfigCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig][%d] kubeConfigCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubeConfigCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this kube config create internal server error response a status code equal to that given
 func (o *KubeConfigCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kube config create internal server error response
+func (o *KubeConfigCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubeConfigCreateInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *CatalogAvailablePackageDetailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog available package details o k response
+func (o *CatalogAvailablePackageDetailsOK) Code() int {
+	return 200
+}
+
 func (o *CatalogAvailablePackageDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CatalogAvailablePackageDetailsBadRequest) IsServerError() bool {
 // IsCode returns true when this catalog available package details bad request response a status code equal to that given
 func (o *CatalogAvailablePackageDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the catalog available package details bad request response
+func (o *CatalogAvailablePackageDetailsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CatalogAvailablePackageDetailsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *CatalogAvailablePackageDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the catalog available package details unauthorized response
+func (o *CatalogAvailablePackageDetailsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CatalogAvailablePackageDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *CatalogAvailablePackageDetailsForbidden) IsServerError() bool {
 // IsCode returns true when this catalog available package details forbidden response a status code equal to that given
 func (o *CatalogAvailablePackageDetailsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the catalog available package details forbidden response
+func (o *CatalogAvailablePackageDetailsForbidden) Code() int {
+	return 403
 }
 
 func (o *CatalogAvailablePackageDetailsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *CatalogAvailablePackageDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog available package details not found response
+func (o *CatalogAvailablePackageDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogAvailablePackageDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *CatalogAvailablePackageDetailsInternalServerError) IsServerError() bool
 // IsCode returns true when this catalog available package details internal server error response a status code equal to that given
 func (o *CatalogAvailablePackageDetailsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog available package details internal server error response
+func (o *CatalogAvailablePackageDetailsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogAvailablePackageDetailsInternalServerError) Error() string {

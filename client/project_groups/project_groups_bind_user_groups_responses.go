@@ -103,6 +103,11 @@ func (o *ProjectGroupsBindUserGroupsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project groups bind user groups o k response
+func (o *ProjectGroupsBindUserGroupsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectGroupsBindUserGroupsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/bind-user-groups][%d] projectGroupsBindUserGroupsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectGroupsBindUserGroupsBadRequest) IsServerError() bool {
 // IsCode returns true when this project groups bind user groups bad request response a status code equal to that given
 func (o *ProjectGroupsBindUserGroupsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project groups bind user groups bad request response
+func (o *ProjectGroupsBindUserGroupsBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectGroupsBindUserGroupsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectGroupsBindUserGroupsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project groups bind user groups unauthorized response
+func (o *ProjectGroupsBindUserGroupsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectGroupsBindUserGroupsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/bind-user-groups][%d] projectGroupsBindUserGroupsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectGroupsBindUserGroupsForbidden) IsServerError() bool {
 // IsCode returns true when this project groups bind user groups forbidden response a status code equal to that given
 func (o *ProjectGroupsBindUserGroupsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project groups bind user groups forbidden response
+func (o *ProjectGroupsBindUserGroupsForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectGroupsBindUserGroupsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectGroupsBindUserGroupsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project groups bind user groups not found response
+func (o *ProjectGroupsBindUserGroupsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectGroupsBindUserGroupsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/bind-user-groups][%d] projectGroupsBindUserGroupsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectGroupsBindUserGroupsInternalServerError) IsServerError() bool {
 // IsCode returns true when this project groups bind user groups internal server error response a status code equal to that given
 func (o *ProjectGroupsBindUserGroupsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project groups bind user groups internal server error response
+func (o *ProjectGroupsBindUserGroupsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectGroupsBindUserGroupsInternalServerError) Error() string {

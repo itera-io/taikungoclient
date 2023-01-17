@@ -103,6 +103,11 @@ func (o *CatalogBindProjectsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog bind projects o k response
+func (o *CatalogBindProjectsOK) Code() int {
+	return 200
+}
+
 func (o *CatalogBindProjectsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CatalogBindProjectsBadRequest) IsServerError() bool {
 // IsCode returns true when this catalog bind projects bad request response a status code equal to that given
 func (o *CatalogBindProjectsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the catalog bind projects bad request response
+func (o *CatalogBindProjectsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CatalogBindProjectsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CatalogBindProjectsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the catalog bind projects unauthorized response
+func (o *CatalogBindProjectsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CatalogBindProjectsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CatalogBindProjectsForbidden) IsServerError() bool {
 // IsCode returns true when this catalog bind projects forbidden response a status code equal to that given
 func (o *CatalogBindProjectsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the catalog bind projects forbidden response
+func (o *CatalogBindProjectsForbidden) Code() int {
+	return 403
 }
 
 func (o *CatalogBindProjectsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CatalogBindProjectsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog bind projects not found response
+func (o *CatalogBindProjectsNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogBindProjectsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CatalogBindProjectsInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog bind projects internal server error response a status code equal to that given
 func (o *CatalogBindProjectsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog bind projects internal server error response
+func (o *CatalogBindProjectsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogBindProjectsInternalServerError) Error() string {

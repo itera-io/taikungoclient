@@ -103,6 +103,11 @@ func (o *UsersConfirmEmailOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users confirm email o k response
+func (o *UsersConfirmEmailOK) Code() int {
+	return 200
+}
+
 func (o *UsersConfirmEmailOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *UsersConfirmEmailBadRequest) IsServerError() bool {
 // IsCode returns true when this users confirm email bad request response a status code equal to that given
 func (o *UsersConfirmEmailBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the users confirm email bad request response
+func (o *UsersConfirmEmailBadRequest) Code() int {
+	return 400
 }
 
 func (o *UsersConfirmEmailBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *UsersConfirmEmailUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the users confirm email unauthorized response
+func (o *UsersConfirmEmailUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UsersConfirmEmailUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *UsersConfirmEmailForbidden) IsServerError() bool {
 // IsCode returns true when this users confirm email forbidden response a status code equal to that given
 func (o *UsersConfirmEmailForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the users confirm email forbidden response
+func (o *UsersConfirmEmailForbidden) Code() int {
+	return 403
 }
 
 func (o *UsersConfirmEmailForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *UsersConfirmEmailNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users confirm email not found response
+func (o *UsersConfirmEmailNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersConfirmEmailNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UsersConfirmEmailInternalServerError) IsServerError() bool {
 // IsCode returns true when this users confirm email internal server error response a status code equal to that given
 func (o *UsersConfirmEmailInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users confirm email internal server error response
+func (o *UsersConfirmEmailInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersConfirmEmailInternalServerError) Error() string {

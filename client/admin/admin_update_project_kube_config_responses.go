@@ -103,6 +103,11 @@ func (o *AdminUpdateProjectKubeConfigOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin update project kube config o k response
+func (o *AdminUpdateProjectKubeConfigOK) Code() int {
+	return 200
+}
+
 func (o *AdminUpdateProjectKubeConfigOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AdminUpdateProjectKubeConfigBadRequest) IsServerError() bool {
 // IsCode returns true when this admin update project kube config bad request response a status code equal to that given
 func (o *AdminUpdateProjectKubeConfigBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the admin update project kube config bad request response
+func (o *AdminUpdateProjectKubeConfigBadRequest) Code() int {
+	return 400
 }
 
 func (o *AdminUpdateProjectKubeConfigBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AdminUpdateProjectKubeConfigUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the admin update project kube config unauthorized response
+func (o *AdminUpdateProjectKubeConfigUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AdminUpdateProjectKubeConfigUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AdminUpdateProjectKubeConfigForbidden) IsServerError() bool {
 // IsCode returns true when this admin update project kube config forbidden response a status code equal to that given
 func (o *AdminUpdateProjectKubeConfigForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the admin update project kube config forbidden response
+func (o *AdminUpdateProjectKubeConfigForbidden) Code() int {
+	return 403
 }
 
 func (o *AdminUpdateProjectKubeConfigForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AdminUpdateProjectKubeConfigNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin update project kube config not found response
+func (o *AdminUpdateProjectKubeConfigNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminUpdateProjectKubeConfigNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AdminUpdateProjectKubeConfigInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin update project kube config internal server error response a status code equal to that given
 func (o *AdminUpdateProjectKubeConfigInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin update project kube config internal server error response
+func (o *AdminUpdateProjectKubeConfigInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminUpdateProjectKubeConfigInternalServerError) Error() string {

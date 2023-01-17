@@ -108,6 +108,11 @@ func (o *ProjectActionsDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project actions delete o k response
+func (o *ProjectActionsDeleteOK) Code() int {
+	return 200
+}
+
 func (o *ProjectActionsDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteOK ", 200)
 }
@@ -157,6 +162,11 @@ func (o *ProjectActionsDeleteNoContent) IsServerError() bool {
 // IsCode returns true when this project actions delete no content response a status code equal to that given
 func (o *ProjectActionsDeleteNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the project actions delete no content response
+func (o *ProjectActionsDeleteNoContent) Code() int {
+	return 204
 }
 
 func (o *ProjectActionsDeleteNoContent) Error() string {
@@ -209,6 +219,11 @@ func (o *ProjectActionsDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this project actions delete bad request response a status code equal to that given
 func (o *ProjectActionsDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project actions delete bad request response
+func (o *ProjectActionsDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectActionsDeleteBadRequest) Error() string {
@@ -274,6 +289,11 @@ func (o *ProjectActionsDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project actions delete unauthorized response
+func (o *ProjectActionsDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectActionsDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -335,6 +355,11 @@ func (o *ProjectActionsDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this project actions delete forbidden response a status code equal to that given
 func (o *ProjectActionsDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project actions delete forbidden response
+func (o *ProjectActionsDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectActionsDeleteForbidden) Error() string {
@@ -400,6 +425,11 @@ func (o *ProjectActionsDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project actions delete not found response
+func (o *ProjectActionsDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectActionsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -460,6 +490,11 @@ func (o *ProjectActionsDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this project actions delete internal server error response a status code equal to that given
 func (o *ProjectActionsDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project actions delete internal server error response
+func (o *ProjectActionsDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectActionsDeleteInternalServerError) Error() string {

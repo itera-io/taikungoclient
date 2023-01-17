@@ -103,6 +103,11 @@ func (o *UserGroupsUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the user groups update o k response
+func (o *UserGroupsUpdateOK) Code() int {
+	return 200
+}
+
 func (o *UserGroupsUpdateOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *UserGroupsUpdateBadRequest) IsServerError() bool {
 // IsCode returns true when this user groups update bad request response a status code equal to that given
 func (o *UserGroupsUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the user groups update bad request response
+func (o *UserGroupsUpdateBadRequest) Code() int {
+	return 400
 }
 
 func (o *UserGroupsUpdateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *UserGroupsUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the user groups update unauthorized response
+func (o *UserGroupsUpdateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UserGroupsUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *UserGroupsUpdateForbidden) IsServerError() bool {
 // IsCode returns true when this user groups update forbidden response a status code equal to that given
 func (o *UserGroupsUpdateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the user groups update forbidden response
+func (o *UserGroupsUpdateForbidden) Code() int {
+	return 403
 }
 
 func (o *UserGroupsUpdateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *UserGroupsUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user groups update not found response
+func (o *UserGroupsUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *UserGroupsUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UserGroupsUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this user groups update internal server error response a status code equal to that given
 func (o *UserGroupsUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the user groups update internal server error response
+func (o *UserGroupsUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UserGroupsUpdateInternalServerError) Error() string {

@@ -109,6 +109,11 @@ func (o *ServersDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the servers delete o k response
+func (o *ServersDeleteOK) Code() int {
+	return 200
+}
+
 func (o *ServersDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *ServersDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the servers delete no content response
+func (o *ServersDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *ServersDeleteNoContent) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteNoContent ", 204)
 }
@@ -219,6 +229,11 @@ func (o *ServersDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this servers delete bad request response a status code equal to that given
 func (o *ServersDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the servers delete bad request response
+func (o *ServersDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *ServersDeleteBadRequest) Error() string {
@@ -284,6 +299,11 @@ func (o *ServersDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the servers delete unauthorized response
+func (o *ServersDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ServersDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -345,6 +365,11 @@ func (o *ServersDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this servers delete forbidden response a status code equal to that given
 func (o *ServersDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the servers delete forbidden response
+func (o *ServersDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *ServersDeleteForbidden) Error() string {
@@ -410,6 +435,11 @@ func (o *ServersDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the servers delete not found response
+func (o *ServersDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *ServersDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *ServersDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this servers delete internal server error response a status code equal to that given
 func (o *ServersDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the servers delete internal server error response
+func (o *ServersDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ServersDeleteInternalServerError) Error() string {

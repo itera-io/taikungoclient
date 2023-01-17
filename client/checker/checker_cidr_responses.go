@@ -103,6 +103,11 @@ func (o *CheckerCidrOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker cidr o k response
+func (o *CheckerCidrOK) Code() int {
+	return 200
+}
+
 func (o *CheckerCidrOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CheckerCidrBadRequest) IsServerError() bool {
 // IsCode returns true when this checker cidr bad request response a status code equal to that given
 func (o *CheckerCidrBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the checker cidr bad request response
+func (o *CheckerCidrBadRequest) Code() int {
+	return 400
 }
 
 func (o *CheckerCidrBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CheckerCidrUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the checker cidr unauthorized response
+func (o *CheckerCidrUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CheckerCidrUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CheckerCidrForbidden) IsServerError() bool {
 // IsCode returns true when this checker cidr forbidden response a status code equal to that given
 func (o *CheckerCidrForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the checker cidr forbidden response
+func (o *CheckerCidrForbidden) Code() int {
+	return 403
 }
 
 func (o *CheckerCidrForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CheckerCidrNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker cidr not found response
+func (o *CheckerCidrNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerCidrNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerCidrInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker cidr internal server error response a status code equal to that given
 func (o *CheckerCidrInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker cidr internal server error response
+func (o *CheckerCidrInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerCidrInternalServerError) Error() string {

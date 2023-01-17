@@ -103,6 +103,11 @@ func (o *CloudCredentialsLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cloud credentials lock manager o k response
+func (o *CloudCredentialsLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *CloudCredentialsLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CloudCredentialsLockManagerBadRequest) IsServerError() bool {
 // IsCode returns true when this cloud credentials lock manager bad request response a status code equal to that given
 func (o *CloudCredentialsLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cloud credentials lock manager bad request response
+func (o *CloudCredentialsLockManagerBadRequest) Code() int {
+	return 400
 }
 
 func (o *CloudCredentialsLockManagerBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CloudCredentialsLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cloud credentials lock manager unauthorized response
+func (o *CloudCredentialsLockManagerUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CloudCredentialsLockManagerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CloudCredentialsLockManagerForbidden) IsServerError() bool {
 // IsCode returns true when this cloud credentials lock manager forbidden response a status code equal to that given
 func (o *CloudCredentialsLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cloud credentials lock manager forbidden response
+func (o *CloudCredentialsLockManagerForbidden) Code() int {
+	return 403
 }
 
 func (o *CloudCredentialsLockManagerForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CloudCredentialsLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cloud credentials lock manager not found response
+func (o *CloudCredentialsLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *CloudCredentialsLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CloudCredentialsLockManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this cloud credentials lock manager internal server error response a status code equal to that given
 func (o *CloudCredentialsLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cloud credentials lock manager internal server error response
+func (o *CloudCredentialsLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CloudCredentialsLockManagerInternalServerError) Error() string {

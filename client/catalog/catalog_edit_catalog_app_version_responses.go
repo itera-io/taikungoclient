@@ -103,6 +103,11 @@ func (o *CatalogEditCatalogAppVersionOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog edit catalog app version o k response
+func (o *CatalogEditCatalogAppVersionOK) Code() int {
+	return 200
+}
+
 func (o *CatalogEditCatalogAppVersionOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CatalogEditCatalogAppVersionBadRequest) IsServerError() bool {
 // IsCode returns true when this catalog edit catalog app version bad request response a status code equal to that given
 func (o *CatalogEditCatalogAppVersionBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the catalog edit catalog app version bad request response
+func (o *CatalogEditCatalogAppVersionBadRequest) Code() int {
+	return 400
 }
 
 func (o *CatalogEditCatalogAppVersionBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CatalogEditCatalogAppVersionUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the catalog edit catalog app version unauthorized response
+func (o *CatalogEditCatalogAppVersionUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CatalogEditCatalogAppVersionUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CatalogEditCatalogAppVersionForbidden) IsServerError() bool {
 // IsCode returns true when this catalog edit catalog app version forbidden response a status code equal to that given
 func (o *CatalogEditCatalogAppVersionForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the catalog edit catalog app version forbidden response
+func (o *CatalogEditCatalogAppVersionForbidden) Code() int {
+	return 403
 }
 
 func (o *CatalogEditCatalogAppVersionForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CatalogEditCatalogAppVersionNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog edit catalog app version not found response
+func (o *CatalogEditCatalogAppVersionNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogEditCatalogAppVersionNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CatalogEditCatalogAppVersionInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog edit catalog app version internal server error response a status code equal to that given
 func (o *CatalogEditCatalogAppVersionInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog edit catalog app version internal server error response
+func (o *CatalogEditCatalogAppVersionInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogEditCatalogAppVersionInternalServerError) Error() string {

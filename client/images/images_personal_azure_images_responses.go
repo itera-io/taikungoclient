@@ -103,6 +103,11 @@ func (o *ImagesPersonalAzureImagesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the images personal azure images o k response
+func (o *ImagesPersonalAzureImagesOK) Code() int {
+	return 200
+}
+
 func (o *ImagesPersonalAzureImagesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ImagesPersonalAzureImagesBadRequest) IsServerError() bool {
 // IsCode returns true when this images personal azure images bad request response a status code equal to that given
 func (o *ImagesPersonalAzureImagesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the images personal azure images bad request response
+func (o *ImagesPersonalAzureImagesBadRequest) Code() int {
+	return 400
 }
 
 func (o *ImagesPersonalAzureImagesBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ImagesPersonalAzureImagesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the images personal azure images unauthorized response
+func (o *ImagesPersonalAzureImagesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ImagesPersonalAzureImagesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ImagesPersonalAzureImagesForbidden) IsServerError() bool {
 // IsCode returns true when this images personal azure images forbidden response a status code equal to that given
 func (o *ImagesPersonalAzureImagesForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the images personal azure images forbidden response
+func (o *ImagesPersonalAzureImagesForbidden) Code() int {
+	return 403
 }
 
 func (o *ImagesPersonalAzureImagesForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ImagesPersonalAzureImagesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the images personal azure images not found response
+func (o *ImagesPersonalAzureImagesNotFound) Code() int {
+	return 404
+}
+
 func (o *ImagesPersonalAzureImagesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ImagesPersonalAzureImagesInternalServerError) IsServerError() bool {
 // IsCode returns true when this images personal azure images internal server error response a status code equal to that given
 func (o *ImagesPersonalAzureImagesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the images personal azure images internal server error response
+func (o *ImagesPersonalAzureImagesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ImagesPersonalAzureImagesInternalServerError) Error() string {

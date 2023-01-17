@@ -103,6 +103,11 @@ func (o *CatalogCreateCatalogOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog create catalog o k response
+func (o *CatalogCreateCatalogOK) Code() int {
+	return 200
+}
+
 func (o *CatalogCreateCatalogOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/create-catalog][%d] catalogCreateCatalogOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CatalogCreateCatalogBadRequest) IsServerError() bool {
 // IsCode returns true when this catalog create catalog bad request response a status code equal to that given
 func (o *CatalogCreateCatalogBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the catalog create catalog bad request response
+func (o *CatalogCreateCatalogBadRequest) Code() int {
+	return 400
 }
 
 func (o *CatalogCreateCatalogBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CatalogCreateCatalogUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the catalog create catalog unauthorized response
+func (o *CatalogCreateCatalogUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CatalogCreateCatalogUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/create-catalog][%d] catalogCreateCatalogUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CatalogCreateCatalogForbidden) IsServerError() bool {
 // IsCode returns true when this catalog create catalog forbidden response a status code equal to that given
 func (o *CatalogCreateCatalogForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the catalog create catalog forbidden response
+func (o *CatalogCreateCatalogForbidden) Code() int {
+	return 403
 }
 
 func (o *CatalogCreateCatalogForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CatalogCreateCatalogNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog create catalog not found response
+func (o *CatalogCreateCatalogNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogCreateCatalogNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/create-catalog][%d] catalogCreateCatalogNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CatalogCreateCatalogInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog create catalog internal server error response a status code equal to that given
 func (o *CatalogCreateCatalogInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog create catalog internal server error response
+func (o *CatalogCreateCatalogInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogCreateCatalogInternalServerError) Error() string {

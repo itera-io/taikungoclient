@@ -103,6 +103,11 @@ func (o *InvoicesInvoicesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the invoices invoices o k response
+func (o *InvoicesInvoicesOK) Code() int {
+	return 200
+}
+
 func (o *InvoicesInvoicesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Invoices/list][%d] invoicesInvoicesOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *InvoicesInvoicesBadRequest) IsServerError() bool {
 // IsCode returns true when this invoices invoices bad request response a status code equal to that given
 func (o *InvoicesInvoicesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the invoices invoices bad request response
+func (o *InvoicesInvoicesBadRequest) Code() int {
+	return 400
 }
 
 func (o *InvoicesInvoicesBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *InvoicesInvoicesUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the invoices invoices unauthorized response
+func (o *InvoicesInvoicesUnauthorized) Code() int {
+	return 401
+}
+
 func (o *InvoicesInvoicesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Invoices/list][%d] invoicesInvoicesUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *InvoicesInvoicesForbidden) IsServerError() bool {
 // IsCode returns true when this invoices invoices forbidden response a status code equal to that given
 func (o *InvoicesInvoicesForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the invoices invoices forbidden response
+func (o *InvoicesInvoicesForbidden) Code() int {
+	return 403
 }
 
 func (o *InvoicesInvoicesForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *InvoicesInvoicesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the invoices invoices not found response
+func (o *InvoicesInvoicesNotFound) Code() int {
+	return 404
+}
+
 func (o *InvoicesInvoicesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Invoices/list][%d] invoicesInvoicesNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *InvoicesInvoicesInternalServerError) IsServerError() bool {
 // IsCode returns true when this invoices invoices internal server error response a status code equal to that given
 func (o *InvoicesInvoicesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the invoices invoices internal server error response
+func (o *InvoicesInvoicesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *InvoicesInvoicesInternalServerError) Error() string {

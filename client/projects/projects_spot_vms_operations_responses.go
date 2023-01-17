@@ -103,6 +103,11 @@ func (o *ProjectsSpotVmsOperationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects spot vms operations o k response
+func (o *ProjectsSpotVmsOperationsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsSpotVmsOperationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectsSpotVmsOperationsBadRequest) IsServerError() bool {
 // IsCode returns true when this projects spot vms operations bad request response a status code equal to that given
 func (o *ProjectsSpotVmsOperationsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the projects spot vms operations bad request response
+func (o *ProjectsSpotVmsOperationsBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectsSpotVmsOperationsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectsSpotVmsOperationsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the projects spot vms operations unauthorized response
+func (o *ProjectsSpotVmsOperationsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectsSpotVmsOperationsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectsSpotVmsOperationsForbidden) IsServerError() bool {
 // IsCode returns true when this projects spot vms operations forbidden response a status code equal to that given
 func (o *ProjectsSpotVmsOperationsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the projects spot vms operations forbidden response
+func (o *ProjectsSpotVmsOperationsForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectsSpotVmsOperationsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectsSpotVmsOperationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects spot vms operations not found response
+func (o *ProjectsSpotVmsOperationsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsSpotVmsOperationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsSpotVmsOperationsInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects spot vms operations internal server error response a status code equal to that given
 func (o *ProjectsSpotVmsOperationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects spot vms operations internal server error response
+func (o *ProjectsSpotVmsOperationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsSpotVmsOperationsInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *AutoscalingEditAutoscalingOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the autoscaling edit autoscaling o k response
+func (o *AutoscalingEditAutoscalingOK) Code() int {
+	return 200
+}
+
 func (o *AutoscalingEditAutoscalingOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/edit][%d] autoscalingEditAutoscalingOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AutoscalingEditAutoscalingBadRequest) IsServerError() bool {
 // IsCode returns true when this autoscaling edit autoscaling bad request response a status code equal to that given
 func (o *AutoscalingEditAutoscalingBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the autoscaling edit autoscaling bad request response
+func (o *AutoscalingEditAutoscalingBadRequest) Code() int {
+	return 400
 }
 
 func (o *AutoscalingEditAutoscalingBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AutoscalingEditAutoscalingUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the autoscaling edit autoscaling unauthorized response
+func (o *AutoscalingEditAutoscalingUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AutoscalingEditAutoscalingUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/edit][%d] autoscalingEditAutoscalingUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AutoscalingEditAutoscalingForbidden) IsServerError() bool {
 // IsCode returns true when this autoscaling edit autoscaling forbidden response a status code equal to that given
 func (o *AutoscalingEditAutoscalingForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the autoscaling edit autoscaling forbidden response
+func (o *AutoscalingEditAutoscalingForbidden) Code() int {
+	return 403
 }
 
 func (o *AutoscalingEditAutoscalingForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AutoscalingEditAutoscalingNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the autoscaling edit autoscaling not found response
+func (o *AutoscalingEditAutoscalingNotFound) Code() int {
+	return 404
+}
+
 func (o *AutoscalingEditAutoscalingNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/edit][%d] autoscalingEditAutoscalingNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AutoscalingEditAutoscalingInternalServerError) IsServerError() bool {
 // IsCode returns true when this autoscaling edit autoscaling internal server error response a status code equal to that given
 func (o *AutoscalingEditAutoscalingInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the autoscaling edit autoscaling internal server error response
+func (o *AutoscalingEditAutoscalingInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AutoscalingEditAutoscalingInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *CatalogCatalogAppValueOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog catalog app value o k response
+func (o *CatalogCatalogAppValueOK) Code() int {
+	return 200
+}
+
 func (o *CatalogCatalogAppValueOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value][%d] catalogCatalogAppValueOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CatalogCatalogAppValueBadRequest) IsServerError() bool {
 // IsCode returns true when this catalog catalog app value bad request response a status code equal to that given
 func (o *CatalogCatalogAppValueBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the catalog catalog app value bad request response
+func (o *CatalogCatalogAppValueBadRequest) Code() int {
+	return 400
 }
 
 func (o *CatalogCatalogAppValueBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CatalogCatalogAppValueUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the catalog catalog app value unauthorized response
+func (o *CatalogCatalogAppValueUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CatalogCatalogAppValueUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value][%d] catalogCatalogAppValueUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CatalogCatalogAppValueForbidden) IsServerError() bool {
 // IsCode returns true when this catalog catalog app value forbidden response a status code equal to that given
 func (o *CatalogCatalogAppValueForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the catalog catalog app value forbidden response
+func (o *CatalogCatalogAppValueForbidden) Code() int {
+	return 403
 }
 
 func (o *CatalogCatalogAppValueForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CatalogCatalogAppValueNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog catalog app value not found response
+func (o *CatalogCatalogAppValueNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogCatalogAppValueNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value][%d] catalogCatalogAppValueNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CatalogCatalogAppValueInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog catalog app value internal server error response a status code equal to that given
 func (o *CatalogCatalogAppValueInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog catalog app value internal server error response
+func (o *CatalogCatalogAppValueInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogCatalogAppValueInternalServerError) Error() string {

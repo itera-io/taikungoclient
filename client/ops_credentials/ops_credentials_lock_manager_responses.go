@@ -103,6 +103,11 @@ func (o *OpsCredentialsLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ops credentials lock manager o k response
+func (o *OpsCredentialsLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *OpsCredentialsLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *OpsCredentialsLockManagerBadRequest) IsServerError() bool {
 // IsCode returns true when this ops credentials lock manager bad request response a status code equal to that given
 func (o *OpsCredentialsLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the ops credentials lock manager bad request response
+func (o *OpsCredentialsLockManagerBadRequest) Code() int {
+	return 400
 }
 
 func (o *OpsCredentialsLockManagerBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *OpsCredentialsLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the ops credentials lock manager unauthorized response
+func (o *OpsCredentialsLockManagerUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OpsCredentialsLockManagerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *OpsCredentialsLockManagerForbidden) IsServerError() bool {
 // IsCode returns true when this ops credentials lock manager forbidden response a status code equal to that given
 func (o *OpsCredentialsLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the ops credentials lock manager forbidden response
+func (o *OpsCredentialsLockManagerForbidden) Code() int {
+	return 403
 }
 
 func (o *OpsCredentialsLockManagerForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *OpsCredentialsLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ops credentials lock manager not found response
+func (o *OpsCredentialsLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *OpsCredentialsLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *OpsCredentialsLockManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this ops credentials lock manager internal server error response a status code equal to that given
 func (o *OpsCredentialsLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ops credentials lock manager internal server error response
+func (o *OpsCredentialsLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpsCredentialsLockManagerInternalServerError) Error() string {

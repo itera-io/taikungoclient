@@ -109,6 +109,11 @@ func (o *AlertingProfilesDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting profiles delete o k response
+func (o *AlertingProfilesDeleteOK) Code() int {
+	return 200
+}
+
 func (o *AlertingProfilesDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *AlertingProfilesDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the alerting profiles delete no content response
+func (o *AlertingProfilesDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *AlertingProfilesDeleteNoContent) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteNoContent ", 204)
 }
@@ -219,6 +229,11 @@ func (o *AlertingProfilesDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this alerting profiles delete bad request response a status code equal to that given
 func (o *AlertingProfilesDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the alerting profiles delete bad request response
+func (o *AlertingProfilesDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *AlertingProfilesDeleteBadRequest) Error() string {
@@ -284,6 +299,11 @@ func (o *AlertingProfilesDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the alerting profiles delete unauthorized response
+func (o *AlertingProfilesDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AlertingProfilesDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -345,6 +365,11 @@ func (o *AlertingProfilesDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this alerting profiles delete forbidden response a status code equal to that given
 func (o *AlertingProfilesDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the alerting profiles delete forbidden response
+func (o *AlertingProfilesDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *AlertingProfilesDeleteForbidden) Error() string {
@@ -410,6 +435,11 @@ func (o *AlertingProfilesDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting profiles delete not found response
+func (o *AlertingProfilesDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingProfilesDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *AlertingProfilesDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this alerting profiles delete internal server error response a status code equal to that given
 func (o *AlertingProfilesDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting profiles delete internal server error response
+func (o *AlertingProfilesDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingProfilesDeleteInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *OpenstackSubnetsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the openstack subnets o k response
+func (o *OpenstackSubnetsOK) Code() int {
+	return 200
+}
+
 func (o *OpenstackSubnetsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *OpenstackSubnetsBadRequest) IsServerError() bool {
 // IsCode returns true when this openstack subnets bad request response a status code equal to that given
 func (o *OpenstackSubnetsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the openstack subnets bad request response
+func (o *OpenstackSubnetsBadRequest) Code() int {
+	return 400
 }
 
 func (o *OpenstackSubnetsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *OpenstackSubnetsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the openstack subnets unauthorized response
+func (o *OpenstackSubnetsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OpenstackSubnetsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *OpenstackSubnetsForbidden) IsServerError() bool {
 // IsCode returns true when this openstack subnets forbidden response a status code equal to that given
 func (o *OpenstackSubnetsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the openstack subnets forbidden response
+func (o *OpenstackSubnetsForbidden) Code() int {
+	return 403
 }
 
 func (o *OpenstackSubnetsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *OpenstackSubnetsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the openstack subnets not found response
+func (o *OpenstackSubnetsNotFound) Code() int {
+	return 404
+}
+
 func (o *OpenstackSubnetsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpenstackSubnetsInternalServerError) IsServerError() bool {
 // IsCode returns true when this openstack subnets internal server error response a status code equal to that given
 func (o *OpenstackSubnetsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the openstack subnets internal server error response
+func (o *OpenstackSubnetsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpenstackSubnetsInternalServerError) Error() string {

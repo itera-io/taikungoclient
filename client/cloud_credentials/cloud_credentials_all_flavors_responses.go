@@ -103,6 +103,11 @@ func (o *CloudCredentialsAllFlavorsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cloud credentials all flavors o k response
+func (o *CloudCredentialsAllFlavorsOK) Code() int {
+	return 200
+}
+
 func (o *CloudCredentialsAllFlavorsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *CloudCredentialsAllFlavorsBadRequest) IsServerError() bool {
 // IsCode returns true when this cloud credentials all flavors bad request response a status code equal to that given
 func (o *CloudCredentialsAllFlavorsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cloud credentials all flavors bad request response
+func (o *CloudCredentialsAllFlavorsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CloudCredentialsAllFlavorsBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *CloudCredentialsAllFlavorsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cloud credentials all flavors unauthorized response
+func (o *CloudCredentialsAllFlavorsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CloudCredentialsAllFlavorsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *CloudCredentialsAllFlavorsForbidden) IsServerError() bool {
 // IsCode returns true when this cloud credentials all flavors forbidden response a status code equal to that given
 func (o *CloudCredentialsAllFlavorsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cloud credentials all flavors forbidden response
+func (o *CloudCredentialsAllFlavorsForbidden) Code() int {
+	return 403
 }
 
 func (o *CloudCredentialsAllFlavorsForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *CloudCredentialsAllFlavorsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cloud credentials all flavors not found response
+func (o *CloudCredentialsAllFlavorsNotFound) Code() int {
+	return 404
+}
+
 func (o *CloudCredentialsAllFlavorsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *CloudCredentialsAllFlavorsInternalServerError) IsServerError() bool {
 // IsCode returns true when this cloud credentials all flavors internal server error response a status code equal to that given
 func (o *CloudCredentialsAllFlavorsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cloud credentials all flavors internal server error response
+func (o *CloudCredentialsAllFlavorsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CloudCredentialsAllFlavorsInternalServerError) Error() string {

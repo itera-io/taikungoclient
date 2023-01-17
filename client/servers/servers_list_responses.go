@@ -103,6 +103,11 @@ func (o *ServersListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the servers list o k response
+func (o *ServersListOK) Code() int {
+	return 200
+}
+
 func (o *ServersListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers][%d] serversListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ServersListBadRequest) IsServerError() bool {
 // IsCode returns true when this servers list bad request response a status code equal to that given
 func (o *ServersListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the servers list bad request response
+func (o *ServersListBadRequest) Code() int {
+	return 400
 }
 
 func (o *ServersListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ServersListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the servers list unauthorized response
+func (o *ServersListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ServersListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers][%d] serversListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ServersListForbidden) IsServerError() bool {
 // IsCode returns true when this servers list forbidden response a status code equal to that given
 func (o *ServersListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the servers list forbidden response
+func (o *ServersListForbidden) Code() int {
+	return 403
 }
 
 func (o *ServersListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ServersListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the servers list not found response
+func (o *ServersListNotFound) Code() int {
+	return 404
+}
+
 func (o *ServersListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers][%d] serversListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ServersListInternalServerError) IsServerError() bool {
 // IsCode returns true when this servers list internal server error response a status code equal to that given
 func (o *ServersListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the servers list internal server error response
+func (o *ServersListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ServersListInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *CronJobDeleteExpiredAlertsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job delete expired alerts o k response
+func (o *CronJobDeleteExpiredAlertsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobDeleteExpiredAlertsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobDeleteExpiredAlertsBadRequest) IsServerError() bool {
 // IsCode returns true when this cron job delete expired alerts bad request response a status code equal to that given
 func (o *CronJobDeleteExpiredAlertsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job delete expired alerts bad request response
+func (o *CronJobDeleteExpiredAlertsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobDeleteExpiredAlertsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobDeleteExpiredAlertsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cron job delete expired alerts unauthorized response
+func (o *CronJobDeleteExpiredAlertsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobDeleteExpiredAlertsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobDeleteExpiredAlertsForbidden) IsServerError() bool {
 // IsCode returns true when this cron job delete expired alerts forbidden response a status code equal to that given
 func (o *CronJobDeleteExpiredAlertsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job delete expired alerts forbidden response
+func (o *CronJobDeleteExpiredAlertsForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobDeleteExpiredAlertsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobDeleteExpiredAlertsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job delete expired alerts not found response
+func (o *CronJobDeleteExpiredAlertsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobDeleteExpiredAlertsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobDeleteExpiredAlertsInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job delete expired alerts internal server error response a status code equal to that given
 func (o *CronJobDeleteExpiredAlertsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job delete expired alerts internal server error response
+func (o *CronJobDeleteExpiredAlertsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobDeleteExpiredAlertsInternalServerError) Error() string {

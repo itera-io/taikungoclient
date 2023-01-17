@@ -103,6 +103,11 @@ func (o *KubernetesDescribeCrdOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe crd o k response
+func (o *KubernetesDescribeCrdOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribeCrdOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/crd][%d] kubernetesDescribeCrdOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesDescribeCrdBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes describe crd bad request response a status code equal to that given
 func (o *KubernetesDescribeCrdBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes describe crd bad request response
+func (o *KubernetesDescribeCrdBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesDescribeCrdBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesDescribeCrdUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes describe crd unauthorized response
+func (o *KubernetesDescribeCrdUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesDescribeCrdUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/crd][%d] kubernetesDescribeCrdUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesDescribeCrdForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes describe crd forbidden response a status code equal to that given
 func (o *KubernetesDescribeCrdForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes describe crd forbidden response
+func (o *KubernetesDescribeCrdForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesDescribeCrdForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesDescribeCrdNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe crd not found response
+func (o *KubernetesDescribeCrdNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribeCrdNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/crd][%d] kubernetesDescribeCrdNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesDescribeCrdInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe crd internal server error response a status code equal to that given
 func (o *KubernetesDescribeCrdInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe crd internal server error response
+func (o *KubernetesDescribeCrdInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribeCrdInternalServerError) Error() string {

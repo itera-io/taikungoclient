@@ -103,6 +103,11 @@ func (o *OpaProfilesSyncOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the opa profiles sync o k response
+func (o *OpaProfilesSyncOK) Code() int {
+	return 200
+}
+
 func (o *OpaProfilesSyncOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *OpaProfilesSyncBadRequest) IsServerError() bool {
 // IsCode returns true when this opa profiles sync bad request response a status code equal to that given
 func (o *OpaProfilesSyncBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the opa profiles sync bad request response
+func (o *OpaProfilesSyncBadRequest) Code() int {
+	return 400
 }
 
 func (o *OpaProfilesSyncBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *OpaProfilesSyncUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the opa profiles sync unauthorized response
+func (o *OpaProfilesSyncUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OpaProfilesSyncUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *OpaProfilesSyncForbidden) IsServerError() bool {
 // IsCode returns true when this opa profiles sync forbidden response a status code equal to that given
 func (o *OpaProfilesSyncForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the opa profiles sync forbidden response
+func (o *OpaProfilesSyncForbidden) Code() int {
+	return 403
 }
 
 func (o *OpaProfilesSyncForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *OpaProfilesSyncNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the opa profiles sync not found response
+func (o *OpaProfilesSyncNotFound) Code() int {
+	return 404
+}
+
 func (o *OpaProfilesSyncNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpaProfilesSyncInternalServerError) IsServerError() bool {
 // IsCode returns true when this opa profiles sync internal server error response a status code equal to that given
 func (o *OpaProfilesSyncInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the opa profiles sync internal server error response
+func (o *OpaProfilesSyncInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpaProfilesSyncInternalServerError) Error() string {

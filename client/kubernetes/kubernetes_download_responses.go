@@ -103,6 +103,11 @@ func (o *KubernetesDownloadOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes download o k response
+func (o *KubernetesDownloadOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDownloadOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *KubernetesDownloadBadRequest) IsServerError() bool {
 // IsCode returns true when this kubernetes download bad request response a status code equal to that given
 func (o *KubernetesDownloadBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the kubernetes download bad request response
+func (o *KubernetesDownloadBadRequest) Code() int {
+	return 400
 }
 
 func (o *KubernetesDownloadBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *KubernetesDownloadUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the kubernetes download unauthorized response
+func (o *KubernetesDownloadUnauthorized) Code() int {
+	return 401
+}
+
 func (o *KubernetesDownloadUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *KubernetesDownloadForbidden) IsServerError() bool {
 // IsCode returns true when this kubernetes download forbidden response a status code equal to that given
 func (o *KubernetesDownloadForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the kubernetes download forbidden response
+func (o *KubernetesDownloadForbidden) Code() int {
+	return 403
 }
 
 func (o *KubernetesDownloadForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *KubernetesDownloadNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes download not found response
+func (o *KubernetesDownloadNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDownloadNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesDownloadInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes download internal server error response a status code equal to that given
 func (o *KubernetesDownloadInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes download internal server error response
+func (o *KubernetesDownloadInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDownloadInternalServerError) Error() string {

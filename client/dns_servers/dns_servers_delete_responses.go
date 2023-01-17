@@ -109,6 +109,11 @@ func (o *DNSServersDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the dns servers delete o k response
+func (o *DNSServersDeleteOK) Code() int {
+	return 200
+}
+
 func (o *DNSServersDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *DNSServersDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the dns servers delete no content response
+func (o *DNSServersDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *DNSServersDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteNoContent ", 204)
 }
@@ -219,6 +229,11 @@ func (o *DNSServersDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this dns servers delete bad request response a status code equal to that given
 func (o *DNSServersDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the dns servers delete bad request response
+func (o *DNSServersDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *DNSServersDeleteBadRequest) Error() string {
@@ -284,6 +299,11 @@ func (o *DNSServersDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the dns servers delete unauthorized response
+func (o *DNSServersDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *DNSServersDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -345,6 +365,11 @@ func (o *DNSServersDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this dns servers delete forbidden response a status code equal to that given
 func (o *DNSServersDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the dns servers delete forbidden response
+func (o *DNSServersDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *DNSServersDeleteForbidden) Error() string {
@@ -410,6 +435,11 @@ func (o *DNSServersDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the dns servers delete not found response
+func (o *DNSServersDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *DNSServersDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *DNSServersDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this dns servers delete internal server error response a status code equal to that given
 func (o *DNSServersDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the dns servers delete internal server error response
+func (o *DNSServersDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *DNSServersDeleteInternalServerError) Error() string {

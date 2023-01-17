@@ -103,6 +103,11 @@ func (o *CloudCredentialsMakeDefaultOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cloud credentials make default o k response
+func (o *CloudCredentialsMakeDefaultOK) Code() int {
+	return 200
+}
+
 func (o *CloudCredentialsMakeDefaultOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CloudCredentialsMakeDefaultBadRequest) IsServerError() bool {
 // IsCode returns true when this cloud credentials make default bad request response a status code equal to that given
 func (o *CloudCredentialsMakeDefaultBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cloud credentials make default bad request response
+func (o *CloudCredentialsMakeDefaultBadRequest) Code() int {
+	return 400
 }
 
 func (o *CloudCredentialsMakeDefaultBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CloudCredentialsMakeDefaultUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cloud credentials make default unauthorized response
+func (o *CloudCredentialsMakeDefaultUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CloudCredentialsMakeDefaultUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CloudCredentialsMakeDefaultForbidden) IsServerError() bool {
 // IsCode returns true when this cloud credentials make default forbidden response a status code equal to that given
 func (o *CloudCredentialsMakeDefaultForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cloud credentials make default forbidden response
+func (o *CloudCredentialsMakeDefaultForbidden) Code() int {
+	return 403
 }
 
 func (o *CloudCredentialsMakeDefaultForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CloudCredentialsMakeDefaultNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cloud credentials make default not found response
+func (o *CloudCredentialsMakeDefaultNotFound) Code() int {
+	return 404
+}
+
 func (o *CloudCredentialsMakeDefaultNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CloudCredentialsMakeDefaultInternalServerError) IsServerError() bool {
 // IsCode returns true when this cloud credentials make default internal server error response a status code equal to that given
 func (o *CloudCredentialsMakeDefaultInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cloud credentials make default internal server error response
+func (o *CloudCredentialsMakeDefaultInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CloudCredentialsMakeDefaultInternalServerError) Error() string {

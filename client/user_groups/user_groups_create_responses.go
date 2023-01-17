@@ -103,6 +103,11 @@ func (o *UserGroupsCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the user groups create o k response
+func (o *UserGroupsCreateOK) Code() int {
+	return 200
+}
+
 func (o *UserGroupsCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/create][%d] userGroupsCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *UserGroupsCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this user groups create bad request response a status code equal to that given
 func (o *UserGroupsCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the user groups create bad request response
+func (o *UserGroupsCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *UserGroupsCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *UserGroupsCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the user groups create unauthorized response
+func (o *UserGroupsCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UserGroupsCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/create][%d] userGroupsCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *UserGroupsCreateForbidden) IsServerError() bool {
 // IsCode returns true when this user groups create forbidden response a status code equal to that given
 func (o *UserGroupsCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the user groups create forbidden response
+func (o *UserGroupsCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *UserGroupsCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *UserGroupsCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user groups create not found response
+func (o *UserGroupsCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *UserGroupsCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/create][%d] userGroupsCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *UserGroupsCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this user groups create internal server error response a status code equal to that given
 func (o *UserGroupsCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the user groups create internal server error response
+func (o *UserGroupsCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UserGroupsCreateInternalServerError) Error() string {

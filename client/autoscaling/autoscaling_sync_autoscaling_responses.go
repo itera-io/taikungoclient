@@ -103,6 +103,11 @@ func (o *AutoscalingSyncAutoscalingOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the autoscaling sync autoscaling o k response
+func (o *AutoscalingSyncAutoscalingOK) Code() int {
+	return 200
+}
+
 func (o *AutoscalingSyncAutoscalingOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/sync][%d] autoscalingSyncAutoscalingOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *AutoscalingSyncAutoscalingBadRequest) IsServerError() bool {
 // IsCode returns true when this autoscaling sync autoscaling bad request response a status code equal to that given
 func (o *AutoscalingSyncAutoscalingBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the autoscaling sync autoscaling bad request response
+func (o *AutoscalingSyncAutoscalingBadRequest) Code() int {
+	return 400
 }
 
 func (o *AutoscalingSyncAutoscalingBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *AutoscalingSyncAutoscalingUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the autoscaling sync autoscaling unauthorized response
+func (o *AutoscalingSyncAutoscalingUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AutoscalingSyncAutoscalingUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/sync][%d] autoscalingSyncAutoscalingUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *AutoscalingSyncAutoscalingForbidden) IsServerError() bool {
 // IsCode returns true when this autoscaling sync autoscaling forbidden response a status code equal to that given
 func (o *AutoscalingSyncAutoscalingForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the autoscaling sync autoscaling forbidden response
+func (o *AutoscalingSyncAutoscalingForbidden) Code() int {
+	return 403
 }
 
 func (o *AutoscalingSyncAutoscalingForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *AutoscalingSyncAutoscalingNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the autoscaling sync autoscaling not found response
+func (o *AutoscalingSyncAutoscalingNotFound) Code() int {
+	return 404
+}
+
 func (o *AutoscalingSyncAutoscalingNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/sync][%d] autoscalingSyncAutoscalingNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AutoscalingSyncAutoscalingInternalServerError) IsServerError() bool {
 // IsCode returns true when this autoscaling sync autoscaling internal server error response a status code equal to that given
 func (o *AutoscalingSyncAutoscalingInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the autoscaling sync autoscaling internal server error response
+func (o *AutoscalingSyncAutoscalingInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AutoscalingSyncAutoscalingInternalServerError) Error() string {

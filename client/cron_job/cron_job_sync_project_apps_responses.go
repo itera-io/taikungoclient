@@ -103,6 +103,11 @@ func (o *CronJobSyncProjectAppsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job sync project apps o k response
+func (o *CronJobSyncProjectAppsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobSyncProjectAppsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobSyncProjectAppsBadRequest) IsServerError() bool {
 // IsCode returns true when this cron job sync project apps bad request response a status code equal to that given
 func (o *CronJobSyncProjectAppsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job sync project apps bad request response
+func (o *CronJobSyncProjectAppsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobSyncProjectAppsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobSyncProjectAppsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cron job sync project apps unauthorized response
+func (o *CronJobSyncProjectAppsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobSyncProjectAppsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobSyncProjectAppsForbidden) IsServerError() bool {
 // IsCode returns true when this cron job sync project apps forbidden response a status code equal to that given
 func (o *CronJobSyncProjectAppsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job sync project apps forbidden response
+func (o *CronJobSyncProjectAppsForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobSyncProjectAppsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobSyncProjectAppsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job sync project apps not found response
+func (o *CronJobSyncProjectAppsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobSyncProjectAppsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobSyncProjectAppsInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job sync project apps internal server error response a status code equal to that given
 func (o *CronJobSyncProjectAppsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job sync project apps internal server error response
+func (o *CronJobSyncProjectAppsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobSyncProjectAppsInternalServerError) Error() string {

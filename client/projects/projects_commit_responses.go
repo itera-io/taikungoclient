@@ -103,6 +103,11 @@ func (o *ProjectsCommitOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects commit o k response
+func (o *ProjectsCommitOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsCommitOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectsCommitBadRequest) IsServerError() bool {
 // IsCode returns true when this projects commit bad request response a status code equal to that given
 func (o *ProjectsCommitBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the projects commit bad request response
+func (o *ProjectsCommitBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectsCommitBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectsCommitUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the projects commit unauthorized response
+func (o *ProjectsCommitUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectsCommitUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectsCommitForbidden) IsServerError() bool {
 // IsCode returns true when this projects commit forbidden response a status code equal to that given
 func (o *ProjectsCommitForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the projects commit forbidden response
+func (o *ProjectsCommitForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectsCommitForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectsCommitNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects commit not found response
+func (o *ProjectsCommitNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsCommitNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsCommitInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects commit internal server error response a status code equal to that given
 func (o *ProjectsCommitInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects commit internal server error response
+func (o *ProjectsCommitInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsCommitInternalServerError) Error() string {

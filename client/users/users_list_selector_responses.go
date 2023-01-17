@@ -103,6 +103,11 @@ func (o *UsersListSelectorOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users list selector o k response
+func (o *UsersListSelectorOK) Code() int {
+	return 200
+}
+
 func (o *UsersListSelectorOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *UsersListSelectorBadRequest) IsServerError() bool {
 // IsCode returns true when this users list selector bad request response a status code equal to that given
 func (o *UsersListSelectorBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the users list selector bad request response
+func (o *UsersListSelectorBadRequest) Code() int {
+	return 400
 }
 
 func (o *UsersListSelectorBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *UsersListSelectorUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the users list selector unauthorized response
+func (o *UsersListSelectorUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UsersListSelectorUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *UsersListSelectorForbidden) IsServerError() bool {
 // IsCode returns true when this users list selector forbidden response a status code equal to that given
 func (o *UsersListSelectorForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the users list selector forbidden response
+func (o *UsersListSelectorForbidden) Code() int {
+	return 403
 }
 
 func (o *UsersListSelectorForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *UsersListSelectorNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users list selector not found response
+func (o *UsersListSelectorNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersListSelectorNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UsersListSelectorInternalServerError) IsServerError() bool {
 // IsCode returns true when this users list selector internal server error response a status code equal to that given
 func (o *UsersListSelectorInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users list selector internal server error response
+func (o *UsersListSelectorInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersListSelectorInternalServerError) Error() string {

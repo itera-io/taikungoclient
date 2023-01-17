@@ -103,6 +103,11 @@ func (o *ProjectInfracostsEditOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project infracosts edit o k response
+func (o *ProjectInfracostsEditOK) Code() int {
+	return 200
+}
+
 func (o *ProjectInfracostsEditOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectInfracosts/upsert/{projectId}][%d] projectInfracostsEditOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectInfracostsEditBadRequest) IsServerError() bool {
 // IsCode returns true when this project infracosts edit bad request response a status code equal to that given
 func (o *ProjectInfracostsEditBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project infracosts edit bad request response
+func (o *ProjectInfracostsEditBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectInfracostsEditBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectInfracostsEditUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project infracosts edit unauthorized response
+func (o *ProjectInfracostsEditUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectInfracostsEditUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectInfracosts/upsert/{projectId}][%d] projectInfracostsEditUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectInfracostsEditForbidden) IsServerError() bool {
 // IsCode returns true when this project infracosts edit forbidden response a status code equal to that given
 func (o *ProjectInfracostsEditForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project infracosts edit forbidden response
+func (o *ProjectInfracostsEditForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectInfracostsEditForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectInfracostsEditNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project infracosts edit not found response
+func (o *ProjectInfracostsEditNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectInfracostsEditNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectInfracosts/upsert/{projectId}][%d] projectInfracostsEditNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectInfracostsEditInternalServerError) IsServerError() bool {
 // IsCode returns true when this project infracosts edit internal server error response a status code equal to that given
 func (o *ProjectInfracostsEditInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project infracosts edit internal server error response
+func (o *ProjectInfracostsEditInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectInfracostsEditInternalServerError) Error() string {

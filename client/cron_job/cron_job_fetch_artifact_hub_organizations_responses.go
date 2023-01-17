@@ -103,6 +103,11 @@ func (o *CronJobFetchArtifactHubOrganizationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job fetch artifact hub organizations o k response
+func (o *CronJobFetchArtifactHubOrganizationsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobFetchArtifactHubOrganizationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-artifact-organizations][%d] cronJobFetchArtifactHubOrganizationsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *CronJobFetchArtifactHubOrganizationsBadRequest) IsServerError() bool {
 // IsCode returns true when this cron job fetch artifact hub organizations bad request response a status code equal to that given
 func (o *CronJobFetchArtifactHubOrganizationsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cron job fetch artifact hub organizations bad request response
+func (o *CronJobFetchArtifactHubOrganizationsBadRequest) Code() int {
+	return 400
 }
 
 func (o *CronJobFetchArtifactHubOrganizationsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *CronJobFetchArtifactHubOrganizationsUnauthorized) IsCode(code int) bool
 	return code == 401
 }
 
+// Code gets the status code for the cron job fetch artifact hub organizations unauthorized response
+func (o *CronJobFetchArtifactHubOrganizationsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CronJobFetchArtifactHubOrganizationsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-artifact-organizations][%d] cronJobFetchArtifactHubOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *CronJobFetchArtifactHubOrganizationsForbidden) IsServerError() bool {
 // IsCode returns true when this cron job fetch artifact hub organizations forbidden response a status code equal to that given
 func (o *CronJobFetchArtifactHubOrganizationsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the cron job fetch artifact hub organizations forbidden response
+func (o *CronJobFetchArtifactHubOrganizationsForbidden) Code() int {
+	return 403
 }
 
 func (o *CronJobFetchArtifactHubOrganizationsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *CronJobFetchArtifactHubOrganizationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job fetch artifact hub organizations not found response
+func (o *CronJobFetchArtifactHubOrganizationsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobFetchArtifactHubOrganizationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-artifact-organizations][%d] cronJobFetchArtifactHubOrganizationsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobFetchArtifactHubOrganizationsInternalServerError) IsServerError(
 // IsCode returns true when this cron job fetch artifact hub organizations internal server error response a status code equal to that given
 func (o *CronJobFetchArtifactHubOrganizationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job fetch artifact hub organizations internal server error response
+func (o *CronJobFetchArtifactHubOrganizationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobFetchArtifactHubOrganizationsInternalServerError) Error() string {

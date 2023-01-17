@@ -103,6 +103,11 @@ func (o *SearchSecretListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search secret list o k response
+func (o *SearchSecretListOK) Code() int {
+	return 200
+}
+
 func (o *SearchSecretListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *SearchSecretListBadRequest) IsServerError() bool {
 // IsCode returns true when this search secret list bad request response a status code equal to that given
 func (o *SearchSecretListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the search secret list bad request response
+func (o *SearchSecretListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SearchSecretListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *SearchSecretListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the search secret list unauthorized response
+func (o *SearchSecretListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SearchSecretListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *SearchSecretListForbidden) IsServerError() bool {
 // IsCode returns true when this search secret list forbidden response a status code equal to that given
 func (o *SearchSecretListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the search secret list forbidden response
+func (o *SearchSecretListForbidden) Code() int {
+	return 403
 }
 
 func (o *SearchSecretListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *SearchSecretListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search secret list not found response
+func (o *SearchSecretListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchSecretListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchSecretListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search secret list internal server error response a status code equal to that given
 func (o *SearchSecretListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search secret list internal server error response
+func (o *SearchSecretListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchSecretListInternalServerError) Error() string {

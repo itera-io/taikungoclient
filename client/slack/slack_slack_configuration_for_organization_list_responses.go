@@ -103,6 +103,11 @@ func (o *SlackSlackConfigurationForOrganizationListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the slack slack configuration for organization list o k response
+func (o *SlackSlackConfigurationForOrganizationListOK) Code() int {
+	return 200
+}
+
 func (o *SlackSlackConfigurationForOrganizationListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *SlackSlackConfigurationForOrganizationListBadRequest) IsServerError() b
 // IsCode returns true when this slack slack configuration for organization list bad request response a status code equal to that given
 func (o *SlackSlackConfigurationForOrganizationListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the slack slack configuration for organization list bad request response
+func (o *SlackSlackConfigurationForOrganizationListBadRequest) Code() int {
+	return 400
 }
 
 func (o *SlackSlackConfigurationForOrganizationListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *SlackSlackConfigurationForOrganizationListUnauthorized) IsCode(code int
 	return code == 401
 }
 
+// Code gets the status code for the slack slack configuration for organization list unauthorized response
+func (o *SlackSlackConfigurationForOrganizationListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SlackSlackConfigurationForOrganizationListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *SlackSlackConfigurationForOrganizationListForbidden) IsServerError() bo
 // IsCode returns true when this slack slack configuration for organization list forbidden response a status code equal to that given
 func (o *SlackSlackConfigurationForOrganizationListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the slack slack configuration for organization list forbidden response
+func (o *SlackSlackConfigurationForOrganizationListForbidden) Code() int {
+	return 403
 }
 
 func (o *SlackSlackConfigurationForOrganizationListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *SlackSlackConfigurationForOrganizationListNotFound) IsCode(code int) bo
 	return code == 404
 }
 
+// Code gets the status code for the slack slack configuration for organization list not found response
+func (o *SlackSlackConfigurationForOrganizationListNotFound) Code() int {
+	return 404
+}
+
 func (o *SlackSlackConfigurationForOrganizationListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *SlackSlackConfigurationForOrganizationListInternalServerError) IsServer
 // IsCode returns true when this slack slack configuration for organization list internal server error response a status code equal to that given
 func (o *SlackSlackConfigurationForOrganizationListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the slack slack configuration for organization list internal server error response
+func (o *SlackSlackConfigurationForOrganizationListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SlackSlackConfigurationForOrganizationListInternalServerError) Error() string {

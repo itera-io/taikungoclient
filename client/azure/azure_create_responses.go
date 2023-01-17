@@ -103,6 +103,11 @@ func (o *AzureCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the azure create o k response
+func (o *AzureCreateOK) Code() int {
+	return 200
+}
+
 func (o *AzureCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AzureCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this azure create bad request response a status code equal to that given
 func (o *AzureCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the azure create bad request response
+func (o *AzureCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *AzureCreateBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *AzureCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the azure create unauthorized response
+func (o *AzureCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AzureCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *AzureCreateForbidden) IsServerError() bool {
 // IsCode returns true when this azure create forbidden response a status code equal to that given
 func (o *AzureCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the azure create forbidden response
+func (o *AzureCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *AzureCreateForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *AzureCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the azure create not found response
+func (o *AzureCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *AzureCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AzureCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this azure create internal server error response a status code equal to that given
 func (o *AzureCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the azure create internal server error response
+func (o *AzureCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AzureCreateInternalServerError) Error() string {

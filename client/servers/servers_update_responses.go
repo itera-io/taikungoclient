@@ -103,6 +103,11 @@ func (o *ServersUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the servers update o k response
+func (o *ServersUpdateOK) Code() int {
+	return 200
+}
+
 func (o *ServersUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ServersUpdateBadRequest) IsServerError() bool {
 // IsCode returns true when this servers update bad request response a status code equal to that given
 func (o *ServersUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the servers update bad request response
+func (o *ServersUpdateBadRequest) Code() int {
+	return 400
 }
 
 func (o *ServersUpdateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ServersUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the servers update unauthorized response
+func (o *ServersUpdateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ServersUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ServersUpdateForbidden) IsServerError() bool {
 // IsCode returns true when this servers update forbidden response a status code equal to that given
 func (o *ServersUpdateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the servers update forbidden response
+func (o *ServersUpdateForbidden) Code() int {
+	return 403
 }
 
 func (o *ServersUpdateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ServersUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the servers update not found response
+func (o *ServersUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *ServersUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ServersUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this servers update internal server error response a status code equal to that given
 func (o *ServersUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the servers update internal server error response
+func (o *ServersUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ServersUpdateInternalServerError) Error() string {

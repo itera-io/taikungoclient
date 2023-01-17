@@ -103,6 +103,11 @@ func (o *ProjectAppEditParamsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project app edit params o k response
+func (o *ProjectAppEditParamsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectAppEditParamsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ProjectAppEditParamsBadRequest) IsServerError() bool {
 // IsCode returns true when this project app edit params bad request response a status code equal to that given
 func (o *ProjectAppEditParamsBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the project app edit params bad request response
+func (o *ProjectAppEditParamsBadRequest) Code() int {
+	return 400
 }
 
 func (o *ProjectAppEditParamsBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ProjectAppEditParamsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the project app edit params unauthorized response
+func (o *ProjectAppEditParamsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ProjectAppEditParamsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ProjectAppEditParamsForbidden) IsServerError() bool {
 // IsCode returns true when this project app edit params forbidden response a status code equal to that given
 func (o *ProjectAppEditParamsForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the project app edit params forbidden response
+func (o *ProjectAppEditParamsForbidden) Code() int {
+	return 403
 }
 
 func (o *ProjectAppEditParamsForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ProjectAppEditParamsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project app edit params not found response
+func (o *ProjectAppEditParamsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectAppEditParamsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectAppEditParamsInternalServerError) IsServerError() bool {
 // IsCode returns true when this project app edit params internal server error response a status code equal to that given
 func (o *ProjectAppEditParamsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project app edit params internal server error response
+func (o *ProjectAppEditParamsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectAppEditParamsInternalServerError) Error() string {

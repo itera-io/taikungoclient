@@ -103,6 +103,11 @@ func (o *UsersDisableUserOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users disable user o k response
+func (o *UsersDisableUserOK) Code() int {
+	return 200
+}
+
 func (o *UsersDisableUserOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/disable][%d] usersDisableUserOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *UsersDisableUserBadRequest) IsServerError() bool {
 // IsCode returns true when this users disable user bad request response a status code equal to that given
 func (o *UsersDisableUserBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the users disable user bad request response
+func (o *UsersDisableUserBadRequest) Code() int {
+	return 400
 }
 
 func (o *UsersDisableUserBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *UsersDisableUserUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the users disable user unauthorized response
+func (o *UsersDisableUserUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UsersDisableUserUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/disable][%d] usersDisableUserUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *UsersDisableUserForbidden) IsServerError() bool {
 // IsCode returns true when this users disable user forbidden response a status code equal to that given
 func (o *UsersDisableUserForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the users disable user forbidden response
+func (o *UsersDisableUserForbidden) Code() int {
+	return 403
 }
 
 func (o *UsersDisableUserForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *UsersDisableUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users disable user not found response
+func (o *UsersDisableUserNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersDisableUserNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/disable][%d] usersDisableUserNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UsersDisableUserInternalServerError) IsServerError() bool {
 // IsCode returns true when this users disable user internal server error response a status code equal to that given
 func (o *UsersDisableUserInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users disable user internal server error response
+func (o *UsersDisableUserInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersDisableUserInternalServerError) Error() string {

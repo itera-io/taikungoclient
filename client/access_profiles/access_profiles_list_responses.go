@@ -103,6 +103,11 @@ func (o *AccessProfilesListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the access profiles list o k response
+func (o *AccessProfilesListOK) Code() int {
+	return 200
+}
+
 func (o *AccessProfilesListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *AccessProfilesListBadRequest) IsServerError() bool {
 // IsCode returns true when this access profiles list bad request response a status code equal to that given
 func (o *AccessProfilesListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the access profiles list bad request response
+func (o *AccessProfilesListBadRequest) Code() int {
+	return 400
 }
 
 func (o *AccessProfilesListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *AccessProfilesListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the access profiles list unauthorized response
+func (o *AccessProfilesListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AccessProfilesListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *AccessProfilesListForbidden) IsServerError() bool {
 // IsCode returns true when this access profiles list forbidden response a status code equal to that given
 func (o *AccessProfilesListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the access profiles list forbidden response
+func (o *AccessProfilesListForbidden) Code() int {
+	return 403
 }
 
 func (o *AccessProfilesListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *AccessProfilesListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the access profiles list not found response
+func (o *AccessProfilesListNotFound) Code() int {
+	return 404
+}
+
 func (o *AccessProfilesListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AccessProfilesListInternalServerError) IsServerError() bool {
 // IsCode returns true when this access profiles list internal server error response a status code equal to that given
 func (o *AccessProfilesListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the access profiles list internal server error response
+func (o *AccessProfilesListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AccessProfilesListInternalServerError) Error() string {
