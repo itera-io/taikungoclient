@@ -17,15 +17,6 @@ import (
 // swagger:model ProjectAppParamsDto
 type ProjectAppParamsDto struct {
 
-	// is editable after installation
-	IsEditableAfterInstallation bool `json:"isEditableAfterInstallation"`
-
-	// is editable when installing
-	IsEditableWhenInstalling bool `json:"isEditableWhenInstalling"`
-
-	// is mandatory
-	IsMandatory bool `json:"isMandatory"`
-
 	// key
 	Key string `json:"key,omitempty"`
 
