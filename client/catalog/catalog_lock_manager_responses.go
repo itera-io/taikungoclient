@@ -103,6 +103,11 @@ func (o *CatalogLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog lock manager o k response
+func (o *CatalogLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *CatalogLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/lockmanager][%d] catalogLockManagerOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CatalogLockManagerBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type CatalogLockManagerBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog lock manager bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CatalogLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the catalog lock manager bad request response
+func (o *CatalogLockManagerBadRequest) Code() int {
+	return 400
+}
+
 func (o *CatalogLockManagerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/lockmanager][%d] catalogLockManagerBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CatalogLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/lockmanager][%d] catalogLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogLockManagerBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CatalogLockManagerBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CatalogLockManagerUnauthorized) IsServerError() bool {
 // IsCode returns true when this catalog lock manager unauthorized response a status code equal to that given
 func (o *CatalogLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the catalog lock manager unauthorized response
+func (o *CatalogLockManagerUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CatalogLockManagerUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CatalogLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the catalog lock manager forbidden response
+func (o *CatalogLockManagerForbidden) Code() int {
+	return 403
+}
+
 func (o *CatalogLockManagerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/lockmanager][%d] catalogLockManagerForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CatalogLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog lock manager not found response
+func (o *CatalogLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/lockmanager][%d] catalogLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CatalogLockManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog lock manager internal server error response a status code equal to that given
 func (o *CatalogLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog lock manager internal server error response
+func (o *CatalogLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogLockManagerInternalServerError) Error() string {

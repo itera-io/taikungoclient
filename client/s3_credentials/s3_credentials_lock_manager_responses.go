@@ -103,6 +103,11 @@ func (o *S3CredentialsLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the s3 credentials lock manager o k response
+func (o *S3CredentialsLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *S3CredentialsLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ S3CredentialsLockManagerBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type S3CredentialsLockManagerBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials lock manager bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *S3CredentialsLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the s3 credentials lock manager bad request response
+func (o *S3CredentialsLockManagerBadRequest) Code() int {
+	return 400
+}
+
 func (o *S3CredentialsLockManagerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *S3CredentialsLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsLockManagerBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *S3CredentialsLockManagerBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *S3CredentialsLockManagerUnauthorized) IsServerError() bool {
 // IsCode returns true when this s3 credentials lock manager unauthorized response a status code equal to that given
 func (o *S3CredentialsLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the s3 credentials lock manager unauthorized response
+func (o *S3CredentialsLockManagerUnauthorized) Code() int {
+	return 401
 }
 
 func (o *S3CredentialsLockManagerUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *S3CredentialsLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the s3 credentials lock manager forbidden response
+func (o *S3CredentialsLockManagerForbidden) Code() int {
+	return 403
+}
+
 func (o *S3CredentialsLockManagerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *S3CredentialsLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the s3 credentials lock manager not found response
+func (o *S3CredentialsLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *S3CredentialsLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *S3CredentialsLockManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this s3 credentials lock manager internal server error response a status code equal to that given
 func (o *S3CredentialsLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the s3 credentials lock manager internal server error response
+func (o *S3CredentialsLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *S3CredentialsLockManagerInternalServerError) Error() string {

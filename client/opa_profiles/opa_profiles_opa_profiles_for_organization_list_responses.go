@@ -103,6 +103,11 @@ func (o *OpaProfilesOpaProfilesForOrganizationListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the opa profiles opa profiles for organization list o k response
+func (o *OpaProfilesOpaProfilesForOrganizationListOK) Code() int {
+	return 200
+}
+
 func (o *OpaProfilesOpaProfilesForOrganizationListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles/list][%d] opaProfilesOpaProfilesForOrganizationListOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ OpaProfilesOpaProfilesForOrganizationListBadRequest describes a response with st
 Bad Request
 */
 type OpaProfilesOpaProfilesForOrganizationListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles opa profiles for organization list bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *OpaProfilesOpaProfilesForOrganizationListBadRequest) IsCode(code int) b
 	return code == 400
 }
 
+// Code gets the status code for the opa profiles opa profiles for organization list bad request response
+func (o *OpaProfilesOpaProfilesForOrganizationListBadRequest) Code() int {
+	return 400
+}
+
 func (o *OpaProfilesOpaProfilesForOrganizationListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles/list][%d] opaProfilesOpaProfilesForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *OpaProfilesOpaProfilesForOrganizationListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles/list][%d] opaProfilesOpaProfilesForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesOpaProfilesForOrganizationListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OpaProfilesOpaProfilesForOrganizationListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesOpaProfilesForOrganizationListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *OpaProfilesOpaProfilesForOrganizationListUnauthorized) IsServerError() 
 // IsCode returns true when this opa profiles opa profiles for organization list unauthorized response a status code equal to that given
 func (o *OpaProfilesOpaProfilesForOrganizationListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the opa profiles opa profiles for organization list unauthorized response
+func (o *OpaProfilesOpaProfilesForOrganizationListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OpaProfilesOpaProfilesForOrganizationListUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *OpaProfilesOpaProfilesForOrganizationListForbidden) IsCode(code int) bo
 	return code == 403
 }
 
+// Code gets the status code for the opa profiles opa profiles for organization list forbidden response
+func (o *OpaProfilesOpaProfilesForOrganizationListForbidden) Code() int {
+	return 403
+}
+
 func (o *OpaProfilesOpaProfilesForOrganizationListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles/list][%d] opaProfilesOpaProfilesForOrganizationListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *OpaProfilesOpaProfilesForOrganizationListNotFound) IsCode(code int) boo
 	return code == 404
 }
 
+// Code gets the status code for the opa profiles opa profiles for organization list not found response
+func (o *OpaProfilesOpaProfilesForOrganizationListNotFound) Code() int {
+	return 404
+}
+
 func (o *OpaProfilesOpaProfilesForOrganizationListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles/list][%d] opaProfilesOpaProfilesForOrganizationListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpaProfilesOpaProfilesForOrganizationListInternalServerError) IsServerE
 // IsCode returns true when this opa profiles opa profiles for organization list internal server error response a status code equal to that given
 func (o *OpaProfilesOpaProfilesForOrganizationListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the opa profiles opa profiles for organization list internal server error response
+func (o *OpaProfilesOpaProfilesForOrganizationListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpaProfilesOpaProfilesForOrganizationListInternalServerError) Error() string {

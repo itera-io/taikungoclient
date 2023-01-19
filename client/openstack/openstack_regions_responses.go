@@ -103,6 +103,11 @@ func (o *OpenstackRegionsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the openstack regions o k response
+func (o *OpenstackRegionsOK) Code() int {
+	return 200
+}
+
 func (o *OpenstackRegionsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ OpenstackRegionsBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type OpenstackRegionsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack regions bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *OpenstackRegionsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the openstack regions bad request response
+func (o *OpenstackRegionsBadRequest) Code() int {
+	return 400
+}
+
 func (o *OpenstackRegionsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *OpenstackRegionsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackRegionsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OpenstackRegionsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackRegionsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *OpenstackRegionsUnauthorized) IsServerError() bool {
 // IsCode returns true when this openstack regions unauthorized response a status code equal to that given
 func (o *OpenstackRegionsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the openstack regions unauthorized response
+func (o *OpenstackRegionsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OpenstackRegionsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *OpenstackRegionsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the openstack regions forbidden response
+func (o *OpenstackRegionsForbidden) Code() int {
+	return 403
+}
+
 func (o *OpenstackRegionsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *OpenstackRegionsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the openstack regions not found response
+func (o *OpenstackRegionsNotFound) Code() int {
+	return 404
+}
+
 func (o *OpenstackRegionsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpenstackRegionsInternalServerError) IsServerError() bool {
 // IsCode returns true when this openstack regions internal server error response a status code equal to that given
 func (o *OpenstackRegionsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the openstack regions internal server error response
+func (o *OpenstackRegionsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpenstackRegionsInternalServerError) Error() string {

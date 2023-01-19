@@ -103,6 +103,11 @@ func (o *StandAloneProfileDropdownListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone profile dropdown list o k response
+func (o *StandAloneProfileDropdownListOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneProfileDropdownListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile/list][%d] standAloneProfileDropdownListOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ StandAloneProfileDropdownListBadRequest describes a response with status code 40
 Bad Request
 */
 type StandAloneProfileDropdownListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone profile dropdown list bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *StandAloneProfileDropdownListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone profile dropdown list bad request response
+func (o *StandAloneProfileDropdownListBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneProfileDropdownListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile/list][%d] standAloneProfileDropdownListBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *StandAloneProfileDropdownListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile/list][%d] standAloneProfileDropdownListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileDropdownListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *StandAloneProfileDropdownListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneProfileDropdownListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *StandAloneProfileDropdownListUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone profile dropdown list unauthorized response a status code equal to that given
 func (o *StandAloneProfileDropdownListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone profile dropdown list unauthorized response
+func (o *StandAloneProfileDropdownListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneProfileDropdownListUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *StandAloneProfileDropdownListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone profile dropdown list forbidden response
+func (o *StandAloneProfileDropdownListForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneProfileDropdownListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile/list][%d] standAloneProfileDropdownListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *StandAloneProfileDropdownListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone profile dropdown list not found response
+func (o *StandAloneProfileDropdownListNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneProfileDropdownListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile/list][%d] standAloneProfileDropdownListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneProfileDropdownListInternalServerError) IsServerError() bool 
 // IsCode returns true when this stand alone profile dropdown list internal server error response a status code equal to that given
 func (o *StandAloneProfileDropdownListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone profile dropdown list internal server error response
+func (o *StandAloneProfileDropdownListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneProfileDropdownListInternalServerError) Error() string {

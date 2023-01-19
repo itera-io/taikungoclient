@@ -103,6 +103,11 @@ func (o *DNSServersCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the dns servers create o k response
+func (o *DNSServersCreateOK) Code() int {
+	return 200
+}
+
 func (o *DNSServersCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/DnsServers/create][%d] dnsServersCreateOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ DNSServersCreateBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type DNSServersCreateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this dns servers create bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *DNSServersCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the dns servers create bad request response
+func (o *DNSServersCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *DNSServersCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/DnsServers/create][%d] dnsServersCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *DNSServersCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/DnsServers/create][%d] dnsServersCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *DNSServersCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *DNSServersCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *DNSServersCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *DNSServersCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this dns servers create unauthorized response a status code equal to that given
 func (o *DNSServersCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the dns servers create unauthorized response
+func (o *DNSServersCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DNSServersCreateUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *DNSServersCreateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the dns servers create forbidden response
+func (o *DNSServersCreateForbidden) Code() int {
+	return 403
+}
+
 func (o *DNSServersCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/DnsServers/create][%d] dnsServersCreateForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *DNSServersCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the dns servers create not found response
+func (o *DNSServersCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *DNSServersCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/DnsServers/create][%d] dnsServersCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *DNSServersCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this dns servers create internal server error response a status code equal to that given
 func (o *DNSServersCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the dns servers create internal server error response
+func (o *DNSServersCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *DNSServersCreateInternalServerError) Error() string {

@@ -109,6 +109,11 @@ func (o *UsersDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users delete o k response
+func (o *UsersDeleteOK) Code() int {
+	return 200
+}
+
 func (o *UsersDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *UsersDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the users delete no content response
+func (o *UsersDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *UsersDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteNoContent ", 204)
 }
@@ -193,7 +203,7 @@ UsersDeleteBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type UsersDeleteBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users delete bad request response has a 2xx status code
@@ -221,6 +231,11 @@ func (o *UsersDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the users delete bad request response
+func (o *UsersDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *UsersDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -229,13 +244,13 @@ func (o *UsersDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *UsersDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -282,6 +297,11 @@ func (o *UsersDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this users delete unauthorized response a status code equal to that given
 func (o *UsersDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the users delete unauthorized response
+func (o *UsersDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UsersDeleteUnauthorized) Error() string {
@@ -347,6 +367,11 @@ func (o *UsersDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the users delete forbidden response
+func (o *UsersDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *UsersDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -410,6 +435,11 @@ func (o *UsersDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users delete not found response
+func (o *UsersDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *UsersDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this users delete internal server error response a status code equal to that given
 func (o *UsersDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users delete internal server error response
+func (o *UsersDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersDeleteInternalServerError) Error() string {

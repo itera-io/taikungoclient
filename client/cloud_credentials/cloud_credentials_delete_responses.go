@@ -109,6 +109,11 @@ func (o *CloudCredentialsDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cloud credentials delete o k response
+func (o *CloudCredentialsDeleteOK) Code() int {
+	return 200
+}
+
 func (o *CloudCredentialsDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *CloudCredentialsDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the cloud credentials delete no content response
+func (o *CloudCredentialsDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *CloudCredentialsDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteNoContent ", 204)
 }
@@ -193,7 +203,7 @@ CloudCredentialsDeleteBadRequest describes a response with status code 400, with
 Bad Request
 */
 type CloudCredentialsDeleteBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials delete bad request response has a 2xx status code
@@ -221,6 +231,11 @@ func (o *CloudCredentialsDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cloud credentials delete bad request response
+func (o *CloudCredentialsDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *CloudCredentialsDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -229,13 +244,13 @@ func (o *CloudCredentialsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CloudCredentialsDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -282,6 +297,11 @@ func (o *CloudCredentialsDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this cloud credentials delete unauthorized response a status code equal to that given
 func (o *CloudCredentialsDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cloud credentials delete unauthorized response
+func (o *CloudCredentialsDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CloudCredentialsDeleteUnauthorized) Error() string {
@@ -347,6 +367,11 @@ func (o *CloudCredentialsDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cloud credentials delete forbidden response
+func (o *CloudCredentialsDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *CloudCredentialsDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -410,6 +435,11 @@ func (o *CloudCredentialsDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cloud credentials delete not found response
+func (o *CloudCredentialsDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *CloudCredentialsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *CloudCredentialsDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this cloud credentials delete internal server error response a status code equal to that given
 func (o *CloudCredentialsDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cloud credentials delete internal server error response
+func (o *CloudCredentialsDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CloudCredentialsDeleteInternalServerError) Error() string {

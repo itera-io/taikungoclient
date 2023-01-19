@@ -103,6 +103,11 @@ func (o *UsersListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users list o k response
+func (o *UsersListOK) Code() int {
+	return 200
+}
+
 func (o *UsersListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users][%d] usersListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ UsersListBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type UsersListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *UsersListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the users list bad request response
+func (o *UsersListBadRequest) Code() int {
+	return 400
+}
+
 func (o *UsersListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users][%d] usersListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *UsersListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users][%d] usersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *UsersListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *UsersListUnauthorized) IsServerError() bool {
 // IsCode returns true when this users list unauthorized response a status code equal to that given
 func (o *UsersListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the users list unauthorized response
+func (o *UsersListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UsersListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *UsersListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the users list forbidden response
+func (o *UsersListForbidden) Code() int {
+	return 403
+}
+
 func (o *UsersListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users][%d] usersListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *UsersListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users list not found response
+func (o *UsersListNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users][%d] usersListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *UsersListInternalServerError) IsServerError() bool {
 // IsCode returns true when this users list internal server error response a status code equal to that given
 func (o *UsersListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users list internal server error response
+func (o *UsersListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersListInternalServerError) Error() string {

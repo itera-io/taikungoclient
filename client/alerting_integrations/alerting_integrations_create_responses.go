@@ -103,6 +103,11 @@ func (o *AlertingIntegrationsCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting integrations create o k response
+func (o *AlertingIntegrationsCreateOK) Code() int {
+	return 200
+}
+
 func (o *AlertingIntegrationsCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ AlertingIntegrationsCreateBadRequest describes a response with status code 400, 
 Bad Request
 */
 type AlertingIntegrationsCreateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting integrations create bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *AlertingIntegrationsCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the alerting integrations create bad request response
+func (o *AlertingIntegrationsCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *AlertingIntegrationsCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *AlertingIntegrationsCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingIntegrationsCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AlertingIntegrationsCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *AlertingIntegrationsCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this alerting integrations create unauthorized response a status code equal to that given
 func (o *AlertingIntegrationsCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the alerting integrations create unauthorized response
+func (o *AlertingIntegrationsCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AlertingIntegrationsCreateUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *AlertingIntegrationsCreateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the alerting integrations create forbidden response
+func (o *AlertingIntegrationsCreateForbidden) Code() int {
+	return 403
+}
+
 func (o *AlertingIntegrationsCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *AlertingIntegrationsCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting integrations create not found response
+func (o *AlertingIntegrationsCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingIntegrationsCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AlertingIntegrationsCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this alerting integrations create internal server error response a status code equal to that given
 func (o *AlertingIntegrationsCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting integrations create internal server error response
+func (o *AlertingIntegrationsCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingIntegrationsCreateInternalServerError) Error() string {

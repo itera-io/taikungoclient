@@ -103,6 +103,11 @@ func (o *StandAloneDetailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone details o k response
+func (o *StandAloneDetailsOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/{projectId}][%d] standAloneDetailsOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ StandAloneDetailsBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type StandAloneDetailsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone details bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *StandAloneDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone details bad request response
+func (o *StandAloneDetailsBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneDetailsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/{projectId}][%d] standAloneDetailsBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *StandAloneDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/{projectId}][%d] standAloneDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneDetailsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *StandAloneDetailsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneDetailsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *StandAloneDetailsUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone details unauthorized response a status code equal to that given
 func (o *StandAloneDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone details unauthorized response
+func (o *StandAloneDetailsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneDetailsUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *StandAloneDetailsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone details forbidden response
+func (o *StandAloneDetailsForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneDetailsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/{projectId}][%d] standAloneDetailsForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *StandAloneDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone details not found response
+func (o *StandAloneDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/{projectId}][%d] standAloneDetailsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *StandAloneDetailsInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone details internal server error response a status code equal to that given
 func (o *StandAloneDetailsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone details internal server error response
+func (o *StandAloneDetailsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneDetailsInternalServerError) Error() string {

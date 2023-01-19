@@ -103,6 +103,11 @@ func (o *StandAloneProjectDetailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone project details o k response
+func (o *StandAloneProjectDetailsOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneProjectDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ StandAloneProjectDetailsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type StandAloneProjectDetailsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone project details bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *StandAloneProjectDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone project details bad request response
+func (o *StandAloneProjectDetailsBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneProjectDetailsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *StandAloneProjectDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProjectDetailsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *StandAloneProjectDetailsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneProjectDetailsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *StandAloneProjectDetailsUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone project details unauthorized response a status code equal to that given
 func (o *StandAloneProjectDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone project details unauthorized response
+func (o *StandAloneProjectDetailsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneProjectDetailsUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *StandAloneProjectDetailsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone project details forbidden response
+func (o *StandAloneProjectDetailsForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneProjectDetailsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *StandAloneProjectDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone project details not found response
+func (o *StandAloneProjectDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneProjectDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *StandAloneProjectDetailsInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone project details internal server error response a status code equal to that given
 func (o *StandAloneProjectDetailsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone project details internal server error response
+func (o *StandAloneProjectDetailsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneProjectDetailsInternalServerError) Error() string {

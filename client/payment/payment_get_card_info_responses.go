@@ -103,6 +103,11 @@ func (o *PaymentGetCardInfoOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the payment get card info o k response
+func (o *PaymentGetCardInfoOK) Code() int {
+	return 200
+}
+
 func (o *PaymentGetCardInfoOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/cardinfo][%d] paymentGetCardInfoOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ PaymentGetCardInfoBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type PaymentGetCardInfoBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment get card info bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *PaymentGetCardInfoBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the payment get card info bad request response
+func (o *PaymentGetCardInfoBadRequest) Code() int {
+	return 400
+}
+
 func (o *PaymentGetCardInfoBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/cardinfo][%d] paymentGetCardInfoBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *PaymentGetCardInfoBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/cardinfo][%d] paymentGetCardInfoBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentGetCardInfoBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *PaymentGetCardInfoBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentGetCardInfoBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *PaymentGetCardInfoUnauthorized) IsServerError() bool {
 // IsCode returns true when this payment get card info unauthorized response a status code equal to that given
 func (o *PaymentGetCardInfoUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the payment get card info unauthorized response
+func (o *PaymentGetCardInfoUnauthorized) Code() int {
+	return 401
 }
 
 func (o *PaymentGetCardInfoUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *PaymentGetCardInfoForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the payment get card info forbidden response
+func (o *PaymentGetCardInfoForbidden) Code() int {
+	return 403
+}
+
 func (o *PaymentGetCardInfoForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/cardinfo][%d] paymentGetCardInfoForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *PaymentGetCardInfoNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the payment get card info not found response
+func (o *PaymentGetCardInfoNotFound) Code() int {
+	return 404
+}
+
 func (o *PaymentGetCardInfoNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/cardinfo][%d] paymentGetCardInfoNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *PaymentGetCardInfoInternalServerError) IsServerError() bool {
 // IsCode returns true when this payment get card info internal server error response a status code equal to that given
 func (o *PaymentGetCardInfoInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the payment get card info internal server error response
+func (o *PaymentGetCardInfoInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PaymentGetCardInfoInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *ProjectsMonitoringOperationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects monitoring operations o k response
+func (o *ProjectsMonitoringOperationsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsMonitoringOperationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectsMonitoringOperationsBadRequest describes a response with status code 400
 Bad Request
 */
 type ProjectsMonitoringOperationsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects monitoring operations bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectsMonitoringOperationsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the projects monitoring operations bad request response
+func (o *ProjectsMonitoringOperationsBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectsMonitoringOperationsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *ProjectsMonitoringOperationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsMonitoringOperationsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ProjectsMonitoringOperationsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsMonitoringOperationsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *ProjectsMonitoringOperationsUnauthorized) IsServerError() bool {
 // IsCode returns true when this projects monitoring operations unauthorized response a status code equal to that given
 func (o *ProjectsMonitoringOperationsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the projects monitoring operations unauthorized response
+func (o *ProjectsMonitoringOperationsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectsMonitoringOperationsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *ProjectsMonitoringOperationsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the projects monitoring operations forbidden response
+func (o *ProjectsMonitoringOperationsForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectsMonitoringOperationsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *ProjectsMonitoringOperationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects monitoring operations not found response
+func (o *ProjectsMonitoringOperationsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsMonitoringOperationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsMonitoringOperationsInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects monitoring operations internal server error response a status code equal to that given
 func (o *ProjectsMonitoringOperationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects monitoring operations internal server error response
+func (o *ProjectsMonitoringOperationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsMonitoringOperationsInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *KubernetesPatchJobOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes patch job o k response
+func (o *KubernetesPatchJobOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesPatchJobOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesPatchJobBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubernetesPatchJobBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch job bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesPatchJobBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes patch job bad request response
+func (o *KubernetesPatchJobBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesPatchJobBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *KubernetesPatchJobBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchJobBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesPatchJobBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchJobBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *KubernetesPatchJobUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes patch job unauthorized response a status code equal to that given
 func (o *KubernetesPatchJobUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes patch job unauthorized response
+func (o *KubernetesPatchJobUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesPatchJobUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *KubernetesPatchJobForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes patch job forbidden response
+func (o *KubernetesPatchJobForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesPatchJobForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *KubernetesPatchJobNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes patch job not found response
+func (o *KubernetesPatchJobNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesPatchJobNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesPatchJobInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes patch job internal server error response a status code equal to that given
 func (o *KubernetesPatchJobInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes patch job internal server error response
+func (o *KubernetesPatchJobInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesPatchJobInternalServerError) Error() string {

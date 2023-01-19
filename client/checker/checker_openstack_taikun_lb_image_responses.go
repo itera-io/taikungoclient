@@ -103,6 +103,11 @@ func (o *CheckerOpenstackTaikunLbImageOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker openstack taikun lb image o k response
+func (o *CheckerOpenstackTaikunLbImageOK) Code() int {
+	return 200
+}
+
 func (o *CheckerOpenstackTaikunLbImageOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CheckerOpenstackTaikunLbImageBadRequest describes a response with status code 40
 Bad Request
 */
 type CheckerOpenstackTaikunLbImageBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker openstack taikun lb image bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CheckerOpenstackTaikunLbImageBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the checker openstack taikun lb image bad request response
+func (o *CheckerOpenstackTaikunLbImageBadRequest) Code() int {
+	return 400
+}
+
 func (o *CheckerOpenstackTaikunLbImageBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CheckerOpenstackTaikunLbImageBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerOpenstackTaikunLbImageBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CheckerOpenstackTaikunLbImageBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerOpenstackTaikunLbImageBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CheckerOpenstackTaikunLbImageUnauthorized) IsServerError() bool {
 // IsCode returns true when this checker openstack taikun lb image unauthorized response a status code equal to that given
 func (o *CheckerOpenstackTaikunLbImageUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the checker openstack taikun lb image unauthorized response
+func (o *CheckerOpenstackTaikunLbImageUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CheckerOpenstackTaikunLbImageUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CheckerOpenstackTaikunLbImageForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the checker openstack taikun lb image forbidden response
+func (o *CheckerOpenstackTaikunLbImageForbidden) Code() int {
+	return 403
+}
+
 func (o *CheckerOpenstackTaikunLbImageForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CheckerOpenstackTaikunLbImageNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker openstack taikun lb image not found response
+func (o *CheckerOpenstackTaikunLbImageNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerOpenstackTaikunLbImageNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerOpenstackTaikunLbImageInternalServerError) IsServerError() bool 
 // IsCode returns true when this checker openstack taikun lb image internal server error response a status code equal to that given
 func (o *CheckerOpenstackTaikunLbImageInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker openstack taikun lb image internal server error response
+func (o *CheckerOpenstackTaikunLbImageInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerOpenstackTaikunLbImageInternalServerError) Error() string {

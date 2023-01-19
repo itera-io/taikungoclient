@@ -103,6 +103,11 @@ func (o *ShowbackRulesListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the showback rules list o k response
+func (o *ShowbackRulesListOK) Code() int {
+	return 200
+}
+
 func (o *ShowbackRulesListOK) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackRules][%d] showbackRulesListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ShowbackRulesListBadRequest) IsServerError() bool {
 // IsCode returns true when this showback rules list bad request response a status code equal to that given
 func (o *ShowbackRulesListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the showback rules list bad request response
+func (o *ShowbackRulesListBadRequest) Code() int {
+	return 400
 }
 
 func (o *ShowbackRulesListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ShowbackRulesListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the showback rules list unauthorized response
+func (o *ShowbackRulesListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ShowbackRulesListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackRules][%d] showbackRulesListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ShowbackRulesListForbidden) IsServerError() bool {
 // IsCode returns true when this showback rules list forbidden response a status code equal to that given
 func (o *ShowbackRulesListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the showback rules list forbidden response
+func (o *ShowbackRulesListForbidden) Code() int {
+	return 403
 }
 
 func (o *ShowbackRulesListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ShowbackRulesListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the showback rules list not found response
+func (o *ShowbackRulesListNotFound) Code() int {
+	return 404
+}
+
 func (o *ShowbackRulesListNotFound) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackRules][%d] showbackRulesListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ShowbackRulesListInternalServerError) IsServerError() bool {
 // IsCode returns true when this showback rules list internal server error response a status code equal to that given
 func (o *ShowbackRulesListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the showback rules list internal server error response
+func (o *ShowbackRulesListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ShowbackRulesListInternalServerError) Error() string {

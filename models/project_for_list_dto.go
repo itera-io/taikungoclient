@@ -23,14 +23,17 @@ type ProjectForListDto struct {
 	// access Ip
 	AccessIP string `json:"accessIp,omitempty"`
 
+	// access profile
+	AccessProfile *AccessProfilesForProjectListDto `json:"accessProfile,omitempty"`
+
 	// access profile revision
 	AccessProfileRevision int32 `json:"accessProfileRevision,omitempty"`
 
-	// access profiles
-	AccessProfiles *AccessProfilesForProjectListDto `json:"accessProfiles,omitempty"`
+	// availability zones
+	AvailabilityZones []string `json:"availabilityZones"`
 
-	// autoscaling credential
-	AutoscalingCredential *AutoscalingListDto `json:"autoscalingCredential,omitempty"`
+	// aws project a z subnets
+	AwsProjectAZSubnets []*AwsProjectAZSubnetDto `json:"awsProjectAZSubnets"`
 
 	// bastion
 	Bastion int32 `json:"bastion,omitempty"`
@@ -77,6 +80,9 @@ type ProjectForListDto struct {
 	// is auto upgrade
 	IsAutoUpgrade bool `json:"isAutoUpgrade"`
 
+	// is autoscaling enabled
+	IsAutoscalingEnabled bool `json:"isAutoscalingEnabled"`
+
 	// is backup enabled
 	IsBackupEnabled bool `json:"isBackupEnabled"`
 
@@ -108,7 +114,7 @@ type ProjectForListDto struct {
 	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion,omitempty"`
 
 	// kubernetes profiles
-	KubernetesProfiles *KubernetesProfilesListDto `json:"kubernetesProfiles,omitempty"`
+	KubernetesProfiles *KubernetesProfilesLisForPollerDto `json:"kubernetesProfiles,omitempty"`
 
 	// kubernetes target version
 	KubernetesTargetVersion string `json:"kubernetesTargetVersion,omitempty"`
@@ -137,11 +143,11 @@ type ProjectForListDto struct {
 	// net mask
 	NetMask int32 `json:"netMask,omitempty"`
 
+	// opa profile
+	OpaProfile *OpaProfileListDto `json:"opaProfile,omitempty"`
+
 	// opa profile revision
 	OpaProfileRevision int32 `json:"opaProfileRevision,omitempty"`
-
-	// opa profiles
-	OpaProfiles *OpaProfileListDto `json:"opaProfiles,omitempty"`
 
 	// operation
 	Operation string `json:"operation,omitempty"`
@@ -221,11 +227,11 @@ type ProjectForListDto struct {
 func (m *ProjectForListDto) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateAccessProfiles(formats); err != nil {
+	if err := m.validateAccessProfile(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateAutoscalingCredential(formats); err != nil {
+	if err := m.validateAwsProjectAZSubnets(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -245,7 +251,7 @@ func (m *ProjectForListDto) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateOpaProfiles(formats); err != nil {
+	if err := m.validateOpaProfile(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -259,17 +265,17 @@ func (m *ProjectForListDto) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ProjectForListDto) validateAccessProfiles(formats strfmt.Registry) error {
-	if swag.IsZero(m.AccessProfiles) { // not required
+func (m *ProjectForListDto) validateAccessProfile(formats strfmt.Registry) error {
+	if swag.IsZero(m.AccessProfile) { // not required
 		return nil
 	}
 
-	if m.AccessProfiles != nil {
-		if err := m.AccessProfiles.Validate(formats); err != nil {
+	if m.AccessProfile != nil {
+		if err := m.AccessProfile.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("accessProfiles")
+				return ve.ValidateName("accessProfile")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("accessProfiles")
+				return ce.ValidateName("accessProfile")
 			}
 			return err
 		}
@@ -278,20 +284,27 @@ func (m *ProjectForListDto) validateAccessProfiles(formats strfmt.Registry) erro
 	return nil
 }
 
-func (m *ProjectForListDto) validateAutoscalingCredential(formats strfmt.Registry) error {
-	if swag.IsZero(m.AutoscalingCredential) { // not required
+func (m *ProjectForListDto) validateAwsProjectAZSubnets(formats strfmt.Registry) error {
+	if swag.IsZero(m.AwsProjectAZSubnets) { // not required
 		return nil
 	}
 
-	if m.AutoscalingCredential != nil {
-		if err := m.AutoscalingCredential.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("autoscalingCredential")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("autoscalingCredential")
-			}
-			return err
+	for i := 0; i < len(m.AwsProjectAZSubnets); i++ {
+		if swag.IsZero(m.AwsProjectAZSubnets[i]) { // not required
+			continue
 		}
+
+		if m.AwsProjectAZSubnets[i] != nil {
+			if err := m.AwsProjectAZSubnets[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("awsProjectAZSubnets" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("awsProjectAZSubnets" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -387,17 +400,17 @@ func (m *ProjectForListDto) validateMonitoringCredential(formats strfmt.Registry
 	return nil
 }
 
-func (m *ProjectForListDto) validateOpaProfiles(formats strfmt.Registry) error {
-	if swag.IsZero(m.OpaProfiles) { // not required
+func (m *ProjectForListDto) validateOpaProfile(formats strfmt.Registry) error {
+	if swag.IsZero(m.OpaProfile) { // not required
 		return nil
 	}
 
-	if m.OpaProfiles != nil {
-		if err := m.OpaProfiles.Validate(formats); err != nil {
+	if m.OpaProfile != nil {
+		if err := m.OpaProfile.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("opaProfiles")
+				return ve.ValidateName("opaProfile")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("opaProfiles")
+				return ce.ValidateName("opaProfile")
 			}
 			return err
 		}
@@ -422,11 +435,11 @@ func (m *ProjectForListDto) validateUpdatedAt(formats strfmt.Registry) error {
 func (m *ProjectForListDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateAccessProfiles(ctx, formats); err != nil {
+	if err := m.contextValidateAccessProfile(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateAutoscalingCredential(ctx, formats); err != nil {
+	if err := m.contextValidateAwsProjectAZSubnets(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -446,7 +459,7 @@ func (m *ProjectForListDto) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateOpaProfiles(ctx, formats); err != nil {
+	if err := m.contextValidateOpaProfile(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -456,14 +469,14 @@ func (m *ProjectForListDto) ContextValidate(ctx context.Context, formats strfmt.
 	return nil
 }
 
-func (m *ProjectForListDto) contextValidateAccessProfiles(ctx context.Context, formats strfmt.Registry) error {
+func (m *ProjectForListDto) contextValidateAccessProfile(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.AccessProfiles != nil {
-		if err := m.AccessProfiles.ContextValidate(ctx, formats); err != nil {
+	if m.AccessProfile != nil {
+		if err := m.AccessProfile.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("accessProfiles")
+				return ve.ValidateName("accessProfile")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("accessProfiles")
+				return ce.ValidateName("accessProfile")
 			}
 			return err
 		}
@@ -472,17 +485,21 @@ func (m *ProjectForListDto) contextValidateAccessProfiles(ctx context.Context, f
 	return nil
 }
 
-func (m *ProjectForListDto) contextValidateAutoscalingCredential(ctx context.Context, formats strfmt.Registry) error {
+func (m *ProjectForListDto) contextValidateAwsProjectAZSubnets(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.AutoscalingCredential != nil {
-		if err := m.AutoscalingCredential.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("autoscalingCredential")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("autoscalingCredential")
+	for i := 0; i < len(m.AwsProjectAZSubnets); i++ {
+
+		if m.AwsProjectAZSubnets[i] != nil {
+			if err := m.AwsProjectAZSubnets[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("awsProjectAZSubnets" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("awsProjectAZSubnets" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
 	}
 
 	return nil
@@ -560,14 +577,14 @@ func (m *ProjectForListDto) contextValidateMonitoringCredential(ctx context.Cont
 	return nil
 }
 
-func (m *ProjectForListDto) contextValidateOpaProfiles(ctx context.Context, formats strfmt.Registry) error {
+func (m *ProjectForListDto) contextValidateOpaProfile(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.OpaProfiles != nil {
-		if err := m.OpaProfiles.ContextValidate(ctx, formats); err != nil {
+	if m.OpaProfile != nil {
+		if err := m.OpaProfile.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("opaProfiles")
+				return ve.ValidateName("opaProfile")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("opaProfiles")
+				return ce.ValidateName("opaProfile")
 			}
 			return err
 		}

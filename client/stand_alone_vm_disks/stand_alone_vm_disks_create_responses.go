@@ -103,6 +103,11 @@ func (o *StandAloneVMDisksCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone Vm disks create o k response
+func (o *StandAloneVMDisksCreateOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneVMDisksCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ StandAloneVMDisksCreateBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneVMDisksCreateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks create bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *StandAloneVMDisksCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone Vm disks create bad request response
+func (o *StandAloneVMDisksCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneVMDisksCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *StandAloneVMDisksCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneVMDisksCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *StandAloneVMDisksCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *StandAloneVMDisksCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone Vm disks create unauthorized response a status code equal to that given
 func (o *StandAloneVMDisksCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone Vm disks create unauthorized response
+func (o *StandAloneVMDisksCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneVMDisksCreateUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *StandAloneVMDisksCreateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone Vm disks create forbidden response
+func (o *StandAloneVMDisksCreateForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneVMDisksCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *StandAloneVMDisksCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone Vm disks create not found response
+func (o *StandAloneVMDisksCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneVMDisksCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *StandAloneVMDisksCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone Vm disks create internal server error response a status code equal to that given
 func (o *StandAloneVMDisksCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone Vm disks create internal server error response
+func (o *StandAloneVMDisksCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneVMDisksCreateInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *ProjectsResetProjectStatusOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects reset project status o k response
+func (o *ProjectsResetProjectStatusOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsResetProjectStatusOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectsResetProjectStatusBadRequest describes a response with status code 400, 
 Bad Request
 */
 type ProjectsResetProjectStatusBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects reset project status bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectsResetProjectStatusBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the projects reset project status bad request response
+func (o *ProjectsResetProjectStatusBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectsResetProjectStatusBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *ProjectsResetProjectStatusBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsResetProjectStatusBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ProjectsResetProjectStatusBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsResetProjectStatusBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *ProjectsResetProjectStatusUnauthorized) IsServerError() bool {
 // IsCode returns true when this projects reset project status unauthorized response a status code equal to that given
 func (o *ProjectsResetProjectStatusUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the projects reset project status unauthorized response
+func (o *ProjectsResetProjectStatusUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectsResetProjectStatusUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *ProjectsResetProjectStatusForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the projects reset project status forbidden response
+func (o *ProjectsResetProjectStatusForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectsResetProjectStatusForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *ProjectsResetProjectStatusNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects reset project status not found response
+func (o *ProjectsResetProjectStatusNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsResetProjectStatusNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsResetProjectStatusInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects reset project status internal server error response a status code equal to that given
 func (o *ProjectsResetProjectStatusInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects reset project status internal server error response
+func (o *ProjectsResetProjectStatusInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsResetProjectStatusInternalServerError) Error() string {

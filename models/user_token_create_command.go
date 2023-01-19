@@ -20,6 +20,9 @@ import (
 // swagger:model UserTokenCreateCommand
 type UserTokenCreateCommand struct {
 
+	// bind a l l
+	BindALL bool `json:"bindALL"`
+
 	// endpoints
 	Endpoints []*AvailableEndpointData `json:"endpoints"`
 

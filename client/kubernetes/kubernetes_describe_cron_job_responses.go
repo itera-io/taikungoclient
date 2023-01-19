@@ -103,6 +103,11 @@ func (o *KubernetesDescribeCronJobOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe cron job o k response
+func (o *KubernetesDescribeCronJobOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribeCronJobOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesDescribeCronJobBadRequest describes a response with status code 400, w
 Bad Request
 */
 type KubernetesDescribeCronJobBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe cron job bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesDescribeCronJobBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes describe cron job bad request response
+func (o *KubernetesDescribeCronJobBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesDescribeCronJobBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *KubernetesDescribeCronJobBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeCronJobBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesDescribeCronJobBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeCronJobBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *KubernetesDescribeCronJobUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes describe cron job unauthorized response a status code equal to that given
 func (o *KubernetesDescribeCronJobUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes describe cron job unauthorized response
+func (o *KubernetesDescribeCronJobUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesDescribeCronJobUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *KubernetesDescribeCronJobForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes describe cron job forbidden response
+func (o *KubernetesDescribeCronJobForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesDescribeCronJobForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *KubernetesDescribeCronJobNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe cron job not found response
+func (o *KubernetesDescribeCronJobNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribeCronJobNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesDescribeCronJobInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe cron job internal server error response a status code equal to that given
 func (o *KubernetesDescribeCronJobInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe cron job internal server error response
+func (o *KubernetesDescribeCronJobInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribeCronJobInternalServerError) Error() string {

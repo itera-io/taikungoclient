@@ -103,6 +103,11 @@ func (o *CatalogListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog list o k response
+func (o *CatalogListOK) Code() int {
+	return 200
+}
+
 func (o *CatalogListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ CatalogListBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type CatalogListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *CatalogListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the catalog list bad request response
+func (o *CatalogListBadRequest) Code() int {
+	return 400
+}
+
 func (o *CatalogListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *CatalogListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CatalogListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *CatalogListUnauthorized) IsServerError() bool {
 // IsCode returns true when this catalog list unauthorized response a status code equal to that given
 func (o *CatalogListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the catalog list unauthorized response
+func (o *CatalogListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CatalogListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *CatalogListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the catalog list forbidden response
+func (o *CatalogListForbidden) Code() int {
+	return 403
+}
+
 func (o *CatalogListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *CatalogListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog list not found response
+func (o *CatalogListNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *CatalogListInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog list internal server error response a status code equal to that given
 func (o *CatalogListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog list internal server error response
+func (o *CatalogListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogListInternalServerError) Error() string {

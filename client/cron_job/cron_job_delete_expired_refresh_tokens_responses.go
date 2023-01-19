@@ -103,6 +103,11 @@ func (o *CronJobDeleteExpiredRefreshTokensOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job delete expired refresh tokens o k response
+func (o *CronJobDeleteExpiredRefreshTokensOK) Code() int {
+	return 200
+}
+
 func (o *CronJobDeleteExpiredRefreshTokensOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/refresh-tokens][%d] cronJobDeleteExpiredRefreshTokensOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CronJobDeleteExpiredRefreshTokensBadRequest describes a response with status cod
 Bad Request
 */
 type CronJobDeleteExpiredRefreshTokensBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete expired refresh tokens bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CronJobDeleteExpiredRefreshTokensBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cron job delete expired refresh tokens bad request response
+func (o *CronJobDeleteExpiredRefreshTokensBadRequest) Code() int {
+	return 400
+}
+
 func (o *CronJobDeleteExpiredRefreshTokensBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/refresh-tokens][%d] cronJobDeleteExpiredRefreshTokensBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CronJobDeleteExpiredRefreshTokensBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/refresh-tokens][%d] cronJobDeleteExpiredRefreshTokensBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredRefreshTokensBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CronJobDeleteExpiredRefreshTokensBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredRefreshTokensBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CronJobDeleteExpiredRefreshTokensUnauthorized) IsServerError() bool {
 // IsCode returns true when this cron job delete expired refresh tokens unauthorized response a status code equal to that given
 func (o *CronJobDeleteExpiredRefreshTokensUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cron job delete expired refresh tokens unauthorized response
+func (o *CronJobDeleteExpiredRefreshTokensUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CronJobDeleteExpiredRefreshTokensUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CronJobDeleteExpiredRefreshTokensForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cron job delete expired refresh tokens forbidden response
+func (o *CronJobDeleteExpiredRefreshTokensForbidden) Code() int {
+	return 403
+}
+
 func (o *CronJobDeleteExpiredRefreshTokensForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/refresh-tokens][%d] cronJobDeleteExpiredRefreshTokensForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CronJobDeleteExpiredRefreshTokensNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job delete expired refresh tokens not found response
+func (o *CronJobDeleteExpiredRefreshTokensNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobDeleteExpiredRefreshTokensNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/refresh-tokens][%d] cronJobDeleteExpiredRefreshTokensNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobDeleteExpiredRefreshTokensInternalServerError) IsServerError() b
 // IsCode returns true when this cron job delete expired refresh tokens internal server error response a status code equal to that given
 func (o *CronJobDeleteExpiredRefreshTokensInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job delete expired refresh tokens internal server error response
+func (o *CronJobDeleteExpiredRefreshTokensInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobDeleteExpiredRefreshTokensInternalServerError) Error() string {

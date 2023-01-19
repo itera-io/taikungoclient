@@ -103,6 +103,11 @@ func (o *BackupListAllSchedulesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the backup list all schedules o k response
+func (o *BackupListAllSchedulesOK) Code() int {
+	return 200
+}
+
 func (o *BackupListAllSchedulesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedules/{projectId}][%d] backupListAllSchedulesOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ BackupListAllSchedulesBadRequest describes a response with status code 400, with
 Bad Request
 */
 type BackupListAllSchedulesBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup list all schedules bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *BackupListAllSchedulesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the backup list all schedules bad request response
+func (o *BackupListAllSchedulesBadRequest) Code() int {
+	return 400
+}
+
 func (o *BackupListAllSchedulesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedules/{projectId}][%d] backupListAllSchedulesBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *BackupListAllSchedulesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedules/{projectId}][%d] backupListAllSchedulesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupListAllSchedulesBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *BackupListAllSchedulesBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupListAllSchedulesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *BackupListAllSchedulesUnauthorized) IsServerError() bool {
 // IsCode returns true when this backup list all schedules unauthorized response a status code equal to that given
 func (o *BackupListAllSchedulesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the backup list all schedules unauthorized response
+func (o *BackupListAllSchedulesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BackupListAllSchedulesUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *BackupListAllSchedulesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the backup list all schedules forbidden response
+func (o *BackupListAllSchedulesForbidden) Code() int {
+	return 403
+}
+
 func (o *BackupListAllSchedulesForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedules/{projectId}][%d] backupListAllSchedulesForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *BackupListAllSchedulesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the backup list all schedules not found response
+func (o *BackupListAllSchedulesNotFound) Code() int {
+	return 404
+}
+
 func (o *BackupListAllSchedulesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedules/{projectId}][%d] backupListAllSchedulesNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *BackupListAllSchedulesInternalServerError) IsServerError() bool {
 // IsCode returns true when this backup list all schedules internal server error response a status code equal to that given
 func (o *BackupListAllSchedulesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the backup list all schedules internal server error response
+func (o *BackupListAllSchedulesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BackupListAllSchedulesInternalServerError) Error() string {

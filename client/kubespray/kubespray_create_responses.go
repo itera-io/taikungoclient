@@ -103,6 +103,11 @@ func (o *KubesprayCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubespray create o k response
+func (o *KubesprayCreateOK) Code() int {
+	return 200
+}
+
 func (o *KubesprayCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ KubesprayCreateBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type KubesprayCreateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubespray create bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *KubesprayCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubespray create bad request response
+func (o *KubesprayCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubesprayCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *KubesprayCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubesprayCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubesprayCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubesprayCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *KubesprayCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubespray create unauthorized response a status code equal to that given
 func (o *KubesprayCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubespray create unauthorized response
+func (o *KubesprayCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubesprayCreateUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *KubesprayCreateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubespray create forbidden response
+func (o *KubesprayCreateForbidden) Code() int {
+	return 403
+}
+
 func (o *KubesprayCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *KubesprayCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubespray create not found response
+func (o *KubesprayCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *KubesprayCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubesprayCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubespray create internal server error response a status code equal to that given
 func (o *KubesprayCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubespray create internal server error response
+func (o *KubesprayCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubesprayCreateInternalServerError) Error() string {

@@ -102,6 +102,11 @@ func (o *UsersUpdateUserOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users update user o k response
+func (o *UsersUpdateUserOK) Code() int {
+	return 200
+}
+
 func (o *UsersUpdateUserOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserOK ", 200)
 }
@@ -126,7 +131,7 @@ UsersUpdateUserBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type UsersUpdateUserBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users update user bad request response has a 2xx status code
@@ -154,6 +159,11 @@ func (o *UsersUpdateUserBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the users update user bad request response
+func (o *UsersUpdateUserBadRequest) Code() int {
+	return 400
+}
+
 func (o *UsersUpdateUserBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserBadRequest  %+v", 400, o.Payload)
 }
@@ -162,13 +172,13 @@ func (o *UsersUpdateUserBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersUpdateUserBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *UsersUpdateUserBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersUpdateUserBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -215,6 +225,11 @@ func (o *UsersUpdateUserUnauthorized) IsServerError() bool {
 // IsCode returns true when this users update user unauthorized response a status code equal to that given
 func (o *UsersUpdateUserUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the users update user unauthorized response
+func (o *UsersUpdateUserUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UsersUpdateUserUnauthorized) Error() string {
@@ -280,6 +295,11 @@ func (o *UsersUpdateUserForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the users update user forbidden response
+func (o *UsersUpdateUserForbidden) Code() int {
+	return 403
+}
+
 func (o *UsersUpdateUserForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserForbidden  %+v", 403, o.Payload)
 }
@@ -343,6 +363,11 @@ func (o *UsersUpdateUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users update user not found response
+func (o *UsersUpdateUserNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersUpdateUserNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserNotFound  %+v", 404, o.Payload)
 }
@@ -403,6 +428,11 @@ func (o *UsersUpdateUserInternalServerError) IsServerError() bool {
 // IsCode returns true when this users update user internal server error response a status code equal to that given
 func (o *UsersUpdateUserInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users update user internal server error response
+func (o *UsersUpdateUserInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersUpdateUserInternalServerError) Error() string {

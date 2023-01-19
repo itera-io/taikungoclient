@@ -17,12 +17,6 @@ import (
 // swagger:model ProjectAppParamsDto
 type ProjectAppParamsDto struct {
 
-	// is changeable
-	IsChangeable bool `json:"isChangeable"`
-
-	// is readonly
-	IsReadonly bool `json:"isReadonly"`
-
 	// key
 	Key string `json:"key,omitempty"`
 

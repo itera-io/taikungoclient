@@ -103,12 +103,17 @@ func (o *RepositoryDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the repository delete o k response
+func (o *RepositoryDeleteOK) Code() int {
+	return 200
+}
+
 func (o *RepositoryDeleteOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Repository/delete][%d] repositoryDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *RepositoryDeleteOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Repository/delete][%d] repositoryDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *RepositoryDeleteOK) GetPayload() models.Unit {
@@ -136,7 +141,7 @@ RepositoryDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type RepositoryDeleteBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this repository delete bad request response has a 2xx status code
@@ -164,21 +169,26 @@ func (o *RepositoryDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the repository delete bad request response
+func (o *RepositoryDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *RepositoryDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Repository/delete][%d] repositoryDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *RepositoryDeleteBadRequest) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Repository/delete][%d] repositoryDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *RepositoryDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *RepositoryDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *RepositoryDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,12 +237,17 @@ func (o *RepositoryDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the repository delete unauthorized response
+func (o *RepositoryDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *RepositoryDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Repository/delete][%d] repositoryDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *RepositoryDeleteUnauthorized) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Repository/delete][%d] repositoryDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *RepositoryDeleteUnauthorized) GetPayload() *models.ProblemDetails {
@@ -290,12 +305,17 @@ func (o *RepositoryDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the repository delete forbidden response
+func (o *RepositoryDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *RepositoryDeleteForbidden) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Repository/delete][%d] repositoryDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *RepositoryDeleteForbidden) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Repository/delete][%d] repositoryDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *RepositoryDeleteForbidden) GetPayload() *models.ProblemDetails {
@@ -353,12 +373,17 @@ func (o *RepositoryDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the repository delete not found response
+func (o *RepositoryDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *RepositoryDeleteNotFound) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Repository/delete][%d] repositoryDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *RepositoryDeleteNotFound) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Repository/delete][%d] repositoryDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *RepositoryDeleteNotFound) GetPayload() *models.ProblemDetails {
@@ -415,12 +440,17 @@ func (o *RepositoryDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
+// Code gets the status code for the repository delete internal server error response
+func (o *RepositoryDeleteInternalServerError) Code() int {
+	return 500
+}
+
 func (o *RepositoryDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteInternalServerError ", 500)
+	return fmt.Sprintf("[POST /api/v{v}/Repository/delete][%d] repositoryDeleteInternalServerError ", 500)
 }
 
 func (o *RepositoryDeleteInternalServerError) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteInternalServerError ", 500)
+	return fmt.Sprintf("[POST /api/v{v}/Repository/delete][%d] repositoryDeleteInternalServerError ", 500)
 }
 
 func (o *RepositoryDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

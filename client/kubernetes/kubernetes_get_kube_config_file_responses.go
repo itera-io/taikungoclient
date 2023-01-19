@@ -103,6 +103,11 @@ func (o *KubernetesGetKubeConfigFileOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get kube config file o k response
+func (o *KubernetesGetKubeConfigFileOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetKubeConfigFileOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ KubernetesGetKubeConfigFileBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesGetKubeConfigFileBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get kube config file bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *KubernetesGetKubeConfigFileBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes get kube config file bad request response
+func (o *KubernetesGetKubeConfigFileBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesGetKubeConfigFileBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *KubernetesGetKubeConfigFileBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetKubeConfigFileBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesGetKubeConfigFileBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubeConfigFileBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *KubernetesGetKubeConfigFileUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes get kube config file unauthorized response a status code equal to that given
 func (o *KubernetesGetKubeConfigFileUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes get kube config file unauthorized response
+func (o *KubernetesGetKubeConfigFileUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesGetKubeConfigFileUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *KubernetesGetKubeConfigFileForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes get kube config file forbidden response
+func (o *KubernetesGetKubeConfigFileForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesGetKubeConfigFileForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *KubernetesGetKubeConfigFileNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get kube config file not found response
+func (o *KubernetesGetKubeConfigFileNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetKubeConfigFileNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubernetesGetKubeConfigFileInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get kube config file internal server error response a status code equal to that given
 func (o *KubernetesGetKubeConfigFileInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get kube config file internal server error response
+func (o *KubernetesGetKubeConfigFileInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetKubeConfigFileInternalServerError) Error() string {

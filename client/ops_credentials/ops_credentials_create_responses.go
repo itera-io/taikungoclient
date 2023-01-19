@@ -103,6 +103,11 @@ func (o *OpsCredentialsCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ops credentials create o k response
+func (o *OpsCredentialsCreateOK) Code() int {
+	return 200
+}
+
 func (o *OpsCredentialsCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials][%d] opsCredentialsCreateOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ OpsCredentialsCreateBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type OpsCredentialsCreateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials create bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *OpsCredentialsCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the ops credentials create bad request response
+func (o *OpsCredentialsCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *OpsCredentialsCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials][%d] opsCredentialsCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *OpsCredentialsCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials][%d] opsCredentialsCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OpsCredentialsCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *OpsCredentialsCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this ops credentials create unauthorized response a status code equal to that given
 func (o *OpsCredentialsCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the ops credentials create unauthorized response
+func (o *OpsCredentialsCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OpsCredentialsCreateUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *OpsCredentialsCreateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the ops credentials create forbidden response
+func (o *OpsCredentialsCreateForbidden) Code() int {
+	return 403
+}
+
 func (o *OpsCredentialsCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials][%d] opsCredentialsCreateForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *OpsCredentialsCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ops credentials create not found response
+func (o *OpsCredentialsCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *OpsCredentialsCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials][%d] opsCredentialsCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *OpsCredentialsCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this ops credentials create internal server error response a status code equal to that given
 func (o *OpsCredentialsCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ops credentials create internal server error response
+func (o *OpsCredentialsCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpsCredentialsCreateInternalServerError) Error() string {

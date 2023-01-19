@@ -103,6 +103,11 @@ func (o *ProjectsRepairOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects repair o k response
+func (o *ProjectsRepairOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsRepairOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/repair/{projectId}][%d] projectsRepairOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectsRepairBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type ProjectsRepairBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects repair bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectsRepairBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the projects repair bad request response
+func (o *ProjectsRepairBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectsRepairBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/repair/{projectId}][%d] projectsRepairBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *ProjectsRepairBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/repair/{projectId}][%d] projectsRepairBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsRepairBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ProjectsRepairBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsRepairBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *ProjectsRepairUnauthorized) IsServerError() bool {
 // IsCode returns true when this projects repair unauthorized response a status code equal to that given
 func (o *ProjectsRepairUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the projects repair unauthorized response
+func (o *ProjectsRepairUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectsRepairUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *ProjectsRepairForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the projects repair forbidden response
+func (o *ProjectsRepairForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectsRepairForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/repair/{projectId}][%d] projectsRepairForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *ProjectsRepairNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects repair not found response
+func (o *ProjectsRepairNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsRepairNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/repair/{projectId}][%d] projectsRepairNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsRepairInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects repair internal server error response a status code equal to that given
 func (o *ProjectsRepairInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects repair internal server error response
+func (o *ProjectsRepairInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsRepairInternalServerError) Error() string {

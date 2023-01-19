@@ -103,6 +103,11 @@ func (o *AdminBillingOperationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin billing operations o k response
+func (o *AdminBillingOperationsOK) Code() int {
+	return 200
+}
+
 func (o *AdminBillingOperationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AdminBillingOperationsBadRequest describes a response with status code 400, with
 Bad Request
 */
 type AdminBillingOperationsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin billing operations bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AdminBillingOperationsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the admin billing operations bad request response
+func (o *AdminBillingOperationsBadRequest) Code() int {
+	return 400
+}
+
 func (o *AdminBillingOperationsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *AdminBillingOperationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminBillingOperationsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AdminBillingOperationsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminBillingOperationsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *AdminBillingOperationsUnauthorized) IsServerError() bool {
 // IsCode returns true when this admin billing operations unauthorized response a status code equal to that given
 func (o *AdminBillingOperationsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the admin billing operations unauthorized response
+func (o *AdminBillingOperationsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AdminBillingOperationsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *AdminBillingOperationsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the admin billing operations forbidden response
+func (o *AdminBillingOperationsForbidden) Code() int {
+	return 403
+}
+
 func (o *AdminBillingOperationsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *AdminBillingOperationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin billing operations not found response
+func (o *AdminBillingOperationsNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminBillingOperationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AdminBillingOperationsInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin billing operations internal server error response a status code equal to that given
 func (o *AdminBillingOperationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin billing operations internal server error response
+func (o *AdminBillingOperationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminBillingOperationsInternalServerError) Error() string {

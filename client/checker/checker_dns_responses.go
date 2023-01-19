@@ -103,6 +103,11 @@ func (o *CheckerDNSOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker Dns o k response
+func (o *CheckerDNSOK) Code() int {
+	return 200
+}
+
 func (o *CheckerDNSOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/dns][%d] checkerDnsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CheckerDNSBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type CheckerDNSBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker Dns bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CheckerDNSBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the checker Dns bad request response
+func (o *CheckerDNSBadRequest) Code() int {
+	return 400
+}
+
 func (o *CheckerDNSBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/dns][%d] checkerDnsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CheckerDNSBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/dns][%d] checkerDnsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerDNSBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CheckerDNSBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerDNSBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CheckerDNSUnauthorized) IsServerError() bool {
 // IsCode returns true when this checker Dns unauthorized response a status code equal to that given
 func (o *CheckerDNSUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the checker Dns unauthorized response
+func (o *CheckerDNSUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CheckerDNSUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CheckerDNSForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the checker Dns forbidden response
+func (o *CheckerDNSForbidden) Code() int {
+	return 403
+}
+
 func (o *CheckerDNSForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/dns][%d] checkerDnsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CheckerDNSNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker Dns not found response
+func (o *CheckerDNSNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerDNSNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/dns][%d] checkerDnsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerDNSInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker Dns internal server error response a status code equal to that given
 func (o *CheckerDNSInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker Dns internal server error response
+func (o *CheckerDNSInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerDNSInternalServerError) Error() string {

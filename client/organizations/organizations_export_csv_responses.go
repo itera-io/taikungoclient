@@ -102,6 +102,11 @@ func (o *OrganizationsExportCsvOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organizations export csv o k response
+func (o *OrganizationsExportCsvOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationsExportCsvOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvOK ", 200)
 }
@@ -126,7 +131,7 @@ OrganizationsExportCsvBadRequest describes a response with status code 400, with
 Bad Request
 */
 type OrganizationsExportCsvBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations export csv bad request response has a 2xx status code
@@ -154,6 +159,11 @@ func (o *OrganizationsExportCsvBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the organizations export csv bad request response
+func (o *OrganizationsExportCsvBadRequest) Code() int {
+	return 400
+}
+
 func (o *OrganizationsExportCsvBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvBadRequest  %+v", 400, o.Payload)
 }
@@ -162,13 +172,13 @@ func (o *OrganizationsExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsExportCsvBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OrganizationsExportCsvBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsExportCsvBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -215,6 +225,11 @@ func (o *OrganizationsExportCsvUnauthorized) IsServerError() bool {
 // IsCode returns true when this organizations export csv unauthorized response a status code equal to that given
 func (o *OrganizationsExportCsvUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the organizations export csv unauthorized response
+func (o *OrganizationsExportCsvUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OrganizationsExportCsvUnauthorized) Error() string {
@@ -280,6 +295,11 @@ func (o *OrganizationsExportCsvForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the organizations export csv forbidden response
+func (o *OrganizationsExportCsvForbidden) Code() int {
+	return 403
+}
+
 func (o *OrganizationsExportCsvForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvForbidden  %+v", 403, o.Payload)
 }
@@ -343,6 +363,11 @@ func (o *OrganizationsExportCsvNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organizations export csv not found response
+func (o *OrganizationsExportCsvNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationsExportCsvNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvNotFound  %+v", 404, o.Payload)
 }
@@ -403,6 +428,11 @@ func (o *OrganizationsExportCsvInternalServerError) IsServerError() bool {
 // IsCode returns true when this organizations export csv internal server error response a status code equal to that given
 func (o *OrganizationsExportCsvInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the organizations export csv internal server error response
+func (o *OrganizationsExportCsvInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrganizationsExportCsvInternalServerError) Error() string {

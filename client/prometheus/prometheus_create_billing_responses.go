@@ -103,6 +103,11 @@ func (o *PrometheusCreateBillingOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the prometheus create billing o k response
+func (o *PrometheusCreateBillingOK) Code() int {
+	return 200
+}
+
 func (o *PrometheusCreateBillingOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ PrometheusCreateBillingBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type PrometheusCreateBillingBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus create billing bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *PrometheusCreateBillingBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the prometheus create billing bad request response
+func (o *PrometheusCreateBillingBadRequest) Code() int {
+	return 400
+}
+
 func (o *PrometheusCreateBillingBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *PrometheusCreateBillingBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusCreateBillingBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *PrometheusCreateBillingBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusCreateBillingBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *PrometheusCreateBillingUnauthorized) IsServerError() bool {
 // IsCode returns true when this prometheus create billing unauthorized response a status code equal to that given
 func (o *PrometheusCreateBillingUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the prometheus create billing unauthorized response
+func (o *PrometheusCreateBillingUnauthorized) Code() int {
+	return 401
 }
 
 func (o *PrometheusCreateBillingUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *PrometheusCreateBillingForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the prometheus create billing forbidden response
+func (o *PrometheusCreateBillingForbidden) Code() int {
+	return 403
+}
+
 func (o *PrometheusCreateBillingForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *PrometheusCreateBillingNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the prometheus create billing not found response
+func (o *PrometheusCreateBillingNotFound) Code() int {
+	return 404
+}
+
 func (o *PrometheusCreateBillingNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PrometheusCreateBillingInternalServerError) IsServerError() bool {
 // IsCode returns true when this prometheus create billing internal server error response a status code equal to that given
 func (o *PrometheusCreateBillingInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the prometheus create billing internal server error response
+func (o *PrometheusCreateBillingInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PrometheusCreateBillingInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *CatalogDeleteCatalogOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog delete catalog o k response
+func (o *CatalogDeleteCatalogOK) Code() int {
+	return 200
+}
+
 func (o *CatalogDeleteCatalogOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CatalogDeleteCatalogBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type CatalogDeleteCatalogBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog delete catalog bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CatalogDeleteCatalogBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the catalog delete catalog bad request response
+func (o *CatalogDeleteCatalogBadRequest) Code() int {
+	return 400
+}
+
 func (o *CatalogDeleteCatalogBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CatalogDeleteCatalogBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CatalogDeleteCatalogBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogDeleteCatalogBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CatalogDeleteCatalogUnauthorized) IsServerError() bool {
 // IsCode returns true when this catalog delete catalog unauthorized response a status code equal to that given
 func (o *CatalogDeleteCatalogUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the catalog delete catalog unauthorized response
+func (o *CatalogDeleteCatalogUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CatalogDeleteCatalogUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CatalogDeleteCatalogForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the catalog delete catalog forbidden response
+func (o *CatalogDeleteCatalogForbidden) Code() int {
+	return 403
+}
+
 func (o *CatalogDeleteCatalogForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CatalogDeleteCatalogNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog delete catalog not found response
+func (o *CatalogDeleteCatalogNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogDeleteCatalogNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CatalogDeleteCatalogInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog delete catalog internal server error response a status code equal to that given
 func (o *CatalogDeleteCatalogInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog delete catalog internal server error response
+func (o *CatalogDeleteCatalogInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogDeleteCatalogInternalServerError) Error() string {

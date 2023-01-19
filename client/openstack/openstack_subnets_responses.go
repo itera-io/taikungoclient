@@ -75,7 +75,7 @@ OpenstackSubnetsOK describes a response with status code 200, with default heade
 Success
 */
 type OpenstackSubnetsOK struct {
-	Payload []*models.CommonStringBasedDropdownDto
+	Payload []*models.Subnet
 }
 
 // IsSuccess returns true when this openstack subnets o k response has a 2xx status code
@@ -103,6 +103,11 @@ func (o *OpenstackSubnetsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the openstack subnets o k response
+func (o *OpenstackSubnetsOK) Code() int {
+	return 200
+}
+
 func (o *OpenstackSubnetsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsOK  %+v", 200, o.Payload)
 }
@@ -111,7 +116,7 @@ func (o *OpenstackSubnetsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsOK  %+v", 200, o.Payload)
 }
 
-func (o *OpenstackSubnetsOK) GetPayload() []*models.CommonStringBasedDropdownDto {
+func (o *OpenstackSubnetsOK) GetPayload() []*models.Subnet {
 	return o.Payload
 }
 
@@ -136,7 +141,7 @@ OpenstackSubnetsBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type OpenstackSubnetsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack subnets bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *OpenstackSubnetsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the openstack subnets bad request response
+func (o *OpenstackSubnetsBadRequest) Code() int {
+	return 400
+}
+
 func (o *OpenstackSubnetsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *OpenstackSubnetsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackSubnetsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OpenstackSubnetsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackSubnetsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *OpenstackSubnetsUnauthorized) IsServerError() bool {
 // IsCode returns true when this openstack subnets unauthorized response a status code equal to that given
 func (o *OpenstackSubnetsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the openstack subnets unauthorized response
+func (o *OpenstackSubnetsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OpenstackSubnetsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *OpenstackSubnetsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the openstack subnets forbidden response
+func (o *OpenstackSubnetsForbidden) Code() int {
+	return 403
+}
+
 func (o *OpenstackSubnetsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *OpenstackSubnetsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the openstack subnets not found response
+func (o *OpenstackSubnetsNotFound) Code() int {
+	return 404
+}
+
 func (o *OpenstackSubnetsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpenstackSubnetsInternalServerError) IsServerError() bool {
 // IsCode returns true when this openstack subnets internal server error response a status code equal to that given
 func (o *OpenstackSubnetsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the openstack subnets internal server error response
+func (o *OpenstackSubnetsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpenstackSubnetsInternalServerError) Error() string {

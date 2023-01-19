@@ -103,6 +103,11 @@ func (o *AccessProfilesListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the access profiles list o k response
+func (o *AccessProfilesListOK) Code() int {
+	return 200
+}
+
 func (o *AccessProfilesListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ AccessProfilesListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type AccessProfilesListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *AccessProfilesListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the access profiles list bad request response
+func (o *AccessProfilesListBadRequest) Code() int {
+	return 400
+}
+
 func (o *AccessProfilesListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *AccessProfilesListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AccessProfilesListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AccessProfilesListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *AccessProfilesListUnauthorized) IsServerError() bool {
 // IsCode returns true when this access profiles list unauthorized response a status code equal to that given
 func (o *AccessProfilesListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the access profiles list unauthorized response
+func (o *AccessProfilesListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AccessProfilesListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *AccessProfilesListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the access profiles list forbidden response
+func (o *AccessProfilesListForbidden) Code() int {
+	return 403
+}
+
 func (o *AccessProfilesListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *AccessProfilesListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the access profiles list not found response
+func (o *AccessProfilesListNotFound) Code() int {
+	return 404
+}
+
 func (o *AccessProfilesListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AccessProfilesListInternalServerError) IsServerError() bool {
 // IsCode returns true when this access profiles list internal server error response a status code equal to that given
 func (o *AccessProfilesListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the access profiles list internal server error response
+func (o *AccessProfilesListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AccessProfilesListInternalServerError) Error() string {

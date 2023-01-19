@@ -103,6 +103,11 @@ func (o *KubernetesRestartDeploymentOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes restart deployment o k response
+func (o *KubernetesRestartDeploymentOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesRestartDeploymentOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesRestartDeploymentBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesRestartDeploymentBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes restart deployment bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesRestartDeploymentBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes restart deployment bad request response
+func (o *KubernetesRestartDeploymentBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesRestartDeploymentBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *KubernetesRestartDeploymentBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesRestartDeploymentBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesRestartDeploymentBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesRestartDeploymentBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *KubernetesRestartDeploymentUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes restart deployment unauthorized response a status code equal to that given
 func (o *KubernetesRestartDeploymentUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes restart deployment unauthorized response
+func (o *KubernetesRestartDeploymentUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesRestartDeploymentUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *KubernetesRestartDeploymentForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes restart deployment forbidden response
+func (o *KubernetesRestartDeploymentForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesRestartDeploymentForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *KubernetesRestartDeploymentNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes restart deployment not found response
+func (o *KubernetesRestartDeploymentNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesRestartDeploymentNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesRestartDeploymentInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes restart deployment internal server error response a status code equal to that given
 func (o *KubernetesRestartDeploymentInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes restart deployment internal server error response
+func (o *KubernetesRestartDeploymentInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesRestartDeploymentInternalServerError) Error() string {

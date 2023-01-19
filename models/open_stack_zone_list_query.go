@@ -37,6 +37,9 @@ type OpenStackZoneListQuery struct {
 
 	// open stack user
 	OpenStackUser string `json:"openStackUser,omitempty"`
+
+	// openstack project
+	OpenstackProject string `json:"openstackProject,omitempty"`
 }
 
 // Validate validates this open stack zone list query

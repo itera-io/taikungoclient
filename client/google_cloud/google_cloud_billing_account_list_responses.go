@@ -103,6 +103,11 @@ func (o *GoogleCloudBillingAccountListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the google cloud billing account list o k response
+func (o *GoogleCloudBillingAccountListOK) Code() int {
+	return 200
+}
+
 func (o *GoogleCloudBillingAccountListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ GoogleCloudBillingAccountListBadRequest describes a response with status code 40
 Bad Request
 */
 type GoogleCloudBillingAccountListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud billing account list bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *GoogleCloudBillingAccountListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the google cloud billing account list bad request response
+func (o *GoogleCloudBillingAccountListBadRequest) Code() int {
+	return 400
+}
+
 func (o *GoogleCloudBillingAccountListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *GoogleCloudBillingAccountListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GoogleCloudBillingAccountListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *GoogleCloudBillingAccountListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudBillingAccountListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *GoogleCloudBillingAccountListUnauthorized) IsServerError() bool {
 // IsCode returns true when this google cloud billing account list unauthorized response a status code equal to that given
 func (o *GoogleCloudBillingAccountListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the google cloud billing account list unauthorized response
+func (o *GoogleCloudBillingAccountListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GoogleCloudBillingAccountListUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *GoogleCloudBillingAccountListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the google cloud billing account list forbidden response
+func (o *GoogleCloudBillingAccountListForbidden) Code() int {
+	return 403
+}
+
 func (o *GoogleCloudBillingAccountListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *GoogleCloudBillingAccountListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the google cloud billing account list not found response
+func (o *GoogleCloudBillingAccountListNotFound) Code() int {
+	return 404
+}
+
 func (o *GoogleCloudBillingAccountListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *GoogleCloudBillingAccountListInternalServerError) IsServerError() bool 
 // IsCode returns true when this google cloud billing account list internal server error response a status code equal to that given
 func (o *GoogleCloudBillingAccountListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the google cloud billing account list internal server error response
+func (o *GoogleCloudBillingAccountListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GoogleCloudBillingAccountListInternalServerError) Error() string {

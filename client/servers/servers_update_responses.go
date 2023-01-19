@@ -103,6 +103,11 @@ func (o *ServersUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the servers update o k response
+func (o *ServersUpdateOK) Code() int {
+	return 200
+}
+
 func (o *ServersUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ServersUpdateBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type ServersUpdateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers update bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ServersUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the servers update bad request response
+func (o *ServersUpdateBadRequest) Code() int {
+	return 400
+}
+
 func (o *ServersUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *ServersUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersUpdateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ServersUpdateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *ServersUpdateUnauthorized) IsServerError() bool {
 // IsCode returns true when this servers update unauthorized response a status code equal to that given
 func (o *ServersUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the servers update unauthorized response
+func (o *ServersUpdateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ServersUpdateUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *ServersUpdateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the servers update forbidden response
+func (o *ServersUpdateForbidden) Code() int {
+	return 403
+}
+
 func (o *ServersUpdateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *ServersUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the servers update not found response
+func (o *ServersUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *ServersUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ServersUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this servers update internal server error response a status code equal to that given
 func (o *ServersUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the servers update internal server error response
+func (o *ServersUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ServersUpdateInternalServerError) Error() string {

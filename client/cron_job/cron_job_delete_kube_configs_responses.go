@@ -103,6 +103,11 @@ func (o *CronJobDeleteKubeConfigsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job delete kube configs o k response
+func (o *CronJobDeleteKubeConfigsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobDeleteKubeConfigsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CronJobDeleteKubeConfigsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type CronJobDeleteKubeConfigsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete kube configs bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CronJobDeleteKubeConfigsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cron job delete kube configs bad request response
+func (o *CronJobDeleteKubeConfigsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CronJobDeleteKubeConfigsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CronJobDeleteKubeConfigsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteKubeConfigsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CronJobDeleteKubeConfigsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteKubeConfigsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CronJobDeleteKubeConfigsUnauthorized) IsServerError() bool {
 // IsCode returns true when this cron job delete kube configs unauthorized response a status code equal to that given
 func (o *CronJobDeleteKubeConfigsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cron job delete kube configs unauthorized response
+func (o *CronJobDeleteKubeConfigsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CronJobDeleteKubeConfigsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CronJobDeleteKubeConfigsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cron job delete kube configs forbidden response
+func (o *CronJobDeleteKubeConfigsForbidden) Code() int {
+	return 403
+}
+
 func (o *CronJobDeleteKubeConfigsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CronJobDeleteKubeConfigsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job delete kube configs not found response
+func (o *CronJobDeleteKubeConfigsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobDeleteKubeConfigsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobDeleteKubeConfigsInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job delete kube configs internal server error response a status code equal to that given
 func (o *CronJobDeleteKubeConfigsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job delete kube configs internal server error response
+func (o *CronJobDeleteKubeConfigsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobDeleteKubeConfigsInternalServerError) Error() string {

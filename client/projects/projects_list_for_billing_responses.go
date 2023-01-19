@@ -103,6 +103,11 @@ func (o *ProjectsListForBillingOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects list for billing o k response
+func (o *ProjectsListForBillingOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsListForBillingOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forbilling][%d] projectsListForBillingOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectsListForBillingBadRequest describes a response with status code 400, with
 Bad Request
 */
 type ProjectsListForBillingBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects list for billing bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectsListForBillingBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the projects list for billing bad request response
+func (o *ProjectsListForBillingBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectsListForBillingBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forbilling][%d] projectsListForBillingBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *ProjectsListForBillingBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forbilling][%d] projectsListForBillingBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsListForBillingBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ProjectsListForBillingBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsListForBillingBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *ProjectsListForBillingUnauthorized) IsServerError() bool {
 // IsCode returns true when this projects list for billing unauthorized response a status code equal to that given
 func (o *ProjectsListForBillingUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the projects list for billing unauthorized response
+func (o *ProjectsListForBillingUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectsListForBillingUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *ProjectsListForBillingForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the projects list for billing forbidden response
+func (o *ProjectsListForBillingForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectsListForBillingForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forbilling][%d] projectsListForBillingForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *ProjectsListForBillingNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects list for billing not found response
+func (o *ProjectsListForBillingNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsListForBillingNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forbilling][%d] projectsListForBillingNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsListForBillingInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects list for billing internal server error response a status code equal to that given
 func (o *ProjectsListForBillingInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects list for billing internal server error response
+func (o *ProjectsListForBillingInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsListForBillingInternalServerError) Error() string {

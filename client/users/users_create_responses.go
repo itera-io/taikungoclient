@@ -103,6 +103,11 @@ func (o *UsersCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users create o k response
+func (o *UsersCreateOK) Code() int {
+	return 200
+}
+
 func (o *UsersCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ UsersCreateBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type UsersCreateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users create bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *UsersCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the users create bad request response
+func (o *UsersCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *UsersCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *UsersCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *UsersCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *UsersCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this users create unauthorized response a status code equal to that given
 func (o *UsersCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the users create unauthorized response
+func (o *UsersCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UsersCreateUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *UsersCreateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the users create forbidden response
+func (o *UsersCreateForbidden) Code() int {
+	return 403
+}
+
 func (o *UsersCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *UsersCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users create not found response
+func (o *UsersCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *UsersCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this users create internal server error response a status code equal to that given
 func (o *UsersCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users create internal server error response
+func (o *UsersCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersCreateInternalServerError) Error() string {

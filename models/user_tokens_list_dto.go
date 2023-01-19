@@ -17,6 +17,9 @@ import (
 // swagger:model UserTokensListDto
 type UserTokensListDto struct {
 
+	// access key
+	AccessKey string `json:"accessKey,omitempty"`
+
 	// created at
 	CreatedAt string `json:"createdAt,omitempty"`
 

@@ -31,6 +31,9 @@ type AzureZonesCommand struct {
 
 	// azure tenant Id
 	AzureTenantID string `json:"azureTenantId,omitempty"`
+
+	// cloud Id
+	CloudID int32 `json:"cloudId,omitempty"`
 }
 
 // Validate validates this azure zones command

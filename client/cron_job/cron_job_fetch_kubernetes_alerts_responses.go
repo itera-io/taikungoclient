@@ -103,6 +103,11 @@ func (o *CronJobFetchKubernetesAlertsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job fetch kubernetes alerts o k response
+func (o *CronJobFetchKubernetesAlertsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobFetchKubernetesAlertsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CronJobFetchKubernetesAlertsBadRequest describes a response with status code 400
 Bad Request
 */
 type CronJobFetchKubernetesAlertsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes alerts bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CronJobFetchKubernetesAlertsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cron job fetch kubernetes alerts bad request response
+func (o *CronJobFetchKubernetesAlertsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CronJobFetchKubernetesAlertsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CronJobFetchKubernetesAlertsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesAlertsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CronJobFetchKubernetesAlertsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobFetchKubernetesAlertsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CronJobFetchKubernetesAlertsUnauthorized) IsServerError() bool {
 // IsCode returns true when this cron job fetch kubernetes alerts unauthorized response a status code equal to that given
 func (o *CronJobFetchKubernetesAlertsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cron job fetch kubernetes alerts unauthorized response
+func (o *CronJobFetchKubernetesAlertsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CronJobFetchKubernetesAlertsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CronJobFetchKubernetesAlertsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cron job fetch kubernetes alerts forbidden response
+func (o *CronJobFetchKubernetesAlertsForbidden) Code() int {
+	return 403
+}
+
 func (o *CronJobFetchKubernetesAlertsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CronJobFetchKubernetesAlertsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job fetch kubernetes alerts not found response
+func (o *CronJobFetchKubernetesAlertsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobFetchKubernetesAlertsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobFetchKubernetesAlertsInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job fetch kubernetes alerts internal server error response a status code equal to that given
 func (o *CronJobFetchKubernetesAlertsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job fetch kubernetes alerts internal server error response
+func (o *CronJobFetchKubernetesAlertsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobFetchKubernetesAlertsInternalServerError) Error() string {

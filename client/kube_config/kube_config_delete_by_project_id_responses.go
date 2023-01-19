@@ -103,6 +103,11 @@ func (o *KubeConfigDeleteByProjectIDOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kube config delete by project Id o k response
+func (o *KubeConfigDeleteByProjectIDOK) Code() int {
+	return 200
+}
+
 func (o *KubeConfigDeleteByProjectIDOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubeConfigDeleteByProjectIDBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubeConfigDeleteByProjectIDBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kube config delete by project Id bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubeConfigDeleteByProjectIDBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kube config delete by project Id bad request response
+func (o *KubeConfigDeleteByProjectIDBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubeConfigDeleteByProjectIDBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *KubeConfigDeleteByProjectIDBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubeConfigDeleteByProjectIDBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubeConfigDeleteByProjectIDBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubeConfigDeleteByProjectIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *KubeConfigDeleteByProjectIDUnauthorized) IsServerError() bool {
 // IsCode returns true when this kube config delete by project Id unauthorized response a status code equal to that given
 func (o *KubeConfigDeleteByProjectIDUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kube config delete by project Id unauthorized response
+func (o *KubeConfigDeleteByProjectIDUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubeConfigDeleteByProjectIDUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *KubeConfigDeleteByProjectIDForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kube config delete by project Id forbidden response
+func (o *KubeConfigDeleteByProjectIDForbidden) Code() int {
+	return 403
+}
+
 func (o *KubeConfigDeleteByProjectIDForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *KubeConfigDeleteByProjectIDNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kube config delete by project Id not found response
+func (o *KubeConfigDeleteByProjectIDNotFound) Code() int {
+	return 404
+}
+
 func (o *KubeConfigDeleteByProjectIDNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubeConfigDeleteByProjectIDInternalServerError) IsServerError() bool {
 // IsCode returns true when this kube config delete by project Id internal server error response a status code equal to that given
 func (o *KubeConfigDeleteByProjectIDInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kube config delete by project Id internal server error response
+func (o *KubeConfigDeleteByProjectIDInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubeConfigDeleteByProjectIDInternalServerError) Error() string {

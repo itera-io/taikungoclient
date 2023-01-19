@@ -103,6 +103,11 @@ func (o *GoogleCloudListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the google cloud list o k response
+func (o *GoogleCloudListOK) Code() int {
+	return 200
+}
+
 func (o *GoogleCloudListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ GoogleCloudListBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type GoogleCloudListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *GoogleCloudListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the google cloud list bad request response
+func (o *GoogleCloudListBadRequest) Code() int {
+	return 400
+}
+
 func (o *GoogleCloudListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *GoogleCloudListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GoogleCloudListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *GoogleCloudListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *GoogleCloudListUnauthorized) IsServerError() bool {
 // IsCode returns true when this google cloud list unauthorized response a status code equal to that given
 func (o *GoogleCloudListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the google cloud list unauthorized response
+func (o *GoogleCloudListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GoogleCloudListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *GoogleCloudListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the google cloud list forbidden response
+func (o *GoogleCloudListForbidden) Code() int {
+	return 403
+}
+
 func (o *GoogleCloudListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *GoogleCloudListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the google cloud list not found response
+func (o *GoogleCloudListNotFound) Code() int {
+	return 404
+}
+
 func (o *GoogleCloudListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *GoogleCloudListInternalServerError) IsServerError() bool {
 // IsCode returns true when this google cloud list internal server error response a status code equal to that given
 func (o *GoogleCloudListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the google cloud list internal server error response
+func (o *GoogleCloudListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GoogleCloudListInternalServerError) Error() string {

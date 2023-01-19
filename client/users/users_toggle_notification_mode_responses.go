@@ -103,6 +103,11 @@ func (o *UsersToggleNotificationModeOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users toggle notification mode o k response
+func (o *UsersToggleNotificationModeOK) Code() int {
+	return 200
+}
+
 func (o *UsersToggleNotificationModeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ UsersToggleNotificationModeBadRequest describes a response with status code 400,
 Bad Request
 */
 type UsersToggleNotificationModeBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users toggle notification mode bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *UsersToggleNotificationModeBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the users toggle notification mode bad request response
+func (o *UsersToggleNotificationModeBadRequest) Code() int {
+	return 400
+}
+
 func (o *UsersToggleNotificationModeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *UsersToggleNotificationModeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersToggleNotificationModeBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *UsersToggleNotificationModeBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersToggleNotificationModeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *UsersToggleNotificationModeUnauthorized) IsServerError() bool {
 // IsCode returns true when this users toggle notification mode unauthorized response a status code equal to that given
 func (o *UsersToggleNotificationModeUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the users toggle notification mode unauthorized response
+func (o *UsersToggleNotificationModeUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UsersToggleNotificationModeUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *UsersToggleNotificationModeForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the users toggle notification mode forbidden response
+func (o *UsersToggleNotificationModeForbidden) Code() int {
+	return 403
+}
+
 func (o *UsersToggleNotificationModeForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *UsersToggleNotificationModeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users toggle notification mode not found response
+func (o *UsersToggleNotificationModeNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersToggleNotificationModeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UsersToggleNotificationModeInternalServerError) IsServerError() bool {
 // IsCode returns true when this users toggle notification mode internal server error response a status code equal to that given
 func (o *UsersToggleNotificationModeInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users toggle notification mode internal server error response
+func (o *UsersToggleNotificationModeInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersToggleNotificationModeInternalServerError) Error() string {

@@ -103,12 +103,17 @@ func (o *CloudCredentialsExceededQuotasOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cloud credentials exceeded quotas o k response
+func (o *CloudCredentialsExceededQuotasOK) Code() int {
+	return 200
+}
+
 func (o *CloudCredentialsExceededQuotasOK) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasOK  %+v", 200, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasOK) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasOK  %+v", 200, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasOK) GetPayload() *models.ExceededQuotaList {
@@ -138,7 +143,7 @@ CloudCredentialsExceededQuotasBadRequest describes a response with status code 4
 Bad Request
 */
 type CloudCredentialsExceededQuotasBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials exceeded quotas bad request response has a 2xx status code
@@ -166,21 +171,26 @@ func (o *CloudCredentialsExceededQuotasBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cloud credentials exceeded quotas bad request response
+func (o *CloudCredentialsExceededQuotasBadRequest) Code() int {
+	return 400
+}
+
 func (o *CloudCredentialsExceededQuotasBadRequest) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasBadRequest) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsExceededQuotasBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CloudCredentialsExceededQuotasBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsExceededQuotasBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -229,12 +239,17 @@ func (o *CloudCredentialsExceededQuotasUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cloud credentials exceeded quotas unauthorized response
+func (o *CloudCredentialsExceededQuotasUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CloudCredentialsExceededQuotasUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasUnauthorized) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasUnauthorized) GetPayload() *models.ProblemDetails {
@@ -292,12 +307,17 @@ func (o *CloudCredentialsExceededQuotasForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cloud credentials exceeded quotas forbidden response
+func (o *CloudCredentialsExceededQuotasForbidden) Code() int {
+	return 403
+}
+
 func (o *CloudCredentialsExceededQuotasForbidden) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasForbidden  %+v", 403, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasForbidden) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasForbidden  %+v", 403, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasForbidden) GetPayload() *models.ProblemDetails {
@@ -355,12 +375,17 @@ func (o *CloudCredentialsExceededQuotasNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cloud credentials exceeded quotas not found response
+func (o *CloudCredentialsExceededQuotasNotFound) Code() int {
+	return 404
+}
+
 func (o *CloudCredentialsExceededQuotasNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasNotFound  %+v", 404, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasNotFound) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasNotFound  %+v", 404, o.Payload)
 }
 
 func (o *CloudCredentialsExceededQuotasNotFound) GetPayload() *models.ProblemDetails {
@@ -417,12 +442,17 @@ func (o *CloudCredentialsExceededQuotasInternalServerError) IsCode(code int) boo
 	return code == 500
 }
 
+// Code gets the status code for the cloud credentials exceeded quotas internal server error response
+func (o *CloudCredentialsExceededQuotasInternalServerError) Code() int {
+	return 500
+}
+
 func (o *CloudCredentialsExceededQuotasInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasInternalServerError ", 500)
 }
 
 func (o *CloudCredentialsExceededQuotasInternalServerError) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas][%d] cloudCredentialsExceededQuotasInternalServerError ", 500)
 }
 
 func (o *CloudCredentialsExceededQuotasInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

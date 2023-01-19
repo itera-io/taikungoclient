@@ -38,6 +38,9 @@ type OpenstackVolumeTypeListQuery struct {
 	// open stack user
 	OpenStackUser string `json:"openStackUser,omitempty"`
 
+	// openstack project
+	OpenstackProject string `json:"openstackProject,omitempty"`
+
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
 }

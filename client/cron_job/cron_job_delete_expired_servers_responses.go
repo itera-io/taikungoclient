@@ -103,6 +103,11 @@ func (o *CronJobDeleteExpiredServersOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job delete expired servers o k response
+func (o *CronJobDeleteExpiredServersOK) Code() int {
+	return 200
+}
+
 func (o *CronJobDeleteExpiredServersOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/servers][%d] cronJobDeleteExpiredServersOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CronJobDeleteExpiredServersBadRequest describes a response with status code 400,
 Bad Request
 */
 type CronJobDeleteExpiredServersBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete expired servers bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CronJobDeleteExpiredServersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cron job delete expired servers bad request response
+func (o *CronJobDeleteExpiredServersBadRequest) Code() int {
+	return 400
+}
+
 func (o *CronJobDeleteExpiredServersBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/servers][%d] cronJobDeleteExpiredServersBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CronJobDeleteExpiredServersBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/servers][%d] cronJobDeleteExpiredServersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredServersBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CronJobDeleteExpiredServersBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredServersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CronJobDeleteExpiredServersUnauthorized) IsServerError() bool {
 // IsCode returns true when this cron job delete expired servers unauthorized response a status code equal to that given
 func (o *CronJobDeleteExpiredServersUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cron job delete expired servers unauthorized response
+func (o *CronJobDeleteExpiredServersUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CronJobDeleteExpiredServersUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CronJobDeleteExpiredServersForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cron job delete expired servers forbidden response
+func (o *CronJobDeleteExpiredServersForbidden) Code() int {
+	return 403
+}
+
 func (o *CronJobDeleteExpiredServersForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/servers][%d] cronJobDeleteExpiredServersForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CronJobDeleteExpiredServersNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job delete expired servers not found response
+func (o *CronJobDeleteExpiredServersNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobDeleteExpiredServersNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/servers][%d] cronJobDeleteExpiredServersNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobDeleteExpiredServersInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job delete expired servers internal server error response a status code equal to that given
 func (o *CronJobDeleteExpiredServersInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job delete expired servers internal server error response
+func (o *CronJobDeleteExpiredServersInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobDeleteExpiredServersInternalServerError) Error() string {

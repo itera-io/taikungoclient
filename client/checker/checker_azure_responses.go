@@ -103,6 +103,11 @@ func (o *CheckerAzureOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker azure o k response
+func (o *CheckerAzureOK) Code() int {
+	return 200
+}
+
 func (o *CheckerAzureOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CheckerAzureBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type CheckerAzureBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker azure bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CheckerAzureBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the checker azure bad request response
+func (o *CheckerAzureBadRequest) Code() int {
+	return 400
+}
+
 func (o *CheckerAzureBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CheckerAzureBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerAzureBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CheckerAzureBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerAzureBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CheckerAzureUnauthorized) IsServerError() bool {
 // IsCode returns true when this checker azure unauthorized response a status code equal to that given
 func (o *CheckerAzureUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the checker azure unauthorized response
+func (o *CheckerAzureUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CheckerAzureUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CheckerAzureForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the checker azure forbidden response
+func (o *CheckerAzureForbidden) Code() int {
+	return 403
+}
+
 func (o *CheckerAzureForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CheckerAzureNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker azure not found response
+func (o *CheckerAzureNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerAzureNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerAzureInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker azure internal server error response a status code equal to that given
 func (o *CheckerAzureInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker azure internal server error response
+func (o *CheckerAzureInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerAzureInternalServerError) Error() string {

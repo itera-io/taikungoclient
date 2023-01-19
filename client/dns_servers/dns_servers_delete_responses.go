@@ -109,6 +109,11 @@ func (o *DNSServersDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the dns servers delete o k response
+func (o *DNSServersDeleteOK) Code() int {
+	return 200
+}
+
 func (o *DNSServersDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *DNSServersDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the dns servers delete no content response
+func (o *DNSServersDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *DNSServersDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteNoContent ", 204)
 }
@@ -193,7 +203,7 @@ DNSServersDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type DNSServersDeleteBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this dns servers delete bad request response has a 2xx status code
@@ -221,6 +231,11 @@ func (o *DNSServersDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the dns servers delete bad request response
+func (o *DNSServersDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *DNSServersDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -229,13 +244,13 @@ func (o *DNSServersDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *DNSServersDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *DNSServersDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *DNSServersDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -282,6 +297,11 @@ func (o *DNSServersDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this dns servers delete unauthorized response a status code equal to that given
 func (o *DNSServersDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the dns servers delete unauthorized response
+func (o *DNSServersDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *DNSServersDeleteUnauthorized) Error() string {
@@ -347,6 +367,11 @@ func (o *DNSServersDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the dns servers delete forbidden response
+func (o *DNSServersDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *DNSServersDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -410,6 +435,11 @@ func (o *DNSServersDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the dns servers delete not found response
+func (o *DNSServersDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *DNSServersDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *DNSServersDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this dns servers delete internal server error response a status code equal to that given
 func (o *DNSServersDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the dns servers delete internal server error response
+func (o *DNSServersDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *DNSServersDeleteInternalServerError) Error() string {

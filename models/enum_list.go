@@ -46,6 +46,9 @@ type EnumList struct {
 	// google image types
 	GoogleImageTypes []*CommonDropdownDto `json:"googleImageTypes"`
 
+	// openstack continents
+	OpenstackContinents []*CommonStringBasedDropdownDto `json:"openstackContinents"`
+
 	// project statuses
 	ProjectStatuses []*CommonDropdownDto `json:"projectStatuses"`
 
@@ -123,6 +126,10 @@ func (m *EnumList) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateGoogleImageTypes(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOpenstackContinents(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -408,6 +415,32 @@ func (m *EnumList) validateGoogleImageTypes(formats strfmt.Registry) error {
 					return ve.ValidateName("googleImageTypes" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("googleImageTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *EnumList) validateOpenstackContinents(formats strfmt.Registry) error {
+	if swag.IsZero(m.OpenstackContinents) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.OpenstackContinents); i++ {
+		if swag.IsZero(m.OpenstackContinents[i]) { // not required
+			continue
+		}
+
+		if m.OpenstackContinents[i] != nil {
+			if err := m.OpenstackContinents[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("openstackContinents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("openstackContinents" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -796,6 +829,10 @@ func (m *EnumList) ContextValidate(ctx context.Context, formats strfmt.Registry)
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateOpenstackContinents(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateProjectStatuses(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1024,6 +1061,26 @@ func (m *EnumList) contextValidateGoogleImageTypes(ctx context.Context, formats 
 					return ve.ValidateName("googleImageTypes" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("googleImageTypes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *EnumList) contextValidateOpenstackContinents(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.OpenstackContinents); i++ {
+
+		if m.OpenstackContinents[i] != nil {
+			if err := m.OpenstackContinents[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("openstackContinents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("openstackContinents" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

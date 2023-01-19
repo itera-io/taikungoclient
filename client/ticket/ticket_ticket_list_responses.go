@@ -103,6 +103,11 @@ func (o *TicketTicketListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ticket ticket list o k response
+func (o *TicketTicketListOK) Code() int {
+	return 200
+}
+
 func (o *TicketTicketListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/list][%d] ticketTicketListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ TicketTicketListBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type TicketTicketListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket ticket list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *TicketTicketListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the ticket ticket list bad request response
+func (o *TicketTicketListBadRequest) Code() int {
+	return 400
+}
+
 func (o *TicketTicketListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/list][%d] ticketTicketListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *TicketTicketListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/list][%d] ticketTicketListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketTicketListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *TicketTicketListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketTicketListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *TicketTicketListUnauthorized) IsServerError() bool {
 // IsCode returns true when this ticket ticket list unauthorized response a status code equal to that given
 func (o *TicketTicketListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the ticket ticket list unauthorized response
+func (o *TicketTicketListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *TicketTicketListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *TicketTicketListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the ticket ticket list forbidden response
+func (o *TicketTicketListForbidden) Code() int {
+	return 403
+}
+
 func (o *TicketTicketListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/list][%d] ticketTicketListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *TicketTicketListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ticket ticket list not found response
+func (o *TicketTicketListNotFound) Code() int {
+	return 404
+}
+
 func (o *TicketTicketListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/list][%d] ticketTicketListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *TicketTicketListInternalServerError) IsServerError() bool {
 // IsCode returns true when this ticket ticket list internal server error response a status code equal to that given
 func (o *TicketTicketListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ticket ticket list internal server error response
+func (o *TicketTicketListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *TicketTicketListInternalServerError) Error() string {

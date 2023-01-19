@@ -62,6 +62,9 @@ CloudCredentialsCloudCredentialsForOrganizationListParams contains all the param
 */
 type CloudCredentialsCloudCredentialsForOrganizationListParams struct {
 
+	// IsAdmin.
+	IsAdmin *bool
+
 	// OrganizationID.
 	//
 	// Format: int32
@@ -126,6 +129,17 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListParams) SetHTTPClien
 	o.HTTPClient = client
 }
 
+// WithIsAdmin adds the isAdmin to the cloud credentials cloud credentials for organization list params
+func (o *CloudCredentialsCloudCredentialsForOrganizationListParams) WithIsAdmin(isAdmin *bool) *CloudCredentialsCloudCredentialsForOrganizationListParams {
+	o.SetIsAdmin(isAdmin)
+	return o
+}
+
+// SetIsAdmin adds the isAdmin to the cloud credentials cloud credentials for organization list params
+func (o *CloudCredentialsCloudCredentialsForOrganizationListParams) SetIsAdmin(isAdmin *bool) {
+	o.IsAdmin = isAdmin
+}
+
 // WithOrganizationID adds the organizationID to the cloud credentials cloud credentials for organization list params
 func (o *CloudCredentialsCloudCredentialsForOrganizationListParams) WithOrganizationID(organizationID *int32) *CloudCredentialsCloudCredentialsForOrganizationListParams {
 	o.SetOrganizationID(organizationID)
@@ -166,6 +180,23 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListParams) WriteToReque
 		return err
 	}
 	var res []error
+
+	if o.IsAdmin != nil {
+
+		// query param isAdmin
+		var qrIsAdmin bool
+
+		if o.IsAdmin != nil {
+			qrIsAdmin = *o.IsAdmin
+		}
+		qIsAdmin := swag.FormatBool(qrIsAdmin)
+		if qIsAdmin != "" {
+
+			if err := r.SetQueryParam("isAdmin", qIsAdmin); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.OrganizationID != nil {
 

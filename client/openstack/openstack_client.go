@@ -93,7 +93,7 @@ func (a *Client) OpenstackCreate(params *OpenstackCreateParams, authInfo runtime
 }
 
 /*
-OpenstackList retrieves list of azure cloud credentials
+OpenstackList retrieves list of openstack cloud credentials
 */
 func (a *Client) OpenstackList(params *OpenstackListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpenstackListOK, error) {
 	// TODO: Validate the params before sending

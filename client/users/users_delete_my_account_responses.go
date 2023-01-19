@@ -103,6 +103,11 @@ func (o *UsersDeleteMyAccountOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users delete my account o k response
+func (o *UsersDeleteMyAccountOK) Code() int {
+	return 200
+}
+
 func (o *UsersDeleteMyAccountOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/delete][%d] usersDeleteMyAccountOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ UsersDeleteMyAccountBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type UsersDeleteMyAccountBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users delete my account bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *UsersDeleteMyAccountBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the users delete my account bad request response
+func (o *UsersDeleteMyAccountBadRequest) Code() int {
+	return 400
+}
+
 func (o *UsersDeleteMyAccountBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/delete][%d] usersDeleteMyAccountBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *UsersDeleteMyAccountBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/delete][%d] usersDeleteMyAccountBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersDeleteMyAccountBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *UsersDeleteMyAccountBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersDeleteMyAccountBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *UsersDeleteMyAccountUnauthorized) IsServerError() bool {
 // IsCode returns true when this users delete my account unauthorized response a status code equal to that given
 func (o *UsersDeleteMyAccountUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the users delete my account unauthorized response
+func (o *UsersDeleteMyAccountUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UsersDeleteMyAccountUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *UsersDeleteMyAccountForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the users delete my account forbidden response
+func (o *UsersDeleteMyAccountForbidden) Code() int {
+	return 403
+}
+
 func (o *UsersDeleteMyAccountForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/delete][%d] usersDeleteMyAccountForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *UsersDeleteMyAccountNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users delete my account not found response
+func (o *UsersDeleteMyAccountNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersDeleteMyAccountNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/delete][%d] usersDeleteMyAccountNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UsersDeleteMyAccountInternalServerError) IsServerError() bool {
 // IsCode returns true when this users delete my account internal server error response a status code equal to that given
 func (o *UsersDeleteMyAccountInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users delete my account internal server error response
+func (o *UsersDeleteMyAccountInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersDeleteMyAccountInternalServerError) Error() string {

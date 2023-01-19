@@ -103,6 +103,11 @@ func (o *CronJobDeleteRedundantProjectActionsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job delete redundant project actions o k response
+func (o *CronJobDeleteRedundantProjectActionsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobDeleteRedundantProjectActionsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CronJobDeleteRedundantProjectActionsBadRequest describes a response with status 
 Bad Request
 */
 type CronJobDeleteRedundantProjectActionsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete redundant project actions bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CronJobDeleteRedundantProjectActionsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cron job delete redundant project actions bad request response
+func (o *CronJobDeleteRedundantProjectActionsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CronJobDeleteRedundantProjectActionsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CronJobDeleteRedundantProjectActionsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteRedundantProjectActionsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CronJobDeleteRedundantProjectActionsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteRedundantProjectActionsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CronJobDeleteRedundantProjectActionsUnauthorized) IsServerError() bool 
 // IsCode returns true when this cron job delete redundant project actions unauthorized response a status code equal to that given
 func (o *CronJobDeleteRedundantProjectActionsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cron job delete redundant project actions unauthorized response
+func (o *CronJobDeleteRedundantProjectActionsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CronJobDeleteRedundantProjectActionsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CronJobDeleteRedundantProjectActionsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cron job delete redundant project actions forbidden response
+func (o *CronJobDeleteRedundantProjectActionsForbidden) Code() int {
+	return 403
+}
+
 func (o *CronJobDeleteRedundantProjectActionsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CronJobDeleteRedundantProjectActionsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job delete redundant project actions not found response
+func (o *CronJobDeleteRedundantProjectActionsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobDeleteRedundantProjectActionsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobDeleteRedundantProjectActionsInternalServerError) IsServerError(
 // IsCode returns true when this cron job delete redundant project actions internal server error response a status code equal to that given
 func (o *CronJobDeleteRedundantProjectActionsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job delete redundant project actions internal server error response
+func (o *CronJobDeleteRedundantProjectActionsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobDeleteRedundantProjectActionsInternalServerError) Error() string {

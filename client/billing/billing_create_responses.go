@@ -103,6 +103,11 @@ func (o *BillingCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the billing create o k response
+func (o *BillingCreateOK) Code() int {
+	return 200
+}
+
 func (o *BillingCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ BillingCreateBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type BillingCreateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this billing create bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *BillingCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the billing create bad request response
+func (o *BillingCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *BillingCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *BillingCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BillingCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *BillingCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BillingCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *BillingCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this billing create unauthorized response a status code equal to that given
 func (o *BillingCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the billing create unauthorized response
+func (o *BillingCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BillingCreateUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *BillingCreateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the billing create forbidden response
+func (o *BillingCreateForbidden) Code() int {
+	return 403
+}
+
 func (o *BillingCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *BillingCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the billing create not found response
+func (o *BillingCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *BillingCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *BillingCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this billing create internal server error response a status code equal to that given
 func (o *BillingCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the billing create internal server error response
+func (o *BillingCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BillingCreateInternalServerError) Error() string {

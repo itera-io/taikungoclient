@@ -42,6 +42,8 @@ type ClientService interface {
 
 	UserGroupsUpdate(params *UserGroupsUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserGroupsUpdateOK, error)
 
+	UserGroupsUserListByProjectGroupID(params *UserGroupsUserListByProjectGroupIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserGroupsUserListByProjectGroupIDOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -124,7 +126,7 @@ func (a *Client) UserGroupsCreate(params *UserGroupsCreateParams, authInfo runti
 }
 
 /*
-UserGroupsDelete removes user group
+UserGroupsDelete removes user group s
 */
 func (a *Client) UserGroupsDelete(params *UserGroupsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserGroupsDeleteOK, *UserGroupsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -134,9 +136,9 @@ func (a *Client) UserGroupsDelete(params *UserGroupsDeleteParams, authInfo runti
 	op := &runtime.ClientOperation{
 		ID:                 "UserGroups_Delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v{v}/UserGroups/{userGroupId}",
+		PathPattern:        "/api/v{v}/UserGroups",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &UserGroupsDeleteReader{formats: a.formats},
@@ -277,6 +279,45 @@ func (a *Client) UserGroupsUpdate(params *UserGroupsUpdateParams, authInfo runti
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for UserGroups_Update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UserGroupsUserListByProjectGroupID retrieves list of users by user group id
+*/
+func (a *Client) UserGroupsUserListByProjectGroupID(params *UserGroupsUserListByProjectGroupIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserGroupsUserListByProjectGroupIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUserGroupsUserListByProjectGroupIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UserGroups_UserListByProjectGroupId",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/UserGroups/{userGroupId}/users",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UserGroupsUserListByProjectGroupIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UserGroupsUserListByProjectGroupIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UserGroups_UserListByProjectGroupId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

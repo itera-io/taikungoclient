@@ -103,6 +103,11 @@ func (o *PartnerAddWhiteListDomainOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the partner add white list domain o k response
+func (o *PartnerAddWhiteListDomainOK) Code() int {
+	return 200
+}
+
 func (o *PartnerAddWhiteListDomainOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ PartnerAddWhiteListDomainBadRequest describes a response with status code 400, w
 Bad Request
 */
 type PartnerAddWhiteListDomainBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner add white list domain bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *PartnerAddWhiteListDomainBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the partner add white list domain bad request response
+func (o *PartnerAddWhiteListDomainBadRequest) Code() int {
+	return 400
+}
+
 func (o *PartnerAddWhiteListDomainBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *PartnerAddWhiteListDomainBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerAddWhiteListDomainBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *PartnerAddWhiteListDomainBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerAddWhiteListDomainBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *PartnerAddWhiteListDomainUnauthorized) IsServerError() bool {
 // IsCode returns true when this partner add white list domain unauthorized response a status code equal to that given
 func (o *PartnerAddWhiteListDomainUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the partner add white list domain unauthorized response
+func (o *PartnerAddWhiteListDomainUnauthorized) Code() int {
+	return 401
 }
 
 func (o *PartnerAddWhiteListDomainUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *PartnerAddWhiteListDomainForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the partner add white list domain forbidden response
+func (o *PartnerAddWhiteListDomainForbidden) Code() int {
+	return 403
+}
+
 func (o *PartnerAddWhiteListDomainForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *PartnerAddWhiteListDomainNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the partner add white list domain not found response
+func (o *PartnerAddWhiteListDomainNotFound) Code() int {
+	return 404
+}
+
 func (o *PartnerAddWhiteListDomainNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PartnerAddWhiteListDomainInternalServerError) IsServerError() bool {
 // IsCode returns true when this partner add white list domain internal server error response a status code equal to that given
 func (o *PartnerAddWhiteListDomainInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the partner add white list domain internal server error response
+func (o *PartnerAddWhiteListDomainInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PartnerAddWhiteListDomainInternalServerError) Error() string {

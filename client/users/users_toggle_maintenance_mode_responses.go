@@ -103,6 +103,11 @@ func (o *UsersToggleMaintenanceModeOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users toggle maintenance mode o k response
+func (o *UsersToggleMaintenanceModeOK) Code() int {
+	return 200
+}
+
 func (o *UsersToggleMaintenanceModeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglemaintenancemode][%d] usersToggleMaintenanceModeOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ UsersToggleMaintenanceModeBadRequest describes a response with status code 400, 
 Bad Request
 */
 type UsersToggleMaintenanceModeBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users toggle maintenance mode bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *UsersToggleMaintenanceModeBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the users toggle maintenance mode bad request response
+func (o *UsersToggleMaintenanceModeBadRequest) Code() int {
+	return 400
+}
+
 func (o *UsersToggleMaintenanceModeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglemaintenancemode][%d] usersToggleMaintenanceModeBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *UsersToggleMaintenanceModeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglemaintenancemode][%d] usersToggleMaintenanceModeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersToggleMaintenanceModeBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *UsersToggleMaintenanceModeBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersToggleMaintenanceModeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *UsersToggleMaintenanceModeUnauthorized) IsServerError() bool {
 // IsCode returns true when this users toggle maintenance mode unauthorized response a status code equal to that given
 func (o *UsersToggleMaintenanceModeUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the users toggle maintenance mode unauthorized response
+func (o *UsersToggleMaintenanceModeUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UsersToggleMaintenanceModeUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *UsersToggleMaintenanceModeForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the users toggle maintenance mode forbidden response
+func (o *UsersToggleMaintenanceModeForbidden) Code() int {
+	return 403
+}
+
 func (o *UsersToggleMaintenanceModeForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglemaintenancemode][%d] usersToggleMaintenanceModeForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *UsersToggleMaintenanceModeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users toggle maintenance mode not found response
+func (o *UsersToggleMaintenanceModeNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersToggleMaintenanceModeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglemaintenancemode][%d] usersToggleMaintenanceModeNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UsersToggleMaintenanceModeInternalServerError) IsServerError() bool {
 // IsCode returns true when this users toggle maintenance mode internal server error response a status code equal to that given
 func (o *UsersToggleMaintenanceModeInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users toggle maintenance mode internal server error response
+func (o *UsersToggleMaintenanceModeInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersToggleMaintenanceModeInternalServerError) Error() string {

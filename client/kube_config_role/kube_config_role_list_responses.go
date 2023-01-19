@@ -103,6 +103,11 @@ func (o *KubeConfigRoleListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kube config role list o k response
+func (o *KubeConfigRoleListOK) Code() int {
+	return 200
+}
+
 func (o *KubeConfigRoleListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ KubeConfigRoleListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubeConfigRoleListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kube config role list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *KubeConfigRoleListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kube config role list bad request response
+func (o *KubeConfigRoleListBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubeConfigRoleListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *KubeConfigRoleListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubeConfigRoleListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubeConfigRoleListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubeConfigRoleListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *KubeConfigRoleListUnauthorized) IsServerError() bool {
 // IsCode returns true when this kube config role list unauthorized response a status code equal to that given
 func (o *KubeConfigRoleListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kube config role list unauthorized response
+func (o *KubeConfigRoleListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubeConfigRoleListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *KubeConfigRoleListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kube config role list forbidden response
+func (o *KubeConfigRoleListForbidden) Code() int {
+	return 403
+}
+
 func (o *KubeConfigRoleListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *KubeConfigRoleListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kube config role list not found response
+func (o *KubeConfigRoleListNotFound) Code() int {
+	return 404
+}
+
 func (o *KubeConfigRoleListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubeConfigRoleListInternalServerError) IsServerError() bool {
 // IsCode returns true when this kube config role list internal server error response a status code equal to that given
 func (o *KubeConfigRoleListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kube config role list internal server error response
+func (o *KubeConfigRoleListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubeConfigRoleListInternalServerError) Error() string {

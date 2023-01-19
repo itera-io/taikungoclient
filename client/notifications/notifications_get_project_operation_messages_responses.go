@@ -103,6 +103,11 @@ func (o *NotificationsGetProjectOperationMessagesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the notifications get project operation messages o k response
+func (o *NotificationsGetProjectOperationMessagesOK) Code() int {
+	return 200
+}
+
 func (o *NotificationsGetProjectOperationMessagesOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ NotificationsGetProjectOperationMessagesBadRequest describes a response with sta
 Bad Request
 */
 type NotificationsGetProjectOperationMessagesBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this notifications get project operation messages bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *NotificationsGetProjectOperationMessagesBadRequest) IsCode(code int) bo
 	return code == 400
 }
 
+// Code gets the status code for the notifications get project operation messages bad request response
+func (o *NotificationsGetProjectOperationMessagesBadRequest) Code() int {
+	return 400
+}
+
 func (o *NotificationsGetProjectOperationMessagesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *NotificationsGetProjectOperationMessagesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NotificationsGetProjectOperationMessagesBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *NotificationsGetProjectOperationMessagesBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NotificationsGetProjectOperationMessagesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *NotificationsGetProjectOperationMessagesUnauthorized) IsServerError() b
 // IsCode returns true when this notifications get project operation messages unauthorized response a status code equal to that given
 func (o *NotificationsGetProjectOperationMessagesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the notifications get project operation messages unauthorized response
+func (o *NotificationsGetProjectOperationMessagesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *NotificationsGetProjectOperationMessagesUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *NotificationsGetProjectOperationMessagesForbidden) IsCode(code int) boo
 	return code == 403
 }
 
+// Code gets the status code for the notifications get project operation messages forbidden response
+func (o *NotificationsGetProjectOperationMessagesForbidden) Code() int {
+	return 403
+}
+
 func (o *NotificationsGetProjectOperationMessagesForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *NotificationsGetProjectOperationMessagesNotFound) IsCode(code int) bool
 	return code == 404
 }
 
+// Code gets the status code for the notifications get project operation messages not found response
+func (o *NotificationsGetProjectOperationMessagesNotFound) Code() int {
+	return 404
+}
+
 func (o *NotificationsGetProjectOperationMessagesNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *NotificationsGetProjectOperationMessagesInternalServerError) IsServerEr
 // IsCode returns true when this notifications get project operation messages internal server error response a status code equal to that given
 func (o *NotificationsGetProjectOperationMessagesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the notifications get project operation messages internal server error response
+func (o *NotificationsGetProjectOperationMessagesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *NotificationsGetProjectOperationMessagesInternalServerError) Error() string {

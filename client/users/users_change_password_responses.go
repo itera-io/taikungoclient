@@ -103,6 +103,11 @@ func (o *UsersChangePasswordOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the users change password o k response
+func (o *UsersChangePasswordOK) Code() int {
+	return 200
+}
+
 func (o *UsersChangePasswordOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/changepassword][%d] usersChangePasswordOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ UsersChangePasswordBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type UsersChangePasswordBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users change password bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *UsersChangePasswordBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the users change password bad request response
+func (o *UsersChangePasswordBadRequest) Code() int {
+	return 400
+}
+
 func (o *UsersChangePasswordBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/changepassword][%d] usersChangePasswordBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *UsersChangePasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/changepassword][%d] usersChangePasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersChangePasswordBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *UsersChangePasswordBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersChangePasswordBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *UsersChangePasswordUnauthorized) IsServerError() bool {
 // IsCode returns true when this users change password unauthorized response a status code equal to that given
 func (o *UsersChangePasswordUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the users change password unauthorized response
+func (o *UsersChangePasswordUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UsersChangePasswordUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *UsersChangePasswordForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the users change password forbidden response
+func (o *UsersChangePasswordForbidden) Code() int {
+	return 403
+}
+
 func (o *UsersChangePasswordForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/changepassword][%d] usersChangePasswordForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *UsersChangePasswordNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the users change password not found response
+func (o *UsersChangePasswordNotFound) Code() int {
+	return 404
+}
+
 func (o *UsersChangePasswordNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/changepassword][%d] usersChangePasswordNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UsersChangePasswordInternalServerError) IsServerError() bool {
 // IsCode returns true when this users change password internal server error response a status code equal to that given
 func (o *UsersChangePasswordInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the users change password internal server error response
+func (o *UsersChangePasswordInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UsersChangePasswordInternalServerError) Error() string {

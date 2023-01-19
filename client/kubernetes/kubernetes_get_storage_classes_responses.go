@@ -103,6 +103,11 @@ func (o *KubernetesGetStorageClassesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get storage classes o k response
+func (o *KubernetesGetStorageClassesOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetStorageClassesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ KubernetesGetStorageClassesBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesGetStorageClassesBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get storage classes bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *KubernetesGetStorageClassesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes get storage classes bad request response
+func (o *KubernetesGetStorageClassesBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesGetStorageClassesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *KubernetesGetStorageClassesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetStorageClassesBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesGetStorageClassesBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetStorageClassesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *KubernetesGetStorageClassesUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes get storage classes unauthorized response a status code equal to that given
 func (o *KubernetesGetStorageClassesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes get storage classes unauthorized response
+func (o *KubernetesGetStorageClassesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesGetStorageClassesUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *KubernetesGetStorageClassesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes get storage classes forbidden response
+func (o *KubernetesGetStorageClassesForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesGetStorageClassesForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *KubernetesGetStorageClassesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get storage classes not found response
+func (o *KubernetesGetStorageClassesNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetStorageClassesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubernetesGetStorageClassesInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get storage classes internal server error response a status code equal to that given
 func (o *KubernetesGetStorageClassesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get storage classes internal server error response
+func (o *KubernetesGetStorageClassesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetStorageClassesInternalServerError) Error() string {

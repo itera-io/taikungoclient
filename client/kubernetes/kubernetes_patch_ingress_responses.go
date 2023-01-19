@@ -103,6 +103,11 @@ func (o *KubernetesPatchIngressOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes patch ingress o k response
+func (o *KubernetesPatchIngressOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesPatchIngressOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/ingress][%d] kubernetesPatchIngressOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesPatchIngressBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesPatchIngressBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch ingress bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesPatchIngressBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes patch ingress bad request response
+func (o *KubernetesPatchIngressBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesPatchIngressBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/ingress][%d] kubernetesPatchIngressBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *KubernetesPatchIngressBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/ingress][%d] kubernetesPatchIngressBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchIngressBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesPatchIngressBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchIngressBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *KubernetesPatchIngressUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes patch ingress unauthorized response a status code equal to that given
 func (o *KubernetesPatchIngressUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes patch ingress unauthorized response
+func (o *KubernetesPatchIngressUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesPatchIngressUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *KubernetesPatchIngressForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes patch ingress forbidden response
+func (o *KubernetesPatchIngressForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesPatchIngressForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/ingress][%d] kubernetesPatchIngressForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *KubernetesPatchIngressNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes patch ingress not found response
+func (o *KubernetesPatchIngressNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesPatchIngressNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/ingress][%d] kubernetesPatchIngressNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesPatchIngressInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes patch ingress internal server error response a status code equal to that given
 func (o *KubernetesPatchIngressInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes patch ingress internal server error response
+func (o *KubernetesPatchIngressInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesPatchIngressInternalServerError) Error() string {

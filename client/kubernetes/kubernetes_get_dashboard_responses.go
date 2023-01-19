@@ -103,6 +103,11 @@ func (o *KubernetesGetDashboardOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get dashboard o k response
+func (o *KubernetesGetDashboardOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetDashboardOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesGetDashboardBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesGetDashboardBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get dashboard bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesGetDashboardBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes get dashboard bad request response
+func (o *KubernetesGetDashboardBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesGetDashboardBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *KubernetesGetDashboardBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetDashboardBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesGetDashboardBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetDashboardBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *KubernetesGetDashboardUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes get dashboard unauthorized response a status code equal to that given
 func (o *KubernetesGetDashboardUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes get dashboard unauthorized response
+func (o *KubernetesGetDashboardUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesGetDashboardUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *KubernetesGetDashboardForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes get dashboard forbidden response
+func (o *KubernetesGetDashboardForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesGetDashboardForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *KubernetesGetDashboardNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get dashboard not found response
+func (o *KubernetesGetDashboardNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetDashboardNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesGetDashboardInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get dashboard internal server error response a status code equal to that given
 func (o *KubernetesGetDashboardInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get dashboard internal server error response
+func (o *KubernetesGetDashboardInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetDashboardInternalServerError) Error() string {

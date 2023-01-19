@@ -103,6 +103,11 @@ func (o *BillingGroupedListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the billing grouped list o k response
+func (o *BillingGroupedListOK) Code() int {
+	return 200
+}
+
 func (o *BillingGroupedListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ BillingGroupedListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type BillingGroupedListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this billing grouped list bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *BillingGroupedListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the billing grouped list bad request response
+func (o *BillingGroupedListBadRequest) Code() int {
+	return 400
+}
+
 func (o *BillingGroupedListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *BillingGroupedListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BillingGroupedListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *BillingGroupedListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BillingGroupedListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *BillingGroupedListUnauthorized) IsServerError() bool {
 // IsCode returns true when this billing grouped list unauthorized response a status code equal to that given
 func (o *BillingGroupedListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the billing grouped list unauthorized response
+func (o *BillingGroupedListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BillingGroupedListUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *BillingGroupedListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the billing grouped list forbidden response
+func (o *BillingGroupedListForbidden) Code() int {
+	return 403
+}
+
 func (o *BillingGroupedListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *BillingGroupedListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the billing grouped list not found response
+func (o *BillingGroupedListNotFound) Code() int {
+	return 404
+}
+
 func (o *BillingGroupedListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *BillingGroupedListInternalServerError) IsServerError() bool {
 // IsCode returns true when this billing grouped list internal server error response a status code equal to that given
 func (o *BillingGroupedListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the billing grouped list internal server error response
+func (o *BillingGroupedListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BillingGroupedListInternalServerError) Error() string {

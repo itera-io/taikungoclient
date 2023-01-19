@@ -103,6 +103,11 @@ func (o *SearchBillingCredentialsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search billing credentials list o k response
+func (o *SearchBillingCredentialsListOK) Code() int {
+	return 200
+}
+
 func (o *SearchBillingCredentialsListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ SearchBillingCredentialsListBadRequest describes a response with status code 400
 Bad Request
 */
 type SearchBillingCredentialsListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search billing credentials list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *SearchBillingCredentialsListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the search billing credentials list bad request response
+func (o *SearchBillingCredentialsListBadRequest) Code() int {
+	return 400
+}
+
 func (o *SearchBillingCredentialsListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *SearchBillingCredentialsListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchBillingCredentialsListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SearchBillingCredentialsListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchBillingCredentialsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *SearchBillingCredentialsListUnauthorized) IsServerError() bool {
 // IsCode returns true when this search billing credentials list unauthorized response a status code equal to that given
 func (o *SearchBillingCredentialsListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the search billing credentials list unauthorized response
+func (o *SearchBillingCredentialsListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SearchBillingCredentialsListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *SearchBillingCredentialsListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the search billing credentials list forbidden response
+func (o *SearchBillingCredentialsListForbidden) Code() int {
+	return 403
+}
+
 func (o *SearchBillingCredentialsListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *SearchBillingCredentialsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search billing credentials list not found response
+func (o *SearchBillingCredentialsListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchBillingCredentialsListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchBillingCredentialsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search billing credentials list internal server error response a status code equal to that given
 func (o *SearchBillingCredentialsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search billing credentials list internal server error response
+func (o *SearchBillingCredentialsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchBillingCredentialsListInternalServerError) Error() string {

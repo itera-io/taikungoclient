@@ -103,6 +103,11 @@ func (o *KubernetesDescribeNodeOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe node o k response
+func (o *KubernetesDescribeNodeOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribeNodeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/node][%d] kubernetesDescribeNodeOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesDescribeNodeBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesDescribeNodeBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe node bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesDescribeNodeBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes describe node bad request response
+func (o *KubernetesDescribeNodeBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesDescribeNodeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/node][%d] kubernetesDescribeNodeBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *KubernetesDescribeNodeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/node][%d] kubernetesDescribeNodeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeNodeBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesDescribeNodeBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeNodeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *KubernetesDescribeNodeUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes describe node unauthorized response a status code equal to that given
 func (o *KubernetesDescribeNodeUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes describe node unauthorized response
+func (o *KubernetesDescribeNodeUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesDescribeNodeUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *KubernetesDescribeNodeForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes describe node forbidden response
+func (o *KubernetesDescribeNodeForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesDescribeNodeForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/node][%d] kubernetesDescribeNodeForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *KubernetesDescribeNodeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe node not found response
+func (o *KubernetesDescribeNodeNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribeNodeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/node][%d] kubernetesDescribeNodeNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesDescribeNodeInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe node internal server error response a status code equal to that given
 func (o *KubernetesDescribeNodeInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe node internal server error response
+func (o *KubernetesDescribeNodeInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribeNodeInternalServerError) Error() string {

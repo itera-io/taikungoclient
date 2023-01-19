@@ -103,6 +103,11 @@ func (o *AzureOffersOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the azure offers o k response
+func (o *AzureOffersOK) Code() int {
+	return 200
+}
+
 func (o *AzureOffersOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ AzureOffersBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type AzureOffersBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure offers bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *AzureOffersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the azure offers bad request response
+func (o *AzureOffersBadRequest) Code() int {
+	return 400
+}
+
 func (o *AzureOffersBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *AzureOffersBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureOffersBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AzureOffersBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureOffersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *AzureOffersUnauthorized) IsServerError() bool {
 // IsCode returns true when this azure offers unauthorized response a status code equal to that given
 func (o *AzureOffersUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the azure offers unauthorized response
+func (o *AzureOffersUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AzureOffersUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *AzureOffersForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the azure offers forbidden response
+func (o *AzureOffersForbidden) Code() int {
+	return 403
+}
+
 func (o *AzureOffersForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *AzureOffersNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the azure offers not found response
+func (o *AzureOffersNotFound) Code() int {
+	return 404
+}
+
 func (o *AzureOffersNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AzureOffersInternalServerError) IsServerError() bool {
 // IsCode returns true when this azure offers internal server error response a status code equal to that given
 func (o *AzureOffersInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the azure offers internal server error response
+func (o *AzureOffersInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AzureOffersInternalServerError) Error() string {

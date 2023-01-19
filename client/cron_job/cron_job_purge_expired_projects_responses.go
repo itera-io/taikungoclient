@@ -103,6 +103,11 @@ func (o *CronJobPurgeExpiredProjectsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job purge expired projects o k response
+func (o *CronJobPurgeExpiredProjectsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobPurgeExpiredProjectsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CronJobPurgeExpiredProjectsBadRequest describes a response with status code 400,
 Bad Request
 */
 type CronJobPurgeExpiredProjectsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job purge expired projects bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CronJobPurgeExpiredProjectsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cron job purge expired projects bad request response
+func (o *CronJobPurgeExpiredProjectsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CronJobPurgeExpiredProjectsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CronJobPurgeExpiredProjectsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobPurgeExpiredProjectsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CronJobPurgeExpiredProjectsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobPurgeExpiredProjectsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CronJobPurgeExpiredProjectsUnauthorized) IsServerError() bool {
 // IsCode returns true when this cron job purge expired projects unauthorized response a status code equal to that given
 func (o *CronJobPurgeExpiredProjectsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cron job purge expired projects unauthorized response
+func (o *CronJobPurgeExpiredProjectsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CronJobPurgeExpiredProjectsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CronJobPurgeExpiredProjectsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cron job purge expired projects forbidden response
+func (o *CronJobPurgeExpiredProjectsForbidden) Code() int {
+	return 403
+}
+
 func (o *CronJobPurgeExpiredProjectsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CronJobPurgeExpiredProjectsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job purge expired projects not found response
+func (o *CronJobPurgeExpiredProjectsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobPurgeExpiredProjectsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobPurgeExpiredProjectsInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job purge expired projects internal server error response a status code equal to that given
 func (o *CronJobPurgeExpiredProjectsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job purge expired projects internal server error response
+func (o *CronJobPurgeExpiredProjectsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobPurgeExpiredProjectsInternalServerError) Error() string {

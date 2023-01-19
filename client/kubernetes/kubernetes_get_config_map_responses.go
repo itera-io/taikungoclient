@@ -103,6 +103,11 @@ func (o *KubernetesGetConfigMapOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get config map o k response
+func (o *KubernetesGetConfigMapOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetConfigMapOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/configmap][%d] kubernetesGetConfigMapOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ KubernetesGetConfigMapBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesGetConfigMapBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get config map bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *KubernetesGetConfigMapBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes get config map bad request response
+func (o *KubernetesGetConfigMapBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesGetConfigMapBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/configmap][%d] kubernetesGetConfigMapBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *KubernetesGetConfigMapBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/configmap][%d] kubernetesGetConfigMapBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetConfigMapBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesGetConfigMapBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetConfigMapBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *KubernetesGetConfigMapUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes get config map unauthorized response a status code equal to that given
 func (o *KubernetesGetConfigMapUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes get config map unauthorized response
+func (o *KubernetesGetConfigMapUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesGetConfigMapUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *KubernetesGetConfigMapForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes get config map forbidden response
+func (o *KubernetesGetConfigMapForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesGetConfigMapForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/configmap][%d] kubernetesGetConfigMapForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *KubernetesGetConfigMapNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get config map not found response
+func (o *KubernetesGetConfigMapNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetConfigMapNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/configmap][%d] kubernetesGetConfigMapNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubernetesGetConfigMapInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get config map internal server error response a status code equal to that given
 func (o *KubernetesGetConfigMapInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get config map internal server error response
+func (o *KubernetesGetConfigMapInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetConfigMapInternalServerError) Error() string {

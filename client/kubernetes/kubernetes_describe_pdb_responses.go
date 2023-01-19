@@ -103,6 +103,11 @@ func (o *KubernetesDescribePdbOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe pdb o k response
+func (o *KubernetesDescribePdbOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribePdbOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesDescribePdbBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesDescribePdbBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe pdb bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesDescribePdbBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes describe pdb bad request response
+func (o *KubernetesDescribePdbBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesDescribePdbBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *KubernetesDescribePdbBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribePdbBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesDescribePdbBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribePdbBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *KubernetesDescribePdbUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes describe pdb unauthorized response a status code equal to that given
 func (o *KubernetesDescribePdbUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes describe pdb unauthorized response
+func (o *KubernetesDescribePdbUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesDescribePdbUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *KubernetesDescribePdbForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes describe pdb forbidden response
+func (o *KubernetesDescribePdbForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesDescribePdbForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *KubernetesDescribePdbNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe pdb not found response
+func (o *KubernetesDescribePdbNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribePdbNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesDescribePdbInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe pdb internal server error response a status code equal to that given
 func (o *KubernetesDescribePdbInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe pdb internal server error response
+func (o *KubernetesDescribePdbInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribePdbInternalServerError) Error() string {

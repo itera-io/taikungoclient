@@ -103,6 +103,11 @@ func (o *OpaProfilesMakeDefaultOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the opa profiles make default o k response
+func (o *OpaProfilesMakeDefaultOK) Code() int {
+	return 200
+}
+
 func (o *OpaProfilesMakeDefaultOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ OpaProfilesMakeDefaultBadRequest describes a response with status code 400, with
 Bad Request
 */
 type OpaProfilesMakeDefaultBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles make default bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *OpaProfilesMakeDefaultBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the opa profiles make default bad request response
+func (o *OpaProfilesMakeDefaultBadRequest) Code() int {
+	return 400
+}
+
 func (o *OpaProfilesMakeDefaultBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *OpaProfilesMakeDefaultBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesMakeDefaultBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OpaProfilesMakeDefaultBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesMakeDefaultBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *OpaProfilesMakeDefaultUnauthorized) IsServerError() bool {
 // IsCode returns true when this opa profiles make default unauthorized response a status code equal to that given
 func (o *OpaProfilesMakeDefaultUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the opa profiles make default unauthorized response
+func (o *OpaProfilesMakeDefaultUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OpaProfilesMakeDefaultUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *OpaProfilesMakeDefaultForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the opa profiles make default forbidden response
+func (o *OpaProfilesMakeDefaultForbidden) Code() int {
+	return 403
+}
+
 func (o *OpaProfilesMakeDefaultForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *OpaProfilesMakeDefaultNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the opa profiles make default not found response
+func (o *OpaProfilesMakeDefaultNotFound) Code() int {
+	return 404
+}
+
 func (o *OpaProfilesMakeDefaultNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpaProfilesMakeDefaultInternalServerError) IsServerError() bool {
 // IsCode returns true when this opa profiles make default internal server error response a status code equal to that given
 func (o *OpaProfilesMakeDefaultInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the opa profiles make default internal server error response
+func (o *OpaProfilesMakeDefaultInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpaProfilesMakeDefaultInternalServerError) Error() string {

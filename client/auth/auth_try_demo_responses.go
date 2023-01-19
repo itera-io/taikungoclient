@@ -103,6 +103,11 @@ func (o *AuthTryDemoOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the auth try demo o k response
+func (o *AuthTryDemoOK) Code() int {
+	return 200
+}
+
 func (o *AuthTryDemoOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AuthTryDemoBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type AuthTryDemoBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth try demo bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AuthTryDemoBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the auth try demo bad request response
+func (o *AuthTryDemoBadRequest) Code() int {
+	return 400
+}
+
 func (o *AuthTryDemoBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *AuthTryDemoBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AuthTryDemoBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AuthTryDemoBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthTryDemoBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *AuthTryDemoUnauthorized) IsServerError() bool {
 // IsCode returns true when this auth try demo unauthorized response a status code equal to that given
 func (o *AuthTryDemoUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the auth try demo unauthorized response
+func (o *AuthTryDemoUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AuthTryDemoUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *AuthTryDemoForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the auth try demo forbidden response
+func (o *AuthTryDemoForbidden) Code() int {
+	return 403
+}
+
 func (o *AuthTryDemoForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *AuthTryDemoNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the auth try demo not found response
+func (o *AuthTryDemoNotFound) Code() int {
+	return 404
+}
+
 func (o *AuthTryDemoNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AuthTryDemoInternalServerError) IsServerError() bool {
 // IsCode returns true when this auth try demo internal server error response a status code equal to that given
 func (o *AuthTryDemoInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the auth try demo internal server error response
+func (o *AuthTryDemoInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AuthTryDemoInternalServerError) Error() string {

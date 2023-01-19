@@ -103,6 +103,11 @@ func (o *AwsAwsOwnersOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the aws aws owners o k response
+func (o *AwsAwsOwnersOK) Code() int {
+	return 200
+}
+
 func (o *AwsAwsOwnersOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AwsAwsOwnersBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type AwsAwsOwnersBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws aws owners bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AwsAwsOwnersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the aws aws owners bad request response
+func (o *AwsAwsOwnersBadRequest) Code() int {
+	return 400
+}
+
 func (o *AwsAwsOwnersBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *AwsAwsOwnersBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsAwsOwnersBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AwsAwsOwnersBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsAwsOwnersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *AwsAwsOwnersUnauthorized) IsServerError() bool {
 // IsCode returns true when this aws aws owners unauthorized response a status code equal to that given
 func (o *AwsAwsOwnersUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the aws aws owners unauthorized response
+func (o *AwsAwsOwnersUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AwsAwsOwnersUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *AwsAwsOwnersForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the aws aws owners forbidden response
+func (o *AwsAwsOwnersForbidden) Code() int {
+	return 403
+}
+
 func (o *AwsAwsOwnersForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *AwsAwsOwnersNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the aws aws owners not found response
+func (o *AwsAwsOwnersNotFound) Code() int {
+	return 404
+}
+
 func (o *AwsAwsOwnersNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AwsAwsOwnersInternalServerError) IsServerError() bool {
 // IsCode returns true when this aws aws owners internal server error response a status code equal to that given
 func (o *AwsAwsOwnersInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the aws aws owners internal server error response
+func (o *AwsAwsOwnersInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AwsAwsOwnersInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *AdminDeleteOrganizationOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin delete organization o k response
+func (o *AdminDeleteOrganizationOK) Code() int {
+	return 200
+}
+
 func (o *AdminDeleteOrganizationOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AdminDeleteOrganizationBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type AdminDeleteOrganizationBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin delete organization bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AdminDeleteOrganizationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the admin delete organization bad request response
+func (o *AdminDeleteOrganizationBadRequest) Code() int {
+	return 400
+}
+
 func (o *AdminDeleteOrganizationBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *AdminDeleteOrganizationBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminDeleteOrganizationBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AdminDeleteOrganizationBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminDeleteOrganizationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *AdminDeleteOrganizationUnauthorized) IsServerError() bool {
 // IsCode returns true when this admin delete organization unauthorized response a status code equal to that given
 func (o *AdminDeleteOrganizationUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the admin delete organization unauthorized response
+func (o *AdminDeleteOrganizationUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AdminDeleteOrganizationUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *AdminDeleteOrganizationForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the admin delete organization forbidden response
+func (o *AdminDeleteOrganizationForbidden) Code() int {
+	return 403
+}
+
 func (o *AdminDeleteOrganizationForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *AdminDeleteOrganizationNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin delete organization not found response
+func (o *AdminDeleteOrganizationNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminDeleteOrganizationNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AdminDeleteOrganizationInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin delete organization internal server error response a status code equal to that given
 func (o *AdminDeleteOrganizationInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin delete organization internal server error response
+func (o *AdminDeleteOrganizationInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminDeleteOrganizationInternalServerError) Error() string {

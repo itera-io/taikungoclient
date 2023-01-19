@@ -19,8 +19,11 @@ import (
 // swagger:model AmazonCredentialsListDto
 type AmazonCredentialsListDto struct {
 
-	// availability zone
-	AvailabilityZone string `json:"availabilityZone,omitempty"`
+	// availability zones
+	AvailabilityZones []string `json:"availabilityZones"`
+
+	// continent name
+	ContinentName string `json:"continentName,omitempty"`
 
 	// created at
 	CreatedAt string `json:"createdAt,omitempty"`

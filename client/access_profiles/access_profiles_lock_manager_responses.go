@@ -103,6 +103,11 @@ func (o *AccessProfilesLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the access profiles lock manager o k response
+func (o *AccessProfilesLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *AccessProfilesLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AccessProfilesLockManagerBadRequest describes a response with status code 400, w
 Bad Request
 */
 type AccessProfilesLockManagerBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles lock manager bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AccessProfilesLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the access profiles lock manager bad request response
+func (o *AccessProfilesLockManagerBadRequest) Code() int {
+	return 400
+}
+
 func (o *AccessProfilesLockManagerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *AccessProfilesLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AccessProfilesLockManagerBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AccessProfilesLockManagerBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *AccessProfilesLockManagerUnauthorized) IsServerError() bool {
 // IsCode returns true when this access profiles lock manager unauthorized response a status code equal to that given
 func (o *AccessProfilesLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the access profiles lock manager unauthorized response
+func (o *AccessProfilesLockManagerUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AccessProfilesLockManagerUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *AccessProfilesLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the access profiles lock manager forbidden response
+func (o *AccessProfilesLockManagerForbidden) Code() int {
+	return 403
+}
+
 func (o *AccessProfilesLockManagerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *AccessProfilesLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the access profiles lock manager not found response
+func (o *AccessProfilesLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *AccessProfilesLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AccessProfilesLockManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this access profiles lock manager internal server error response a status code equal to that given
 func (o *AccessProfilesLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the access profiles lock manager internal server error response
+func (o *AccessProfilesLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AccessProfilesLockManagerInternalServerError) Error() string {

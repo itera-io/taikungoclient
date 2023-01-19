@@ -102,6 +102,11 @@ func (o *ShowbackSummariesExportCsvOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the showback summaries export csv o k response
+func (o *ShowbackSummariesExportCsvOK) Code() int {
+	return 200
+}
+
 func (o *ShowbackSummariesExportCsvOK) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvOK ", 200)
 }
@@ -152,6 +157,11 @@ func (o *ShowbackSummariesExportCsvBadRequest) IsServerError() bool {
 // IsCode returns true when this showback summaries export csv bad request response a status code equal to that given
 func (o *ShowbackSummariesExportCsvBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the showback summaries export csv bad request response
+func (o *ShowbackSummariesExportCsvBadRequest) Code() int {
+	return 400
 }
 
 func (o *ShowbackSummariesExportCsvBadRequest) Error() string {
@@ -217,6 +227,11 @@ func (o *ShowbackSummariesExportCsvUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the showback summaries export csv unauthorized response
+func (o *ShowbackSummariesExportCsvUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ShowbackSummariesExportCsvUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvUnauthorized  %+v", 401, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *ShowbackSummariesExportCsvForbidden) IsServerError() bool {
 // IsCode returns true when this showback summaries export csv forbidden response a status code equal to that given
 func (o *ShowbackSummariesExportCsvForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the showback summaries export csv forbidden response
+func (o *ShowbackSummariesExportCsvForbidden) Code() int {
+	return 403
 }
 
 func (o *ShowbackSummariesExportCsvForbidden) Error() string {
@@ -343,6 +363,11 @@ func (o *ShowbackSummariesExportCsvNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the showback summaries export csv not found response
+func (o *ShowbackSummariesExportCsvNotFound) Code() int {
+	return 404
+}
+
 func (o *ShowbackSummariesExportCsvNotFound) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvNotFound  %+v", 404, o.Payload)
 }
@@ -403,6 +428,11 @@ func (o *ShowbackSummariesExportCsvInternalServerError) IsServerError() bool {
 // IsCode returns true when this showback summaries export csv internal server error response a status code equal to that given
 func (o *ShowbackSummariesExportCsvInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the showback summaries export csv internal server error response
+func (o *ShowbackSummariesExportCsvInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ShowbackSummariesExportCsvInternalServerError) Error() string {

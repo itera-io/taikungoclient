@@ -103,6 +103,11 @@ func (o *PaymentGetFinalPriceOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the payment get final price o k response
+func (o *PaymentGetFinalPriceOK) Code() int {
+	return 200
+}
+
 func (o *PaymentGetFinalPriceOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ PaymentGetFinalPriceBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type PaymentGetFinalPriceBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment get final price bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *PaymentGetFinalPriceBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the payment get final price bad request response
+func (o *PaymentGetFinalPriceBadRequest) Code() int {
+	return 400
+}
+
 func (o *PaymentGetFinalPriceBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *PaymentGetFinalPriceBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentGetFinalPriceBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *PaymentGetFinalPriceBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentGetFinalPriceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *PaymentGetFinalPriceUnauthorized) IsServerError() bool {
 // IsCode returns true when this payment get final price unauthorized response a status code equal to that given
 func (o *PaymentGetFinalPriceUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the payment get final price unauthorized response
+func (o *PaymentGetFinalPriceUnauthorized) Code() int {
+	return 401
 }
 
 func (o *PaymentGetFinalPriceUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *PaymentGetFinalPriceForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the payment get final price forbidden response
+func (o *PaymentGetFinalPriceForbidden) Code() int {
+	return 403
+}
+
 func (o *PaymentGetFinalPriceForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *PaymentGetFinalPriceNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the payment get final price not found response
+func (o *PaymentGetFinalPriceNotFound) Code() int {
+	return 404
+}
+
 func (o *PaymentGetFinalPriceNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *PaymentGetFinalPriceInternalServerError) IsServerError() bool {
 // IsCode returns true when this payment get final price internal server error response a status code equal to that given
 func (o *PaymentGetFinalPriceInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the payment get final price internal server error response
+func (o *PaymentGetFinalPriceInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PaymentGetFinalPriceInternalServerError) Error() string {

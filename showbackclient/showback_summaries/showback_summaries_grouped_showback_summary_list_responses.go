@@ -103,6 +103,11 @@ func (o *ShowbackSummariesGroupedShowbackSummaryListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the showback summaries grouped showback summary list o k response
+func (o *ShowbackSummariesGroupedShowbackSummaryListOK) Code() int {
+	return 200
+}
+
 func (o *ShowbackSummariesGroupedShowbackSummaryListOK) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/list][%d] showbackSummariesGroupedShowbackSummaryListOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ShowbackSummariesGroupedShowbackSummaryListBadRequest) IsServerError() 
 // IsCode returns true when this showback summaries grouped showback summary list bad request response a status code equal to that given
 func (o *ShowbackSummariesGroupedShowbackSummaryListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the showback summaries grouped showback summary list bad request response
+func (o *ShowbackSummariesGroupedShowbackSummaryListBadRequest) Code() int {
+	return 400
 }
 
 func (o *ShowbackSummariesGroupedShowbackSummaryListBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ShowbackSummariesGroupedShowbackSummaryListUnauthorized) IsCode(code in
 	return code == 401
 }
 
+// Code gets the status code for the showback summaries grouped showback summary list unauthorized response
+func (o *ShowbackSummariesGroupedShowbackSummaryListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ShowbackSummariesGroupedShowbackSummaryListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/list][%d] showbackSummariesGroupedShowbackSummaryListUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ShowbackSummariesGroupedShowbackSummaryListForbidden) IsServerError() b
 // IsCode returns true when this showback summaries grouped showback summary list forbidden response a status code equal to that given
 func (o *ShowbackSummariesGroupedShowbackSummaryListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the showback summaries grouped showback summary list forbidden response
+func (o *ShowbackSummariesGroupedShowbackSummaryListForbidden) Code() int {
+	return 403
 }
 
 func (o *ShowbackSummariesGroupedShowbackSummaryListForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ShowbackSummariesGroupedShowbackSummaryListNotFound) IsCode(code int) b
 	return code == 404
 }
 
+// Code gets the status code for the showback summaries grouped showback summary list not found response
+func (o *ShowbackSummariesGroupedShowbackSummaryListNotFound) Code() int {
+	return 404
+}
+
 func (o *ShowbackSummariesGroupedShowbackSummaryListNotFound) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/list][%d] showbackSummariesGroupedShowbackSummaryListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ShowbackSummariesGroupedShowbackSummaryListInternalServerError) IsServe
 // IsCode returns true when this showback summaries grouped showback summary list internal server error response a status code equal to that given
 func (o *ShowbackSummariesGroupedShowbackSummaryListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the showback summaries grouped showback summary list internal server error response
+func (o *ShowbackSummariesGroupedShowbackSummaryListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ShowbackSummariesGroupedShowbackSummaryListInternalServerError) Error() string {

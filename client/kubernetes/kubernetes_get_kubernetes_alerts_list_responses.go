@@ -103,6 +103,11 @@ func (o *KubernetesGetKubernetesAlertsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get kubernetes alerts list o k response
+func (o *KubernetesGetKubernetesAlertsListOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetKubernetesAlertsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ KubernetesGetKubernetesAlertsListBadRequest describes a response with status cod
 Bad Request
 */
 type KubernetesGetKubernetesAlertsListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get kubernetes alerts list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *KubernetesGetKubernetesAlertsListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes get kubernetes alerts list bad request response
+func (o *KubernetesGetKubernetesAlertsListBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesGetKubernetesAlertsListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *KubernetesGetKubernetesAlertsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetKubernetesAlertsListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesGetKubernetesAlertsListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubernetesAlertsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *KubernetesGetKubernetesAlertsListUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes get kubernetes alerts list unauthorized response a status code equal to that given
 func (o *KubernetesGetKubernetesAlertsListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes get kubernetes alerts list unauthorized response
+func (o *KubernetesGetKubernetesAlertsListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesGetKubernetesAlertsListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *KubernetesGetKubernetesAlertsListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes get kubernetes alerts list forbidden response
+func (o *KubernetesGetKubernetesAlertsListForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesGetKubernetesAlertsListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *KubernetesGetKubernetesAlertsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get kubernetes alerts list not found response
+func (o *KubernetesGetKubernetesAlertsListNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetKubernetesAlertsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubernetesGetKubernetesAlertsListInternalServerError) IsServerError() b
 // IsCode returns true when this kubernetes get kubernetes alerts list internal server error response a status code equal to that given
 func (o *KubernetesGetKubernetesAlertsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get kubernetes alerts list internal server error response
+func (o *KubernetesGetKubernetesAlertsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetKubernetesAlertsListInternalServerError) Error() string {

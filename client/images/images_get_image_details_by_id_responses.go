@@ -103,6 +103,11 @@ func (o *ImagesGetImageDetailsByIDOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the images get image details by Id o k response
+func (o *ImagesGetImageDetailsByIDOK) Code() int {
+	return 200
+}
+
 func (o *ImagesGetImageDetailsByIDOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ImagesGetImageDetailsByIDBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ImagesGetImageDetailsByIDBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images get image details by Id bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ImagesGetImageDetailsByIDBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the images get image details by Id bad request response
+func (o *ImagesGetImageDetailsByIDBadRequest) Code() int {
+	return 400
+}
+
 func (o *ImagesGetImageDetailsByIDBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *ImagesGetImageDetailsByIDBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesGetImageDetailsByIDBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ImagesGetImageDetailsByIDBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesGetImageDetailsByIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *ImagesGetImageDetailsByIDUnauthorized) IsServerError() bool {
 // IsCode returns true when this images get image details by Id unauthorized response a status code equal to that given
 func (o *ImagesGetImageDetailsByIDUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the images get image details by Id unauthorized response
+func (o *ImagesGetImageDetailsByIDUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ImagesGetImageDetailsByIDUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *ImagesGetImageDetailsByIDForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the images get image details by Id forbidden response
+func (o *ImagesGetImageDetailsByIDForbidden) Code() int {
+	return 403
+}
+
 func (o *ImagesGetImageDetailsByIDForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *ImagesGetImageDetailsByIDNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the images get image details by Id not found response
+func (o *ImagesGetImageDetailsByIDNotFound) Code() int {
+	return 404
+}
+
 func (o *ImagesGetImageDetailsByIDNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ImagesGetImageDetailsByIDInternalServerError) IsServerError() bool {
 // IsCode returns true when this images get image details by Id internal server error response a status code equal to that given
 func (o *ImagesGetImageDetailsByIDInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the images get image details by Id internal server error response
+func (o *ImagesGetImageDetailsByIDInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ImagesGetImageDetailsByIDInternalServerError) Error() string {

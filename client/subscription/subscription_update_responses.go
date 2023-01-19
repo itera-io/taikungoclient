@@ -103,6 +103,11 @@ func (o *SubscriptionUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the subscription update o k response
+func (o *SubscriptionUpdateOK) Code() int {
+	return 200
+}
+
 func (o *SubscriptionUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/update][%d] subscriptionUpdateOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ SubscriptionUpdateBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type SubscriptionUpdateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription update bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *SubscriptionUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the subscription update bad request response
+func (o *SubscriptionUpdateBadRequest) Code() int {
+	return 400
+}
+
 func (o *SubscriptionUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/update][%d] subscriptionUpdateBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *SubscriptionUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/update][%d] subscriptionUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionUpdateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SubscriptionUpdateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *SubscriptionUpdateUnauthorized) IsServerError() bool {
 // IsCode returns true when this subscription update unauthorized response a status code equal to that given
 func (o *SubscriptionUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the subscription update unauthorized response
+func (o *SubscriptionUpdateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SubscriptionUpdateUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *SubscriptionUpdateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the subscription update forbidden response
+func (o *SubscriptionUpdateForbidden) Code() int {
+	return 403
+}
+
 func (o *SubscriptionUpdateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/update][%d] subscriptionUpdateForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *SubscriptionUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the subscription update not found response
+func (o *SubscriptionUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *SubscriptionUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/update][%d] subscriptionUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *SubscriptionUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this subscription update internal server error response a status code equal to that given
 func (o *SubscriptionUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the subscription update internal server error response
+func (o *SubscriptionUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SubscriptionUpdateInternalServerError) Error() string {

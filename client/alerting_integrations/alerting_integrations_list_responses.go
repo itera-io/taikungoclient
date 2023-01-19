@@ -103,6 +103,11 @@ func (o *AlertingIntegrationsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting integrations list o k response
+func (o *AlertingIntegrationsListOK) Code() int {
+	return 200
+}
+
 func (o *AlertingIntegrationsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AlertingIntegrationsListBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type AlertingIntegrationsListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting integrations list bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AlertingIntegrationsListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the alerting integrations list bad request response
+func (o *AlertingIntegrationsListBadRequest) Code() int {
+	return 400
+}
+
 func (o *AlertingIntegrationsListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *AlertingIntegrationsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingIntegrationsListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AlertingIntegrationsListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *AlertingIntegrationsListUnauthorized) IsServerError() bool {
 // IsCode returns true when this alerting integrations list unauthorized response a status code equal to that given
 func (o *AlertingIntegrationsListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the alerting integrations list unauthorized response
+func (o *AlertingIntegrationsListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AlertingIntegrationsListUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *AlertingIntegrationsListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the alerting integrations list forbidden response
+func (o *AlertingIntegrationsListForbidden) Code() int {
+	return 403
+}
+
 func (o *AlertingIntegrationsListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *AlertingIntegrationsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting integrations list not found response
+func (o *AlertingIntegrationsListNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingIntegrationsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AlertingIntegrationsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this alerting integrations list internal server error response a status code equal to that given
 func (o *AlertingIntegrationsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting integrations list internal server error response
+func (o *AlertingIntegrationsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingIntegrationsListInternalServerError) Error() string {

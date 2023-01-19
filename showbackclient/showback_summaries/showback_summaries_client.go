@@ -34,6 +34,10 @@ type ClientService interface {
 
 	ShowbackSummariesExportCsv(params *ShowbackSummariesExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackSummariesExportCsvOK, error)
 
+	ShowbackSummariesGroupedByLabelList(params *ShowbackSummariesGroupedByLabelListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackSummariesGroupedByLabelListOK, error)
+
+	ShowbackSummariesGroupedByProjectList(params *ShowbackSummariesGroupedByProjectListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackSummariesGroupedByProjectListOK, error)
+
 	ShowbackSummariesGroupedList(params *ShowbackSummariesGroupedListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackSummariesGroupedListOK, error)
 
 	ShowbackSummariesGroupedShowbackSummaryList(params *ShowbackSummariesGroupedShowbackSummaryListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackSummariesGroupedShowbackSummaryListOK, error)
@@ -116,6 +120,84 @@ func (a *Client) ShowbackSummariesExportCsv(params *ShowbackSummariesExportCsvPa
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for ShowbackSummaries_ExportCsv: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ShowbackSummariesGroupedByLabelList retrieves a grouped list of by label showback summaries
+*/
+func (a *Client) ShowbackSummariesGroupedByLabelList(params *ShowbackSummariesGroupedByLabelListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackSummariesGroupedByLabelListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewShowbackSummariesGroupedByLabelListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "ShowbackSummaries_GroupedByLabelList",
+		Method:             "GET",
+		PathPattern:        "/showback/v{v}/ShowbackSummaries/grouped/byLabel",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ShowbackSummariesGroupedByLabelListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ShowbackSummariesGroupedByLabelListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for ShowbackSummaries_GroupedByLabelList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ShowbackSummariesGroupedByProjectList retrieves a grouped list of by project showback summaries
+*/
+func (a *Client) ShowbackSummariesGroupedByProjectList(params *ShowbackSummariesGroupedByProjectListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackSummariesGroupedByProjectListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewShowbackSummariesGroupedByProjectListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "ShowbackSummaries_GroupedByProjectList",
+		Method:             "GET",
+		PathPattern:        "/showback/v{v}/ShowbackSummaries/grouped/byProject",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ShowbackSummariesGroupedByProjectListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ShowbackSummariesGroupedByProjectListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for ShowbackSummaries_GroupedByProjectList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

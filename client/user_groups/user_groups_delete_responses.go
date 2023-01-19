@@ -109,12 +109,17 @@ func (o *UserGroupsDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the user groups delete o k response
+func (o *UserGroupsDeleteOK) Code() int {
+	return 200
+}
+
 func (o *UserGroupsDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *UserGroupsDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *UserGroupsDeleteOK) GetPayload() models.Unit {
@@ -169,12 +174,17 @@ func (o *UserGroupsDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the user groups delete no content response
+func (o *UserGroupsDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *UserGroupsDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteNoContent ", 204)
 }
 
 func (o *UserGroupsDeleteNoContent) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteNoContent ", 204)
 }
 
 func (o *UserGroupsDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -193,7 +203,7 @@ UserGroupsDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type UserGroupsDeleteBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user groups delete bad request response has a 2xx status code
@@ -221,21 +231,26 @@ func (o *UserGroupsDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the user groups delete bad request response
+func (o *UserGroupsDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *UserGroupsDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UserGroupsDeleteBadRequest) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserGroupsDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *UserGroupsDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserGroupsDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -284,12 +299,17 @@ func (o *UserGroupsDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the user groups delete unauthorized response
+func (o *UserGroupsDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UserGroupsDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *UserGroupsDeleteUnauthorized) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *UserGroupsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
@@ -347,12 +367,17 @@ func (o *UserGroupsDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the user groups delete forbidden response
+func (o *UserGroupsDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *UserGroupsDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *UserGroupsDeleteForbidden) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *UserGroupsDeleteForbidden) GetPayload() *models.ProblemDetails {
@@ -410,12 +435,17 @@ func (o *UserGroupsDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user groups delete not found response
+func (o *UserGroupsDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *UserGroupsDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UserGroupsDeleteNotFound) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UserGroupsDeleteNotFound) GetPayload() *models.ProblemDetails {
@@ -472,12 +502,17 @@ func (o *UserGroupsDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
+// Code gets the status code for the user groups delete internal server error response
+func (o *UserGroupsDeleteInternalServerError) Code() int {
+	return 500
+}
+
 func (o *UserGroupsDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteInternalServerError ", 500)
+	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteInternalServerError ", 500)
 }
 
 func (o *UserGroupsDeleteInternalServerError) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteInternalServerError ", 500)
+	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteInternalServerError ", 500)
 }
 
 func (o *UserGroupsDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

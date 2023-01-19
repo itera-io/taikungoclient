@@ -103,6 +103,11 @@ func (o *SearchConfigMapListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search config map list o k response
+func (o *SearchConfigMapListOK) Code() int {
+	return 200
+}
+
 func (o *SearchConfigMapListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ SearchConfigMapListBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type SearchConfigMapListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search config map list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *SearchConfigMapListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the search config map list bad request response
+func (o *SearchConfigMapListBadRequest) Code() int {
+	return 400
+}
+
 func (o *SearchConfigMapListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *SearchConfigMapListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchConfigMapListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SearchConfigMapListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchConfigMapListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *SearchConfigMapListUnauthorized) IsServerError() bool {
 // IsCode returns true when this search config map list unauthorized response a status code equal to that given
 func (o *SearchConfigMapListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the search config map list unauthorized response
+func (o *SearchConfigMapListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SearchConfigMapListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *SearchConfigMapListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the search config map list forbidden response
+func (o *SearchConfigMapListForbidden) Code() int {
+	return 403
+}
+
 func (o *SearchConfigMapListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *SearchConfigMapListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search config map list not found response
+func (o *SearchConfigMapListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchConfigMapListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchConfigMapListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search config map list internal server error response a status code equal to that given
 func (o *SearchConfigMapListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search config map list internal server error response
+func (o *SearchConfigMapListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchConfigMapListInternalServerError) Error() string {

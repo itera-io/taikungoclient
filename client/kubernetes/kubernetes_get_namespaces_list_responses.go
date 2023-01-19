@@ -103,6 +103,11 @@ func (o *KubernetesGetNamespacesListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get namespaces list o k response
+func (o *KubernetesGetNamespacesListOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetNamespacesListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesGetNamespacesListBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesGetNamespacesListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get namespaces list bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesGetNamespacesListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes get namespaces list bad request response
+func (o *KubernetesGetNamespacesListBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesGetNamespacesListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *KubernetesGetNamespacesListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetNamespacesListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesGetNamespacesListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetNamespacesListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *KubernetesGetNamespacesListUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes get namespaces list unauthorized response a status code equal to that given
 func (o *KubernetesGetNamespacesListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes get namespaces list unauthorized response
+func (o *KubernetesGetNamespacesListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesGetNamespacesListUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *KubernetesGetNamespacesListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes get namespaces list forbidden response
+func (o *KubernetesGetNamespacesListForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesGetNamespacesListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *KubernetesGetNamespacesListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get namespaces list not found response
+func (o *KubernetesGetNamespacesListNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetNamespacesListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesGetNamespacesListInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get namespaces list internal server error response a status code equal to that given
 func (o *KubernetesGetNamespacesListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get namespaces list internal server error response
+func (o *KubernetesGetNamespacesListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetNamespacesListInternalServerError) Error() string {

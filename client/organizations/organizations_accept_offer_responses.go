@@ -103,6 +103,11 @@ func (o *OrganizationsAcceptOfferOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organizations accept offer o k response
+func (o *OrganizationsAcceptOfferOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationsAcceptOfferOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ OrganizationsAcceptOfferBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type OrganizationsAcceptOfferBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations accept offer bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *OrganizationsAcceptOfferBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the organizations accept offer bad request response
+func (o *OrganizationsAcceptOfferBadRequest) Code() int {
+	return 400
+}
+
 func (o *OrganizationsAcceptOfferBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *OrganizationsAcceptOfferBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsAcceptOfferBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OrganizationsAcceptOfferBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsAcceptOfferBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *OrganizationsAcceptOfferUnauthorized) IsServerError() bool {
 // IsCode returns true when this organizations accept offer unauthorized response a status code equal to that given
 func (o *OrganizationsAcceptOfferUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the organizations accept offer unauthorized response
+func (o *OrganizationsAcceptOfferUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OrganizationsAcceptOfferUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *OrganizationsAcceptOfferForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the organizations accept offer forbidden response
+func (o *OrganizationsAcceptOfferForbidden) Code() int {
+	return 403
+}
+
 func (o *OrganizationsAcceptOfferForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *OrganizationsAcceptOfferNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organizations accept offer not found response
+func (o *OrganizationsAcceptOfferNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationsAcceptOfferNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OrganizationsAcceptOfferInternalServerError) IsServerError() bool {
 // IsCode returns true when this organizations accept offer internal server error response a status code equal to that given
 func (o *OrganizationsAcceptOfferInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the organizations accept offer internal server error response
+func (o *OrganizationsAcceptOfferInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrganizationsAcceptOfferInternalServerError) Error() string {

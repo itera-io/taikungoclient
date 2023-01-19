@@ -103,6 +103,11 @@ func (o *TicketArchiveOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ticket archive o k response
+func (o *TicketArchiveOK) Code() int {
+	return 200
+}
+
 func (o *TicketArchiveOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/archive][%d] ticketArchiveOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ TicketArchiveBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type TicketArchiveBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket archive bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *TicketArchiveBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the ticket archive bad request response
+func (o *TicketArchiveBadRequest) Code() int {
+	return 400
+}
+
 func (o *TicketArchiveBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/archive][%d] ticketArchiveBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *TicketArchiveBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/archive][%d] ticketArchiveBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketArchiveBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *TicketArchiveBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketArchiveBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *TicketArchiveUnauthorized) IsServerError() bool {
 // IsCode returns true when this ticket archive unauthorized response a status code equal to that given
 func (o *TicketArchiveUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the ticket archive unauthorized response
+func (o *TicketArchiveUnauthorized) Code() int {
+	return 401
 }
 
 func (o *TicketArchiveUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *TicketArchiveForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the ticket archive forbidden response
+func (o *TicketArchiveForbidden) Code() int {
+	return 403
+}
+
 func (o *TicketArchiveForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/archive][%d] ticketArchiveForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *TicketArchiveNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ticket archive not found response
+func (o *TicketArchiveNotFound) Code() int {
+	return 404
+}
+
 func (o *TicketArchiveNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/archive][%d] ticketArchiveNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *TicketArchiveInternalServerError) IsServerError() bool {
 // IsCode returns true when this ticket archive internal server error response a status code equal to that given
 func (o *TicketArchiveInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ticket archive internal server error response
+func (o *TicketArchiveInternalServerError) Code() int {
+	return 500
 }
 
 func (o *TicketArchiveInternalServerError) Error() string {

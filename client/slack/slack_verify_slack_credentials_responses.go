@@ -103,6 +103,11 @@ func (o *SlackVerifySlackCredentialsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the slack verify slack credentials o k response
+func (o *SlackVerifySlackCredentialsOK) Code() int {
+	return 200
+}
+
 func (o *SlackVerifySlackCredentialsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ SlackVerifySlackCredentialsBadRequest describes a response with status code 400,
 Bad Request
 */
 type SlackVerifySlackCredentialsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack verify slack credentials bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *SlackVerifySlackCredentialsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the slack verify slack credentials bad request response
+func (o *SlackVerifySlackCredentialsBadRequest) Code() int {
+	return 400
+}
+
 func (o *SlackVerifySlackCredentialsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *SlackVerifySlackCredentialsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SlackVerifySlackCredentialsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SlackVerifySlackCredentialsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackVerifySlackCredentialsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *SlackVerifySlackCredentialsUnauthorized) IsServerError() bool {
 // IsCode returns true when this slack verify slack credentials unauthorized response a status code equal to that given
 func (o *SlackVerifySlackCredentialsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the slack verify slack credentials unauthorized response
+func (o *SlackVerifySlackCredentialsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SlackVerifySlackCredentialsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *SlackVerifySlackCredentialsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the slack verify slack credentials forbidden response
+func (o *SlackVerifySlackCredentialsForbidden) Code() int {
+	return 403
+}
+
 func (o *SlackVerifySlackCredentialsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *SlackVerifySlackCredentialsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the slack verify slack credentials not found response
+func (o *SlackVerifySlackCredentialsNotFound) Code() int {
+	return 404
+}
+
 func (o *SlackVerifySlackCredentialsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *SlackVerifySlackCredentialsInternalServerError) IsServerError() bool {
 // IsCode returns true when this slack verify slack credentials internal server error response a status code equal to that given
 func (o *SlackVerifySlackCredentialsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the slack verify slack credentials internal server error response
+func (o *SlackVerifySlackCredentialsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SlackVerifySlackCredentialsInternalServerError) Error() string {

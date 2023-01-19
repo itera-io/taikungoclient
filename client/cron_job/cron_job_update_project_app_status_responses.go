@@ -103,6 +103,11 @@ func (o *CronJobUpdateProjectAppStatusOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job update project app status o k response
+func (o *CronJobUpdateProjectAppStatusOK) Code() int {
+	return 200
+}
+
 func (o *CronJobUpdateProjectAppStatusOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CronJobUpdateProjectAppStatusBadRequest describes a response with status code 40
 Bad Request
 */
 type CronJobUpdateProjectAppStatusBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job update project app status bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CronJobUpdateProjectAppStatusBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cron job update project app status bad request response
+func (o *CronJobUpdateProjectAppStatusBadRequest) Code() int {
+	return 400
+}
+
 func (o *CronJobUpdateProjectAppStatusBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CronJobUpdateProjectAppStatusBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobUpdateProjectAppStatusBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CronJobUpdateProjectAppStatusBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobUpdateProjectAppStatusBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CronJobUpdateProjectAppStatusUnauthorized) IsServerError() bool {
 // IsCode returns true when this cron job update project app status unauthorized response a status code equal to that given
 func (o *CronJobUpdateProjectAppStatusUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cron job update project app status unauthorized response
+func (o *CronJobUpdateProjectAppStatusUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CronJobUpdateProjectAppStatusUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CronJobUpdateProjectAppStatusForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cron job update project app status forbidden response
+func (o *CronJobUpdateProjectAppStatusForbidden) Code() int {
+	return 403
+}
+
 func (o *CronJobUpdateProjectAppStatusForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CronJobUpdateProjectAppStatusNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job update project app status not found response
+func (o *CronJobUpdateProjectAppStatusNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobUpdateProjectAppStatusNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobUpdateProjectAppStatusInternalServerError) IsServerError() bool 
 // IsCode returns true when this cron job update project app status internal server error response a status code equal to that given
 func (o *CronJobUpdateProjectAppStatusInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job update project app status internal server error response
+func (o *CronJobUpdateProjectAppStatusInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobUpdateProjectAppStatusInternalServerError) Error() string {

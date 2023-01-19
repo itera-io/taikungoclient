@@ -103,6 +103,11 @@ func (o *AlertingProfilesVerifyWebhookOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting profiles verify webhook o k response
+func (o *AlertingProfilesVerifyWebhookOK) Code() int {
+	return 200
+}
+
 func (o *AlertingProfilesVerifyWebhookOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AlertingProfilesVerifyWebhookBadRequest describes a response with status code 40
 Bad Request
 */
 type AlertingProfilesVerifyWebhookBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles verify webhook bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AlertingProfilesVerifyWebhookBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the alerting profiles verify webhook bad request response
+func (o *AlertingProfilesVerifyWebhookBadRequest) Code() int {
+	return 400
+}
+
 func (o *AlertingProfilesVerifyWebhookBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *AlertingProfilesVerifyWebhookBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesVerifyWebhookBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AlertingProfilesVerifyWebhookBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesVerifyWebhookBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *AlertingProfilesVerifyWebhookUnauthorized) IsServerError() bool {
 // IsCode returns true when this alerting profiles verify webhook unauthorized response a status code equal to that given
 func (o *AlertingProfilesVerifyWebhookUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the alerting profiles verify webhook unauthorized response
+func (o *AlertingProfilesVerifyWebhookUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AlertingProfilesVerifyWebhookUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *AlertingProfilesVerifyWebhookForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the alerting profiles verify webhook forbidden response
+func (o *AlertingProfilesVerifyWebhookForbidden) Code() int {
+	return 403
+}
+
 func (o *AlertingProfilesVerifyWebhookForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *AlertingProfilesVerifyWebhookNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting profiles verify webhook not found response
+func (o *AlertingProfilesVerifyWebhookNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingProfilesVerifyWebhookNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AlertingProfilesVerifyWebhookInternalServerError) IsServerError() bool 
 // IsCode returns true when this alerting profiles verify webhook internal server error response a status code equal to that given
 func (o *AlertingProfilesVerifyWebhookInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting profiles verify webhook internal server error response
+func (o *AlertingProfilesVerifyWebhookInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingProfilesVerifyWebhookInternalServerError) Error() string {

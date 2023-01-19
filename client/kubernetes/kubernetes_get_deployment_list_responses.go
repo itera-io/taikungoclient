@@ -103,6 +103,11 @@ func (o *KubernetesGetDeploymentListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get deployment list o k response
+func (o *KubernetesGetDeploymentListOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetDeploymentListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ KubernetesGetDeploymentListBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesGetDeploymentListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get deployment list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *KubernetesGetDeploymentListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes get deployment list bad request response
+func (o *KubernetesGetDeploymentListBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesGetDeploymentListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *KubernetesGetDeploymentListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetDeploymentListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesGetDeploymentListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetDeploymentListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *KubernetesGetDeploymentListUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes get deployment list unauthorized response a status code equal to that given
 func (o *KubernetesGetDeploymentListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes get deployment list unauthorized response
+func (o *KubernetesGetDeploymentListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesGetDeploymentListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *KubernetesGetDeploymentListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes get deployment list forbidden response
+func (o *KubernetesGetDeploymentListForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesGetDeploymentListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *KubernetesGetDeploymentListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get deployment list not found response
+func (o *KubernetesGetDeploymentListNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetDeploymentListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubernetesGetDeploymentListInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get deployment list internal server error response a status code equal to that given
 func (o *KubernetesGetDeploymentListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get deployment list internal server error response
+func (o *KubernetesGetDeploymentListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetDeploymentListInternalServerError) Error() string {

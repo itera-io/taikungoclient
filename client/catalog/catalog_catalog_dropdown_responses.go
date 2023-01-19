@@ -103,6 +103,11 @@ func (o *CatalogCatalogDropdownOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog catalog dropdown o k response
+func (o *CatalogCatalogDropdownOK) Code() int {
+	return 200
+}
+
 func (o *CatalogCatalogDropdownOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/dropdown-list][%d] catalogCatalogDropdownOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CatalogCatalogDropdownBadRequest describes a response with status code 400, with
 Bad Request
 */
 type CatalogCatalogDropdownBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog catalog dropdown bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CatalogCatalogDropdownBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the catalog catalog dropdown bad request response
+func (o *CatalogCatalogDropdownBadRequest) Code() int {
+	return 400
+}
+
 func (o *CatalogCatalogDropdownBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/dropdown-list][%d] catalogCatalogDropdownBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CatalogCatalogDropdownBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/dropdown-list][%d] catalogCatalogDropdownBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogCatalogDropdownBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CatalogCatalogDropdownBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogCatalogDropdownBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CatalogCatalogDropdownUnauthorized) IsServerError() bool {
 // IsCode returns true when this catalog catalog dropdown unauthorized response a status code equal to that given
 func (o *CatalogCatalogDropdownUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the catalog catalog dropdown unauthorized response
+func (o *CatalogCatalogDropdownUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CatalogCatalogDropdownUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CatalogCatalogDropdownForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the catalog catalog dropdown forbidden response
+func (o *CatalogCatalogDropdownForbidden) Code() int {
+	return 403
+}
+
 func (o *CatalogCatalogDropdownForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/dropdown-list][%d] catalogCatalogDropdownForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CatalogCatalogDropdownNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog catalog dropdown not found response
+func (o *CatalogCatalogDropdownNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogCatalogDropdownNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/dropdown-list][%d] catalogCatalogDropdownNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CatalogCatalogDropdownInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog catalog dropdown internal server error response a status code equal to that given
 func (o *CatalogCatalogDropdownInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog catalog dropdown internal server error response
+func (o *CatalogCatalogDropdownInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogCatalogDropdownInternalServerError) Error() string {

@@ -67,6 +67,9 @@ type ProjectDetailsForVmsDto struct {
 
 	// project status
 	ProjectStatus string `json:"projectStatus,omitempty"`
+
+	// total hourly cost
+	TotalHourlyCost float64 `json:"totalHourlyCost,omitempty"`
 }
 
 // Validate validates this project details for vms dto

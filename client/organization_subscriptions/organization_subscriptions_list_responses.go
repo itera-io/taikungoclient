@@ -103,6 +103,11 @@ func (o *OrganizationSubscriptionsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organization subscriptions list o k response
+func (o *OrganizationSubscriptionsListOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationSubscriptionsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ OrganizationSubscriptionsListBadRequest describes a response with status code 40
 Bad Request
 */
 type OrganizationSubscriptionsListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organization subscriptions list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *OrganizationSubscriptionsListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the organization subscriptions list bad request response
+func (o *OrganizationSubscriptionsListBadRequest) Code() int {
+	return 400
+}
+
 func (o *OrganizationSubscriptionsListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *OrganizationSubscriptionsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationSubscriptionsListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OrganizationSubscriptionsListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationSubscriptionsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *OrganizationSubscriptionsListUnauthorized) IsServerError() bool {
 // IsCode returns true when this organization subscriptions list unauthorized response a status code equal to that given
 func (o *OrganizationSubscriptionsListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the organization subscriptions list unauthorized response
+func (o *OrganizationSubscriptionsListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OrganizationSubscriptionsListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *OrganizationSubscriptionsListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the organization subscriptions list forbidden response
+func (o *OrganizationSubscriptionsListForbidden) Code() int {
+	return 403
+}
+
 func (o *OrganizationSubscriptionsListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *OrganizationSubscriptionsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organization subscriptions list not found response
+func (o *OrganizationSubscriptionsListNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationSubscriptionsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *OrganizationSubscriptionsListInternalServerError) IsServerError() bool 
 // IsCode returns true when this organization subscriptions list internal server error response a status code equal to that given
 func (o *OrganizationSubscriptionsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the organization subscriptions list internal server error response
+func (o *OrganizationSubscriptionsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrganizationSubscriptionsListInternalServerError) Error() string {

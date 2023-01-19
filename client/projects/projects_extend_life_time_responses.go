@@ -103,6 +103,11 @@ func (o *ProjectsExtendLifeTimeOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects extend life time o k response
+func (o *ProjectsExtendLifeTimeOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsExtendLifeTimeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectsExtendLifeTimeBadRequest describes a response with status code 400, with
 Bad Request
 */
 type ProjectsExtendLifeTimeBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects extend life time bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectsExtendLifeTimeBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the projects extend life time bad request response
+func (o *ProjectsExtendLifeTimeBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectsExtendLifeTimeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *ProjectsExtendLifeTimeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsExtendLifeTimeBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ProjectsExtendLifeTimeBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsExtendLifeTimeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *ProjectsExtendLifeTimeUnauthorized) IsServerError() bool {
 // IsCode returns true when this projects extend life time unauthorized response a status code equal to that given
 func (o *ProjectsExtendLifeTimeUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the projects extend life time unauthorized response
+func (o *ProjectsExtendLifeTimeUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectsExtendLifeTimeUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *ProjectsExtendLifeTimeForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the projects extend life time forbidden response
+func (o *ProjectsExtendLifeTimeForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectsExtendLifeTimeForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *ProjectsExtendLifeTimeNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects extend life time not found response
+func (o *ProjectsExtendLifeTimeNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsExtendLifeTimeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsExtendLifeTimeInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects extend life time internal server error response a status code equal to that given
 func (o *ProjectsExtendLifeTimeInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects extend life time internal server error response
+func (o *ProjectsExtendLifeTimeInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsExtendLifeTimeInternalServerError) Error() string {

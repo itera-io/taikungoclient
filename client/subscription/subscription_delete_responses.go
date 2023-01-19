@@ -109,6 +109,11 @@ func (o *SubscriptionDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the subscription delete o k response
+func (o *SubscriptionDeleteOK) Code() int {
+	return 200
+}
+
 func (o *SubscriptionDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *SubscriptionDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the subscription delete no content response
+func (o *SubscriptionDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *SubscriptionDeleteNoContent) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteNoContent ", 204)
 }
@@ -193,7 +203,7 @@ SubscriptionDeleteBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type SubscriptionDeleteBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription delete bad request response has a 2xx status code
@@ -221,6 +231,11 @@ func (o *SubscriptionDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the subscription delete bad request response
+func (o *SubscriptionDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *SubscriptionDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -229,13 +244,13 @@ func (o *SubscriptionDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SubscriptionDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -282,6 +297,11 @@ func (o *SubscriptionDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this subscription delete unauthorized response a status code equal to that given
 func (o *SubscriptionDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the subscription delete unauthorized response
+func (o *SubscriptionDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SubscriptionDeleteUnauthorized) Error() string {
@@ -347,6 +367,11 @@ func (o *SubscriptionDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the subscription delete forbidden response
+func (o *SubscriptionDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *SubscriptionDeleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -410,6 +435,11 @@ func (o *SubscriptionDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the subscription delete not found response
+func (o *SubscriptionDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *SubscriptionDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *SubscriptionDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this subscription delete internal server error response a status code equal to that given
 func (o *SubscriptionDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the subscription delete internal server error response
+func (o *SubscriptionDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SubscriptionDeleteInternalServerError) Error() string {

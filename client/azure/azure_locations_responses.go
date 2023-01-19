@@ -103,6 +103,11 @@ func (o *AzureLocationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the azure locations o k response
+func (o *AzureLocationsOK) Code() int {
+	return 200
+}
+
 func (o *AzureLocationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AzureLocationsBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AzureLocationsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure locations bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AzureLocationsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the azure locations bad request response
+func (o *AzureLocationsBadRequest) Code() int {
+	return 400
+}
+
 func (o *AzureLocationsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *AzureLocationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureLocationsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AzureLocationsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureLocationsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *AzureLocationsUnauthorized) IsServerError() bool {
 // IsCode returns true when this azure locations unauthorized response a status code equal to that given
 func (o *AzureLocationsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the azure locations unauthorized response
+func (o *AzureLocationsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AzureLocationsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *AzureLocationsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the azure locations forbidden response
+func (o *AzureLocationsForbidden) Code() int {
+	return 403
+}
+
 func (o *AzureLocationsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *AzureLocationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the azure locations not found response
+func (o *AzureLocationsNotFound) Code() int {
+	return 404
+}
+
 func (o *AzureLocationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AzureLocationsInternalServerError) IsServerError() bool {
 // IsCode returns true when this azure locations internal server error response a status code equal to that given
 func (o *AzureLocationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the azure locations internal server error response
+func (o *AzureLocationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AzureLocationsInternalServerError) Error() string {

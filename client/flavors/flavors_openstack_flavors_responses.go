@@ -103,6 +103,11 @@ func (o *FlavorsOpenstackFlavorsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the flavors openstack flavors o k response
+func (o *FlavorsOpenstackFlavorsOK) Code() int {
+	return 200
+}
+
 func (o *FlavorsOpenstackFlavorsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ FlavorsOpenstackFlavorsBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type FlavorsOpenstackFlavorsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors openstack flavors bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *FlavorsOpenstackFlavorsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the flavors openstack flavors bad request response
+func (o *FlavorsOpenstackFlavorsBadRequest) Code() int {
+	return 400
+}
+
 func (o *FlavorsOpenstackFlavorsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *FlavorsOpenstackFlavorsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsOpenstackFlavorsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *FlavorsOpenstackFlavorsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsOpenstackFlavorsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *FlavorsOpenstackFlavorsUnauthorized) IsServerError() bool {
 // IsCode returns true when this flavors openstack flavors unauthorized response a status code equal to that given
 func (o *FlavorsOpenstackFlavorsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the flavors openstack flavors unauthorized response
+func (o *FlavorsOpenstackFlavorsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *FlavorsOpenstackFlavorsUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *FlavorsOpenstackFlavorsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the flavors openstack flavors forbidden response
+func (o *FlavorsOpenstackFlavorsForbidden) Code() int {
+	return 403
+}
+
 func (o *FlavorsOpenstackFlavorsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *FlavorsOpenstackFlavorsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the flavors openstack flavors not found response
+func (o *FlavorsOpenstackFlavorsNotFound) Code() int {
+	return 404
+}
+
 func (o *FlavorsOpenstackFlavorsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *FlavorsOpenstackFlavorsInternalServerError) IsServerError() bool {
 // IsCode returns true when this flavors openstack flavors internal server error response a status code equal to that given
 func (o *FlavorsOpenstackFlavorsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the flavors openstack flavors internal server error response
+func (o *FlavorsOpenstackFlavorsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *FlavorsOpenstackFlavorsInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *ProjectsProjectMonitoringAlertsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects project monitoring alerts o k response
+func (o *ProjectsProjectMonitoringAlertsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsProjectMonitoringAlertsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectsProjectMonitoringAlertsBadRequest describes a response with status code 
 Bad Request
 */
 type ProjectsProjectMonitoringAlertsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects project monitoring alerts bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectsProjectMonitoringAlertsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the projects project monitoring alerts bad request response
+func (o *ProjectsProjectMonitoringAlertsBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectsProjectMonitoringAlertsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *ProjectsProjectMonitoringAlertsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsProjectMonitoringAlertsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ProjectsProjectMonitoringAlertsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsProjectMonitoringAlertsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *ProjectsProjectMonitoringAlertsUnauthorized) IsServerError() bool {
 // IsCode returns true when this projects project monitoring alerts unauthorized response a status code equal to that given
 func (o *ProjectsProjectMonitoringAlertsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the projects project monitoring alerts unauthorized response
+func (o *ProjectsProjectMonitoringAlertsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectsProjectMonitoringAlertsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *ProjectsProjectMonitoringAlertsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the projects project monitoring alerts forbidden response
+func (o *ProjectsProjectMonitoringAlertsForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectsProjectMonitoringAlertsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *ProjectsProjectMonitoringAlertsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects project monitoring alerts not found response
+func (o *ProjectsProjectMonitoringAlertsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsProjectMonitoringAlertsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsProjectMonitoringAlertsInternalServerError) IsServerError() boo
 // IsCode returns true when this projects project monitoring alerts internal server error response a status code equal to that given
 func (o *ProjectsProjectMonitoringAlertsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects project monitoring alerts internal server error response
+func (o *ProjectsProjectMonitoringAlertsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsProjectMonitoringAlertsInternalServerError) Error() string {

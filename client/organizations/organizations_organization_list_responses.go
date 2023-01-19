@@ -103,6 +103,11 @@ func (o *OrganizationsOrganizationListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organizations organization list o k response
+func (o *OrganizationsOrganizationListOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationsOrganizationListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ OrganizationsOrganizationListBadRequest describes a response with status code 40
 Bad Request
 */
 type OrganizationsOrganizationListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations organization list bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *OrganizationsOrganizationListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the organizations organization list bad request response
+func (o *OrganizationsOrganizationListBadRequest) Code() int {
+	return 400
+}
+
 func (o *OrganizationsOrganizationListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *OrganizationsOrganizationListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsOrganizationListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OrganizationsOrganizationListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsOrganizationListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *OrganizationsOrganizationListUnauthorized) IsServerError() bool {
 // IsCode returns true when this organizations organization list unauthorized response a status code equal to that given
 func (o *OrganizationsOrganizationListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the organizations organization list unauthorized response
+func (o *OrganizationsOrganizationListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OrganizationsOrganizationListUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *OrganizationsOrganizationListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the organizations organization list forbidden response
+func (o *OrganizationsOrganizationListForbidden) Code() int {
+	return 403
+}
+
 func (o *OrganizationsOrganizationListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *OrganizationsOrganizationListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organizations organization list not found response
+func (o *OrganizationsOrganizationListNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationsOrganizationListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OrganizationsOrganizationListInternalServerError) IsServerError() bool 
 // IsCode returns true when this organizations organization list internal server error response a status code equal to that given
 func (o *OrganizationsOrganizationListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the organizations organization list internal server error response
+func (o *OrganizationsOrganizationListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrganizationsOrganizationListInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *AdminCreateUserOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin create user o k response
+func (o *AdminCreateUserOK) Code() int {
+	return 200
+}
+
 func (o *AdminCreateUserOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AdminCreateUserBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type AdminCreateUserBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin create user bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AdminCreateUserBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the admin create user bad request response
+func (o *AdminCreateUserBadRequest) Code() int {
+	return 400
+}
+
 func (o *AdminCreateUserBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *AdminCreateUserBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminCreateUserBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AdminCreateUserBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminCreateUserBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *AdminCreateUserUnauthorized) IsServerError() bool {
 // IsCode returns true when this admin create user unauthorized response a status code equal to that given
 func (o *AdminCreateUserUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the admin create user unauthorized response
+func (o *AdminCreateUserUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AdminCreateUserUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *AdminCreateUserForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the admin create user forbidden response
+func (o *AdminCreateUserForbidden) Code() int {
+	return 403
+}
+
 func (o *AdminCreateUserForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *AdminCreateUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin create user not found response
+func (o *AdminCreateUserNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminCreateUserNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AdminCreateUserInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin create user internal server error response a status code equal to that given
 func (o *AdminCreateUserInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin create user internal server error response
+func (o *AdminCreateUserInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminCreateUserInternalServerError) Error() string {

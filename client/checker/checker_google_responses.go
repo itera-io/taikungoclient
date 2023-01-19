@@ -103,6 +103,11 @@ func (o *CheckerGoogleOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker google o k response
+func (o *CheckerGoogleOK) Code() int {
+	return 200
+}
+
 func (o *CheckerGoogleOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CheckerGoogleBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type CheckerGoogleBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker google bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CheckerGoogleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the checker google bad request response
+func (o *CheckerGoogleBadRequest) Code() int {
+	return 400
+}
+
 func (o *CheckerGoogleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CheckerGoogleBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerGoogleBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CheckerGoogleBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerGoogleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CheckerGoogleUnauthorized) IsServerError() bool {
 // IsCode returns true when this checker google unauthorized response a status code equal to that given
 func (o *CheckerGoogleUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the checker google unauthorized response
+func (o *CheckerGoogleUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CheckerGoogleUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CheckerGoogleForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the checker google forbidden response
+func (o *CheckerGoogleForbidden) Code() int {
+	return 403
+}
+
 func (o *CheckerGoogleForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CheckerGoogleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker google not found response
+func (o *CheckerGoogleNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerGoogleNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerGoogleInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker google internal server error response a status code equal to that given
 func (o *CheckerGoogleInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker google internal server error response
+func (o *CheckerGoogleInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerGoogleInternalServerError) Error() string {

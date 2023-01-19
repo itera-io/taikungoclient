@@ -103,6 +103,11 @@ func (o *OrganizationsCreateDefaultProfilersOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organizations create default profilers o k response
+func (o *OrganizationsCreateDefaultProfilersOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationsCreateDefaultProfilersOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ OrganizationsCreateDefaultProfilersBadRequest describes a response with status c
 Bad Request
 */
 type OrganizationsCreateDefaultProfilersBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations create default profilers bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *OrganizationsCreateDefaultProfilersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the organizations create default profilers bad request response
+func (o *OrganizationsCreateDefaultProfilersBadRequest) Code() int {
+	return 400
+}
+
 func (o *OrganizationsCreateDefaultProfilersBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *OrganizationsCreateDefaultProfilersBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsCreateDefaultProfilersBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OrganizationsCreateDefaultProfilersBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsCreateDefaultProfilersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *OrganizationsCreateDefaultProfilersUnauthorized) IsServerError() bool {
 // IsCode returns true when this organizations create default profilers unauthorized response a status code equal to that given
 func (o *OrganizationsCreateDefaultProfilersUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the organizations create default profilers unauthorized response
+func (o *OrganizationsCreateDefaultProfilersUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OrganizationsCreateDefaultProfilersUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *OrganizationsCreateDefaultProfilersForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the organizations create default profilers forbidden response
+func (o *OrganizationsCreateDefaultProfilersForbidden) Code() int {
+	return 403
+}
+
 func (o *OrganizationsCreateDefaultProfilersForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *OrganizationsCreateDefaultProfilersNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organizations create default profilers not found response
+func (o *OrganizationsCreateDefaultProfilersNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationsCreateDefaultProfilersNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OrganizationsCreateDefaultProfilersInternalServerError) IsServerError()
 // IsCode returns true when this organizations create default profilers internal server error response a status code equal to that given
 func (o *OrganizationsCreateDefaultProfilersInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the organizations create default profilers internal server error response
+func (o *OrganizationsCreateDefaultProfilersInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrganizationsCreateDefaultProfilersInternalServerError) Error() string {

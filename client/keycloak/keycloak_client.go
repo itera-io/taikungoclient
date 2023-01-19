@@ -38,8 +38,6 @@ type ClientService interface {
 
 	KeycloakGet(params *KeycloakGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KeycloakGetOK, error)
 
-	KeycloakLogin(params *KeycloakLoginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KeycloakLoginOK, error)
-
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -196,45 +194,6 @@ func (a *Client) KeycloakGet(params *KeycloakGetParams, authInfo runtime.ClientA
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Keycloak_Get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-KeycloakLogin logins to API by using keycloak email and password
-*/
-func (a *Client) KeycloakLogin(params *KeycloakLoginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KeycloakLoginOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewKeycloakLoginParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Keycloak_Login",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/Keycloak/login",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &KeycloakLoginReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*KeycloakLoginOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Keycloak_Login: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

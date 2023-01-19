@@ -103,6 +103,11 @@ func (o *KubernetesPatchSecretOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes patch secret o k response
+func (o *KubernetesPatchSecretOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesPatchSecretOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesPatchSecretBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesPatchSecretBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch secret bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesPatchSecretBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes patch secret bad request response
+func (o *KubernetesPatchSecretBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesPatchSecretBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *KubernetesPatchSecretBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchSecretBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesPatchSecretBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchSecretBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *KubernetesPatchSecretUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes patch secret unauthorized response a status code equal to that given
 func (o *KubernetesPatchSecretUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes patch secret unauthorized response
+func (o *KubernetesPatchSecretUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesPatchSecretUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *KubernetesPatchSecretForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes patch secret forbidden response
+func (o *KubernetesPatchSecretForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesPatchSecretForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *KubernetesPatchSecretNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes patch secret not found response
+func (o *KubernetesPatchSecretNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesPatchSecretNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesPatchSecretInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes patch secret internal server error response a status code equal to that given
 func (o *KubernetesPatchSecretInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes patch secret internal server error response
+func (o *KubernetesPatchSecretInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesPatchSecretInternalServerError) Error() string {

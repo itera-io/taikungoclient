@@ -103,6 +103,11 @@ func (o *SubscriptionCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the subscription create o k response
+func (o *SubscriptionCreateOK) Code() int {
+	return 200
+}
+
 func (o *SubscriptionCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *SubscriptionCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this subscription create bad request response a status code equal to that given
 func (o *SubscriptionCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the subscription create bad request response
+func (o *SubscriptionCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *SubscriptionCreateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *SubscriptionCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the subscription create unauthorized response
+func (o *SubscriptionCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SubscriptionCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *SubscriptionCreateForbidden) IsServerError() bool {
 // IsCode returns true when this subscription create forbidden response a status code equal to that given
 func (o *SubscriptionCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the subscription create forbidden response
+func (o *SubscriptionCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *SubscriptionCreateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *SubscriptionCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the subscription create not found response
+func (o *SubscriptionCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *SubscriptionCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *SubscriptionCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this subscription create internal server error response a status code equal to that given
 func (o *SubscriptionCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the subscription create internal server error response
+func (o *SubscriptionCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SubscriptionCreateInternalServerError) Error() string {

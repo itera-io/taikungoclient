@@ -103,6 +103,11 @@ func (o *BackupDeleteBackupLocationOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the backup delete backup location o k response
+func (o *BackupDeleteBackupLocationOK) Code() int {
+	return 200
+}
+
 func (o *BackupDeleteBackupLocationOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ BackupDeleteBackupLocationBadRequest describes a response with status code 400, 
 Bad Request
 */
 type BackupDeleteBackupLocationBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup delete backup location bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *BackupDeleteBackupLocationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the backup delete backup location bad request response
+func (o *BackupDeleteBackupLocationBadRequest) Code() int {
+	return 400
+}
+
 func (o *BackupDeleteBackupLocationBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *BackupDeleteBackupLocationBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupDeleteBackupLocationBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *BackupDeleteBackupLocationBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupDeleteBackupLocationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *BackupDeleteBackupLocationUnauthorized) IsServerError() bool {
 // IsCode returns true when this backup delete backup location unauthorized response a status code equal to that given
 func (o *BackupDeleteBackupLocationUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the backup delete backup location unauthorized response
+func (o *BackupDeleteBackupLocationUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BackupDeleteBackupLocationUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *BackupDeleteBackupLocationForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the backup delete backup location forbidden response
+func (o *BackupDeleteBackupLocationForbidden) Code() int {
+	return 403
+}
+
 func (o *BackupDeleteBackupLocationForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *BackupDeleteBackupLocationNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the backup delete backup location not found response
+func (o *BackupDeleteBackupLocationNotFound) Code() int {
+	return 404
+}
+
 func (o *BackupDeleteBackupLocationNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *BackupDeleteBackupLocationInternalServerError) IsServerError() bool {
 // IsCode returns true when this backup delete backup location internal server error response a status code equal to that given
 func (o *BackupDeleteBackupLocationInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the backup delete backup location internal server error response
+func (o *BackupDeleteBackupLocationInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BackupDeleteBackupLocationInternalServerError) Error() string {

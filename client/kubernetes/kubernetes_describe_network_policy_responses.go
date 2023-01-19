@@ -103,6 +103,11 @@ func (o *KubernetesDescribeNetworkPolicyOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe network policy o k response
+func (o *KubernetesDescribeNetworkPolicyOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribeNetworkPolicyOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesDescribeNetworkPolicyBadRequest describes a response with status code 
 Bad Request
 */
 type KubernetesDescribeNetworkPolicyBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe network policy bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesDescribeNetworkPolicyBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes describe network policy bad request response
+func (o *KubernetesDescribeNetworkPolicyBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesDescribeNetworkPolicyBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *KubernetesDescribeNetworkPolicyBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeNetworkPolicyBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesDescribeNetworkPolicyBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeNetworkPolicyBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *KubernetesDescribeNetworkPolicyUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes describe network policy unauthorized response a status code equal to that given
 func (o *KubernetesDescribeNetworkPolicyUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes describe network policy unauthorized response
+func (o *KubernetesDescribeNetworkPolicyUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesDescribeNetworkPolicyUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *KubernetesDescribeNetworkPolicyForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes describe network policy forbidden response
+func (o *KubernetesDescribeNetworkPolicyForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesDescribeNetworkPolicyForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *KubernetesDescribeNetworkPolicyNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe network policy not found response
+func (o *KubernetesDescribeNetworkPolicyNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribeNetworkPolicyNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesDescribeNetworkPolicyInternalServerError) IsServerError() boo
 // IsCode returns true when this kubernetes describe network policy internal server error response a status code equal to that given
 func (o *KubernetesDescribeNetworkPolicyInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe network policy internal server error response
+func (o *KubernetesDescribeNetworkPolicyInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribeNetworkPolicyInternalServerError) Error() string {

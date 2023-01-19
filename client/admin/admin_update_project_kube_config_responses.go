@@ -103,6 +103,11 @@ func (o *AdminUpdateProjectKubeConfigOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin update project kube config o k response
+func (o *AdminUpdateProjectKubeConfigOK) Code() int {
+	return 200
+}
+
 func (o *AdminUpdateProjectKubeConfigOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AdminUpdateProjectKubeConfigBadRequest describes a response with status code 400
 Bad Request
 */
 type AdminUpdateProjectKubeConfigBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin update project kube config bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AdminUpdateProjectKubeConfigBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the admin update project kube config bad request response
+func (o *AdminUpdateProjectKubeConfigBadRequest) Code() int {
+	return 400
+}
+
 func (o *AdminUpdateProjectKubeConfigBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *AdminUpdateProjectKubeConfigBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminUpdateProjectKubeConfigBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AdminUpdateProjectKubeConfigBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUpdateProjectKubeConfigBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *AdminUpdateProjectKubeConfigUnauthorized) IsServerError() bool {
 // IsCode returns true when this admin update project kube config unauthorized response a status code equal to that given
 func (o *AdminUpdateProjectKubeConfigUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the admin update project kube config unauthorized response
+func (o *AdminUpdateProjectKubeConfigUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AdminUpdateProjectKubeConfigUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *AdminUpdateProjectKubeConfigForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the admin update project kube config forbidden response
+func (o *AdminUpdateProjectKubeConfigForbidden) Code() int {
+	return 403
+}
+
 func (o *AdminUpdateProjectKubeConfigForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *AdminUpdateProjectKubeConfigNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin update project kube config not found response
+func (o *AdminUpdateProjectKubeConfigNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminUpdateProjectKubeConfigNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AdminUpdateProjectKubeConfigInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin update project kube config internal server error response a status code equal to that given
 func (o *AdminUpdateProjectKubeConfigInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin update project kube config internal server error response
+func (o *AdminUpdateProjectKubeConfigInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminUpdateProjectKubeConfigInternalServerError) Error() string {

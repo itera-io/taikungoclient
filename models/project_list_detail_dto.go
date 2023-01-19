@@ -34,8 +34,8 @@ type ProjectListDetailDto struct {
 	// bound users
 	BoundUsers []*UserDto `json:"boundUsers"`
 
-	// certification expired at
-	CertificationExpiredAt string `json:"certificationExpiredAt,omitempty"`
+	// certificate expired at
+	CertificateExpiredAt string `json:"certificateExpiredAt,omitempty"`
 
 	// cloud credential name
 	CloudCredentialName string `json:"cloudCredentialName,omitempty"`
@@ -55,6 +55,9 @@ type ProjectListDetailDto struct {
 	// expired at
 	ExpiredAt string `json:"expiredAt,omitempty"`
 
+	// has expiration warning
+	HasExpirationWarning bool `json:"hasExpirationWarning"`
+
 	// has kube config file
 	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
 
@@ -63,6 +66,9 @@ type ProjectListDetailDto struct {
 
 	// id
 	ID int32 `json:"id,omitempty"`
+
+	// is autoscaling enabled
+	IsAutoscalingEnabled bool `json:"isAutoscalingEnabled"`
 
 	// is kubernetes
 	IsKubernetes bool `json:"isKubernetes"`
@@ -108,6 +114,9 @@ type ProjectListDetailDto struct {
 
 	// status
 	Status string `json:"status,omitempty"`
+
+	// total hourly cost
+	TotalHourlyCost float64 `json:"totalHourlyCost,omitempty"`
 
 	// total servers count
 	TotalServersCount int32 `json:"totalServersCount,omitempty"`

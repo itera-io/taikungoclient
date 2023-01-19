@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGoogleCloudZoneListParams creates a new GoogleCloudZoneListParams object,
@@ -60,6 +61,11 @@ GoogleCloudZoneListParams contains all the parameters to send to the API endpoin
 	Typically these are written to a http.Request.
 */
 type GoogleCloudZoneListParams struct {
+
+	// CloudID.
+	//
+	// Format: int32
+	CloudID *int32
 
 	// Config.
 	Config runtime.NamedReadCloser
@@ -123,6 +129,17 @@ func (o *GoogleCloudZoneListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithCloudID adds the cloudID to the google cloud zone list params
+func (o *GoogleCloudZoneListParams) WithCloudID(cloudID *int32) *GoogleCloudZoneListParams {
+	o.SetCloudID(cloudID)
+	return o
+}
+
+// SetCloudID adds the cloudId to the google cloud zone list params
+func (o *GoogleCloudZoneListParams) SetCloudID(cloudID *int32) {
+	o.CloudID = cloudID
+}
+
 // WithConfig adds the config to the google cloud zone list params
 func (o *GoogleCloudZoneListParams) WithConfig(config runtime.NamedReadCloser) *GoogleCloudZoneListParams {
 	o.SetConfig(config)
@@ -163,6 +180,21 @@ func (o *GoogleCloudZoneListParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
+
+	if o.CloudID != nil {
+
+		// form param CloudId
+		var frCloudID int32
+		if o.CloudID != nil {
+			frCloudID = *o.CloudID
+		}
+		fCloudID := swag.FormatInt32(frCloudID)
+		if fCloudID != "" {
+			if err := r.SetFormParam("CloudId", fCloudID); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Config != nil {
 

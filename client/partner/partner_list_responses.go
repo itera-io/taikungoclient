@@ -103,6 +103,11 @@ func (o *PartnerListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the partner list o k response
+func (o *PartnerListOK) Code() int {
+	return 200
+}
+
 func (o *PartnerListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner][%d] partnerListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ PartnerListBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type PartnerListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *PartnerListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the partner list bad request response
+func (o *PartnerListBadRequest) Code() int {
+	return 400
+}
+
 func (o *PartnerListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner][%d] partnerListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *PartnerListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner][%d] partnerListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *PartnerListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *PartnerListUnauthorized) IsServerError() bool {
 // IsCode returns true when this partner list unauthorized response a status code equal to that given
 func (o *PartnerListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the partner list unauthorized response
+func (o *PartnerListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *PartnerListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *PartnerListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the partner list forbidden response
+func (o *PartnerListForbidden) Code() int {
+	return 403
+}
+
 func (o *PartnerListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner][%d] partnerListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *PartnerListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the partner list not found response
+func (o *PartnerListNotFound) Code() int {
+	return 404
+}
+
 func (o *PartnerListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner][%d] partnerListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *PartnerListInternalServerError) IsServerError() bool {
 // IsCode returns true when this partner list internal server error response a status code equal to that given
 func (o *PartnerListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the partner list internal server error response
+func (o *PartnerListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PartnerListInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *KubernetesPatchPdbOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes patch pdb o k response
+func (o *KubernetesPatchPdbOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesPatchPdbOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesPatchPdbBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubernetesPatchPdbBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch pdb bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesPatchPdbBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes patch pdb bad request response
+func (o *KubernetesPatchPdbBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesPatchPdbBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *KubernetesPatchPdbBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchPdbBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesPatchPdbBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchPdbBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *KubernetesPatchPdbUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes patch pdb unauthorized response a status code equal to that given
 func (o *KubernetesPatchPdbUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes patch pdb unauthorized response
+func (o *KubernetesPatchPdbUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesPatchPdbUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *KubernetesPatchPdbForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes patch pdb forbidden response
+func (o *KubernetesPatchPdbForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesPatchPdbForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *KubernetesPatchPdbNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes patch pdb not found response
+func (o *KubernetesPatchPdbNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesPatchPdbNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesPatchPdbInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes patch pdb internal server error response a status code equal to that given
 func (o *KubernetesPatchPdbInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes patch pdb internal server error response
+func (o *KubernetesPatchPdbInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesPatchPdbInternalServerError) Error() string {

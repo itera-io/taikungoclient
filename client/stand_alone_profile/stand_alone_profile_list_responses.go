@@ -103,6 +103,11 @@ func (o *StandAloneProfileListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone profile list o k response
+func (o *StandAloneProfileListOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneProfileListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile][%d] standAloneProfileListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ StandAloneProfileListBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type StandAloneProfileListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone profile list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *StandAloneProfileListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone profile list bad request response
+func (o *StandAloneProfileListBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneProfileListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile][%d] standAloneProfileListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *StandAloneProfileListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile][%d] standAloneProfileListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *StandAloneProfileListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneProfileListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *StandAloneProfileListUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone profile list unauthorized response a status code equal to that given
 func (o *StandAloneProfileListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone profile list unauthorized response
+func (o *StandAloneProfileListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneProfileListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *StandAloneProfileListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone profile list forbidden response
+func (o *StandAloneProfileListForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneProfileListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile][%d] standAloneProfileListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *StandAloneProfileListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone profile list not found response
+func (o *StandAloneProfileListNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneProfileListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile][%d] standAloneProfileListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *StandAloneProfileListInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone profile list internal server error response a status code equal to that given
 func (o *StandAloneProfileListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone profile list internal server error response
+func (o *StandAloneProfileListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneProfileListInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *ImagesGetSelectedImagesForProjectOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the images get selected images for project o k response
+func (o *ImagesGetSelectedImagesForProjectOK) Code() int {
+	return 200
+}
+
 func (o *ImagesGetSelectedImagesForProjectOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/projects/list][%d] imagesGetSelectedImagesForProjectOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ ImagesGetSelectedImagesForProjectBadRequest describes a response with status cod
 Bad Request
 */
 type ImagesGetSelectedImagesForProjectBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images get selected images for project bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *ImagesGetSelectedImagesForProjectBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the images get selected images for project bad request response
+func (o *ImagesGetSelectedImagesForProjectBadRequest) Code() int {
+	return 400
+}
+
 func (o *ImagesGetSelectedImagesForProjectBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/projects/list][%d] imagesGetSelectedImagesForProjectBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *ImagesGetSelectedImagesForProjectBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/projects/list][%d] imagesGetSelectedImagesForProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesGetSelectedImagesForProjectBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ImagesGetSelectedImagesForProjectBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesGetSelectedImagesForProjectBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *ImagesGetSelectedImagesForProjectUnauthorized) IsServerError() bool {
 // IsCode returns true when this images get selected images for project unauthorized response a status code equal to that given
 func (o *ImagesGetSelectedImagesForProjectUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the images get selected images for project unauthorized response
+func (o *ImagesGetSelectedImagesForProjectUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ImagesGetSelectedImagesForProjectUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *ImagesGetSelectedImagesForProjectForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the images get selected images for project forbidden response
+func (o *ImagesGetSelectedImagesForProjectForbidden) Code() int {
+	return 403
+}
+
 func (o *ImagesGetSelectedImagesForProjectForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/projects/list][%d] imagesGetSelectedImagesForProjectForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *ImagesGetSelectedImagesForProjectNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the images get selected images for project not found response
+func (o *ImagesGetSelectedImagesForProjectNotFound) Code() int {
+	return 404
+}
+
 func (o *ImagesGetSelectedImagesForProjectNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/projects/list][%d] imagesGetSelectedImagesForProjectNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ImagesGetSelectedImagesForProjectInternalServerError) IsServerError() b
 // IsCode returns true when this images get selected images for project internal server error response a status code equal to that given
 func (o *ImagesGetSelectedImagesForProjectInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the images get selected images for project internal server error response
+func (o *ImagesGetSelectedImagesForProjectInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ImagesGetSelectedImagesForProjectInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *AlertingProfilesAssignEmailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting profiles assign emails o k response
+func (o *AlertingProfilesAssignEmailsOK) Code() int {
+	return 200
+}
+
 func (o *AlertingProfilesAssignEmailsOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AlertingProfilesAssignEmailsBadRequest describes a response with status code 400
 Bad Request
 */
 type AlertingProfilesAssignEmailsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles assign emails bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AlertingProfilesAssignEmailsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the alerting profiles assign emails bad request response
+func (o *AlertingProfilesAssignEmailsBadRequest) Code() int {
+	return 400
+}
+
 func (o *AlertingProfilesAssignEmailsBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *AlertingProfilesAssignEmailsBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesAssignEmailsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AlertingProfilesAssignEmailsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAssignEmailsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *AlertingProfilesAssignEmailsUnauthorized) IsServerError() bool {
 // IsCode returns true when this alerting profiles assign emails unauthorized response a status code equal to that given
 func (o *AlertingProfilesAssignEmailsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the alerting profiles assign emails unauthorized response
+func (o *AlertingProfilesAssignEmailsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AlertingProfilesAssignEmailsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *AlertingProfilesAssignEmailsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the alerting profiles assign emails forbidden response
+func (o *AlertingProfilesAssignEmailsForbidden) Code() int {
+	return 403
+}
+
 func (o *AlertingProfilesAssignEmailsForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *AlertingProfilesAssignEmailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting profiles assign emails not found response
+func (o *AlertingProfilesAssignEmailsNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingProfilesAssignEmailsNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AlertingProfilesAssignEmailsInternalServerError) IsServerError() bool {
 // IsCode returns true when this alerting profiles assign emails internal server error response a status code equal to that given
 func (o *AlertingProfilesAssignEmailsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting profiles assign emails internal server error response
+func (o *AlertingProfilesAssignEmailsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingProfilesAssignEmailsInternalServerError) Error() string {

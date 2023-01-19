@@ -103,6 +103,11 @@ func (o *ProjectAppListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project app list o k response
+func (o *ProjectAppListOK) Code() int {
+	return 200
+}
+
 func (o *ProjectAppListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/list][%d] projectAppListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ ProjectAppListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type ProjectAppListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *ProjectAppListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the project app list bad request response
+func (o *ProjectAppListBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectAppListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/list][%d] projectAppListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *ProjectAppListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/list][%d] projectAppListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectAppListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ProjectAppListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *ProjectAppListUnauthorized) IsServerError() bool {
 // IsCode returns true when this project app list unauthorized response a status code equal to that given
 func (o *ProjectAppListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the project app list unauthorized response
+func (o *ProjectAppListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectAppListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *ProjectAppListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the project app list forbidden response
+func (o *ProjectAppListForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectAppListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/list][%d] projectAppListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *ProjectAppListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project app list not found response
+func (o *ProjectAppListNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectAppListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/list][%d] projectAppListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ProjectAppListInternalServerError) IsServerError() bool {
 // IsCode returns true when this project app list internal server error response a status code equal to that given
 func (o *ProjectAppListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project app list internal server error response
+func (o *ProjectAppListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectAppListInternalServerError) Error() string {

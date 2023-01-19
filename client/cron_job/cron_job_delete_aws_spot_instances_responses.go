@@ -103,6 +103,11 @@ func (o *CronJobDeleteAwsSpotInstancesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job delete aws spot instances o k response
+func (o *CronJobDeleteAwsSpotInstancesOK) Code() int {
+	return 200
+}
+
 func (o *CronJobDeleteAwsSpotInstancesOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CronJobDeleteAwsSpotInstancesBadRequest describes a response with status code 40
 Bad Request
 */
 type CronJobDeleteAwsSpotInstancesBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete aws spot instances bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CronJobDeleteAwsSpotInstancesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cron job delete aws spot instances bad request response
+func (o *CronJobDeleteAwsSpotInstancesBadRequest) Code() int {
+	return 400
+}
+
 func (o *CronJobDeleteAwsSpotInstancesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CronJobDeleteAwsSpotInstancesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteAwsSpotInstancesBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CronJobDeleteAwsSpotInstancesBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteAwsSpotInstancesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CronJobDeleteAwsSpotInstancesUnauthorized) IsServerError() bool {
 // IsCode returns true when this cron job delete aws spot instances unauthorized response a status code equal to that given
 func (o *CronJobDeleteAwsSpotInstancesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cron job delete aws spot instances unauthorized response
+func (o *CronJobDeleteAwsSpotInstancesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CronJobDeleteAwsSpotInstancesUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CronJobDeleteAwsSpotInstancesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cron job delete aws spot instances forbidden response
+func (o *CronJobDeleteAwsSpotInstancesForbidden) Code() int {
+	return 403
+}
+
 func (o *CronJobDeleteAwsSpotInstancesForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CronJobDeleteAwsSpotInstancesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job delete aws spot instances not found response
+func (o *CronJobDeleteAwsSpotInstancesNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobDeleteAwsSpotInstancesNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobDeleteAwsSpotInstancesInternalServerError) IsServerError() bool 
 // IsCode returns true when this cron job delete aws spot instances internal server error response a status code equal to that given
 func (o *CronJobDeleteAwsSpotInstancesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job delete aws spot instances internal server error response
+func (o *CronJobDeleteAwsSpotInstancesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobDeleteAwsSpotInstancesInternalServerError) Error() string {

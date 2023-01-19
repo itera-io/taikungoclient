@@ -103,6 +103,11 @@ func (o *ProjectsListSelectorOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects list selector o k response
+func (o *ProjectsListSelectorOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsListSelectorOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectsListSelectorBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type ProjectsListSelectorBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects list selector bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectsListSelectorBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the projects list selector bad request response
+func (o *ProjectsListSelectorBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectsListSelectorBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *ProjectsListSelectorBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsListSelectorBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ProjectsListSelectorBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsListSelectorBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *ProjectsListSelectorUnauthorized) IsServerError() bool {
 // IsCode returns true when this projects list selector unauthorized response a status code equal to that given
 func (o *ProjectsListSelectorUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the projects list selector unauthorized response
+func (o *ProjectsListSelectorUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectsListSelectorUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *ProjectsListSelectorForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the projects list selector forbidden response
+func (o *ProjectsListSelectorForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectsListSelectorForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *ProjectsListSelectorNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects list selector not found response
+func (o *ProjectsListSelectorNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsListSelectorNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectsListSelectorInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects list selector internal server error response a status code equal to that given
 func (o *ProjectsListSelectorInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects list selector internal server error response
+func (o *ProjectsListSelectorInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsListSelectorInternalServerError) Error() string {

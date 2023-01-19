@@ -103,6 +103,11 @@ func (o *PrometheusBindOrganizationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the prometheus bind organizations o k response
+func (o *PrometheusBindOrganizationsOK) Code() int {
+	return 200
+}
+
 func (o *PrometheusBindOrganizationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ PrometheusBindOrganizationsBadRequest describes a response with status code 400,
 Bad Request
 */
 type PrometheusBindOrganizationsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus bind organizations bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *PrometheusBindOrganizationsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the prometheus bind organizations bad request response
+func (o *PrometheusBindOrganizationsBadRequest) Code() int {
+	return 400
+}
+
 func (o *PrometheusBindOrganizationsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *PrometheusBindOrganizationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusBindOrganizationsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *PrometheusBindOrganizationsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusBindOrganizationsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *PrometheusBindOrganizationsUnauthorized) IsServerError() bool {
 // IsCode returns true when this prometheus bind organizations unauthorized response a status code equal to that given
 func (o *PrometheusBindOrganizationsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the prometheus bind organizations unauthorized response
+func (o *PrometheusBindOrganizationsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *PrometheusBindOrganizationsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *PrometheusBindOrganizationsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the prometheus bind organizations forbidden response
+func (o *PrometheusBindOrganizationsForbidden) Code() int {
+	return 403
+}
+
 func (o *PrometheusBindOrganizationsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *PrometheusBindOrganizationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the prometheus bind organizations not found response
+func (o *PrometheusBindOrganizationsNotFound) Code() int {
+	return 404
+}
+
 func (o *PrometheusBindOrganizationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PrometheusBindOrganizationsInternalServerError) IsServerError() bool {
 // IsCode returns true when this prometheus bind organizations internal server error response a status code equal to that given
 func (o *PrometheusBindOrganizationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the prometheus bind organizations internal server error response
+func (o *PrometheusBindOrganizationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PrometheusBindOrganizationsInternalServerError) Error() string {

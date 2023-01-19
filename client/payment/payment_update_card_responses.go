@@ -103,6 +103,11 @@ func (o *PaymentUpdateCardOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the payment update card o k response
+func (o *PaymentUpdateCardOK) Code() int {
+	return 200
+}
+
 func (o *PaymentUpdateCardOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/updatecard][%d] paymentUpdateCardOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ PaymentUpdateCardBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type PaymentUpdateCardBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment update card bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *PaymentUpdateCardBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the payment update card bad request response
+func (o *PaymentUpdateCardBadRequest) Code() int {
+	return 400
+}
+
 func (o *PaymentUpdateCardBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/updatecard][%d] paymentUpdateCardBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *PaymentUpdateCardBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/updatecard][%d] paymentUpdateCardBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentUpdateCardBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *PaymentUpdateCardBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentUpdateCardBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *PaymentUpdateCardUnauthorized) IsServerError() bool {
 // IsCode returns true when this payment update card unauthorized response a status code equal to that given
 func (o *PaymentUpdateCardUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the payment update card unauthorized response
+func (o *PaymentUpdateCardUnauthorized) Code() int {
+	return 401
 }
 
 func (o *PaymentUpdateCardUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *PaymentUpdateCardForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the payment update card forbidden response
+func (o *PaymentUpdateCardForbidden) Code() int {
+	return 403
+}
+
 func (o *PaymentUpdateCardForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/updatecard][%d] paymentUpdateCardForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *PaymentUpdateCardNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the payment update card not found response
+func (o *PaymentUpdateCardNotFound) Code() int {
+	return 404
+}
+
 func (o *PaymentUpdateCardNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/updatecard][%d] paymentUpdateCardNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PaymentUpdateCardInternalServerError) IsServerError() bool {
 // IsCode returns true when this payment update card internal server error response a status code equal to that given
 func (o *PaymentUpdateCardInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the payment update card internal server error response
+func (o *PaymentUpdateCardInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PaymentUpdateCardInternalServerError) Error() string {

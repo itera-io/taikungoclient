@@ -103,6 +103,11 @@ func (o *AlertingProfilesLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting profiles lock manager o k response
+func (o *AlertingProfilesLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *AlertingProfilesLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/lockmanager][%d] alertingProfilesLockManagerOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AlertingProfilesLockManagerBadRequest describes a response with status code 400,
 Bad Request
 */
 type AlertingProfilesLockManagerBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles lock manager bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AlertingProfilesLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the alerting profiles lock manager bad request response
+func (o *AlertingProfilesLockManagerBadRequest) Code() int {
+	return 400
+}
+
 func (o *AlertingProfilesLockManagerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/lockmanager][%d] alertingProfilesLockManagerBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *AlertingProfilesLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/lockmanager][%d] alertingProfilesLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesLockManagerBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AlertingProfilesLockManagerBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *AlertingProfilesLockManagerUnauthorized) IsServerError() bool {
 // IsCode returns true when this alerting profiles lock manager unauthorized response a status code equal to that given
 func (o *AlertingProfilesLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the alerting profiles lock manager unauthorized response
+func (o *AlertingProfilesLockManagerUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AlertingProfilesLockManagerUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *AlertingProfilesLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the alerting profiles lock manager forbidden response
+func (o *AlertingProfilesLockManagerForbidden) Code() int {
+	return 403
+}
+
 func (o *AlertingProfilesLockManagerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/lockmanager][%d] alertingProfilesLockManagerForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *AlertingProfilesLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting profiles lock manager not found response
+func (o *AlertingProfilesLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingProfilesLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/lockmanager][%d] alertingProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AlertingProfilesLockManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this alerting profiles lock manager internal server error response a status code equal to that given
 func (o *AlertingProfilesLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting profiles lock manager internal server error response
+func (o *AlertingProfilesLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingProfilesLockManagerInternalServerError) Error() string {

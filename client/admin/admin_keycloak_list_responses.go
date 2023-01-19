@@ -103,6 +103,11 @@ func (o *AdminKeycloakListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin keycloak list o k response
+func (o *AdminKeycloakListOK) Code() int {
+	return 200
+}
+
 func (o *AdminKeycloakListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ AdminKeycloakListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AdminKeycloakListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin keycloak list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *AdminKeycloakListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the admin keycloak list bad request response
+func (o *AdminKeycloakListBadRequest) Code() int {
+	return 400
+}
+
 func (o *AdminKeycloakListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *AdminKeycloakListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminKeycloakListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AdminKeycloakListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminKeycloakListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *AdminKeycloakListUnauthorized) IsServerError() bool {
 // IsCode returns true when this admin keycloak list unauthorized response a status code equal to that given
 func (o *AdminKeycloakListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the admin keycloak list unauthorized response
+func (o *AdminKeycloakListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AdminKeycloakListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *AdminKeycloakListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the admin keycloak list forbidden response
+func (o *AdminKeycloakListForbidden) Code() int {
+	return 403
+}
+
 func (o *AdminKeycloakListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *AdminKeycloakListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin keycloak list not found response
+func (o *AdminKeycloakListNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminKeycloakListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AdminKeycloakListInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin keycloak list internal server error response a status code equal to that given
 func (o *AdminKeycloakListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin keycloak list internal server error response
+func (o *AdminKeycloakListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminKeycloakListInternalServerError) Error() string {

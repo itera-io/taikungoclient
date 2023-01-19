@@ -103,6 +103,11 @@ func (o *CloudCredentialsAllFlavorsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cloud credentials all flavors o k response
+func (o *CloudCredentialsAllFlavorsOK) Code() int {
+	return 200
+}
+
 func (o *CloudCredentialsAllFlavorsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ CloudCredentialsAllFlavorsBadRequest describes a response with status code 400, 
 Bad Request
 */
 type CloudCredentialsAllFlavorsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials all flavors bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *CloudCredentialsAllFlavorsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cloud credentials all flavors bad request response
+func (o *CloudCredentialsAllFlavorsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CloudCredentialsAllFlavorsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *CloudCredentialsAllFlavorsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsAllFlavorsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CloudCredentialsAllFlavorsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsAllFlavorsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *CloudCredentialsAllFlavorsUnauthorized) IsServerError() bool {
 // IsCode returns true when this cloud credentials all flavors unauthorized response a status code equal to that given
 func (o *CloudCredentialsAllFlavorsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cloud credentials all flavors unauthorized response
+func (o *CloudCredentialsAllFlavorsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CloudCredentialsAllFlavorsUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *CloudCredentialsAllFlavorsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cloud credentials all flavors forbidden response
+func (o *CloudCredentialsAllFlavorsForbidden) Code() int {
+	return 403
+}
+
 func (o *CloudCredentialsAllFlavorsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *CloudCredentialsAllFlavorsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cloud credentials all flavors not found response
+func (o *CloudCredentialsAllFlavorsNotFound) Code() int {
+	return 404
+}
+
 func (o *CloudCredentialsAllFlavorsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *CloudCredentialsAllFlavorsInternalServerError) IsServerError() bool {
 // IsCode returns true when this cloud credentials all flavors internal server error response a status code equal to that given
 func (o *CloudCredentialsAllFlavorsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cloud credentials all flavors internal server error response
+func (o *CloudCredentialsAllFlavorsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CloudCredentialsAllFlavorsInternalServerError) Error() string {

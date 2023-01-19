@@ -20,9 +20,6 @@ type AwsCredentialsForProjectDto struct {
 	// aws access key Id
 	AwsAccessKeyID string `json:"awsAccessKeyId,omitempty"`
 
-	// aws availability zone
-	AwsAvailabilityZone string `json:"awsAvailabilityZone,omitempty"`
-
 	// aws region
 	AwsRegion string `json:"awsRegion,omitempty"`
 

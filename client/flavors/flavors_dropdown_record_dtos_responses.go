@@ -103,6 +103,11 @@ func (o *FlavorsDropdownRecordDtosOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the flavors dropdown record dtos o k response
+func (o *FlavorsDropdownRecordDtosOK) Code() int {
+	return 200
+}
+
 func (o *FlavorsDropdownRecordDtosOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ FlavorsDropdownRecordDtosBadRequest describes a response with status code 400, w
 Bad Request
 */
 type FlavorsDropdownRecordDtosBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors dropdown record dtos bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *FlavorsDropdownRecordDtosBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the flavors dropdown record dtos bad request response
+func (o *FlavorsDropdownRecordDtosBadRequest) Code() int {
+	return 400
+}
+
 func (o *FlavorsDropdownRecordDtosBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *FlavorsDropdownRecordDtosBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsDropdownRecordDtosBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *FlavorsDropdownRecordDtosBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsDropdownRecordDtosBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *FlavorsDropdownRecordDtosUnauthorized) IsServerError() bool {
 // IsCode returns true when this flavors dropdown record dtos unauthorized response a status code equal to that given
 func (o *FlavorsDropdownRecordDtosUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the flavors dropdown record dtos unauthorized response
+func (o *FlavorsDropdownRecordDtosUnauthorized) Code() int {
+	return 401
 }
 
 func (o *FlavorsDropdownRecordDtosUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *FlavorsDropdownRecordDtosForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the flavors dropdown record dtos forbidden response
+func (o *FlavorsDropdownRecordDtosForbidden) Code() int {
+	return 403
+}
+
 func (o *FlavorsDropdownRecordDtosForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *FlavorsDropdownRecordDtosNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the flavors dropdown record dtos not found response
+func (o *FlavorsDropdownRecordDtosNotFound) Code() int {
+	return 404
+}
+
 func (o *FlavorsDropdownRecordDtosNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *FlavorsDropdownRecordDtosInternalServerError) IsServerError() bool {
 // IsCode returns true when this flavors dropdown record dtos internal server error response a status code equal to that given
 func (o *FlavorsDropdownRecordDtosInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the flavors dropdown record dtos internal server error response
+func (o *FlavorsDropdownRecordDtosInternalServerError) Code() int {
+	return 500
 }
 
 func (o *FlavorsDropdownRecordDtosInternalServerError) Error() string {

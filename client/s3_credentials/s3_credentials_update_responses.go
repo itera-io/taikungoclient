@@ -103,6 +103,11 @@ func (o *S3CredentialsUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the s3 credentials update o k response
+func (o *S3CredentialsUpdateOK) Code() int {
+	return 200
+}
+
 func (o *S3CredentialsUpdateOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ S3CredentialsUpdateBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type S3CredentialsUpdateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials update bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *S3CredentialsUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the s3 credentials update bad request response
+func (o *S3CredentialsUpdateBadRequest) Code() int {
+	return 400
+}
+
 func (o *S3CredentialsUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *S3CredentialsUpdateBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsUpdateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *S3CredentialsUpdateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *S3CredentialsUpdateUnauthorized) IsServerError() bool {
 // IsCode returns true when this s3 credentials update unauthorized response a status code equal to that given
 func (o *S3CredentialsUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the s3 credentials update unauthorized response
+func (o *S3CredentialsUpdateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *S3CredentialsUpdateUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *S3CredentialsUpdateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the s3 credentials update forbidden response
+func (o *S3CredentialsUpdateForbidden) Code() int {
+	return 403
+}
+
 func (o *S3CredentialsUpdateForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *S3CredentialsUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the s3 credentials update not found response
+func (o *S3CredentialsUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *S3CredentialsUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *S3CredentialsUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this s3 credentials update internal server error response a status code equal to that given
 func (o *S3CredentialsUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the s3 credentials update internal server error response
+func (o *S3CredentialsUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *S3CredentialsUpdateInternalServerError) Error() string {

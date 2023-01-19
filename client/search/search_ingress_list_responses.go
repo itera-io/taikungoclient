@@ -103,6 +103,11 @@ func (o *SearchIngressListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search ingress list o k response
+func (o *SearchIngressListOK) Code() int {
+	return 200
+}
+
 func (o *SearchIngressListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/ingress][%d] searchIngressListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ SearchIngressListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type SearchIngressListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search ingress list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *SearchIngressListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the search ingress list bad request response
+func (o *SearchIngressListBadRequest) Code() int {
+	return 400
+}
+
 func (o *SearchIngressListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/ingress][%d] searchIngressListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *SearchIngressListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/ingress][%d] searchIngressListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchIngressListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SearchIngressListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchIngressListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *SearchIngressListUnauthorized) IsServerError() bool {
 // IsCode returns true when this search ingress list unauthorized response a status code equal to that given
 func (o *SearchIngressListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the search ingress list unauthorized response
+func (o *SearchIngressListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SearchIngressListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *SearchIngressListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the search ingress list forbidden response
+func (o *SearchIngressListForbidden) Code() int {
+	return 403
+}
+
 func (o *SearchIngressListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/ingress][%d] searchIngressListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *SearchIngressListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search ingress list not found response
+func (o *SearchIngressListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchIngressListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/ingress][%d] searchIngressListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchIngressListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search ingress list internal server error response a status code equal to that given
 func (o *SearchIngressListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search ingress list internal server error response
+func (o *SearchIngressListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchIngressListInternalServerError) Error() string {

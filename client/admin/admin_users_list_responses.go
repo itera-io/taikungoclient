@@ -103,6 +103,11 @@ func (o *AdminUsersListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin users list o k response
+func (o *AdminUsersListOK) Code() int {
+	return 200
+}
+
 func (o *AdminUsersListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ AdminUsersListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AdminUsersListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin users list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *AdminUsersListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the admin users list bad request response
+func (o *AdminUsersListBadRequest) Code() int {
+	return 400
+}
+
 func (o *AdminUsersListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *AdminUsersListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminUsersListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AdminUsersListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUsersListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *AdminUsersListUnauthorized) IsServerError() bool {
 // IsCode returns true when this admin users list unauthorized response a status code equal to that given
 func (o *AdminUsersListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the admin users list unauthorized response
+func (o *AdminUsersListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AdminUsersListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *AdminUsersListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the admin users list forbidden response
+func (o *AdminUsersListForbidden) Code() int {
+	return 403
+}
+
 func (o *AdminUsersListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *AdminUsersListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin users list not found response
+func (o *AdminUsersListNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminUsersListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AdminUsersListInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin users list internal server error response a status code equal to that given
 func (o *AdminUsersListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin users list internal server error response
+func (o *AdminUsersListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminUsersListInternalServerError) Error() string {

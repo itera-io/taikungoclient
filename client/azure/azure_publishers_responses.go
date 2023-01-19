@@ -103,6 +103,11 @@ func (o *AzurePublishersOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the azure publishers o k response
+func (o *AzurePublishersOK) Code() int {
+	return 200
+}
+
 func (o *AzurePublishersOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ AzurePublishersBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type AzurePublishersBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure publishers bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *AzurePublishersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the azure publishers bad request response
+func (o *AzurePublishersBadRequest) Code() int {
+	return 400
+}
+
 func (o *AzurePublishersBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *AzurePublishersBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzurePublishersBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AzurePublishersBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzurePublishersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *AzurePublishersUnauthorized) IsServerError() bool {
 // IsCode returns true when this azure publishers unauthorized response a status code equal to that given
 func (o *AzurePublishersUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the azure publishers unauthorized response
+func (o *AzurePublishersUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AzurePublishersUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *AzurePublishersForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the azure publishers forbidden response
+func (o *AzurePublishersForbidden) Code() int {
+	return 403
+}
+
 func (o *AzurePublishersForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *AzurePublishersNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the azure publishers not found response
+func (o *AzurePublishersNotFound) Code() int {
+	return 404
+}
+
 func (o *AzurePublishersNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AzurePublishersInternalServerError) IsServerError() bool {
 // IsCode returns true when this azure publishers internal server error response a status code equal to that given
 func (o *AzurePublishersInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the azure publishers internal server error response
+func (o *AzurePublishersInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AzurePublishersInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *CronJobAutoUpgradeProjectsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job auto upgrade projects o k response
+func (o *CronJobAutoUpgradeProjectsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobAutoUpgradeProjectsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CronJobAutoUpgradeProjectsBadRequest describes a response with status code 400, 
 Bad Request
 */
 type CronJobAutoUpgradeProjectsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job auto upgrade projects bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CronJobAutoUpgradeProjectsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cron job auto upgrade projects bad request response
+func (o *CronJobAutoUpgradeProjectsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CronJobAutoUpgradeProjectsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CronJobAutoUpgradeProjectsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobAutoUpgradeProjectsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CronJobAutoUpgradeProjectsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobAutoUpgradeProjectsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CronJobAutoUpgradeProjectsUnauthorized) IsServerError() bool {
 // IsCode returns true when this cron job auto upgrade projects unauthorized response a status code equal to that given
 func (o *CronJobAutoUpgradeProjectsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cron job auto upgrade projects unauthorized response
+func (o *CronJobAutoUpgradeProjectsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CronJobAutoUpgradeProjectsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CronJobAutoUpgradeProjectsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cron job auto upgrade projects forbidden response
+func (o *CronJobAutoUpgradeProjectsForbidden) Code() int {
+	return 403
+}
+
 func (o *CronJobAutoUpgradeProjectsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CronJobAutoUpgradeProjectsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job auto upgrade projects not found response
+func (o *CronJobAutoUpgradeProjectsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobAutoUpgradeProjectsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobAutoUpgradeProjectsInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job auto upgrade projects internal server error response a status code equal to that given
 func (o *CronJobAutoUpgradeProjectsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job auto upgrade projects internal server error response
+func (o *CronJobAutoUpgradeProjectsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobAutoUpgradeProjectsInternalServerError) Error() string {

@@ -36,8 +36,6 @@ type ClientService interface {
 
 	KubernetesDeleteAlerts(params *KubernetesDeleteAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDeleteAlertsOK, error)
 
-	KubernetesDeleteEvents(params *KubernetesDeleteEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDeleteEventsOK, error)
-
 	KubernetesDeletePod(params *KubernetesDeletePodParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDeletePodOK, error)
 
 	KubernetesDescribeConfigMap(params *KubernetesDescribeConfigMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeConfigMapOK, error)
@@ -98,8 +96,6 @@ type ClientService interface {
 
 	KubernetesGetKubernetesAlertsList(params *KubernetesGetKubernetesAlertsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetKubernetesAlertsListOK, error)
 
-	KubernetesGetKubernetesEventsList(params *KubernetesGetKubernetesEventsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetKubernetesEventsListOK, error)
-
 	KubernetesGetNamespacesList(params *KubernetesGetNamespacesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetNamespacesListOK, error)
 
 	KubernetesGetNetworkPolicies(params *KubernetesGetNetworkPoliciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetNetworkPoliciesOK, error)
@@ -119,8 +115,6 @@ type ClientService interface {
 	KubernetesGetService(params *KubernetesGetServiceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetServiceOK, error)
 
 	KubernetesGetStorageClasses(params *KubernetesGetStorageClassesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStorageClassesOK, error)
-
-	KubernetesGetStreamPodLogsList(params *KubernetesGetStreamPodLogsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStreamPodLogsListOK, error)
 
 	KubernetesGetSts(params *KubernetesGetStsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStsOK, error)
 
@@ -279,45 +273,6 @@ func (a *Client) KubernetesDeleteAlerts(params *KubernetesDeleteAlertsParams, au
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_DeleteAlerts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-KubernetesDeleteEvents removes k8s events
-*/
-func (a *Client) KubernetesDeleteEvents(params *KubernetesDeleteEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDeleteEventsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewKubernetesDeleteEventsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Kubernetes_DeleteEvents",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/Kubernetes/removeevents",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &KubernetesDeleteEventsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*KubernetesDeleteEventsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Kubernetes_DeleteEvents: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1492,45 +1447,6 @@ func (a *Client) KubernetesGetKubernetesAlertsList(params *KubernetesGetKubernet
 }
 
 /*
-KubernetesGetKubernetesEventsList retrieves all k8s events by project Id
-*/
-func (a *Client) KubernetesGetKubernetesEventsList(params *KubernetesGetKubernetesEventsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetKubernetesEventsListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewKubernetesGetKubernetesEventsListParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Kubernetes_GetKubernetesEventsList",
-		Method:             "GET",
-		PathPattern:        "/api/v{v}/Kubernetes/{projectId}/events",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &KubernetesGetKubernetesEventsListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*KubernetesGetKubernetesEventsListOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetKubernetesEventsList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
 KubernetesGetNamespacesList retrieves kube config file
 */
 func (a *Client) KubernetesGetNamespacesList(params *KubernetesGetNamespacesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetNamespacesListOK, error) {
@@ -1917,45 +1833,6 @@ func (a *Client) KubernetesGetStorageClasses(params *KubernetesGetStorageClasses
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetStorageClasses: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-KubernetesGetStreamPodLogsList retrieves k8s pod logs as stream
-*/
-func (a *Client) KubernetesGetStreamPodLogsList(params *KubernetesGetStreamPodLogsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStreamPodLogsListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewKubernetesGetStreamPodLogsListParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Kubernetes_GetStreamPodLogsList",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/Kubernetes/podlogs-stream",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &KubernetesGetStreamPodLogsListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*KubernetesGetStreamPodLogsListOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetStreamPodLogsList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

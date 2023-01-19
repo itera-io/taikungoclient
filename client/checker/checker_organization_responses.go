@@ -103,6 +103,11 @@ func (o *CheckerOrganizationOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker organization o k response
+func (o *CheckerOrganizationOK) Code() int {
+	return 200
+}
+
 func (o *CheckerOrganizationOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CheckerOrganizationBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type CheckerOrganizationBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker organization bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CheckerOrganizationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the checker organization bad request response
+func (o *CheckerOrganizationBadRequest) Code() int {
+	return 400
+}
+
 func (o *CheckerOrganizationBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CheckerOrganizationBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerOrganizationBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CheckerOrganizationBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerOrganizationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CheckerOrganizationUnauthorized) IsServerError() bool {
 // IsCode returns true when this checker organization unauthorized response a status code equal to that given
 func (o *CheckerOrganizationUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the checker organization unauthorized response
+func (o *CheckerOrganizationUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CheckerOrganizationUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CheckerOrganizationForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the checker organization forbidden response
+func (o *CheckerOrganizationForbidden) Code() int {
+	return 403
+}
+
 func (o *CheckerOrganizationForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CheckerOrganizationNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker organization not found response
+func (o *CheckerOrganizationNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerOrganizationNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerOrganizationInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker organization internal server error response a status code equal to that given
 func (o *CheckerOrganizationInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker organization internal server error response
+func (o *CheckerOrganizationInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerOrganizationInternalServerError) Error() string {

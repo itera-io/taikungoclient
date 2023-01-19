@@ -103,6 +103,11 @@ func (o *AccessProfilesCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the access profiles create o k response
+func (o *AccessProfilesCreateOK) Code() int {
+	return 200
+}
+
 func (o *AccessProfilesCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ AccessProfilesCreateBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type AccessProfilesCreateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles create bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *AccessProfilesCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the access profiles create bad request response
+func (o *AccessProfilesCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *AccessProfilesCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *AccessProfilesCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AccessProfilesCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AccessProfilesCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *AccessProfilesCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this access profiles create unauthorized response a status code equal to that given
 func (o *AccessProfilesCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the access profiles create unauthorized response
+func (o *AccessProfilesCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AccessProfilesCreateUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *AccessProfilesCreateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the access profiles create forbidden response
+func (o *AccessProfilesCreateForbidden) Code() int {
+	return 403
+}
+
 func (o *AccessProfilesCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *AccessProfilesCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the access profiles create not found response
+func (o *AccessProfilesCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *AccessProfilesCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *AccessProfilesCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this access profiles create internal server error response a status code equal to that given
 func (o *AccessProfilesCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the access profiles create internal server error response
+func (o *AccessProfilesCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AccessProfilesCreateInternalServerError) Error() string {

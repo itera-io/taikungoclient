@@ -103,6 +103,11 @@ func (o *AzureDashboardOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the azure dashboard o k response
+func (o *AzureDashboardOK) Code() int {
+	return 200
+}
+
 func (o *AzureDashboardOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AzureDashboardBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AzureDashboardBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure dashboard bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AzureDashboardBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the azure dashboard bad request response
+func (o *AzureDashboardBadRequest) Code() int {
+	return 400
+}
+
 func (o *AzureDashboardBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *AzureDashboardBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureDashboardBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AzureDashboardBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureDashboardBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *AzureDashboardUnauthorized) IsServerError() bool {
 // IsCode returns true when this azure dashboard unauthorized response a status code equal to that given
 func (o *AzureDashboardUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the azure dashboard unauthorized response
+func (o *AzureDashboardUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AzureDashboardUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *AzureDashboardForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the azure dashboard forbidden response
+func (o *AzureDashboardForbidden) Code() int {
+	return 403
+}
+
 func (o *AzureDashboardForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *AzureDashboardNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the azure dashboard not found response
+func (o *AzureDashboardNotFound) Code() int {
+	return 404
+}
+
 func (o *AzureDashboardNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AzureDashboardInternalServerError) IsServerError() bool {
 // IsCode returns true when this azure dashboard internal server error response a status code equal to that given
 func (o *AzureDashboardInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the azure dashboard internal server error response
+func (o *AzureDashboardInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AzureDashboardInternalServerError) Error() string {

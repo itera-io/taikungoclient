@@ -29,6 +29,9 @@ type CreateOpenstackCloudCommand struct {
 	// open stack availability zone
 	OpenStackAvailabilityZone string `json:"openStackAvailabilityZone,omitempty"`
 
+	// open stack continent
+	OpenStackContinent string `json:"openStackContinent,omitempty"`
+
 	// open stack domain
 	OpenStackDomain string `json:"openStackDomain,omitempty"`
 

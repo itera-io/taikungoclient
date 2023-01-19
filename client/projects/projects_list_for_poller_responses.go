@@ -103,6 +103,11 @@ func (o *ProjectsListForPollerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects list for poller o k response
+func (o *ProjectsListForPollerOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsListForPollerOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ ProjectsListForPollerBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type ProjectsListForPollerBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects list for poller bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *ProjectsListForPollerBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the projects list for poller bad request response
+func (o *ProjectsListForPollerBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectsListForPollerBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *ProjectsListForPollerBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsListForPollerBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ProjectsListForPollerBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsListForPollerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *ProjectsListForPollerUnauthorized) IsServerError() bool {
 // IsCode returns true when this projects list for poller unauthorized response a status code equal to that given
 func (o *ProjectsListForPollerUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the projects list for poller unauthorized response
+func (o *ProjectsListForPollerUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectsListForPollerUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *ProjectsListForPollerForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the projects list for poller forbidden response
+func (o *ProjectsListForPollerForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectsListForPollerForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *ProjectsListForPollerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects list for poller not found response
+func (o *ProjectsListForPollerNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsListForPollerNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ProjectsListForPollerInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects list for poller internal server error response a status code equal to that given
 func (o *ProjectsListForPollerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects list for poller internal server error response
+func (o *ProjectsListForPollerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsListForPollerInternalServerError) Error() string {

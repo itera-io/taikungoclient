@@ -103,6 +103,11 @@ func (o *CheckerCidrOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker cidr o k response
+func (o *CheckerCidrOK) Code() int {
+	return 200
+}
+
 func (o *CheckerCidrOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CheckerCidrBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type CheckerCidrBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker cidr bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CheckerCidrBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the checker cidr bad request response
+func (o *CheckerCidrBadRequest) Code() int {
+	return 400
+}
+
 func (o *CheckerCidrBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CheckerCidrBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerCidrBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CheckerCidrBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerCidrBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CheckerCidrUnauthorized) IsServerError() bool {
 // IsCode returns true when this checker cidr unauthorized response a status code equal to that given
 func (o *CheckerCidrUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the checker cidr unauthorized response
+func (o *CheckerCidrUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CheckerCidrUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CheckerCidrForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the checker cidr forbidden response
+func (o *CheckerCidrForbidden) Code() int {
+	return 403
+}
+
 func (o *CheckerCidrForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CheckerCidrNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker cidr not found response
+func (o *CheckerCidrNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerCidrNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CheckerCidrInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker cidr internal server error response a status code equal to that given
 func (o *CheckerCidrInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker cidr internal server error response
+func (o *CheckerCidrInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerCidrInternalServerError) Error() string {

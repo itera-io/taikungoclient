@@ -25,6 +25,9 @@ type GoogleCredentialsListDto struct {
 	// billing account name
 	BillingAccountName string `json:"billingAccountName,omitempty"`
 
+	// continent name
+	ContinentName string `json:"continentName,omitempty"`
+
 	// created at
 	CreatedAt string `json:"createdAt,omitempty"`
 
@@ -64,8 +67,8 @@ type GoogleCredentialsListDto struct {
 	// region
 	Region string `json:"region,omitempty"`
 
-	// zone
-	Zone string `json:"zone,omitempty"`
+	// zones
+	Zones []string `json:"zones"`
 }
 
 // Validate validates this google credentials list dto

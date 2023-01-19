@@ -103,6 +103,11 @@ func (o *KubeConfigDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kube config delete o k response
+func (o *KubeConfigDeleteOK) Code() int {
+	return 200
+}
+
 func (o *KubeConfigDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete][%d] kubeConfigDeleteOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubeConfigDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type KubeConfigDeleteBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kube config delete bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubeConfigDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kube config delete bad request response
+func (o *KubeConfigDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubeConfigDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete][%d] kubeConfigDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *KubeConfigDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete][%d] kubeConfigDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubeConfigDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubeConfigDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubeConfigDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *KubeConfigDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this kube config delete unauthorized response a status code equal to that given
 func (o *KubeConfigDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kube config delete unauthorized response
+func (o *KubeConfigDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubeConfigDeleteUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *KubeConfigDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kube config delete forbidden response
+func (o *KubeConfigDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *KubeConfigDeleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete][%d] kubeConfigDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *KubeConfigDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kube config delete not found response
+func (o *KubeConfigDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *KubeConfigDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete][%d] kubeConfigDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubeConfigDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this kube config delete internal server error response a status code equal to that given
 func (o *KubeConfigDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kube config delete internal server error response
+func (o *KubeConfigDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubeConfigDeleteInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *CronJobDeleteExpiredAlertsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job delete expired alerts o k response
+func (o *CronJobDeleteExpiredAlertsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobDeleteExpiredAlertsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CronJobDeleteExpiredAlertsBadRequest describes a response with status code 400, 
 Bad Request
 */
 type CronJobDeleteExpiredAlertsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete expired alerts bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CronJobDeleteExpiredAlertsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cron job delete expired alerts bad request response
+func (o *CronJobDeleteExpiredAlertsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CronJobDeleteExpiredAlertsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CronJobDeleteExpiredAlertsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredAlertsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CronJobDeleteExpiredAlertsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredAlertsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CronJobDeleteExpiredAlertsUnauthorized) IsServerError() bool {
 // IsCode returns true when this cron job delete expired alerts unauthorized response a status code equal to that given
 func (o *CronJobDeleteExpiredAlertsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cron job delete expired alerts unauthorized response
+func (o *CronJobDeleteExpiredAlertsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CronJobDeleteExpiredAlertsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CronJobDeleteExpiredAlertsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cron job delete expired alerts forbidden response
+func (o *CronJobDeleteExpiredAlertsForbidden) Code() int {
+	return 403
+}
+
 func (o *CronJobDeleteExpiredAlertsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CronJobDeleteExpiredAlertsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job delete expired alerts not found response
+func (o *CronJobDeleteExpiredAlertsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobDeleteExpiredAlertsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobDeleteExpiredAlertsInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job delete expired alerts internal server error response a status code equal to that given
 func (o *CronJobDeleteExpiredAlertsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job delete expired alerts internal server error response
+func (o *CronJobDeleteExpiredAlertsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobDeleteExpiredAlertsInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *BillingListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the billing list o k response
+func (o *BillingListOK) Code() int {
+	return 200
+}
+
 func (o *BillingListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ BillingListBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type BillingListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this billing list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *BillingListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the billing list bad request response
+func (o *BillingListBadRequest) Code() int {
+	return 400
+}
+
 func (o *BillingListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *BillingListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BillingListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *BillingListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BillingListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *BillingListUnauthorized) IsServerError() bool {
 // IsCode returns true when this billing list unauthorized response a status code equal to that given
 func (o *BillingListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the billing list unauthorized response
+func (o *BillingListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BillingListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *BillingListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the billing list forbidden response
+func (o *BillingListForbidden) Code() int {
+	return 403
+}
+
 func (o *BillingListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *BillingListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the billing list not found response
+func (o *BillingListNotFound) Code() int {
+	return 404
+}
+
 func (o *BillingListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *BillingListInternalServerError) IsServerError() bool {
 // IsCode returns true when this billing list internal server error response a status code equal to that given
 func (o *BillingListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the billing list internal server error response
+func (o *BillingListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BillingListInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *AdminMakeCsmUserOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the admin make csm user o k response
+func (o *AdminMakeCsmUserOK) Code() int {
+	return 200
+}
+
 func (o *AdminMakeCsmUserOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AdminMakeCsmUserBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type AdminMakeCsmUserBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin make csm user bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AdminMakeCsmUserBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the admin make csm user bad request response
+func (o *AdminMakeCsmUserBadRequest) Code() int {
+	return 400
+}
+
 func (o *AdminMakeCsmUserBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *AdminMakeCsmUserBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminMakeCsmUserBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AdminMakeCsmUserBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminMakeCsmUserBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *AdminMakeCsmUserUnauthorized) IsServerError() bool {
 // IsCode returns true when this admin make csm user unauthorized response a status code equal to that given
 func (o *AdminMakeCsmUserUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the admin make csm user unauthorized response
+func (o *AdminMakeCsmUserUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AdminMakeCsmUserUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *AdminMakeCsmUserForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the admin make csm user forbidden response
+func (o *AdminMakeCsmUserForbidden) Code() int {
+	return 403
+}
+
 func (o *AdminMakeCsmUserForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *AdminMakeCsmUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the admin make csm user not found response
+func (o *AdminMakeCsmUserNotFound) Code() int {
+	return 404
+}
+
 func (o *AdminMakeCsmUserNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *AdminMakeCsmUserInternalServerError) IsServerError() bool {
 // IsCode returns true when this admin make csm user internal server error response a status code equal to that given
 func (o *AdminMakeCsmUserInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the admin make csm user internal server error response
+func (o *AdminMakeCsmUserInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AdminMakeCsmUserInternalServerError) Error() string {

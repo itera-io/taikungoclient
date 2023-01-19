@@ -103,6 +103,11 @@ func (o *ShowbackCredentialsLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the showback credentials lock manager o k response
+func (o *ShowbackCredentialsLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *ShowbackCredentialsLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ShowbackCredentialsLockManagerBadRequest) IsServerError() bool {
 // IsCode returns true when this showback credentials lock manager bad request response a status code equal to that given
 func (o *ShowbackCredentialsLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the showback credentials lock manager bad request response
+func (o *ShowbackCredentialsLockManagerBadRequest) Code() int {
+	return 400
 }
 
 func (o *ShowbackCredentialsLockManagerBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ShowbackCredentialsLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the showback credentials lock manager unauthorized response
+func (o *ShowbackCredentialsLockManagerUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ShowbackCredentialsLockManagerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ShowbackCredentialsLockManagerForbidden) IsServerError() bool {
 // IsCode returns true when this showback credentials lock manager forbidden response a status code equal to that given
 func (o *ShowbackCredentialsLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the showback credentials lock manager forbidden response
+func (o *ShowbackCredentialsLockManagerForbidden) Code() int {
+	return 403
 }
 
 func (o *ShowbackCredentialsLockManagerForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ShowbackCredentialsLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the showback credentials lock manager not found response
+func (o *ShowbackCredentialsLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *ShowbackCredentialsLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ShowbackCredentialsLockManagerInternalServerError) IsServerError() bool
 // IsCode returns true when this showback credentials lock manager internal server error response a status code equal to that given
 func (o *ShowbackCredentialsLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the showback credentials lock manager internal server error response
+func (o *ShowbackCredentialsLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ShowbackCredentialsLockManagerInternalServerError) Error() string {

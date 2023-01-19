@@ -103,6 +103,11 @@ func (o *SubscriptionSubscriptionForOrganizationListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the subscription subscription for organization list o k response
+func (o *SubscriptionSubscriptionForOrganizationListOK) Code() int {
+	return 200
+}
+
 func (o *SubscriptionSubscriptionForOrganizationListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/boundlist][%d] subscriptionSubscriptionForOrganizationListOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ SubscriptionSubscriptionForOrganizationListBadRequest describes a response with 
 Bad Request
 */
 type SubscriptionSubscriptionForOrganizationListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription subscription for organization list bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *SubscriptionSubscriptionForOrganizationListBadRequest) IsCode(code int)
 	return code == 400
 }
 
+// Code gets the status code for the subscription subscription for organization list bad request response
+func (o *SubscriptionSubscriptionForOrganizationListBadRequest) Code() int {
+	return 400
+}
+
 func (o *SubscriptionSubscriptionForOrganizationListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/boundlist][%d] subscriptionSubscriptionForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *SubscriptionSubscriptionForOrganizationListBadRequest) String() string 
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/boundlist][%d] subscriptionSubscriptionForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForOrganizationListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SubscriptionSubscriptionForOrganizationListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionSubscriptionForOrganizationListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *SubscriptionSubscriptionForOrganizationListUnauthorized) IsServerError(
 // IsCode returns true when this subscription subscription for organization list unauthorized response a status code equal to that given
 func (o *SubscriptionSubscriptionForOrganizationListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the subscription subscription for organization list unauthorized response
+func (o *SubscriptionSubscriptionForOrganizationListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SubscriptionSubscriptionForOrganizationListUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *SubscriptionSubscriptionForOrganizationListForbidden) IsCode(code int) 
 	return code == 403
 }
 
+// Code gets the status code for the subscription subscription for organization list forbidden response
+func (o *SubscriptionSubscriptionForOrganizationListForbidden) Code() int {
+	return 403
+}
+
 func (o *SubscriptionSubscriptionForOrganizationListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/boundlist][%d] subscriptionSubscriptionForOrganizationListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *SubscriptionSubscriptionForOrganizationListNotFound) IsCode(code int) b
 	return code == 404
 }
 
+// Code gets the status code for the subscription subscription for organization list not found response
+func (o *SubscriptionSubscriptionForOrganizationListNotFound) Code() int {
+	return 404
+}
+
 func (o *SubscriptionSubscriptionForOrganizationListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/boundlist][%d] subscriptionSubscriptionForOrganizationListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *SubscriptionSubscriptionForOrganizationListInternalServerError) IsServe
 // IsCode returns true when this subscription subscription for organization list internal server error response a status code equal to that given
 func (o *SubscriptionSubscriptionForOrganizationListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the subscription subscription for organization list internal server error response
+func (o *SubscriptionSubscriptionForOrganizationListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SubscriptionSubscriptionForOrganizationListInternalServerError) Error() string {

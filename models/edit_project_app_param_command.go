@@ -20,7 +20,7 @@ import (
 type EditProjectAppParamCommand struct {
 
 	// parameters
-	Parameters []*ProjectAppParamsDto `json:"parameters"`
+	Parameters []*EditProjectAppParamsDto `json:"parameters"`
 
 	// project app Id
 	ProjectAppID int32 `json:"projectAppId,omitempty"`

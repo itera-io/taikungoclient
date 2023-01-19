@@ -103,6 +103,11 @@ func (o *CloudCredentialsDashboardListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cloud credentials dashboard list o k response
+func (o *CloudCredentialsDashboardListOK) Code() int {
+	return 200
+}
+
 func (o *CloudCredentialsDashboardListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ CloudCredentialsDashboardListBadRequest describes a response with status code 40
 Bad Request
 */
 type CloudCredentialsDashboardListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials dashboard list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *CloudCredentialsDashboardListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cloud credentials dashboard list bad request response
+func (o *CloudCredentialsDashboardListBadRequest) Code() int {
+	return 400
+}
+
 func (o *CloudCredentialsDashboardListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *CloudCredentialsDashboardListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsDashboardListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CloudCredentialsDashboardListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDashboardListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *CloudCredentialsDashboardListUnauthorized) IsServerError() bool {
 // IsCode returns true when this cloud credentials dashboard list unauthorized response a status code equal to that given
 func (o *CloudCredentialsDashboardListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cloud credentials dashboard list unauthorized response
+func (o *CloudCredentialsDashboardListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CloudCredentialsDashboardListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *CloudCredentialsDashboardListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cloud credentials dashboard list forbidden response
+func (o *CloudCredentialsDashboardListForbidden) Code() int {
+	return 403
+}
+
 func (o *CloudCredentialsDashboardListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *CloudCredentialsDashboardListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cloud credentials dashboard list not found response
+func (o *CloudCredentialsDashboardListNotFound) Code() int {
+	return 404
+}
+
 func (o *CloudCredentialsDashboardListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *CloudCredentialsDashboardListInternalServerError) IsServerError() bool 
 // IsCode returns true when this cloud credentials dashboard list internal server error response a status code equal to that given
 func (o *CloudCredentialsDashboardListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cloud credentials dashboard list internal server error response
+func (o *CloudCredentialsDashboardListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CloudCredentialsDashboardListInternalServerError) Error() string {

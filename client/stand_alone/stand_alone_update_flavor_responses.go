@@ -103,6 +103,11 @@ func (o *StandAloneUpdateFlavorOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone update flavor o k response
+func (o *StandAloneUpdateFlavorOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneUpdateFlavorOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ StandAloneUpdateFlavorBadRequest describes a response with status code 400, with
 Bad Request
 */
 type StandAloneUpdateFlavorBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone update flavor bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *StandAloneUpdateFlavorBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone update flavor bad request response
+func (o *StandAloneUpdateFlavorBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneUpdateFlavorBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *StandAloneUpdateFlavorBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneUpdateFlavorBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *StandAloneUpdateFlavorBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneUpdateFlavorBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *StandAloneUpdateFlavorUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone update flavor unauthorized response a status code equal to that given
 func (o *StandAloneUpdateFlavorUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone update flavor unauthorized response
+func (o *StandAloneUpdateFlavorUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneUpdateFlavorUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *StandAloneUpdateFlavorForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone update flavor forbidden response
+func (o *StandAloneUpdateFlavorForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneUpdateFlavorForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *StandAloneUpdateFlavorNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone update flavor not found response
+func (o *StandAloneUpdateFlavorNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneUpdateFlavorNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneUpdateFlavorInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone update flavor internal server error response a status code equal to that given
 func (o *StandAloneUpdateFlavorInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone update flavor internal server error response
+func (o *StandAloneUpdateFlavorInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneUpdateFlavorInternalServerError) Error() string {

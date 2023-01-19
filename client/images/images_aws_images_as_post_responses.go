@@ -103,6 +103,11 @@ func (o *ImagesAwsImagesAsPostOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the images aws images as post o k response
+func (o *ImagesAwsImagesAsPostOK) Code() int {
+	return 200
+}
+
 func (o *ImagesAwsImagesAsPostOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/aws][%d] imagesAwsImagesAsPostOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ ImagesAwsImagesAsPostBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type ImagesAwsImagesAsPostBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images aws images as post bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *ImagesAwsImagesAsPostBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the images aws images as post bad request response
+func (o *ImagesAwsImagesAsPostBadRequest) Code() int {
+	return 400
+}
+
 func (o *ImagesAwsImagesAsPostBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/aws][%d] imagesAwsImagesAsPostBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *ImagesAwsImagesAsPostBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/aws][%d] imagesAwsImagesAsPostBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesAwsImagesAsPostBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ImagesAwsImagesAsPostBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesAwsImagesAsPostBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *ImagesAwsImagesAsPostUnauthorized) IsServerError() bool {
 // IsCode returns true when this images aws images as post unauthorized response a status code equal to that given
 func (o *ImagesAwsImagesAsPostUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the images aws images as post unauthorized response
+func (o *ImagesAwsImagesAsPostUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ImagesAwsImagesAsPostUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *ImagesAwsImagesAsPostForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the images aws images as post forbidden response
+func (o *ImagesAwsImagesAsPostForbidden) Code() int {
+	return 403
+}
+
 func (o *ImagesAwsImagesAsPostForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/aws][%d] imagesAwsImagesAsPostForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *ImagesAwsImagesAsPostNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the images aws images as post not found response
+func (o *ImagesAwsImagesAsPostNotFound) Code() int {
+	return 404
+}
+
 func (o *ImagesAwsImagesAsPostNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/aws][%d] imagesAwsImagesAsPostNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ImagesAwsImagesAsPostInternalServerError) IsServerError() bool {
 // IsCode returns true when this images aws images as post internal server error response a status code equal to that given
 func (o *ImagesAwsImagesAsPostInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the images aws images as post internal server error response
+func (o *ImagesAwsImagesAsPostInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ImagesAwsImagesAsPostInternalServerError) Error() string {

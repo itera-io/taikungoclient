@@ -103,6 +103,11 @@ func (o *KubernetesGetPodListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get pod list o k response
+func (o *KubernetesGetPodListOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetPodListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pod][%d] kubernetesGetPodListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ KubernetesGetPodListBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type KubernetesGetPodListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get pod list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *KubernetesGetPodListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes get pod list bad request response
+func (o *KubernetesGetPodListBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesGetPodListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pod][%d] kubernetesGetPodListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *KubernetesGetPodListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pod][%d] kubernetesGetPodListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetPodListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesGetPodListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetPodListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *KubernetesGetPodListUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes get pod list unauthorized response a status code equal to that given
 func (o *KubernetesGetPodListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes get pod list unauthorized response
+func (o *KubernetesGetPodListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesGetPodListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *KubernetesGetPodListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes get pod list forbidden response
+func (o *KubernetesGetPodListForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesGetPodListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pod][%d] kubernetesGetPodListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *KubernetesGetPodListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get pod list not found response
+func (o *KubernetesGetPodListNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetPodListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pod][%d] kubernetesGetPodListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *KubernetesGetPodListInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get pod list internal server error response a status code equal to that given
 func (o *KubernetesGetPodListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get pod list internal server error response
+func (o *KubernetesGetPodListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetPodListInternalServerError) Error() string {

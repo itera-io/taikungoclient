@@ -103,6 +103,11 @@ func (o *NotificationsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the notifications list o k response
+func (o *NotificationsListOK) Code() int {
+	return 200
+}
+
 func (o *NotificationsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ NotificationsListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type NotificationsListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this notifications list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *NotificationsListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the notifications list bad request response
+func (o *NotificationsListBadRequest) Code() int {
+	return 400
+}
+
 func (o *NotificationsListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *NotificationsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NotificationsListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *NotificationsListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NotificationsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *NotificationsListUnauthorized) IsServerError() bool {
 // IsCode returns true when this notifications list unauthorized response a status code equal to that given
 func (o *NotificationsListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the notifications list unauthorized response
+func (o *NotificationsListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *NotificationsListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *NotificationsListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the notifications list forbidden response
+func (o *NotificationsListForbidden) Code() int {
+	return 403
+}
+
 func (o *NotificationsListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *NotificationsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the notifications list not found response
+func (o *NotificationsListNotFound) Code() int {
+	return 404
+}
+
 func (o *NotificationsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *NotificationsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this notifications list internal server error response a status code equal to that given
 func (o *NotificationsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the notifications list internal server error response
+func (o *NotificationsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *NotificationsListInternalServerError) Error() string {

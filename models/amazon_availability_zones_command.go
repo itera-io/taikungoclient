@@ -23,6 +23,9 @@ type AmazonAvailabilityZonesCommand struct {
 	// aws secret access key
 	AwsSecretAccessKey string `json:"awsSecretAccessKey,omitempty"`
 
+	// cloud Id
+	CloudID int32 `json:"cloudId,omitempty"`
+
 	// region
 	Region string `json:"region,omitempty"`
 }

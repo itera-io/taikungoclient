@@ -103,6 +103,11 @@ func (o *ShowbackSummariesCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the showback summaries create o k response
+func (o *ShowbackSummariesCreateOK) Code() int {
+	return 200
+}
+
 func (o *ShowbackSummariesCreateOK) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ShowbackSummariesCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this showback summaries create bad request response a status code equal to that given
 func (o *ShowbackSummariesCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the showback summaries create bad request response
+func (o *ShowbackSummariesCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *ShowbackSummariesCreateBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ShowbackSummariesCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the showback summaries create unauthorized response
+func (o *ShowbackSummariesCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ShowbackSummariesCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ShowbackSummariesCreateForbidden) IsServerError() bool {
 // IsCode returns true when this showback summaries create forbidden response a status code equal to that given
 func (o *ShowbackSummariesCreateForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the showback summaries create forbidden response
+func (o *ShowbackSummariesCreateForbidden) Code() int {
+	return 403
 }
 
 func (o *ShowbackSummariesCreateForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ShowbackSummariesCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the showback summaries create not found response
+func (o *ShowbackSummariesCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *ShowbackSummariesCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ShowbackSummariesCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this showback summaries create internal server error response a status code equal to that given
 func (o *ShowbackSummariesCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the showback summaries create internal server error response
+func (o *ShowbackSummariesCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ShowbackSummariesCreateInternalServerError) Error() string {

@@ -109,6 +109,11 @@ func (o *AccessProfilesDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the access profiles delete o k response
+func (o *AccessProfilesDeleteOK) Code() int {
+	return 200
+}
+
 func (o *AccessProfilesDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *AccessProfilesDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the access profiles delete no content response
+func (o *AccessProfilesDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *AccessProfilesDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteNoContent ", 204)
 }
@@ -193,7 +203,7 @@ AccessProfilesDeleteBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type AccessProfilesDeleteBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles delete bad request response has a 2xx status code
@@ -221,6 +231,11 @@ func (o *AccessProfilesDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the access profiles delete bad request response
+func (o *AccessProfilesDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *AccessProfilesDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -229,13 +244,13 @@ func (o *AccessProfilesDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AccessProfilesDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AccessProfilesDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -282,6 +297,11 @@ func (o *AccessProfilesDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this access profiles delete unauthorized response a status code equal to that given
 func (o *AccessProfilesDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the access profiles delete unauthorized response
+func (o *AccessProfilesDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AccessProfilesDeleteUnauthorized) Error() string {
@@ -347,6 +367,11 @@ func (o *AccessProfilesDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the access profiles delete forbidden response
+func (o *AccessProfilesDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *AccessProfilesDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -410,6 +435,11 @@ func (o *AccessProfilesDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the access profiles delete not found response
+func (o *AccessProfilesDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *AccessProfilesDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *AccessProfilesDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this access profiles delete internal server error response a status code equal to that given
 func (o *AccessProfilesDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the access profiles delete internal server error response
+func (o *AccessProfilesDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AccessProfilesDeleteInternalServerError) Error() string {

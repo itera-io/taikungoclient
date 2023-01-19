@@ -75,7 +75,7 @@ GoogleCloudZoneListOK describes a response with status code 200, with default he
 Success
 */
 type GoogleCloudZoneListOK struct {
-	Payload []string
+	Payload *models.AzResult
 }
 
 // IsSuccess returns true when this google cloud zone list o k response has a 2xx status code
@@ -103,6 +103,11 @@ func (o *GoogleCloudZoneListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the google cloud zone list o k response
+func (o *GoogleCloudZoneListOK) Code() int {
+	return 200
+}
+
 func (o *GoogleCloudZoneListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListOK  %+v", 200, o.Payload)
 }
@@ -111,14 +116,16 @@ func (o *GoogleCloudZoneListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListOK  %+v", 200, o.Payload)
 }
 
-func (o *GoogleCloudZoneListOK) GetPayload() []string {
+func (o *GoogleCloudZoneListOK) GetPayload() *models.AzResult {
 	return o.Payload
 }
 
 func (o *GoogleCloudZoneListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.AzResult)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -136,7 +143,7 @@ GoogleCloudZoneListBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type GoogleCloudZoneListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud zone list bad request response has a 2xx status code
@@ -164,6 +171,11 @@ func (o *GoogleCloudZoneListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the google cloud zone list bad request response
+func (o *GoogleCloudZoneListBadRequest) Code() int {
+	return 400
+}
+
 func (o *GoogleCloudZoneListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +184,13 @@ func (o *GoogleCloudZoneListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GoogleCloudZoneListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *GoogleCloudZoneListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudZoneListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +237,11 @@ func (o *GoogleCloudZoneListUnauthorized) IsServerError() bool {
 // IsCode returns true when this google cloud zone list unauthorized response a status code equal to that given
 func (o *GoogleCloudZoneListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the google cloud zone list unauthorized response
+func (o *GoogleCloudZoneListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GoogleCloudZoneListUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *GoogleCloudZoneListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the google cloud zone list forbidden response
+func (o *GoogleCloudZoneListForbidden) Code() int {
+	return 403
+}
+
 func (o *GoogleCloudZoneListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *GoogleCloudZoneListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the google cloud zone list not found response
+func (o *GoogleCloudZoneListNotFound) Code() int {
+	return 404
+}
+
 func (o *GoogleCloudZoneListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *GoogleCloudZoneListInternalServerError) IsServerError() bool {
 // IsCode returns true when this google cloud zone list internal server error response a status code equal to that given
 func (o *GoogleCloudZoneListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the google cloud zone list internal server error response
+func (o *GoogleCloudZoneListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GoogleCloudZoneListInternalServerError) Error() string {

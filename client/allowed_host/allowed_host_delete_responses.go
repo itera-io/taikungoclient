@@ -109,6 +109,11 @@ func (o *AllowedHostDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the allowed host delete o k response
+func (o *AllowedHostDeleteOK) Code() int {
+	return 200
+}
+
 func (o *AllowedHostDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *AllowedHostDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the allowed host delete no content response
+func (o *AllowedHostDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *AllowedHostDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteNoContent ", 204)
 }
@@ -193,7 +203,7 @@ AllowedHostDeleteBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AllowedHostDeleteBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this allowed host delete bad request response has a 2xx status code
@@ -221,6 +231,11 @@ func (o *AllowedHostDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the allowed host delete bad request response
+func (o *AllowedHostDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *AllowedHostDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -229,13 +244,13 @@ func (o *AllowedHostDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AllowedHostDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AllowedHostDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AllowedHostDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -282,6 +297,11 @@ func (o *AllowedHostDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this allowed host delete unauthorized response a status code equal to that given
 func (o *AllowedHostDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the allowed host delete unauthorized response
+func (o *AllowedHostDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AllowedHostDeleteUnauthorized) Error() string {
@@ -347,6 +367,11 @@ func (o *AllowedHostDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the allowed host delete forbidden response
+func (o *AllowedHostDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *AllowedHostDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -410,6 +435,11 @@ func (o *AllowedHostDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the allowed host delete not found response
+func (o *AllowedHostDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *AllowedHostDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *AllowedHostDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this allowed host delete internal server error response a status code equal to that given
 func (o *AllowedHostDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the allowed host delete internal server error response
+func (o *AllowedHostDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AllowedHostDeleteInternalServerError) Error() string {

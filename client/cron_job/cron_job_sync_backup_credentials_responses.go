@@ -103,6 +103,11 @@ func (o *CronJobSyncBackupCredentialsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job sync backup credentials o k response
+func (o *CronJobSyncBackupCredentialsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobSyncBackupCredentialsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CronJobSyncBackupCredentialsBadRequest describes a response with status code 400
 Bad Request
 */
 type CronJobSyncBackupCredentialsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job sync backup credentials bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CronJobSyncBackupCredentialsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cron job sync backup credentials bad request response
+func (o *CronJobSyncBackupCredentialsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CronJobSyncBackupCredentialsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CronJobSyncBackupCredentialsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobSyncBackupCredentialsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CronJobSyncBackupCredentialsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobSyncBackupCredentialsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CronJobSyncBackupCredentialsUnauthorized) IsServerError() bool {
 // IsCode returns true when this cron job sync backup credentials unauthorized response a status code equal to that given
 func (o *CronJobSyncBackupCredentialsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cron job sync backup credentials unauthorized response
+func (o *CronJobSyncBackupCredentialsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CronJobSyncBackupCredentialsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CronJobSyncBackupCredentialsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cron job sync backup credentials forbidden response
+func (o *CronJobSyncBackupCredentialsForbidden) Code() int {
+	return 403
+}
+
 func (o *CronJobSyncBackupCredentialsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CronJobSyncBackupCredentialsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job sync backup credentials not found response
+func (o *CronJobSyncBackupCredentialsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobSyncBackupCredentialsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobSyncBackupCredentialsInternalServerError) IsServerError() bool {
 // IsCode returns true when this cron job sync backup credentials internal server error response a status code equal to that given
 func (o *CronJobSyncBackupCredentialsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job sync backup credentials internal server error response
+func (o *CronJobSyncBackupCredentialsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobSyncBackupCredentialsInternalServerError) Error() string {

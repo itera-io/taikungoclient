@@ -103,6 +103,11 @@ func (o *UserProjectsBindUsersOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the user projects bind users o k response
+func (o *UserProjectsBindUsersOK) Code() int {
+	return 200
+}
+
 func (o *UserProjectsBindUsersOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindusers][%d] userProjectsBindUsersOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ UserProjectsBindUsersBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type UserProjectsBindUsersBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user projects bind users bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *UserProjectsBindUsersBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the user projects bind users bad request response
+func (o *UserProjectsBindUsersBadRequest) Code() int {
+	return 400
+}
+
 func (o *UserProjectsBindUsersBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindusers][%d] userProjectsBindUsersBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *UserProjectsBindUsersBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindusers][%d] userProjectsBindUsersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserProjectsBindUsersBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *UserProjectsBindUsersBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserProjectsBindUsersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *UserProjectsBindUsersUnauthorized) IsServerError() bool {
 // IsCode returns true when this user projects bind users unauthorized response a status code equal to that given
 func (o *UserProjectsBindUsersUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the user projects bind users unauthorized response
+func (o *UserProjectsBindUsersUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UserProjectsBindUsersUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *UserProjectsBindUsersForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the user projects bind users forbidden response
+func (o *UserProjectsBindUsersForbidden) Code() int {
+	return 403
+}
+
 func (o *UserProjectsBindUsersForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindusers][%d] userProjectsBindUsersForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *UserProjectsBindUsersNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user projects bind users not found response
+func (o *UserProjectsBindUsersNotFound) Code() int {
+	return 404
+}
+
 func (o *UserProjectsBindUsersNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindusers][%d] userProjectsBindUsersNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *UserProjectsBindUsersInternalServerError) IsServerError() bool {
 // IsCode returns true when this user projects bind users internal server error response a status code equal to that given
 func (o *UserProjectsBindUsersInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the user projects bind users internal server error response
+func (o *UserProjectsBindUsersInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UserProjectsBindUsersInternalServerError) Error() string {

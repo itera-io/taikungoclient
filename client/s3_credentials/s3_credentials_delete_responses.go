@@ -109,6 +109,11 @@ func (o *S3CredentialsDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the s3 credentials delete o k response
+func (o *S3CredentialsDeleteOK) Code() int {
+	return 200
+}
+
 func (o *S3CredentialsDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *S3CredentialsDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the s3 credentials delete no content response
+func (o *S3CredentialsDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *S3CredentialsDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteNoContent ", 204)
 }
@@ -193,7 +203,7 @@ S3CredentialsDeleteBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type S3CredentialsDeleteBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials delete bad request response has a 2xx status code
@@ -221,6 +231,11 @@ func (o *S3CredentialsDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the s3 credentials delete bad request response
+func (o *S3CredentialsDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *S3CredentialsDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -229,13 +244,13 @@ func (o *S3CredentialsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *S3CredentialsDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -282,6 +297,11 @@ func (o *S3CredentialsDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this s3 credentials delete unauthorized response a status code equal to that given
 func (o *S3CredentialsDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the s3 credentials delete unauthorized response
+func (o *S3CredentialsDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *S3CredentialsDeleteUnauthorized) Error() string {
@@ -347,6 +367,11 @@ func (o *S3CredentialsDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the s3 credentials delete forbidden response
+func (o *S3CredentialsDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *S3CredentialsDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -410,6 +435,11 @@ func (o *S3CredentialsDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the s3 credentials delete not found response
+func (o *S3CredentialsDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *S3CredentialsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *S3CredentialsDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this s3 credentials delete internal server error response a status code equal to that given
 func (o *S3CredentialsDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the s3 credentials delete internal server error response
+func (o *S3CredentialsDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *S3CredentialsDeleteInternalServerError) Error() string {

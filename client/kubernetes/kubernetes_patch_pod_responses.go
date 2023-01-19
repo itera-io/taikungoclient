@@ -103,6 +103,11 @@ func (o *KubernetesPatchPodOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes patch pod o k response
+func (o *KubernetesPatchPodOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesPatchPodOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pod][%d] kubernetesPatchPodOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesPatchPodBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubernetesPatchPodBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch pod bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesPatchPodBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes patch pod bad request response
+func (o *KubernetesPatchPodBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesPatchPodBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pod][%d] kubernetesPatchPodBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *KubernetesPatchPodBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pod][%d] kubernetesPatchPodBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchPodBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesPatchPodBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchPodBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *KubernetesPatchPodUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes patch pod unauthorized response a status code equal to that given
 func (o *KubernetesPatchPodUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes patch pod unauthorized response
+func (o *KubernetesPatchPodUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesPatchPodUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *KubernetesPatchPodForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes patch pod forbidden response
+func (o *KubernetesPatchPodForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesPatchPodForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pod][%d] kubernetesPatchPodForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *KubernetesPatchPodNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes patch pod not found response
+func (o *KubernetesPatchPodNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesPatchPodNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pod][%d] kubernetesPatchPodNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesPatchPodInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes patch pod internal server error response a status code equal to that given
 func (o *KubernetesPatchPodInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes patch pod internal server error response
+func (o *KubernetesPatchPodInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesPatchPodInternalServerError) Error() string {

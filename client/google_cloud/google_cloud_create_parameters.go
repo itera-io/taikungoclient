@@ -62,6 +62,11 @@ GoogleCloudCreateParams contains all the parameters to send to the API endpoint
 */
 type GoogleCloudCreateParams struct {
 
+	// AzCount.
+	//
+	// Format: int32
+	AzCount *int32
+
 	// BillingAccountID.
 	BillingAccountID *string
 
@@ -84,9 +89,6 @@ type GoogleCloudCreateParams struct {
 
 	// Region.
 	Region *string
-
-	// Zone.
-	Zone *string
 
 	// V.
 	V string
@@ -142,6 +144,17 @@ func (o *GoogleCloudCreateParams) WithHTTPClient(client *http.Client) *GoogleClo
 // SetHTTPClient adds the HTTPClient to the google cloud create params
 func (o *GoogleCloudCreateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithAzCount adds the azCount to the google cloud create params
+func (o *GoogleCloudCreateParams) WithAzCount(azCount *int32) *GoogleCloudCreateParams {
+	o.SetAzCount(azCount)
+	return o
+}
+
+// SetAzCount adds the azCount to the google cloud create params
+func (o *GoogleCloudCreateParams) SetAzCount(azCount *int32) {
+	o.AzCount = azCount
 }
 
 // WithBillingAccountID adds the billingAccountID to the google cloud create params
@@ -221,17 +234,6 @@ func (o *GoogleCloudCreateParams) SetRegion(region *string) {
 	o.Region = region
 }
 
-// WithZone adds the zone to the google cloud create params
-func (o *GoogleCloudCreateParams) WithZone(zone *string) *GoogleCloudCreateParams {
-	o.SetZone(zone)
-	return o
-}
-
-// SetZone adds the zone to the google cloud create params
-func (o *GoogleCloudCreateParams) SetZone(zone *string) {
-	o.Zone = zone
-}
-
 // WithV adds the v to the google cloud create params
 func (o *GoogleCloudCreateParams) WithV(v string) *GoogleCloudCreateParams {
 	o.SetV(v)
@@ -250,6 +252,21 @@ func (o *GoogleCloudCreateParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
+
+	if o.AzCount != nil {
+
+		// form param AzCount
+		var frAzCount int32
+		if o.AzCount != nil {
+			frAzCount = *o.AzCount
+		}
+		fAzCount := swag.FormatInt32(frAzCount)
+		if fAzCount != "" {
+			if err := r.SetFormParam("AzCount", fAzCount); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.BillingAccountID != nil {
 
@@ -346,21 +363,6 @@ func (o *GoogleCloudCreateParams) WriteToRequest(r runtime.ClientRequest, reg st
 		fRegion := frRegion
 		if fRegion != "" {
 			if err := r.SetFormParam("Region", fRegion); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.Zone != nil {
-
-		// form param Zone
-		var frZone string
-		if o.Zone != nil {
-			frZone = *o.Zone
-		}
-		fZone := frZone
-		if fZone != "" {
-			if err := r.SetFormParam("Zone", fZone); err != nil {
 				return err
 			}
 		}

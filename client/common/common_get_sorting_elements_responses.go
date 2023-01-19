@@ -103,6 +103,11 @@ func (o *CommonGetSortingElementsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the common get sorting elements o k response
+func (o *CommonGetSortingElementsOK) Code() int {
+	return 200
+}
+
 func (o *CommonGetSortingElementsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CommonGetSortingElementsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type CommonGetSortingElementsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this common get sorting elements bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CommonGetSortingElementsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the common get sorting elements bad request response
+func (o *CommonGetSortingElementsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CommonGetSortingElementsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CommonGetSortingElementsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CommonGetSortingElementsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CommonGetSortingElementsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CommonGetSortingElementsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CommonGetSortingElementsUnauthorized) IsServerError() bool {
 // IsCode returns true when this common get sorting elements unauthorized response a status code equal to that given
 func (o *CommonGetSortingElementsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the common get sorting elements unauthorized response
+func (o *CommonGetSortingElementsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CommonGetSortingElementsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CommonGetSortingElementsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the common get sorting elements forbidden response
+func (o *CommonGetSortingElementsForbidden) Code() int {
+	return 403
+}
+
 func (o *CommonGetSortingElementsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CommonGetSortingElementsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the common get sorting elements not found response
+func (o *CommonGetSortingElementsNotFound) Code() int {
+	return 404
+}
+
 func (o *CommonGetSortingElementsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CommonGetSortingElementsInternalServerError) IsServerError() bool {
 // IsCode returns true when this common get sorting elements internal server error response a status code equal to that given
 func (o *CommonGetSortingElementsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the common get sorting elements internal server error response
+func (o *CommonGetSortingElementsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CommonGetSortingElementsInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *OpsCredentialsMakeDefaultOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ops credentials make default o k response
+func (o *OpsCredentialsMakeDefaultOK) Code() int {
+	return 200
+}
+
 func (o *OpsCredentialsMakeDefaultOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ OpsCredentialsMakeDefaultBadRequest describes a response with status code 400, w
 Bad Request
 */
 type OpsCredentialsMakeDefaultBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials make default bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *OpsCredentialsMakeDefaultBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the ops credentials make default bad request response
+func (o *OpsCredentialsMakeDefaultBadRequest) Code() int {
+	return 400
+}
+
 func (o *OpsCredentialsMakeDefaultBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *OpsCredentialsMakeDefaultBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsMakeDefaultBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OpsCredentialsMakeDefaultBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsMakeDefaultBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *OpsCredentialsMakeDefaultUnauthorized) IsServerError() bool {
 // IsCode returns true when this ops credentials make default unauthorized response a status code equal to that given
 func (o *OpsCredentialsMakeDefaultUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the ops credentials make default unauthorized response
+func (o *OpsCredentialsMakeDefaultUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OpsCredentialsMakeDefaultUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *OpsCredentialsMakeDefaultForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the ops credentials make default forbidden response
+func (o *OpsCredentialsMakeDefaultForbidden) Code() int {
+	return 403
+}
+
 func (o *OpsCredentialsMakeDefaultForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *OpsCredentialsMakeDefaultNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ops credentials make default not found response
+func (o *OpsCredentialsMakeDefaultNotFound) Code() int {
+	return 404
+}
+
 func (o *OpsCredentialsMakeDefaultNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpsCredentialsMakeDefaultInternalServerError) IsServerError() bool {
 // IsCode returns true when this ops credentials make default internal server error response a status code equal to that given
 func (o *OpsCredentialsMakeDefaultInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ops credentials make default internal server error response
+func (o *OpsCredentialsMakeDefaultInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpsCredentialsMakeDefaultInternalServerError) Error() string {

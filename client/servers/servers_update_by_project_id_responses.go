@@ -103,6 +103,11 @@ func (o *ServersUpdateByProjectIDOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the servers update by project Id o k response
+func (o *ServersUpdateByProjectIDOK) Code() int {
+	return 200
+}
+
 func (o *ServersUpdateByProjectIDOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ServersUpdateByProjectIDBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type ServersUpdateByProjectIDBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers update by project Id bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ServersUpdateByProjectIDBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the servers update by project Id bad request response
+func (o *ServersUpdateByProjectIDBadRequest) Code() int {
+	return 400
+}
+
 func (o *ServersUpdateByProjectIDBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *ServersUpdateByProjectIDBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersUpdateByProjectIDBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ServersUpdateByProjectIDBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersUpdateByProjectIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *ServersUpdateByProjectIDUnauthorized) IsServerError() bool {
 // IsCode returns true when this servers update by project Id unauthorized response a status code equal to that given
 func (o *ServersUpdateByProjectIDUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the servers update by project Id unauthorized response
+func (o *ServersUpdateByProjectIDUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ServersUpdateByProjectIDUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *ServersUpdateByProjectIDForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the servers update by project Id forbidden response
+func (o *ServersUpdateByProjectIDForbidden) Code() int {
+	return 403
+}
+
 func (o *ServersUpdateByProjectIDForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *ServersUpdateByProjectIDNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the servers update by project Id not found response
+func (o *ServersUpdateByProjectIDNotFound) Code() int {
+	return 404
+}
+
 func (o *ServersUpdateByProjectIDNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ServersUpdateByProjectIDInternalServerError) IsServerError() bool {
 // IsCode returns true when this servers update by project Id internal server error response a status code equal to that given
 func (o *ServersUpdateByProjectIDInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the servers update by project Id internal server error response
+func (o *ServersUpdateByProjectIDInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ServersUpdateByProjectIDInternalServerError) Error() string {

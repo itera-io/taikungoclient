@@ -103,6 +103,11 @@ func (o *CronJobDeletePendingOrganizationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cron job delete pending organizations o k response
+func (o *CronJobDeletePendingOrganizationsOK) Code() int {
+	return 200
+}
+
 func (o *CronJobDeletePendingOrganizationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CronJobDeletePendingOrganizationsBadRequest describes a response with status cod
 Bad Request
 */
 type CronJobDeletePendingOrganizationsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete pending organizations bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CronJobDeletePendingOrganizationsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cron job delete pending organizations bad request response
+func (o *CronJobDeletePendingOrganizationsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CronJobDeletePendingOrganizationsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CronJobDeletePendingOrganizationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeletePendingOrganizationsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CronJobDeletePendingOrganizationsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeletePendingOrganizationsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CronJobDeletePendingOrganizationsUnauthorized) IsServerError() bool {
 // IsCode returns true when this cron job delete pending organizations unauthorized response a status code equal to that given
 func (o *CronJobDeletePendingOrganizationsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cron job delete pending organizations unauthorized response
+func (o *CronJobDeletePendingOrganizationsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CronJobDeletePendingOrganizationsUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CronJobDeletePendingOrganizationsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cron job delete pending organizations forbidden response
+func (o *CronJobDeletePendingOrganizationsForbidden) Code() int {
+	return 403
+}
+
 func (o *CronJobDeletePendingOrganizationsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CronJobDeletePendingOrganizationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cron job delete pending organizations not found response
+func (o *CronJobDeletePendingOrganizationsNotFound) Code() int {
+	return 404
+}
+
 func (o *CronJobDeletePendingOrganizationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CronJobDeletePendingOrganizationsInternalServerError) IsServerError() b
 // IsCode returns true when this cron job delete pending organizations internal server error response a status code equal to that given
 func (o *CronJobDeletePendingOrganizationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cron job delete pending organizations internal server error response
+func (o *CronJobDeletePendingOrganizationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CronJobDeletePendingOrganizationsInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *SearchNodesListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search nodes list o k response
+func (o *SearchNodesListOK) Code() int {
+	return 200
+}
+
 func (o *SearchNodesListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/nodes][%d] searchNodesListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ SearchNodesListBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type SearchNodesListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search nodes list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *SearchNodesListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the search nodes list bad request response
+func (o *SearchNodesListBadRequest) Code() int {
+	return 400
+}
+
 func (o *SearchNodesListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/nodes][%d] searchNodesListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *SearchNodesListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/nodes][%d] searchNodesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchNodesListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SearchNodesListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchNodesListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *SearchNodesListUnauthorized) IsServerError() bool {
 // IsCode returns true when this search nodes list unauthorized response a status code equal to that given
 func (o *SearchNodesListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the search nodes list unauthorized response
+func (o *SearchNodesListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SearchNodesListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *SearchNodesListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the search nodes list forbidden response
+func (o *SearchNodesListForbidden) Code() int {
+	return 403
+}
+
 func (o *SearchNodesListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/nodes][%d] searchNodesListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *SearchNodesListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search nodes list not found response
+func (o *SearchNodesListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchNodesListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/nodes][%d] searchNodesListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchNodesListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search nodes list internal server error response a status code equal to that given
 func (o *SearchNodesListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search nodes list internal server error response
+func (o *SearchNodesListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchNodesListInternalServerError) Error() string {

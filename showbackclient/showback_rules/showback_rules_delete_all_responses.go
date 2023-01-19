@@ -103,6 +103,11 @@ func (o *ShowbackRulesDeleteAllOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the showback rules delete all o k response
+func (o *ShowbackRulesDeleteAllOK) Code() int {
+	return 200
+}
+
 func (o *ShowbackRulesDeleteAllOK) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllOK  %+v", 200, o.Payload)
 }
@@ -162,6 +167,11 @@ func (o *ShowbackRulesDeleteAllBadRequest) IsServerError() bool {
 // IsCode returns true when this showback rules delete all bad request response a status code equal to that given
 func (o *ShowbackRulesDeleteAllBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the showback rules delete all bad request response
+func (o *ShowbackRulesDeleteAllBadRequest) Code() int {
+	return 400
 }
 
 func (o *ShowbackRulesDeleteAllBadRequest) Error() string {
@@ -227,6 +237,11 @@ func (o *ShowbackRulesDeleteAllUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the showback rules delete all unauthorized response
+func (o *ShowbackRulesDeleteAllUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ShowbackRulesDeleteAllUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllUnauthorized  %+v", 401, o.Payload)
 }
@@ -288,6 +303,11 @@ func (o *ShowbackRulesDeleteAllForbidden) IsServerError() bool {
 // IsCode returns true when this showback rules delete all forbidden response a status code equal to that given
 func (o *ShowbackRulesDeleteAllForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the showback rules delete all forbidden response
+func (o *ShowbackRulesDeleteAllForbidden) Code() int {
+	return 403
 }
 
 func (o *ShowbackRulesDeleteAllForbidden) Error() string {
@@ -353,6 +373,11 @@ func (o *ShowbackRulesDeleteAllNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the showback rules delete all not found response
+func (o *ShowbackRulesDeleteAllNotFound) Code() int {
+	return 404
+}
+
 func (o *ShowbackRulesDeleteAllNotFound) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ShowbackRulesDeleteAllInternalServerError) IsServerError() bool {
 // IsCode returns true when this showback rules delete all internal server error response a status code equal to that given
 func (o *ShowbackRulesDeleteAllInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the showback rules delete all internal server error response
+func (o *ShowbackRulesDeleteAllInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ShowbackRulesDeleteAllInternalServerError) Error() string {

@@ -108,6 +108,11 @@ func (o *ProjectsDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects delete o k response
+func (o *ProjectsDeleteOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/delete][%d] projectsDeleteOK ", 200)
 }
@@ -159,6 +164,11 @@ func (o *ProjectsDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the projects delete no content response
+func (o *ProjectsDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *ProjectsDeleteNoContent) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/delete][%d] projectsDeleteNoContent ", 204)
 }
@@ -183,7 +193,7 @@ ProjectsDeleteBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type ProjectsDeleteBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects delete bad request response has a 2xx status code
@@ -211,6 +221,11 @@ func (o *ProjectsDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the projects delete bad request response
+func (o *ProjectsDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectsDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/delete][%d] projectsDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -219,13 +234,13 @@ func (o *ProjectsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/delete][%d] projectsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ProjectsDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -272,6 +287,11 @@ func (o *ProjectsDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this projects delete unauthorized response a status code equal to that given
 func (o *ProjectsDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the projects delete unauthorized response
+func (o *ProjectsDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectsDeleteUnauthorized) Error() string {
@@ -337,6 +357,11 @@ func (o *ProjectsDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the projects delete forbidden response
+func (o *ProjectsDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectsDeleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/delete][%d] projectsDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -400,6 +425,11 @@ func (o *ProjectsDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects delete not found response
+func (o *ProjectsDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/delete][%d] projectsDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -460,6 +490,11 @@ func (o *ProjectsDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects delete internal server error response a status code equal to that given
 func (o *ProjectsDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects delete internal server error response
+func (o *ProjectsDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsDeleteInternalServerError) Error() string {

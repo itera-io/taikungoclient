@@ -103,6 +103,11 @@ func (o *BackupDisableBackupOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the backup disable backup o k response
+func (o *BackupDisableBackupOK) Code() int {
+	return 200
+}
+
 func (o *BackupDisableBackupOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/disablebackup][%d] backupDisableBackupOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ BackupDisableBackupBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type BackupDisableBackupBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup disable backup bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *BackupDisableBackupBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the backup disable backup bad request response
+func (o *BackupDisableBackupBadRequest) Code() int {
+	return 400
+}
+
 func (o *BackupDisableBackupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/disablebackup][%d] backupDisableBackupBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *BackupDisableBackupBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/disablebackup][%d] backupDisableBackupBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupDisableBackupBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *BackupDisableBackupBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupDisableBackupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *BackupDisableBackupUnauthorized) IsServerError() bool {
 // IsCode returns true when this backup disable backup unauthorized response a status code equal to that given
 func (o *BackupDisableBackupUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the backup disable backup unauthorized response
+func (o *BackupDisableBackupUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BackupDisableBackupUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *BackupDisableBackupForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the backup disable backup forbidden response
+func (o *BackupDisableBackupForbidden) Code() int {
+	return 403
+}
+
 func (o *BackupDisableBackupForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/disablebackup][%d] backupDisableBackupForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *BackupDisableBackupNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the backup disable backup not found response
+func (o *BackupDisableBackupNotFound) Code() int {
+	return 404
+}
+
 func (o *BackupDisableBackupNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/disablebackup][%d] backupDisableBackupNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *BackupDisableBackupInternalServerError) IsServerError() bool {
 // IsCode returns true when this backup disable backup internal server error response a status code equal to that given
 func (o *BackupDisableBackupInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the backup disable backup internal server error response
+func (o *BackupDisableBackupInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BackupDisableBackupInternalServerError) Error() string {

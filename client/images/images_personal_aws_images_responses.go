@@ -103,6 +103,11 @@ func (o *ImagesPersonalAwsImagesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the images personal aws images o k response
+func (o *ImagesPersonalAwsImagesOK) Code() int {
+	return 200
+}
+
 func (o *ImagesPersonalAwsImagesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ImagesPersonalAwsImagesBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type ImagesPersonalAwsImagesBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images personal aws images bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ImagesPersonalAwsImagesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the images personal aws images bad request response
+func (o *ImagesPersonalAwsImagesBadRequest) Code() int {
+	return 400
+}
+
 func (o *ImagesPersonalAwsImagesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *ImagesPersonalAwsImagesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesPersonalAwsImagesBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ImagesPersonalAwsImagesBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesPersonalAwsImagesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *ImagesPersonalAwsImagesUnauthorized) IsServerError() bool {
 // IsCode returns true when this images personal aws images unauthorized response a status code equal to that given
 func (o *ImagesPersonalAwsImagesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the images personal aws images unauthorized response
+func (o *ImagesPersonalAwsImagesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ImagesPersonalAwsImagesUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *ImagesPersonalAwsImagesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the images personal aws images forbidden response
+func (o *ImagesPersonalAwsImagesForbidden) Code() int {
+	return 403
+}
+
 func (o *ImagesPersonalAwsImagesForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *ImagesPersonalAwsImagesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the images personal aws images not found response
+func (o *ImagesPersonalAwsImagesNotFound) Code() int {
+	return 404
+}
+
 func (o *ImagesPersonalAwsImagesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ImagesPersonalAwsImagesInternalServerError) IsServerError() bool {
 // IsCode returns true when this images personal aws images internal server error response a status code equal to that given
 func (o *ImagesPersonalAwsImagesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the images personal aws images internal server error response
+func (o *ImagesPersonalAwsImagesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ImagesPersonalAwsImagesInternalServerError) Error() string {

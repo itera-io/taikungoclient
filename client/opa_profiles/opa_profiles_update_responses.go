@@ -103,6 +103,11 @@ func (o *OpaProfilesUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the opa profiles update o k response
+func (o *OpaProfilesUpdateOK) Code() int {
+	return 200
+}
+
 func (o *OpaProfilesUpdateOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/OpaProfiles][%d] opaProfilesUpdateOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ OpaProfilesUpdateBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type OpaProfilesUpdateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles update bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *OpaProfilesUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the opa profiles update bad request response
+func (o *OpaProfilesUpdateBadRequest) Code() int {
+	return 400
+}
+
 func (o *OpaProfilesUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/OpaProfiles][%d] opaProfilesUpdateBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *OpaProfilesUpdateBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/OpaProfiles][%d] opaProfilesUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesUpdateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OpaProfilesUpdateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *OpaProfilesUpdateUnauthorized) IsServerError() bool {
 // IsCode returns true when this opa profiles update unauthorized response a status code equal to that given
 func (o *OpaProfilesUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the opa profiles update unauthorized response
+func (o *OpaProfilesUpdateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OpaProfilesUpdateUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *OpaProfilesUpdateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the opa profiles update forbidden response
+func (o *OpaProfilesUpdateForbidden) Code() int {
+	return 403
+}
+
 func (o *OpaProfilesUpdateForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/OpaProfiles][%d] opaProfilesUpdateForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *OpaProfilesUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the opa profiles update not found response
+func (o *OpaProfilesUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *OpaProfilesUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/OpaProfiles][%d] opaProfilesUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *OpaProfilesUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this opa profiles update internal server error response a status code equal to that given
 func (o *OpaProfilesUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the opa profiles update internal server error response
+func (o *OpaProfilesUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpaProfilesUpdateInternalServerError) Error() string {

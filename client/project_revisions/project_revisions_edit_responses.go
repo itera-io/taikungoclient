@@ -103,6 +103,11 @@ func (o *ProjectRevisionsEditOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project revisions edit o k response
+func (o *ProjectRevisionsEditOK) Code() int {
+	return 200
+}
+
 func (o *ProjectRevisionsEditOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectRevisionsEditBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type ProjectRevisionsEditBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project revisions edit bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectRevisionsEditBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the project revisions edit bad request response
+func (o *ProjectRevisionsEditBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectRevisionsEditBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *ProjectRevisionsEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectRevisionsEditBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ProjectRevisionsEditBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectRevisionsEditBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *ProjectRevisionsEditUnauthorized) IsServerError() bool {
 // IsCode returns true when this project revisions edit unauthorized response a status code equal to that given
 func (o *ProjectRevisionsEditUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the project revisions edit unauthorized response
+func (o *ProjectRevisionsEditUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectRevisionsEditUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *ProjectRevisionsEditForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the project revisions edit forbidden response
+func (o *ProjectRevisionsEditForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectRevisionsEditForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *ProjectRevisionsEditNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project revisions edit not found response
+func (o *ProjectRevisionsEditNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectRevisionsEditNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *ProjectRevisionsEditInternalServerError) IsServerError() bool {
 // IsCode returns true when this project revisions edit internal server error response a status code equal to that given
 func (o *ProjectRevisionsEditInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project revisions edit internal server error response
+func (o *ProjectRevisionsEditInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectRevisionsEditInternalServerError) Error() string {

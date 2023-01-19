@@ -40,6 +40,8 @@ type ClientService interface {
 
 	ProjectGroupsListByUserGroupID(params *ProjectGroupsListByUserGroupIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectGroupsListByUserGroupIDOK, error)
 
+	ProjectGroupsProjectListByProjectGroupID(params *ProjectGroupsProjectListByProjectGroupIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectGroupsProjectListByProjectGroupIDOK, error)
+
 	ProjectGroupsUpdate(params *ProjectGroupsUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectGroupsUpdateOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -124,7 +126,7 @@ func (a *Client) ProjectGroupsCreate(params *ProjectGroupsCreateParams, authInfo
 }
 
 /*
-ProjectGroupsDelete removes project group
+ProjectGroupsDelete removes project group s
 */
 func (a *Client) ProjectGroupsDelete(params *ProjectGroupsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectGroupsDeleteOK, *ProjectGroupsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -134,9 +136,9 @@ func (a *Client) ProjectGroupsDelete(params *ProjectGroupsDeleteParams, authInfo
 	op := &runtime.ClientOperation{
 		ID:                 "ProjectGroups_Delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v{v}/ProjectGroups/{ProjectGroupId}",
+		PathPattern:        "/api/v{v}/ProjectGroups",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectGroupsDeleteReader{formats: a.formats},
@@ -238,6 +240,45 @@ func (a *Client) ProjectGroupsListByUserGroupID(params *ProjectGroupsListByUserG
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for ProjectGroups_ListByUserGroupId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ProjectGroupsProjectListByProjectGroupID retrieves list of projects by project group id
+*/
+func (a *Client) ProjectGroupsProjectListByProjectGroupID(params *ProjectGroupsProjectListByProjectGroupIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectGroupsProjectListByProjectGroupIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectGroupsProjectListByProjectGroupIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "ProjectGroups_ProjectListByProjectGroupId",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/ProjectGroups/{projectGroupId}/projects",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectGroupsProjectListByProjectGroupIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ProjectGroupsProjectListByProjectGroupIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for ProjectGroups_ProjectListByProjectGroupId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

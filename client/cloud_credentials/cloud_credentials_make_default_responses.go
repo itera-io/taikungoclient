@@ -103,6 +103,11 @@ func (o *CloudCredentialsMakeDefaultOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the cloud credentials make default o k response
+func (o *CloudCredentialsMakeDefaultOK) Code() int {
+	return 200
+}
+
 func (o *CloudCredentialsMakeDefaultOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CloudCredentialsMakeDefaultBadRequest describes a response with status code 400,
 Bad Request
 */
 type CloudCredentialsMakeDefaultBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials make default bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CloudCredentialsMakeDefaultBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cloud credentials make default bad request response
+func (o *CloudCredentialsMakeDefaultBadRequest) Code() int {
+	return 400
+}
+
 func (o *CloudCredentialsMakeDefaultBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CloudCredentialsMakeDefaultBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsMakeDefaultBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CloudCredentialsMakeDefaultBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsMakeDefaultBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CloudCredentialsMakeDefaultUnauthorized) IsServerError() bool {
 // IsCode returns true when this cloud credentials make default unauthorized response a status code equal to that given
 func (o *CloudCredentialsMakeDefaultUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cloud credentials make default unauthorized response
+func (o *CloudCredentialsMakeDefaultUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CloudCredentialsMakeDefaultUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CloudCredentialsMakeDefaultForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the cloud credentials make default forbidden response
+func (o *CloudCredentialsMakeDefaultForbidden) Code() int {
+	return 403
+}
+
 func (o *CloudCredentialsMakeDefaultForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CloudCredentialsMakeDefaultNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cloud credentials make default not found response
+func (o *CloudCredentialsMakeDefaultNotFound) Code() int {
+	return 404
+}
+
 func (o *CloudCredentialsMakeDefaultNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CloudCredentialsMakeDefaultInternalServerError) IsServerError() bool {
 // IsCode returns true when this cloud credentials make default internal server error response a status code equal to that given
 func (o *CloudCredentialsMakeDefaultInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cloud credentials make default internal server error response
+func (o *CloudCredentialsMakeDefaultInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CloudCredentialsMakeDefaultInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *SearchPrometheusRulesListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search prometheus rules list o k response
+func (o *SearchPrometheusRulesListOK) Code() int {
+	return 200
+}
+
 func (o *SearchPrometheusRulesListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ SearchPrometheusRulesListBadRequest describes a response with status code 400, w
 Bad Request
 */
 type SearchPrometheusRulesListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search prometheus rules list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *SearchPrometheusRulesListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the search prometheus rules list bad request response
+func (o *SearchPrometheusRulesListBadRequest) Code() int {
+	return 400
+}
+
 func (o *SearchPrometheusRulesListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,13 +184,13 @@ func (o *SearchPrometheusRulesListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchPrometheusRulesListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SearchPrometheusRulesListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchPrometheusRulesListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -227,6 +237,11 @@ func (o *SearchPrometheusRulesListUnauthorized) IsServerError() bool {
 // IsCode returns true when this search prometheus rules list unauthorized response a status code equal to that given
 func (o *SearchPrometheusRulesListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the search prometheus rules list unauthorized response
+func (o *SearchPrometheusRulesListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SearchPrometheusRulesListUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *SearchPrometheusRulesListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the search prometheus rules list forbidden response
+func (o *SearchPrometheusRulesListForbidden) Code() int {
+	return 403
+}
+
 func (o *SearchPrometheusRulesListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListForbidden  %+v", 403, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *SearchPrometheusRulesListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search prometheus rules list not found response
+func (o *SearchPrometheusRulesListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchPrometheusRulesListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *SearchPrometheusRulesListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search prometheus rules list internal server error response a status code equal to that given
 func (o *SearchPrometheusRulesListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search prometheus rules list internal server error response
+func (o *SearchPrometheusRulesListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchPrometheusRulesListInternalServerError) Error() string {

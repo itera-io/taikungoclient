@@ -103,6 +103,11 @@ func (o *StandAloneResetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone reset o k response
+func (o *StandAloneResetOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneResetOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ StandAloneResetBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type StandAloneResetBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone reset bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *StandAloneResetBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone reset bad request response
+func (o *StandAloneResetBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneResetBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *StandAloneResetBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneResetBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *StandAloneResetBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneResetBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *StandAloneResetUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone reset unauthorized response a status code equal to that given
 func (o *StandAloneResetUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone reset unauthorized response
+func (o *StandAloneResetUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneResetUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *StandAloneResetForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone reset forbidden response
+func (o *StandAloneResetForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneResetForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *StandAloneResetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone reset not found response
+func (o *StandAloneResetNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneResetNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *StandAloneResetInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone reset internal server error response a status code equal to that given
 func (o *StandAloneResetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone reset internal server error response
+func (o *StandAloneResetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneResetInternalServerError) Error() string {

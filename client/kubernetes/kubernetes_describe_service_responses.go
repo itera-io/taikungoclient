@@ -103,6 +103,11 @@ func (o *KubernetesDescribeServiceOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe service o k response
+func (o *KubernetesDescribeServiceOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribeServiceOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/service][%d] kubernetesDescribeServiceOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesDescribeServiceBadRequest describes a response with status code 400, w
 Bad Request
 */
 type KubernetesDescribeServiceBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe service bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesDescribeServiceBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes describe service bad request response
+func (o *KubernetesDescribeServiceBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesDescribeServiceBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/service][%d] kubernetesDescribeServiceBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *KubernetesDescribeServiceBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/service][%d] kubernetesDescribeServiceBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeServiceBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesDescribeServiceBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeServiceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *KubernetesDescribeServiceUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes describe service unauthorized response a status code equal to that given
 func (o *KubernetesDescribeServiceUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes describe service unauthorized response
+func (o *KubernetesDescribeServiceUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesDescribeServiceUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *KubernetesDescribeServiceForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes describe service forbidden response
+func (o *KubernetesDescribeServiceForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesDescribeServiceForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/service][%d] kubernetesDescribeServiceForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *KubernetesDescribeServiceNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe service not found response
+func (o *KubernetesDescribeServiceNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribeServiceNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/service][%d] kubernetesDescribeServiceNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *KubernetesDescribeServiceInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe service internal server error response a status code equal to that given
 func (o *KubernetesDescribeServiceInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe service internal server error response
+func (o *KubernetesDescribeServiceInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribeServiceInternalServerError) Error() string {

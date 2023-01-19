@@ -103,6 +103,11 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListOK) IsCode(code int)
 	return code == 200
 }
 
+// Code gets the status code for the cloud credentials cloud credentials for organization list o k response
+func (o *CloudCredentialsCloudCredentialsForOrganizationListOK) Code() int {
+	return 200
+}
+
 func (o *CloudCredentialsCloudCredentialsForOrganizationListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials][%d] cloudCredentialsCloudCredentialsForOrganizationListOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CloudCredentialsCloudCredentialsForOrganizationListBadRequest describes a respon
 Bad Request
 */
 type CloudCredentialsCloudCredentialsForOrganizationListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials cloud credentials for organization list bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListBadRequest) IsCode(c
 	return code == 400
 }
 
+// Code gets the status code for the cloud credentials cloud credentials for organization list bad request response
+func (o *CloudCredentialsCloudCredentialsForOrganizationListBadRequest) Code() int {
+	return 400
+}
+
 func (o *CloudCredentialsCloudCredentialsForOrganizationListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials][%d] cloudCredentialsCloudCredentialsForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListBadRequest) String()
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials][%d] cloudCredentialsCloudCredentialsForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsCloudCredentialsForOrganizationListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CloudCredentialsCloudCredentialsForOrganizationListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsCloudCredentialsForOrganizationListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListUnauthorized) IsServ
 // IsCode returns true when this cloud credentials cloud credentials for organization list unauthorized response a status code equal to that given
 func (o *CloudCredentialsCloudCredentialsForOrganizationListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cloud credentials cloud credentials for organization list unauthorized response
+func (o *CloudCredentialsCloudCredentialsForOrganizationListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CloudCredentialsCloudCredentialsForOrganizationListUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListForbidden) IsCode(co
 	return code == 403
 }
 
+// Code gets the status code for the cloud credentials cloud credentials for organization list forbidden response
+func (o *CloudCredentialsCloudCredentialsForOrganizationListForbidden) Code() int {
+	return 403
+}
+
 func (o *CloudCredentialsCloudCredentialsForOrganizationListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials][%d] cloudCredentialsCloudCredentialsForOrganizationListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListNotFound) IsCode(cod
 	return code == 404
 }
 
+// Code gets the status code for the cloud credentials cloud credentials for organization list not found response
+func (o *CloudCredentialsCloudCredentialsForOrganizationListNotFound) Code() int {
+	return 404
+}
+
 func (o *CloudCredentialsCloudCredentialsForOrganizationListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials][%d] cloudCredentialsCloudCredentialsForOrganizationListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListInternalServerError)
 // IsCode returns true when this cloud credentials cloud credentials for organization list internal server error response a status code equal to that given
 func (o *CloudCredentialsCloudCredentialsForOrganizationListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cloud credentials cloud credentials for organization list internal server error response
+func (o *CloudCredentialsCloudCredentialsForOrganizationListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CloudCredentialsCloudCredentialsForOrganizationListInternalServerError) Error() string {

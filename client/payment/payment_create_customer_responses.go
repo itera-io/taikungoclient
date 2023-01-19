@@ -103,6 +103,11 @@ func (o *PaymentCreateCustomerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the payment create customer o k response
+func (o *PaymentCreateCustomerOK) Code() int {
+	return 200
+}
+
 func (o *PaymentCreateCustomerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ PaymentCreateCustomerBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type PaymentCreateCustomerBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment create customer bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *PaymentCreateCustomerBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the payment create customer bad request response
+func (o *PaymentCreateCustomerBadRequest) Code() int {
+	return 400
+}
+
 func (o *PaymentCreateCustomerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerBadRequest  %+v", 400, o.Payload)
 }
@@ -172,13 +182,13 @@ func (o *PaymentCreateCustomerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentCreateCustomerBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *PaymentCreateCustomerBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentCreateCustomerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -225,6 +235,11 @@ func (o *PaymentCreateCustomerUnauthorized) IsServerError() bool {
 // IsCode returns true when this payment create customer unauthorized response a status code equal to that given
 func (o *PaymentCreateCustomerUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the payment create customer unauthorized response
+func (o *PaymentCreateCustomerUnauthorized) Code() int {
+	return 401
 }
 
 func (o *PaymentCreateCustomerUnauthorized) Error() string {
@@ -290,6 +305,11 @@ func (o *PaymentCreateCustomerForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the payment create customer forbidden response
+func (o *PaymentCreateCustomerForbidden) Code() int {
+	return 403
+}
+
 func (o *PaymentCreateCustomerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +373,11 @@ func (o *PaymentCreateCustomerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the payment create customer not found response
+func (o *PaymentCreateCustomerNotFound) Code() int {
+	return 404
+}
+
 func (o *PaymentCreateCustomerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +438,11 @@ func (o *PaymentCreateCustomerInternalServerError) IsServerError() bool {
 // IsCode returns true when this payment create customer internal server error response a status code equal to that given
 func (o *PaymentCreateCustomerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the payment create customer internal server error response
+func (o *PaymentCreateCustomerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PaymentCreateCustomerInternalServerError) Error() string {
