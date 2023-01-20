@@ -143,7 +143,7 @@ OrganizationsLeaveTaikunBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type OrganizationsLeaveTaikunBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations leave taikun bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *OrganizationsLeaveTaikunBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsLeaveTaikunBadRequest) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsLeaveTaikunBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsLeaveTaikunBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ OrganizationsLeaveTaikunUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type OrganizationsLeaveTaikunUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations leave taikun unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *OrganizationsLeaveTaikunUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsLeaveTaikunUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsLeaveTaikunUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsLeaveTaikunUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ OrganizationsLeaveTaikunForbidden describes a response with status code 403, wit
 Forbidden
 */
 type OrganizationsLeaveTaikunForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations leave taikun forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *OrganizationsLeaveTaikunForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsLeaveTaikunForbidden) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsLeaveTaikunForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsLeaveTaikunForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ OrganizationsLeaveTaikunNotFound describes a response with status code 404, with
 Not Found
 */
 type OrganizationsLeaveTaikunNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations leave taikun not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *OrganizationsLeaveTaikunNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsLeaveTaikunNotFound) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsLeaveTaikunNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsLeaveTaikunNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

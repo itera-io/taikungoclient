@@ -141,7 +141,7 @@ CatalogDeleteCatalogBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type CatalogDeleteCatalogBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog delete catalog bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CatalogDeleteCatalogBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CatalogDeleteCatalogBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogDeleteCatalogBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CatalogDeleteCatalogUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type CatalogDeleteCatalogUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog delete catalog unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CatalogDeleteCatalogUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogDeleteCatalogUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogDeleteCatalogUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CatalogDeleteCatalogForbidden describes a response with status code 403, with de
 Forbidden
 */
 type CatalogDeleteCatalogForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog delete catalog forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CatalogDeleteCatalogForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogDeleteCatalogForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogDeleteCatalogForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CatalogDeleteCatalogNotFound describes a response with status code 404, with def
 Not Found
 */
 type CatalogDeleteCatalogNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog delete catalog not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CatalogDeleteCatalogNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogDeleteCatalogNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogDeleteCatalogNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

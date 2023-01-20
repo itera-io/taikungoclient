@@ -143,7 +143,7 @@ OpsCredentialsLockManagerBadRequest describes a response with status code 400, w
 Bad Request
 */
 type OpsCredentialsLockManagerBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ops credentials lock manager bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *OpsCredentialsLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsLockManagerBadRequest) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsLockManagerBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpsCredentialsLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ OpsCredentialsLockManagerUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type OpsCredentialsLockManagerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ops credentials lock manager unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *OpsCredentialsLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpsCredentialsLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsLockManagerUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpsCredentialsLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ OpsCredentialsLockManagerForbidden describes a response with status code 403, wi
 Forbidden
 */
 type OpsCredentialsLockManagerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ops credentials lock manager forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *OpsCredentialsLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpsCredentialsLockManagerForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsLockManagerForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpsCredentialsLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ OpsCredentialsLockManagerNotFound describes a response with status code 404, wit
 Not Found
 */
 type OpsCredentialsLockManagerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ops credentials lock manager not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *OpsCredentialsLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpsCredentialsLockManagerNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsLockManagerNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpsCredentialsLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

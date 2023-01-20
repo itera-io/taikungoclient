@@ -141,7 +141,7 @@ CronJobUpdateProjectQuotaMessageBadRequest describes a response with status code
 Bad Request
 */
 type CronJobUpdateProjectQuotaMessageBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job update project quota message bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CronJobUpdateProjectQuotaMessageBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobUpdateProjectQuotaMessageBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CronJobUpdateProjectQuotaMessageBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobUpdateProjectQuotaMessageBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CronJobUpdateProjectQuotaMessageUnauthorized describes a response with status co
 Unauthorized
 */
 type CronJobUpdateProjectQuotaMessageUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job update project quota message unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CronJobUpdateProjectQuotaMessageUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobUpdateProjectQuotaMessageUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobUpdateProjectQuotaMessageUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobUpdateProjectQuotaMessageUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CronJobUpdateProjectQuotaMessageForbidden describes a response with status code 
 Forbidden
 */
 type CronJobUpdateProjectQuotaMessageForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job update project quota message forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CronJobUpdateProjectQuotaMessageForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobUpdateProjectQuotaMessageForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobUpdateProjectQuotaMessageForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobUpdateProjectQuotaMessageForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CronJobUpdateProjectQuotaMessageNotFound describes a response with status code 4
 Not Found
 */
 type CronJobUpdateProjectQuotaMessageNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job update project quota message not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CronJobUpdateProjectQuotaMessageNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobUpdateProjectQuotaMessageNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobUpdateProjectQuotaMessageNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobUpdateProjectQuotaMessageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

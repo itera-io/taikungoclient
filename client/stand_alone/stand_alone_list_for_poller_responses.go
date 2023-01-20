@@ -143,7 +143,7 @@ StandAloneListForPollerBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneListForPollerBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone list for poller bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *StandAloneListForPollerBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneListForPollerBadRequest) GetPayload() *models.ProblemDetails {
+func (o *StandAloneListForPollerBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneListForPollerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ StandAloneListForPollerUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneListForPollerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone list for poller unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *StandAloneListForPollerUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneListForPollerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneListForPollerUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneListForPollerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ StandAloneListForPollerForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneListForPollerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone list for poller forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *StandAloneListForPollerForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneListForPollerForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneListForPollerForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneListForPollerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ StandAloneListForPollerNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneListForPollerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone list for poller not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *StandAloneListForPollerNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneListForPollerNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneListForPollerNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneListForPollerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

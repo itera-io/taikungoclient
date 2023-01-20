@@ -141,7 +141,7 @@ CronJobDeleteAwsSpotInstancesBadRequest describes a response with status code 40
 Bad Request
 */
 type CronJobDeleteAwsSpotInstancesBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job delete aws spot instances bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CronJobDeleteAwsSpotInstancesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteAwsSpotInstancesBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CronJobDeleteAwsSpotInstancesBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobDeleteAwsSpotInstancesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CronJobDeleteAwsSpotInstancesUnauthorized describes a response with status code 
 Unauthorized
 */
 type CronJobDeleteAwsSpotInstancesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job delete aws spot instances unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CronJobDeleteAwsSpotInstancesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteAwsSpotInstancesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobDeleteAwsSpotInstancesUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobDeleteAwsSpotInstancesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CronJobDeleteAwsSpotInstancesForbidden describes a response with status code 403
 Forbidden
 */
 type CronJobDeleteAwsSpotInstancesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job delete aws spot instances forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CronJobDeleteAwsSpotInstancesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteAwsSpotInstancesForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobDeleteAwsSpotInstancesForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobDeleteAwsSpotInstancesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CronJobDeleteAwsSpotInstancesNotFound describes a response with status code 404,
 Not Found
 */
 type CronJobDeleteAwsSpotInstancesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job delete aws spot instances not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CronJobDeleteAwsSpotInstancesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteAwsSpotInstancesNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobDeleteAwsSpotInstancesNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobDeleteAwsSpotInstancesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

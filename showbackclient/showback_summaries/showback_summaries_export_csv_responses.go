@@ -199,7 +199,7 @@ ShowbackSummariesExportCsvUnauthorized describes a response with status code 401
 Unauthorized
 */
 type ShowbackSummariesExportCsvUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback summaries export csv unauthorized response has a 2xx status code
@@ -240,16 +240,14 @@ func (o *ShowbackSummariesExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackSummariesExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesExportCsvUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesExportCsvUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -267,7 +265,7 @@ ShowbackSummariesExportCsvForbidden describes a response with status code 403, w
 Forbidden
 */
 type ShowbackSummariesExportCsvForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback summaries export csv forbidden response has a 2xx status code
@@ -308,16 +306,14 @@ func (o *ShowbackSummariesExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackSummariesExportCsvForbidden) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesExportCsvForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesExportCsvForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -335,7 +331,7 @@ ShowbackSummariesExportCsvNotFound describes a response with status code 404, wi
 Not Found
 */
 type ShowbackSummariesExportCsvNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback summaries export csv not found response has a 2xx status code
@@ -376,16 +372,14 @@ func (o *ShowbackSummariesExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackSummariesExportCsvNotFound) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesExportCsvNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesExportCsvNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -143,7 +143,7 @@ AllowedHostListBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type AllowedHostListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this allowed host list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *AllowedHostListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AllowedHostListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AllowedHostListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ AllowedHostListUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type AllowedHostListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this allowed host list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *AllowedHostListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AllowedHostListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AllowedHostListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ AllowedHostListForbidden describes a response with status code 403, with default
 Forbidden
 */
 type AllowedHostListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this allowed host list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *AllowedHostListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AllowedHostListForbidden) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AllowedHostListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ AllowedHostListNotFound describes a response with status code 404, with default 
 Not Found
 */
 type AllowedHostListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this allowed host list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *AllowedHostListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AllowedHostListNotFound) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AllowedHostListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

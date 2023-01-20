@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesDescribeStorageClassReader is a Reader for the KubernetesDescribeStorageClass structure.
@@ -141,7 +139,7 @@ KubernetesDescribeStorageClassBadRequest describes a response with status code 4
 Bad Request
 */
 type KubernetesDescribeStorageClassBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe storage class bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *KubernetesDescribeStorageClassBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/storageclass][%d] kubernetesDescribeStorageClassBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeStorageClassBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeStorageClassBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeStorageClassBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ KubernetesDescribeStorageClassUnauthorized describes a response with status code
 Unauthorized
 */
 type KubernetesDescribeStorageClassUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe storage class unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *KubernetesDescribeStorageClassUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/storageclass][%d] kubernetesDescribeStorageClassUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeStorageClassUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeStorageClassUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeStorageClassUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ KubernetesDescribeStorageClassForbidden describes a response with status code 40
 Forbidden
 */
 type KubernetesDescribeStorageClassForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe storage class forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *KubernetesDescribeStorageClassForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/storageclass][%d] kubernetesDescribeStorageClassForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeStorageClassForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeStorageClassForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeStorageClassForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ KubernetesDescribeStorageClassNotFound describes a response with status code 404
 Not Found
 */
 type KubernetesDescribeStorageClassNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe storage class not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *KubernetesDescribeStorageClassNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/storageclass][%d] kubernetesDescribeStorageClassNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeStorageClassNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeStorageClassNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeStorageClassNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -141,7 +141,7 @@ CheckerAwsBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type CheckerAwsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker aws bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CheckerAwsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerAwsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CheckerAwsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerAwsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CheckerAwsUnauthorized describes a response with status code 401, with default h
 Unauthorized
 */
 type CheckerAwsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker aws unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CheckerAwsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerAwsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerAwsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerAwsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CheckerAwsForbidden describes a response with status code 403, with default head
 Forbidden
 */
 type CheckerAwsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker aws forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CheckerAwsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerAwsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerAwsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerAwsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CheckerAwsNotFound describes a response with status code 404, with default heade
 Not Found
 */
 type CheckerAwsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker aws not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CheckerAwsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerAwsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerAwsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerAwsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

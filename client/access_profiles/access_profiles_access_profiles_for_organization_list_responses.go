@@ -141,7 +141,7 @@ AccessProfilesAccessProfilesForOrganizationListBadRequest describes a response w
 Bad Request
 */
 type AccessProfilesAccessProfilesForOrganizationListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles access profiles for organization list bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *AccessProfilesAccessProfilesForOrganizationListBadRequest) String() str
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles/list][%d] accessProfilesAccessProfilesForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AccessProfilesAccessProfilesForOrganizationListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AccessProfilesAccessProfilesForOrganizationListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AccessProfilesAccessProfilesForOrganizationListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ AccessProfilesAccessProfilesForOrganizationListUnauthorized describes a response
 Unauthorized
 */
 type AccessProfilesAccessProfilesForOrganizationListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles access profiles for organization list unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *AccessProfilesAccessProfilesForOrganizationListUnauthorized) String() s
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles/list][%d] accessProfilesAccessProfilesForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AccessProfilesAccessProfilesForOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AccessProfilesAccessProfilesForOrganizationListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AccessProfilesAccessProfilesForOrganizationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ AccessProfilesAccessProfilesForOrganizationListForbidden describes a response wi
 Forbidden
 */
 type AccessProfilesAccessProfilesForOrganizationListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles access profiles for organization list forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *AccessProfilesAccessProfilesForOrganizationListForbidden) String() stri
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles/list][%d] accessProfilesAccessProfilesForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AccessProfilesAccessProfilesForOrganizationListForbidden) GetPayload() *models.ProblemDetails {
+func (o *AccessProfilesAccessProfilesForOrganizationListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AccessProfilesAccessProfilesForOrganizationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ AccessProfilesAccessProfilesForOrganizationListNotFound describes a response wit
 Not Found
 */
 type AccessProfilesAccessProfilesForOrganizationListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles access profiles for organization list not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *AccessProfilesAccessProfilesForOrganizationListNotFound) String() strin
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles/list][%d] accessProfilesAccessProfilesForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AccessProfilesAccessProfilesForOrganizationListNotFound) GetPayload() *models.ProblemDetails {
+func (o *AccessProfilesAccessProfilesForOrganizationListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AccessProfilesAccessProfilesForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

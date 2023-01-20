@@ -143,7 +143,7 @@ AdminKeycloakListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AdminKeycloakListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin keycloak list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *AdminKeycloakListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminKeycloakListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AdminKeycloakListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminKeycloakListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ AdminKeycloakListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type AdminKeycloakListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin keycloak list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *AdminKeycloakListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminKeycloakListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AdminKeycloakListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminKeycloakListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ AdminKeycloakListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type AdminKeycloakListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin keycloak list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *AdminKeycloakListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminKeycloakListForbidden) GetPayload() *models.ProblemDetails {
+func (o *AdminKeycloakListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminKeycloakListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ AdminKeycloakListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type AdminKeycloakListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin keycloak list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *AdminKeycloakListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminKeycloakListNotFound) GetPayload() *models.ProblemDetails {
+func (o *AdminKeycloakListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminKeycloakListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

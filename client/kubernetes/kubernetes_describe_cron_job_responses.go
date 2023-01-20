@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesDescribeCronJobReader is a Reader for the KubernetesDescribeCronJob structure.
@@ -141,7 +139,7 @@ KubernetesDescribeCronJobBadRequest describes a response with status code 400, w
 Bad Request
 */
 type KubernetesDescribeCronJobBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe cron job bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *KubernetesDescribeCronJobBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeCronJobBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeCronJobBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeCronJobBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ KubernetesDescribeCronJobUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type KubernetesDescribeCronJobUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe cron job unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *KubernetesDescribeCronJobUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeCronJobUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeCronJobUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeCronJobUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ KubernetesDescribeCronJobForbidden describes a response with status code 403, wi
 Forbidden
 */
 type KubernetesDescribeCronJobForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe cron job forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *KubernetesDescribeCronJobForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeCronJobForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeCronJobForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeCronJobForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ KubernetesDescribeCronJobNotFound describes a response with status code 404, wit
 Not Found
 */
 type KubernetesDescribeCronJobNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe cron job not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *KubernetesDescribeCronJobNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeCronJobNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeCronJobNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeCronJobNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

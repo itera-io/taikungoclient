@@ -141,7 +141,7 @@ ProjectGroupsProjectListByProjectGroupIDBadRequest describes a response with sta
 Bad Request
 */
 type ProjectGroupsProjectListByProjectGroupIDBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project groups project list by project group Id bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *ProjectGroupsProjectListByProjectGroupIDBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectGroups/{projectGroupId}/projects][%d] projectGroupsProjectListByProjectGroupIdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectGroupsProjectListByProjectGroupIDBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsProjectListByProjectGroupIDBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectGroupsProjectListByProjectGroupIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ ProjectGroupsProjectListByProjectGroupIDUnauthorized describes a response with s
 Unauthorized
 */
 type ProjectGroupsProjectListByProjectGroupIDUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project groups project list by project group Id unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *ProjectGroupsProjectListByProjectGroupIDUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectGroups/{projectGroupId}/projects][%d] projectGroupsProjectListByProjectGroupIdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectGroupsProjectListByProjectGroupIDUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsProjectListByProjectGroupIDUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectGroupsProjectListByProjectGroupIDUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ ProjectGroupsProjectListByProjectGroupIDForbidden describes a response with stat
 Forbidden
 */
 type ProjectGroupsProjectListByProjectGroupIDForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project groups project list by project group Id forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *ProjectGroupsProjectListByProjectGroupIDForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectGroups/{projectGroupId}/projects][%d] projectGroupsProjectListByProjectGroupIdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectGroupsProjectListByProjectGroupIDForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsProjectListByProjectGroupIDForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectGroupsProjectListByProjectGroupIDForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ ProjectGroupsProjectListByProjectGroupIDNotFound describes a response with statu
 Not Found
 */
 type ProjectGroupsProjectListByProjectGroupIDNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project groups project list by project group Id not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *ProjectGroupsProjectListByProjectGroupIDNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectGroups/{projectGroupId}/projects][%d] projectGroupsProjectListByProjectGroupIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectGroupsProjectListByProjectGroupIDNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectGroupsProjectListByProjectGroupIDNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectGroupsProjectListByProjectGroupIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

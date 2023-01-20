@@ -141,7 +141,7 @@ ProjectsResetProjectStatusBadRequest describes a response with status code 400, 
 Bad Request
 */
 type ProjectsResetProjectStatusBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects reset project status bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *ProjectsResetProjectStatusBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsResetProjectStatusBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectsResetProjectStatusBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsResetProjectStatusBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ ProjectsResetProjectStatusUnauthorized describes a response with status code 401
 Unauthorized
 */
 type ProjectsResetProjectStatusUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects reset project status unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *ProjectsResetProjectStatusUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsResetProjectStatusUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsResetProjectStatusUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsResetProjectStatusUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ ProjectsResetProjectStatusForbidden describes a response with status code 403, w
 Forbidden
 */
 type ProjectsResetProjectStatusForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects reset project status forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *ProjectsResetProjectStatusForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsResetProjectStatusForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsResetProjectStatusForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsResetProjectStatusForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ ProjectsResetProjectStatusNotFound describes a response with status code 404, wi
 Not Found
 */
 type ProjectsResetProjectStatusNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects reset project status not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *ProjectsResetProjectStatusNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsResetProjectStatusNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsResetProjectStatusNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsResetProjectStatusNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

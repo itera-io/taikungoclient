@@ -141,7 +141,7 @@ SubscriptionSubscriptionForLandingPageBadRequest describes a response with statu
 Bad Request
 */
 type SubscriptionSubscriptionForLandingPageBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this subscription subscription for landing page bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *SubscriptionSubscriptionForLandingPageBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForLandingPageBadRequest) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionSubscriptionForLandingPageBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SubscriptionSubscriptionForLandingPageBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ SubscriptionSubscriptionForLandingPageUnauthorized describes a response with sta
 Unauthorized
 */
 type SubscriptionSubscriptionForLandingPageUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this subscription subscription for landing page unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *SubscriptionSubscriptionForLandingPageUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForLandingPageUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionSubscriptionForLandingPageUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SubscriptionSubscriptionForLandingPageUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ SubscriptionSubscriptionForLandingPageForbidden describes a response with status
 Forbidden
 */
 type SubscriptionSubscriptionForLandingPageForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this subscription subscription for landing page forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *SubscriptionSubscriptionForLandingPageForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForLandingPageForbidden) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionSubscriptionForLandingPageForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SubscriptionSubscriptionForLandingPageForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ SubscriptionSubscriptionForLandingPageNotFound describes a response with status 
 Not Found
 */
 type SubscriptionSubscriptionForLandingPageNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this subscription subscription for landing page not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *SubscriptionSubscriptionForLandingPageNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForLandingPageNotFound) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionSubscriptionForLandingPageNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SubscriptionSubscriptionForLandingPageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

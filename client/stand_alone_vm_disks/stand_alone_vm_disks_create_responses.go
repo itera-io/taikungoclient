@@ -143,7 +143,7 @@ StandAloneVMDisksCreateBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneVMDisksCreateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks create bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *StandAloneVMDisksCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneVMDisksCreateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ StandAloneVMDisksCreateUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneVMDisksCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks create unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *StandAloneVMDisksCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ StandAloneVMDisksCreateForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneVMDisksCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks create forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *StandAloneVMDisksCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ StandAloneVMDisksCreateNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneVMDisksCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks create not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *StandAloneVMDisksCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

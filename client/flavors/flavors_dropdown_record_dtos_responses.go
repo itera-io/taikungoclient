@@ -141,7 +141,7 @@ FlavorsDropdownRecordDtosBadRequest describes a response with status code 400, w
 Bad Request
 */
 type FlavorsDropdownRecordDtosBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors dropdown record dtos bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *FlavorsDropdownRecordDtosBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsDropdownRecordDtosBadRequest) GetPayload() *models.ProblemDetails {
+func (o *FlavorsDropdownRecordDtosBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsDropdownRecordDtosBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ FlavorsDropdownRecordDtosUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type FlavorsDropdownRecordDtosUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors dropdown record dtos unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *FlavorsDropdownRecordDtosUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsDropdownRecordDtosUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *FlavorsDropdownRecordDtosUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsDropdownRecordDtosUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ FlavorsDropdownRecordDtosForbidden describes a response with status code 403, wi
 Forbidden
 */
 type FlavorsDropdownRecordDtosForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors dropdown record dtos forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *FlavorsDropdownRecordDtosForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsDropdownRecordDtosForbidden) GetPayload() *models.ProblemDetails {
+func (o *FlavorsDropdownRecordDtosForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsDropdownRecordDtosForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ FlavorsDropdownRecordDtosNotFound describes a response with status code 404, wit
 Not Found
 */
 type FlavorsDropdownRecordDtosNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors dropdown record dtos not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *FlavorsDropdownRecordDtosNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsDropdownRecordDtosNotFound) GetPayload() *models.ProblemDetails {
+func (o *FlavorsDropdownRecordDtosNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsDropdownRecordDtosNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

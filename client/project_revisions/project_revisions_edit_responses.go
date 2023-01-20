@@ -141,7 +141,7 @@ ProjectRevisionsEditBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type ProjectRevisionsEditBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project revisions edit bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *ProjectRevisionsEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectRevisionsEditBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectRevisionsEditBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectRevisionsEditBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ ProjectRevisionsEditUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type ProjectRevisionsEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project revisions edit unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *ProjectRevisionsEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectRevisionsEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectRevisionsEditUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectRevisionsEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ ProjectRevisionsEditForbidden describes a response with status code 403, with de
 Forbidden
 */
 type ProjectRevisionsEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project revisions edit forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *ProjectRevisionsEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectRevisionsEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectRevisionsEditForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectRevisionsEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ ProjectRevisionsEditNotFound describes a response with status code 404, with def
 Not Found
 */
 type ProjectRevisionsEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project revisions edit not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *ProjectRevisionsEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectRevisionsEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectRevisionsEditNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectRevisionsEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

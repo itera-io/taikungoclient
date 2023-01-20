@@ -141,7 +141,7 @@ CronJobSyncOpaProfilesBadRequest describes a response with status code 400, with
 Bad Request
 */
 type CronJobSyncOpaProfilesBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync opa profiles bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CronJobSyncOpaProfilesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobSyncOpaProfilesBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncOpaProfilesBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSyncOpaProfilesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CronJobSyncOpaProfilesUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type CronJobSyncOpaProfilesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync opa profiles unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CronJobSyncOpaProfilesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobSyncOpaProfilesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncOpaProfilesUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSyncOpaProfilesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CronJobSyncOpaProfilesForbidden describes a response with status code 403, with 
 Forbidden
 */
 type CronJobSyncOpaProfilesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync opa profiles forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CronJobSyncOpaProfilesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobSyncOpaProfilesForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncOpaProfilesForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSyncOpaProfilesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CronJobSyncOpaProfilesNotFound describes a response with status code 404, with d
 Not Found
 */
 type CronJobSyncOpaProfilesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync opa profiles not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CronJobSyncOpaProfilesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobSyncOpaProfilesNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncOpaProfilesNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSyncOpaProfilesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

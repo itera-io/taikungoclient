@@ -141,7 +141,7 @@ AutoscalingEnableAutoscalingBadRequest describes a response with status code 400
 Bad Request
 */
 type AutoscalingEnableAutoscalingBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this autoscaling enable autoscaling bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *AutoscalingEnableAutoscalingBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/enable][%d] autoscalingEnableAutoscalingBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AutoscalingEnableAutoscalingBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AutoscalingEnableAutoscalingBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AutoscalingEnableAutoscalingBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ AutoscalingEnableAutoscalingUnauthorized describes a response with status code 4
 Unauthorized
 */
 type AutoscalingEnableAutoscalingUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this autoscaling enable autoscaling unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *AutoscalingEnableAutoscalingUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/enable][%d] autoscalingEnableAutoscalingUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AutoscalingEnableAutoscalingUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AutoscalingEnableAutoscalingUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AutoscalingEnableAutoscalingUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ AutoscalingEnableAutoscalingForbidden describes a response with status code 403,
 Forbidden
 */
 type AutoscalingEnableAutoscalingForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this autoscaling enable autoscaling forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *AutoscalingEnableAutoscalingForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/enable][%d] autoscalingEnableAutoscalingForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AutoscalingEnableAutoscalingForbidden) GetPayload() *models.ProblemDetails {
+func (o *AutoscalingEnableAutoscalingForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AutoscalingEnableAutoscalingForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ AutoscalingEnableAutoscalingNotFound describes a response with status code 404, 
 Not Found
 */
 type AutoscalingEnableAutoscalingNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this autoscaling enable autoscaling not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *AutoscalingEnableAutoscalingNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/enable][%d] autoscalingEnableAutoscalingNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AutoscalingEnableAutoscalingNotFound) GetPayload() *models.ProblemDetails {
+func (o *AutoscalingEnableAutoscalingNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AutoscalingEnableAutoscalingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

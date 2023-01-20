@@ -141,7 +141,7 @@ StandAloneCommitBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type StandAloneCommitBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone commit bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *StandAloneCommitBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneCommitBadRequest) GetPayload() *models.ProblemDetails {
+func (o *StandAloneCommitBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneCommitBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ StandAloneCommitUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type StandAloneCommitUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone commit unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *StandAloneCommitUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneCommitUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneCommitUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneCommitUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ StandAloneCommitForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type StandAloneCommitForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone commit forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *StandAloneCommitForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneCommitForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneCommitForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneCommitForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ StandAloneCommitNotFound describes a response with status code 404, with default
 Not Found
 */
 type StandAloneCommitNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone commit not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *StandAloneCommitNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneCommitNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneCommitNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneCommitNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

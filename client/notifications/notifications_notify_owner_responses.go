@@ -141,7 +141,7 @@ NotificationsNotifyOwnerBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type NotificationsNotifyOwnerBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications notify owner bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *NotificationsNotifyOwnerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NotificationsNotifyOwnerBadRequest) GetPayload() *models.ProblemDetails {
+func (o *NotificationsNotifyOwnerBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NotificationsNotifyOwnerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ NotificationsNotifyOwnerUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type NotificationsNotifyOwnerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications notify owner unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *NotificationsNotifyOwnerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NotificationsNotifyOwnerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *NotificationsNotifyOwnerUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NotificationsNotifyOwnerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ NotificationsNotifyOwnerForbidden describes a response with status code 403, wit
 Forbidden
 */
 type NotificationsNotifyOwnerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications notify owner forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *NotificationsNotifyOwnerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NotificationsNotifyOwnerForbidden) GetPayload() *models.ProblemDetails {
+func (o *NotificationsNotifyOwnerForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NotificationsNotifyOwnerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ NotificationsNotifyOwnerNotFound describes a response with status code 404, with
 Not Found
 */
 type NotificationsNotifyOwnerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications notify owner not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *NotificationsNotifyOwnerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NotificationsNotifyOwnerNotFound) GetPayload() *models.ProblemDetails {
+func (o *NotificationsNotifyOwnerNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NotificationsNotifyOwnerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

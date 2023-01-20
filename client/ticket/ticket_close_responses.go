@@ -141,7 +141,7 @@ TicketCloseBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type TicketCloseBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket close bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *TicketCloseBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/close][%d] ticketCloseBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketCloseBadRequest) GetPayload() *models.ProblemDetails {
+func (o *TicketCloseBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketCloseBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ TicketCloseUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type TicketCloseUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket close unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *TicketCloseUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/close][%d] ticketCloseUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketCloseUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *TicketCloseUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketCloseUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ TicketCloseForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type TicketCloseForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket close forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *TicketCloseForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/close][%d] ticketCloseForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketCloseForbidden) GetPayload() *models.ProblemDetails {
+func (o *TicketCloseForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketCloseForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ TicketCloseNotFound describes a response with status code 404, with default head
 Not Found
 */
 type TicketCloseNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket close not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *TicketCloseNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/close][%d] ticketCloseNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketCloseNotFound) GetPayload() *models.ProblemDetails {
+func (o *TicketCloseNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketCloseNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

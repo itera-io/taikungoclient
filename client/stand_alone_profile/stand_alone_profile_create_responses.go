@@ -143,7 +143,7 @@ StandAloneProfileCreateBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneProfileCreateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile create bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *StandAloneProfileCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileCreateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneProfileCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ StandAloneProfileCreateUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneProfileCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile create unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *StandAloneProfileCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneProfileCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneProfileCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ StandAloneProfileCreateForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneProfileCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile create forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *StandAloneProfileCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneProfileCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneProfileCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ StandAloneProfileCreateNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneProfileCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile create not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *StandAloneProfileCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneProfileCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneProfileCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

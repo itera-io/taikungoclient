@@ -141,7 +141,7 @@ ProjectInfracostsEditBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type ProjectInfracostsEditBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project infracosts edit bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *ProjectInfracostsEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectInfracosts/upsert/{projectId}][%d] projectInfracostsEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectInfracostsEditBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectInfracostsEditBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsEditBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ ProjectInfracostsEditUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type ProjectInfracostsEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project infracosts edit unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *ProjectInfracostsEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectInfracosts/upsert/{projectId}][%d] projectInfracostsEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectInfracostsEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectInfracostsEditUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ ProjectInfracostsEditForbidden describes a response with status code 403, with d
 Forbidden
 */
 type ProjectInfracostsEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project infracosts edit forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *ProjectInfracostsEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectInfracosts/upsert/{projectId}][%d] projectInfracostsEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectInfracostsEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectInfracostsEditForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ ProjectInfracostsEditNotFound describes a response with status code 404, with de
 Not Found
 */
 type ProjectInfracostsEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project infracosts edit not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *ProjectInfracostsEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectInfracosts/upsert/{projectId}][%d] projectInfracostsEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectInfracostsEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectInfracostsEditNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

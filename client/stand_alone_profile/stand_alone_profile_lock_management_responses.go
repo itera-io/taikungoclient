@@ -141,7 +141,7 @@ StandAloneProfileLockManagementBadRequest describes a response with status code 
 Bad Request
 */
 type StandAloneProfileLockManagementBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile lock management bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *StandAloneProfileLockManagementBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/lockmanager][%d] standAloneProfileLockManagementBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileLockManagementBadRequest) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileLockManagementBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneProfileLockManagementBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ StandAloneProfileLockManagementUnauthorized describes a response with status cod
 Unauthorized
 */
 type StandAloneProfileLockManagementUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile lock management unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *StandAloneProfileLockManagementUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/lockmanager][%d] standAloneProfileLockManagementUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneProfileLockManagementUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileLockManagementUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneProfileLockManagementUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ StandAloneProfileLockManagementForbidden describes a response with status code 4
 Forbidden
 */
 type StandAloneProfileLockManagementForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile lock management forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *StandAloneProfileLockManagementForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/lockmanager][%d] standAloneProfileLockManagementForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneProfileLockManagementForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileLockManagementForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneProfileLockManagementForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ StandAloneProfileLockManagementNotFound describes a response with status code 40
 Not Found
 */
 type StandAloneProfileLockManagementNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile lock management not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *StandAloneProfileLockManagementNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/lockmanager][%d] standAloneProfileLockManagementNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneProfileLockManagementNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileLockManagementNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneProfileLockManagementNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

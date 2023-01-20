@@ -143,7 +143,7 @@ OpenstackListBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type OpenstackListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *OpenstackListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *OpenstackListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ OpenstackListUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type OpenstackListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *OpenstackListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpenstackListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ OpenstackListForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type OpenstackListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *OpenstackListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackListForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpenstackListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ OpenstackListNotFound describes a response with status code 404, with default he
 Not Found
 */
 type OpenstackListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *OpenstackListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackListNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpenstackListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

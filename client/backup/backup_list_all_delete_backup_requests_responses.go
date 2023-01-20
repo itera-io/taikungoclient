@@ -143,7 +143,7 @@ BackupListAllDeleteBackupRequestsBadRequest describes a response with status cod
 Bad Request
 */
 type BackupListAllDeleteBackupRequestsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup list all delete backup requests bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *BackupListAllDeleteBackupRequestsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupListAllDeleteBackupRequestsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllDeleteBackupRequestsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupListAllDeleteBackupRequestsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ BackupListAllDeleteBackupRequestsUnauthorized describes a response with status c
 Unauthorized
 */
 type BackupListAllDeleteBackupRequestsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup list all delete backup requests unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *BackupListAllDeleteBackupRequestsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupListAllDeleteBackupRequestsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllDeleteBackupRequestsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupListAllDeleteBackupRequestsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ BackupListAllDeleteBackupRequestsForbidden describes a response with status code
 Forbidden
 */
 type BackupListAllDeleteBackupRequestsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup list all delete backup requests forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *BackupListAllDeleteBackupRequestsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupListAllDeleteBackupRequestsForbidden) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllDeleteBackupRequestsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupListAllDeleteBackupRequestsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ BackupListAllDeleteBackupRequestsNotFound describes a response with status code 
 Not Found
 */
 type BackupListAllDeleteBackupRequestsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup list all delete backup requests not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *BackupListAllDeleteBackupRequestsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupListAllDeleteBackupRequestsNotFound) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllDeleteBackupRequestsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupListAllDeleteBackupRequestsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

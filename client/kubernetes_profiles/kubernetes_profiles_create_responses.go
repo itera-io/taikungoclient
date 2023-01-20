@@ -143,7 +143,7 @@ KubernetesProfilesCreateBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type KubernetesProfilesCreateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes profiles create bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *KubernetesProfilesCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesProfilesCreateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ KubernetesProfilesCreateUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type KubernetesProfilesCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes profiles create unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *KubernetesProfilesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesProfilesCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ KubernetesProfilesCreateForbidden describes a response with status code 403, wit
 Forbidden
 */
 type KubernetesProfilesCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes profiles create forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *KubernetesProfilesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesProfilesCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ KubernetesProfilesCreateNotFound describes a response with status code 404, with
 Not Found
 */
 type KubernetesProfilesCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes profiles create not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *KubernetesProfilesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesProfilesCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

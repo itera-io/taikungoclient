@@ -141,7 +141,7 @@ AdminUpdateUserPasswordBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type AdminUpdateUserPasswordBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin update user password bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *AdminUpdateUserPasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminUpdateUserPasswordBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AdminUpdateUserPasswordBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserPasswordBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ AdminUpdateUserPasswordUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type AdminUpdateUserPasswordUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin update user password unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *AdminUpdateUserPasswordUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminUpdateUserPasswordUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AdminUpdateUserPasswordUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserPasswordUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ AdminUpdateUserPasswordForbidden describes a response with status code 403, with
 Forbidden
 */
 type AdminUpdateUserPasswordForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin update user password forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *AdminUpdateUserPasswordForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminUpdateUserPasswordForbidden) GetPayload() *models.ProblemDetails {
+func (o *AdminUpdateUserPasswordForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserPasswordForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ AdminUpdateUserPasswordNotFound describes a response with status code 404, with 
 Not Found
 */
 type AdminUpdateUserPasswordNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin update user password not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *AdminUpdateUserPasswordNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminUpdateUserPasswordNotFound) GetPayload() *models.ProblemDetails {
+func (o *AdminUpdateUserPasswordNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserPasswordNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

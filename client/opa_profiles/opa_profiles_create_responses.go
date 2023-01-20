@@ -143,7 +143,7 @@ OpaProfilesCreateBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type OpaProfilesCreateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles create bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *OpaProfilesCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesCreateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpaProfilesCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ OpaProfilesCreateUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpaProfilesCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles create unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *OpaProfilesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpaProfilesCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ OpaProfilesCreateForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpaProfilesCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles create forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *OpaProfilesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpaProfilesCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ OpaProfilesCreateNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpaProfilesCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles create not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *OpaProfilesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpaProfilesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

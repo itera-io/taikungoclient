@@ -143,7 +143,7 @@ PartnerPartnerInfoRegistrationBadRequest describes a response with status code 4
 Bad Request
 */
 type PartnerPartnerInfoRegistrationBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner partner info registration bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *PartnerPartnerInfoRegistrationBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerPartnerInfoRegistrationBadRequest) GetPayload() *models.ProblemDetails {
+func (o *PartnerPartnerInfoRegistrationBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerPartnerInfoRegistrationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ PartnerPartnerInfoRegistrationUnauthorized describes a response with status code
 Unauthorized
 */
 type PartnerPartnerInfoRegistrationUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner partner info registration unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *PartnerPartnerInfoRegistrationUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerPartnerInfoRegistrationUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PartnerPartnerInfoRegistrationUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerPartnerInfoRegistrationUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ PartnerPartnerInfoRegistrationForbidden describes a response with status code 40
 Forbidden
 */
 type PartnerPartnerInfoRegistrationForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner partner info registration forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *PartnerPartnerInfoRegistrationForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerPartnerInfoRegistrationForbidden) GetPayload() *models.ProblemDetails {
+func (o *PartnerPartnerInfoRegistrationForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerPartnerInfoRegistrationForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ PartnerPartnerInfoRegistrationNotFound describes a response with status code 404
 Not Found
 */
 type PartnerPartnerInfoRegistrationNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner partner info registration not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *PartnerPartnerInfoRegistrationNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerPartnerInfoRegistrationNotFound) GetPayload() *models.ProblemDetails {
+func (o *PartnerPartnerInfoRegistrationNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerPartnerInfoRegistrationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

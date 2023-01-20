@@ -143,7 +143,7 @@ PaymentGetFinalPriceBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type PaymentGetFinalPriceBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment get final price bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *PaymentGetFinalPriceBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentGetFinalPriceBadRequest) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetFinalPriceBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentGetFinalPriceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ PaymentGetFinalPriceUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type PaymentGetFinalPriceUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment get final price unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *PaymentGetFinalPriceUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentGetFinalPriceUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetFinalPriceUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentGetFinalPriceUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ PaymentGetFinalPriceForbidden describes a response with status code 403, with de
 Forbidden
 */
 type PaymentGetFinalPriceForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment get final price forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *PaymentGetFinalPriceForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentGetFinalPriceForbidden) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetFinalPriceForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentGetFinalPriceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ PaymentGetFinalPriceNotFound describes a response with status code 404, with def
 Not Found
 */
 type PaymentGetFinalPriceNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment get final price not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *PaymentGetFinalPriceNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentGetFinalPriceNotFound) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetFinalPriceNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentGetFinalPriceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

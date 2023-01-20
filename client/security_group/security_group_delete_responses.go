@@ -141,7 +141,7 @@ SecurityGroupDeleteBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type SecurityGroupDeleteBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this security group delete bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *SecurityGroupDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SecurityGroupDeleteBadRequest) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SecurityGroupDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ SecurityGroupDeleteUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type SecurityGroupDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this security group delete unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *SecurityGroupDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SecurityGroupDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupDeleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SecurityGroupDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ SecurityGroupDeleteForbidden describes a response with status code 403, with def
 Forbidden
 */
 type SecurityGroupDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this security group delete forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *SecurityGroupDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SecurityGroupDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupDeleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SecurityGroupDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ SecurityGroupDeleteNotFound describes a response with status code 404, with defa
 Not Found
 */
 type SecurityGroupDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this security group delete not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *SecurityGroupDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SecurityGroupDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupDeleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SecurityGroupDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

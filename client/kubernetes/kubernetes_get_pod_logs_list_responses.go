@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesGetPodLogsListReader is a Reader for the KubernetesGetPodLogsList structure.
@@ -141,7 +139,7 @@ KubernetesGetPodLogsListBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type KubernetesGetPodLogsListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get pod logs list bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *KubernetesGetPodLogsListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/podlogs][%d] kubernetesGetPodLogsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetPodLogsListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPodLogsListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetPodLogsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ KubernetesGetPodLogsListUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type KubernetesGetPodLogsListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get pod logs list unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *KubernetesGetPodLogsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/podlogs][%d] kubernetesGetPodLogsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetPodLogsListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPodLogsListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetPodLogsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ KubernetesGetPodLogsListForbidden describes a response with status code 403, wit
 Forbidden
 */
 type KubernetesGetPodLogsListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get pod logs list forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *KubernetesGetPodLogsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/podlogs][%d] kubernetesGetPodLogsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetPodLogsListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPodLogsListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetPodLogsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ KubernetesGetPodLogsListNotFound describes a response with status code 404, with
 Not Found
 */
 type KubernetesGetPodLogsListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get pod logs list not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *KubernetesGetPodLogsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/podlogs][%d] kubernetesGetPodLogsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetPodLogsListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPodLogsListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetPodLogsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -143,7 +143,7 @@ SearchServiceListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type SearchServiceListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search service list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *SearchServiceListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/services][%d] searchServiceListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchServiceListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *SearchServiceListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchServiceListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ SearchServiceListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type SearchServiceListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search service list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *SearchServiceListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/services][%d] searchServiceListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchServiceListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchServiceListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchServiceListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ SearchServiceListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type SearchServiceListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search service list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *SearchServiceListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/services][%d] searchServiceListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchServiceListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchServiceListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchServiceListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ SearchServiceListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type SearchServiceListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search service list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *SearchServiceListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/services][%d] searchServiceListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchServiceListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchServiceListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchServiceListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

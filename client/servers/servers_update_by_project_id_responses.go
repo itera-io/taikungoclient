@@ -141,7 +141,7 @@ ServersUpdateByProjectIDBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type ServersUpdateByProjectIDBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers update by project Id bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *ServersUpdateByProjectIDBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersUpdateByProjectIDBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ServersUpdateByProjectIDBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ServersUpdateByProjectIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ ServersUpdateByProjectIDUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type ServersUpdateByProjectIDUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers update by project Id unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *ServersUpdateByProjectIDUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersUpdateByProjectIDUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ServersUpdateByProjectIDUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ServersUpdateByProjectIDUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ ServersUpdateByProjectIDForbidden describes a response with status code 403, wit
 Forbidden
 */
 type ServersUpdateByProjectIDForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers update by project Id forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *ServersUpdateByProjectIDForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersUpdateByProjectIDForbidden) GetPayload() *models.ProblemDetails {
+func (o *ServersUpdateByProjectIDForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ServersUpdateByProjectIDForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ ServersUpdateByProjectIDNotFound describes a response with status code 404, with
 Not Found
 */
 type ServersUpdateByProjectIDNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers update by project Id not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *ServersUpdateByProjectIDNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersUpdateByProjectIDNotFound) GetPayload() *models.ProblemDetails {
+func (o *ServersUpdateByProjectIDNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ServersUpdateByProjectIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

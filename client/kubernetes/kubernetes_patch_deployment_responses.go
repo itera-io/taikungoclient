@@ -141,7 +141,7 @@ KubernetesPatchDeploymentBadRequest describes a response with status code 400, w
 Bad Request
 */
 type KubernetesPatchDeploymentBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch deployment bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *KubernetesPatchDeploymentBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/deployment][%d] kubernetesPatchDeploymentBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchDeploymentBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchDeploymentBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesPatchDeploymentBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ KubernetesPatchDeploymentUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type KubernetesPatchDeploymentUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch deployment unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *KubernetesPatchDeploymentUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/deployment][%d] kubernetesPatchDeploymentUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchDeploymentUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchDeploymentUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesPatchDeploymentUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ KubernetesPatchDeploymentForbidden describes a response with status code 403, wi
 Forbidden
 */
 type KubernetesPatchDeploymentForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch deployment forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *KubernetesPatchDeploymentForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/deployment][%d] kubernetesPatchDeploymentForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchDeploymentForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchDeploymentForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesPatchDeploymentForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ KubernetesPatchDeploymentNotFound describes a response with status code 404, wit
 Not Found
 */
 type KubernetesPatchDeploymentNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch deployment not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *KubernetesPatchDeploymentNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/deployment][%d] kubernetesPatchDeploymentNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchDeploymentNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchDeploymentNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesPatchDeploymentNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

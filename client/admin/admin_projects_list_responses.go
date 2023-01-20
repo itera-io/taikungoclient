@@ -143,7 +143,7 @@ AdminProjectsListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AdminProjectsListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin projects list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *AdminProjectsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminProjectsListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AdminProjectsListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminProjectsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ AdminProjectsListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type AdminProjectsListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin projects list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *AdminProjectsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminProjectsListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AdminProjectsListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminProjectsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ AdminProjectsListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type AdminProjectsListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin projects list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *AdminProjectsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminProjectsListForbidden) GetPayload() *models.ProblemDetails {
+func (o *AdminProjectsListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminProjectsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ AdminProjectsListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type AdminProjectsListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin projects list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *AdminProjectsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminProjectsListNotFound) GetPayload() *models.ProblemDetails {
+func (o *AdminProjectsListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminProjectsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -141,7 +141,7 @@ KubeConfigDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type KubeConfigDeleteBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kube config delete bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *KubeConfigDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete][%d] kubeConfigDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubeConfigDeleteBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubeConfigDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ KubeConfigDeleteUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type KubeConfigDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kube config delete unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *KubeConfigDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete][%d] kubeConfigDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubeConfigDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigDeleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubeConfigDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ KubeConfigDeleteForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type KubeConfigDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kube config delete forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *KubeConfigDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete][%d] kubeConfigDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubeConfigDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigDeleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubeConfigDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ KubeConfigDeleteNotFound describes a response with status code 404, with default
 Not Found
 */
 type KubeConfigDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kube config delete not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *KubeConfigDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete][%d] kubeConfigDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubeConfigDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigDeleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubeConfigDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

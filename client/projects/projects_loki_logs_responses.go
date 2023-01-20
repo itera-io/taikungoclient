@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsLokiLogsReader is a Reader for the ProjectsLokiLogs structure.
@@ -131,7 +129,7 @@ ProjectsLokiLogsBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type ProjectsLokiLogsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects loki logs bad request response has a 2xx status code
@@ -172,16 +170,14 @@ func (o *ProjectsLokiLogsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsLokiLogsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectsLokiLogsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsLokiLogsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -199,7 +195,7 @@ ProjectsLokiLogsUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type ProjectsLokiLogsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects loki logs unauthorized response has a 2xx status code
@@ -240,16 +236,14 @@ func (o *ProjectsLokiLogsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsLokiLogsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsLokiLogsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsLokiLogsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -267,7 +261,7 @@ ProjectsLokiLogsForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type ProjectsLokiLogsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects loki logs forbidden response has a 2xx status code
@@ -308,16 +302,14 @@ func (o *ProjectsLokiLogsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsLokiLogsForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsLokiLogsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsLokiLogsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -335,7 +327,7 @@ ProjectsLokiLogsNotFound describes a response with status code 404, with default
 Not Found
 */
 type ProjectsLokiLogsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects loki logs not found response has a 2xx status code
@@ -376,16 +368,14 @@ func (o *ProjectsLokiLogsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsLokiLogsNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsLokiLogsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsLokiLogsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

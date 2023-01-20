@@ -141,7 +141,7 @@ CatalogAppLockManagerBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type CatalogAppLockManagerBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog app lock manager bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CatalogAppLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogAppLockManagerBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CatalogAppLockManagerBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogAppLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CatalogAppLockManagerUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type CatalogAppLockManagerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog app lock manager unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CatalogAppLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogAppLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogAppLockManagerUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogAppLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CatalogAppLockManagerForbidden describes a response with status code 403, with d
 Forbidden
 */
 type CatalogAppLockManagerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog app lock manager forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CatalogAppLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogAppLockManagerForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogAppLockManagerForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogAppLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CatalogAppLockManagerNotFound describes a response with status code 404, with de
 Not Found
 */
 type CatalogAppLockManagerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog app lock manager not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CatalogAppLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogAppLockManagerNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogAppLockManagerNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogAppLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

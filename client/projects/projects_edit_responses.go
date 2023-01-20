@@ -141,7 +141,7 @@ ProjectsEditBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type ProjectsEditBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects edit bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *ProjectsEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsEditBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectsEditBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsEditBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ ProjectsEditUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type ProjectsEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects edit unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *ProjectsEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsEditUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ ProjectsEditForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type ProjectsEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects edit forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *ProjectsEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsEditForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ ProjectsEditNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type ProjectsEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects edit not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *ProjectsEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsEditNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -141,7 +141,7 @@ AwsRegionListBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type AwsRegionListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws region list bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *AwsRegionListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsRegionListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AwsRegionListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsRegionListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ AwsRegionListUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type AwsRegionListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws region list unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *AwsRegionListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsRegionListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AwsRegionListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsRegionListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ AwsRegionListForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type AwsRegionListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws region list forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *AwsRegionListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsRegionListForbidden) GetPayload() *models.ProblemDetails {
+func (o *AwsRegionListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsRegionListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ AwsRegionListNotFound describes a response with status code 404, with default he
 Not Found
 */
 type AwsRegionListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws region list not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *AwsRegionListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsRegionListNotFound) GetPayload() *models.ProblemDetails {
+func (o *AwsRegionListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsRegionListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

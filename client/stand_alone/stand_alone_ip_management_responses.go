@@ -141,7 +141,7 @@ StandAloneIPManagementBadRequest describes a response with status code 400, with
 Bad Request
 */
 type StandAloneIPManagementBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Ip management bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *StandAloneIPManagementBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneIPManagementBadRequest) GetPayload() *models.ProblemDetails {
+func (o *StandAloneIPManagementBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneIPManagementBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ StandAloneIPManagementUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type StandAloneIPManagementUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Ip management unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *StandAloneIPManagementUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneIPManagementUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneIPManagementUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneIPManagementUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ StandAloneIPManagementForbidden describes a response with status code 403, with 
 Forbidden
 */
 type StandAloneIPManagementForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Ip management forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *StandAloneIPManagementForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneIPManagementForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneIPManagementForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneIPManagementForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ StandAloneIPManagementNotFound describes a response with status code 404, with d
 Not Found
 */
 type StandAloneIPManagementNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Ip management not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *StandAloneIPManagementNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneIPManagementNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneIPManagementNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneIPManagementNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

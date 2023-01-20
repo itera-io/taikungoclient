@@ -143,7 +143,7 @@ AdminOrganizationsBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type AdminOrganizationsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin organizations bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *AdminOrganizationsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminOrganizationsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AdminOrganizationsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminOrganizationsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ AdminOrganizationsUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type AdminOrganizationsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin organizations unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *AdminOrganizationsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminOrganizationsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AdminOrganizationsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminOrganizationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ AdminOrganizationsForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type AdminOrganizationsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin organizations forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *AdminOrganizationsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminOrganizationsForbidden) GetPayload() *models.ProblemDetails {
+func (o *AdminOrganizationsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminOrganizationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ AdminOrganizationsNotFound describes a response with status code 404, with defau
 Not Found
 */
 type AdminOrganizationsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin organizations not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *AdminOrganizationsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminOrganizationsNotFound) GetPayload() *models.ProblemDetails {
+func (o *AdminOrganizationsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminOrganizationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

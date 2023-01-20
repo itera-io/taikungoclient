@@ -141,7 +141,7 @@ CommonGetCountryListBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type CommonGetCountryListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this common get country list bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CommonGetCountryListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CommonGetCountryListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CommonGetCountryListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CommonGetCountryListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CommonGetCountryListUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type CommonGetCountryListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this common get country list unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CommonGetCountryListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CommonGetCountryListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CommonGetCountryListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CommonGetCountryListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CommonGetCountryListForbidden describes a response with status code 403, with de
 Forbidden
 */
 type CommonGetCountryListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this common get country list forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CommonGetCountryListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CommonGetCountryListForbidden) GetPayload() *models.ProblemDetails {
+func (o *CommonGetCountryListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CommonGetCountryListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CommonGetCountryListNotFound describes a response with status code 404, with def
 Not Found
 */
 type CommonGetCountryListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this common get country list not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CommonGetCountryListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CommonGetCountryListNotFound) GetPayload() *models.ProblemDetails {
+func (o *CommonGetCountryListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CommonGetCountryListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -143,7 +143,7 @@ BillingListBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type BillingListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this billing list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *BillingListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BillingListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *BillingListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BillingListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ BillingListUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type BillingListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this billing list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *BillingListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BillingListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BillingListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BillingListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ BillingListForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type BillingListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this billing list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *BillingListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BillingListForbidden) GetPayload() *models.ProblemDetails {
+func (o *BillingListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BillingListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ BillingListNotFound describes a response with status code 404, with default head
 Not Found
 */
 type BillingListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this billing list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *BillingListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BillingListNotFound) GetPayload() *models.ProblemDetails {
+func (o *BillingListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BillingListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

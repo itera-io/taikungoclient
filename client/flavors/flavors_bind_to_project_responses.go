@@ -141,7 +141,7 @@ FlavorsBindToProjectBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type FlavorsBindToProjectBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors bind to project bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *FlavorsBindToProjectBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsBindToProjectBadRequest) GetPayload() *models.ProblemDetails {
+func (o *FlavorsBindToProjectBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsBindToProjectBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ FlavorsBindToProjectUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type FlavorsBindToProjectUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors bind to project unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *FlavorsBindToProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsBindToProjectUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *FlavorsBindToProjectUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsBindToProjectUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ FlavorsBindToProjectForbidden describes a response with status code 403, with de
 Forbidden
 */
 type FlavorsBindToProjectForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors bind to project forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *FlavorsBindToProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsBindToProjectForbidden) GetPayload() *models.ProblemDetails {
+func (o *FlavorsBindToProjectForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsBindToProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ FlavorsBindToProjectNotFound describes a response with status code 404, with def
 Not Found
 */
 type FlavorsBindToProjectNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors bind to project not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *FlavorsBindToProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsBindToProjectNotFound) GetPayload() *models.ProblemDetails {
+func (o *FlavorsBindToProjectNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsBindToProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

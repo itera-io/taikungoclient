@@ -141,7 +141,7 @@ CronJobTriggerTemplatesBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type CronJobTriggerTemplatesBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job trigger templates bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CronJobTriggerTemplatesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/trigger-templates][%d] cronJobTriggerTemplatesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobTriggerTemplatesBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CronJobTriggerTemplatesBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobTriggerTemplatesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CronJobTriggerTemplatesUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type CronJobTriggerTemplatesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job trigger templates unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CronJobTriggerTemplatesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/trigger-templates][%d] cronJobTriggerTemplatesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobTriggerTemplatesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobTriggerTemplatesUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobTriggerTemplatesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CronJobTriggerTemplatesForbidden describes a response with status code 403, with
 Forbidden
 */
 type CronJobTriggerTemplatesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job trigger templates forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CronJobTriggerTemplatesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/trigger-templates][%d] cronJobTriggerTemplatesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobTriggerTemplatesForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobTriggerTemplatesForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobTriggerTemplatesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CronJobTriggerTemplatesNotFound describes a response with status code 404, with 
 Not Found
 */
 type CronJobTriggerTemplatesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job trigger templates not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CronJobTriggerTemplatesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/trigger-templates][%d] cronJobTriggerTemplatesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobTriggerTemplatesNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobTriggerTemplatesNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobTriggerTemplatesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

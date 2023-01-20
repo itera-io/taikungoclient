@@ -141,7 +141,7 @@ TicketArchiveBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type TicketArchiveBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket archive bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *TicketArchiveBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/archive][%d] ticketArchiveBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketArchiveBadRequest) GetPayload() *models.ProblemDetails {
+func (o *TicketArchiveBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketArchiveBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ TicketArchiveUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type TicketArchiveUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket archive unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *TicketArchiveUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/archive][%d] ticketArchiveUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketArchiveUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *TicketArchiveUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketArchiveUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ TicketArchiveForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type TicketArchiveForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket archive forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *TicketArchiveForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/archive][%d] ticketArchiveForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketArchiveForbidden) GetPayload() *models.ProblemDetails {
+func (o *TicketArchiveForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketArchiveForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ TicketArchiveNotFound describes a response with status code 404, with default he
 Not Found
 */
 type TicketArchiveNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket archive not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *TicketArchiveNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/archive][%d] ticketArchiveNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketArchiveNotFound) GetPayload() *models.ProblemDetails {
+func (o *TicketArchiveNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketArchiveNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

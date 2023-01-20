@@ -141,7 +141,7 @@ CronJobFetchArtifactHubOrganizationsBadRequest describes a response with status 
 Bad Request
 */
 type CronJobFetchArtifactHubOrganizationsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job fetch artifact hub organizations bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CronJobFetchArtifactHubOrganizationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-artifact-organizations][%d] cronJobFetchArtifactHubOrganizationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobFetchArtifactHubOrganizationsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchArtifactHubOrganizationsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobFetchArtifactHubOrganizationsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CronJobFetchArtifactHubOrganizationsUnauthorized describes a response with statu
 Unauthorized
 */
 type CronJobFetchArtifactHubOrganizationsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job fetch artifact hub organizations unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CronJobFetchArtifactHubOrganizationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-artifact-organizations][%d] cronJobFetchArtifactHubOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobFetchArtifactHubOrganizationsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchArtifactHubOrganizationsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobFetchArtifactHubOrganizationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CronJobFetchArtifactHubOrganizationsForbidden describes a response with status c
 Forbidden
 */
 type CronJobFetchArtifactHubOrganizationsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job fetch artifact hub organizations forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CronJobFetchArtifactHubOrganizationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-artifact-organizations][%d] cronJobFetchArtifactHubOrganizationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobFetchArtifactHubOrganizationsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchArtifactHubOrganizationsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobFetchArtifactHubOrganizationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CronJobFetchArtifactHubOrganizationsNotFound describes a response with status co
 Not Found
 */
 type CronJobFetchArtifactHubOrganizationsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job fetch artifact hub organizations not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CronJobFetchArtifactHubOrganizationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-artifact-organizations][%d] cronJobFetchArtifactHubOrganizationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobFetchArtifactHubOrganizationsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchArtifactHubOrganizationsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobFetchArtifactHubOrganizationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

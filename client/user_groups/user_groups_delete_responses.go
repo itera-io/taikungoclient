@@ -203,7 +203,7 @@ UserGroupsDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type UserGroupsDeleteBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups delete bad request response has a 2xx status code
@@ -244,16 +244,14 @@ func (o *UserGroupsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserGroupsDeleteBadRequest) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -271,7 +269,7 @@ UserGroupsDeleteUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type UserGroupsDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups delete unauthorized response has a 2xx status code
@@ -312,16 +310,14 @@ func (o *UserGroupsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserGroupsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsDeleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -339,7 +335,7 @@ UserGroupsDeleteForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type UserGroupsDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups delete forbidden response has a 2xx status code
@@ -380,16 +376,14 @@ func (o *UserGroupsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserGroupsDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsDeleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -407,7 +401,7 @@ UserGroupsDeleteNotFound describes a response with status code 404, with default
 Not Found
 */
 type UserGroupsDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups delete not found response has a 2xx status code
@@ -448,16 +442,14 @@ func (o *UserGroupsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups][%d] userGroupsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserGroupsDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsDeleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

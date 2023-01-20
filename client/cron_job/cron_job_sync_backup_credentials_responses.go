@@ -141,7 +141,7 @@ CronJobSyncBackupCredentialsBadRequest describes a response with status code 400
 Bad Request
 */
 type CronJobSyncBackupCredentialsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync backup credentials bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CronJobSyncBackupCredentialsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobSyncBackupCredentialsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncBackupCredentialsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSyncBackupCredentialsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CronJobSyncBackupCredentialsUnauthorized describes a response with status code 4
 Unauthorized
 */
 type CronJobSyncBackupCredentialsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync backup credentials unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CronJobSyncBackupCredentialsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobSyncBackupCredentialsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncBackupCredentialsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSyncBackupCredentialsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CronJobSyncBackupCredentialsForbidden describes a response with status code 403,
 Forbidden
 */
 type CronJobSyncBackupCredentialsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync backup credentials forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CronJobSyncBackupCredentialsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobSyncBackupCredentialsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncBackupCredentialsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSyncBackupCredentialsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CronJobSyncBackupCredentialsNotFound describes a response with status code 404, 
 Not Found
 */
 type CronJobSyncBackupCredentialsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync backup credentials not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CronJobSyncBackupCredentialsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobSyncBackupCredentialsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncBackupCredentialsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSyncBackupCredentialsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

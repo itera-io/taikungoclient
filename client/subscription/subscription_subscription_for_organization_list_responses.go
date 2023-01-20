@@ -141,7 +141,7 @@ SubscriptionSubscriptionForOrganizationListBadRequest describes a response with 
 Bad Request
 */
 type SubscriptionSubscriptionForOrganizationListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this subscription subscription for organization list bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *SubscriptionSubscriptionForOrganizationListBadRequest) String() string 
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/boundlist][%d] subscriptionSubscriptionForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForOrganizationListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionSubscriptionForOrganizationListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SubscriptionSubscriptionForOrganizationListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ SubscriptionSubscriptionForOrganizationListUnauthorized describes a response wit
 Unauthorized
 */
 type SubscriptionSubscriptionForOrganizationListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this subscription subscription for organization list unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *SubscriptionSubscriptionForOrganizationListUnauthorized) String() strin
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/boundlist][%d] subscriptionSubscriptionForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionSubscriptionForOrganizationListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SubscriptionSubscriptionForOrganizationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ SubscriptionSubscriptionForOrganizationListForbidden describes a response with s
 Forbidden
 */
 type SubscriptionSubscriptionForOrganizationListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this subscription subscription for organization list forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *SubscriptionSubscriptionForOrganizationListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/boundlist][%d] subscriptionSubscriptionForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForOrganizationListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionSubscriptionForOrganizationListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SubscriptionSubscriptionForOrganizationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ SubscriptionSubscriptionForOrganizationListNotFound describes a response with st
 Not Found
 */
 type SubscriptionSubscriptionForOrganizationListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this subscription subscription for organization list not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *SubscriptionSubscriptionForOrganizationListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/boundlist][%d] subscriptionSubscriptionForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForOrganizationListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SubscriptionSubscriptionForOrganizationListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SubscriptionSubscriptionForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

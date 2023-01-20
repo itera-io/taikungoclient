@@ -141,7 +141,7 @@ KubernetesDeletePodBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type KubernetesDeletePodBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes delete pod bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *KubernetesDeletePodBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDeletePodBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDeletePodBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDeletePodBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ KubernetesDeletePodUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type KubernetesDeletePodUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes delete pod unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *KubernetesDeletePodUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDeletePodUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDeletePodUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDeletePodUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ KubernetesDeletePodForbidden describes a response with status code 403, with def
 Forbidden
 */
 type KubernetesDeletePodForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes delete pod forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *KubernetesDeletePodForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDeletePodForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDeletePodForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDeletePodForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ KubernetesDeletePodNotFound describes a response with status code 404, with defa
 Not Found
 */
 type KubernetesDeletePodNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes delete pod not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *KubernetesDeletePodNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDeletePodNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDeletePodNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDeletePodNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

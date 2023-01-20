@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesOverviewReader is a Reader for the KubernetesOverview structure.
@@ -141,7 +139,7 @@ KubernetesOverviewBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubernetesOverviewBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes overview bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *KubernetesOverviewBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesOverviewBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesOverviewBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesOverviewBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ KubernetesOverviewUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubernetesOverviewUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes overview unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *KubernetesOverviewUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesOverviewUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesOverviewUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesOverviewUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ KubernetesOverviewForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubernetesOverviewForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes overview forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *KubernetesOverviewForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesOverviewForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesOverviewForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesOverviewForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ KubernetesOverviewNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubernetesOverviewNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes overview not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *KubernetesOverviewNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesOverviewNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesOverviewNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesOverviewNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -141,7 +141,7 @@ KubernetesPatchJobBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubernetesPatchJobBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch job bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *KubernetesPatchJobBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchJobBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchJobBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesPatchJobBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ KubernetesPatchJobUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubernetesPatchJobUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch job unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *KubernetesPatchJobUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchJobUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchJobUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesPatchJobUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ KubernetesPatchJobForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubernetesPatchJobForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch job forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *KubernetesPatchJobForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchJobForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchJobForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesPatchJobForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ KubernetesPatchJobNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubernetesPatchJobNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch job not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *KubernetesPatchJobNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/job][%d] kubernetesPatchJobNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchJobNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchJobNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesPatchJobNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

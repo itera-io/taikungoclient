@@ -141,7 +141,7 @@ CronJobSyncProjectsBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type CronJobSyncProjectsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync projects bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CronJobSyncProjectsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-projects][%d] cronJobSyncProjectsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobSyncProjectsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncProjectsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSyncProjectsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CronJobSyncProjectsUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type CronJobSyncProjectsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync projects unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CronJobSyncProjectsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-projects][%d] cronJobSyncProjectsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobSyncProjectsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncProjectsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSyncProjectsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CronJobSyncProjectsForbidden describes a response with status code 403, with def
 Forbidden
 */
 type CronJobSyncProjectsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync projects forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CronJobSyncProjectsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-projects][%d] cronJobSyncProjectsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobSyncProjectsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncProjectsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSyncProjectsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CronJobSyncProjectsNotFound describes a response with status code 404, with defa
 Not Found
 */
 type CronJobSyncProjectsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job sync projects not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CronJobSyncProjectsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-projects][%d] cronJobSyncProjectsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobSyncProjectsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobSyncProjectsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSyncProjectsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

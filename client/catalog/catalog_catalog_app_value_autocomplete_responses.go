@@ -141,7 +141,7 @@ CatalogCatalogAppValueAutocompleteBadRequest describes a response with status co
 Bad Request
 */
 type CatalogCatalogAppValueAutocompleteBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog catalog app value autocomplete bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CatalogCatalogAppValueAutocompleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueAutocompleteBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppValueAutocompleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppValueAutocompleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CatalogCatalogAppValueAutocompleteUnauthorized describes a response with status 
 Unauthorized
 */
 type CatalogCatalogAppValueAutocompleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog catalog app value autocomplete unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CatalogCatalogAppValueAutocompleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueAutocompleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppValueAutocompleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppValueAutocompleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CatalogCatalogAppValueAutocompleteForbidden describes a response with status cod
 Forbidden
 */
 type CatalogCatalogAppValueAutocompleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog catalog app value autocomplete forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CatalogCatalogAppValueAutocompleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueAutocompleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppValueAutocompleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppValueAutocompleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CatalogCatalogAppValueAutocompleteNotFound describes a response with status code
 Not Found
 */
 type CatalogCatalogAppValueAutocompleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog catalog app value autocomplete not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CatalogCatalogAppValueAutocompleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueAutocompleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppValueAutocompleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppValueAutocompleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

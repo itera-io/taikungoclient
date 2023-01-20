@@ -141,7 +141,7 @@ StandAloneVMDisksPurgeBadRequest describes a response with status code 400, with
 Bad Request
 */
 type StandAloneVMDisksPurgeBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks purge bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *StandAloneVMDisksPurgeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneVMDisksPurgeBadRequest) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksPurgeBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksPurgeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ StandAloneVMDisksPurgeUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type StandAloneVMDisksPurgeUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks purge unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *StandAloneVMDisksPurgeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksPurgeUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksPurgeUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksPurgeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ StandAloneVMDisksPurgeForbidden describes a response with status code 403, with 
 Forbidden
 */
 type StandAloneVMDisksPurgeForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks purge forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *StandAloneVMDisksPurgeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksPurgeForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksPurgeForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksPurgeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ StandAloneVMDisksPurgeNotFound describes a response with status code 404, with d
 Not Found
 */
 type StandAloneVMDisksPurgeNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks purge not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *StandAloneVMDisksPurgeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksPurgeNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksPurgeNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksPurgeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

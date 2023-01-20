@@ -141,7 +141,7 @@ StandAloneProfileEditBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type StandAloneProfileEditBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile edit bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *StandAloneProfileEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileEditBadRequest) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileEditBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneProfileEditBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ StandAloneProfileEditUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type StandAloneProfileEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile edit unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *StandAloneProfileEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneProfileEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileEditUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneProfileEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ StandAloneProfileEditForbidden describes a response with status code 403, with d
 Forbidden
 */
 type StandAloneProfileEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile edit forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *StandAloneProfileEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneProfileEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileEditForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneProfileEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ StandAloneProfileEditNotFound describes a response with status code 404, with de
 Not Found
 */
 type StandAloneProfileEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone profile edit not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *StandAloneProfileEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneProfileEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneProfileEditNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneProfileEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

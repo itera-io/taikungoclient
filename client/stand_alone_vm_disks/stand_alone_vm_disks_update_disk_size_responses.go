@@ -141,7 +141,7 @@ StandAloneVMDisksUpdateDiskSizeBadRequest describes a response with status code 
 Bad Request
 */
 type StandAloneVMDisksUpdateDiskSizeBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks update disk size bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *StandAloneVMDisksUpdateDiskSizeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update-size][%d] standAloneVmDisksUpdateDiskSizeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateDiskSizeBadRequest) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksUpdateDiskSizeBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksUpdateDiskSizeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ StandAloneVMDisksUpdateDiskSizeUnauthorized describes a response with status cod
 Unauthorized
 */
 type StandAloneVMDisksUpdateDiskSizeUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks update disk size unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *StandAloneVMDisksUpdateDiskSizeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update-size][%d] standAloneVmDisksUpdateDiskSizeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateDiskSizeUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksUpdateDiskSizeUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksUpdateDiskSizeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ StandAloneVMDisksUpdateDiskSizeForbidden describes a response with status code 4
 Forbidden
 */
 type StandAloneVMDisksUpdateDiskSizeForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks update disk size forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *StandAloneVMDisksUpdateDiskSizeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update-size][%d] standAloneVmDisksUpdateDiskSizeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateDiskSizeForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksUpdateDiskSizeForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksUpdateDiskSizeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ StandAloneVMDisksUpdateDiskSizeNotFound describes a response with status code 40
 Not Found
 */
 type StandAloneVMDisksUpdateDiskSizeNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone Vm disks update disk size not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *StandAloneVMDisksUpdateDiskSizeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update-size][%d] standAloneVmDisksUpdateDiskSizeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateDiskSizeNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneVMDisksUpdateDiskSizeNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksUpdateDiskSizeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

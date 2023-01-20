@@ -141,7 +141,7 @@ PreDefinedQueriesGetPrometheusCommonDashboardListBadRequest describes a response
 Bad Request
 */
 type PreDefinedQueriesGetPrometheusCommonDashboardListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus common dashboard list bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *PreDefinedQueriesGetPrometheusCommonDashboardListBadRequest) String() s
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/common][%d] preDefinedQueriesGetPrometheusCommonDashboardListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusCommonDashboardListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *PreDefinedQueriesGetPrometheusCommonDashboardListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesGetPrometheusCommonDashboardListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized describes a respon
 Unauthorized
 */
 type PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus common dashboard list unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized) String()
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/common][%d] preDefinedQueriesGetPrometheusCommonDashboardListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ PreDefinedQueriesGetPrometheusCommonDashboardListForbidden describes a response 
 Forbidden
 */
 type PreDefinedQueriesGetPrometheusCommonDashboardListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus common dashboard list forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *PreDefinedQueriesGetPrometheusCommonDashboardListForbidden) String() st
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/common][%d] preDefinedQueriesGetPrometheusCommonDashboardListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusCommonDashboardListForbidden) GetPayload() *models.ProblemDetails {
+func (o *PreDefinedQueriesGetPrometheusCommonDashboardListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesGetPrometheusCommonDashboardListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ PreDefinedQueriesGetPrometheusCommonDashboardListNotFound describes a response w
 Not Found
 */
 type PreDefinedQueriesGetPrometheusCommonDashboardListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus common dashboard list not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *PreDefinedQueriesGetPrometheusCommonDashboardListNotFound) String() str
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/common][%d] preDefinedQueriesGetPrometheusCommonDashboardListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusCommonDashboardListNotFound) GetPayload() *models.ProblemDetails {
+func (o *PreDefinedQueriesGetPrometheusCommonDashboardListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesGetPrometheusCommonDashboardListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

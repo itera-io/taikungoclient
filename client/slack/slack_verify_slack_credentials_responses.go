@@ -141,7 +141,7 @@ SlackVerifySlackCredentialsBadRequest describes a response with status code 400,
 Bad Request
 */
 type SlackVerifySlackCredentialsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this slack verify slack credentials bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *SlackVerifySlackCredentialsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SlackVerifySlackCredentialsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *SlackVerifySlackCredentialsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SlackVerifySlackCredentialsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ SlackVerifySlackCredentialsUnauthorized describes a response with status code 40
 Unauthorized
 */
 type SlackVerifySlackCredentialsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this slack verify slack credentials unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *SlackVerifySlackCredentialsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SlackVerifySlackCredentialsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SlackVerifySlackCredentialsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SlackVerifySlackCredentialsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ SlackVerifySlackCredentialsForbidden describes a response with status code 403, 
 Forbidden
 */
 type SlackVerifySlackCredentialsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this slack verify slack credentials forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *SlackVerifySlackCredentialsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SlackVerifySlackCredentialsForbidden) GetPayload() *models.ProblemDetails {
+func (o *SlackVerifySlackCredentialsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SlackVerifySlackCredentialsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ SlackVerifySlackCredentialsNotFound describes a response with status code 404, w
 Not Found
 */
 type SlackVerifySlackCredentialsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this slack verify slack credentials not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *SlackVerifySlackCredentialsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SlackVerifySlackCredentialsNotFound) GetPayload() *models.ProblemDetails {
+func (o *SlackVerifySlackCredentialsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SlackVerifySlackCredentialsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

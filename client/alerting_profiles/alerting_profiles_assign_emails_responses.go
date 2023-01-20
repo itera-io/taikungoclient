@@ -141,7 +141,7 @@ AlertingProfilesAssignEmailsBadRequest describes a response with status code 400
 Bad Request
 */
 type AlertingProfilesAssignEmailsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles assign emails bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *AlertingProfilesAssignEmailsBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesAssignEmailsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAssignEmailsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAssignEmailsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ AlertingProfilesAssignEmailsUnauthorized describes a response with status code 4
 Unauthorized
 */
 type AlertingProfilesAssignEmailsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles assign emails unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *AlertingProfilesAssignEmailsUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesAssignEmailsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAssignEmailsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAssignEmailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ AlertingProfilesAssignEmailsForbidden describes a response with status code 403,
 Forbidden
 */
 type AlertingProfilesAssignEmailsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles assign emails forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *AlertingProfilesAssignEmailsForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesAssignEmailsForbidden) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAssignEmailsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAssignEmailsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ AlertingProfilesAssignEmailsNotFound describes a response with status code 404, 
 Not Found
 */
 type AlertingProfilesAssignEmailsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles assign emails not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *AlertingProfilesAssignEmailsNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesAssignEmailsNotFound) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAssignEmailsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAssignEmailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

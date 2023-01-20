@@ -203,7 +203,7 @@ AllowedHostDeleteBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AllowedHostDeleteBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this allowed host delete bad request response has a 2xx status code
@@ -244,16 +244,14 @@ func (o *AllowedHostDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AllowedHostDeleteBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AllowedHostDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -271,7 +269,7 @@ AllowedHostDeleteUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type AllowedHostDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this allowed host delete unauthorized response has a 2xx status code
@@ -312,16 +310,14 @@ func (o *AllowedHostDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AllowedHostDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostDeleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AllowedHostDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -339,7 +335,7 @@ AllowedHostDeleteForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type AllowedHostDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this allowed host delete forbidden response has a 2xx status code
@@ -380,16 +376,14 @@ func (o *AllowedHostDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AllowedHostDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostDeleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AllowedHostDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -407,7 +401,7 @@ AllowedHostDeleteNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type AllowedHostDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this allowed host delete not found response has a 2xx status code
@@ -448,16 +442,14 @@ func (o *AllowedHostDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AllowedHostDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostDeleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AllowedHostDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

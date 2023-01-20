@@ -141,7 +141,7 @@ ProjectTemplateCreateBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type ProjectTemplateCreateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template create bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *ProjectTemplateCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectTemplate/create-project][%d] projectTemplateCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectTemplateCreateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ ProjectTemplateCreateUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type ProjectTemplateCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template create unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *ProjectTemplateCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectTemplate/create-project][%d] projectTemplateCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectTemplateCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ ProjectTemplateCreateForbidden describes a response with status code 403, with d
 Forbidden
 */
 type ProjectTemplateCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template create forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *ProjectTemplateCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectTemplate/create-project][%d] projectTemplateCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectTemplateCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ ProjectTemplateCreateNotFound describes a response with status code 404, with de
 Not Found
 */
 type ProjectTemplateCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template create not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *ProjectTemplateCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectTemplate/create-project][%d] projectTemplateCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectTemplateCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

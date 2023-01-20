@@ -141,7 +141,7 @@ SSHUsersListBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type SSHUsersListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ssh users list bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *SSHUsersListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/SshUsers/list/{accessProfileId}][%d] sshUsersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SSHUsersListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SSHUsersListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ SSHUsersListUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type SSHUsersListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ssh users list unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *SSHUsersListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/SshUsers/list/{accessProfileId}][%d] sshUsersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SSHUsersListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SSHUsersListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ SSHUsersListForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type SSHUsersListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ssh users list forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *SSHUsersListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/SshUsers/list/{accessProfileId}][%d] sshUsersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SSHUsersListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SSHUsersListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ SSHUsersListNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type SSHUsersListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ssh users list not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *SSHUsersListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/SshUsers/list/{accessProfileId}][%d] sshUsersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SSHUsersListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SSHUsersListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

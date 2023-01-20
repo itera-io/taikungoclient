@@ -141,7 +141,7 @@ CronJobDeleteExpiredAlertsBadRequest describes a response with status code 400, 
 Bad Request
 */
 type CronJobDeleteExpiredAlertsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job delete expired alerts bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CronJobDeleteExpiredAlertsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredAlertsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CronJobDeleteExpiredAlertsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredAlertsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CronJobDeleteExpiredAlertsUnauthorized describes a response with status code 401
 Unauthorized
 */
 type CronJobDeleteExpiredAlertsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job delete expired alerts unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CronJobDeleteExpiredAlertsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredAlertsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobDeleteExpiredAlertsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredAlertsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CronJobDeleteExpiredAlertsForbidden describes a response with status code 403, w
 Forbidden
 */
 type CronJobDeleteExpiredAlertsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job delete expired alerts forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CronJobDeleteExpiredAlertsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredAlertsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobDeleteExpiredAlertsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredAlertsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CronJobDeleteExpiredAlertsNotFound describes a response with status code 404, wi
 Not Found
 */
 type CronJobDeleteExpiredAlertsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job delete expired alerts not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CronJobDeleteExpiredAlertsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredAlertsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobDeleteExpiredAlertsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredAlertsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

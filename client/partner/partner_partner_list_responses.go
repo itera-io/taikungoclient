@@ -141,7 +141,7 @@ PartnerPartnerListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type PartnerPartnerListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner partner list bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *PartnerPartnerListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerPartnerListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *PartnerPartnerListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerPartnerListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ PartnerPartnerListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type PartnerPartnerListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner partner list unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *PartnerPartnerListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerPartnerListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PartnerPartnerListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerPartnerListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ PartnerPartnerListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type PartnerPartnerListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner partner list forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *PartnerPartnerListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerPartnerListForbidden) GetPayload() *models.ProblemDetails {
+func (o *PartnerPartnerListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerPartnerListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ PartnerPartnerListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type PartnerPartnerListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner partner list not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *PartnerPartnerListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerPartnerListNotFound) GetPayload() *models.ProblemDetails {
+func (o *PartnerPartnerListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerPartnerListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -141,7 +141,7 @@ AzureDashboardBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AzureDashboardBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure dashboard bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *AzureDashboardBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureDashboardBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AzureDashboardBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureDashboardBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ AzureDashboardUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type AzureDashboardUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure dashboard unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *AzureDashboardUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureDashboardUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AzureDashboardUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureDashboardUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ AzureDashboardForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type AzureDashboardForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure dashboard forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *AzureDashboardForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureDashboardForbidden) GetPayload() *models.ProblemDetails {
+func (o *AzureDashboardForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureDashboardForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ AzureDashboardNotFound describes a response with status code 404, with default h
 Not Found
 */
 type AzureDashboardNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure dashboard not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *AzureDashboardNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureDashboardNotFound) GetPayload() *models.ProblemDetails {
+func (o *AzureDashboardNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureDashboardNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

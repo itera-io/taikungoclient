@@ -141,7 +141,7 @@ UserTokenBindUnbindBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type UserTokenBindUnbindBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token bind unbind bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *UserTokenBindUnbindBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserTokenBindUnbindBadRequest) GetPayload() *models.ProblemDetails {
+func (o *UserTokenBindUnbindBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserTokenBindUnbindBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ UserTokenBindUnbindUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type UserTokenBindUnbindUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token bind unbind unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *UserTokenBindUnbindUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserTokenBindUnbindUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UserTokenBindUnbindUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserTokenBindUnbindUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ UserTokenBindUnbindForbidden describes a response with status code 403, with def
 Forbidden
 */
 type UserTokenBindUnbindForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token bind unbind forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *UserTokenBindUnbindForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserTokenBindUnbindForbidden) GetPayload() *models.ProblemDetails {
+func (o *UserTokenBindUnbindForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserTokenBindUnbindForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ UserTokenBindUnbindNotFound describes a response with status code 404, with defa
 Not Found
 */
 type UserTokenBindUnbindNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token bind unbind not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *UserTokenBindUnbindNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserTokenBindUnbindNotFound) GetPayload() *models.ProblemDetails {
+func (o *UserTokenBindUnbindNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserTokenBindUnbindNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

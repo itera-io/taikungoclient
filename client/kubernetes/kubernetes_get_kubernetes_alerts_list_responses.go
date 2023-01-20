@@ -143,7 +143,7 @@ KubernetesGetKubernetesAlertsListBadRequest describes a response with status cod
 Bad Request
 */
 type KubernetesGetKubernetesAlertsListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get kubernetes alerts list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *KubernetesGetKubernetesAlertsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetKubernetesAlertsListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetKubernetesAlertsListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubernetesAlertsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ KubernetesGetKubernetesAlertsListUnauthorized describes a response with status c
 Unauthorized
 */
 type KubernetesGetKubernetesAlertsListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get kubernetes alerts list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *KubernetesGetKubernetesAlertsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetKubernetesAlertsListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetKubernetesAlertsListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubernetesAlertsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ KubernetesGetKubernetesAlertsListForbidden describes a response with status code
 Forbidden
 */
 type KubernetesGetKubernetesAlertsListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get kubernetes alerts list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *KubernetesGetKubernetesAlertsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetKubernetesAlertsListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetKubernetesAlertsListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubernetesAlertsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ KubernetesGetKubernetesAlertsListNotFound describes a response with status code 
 Not Found
 */
 type KubernetesGetKubernetesAlertsListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get kubernetes alerts list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *KubernetesGetKubernetesAlertsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetKubernetesAlertsListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetKubernetesAlertsListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubernetesAlertsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

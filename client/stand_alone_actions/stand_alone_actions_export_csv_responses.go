@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneActionsExportCsvReader is a Reader for the StandAloneActionsExportCsv structure.
@@ -131,7 +129,7 @@ StandAloneActionsExportCsvBadRequest describes a response with status code 400, 
 Bad Request
 */
 type StandAloneActionsExportCsvBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions export csv bad request response has a 2xx status code
@@ -172,16 +170,14 @@ func (o *StandAloneActionsExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsExportCsvBadRequest) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsExportCsvBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsExportCsvBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -199,7 +195,7 @@ StandAloneActionsExportCsvUnauthorized describes a response with status code 401
 Unauthorized
 */
 type StandAloneActionsExportCsvUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions export csv unauthorized response has a 2xx status code
@@ -240,16 +236,14 @@ func (o *StandAloneActionsExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsExportCsvUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsExportCsvUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -267,7 +261,7 @@ StandAloneActionsExportCsvForbidden describes a response with status code 403, w
 Forbidden
 */
 type StandAloneActionsExportCsvForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions export csv forbidden response has a 2xx status code
@@ -308,16 +302,14 @@ func (o *StandAloneActionsExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsExportCsvForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsExportCsvForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsExportCsvForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -335,7 +327,7 @@ StandAloneActionsExportCsvNotFound describes a response with status code 404, wi
 Not Found
 */
 type StandAloneActionsExportCsvNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions export csv not found response has a 2xx status code
@@ -376,16 +368,14 @@ func (o *StandAloneActionsExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsExportCsvNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsExportCsvNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsExportCsvNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

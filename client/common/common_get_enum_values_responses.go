@@ -143,7 +143,7 @@ CommonGetEnumValuesBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type CommonGetEnumValuesBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this common get enum values bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *CommonGetEnumValuesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CommonGetEnumValuesBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CommonGetEnumValuesBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CommonGetEnumValuesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ CommonGetEnumValuesUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type CommonGetEnumValuesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this common get enum values unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *CommonGetEnumValuesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CommonGetEnumValuesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CommonGetEnumValuesUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CommonGetEnumValuesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ CommonGetEnumValuesForbidden describes a response with status code 403, with def
 Forbidden
 */
 type CommonGetEnumValuesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this common get enum values forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *CommonGetEnumValuesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CommonGetEnumValuesForbidden) GetPayload() *models.ProblemDetails {
+func (o *CommonGetEnumValuesForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CommonGetEnumValuesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ CommonGetEnumValuesNotFound describes a response with status code 404, with defa
 Not Found
 */
 type CommonGetEnumValuesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this common get enum values not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *CommonGetEnumValuesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CommonGetEnumValuesNotFound) GetPayload() *models.ProblemDetails {
+func (o *CommonGetEnumValuesNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CommonGetEnumValuesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

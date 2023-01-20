@@ -143,7 +143,7 @@ CloudCredentialsForCliBadRequest describes a response with status code 400, with
 Bad Request
 */
 type CloudCredentialsForCliBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials for cli bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *CloudCredentialsForCliBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/cli][%d] cloudCredentialsForCliBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsForCliBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsForCliBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsForCliBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ CloudCredentialsForCliUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type CloudCredentialsForCliUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials for cli unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *CloudCredentialsForCliUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/cli][%d] cloudCredentialsForCliUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsForCliUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsForCliUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsForCliUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ CloudCredentialsForCliForbidden describes a response with status code 403, with 
 Forbidden
 */
 type CloudCredentialsForCliForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials for cli forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *CloudCredentialsForCliForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/cli][%d] cloudCredentialsForCliForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsForCliForbidden) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsForCliForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsForCliForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ CloudCredentialsForCliNotFound describes a response with status code 404, with d
 Not Found
 */
 type CloudCredentialsForCliNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials for cli not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *CloudCredentialsForCliNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/cli][%d] cloudCredentialsForCliNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsForCliNotFound) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsForCliNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsForCliNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

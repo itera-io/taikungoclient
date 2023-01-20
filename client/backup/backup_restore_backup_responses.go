@@ -141,7 +141,7 @@ BackupRestoreBackupBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type BackupRestoreBackupBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup restore backup bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *BackupRestoreBackupBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/restore][%d] backupRestoreBackupBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupRestoreBackupBadRequest) GetPayload() *models.ProblemDetails {
+func (o *BackupRestoreBackupBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupRestoreBackupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ BackupRestoreBackupUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type BackupRestoreBackupUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup restore backup unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *BackupRestoreBackupUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/restore][%d] backupRestoreBackupUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupRestoreBackupUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BackupRestoreBackupUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupRestoreBackupUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ BackupRestoreBackupForbidden describes a response with status code 403, with def
 Forbidden
 */
 type BackupRestoreBackupForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup restore backup forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *BackupRestoreBackupForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/restore][%d] backupRestoreBackupForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupRestoreBackupForbidden) GetPayload() *models.ProblemDetails {
+func (o *BackupRestoreBackupForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupRestoreBackupForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ BackupRestoreBackupNotFound describes a response with status code 404, with defa
 Not Found
 */
 type BackupRestoreBackupNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup restore backup not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *BackupRestoreBackupNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/restore][%d] backupRestoreBackupNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupRestoreBackupNotFound) GetPayload() *models.ProblemDetails {
+func (o *BackupRestoreBackupNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupRestoreBackupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

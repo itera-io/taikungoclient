@@ -141,7 +141,7 @@ DNSServersListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type DNSServersListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers list bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *DNSServersListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *DNSServersListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *DNSServersListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DNSServersListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ DNSServersListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type DNSServersListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers list unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *DNSServersListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *DNSServersListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *DNSServersListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DNSServersListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ DNSServersListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type DNSServersListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers list forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *DNSServersListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *DNSServersListForbidden) GetPayload() *models.ProblemDetails {
+func (o *DNSServersListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DNSServersListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ DNSServersListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type DNSServersListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers list not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *DNSServersListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *DNSServersListNotFound) GetPayload() *models.ProblemDetails {
+func (o *DNSServersListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DNSServersListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

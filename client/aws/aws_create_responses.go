@@ -143,7 +143,7 @@ AwsCreateBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AwsCreateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws create bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *AwsCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsCreateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AwsCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ AwsCreateUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type AwsCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws create unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *AwsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AwsCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ AwsCreateForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type AwsCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws create forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *AwsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *AwsCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ AwsCreateNotFound describes a response with status code 404, with default header
 Not Found
 */
 type AwsCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws create not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *AwsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *AwsCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

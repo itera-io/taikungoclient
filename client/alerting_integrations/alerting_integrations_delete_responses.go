@@ -203,7 +203,7 @@ AlertingIntegrationsDeleteBadRequest describes a response with status code 400, 
 Bad Request
 */
 type AlertingIntegrationsDeleteBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting integrations delete bad request response has a 2xx status code
@@ -244,16 +244,14 @@ func (o *AlertingIntegrationsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingIntegrationsDeleteBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AlertingIntegrationsDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -271,7 +269,7 @@ AlertingIntegrationsDeleteUnauthorized describes a response with status code 401
 Unauthorized
 */
 type AlertingIntegrationsDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting integrations delete unauthorized response has a 2xx status code
@@ -312,16 +310,14 @@ func (o *AlertingIntegrationsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingIntegrationsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AlertingIntegrationsDeleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -339,7 +335,7 @@ AlertingIntegrationsDeleteForbidden describes a response with status code 403, w
 Forbidden
 */
 type AlertingIntegrationsDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting integrations delete forbidden response has a 2xx status code
@@ -380,16 +376,14 @@ func (o *AlertingIntegrationsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingIntegrationsDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *AlertingIntegrationsDeleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -407,7 +401,7 @@ AlertingIntegrationsDeleteNotFound describes a response with status code 404, wi
 Not Found
 */
 type AlertingIntegrationsDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting integrations delete not found response has a 2xx status code
@@ -448,16 +442,14 @@ func (o *AlertingIntegrationsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingIntegrationsDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *AlertingIntegrationsDeleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

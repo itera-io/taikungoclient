@@ -143,7 +143,7 @@ KubernetesGetPersistentVolumeClaimBadRequest describes a response with status co
 Bad Request
 */
 type KubernetesGetPersistentVolumeClaimBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get persistent volume claim bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *KubernetesGetPersistentVolumeClaimBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetPersistentVolumeClaimBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPersistentVolumeClaimBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetPersistentVolumeClaimBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ KubernetesGetPersistentVolumeClaimUnauthorized describes a response with status 
 Unauthorized
 */
 type KubernetesGetPersistentVolumeClaimUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get persistent volume claim unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *KubernetesGetPersistentVolumeClaimUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetPersistentVolumeClaimUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPersistentVolumeClaimUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetPersistentVolumeClaimUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ KubernetesGetPersistentVolumeClaimForbidden describes a response with status cod
 Forbidden
 */
 type KubernetesGetPersistentVolumeClaimForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get persistent volume claim forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *KubernetesGetPersistentVolumeClaimForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetPersistentVolumeClaimForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPersistentVolumeClaimForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetPersistentVolumeClaimForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ KubernetesGetPersistentVolumeClaimNotFound describes a response with status code
 Not Found
 */
 type KubernetesGetPersistentVolumeClaimNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get persistent volume claim not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *KubernetesGetPersistentVolumeClaimNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetPersistentVolumeClaimNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPersistentVolumeClaimNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetPersistentVolumeClaimNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

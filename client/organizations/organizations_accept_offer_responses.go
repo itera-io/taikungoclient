@@ -141,7 +141,7 @@ OrganizationsAcceptOfferBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type OrganizationsAcceptOfferBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations accept offer bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *OrganizationsAcceptOfferBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsAcceptOfferBadRequest) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsAcceptOfferBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsAcceptOfferBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ OrganizationsAcceptOfferUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type OrganizationsAcceptOfferUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations accept offer unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *OrganizationsAcceptOfferUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsAcceptOfferUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsAcceptOfferUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsAcceptOfferUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ OrganizationsAcceptOfferForbidden describes a response with status code 403, wit
 Forbidden
 */
 type OrganizationsAcceptOfferForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations accept offer forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *OrganizationsAcceptOfferForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsAcceptOfferForbidden) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsAcceptOfferForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsAcceptOfferForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ OrganizationsAcceptOfferNotFound describes a response with status code 404, with
 Not Found
 */
 type OrganizationsAcceptOfferNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations accept offer not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *OrganizationsAcceptOfferNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsAcceptOfferNotFound) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsAcceptOfferNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsAcceptOfferNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

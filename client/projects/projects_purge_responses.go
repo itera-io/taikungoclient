@@ -141,7 +141,7 @@ ProjectsPurgeBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type ProjectsPurgeBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects purge bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *ProjectsPurgeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsPurgeBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectsPurgeBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsPurgeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ ProjectsPurgeUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type ProjectsPurgeUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects purge unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *ProjectsPurgeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsPurgeUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsPurgeUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsPurgeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ ProjectsPurgeForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type ProjectsPurgeForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects purge forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *ProjectsPurgeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsPurgeForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsPurgeForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsPurgeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ ProjectsPurgeNotFound describes a response with status code 404, with default he
 Not Found
 */
 type ProjectsPurgeNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects purge not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *ProjectsPurgeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsPurgeNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsPurgeNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsPurgeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

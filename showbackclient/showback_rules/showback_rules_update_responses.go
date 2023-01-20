@@ -209,7 +209,7 @@ ShowbackRulesUpdateUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ShowbackRulesUpdateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback rules update unauthorized response has a 2xx status code
@@ -250,16 +250,14 @@ func (o *ShowbackRulesUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackRulesUpdateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ShowbackRulesUpdateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackRulesUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +275,7 @@ ShowbackRulesUpdateForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ShowbackRulesUpdateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback rules update forbidden response has a 2xx status code
@@ -318,16 +316,14 @@ func (o *ShowbackRulesUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackRulesUpdateForbidden) GetPayload() *models.ProblemDetails {
+func (o *ShowbackRulesUpdateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackRulesUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +341,7 @@ ShowbackRulesUpdateNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ShowbackRulesUpdateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback rules update not found response has a 2xx status code
@@ -386,16 +382,14 @@ func (o *ShowbackRulesUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackRulesUpdateNotFound) GetPayload() *models.ProblemDetails {
+func (o *ShowbackRulesUpdateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackRulesUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

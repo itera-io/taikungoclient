@@ -141,7 +141,7 @@ AdminAddBalanceBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type AdminAddBalanceBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin add balance bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *AdminAddBalanceBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminAddBalanceBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AdminAddBalanceBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminAddBalanceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ AdminAddBalanceUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type AdminAddBalanceUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin add balance unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *AdminAddBalanceUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminAddBalanceUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AdminAddBalanceUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminAddBalanceUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ AdminAddBalanceForbidden describes a response with status code 403, with default
 Forbidden
 */
 type AdminAddBalanceForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin add balance forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *AdminAddBalanceForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminAddBalanceForbidden) GetPayload() *models.ProblemDetails {
+func (o *AdminAddBalanceForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminAddBalanceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ AdminAddBalanceNotFound describes a response with status code 404, with default 
 Not Found
 */
 type AdminAddBalanceNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin add balance not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *AdminAddBalanceNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminAddBalanceNotFound) GetPayload() *models.ProblemDetails {
+func (o *AdminAddBalanceNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminAddBalanceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -143,7 +143,7 @@ UsersCreateBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type UsersCreateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users create bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *UsersCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersCreateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *UsersCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UsersCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ UsersCreateUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type UsersCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users create unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *UsersCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UsersCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UsersCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ UsersCreateForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type UsersCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users create forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *UsersCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *UsersCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UsersCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ UsersCreateNotFound describes a response with status code 404, with default head
 Not Found
 */
 type UsersCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users create not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *UsersCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *UsersCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UsersCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

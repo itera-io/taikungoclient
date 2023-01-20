@@ -141,7 +141,7 @@ BillingGroupedListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type BillingGroupedListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this billing grouped list bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *BillingGroupedListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BillingGroupedListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *BillingGroupedListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BillingGroupedListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ BillingGroupedListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type BillingGroupedListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this billing grouped list unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *BillingGroupedListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BillingGroupedListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BillingGroupedListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BillingGroupedListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ BillingGroupedListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type BillingGroupedListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this billing grouped list forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *BillingGroupedListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BillingGroupedListForbidden) GetPayload() *models.ProblemDetails {
+func (o *BillingGroupedListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BillingGroupedListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ BillingGroupedListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type BillingGroupedListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this billing grouped list not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *BillingGroupedListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BillingGroupedListNotFound) GetPayload() *models.ProblemDetails {
+func (o *BillingGroupedListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BillingGroupedListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

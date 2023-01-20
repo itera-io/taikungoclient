@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneActionsInstancePasswordReader is a Reader for the StandAloneActionsInstancePassword structure.
@@ -141,7 +139,7 @@ StandAloneActionsInstancePasswordBadRequest describes a response with status cod
 Bad Request
 */
 type StandAloneActionsInstancePasswordBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions instance password bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *StandAloneActionsInstancePasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsInstancePasswordBadRequest) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsInstancePasswordBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsInstancePasswordBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ StandAloneActionsInstancePasswordUnauthorized describes a response with status c
 Unauthorized
 */
 type StandAloneActionsInstancePasswordUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions instance password unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *StandAloneActionsInstancePasswordUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsInstancePasswordUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsInstancePasswordUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsInstancePasswordUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ StandAloneActionsInstancePasswordForbidden describes a response with status code
 Forbidden
 */
 type StandAloneActionsInstancePasswordForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions instance password forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *StandAloneActionsInstancePasswordForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsInstancePasswordForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsInstancePasswordForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsInstancePasswordForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ StandAloneActionsInstancePasswordNotFound describes a response with status code 
 Not Found
 */
 type StandAloneActionsInstancePasswordNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions instance password not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *StandAloneActionsInstancePasswordNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsInstancePasswordNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsInstancePasswordNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsInstancePasswordNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

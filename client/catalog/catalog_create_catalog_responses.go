@@ -141,7 +141,7 @@ CatalogCreateCatalogBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type CatalogCreateCatalogBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog create catalog bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CatalogCreateCatalogBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/create-catalog][%d] catalogCreateCatalogBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogCreateCatalogBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CatalogCreateCatalogBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCreateCatalogBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CatalogCreateCatalogUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type CatalogCreateCatalogUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog create catalog unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CatalogCreateCatalogUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/create-catalog][%d] catalogCreateCatalogUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogCreateCatalogUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogCreateCatalogUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCreateCatalogUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CatalogCreateCatalogForbidden describes a response with status code 403, with de
 Forbidden
 */
 type CatalogCreateCatalogForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog create catalog forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CatalogCreateCatalogForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/create-catalog][%d] catalogCreateCatalogForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogCreateCatalogForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogCreateCatalogForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCreateCatalogForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CatalogCreateCatalogNotFound describes a response with status code 404, with def
 Not Found
 */
 type CatalogCreateCatalogNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog create catalog not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CatalogCreateCatalogNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/create-catalog][%d] catalogCreateCatalogNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogCreateCatalogNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogCreateCatalogNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCreateCatalogNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

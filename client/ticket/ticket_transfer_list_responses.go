@@ -141,7 +141,7 @@ TicketTransferListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type TicketTransferListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket transfer list bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *TicketTransferListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketTransferListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *TicketTransferListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketTransferListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ TicketTransferListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type TicketTransferListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket transfer list unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *TicketTransferListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketTransferListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *TicketTransferListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketTransferListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ TicketTransferListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type TicketTransferListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket transfer list forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *TicketTransferListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketTransferListForbidden) GetPayload() *models.ProblemDetails {
+func (o *TicketTransferListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketTransferListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ TicketTransferListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type TicketTransferListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket transfer list not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *TicketTransferListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketTransferListNotFound) GetPayload() *models.ProblemDetails {
+func (o *TicketTransferListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketTransferListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

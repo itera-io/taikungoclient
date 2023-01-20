@@ -141,7 +141,7 @@ CheckerNodeBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type CheckerNodeBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker node bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CheckerNodeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/node][%d] checkerNodeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerNodeBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CheckerNodeBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerNodeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CheckerNodeUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type CheckerNodeUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker node unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CheckerNodeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/node][%d] checkerNodeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerNodeUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerNodeUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerNodeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CheckerNodeForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type CheckerNodeForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker node forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CheckerNodeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/node][%d] checkerNodeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerNodeForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerNodeForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerNodeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CheckerNodeNotFound describes a response with status code 404, with default head
 Not Found
 */
 type CheckerNodeNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker node not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CheckerNodeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/node][%d] checkerNodeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerNodeNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerNodeNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerNodeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

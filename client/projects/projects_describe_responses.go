@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsDescribeReader is a Reader for the ProjectsDescribe structure.
@@ -141,7 +139,7 @@ ProjectsDescribeBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type ProjectsDescribeBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects describe bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *ProjectsDescribeBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/describe/{projectId}][%d] projectsDescribeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsDescribeBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectsDescribeBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsDescribeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ ProjectsDescribeUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type ProjectsDescribeUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects describe unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *ProjectsDescribeUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/describe/{projectId}][%d] projectsDescribeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsDescribeUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsDescribeUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsDescribeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ ProjectsDescribeForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type ProjectsDescribeForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects describe forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *ProjectsDescribeForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/describe/{projectId}][%d] projectsDescribeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsDescribeForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsDescribeForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsDescribeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ ProjectsDescribeNotFound describes a response with status code 404, with default
 Not Found
 */
 type ProjectsDescribeNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects describe not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *ProjectsDescribeNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/describe/{projectId}][%d] projectsDescribeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsDescribeNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsDescribeNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsDescribeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

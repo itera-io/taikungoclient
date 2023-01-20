@@ -141,7 +141,7 @@ ServersResetBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type ServersResetBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers reset bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *ServersResetBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersResetBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ServersResetBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ServersResetBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ ServersResetUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type ServersResetUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers reset unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *ServersResetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersResetUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ServersResetUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ServersResetUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ ServersResetForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type ServersResetForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers reset forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *ServersResetForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersResetForbidden) GetPayload() *models.ProblemDetails {
+func (o *ServersResetForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ServersResetForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ ServersResetNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type ServersResetNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers reset not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *ServersResetNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersResetNotFound) GetPayload() *models.ProblemDetails {
+func (o *ServersResetNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ServersResetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

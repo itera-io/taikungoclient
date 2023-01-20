@@ -141,7 +141,7 @@ CronJobSendEmailAboutProjectExpirationBadRequest describes a response with statu
 Bad Request
 */
 type CronJobSendEmailAboutProjectExpirationBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job send email about project expiration bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CronJobSendEmailAboutProjectExpirationBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobSendEmailAboutProjectExpirationBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CronJobSendEmailAboutProjectExpirationBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSendEmailAboutProjectExpirationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CronJobSendEmailAboutProjectExpirationUnauthorized describes a response with sta
 Unauthorized
 */
 type CronJobSendEmailAboutProjectExpirationUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job send email about project expiration unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CronJobSendEmailAboutProjectExpirationUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobSendEmailAboutProjectExpirationUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobSendEmailAboutProjectExpirationUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSendEmailAboutProjectExpirationUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CronJobSendEmailAboutProjectExpirationForbidden describes a response with status
 Forbidden
 */
 type CronJobSendEmailAboutProjectExpirationForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job send email about project expiration forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CronJobSendEmailAboutProjectExpirationForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobSendEmailAboutProjectExpirationForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobSendEmailAboutProjectExpirationForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSendEmailAboutProjectExpirationForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CronJobSendEmailAboutProjectExpirationNotFound describes a response with status 
 Not Found
 */
 type CronJobSendEmailAboutProjectExpirationNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job send email about project expiration not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CronJobSendEmailAboutProjectExpirationNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobSendEmailAboutProjectExpirationNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobSendEmailAboutProjectExpirationNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobSendEmailAboutProjectExpirationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -141,7 +141,7 @@ OrganizationsToggleKeycloakBadRequest describes a response with status code 400,
 Bad Request
 */
 type OrganizationsToggleKeycloakBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations toggle keycloak bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *OrganizationsToggleKeycloakBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsToggleKeycloakBadRequest) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsToggleKeycloakBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsToggleKeycloakBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ OrganizationsToggleKeycloakUnauthorized describes a response with status code 40
 Unauthorized
 */
 type OrganizationsToggleKeycloakUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations toggle keycloak unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *OrganizationsToggleKeycloakUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsToggleKeycloakUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsToggleKeycloakUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsToggleKeycloakUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ OrganizationsToggleKeycloakForbidden describes a response with status code 403, 
 Forbidden
 */
 type OrganizationsToggleKeycloakForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations toggle keycloak forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *OrganizationsToggleKeycloakForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsToggleKeycloakForbidden) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsToggleKeycloakForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsToggleKeycloakForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ OrganizationsToggleKeycloakNotFound describes a response with status code 404, w
 Not Found
 */
 type OrganizationsToggleKeycloakNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations toggle keycloak not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *OrganizationsToggleKeycloakNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsToggleKeycloakNotFound) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsToggleKeycloakNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsToggleKeycloakNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

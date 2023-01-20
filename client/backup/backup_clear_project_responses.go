@@ -141,7 +141,7 @@ BackupClearProjectBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type BackupClearProjectBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup clear project bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *BackupClearProjectBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupClearProjectBadRequest) GetPayload() *models.ProblemDetails {
+func (o *BackupClearProjectBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupClearProjectBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ BackupClearProjectUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type BackupClearProjectUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup clear project unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *BackupClearProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupClearProjectUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BackupClearProjectUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupClearProjectUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ BackupClearProjectForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type BackupClearProjectForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup clear project forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *BackupClearProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupClearProjectForbidden) GetPayload() *models.ProblemDetails {
+func (o *BackupClearProjectForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupClearProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ BackupClearProjectNotFound describes a response with status code 404, with defau
 Not Found
 */
 type BackupClearProjectNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup clear project not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *BackupClearProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupClearProjectNotFound) GetPayload() *models.ProblemDetails {
+func (o *BackupClearProjectNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupClearProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -141,7 +141,7 @@ ProjectsLockManagerBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type ProjectsLockManagerBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects lock manager bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *ProjectsLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsLockManagerBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectsLockManagerBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ ProjectsLockManagerUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ProjectsLockManagerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects lock manager unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *ProjectsLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsLockManagerUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ ProjectsLockManagerForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ProjectsLockManagerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects lock manager forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *ProjectsLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsLockManagerForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsLockManagerForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ ProjectsLockManagerNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ProjectsLockManagerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects lock manager not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *ProjectsLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsLockManagerNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsLockManagerNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

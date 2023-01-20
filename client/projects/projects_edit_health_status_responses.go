@@ -141,7 +141,7 @@ ProjectsEditHealthStatusBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type ProjectsEditHealthStatusBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects edit health status bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *ProjectsEditHealthStatusBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsEditHealthStatusBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectsEditHealthStatusBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsEditHealthStatusBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ ProjectsEditHealthStatusUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type ProjectsEditHealthStatusUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects edit health status unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *ProjectsEditHealthStatusUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsEditHealthStatusUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsEditHealthStatusUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsEditHealthStatusUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ ProjectsEditHealthStatusForbidden describes a response with status code 403, wit
 Forbidden
 */
 type ProjectsEditHealthStatusForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects edit health status forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *ProjectsEditHealthStatusForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsEditHealthStatusForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsEditHealthStatusForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsEditHealthStatusForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ ProjectsEditHealthStatusNotFound describes a response with status code 404, with
 Not Found
 */
 type ProjectsEditHealthStatusNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects edit health status not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *ProjectsEditHealthStatusNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsEditHealthStatusNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsEditHealthStatusNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsEditHealthStatusNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectInfracostsDeleteReader is a Reader for the ProjectInfracostsDelete structure.
@@ -193,7 +191,7 @@ ProjectInfracostsDeleteBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type ProjectInfracostsDeleteBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project infracosts delete bad request response has a 2xx status code
@@ -234,16 +232,14 @@ func (o *ProjectInfracostsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectInfracosts/delete][%d] projectInfracostsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectInfracostsDeleteBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectInfracostsDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -261,7 +257,7 @@ ProjectInfracostsDeleteUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type ProjectInfracostsDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project infracosts delete unauthorized response has a 2xx status code
@@ -302,16 +298,14 @@ func (o *ProjectInfracostsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectInfracosts/delete][%d] projectInfracostsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectInfracostsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectInfracostsDeleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -329,7 +323,7 @@ ProjectInfracostsDeleteForbidden describes a response with status code 403, with
 Forbidden
 */
 type ProjectInfracostsDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project infracosts delete forbidden response has a 2xx status code
@@ -370,16 +364,14 @@ func (o *ProjectInfracostsDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectInfracosts/delete][%d] projectInfracostsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectInfracostsDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectInfracostsDeleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -397,7 +389,7 @@ ProjectInfracostsDeleteNotFound describes a response with status code 404, with 
 Not Found
 */
 type ProjectInfracostsDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project infracosts delete not found response has a 2xx status code
@@ -438,16 +430,14 @@ func (o *ProjectInfracostsDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectInfracosts/delete][%d] projectInfracostsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectInfracostsDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectInfracostsDeleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

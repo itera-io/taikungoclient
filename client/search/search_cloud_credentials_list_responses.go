@@ -143,7 +143,7 @@ SearchCloudCredentialsListBadRequest describes a response with status code 400, 
 Bad Request
 */
 type SearchCloudCredentialsListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search cloud credentials list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *SearchCloudCredentialsListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchCloudCredentialsListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *SearchCloudCredentialsListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchCloudCredentialsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ SearchCloudCredentialsListUnauthorized describes a response with status code 401
 Unauthorized
 */
 type SearchCloudCredentialsListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search cloud credentials list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *SearchCloudCredentialsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchCloudCredentialsListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchCloudCredentialsListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchCloudCredentialsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ SearchCloudCredentialsListForbidden describes a response with status code 403, w
 Forbidden
 */
 type SearchCloudCredentialsListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search cloud credentials list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *SearchCloudCredentialsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchCloudCredentialsListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchCloudCredentialsListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchCloudCredentialsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ SearchCloudCredentialsListNotFound describes a response with status code 404, wi
 Not Found
 */
 type SearchCloudCredentialsListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search cloud credentials list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *SearchCloudCredentialsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchCloudCredentialsListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchCloudCredentialsListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchCloudCredentialsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

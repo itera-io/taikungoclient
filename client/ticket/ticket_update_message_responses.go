@@ -141,7 +141,7 @@ TicketUpdateMessageBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type TicketUpdateMessageBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket update message bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *TicketUpdateMessageBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketUpdateMessageBadRequest) GetPayload() *models.ProblemDetails {
+func (o *TicketUpdateMessageBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketUpdateMessageBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ TicketUpdateMessageUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type TicketUpdateMessageUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket update message unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *TicketUpdateMessageUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketUpdateMessageUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *TicketUpdateMessageUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketUpdateMessageUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ TicketUpdateMessageForbidden describes a response with status code 403, with def
 Forbidden
 */
 type TicketUpdateMessageForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket update message forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *TicketUpdateMessageForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketUpdateMessageForbidden) GetPayload() *models.ProblemDetails {
+func (o *TicketUpdateMessageForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketUpdateMessageForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ TicketUpdateMessageNotFound describes a response with status code 404, with defa
 Not Found
 */
 type TicketUpdateMessageNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket update message not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *TicketUpdateMessageNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketUpdateMessageNotFound) GetPayload() *models.ProblemDetails {
+func (o *TicketUpdateMessageNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketUpdateMessageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

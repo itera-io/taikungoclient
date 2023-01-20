@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ServersShowServerStatusReader is a Reader for the ServersShowServerStatus structure.
@@ -141,7 +139,7 @@ ServersShowServerStatusBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type ServersShowServerStatusBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers show server status bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *ServersShowServerStatusBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/status/{serverId}][%d] serversShowServerStatusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersShowServerStatusBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ServersShowServerStatusBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ServersShowServerStatusBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ ServersShowServerStatusUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type ServersShowServerStatusUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers show server status unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *ServersShowServerStatusUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/status/{serverId}][%d] serversShowServerStatusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersShowServerStatusUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ServersShowServerStatusUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ServersShowServerStatusUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ ServersShowServerStatusForbidden describes a response with status code 403, with
 Forbidden
 */
 type ServersShowServerStatusForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers show server status forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *ServersShowServerStatusForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/status/{serverId}][%d] serversShowServerStatusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersShowServerStatusForbidden) GetPayload() *models.ProblemDetails {
+func (o *ServersShowServerStatusForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ServersShowServerStatusForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ ServersShowServerStatusNotFound describes a response with status code 404, with 
 Not Found
 */
 type ServersShowServerStatusNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this servers show server status not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *ServersShowServerStatusNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/status/{serverId}][%d] serversShowServerStatusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersShowServerStatusNotFound) GetPayload() *models.ProblemDetails {
+func (o *ServersShowServerStatusNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ServersShowServerStatusNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

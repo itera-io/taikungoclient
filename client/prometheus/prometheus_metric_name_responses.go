@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // PrometheusMetricNameReader is a Reader for the PrometheusMetricName structure.
@@ -141,7 +139,7 @@ PrometheusMetricNameBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type PrometheusMetricNameBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this prometheus metric name bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *PrometheusMetricNameBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusMetricNameBadRequest) GetPayload() *models.ProblemDetails {
+func (o *PrometheusMetricNameBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PrometheusMetricNameBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ PrometheusMetricNameUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type PrometheusMetricNameUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this prometheus metric name unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *PrometheusMetricNameUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusMetricNameUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PrometheusMetricNameUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PrometheusMetricNameUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ PrometheusMetricNameForbidden describes a response with status code 403, with de
 Forbidden
 */
 type PrometheusMetricNameForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this prometheus metric name forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *PrometheusMetricNameForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusMetricNameForbidden) GetPayload() *models.ProblemDetails {
+func (o *PrometheusMetricNameForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PrometheusMetricNameForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ PrometheusMetricNameNotFound describes a response with status code 404, with def
 Not Found
 */
 type PrometheusMetricNameNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this prometheus metric name not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *PrometheusMetricNameNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusMetricNameNotFound) GetPayload() *models.ProblemDetails {
+func (o *PrometheusMetricNameNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PrometheusMetricNameNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

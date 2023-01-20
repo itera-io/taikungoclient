@@ -141,7 +141,7 @@ OpenstackNetworksBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type OpenstackNetworksBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack networks bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *OpenstackNetworksBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackNetworksBadRequest) GetPayload() *models.ProblemDetails {
+func (o *OpenstackNetworksBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackNetworksBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ OpenstackNetworksUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpenstackNetworksUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack networks unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *OpenstackNetworksUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackNetworksUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpenstackNetworksUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackNetworksUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ OpenstackNetworksForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpenstackNetworksForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack networks forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *OpenstackNetworksForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackNetworksForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpenstackNetworksForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackNetworksForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ OpenstackNetworksNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpenstackNetworksNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack networks not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *OpenstackNetworksNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackNetworksNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpenstackNetworksNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackNetworksNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

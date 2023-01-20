@@ -141,7 +141,7 @@ OpaProfilesDisableGatekeeperBadRequest describes a response with status code 400
 Bad Request
 */
 type OpaProfilesDisableGatekeeperBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles disable gatekeeper bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *OpaProfilesDisableGatekeeperBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesDisableGatekeeperBadRequest) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesDisableGatekeeperBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpaProfilesDisableGatekeeperBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ OpaProfilesDisableGatekeeperUnauthorized describes a response with status code 4
 Unauthorized
 */
 type OpaProfilesDisableGatekeeperUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles disable gatekeeper unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *OpaProfilesDisableGatekeeperUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesDisableGatekeeperUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesDisableGatekeeperUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpaProfilesDisableGatekeeperUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ OpaProfilesDisableGatekeeperForbidden describes a response with status code 403,
 Forbidden
 */
 type OpaProfilesDisableGatekeeperForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles disable gatekeeper forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *OpaProfilesDisableGatekeeperForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesDisableGatekeeperForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesDisableGatekeeperForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpaProfilesDisableGatekeeperForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ OpaProfilesDisableGatekeeperNotFound describes a response with status code 404, 
 Not Found
 */
 type OpaProfilesDisableGatekeeperNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles disable gatekeeper not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *OpaProfilesDisableGatekeeperNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesDisableGatekeeperNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesDisableGatekeeperNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpaProfilesDisableGatekeeperNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
