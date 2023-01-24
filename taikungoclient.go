@@ -122,6 +122,21 @@ func NewClient() (*Client, error) {
 	return InitializeClient(&apiClient, apiHost), nil
 }
 
+func NewClientFromCredentials(email string, password string, keycloakEnabled bool, apiHost string) (*Client, error) {
+	apiClient := Client{
+		email:    email,
+		password: password,
+	}
+
+	if keycloakEnabled {
+		apiClient.authMode = "keycloak"
+	} else {
+		apiClient.authMode = "taikun"
+	}
+
+	return InitializeClient(&apiClient, apiHost), nil
+}
+
 func InitializeClient(apiClient *Client, apiHost string) *Client {
 	transportConfig := client.DefaultTransportConfig()
 	showbackTransportConfig := showbackclient.DefaultTransportConfig()
