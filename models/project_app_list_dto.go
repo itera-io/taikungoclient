@@ -23,6 +23,9 @@ type ProjectAppListDto struct {
 	// auto sync
 	AutoSync bool `json:"autoSync"`
 
+	// catalog app Id
+	CatalogAppID int32 `json:"catalogAppId,omitempty"`
+
 	// catalog app name
 	CatalogAppName string `json:"catalogAppName,omitempty"`
 
