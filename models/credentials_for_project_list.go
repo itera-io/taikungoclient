@@ -44,6 +44,9 @@ type CredentialsForProjectList struct {
 
 	// requires v p n
 	RequiresVPN bool `json:"requiresVPN"`
+
+	// tanzu
+	Tanzu *TanzuCredentialsForProjectDto `json:"tanzu,omitempty"`
 }
 
 // Validate validates this credentials for project list
@@ -67,6 +70,10 @@ func (m *CredentialsForProjectList) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateOpenstack(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTanzu(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -169,6 +176,25 @@ func (m *CredentialsForProjectList) validateOpenstack(formats strfmt.Registry) e
 	return nil
 }
 
+func (m *CredentialsForProjectList) validateTanzu(formats strfmt.Registry) error {
+	if swag.IsZero(m.Tanzu) { // not required
+		return nil
+	}
+
+	if m.Tanzu != nil {
+		if err := m.Tanzu.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("tanzu")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tanzu")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this credentials for project list based on the context it is used
 func (m *CredentialsForProjectList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -190,6 +216,10 @@ func (m *CredentialsForProjectList) ContextValidate(ctx context.Context, formats
 	}
 
 	if err := m.contextValidateOpenstack(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTanzu(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -269,6 +299,22 @@ func (m *CredentialsForProjectList) contextValidateOpenstack(ctx context.Context
 				return ve.ValidateName("openstack")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("openstack")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CredentialsForProjectList) contextValidateTanzu(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Tanzu != nil {
+		if err := m.Tanzu.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("tanzu")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tanzu")
 			}
 			return err
 		}

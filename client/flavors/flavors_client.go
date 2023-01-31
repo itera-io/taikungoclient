@@ -44,6 +44,8 @@ type ClientService interface {
 
 	FlavorsOpenstackFlavors(params *FlavorsOpenstackFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsOpenstackFlavorsOK, error)
 
+	FlavorsTanzuFlavors(params *FlavorsTanzuFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsTanzuFlavorsOK, error)
+
 	FlavorsUnbindFromProject(params *FlavorsUnbindFromProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsUnbindFromProjectOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -319,6 +321,45 @@ func (a *Client) FlavorsOpenstackFlavors(params *FlavorsOpenstackFlavorsParams, 
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Flavors_OpenstackFlavors: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+FlavorsTanzuFlavors retrieves tanzu flavors
+*/
+func (a *Client) FlavorsTanzuFlavors(params *FlavorsTanzuFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsTanzuFlavorsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewFlavorsTanzuFlavorsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Flavors_TanzuFlavors",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Flavors/tanzu/{cloudId}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &FlavorsTanzuFlavorsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*FlavorsTanzuFlavorsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Flavors_TanzuFlavors: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

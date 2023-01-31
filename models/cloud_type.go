@@ -24,7 +24,7 @@ var cloudTypeEnum []interface{}
 
 func init() {
 	var res []CloudType
-	if err := json.Unmarshal([]byte(`[100,200,300,400]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`[100,200,300,400,600]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

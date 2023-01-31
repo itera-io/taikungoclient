@@ -31,6 +31,9 @@ type CredentialsChart struct {
 	// openstack
 	Openstack []*OpenstackCredentialsListDto `json:"openstack"`
 
+	// tanzu
+	Tanzu []*TanzuCredentialsListDto `json:"tanzu"`
+
 	// total count aws
 	TotalCountAws int32 `json:"totalCountAws,omitempty"`
 
@@ -42,6 +45,9 @@ type CredentialsChart struct {
 
 	// total count openstack
 	TotalCountOpenstack int32 `json:"totalCountOpenstack,omitempty"`
+
+	// total count tanzu
+	TotalCountTanzu int32 `json:"totalCountTanzu,omitempty"`
 }
 
 // Validate validates this credentials chart
@@ -61,6 +67,10 @@ func (m *CredentialsChart) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateOpenstack(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTanzu(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -174,6 +184,32 @@ func (m *CredentialsChart) validateOpenstack(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *CredentialsChart) validateTanzu(formats strfmt.Registry) error {
+	if swag.IsZero(m.Tanzu) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Tanzu); i++ {
+		if swag.IsZero(m.Tanzu[i]) { // not required
+			continue
+		}
+
+		if m.Tanzu[i] != nil {
+			if err := m.Tanzu[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tanzu" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tanzu" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this credentials chart based on the context it is used
 func (m *CredentialsChart) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -191,6 +227,10 @@ func (m *CredentialsChart) ContextValidate(ctx context.Context, formats strfmt.R
 	}
 
 	if err := m.contextValidateOpenstack(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTanzu(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -270,6 +310,26 @@ func (m *CredentialsChart) contextValidateOpenstack(ctx context.Context, formats
 					return ve.ValidateName("openstack" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("openstack" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CredentialsChart) contextValidateTanzu(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tanzu); i++ {
+
+		if m.Tanzu[i] != nil {
+			if err := m.Tanzu[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tanzu" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tanzu" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
