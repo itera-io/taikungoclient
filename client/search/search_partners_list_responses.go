@@ -103,6 +103,11 @@ func (o *SearchPartnersListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search partners list o k response
+func (o *SearchPartnersListOK) Code() int {
+	return 200
+}
+
 func (o *SearchPartnersListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/partners][%d] searchPartnersListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ SearchPartnersListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type SearchPartnersListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search partners list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *SearchPartnersListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the search partners list bad request response
+func (o *SearchPartnersListBadRequest) Code() int {
+	return 400
+}
+
 func (o *SearchPartnersListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/partners][%d] searchPartnersListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *SearchPartnersListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/partners][%d] searchPartnersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchPartnersListBadRequest) GetPayload() interface{} {
+func (o *SearchPartnersListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchPartnersListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *SearchPartnersListUnauthorized) IsServerError() bool {
 // IsCode returns true when this search partners list unauthorized response a status code equal to that given
 func (o *SearchPartnersListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the search partners list unauthorized response
+func (o *SearchPartnersListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SearchPartnersListUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *SearchPartnersListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the search partners list forbidden response
+func (o *SearchPartnersListForbidden) Code() int {
+	return 403
+}
+
 func (o *SearchPartnersListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/partners][%d] searchPartnersListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *SearchPartnersListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search partners list not found response
+func (o *SearchPartnersListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchPartnersListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/partners][%d] searchPartnersListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *SearchPartnersListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search partners list internal server error response a status code equal to that given
 func (o *SearchPartnersListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search partners list internal server error response
+func (o *SearchPartnersListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchPartnersListInternalServerError) Error() string {

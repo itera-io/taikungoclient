@@ -103,6 +103,11 @@ func (o *KubernetesDescribePvcOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe pvc o k response
+func (o *KubernetesDescribePvcOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribePvcOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesDescribePvcBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesDescribePvcBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe pvc bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesDescribePvcBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes describe pvc bad request response
+func (o *KubernetesDescribePvcBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesDescribePvcBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *KubernetesDescribePvcBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribePvcBadRequest) GetPayload() interface{} {
+func (o *KubernetesDescribePvcBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribePvcBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *KubernetesDescribePvcUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes describe pvc unauthorized response a status code equal to that given
 func (o *KubernetesDescribePvcUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes describe pvc unauthorized response
+func (o *KubernetesDescribePvcUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesDescribePvcUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *KubernetesDescribePvcForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes describe pvc forbidden response
+func (o *KubernetesDescribePvcForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesDescribePvcForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *KubernetesDescribePvcNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe pvc not found response
+func (o *KubernetesDescribePvcNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribePvcNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *KubernetesDescribePvcInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe pvc internal server error response a status code equal to that given
 func (o *KubernetesDescribePvcInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe pvc internal server error response
+func (o *KubernetesDescribePvcInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribePvcInternalServerError) Error() string {

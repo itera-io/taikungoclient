@@ -103,6 +103,11 @@ func (o *UserTokenListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the user token list o k response
+func (o *UserTokenListOK) Code() int {
+	return 200
+}
+
 func (o *UserTokenListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ UserTokenListBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type UserTokenListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user token list bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *UserTokenListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the user token list bad request response
+func (o *UserTokenListBadRequest) Code() int {
+	return 400
+}
+
 func (o *UserTokenListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *UserTokenListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserTokenListBadRequest) GetPayload() interface{} {
+func (o *UserTokenListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserTokenListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *UserTokenListUnauthorized) IsServerError() bool {
 // IsCode returns true when this user token list unauthorized response a status code equal to that given
 func (o *UserTokenListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the user token list unauthorized response
+func (o *UserTokenListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UserTokenListUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *UserTokenListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the user token list forbidden response
+func (o *UserTokenListForbidden) Code() int {
+	return 403
+}
+
 func (o *UserTokenListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *UserTokenListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user token list not found response
+func (o *UserTokenListNotFound) Code() int {
+	return 404
+}
+
 func (o *UserTokenListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *UserTokenListInternalServerError) IsServerError() bool {
 // IsCode returns true when this user token list internal server error response a status code equal to that given
 func (o *UserTokenListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the user token list internal server error response
+func (o *UserTokenListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UserTokenListInternalServerError) Error() string {

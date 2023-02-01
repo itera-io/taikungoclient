@@ -103,6 +103,11 @@ func (o *SearchKubernetesProfilesListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search kubernetes profiles list o k response
+func (o *SearchKubernetesProfilesListOK) Code() int {
+	return 200
+}
+
 func (o *SearchKubernetesProfilesListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ SearchKubernetesProfilesListBadRequest describes a response with status code 400
 Bad Request
 */
 type SearchKubernetesProfilesListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search kubernetes profiles list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *SearchKubernetesProfilesListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the search kubernetes profiles list bad request response
+func (o *SearchKubernetesProfilesListBadRequest) Code() int {
+	return 400
+}
+
 func (o *SearchKubernetesProfilesListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *SearchKubernetesProfilesListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchKubernetesProfilesListBadRequest) GetPayload() interface{} {
+func (o *SearchKubernetesProfilesListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchKubernetesProfilesListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *SearchKubernetesProfilesListUnauthorized) IsServerError() bool {
 // IsCode returns true when this search kubernetes profiles list unauthorized response a status code equal to that given
 func (o *SearchKubernetesProfilesListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the search kubernetes profiles list unauthorized response
+func (o *SearchKubernetesProfilesListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SearchKubernetesProfilesListUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *SearchKubernetesProfilesListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the search kubernetes profiles list forbidden response
+func (o *SearchKubernetesProfilesListForbidden) Code() int {
+	return 403
+}
+
 func (o *SearchKubernetesProfilesListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *SearchKubernetesProfilesListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search kubernetes profiles list not found response
+func (o *SearchKubernetesProfilesListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchKubernetesProfilesListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *SearchKubernetesProfilesListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search kubernetes profiles list internal server error response a status code equal to that given
 func (o *SearchKubernetesProfilesListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search kubernetes profiles list internal server error response
+func (o *SearchKubernetesProfilesListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchKubernetesProfilesListInternalServerError) Error() string {

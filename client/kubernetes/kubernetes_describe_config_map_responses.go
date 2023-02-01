@@ -103,6 +103,11 @@ func (o *KubernetesDescribeConfigMapOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe config map o k response
+func (o *KubernetesDescribeConfigMapOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribeConfigMapOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesDescribeConfigMapBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesDescribeConfigMapBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe config map bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesDescribeConfigMapBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes describe config map bad request response
+func (o *KubernetesDescribeConfigMapBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesDescribeConfigMapBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *KubernetesDescribeConfigMapBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeConfigMapBadRequest) GetPayload() interface{} {
+func (o *KubernetesDescribeConfigMapBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeConfigMapBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *KubernetesDescribeConfigMapUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes describe config map unauthorized response a status code equal to that given
 func (o *KubernetesDescribeConfigMapUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes describe config map unauthorized response
+func (o *KubernetesDescribeConfigMapUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesDescribeConfigMapUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *KubernetesDescribeConfigMapForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes describe config map forbidden response
+func (o *KubernetesDescribeConfigMapForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesDescribeConfigMapForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *KubernetesDescribeConfigMapNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe config map not found response
+func (o *KubernetesDescribeConfigMapNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribeConfigMapNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *KubernetesDescribeConfigMapInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe config map internal server error response a status code equal to that given
 func (o *KubernetesDescribeConfigMapInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe config map internal server error response
+func (o *KubernetesDescribeConfigMapInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribeConfigMapInternalServerError) Error() string {

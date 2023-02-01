@@ -103,6 +103,11 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListOK) IsCode(code in
 	return code == 200
 }
 
+// Code gets the status code for the ops credentials operation credentials for organization list o k response
+func (o *OpsCredentialsOperationCredentialsForOrganizationListOK) Code() int {
+	return 200
+}
+
 func (o *OpsCredentialsOperationCredentialsForOrganizationListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ OpsCredentialsOperationCredentialsForOrganizationListBadRequest describes a resp
 Bad Request
 */
 type OpsCredentialsOperationCredentialsForOrganizationListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) IsCode
 	return code == 400
 }
 
+// Code gets the status code for the ops credentials operation credentials for organization list bad request response
+func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) Code() int {
+	return 400
+}
+
 func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) String
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) GetPayload() interface{} {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) IsSe
 // IsCode returns true when this ops credentials operation credentials for organization list unauthorized response a status code equal to that given
 func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the ops credentials operation credentials for organization list unauthorized response
+func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) IsCode(
 	return code == 403
 }
 
+// Code gets the status code for the ops credentials operation credentials for organization list forbidden response
+func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) Code() int {
+	return 403
+}
+
 func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) IsCode(c
 	return code == 404
 }
 
+// Code gets the status code for the ops credentials operation credentials for organization list not found response
+func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) Code() int {
+	return 404
+}
+
 func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListInternalServerErro
 // IsCode returns true when this ops credentials operation credentials for organization list internal server error response a status code equal to that given
 func (o *OpsCredentialsOperationCredentialsForOrganizationListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ops credentials operation credentials for organization list internal server error response
+func (o *OpsCredentialsOperationCredentialsForOrganizationListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpsCredentialsOperationCredentialsForOrganizationListInternalServerError) Error() string {

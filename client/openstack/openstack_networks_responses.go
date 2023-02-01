@@ -103,6 +103,11 @@ func (o *OpenstackNetworksOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the openstack networks o k response
+func (o *OpenstackNetworksOK) Code() int {
+	return 200
+}
+
 func (o *OpenstackNetworksOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ OpenstackNetworksBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type OpenstackNetworksBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack networks bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *OpenstackNetworksBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the openstack networks bad request response
+func (o *OpenstackNetworksBadRequest) Code() int {
+	return 400
+}
+
 func (o *OpenstackNetworksBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *OpenstackNetworksBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackNetworksBadRequest) GetPayload() interface{} {
+func (o *OpenstackNetworksBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackNetworksBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *OpenstackNetworksUnauthorized) IsServerError() bool {
 // IsCode returns true when this openstack networks unauthorized response a status code equal to that given
 func (o *OpenstackNetworksUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the openstack networks unauthorized response
+func (o *OpenstackNetworksUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OpenstackNetworksUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *OpenstackNetworksForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the openstack networks forbidden response
+func (o *OpenstackNetworksForbidden) Code() int {
+	return 403
+}
+
 func (o *OpenstackNetworksForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *OpenstackNetworksNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the openstack networks not found response
+func (o *OpenstackNetworksNotFound) Code() int {
+	return 404
+}
+
 func (o *OpenstackNetworksNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *OpenstackNetworksInternalServerError) IsServerError() bool {
 // IsCode returns true when this openstack networks internal server error response a status code equal to that given
 func (o *OpenstackNetworksInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the openstack networks internal server error response
+func (o *OpenstackNetworksInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpenstackNetworksInternalServerError) Error() string {

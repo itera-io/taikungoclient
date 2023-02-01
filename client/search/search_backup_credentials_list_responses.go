@@ -103,6 +103,11 @@ func (o *SearchBackupCredentialsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search backup credentials list o k response
+func (o *SearchBackupCredentialsListOK) Code() int {
+	return 200
+}
+
 func (o *SearchBackupCredentialsListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ SearchBackupCredentialsListBadRequest describes a response with status code 400,
 Bad Request
 */
 type SearchBackupCredentialsListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search backup credentials list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *SearchBackupCredentialsListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the search backup credentials list bad request response
+func (o *SearchBackupCredentialsListBadRequest) Code() int {
+	return 400
+}
+
 func (o *SearchBackupCredentialsListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *SearchBackupCredentialsListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchBackupCredentialsListBadRequest) GetPayload() interface{} {
+func (o *SearchBackupCredentialsListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchBackupCredentialsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *SearchBackupCredentialsListUnauthorized) IsServerError() bool {
 // IsCode returns true when this search backup credentials list unauthorized response a status code equal to that given
 func (o *SearchBackupCredentialsListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the search backup credentials list unauthorized response
+func (o *SearchBackupCredentialsListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SearchBackupCredentialsListUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *SearchBackupCredentialsListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the search backup credentials list forbidden response
+func (o *SearchBackupCredentialsListForbidden) Code() int {
+	return 403
+}
+
 func (o *SearchBackupCredentialsListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *SearchBackupCredentialsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search backup credentials list not found response
+func (o *SearchBackupCredentialsListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchBackupCredentialsListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *SearchBackupCredentialsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this search backup credentials list internal server error response a status code equal to that given
 func (o *SearchBackupCredentialsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search backup credentials list internal server error response
+func (o *SearchBackupCredentialsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchBackupCredentialsListInternalServerError) Error() string {

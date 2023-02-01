@@ -103,6 +103,11 @@ func (o *KubernetesDescribeStorageClassOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe storage class o k response
+func (o *KubernetesDescribeStorageClassOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribeStorageClassOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/storageclass][%d] kubernetesDescribeStorageClassOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesDescribeStorageClassBadRequest describes a response with status code 4
 Bad Request
 */
 type KubernetesDescribeStorageClassBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe storage class bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesDescribeStorageClassBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes describe storage class bad request response
+func (o *KubernetesDescribeStorageClassBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesDescribeStorageClassBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/storageclass][%d] kubernetesDescribeStorageClassBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *KubernetesDescribeStorageClassBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/storageclass][%d] kubernetesDescribeStorageClassBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeStorageClassBadRequest) GetPayload() interface{} {
+func (o *KubernetesDescribeStorageClassBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeStorageClassBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *KubernetesDescribeStorageClassUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes describe storage class unauthorized response a status code equal to that given
 func (o *KubernetesDescribeStorageClassUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes describe storage class unauthorized response
+func (o *KubernetesDescribeStorageClassUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesDescribeStorageClassUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *KubernetesDescribeStorageClassForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes describe storage class forbidden response
+func (o *KubernetesDescribeStorageClassForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesDescribeStorageClassForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/storageclass][%d] kubernetesDescribeStorageClassForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *KubernetesDescribeStorageClassNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe storage class not found response
+func (o *KubernetesDescribeStorageClassNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribeStorageClassNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/storageclass][%d] kubernetesDescribeStorageClassNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *KubernetesDescribeStorageClassInternalServerError) IsServerError() bool
 // IsCode returns true when this kubernetes describe storage class internal server error response a status code equal to that given
 func (o *KubernetesDescribeStorageClassInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe storage class internal server error response
+func (o *KubernetesDescribeStorageClassInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribeStorageClassInternalServerError) Error() string {

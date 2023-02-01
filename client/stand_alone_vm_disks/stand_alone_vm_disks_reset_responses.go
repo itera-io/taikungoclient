@@ -103,6 +103,11 @@ func (o *StandAloneVMDisksResetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone Vm disks reset o k response
+func (o *StandAloneVMDisksResetOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneVMDisksResetOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ StandAloneVMDisksResetBadRequest describes a response with status code 400, with
 Bad Request
 */
 type StandAloneVMDisksResetBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks reset bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *StandAloneVMDisksResetBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone Vm disks reset bad request response
+func (o *StandAloneVMDisksResetBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneVMDisksResetBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *StandAloneVMDisksResetBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneVMDisksResetBadRequest) GetPayload() interface{} {
+func (o *StandAloneVMDisksResetBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksResetBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *StandAloneVMDisksResetUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone Vm disks reset unauthorized response a status code equal to that given
 func (o *StandAloneVMDisksResetUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone Vm disks reset unauthorized response
+func (o *StandAloneVMDisksResetUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneVMDisksResetUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *StandAloneVMDisksResetForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone Vm disks reset forbidden response
+func (o *StandAloneVMDisksResetForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneVMDisksResetForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *StandAloneVMDisksResetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone Vm disks reset not found response
+func (o *StandAloneVMDisksResetNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneVMDisksResetNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *StandAloneVMDisksResetInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone Vm disks reset internal server error response a status code equal to that given
 func (o *StandAloneVMDisksResetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone Vm disks reset internal server error response
+func (o *StandAloneVMDisksResetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneVMDisksResetInternalServerError) Error() string {

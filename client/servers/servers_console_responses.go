@@ -103,6 +103,11 @@ func (o *ServersConsoleOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the servers console o k response
+func (o *ServersConsoleOK) Code() int {
+	return 200
+}
+
 func (o *ServersConsoleOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ServersConsoleBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type ServersConsoleBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers console bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ServersConsoleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the servers console bad request response
+func (o *ServersConsoleBadRequest) Code() int {
+	return 400
+}
+
 func (o *ServersConsoleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *ServersConsoleBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersConsoleBadRequest) GetPayload() interface{} {
+func (o *ServersConsoleBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersConsoleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *ServersConsoleUnauthorized) IsServerError() bool {
 // IsCode returns true when this servers console unauthorized response a status code equal to that given
 func (o *ServersConsoleUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the servers console unauthorized response
+func (o *ServersConsoleUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ServersConsoleUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *ServersConsoleForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the servers console forbidden response
+func (o *ServersConsoleForbidden) Code() int {
+	return 403
+}
+
 func (o *ServersConsoleForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *ServersConsoleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the servers console not found response
+func (o *ServersConsoleNotFound) Code() int {
+	return 404
+}
+
 func (o *ServersConsoleNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *ServersConsoleInternalServerError) IsServerError() bool {
 // IsCode returns true when this servers console internal server error response a status code equal to that given
 func (o *ServersConsoleInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the servers console internal server error response
+func (o *ServersConsoleInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ServersConsoleInternalServerError) Error() string {

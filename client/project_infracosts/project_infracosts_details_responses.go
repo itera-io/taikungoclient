@@ -103,6 +103,11 @@ func (o *ProjectInfracostsDetailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project infracosts details o k response
+func (o *ProjectInfracostsDetailsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectInfracostsDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ ProjectInfracostsDetailsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type ProjectInfracostsDetailsBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project infracosts details bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *ProjectInfracostsDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the project infracosts details bad request response
+func (o *ProjectInfracostsDetailsBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectInfracostsDetailsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *ProjectInfracostsDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectInfracostsDetailsBadRequest) GetPayload() interface{} {
+func (o *ProjectInfracostsDetailsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsDetailsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *ProjectInfracostsDetailsUnauthorized) IsServerError() bool {
 // IsCode returns true when this project infracosts details unauthorized response a status code equal to that given
 func (o *ProjectInfracostsDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the project infracosts details unauthorized response
+func (o *ProjectInfracostsDetailsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectInfracostsDetailsUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *ProjectInfracostsDetailsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the project infracosts details forbidden response
+func (o *ProjectInfracostsDetailsForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectInfracostsDetailsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *ProjectInfracostsDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project infracosts details not found response
+func (o *ProjectInfracostsDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectInfracostsDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{projectId}][%d] projectInfracostsDetailsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *ProjectInfracostsDetailsInternalServerError) IsServerError() bool {
 // IsCode returns true when this project infracosts details internal server error response a status code equal to that given
 func (o *ProjectInfracostsDetailsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project infracosts details internal server error response
+func (o *ProjectInfracostsDetailsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectInfracostsDetailsInternalServerError) Error() string {

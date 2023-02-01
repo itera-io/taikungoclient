@@ -103,6 +103,11 @@ func (o *CatalogCatalogAppValueAutocompleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog catalog app value autocomplete o k response
+func (o *CatalogCatalogAppValueAutocompleteOK) Code() int {
+	return 200
+}
+
 func (o *CatalogCatalogAppValueAutocompleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CatalogCatalogAppValueAutocompleteBadRequest describes a response with status co
 Bad Request
 */
 type CatalogCatalogAppValueAutocompleteBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog catalog app value autocomplete bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CatalogCatalogAppValueAutocompleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the catalog catalog app value autocomplete bad request response
+func (o *CatalogCatalogAppValueAutocompleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *CatalogCatalogAppValueAutocompleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *CatalogCatalogAppValueAutocompleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueAutocompleteBadRequest) GetPayload() interface{} {
+func (o *CatalogCatalogAppValueAutocompleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppValueAutocompleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *CatalogCatalogAppValueAutocompleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this catalog catalog app value autocomplete unauthorized response a status code equal to that given
 func (o *CatalogCatalogAppValueAutocompleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the catalog catalog app value autocomplete unauthorized response
+func (o *CatalogCatalogAppValueAutocompleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CatalogCatalogAppValueAutocompleteUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *CatalogCatalogAppValueAutocompleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the catalog catalog app value autocomplete forbidden response
+func (o *CatalogCatalogAppValueAutocompleteForbidden) Code() int {
+	return 403
+}
+
 func (o *CatalogCatalogAppValueAutocompleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *CatalogCatalogAppValueAutocompleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog catalog app value autocomplete not found response
+func (o *CatalogCatalogAppValueAutocompleteNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogCatalogAppValueAutocompleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *CatalogCatalogAppValueAutocompleteInternalServerError) IsServerError() 
 // IsCode returns true when this catalog catalog app value autocomplete internal server error response a status code equal to that given
 func (o *CatalogCatalogAppValueAutocompleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog catalog app value autocomplete internal server error response
+func (o *CatalogCatalogAppValueAutocompleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogCatalogAppValueAutocompleteInternalServerError) Error() string {

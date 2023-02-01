@@ -103,6 +103,11 @@ func (o *KubernetesSilenceManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes silence manager o k response
+func (o *KubernetesSilenceManagerOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesSilenceManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesSilenceManagerBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type KubernetesSilenceManagerBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes silence manager bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesSilenceManagerBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes silence manager bad request response
+func (o *KubernetesSilenceManagerBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesSilenceManagerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *KubernetesSilenceManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesSilenceManagerBadRequest) GetPayload() interface{} {
+func (o *KubernetesSilenceManagerBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesSilenceManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *KubernetesSilenceManagerUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes silence manager unauthorized response a status code equal to that given
 func (o *KubernetesSilenceManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes silence manager unauthorized response
+func (o *KubernetesSilenceManagerUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesSilenceManagerUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *KubernetesSilenceManagerForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes silence manager forbidden response
+func (o *KubernetesSilenceManagerForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesSilenceManagerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *KubernetesSilenceManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes silence manager not found response
+func (o *KubernetesSilenceManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesSilenceManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *KubernetesSilenceManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes silence manager internal server error response a status code equal to that given
 func (o *KubernetesSilenceManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes silence manager internal server error response
+func (o *KubernetesSilenceManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesSilenceManagerInternalServerError) Error() string {

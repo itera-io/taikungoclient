@@ -103,6 +103,11 @@ func (o *StandAloneActionsRebootOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone actions reboot o k response
+func (o *StandAloneActionsRebootOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneActionsRebootOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ StandAloneActionsRebootBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneActionsRebootBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions reboot bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *StandAloneActionsRebootBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone actions reboot bad request response
+func (o *StandAloneActionsRebootBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneActionsRebootBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *StandAloneActionsRebootBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsRebootBadRequest) GetPayload() interface{} {
+func (o *StandAloneActionsRebootBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsRebootBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *StandAloneActionsRebootUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone actions reboot unauthorized response a status code equal to that given
 func (o *StandAloneActionsRebootUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone actions reboot unauthorized response
+func (o *StandAloneActionsRebootUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneActionsRebootUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *StandAloneActionsRebootForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone actions reboot forbidden response
+func (o *StandAloneActionsRebootForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneActionsRebootForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *StandAloneActionsRebootNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone actions reboot not found response
+func (o *StandAloneActionsRebootNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneActionsRebootNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *StandAloneActionsRebootInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone actions reboot internal server error response a status code equal to that given
 func (o *StandAloneActionsRebootInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone actions reboot internal server error response
+func (o *StandAloneActionsRebootInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneActionsRebootInternalServerError) Error() string {

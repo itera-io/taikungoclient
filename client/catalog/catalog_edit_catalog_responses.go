@@ -103,6 +103,11 @@ func (o *CatalogEditCatalogOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog edit catalog o k response
+func (o *CatalogEditCatalogOK) Code() int {
+	return 200
+}
+
 func (o *CatalogEditCatalogOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CatalogEditCatalogBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type CatalogEditCatalogBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog edit catalog bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CatalogEditCatalogBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the catalog edit catalog bad request response
+func (o *CatalogEditCatalogBadRequest) Code() int {
+	return 400
+}
+
 func (o *CatalogEditCatalogBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *CatalogEditCatalogBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogEditCatalogBadRequest) GetPayload() interface{} {
+func (o *CatalogEditCatalogBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *CatalogEditCatalogUnauthorized) IsServerError() bool {
 // IsCode returns true when this catalog edit catalog unauthorized response a status code equal to that given
 func (o *CatalogEditCatalogUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the catalog edit catalog unauthorized response
+func (o *CatalogEditCatalogUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CatalogEditCatalogUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *CatalogEditCatalogForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the catalog edit catalog forbidden response
+func (o *CatalogEditCatalogForbidden) Code() int {
+	return 403
+}
+
 func (o *CatalogEditCatalogForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *CatalogEditCatalogNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog edit catalog not found response
+func (o *CatalogEditCatalogNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogEditCatalogNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *CatalogEditCatalogInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog edit catalog internal server error response a status code equal to that given
 func (o *CatalogEditCatalogInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog edit catalog internal server error response
+func (o *CatalogEditCatalogInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogEditCatalogInternalServerError) Error() string {

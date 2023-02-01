@@ -65,7 +65,7 @@ type OrganizationsDetailsParams struct {
 	// OrganizationID.
 	//
 	// Format: int32
-	OrganizationID int32
+	OrganizationID *int32
 
 	// V.
 	V string
@@ -124,13 +124,13 @@ func (o *OrganizationsDetailsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithOrganizationID adds the organizationID to the organizations details params
-func (o *OrganizationsDetailsParams) WithOrganizationID(organizationID int32) *OrganizationsDetailsParams {
+func (o *OrganizationsDetailsParams) WithOrganizationID(organizationID *int32) *OrganizationsDetailsParams {
 	o.SetOrganizationID(organizationID)
 	return o
 }
 
 // SetOrganizationID adds the organizationId to the organizations details params
-func (o *OrganizationsDetailsParams) SetOrganizationID(organizationID int32) {
+func (o *OrganizationsDetailsParams) SetOrganizationID(organizationID *int32) {
 	o.OrganizationID = organizationID
 }
 
@@ -153,9 +153,21 @@ func (o *OrganizationsDetailsParams) WriteToRequest(r runtime.ClientRequest, reg
 	}
 	var res []error
 
-	// path param organizationId
-	if err := r.SetPathParam("organizationId", swag.FormatInt32(o.OrganizationID)); err != nil {
-		return err
+	if o.OrganizationID != nil {
+
+		// query param organizationId
+		var qrOrganizationID int32
+
+		if o.OrganizationID != nil {
+			qrOrganizationID = *o.OrganizationID
+		}
+		qOrganizationID := swag.FormatInt32(qrOrganizationID)
+		if qOrganizationID != "" {
+
+			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
+				return err
+			}
+		}
 	}
 
 	// path param v

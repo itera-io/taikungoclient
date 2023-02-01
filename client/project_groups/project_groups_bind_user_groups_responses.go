@@ -103,6 +103,11 @@ func (o *ProjectGroupsBindUserGroupsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project groups bind user groups o k response
+func (o *ProjectGroupsBindUserGroupsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectGroupsBindUserGroupsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/bind-user-groups][%d] projectGroupsBindUserGroupsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectGroupsBindUserGroupsBadRequest describes a response with status code 400,
 Bad Request
 */
 type ProjectGroupsBindUserGroupsBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project groups bind user groups bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectGroupsBindUserGroupsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the project groups bind user groups bad request response
+func (o *ProjectGroupsBindUserGroupsBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectGroupsBindUserGroupsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/bind-user-groups][%d] projectGroupsBindUserGroupsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *ProjectGroupsBindUserGroupsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/bind-user-groups][%d] projectGroupsBindUserGroupsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectGroupsBindUserGroupsBadRequest) GetPayload() interface{} {
+func (o *ProjectGroupsBindUserGroupsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectGroupsBindUserGroupsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *ProjectGroupsBindUserGroupsUnauthorized) IsServerError() bool {
 // IsCode returns true when this project groups bind user groups unauthorized response a status code equal to that given
 func (o *ProjectGroupsBindUserGroupsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the project groups bind user groups unauthorized response
+func (o *ProjectGroupsBindUserGroupsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectGroupsBindUserGroupsUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *ProjectGroupsBindUserGroupsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the project groups bind user groups forbidden response
+func (o *ProjectGroupsBindUserGroupsForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectGroupsBindUserGroupsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/bind-user-groups][%d] projectGroupsBindUserGroupsForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *ProjectGroupsBindUserGroupsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project groups bind user groups not found response
+func (o *ProjectGroupsBindUserGroupsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectGroupsBindUserGroupsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/bind-user-groups][%d] projectGroupsBindUserGroupsNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *ProjectGroupsBindUserGroupsInternalServerError) IsServerError() bool {
 // IsCode returns true when this project groups bind user groups internal server error response a status code equal to that given
 func (o *ProjectGroupsBindUserGroupsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project groups bind user groups internal server error response
+func (o *ProjectGroupsBindUserGroupsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectGroupsBindUserGroupsInternalServerError) Error() string {

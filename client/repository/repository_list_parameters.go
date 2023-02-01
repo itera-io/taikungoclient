@@ -65,6 +65,9 @@ type RepositoryListParams struct {
 	// ID.
 	ID *string
 
+	// IsPrivate.
+	IsPrivate *bool
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -157,6 +160,17 @@ func (o *RepositoryListParams) SetID(id *string) {
 	o.ID = id
 }
 
+// WithIsPrivate adds the isPrivate to the repository list params
+func (o *RepositoryListParams) WithIsPrivate(isPrivate *bool) *RepositoryListParams {
+	o.SetIsPrivate(isPrivate)
+	return o
+}
+
+// SetIsPrivate adds the isPrivate to the repository list params
+func (o *RepositoryListParams) SetIsPrivate(isPrivate *bool) {
+	o.IsPrivate = isPrivate
+}
+
 // WithLimit adds the limit to the repository list params
 func (o *RepositoryListParams) WithLimit(limit *int32) *RepositoryListParams {
 	o.SetLimit(limit)
@@ -243,6 +257,23 @@ func (o *RepositoryListParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		if qID != "" {
 
 			if err := r.SetQueryParam("id", qID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.IsPrivate != nil {
+
+		// query param isPrivate
+		var qrIsPrivate bool
+
+		if o.IsPrivate != nil {
+			qrIsPrivate = *o.IsPrivate
+		}
+		qIsPrivate := swag.FormatBool(qrIsPrivate)
+		if qIsPrivate != "" {
+
+			if err := r.SetQueryParam("isPrivate", qIsPrivate); err != nil {
 				return err
 			}
 		}

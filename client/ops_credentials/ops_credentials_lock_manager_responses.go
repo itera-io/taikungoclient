@@ -103,6 +103,11 @@ func (o *OpsCredentialsLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ops credentials lock manager o k response
+func (o *OpsCredentialsLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *OpsCredentialsLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ OpsCredentialsLockManagerBadRequest describes a response with status code 400, w
 Bad Request
 */
 type OpsCredentialsLockManagerBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials lock manager bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *OpsCredentialsLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the ops credentials lock manager bad request response
+func (o *OpsCredentialsLockManagerBadRequest) Code() int {
+	return 400
+}
+
 func (o *OpsCredentialsLockManagerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *OpsCredentialsLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsLockManagerBadRequest) GetPayload() interface{} {
+func (o *OpsCredentialsLockManagerBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *OpsCredentialsLockManagerUnauthorized) IsServerError() bool {
 // IsCode returns true when this ops credentials lock manager unauthorized response a status code equal to that given
 func (o *OpsCredentialsLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the ops credentials lock manager unauthorized response
+func (o *OpsCredentialsLockManagerUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OpsCredentialsLockManagerUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *OpsCredentialsLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the ops credentials lock manager forbidden response
+func (o *OpsCredentialsLockManagerForbidden) Code() int {
+	return 403
+}
+
 func (o *OpsCredentialsLockManagerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *OpsCredentialsLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ops credentials lock manager not found response
+func (o *OpsCredentialsLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *OpsCredentialsLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *OpsCredentialsLockManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this ops credentials lock manager internal server error response a status code equal to that given
 func (o *OpsCredentialsLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ops credentials lock manager internal server error response
+func (o *OpsCredentialsLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpsCredentialsLockManagerInternalServerError) Error() string {

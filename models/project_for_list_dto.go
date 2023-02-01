@@ -23,11 +23,11 @@ type ProjectForListDto struct {
 	// access Ip
 	AccessIP string `json:"accessIp,omitempty"`
 
+	// access profile
+	AccessProfile *AccessProfilesForProjectListDto `json:"accessProfile,omitempty"`
+
 	// access profile revision
 	AccessProfileRevision int32 `json:"accessProfileRevision,omitempty"`
-
-	// access profiles
-	AccessProfiles *AccessProfilesForProjectListDto `json:"accessProfiles,omitempty"`
 
 	// availability zones
 	AvailabilityZones []string `json:"availabilityZones"`
@@ -114,7 +114,7 @@ type ProjectForListDto struct {
 	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion,omitempty"`
 
 	// kubernetes profiles
-	KubernetesProfiles *KubernetesProfilesListDto `json:"kubernetesProfiles,omitempty"`
+	KubernetesProfiles *KubernetesProfilesLisForPollerDto `json:"kubernetesProfiles,omitempty"`
 
 	// kubernetes target version
 	KubernetesTargetVersion string `json:"kubernetesTargetVersion,omitempty"`
@@ -143,11 +143,11 @@ type ProjectForListDto struct {
 	// net mask
 	NetMask int32 `json:"netMask,omitempty"`
 
+	// opa profile
+	OpaProfile *OpaProfileListDto `json:"opaProfile,omitempty"`
+
 	// opa profile revision
 	OpaProfileRevision int32 `json:"opaProfileRevision,omitempty"`
-
-	// opa profiles
-	OpaProfiles *OpaProfileListDto `json:"opaProfiles,omitempty"`
 
 	// operation
 	Operation string `json:"operation,omitempty"`
@@ -227,7 +227,7 @@ type ProjectForListDto struct {
 func (m *ProjectForListDto) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateAccessProfiles(formats); err != nil {
+	if err := m.validateAccessProfile(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -251,7 +251,7 @@ func (m *ProjectForListDto) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateOpaProfiles(formats); err != nil {
+	if err := m.validateOpaProfile(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -265,17 +265,17 @@ func (m *ProjectForListDto) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ProjectForListDto) validateAccessProfiles(formats strfmt.Registry) error {
-	if swag.IsZero(m.AccessProfiles) { // not required
+func (m *ProjectForListDto) validateAccessProfile(formats strfmt.Registry) error {
+	if swag.IsZero(m.AccessProfile) { // not required
 		return nil
 	}
 
-	if m.AccessProfiles != nil {
-		if err := m.AccessProfiles.Validate(formats); err != nil {
+	if m.AccessProfile != nil {
+		if err := m.AccessProfile.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("accessProfiles")
+				return ve.ValidateName("accessProfile")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("accessProfiles")
+				return ce.ValidateName("accessProfile")
 			}
 			return err
 		}
@@ -400,17 +400,17 @@ func (m *ProjectForListDto) validateMonitoringCredential(formats strfmt.Registry
 	return nil
 }
 
-func (m *ProjectForListDto) validateOpaProfiles(formats strfmt.Registry) error {
-	if swag.IsZero(m.OpaProfiles) { // not required
+func (m *ProjectForListDto) validateOpaProfile(formats strfmt.Registry) error {
+	if swag.IsZero(m.OpaProfile) { // not required
 		return nil
 	}
 
-	if m.OpaProfiles != nil {
-		if err := m.OpaProfiles.Validate(formats); err != nil {
+	if m.OpaProfile != nil {
+		if err := m.OpaProfile.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("opaProfiles")
+				return ve.ValidateName("opaProfile")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("opaProfiles")
+				return ce.ValidateName("opaProfile")
 			}
 			return err
 		}
@@ -435,7 +435,7 @@ func (m *ProjectForListDto) validateUpdatedAt(formats strfmt.Registry) error {
 func (m *ProjectForListDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateAccessProfiles(ctx, formats); err != nil {
+	if err := m.contextValidateAccessProfile(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -459,7 +459,7 @@ func (m *ProjectForListDto) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateOpaProfiles(ctx, formats); err != nil {
+	if err := m.contextValidateOpaProfile(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -469,14 +469,14 @@ func (m *ProjectForListDto) ContextValidate(ctx context.Context, formats strfmt.
 	return nil
 }
 
-func (m *ProjectForListDto) contextValidateAccessProfiles(ctx context.Context, formats strfmt.Registry) error {
+func (m *ProjectForListDto) contextValidateAccessProfile(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.AccessProfiles != nil {
-		if err := m.AccessProfiles.ContextValidate(ctx, formats); err != nil {
+	if m.AccessProfile != nil {
+		if err := m.AccessProfile.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("accessProfiles")
+				return ve.ValidateName("accessProfile")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("accessProfiles")
+				return ce.ValidateName("accessProfile")
 			}
 			return err
 		}
@@ -577,14 +577,14 @@ func (m *ProjectForListDto) contextValidateMonitoringCredential(ctx context.Cont
 	return nil
 }
 
-func (m *ProjectForListDto) contextValidateOpaProfiles(ctx context.Context, formats strfmt.Registry) error {
+func (m *ProjectForListDto) contextValidateOpaProfile(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.OpaProfiles != nil {
-		if err := m.OpaProfiles.ContextValidate(ctx, formats); err != nil {
+	if m.OpaProfile != nil {
+		if err := m.OpaProfile.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("opaProfiles")
+				return ve.ValidateName("opaProfile")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("opaProfiles")
+				return ce.ValidateName("opaProfile")
 			}
 			return err
 		}

@@ -103,6 +103,11 @@ func (o *ProjectAppSyncOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project app sync o k response
+func (o *ProjectAppSyncOK) Code() int {
+	return 200
+}
+
 func (o *ProjectAppSyncOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectAppSyncBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type ProjectAppSyncBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app sync bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectAppSyncBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the project app sync bad request response
+func (o *ProjectAppSyncBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectAppSyncBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *ProjectAppSyncBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectAppSyncBadRequest) GetPayload() interface{} {
+func (o *ProjectAppSyncBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppSyncBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *ProjectAppSyncUnauthorized) IsServerError() bool {
 // IsCode returns true when this project app sync unauthorized response a status code equal to that given
 func (o *ProjectAppSyncUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the project app sync unauthorized response
+func (o *ProjectAppSyncUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectAppSyncUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *ProjectAppSyncForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the project app sync forbidden response
+func (o *ProjectAppSyncForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectAppSyncForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *ProjectAppSyncNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project app sync not found response
+func (o *ProjectAppSyncNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectAppSyncNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *ProjectAppSyncInternalServerError) IsServerError() bool {
 // IsCode returns true when this project app sync internal server error response a status code equal to that given
 func (o *ProjectAppSyncInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project app sync internal server error response
+func (o *ProjectAppSyncInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectAppSyncInternalServerError) Error() string {

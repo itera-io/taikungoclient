@@ -103,6 +103,11 @@ func (o *ImagesCommonGoogleImagesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the images common google images o k response
+func (o *ImagesCommonGoogleImagesOK) Code() int {
+	return 200
+}
+
 func (o *ImagesCommonGoogleImagesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/common/{cloudId}][%d] imagesCommonGoogleImagesOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ImagesCommonGoogleImagesBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type ImagesCommonGoogleImagesBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images common google images bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ImagesCommonGoogleImagesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the images common google images bad request response
+func (o *ImagesCommonGoogleImagesBadRequest) Code() int {
+	return 400
+}
+
 func (o *ImagesCommonGoogleImagesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/common/{cloudId}][%d] imagesCommonGoogleImagesBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *ImagesCommonGoogleImagesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/common/{cloudId}][%d] imagesCommonGoogleImagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesCommonGoogleImagesBadRequest) GetPayload() interface{} {
+func (o *ImagesCommonGoogleImagesBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesCommonGoogleImagesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *ImagesCommonGoogleImagesUnauthorized) IsServerError() bool {
 // IsCode returns true when this images common google images unauthorized response a status code equal to that given
 func (o *ImagesCommonGoogleImagesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the images common google images unauthorized response
+func (o *ImagesCommonGoogleImagesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ImagesCommonGoogleImagesUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *ImagesCommonGoogleImagesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the images common google images forbidden response
+func (o *ImagesCommonGoogleImagesForbidden) Code() int {
+	return 403
+}
+
 func (o *ImagesCommonGoogleImagesForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/common/{cloudId}][%d] imagesCommonGoogleImagesForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *ImagesCommonGoogleImagesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the images common google images not found response
+func (o *ImagesCommonGoogleImagesNotFound) Code() int {
+	return 404
+}
+
 func (o *ImagesCommonGoogleImagesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/common/{cloudId}][%d] imagesCommonGoogleImagesNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *ImagesCommonGoogleImagesInternalServerError) IsServerError() bool {
 // IsCode returns true when this images common google images internal server error response a status code equal to that given
 func (o *ImagesCommonGoogleImagesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the images common google images internal server error response
+func (o *ImagesCommonGoogleImagesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ImagesCommonGoogleImagesInternalServerError) Error() string {

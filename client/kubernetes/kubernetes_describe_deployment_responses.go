@@ -103,6 +103,11 @@ func (o *KubernetesDescribeDeploymentOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe deployment o k response
+func (o *KubernetesDescribeDeploymentOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribeDeploymentOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesDescribeDeploymentBadRequest describes a response with status code 400
 Bad Request
 */
 type KubernetesDescribeDeploymentBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe deployment bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesDescribeDeploymentBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes describe deployment bad request response
+func (o *KubernetesDescribeDeploymentBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesDescribeDeploymentBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *KubernetesDescribeDeploymentBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeDeploymentBadRequest) GetPayload() interface{} {
+func (o *KubernetesDescribeDeploymentBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeDeploymentBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *KubernetesDescribeDeploymentUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes describe deployment unauthorized response a status code equal to that given
 func (o *KubernetesDescribeDeploymentUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes describe deployment unauthorized response
+func (o *KubernetesDescribeDeploymentUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesDescribeDeploymentUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *KubernetesDescribeDeploymentForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes describe deployment forbidden response
+func (o *KubernetesDescribeDeploymentForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesDescribeDeploymentForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *KubernetesDescribeDeploymentNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe deployment not found response
+func (o *KubernetesDescribeDeploymentNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribeDeploymentNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *KubernetesDescribeDeploymentInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe deployment internal server error response a status code equal to that given
 func (o *KubernetesDescribeDeploymentInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe deployment internal server error response
+func (o *KubernetesDescribeDeploymentInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribeDeploymentInternalServerError) Error() string {

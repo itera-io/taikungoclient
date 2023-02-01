@@ -103,6 +103,11 @@ func (o *ImagesUnbindImagesFromProjectOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the images unbind images from project o k response
+func (o *ImagesUnbindImagesFromProjectOK) Code() int {
+	return 200
+}
+
 func (o *ImagesUnbindImagesFromProjectOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ImagesUnbindImagesFromProjectBadRequest describes a response with status code 40
 Bad Request
 */
 type ImagesUnbindImagesFromProjectBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images unbind images from project bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ImagesUnbindImagesFromProjectBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the images unbind images from project bad request response
+func (o *ImagesUnbindImagesFromProjectBadRequest) Code() int {
+	return 400
+}
+
 func (o *ImagesUnbindImagesFromProjectBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *ImagesUnbindImagesFromProjectBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesUnbindImagesFromProjectBadRequest) GetPayload() interface{} {
+func (o *ImagesUnbindImagesFromProjectBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesUnbindImagesFromProjectBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *ImagesUnbindImagesFromProjectUnauthorized) IsServerError() bool {
 // IsCode returns true when this images unbind images from project unauthorized response a status code equal to that given
 func (o *ImagesUnbindImagesFromProjectUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the images unbind images from project unauthorized response
+func (o *ImagesUnbindImagesFromProjectUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ImagesUnbindImagesFromProjectUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *ImagesUnbindImagesFromProjectForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the images unbind images from project forbidden response
+func (o *ImagesUnbindImagesFromProjectForbidden) Code() int {
+	return 403
+}
+
 func (o *ImagesUnbindImagesFromProjectForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *ImagesUnbindImagesFromProjectNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the images unbind images from project not found response
+func (o *ImagesUnbindImagesFromProjectNotFound) Code() int {
+	return 404
+}
+
 func (o *ImagesUnbindImagesFromProjectNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *ImagesUnbindImagesFromProjectInternalServerError) IsServerError() bool 
 // IsCode returns true when this images unbind images from project internal server error response a status code equal to that given
 func (o *ImagesUnbindImagesFromProjectInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the images unbind images from project internal server error response
+func (o *ImagesUnbindImagesFromProjectInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ImagesUnbindImagesFromProjectInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *CheckerOpenstackOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker openstack o k response
+func (o *CheckerOpenstackOK) Code() int {
+	return 200
+}
+
 func (o *CheckerOpenstackOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack][%d] checkerOpenstackOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CheckerOpenstackBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type CheckerOpenstackBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker openstack bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CheckerOpenstackBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the checker openstack bad request response
+func (o *CheckerOpenstackBadRequest) Code() int {
+	return 400
+}
+
 func (o *CheckerOpenstackBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack][%d] checkerOpenstackBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *CheckerOpenstackBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack][%d] checkerOpenstackBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerOpenstackBadRequest) GetPayload() interface{} {
+func (o *CheckerOpenstackBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerOpenstackBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *CheckerOpenstackUnauthorized) IsServerError() bool {
 // IsCode returns true when this checker openstack unauthorized response a status code equal to that given
 func (o *CheckerOpenstackUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the checker openstack unauthorized response
+func (o *CheckerOpenstackUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CheckerOpenstackUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *CheckerOpenstackForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the checker openstack forbidden response
+func (o *CheckerOpenstackForbidden) Code() int {
+	return 403
+}
+
 func (o *CheckerOpenstackForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack][%d] checkerOpenstackForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *CheckerOpenstackNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker openstack not found response
+func (o *CheckerOpenstackNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerOpenstackNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack][%d] checkerOpenstackNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *CheckerOpenstackInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker openstack internal server error response a status code equal to that given
 func (o *CheckerOpenstackInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker openstack internal server error response
+func (o *CheckerOpenstackInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerOpenstackInternalServerError) Error() string {

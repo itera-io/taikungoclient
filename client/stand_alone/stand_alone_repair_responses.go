@@ -103,6 +103,11 @@ func (o *StandAloneRepairOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone repair o k response
+func (o *StandAloneRepairOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneRepairOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ StandAloneRepairBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type StandAloneRepairBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone repair bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *StandAloneRepairBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone repair bad request response
+func (o *StandAloneRepairBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneRepairBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *StandAloneRepairBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneRepairBadRequest) GetPayload() interface{} {
+func (o *StandAloneRepairBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneRepairBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *StandAloneRepairUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone repair unauthorized response a status code equal to that given
 func (o *StandAloneRepairUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone repair unauthorized response
+func (o *StandAloneRepairUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneRepairUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *StandAloneRepairForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone repair forbidden response
+func (o *StandAloneRepairForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneRepairForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *StandAloneRepairNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone repair not found response
+func (o *StandAloneRepairNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneRepairNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *StandAloneRepairInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone repair internal server error response a status code equal to that given
 func (o *StandAloneRepairInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone repair internal server error response
+func (o *StandAloneRepairInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneRepairInternalServerError) Error() string {

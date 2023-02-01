@@ -103,6 +103,11 @@ func (o *BackupDeleteScheduleOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the backup delete schedule o k response
+func (o *BackupDeleteScheduleOK) Code() int {
+	return 200
+}
+
 func (o *BackupDeleteScheduleOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ BackupDeleteScheduleBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type BackupDeleteScheduleBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup delete schedule bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *BackupDeleteScheduleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the backup delete schedule bad request response
+func (o *BackupDeleteScheduleBadRequest) Code() int {
+	return 400
+}
+
 func (o *BackupDeleteScheduleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *BackupDeleteScheduleBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupDeleteScheduleBadRequest) GetPayload() interface{} {
+func (o *BackupDeleteScheduleBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupDeleteScheduleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *BackupDeleteScheduleUnauthorized) IsServerError() bool {
 // IsCode returns true when this backup delete schedule unauthorized response a status code equal to that given
 func (o *BackupDeleteScheduleUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the backup delete schedule unauthorized response
+func (o *BackupDeleteScheduleUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BackupDeleteScheduleUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *BackupDeleteScheduleForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the backup delete schedule forbidden response
+func (o *BackupDeleteScheduleForbidden) Code() int {
+	return 403
+}
+
 func (o *BackupDeleteScheduleForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *BackupDeleteScheduleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the backup delete schedule not found response
+func (o *BackupDeleteScheduleNotFound) Code() int {
+	return 404
+}
+
 func (o *BackupDeleteScheduleNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *BackupDeleteScheduleInternalServerError) IsServerError() bool {
 // IsCode returns true when this backup delete schedule internal server error response a status code equal to that given
 func (o *BackupDeleteScheduleInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the backup delete schedule internal server error response
+func (o *BackupDeleteScheduleInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BackupDeleteScheduleInternalServerError) Error() string {

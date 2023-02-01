@@ -103,6 +103,11 @@ func (o *KubernetesDescribeIngressOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe ingress o k response
+func (o *KubernetesDescribeIngressOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribeIngressOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesDescribeIngressBadRequest describes a response with status code 400, w
 Bad Request
 */
 type KubernetesDescribeIngressBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe ingress bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesDescribeIngressBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes describe ingress bad request response
+func (o *KubernetesDescribeIngressBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesDescribeIngressBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *KubernetesDescribeIngressBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeIngressBadRequest) GetPayload() interface{} {
+func (o *KubernetesDescribeIngressBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeIngressBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *KubernetesDescribeIngressUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes describe ingress unauthorized response a status code equal to that given
 func (o *KubernetesDescribeIngressUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes describe ingress unauthorized response
+func (o *KubernetesDescribeIngressUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesDescribeIngressUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *KubernetesDescribeIngressForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes describe ingress forbidden response
+func (o *KubernetesDescribeIngressForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesDescribeIngressForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *KubernetesDescribeIngressNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe ingress not found response
+func (o *KubernetesDescribeIngressNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribeIngressNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *KubernetesDescribeIngressInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe ingress internal server error response a status code equal to that given
 func (o *KubernetesDescribeIngressInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe ingress internal server error response
+func (o *KubernetesDescribeIngressInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribeIngressInternalServerError) Error() string {

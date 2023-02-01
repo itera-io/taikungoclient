@@ -103,6 +103,11 @@ func (o *ShowbackCredentialsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the showback credentials list o k response
+func (o *ShowbackCredentialsListOK) Code() int {
+	return 200
+}
+
 func (o *ShowbackCredentialsListOK) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials][%d] showbackCredentialsListOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *ShowbackCredentialsListBadRequest) IsServerError() bool {
 // IsCode returns true when this showback credentials list bad request response a status code equal to that given
 func (o *ShowbackCredentialsListBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the showback credentials list bad request response
+func (o *ShowbackCredentialsListBadRequest) Code() int {
+	return 400
 }
 
 func (o *ShowbackCredentialsListBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *ShowbackCredentialsListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the showback credentials list unauthorized response
+func (o *ShowbackCredentialsListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ShowbackCredentialsListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials][%d] showbackCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *ShowbackCredentialsListForbidden) IsServerError() bool {
 // IsCode returns true when this showback credentials list forbidden response a status code equal to that given
 func (o *ShowbackCredentialsListForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the showback credentials list forbidden response
+func (o *ShowbackCredentialsListForbidden) Code() int {
+	return 403
 }
 
 func (o *ShowbackCredentialsListForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *ShowbackCredentialsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the showback credentials list not found response
+func (o *ShowbackCredentialsListNotFound) Code() int {
+	return 404
+}
+
 func (o *ShowbackCredentialsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials][%d] showbackCredentialsListNotFound  %+v", 404, o.Payload)
 }
@@ -415,6 +440,11 @@ func (o *ShowbackCredentialsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this showback credentials list internal server error response a status code equal to that given
 func (o *ShowbackCredentialsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the showback credentials list internal server error response
+func (o *ShowbackCredentialsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ShowbackCredentialsListInternalServerError) Error() string {

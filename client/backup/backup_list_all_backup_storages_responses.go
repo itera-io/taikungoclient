@@ -103,6 +103,11 @@ func (o *BackupListAllBackupStoragesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the backup list all backup storages o k response
+func (o *BackupListAllBackupStoragesOK) Code() int {
+	return 200
+}
+
 func (o *BackupListAllBackupStoragesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ BackupListAllBackupStoragesBadRequest describes a response with status code 400,
 Bad Request
 */
 type BackupListAllBackupStoragesBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup list all backup storages bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *BackupListAllBackupStoragesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the backup list all backup storages bad request response
+func (o *BackupListAllBackupStoragesBadRequest) Code() int {
+	return 400
+}
+
 func (o *BackupListAllBackupStoragesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *BackupListAllBackupStoragesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupListAllBackupStoragesBadRequest) GetPayload() interface{} {
+func (o *BackupListAllBackupStoragesBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupListAllBackupStoragesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *BackupListAllBackupStoragesUnauthorized) IsServerError() bool {
 // IsCode returns true when this backup list all backup storages unauthorized response a status code equal to that given
 func (o *BackupListAllBackupStoragesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the backup list all backup storages unauthorized response
+func (o *BackupListAllBackupStoragesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BackupListAllBackupStoragesUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *BackupListAllBackupStoragesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the backup list all backup storages forbidden response
+func (o *BackupListAllBackupStoragesForbidden) Code() int {
+	return 403
+}
+
 func (o *BackupListAllBackupStoragesForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *BackupListAllBackupStoragesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the backup list all backup storages not found response
+func (o *BackupListAllBackupStoragesNotFound) Code() int {
+	return 404
+}
+
 func (o *BackupListAllBackupStoragesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *BackupListAllBackupStoragesInternalServerError) IsServerError() bool {
 // IsCode returns true when this backup list all backup storages internal server error response a status code equal to that given
 func (o *BackupListAllBackupStoragesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the backup list all backup storages internal server error response
+func (o *BackupListAllBackupStoragesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BackupListAllBackupStoragesInternalServerError) Error() string {

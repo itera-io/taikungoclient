@@ -109,6 +109,11 @@ func (o *NtpServersDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ntp servers delete o k response
+func (o *NtpServersDeleteOK) Code() int {
+	return 200
+}
+
 func (o *NtpServersDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *NtpServersDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the ntp servers delete no content response
+func (o *NtpServersDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *NtpServersDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteNoContent ", 204)
 }
@@ -193,7 +203,7 @@ NtpServersDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type NtpServersDeleteBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ntp servers delete bad request response has a 2xx status code
@@ -221,6 +231,11 @@ func (o *NtpServersDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the ntp servers delete bad request response
+func (o *NtpServersDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *NtpServersDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -229,14 +244,16 @@ func (o *NtpServersDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NtpServersDeleteBadRequest) GetPayload() interface{} {
+func (o *NtpServersDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NtpServersDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -280,6 +297,11 @@ func (o *NtpServersDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this ntp servers delete unauthorized response a status code equal to that given
 func (o *NtpServersDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the ntp servers delete unauthorized response
+func (o *NtpServersDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *NtpServersDeleteUnauthorized) Error() string {
@@ -345,6 +367,11 @@ func (o *NtpServersDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the ntp servers delete forbidden response
+func (o *NtpServersDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *NtpServersDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -408,6 +435,11 @@ func (o *NtpServersDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ntp servers delete not found response
+func (o *NtpServersDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *NtpServersDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -468,6 +500,11 @@ func (o *NtpServersDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this ntp servers delete internal server error response a status code equal to that given
 func (o *NtpServersDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ntp servers delete internal server error response
+func (o *NtpServersDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *NtpServersDeleteInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *RepositoryDisableOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the repository disable o k response
+func (o *RepositoryDisableOK) Code() int {
+	return 200
+}
+
 func (o *RepositoryDisableOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/disable][%d] repositoryDisableOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ RepositoryDisableBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type RepositoryDisableBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this repository disable bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *RepositoryDisableBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the repository disable bad request response
+func (o *RepositoryDisableBadRequest) Code() int {
+	return 400
+}
+
 func (o *RepositoryDisableBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/disable][%d] repositoryDisableBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *RepositoryDisableBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/disable][%d] repositoryDisableBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *RepositoryDisableBadRequest) GetPayload() interface{} {
+func (o *RepositoryDisableBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *RepositoryDisableBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *RepositoryDisableUnauthorized) IsServerError() bool {
 // IsCode returns true when this repository disable unauthorized response a status code equal to that given
 func (o *RepositoryDisableUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the repository disable unauthorized response
+func (o *RepositoryDisableUnauthorized) Code() int {
+	return 401
 }
 
 func (o *RepositoryDisableUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *RepositoryDisableForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the repository disable forbidden response
+func (o *RepositoryDisableForbidden) Code() int {
+	return 403
+}
+
 func (o *RepositoryDisableForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/disable][%d] repositoryDisableForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *RepositoryDisableNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the repository disable not found response
+func (o *RepositoryDisableNotFound) Code() int {
+	return 404
+}
+
 func (o *RepositoryDisableNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/disable][%d] repositoryDisableNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *RepositoryDisableInternalServerError) IsServerError() bool {
 // IsCode returns true when this repository disable internal server error response a status code equal to that given
 func (o *RepositoryDisableInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the repository disable internal server error response
+func (o *RepositoryDisableInternalServerError) Code() int {
+	return 500
 }
 
 func (o *RepositoryDisableInternalServerError) Error() string {

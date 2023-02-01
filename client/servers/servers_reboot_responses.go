@@ -103,6 +103,11 @@ func (o *ServersRebootOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the servers reboot o k response
+func (o *ServersRebootOK) Code() int {
+	return 200
+}
+
 func (o *ServersRebootOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ServersRebootBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type ServersRebootBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers reboot bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ServersRebootBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the servers reboot bad request response
+func (o *ServersRebootBadRequest) Code() int {
+	return 400
+}
+
 func (o *ServersRebootBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *ServersRebootBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersRebootBadRequest) GetPayload() interface{} {
+func (o *ServersRebootBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersRebootBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *ServersRebootUnauthorized) IsServerError() bool {
 // IsCode returns true when this servers reboot unauthorized response a status code equal to that given
 func (o *ServersRebootUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the servers reboot unauthorized response
+func (o *ServersRebootUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ServersRebootUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *ServersRebootForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the servers reboot forbidden response
+func (o *ServersRebootForbidden) Code() int {
+	return 403
+}
+
 func (o *ServersRebootForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *ServersRebootNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the servers reboot not found response
+func (o *ServersRebootNotFound) Code() int {
+	return 404
+}
+
 func (o *ServersRebootNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *ServersRebootInternalServerError) IsServerError() bool {
 // IsCode returns true when this servers reboot internal server error response a status code equal to that given
 func (o *ServersRebootInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the servers reboot internal server error response
+func (o *ServersRebootInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ServersRebootInternalServerError) Error() string {

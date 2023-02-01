@@ -109,6 +109,11 @@ func (o *OrganizationsDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organizations delete o k response
+func (o *OrganizationsDeleteOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationsDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *OrganizationsDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the organizations delete no content response
+func (o *OrganizationsDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *OrganizationsDeleteNoContent) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteNoContent ", 204)
 }
@@ -193,7 +203,7 @@ OrganizationsDeleteBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type OrganizationsDeleteBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations delete bad request response has a 2xx status code
@@ -221,6 +231,11 @@ func (o *OrganizationsDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the organizations delete bad request response
+func (o *OrganizationsDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *OrganizationsDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -229,14 +244,16 @@ func (o *OrganizationsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsDeleteBadRequest) GetPayload() interface{} {
+func (o *OrganizationsDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -280,6 +297,11 @@ func (o *OrganizationsDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this organizations delete unauthorized response a status code equal to that given
 func (o *OrganizationsDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the organizations delete unauthorized response
+func (o *OrganizationsDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OrganizationsDeleteUnauthorized) Error() string {
@@ -345,6 +367,11 @@ func (o *OrganizationsDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the organizations delete forbidden response
+func (o *OrganizationsDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *OrganizationsDeleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -408,6 +435,11 @@ func (o *OrganizationsDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organizations delete not found response
+func (o *OrganizationsDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -468,6 +500,11 @@ func (o *OrganizationsDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this organizations delete internal server error response a status code equal to that given
 func (o *OrganizationsDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the organizations delete internal server error response
+func (o *OrganizationsDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrganizationsDeleteInternalServerError) Error() string {

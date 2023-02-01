@@ -103,6 +103,11 @@ func (o *KubernetesDeletePodOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes delete pod o k response
+func (o *KubernetesDeletePodOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDeletePodOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesDeletePodBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type KubernetesDeletePodBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes delete pod bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesDeletePodBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes delete pod bad request response
+func (o *KubernetesDeletePodBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesDeletePodBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *KubernetesDeletePodBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDeletePodBadRequest) GetPayload() interface{} {
+func (o *KubernetesDeletePodBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDeletePodBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *KubernetesDeletePodUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes delete pod unauthorized response a status code equal to that given
 func (o *KubernetesDeletePodUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes delete pod unauthorized response
+func (o *KubernetesDeletePodUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesDeletePodUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *KubernetesDeletePodForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes delete pod forbidden response
+func (o *KubernetesDeletePodForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesDeletePodForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *KubernetesDeletePodNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes delete pod not found response
+func (o *KubernetesDeletePodNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDeletePodNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *KubernetesDeletePodInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes delete pod internal server error response a status code equal to that given
 func (o *KubernetesDeletePodInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes delete pod internal server error response
+func (o *KubernetesDeletePodInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDeletePodInternalServerError) Error() string {

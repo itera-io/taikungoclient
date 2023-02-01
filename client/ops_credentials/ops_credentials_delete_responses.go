@@ -109,6 +109,11 @@ func (o *OpsCredentialsDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the ops credentials delete o k response
+func (o *OpsCredentialsDeleteOK) Code() int {
+	return 200
+}
+
 func (o *OpsCredentialsDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *OpsCredentialsDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the ops credentials delete no content response
+func (o *OpsCredentialsDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *OpsCredentialsDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteNoContent ", 204)
 }
@@ -193,7 +203,7 @@ OpsCredentialsDeleteBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type OpsCredentialsDeleteBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials delete bad request response has a 2xx status code
@@ -221,6 +231,11 @@ func (o *OpsCredentialsDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the ops credentials delete bad request response
+func (o *OpsCredentialsDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *OpsCredentialsDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -229,14 +244,16 @@ func (o *OpsCredentialsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsDeleteBadRequest) GetPayload() interface{} {
+func (o *OpsCredentialsDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -280,6 +297,11 @@ func (o *OpsCredentialsDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this ops credentials delete unauthorized response a status code equal to that given
 func (o *OpsCredentialsDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the ops credentials delete unauthorized response
+func (o *OpsCredentialsDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OpsCredentialsDeleteUnauthorized) Error() string {
@@ -345,6 +367,11 @@ func (o *OpsCredentialsDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the ops credentials delete forbidden response
+func (o *OpsCredentialsDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *OpsCredentialsDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -408,6 +435,11 @@ func (o *OpsCredentialsDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ops credentials delete not found response
+func (o *OpsCredentialsDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *OpsCredentialsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -468,6 +500,11 @@ func (o *OpsCredentialsDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this ops credentials delete internal server error response a status code equal to that given
 func (o *OpsCredentialsDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ops credentials delete internal server error response
+func (o *OpsCredentialsDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpsCredentialsDeleteInternalServerError) Error() string {

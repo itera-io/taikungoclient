@@ -103,6 +103,11 @@ func (o *AuthRefreshTokenOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the auth refresh token o k response
+func (o *AuthRefreshTokenOK) Code() int {
+	return 200
+}
+
 func (o *AuthRefreshTokenOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ AuthRefreshTokenBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type AuthRefreshTokenBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth refresh token bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *AuthRefreshTokenBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the auth refresh token bad request response
+func (o *AuthRefreshTokenBadRequest) Code() int {
+	return 400
+}
+
 func (o *AuthRefreshTokenBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *AuthRefreshTokenBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AuthRefreshTokenBadRequest) GetPayload() interface{} {
+func (o *AuthRefreshTokenBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthRefreshTokenBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *AuthRefreshTokenUnauthorized) IsServerError() bool {
 // IsCode returns true when this auth refresh token unauthorized response a status code equal to that given
 func (o *AuthRefreshTokenUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the auth refresh token unauthorized response
+func (o *AuthRefreshTokenUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AuthRefreshTokenUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *AuthRefreshTokenForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the auth refresh token forbidden response
+func (o *AuthRefreshTokenForbidden) Code() int {
+	return 403
+}
+
 func (o *AuthRefreshTokenForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *AuthRefreshTokenNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the auth refresh token not found response
+func (o *AuthRefreshTokenNotFound) Code() int {
+	return 404
+}
+
 func (o *AuthRefreshTokenNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *AuthRefreshTokenInternalServerError) IsServerError() bool {
 // IsCode returns true when this auth refresh token internal server error response a status code equal to that given
 func (o *AuthRefreshTokenInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the auth refresh token internal server error response
+func (o *AuthRefreshTokenInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AuthRefreshTokenInternalServerError) Error() string {

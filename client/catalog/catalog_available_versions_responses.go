@@ -103,6 +103,11 @@ func (o *CatalogAvailableVersionsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog available versions o k response
+func (o *CatalogAvailableVersionsOK) Code() int {
+	return 200
+}
+
 func (o *CatalogAvailableVersionsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CatalogAvailableVersionsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type CatalogAvailableVersionsBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog available versions bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CatalogAvailableVersionsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the catalog available versions bad request response
+func (o *CatalogAvailableVersionsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CatalogAvailableVersionsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *CatalogAvailableVersionsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogAvailableVersionsBadRequest) GetPayload() interface{} {
+func (o *CatalogAvailableVersionsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogAvailableVersionsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *CatalogAvailableVersionsUnauthorized) IsServerError() bool {
 // IsCode returns true when this catalog available versions unauthorized response a status code equal to that given
 func (o *CatalogAvailableVersionsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the catalog available versions unauthorized response
+func (o *CatalogAvailableVersionsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CatalogAvailableVersionsUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *CatalogAvailableVersionsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the catalog available versions forbidden response
+func (o *CatalogAvailableVersionsForbidden) Code() int {
+	return 403
+}
+
 func (o *CatalogAvailableVersionsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *CatalogAvailableVersionsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog available versions not found response
+func (o *CatalogAvailableVersionsNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogAvailableVersionsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *CatalogAvailableVersionsInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog available versions internal server error response a status code equal to that given
 func (o *CatalogAvailableVersionsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog available versions internal server error response
+func (o *CatalogAvailableVersionsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogAvailableVersionsInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *BackupDescribeScheduleOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the backup describe schedule o k response
+func (o *BackupDescribeScheduleOK) Code() int {
+	return 200
+}
+
 func (o *BackupDescribeScheduleOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ BackupDescribeScheduleBadRequest describes a response with status code 400, with
 Bad Request
 */
 type BackupDescribeScheduleBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup describe schedule bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *BackupDescribeScheduleBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the backup describe schedule bad request response
+func (o *BackupDescribeScheduleBadRequest) Code() int {
+	return 400
+}
+
 func (o *BackupDescribeScheduleBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *BackupDescribeScheduleBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupDescribeScheduleBadRequest) GetPayload() interface{} {
+func (o *BackupDescribeScheduleBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupDescribeScheduleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *BackupDescribeScheduleUnauthorized) IsServerError() bool {
 // IsCode returns true when this backup describe schedule unauthorized response a status code equal to that given
 func (o *BackupDescribeScheduleUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the backup describe schedule unauthorized response
+func (o *BackupDescribeScheduleUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BackupDescribeScheduleUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *BackupDescribeScheduleForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the backup describe schedule forbidden response
+func (o *BackupDescribeScheduleForbidden) Code() int {
+	return 403
+}
+
 func (o *BackupDescribeScheduleForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *BackupDescribeScheduleNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the backup describe schedule not found response
+func (o *BackupDescribeScheduleNotFound) Code() int {
+	return 404
+}
+
 func (o *BackupDescribeScheduleNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *BackupDescribeScheduleInternalServerError) IsServerError() bool {
 // IsCode returns true when this backup describe schedule internal server error response a status code equal to that given
 func (o *BackupDescribeScheduleInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the backup describe schedule internal server error response
+func (o *BackupDescribeScheduleInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BackupDescribeScheduleInternalServerError) Error() string {

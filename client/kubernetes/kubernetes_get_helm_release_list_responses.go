@@ -103,6 +103,11 @@ func (o *KubernetesGetHelmReleaseListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get helm release list o k response
+func (o *KubernetesGetHelmReleaseListOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetHelmReleaseListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ KubernetesGetHelmReleaseListBadRequest describes a response with status code 400
 Bad Request
 */
 type KubernetesGetHelmReleaseListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get helm release list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *KubernetesGetHelmReleaseListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes get helm release list bad request response
+func (o *KubernetesGetHelmReleaseListBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesGetHelmReleaseListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *KubernetesGetHelmReleaseListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetHelmReleaseListBadRequest) GetPayload() interface{} {
+func (o *KubernetesGetHelmReleaseListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetHelmReleaseListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *KubernetesGetHelmReleaseListUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes get helm release list unauthorized response a status code equal to that given
 func (o *KubernetesGetHelmReleaseListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes get helm release list unauthorized response
+func (o *KubernetesGetHelmReleaseListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesGetHelmReleaseListUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *KubernetesGetHelmReleaseListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes get helm release list forbidden response
+func (o *KubernetesGetHelmReleaseListForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesGetHelmReleaseListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *KubernetesGetHelmReleaseListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get helm release list not found response
+func (o *KubernetesGetHelmReleaseListNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetHelmReleaseListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *KubernetesGetHelmReleaseListInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get helm release list internal server error response a status code equal to that given
 func (o *KubernetesGetHelmReleaseListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get helm release list internal server error response
+func (o *KubernetesGetHelmReleaseListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetHelmReleaseListInternalServerError) Error() string {

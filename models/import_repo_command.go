@@ -17,6 +17,9 @@ import (
 // swagger:model ImportRepoCommand
 type ImportRepoCommand struct {
 
+	// display name
+	DisplayName string `json:"displayName"`
+
 	// name
 	Name string `json:"name,omitempty"`
 

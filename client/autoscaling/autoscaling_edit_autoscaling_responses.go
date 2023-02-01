@@ -103,6 +103,11 @@ func (o *AutoscalingEditAutoscalingOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the autoscaling edit autoscaling o k response
+func (o *AutoscalingEditAutoscalingOK) Code() int {
+	return 200
+}
+
 func (o *AutoscalingEditAutoscalingOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/edit][%d] autoscalingEditAutoscalingOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AutoscalingEditAutoscalingBadRequest describes a response with status code 400, 
 Bad Request
 */
 type AutoscalingEditAutoscalingBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this autoscaling edit autoscaling bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AutoscalingEditAutoscalingBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the autoscaling edit autoscaling bad request response
+func (o *AutoscalingEditAutoscalingBadRequest) Code() int {
+	return 400
+}
+
 func (o *AutoscalingEditAutoscalingBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/edit][%d] autoscalingEditAutoscalingBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *AutoscalingEditAutoscalingBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/edit][%d] autoscalingEditAutoscalingBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AutoscalingEditAutoscalingBadRequest) GetPayload() interface{} {
+func (o *AutoscalingEditAutoscalingBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AutoscalingEditAutoscalingBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *AutoscalingEditAutoscalingUnauthorized) IsServerError() bool {
 // IsCode returns true when this autoscaling edit autoscaling unauthorized response a status code equal to that given
 func (o *AutoscalingEditAutoscalingUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the autoscaling edit autoscaling unauthorized response
+func (o *AutoscalingEditAutoscalingUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AutoscalingEditAutoscalingUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *AutoscalingEditAutoscalingForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the autoscaling edit autoscaling forbidden response
+func (o *AutoscalingEditAutoscalingForbidden) Code() int {
+	return 403
+}
+
 func (o *AutoscalingEditAutoscalingForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/edit][%d] autoscalingEditAutoscalingForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *AutoscalingEditAutoscalingNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the autoscaling edit autoscaling not found response
+func (o *AutoscalingEditAutoscalingNotFound) Code() int {
+	return 404
+}
+
 func (o *AutoscalingEditAutoscalingNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/edit][%d] autoscalingEditAutoscalingNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *AutoscalingEditAutoscalingInternalServerError) IsServerError() bool {
 // IsCode returns true when this autoscaling edit autoscaling internal server error response a status code equal to that given
 func (o *AutoscalingEditAutoscalingInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the autoscaling edit autoscaling internal server error response
+func (o *AutoscalingEditAutoscalingInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AutoscalingEditAutoscalingInternalServerError) Error() string {

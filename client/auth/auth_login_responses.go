@@ -103,6 +103,11 @@ func (o *AuthLoginOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the auth login o k response
+func (o *AuthLoginOK) Code() int {
+	return 200
+}
+
 func (o *AuthLoginOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ AuthLoginBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AuthLoginBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth login bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *AuthLoginBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the auth login bad request response
+func (o *AuthLoginBadRequest) Code() int {
+	return 400
+}
+
 func (o *AuthLoginBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *AuthLoginBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AuthLoginBadRequest) GetPayload() interface{} {
+func (o *AuthLoginBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthLoginBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *AuthLoginUnauthorized) IsServerError() bool {
 // IsCode returns true when this auth login unauthorized response a status code equal to that given
 func (o *AuthLoginUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the auth login unauthorized response
+func (o *AuthLoginUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AuthLoginUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *AuthLoginForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the auth login forbidden response
+func (o *AuthLoginForbidden) Code() int {
+	return 403
+}
+
 func (o *AuthLoginForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *AuthLoginNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the auth login not found response
+func (o *AuthLoginNotFound) Code() int {
+	return 404
+}
+
 func (o *AuthLoginNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *AuthLoginInternalServerError) IsServerError() bool {
 // IsCode returns true when this auth login internal server error response a status code equal to that given
 func (o *AuthLoginInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the auth login internal server error response
+func (o *AuthLoginInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AuthLoginInternalServerError) Error() string {

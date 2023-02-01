@@ -103,6 +103,11 @@ func (o *StandAloneProfileEditOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone profile edit o k response
+func (o *StandAloneProfileEditOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneProfileEditOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ StandAloneProfileEditBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type StandAloneProfileEditBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone profile edit bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *StandAloneProfileEditBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone profile edit bad request response
+func (o *StandAloneProfileEditBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneProfileEditBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *StandAloneProfileEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileEditBadRequest) GetPayload() interface{} {
+func (o *StandAloneProfileEditBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneProfileEditBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *StandAloneProfileEditUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone profile edit unauthorized response a status code equal to that given
 func (o *StandAloneProfileEditUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone profile edit unauthorized response
+func (o *StandAloneProfileEditUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneProfileEditUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *StandAloneProfileEditForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone profile edit forbidden response
+func (o *StandAloneProfileEditForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneProfileEditForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *StandAloneProfileEditNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone profile edit not found response
+func (o *StandAloneProfileEditNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneProfileEditNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *StandAloneProfileEditInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone profile edit internal server error response a status code equal to that given
 func (o *StandAloneProfileEditInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone profile edit internal server error response
+func (o *StandAloneProfileEditInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneProfileEditInternalServerError) Error() string {

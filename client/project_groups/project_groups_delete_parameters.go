@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewProjectGroupsDeleteParams creates a new ProjectGroupsDeleteParams object,
@@ -62,10 +61,8 @@ ProjectGroupsDeleteParams contains all the parameters to send to the API endpoin
 */
 type ProjectGroupsDeleteParams struct {
 
-	// ProjectGroupID.
-	//
-	// Format: int32
-	ProjectGroupID int32
+	// Body.
+	Body []int32
 
 	// V.
 	V string
@@ -123,15 +120,15 @@ func (o *ProjectGroupsDeleteParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithProjectGroupID adds the projectGroupID to the project groups delete params
-func (o *ProjectGroupsDeleteParams) WithProjectGroupID(projectGroupID int32) *ProjectGroupsDeleteParams {
-	o.SetProjectGroupID(projectGroupID)
+// WithBody adds the body to the project groups delete params
+func (o *ProjectGroupsDeleteParams) WithBody(body []int32) *ProjectGroupsDeleteParams {
+	o.SetBody(body)
 	return o
 }
 
-// SetProjectGroupID adds the projectGroupId to the project groups delete params
-func (o *ProjectGroupsDeleteParams) SetProjectGroupID(projectGroupID int32) {
-	o.ProjectGroupID = projectGroupID
+// SetBody adds the body to the project groups delete params
+func (o *ProjectGroupsDeleteParams) SetBody(body []int32) {
+	o.Body = body
 }
 
 // WithV adds the v to the project groups delete params
@@ -152,10 +149,10 @@ func (o *ProjectGroupsDeleteParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-
-	// path param ProjectGroupId
-	if err := r.SetPathParam("ProjectGroupId", swag.FormatInt32(o.ProjectGroupID)); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

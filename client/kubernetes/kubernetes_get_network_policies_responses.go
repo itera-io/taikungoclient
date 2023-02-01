@@ -103,6 +103,11 @@ func (o *KubernetesGetNetworkPoliciesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get network policies o k response
+func (o *KubernetesGetNetworkPoliciesOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetNetworkPoliciesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/network-policies][%d] kubernetesGetNetworkPoliciesOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ KubernetesGetNetworkPoliciesBadRequest describes a response with status code 400
 Bad Request
 */
 type KubernetesGetNetworkPoliciesBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get network policies bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *KubernetesGetNetworkPoliciesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes get network policies bad request response
+func (o *KubernetesGetNetworkPoliciesBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesGetNetworkPoliciesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/network-policies][%d] kubernetesGetNetworkPoliciesBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *KubernetesGetNetworkPoliciesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/network-policies][%d] kubernetesGetNetworkPoliciesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetNetworkPoliciesBadRequest) GetPayload() interface{} {
+func (o *KubernetesGetNetworkPoliciesBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetNetworkPoliciesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *KubernetesGetNetworkPoliciesUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes get network policies unauthorized response a status code equal to that given
 func (o *KubernetesGetNetworkPoliciesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes get network policies unauthorized response
+func (o *KubernetesGetNetworkPoliciesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesGetNetworkPoliciesUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *KubernetesGetNetworkPoliciesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes get network policies forbidden response
+func (o *KubernetesGetNetworkPoliciesForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesGetNetworkPoliciesForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/network-policies][%d] kubernetesGetNetworkPoliciesForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *KubernetesGetNetworkPoliciesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get network policies not found response
+func (o *KubernetesGetNetworkPoliciesNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetNetworkPoliciesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/network-policies][%d] kubernetesGetNetworkPoliciesNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *KubernetesGetNetworkPoliciesInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get network policies internal server error response a status code equal to that given
 func (o *KubernetesGetNetworkPoliciesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get network policies internal server error response
+func (o *KubernetesGetNetworkPoliciesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetNetworkPoliciesInternalServerError) Error() string {

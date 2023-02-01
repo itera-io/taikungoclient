@@ -103,6 +103,11 @@ func (o *ProjectsPrometheusMetricsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects prometheus metrics o k response
+func (o *ProjectsPrometheusMetricsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsPrometheusMetricsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectsPrometheusMetricsBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ProjectsPrometheusMetricsBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects prometheus metrics bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectsPrometheusMetricsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the projects prometheus metrics bad request response
+func (o *ProjectsPrometheusMetricsBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectsPrometheusMetricsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *ProjectsPrometheusMetricsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsPrometheusMetricsBadRequest) GetPayload() interface{} {
+func (o *ProjectsPrometheusMetricsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsPrometheusMetricsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *ProjectsPrometheusMetricsUnauthorized) IsServerError() bool {
 // IsCode returns true when this projects prometheus metrics unauthorized response a status code equal to that given
 func (o *ProjectsPrometheusMetricsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the projects prometheus metrics unauthorized response
+func (o *ProjectsPrometheusMetricsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectsPrometheusMetricsUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *ProjectsPrometheusMetricsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the projects prometheus metrics forbidden response
+func (o *ProjectsPrometheusMetricsForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectsPrometheusMetricsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *ProjectsPrometheusMetricsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects prometheus metrics not found response
+func (o *ProjectsPrometheusMetricsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsPrometheusMetricsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *ProjectsPrometheusMetricsInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects prometheus metrics internal server error response a status code equal to that given
 func (o *ProjectsPrometheusMetricsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects prometheus metrics internal server error response
+func (o *ProjectsPrometheusMetricsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsPrometheusMetricsInternalServerError) Error() string {

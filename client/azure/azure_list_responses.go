@@ -103,6 +103,11 @@ func (o *AzureListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the azure list o k response
+func (o *AzureListOK) Code() int {
+	return 200
+}
+
 func (o *AzureListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ AzureListBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AzureListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *AzureListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the azure list bad request response
+func (o *AzureListBadRequest) Code() int {
+	return 400
+}
+
 func (o *AzureListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *AzureListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureListBadRequest) GetPayload() interface{} {
+func (o *AzureListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *AzureListUnauthorized) IsServerError() bool {
 // IsCode returns true when this azure list unauthorized response a status code equal to that given
 func (o *AzureListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the azure list unauthorized response
+func (o *AzureListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AzureListUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *AzureListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the azure list forbidden response
+func (o *AzureListForbidden) Code() int {
+	return 403
+}
+
 func (o *AzureListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *AzureListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the azure list not found response
+func (o *AzureListNotFound) Code() int {
+	return 404
+}
+
 func (o *AzureListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *AzureListInternalServerError) IsServerError() bool {
 // IsCode returns true when this azure list internal server error response a status code equal to that given
 func (o *AzureListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the azure list internal server error response
+func (o *AzureListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AzureListInternalServerError) Error() string {

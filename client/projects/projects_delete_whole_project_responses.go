@@ -109,6 +109,11 @@ func (o *ProjectsDeleteWholeProjectOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects delete whole project o k response
+func (o *ProjectsDeleteWholeProjectOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsDeleteWholeProjectOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *ProjectsDeleteWholeProjectNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the projects delete whole project no content response
+func (o *ProjectsDeleteWholeProjectNoContent) Code() int {
+	return 204
+}
+
 func (o *ProjectsDeleteWholeProjectNoContent) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectNoContent ", 204)
 }
@@ -193,7 +203,7 @@ ProjectsDeleteWholeProjectBadRequest describes a response with status code 400, 
 Bad Request
 */
 type ProjectsDeleteWholeProjectBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects delete whole project bad request response has a 2xx status code
@@ -221,6 +231,11 @@ func (o *ProjectsDeleteWholeProjectBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the projects delete whole project bad request response
+func (o *ProjectsDeleteWholeProjectBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectsDeleteWholeProjectBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectBadRequest  %+v", 400, o.Payload)
 }
@@ -229,14 +244,16 @@ func (o *ProjectsDeleteWholeProjectBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsDeleteWholeProjectBadRequest) GetPayload() interface{} {
+func (o *ProjectsDeleteWholeProjectBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsDeleteWholeProjectBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -280,6 +297,11 @@ func (o *ProjectsDeleteWholeProjectUnauthorized) IsServerError() bool {
 // IsCode returns true when this projects delete whole project unauthorized response a status code equal to that given
 func (o *ProjectsDeleteWholeProjectUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the projects delete whole project unauthorized response
+func (o *ProjectsDeleteWholeProjectUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectsDeleteWholeProjectUnauthorized) Error() string {
@@ -345,6 +367,11 @@ func (o *ProjectsDeleteWholeProjectForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the projects delete whole project forbidden response
+func (o *ProjectsDeleteWholeProjectForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectsDeleteWholeProjectForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectForbidden  %+v", 403, o.Payload)
 }
@@ -408,6 +435,11 @@ func (o *ProjectsDeleteWholeProjectNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects delete whole project not found response
+func (o *ProjectsDeleteWholeProjectNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsDeleteWholeProjectNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectNotFound  %+v", 404, o.Payload)
 }
@@ -468,6 +500,11 @@ func (o *ProjectsDeleteWholeProjectInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects delete whole project internal server error response a status code equal to that given
 func (o *ProjectsDeleteWholeProjectInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects delete whole project internal server error response
+func (o *ProjectsDeleteWholeProjectInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsDeleteWholeProjectInternalServerError) Error() string {

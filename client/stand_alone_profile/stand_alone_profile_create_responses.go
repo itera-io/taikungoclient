@@ -103,6 +103,11 @@ func (o *StandAloneProfileCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone profile create o k response
+func (o *StandAloneProfileCreateOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneProfileCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ StandAloneProfileCreateBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneProfileCreateBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone profile create bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *StandAloneProfileCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone profile create bad request response
+func (o *StandAloneProfileCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneProfileCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *StandAloneProfileCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileCreateBadRequest) GetPayload() interface{} {
+func (o *StandAloneProfileCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneProfileCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *StandAloneProfileCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone profile create unauthorized response a status code equal to that given
 func (o *StandAloneProfileCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone profile create unauthorized response
+func (o *StandAloneProfileCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneProfileCreateUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *StandAloneProfileCreateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone profile create forbidden response
+func (o *StandAloneProfileCreateForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneProfileCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *StandAloneProfileCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone profile create not found response
+func (o *StandAloneProfileCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneProfileCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *StandAloneProfileCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone profile create internal server error response a status code equal to that given
 func (o *StandAloneProfileCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone profile create internal server error response
+func (o *StandAloneProfileCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneProfileCreateInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *CheckerNtpOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker ntp o k response
+func (o *CheckerNtpOK) Code() int {
+	return 200
+}
+
 func (o *CheckerNtpOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CheckerNtpBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type CheckerNtpBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker ntp bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CheckerNtpBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the checker ntp bad request response
+func (o *CheckerNtpBadRequest) Code() int {
+	return 400
+}
+
 func (o *CheckerNtpBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *CheckerNtpBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerNtpBadRequest) GetPayload() interface{} {
+func (o *CheckerNtpBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerNtpBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *CheckerNtpUnauthorized) IsServerError() bool {
 // IsCode returns true when this checker ntp unauthorized response a status code equal to that given
 func (o *CheckerNtpUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the checker ntp unauthorized response
+func (o *CheckerNtpUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CheckerNtpUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *CheckerNtpForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the checker ntp forbidden response
+func (o *CheckerNtpForbidden) Code() int {
+	return 403
+}
+
 func (o *CheckerNtpForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *CheckerNtpNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker ntp not found response
+func (o *CheckerNtpNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerNtpNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *CheckerNtpInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker ntp internal server error response a status code equal to that given
 func (o *CheckerNtpInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker ntp internal server error response
+func (o *CheckerNtpInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerNtpInternalServerError) Error() string {

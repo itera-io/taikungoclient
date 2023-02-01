@@ -103,6 +103,11 @@ func (o *AzureSkusOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the azure skus o k response
+func (o *AzureSkusOK) Code() int {
+	return 200
+}
+
 func (o *AzureSkusOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ AzureSkusBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AzureSkusBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure skus bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *AzureSkusBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the azure skus bad request response
+func (o *AzureSkusBadRequest) Code() int {
+	return 400
+}
+
 func (o *AzureSkusBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *AzureSkusBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureSkusBadRequest) GetPayload() interface{} {
+func (o *AzureSkusBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureSkusBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *AzureSkusUnauthorized) IsServerError() bool {
 // IsCode returns true when this azure skus unauthorized response a status code equal to that given
 func (o *AzureSkusUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the azure skus unauthorized response
+func (o *AzureSkusUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AzureSkusUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *AzureSkusForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the azure skus forbidden response
+func (o *AzureSkusForbidden) Code() int {
+	return 403
+}
+
 func (o *AzureSkusForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *AzureSkusNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the azure skus not found response
+func (o *AzureSkusNotFound) Code() int {
+	return 404
+}
+
 func (o *AzureSkusNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *AzureSkusInternalServerError) IsServerError() bool {
 // IsCode returns true when this azure skus internal server error response a status code equal to that given
 func (o *AzureSkusInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the azure skus internal server error response
+func (o *AzureSkusInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AzureSkusInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *ProjectAppLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project app lock manager o k response
+func (o *ProjectAppLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *ProjectAppLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectAppLockManagerBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type ProjectAppLockManagerBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app lock manager bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectAppLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the project app lock manager bad request response
+func (o *ProjectAppLockManagerBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectAppLockManagerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *ProjectAppLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectAppLockManagerBadRequest) GetPayload() interface{} {
+func (o *ProjectAppLockManagerBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *ProjectAppLockManagerUnauthorized) IsServerError() bool {
 // IsCode returns true when this project app lock manager unauthorized response a status code equal to that given
 func (o *ProjectAppLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the project app lock manager unauthorized response
+func (o *ProjectAppLockManagerUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectAppLockManagerUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *ProjectAppLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the project app lock manager forbidden response
+func (o *ProjectAppLockManagerForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectAppLockManagerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *ProjectAppLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project app lock manager not found response
+func (o *ProjectAppLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectAppLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *ProjectAppLockManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this project app lock manager internal server error response a status code equal to that given
 func (o *ProjectAppLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project app lock manager internal server error response
+func (o *ProjectAppLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectAppLockManagerInternalServerError) Error() string {

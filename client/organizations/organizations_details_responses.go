@@ -103,12 +103,17 @@ func (o *OrganizationsDetailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organizations details o k response
+func (o *OrganizationsDetailsOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationsDetailsOK) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsOK  %+v", 200, o.Payload)
 }
 
 func (o *OrganizationsDetailsOK) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsOK  %+v", 200, o.Payload)
 }
 
 func (o *OrganizationsDetailsOK) GetPayload() *models.DashboardChart {
@@ -138,7 +143,7 @@ OrganizationsDetailsBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type OrganizationsDetailsBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations details bad request response has a 2xx status code
@@ -166,22 +171,29 @@ func (o *OrganizationsDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the organizations details bad request response
+func (o *OrganizationsDetailsBadRequest) Code() int {
+	return 400
+}
+
 func (o *OrganizationsDetailsBadRequest) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *OrganizationsDetailsBadRequest) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsDetailsBadRequest) GetPayload() interface{} {
+func (o *OrganizationsDetailsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsDetailsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -227,12 +239,17 @@ func (o *OrganizationsDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the organizations details unauthorized response
+func (o *OrganizationsDetailsUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OrganizationsDetailsUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *OrganizationsDetailsUnauthorized) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *OrganizationsDetailsUnauthorized) GetPayload() *models.ProblemDetails {
@@ -290,12 +307,17 @@ func (o *OrganizationsDetailsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the organizations details forbidden response
+func (o *OrganizationsDetailsForbidden) Code() int {
+	return 403
+}
+
 func (o *OrganizationsDetailsForbidden) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsForbidden  %+v", 403, o.Payload)
 }
 
 func (o *OrganizationsDetailsForbidden) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsForbidden  %+v", 403, o.Payload)
 }
 
 func (o *OrganizationsDetailsForbidden) GetPayload() *models.ProblemDetails {
@@ -353,12 +375,17 @@ func (o *OrganizationsDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organizations details not found response
+func (o *OrganizationsDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationsDetailsNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsNotFound  %+v", 404, o.Payload)
 }
 
 func (o *OrganizationsDetailsNotFound) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsNotFound  %+v", 404, o.Payload)
 }
 
 func (o *OrganizationsDetailsNotFound) GetPayload() *models.ProblemDetails {
@@ -415,12 +442,17 @@ func (o *OrganizationsDetailsInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
+// Code gets the status code for the organizations details internal server error response
+func (o *OrganizationsDetailsInternalServerError) Code() int {
+	return 500
+}
+
 func (o *OrganizationsDetailsInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsInternalServerError ", 500)
 }
 
 func (o *OrganizationsDetailsInternalServerError) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/Organizations/details][%d] organizationsDetailsInternalServerError ", 500)
 }
 
 func (o *OrganizationsDetailsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

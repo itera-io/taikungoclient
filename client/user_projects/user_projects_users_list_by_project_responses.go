@@ -103,6 +103,11 @@ func (o *UserProjectsUsersListByProjectOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the user projects users list by project o k response
+func (o *UserProjectsUsersListByProjectOK) Code() int {
+	return 200
+}
+
 func (o *UserProjectsUsersListByProjectOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ UserProjectsUsersListByProjectBadRequest describes a response with status code 4
 Bad Request
 */
 type UserProjectsUsersListByProjectBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user projects users list by project bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *UserProjectsUsersListByProjectBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the user projects users list by project bad request response
+func (o *UserProjectsUsersListByProjectBadRequest) Code() int {
+	return 400
+}
+
 func (o *UserProjectsUsersListByProjectBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *UserProjectsUsersListByProjectBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserProjectsUsersListByProjectBadRequest) GetPayload() interface{} {
+func (o *UserProjectsUsersListByProjectBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserProjectsUsersListByProjectBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *UserProjectsUsersListByProjectUnauthorized) IsServerError() bool {
 // IsCode returns true when this user projects users list by project unauthorized response a status code equal to that given
 func (o *UserProjectsUsersListByProjectUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the user projects users list by project unauthorized response
+func (o *UserProjectsUsersListByProjectUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UserProjectsUsersListByProjectUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *UserProjectsUsersListByProjectForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the user projects users list by project forbidden response
+func (o *UserProjectsUsersListByProjectForbidden) Code() int {
+	return 403
+}
+
 func (o *UserProjectsUsersListByProjectForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *UserProjectsUsersListByProjectNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user projects users list by project not found response
+func (o *UserProjectsUsersListByProjectNotFound) Code() int {
+	return 404
+}
+
 func (o *UserProjectsUsersListByProjectNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *UserProjectsUsersListByProjectInternalServerError) IsServerError() bool
 // IsCode returns true when this user projects users list by project internal server error response a status code equal to that given
 func (o *UserProjectsUsersListByProjectInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the user projects users list by project internal server error response
+func (o *UserProjectsUsersListByProjectInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UserProjectsUsersListByProjectInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *KubernetesProfilesCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes profiles create o k response
+func (o *KubernetesProfilesCreateOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesProfilesCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ KubernetesProfilesCreateBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type KubernetesProfilesCreateBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes profiles create bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *KubernetesProfilesCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes profiles create bad request response
+func (o *KubernetesProfilesCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesProfilesCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *KubernetesProfilesCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesProfilesCreateBadRequest) GetPayload() interface{} {
+func (o *KubernetesProfilesCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *KubernetesProfilesCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes profiles create unauthorized response a status code equal to that given
 func (o *KubernetesProfilesCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes profiles create unauthorized response
+func (o *KubernetesProfilesCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesProfilesCreateUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *KubernetesProfilesCreateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes profiles create forbidden response
+func (o *KubernetesProfilesCreateForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesProfilesCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *KubernetesProfilesCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes profiles create not found response
+func (o *KubernetesProfilesCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesProfilesCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *KubernetesProfilesCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes profiles create internal server error response a status code equal to that given
 func (o *KubernetesProfilesCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes profiles create internal server error response
+func (o *KubernetesProfilesCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesProfilesCreateInternalServerError) Error() string {

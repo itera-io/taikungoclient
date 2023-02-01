@@ -103,6 +103,11 @@ func (o *ProjectAppInstallOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project app install o k response
+func (o *ProjectAppInstallOK) Code() int {
+	return 200
+}
+
 func (o *ProjectAppInstallOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/install][%d] projectAppInstallOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ ProjectAppInstallBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type ProjectAppInstallBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app install bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *ProjectAppInstallBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the project app install bad request response
+func (o *ProjectAppInstallBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectAppInstallBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/install][%d] projectAppInstallBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *ProjectAppInstallBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/install][%d] projectAppInstallBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectAppInstallBadRequest) GetPayload() interface{} {
+func (o *ProjectAppInstallBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppInstallBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *ProjectAppInstallUnauthorized) IsServerError() bool {
 // IsCode returns true when this project app install unauthorized response a status code equal to that given
 func (o *ProjectAppInstallUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the project app install unauthorized response
+func (o *ProjectAppInstallUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectAppInstallUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *ProjectAppInstallForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the project app install forbidden response
+func (o *ProjectAppInstallForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectAppInstallForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/install][%d] projectAppInstallForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *ProjectAppInstallNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project app install not found response
+func (o *ProjectAppInstallNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectAppInstallNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/install][%d] projectAppInstallNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *ProjectAppInstallInternalServerError) IsServerError() bool {
 // IsCode returns true when this project app install internal server error response a status code equal to that given
 func (o *ProjectAppInstallInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project app install internal server error response
+func (o *ProjectAppInstallInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectAppInstallInternalServerError) Error() string {

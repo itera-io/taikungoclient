@@ -103,6 +103,11 @@ func (o *CommonGetCountryListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the common get country list o k response
+func (o *CommonGetCountryListOK) Code() int {
+	return 200
+}
+
 func (o *CommonGetCountryListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CommonGetCountryListBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type CommonGetCountryListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this common get country list bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CommonGetCountryListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the common get country list bad request response
+func (o *CommonGetCountryListBadRequest) Code() int {
+	return 400
+}
+
 func (o *CommonGetCountryListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *CommonGetCountryListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CommonGetCountryListBadRequest) GetPayload() interface{} {
+func (o *CommonGetCountryListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CommonGetCountryListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *CommonGetCountryListUnauthorized) IsServerError() bool {
 // IsCode returns true when this common get country list unauthorized response a status code equal to that given
 func (o *CommonGetCountryListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the common get country list unauthorized response
+func (o *CommonGetCountryListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CommonGetCountryListUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *CommonGetCountryListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the common get country list forbidden response
+func (o *CommonGetCountryListForbidden) Code() int {
+	return 403
+}
+
 func (o *CommonGetCountryListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *CommonGetCountryListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the common get country list not found response
+func (o *CommonGetCountryListNotFound) Code() int {
+	return 404
+}
+
 func (o *CommonGetCountryListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *CommonGetCountryListInternalServerError) IsServerError() bool {
 // IsCode returns true when this common get country list internal server error response a status code equal to that given
 func (o *CommonGetCountryListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the common get country list internal server error response
+func (o *CommonGetCountryListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CommonGetCountryListInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *AlertingProfilesAttachOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting profiles attach o k response
+func (o *AlertingProfilesAttachOK) Code() int {
+	return 200
+}
+
 func (o *AlertingProfilesAttachOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AlertingProfilesAttachBadRequest describes a response with status code 400, with
 Bad Request
 */
 type AlertingProfilesAttachBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles attach bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AlertingProfilesAttachBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the alerting profiles attach bad request response
+func (o *AlertingProfilesAttachBadRequest) Code() int {
+	return 400
+}
+
 func (o *AlertingProfilesAttachBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *AlertingProfilesAttachBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesAttachBadRequest) GetPayload() interface{} {
+func (o *AlertingProfilesAttachBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAttachBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *AlertingProfilesAttachUnauthorized) IsServerError() bool {
 // IsCode returns true when this alerting profiles attach unauthorized response a status code equal to that given
 func (o *AlertingProfilesAttachUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the alerting profiles attach unauthorized response
+func (o *AlertingProfilesAttachUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AlertingProfilesAttachUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *AlertingProfilesAttachForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the alerting profiles attach forbidden response
+func (o *AlertingProfilesAttachForbidden) Code() int {
+	return 403
+}
+
 func (o *AlertingProfilesAttachForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *AlertingProfilesAttachNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting profiles attach not found response
+func (o *AlertingProfilesAttachNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingProfilesAttachNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *AlertingProfilesAttachInternalServerError) IsServerError() bool {
 // IsCode returns true when this alerting profiles attach internal server error response a status code equal to that given
 func (o *AlertingProfilesAttachInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting profiles attach internal server error response
+func (o *AlertingProfilesAttachInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingProfilesAttachInternalServerError) Error() string {

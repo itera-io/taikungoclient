@@ -103,6 +103,11 @@ func (o *RepositoryUnbindOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the repository unbind o k response
+func (o *RepositoryUnbindOK) Code() int {
+	return 200
+}
+
 func (o *RepositoryUnbindOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryUnbindOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ RepositoryUnbindBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type RepositoryUnbindBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this repository unbind bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *RepositoryUnbindBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the repository unbind bad request response
+func (o *RepositoryUnbindBadRequest) Code() int {
+	return 400
+}
+
 func (o *RepositoryUnbindBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryUnbindBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *RepositoryUnbindBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryUnbindBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *RepositoryUnbindBadRequest) GetPayload() interface{} {
+func (o *RepositoryUnbindBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *RepositoryUnbindBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *RepositoryUnbindUnauthorized) IsServerError() bool {
 // IsCode returns true when this repository unbind unauthorized response a status code equal to that given
 func (o *RepositoryUnbindUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the repository unbind unauthorized response
+func (o *RepositoryUnbindUnauthorized) Code() int {
+	return 401
 }
 
 func (o *RepositoryUnbindUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *RepositoryUnbindForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the repository unbind forbidden response
+func (o *RepositoryUnbindForbidden) Code() int {
+	return 403
+}
+
 func (o *RepositoryUnbindForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryUnbindForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *RepositoryUnbindNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the repository unbind not found response
+func (o *RepositoryUnbindNotFound) Code() int {
+	return 404
+}
+
 func (o *RepositoryUnbindNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryUnbindNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *RepositoryUnbindInternalServerError) IsServerError() bool {
 // IsCode returns true when this repository unbind internal server error response a status code equal to that given
 func (o *RepositoryUnbindInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the repository unbind internal server error response
+func (o *RepositoryUnbindInternalServerError) Code() int {
+	return 500
 }
 
 func (o *RepositoryUnbindInternalServerError) Error() string {

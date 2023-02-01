@@ -103,6 +103,11 @@ func (o *KubernetesExecCliOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes exec cli o k response
+func (o *KubernetesExecCliOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesExecCliOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesExecCliBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type KubernetesExecCliBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes exec cli bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesExecCliBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes exec cli bad request response
+func (o *KubernetesExecCliBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesExecCliBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *KubernetesExecCliBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesExecCliBadRequest) GetPayload() interface{} {
+func (o *KubernetesExecCliBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesExecCliBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *KubernetesExecCliUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes exec cli unauthorized response a status code equal to that given
 func (o *KubernetesExecCliUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes exec cli unauthorized response
+func (o *KubernetesExecCliUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesExecCliUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *KubernetesExecCliForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes exec cli forbidden response
+func (o *KubernetesExecCliForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesExecCliForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *KubernetesExecCliNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes exec cli not found response
+func (o *KubernetesExecCliNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesExecCliNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *KubernetesExecCliInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes exec cli internal server error response a status code equal to that given
 func (o *KubernetesExecCliInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes exec cli internal server error response
+func (o *KubernetesExecCliInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesExecCliInternalServerError) Error() string {

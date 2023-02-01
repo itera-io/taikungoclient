@@ -103,6 +103,11 @@ func (o *SecurityGroupListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the security group list o k response
+func (o *SecurityGroupListOK) Code() int {
+	return 200
+}
+
 func (o *SecurityGroupListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ SecurityGroupListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type SecurityGroupListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this security group list bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *SecurityGroupListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the security group list bad request response
+func (o *SecurityGroupListBadRequest) Code() int {
+	return 400
+}
+
 func (o *SecurityGroupListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *SecurityGroupListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SecurityGroupListBadRequest) GetPayload() interface{} {
+func (o *SecurityGroupListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SecurityGroupListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *SecurityGroupListUnauthorized) IsServerError() bool {
 // IsCode returns true when this security group list unauthorized response a status code equal to that given
 func (o *SecurityGroupListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the security group list unauthorized response
+func (o *SecurityGroupListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SecurityGroupListUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *SecurityGroupListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the security group list forbidden response
+func (o *SecurityGroupListForbidden) Code() int {
+	return 403
+}
+
 func (o *SecurityGroupListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *SecurityGroupListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the security group list not found response
+func (o *SecurityGroupListNotFound) Code() int {
+	return 404
+}
+
 func (o *SecurityGroupListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *SecurityGroupListInternalServerError) IsServerError() bool {
 // IsCode returns true when this security group list internal server error response a status code equal to that given
 func (o *SecurityGroupListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the security group list internal server error response
+func (o *SecurityGroupListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SecurityGroupListInternalServerError) Error() string {

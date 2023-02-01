@@ -103,6 +103,11 @@ func (o *StandAloneActionsInstancePasswordOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone actions instance password o k response
+func (o *StandAloneActionsInstancePasswordOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneActionsInstancePasswordOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ StandAloneActionsInstancePasswordBadRequest describes a response with status cod
 Bad Request
 */
 type StandAloneActionsInstancePasswordBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions instance password bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *StandAloneActionsInstancePasswordBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone actions instance password bad request response
+func (o *StandAloneActionsInstancePasswordBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneActionsInstancePasswordBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *StandAloneActionsInstancePasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsInstancePasswordBadRequest) GetPayload() interface{} {
+func (o *StandAloneActionsInstancePasswordBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsInstancePasswordBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *StandAloneActionsInstancePasswordUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone actions instance password unauthorized response a status code equal to that given
 func (o *StandAloneActionsInstancePasswordUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone actions instance password unauthorized response
+func (o *StandAloneActionsInstancePasswordUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneActionsInstancePasswordUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *StandAloneActionsInstancePasswordForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone actions instance password forbidden response
+func (o *StandAloneActionsInstancePasswordForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneActionsInstancePasswordForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *StandAloneActionsInstancePasswordNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone actions instance password not found response
+func (o *StandAloneActionsInstancePasswordNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneActionsInstancePasswordNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *StandAloneActionsInstancePasswordInternalServerError) IsServerError() b
 // IsCode returns true when this stand alone actions instance password internal server error response a status code equal to that given
 func (o *StandAloneActionsInstancePasswordInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone actions instance password internal server error response
+func (o *StandAloneActionsInstancePasswordInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneActionsInstancePasswordInternalServerError) Error() string {

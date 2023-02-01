@@ -103,6 +103,11 @@ func (o *OrganizationsUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the organizations update o k response
+func (o *OrganizationsUpdateOK) Code() int {
+	return 200
+}
+
 func (o *OrganizationsUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ OrganizationsUpdateBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type OrganizationsUpdateBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations update bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *OrganizationsUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the organizations update bad request response
+func (o *OrganizationsUpdateBadRequest) Code() int {
+	return 400
+}
+
 func (o *OrganizationsUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *OrganizationsUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsUpdateBadRequest) GetPayload() interface{} {
+func (o *OrganizationsUpdateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *OrganizationsUpdateUnauthorized) IsServerError() bool {
 // IsCode returns true when this organizations update unauthorized response a status code equal to that given
 func (o *OrganizationsUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the organizations update unauthorized response
+func (o *OrganizationsUpdateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OrganizationsUpdateUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *OrganizationsUpdateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the organizations update forbidden response
+func (o *OrganizationsUpdateForbidden) Code() int {
+	return 403
+}
+
 func (o *OrganizationsUpdateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *OrganizationsUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the organizations update not found response
+func (o *OrganizationsUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *OrganizationsUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *OrganizationsUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this organizations update internal server error response a status code equal to that given
 func (o *OrganizationsUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the organizations update internal server error response
+func (o *OrganizationsUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrganizationsUpdateInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *ProjectQuotasEditOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project quotas edit o k response
+func (o *ProjectQuotasEditOK) Code() int {
+	return 200
+}
+
 func (o *ProjectQuotasEditOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectQuotasEditBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type ProjectQuotasEditBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project quotas edit bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectQuotasEditBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the project quotas edit bad request response
+func (o *ProjectQuotasEditBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectQuotasEditBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *ProjectQuotasEditBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectQuotasEditBadRequest) GetPayload() interface{} {
+func (o *ProjectQuotasEditBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectQuotasEditBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *ProjectQuotasEditUnauthorized) IsServerError() bool {
 // IsCode returns true when this project quotas edit unauthorized response a status code equal to that given
 func (o *ProjectQuotasEditUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the project quotas edit unauthorized response
+func (o *ProjectQuotasEditUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectQuotasEditUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *ProjectQuotasEditForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the project quotas edit forbidden response
+func (o *ProjectQuotasEditForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectQuotasEditForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *ProjectQuotasEditNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project quotas edit not found response
+func (o *ProjectQuotasEditNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectQuotasEditNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *ProjectQuotasEditInternalServerError) IsServerError() bool {
 // IsCode returns true when this project quotas edit internal server error response a status code equal to that given
 func (o *ProjectQuotasEditInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project quotas edit internal server error response
+func (o *ProjectQuotasEditInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectQuotasEditInternalServerError) Error() string {

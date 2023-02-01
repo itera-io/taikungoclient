@@ -103,6 +103,11 @@ func (o *AwsUpdateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the aws update o k response
+func (o *AwsUpdateOK) Code() int {
+	return 200
+}
+
 func (o *AwsUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AwsUpdateBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AwsUpdateBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws update bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AwsUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the aws update bad request response
+func (o *AwsUpdateBadRequest) Code() int {
+	return 400
+}
+
 func (o *AwsUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *AwsUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsUpdateBadRequest) GetPayload() interface{} {
+func (o *AwsUpdateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *AwsUpdateUnauthorized) IsServerError() bool {
 // IsCode returns true when this aws update unauthorized response a status code equal to that given
 func (o *AwsUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the aws update unauthorized response
+func (o *AwsUpdateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AwsUpdateUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *AwsUpdateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the aws update forbidden response
+func (o *AwsUpdateForbidden) Code() int {
+	return 403
+}
+
 func (o *AwsUpdateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *AwsUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the aws update not found response
+func (o *AwsUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *AwsUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *AwsUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this aws update internal server error response a status code equal to that given
 func (o *AwsUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the aws update internal server error response
+func (o *AwsUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AwsUpdateInternalServerError) Error() string {

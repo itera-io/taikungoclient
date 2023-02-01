@@ -103,6 +103,11 @@ func (o *ProjectQuotasListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the project quotas list o k response
+func (o *ProjectQuotasListOK) Code() int {
+	return 200
+}
+
 func (o *ProjectQuotasListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ ProjectQuotasListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type ProjectQuotasListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project quotas list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *ProjectQuotasListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the project quotas list bad request response
+func (o *ProjectQuotasListBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectQuotasListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *ProjectQuotasListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectQuotasListBadRequest) GetPayload() interface{} {
+func (o *ProjectQuotasListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectQuotasListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *ProjectQuotasListUnauthorized) IsServerError() bool {
 // IsCode returns true when this project quotas list unauthorized response a status code equal to that given
 func (o *ProjectQuotasListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the project quotas list unauthorized response
+func (o *ProjectQuotasListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectQuotasListUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *ProjectQuotasListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the project quotas list forbidden response
+func (o *ProjectQuotasListForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectQuotasListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *ProjectQuotasListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the project quotas list not found response
+func (o *ProjectQuotasListNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectQuotasListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *ProjectQuotasListInternalServerError) IsServerError() bool {
 // IsCode returns true when this project quotas list internal server error response a status code equal to that given
 func (o *ProjectQuotasListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the project quotas list internal server error response
+func (o *ProjectQuotasListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectQuotasListInternalServerError) Error() string {

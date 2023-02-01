@@ -103,6 +103,11 @@ func (o *CatalogAppLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog app lock manager o k response
+func (o *CatalogAppLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *CatalogAppLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CatalogAppLockManagerBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type CatalogAppLockManagerBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog app lock manager bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CatalogAppLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the catalog app lock manager bad request response
+func (o *CatalogAppLockManagerBadRequest) Code() int {
+	return 400
+}
+
 func (o *CatalogAppLockManagerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *CatalogAppLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogAppLockManagerBadRequest) GetPayload() interface{} {
+func (o *CatalogAppLockManagerBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogAppLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *CatalogAppLockManagerUnauthorized) IsServerError() bool {
 // IsCode returns true when this catalog app lock manager unauthorized response a status code equal to that given
 func (o *CatalogAppLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the catalog app lock manager unauthorized response
+func (o *CatalogAppLockManagerUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CatalogAppLockManagerUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *CatalogAppLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the catalog app lock manager forbidden response
+func (o *CatalogAppLockManagerForbidden) Code() int {
+	return 403
+}
+
 func (o *CatalogAppLockManagerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *CatalogAppLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog app lock manager not found response
+func (o *CatalogAppLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogAppLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *CatalogAppLockManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog app lock manager internal server error response a status code equal to that given
 func (o *CatalogAppLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog app lock manager internal server error response
+func (o *CatalogAppLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogAppLockManagerInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *CatalogAvailablePackageDetailsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog available package details o k response
+func (o *CatalogAvailablePackageDetailsOK) Code() int {
+	return 200
+}
+
 func (o *CatalogAvailablePackageDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ CatalogAvailablePackageDetailsBadRequest describes a response with status code 4
 Bad Request
 */
 type CatalogAvailablePackageDetailsBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog available package details bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *CatalogAvailablePackageDetailsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the catalog available package details bad request response
+func (o *CatalogAvailablePackageDetailsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CatalogAvailablePackageDetailsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *CatalogAvailablePackageDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogAvailablePackageDetailsBadRequest) GetPayload() interface{} {
+func (o *CatalogAvailablePackageDetailsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogAvailablePackageDetailsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *CatalogAvailablePackageDetailsUnauthorized) IsServerError() bool {
 // IsCode returns true when this catalog available package details unauthorized response a status code equal to that given
 func (o *CatalogAvailablePackageDetailsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the catalog available package details unauthorized response
+func (o *CatalogAvailablePackageDetailsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CatalogAvailablePackageDetailsUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *CatalogAvailablePackageDetailsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the catalog available package details forbidden response
+func (o *CatalogAvailablePackageDetailsForbidden) Code() int {
+	return 403
+}
+
 func (o *CatalogAvailablePackageDetailsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *CatalogAvailablePackageDetailsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog available package details not found response
+func (o *CatalogAvailablePackageDetailsNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogAvailablePackageDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *CatalogAvailablePackageDetailsInternalServerError) IsServerError() bool
 // IsCode returns true when this catalog available package details internal server error response a status code equal to that given
 func (o *CatalogAvailablePackageDetailsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog available package details internal server error response
+func (o *CatalogAvailablePackageDetailsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogAvailablePackageDetailsInternalServerError) Error() string {

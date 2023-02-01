@@ -103,6 +103,11 @@ func (o *AuthResetPasswordOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the auth reset password o k response
+func (o *AuthResetPasswordOK) Code() int {
+	return 200
+}
+
 func (o *AuthResetPasswordOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AuthResetPasswordBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AuthResetPasswordBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth reset password bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AuthResetPasswordBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the auth reset password bad request response
+func (o *AuthResetPasswordBadRequest) Code() int {
+	return 400
+}
+
 func (o *AuthResetPasswordBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *AuthResetPasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AuthResetPasswordBadRequest) GetPayload() interface{} {
+func (o *AuthResetPasswordBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthResetPasswordBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *AuthResetPasswordUnauthorized) IsServerError() bool {
 // IsCode returns true when this auth reset password unauthorized response a status code equal to that given
 func (o *AuthResetPasswordUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the auth reset password unauthorized response
+func (o *AuthResetPasswordUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AuthResetPasswordUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *AuthResetPasswordForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the auth reset password forbidden response
+func (o *AuthResetPasswordForbidden) Code() int {
+	return 403
+}
+
 func (o *AuthResetPasswordForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *AuthResetPasswordNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the auth reset password not found response
+func (o *AuthResetPasswordNotFound) Code() int {
+	return 404
+}
+
 func (o *AuthResetPasswordNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *AuthResetPasswordInternalServerError) IsServerError() bool {
 // IsCode returns true when this auth reset password internal server error response a status code equal to that given
 func (o *AuthResetPasswordInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the auth reset password internal server error response
+func (o *AuthResetPasswordInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AuthResetPasswordInternalServerError) Error() string {

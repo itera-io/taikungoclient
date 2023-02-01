@@ -103,6 +103,11 @@ func (o *KeycloakCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the keycloak create o k response
+func (o *KeycloakCreateOK) Code() int {
+	return 200
+}
+
 func (o *KeycloakCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KeycloakCreateBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type KeycloakCreateBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this keycloak create bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KeycloakCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the keycloak create bad request response
+func (o *KeycloakCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *KeycloakCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *KeycloakCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KeycloakCreateBadRequest) GetPayload() interface{} {
+func (o *KeycloakCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KeycloakCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *KeycloakCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this keycloak create unauthorized response a status code equal to that given
 func (o *KeycloakCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the keycloak create unauthorized response
+func (o *KeycloakCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KeycloakCreateUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *KeycloakCreateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the keycloak create forbidden response
+func (o *KeycloakCreateForbidden) Code() int {
+	return 403
+}
+
 func (o *KeycloakCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *KeycloakCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the keycloak create not found response
+func (o *KeycloakCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *KeycloakCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *KeycloakCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this keycloak create internal server error response a status code equal to that given
 func (o *KeycloakCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the keycloak create internal server error response
+func (o *KeycloakCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KeycloakCreateInternalServerError) Error() string {

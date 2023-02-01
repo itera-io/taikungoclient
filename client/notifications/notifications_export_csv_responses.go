@@ -102,6 +102,11 @@ func (o *NotificationsExportCsvOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the notifications export csv o k response
+func (o *NotificationsExportCsvOK) Code() int {
+	return 200
+}
+
 func (o *NotificationsExportCsvOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvOK ", 200)
 }
@@ -126,7 +131,7 @@ NotificationsExportCsvBadRequest describes a response with status code 400, with
 Bad Request
 */
 type NotificationsExportCsvBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this notifications export csv bad request response has a 2xx status code
@@ -154,6 +159,11 @@ func (o *NotificationsExportCsvBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the notifications export csv bad request response
+func (o *NotificationsExportCsvBadRequest) Code() int {
+	return 400
+}
+
 func (o *NotificationsExportCsvBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvBadRequest  %+v", 400, o.Payload)
 }
@@ -162,14 +172,16 @@ func (o *NotificationsExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NotificationsExportCsvBadRequest) GetPayload() interface{} {
+func (o *NotificationsExportCsvBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NotificationsExportCsvBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -213,6 +225,11 @@ func (o *NotificationsExportCsvUnauthorized) IsServerError() bool {
 // IsCode returns true when this notifications export csv unauthorized response a status code equal to that given
 func (o *NotificationsExportCsvUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the notifications export csv unauthorized response
+func (o *NotificationsExportCsvUnauthorized) Code() int {
+	return 401
 }
 
 func (o *NotificationsExportCsvUnauthorized) Error() string {
@@ -278,6 +295,11 @@ func (o *NotificationsExportCsvForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the notifications export csv forbidden response
+func (o *NotificationsExportCsvForbidden) Code() int {
+	return 403
+}
+
 func (o *NotificationsExportCsvForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvForbidden  %+v", 403, o.Payload)
 }
@@ -341,6 +363,11 @@ func (o *NotificationsExportCsvNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the notifications export csv not found response
+func (o *NotificationsExportCsvNotFound) Code() int {
+	return 404
+}
+
 func (o *NotificationsExportCsvNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvNotFound  %+v", 404, o.Payload)
 }
@@ -401,6 +428,11 @@ func (o *NotificationsExportCsvInternalServerError) IsServerError() bool {
 // IsCode returns true when this notifications export csv internal server error response a status code equal to that given
 func (o *NotificationsExportCsvInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the notifications export csv internal server error response
+func (o *NotificationsExportCsvInternalServerError) Code() int {
+	return 500
 }
 
 func (o *NotificationsExportCsvInternalServerError) Error() string {

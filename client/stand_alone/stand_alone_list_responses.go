@@ -103,6 +103,11 @@ func (o *StandAloneListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone list o k response
+func (o *StandAloneListOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ StandAloneListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type StandAloneListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *StandAloneListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone list bad request response
+func (o *StandAloneListBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *StandAloneListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneListBadRequest) GetPayload() interface{} {
+func (o *StandAloneListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *StandAloneListUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone list unauthorized response a status code equal to that given
 func (o *StandAloneListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone list unauthorized response
+func (o *StandAloneListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneListUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *StandAloneListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone list forbidden response
+func (o *StandAloneListForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *StandAloneListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone list not found response
+func (o *StandAloneListNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *StandAloneListInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone list internal server error response a status code equal to that given
 func (o *StandAloneListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone list internal server error response
+func (o *StandAloneListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneListInternalServerError) Error() string {

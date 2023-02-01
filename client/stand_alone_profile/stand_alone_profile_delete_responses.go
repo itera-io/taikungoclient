@@ -103,6 +103,11 @@ func (o *StandAloneProfileDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone profile delete o k response
+func (o *StandAloneProfileDeleteOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneProfileDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ StandAloneProfileDeleteBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneProfileDeleteBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone profile delete bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *StandAloneProfileDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone profile delete bad request response
+func (o *StandAloneProfileDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneProfileDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *StandAloneProfileDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileDeleteBadRequest) GetPayload() interface{} {
+func (o *StandAloneProfileDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneProfileDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *StandAloneProfileDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone profile delete unauthorized response a status code equal to that given
 func (o *StandAloneProfileDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone profile delete unauthorized response
+func (o *StandAloneProfileDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneProfileDeleteUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *StandAloneProfileDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone profile delete forbidden response
+func (o *StandAloneProfileDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneProfileDeleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *StandAloneProfileDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone profile delete not found response
+func (o *StandAloneProfileDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneProfileDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *StandAloneProfileDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone profile delete internal server error response a status code equal to that given
 func (o *StandAloneProfileDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone profile delete internal server error response
+func (o *StandAloneProfileDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneProfileDeleteInternalServerError) Error() string {

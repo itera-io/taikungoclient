@@ -103,6 +103,11 @@ func (o *ProjectsSpotVmsOperationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects spot vms operations o k response
+func (o *ProjectsSpotVmsOperationsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsSpotVmsOperationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectsSpotVmsOperationsBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ProjectsSpotVmsOperationsBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects spot vms operations bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectsSpotVmsOperationsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the projects spot vms operations bad request response
+func (o *ProjectsSpotVmsOperationsBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectsSpotVmsOperationsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *ProjectsSpotVmsOperationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsSpotVmsOperationsBadRequest) GetPayload() interface{} {
+func (o *ProjectsSpotVmsOperationsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsSpotVmsOperationsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *ProjectsSpotVmsOperationsUnauthorized) IsServerError() bool {
 // IsCode returns true when this projects spot vms operations unauthorized response a status code equal to that given
 func (o *ProjectsSpotVmsOperationsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the projects spot vms operations unauthorized response
+func (o *ProjectsSpotVmsOperationsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectsSpotVmsOperationsUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *ProjectsSpotVmsOperationsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the projects spot vms operations forbidden response
+func (o *ProjectsSpotVmsOperationsForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectsSpotVmsOperationsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *ProjectsSpotVmsOperationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects spot vms operations not found response
+func (o *ProjectsSpotVmsOperationsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsSpotVmsOperationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *ProjectsSpotVmsOperationsInternalServerError) IsServerError() bool {
 // IsCode returns true when this projects spot vms operations internal server error response a status code equal to that given
 func (o *ProjectsSpotVmsOperationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects spot vms operations internal server error response
+func (o *ProjectsSpotVmsOperationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsSpotVmsOperationsInternalServerError) Error() string {

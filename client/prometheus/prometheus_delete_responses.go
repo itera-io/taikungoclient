@@ -103,6 +103,11 @@ func (o *PrometheusDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the prometheus delete o k response
+func (o *PrometheusDeleteOK) Code() int {
+	return 200
+}
+
 func (o *PrometheusDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Prometheus/{id}][%d] prometheusDeleteOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ PrometheusDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type PrometheusDeleteBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus delete bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *PrometheusDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the prometheus delete bad request response
+func (o *PrometheusDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *PrometheusDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Prometheus/{id}][%d] prometheusDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *PrometheusDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Prometheus/{id}][%d] prometheusDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusDeleteBadRequest) GetPayload() interface{} {
+func (o *PrometheusDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *PrometheusDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this prometheus delete unauthorized response a status code equal to that given
 func (o *PrometheusDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the prometheus delete unauthorized response
+func (o *PrometheusDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *PrometheusDeleteUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *PrometheusDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the prometheus delete forbidden response
+func (o *PrometheusDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *PrometheusDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Prometheus/{id}][%d] prometheusDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *PrometheusDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the prometheus delete not found response
+func (o *PrometheusDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *PrometheusDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Prometheus/{id}][%d] prometheusDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *PrometheusDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this prometheus delete internal server error response a status code equal to that given
 func (o *PrometheusDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the prometheus delete internal server error response
+func (o *PrometheusDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PrometheusDeleteInternalServerError) Error() string {

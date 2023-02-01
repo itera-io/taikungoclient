@@ -103,6 +103,11 @@ func (o *GoogleCloudCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the google cloud create o k response
+func (o *GoogleCloudCreateOK) Code() int {
+	return 200
+}
+
 func (o *GoogleCloudCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ GoogleCloudCreateBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type GoogleCloudCreateBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud create bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *GoogleCloudCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the google cloud create bad request response
+func (o *GoogleCloudCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *GoogleCloudCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *GoogleCloudCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GoogleCloudCreateBadRequest) GetPayload() interface{} {
+func (o *GoogleCloudCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *GoogleCloudCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this google cloud create unauthorized response a status code equal to that given
 func (o *GoogleCloudCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the google cloud create unauthorized response
+func (o *GoogleCloudCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GoogleCloudCreateUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *GoogleCloudCreateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the google cloud create forbidden response
+func (o *GoogleCloudCreateForbidden) Code() int {
+	return 403
+}
+
 func (o *GoogleCloudCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *GoogleCloudCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the google cloud create not found response
+func (o *GoogleCloudCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *GoogleCloudCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *GoogleCloudCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this google cloud create internal server error response a status code equal to that given
 func (o *GoogleCloudCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the google cloud create internal server error response
+func (o *GoogleCloudCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GoogleCloudCreateInternalServerError) Error() string {

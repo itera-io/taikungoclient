@@ -103,6 +103,11 @@ func (o *AutoscalingDisableAutoscalingOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the autoscaling disable autoscaling o k response
+func (o *AutoscalingDisableAutoscalingOK) Code() int {
+	return 200
+}
+
 func (o *AutoscalingDisableAutoscalingOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/disable][%d] autoscalingDisableAutoscalingOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AutoscalingDisableAutoscalingBadRequest describes a response with status code 40
 Bad Request
 */
 type AutoscalingDisableAutoscalingBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this autoscaling disable autoscaling bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AutoscalingDisableAutoscalingBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the autoscaling disable autoscaling bad request response
+func (o *AutoscalingDisableAutoscalingBadRequest) Code() int {
+	return 400
+}
+
 func (o *AutoscalingDisableAutoscalingBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/disable][%d] autoscalingDisableAutoscalingBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *AutoscalingDisableAutoscalingBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/disable][%d] autoscalingDisableAutoscalingBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AutoscalingDisableAutoscalingBadRequest) GetPayload() interface{} {
+func (o *AutoscalingDisableAutoscalingBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AutoscalingDisableAutoscalingBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *AutoscalingDisableAutoscalingUnauthorized) IsServerError() bool {
 // IsCode returns true when this autoscaling disable autoscaling unauthorized response a status code equal to that given
 func (o *AutoscalingDisableAutoscalingUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the autoscaling disable autoscaling unauthorized response
+func (o *AutoscalingDisableAutoscalingUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AutoscalingDisableAutoscalingUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *AutoscalingDisableAutoscalingForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the autoscaling disable autoscaling forbidden response
+func (o *AutoscalingDisableAutoscalingForbidden) Code() int {
+	return 403
+}
+
 func (o *AutoscalingDisableAutoscalingForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/disable][%d] autoscalingDisableAutoscalingForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *AutoscalingDisableAutoscalingNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the autoscaling disable autoscaling not found response
+func (o *AutoscalingDisableAutoscalingNotFound) Code() int {
+	return 404
+}
+
 func (o *AutoscalingDisableAutoscalingNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/disable][%d] autoscalingDisableAutoscalingNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *AutoscalingDisableAutoscalingInternalServerError) IsServerError() bool 
 // IsCode returns true when this autoscaling disable autoscaling internal server error response a status code equal to that given
 func (o *AutoscalingDisableAutoscalingInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the autoscaling disable autoscaling internal server error response
+func (o *AutoscalingDisableAutoscalingInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AutoscalingDisableAutoscalingInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *ProjectsFullSpotWorkersOperationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects full spot workers operations o k response
+func (o *ProjectsFullSpotWorkersOperationsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsFullSpotWorkersOperationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectsFullSpotWorkersOperationsBadRequest describes a response with status cod
 Bad Request
 */
 type ProjectsFullSpotWorkersOperationsBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects full spot workers operations bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectsFullSpotWorkersOperationsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the projects full spot workers operations bad request response
+func (o *ProjectsFullSpotWorkersOperationsBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectsFullSpotWorkersOperationsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *ProjectsFullSpotWorkersOperationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsFullSpotWorkersOperationsBadRequest) GetPayload() interface{} {
+func (o *ProjectsFullSpotWorkersOperationsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsFullSpotWorkersOperationsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *ProjectsFullSpotWorkersOperationsUnauthorized) IsServerError() bool {
 // IsCode returns true when this projects full spot workers operations unauthorized response a status code equal to that given
 func (o *ProjectsFullSpotWorkersOperationsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the projects full spot workers operations unauthorized response
+func (o *ProjectsFullSpotWorkersOperationsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectsFullSpotWorkersOperationsUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *ProjectsFullSpotWorkersOperationsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the projects full spot workers operations forbidden response
+func (o *ProjectsFullSpotWorkersOperationsForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectsFullSpotWorkersOperationsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *ProjectsFullSpotWorkersOperationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects full spot workers operations not found response
+func (o *ProjectsFullSpotWorkersOperationsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsFullSpotWorkersOperationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *ProjectsFullSpotWorkersOperationsInternalServerError) IsServerError() b
 // IsCode returns true when this projects full spot workers operations internal server error response a status code equal to that given
 func (o *ProjectsFullSpotWorkersOperationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects full spot workers operations internal server error response
+func (o *ProjectsFullSpotWorkersOperationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsFullSpotWorkersOperationsInternalServerError) Error() string {

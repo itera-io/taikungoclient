@@ -35,6 +35,9 @@ type BoundFlavorsForProjectsListDto struct {
 	// is azure
 	IsAzure bool `json:"isAzure"`
 
+	// is google
+	IsGoogle bool `json:"isGoogle"`
+
 	// is openstack
 	IsOpenstack bool `json:"isOpenstack"`
 

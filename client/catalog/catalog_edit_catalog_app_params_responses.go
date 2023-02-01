@@ -103,6 +103,11 @@ func (o *CatalogEditCatalogAppParamsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the catalog edit catalog app params o k response
+func (o *CatalogEditCatalogAppParamsOK) Code() int {
+	return 200
+}
+
 func (o *CatalogEditCatalogAppParamsOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-params][%d] catalogEditCatalogAppParamsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CatalogEditCatalogAppParamsBadRequest describes a response with status code 400,
 Bad Request
 */
 type CatalogEditCatalogAppParamsBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog edit catalog app params bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CatalogEditCatalogAppParamsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the catalog edit catalog app params bad request response
+func (o *CatalogEditCatalogAppParamsBadRequest) Code() int {
+	return 400
+}
+
 func (o *CatalogEditCatalogAppParamsBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-params][%d] catalogEditCatalogAppParamsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *CatalogEditCatalogAppParamsBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-params][%d] catalogEditCatalogAppParamsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppParamsBadRequest) GetPayload() interface{} {
+func (o *CatalogEditCatalogAppParamsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogAppParamsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *CatalogEditCatalogAppParamsUnauthorized) IsServerError() bool {
 // IsCode returns true when this catalog edit catalog app params unauthorized response a status code equal to that given
 func (o *CatalogEditCatalogAppParamsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the catalog edit catalog app params unauthorized response
+func (o *CatalogEditCatalogAppParamsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CatalogEditCatalogAppParamsUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *CatalogEditCatalogAppParamsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the catalog edit catalog app params forbidden response
+func (o *CatalogEditCatalogAppParamsForbidden) Code() int {
+	return 403
+}
+
 func (o *CatalogEditCatalogAppParamsForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-params][%d] catalogEditCatalogAppParamsForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *CatalogEditCatalogAppParamsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the catalog edit catalog app params not found response
+func (o *CatalogEditCatalogAppParamsNotFound) Code() int {
+	return 404
+}
+
 func (o *CatalogEditCatalogAppParamsNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-params][%d] catalogEditCatalogAppParamsNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *CatalogEditCatalogAppParamsInternalServerError) IsServerError() bool {
 // IsCode returns true when this catalog edit catalog app params internal server error response a status code equal to that given
 func (o *CatalogEditCatalogAppParamsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the catalog edit catalog app params internal server error response
+func (o *CatalogEditCatalogAppParamsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CatalogEditCatalogAppParamsInternalServerError) Error() string {

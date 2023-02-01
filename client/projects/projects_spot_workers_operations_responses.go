@@ -103,6 +103,11 @@ func (o *ProjectsSpotWorkersOperationsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the projects spot workers operations o k response
+func (o *ProjectsSpotWorkersOperationsOK) Code() int {
+	return 200
+}
+
 func (o *ProjectsSpotWorkersOperationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ProjectsSpotWorkersOperationsBadRequest describes a response with status code 40
 Bad Request
 */
 type ProjectsSpotWorkersOperationsBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects spot workers operations bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ProjectsSpotWorkersOperationsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the projects spot workers operations bad request response
+func (o *ProjectsSpotWorkersOperationsBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProjectsSpotWorkersOperationsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *ProjectsSpotWorkersOperationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsSpotWorkersOperationsBadRequest) GetPayload() interface{} {
+func (o *ProjectsSpotWorkersOperationsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsSpotWorkersOperationsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *ProjectsSpotWorkersOperationsUnauthorized) IsServerError() bool {
 // IsCode returns true when this projects spot workers operations unauthorized response a status code equal to that given
 func (o *ProjectsSpotWorkersOperationsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the projects spot workers operations unauthorized response
+func (o *ProjectsSpotWorkersOperationsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProjectsSpotWorkersOperationsUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *ProjectsSpotWorkersOperationsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the projects spot workers operations forbidden response
+func (o *ProjectsSpotWorkersOperationsForbidden) Code() int {
+	return 403
+}
+
 func (o *ProjectsSpotWorkersOperationsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *ProjectsSpotWorkersOperationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the projects spot workers operations not found response
+func (o *ProjectsSpotWorkersOperationsNotFound) Code() int {
+	return 404
+}
+
 func (o *ProjectsSpotWorkersOperationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *ProjectsSpotWorkersOperationsInternalServerError) IsServerError() bool 
 // IsCode returns true when this projects spot workers operations internal server error response a status code equal to that given
 func (o *ProjectsSpotWorkersOperationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the projects spot workers operations internal server error response
+func (o *ProjectsSpotWorkersOperationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProjectsSpotWorkersOperationsInternalServerError) Error() string {

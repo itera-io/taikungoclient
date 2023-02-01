@@ -103,6 +103,11 @@ func (o *ImagesPersonalAzureImagesOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the images personal azure images o k response
+func (o *ImagesPersonalAzureImagesOK) Code() int {
+	return 200
+}
+
 func (o *ImagesPersonalAzureImagesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ ImagesPersonalAzureImagesBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ImagesPersonalAzureImagesBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images personal azure images bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *ImagesPersonalAzureImagesBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the images personal azure images bad request response
+func (o *ImagesPersonalAzureImagesBadRequest) Code() int {
+	return 400
+}
+
 func (o *ImagesPersonalAzureImagesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *ImagesPersonalAzureImagesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesPersonalAzureImagesBadRequest) GetPayload() interface{} {
+func (o *ImagesPersonalAzureImagesBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesPersonalAzureImagesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *ImagesPersonalAzureImagesUnauthorized) IsServerError() bool {
 // IsCode returns true when this images personal azure images unauthorized response a status code equal to that given
 func (o *ImagesPersonalAzureImagesUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the images personal azure images unauthorized response
+func (o *ImagesPersonalAzureImagesUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ImagesPersonalAzureImagesUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *ImagesPersonalAzureImagesForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the images personal azure images forbidden response
+func (o *ImagesPersonalAzureImagesForbidden) Code() int {
+	return 403
+}
+
 func (o *ImagesPersonalAzureImagesForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *ImagesPersonalAzureImagesNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the images personal azure images not found response
+func (o *ImagesPersonalAzureImagesNotFound) Code() int {
+	return 404
+}
+
 func (o *ImagesPersonalAzureImagesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *ImagesPersonalAzureImagesInternalServerError) IsServerError() bool {
 // IsCode returns true when this images personal azure images internal server error response a status code equal to that given
 func (o *ImagesPersonalAzureImagesInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the images personal azure images internal server error response
+func (o *ImagesPersonalAzureImagesInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ImagesPersonalAzureImagesInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *BackupImportBackupStorageOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the backup import backup storage o k response
+func (o *BackupImportBackupStorageOK) Code() int {
+	return 200
+}
+
 func (o *BackupImportBackupStorageOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ BackupImportBackupStorageBadRequest describes a response with status code 400, w
 Bad Request
 */
 type BackupImportBackupStorageBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup import backup storage bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *BackupImportBackupStorageBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the backup import backup storage bad request response
+func (o *BackupImportBackupStorageBadRequest) Code() int {
+	return 400
+}
+
 func (o *BackupImportBackupStorageBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *BackupImportBackupStorageBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupImportBackupStorageBadRequest) GetPayload() interface{} {
+func (o *BackupImportBackupStorageBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupImportBackupStorageBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *BackupImportBackupStorageUnauthorized) IsServerError() bool {
 // IsCode returns true when this backup import backup storage unauthorized response a status code equal to that given
 func (o *BackupImportBackupStorageUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the backup import backup storage unauthorized response
+func (o *BackupImportBackupStorageUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BackupImportBackupStorageUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *BackupImportBackupStorageForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the backup import backup storage forbidden response
+func (o *BackupImportBackupStorageForbidden) Code() int {
+	return 403
+}
+
 func (o *BackupImportBackupStorageForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *BackupImportBackupStorageNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the backup import backup storage not found response
+func (o *BackupImportBackupStorageNotFound) Code() int {
+	return 404
+}
+
 func (o *BackupImportBackupStorageNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *BackupImportBackupStorageInternalServerError) IsServerError() bool {
 // IsCode returns true when this backup import backup storage internal server error response a status code equal to that given
 func (o *BackupImportBackupStorageInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the backup import backup storage internal server error response
+func (o *BackupImportBackupStorageInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BackupImportBackupStorageInternalServerError) Error() string {

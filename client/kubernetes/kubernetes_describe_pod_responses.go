@@ -103,6 +103,11 @@ func (o *KubernetesDescribePodOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe pod o k response
+func (o *KubernetesDescribePodOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribePodOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pod][%d] kubernetesDescribePodOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesDescribePodBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesDescribePodBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe pod bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesDescribePodBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes describe pod bad request response
+func (o *KubernetesDescribePodBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesDescribePodBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pod][%d] kubernetesDescribePodBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *KubernetesDescribePodBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pod][%d] kubernetesDescribePodBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribePodBadRequest) GetPayload() interface{} {
+func (o *KubernetesDescribePodBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribePodBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *KubernetesDescribePodUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes describe pod unauthorized response a status code equal to that given
 func (o *KubernetesDescribePodUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes describe pod unauthorized response
+func (o *KubernetesDescribePodUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesDescribePodUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *KubernetesDescribePodForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes describe pod forbidden response
+func (o *KubernetesDescribePodForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesDescribePodForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pod][%d] kubernetesDescribePodForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *KubernetesDescribePodNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe pod not found response
+func (o *KubernetesDescribePodNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribePodNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pod][%d] kubernetesDescribePodNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *KubernetesDescribePodInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe pod internal server error response a status code equal to that given
 func (o *KubernetesDescribePodInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe pod internal server error response
+func (o *KubernetesDescribePodInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribePodInternalServerError) Error() string {

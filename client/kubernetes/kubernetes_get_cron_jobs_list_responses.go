@@ -103,6 +103,11 @@ func (o *KubernetesGetCronJobsListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get cron jobs list o k response
+func (o *KubernetesGetCronJobsListOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetCronJobsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/cronjobs][%d] kubernetesGetCronJobsListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ KubernetesGetCronJobsListBadRequest describes a response with status code 400, w
 Bad Request
 */
 type KubernetesGetCronJobsListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get cron jobs list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *KubernetesGetCronJobsListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes get cron jobs list bad request response
+func (o *KubernetesGetCronJobsListBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesGetCronJobsListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/cronjobs][%d] kubernetesGetCronJobsListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *KubernetesGetCronJobsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/cronjobs][%d] kubernetesGetCronJobsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetCronJobsListBadRequest) GetPayload() interface{} {
+func (o *KubernetesGetCronJobsListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetCronJobsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *KubernetesGetCronJobsListUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes get cron jobs list unauthorized response a status code equal to that given
 func (o *KubernetesGetCronJobsListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes get cron jobs list unauthorized response
+func (o *KubernetesGetCronJobsListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesGetCronJobsListUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *KubernetesGetCronJobsListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes get cron jobs list forbidden response
+func (o *KubernetesGetCronJobsListForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesGetCronJobsListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/cronjobs][%d] kubernetesGetCronJobsListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *KubernetesGetCronJobsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get cron jobs list not found response
+func (o *KubernetesGetCronJobsListNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetCronJobsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/cronjobs][%d] kubernetesGetCronJobsListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *KubernetesGetCronJobsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get cron jobs list internal server error response a status code equal to that given
 func (o *KubernetesGetCronJobsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get cron jobs list internal server error response
+func (o *KubernetesGetCronJobsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetCronJobsListInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *FlavorsGoogleFlavorsOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the flavors google flavors o k response
+func (o *FlavorsGoogleFlavorsOK) Code() int {
+	return 200
+}
+
 func (o *FlavorsGoogleFlavorsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ FlavorsGoogleFlavorsBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type FlavorsGoogleFlavorsBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors google flavors bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *FlavorsGoogleFlavorsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the flavors google flavors bad request response
+func (o *FlavorsGoogleFlavorsBadRequest) Code() int {
+	return 400
+}
+
 func (o *FlavorsGoogleFlavorsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *FlavorsGoogleFlavorsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsGoogleFlavorsBadRequest) GetPayload() interface{} {
+func (o *FlavorsGoogleFlavorsBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsGoogleFlavorsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *FlavorsGoogleFlavorsUnauthorized) IsServerError() bool {
 // IsCode returns true when this flavors google flavors unauthorized response a status code equal to that given
 func (o *FlavorsGoogleFlavorsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the flavors google flavors unauthorized response
+func (o *FlavorsGoogleFlavorsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *FlavorsGoogleFlavorsUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *FlavorsGoogleFlavorsForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the flavors google flavors forbidden response
+func (o *FlavorsGoogleFlavorsForbidden) Code() int {
+	return 403
+}
+
 func (o *FlavorsGoogleFlavorsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *FlavorsGoogleFlavorsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the flavors google flavors not found response
+func (o *FlavorsGoogleFlavorsNotFound) Code() int {
+	return 404
+}
+
 func (o *FlavorsGoogleFlavorsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *FlavorsGoogleFlavorsInternalServerError) IsServerError() bool {
 // IsCode returns true when this flavors google flavors internal server error response a status code equal to that given
 func (o *FlavorsGoogleFlavorsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the flavors google flavors internal server error response
+func (o *FlavorsGoogleFlavorsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *FlavorsGoogleFlavorsInternalServerError) Error() string {

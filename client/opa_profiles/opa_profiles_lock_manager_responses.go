@@ -103,6 +103,11 @@ func (o *OpaProfilesLockManagerOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the opa profiles lock manager o k response
+func (o *OpaProfilesLockManagerOK) Code() int {
+	return 200
+}
+
 func (o *OpaProfilesLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ OpaProfilesLockManagerBadRequest describes a response with status code 400, with
 Bad Request
 */
 type OpaProfilesLockManagerBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles lock manager bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *OpaProfilesLockManagerBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the opa profiles lock manager bad request response
+func (o *OpaProfilesLockManagerBadRequest) Code() int {
+	return 400
+}
+
 func (o *OpaProfilesLockManagerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *OpaProfilesLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesLockManagerBadRequest) GetPayload() interface{} {
+func (o *OpaProfilesLockManagerBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *OpaProfilesLockManagerUnauthorized) IsServerError() bool {
 // IsCode returns true when this opa profiles lock manager unauthorized response a status code equal to that given
 func (o *OpaProfilesLockManagerUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the opa profiles lock manager unauthorized response
+func (o *OpaProfilesLockManagerUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OpaProfilesLockManagerUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *OpaProfilesLockManagerForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the opa profiles lock manager forbidden response
+func (o *OpaProfilesLockManagerForbidden) Code() int {
+	return 403
+}
+
 func (o *OpaProfilesLockManagerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *OpaProfilesLockManagerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the opa profiles lock manager not found response
+func (o *OpaProfilesLockManagerNotFound) Code() int {
+	return 404
+}
+
 func (o *OpaProfilesLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *OpaProfilesLockManagerInternalServerError) IsServerError() bool {
 // IsCode returns true when this opa profiles lock manager internal server error response a status code equal to that given
 func (o *OpaProfilesLockManagerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the opa profiles lock manager internal server error response
+func (o *OpaProfilesLockManagerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OpaProfilesLockManagerInternalServerError) Error() string {

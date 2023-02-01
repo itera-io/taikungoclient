@@ -103,6 +103,11 @@ func (o *KeycloakDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the keycloak delete o k response
+func (o *KeycloakDeleteOK) Code() int {
+	return 200
+}
+
 func (o *KeycloakDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KeycloakDeleteBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type KeycloakDeleteBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this keycloak delete bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KeycloakDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the keycloak delete bad request response
+func (o *KeycloakDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *KeycloakDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *KeycloakDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KeycloakDeleteBadRequest) GetPayload() interface{} {
+func (o *KeycloakDeleteBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KeycloakDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *KeycloakDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this keycloak delete unauthorized response a status code equal to that given
 func (o *KeycloakDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the keycloak delete unauthorized response
+func (o *KeycloakDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KeycloakDeleteUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *KeycloakDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the keycloak delete forbidden response
+func (o *KeycloakDeleteForbidden) Code() int {
+	return 403
+}
+
 func (o *KeycloakDeleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *KeycloakDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the keycloak delete not found response
+func (o *KeycloakDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *KeycloakDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *KeycloakDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this keycloak delete internal server error response a status code equal to that given
 func (o *KeycloakDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the keycloak delete internal server error response
+func (o *KeycloakDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KeycloakDeleteInternalServerError) Error() string {

@@ -103,6 +103,11 @@ func (o *CheckerSSHOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker Ssh o k response
+func (o *CheckerSSHOK) Code() int {
+	return 200
+}
+
 func (o *CheckerSSHOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CheckerSSHBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type CheckerSSHBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker Ssh bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CheckerSSHBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the checker Ssh bad request response
+func (o *CheckerSSHBadRequest) Code() int {
+	return 400
+}
+
 func (o *CheckerSSHBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *CheckerSSHBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerSSHBadRequest) GetPayload() interface{} {
+func (o *CheckerSSHBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerSSHBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *CheckerSSHUnauthorized) IsServerError() bool {
 // IsCode returns true when this checker Ssh unauthorized response a status code equal to that given
 func (o *CheckerSSHUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the checker Ssh unauthorized response
+func (o *CheckerSSHUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CheckerSSHUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *CheckerSSHForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the checker Ssh forbidden response
+func (o *CheckerSSHForbidden) Code() int {
+	return 403
+}
+
 func (o *CheckerSSHForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *CheckerSSHNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker Ssh not found response
+func (o *CheckerSSHNotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerSSHNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *CheckerSSHInternalServerError) IsServerError() bool {
 // IsCode returns true when this checker Ssh internal server error response a status code equal to that given
 func (o *CheckerSSHInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker Ssh internal server error response
+func (o *CheckerSSHInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerSSHInternalServerError) Error() string {

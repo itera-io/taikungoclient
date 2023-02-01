@@ -102,6 +102,11 @@ func (o *StandAloneActionsExportCsvOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone actions export csv o k response
+func (o *StandAloneActionsExportCsvOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneActionsExportCsvOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvOK ", 200)
 }
@@ -126,7 +131,7 @@ StandAloneActionsExportCsvBadRequest describes a response with status code 400, 
 Bad Request
 */
 type StandAloneActionsExportCsvBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions export csv bad request response has a 2xx status code
@@ -154,6 +159,11 @@ func (o *StandAloneActionsExportCsvBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone actions export csv bad request response
+func (o *StandAloneActionsExportCsvBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneActionsExportCsvBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvBadRequest  %+v", 400, o.Payload)
 }
@@ -162,14 +172,16 @@ func (o *StandAloneActionsExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsExportCsvBadRequest) GetPayload() interface{} {
+func (o *StandAloneActionsExportCsvBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsExportCsvBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -213,6 +225,11 @@ func (o *StandAloneActionsExportCsvUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone actions export csv unauthorized response a status code equal to that given
 func (o *StandAloneActionsExportCsvUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone actions export csv unauthorized response
+func (o *StandAloneActionsExportCsvUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneActionsExportCsvUnauthorized) Error() string {
@@ -278,6 +295,11 @@ func (o *StandAloneActionsExportCsvForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone actions export csv forbidden response
+func (o *StandAloneActionsExportCsvForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneActionsExportCsvForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvForbidden  %+v", 403, o.Payload)
 }
@@ -341,6 +363,11 @@ func (o *StandAloneActionsExportCsvNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone actions export csv not found response
+func (o *StandAloneActionsExportCsvNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneActionsExportCsvNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvNotFound  %+v", 404, o.Payload)
 }
@@ -401,6 +428,11 @@ func (o *StandAloneActionsExportCsvInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone actions export csv internal server error response a status code equal to that given
 func (o *StandAloneActionsExportCsvInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone actions export csv internal server error response
+func (o *StandAloneActionsExportCsvInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneActionsExportCsvInternalServerError) Error() string {

@@ -109,6 +109,11 @@ func (o *ShowbackCredentialsDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the showback credentials delete o k response
+func (o *ShowbackCredentialsDeleteOK) Code() int {
+	return 200
+}
+
 func (o *ShowbackCredentialsDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteOK  %+v", 200, o.Payload)
 }
@@ -169,6 +174,11 @@ func (o *ShowbackCredentialsDeleteNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the showback credentials delete no content response
+func (o *ShowbackCredentialsDeleteNoContent) Code() int {
+	return 204
+}
+
 func (o *ShowbackCredentialsDeleteNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteNoContent ", 204)
 }
@@ -219,6 +229,11 @@ func (o *ShowbackCredentialsDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this showback credentials delete bad request response a status code equal to that given
 func (o *ShowbackCredentialsDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the showback credentials delete bad request response
+func (o *ShowbackCredentialsDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *ShowbackCredentialsDeleteBadRequest) Error() string {
@@ -284,6 +299,11 @@ func (o *ShowbackCredentialsDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the showback credentials delete unauthorized response
+func (o *ShowbackCredentialsDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *ShowbackCredentialsDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -345,6 +365,11 @@ func (o *ShowbackCredentialsDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this showback credentials delete forbidden response a status code equal to that given
 func (o *ShowbackCredentialsDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the showback credentials delete forbidden response
+func (o *ShowbackCredentialsDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *ShowbackCredentialsDeleteForbidden) Error() string {
@@ -410,6 +435,11 @@ func (o *ShowbackCredentialsDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the showback credentials delete not found response
+func (o *ShowbackCredentialsDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *ShowbackCredentialsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -470,6 +500,11 @@ func (o *ShowbackCredentialsDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this showback credentials delete internal server error response a status code equal to that given
 func (o *ShowbackCredentialsDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the showback credentials delete internal server error response
+func (o *ShowbackCredentialsDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ShowbackCredentialsDeleteInternalServerError) Error() string {

@@ -34,8 +34,8 @@ type ProjectListDetailDto struct {
 	// bound users
 	BoundUsers []*UserDto `json:"boundUsers"`
 
-	// certification expired at
-	CertificationExpiredAt string `json:"certificationExpiredAt,omitempty"`
+	// certificate expired at
+	CertificateExpiredAt string `json:"certificateExpiredAt,omitempty"`
 
 	// cloud credential name
 	CloudCredentialName string `json:"cloudCredentialName,omitempty"`

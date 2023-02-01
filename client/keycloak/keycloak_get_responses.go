@@ -103,6 +103,11 @@ func (o *KeycloakGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the keycloak get o k response
+func (o *KeycloakGetOK) Code() int {
+	return 200
+}
+
 func (o *KeycloakGetOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Keycloak][%d] keycloakGetOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ KeycloakGetBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type KeycloakGetBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this keycloak get bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *KeycloakGetBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the keycloak get bad request response
+func (o *KeycloakGetBadRequest) Code() int {
+	return 400
+}
+
 func (o *KeycloakGetBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Keycloak][%d] keycloakGetBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *KeycloakGetBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Keycloak][%d] keycloakGetBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KeycloakGetBadRequest) GetPayload() interface{} {
+func (o *KeycloakGetBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KeycloakGetBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *KeycloakGetUnauthorized) IsServerError() bool {
 // IsCode returns true when this keycloak get unauthorized response a status code equal to that given
 func (o *KeycloakGetUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the keycloak get unauthorized response
+func (o *KeycloakGetUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KeycloakGetUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *KeycloakGetForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the keycloak get forbidden response
+func (o *KeycloakGetForbidden) Code() int {
+	return 403
+}
+
 func (o *KeycloakGetForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Keycloak][%d] keycloakGetForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *KeycloakGetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the keycloak get not found response
+func (o *KeycloakGetNotFound) Code() int {
+	return 404
+}
+
 func (o *KeycloakGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Keycloak][%d] keycloakGetNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *KeycloakGetInternalServerError) IsServerError() bool {
 // IsCode returns true when this keycloak get internal server error response a status code equal to that given
 func (o *KeycloakGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the keycloak get internal server error response
+func (o *KeycloakGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KeycloakGetInternalServerError) Error() string {

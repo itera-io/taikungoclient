@@ -103,6 +103,11 @@ func (o *AllowedHostCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the allowed host create o k response
+func (o *AllowedHostCreateOK) Code() int {
+	return 200
+}
+
 func (o *AllowedHostCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AllowedHost/create][%d] allowedHostCreateOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ AllowedHostCreateBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AllowedHostCreateBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this allowed host create bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *AllowedHostCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the allowed host create bad request response
+func (o *AllowedHostCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *AllowedHostCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AllowedHost/create][%d] allowedHostCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *AllowedHostCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AllowedHost/create][%d] allowedHostCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AllowedHostCreateBadRequest) GetPayload() interface{} {
+func (o *AllowedHostCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AllowedHostCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *AllowedHostCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this allowed host create unauthorized response a status code equal to that given
 func (o *AllowedHostCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the allowed host create unauthorized response
+func (o *AllowedHostCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AllowedHostCreateUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *AllowedHostCreateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the allowed host create forbidden response
+func (o *AllowedHostCreateForbidden) Code() int {
+	return 403
+}
+
 func (o *AllowedHostCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AllowedHost/create][%d] allowedHostCreateForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *AllowedHostCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the allowed host create not found response
+func (o *AllowedHostCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *AllowedHostCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AllowedHost/create][%d] allowedHostCreateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *AllowedHostCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this allowed host create internal server error response a status code equal to that given
 func (o *AllowedHostCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the allowed host create internal server error response
+func (o *AllowedHostCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AllowedHostCreateInternalServerError) Error() string {

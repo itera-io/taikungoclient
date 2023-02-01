@@ -103,6 +103,11 @@ func (o *RepositoryImportOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the repository import o k response
+func (o *RepositoryImportOK) Code() int {
+	return 200
+}
+
 func (o *RepositoryImportOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/import][%d] repositoryImportOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ RepositoryImportBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type RepositoryImportBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this repository import bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *RepositoryImportBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the repository import bad request response
+func (o *RepositoryImportBadRequest) Code() int {
+	return 400
+}
+
 func (o *RepositoryImportBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/import][%d] repositoryImportBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *RepositoryImportBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/import][%d] repositoryImportBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *RepositoryImportBadRequest) GetPayload() interface{} {
+func (o *RepositoryImportBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *RepositoryImportBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *RepositoryImportUnauthorized) IsServerError() bool {
 // IsCode returns true when this repository import unauthorized response a status code equal to that given
 func (o *RepositoryImportUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the repository import unauthorized response
+func (o *RepositoryImportUnauthorized) Code() int {
+	return 401
 }
 
 func (o *RepositoryImportUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *RepositoryImportForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the repository import forbidden response
+func (o *RepositoryImportForbidden) Code() int {
+	return 403
+}
+
 func (o *RepositoryImportForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/import][%d] repositoryImportForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *RepositoryImportNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the repository import not found response
+func (o *RepositoryImportNotFound) Code() int {
+	return 404
+}
+
 func (o *RepositoryImportNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/import][%d] repositoryImportNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *RepositoryImportInternalServerError) IsServerError() bool {
 // IsCode returns true when this repository import internal server error response a status code equal to that given
 func (o *RepositoryImportInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the repository import internal server error response
+func (o *RepositoryImportInternalServerError) Code() int {
+	return 500
 }
 
 func (o *RepositoryImportInternalServerError) Error() string {

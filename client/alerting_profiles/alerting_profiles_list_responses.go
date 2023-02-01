@@ -103,6 +103,11 @@ func (o *AlertingProfilesListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting profiles list o k response
+func (o *AlertingProfilesListOK) Code() int {
+	return 200
+}
+
 func (o *AlertingProfilesListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles][%d] alertingProfilesListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ AlertingProfilesListBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type AlertingProfilesListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *AlertingProfilesListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the alerting profiles list bad request response
+func (o *AlertingProfilesListBadRequest) Code() int {
+	return 400
+}
+
 func (o *AlertingProfilesListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles][%d] alertingProfilesListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *AlertingProfilesListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles][%d] alertingProfilesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesListBadRequest) GetPayload() interface{} {
+func (o *AlertingProfilesListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *AlertingProfilesListUnauthorized) IsServerError() bool {
 // IsCode returns true when this alerting profiles list unauthorized response a status code equal to that given
 func (o *AlertingProfilesListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the alerting profiles list unauthorized response
+func (o *AlertingProfilesListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AlertingProfilesListUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *AlertingProfilesListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the alerting profiles list forbidden response
+func (o *AlertingProfilesListForbidden) Code() int {
+	return 403
+}
+
 func (o *AlertingProfilesListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles][%d] alertingProfilesListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *AlertingProfilesListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting profiles list not found response
+func (o *AlertingProfilesListNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingProfilesListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles][%d] alertingProfilesListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *AlertingProfilesListInternalServerError) IsServerError() bool {
 // IsCode returns true when this alerting profiles list internal server error response a status code equal to that given
 func (o *AlertingProfilesListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting profiles list internal server error response
+func (o *AlertingProfilesListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingProfilesListInternalServerError) Error() string {

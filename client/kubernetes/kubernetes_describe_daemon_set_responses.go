@@ -103,6 +103,11 @@ func (o *KubernetesDescribeDaemonSetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe daemon set o k response
+func (o *KubernetesDescribeDaemonSetOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribeDaemonSetOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesDescribeDaemonSetBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesDescribeDaemonSetBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe daemon set bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesDescribeDaemonSetBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes describe daemon set bad request response
+func (o *KubernetesDescribeDaemonSetBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesDescribeDaemonSetBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *KubernetesDescribeDaemonSetBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeDaemonSetBadRequest) GetPayload() interface{} {
+func (o *KubernetesDescribeDaemonSetBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeDaemonSetBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *KubernetesDescribeDaemonSetUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes describe daemon set unauthorized response a status code equal to that given
 func (o *KubernetesDescribeDaemonSetUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes describe daemon set unauthorized response
+func (o *KubernetesDescribeDaemonSetUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesDescribeDaemonSetUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *KubernetesDescribeDaemonSetForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes describe daemon set forbidden response
+func (o *KubernetesDescribeDaemonSetForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesDescribeDaemonSetForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *KubernetesDescribeDaemonSetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe daemon set not found response
+func (o *KubernetesDescribeDaemonSetNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribeDaemonSetNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *KubernetesDescribeDaemonSetInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe daemon set internal server error response a status code equal to that given
 func (o *KubernetesDescribeDaemonSetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe daemon set internal server error response
+func (o *KubernetesDescribeDaemonSetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribeDaemonSetInternalServerError) Error() string {

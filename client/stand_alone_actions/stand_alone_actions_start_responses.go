@@ -103,6 +103,11 @@ func (o *StandAloneActionsStartOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the stand alone actions start o k response
+func (o *StandAloneActionsStartOK) Code() int {
+	return 200
+}
+
 func (o *StandAloneActionsStartOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/start][%d] standAloneActionsStartOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ StandAloneActionsStartBadRequest describes a response with status code 400, with
 Bad Request
 */
 type StandAloneActionsStartBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions start bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *StandAloneActionsStartBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the stand alone actions start bad request response
+func (o *StandAloneActionsStartBadRequest) Code() int {
+	return 400
+}
+
 func (o *StandAloneActionsStartBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/start][%d] standAloneActionsStartBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *StandAloneActionsStartBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/start][%d] standAloneActionsStartBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsStartBadRequest) GetPayload() interface{} {
+func (o *StandAloneActionsStartBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsStartBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *StandAloneActionsStartUnauthorized) IsServerError() bool {
 // IsCode returns true when this stand alone actions start unauthorized response a status code equal to that given
 func (o *StandAloneActionsStartUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the stand alone actions start unauthorized response
+func (o *StandAloneActionsStartUnauthorized) Code() int {
+	return 401
 }
 
 func (o *StandAloneActionsStartUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *StandAloneActionsStartForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the stand alone actions start forbidden response
+func (o *StandAloneActionsStartForbidden) Code() int {
+	return 403
+}
+
 func (o *StandAloneActionsStartForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/start][%d] standAloneActionsStartForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *StandAloneActionsStartNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the stand alone actions start not found response
+func (o *StandAloneActionsStartNotFound) Code() int {
+	return 404
+}
+
 func (o *StandAloneActionsStartNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/start][%d] standAloneActionsStartNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *StandAloneActionsStartInternalServerError) IsServerError() bool {
 // IsCode returns true when this stand alone actions start internal server error response a status code equal to that given
 func (o *StandAloneActionsStartInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the stand alone actions start internal server error response
+func (o *StandAloneActionsStartInternalServerError) Code() int {
+	return 500
 }
 
 func (o *StandAloneActionsStartInternalServerError) Error() string {

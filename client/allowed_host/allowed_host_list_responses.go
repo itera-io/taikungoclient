@@ -103,6 +103,11 @@ func (o *AllowedHostListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the allowed host list o k response
+func (o *AllowedHostListOK) Code() int {
+	return 200
+}
+
 func (o *AllowedHostListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ AllowedHostListBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type AllowedHostListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this allowed host list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *AllowedHostListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the allowed host list bad request response
+func (o *AllowedHostListBadRequest) Code() int {
+	return 400
+}
+
 func (o *AllowedHostListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *AllowedHostListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AllowedHostListBadRequest) GetPayload() interface{} {
+func (o *AllowedHostListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AllowedHostListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *AllowedHostListUnauthorized) IsServerError() bool {
 // IsCode returns true when this allowed host list unauthorized response a status code equal to that given
 func (o *AllowedHostListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the allowed host list unauthorized response
+func (o *AllowedHostListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AllowedHostListUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *AllowedHostListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the allowed host list forbidden response
+func (o *AllowedHostListForbidden) Code() int {
+	return 403
+}
+
 func (o *AllowedHostListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *AllowedHostListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the allowed host list not found response
+func (o *AllowedHostListNotFound) Code() int {
+	return 404
+}
+
 func (o *AllowedHostListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *AllowedHostListInternalServerError) IsServerError() bool {
 // IsCode returns true when this allowed host list internal server error response a status code equal to that given
 func (o *AllowedHostListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the allowed host list internal server error response
+func (o *AllowedHostListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AllowedHostListInternalServerError) Error() string {

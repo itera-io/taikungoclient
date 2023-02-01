@@ -103,6 +103,11 @@ func (o *AwsRegionListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the aws region list o k response
+func (o *AwsRegionListOK) Code() int {
+	return 200
+}
+
 func (o *AwsRegionListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ AwsRegionListBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type AwsRegionListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws region list bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *AwsRegionListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the aws region list bad request response
+func (o *AwsRegionListBadRequest) Code() int {
+	return 400
+}
+
 func (o *AwsRegionListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *AwsRegionListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsRegionListBadRequest) GetPayload() interface{} {
+func (o *AwsRegionListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsRegionListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *AwsRegionListUnauthorized) IsServerError() bool {
 // IsCode returns true when this aws region list unauthorized response a status code equal to that given
 func (o *AwsRegionListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the aws region list unauthorized response
+func (o *AwsRegionListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AwsRegionListUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *AwsRegionListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the aws region list forbidden response
+func (o *AwsRegionListForbidden) Code() int {
+	return 403
+}
+
 func (o *AwsRegionListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *AwsRegionListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the aws region list not found response
+func (o *AwsRegionListNotFound) Code() int {
+	return 404
+}
+
 func (o *AwsRegionListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *AwsRegionListInternalServerError) IsServerError() bool {
 // IsCode returns true when this aws region list internal server error response a status code equal to that given
 func (o *AwsRegionListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the aws region list internal server error response
+func (o *AwsRegionListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AwsRegionListInternalServerError) Error() string {

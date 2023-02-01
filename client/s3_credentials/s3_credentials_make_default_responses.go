@@ -103,6 +103,11 @@ func (o *S3CredentialsMakeDefaultOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the s3 credentials make default o k response
+func (o *S3CredentialsMakeDefaultOK) Code() int {
+	return 200
+}
+
 func (o *S3CredentialsMakeDefaultOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ S3CredentialsMakeDefaultBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type S3CredentialsMakeDefaultBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials make default bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *S3CredentialsMakeDefaultBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the s3 credentials make default bad request response
+func (o *S3CredentialsMakeDefaultBadRequest) Code() int {
+	return 400
+}
+
 func (o *S3CredentialsMakeDefaultBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *S3CredentialsMakeDefaultBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsMakeDefaultBadRequest) GetPayload() interface{} {
+func (o *S3CredentialsMakeDefaultBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsMakeDefaultBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *S3CredentialsMakeDefaultUnauthorized) IsServerError() bool {
 // IsCode returns true when this s3 credentials make default unauthorized response a status code equal to that given
 func (o *S3CredentialsMakeDefaultUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the s3 credentials make default unauthorized response
+func (o *S3CredentialsMakeDefaultUnauthorized) Code() int {
+	return 401
 }
 
 func (o *S3CredentialsMakeDefaultUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *S3CredentialsMakeDefaultForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the s3 credentials make default forbidden response
+func (o *S3CredentialsMakeDefaultForbidden) Code() int {
+	return 403
+}
+
 func (o *S3CredentialsMakeDefaultForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *S3CredentialsMakeDefaultNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the s3 credentials make default not found response
+func (o *S3CredentialsMakeDefaultNotFound) Code() int {
+	return 404
+}
+
 func (o *S3CredentialsMakeDefaultNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *S3CredentialsMakeDefaultInternalServerError) IsServerError() bool {
 // IsCode returns true when this s3 credentials make default internal server error response a status code equal to that given
 func (o *S3CredentialsMakeDefaultInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the s3 credentials make default internal server error response
+func (o *S3CredentialsMakeDefaultInternalServerError) Code() int {
+	return 500
 }
 
 func (o *S3CredentialsMakeDefaultInternalServerError) Error() string {

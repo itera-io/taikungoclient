@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -65,6 +66,9 @@ type CreateProjectCommand struct {
 	// flavors
 	Flavors []string `json:"flavors"`
 
+	// from template
+	FromTemplate *FromTemplateDto `json:"fromTemplate,omitempty"`
+
 	// is auto upgrade
 	IsAutoUpgrade bool `json:"isAutoUpgrade"`
 
@@ -73,9 +77,6 @@ type CreateProjectCommand struct {
 
 	// is kubernetes
 	IsKubernetes bool `json:"isKubernetes"`
-
-	// is lightweight k8s
-	IsLightweightK8s bool `json:"isLightweightK8s"`
 
 	// is monitoring enabled
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
@@ -116,8 +117,17 @@ type CreateProjectCommand struct {
 	// s3 credential Id
 	S3CredentialID int32 `json:"s3CredentialId,omitempty"`
 
+	// save as template
+	SaveAsTemplate bool `json:"saveAsTemplate"`
+
+	// server templates
+	ServerTemplates []*ServerTemplateDto `json:"serverTemplates"`
+
 	// taikun l b flavor
 	TaikunLBFlavor string `json:"taikunLBFlavor,omitempty"`
+
+	// template name
+	TemplateName string `json:"templateName,omitempty"`
 
 	// users
 	Users []string `json:"users"`
@@ -128,6 +138,14 @@ func (m *CreateProjectCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateExpiredAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFromTemplate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateServerTemplates(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -149,8 +167,102 @@ func (m *CreateProjectCommand) validateExpiredAt(formats strfmt.Registry) error 
 	return nil
 }
 
-// ContextValidate validates this create project command based on context it is used
+func (m *CreateProjectCommand) validateFromTemplate(formats strfmt.Registry) error {
+	if swag.IsZero(m.FromTemplate) { // not required
+		return nil
+	}
+
+	if m.FromTemplate != nil {
+		if err := m.FromTemplate.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("fromTemplate")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("fromTemplate")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CreateProjectCommand) validateServerTemplates(formats strfmt.Registry) error {
+	if swag.IsZero(m.ServerTemplates) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ServerTemplates); i++ {
+		if swag.IsZero(m.ServerTemplates[i]) { // not required
+			continue
+		}
+
+		if m.ServerTemplates[i] != nil {
+			if err := m.ServerTemplates[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("serverTemplates" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serverTemplates" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this create project command based on the context it is used
 func (m *CreateProjectCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateFromTemplate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateServerTemplates(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateProjectCommand) contextValidateFromTemplate(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.FromTemplate != nil {
+		if err := m.FromTemplate.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("fromTemplate")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("fromTemplate")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CreateProjectCommand) contextValidateServerTemplates(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ServerTemplates); i++ {
+
+		if m.ServerTemplates[i] != nil {
+			if err := m.ServerTemplates[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("serverTemplates" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serverTemplates" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

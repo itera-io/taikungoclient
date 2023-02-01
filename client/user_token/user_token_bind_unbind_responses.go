@@ -103,6 +103,11 @@ func (o *UserTokenBindUnbindOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the user token bind unbind o k response
+func (o *UserTokenBindUnbindOK) Code() int {
+	return 200
+}
+
 func (o *UserTokenBindUnbindOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ UserTokenBindUnbindBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type UserTokenBindUnbindBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user token bind unbind bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *UserTokenBindUnbindBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the user token bind unbind bad request response
+func (o *UserTokenBindUnbindBadRequest) Code() int {
+	return 400
+}
+
 func (o *UserTokenBindUnbindBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *UserTokenBindUnbindBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserTokenBindUnbindBadRequest) GetPayload() interface{} {
+func (o *UserTokenBindUnbindBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserTokenBindUnbindBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *UserTokenBindUnbindUnauthorized) IsServerError() bool {
 // IsCode returns true when this user token bind unbind unauthorized response a status code equal to that given
 func (o *UserTokenBindUnbindUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the user token bind unbind unauthorized response
+func (o *UserTokenBindUnbindUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UserTokenBindUnbindUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *UserTokenBindUnbindForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the user token bind unbind forbidden response
+func (o *UserTokenBindUnbindForbidden) Code() int {
+	return 403
+}
+
 func (o *UserTokenBindUnbindForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *UserTokenBindUnbindNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user token bind unbind not found response
+func (o *UserTokenBindUnbindNotFound) Code() int {
+	return 404
+}
+
 func (o *UserTokenBindUnbindNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *UserTokenBindUnbindInternalServerError) IsServerError() bool {
 // IsCode returns true when this user token bind unbind internal server error response a status code equal to that given
 func (o *UserTokenBindUnbindInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the user token bind unbind internal server error response
+func (o *UserTokenBindUnbindInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UserTokenBindUnbindInternalServerError) Error() string {

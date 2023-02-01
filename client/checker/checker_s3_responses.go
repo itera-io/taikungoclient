@@ -103,6 +103,11 @@ func (o *CheckerS3OK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the checker s3 o k response
+func (o *CheckerS3OK) Code() int {
+	return 200
+}
+
 func (o *CheckerS3OK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/s3][%d] checkerS3OK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ CheckerS3BadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type CheckerS3BadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker s3 bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *CheckerS3BadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the checker s3 bad request response
+func (o *CheckerS3BadRequest) Code() int {
+	return 400
+}
+
 func (o *CheckerS3BadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/s3][%d] checkerS3BadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *CheckerS3BadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/s3][%d] checkerS3BadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerS3BadRequest) GetPayload() interface{} {
+func (o *CheckerS3BadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerS3BadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *CheckerS3Unauthorized) IsServerError() bool {
 // IsCode returns true when this checker s3 unauthorized response a status code equal to that given
 func (o *CheckerS3Unauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the checker s3 unauthorized response
+func (o *CheckerS3Unauthorized) Code() int {
+	return 401
 }
 
 func (o *CheckerS3Unauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *CheckerS3Forbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the checker s3 forbidden response
+func (o *CheckerS3Forbidden) Code() int {
+	return 403
+}
+
 func (o *CheckerS3Forbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/s3][%d] checkerS3Forbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *CheckerS3NotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the checker s3 not found response
+func (o *CheckerS3NotFound) Code() int {
+	return 404
+}
+
 func (o *CheckerS3NotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/s3][%d] checkerS3NotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *CheckerS3InternalServerError) IsServerError() bool {
 // IsCode returns true when this checker s3 internal server error response a status code equal to that given
 func (o *CheckerS3InternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the checker s3 internal server error response
+func (o *CheckerS3InternalServerError) Code() int {
+	return 500
 }
 
 func (o *CheckerS3InternalServerError) Error() string {

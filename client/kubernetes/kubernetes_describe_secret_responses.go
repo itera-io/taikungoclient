@@ -103,6 +103,11 @@ func (o *KubernetesDescribeSecretOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes describe secret o k response
+func (o *KubernetesDescribeSecretOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesDescribeSecretOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/secret][%d] kubernetesDescribeSecretOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubernetesDescribeSecretBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type KubernetesDescribeSecretBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe secret bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubernetesDescribeSecretBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes describe secret bad request response
+func (o *KubernetesDescribeSecretBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesDescribeSecretBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/secret][%d] kubernetesDescribeSecretBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *KubernetesDescribeSecretBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/secret][%d] kubernetesDescribeSecretBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeSecretBadRequest) GetPayload() interface{} {
+func (o *KubernetesDescribeSecretBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeSecretBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *KubernetesDescribeSecretUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes describe secret unauthorized response a status code equal to that given
 func (o *KubernetesDescribeSecretUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes describe secret unauthorized response
+func (o *KubernetesDescribeSecretUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesDescribeSecretUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *KubernetesDescribeSecretForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes describe secret forbidden response
+func (o *KubernetesDescribeSecretForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesDescribeSecretForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/secret][%d] kubernetesDescribeSecretForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *KubernetesDescribeSecretNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes describe secret not found response
+func (o *KubernetesDescribeSecretNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesDescribeSecretNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/secret][%d] kubernetesDescribeSecretNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *KubernetesDescribeSecretInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes describe secret internal server error response a status code equal to that given
 func (o *KubernetesDescribeSecretInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes describe secret internal server error response
+func (o *KubernetesDescribeSecretInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesDescribeSecretInternalServerError) Error() string {

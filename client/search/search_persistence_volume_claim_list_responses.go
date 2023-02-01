@@ -103,6 +103,11 @@ func (o *SearchPersistenceVolumeClaimListOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the search persistence volume claim list o k response
+func (o *SearchPersistenceVolumeClaimListOK) Code() int {
+	return 200
+}
+
 func (o *SearchPersistenceVolumeClaimListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ SearchPersistenceVolumeClaimListBadRequest describes a response with status code
 Bad Request
 */
 type SearchPersistenceVolumeClaimListBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search persistence volume claim list bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *SearchPersistenceVolumeClaimListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the search persistence volume claim list bad request response
+func (o *SearchPersistenceVolumeClaimListBadRequest) Code() int {
+	return 400
+}
+
 func (o *SearchPersistenceVolumeClaimListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *SearchPersistenceVolumeClaimListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchPersistenceVolumeClaimListBadRequest) GetPayload() interface{} {
+func (o *SearchPersistenceVolumeClaimListBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchPersistenceVolumeClaimListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *SearchPersistenceVolumeClaimListUnauthorized) IsServerError() bool {
 // IsCode returns true when this search persistence volume claim list unauthorized response a status code equal to that given
 func (o *SearchPersistenceVolumeClaimListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the search persistence volume claim list unauthorized response
+func (o *SearchPersistenceVolumeClaimListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SearchPersistenceVolumeClaimListUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *SearchPersistenceVolumeClaimListForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the search persistence volume claim list forbidden response
+func (o *SearchPersistenceVolumeClaimListForbidden) Code() int {
+	return 403
+}
+
 func (o *SearchPersistenceVolumeClaimListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *SearchPersistenceVolumeClaimListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the search persistence volume claim list not found response
+func (o *SearchPersistenceVolumeClaimListNotFound) Code() int {
+	return 404
+}
+
 func (o *SearchPersistenceVolumeClaimListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *SearchPersistenceVolumeClaimListInternalServerError) IsServerError() bo
 // IsCode returns true when this search persistence volume claim list internal server error response a status code equal to that given
 func (o *SearchPersistenceVolumeClaimListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the search persistence volume claim list internal server error response
+func (o *SearchPersistenceVolumeClaimListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SearchPersistenceVolumeClaimListInternalServerError) Error() string {

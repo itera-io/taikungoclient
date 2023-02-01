@@ -103,6 +103,11 @@ func (o *AlertingProfilesCreateOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the alerting profiles create o k response
+func (o *AlertingProfilesCreateOK) Code() int {
+	return 200
+}
+
 func (o *AlertingProfilesCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ AlertingProfilesCreateBadRequest describes a response with status code 400, with
 Bad Request
 */
 type AlertingProfilesCreateBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles create bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *AlertingProfilesCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the alerting profiles create bad request response
+func (o *AlertingProfilesCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *AlertingProfilesCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *AlertingProfilesCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesCreateBadRequest) GetPayload() interface{} {
+func (o *AlertingProfilesCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *AlertingProfilesCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this alerting profiles create unauthorized response a status code equal to that given
 func (o *AlertingProfilesCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the alerting profiles create unauthorized response
+func (o *AlertingProfilesCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AlertingProfilesCreateUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *AlertingProfilesCreateForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the alerting profiles create forbidden response
+func (o *AlertingProfilesCreateForbidden) Code() int {
+	return 403
+}
+
 func (o *AlertingProfilesCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *AlertingProfilesCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the alerting profiles create not found response
+func (o *AlertingProfilesCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *AlertingProfilesCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *AlertingProfilesCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this alerting profiles create internal server error response a status code equal to that given
 func (o *AlertingProfilesCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the alerting profiles create internal server error response
+func (o *AlertingProfilesCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AlertingProfilesCreateInternalServerError) Error() string {

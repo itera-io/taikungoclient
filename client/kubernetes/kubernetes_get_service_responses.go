@@ -103,6 +103,11 @@ func (o *KubernetesGetServiceOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kubernetes get service o k response
+func (o *KubernetesGetServiceOK) Code() int {
+	return 200
+}
+
 func (o *KubernetesGetServiceOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceOK  %+v", 200, o.Payload)
 }
@@ -138,7 +143,7 @@ KubernetesGetServiceBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type KubernetesGetServiceBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get service bad request response has a 2xx status code
@@ -166,6 +171,11 @@ func (o *KubernetesGetServiceBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kubernetes get service bad request response
+func (o *KubernetesGetServiceBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubernetesGetServiceBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceBadRequest  %+v", 400, o.Payload)
 }
@@ -174,14 +184,16 @@ func (o *KubernetesGetServiceBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetServiceBadRequest) GetPayload() interface{} {
+func (o *KubernetesGetServiceBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetServiceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -225,6 +237,11 @@ func (o *KubernetesGetServiceUnauthorized) IsServerError() bool {
 // IsCode returns true when this kubernetes get service unauthorized response a status code equal to that given
 func (o *KubernetesGetServiceUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kubernetes get service unauthorized response
+func (o *KubernetesGetServiceUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubernetesGetServiceUnauthorized) Error() string {
@@ -290,6 +307,11 @@ func (o *KubernetesGetServiceForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kubernetes get service forbidden response
+func (o *KubernetesGetServiceForbidden) Code() int {
+	return 403
+}
+
 func (o *KubernetesGetServiceForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceForbidden  %+v", 403, o.Payload)
 }
@@ -353,6 +375,11 @@ func (o *KubernetesGetServiceNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kubernetes get service not found response
+func (o *KubernetesGetServiceNotFound) Code() int {
+	return 404
+}
+
 func (o *KubernetesGetServiceNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceNotFound  %+v", 404, o.Payload)
 }
@@ -413,6 +440,11 @@ func (o *KubernetesGetServiceInternalServerError) IsServerError() bool {
 // IsCode returns true when this kubernetes get service internal server error response a status code equal to that given
 func (o *KubernetesGetServiceInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kubernetes get service internal server error response
+func (o *KubernetesGetServiceInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubernetesGetServiceInternalServerError) Error() string {

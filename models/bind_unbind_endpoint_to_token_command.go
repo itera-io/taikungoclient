@@ -19,6 +19,9 @@ import (
 // swagger:model BindUnbindEndpointToTokenCommand
 type BindUnbindEndpointToTokenCommand struct {
 
+	// bind all
+	BindAll bool `json:"bindAll"`
+
 	// endpoints
 	Endpoints []*AvailableEndpointData `json:"endpoints"`
 

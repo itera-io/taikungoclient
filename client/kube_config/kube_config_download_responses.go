@@ -103,6 +103,11 @@ func (o *KubeConfigDownloadOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the kube config download o k response
+func (o *KubeConfigDownloadOK) Code() int {
+	return 200
+}
+
 func (o *KubeConfigDownloadOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadOK  %+v", 200, o.Payload)
 }
@@ -136,7 +141,7 @@ KubeConfigDownloadBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubeConfigDownloadBadRequest struct {
-	Payload interface{}
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kube config download bad request response has a 2xx status code
@@ -164,6 +169,11 @@ func (o *KubeConfigDownloadBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the kube config download bad request response
+func (o *KubeConfigDownloadBadRequest) Code() int {
+	return 400
+}
+
 func (o *KubeConfigDownloadBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadBadRequest  %+v", 400, o.Payload)
 }
@@ -172,14 +182,16 @@ func (o *KubeConfigDownloadBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubeConfigDownloadBadRequest) GetPayload() interface{} {
+func (o *KubeConfigDownloadBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubeConfigDownloadBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.ProblemDetails)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -223,6 +235,11 @@ func (o *KubeConfigDownloadUnauthorized) IsServerError() bool {
 // IsCode returns true when this kube config download unauthorized response a status code equal to that given
 func (o *KubeConfigDownloadUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the kube config download unauthorized response
+func (o *KubeConfigDownloadUnauthorized) Code() int {
+	return 401
 }
 
 func (o *KubeConfigDownloadUnauthorized) Error() string {
@@ -288,6 +305,11 @@ func (o *KubeConfigDownloadForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the kube config download forbidden response
+func (o *KubeConfigDownloadForbidden) Code() int {
+	return 403
+}
+
 func (o *KubeConfigDownloadForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadForbidden  %+v", 403, o.Payload)
 }
@@ -351,6 +373,11 @@ func (o *KubeConfigDownloadNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the kube config download not found response
+func (o *KubeConfigDownloadNotFound) Code() int {
+	return 404
+}
+
 func (o *KubeConfigDownloadNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadNotFound  %+v", 404, o.Payload)
 }
@@ -411,6 +438,11 @@ func (o *KubeConfigDownloadInternalServerError) IsServerError() bool {
 // IsCode returns true when this kube config download internal server error response a status code equal to that given
 func (o *KubeConfigDownloadInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the kube config download internal server error response
+func (o *KubeConfigDownloadInternalServerError) Code() int {
+	return 500
 }
 
 func (o *KubeConfigDownloadInternalServerError) Error() string {
