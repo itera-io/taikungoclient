@@ -28,6 +28,9 @@ type PrometheusDashboardCreateCommand struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
 }
 
 // Validate validates this prometheus dashboard create command

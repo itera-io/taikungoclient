@@ -32,18 +32,6 @@ type CreateStripeCustomerCommand struct {
 	// legal name
 	LegalName string `json:"legalName,omitempty"`
 
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// partner Id
-	PartnerID int32 `json:"partnerId,omitempty"`
-
-	// user email
-	UserEmail string `json:"userEmail,omitempty"`
-
-	// user name
-	UserName string `json:"userName,omitempty"`
-
 	// vat number
 	VatNumber string `json:"vatNumber,omitempty"`
 }

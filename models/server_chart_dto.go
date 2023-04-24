@@ -37,6 +37,9 @@ type ServerChartDto struct {
 	// succeeded
 	Succeeded []*ServerCommonRecordDto `json:"succeeded"`
 
+	// tanzu
+	Tanzu []*ServerCommonRecordDto `json:"tanzu"`
+
 	// total aws count
 	TotalAwsCount int32 `json:"totalAwsCount,omitempty"`
 
@@ -69,6 +72,9 @@ type ServerChartDto struct {
 
 	// total succeeded count
 	TotalSucceededCount int32 `json:"totalSucceededCount,omitempty"`
+
+	// total tanzu count
+	TotalTanzuCount int32 `json:"totalTanzuCount,omitempty"`
 
 	// total updating count
 	TotalUpdatingCount int32 `json:"totalUpdatingCount,omitempty"`
@@ -108,6 +114,10 @@ func (m *ServerChartDto) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSucceeded(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTanzu(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -285,6 +295,32 @@ func (m *ServerChartDto) validateSucceeded(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *ServerChartDto) validateTanzu(formats strfmt.Registry) error {
+	if swag.IsZero(m.Tanzu) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Tanzu); i++ {
+		if swag.IsZero(m.Tanzu[i]) { // not required
+			continue
+		}
+
+		if m.Tanzu[i] != nil {
+			if err := m.Tanzu[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tanzu" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tanzu" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ServerChartDto) validateUpdating(formats strfmt.Registry) error {
 	if swag.IsZero(m.Updating) { // not required
 		return nil
@@ -388,6 +424,10 @@ func (m *ServerChartDto) ContextValidate(ctx context.Context, formats strfmt.Reg
 	}
 
 	if err := m.contextValidateSucceeded(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTanzu(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -519,6 +559,26 @@ func (m *ServerChartDto) contextValidateSucceeded(ctx context.Context, formats s
 					return ve.ValidateName("succeeded" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("succeeded" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ServerChartDto) contextValidateTanzu(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tanzu); i++ {
+
+		if m.Tanzu[i] != nil {
+			if err := m.Tanzu[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tanzu" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tanzu" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

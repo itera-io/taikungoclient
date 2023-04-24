@@ -53,13 +53,16 @@ type AvailablePackageDetailsDto struct {
 	Readme string `json:"readme,omitempty"`
 
 	// security report
-	SecurityReport *SecurityReportSummariesDto `json:"securityReport,omitempty"`
+	SecurityReport *SecurityReportSummaryDto `json:"securityReport,omitempty"`
 
 	// stars
 	Stars int32 `json:"stars,omitempty"`
 
 	// verified publisher
 	VerifiedPublisher bool `json:"verifiedPublisher"`
+
+	// version
+	Version string `json:"version,omitempty"`
 }
 
 // Validate validates this available package details dto

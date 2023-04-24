@@ -38,6 +38,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/openstack"
 	"github.com/itera-io/taikungoclient/client/ops_credentials"
 	"github.com/itera-io/taikungoclient/client/organizations"
+	"github.com/itera-io/taikungoclient/client/payment"
 	"github.com/itera-io/taikungoclient/client/pre_defined_queries"
 	"github.com/itera-io/taikungoclient/client/project_app"
 	"github.com/itera-io/taikungoclient/client/project_groups"
@@ -46,6 +47,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/project_template"
 	"github.com/itera-io/taikungoclient/client/projects"
 	"github.com/itera-io/taikungoclient/client/prometheus"
+	"github.com/itera-io/taikungoclient/client/proxmox"
 	"github.com/itera-io/taikungoclient/client/repository"
 	"github.com/itera-io/taikungoclient/client/s3_credentials"
 	"github.com/itera-io/taikungoclient/client/search"
@@ -57,6 +59,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/stand_alone_actions"
 	"github.com/itera-io/taikungoclient/client/stand_alone_profile"
 	"github.com/itera-io/taikungoclient/client/stand_alone_vm_disks"
+	"github.com/itera-io/taikungoclient/client/tanzu"
 	"github.com/itera-io/taikungoclient/client/user_groups"
 	"github.com/itera-io/taikungoclient/client/user_projects"
 	"github.com/itera-io/taikungoclient/client/user_token"
@@ -150,6 +153,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Openstack = openstack.New(transport, formats)
 	cli.OpsCredentials = ops_credentials.New(transport, formats)
 	cli.Organizations = organizations.New(transport, formats)
+	cli.Payment = payment.New(transport, formats)
 	cli.PreDefinedQueries = pre_defined_queries.New(transport, formats)
 	cli.ProjectApp = project_app.New(transport, formats)
 	cli.ProjectGroups = project_groups.New(transport, formats)
@@ -158,6 +162,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.ProjectTemplate = project_template.New(transport, formats)
 	cli.Projects = projects.New(transport, formats)
 	cli.Prometheus = prometheus.New(transport, formats)
+	cli.Proxmox = proxmox.New(transport, formats)
 	cli.Repository = repository.New(transport, formats)
 	cli.S3Credentials = s3_credentials.New(transport, formats)
 	cli.Search = search.New(transport, formats)
@@ -169,6 +174,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.StandAloneActions = stand_alone_actions.New(transport, formats)
 	cli.StandAloneProfile = stand_alone_profile.New(transport, formats)
 	cli.StandAloneVMDisks = stand_alone_vm_disks.New(transport, formats)
+	cli.Tanzu = tanzu.New(transport, formats)
 	cli.UserGroups = user_groups.New(transport, formats)
 	cli.UserProjects = user_projects.New(transport, formats)
 	cli.UserToken = user_token.New(transport, formats)
@@ -273,6 +279,8 @@ type Taikungoclient struct {
 
 	Organizations organizations.ClientService
 
+	Payment payment.ClientService
+
 	PreDefinedQueries pre_defined_queries.ClientService
 
 	ProjectApp project_app.ClientService
@@ -288,6 +296,8 @@ type Taikungoclient struct {
 	Projects projects.ClientService
 
 	Prometheus prometheus.ClientService
+
+	Proxmox proxmox.ClientService
 
 	Repository repository.ClientService
 
@@ -310,6 +320,8 @@ type Taikungoclient struct {
 	StandAloneProfile stand_alone_profile.ClientService
 
 	StandAloneVMDisks stand_alone_vm_disks.ClientService
+
+	Tanzu tanzu.ClientService
 
 	UserGroups user_groups.ClientService
 
@@ -353,6 +365,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Openstack.SetTransport(transport)
 	c.OpsCredentials.SetTransport(transport)
 	c.Organizations.SetTransport(transport)
+	c.Payment.SetTransport(transport)
 	c.PreDefinedQueries.SetTransport(transport)
 	c.ProjectApp.SetTransport(transport)
 	c.ProjectGroups.SetTransport(transport)
@@ -361,6 +374,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.ProjectTemplate.SetTransport(transport)
 	c.Projects.SetTransport(transport)
 	c.Prometheus.SetTransport(transport)
+	c.Proxmox.SetTransport(transport)
 	c.Repository.SetTransport(transport)
 	c.S3Credentials.SetTransport(transport)
 	c.Search.SetTransport(transport)
@@ -372,6 +386,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.StandAloneActions.SetTransport(transport)
 	c.StandAloneProfile.SetTransport(transport)
 	c.StandAloneVMDisks.SetTransport(transport)
+	c.Tanzu.SetTransport(transport)
 	c.UserGroups.SetTransport(transport)
 	c.UserProjects.SetTransport(transport)
 	c.UserToken.SetTransport(transport)

@@ -22,9 +22,6 @@ type UpdatePaymentIDCommand struct {
 
 	// payment method Id
 	PaymentMethodID string `json:"paymentMethodId,omitempty"`
-
-	// uuid
-	UUID string `json:"uuid,omitempty"`
 }
 
 // Validate validates this update payment Id command

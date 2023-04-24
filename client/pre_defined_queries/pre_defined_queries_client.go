@@ -132,7 +132,7 @@ func (a *Client) PreDefinedQueriesGetPrometheusCommonDashboardList(params *PreDe
 	op := &runtime.ClientOperation{
 		ID:                 "PreDefinedQueries_GetPrometheusCommonDashboardList",
 		Method:             "GET",
-		PathPattern:        "/api/v{v}/PreDefinedQueries/prometheus/dashboard/common",
+		PathPattern:        "/api/v{v}/PreDefinedQueries/prometheus/dashboard/common/{projectId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -171,7 +171,7 @@ func (a *Client) PreDefinedQueriesGetPrometheusDashboardList(params *PreDefinedQ
 	op := &runtime.ClientOperation{
 		ID:                 "PreDefinedQueries_GetPrometheusDashboardList",
 		Method:             "GET",
-		PathPattern:        "/api/v{v}/PreDefinedQueries/prometheus/dashboard/list",
+		PathPattern:        "/api/v{v}/PreDefinedQueries/prometheus/dashboard/list/{projectId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},

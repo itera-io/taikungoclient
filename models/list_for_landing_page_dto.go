@@ -29,11 +29,14 @@ type ListForLandingPageDto struct {
 	// id
 	ID int32 `json:"id,omitempty"`
 
-	// is demo
-	IsDemo bool `json:"isDemo"`
-
 	// is deprecated
 	IsDeprecated bool `json:"isDeprecated"`
+
+	// is enterprise
+	IsEnterprise bool `json:"isEnterprise"`
+
+	// is free
+	IsFree bool `json:"isFree"`
 
 	// monthly price
 	MonthlyPrice float64 `json:"monthlyPrice,omitempty"`

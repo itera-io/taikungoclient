@@ -60,9 +60,13 @@ type ClientService interface {
 
 	CheckerPrometheus(params *CheckerPrometheusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerPrometheusOK, error)
 
+	CheckerProxmox(params *CheckerProxmoxParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerProxmoxOK, error)
+
 	CheckerS3(params *CheckerS3Params, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerS3OK, error)
 
 	CheckerSSH(params *CheckerSSHParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerSSHOK, error)
+
+	CheckerTanzu(params *CheckerTanzuParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerTanzuOK, error)
 
 	CheckerYaml(params *CheckerYamlParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerYamlOK, error)
 
@@ -655,6 +659,45 @@ func (a *Client) CheckerPrometheus(params *CheckerPrometheusParams, authInfo run
 }
 
 /*
+CheckerProxmox checks proxmox credentials
+*/
+func (a *Client) CheckerProxmox(params *CheckerProxmoxParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerProxmoxOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCheckerProxmoxParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Checker_Proxmox",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Checker/proxmox",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CheckerProxmoxReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CheckerProxmoxOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Checker_Proxmox: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 CheckerS3 checks s3 credentials
 */
 func (a *Client) CheckerS3(params *CheckerS3Params, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerS3OK, error) {
@@ -729,6 +772,45 @@ func (a *Client) CheckerSSH(params *CheckerSSHParams, authInfo runtime.ClientAut
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Checker_Ssh: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CheckerTanzu checks tanzu credentials
+*/
+func (a *Client) CheckerTanzu(params *CheckerTanzuParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerTanzuOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCheckerTanzuParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Checker_Tanzu",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Checker/tanzu",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CheckerTanzuReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CheckerTanzuOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Checker_Tanzu: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

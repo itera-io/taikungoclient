@@ -29,6 +29,9 @@ type CredentialChartDto struct {
 	// openstack
 	Openstack int32 `json:"openstack,omitempty"`
 
+	// tanzu
+	Tanzu int32 `json:"tanzu,omitempty"`
+
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
 }

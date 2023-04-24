@@ -52,6 +52,9 @@ type ServerListDto struct {
 	// google machine type
 	GoogleMachineType string `json:"googleMachineType,omitempty"`
 
+	// hypervisor
+	Hypervisor string `json:"hypervisor,omitempty"`
+
 	// id
 	ID int32 `json:"id,omitempty"`
 
@@ -91,6 +94,15 @@ type ServerListDto struct {
 	// provider ID
 	ProviderID string `json:"providerID,omitempty"`
 
+	// proxmox flavor
+	ProxmoxFlavor string `json:"proxmoxFlavor,omitempty"`
+
+	// proxmox n f s disk size
+	ProxmoxNFSDiskSize int32 `json:"proxmoxNFSDiskSize,omitempty"`
+
+	// proxmox role
+	ProxmoxRole string `json:"proxmoxRole,omitempty"`
+
 	// ram
 	RAM int64 `json:"ram,omitempty"`
 
@@ -108,6 +120,9 @@ type ServerListDto struct {
 
 	// status
 	Status string `json:"status,omitempty"`
+
+	// tanzu flavor
+	TanzuFlavor string `json:"tanzuFlavor,omitempty"`
 }
 
 // Validate validates this server list dto

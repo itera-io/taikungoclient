@@ -51,6 +51,9 @@ type ListForPartnersDto struct {
 	// is deprecated
 	IsDeprecated bool `json:"isDeprecated"`
 
+	// is enterprise
+	IsEnterprise bool `json:"isEnterprise"`
+
 	// is yearly
 	IsYearly bool `json:"isYearly"`
 

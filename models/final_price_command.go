@@ -17,9 +17,6 @@ import (
 // swagger:model FinalPriceCommand
 type FinalPriceCommand struct {
 
-	// organization Uuid
-	OrganizationUUID string `json:"organizationUuid,omitempty"`
-
 	// subscription Id
 	SubscriptionID int32 `json:"subscriptionId,omitempty"`
 }

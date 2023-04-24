@@ -10,7 +10,6 @@ import (
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/itera-io/taikungoclient/showbackclient/projects"
 	"github.com/itera-io/taikungoclient/showbackclient/showback_credentials"
 	"github.com/itera-io/taikungoclient/showbackclient/showback_rules"
 	"github.com/itera-io/taikungoclient/showbackclient/showback_summaries"
@@ -75,7 +74,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Showbackgo
 
 	cli := new(Showbackgoclient)
 	cli.Transport = transport
-	cli.Projects = projects.New(transport, formats)
 	cli.ShowbackCredentials = showback_credentials.New(transport, formats)
 	cli.ShowbackRules = showback_rules.New(transport, formats)
 	cli.ShowbackSummaries = showback_summaries.New(transport, formats)
@@ -123,8 +121,6 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 
 // Showbackgoclient is a client for showbackgoclient
 type Showbackgoclient struct {
-	Projects projects.ClientService
-
 	ShowbackCredentials showback_credentials.ClientService
 
 	ShowbackRules showback_rules.ClientService
@@ -137,7 +133,6 @@ type Showbackgoclient struct {
 // SetTransport changes the transport on the client and all its subresources
 func (c *Showbackgoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
-	c.Projects.SetTransport(transport)
 	c.ShowbackCredentials.SetTransport(transport)
 	c.ShowbackRules.SetTransport(transport)
 	c.ShowbackSummaries.SetTransport(transport)

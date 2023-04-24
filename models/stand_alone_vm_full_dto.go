@@ -34,8 +34,11 @@ type StandAloneVMFullDto struct {
 	// id
 	ID int32 `json:"id,omitempty"`
 
-	// image
-	Image string `json:"image,omitempty"`
+	// image Id
+	ImageID string `json:"imageId,omitempty"`
+
+	// image name
+	ImageName string `json:"imageName,omitempty"`
 
 	// is windows
 	IsWindows bool `json:"isWindows"`

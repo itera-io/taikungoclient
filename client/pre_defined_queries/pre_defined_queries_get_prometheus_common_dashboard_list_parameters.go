@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewPreDefinedQueriesGetPrometheusCommonDashboardListParams creates a new PreDefinedQueriesGetPrometheusCommonDashboardListParams object,
@@ -60,6 +61,11 @@ PreDefinedQueriesGetPrometheusCommonDashboardListParams contains all the paramet
 	Typically these are written to a http.Request.
 */
 type PreDefinedQueriesGetPrometheusCommonDashboardListParams struct {
+
+	// ProjectID.
+	//
+	// Format: int32
+	ProjectID int32
 
 	// V.
 	V string
@@ -117,6 +123,17 @@ func (o *PreDefinedQueriesGetPrometheusCommonDashboardListParams) SetHTTPClient(
 	o.HTTPClient = client
 }
 
+// WithProjectID adds the projectID to the pre defined queries get prometheus common dashboard list params
+func (o *PreDefinedQueriesGetPrometheusCommonDashboardListParams) WithProjectID(projectID int32) *PreDefinedQueriesGetPrometheusCommonDashboardListParams {
+	o.SetProjectID(projectID)
+	return o
+}
+
+// SetProjectID adds the projectId to the pre defined queries get prometheus common dashboard list params
+func (o *PreDefinedQueriesGetPrometheusCommonDashboardListParams) SetProjectID(projectID int32) {
+	o.ProjectID = projectID
+}
+
 // WithV adds the v to the pre defined queries get prometheus common dashboard list params
 func (o *PreDefinedQueriesGetPrometheusCommonDashboardListParams) WithV(v string) *PreDefinedQueriesGetPrometheusCommonDashboardListParams {
 	o.SetV(v)
@@ -135,6 +152,11 @@ func (o *PreDefinedQueriesGetPrometheusCommonDashboardListParams) WriteToRequest
 		return err
 	}
 	var res []error
+
+	// path param projectId
+	if err := r.SetPathParam("projectId", swag.FormatInt32(o.ProjectID)); err != nil {
+		return err
+	}
 
 	// path param v
 	if err := r.SetPathParam("v", o.V); err != nil {
