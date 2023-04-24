@@ -55,6 +55,14 @@ sed -i "s/${refline}/\"x-omitempty\": false,${refline}/g" "${showback_swagger_pa
 perl -0777 -i -pe 's/ *"type": *"array",\n *"items": *{\n *"\$ref": *"#\/definitions\/Error"\n *}/"type":"object"/g' "${swagger_patch_file}"
 perl -0777 -i -pe 's/ *"type": *"array",\n *"items": *{\n *"\$ref": *"#\/definitions\/Error"\n *}/"type":"object"/g' "${showback_swagger_patch_file}"
 
+
+# Replace ProblemDetails with free-form objects
+sed -i 's/"$ref": "#\/definitions\/ProblemDetails"/"type":"object"/g' "${swagger_patch_file}"
+sed -i 's/"$ref": "#\/definitions\/ProblemDetails"/"type":"object"/g' "${showback_swagger_patch_file}"
+
+jq 'del(.. | .pattern?)' swagger.json > tmp
+mv tmp swagger.json
+
 # Initialize go module
 go mod init "${module_name}"
 
