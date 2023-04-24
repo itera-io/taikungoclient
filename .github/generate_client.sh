@@ -29,7 +29,7 @@ rm -rfv go.mod
 rm -rfv go.sum
 
 jq 'del(.. | .pattern?, .allOf?)' swagger.json > tmp
-mv tmp swagger.json
+jq '. + {"schemes": ["https"]}' tmp > swagger.json
 
 # Ensure go-swagger names the package for the 'Documentation' endpoint 'doc' instead of 'documentation'
 sed 's/"Documentation"/"Doc"/g' swagger.json >"${swagger_patch_file}"
