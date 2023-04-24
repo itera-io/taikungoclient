@@ -59,6 +59,9 @@ perl -0777 -i -pe 's/ *"type": *"array",\n *"items": *{\n *"\$ref": *"#\/definit
 sed -i 's/"$ref": "#\/definitions\/ProblemDetails"/"type":"object"/g' "${swagger_patch_file}"
 sed -i 's/"$ref": "#\/definitions\/ProblemDetails"/"type":"object"/g' "${showback_swagger_patch_file}"
 
+jq 'del(.. | .pattern?)' swagger.json > tmp
+mv tmp swagger.json
+
 # Initialize go module
 go mod init "${module_name}"
 
