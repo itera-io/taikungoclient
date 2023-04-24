@@ -28,7 +28,7 @@ rm -rfv models/
 rm -rfv go.mod
 rm -rfv go.sum
 
-jq 'del(.. | .pattern?)' swagger.json > tmp
+jq 'del(.. | .pattern?, .allOf?)' swagger.json > tmp
 mv tmp swagger.json
 
 # Ensure go-swagger names the package for the 'Documentation' endpoint 'doc' instead of 'documentation'
