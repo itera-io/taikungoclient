@@ -49,7 +49,7 @@ func (a *Client) ProjectRevisionsEdit(params *ProjectRevisionsEditParams, authIn
 		PathPattern:        "/api/v{v}/ProjectRevisions/update/{projectId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectRevisionsEditReader{formats: a.formats},
 		AuthInfo:           authInfo,

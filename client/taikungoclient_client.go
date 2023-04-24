@@ -91,7 +91,7 @@ const (
 )
 
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
-var DefaultSchemes = []string{"http"}
+var DefaultSchemes = []string{"https"}
 
 // NewHTTPClient creates a new taikungoclient HTTP client.
 func NewHTTPClient(formats strfmt.Registry) *Taikungoclient {
