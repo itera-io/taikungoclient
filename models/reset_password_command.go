@@ -26,15 +26,7 @@ type ResetPasswordCommand struct {
 	// new password
 	// Required: true
 	// Min Length: 6
-	NewPassword struct {
-		ResetPasswordCommandNewPasswordAllOf0
-
-		ResetPasswordCommandNewPasswordAllOf1
-
-		ResetPasswordCommandNewPasswordAllOf2
-
-		ResetPasswordCommandNewPasswordAllOf3
-	} `json:"newPassword"`
+	NewPassword *string `json:"newPassword"`
 
 	// token
 	// Required: true
@@ -124,23 +116,3 @@ func (m *ResetPasswordCommand) UnmarshalBinary(b []byte) error {
 	*m = res
 	return nil
 }
-
-// ResetPasswordCommandNewPasswordAllOf0 reset password command new password all of0
-//
-// swagger:model ResetPasswordCommandNewPasswordAllOf0
-type ResetPasswordCommandNewPasswordAllOf0 interface{}
-
-// ResetPasswordCommandNewPasswordAllOf1 reset password command new password all of1
-//
-// swagger:model ResetPasswordCommandNewPasswordAllOf1
-type ResetPasswordCommandNewPasswordAllOf1 interface{}
-
-// ResetPasswordCommandNewPasswordAllOf2 reset password command new password all of2
-//
-// swagger:model ResetPasswordCommandNewPasswordAllOf2
-type ResetPasswordCommandNewPasswordAllOf2 interface{}
-
-// ResetPasswordCommandNewPasswordAllOf3 reset password command new password all of3
-//
-// swagger:model ResetPasswordCommandNewPasswordAllOf3
-type ResetPasswordCommandNewPasswordAllOf3 interface{}

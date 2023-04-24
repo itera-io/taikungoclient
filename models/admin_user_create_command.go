@@ -33,15 +33,7 @@ type AdminUserCreateCommand struct {
 	// Required: true
 	// Max Length: 200
 	// Min Length: 6
-	Password struct {
-		AdminUserCreateCommandPasswordAllOf0
-
-		AdminUserCreateCommandPasswordAllOf1
-
-		AdminUserCreateCommandPasswordAllOf2
-
-		AdminUserCreateCommandPasswordAllOf3
-	} `json:"password"`
+	Password *string `json:"password"`
 
 	// role
 	Role UserRole `json:"role,omitempty"`
@@ -196,23 +188,3 @@ func (m *AdminUserCreateCommand) UnmarshalBinary(b []byte) error {
 	*m = res
 	return nil
 }
-
-// AdminUserCreateCommandPasswordAllOf0 admin user create command password all of0
-//
-// swagger:model AdminUserCreateCommandPasswordAllOf0
-type AdminUserCreateCommandPasswordAllOf0 interface{}
-
-// AdminUserCreateCommandPasswordAllOf1 admin user create command password all of1
-//
-// swagger:model AdminUserCreateCommandPasswordAllOf1
-type AdminUserCreateCommandPasswordAllOf1 interface{}
-
-// AdminUserCreateCommandPasswordAllOf2 admin user create command password all of2
-//
-// swagger:model AdminUserCreateCommandPasswordAllOf2
-type AdminUserCreateCommandPasswordAllOf2 interface{}
-
-// AdminUserCreateCommandPasswordAllOf3 admin user create command password all of3
-//
-// swagger:model AdminUserCreateCommandPasswordAllOf3
-type AdminUserCreateCommandPasswordAllOf3 interface{}

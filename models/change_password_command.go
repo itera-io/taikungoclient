@@ -22,28 +22,12 @@ type ChangePasswordCommand struct {
 	// new password
 	// Required: true
 	// Min Length: 6
-	NewPassword struct {
-		ChangePasswordCommandNewPasswordAllOf0
-
-		ChangePasswordCommandNewPasswordAllOf1
-
-		ChangePasswordCommandNewPasswordAllOf2
-
-		ChangePasswordCommandNewPasswordAllOf3
-	} `json:"newPassword"`
+	NewPassword *string `json:"newPassword"`
 
 	// password
 	// Required: true
 	// Min Length: 6
-	Password struct {
-		ChangePasswordCommandPasswordAllOf0
-
-		ChangePasswordCommandPasswordAllOf1
-
-		ChangePasswordCommandPasswordAllOf2
-
-		ChangePasswordCommandPasswordAllOf3
-	} `json:"password"`
+	Password *string `json:"password"`
 }
 
 // Validate validates this change password command
@@ -112,43 +96,3 @@ func (m *ChangePasswordCommand) UnmarshalBinary(b []byte) error {
 	*m = res
 	return nil
 }
-
-// ChangePasswordCommandNewPasswordAllOf0 change password command new password all of0
-//
-// swagger:model ChangePasswordCommandNewPasswordAllOf0
-type ChangePasswordCommandNewPasswordAllOf0 interface{}
-
-// ChangePasswordCommandNewPasswordAllOf1 change password command new password all of1
-//
-// swagger:model ChangePasswordCommandNewPasswordAllOf1
-type ChangePasswordCommandNewPasswordAllOf1 interface{}
-
-// ChangePasswordCommandNewPasswordAllOf2 change password command new password all of2
-//
-// swagger:model ChangePasswordCommandNewPasswordAllOf2
-type ChangePasswordCommandNewPasswordAllOf2 interface{}
-
-// ChangePasswordCommandNewPasswordAllOf3 change password command new password all of3
-//
-// swagger:model ChangePasswordCommandNewPasswordAllOf3
-type ChangePasswordCommandNewPasswordAllOf3 interface{}
-
-// ChangePasswordCommandPasswordAllOf0 change password command password all of0
-//
-// swagger:model ChangePasswordCommandPasswordAllOf0
-type ChangePasswordCommandPasswordAllOf0 interface{}
-
-// ChangePasswordCommandPasswordAllOf1 change password command password all of1
-//
-// swagger:model ChangePasswordCommandPasswordAllOf1
-type ChangePasswordCommandPasswordAllOf1 interface{}
-
-// ChangePasswordCommandPasswordAllOf2 change password command password all of2
-//
-// swagger:model ChangePasswordCommandPasswordAllOf2
-type ChangePasswordCommandPasswordAllOf2 interface{}
-
-// ChangePasswordCommandPasswordAllOf3 change password command password all of3
-//
-// swagger:model ChangePasswordCommandPasswordAllOf3
-type ChangePasswordCommandPasswordAllOf3 interface{}

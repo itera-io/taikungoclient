@@ -27,15 +27,7 @@ type AdminUsersUpdatePasswordCommand struct {
 	// password
 	// Required: true
 	// Min Length: 6
-	Password struct {
-		AdminUsersUpdatePasswordCommandPasswordAllOf0
-
-		AdminUsersUpdatePasswordCommandPasswordAllOf1
-
-		AdminUsersUpdatePasswordCommandPasswordAllOf2
-
-		AdminUsersUpdatePasswordCommandPasswordAllOf3
-	} `json:"password"`
+	Password *string `json:"password"`
 }
 
 // Validate validates this admin users update password command
@@ -104,23 +96,3 @@ func (m *AdminUsersUpdatePasswordCommand) UnmarshalBinary(b []byte) error {
 	*m = res
 	return nil
 }
-
-// AdminUsersUpdatePasswordCommandPasswordAllOf0 admin users update password command password all of0
-//
-// swagger:model AdminUsersUpdatePasswordCommandPasswordAllOf0
-type AdminUsersUpdatePasswordCommandPasswordAllOf0 interface{}
-
-// AdminUsersUpdatePasswordCommandPasswordAllOf1 admin users update password command password all of1
-//
-// swagger:model AdminUsersUpdatePasswordCommandPasswordAllOf1
-type AdminUsersUpdatePasswordCommandPasswordAllOf1 interface{}
-
-// AdminUsersUpdatePasswordCommandPasswordAllOf2 admin users update password command password all of2
-//
-// swagger:model AdminUsersUpdatePasswordCommandPasswordAllOf2
-type AdminUsersUpdatePasswordCommandPasswordAllOf2 interface{}
-
-// AdminUsersUpdatePasswordCommandPasswordAllOf3 admin users update password command password all of3
-//
-// swagger:model AdminUsersUpdatePasswordCommandPasswordAllOf3
-type AdminUsersUpdatePasswordCommandPasswordAllOf3 interface{}
