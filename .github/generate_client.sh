@@ -28,6 +28,9 @@ rm -rfv models/
 rm -rfv go.mod
 rm -rfv go.sum
 
+jq 'del(.. | .pattern?)' swagger.json > tmp
+mv tmp swagger.json
+
 # Ensure go-swagger names the package for the 'Documentation' endpoint 'doc' instead of 'documentation'
 sed 's/"Documentation"/"Doc"/g' swagger.json >"${swagger_patch_file}"
 sed 's/"Documentation"/"Doc"/g' showback-swagger.json >"${showback_swagger_patch_file}"
@@ -58,9 +61,6 @@ perl -0777 -i -pe 's/ *"type": *"array",\n *"items": *{\n *"\$ref": *"#\/definit
 # Replace ProblemDetails with free-form objects
 sed -i 's/"$ref": "#\/definitions\/ProblemDetails"/"type":"object"/g' "${swagger_patch_file}"
 sed -i 's/"$ref": "#\/definitions\/ProblemDetails"/"type":"object"/g' "${showback_swagger_patch_file}"
-
-jq 'del(.. | .pattern?)' swagger.json > tmp
-mv tmp swagger.json
 
 # Initialize go module
 go mod init "${module_name}"
