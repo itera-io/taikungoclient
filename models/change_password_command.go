@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ChangePasswordCommand change password command
@@ -18,14 +20,73 @@ import (
 type ChangePasswordCommand struct {
 
 	// new password
-	NewPassword string `json:"newPassword,omitempty"`
+	// Required: true
+	// Min Length: 6
+	NewPassword struct {
+		ChangePasswordCommandNewPasswordAllOf0
+
+		ChangePasswordCommandNewPasswordAllOf1
+
+		ChangePasswordCommandNewPasswordAllOf2
+
+		ChangePasswordCommandNewPasswordAllOf3
+	} `json:"newPassword"`
 
 	// password
-	Password string `json:"password,omitempty"`
+	// Required: true
+	// Min Length: 6
+	Password struct {
+		ChangePasswordCommandPasswordAllOf0
+
+		ChangePasswordCommandPasswordAllOf1
+
+		ChangePasswordCommandPasswordAllOf2
+
+		ChangePasswordCommandPasswordAllOf3
+	} `json:"password"`
 }
 
 // Validate validates this change password command
 func (m *ChangePasswordCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateNewPassword(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePassword(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ChangePasswordCommand) validateNewPassword(formats strfmt.Registry) error {
+
+	if err := validate.Required("newPassword", "body", m.NewPassword); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("newPassword", "body", *m.NewPassword, 6); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ChangePasswordCommand) validatePassword(formats strfmt.Registry) error {
+
+	if err := validate.Required("password", "body", m.Password); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("password", "body", *m.Password, 6); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -51,3 +112,43 @@ func (m *ChangePasswordCommand) UnmarshalBinary(b []byte) error {
 	*m = res
 	return nil
 }
+
+// ChangePasswordCommandNewPasswordAllOf0 change password command new password all of0
+//
+// swagger:model ChangePasswordCommandNewPasswordAllOf0
+type ChangePasswordCommandNewPasswordAllOf0 interface{}
+
+// ChangePasswordCommandNewPasswordAllOf1 change password command new password all of1
+//
+// swagger:model ChangePasswordCommandNewPasswordAllOf1
+type ChangePasswordCommandNewPasswordAllOf1 interface{}
+
+// ChangePasswordCommandNewPasswordAllOf2 change password command new password all of2
+//
+// swagger:model ChangePasswordCommandNewPasswordAllOf2
+type ChangePasswordCommandNewPasswordAllOf2 interface{}
+
+// ChangePasswordCommandNewPasswordAllOf3 change password command new password all of3
+//
+// swagger:model ChangePasswordCommandNewPasswordAllOf3
+type ChangePasswordCommandNewPasswordAllOf3 interface{}
+
+// ChangePasswordCommandPasswordAllOf0 change password command password all of0
+//
+// swagger:model ChangePasswordCommandPasswordAllOf0
+type ChangePasswordCommandPasswordAllOf0 interface{}
+
+// ChangePasswordCommandPasswordAllOf1 change password command password all of1
+//
+// swagger:model ChangePasswordCommandPasswordAllOf1
+type ChangePasswordCommandPasswordAllOf1 interface{}
+
+// ChangePasswordCommandPasswordAllOf2 change password command password all of2
+//
+// swagger:model ChangePasswordCommandPasswordAllOf2
+type ChangePasswordCommandPasswordAllOf2 interface{}
+
+// ChangePasswordCommandPasswordAllOf3 change password command password all of3
+//
+// swagger:model ChangePasswordCommandPasswordAllOf3
+type ChangePasswordCommandPasswordAllOf3 interface{}

@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneRepairReader is a Reader for the StandAloneRepair structure.
@@ -75,7 +73,6 @@ StandAloneRepairOK describes a response with status code 200, with default heade
 Success
 */
 type StandAloneRepairOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone repair o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *StandAloneRepairOK) Code() int {
 }
 
 func (o *StandAloneRepairOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairOK ", 200)
 }
 
 func (o *StandAloneRepairOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairOK  %+v", 200, o.Payload)
-}
-
-func (o *StandAloneRepairOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/repair][%d] standAloneRepairOK ", 200)
 }
 
 func (o *StandAloneRepairOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AdminMakeOwnerReader is a Reader for the AdminMakeOwner structure.
@@ -75,7 +73,6 @@ AdminMakeOwnerOK describes a response with status code 200, with default header 
 Success
 */
 type AdminMakeOwnerOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this admin make owner o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *AdminMakeOwnerOK) Code() int {
 }
 
 func (o *AdminMakeOwnerOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerOK ", 200)
 }
 
 func (o *AdminMakeOwnerOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerOK  %+v", 200, o.Payload)
-}
-
-func (o *AdminMakeOwnerOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerOK ", 200)
 }
 
 func (o *AdminMakeOwnerOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobFetchOrganizationDetailsReader is a Reader for the CronJobFetchOrganizationDetails structure.
@@ -75,7 +73,6 @@ CronJobFetchOrganizationDetailsOK describes a response with status code 200, wit
 Success
 */
 type CronJobFetchOrganizationDetailsOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job fetch organization details o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CronJobFetchOrganizationDetailsOK) Code() int {
 }
 
 func (o *CronJobFetchOrganizationDetailsOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsOK ", 200)
 }
 
 func (o *CronJobFetchOrganizationDetailsOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsOK  %+v", 200, o.Payload)
-}
-
-func (o *CronJobFetchOrganizationDetailsOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsOK ", 200)
 }
 
 func (o *CronJobFetchOrganizationDetailsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

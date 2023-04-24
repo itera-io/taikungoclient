@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CheckerOpenstackTaikunLbImageReader is a Reader for the CheckerOpenstackTaikunLbImage structure.
@@ -75,7 +73,6 @@ CheckerOpenstackTaikunLbImageOK describes a response with status code 200, with 
 Success
 */
 type CheckerOpenstackTaikunLbImageOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this checker openstack taikun lb image o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CheckerOpenstackTaikunLbImageOK) Code() int {
 }
 
 func (o *CheckerOpenstackTaikunLbImageOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageOK ", 200)
 }
 
 func (o *CheckerOpenstackTaikunLbImageOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageOK  %+v", 200, o.Payload)
-}
-
-func (o *CheckerOpenstackTaikunLbImageOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageOK ", 200)
 }
 
 func (o *CheckerOpenstackTaikunLbImageOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

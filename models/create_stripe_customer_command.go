@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateStripeCustomerCommand create stripe customer command
@@ -27,22 +29,13 @@ type CreateStripeCustomerCommand struct {
 	City string `json:"city,omitempty"`
 
 	// country
-	Country string `json:"country,omitempty"`
+	// Required: true
+	// Max Length: 90
+	// Min Length: 3
+	Country *string `json:"country"`
 
 	// legal name
 	LegalName string `json:"legalName,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// partner Id
-	PartnerID int32 `json:"partnerId,omitempty"`
-
-	// user email
-	UserEmail string `json:"userEmail,omitempty"`
-
-	// user name
-	UserName string `json:"userName,omitempty"`
 
 	// vat number
 	VatNumber string `json:"vatNumber,omitempty"`
@@ -50,6 +43,32 @@ type CreateStripeCustomerCommand struct {
 
 // Validate validates this create stripe customer command
 func (m *CreateStripeCustomerCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateCountry(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateStripeCustomerCommand) validateCountry(formats strfmt.Registry) error {
+
+	if err := validate.Required("country", "body", m.Country); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("country", "body", *m.Country, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("country", "body", *m.Country, 90); err != nil {
+		return err
+	}
+
 	return nil
 }
 

@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ConfirmEmailCommand confirm email command
@@ -18,14 +20,62 @@ import (
 type ConfirmEmailCommand struct {
 
 	// mode
-	Mode string `json:"mode,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Mode *string `json:"mode"`
 
 	// new email
-	NewEmail string `json:"newEmail,omitempty"`
+	// Required: true
+	// Min Length: 1
+	// Format: email
+	NewEmail *strfmt.Email `json:"newEmail"`
 }
 
 // Validate validates this confirm email command
 func (m *ConfirmEmailCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateMode(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNewEmail(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ConfirmEmailCommand) validateMode(formats strfmt.Registry) error {
+
+	if err := validate.Required("mode", "body", m.Mode); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("mode", "body", *m.Mode, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ConfirmEmailCommand) validateNewEmail(formats strfmt.Registry) error {
+
+	if err := validate.Required("newEmail", "body", m.NewEmail); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("newEmail", "body", m.NewEmail.String(), 1); err != nil {
+		return err
+	}
+
+	if err := validate.FormatOf("newEmail", "body", "email", m.NewEmail.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

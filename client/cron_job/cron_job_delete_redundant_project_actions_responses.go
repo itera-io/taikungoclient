@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobDeleteRedundantProjectActionsReader is a Reader for the CronJobDeleteRedundantProjectActions structure.
@@ -75,7 +73,6 @@ CronJobDeleteRedundantProjectActionsOK describes a response with status code 200
 Success
 */
 type CronJobDeleteRedundantProjectActionsOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job delete redundant project actions o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CronJobDeleteRedundantProjectActionsOK) Code() int {
 }
 
 func (o *CronJobDeleteRedundantProjectActionsOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsOK ", 200)
 }
 
 func (o *CronJobDeleteRedundantProjectActionsOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsOK  %+v", 200, o.Payload)
-}
-
-func (o *CronJobDeleteRedundantProjectActionsOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsOK ", 200)
 }
 
 func (o *CronJobDeleteRedundantProjectActionsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

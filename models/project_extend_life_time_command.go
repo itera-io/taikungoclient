@@ -27,7 +27,9 @@ type ProjectExtendLifeTimeCommand struct {
 	ExpireAt *strfmt.DateTime `json:"expireAt,omitempty"`
 
 	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ProjectID *int32 `json:"projectId"`
 }
 
 // Validate validates this project extend life time command
@@ -35,6 +37,10 @@ func (m *ProjectExtendLifeTimeCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateExpireAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProjectID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -50,6 +56,19 @@ func (m *ProjectExtendLifeTimeCommand) validateExpireAt(formats strfmt.Registry)
 	}
 
 	if err := validate.FormatOf("expireAt", "body", "date-time", m.ExpireAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ProjectExtendLifeTimeCommand) validateProjectID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectId", "body", m.ProjectID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("projectId", "body", int64(*m.ProjectID), 0, true); err != nil {
 		return err
 	}
 

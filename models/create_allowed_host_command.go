@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateAllowedHostCommand create allowed host command
@@ -18,20 +20,85 @@ import (
 type CreateAllowedHostCommand struct {
 
 	// access profile Id
-	AccessProfileID int32 `json:"accessProfileId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	AccessProfileID *int32 `json:"accessProfileId"`
 
 	// description
 	Description string `json:"description,omitempty"`
 
 	// ip address
-	IPAddress string `json:"ipAddress,omitempty"`
+	// Required: true
+	// Min Length: 1
+	IPAddress *string `json:"ipAddress"`
 
 	// mask bits
-	MaskBits int32 `json:"maskBits,omitempty"`
+	// Maximum: 32
+	// Minimum: 0
+	MaskBits *int32 `json:"maskBits,omitempty"`
 }
 
 // Validate validates this create allowed host command
 func (m *CreateAllowedHostCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAccessProfileID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIPAddress(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMaskBits(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateAllowedHostCommand) validateAccessProfileID(formats strfmt.Registry) error {
+
+	if err := validate.Required("accessProfileId", "body", m.AccessProfileID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("accessProfileId", "body", int64(*m.AccessProfileID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateAllowedHostCommand) validateIPAddress(formats strfmt.Registry) error {
+
+	if err := validate.Required("ipAddress", "body", m.IPAddress); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("ipAddress", "body", *m.IPAddress, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateAllowedHostCommand) validateMaskBits(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaskBits) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("maskBits", "body", int64(*m.MaskBits), 0, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("maskBits", "body", int64(*m.MaskBits), 32, false); err != nil {
+		return err
+	}
+
 	return nil
 }
 

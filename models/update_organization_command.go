@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // UpdateOrganizationCommand update organization command
@@ -36,7 +38,9 @@ type UpdateOrganizationCommand struct {
 	Email string `json:"email,omitempty"`
 
 	// full name
-	FullName string `json:"fullName,omitempty"`
+	// Required: true
+	// Min Length: 1
+	FullName *string `json:"fullName"`
 
 	// id
 	ID int32 `json:"id,omitempty"`
@@ -48,7 +52,10 @@ type UpdateOrganizationCommand struct {
 	IsLocked bool `json:"isLocked"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// phone
 	Phone string `json:"phone,omitempty"`
@@ -59,6 +66,49 @@ type UpdateOrganizationCommand struct {
 
 // Validate validates this update organization command
 func (m *UpdateOrganizationCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateFullName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UpdateOrganizationCommand) validateFullName(formats strfmt.Registry) error {
+
+	if err := validate.Required("fullName", "body", m.FullName); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("fullName", "body", *m.FullName, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateOrganizationCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
 	return nil
 }
 

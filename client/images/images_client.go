@@ -54,6 +54,8 @@ type ClientService interface {
 
 	ImagesPersonalAzureImages(params *ImagesPersonalAzureImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesPersonalAzureImagesOK, error)
 
+	ImagesTanzuImages(params *ImagesTanzuImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesTanzuImagesOK, error)
+
 	ImagesUnbindImagesFromProject(params *ImagesUnbindImagesFromProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesUnbindImagesFromProjectOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -73,7 +75,7 @@ func (a *Client) ImagesAwsImagesAsPost(params *ImagesAwsImagesAsPostParams, auth
 		PathPattern:        "/api/v{v}/Images/aws",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ImagesAwsImagesAsPostReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -112,7 +114,7 @@ func (a *Client) ImagesAzureImages(params *ImagesAzureImagesParams, authInfo run
 		PathPattern:        "/api/v{v}/Images/azure/{cloudId}/{publisherName}/{offer}/{sku}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ImagesAzureImagesReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -151,7 +153,7 @@ func (a *Client) ImagesBindImagesToProject(params *ImagesBindImagesToProjectPara
 		PathPattern:        "/api/v{v}/Images/bind",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ImagesBindImagesToProjectReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -190,7 +192,7 @@ func (a *Client) ImagesCommonAwsImages(params *ImagesCommonAwsImagesParams, auth
 		PathPattern:        "/api/v{v}/Images/aws/common/{cloudId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ImagesCommonAwsImagesReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -229,7 +231,7 @@ func (a *Client) ImagesCommonAzureImages(params *ImagesCommonAzureImagesParams, 
 		PathPattern:        "/api/v{v}/Images/azure/common/{cloudId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ImagesCommonAzureImagesReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -268,7 +270,7 @@ func (a *Client) ImagesCommonGoogleImages(params *ImagesCommonGoogleImagesParams
 		PathPattern:        "/api/v{v}/Images/google/common/{cloudId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ImagesCommonGoogleImagesReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -307,7 +309,7 @@ func (a *Client) ImagesGetImageDetailsByID(params *ImagesGetImageDetailsByIDPara
 		PathPattern:        "/api/v{v}/Images/details",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ImagesGetImageDetailsByIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -346,7 +348,7 @@ func (a *Client) ImagesGetSelectedImagesForProject(params *ImagesGetSelectedImag
 		PathPattern:        "/api/v{v}/Images/projects/list",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ImagesGetSelectedImagesForProjectReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -385,7 +387,7 @@ func (a *Client) ImagesGoogleImages(params *ImagesGoogleImagesParams, authInfo r
 		PathPattern:        "/api/v{v}/Images/google/{cloudId}/{type}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ImagesGoogleImagesReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -424,7 +426,7 @@ func (a *Client) ImagesOpenstackImages(params *ImagesOpenstackImagesParams, auth
 		PathPattern:        "/api/v{v}/Images/openstack/{cloudId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ImagesOpenstackImagesReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -463,7 +465,7 @@ func (a *Client) ImagesPersonalAwsImages(params *ImagesPersonalAwsImagesParams, 
 		PathPattern:        "/api/v{v}/Images/aws/personal/{cloudId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ImagesPersonalAwsImagesReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -502,7 +504,7 @@ func (a *Client) ImagesPersonalAzureImages(params *ImagesPersonalAzureImagesPara
 		PathPattern:        "/api/v{v}/Images/azure/personal/{cloudId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ImagesPersonalAzureImagesReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -528,6 +530,45 @@ func (a *Client) ImagesPersonalAzureImages(params *ImagesPersonalAzureImagesPara
 }
 
 /*
+ImagesTanzuImages retrieves tanzu images
+*/
+func (a *Client) ImagesTanzuImages(params *ImagesTanzuImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesTanzuImagesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewImagesTanzuImagesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Images_TanzuImages",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Images/tanzu/{cloudId}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ImagesTanzuImagesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ImagesTanzuImagesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Images_TanzuImages: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 ImagesUnbindImagesFromProject unbinds images from project
 */
 func (a *Client) ImagesUnbindImagesFromProject(params *ImagesUnbindImagesFromProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesUnbindImagesFromProjectOK, error) {
@@ -541,7 +582,7 @@ func (a *Client) ImagesUnbindImagesFromProject(params *ImagesUnbindImagesFromPro
 		PathPattern:        "/api/v{v}/Images/unbind",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ImagesUnbindImagesFromProjectReader{formats: a.formats},
 		AuthInfo:           authInfo,

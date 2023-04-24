@@ -75,7 +75,7 @@ UsersListSelectorOK describes a response with status code 200, with default head
 Success
 */
 type UsersListSelectorOK struct {
-	Payload []*models.CommonStringBasedDropdownDto
+	Payload []*models.CommonStringDropdownIsBoundDto
 }
 
 // IsSuccess returns true when this users list selector o k response has a 2xx status code
@@ -116,7 +116,7 @@ func (o *UsersListSelectorOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorOK  %+v", 200, o.Payload)
 }
 
-func (o *UsersListSelectorOK) GetPayload() []*models.CommonStringBasedDropdownDto {
+func (o *UsersListSelectorOK) GetPayload() []*models.CommonStringDropdownIsBoundDto {
 	return o.Payload
 }
 

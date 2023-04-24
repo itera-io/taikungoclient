@@ -36,6 +36,8 @@ type ClientService interface {
 
 	PartnerBindOrganizations(params *PartnerBindOrganizationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerBindOrganizationsOK, error)
 
+	PartnerContactUs(params *PartnerContactUsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerContactUsOK, error)
+
 	PartnerCreate(params *PartnerCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerCreateOK, error)
 
 	PartnerDeleteWhiteListDomain(params *PartnerDeleteWhiteListDomainParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerDeleteWhiteListDomainOK, error)
@@ -67,7 +69,7 @@ func (a *Client) PartnerAddWhiteListDomain(params *PartnerAddWhiteListDomainPara
 		PathPattern:        "/api/v{v}/Partner/add/whitelist/domain",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PartnerAddWhiteListDomainReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -106,7 +108,7 @@ func (a *Client) PartnerBecomePartner(params *PartnerBecomePartnerParams, authIn
 		PathPattern:        "/api/v{v}/Partner/become-a-partner",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PartnerBecomePartnerReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -145,7 +147,7 @@ func (a *Client) PartnerBindOrganizations(params *PartnerBindOrganizationsParams
 		PathPattern:        "/api/v{v}/Partner/bindorganizations",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PartnerBindOrganizationsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -171,6 +173,45 @@ func (a *Client) PartnerBindOrganizations(params *PartnerBindOrganizationsParams
 }
 
 /*
+PartnerContactUs partner contact us API
+*/
+func (a *Client) PartnerContactUs(params *PartnerContactUsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerContactUsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPartnerContactUsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Partner_ContactUs",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Partner/contact-us",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PartnerContactUsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PartnerContactUsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Partner_ContactUs: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 PartnerCreate adds partner
 */
 func (a *Client) PartnerCreate(params *PartnerCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerCreateOK, error) {
@@ -184,7 +225,7 @@ func (a *Client) PartnerCreate(params *PartnerCreateParams, authInfo runtime.Cli
 		PathPattern:        "/api/v{v}/Partner/create",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"multipart/form-data"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PartnerCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -223,7 +264,7 @@ func (a *Client) PartnerDeleteWhiteListDomain(params *PartnerDeleteWhiteListDoma
 		PathPattern:        "/api/v{v}/Partner/delete/whitelist/domain",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PartnerDeleteWhiteListDomainReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -262,7 +303,7 @@ func (a *Client) PartnerDetails(params *PartnerDetailsParams, authInfo runtime.C
 		PathPattern:        "/api/v{v}/Partner/details",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PartnerDetailsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -301,7 +342,7 @@ func (a *Client) PartnerList(params *PartnerListParams, authInfo runtime.ClientA
 		PathPattern:        "/api/v{v}/Partner",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PartnerListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -340,7 +381,7 @@ func (a *Client) PartnerPartnerInfoRegistration(params *PartnerPartnerInfoRegist
 		PathPattern:        "/api/v{v}/Partner/info",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PartnerPartnerInfoRegistrationReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -379,7 +420,7 @@ func (a *Client) PartnerPartnerList(params *PartnerPartnerListParams, authInfo r
 		PathPattern:        "/api/v{v}/Partner/list",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PartnerPartnerListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -418,7 +459,7 @@ func (a *Client) PartnerUpdate(params *PartnerUpdateParams, authInfo runtime.Cli
 		PathPattern:        "/api/v{v}/Partner/update/{id}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"multipart/form-data"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PartnerUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,

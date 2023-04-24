@@ -40,6 +40,9 @@ type CatalogAppDetailsDto struct {
 	// description
 	Description string `json:"description,omitempty"`
 
+	// has Json schema
+	HasJSONSchema bool `json:"hasJsonSchema"`
+
 	// id
 	ID int32 `json:"id,omitempty"`
 

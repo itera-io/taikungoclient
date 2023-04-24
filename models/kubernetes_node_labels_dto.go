@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // KubernetesNodeLabelsDto kubernetes node labels dto
@@ -18,7 +20,10 @@ import (
 type KubernetesNodeLabelsDto struct {
 
 	// key
-	Key string `json:"key,omitempty"`
+	// Required: true
+	// Max Length: 63
+	// Min Length: 1
+	Key *string `json:"key"`
 
 	// value
 	Value string `json:"value,omitempty"`
@@ -26,6 +31,32 @@ type KubernetesNodeLabelsDto struct {
 
 // Validate validates this kubernetes node labels dto
 func (m *KubernetesNodeLabelsDto) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *KubernetesNodeLabelsDto) validateKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("key", "body", m.Key); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("key", "body", *m.Key, 1); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("key", "body", *m.Key, 63); err != nil {
+		return err
+	}
+
 	return nil
 }
 

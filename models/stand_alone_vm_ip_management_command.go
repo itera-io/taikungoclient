@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // StandAloneVMIPManagementCommand stand alone Vm Ip management command
@@ -18,14 +20,57 @@ import (
 type StandAloneVMIPManagementCommand struct {
 
 	// id
-	ID int32 `json:"id,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ID *int32 `json:"id"`
 
 	// mode
-	Mode string `json:"mode,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Mode *string `json:"mode"`
 }
 
 // Validate validates this stand alone Vm Ip management command
 func (m *StandAloneVMIPManagementCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMode(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StandAloneVMIPManagementCommand) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("id", "body", int64(*m.ID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *StandAloneVMIPManagementCommand) validateMode(formats strfmt.Registry) error {
+
+	if err := validate.Required("mode", "body", m.Mode); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("mode", "body", *m.Mode, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

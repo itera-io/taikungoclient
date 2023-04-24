@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateNtpServerCommand create ntp server command
@@ -18,14 +20,57 @@ import (
 type CreateNtpServerCommand struct {
 
 	// access profile Id
-	AccessProfileID int32 `json:"accessProfileId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	AccessProfileID *int32 `json:"accessProfileId"`
 
 	// address
-	Address string `json:"address,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Address *string `json:"address"`
 }
 
 // Validate validates this create ntp server command
 func (m *CreateNtpServerCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAccessProfileID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAddress(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateNtpServerCommand) validateAccessProfileID(formats strfmt.Registry) error {
+
+	if err := validate.Required("accessProfileId", "body", m.AccessProfileID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("accessProfileId", "body", int64(*m.AccessProfileID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateNtpServerCommand) validateAddress(formats strfmt.Registry) error {
+
+	if err := validate.Required("address", "body", m.Address); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("address", "body", *m.Address, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

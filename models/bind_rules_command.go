@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // BindRulesCommand bind rules command
@@ -20,7 +21,9 @@ import (
 type BindRulesCommand struct {
 
 	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	OrganizationID *int32 `json:"organizationId"`
 
 	// rules
 	Rules []*BindRulesToOrganizationDto `json:"rules"`
@@ -30,6 +33,10 @@ type BindRulesCommand struct {
 func (m *BindRulesCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateOrganizationID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateRules(formats); err != nil {
 		res = append(res, err)
 	}
@@ -37,6 +44,19 @@ func (m *BindRulesCommand) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *BindRulesCommand) validateOrganizationID(formats strfmt.Registry) error {
+
+	if err := validate.Required("organizationId", "body", m.OrganizationID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("organizationId", "body", int64(*m.OrganizationID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 

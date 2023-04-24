@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // UserGroupsBindProjectGroupsReader is a Reader for the UserGroupsBindProjectGroups structure.
@@ -75,7 +73,6 @@ UserGroupsBindProjectGroupsOK describes a response with status code 200, with de
 Success
 */
 type UserGroupsBindProjectGroupsOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this user groups bind project groups o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *UserGroupsBindProjectGroupsOK) Code() int {
 }
 
 func (o *UserGroupsBindProjectGroupsOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsOK ", 200)
 }
 
 func (o *UserGroupsBindProjectGroupsOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsOK  %+v", 200, o.Payload)
-}
-
-func (o *UserGroupsBindProjectGroupsOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsOK ", 200)
 }
 
 func (o *UserGroupsBindProjectGroupsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

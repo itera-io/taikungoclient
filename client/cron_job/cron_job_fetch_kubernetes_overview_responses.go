@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobFetchKubernetesOverviewReader is a Reader for the CronJobFetchKubernetesOverview structure.
@@ -75,7 +73,6 @@ CronJobFetchKubernetesOverviewOK describes a response with status code 200, with
 Success
 */
 type CronJobFetchKubernetesOverviewOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes overview o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CronJobFetchKubernetesOverviewOK) Code() int {
 }
 
 func (o *CronJobFetchKubernetesOverviewOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewOK ", 200)
 }
 
 func (o *CronJobFetchKubernetesOverviewOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewOK  %+v", 200, o.Payload)
-}
-
-func (o *CronJobFetchKubernetesOverviewOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewOK ", 200)
 }
 
 func (o *CronJobFetchKubernetesOverviewOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

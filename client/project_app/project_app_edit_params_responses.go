@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectAppEditParamsReader is a Reader for the ProjectAppEditParams structure.
@@ -75,7 +73,6 @@ ProjectAppEditParamsOK describes a response with status code 200, with default h
 Success
 */
 type ProjectAppEditParamsOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this project app edit params o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *ProjectAppEditParamsOK) Code() int {
 }
 
 func (o *ProjectAppEditParamsOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsOK ", 200)
 }
 
 func (o *ProjectAppEditParamsOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsOK  %+v", 200, o.Payload)
-}
-
-func (o *ProjectAppEditParamsOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsOK ", 200)
 }
 
 func (o *ProjectAppEditParamsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

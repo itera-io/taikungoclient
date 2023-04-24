@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // SSHKeyCommand Ssh key command
@@ -18,11 +20,35 @@ import (
 type SSHKeyCommand struct {
 
 	// ssh public key
-	SSHPublicKey string `json:"sshPublicKey,omitempty"`
+	// Required: true
+	// Min Length: 1
+	SSHPublicKey *string `json:"sshPublicKey"`
 }
 
 // Validate validates this Ssh key command
 func (m *SSHKeyCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateSSHPublicKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *SSHKeyCommand) validateSSHPublicKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("sshPublicKey", "body", m.SSHPublicKey); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("sshPublicKey", "body", *m.SSHPublicKey, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

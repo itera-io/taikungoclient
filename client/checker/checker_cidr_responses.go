@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CheckerCidrReader is a Reader for the CheckerCidr structure.
@@ -75,7 +73,6 @@ CheckerCidrOK describes a response with status code 200, with default header val
 Success
 */
 type CheckerCidrOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this checker cidr o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CheckerCidrOK) Code() int {
 }
 
 func (o *CheckerCidrOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrOK ", 200)
 }
 
 func (o *CheckerCidrOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrOK  %+v", 200, o.Payload)
-}
-
-func (o *CheckerCidrOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrOK ", 200)
 }
 
 func (o *CheckerCidrOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

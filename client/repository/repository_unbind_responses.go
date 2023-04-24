@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // RepositoryUnbindReader is a Reader for the RepositoryUnbind structure.
@@ -75,7 +73,6 @@ RepositoryUnbindOK describes a response with status code 200, with default heade
 Success
 */
 type RepositoryUnbindOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this repository unbind o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *RepositoryUnbindOK) Code() int {
 }
 
 func (o *RepositoryUnbindOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryUnbindOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryUnbindOK ", 200)
 }
 
 func (o *RepositoryUnbindOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryUnbindOK  %+v", 200, o.Payload)
-}
-
-func (o *RepositoryUnbindOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryUnbindOK ", 200)
 }
 
 func (o *RepositoryUnbindOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CheckAzureCommand check azure command
@@ -18,17 +20,79 @@ import (
 type CheckAzureCommand struct {
 
 	// azure client Id
-	AzureClientID string `json:"azureClientId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AzureClientID *string `json:"azureClientId"`
 
 	// azure client secret
-	AzureClientSecret string `json:"azureClientSecret,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AzureClientSecret *string `json:"azureClientSecret"`
 
 	// azure tenant Id
-	AzureTenantID string `json:"azureTenantId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AzureTenantID *string `json:"azureTenantId"`
 }
 
 // Validate validates this check azure command
 func (m *CheckAzureCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAzureClientID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAzureClientSecret(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAzureTenantID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CheckAzureCommand) validateAzureClientID(formats strfmt.Registry) error {
+
+	if err := validate.Required("azureClientId", "body", m.AzureClientID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("azureClientId", "body", *m.AzureClientID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CheckAzureCommand) validateAzureClientSecret(formats strfmt.Registry) error {
+
+	if err := validate.Required("azureClientSecret", "body", m.AzureClientSecret); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("azureClientSecret", "body", *m.AzureClientSecret, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CheckAzureCommand) validateAzureTenantID(formats strfmt.Registry) error {
+
+	if err := validate.Required("azureTenantId", "body", m.AzureTenantID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("azureTenantId", "body", *m.AzureTenantID, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

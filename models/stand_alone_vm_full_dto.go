@@ -31,11 +31,20 @@ type StandAloneVMFullDto struct {
 	// flavor Id
 	FlavorID string `json:"flavorId,omitempty"`
 
+	// hypervisor
+	Hypervisor string `json:"hypervisor,omitempty"`
+
 	// id
 	ID int32 `json:"id,omitempty"`
 
-	// image
-	Image string `json:"image,omitempty"`
+	// image Id
+	ImageID string `json:"imageId,omitempty"`
+
+	// image name
+	ImageName string `json:"imageName,omitempty"`
+
+	// ip address
+	IPAddress string `json:"ipAddress,omitempty"`
 
 	// is windows
 	IsWindows bool `json:"isWindows"`
@@ -45,6 +54,9 @@ type StandAloneVMFullDto struct {
 
 	// password
 	Password string `json:"password,omitempty"`
+
+	// public Ip
+	PublicIP string `json:"publicIp,omitempty"`
 
 	// public Ip enabled
 	PublicIPEnabled bool `json:"publicIpEnabled"`

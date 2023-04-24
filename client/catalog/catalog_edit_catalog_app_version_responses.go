@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CatalogEditCatalogAppVersionReader is a Reader for the CatalogEditCatalogAppVersion structure.
@@ -75,7 +73,6 @@ CatalogEditCatalogAppVersionOK describes a response with status code 200, with d
 Success
 */
 type CatalogEditCatalogAppVersionOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this catalog edit catalog app version o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CatalogEditCatalogAppVersionOK) Code() int {
 }
 
 func (o *CatalogEditCatalogAppVersionOK) Error() string {
-	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionOK ", 200)
 }
 
 func (o *CatalogEditCatalogAppVersionOK) String() string {
-	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionOK  %+v", 200, o.Payload)
-}
-
-func (o *CatalogEditCatalogAppVersionOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionOK ", 200)
 }
 
 func (o *CatalogEditCatalogAppVersionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

@@ -34,6 +34,9 @@ type ServerForCreateDto struct {
 	// flavor
 	Flavor string `json:"flavor,omitempty"`
 
+	// hypervisor
+	Hypervisor string `json:"hypervisor,omitempty"`
+
 	// kubernetes node labels
 	KubernetesNodeLabels []*KubernetesNodeLabelsDto `json:"kubernetesNodeLabels"`
 
@@ -42,6 +45,12 @@ type ServerForCreateDto struct {
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
+
+	// proxmox n f s disk size
+	ProxmoxNFSDiskSize int32 `json:"proxmoxNFSDiskSize,omitempty"`
+
+	// proxmox role
+	ProxmoxRole ProxmoxRole `json:"proxmoxRole,omitempty"`
 
 	// role
 	Role CloudRole `json:"role,omitempty"`
@@ -58,6 +67,10 @@ func (m *ServerForCreateDto) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateKubernetesNodeLabels(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProxmoxRole(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -97,6 +110,23 @@ func (m *ServerForCreateDto) validateKubernetesNodeLabels(formats strfmt.Registr
 	return nil
 }
 
+func (m *ServerForCreateDto) validateProxmoxRole(formats strfmt.Registry) error {
+	if swag.IsZero(m.ProxmoxRole) { // not required
+		return nil
+	}
+
+	if err := m.ProxmoxRole.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("proxmoxRole")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("proxmoxRole")
+		}
+		return err
+	}
+
+	return nil
+}
+
 func (m *ServerForCreateDto) validateRole(formats strfmt.Registry) error {
 	if swag.IsZero(m.Role) { // not required
 		return nil
@@ -119,6 +149,10 @@ func (m *ServerForCreateDto) ContextValidate(ctx context.Context, formats strfmt
 	var res []error
 
 	if err := m.contextValidateKubernetesNodeLabels(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProxmoxRole(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -147,6 +181,20 @@ func (m *ServerForCreateDto) contextValidateKubernetesNodeLabels(ctx context.Con
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ServerForCreateDto) contextValidateProxmoxRole(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.ProxmoxRole.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("proxmoxRole")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("proxmoxRole")
+		}
+		return err
 	}
 
 	return nil

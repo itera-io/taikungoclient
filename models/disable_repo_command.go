@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // DisableRepoCommand disable repo command
@@ -18,11 +20,35 @@ import (
 type DisableRepoCommand struct {
 
 	// repo name
-	RepoName string `json:"repoName,omitempty"`
+	// Required: true
+	// Min Length: 1
+	RepoName *string `json:"repoName"`
 }
 
 // Validate validates this disable repo command
 func (m *DisableRepoCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateRepoName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *DisableRepoCommand) validateRepoName(formats strfmt.Registry) error {
+
+	if err := validate.Required("repoName", "body", m.RepoName); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("repoName", "body", *m.RepoName, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

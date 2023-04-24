@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AdminUpdateUserKubeConfigCommand admin update user kube config command
@@ -18,11 +20,35 @@ import (
 type AdminUpdateUserKubeConfigCommand struct {
 
 	// id
-	ID int32 `json:"id,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ID *int32 `json:"id"`
 }
 
 // Validate validates this admin update user kube config command
 func (m *AdminUpdateUserKubeConfigCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AdminUpdateUserKubeConfigCommand) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("id", "body", int64(*m.ID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 

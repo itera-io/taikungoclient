@@ -26,6 +26,9 @@ type UserDetails struct {
 
 	// is maintenance mode enabled
 	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
+
+	// trial days
+	TrialDays int32 `json:"trialDays,omitempty"`
 }
 
 // Validate validates this user details

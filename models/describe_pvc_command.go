@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // DescribePvcCommand describe pvc command
@@ -18,17 +20,79 @@ import (
 type DescribePvcCommand struct {
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Name *string `json:"name"`
 
 	// namespace
-	Namespace string `json:"namespace,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Namespace *string `json:"namespace"`
 
 	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ProjectID *int32 `json:"projectId"`
 }
 
 // Validate validates this describe pvc command
 func (m *DescribePvcCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNamespace(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProjectID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *DescribePvcCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *DescribePvcCommand) validateNamespace(formats strfmt.Registry) error {
+
+	if err := validate.Required("namespace", "body", m.Namespace); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("namespace", "body", *m.Namespace, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *DescribePvcCommand) validateProjectID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectId", "body", m.ProjectID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("projectId", "body", int64(*m.ProjectID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 

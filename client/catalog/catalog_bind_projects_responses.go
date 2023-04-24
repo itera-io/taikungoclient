@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CatalogBindProjectsReader is a Reader for the CatalogBindProjects structure.
@@ -75,7 +73,6 @@ CatalogBindProjectsOK describes a response with status code 200, with default he
 Success
 */
 type CatalogBindProjectsOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this catalog bind projects o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CatalogBindProjectsOK) Code() int {
 }
 
 func (o *CatalogBindProjectsOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsOK ", 200)
 }
 
 func (o *CatalogBindProjectsOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsOK  %+v", 200, o.Payload)
-}
-
-func (o *CatalogBindProjectsOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsOK ", 200)
 }
 
 func (o *CatalogBindProjectsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

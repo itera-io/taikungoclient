@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateAzureCloudCommand create azure cloud command
@@ -21,22 +23,35 @@ type CreateAzureCloudCommand struct {
 	AzCount int32 `json:"azCount,omitempty"`
 
 	// azure client Id
-	AzureClientID string `json:"azureClientId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AzureClientID *string `json:"azureClientId"`
 
 	// azure client secret
-	AzureClientSecret string `json:"azureClientSecret,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AzureClientSecret *string `json:"azureClientSecret"`
 
 	// azure location
-	AzureLocation string `json:"azureLocation,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AzureLocation *string `json:"azureLocation"`
 
 	// azure subscription Id
-	AzureSubscriptionID string `json:"azureSubscriptionId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AzureSubscriptionID *string `json:"azureSubscriptionId"`
 
 	// azure tenant Id
-	AzureTenantID string `json:"azureTenantId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AzureTenantID *string `json:"azureTenantId"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
@@ -44,6 +59,117 @@ type CreateAzureCloudCommand struct {
 
 // Validate validates this create azure cloud command
 func (m *CreateAzureCloudCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAzureClientID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAzureClientSecret(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAzureLocation(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAzureSubscriptionID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAzureTenantID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateAzureCloudCommand) validateAzureClientID(formats strfmt.Registry) error {
+
+	if err := validate.Required("azureClientId", "body", m.AzureClientID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("azureClientId", "body", *m.AzureClientID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateAzureCloudCommand) validateAzureClientSecret(formats strfmt.Registry) error {
+
+	if err := validate.Required("azureClientSecret", "body", m.AzureClientSecret); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("azureClientSecret", "body", *m.AzureClientSecret, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateAzureCloudCommand) validateAzureLocation(formats strfmt.Registry) error {
+
+	if err := validate.Required("azureLocation", "body", m.AzureLocation); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("azureLocation", "body", *m.AzureLocation, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateAzureCloudCommand) validateAzureSubscriptionID(formats strfmt.Registry) error {
+
+	if err := validate.Required("azureSubscriptionId", "body", m.AzureSubscriptionID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("azureSubscriptionId", "body", *m.AzureSubscriptionID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateAzureCloudCommand) validateAzureTenantID(formats strfmt.Registry) error {
+
+	if err := validate.Required("azureTenantId", "body", m.AzureTenantID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("azureTenantId", "body", *m.AzureTenantID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateAzureCloudCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
 	return nil
 }
 

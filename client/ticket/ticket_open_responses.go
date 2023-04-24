@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // TicketOpenReader is a Reader for the TicketOpen structure.
@@ -75,7 +73,6 @@ TicketOpenOK describes a response with status code 200, with default header valu
 Success
 */
 type TicketOpenOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this ticket open o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *TicketOpenOK) Code() int {
 }
 
 func (o *TicketOpenOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenOK ", 200)
 }
 
 func (o *TicketOpenOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenOK  %+v", 200, o.Payload)
-}
-
-func (o *TicketOpenOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenOK ", 200)
 }
 
 func (o *TicketOpenOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

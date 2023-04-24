@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // BillingCreateReader is a Reader for the BillingCreate structure.
@@ -75,7 +73,6 @@ BillingCreateOK describes a response with status code 200, with default header v
 Success
 */
 type BillingCreateOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this billing create o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *BillingCreateOK) Code() int {
 }
 
 func (o *BillingCreateOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateOK ", 200)
 }
 
 func (o *BillingCreateOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateOK  %+v", 200, o.Payload)
-}
-
-func (o *BillingCreateOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateOK ", 200)
 }
 
 func (o *BillingCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

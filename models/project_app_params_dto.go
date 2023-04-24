@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ProjectAppParamsDto project app params dto
@@ -18,7 +20,9 @@ import (
 type ProjectAppParamsDto struct {
 
 	// key
-	Key string `json:"key,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Key *string `json:"key"`
 
 	// value
 	Value string `json:"value,omitempty"`
@@ -26,6 +30,28 @@ type ProjectAppParamsDto struct {
 
 // Validate validates this project app params dto
 func (m *ProjectAppParamsDto) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ProjectAppParamsDto) validateKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("key", "body", m.Key); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("key", "body", *m.Key, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

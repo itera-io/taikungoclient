@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AzureSubscriptionListCommand azure subscription list command
@@ -18,17 +20,79 @@ import (
 type AzureSubscriptionListCommand struct {
 
 	// client Id
-	ClientID string `json:"clientId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	ClientID *string `json:"clientId"`
 
 	// client secret
-	ClientSecret string `json:"clientSecret,omitempty"`
+	// Required: true
+	// Min Length: 1
+	ClientSecret *string `json:"clientSecret"`
 
 	// tenant Id
-	TenantID string `json:"tenantId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	TenantID *string `json:"tenantId"`
 }
 
 // Validate validates this azure subscription list command
 func (m *AzureSubscriptionListCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateClientID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateClientSecret(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTenantID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AzureSubscriptionListCommand) validateClientID(formats strfmt.Registry) error {
+
+	if err := validate.Required("clientId", "body", m.ClientID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("clientId", "body", *m.ClientID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *AzureSubscriptionListCommand) validateClientSecret(formats strfmt.Registry) error {
+
+	if err := validate.Required("clientSecret", "body", m.ClientSecret); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("clientSecret", "body", *m.ClientSecret, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *AzureSubscriptionListCommand) validateTenantID(formats strfmt.Registry) error {
+
+	if err := validate.Required("tenantId", "body", m.TenantID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("tenantId", "body", *m.TenantID, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

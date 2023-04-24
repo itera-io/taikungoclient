@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AdminAddBalanceReader is a Reader for the AdminAddBalance structure.
@@ -75,7 +73,6 @@ AdminAddBalanceOK describes a response with status code 200, with default header
 Success
 */
 type AdminAddBalanceOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this admin add balance o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *AdminAddBalanceOK) Code() int {
 }
 
 func (o *AdminAddBalanceOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceOK ", 200)
 }
 
 func (o *AdminAddBalanceOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceOK  %+v", 200, o.Payload)
-}
-
-func (o *AdminAddBalanceOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceOK ", 200)
 }
 
 func (o *AdminAddBalanceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

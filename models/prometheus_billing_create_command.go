@@ -20,13 +20,19 @@ import (
 type PrometheusBillingCreateCommand struct {
 
 	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	OrganizationID *int32 `json:"organizationId"`
 
 	// price
+	// Maximum: 3e+09
+	// Minimum: 1e-12
 	Price float64 `json:"price,omitempty"`
 
 	// prometheus rule Id
-	PrometheusRuleID int32 `json:"prometheusRuleId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	PrometheusRuleID *int32 `json:"prometheusRuleId"`
 
 	// start date
 	// Format: date-time
@@ -37,6 +43,18 @@ type PrometheusBillingCreateCommand struct {
 func (m *PrometheusBillingCreateCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateOrganizationID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePrice(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePrometheusRuleID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateStartDate(formats); err != nil {
 		res = append(res, err)
 	}
@@ -44,6 +62,48 @@ func (m *PrometheusBillingCreateCommand) Validate(formats strfmt.Registry) error
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *PrometheusBillingCreateCommand) validateOrganizationID(formats strfmt.Registry) error {
+
+	if err := validate.Required("organizationId", "body", m.OrganizationID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("organizationId", "body", int64(*m.OrganizationID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PrometheusBillingCreateCommand) validatePrice(formats strfmt.Registry) error {
+	if swag.IsZero(m.Price) { // not required
+		return nil
+	}
+
+	if err := validate.Minimum("price", "body", m.Price, 1e-12, false); err != nil {
+		return err
+	}
+
+	if err := validate.Maximum("price", "body", m.Price, 3e+09, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PrometheusBillingCreateCommand) validatePrometheusRuleID(formats strfmt.Registry) error {
+
+	if err := validate.Required("prometheusRuleId", "body", m.PrometheusRuleID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("prometheusRuleId", "body", int64(*m.PrometheusRuleID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 

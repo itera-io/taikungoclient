@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesProfilesDeleteReader is a Reader for the KubernetesProfilesDelete structure.
@@ -81,7 +79,6 @@ KubernetesProfilesDeleteOK describes a response with status code 200, with defau
 Success
 */
 type KubernetesProfilesDeleteOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this kubernetes profiles delete o k response has a 2xx status code
@@ -115,23 +112,14 @@ func (o *KubernetesProfilesDeleteOK) Code() int {
 }
 
 func (o *KubernetesProfilesDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteOK ", 200)
 }
 
 func (o *KubernetesProfilesDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteOK  %+v", 200, o.Payload)
-}
-
-func (o *KubernetesProfilesDeleteOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteOK ", 200)
 }
 
 func (o *KubernetesProfilesDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }
@@ -144,7 +132,7 @@ func NewKubernetesProfilesDeleteNoContent() *KubernetesProfilesDeleteNoContent {
 /*
 KubernetesProfilesDeleteNoContent describes a response with status code 204, with default header values.
 
-Success
+No Content
 */
 type KubernetesProfilesDeleteNoContent struct {
 }

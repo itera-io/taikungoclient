@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CheckerYamlReader is a Reader for the CheckerYaml structure.
@@ -75,7 +73,6 @@ CheckerYamlOK describes a response with status code 200, with default header val
 Success
 */
 type CheckerYamlOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this checker yaml o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CheckerYamlOK) Code() int {
 }
 
 func (o *CheckerYamlOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlOK ", 200)
 }
 
 func (o *CheckerYamlOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlOK  %+v", 200, o.Payload)
-}
-
-func (o *CheckerYamlOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlOK ", 200)
 }
 
 func (o *CheckerYamlOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

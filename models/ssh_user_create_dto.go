@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // SSHUserCreateDto Ssh user create dto
@@ -18,14 +20,62 @@ import (
 type SSHUserCreateDto struct {
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// ssh public key
-	SSHPublicKey string `json:"sshPublicKey,omitempty"`
+	// Required: true
+	// Min Length: 1
+	SSHPublicKey *string `json:"sshPublicKey"`
 }
 
 // Validate validates this Ssh user create dto
 func (m *SSHUserCreateDto) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSSHPublicKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *SSHUserCreateDto) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SSHUserCreateDto) validateSSHPublicKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("sshPublicKey", "body", m.SSHPublicKey); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("sshPublicKey", "body", *m.SSHPublicKey, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

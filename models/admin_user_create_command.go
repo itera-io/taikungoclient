@@ -11,6 +11,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AdminUserCreateCommand admin user create command
@@ -19,32 +20,100 @@ import (
 type AdminUserCreateCommand struct {
 
 	// email
-	Email string `json:"email,omitempty"`
+	// Required: true
+	// Max Length: 2000
+	// Min Length: 3
+	// Format: email
+	Email *strfmt.Email `json:"email"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
 	// password
-	Password string `json:"password,omitempty"`
+	// Required: true
+	// Max Length: 200
+	// Min Length: 6
+	Password struct {
+		AdminUserCreateCommandPasswordAllOf0
+
+		AdminUserCreateCommandPasswordAllOf1
+
+		AdminUserCreateCommandPasswordAllOf2
+
+		AdminUserCreateCommandPasswordAllOf3
+	} `json:"password"`
 
 	// role
 	Role UserRole `json:"role,omitempty"`
 
 	// username
-	Username string `json:"username,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Username *string `json:"username"`
 }
 
 // Validate validates this admin user create command
 func (m *AdminUserCreateCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateEmail(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePassword(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateRole(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsername(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *AdminUserCreateCommand) validateEmail(formats strfmt.Registry) error {
+
+	if err := validate.Required("email", "body", m.Email); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("email", "body", m.Email.String(), 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("email", "body", m.Email.String(), 2000); err != nil {
+		return err
+	}
+
+	if err := validate.FormatOf("email", "body", "email", m.Email.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *AdminUserCreateCommand) validatePassword(formats strfmt.Registry) error {
+
+	if err := validate.Required("password", "body", m.Password); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("password", "body", *m.Password, 6); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("password", "body", *m.Password, 200); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -59,6 +128,23 @@ func (m *AdminUserCreateCommand) validateRole(formats strfmt.Registry) error {
 		} else if ce, ok := err.(*errors.CompositeError); ok {
 			return ce.ValidateName("role")
 		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *AdminUserCreateCommand) validateUsername(formats strfmt.Registry) error {
+
+	if err := validate.Required("username", "body", m.Username); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("username", "body", *m.Username, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("username", "body", *m.Username, 30); err != nil {
 		return err
 	}
 
@@ -110,3 +196,23 @@ func (m *AdminUserCreateCommand) UnmarshalBinary(b []byte) error {
 	*m = res
 	return nil
 }
+
+// AdminUserCreateCommandPasswordAllOf0 admin user create command password all of0
+//
+// swagger:model AdminUserCreateCommandPasswordAllOf0
+type AdminUserCreateCommandPasswordAllOf0 interface{}
+
+// AdminUserCreateCommandPasswordAllOf1 admin user create command password all of1
+//
+// swagger:model AdminUserCreateCommandPasswordAllOf1
+type AdminUserCreateCommandPasswordAllOf1 interface{}
+
+// AdminUserCreateCommandPasswordAllOf2 admin user create command password all of2
+//
+// swagger:model AdminUserCreateCommandPasswordAllOf2
+type AdminUserCreateCommandPasswordAllOf2 interface{}
+
+// AdminUserCreateCommandPasswordAllOf3 admin user create command password all of3
+//
+// swagger:model AdminUserCreateCommandPasswordAllOf3
+type AdminUserCreateCommandPasswordAllOf3 interface{}

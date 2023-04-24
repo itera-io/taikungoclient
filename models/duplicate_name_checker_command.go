@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // DuplicateNameCheckerCommand duplicate name checker command
@@ -18,17 +20,60 @@ import (
 type DuplicateNameCheckerCommand struct {
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Name *string `json:"name"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
 	// type
-	Type string `json:"type,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Type *string `json:"type"`
 }
 
 // Validate validates this duplicate name checker command
 func (m *DuplicateNameCheckerCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *DuplicateNameCheckerCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *DuplicateNameCheckerCommand) validateType(formats strfmt.Registry) error {
+
+	if err := validate.Required("type", "body", m.Type); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("type", "body", *m.Type, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

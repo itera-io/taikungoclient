@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // KeycloakCreateReader is a Reader for the KeycloakCreate structure.
@@ -75,7 +73,6 @@ KeycloakCreateOK describes a response with status code 200, with default header 
 Success
 */
 type KeycloakCreateOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this keycloak create o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *KeycloakCreateOK) Code() int {
 }
 
 func (o *KeycloakCreateOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateOK ", 200)
 }
 
 func (o *KeycloakCreateOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateOK  %+v", 200, o.Payload)
-}
-
-func (o *KeycloakCreateOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateOK ", 200)
 }
 
 func (o *KeycloakCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

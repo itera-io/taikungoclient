@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesPatchConfigMapReader is a Reader for the KubernetesPatchConfigMap structure.
@@ -75,7 +73,6 @@ KubernetesPatchConfigMapOK describes a response with status code 200, with defau
 Success
 */
 type KubernetesPatchConfigMapOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this kubernetes patch config map o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *KubernetesPatchConfigMapOK) Code() int {
 }
 
 func (o *KubernetesPatchConfigMapOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapOK ", 200)
 }
 
 func (o *KubernetesPatchConfigMapOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapOK  %+v", 200, o.Payload)
-}
-
-func (o *KubernetesPatchConfigMapOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapOK ", 200)
 }
 
 func (o *KubernetesPatchConfigMapOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

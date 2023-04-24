@@ -11,6 +11,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AlertingIntegrationDto alerting integration dto
@@ -19,13 +20,16 @@ import (
 type AlertingIntegrationDto struct {
 
 	// alerting integration type
-	AlertingIntegrationType AlertingIntegrationType `json:"alertingIntegrationType,omitempty"`
+	// Required: true
+	AlertingIntegrationType *AlertingIntegrationType `json:"alertingIntegrationType"`
 
 	// token
 	Token string `json:"token,omitempty"`
 
 	// url
-	URL string `json:"url,omitempty"`
+	// Required: true
+	// Min Length: 1
+	URL *string `json:"url"`
 }
 
 // Validate validates this alerting integration dto
@@ -36,6 +40,10 @@ func (m *AlertingIntegrationDto) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateURL(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -43,16 +51,36 @@ func (m *AlertingIntegrationDto) Validate(formats strfmt.Registry) error {
 }
 
 func (m *AlertingIntegrationDto) validateAlertingIntegrationType(formats strfmt.Registry) error {
-	if swag.IsZero(m.AlertingIntegrationType) { // not required
-		return nil
+
+	if err := validate.Required("alertingIntegrationType", "body", m.AlertingIntegrationType); err != nil {
+		return err
 	}
 
-	if err := m.AlertingIntegrationType.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("alertingIntegrationType")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("alertingIntegrationType")
+	if err := validate.Required("alertingIntegrationType", "body", m.AlertingIntegrationType); err != nil {
+		return err
+	}
+
+	if m.AlertingIntegrationType != nil {
+		if err := m.AlertingIntegrationType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("alertingIntegrationType")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("alertingIntegrationType")
+			}
+			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *AlertingIntegrationDto) validateURL(formats strfmt.Registry) error {
+
+	if err := validate.Required("url", "body", m.URL); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("url", "body", *m.URL, 1); err != nil {
 		return err
 	}
 
@@ -75,13 +103,15 @@ func (m *AlertingIntegrationDto) ContextValidate(ctx context.Context, formats st
 
 func (m *AlertingIntegrationDto) contextValidateAlertingIntegrationType(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.AlertingIntegrationType.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("alertingIntegrationType")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("alertingIntegrationType")
+	if m.AlertingIntegrationType != nil {
+		if err := m.AlertingIntegrationType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("alertingIntegrationType")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("alertingIntegrationType")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

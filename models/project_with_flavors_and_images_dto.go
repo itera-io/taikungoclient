@@ -23,6 +23,9 @@ type ProjectWithFlavorsAndImagesDto struct {
 	// id
 	ID int32 `json:"id,omitempty"`
 
+	// image names
+	ImageNames []string `json:"imageNames"`
+
 	// images
 	Images []string `json:"images"`
 

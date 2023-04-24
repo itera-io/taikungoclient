@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AutoscalingEnableAutoscalingReader is a Reader for the AutoscalingEnableAutoscaling structure.
@@ -75,7 +73,6 @@ AutoscalingEnableAutoscalingOK describes a response with status code 200, with d
 Success
 */
 type AutoscalingEnableAutoscalingOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this autoscaling enable autoscaling o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *AutoscalingEnableAutoscalingOK) Code() int {
 }
 
 func (o *AutoscalingEnableAutoscalingOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/enable][%d] autoscalingEnableAutoscalingOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/enable][%d] autoscalingEnableAutoscalingOK ", 200)
 }
 
 func (o *AutoscalingEnableAutoscalingOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/enable][%d] autoscalingEnableAutoscalingOK  %+v", 200, o.Payload)
-}
-
-func (o *AutoscalingEnableAutoscalingOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/enable][%d] autoscalingEnableAutoscalingOK ", 200)
 }
 
 func (o *AutoscalingEnableAutoscalingOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

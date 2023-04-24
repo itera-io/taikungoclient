@@ -51,7 +51,9 @@ type CreateProjectCommand struct {
 	Cidr string `json:"cidr,omitempty"`
 
 	// cloud credential Id
-	CloudCredentialID int32 `json:"cloudCredentialId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	CloudCredentialID *int32 `json:"cloudCredentialId"`
 
 	// delete on expiration
 	DeleteOnExpiration bool `json:"deleteOnExpiration"`
@@ -97,7 +99,10 @@ type CreateProjectCommand struct {
 	MinSize int32 `json:"minSize,omitempty"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// net mask
 	NetMask int32 `json:"netMask,omitempty"`
@@ -137,11 +142,19 @@ type CreateProjectCommand struct {
 func (m *CreateProjectCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCloudCredentialID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateExpiredAt(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateFromTemplate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -152,6 +165,19 @@ func (m *CreateProjectCommand) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CreateProjectCommand) validateCloudCredentialID(formats strfmt.Registry) error {
+
+	if err := validate.Required("cloudCredentialId", "body", m.CloudCredentialID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("cloudCredentialId", "body", int64(*m.CloudCredentialID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -181,6 +207,23 @@ func (m *CreateProjectCommand) validateFromTemplate(formats strfmt.Registry) err
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *CreateProjectCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
 	}
 
 	return nil

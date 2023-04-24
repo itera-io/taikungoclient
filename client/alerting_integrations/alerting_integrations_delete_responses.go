@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AlertingIntegrationsDeleteReader is a Reader for the AlertingIntegrationsDelete structure.
@@ -81,7 +79,6 @@ AlertingIntegrationsDeleteOK describes a response with status code 200, with def
 Success
 */
 type AlertingIntegrationsDeleteOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this alerting integrations delete o k response has a 2xx status code
@@ -115,23 +112,14 @@ func (o *AlertingIntegrationsDeleteOK) Code() int {
 }
 
 func (o *AlertingIntegrationsDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteOK ", 200)
 }
 
 func (o *AlertingIntegrationsDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteOK  %+v", 200, o.Payload)
-}
-
-func (o *AlertingIntegrationsDeleteOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteOK ", 200)
 }
 
 func (o *AlertingIntegrationsDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }
@@ -144,7 +132,7 @@ func NewAlertingIntegrationsDeleteNoContent() *AlertingIntegrationsDeleteNoConte
 /*
 AlertingIntegrationsDeleteNoContent describes a response with status code 204, with default header values.
 
-Success
+No Content
 */
 type AlertingIntegrationsDeleteNoContent struct {
 }

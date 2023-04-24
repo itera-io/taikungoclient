@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // SecurityGroupEditReader is a Reader for the SecurityGroupEdit structure.
@@ -75,7 +73,6 @@ SecurityGroupEditOK describes a response with status code 200, with default head
 Success
 */
 type SecurityGroupEditOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this security group edit o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *SecurityGroupEditOK) Code() int {
 }
 
 func (o *SecurityGroupEditOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditOK ", 200)
 }
 
 func (o *SecurityGroupEditOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditOK  %+v", 200, o.Payload)
-}
-
-func (o *SecurityGroupEditOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditOK ", 200)
 }
 
 func (o *SecurityGroupEditOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

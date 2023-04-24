@@ -36,6 +36,8 @@ type ClientService interface {
 
 	AwsCreate(params *AwsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsCreateOK, error)
 
+	AwsDeviceNames(params *AwsDeviceNamesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsDeviceNamesOK, error)
+
 	AwsList(params *AwsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsListOK, error)
 
 	AwsRegionList(params *AwsRegionListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsRegionListOK, error)
@@ -59,7 +61,7 @@ func (a *Client) AwsAwsOwners(params *AwsAwsOwnersParams, authInfo runtime.Clien
 		PathPattern:        "/api/v{v}/Aws/owners",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &AwsAwsOwnersReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -98,7 +100,7 @@ func (a *Client) AwsAwsZoneList(params *AwsAwsZoneListParams, authInfo runtime.C
 		PathPattern:        "/api/v{v}/Aws/zones",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &AwsAwsZoneListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -137,7 +139,7 @@ func (a *Client) AwsCreate(params *AwsCreateParams, authInfo runtime.ClientAuthI
 		PathPattern:        "/api/v{v}/Aws/create",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &AwsCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -163,6 +165,45 @@ func (a *Client) AwsCreate(params *AwsCreateParams, authInfo runtime.ClientAuthI
 }
 
 /*
+AwsDeviceNames aws device name list
+*/
+func (a *Client) AwsDeviceNames(params *AwsDeviceNamesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsDeviceNamesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAwsDeviceNamesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Aws_DeviceNames",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Aws/device-names",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &AwsDeviceNamesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AwsDeviceNamesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Aws_DeviceNames: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 AwsList retrieves list of aws cloud credentials
 */
 func (a *Client) AwsList(params *AwsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsListOK, error) {
@@ -176,7 +217,7 @@ func (a *Client) AwsList(params *AwsListParams, authInfo runtime.ClientAuthInfoW
 		PathPattern:        "/api/v{v}/Aws/list",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &AwsListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -215,7 +256,7 @@ func (a *Client) AwsRegionList(params *AwsRegionListParams, authInfo runtime.Cli
 		PathPattern:        "/api/v{v}/Aws/regions",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &AwsRegionListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -254,7 +295,7 @@ func (a *Client) AwsUpdate(params *AwsUpdateParams, authInfo runtime.ClientAuthI
 		PathPattern:        "/api/v{v}/Aws/update",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &AwsUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,

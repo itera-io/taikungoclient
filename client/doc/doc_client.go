@@ -49,7 +49,7 @@ func (a *Client) DocumentationList(params *DocumentationListParams, authInfo run
 		PathPattern:        "/api/v{v}/Documentation",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &DocumentationListReader{formats: a.formats},
 		AuthInfo:           authInfo,

@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ResetPasswordCommand reset password command
@@ -18,17 +20,85 @@ import (
 type ResetPasswordCommand struct {
 
 	// email
-	Email string `json:"email,omitempty"`
+	// Format: email
+	Email strfmt.Email `json:"email,omitempty"`
 
 	// new password
-	NewPassword string `json:"newPassword,omitempty"`
+	// Required: true
+	// Min Length: 6
+	NewPassword struct {
+		ResetPasswordCommandNewPasswordAllOf0
+
+		ResetPasswordCommandNewPasswordAllOf1
+
+		ResetPasswordCommandNewPasswordAllOf2
+
+		ResetPasswordCommandNewPasswordAllOf3
+	} `json:"newPassword"`
 
 	// token
-	Token string `json:"token,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Token *string `json:"token"`
 }
 
 // Validate validates this reset password command
 func (m *ResetPasswordCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateEmail(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNewPassword(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateToken(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResetPasswordCommand) validateEmail(formats strfmt.Registry) error {
+	if swag.IsZero(m.Email) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("email", "body", "email", m.Email.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ResetPasswordCommand) validateNewPassword(formats strfmt.Registry) error {
+
+	if err := validate.Required("newPassword", "body", m.NewPassword); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("newPassword", "body", *m.NewPassword, 6); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ResetPasswordCommand) validateToken(formats strfmt.Registry) error {
+
+	if err := validate.Required("token", "body", m.Token); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("token", "body", *m.Token, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -54,3 +124,23 @@ func (m *ResetPasswordCommand) UnmarshalBinary(b []byte) error {
 	*m = res
 	return nil
 }
+
+// ResetPasswordCommandNewPasswordAllOf0 reset password command new password all of0
+//
+// swagger:model ResetPasswordCommandNewPasswordAllOf0
+type ResetPasswordCommandNewPasswordAllOf0 interface{}
+
+// ResetPasswordCommandNewPasswordAllOf1 reset password command new password all of1
+//
+// swagger:model ResetPasswordCommandNewPasswordAllOf1
+type ResetPasswordCommandNewPasswordAllOf1 interface{}
+
+// ResetPasswordCommandNewPasswordAllOf2 reset password command new password all of2
+//
+// swagger:model ResetPasswordCommandNewPasswordAllOf2
+type ResetPasswordCommandNewPasswordAllOf2 interface{}
+
+// ResetPasswordCommandNewPasswordAllOf3 reset password command new password all of3
+//
+// swagger:model ResetPasswordCommandNewPasswordAllOf3
+type ResetPasswordCommandNewPasswordAllOf3 interface{}

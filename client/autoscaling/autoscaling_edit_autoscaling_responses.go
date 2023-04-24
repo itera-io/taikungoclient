@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AutoscalingEditAutoscalingReader is a Reader for the AutoscalingEditAutoscaling structure.
@@ -75,7 +73,6 @@ AutoscalingEditAutoscalingOK describes a response with status code 200, with def
 Success
 */
 type AutoscalingEditAutoscalingOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this autoscaling edit autoscaling o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *AutoscalingEditAutoscalingOK) Code() int {
 }
 
 func (o *AutoscalingEditAutoscalingOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/edit][%d] autoscalingEditAutoscalingOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/edit][%d] autoscalingEditAutoscalingOK ", 200)
 }
 
 func (o *AutoscalingEditAutoscalingOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/edit][%d] autoscalingEditAutoscalingOK  %+v", 200, o.Payload)
-}
-
-func (o *AutoscalingEditAutoscalingOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/edit][%d] autoscalingEditAutoscalingOK ", 200)
 }
 
 func (o *AutoscalingEditAutoscalingOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

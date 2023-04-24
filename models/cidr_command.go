@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CidrCommand cidr command
@@ -18,11 +20,35 @@ import (
 type CidrCommand struct {
 
 	// cidr
-	Cidr string `json:"cidr,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Cidr *string `json:"cidr"`
 }
 
 // Validate validates this cidr command
 func (m *CidrCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateCidr(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CidrCommand) validateCidr(formats strfmt.Registry) error {
+
+	if err := validate.Required("cidr", "body", m.Cidr); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("cidr", "body", *m.Cidr, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

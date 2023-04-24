@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesRestartDaemonSetReader is a Reader for the KubernetesRestartDaemonSet structure.
@@ -75,7 +73,6 @@ KubernetesRestartDaemonSetOK describes a response with status code 200, with def
 Success
 */
 type KubernetesRestartDaemonSetOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this kubernetes restart daemon set o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *KubernetesRestartDaemonSetOK) Code() int {
 }
 
 func (o *KubernetesRestartDaemonSetOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetOK ", 200)
 }
 
 func (o *KubernetesRestartDaemonSetOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetOK  %+v", 200, o.Payload)
-}
-
-func (o *KubernetesRestartDaemonSetOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetOK ", 200)
 }
 
 func (o *KubernetesRestartDaemonSetOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

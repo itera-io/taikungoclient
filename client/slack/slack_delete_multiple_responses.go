@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // SlackDeleteMultipleReader is a Reader for the SlackDeleteMultiple structure.
@@ -75,7 +73,6 @@ SlackDeleteMultipleOK describes a response with status code 200, with default he
 Success
 */
 type SlackDeleteMultipleOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this slack delete multiple o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *SlackDeleteMultipleOK) Code() int {
 }
 
 func (o *SlackDeleteMultipleOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleOK ", 200)
 }
 
 func (o *SlackDeleteMultipleOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleOK  %+v", 200, o.Payload)
-}
-
-func (o *SlackDeleteMultipleOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleOK ", 200)
 }
 
 func (o *SlackDeleteMultipleOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

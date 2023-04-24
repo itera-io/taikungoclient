@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneVMDisksDeleteReader is a Reader for the StandAloneVMDisksDelete structure.
@@ -75,7 +73,6 @@ StandAloneVMDisksDeleteOK describes a response with status code 200, with defaul
 Success
 */
 type StandAloneVMDisksDeleteOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone Vm disks delete o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *StandAloneVMDisksDeleteOK) Code() int {
 }
 
 func (o *StandAloneVMDisksDeleteOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteOK ", 200)
 }
 
 func (o *StandAloneVMDisksDeleteOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteOK  %+v", 200, o.Payload)
-}
-
-func (o *StandAloneVMDisksDeleteOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteOK ", 200)
 }
 
 func (o *StandAloneVMDisksDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

@@ -143,6 +143,9 @@ type ProjectForListDto struct {
 	// net mask
 	NetMask int32 `json:"netMask,omitempty"`
 
+	// nfs disk size
+	NfsDiskSize int32 `json:"nfsDiskSize,omitempty"`
+
 	// opa profile
 	OpaProfile *OpaProfileListDto `json:"opaProfile,omitempty"`
 
@@ -208,6 +211,9 @@ type ProjectForListDto struct {
 
 	// taikun public SSH key
 	TaikunPublicSSHKey string `json:"taikunPublicSSHKey,omitempty"`
+
+	// tanzu release version
+	TanzuReleaseVersion string `json:"tanzuReleaseVersion,omitempty"`
 
 	// token
 	Token string `json:"token,omitempty"`

@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CheckAzureCPUQuotaCommand check azure Cpu quota command
@@ -18,11 +20,35 @@ import (
 type CheckAzureCPUQuotaCommand struct {
 
 	// cloud Id
-	CloudID int32 `json:"cloudId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	CloudID *int32 `json:"cloudId"`
 }
 
 // Validate validates this check azure Cpu quota command
 func (m *CheckAzureCPUQuotaCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateCloudID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CheckAzureCPUQuotaCommand) validateCloudID(formats strfmt.Registry) error {
+
+	if err := validate.Required("cloudId", "body", m.CloudID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("cloudId", "body", int64(*m.CloudID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 

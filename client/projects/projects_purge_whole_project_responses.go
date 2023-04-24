@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsPurgeWholeProjectReader is a Reader for the ProjectsPurgeWholeProject structure.
@@ -75,7 +73,6 @@ ProjectsPurgeWholeProjectOK describes a response with status code 200, with defa
 Success
 */
 type ProjectsPurgeWholeProjectOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects purge whole project o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *ProjectsPurgeWholeProjectOK) Code() int {
 }
 
 func (o *ProjectsPurgeWholeProjectOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectOK ", 200)
 }
 
 func (o *ProjectsPurgeWholeProjectOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectOK  %+v", 200, o.Payload)
-}
-
-func (o *ProjectsPurgeWholeProjectOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectOK ", 200)
 }
 
 func (o *ProjectsPurgeWholeProjectOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

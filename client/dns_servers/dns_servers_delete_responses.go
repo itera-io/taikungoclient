@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // DNSServersDeleteReader is a Reader for the DNSServersDelete structure.
@@ -81,7 +79,6 @@ DNSServersDeleteOK describes a response with status code 200, with default heade
 Success
 */
 type DNSServersDeleteOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this dns servers delete o k response has a 2xx status code
@@ -115,23 +112,14 @@ func (o *DNSServersDeleteOK) Code() int {
 }
 
 func (o *DNSServersDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteOK ", 200)
 }
 
 func (o *DNSServersDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteOK  %+v", 200, o.Payload)
-}
-
-func (o *DNSServersDeleteOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteOK ", 200)
 }
 
 func (o *DNSServersDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }
@@ -144,7 +132,7 @@ func NewDNSServersDeleteNoContent() *DNSServersDeleteNoContent {
 /*
 DNSServersDeleteNoContent describes a response with status code 204, with default header values.
 
-Success
+No Content
 */
 type DNSServersDeleteNoContent struct {
 }

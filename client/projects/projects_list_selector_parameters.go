@@ -78,6 +78,9 @@ type ProjectsListSelectorParams struct {
 	// Search.
 	Search *string
 
+	// UserID.
+	UserID *string
+
 	// V.
 	V string
 
@@ -178,6 +181,17 @@ func (o *ProjectsListSelectorParams) SetSearch(search *string) {
 	o.Search = search
 }
 
+// WithUserID adds the userID to the projects list selector params
+func (o *ProjectsListSelectorParams) WithUserID(userID *string) *ProjectsListSelectorParams {
+	o.SetUserID(userID)
+	return o
+}
+
+// SetUserID adds the userId to the projects list selector params
+func (o *ProjectsListSelectorParams) SetUserID(userID *string) {
+	o.UserID = userID
+}
+
 // WithV adds the v to the projects list selector params
 func (o *ProjectsListSelectorParams) WithV(v string) *ProjectsListSelectorParams {
 	o.SetV(v)
@@ -260,6 +274,23 @@ func (o *ProjectsListSelectorParams) WriteToRequest(r runtime.ClientRequest, reg
 		if qSearch != "" {
 
 			if err := r.SetQueryParam("search", qSearch); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.UserID != nil {
+
+		// query param userId
+		var qrUserID string
+
+		if o.UserID != nil {
+			qrUserID = *o.UserID
+		}
+		qUserID := qrUserID
+		if qUserID != "" {
+
+			if err := r.SetQueryParam("userId", qUserID); err != nil {
 				return err
 			}
 		}

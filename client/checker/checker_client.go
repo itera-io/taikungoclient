@@ -64,6 +64,8 @@ type ClientService interface {
 
 	CheckerPrometheus(params *CheckerPrometheusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerPrometheusOK, error)
 
+	CheckerProxmox(params *CheckerProxmoxParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerProxmoxOK, error)
+
 	CheckerS3(params *CheckerS3Params, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerS3OK, error)
 
 	CheckerSSH(params *CheckerSSHParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerSSHOK, error)
@@ -91,7 +93,7 @@ func (a *Client) CheckerArtifact(params *CheckerArtifactParams, authInfo runtime
 		PathPattern:        "/api/v{v}/Checker/artifact",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerArtifactReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -130,7 +132,7 @@ func (a *Client) CheckerAws(params *CheckerAwsParams, authInfo runtime.ClientAut
 		PathPattern:        "/api/v{v}/Checker/aws",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerAwsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -169,7 +171,7 @@ func (a *Client) CheckerAzure(params *CheckerAzureParams, authInfo runtime.Clien
 		PathPattern:        "/api/v{v}/Checker/azure",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerAzureReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -208,7 +210,7 @@ func (a *Client) CheckerAzureCPUQuota(params *CheckerAzureCPUQuotaParams, authIn
 		PathPattern:        "/api/v{v}/Checker/azure/quota/cpu",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerAzureCPUQuotaReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -247,7 +249,7 @@ func (a *Client) CheckerCidr(params *CheckerCidrParams, authInfo runtime.ClientA
 		PathPattern:        "/api/v{v}/Checker/cidr",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerCidrReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -286,7 +288,7 @@ func (a *Client) CheckerCron(params *CheckerCronParams, authInfo runtime.ClientA
 		PathPattern:        "/api/v{v}/Checker/cron",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerCronReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -325,7 +327,7 @@ func (a *Client) CheckerDNS(params *CheckerDNSParams, authInfo runtime.ClientAut
 		PathPattern:        "/api/v{v}/Checker/dns",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerDNSReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -364,7 +366,7 @@ func (a *Client) CheckerDuplicate(params *CheckerDuplicateParams, authInfo runti
 		PathPattern:        "/api/v{v}/Checker/duplicate",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerDuplicateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -403,7 +405,7 @@ func (a *Client) CheckerGoogle(params *CheckerGoogleParams, authInfo runtime.Cli
 		PathPattern:        "/api/v{v}/Checker/google",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"multipart/form-data"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerGoogleReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -442,7 +444,7 @@ func (a *Client) CheckerKeycloak(params *CheckerKeycloakParams, authInfo runtime
 		PathPattern:        "/api/v{v}/Checker/keycloak",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerKeycloakReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -481,7 +483,7 @@ func (a *Client) CheckerNode(params *CheckerNodeParams, authInfo runtime.ClientA
 		PathPattern:        "/api/v{v}/Checker/node",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerNodeReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -520,7 +522,7 @@ func (a *Client) CheckerNtp(params *CheckerNtpParams, authInfo runtime.ClientAut
 		PathPattern:        "/api/v{v}/Checker/ntp",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerNtpReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -559,7 +561,7 @@ func (a *Client) CheckerOpenstack(params *CheckerOpenstackParams, authInfo runti
 		PathPattern:        "/api/v{v}/Checker/openstack",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerOpenstackReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -598,7 +600,7 @@ func (a *Client) CheckerOpenstackImage(params *CheckerOpenstackImageParams, auth
 		PathPattern:        "/api/v{v}/Checker/openstack-image/{id}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerOpenstackImageReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -637,7 +639,7 @@ func (a *Client) CheckerOpenstackTaikunLbImage(params *CheckerOpenstackTaikunLbI
 		PathPattern:        "/api/v{v}/Checker/taikun-lb-image/{id}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerOpenstackTaikunLbImageReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -676,7 +678,7 @@ func (a *Client) CheckerOrganization(params *CheckerOrganizationParams, authInfo
 		PathPattern:        "/api/v{v}/Checker/organization",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerOrganizationReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -715,7 +717,7 @@ func (a *Client) CheckerPrometheus(params *CheckerPrometheusParams, authInfo run
 		PathPattern:        "/api/v{v}/Checker/prometheus",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerPrometheusReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -741,6 +743,45 @@ func (a *Client) CheckerPrometheus(params *CheckerPrometheusParams, authInfo run
 }
 
 /*
+CheckerProxmox checks proxmox credentials
+*/
+func (a *Client) CheckerProxmox(params *CheckerProxmoxParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerProxmoxOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCheckerProxmoxParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Checker_Proxmox",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Checker/proxmox",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &CheckerProxmoxReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CheckerProxmoxOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Checker_Proxmox: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 CheckerS3 checks s3 credentials
 */
 func (a *Client) CheckerS3(params *CheckerS3Params, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerS3OK, error) {
@@ -754,7 +795,7 @@ func (a *Client) CheckerS3(params *CheckerS3Params, authInfo runtime.ClientAuthI
 		PathPattern:        "/api/v{v}/Checker/s3",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerS3Reader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -793,7 +834,7 @@ func (a *Client) CheckerSSH(params *CheckerSSHParams, authInfo runtime.ClientAut
 		PathPattern:        "/api/v{v}/Checker/ssh",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerSSHReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -832,7 +873,7 @@ func (a *Client) CheckerTanzu(params *CheckerTanzuParams, authInfo runtime.Clien
 		PathPattern:        "/api/v{v}/Checker/tanzu",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerTanzuReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -871,7 +912,7 @@ func (a *Client) CheckerUserChecker(params *CheckerUserCheckerParams, authInfo r
 		PathPattern:        "/api/v{v}/Checker/user",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerUserCheckerReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -910,7 +951,7 @@ func (a *Client) CheckerYaml(params *CheckerYamlParams, authInfo runtime.ClientA
 		PathPattern:        "/api/v{v}/Checker/yaml",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CheckerYamlReader{formats: a.formats},
 		AuthInfo:           authInfo,

@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // PrometheusLabelListDto prometheus label list dto
@@ -21,11 +23,40 @@ type PrometheusLabelListDto struct {
 	Label string `json:"label,omitempty"`
 
 	// value
-	Value string `json:"value,omitempty"`
+	// Required: true
+	// Max Length: 300
+	// Min Length: 1
+	Value *string `json:"value"`
 }
 
 // Validate validates this prometheus label list dto
 func (m *PrometheusLabelListDto) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateValue(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PrometheusLabelListDto) validateValue(formats strfmt.Registry) error {
+
+	if err := validate.Required("value", "body", m.Value); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("value", "body", *m.Value, 1); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("value", "body", *m.Value, 300); err != nil {
+		return err
+	}
+
 	return nil
 }
 

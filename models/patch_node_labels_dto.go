@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // PatchNodeLabelsDto patch node labels dto
@@ -18,10 +20,15 @@ import (
 type PatchNodeLabelsDto struct {
 
 	// key
-	Key string `json:"key,omitempty"`
+	// Required: true
+	// Max Length: 63
+	// Min Length: 1
+	Key *string `json:"key"`
 
 	// mode
-	Mode string `json:"mode,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Mode *string `json:"mode"`
 
 	// value
 	Value string `json:"value,omitempty"`
@@ -29,6 +36,49 @@ type PatchNodeLabelsDto struct {
 
 // Validate validates this patch node labels dto
 func (m *PatchNodeLabelsDto) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMode(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PatchNodeLabelsDto) validateKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("key", "body", m.Key); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("key", "body", *m.Key, 1); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("key", "body", *m.Key, 63); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PatchNodeLabelsDto) validateMode(formats strfmt.Registry) error {
+
+	if err := validate.Required("mode", "body", m.Mode); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("mode", "body", *m.Mode, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

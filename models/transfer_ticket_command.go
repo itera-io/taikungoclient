@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // TransferTicketCommand transfer ticket command
@@ -18,14 +20,57 @@ import (
 type TransferTicketCommand struct {
 
 	// ticket Id
-	TicketID string `json:"ticketId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	TicketID *string `json:"ticketId"`
 
 	// user Id
-	UserID string `json:"userId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	UserID *string `json:"userId"`
 }
 
 // Validate validates this transfer ticket command
 func (m *TransferTicketCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateTicketID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *TransferTicketCommand) validateTicketID(formats strfmt.Registry) error {
+
+	if err := validate.Required("ticketId", "body", m.TicketID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("ticketId", "body", *m.TicketID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *TransferTicketCommand) validateUserID(formats strfmt.Registry) error {
+
+	if err := validate.Required("userId", "body", m.UserID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("userId", "body", *m.UserID, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

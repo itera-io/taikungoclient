@@ -72,11 +72,6 @@ type SubscriptionListParams struct {
 	// Format: int32
 	Offset *int32
 
-	// PartnerID.
-	//
-	// Format: int32
-	PartnerID *int32
-
 	// Search.
 	Search *string
 
@@ -164,17 +159,6 @@ func (o *SubscriptionListParams) SetOffset(offset *int32) {
 	o.Offset = offset
 }
 
-// WithPartnerID adds the partnerID to the subscription list params
-func (o *SubscriptionListParams) WithPartnerID(partnerID *int32) *SubscriptionListParams {
-	o.SetPartnerID(partnerID)
-	return o
-}
-
-// SetPartnerID adds the partnerId to the subscription list params
-func (o *SubscriptionListParams) SetPartnerID(partnerID *int32) {
-	o.PartnerID = partnerID
-}
-
 // WithSearch adds the search to the subscription list params
 func (o *SubscriptionListParams) WithSearch(search *string) *SubscriptionListParams {
 	o.SetSearch(search)
@@ -256,23 +240,6 @@ func (o *SubscriptionListParams) WriteToRequest(r runtime.ClientRequest, reg str
 		if qOffset != "" {
 
 			if err := r.SetQueryParam("offset", qOffset); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.PartnerID != nil {
-
-		// query param partnerId
-		var qrPartnerID int32
-
-		if o.PartnerID != nil {
-			qrPartnerID = *o.PartnerID
-		}
-		qPartnerID := swag.FormatInt32(qrPartnerID)
-		if qPartnerID != "" {
-
-			if err := r.SetQueryParam("partnerId", qPartnerID); err != nil {
 				return err
 			}
 		}

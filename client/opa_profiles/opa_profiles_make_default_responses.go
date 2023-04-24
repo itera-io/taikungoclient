@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // OpaProfilesMakeDefaultReader is a Reader for the OpaProfilesMakeDefault structure.
@@ -75,7 +73,6 @@ OpaProfilesMakeDefaultOK describes a response with status code 200, with default
 Success
 */
 type OpaProfilesMakeDefaultOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this opa profiles make default o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *OpaProfilesMakeDefaultOK) Code() int {
 }
 
 func (o *OpaProfilesMakeDefaultOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultOK ", 200)
 }
 
 func (o *OpaProfilesMakeDefaultOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultOK  %+v", 200, o.Payload)
-}
-
-func (o *OpaProfilesMakeDefaultOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultOK ", 200)
 }
 
 func (o *OpaProfilesMakeDefaultOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

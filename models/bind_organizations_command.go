@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // BindOrganizationsCommand bind organizations command
@@ -23,7 +24,8 @@ type BindOrganizationsCommand struct {
 	Organizations []*OrganizationDto `json:"organizations"`
 
 	// partner Id
-	PartnerID int32 `json:"partnerId,omitempty"`
+	// Required: true
+	PartnerID *int32 `json:"partnerId"`
 }
 
 // Validate validates this bind organizations command
@@ -31,6 +33,10 @@ func (m *BindOrganizationsCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateOrganizations(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePartnerID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -61,6 +67,15 @@ func (m *BindOrganizationsCommand) validateOrganizations(formats strfmt.Registry
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *BindOrganizationsCommand) validatePartnerID(formats strfmt.Registry) error {
+
+	if err := validate.Required("partnerId", "body", m.PartnerID); err != nil {
+		return err
 	}
 
 	return nil

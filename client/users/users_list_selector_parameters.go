@@ -67,6 +67,11 @@ type UsersListSelectorParams struct {
 	// Format: int32
 	OrganizationID *int32
 
+	// ProjectID.
+	//
+	// Format: int32
+	ProjectID *int32
+
 	// Search.
 	Search *string
 
@@ -137,6 +142,17 @@ func (o *UsersListSelectorParams) SetOrganizationID(organizationID *int32) {
 	o.OrganizationID = organizationID
 }
 
+// WithProjectID adds the projectID to the users list selector params
+func (o *UsersListSelectorParams) WithProjectID(projectID *int32) *UsersListSelectorParams {
+	o.SetProjectID(projectID)
+	return o
+}
+
+// SetProjectID adds the projectId to the users list selector params
+func (o *UsersListSelectorParams) SetProjectID(projectID *int32) {
+	o.ProjectID = projectID
+}
+
 // WithSearch adds the search to the users list selector params
 func (o *UsersListSelectorParams) WithSearch(search *string) *UsersListSelectorParams {
 	o.SetSearch(search)
@@ -179,6 +195,23 @@ func (o *UsersListSelectorParams) WriteToRequest(r runtime.ClientRequest, reg st
 		if qOrganizationID != "" {
 
 			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ProjectID != nil {
+
+		// query param projectId
+		var qrProjectID int32
+
+		if o.ProjectID != nil {
+			qrProjectID = *o.ProjectID
+		}
+		qProjectID := swag.FormatInt32(qrProjectID)
+		if qProjectID != "" {
+
+			if err := r.SetQueryParam("projectId", qProjectID); err != nil {
 				return err
 			}
 		}

@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateProjectAppCommand create project app command
@@ -23,35 +24,108 @@ type CreateProjectAppCommand struct {
 	AutoSync bool `json:"autoSync"`
 
 	// catalog app Id
-	CatalogAppID int32 `json:"catalogAppId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	CatalogAppID *int32 `json:"catalogAppId"`
 
 	// extra values
 	ExtraValues string `json:"extraValues,omitempty"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 63
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// namespace
-	Namespace string `json:"namespace,omitempty"`
+	// Required: true
+	// Max Length: 63
+	// Min Length: 1
+	Namespace *string `json:"namespace"`
 
 	// parameters
 	Parameters []*ProjectAppParamsDto `json:"parameters"`
 
 	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ProjectID *int32 `json:"projectId"`
 }
 
 // Validate validates this create project app command
 func (m *CreateProjectAppCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCatalogAppID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNamespace(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateParameters(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProjectID(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CreateProjectAppCommand) validateCatalogAppID(formats strfmt.Registry) error {
+
+	if err := validate.Required("catalogAppId", "body", m.CatalogAppID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("catalogAppId", "body", int64(*m.CatalogAppID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateProjectAppCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 63); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateProjectAppCommand) validateNamespace(formats strfmt.Registry) error {
+
+	if err := validate.Required("namespace", "body", m.Namespace); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("namespace", "body", *m.Namespace, 1); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("namespace", "body", *m.Namespace, 63); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -76,6 +150,19 @@ func (m *CreateProjectAppCommand) validateParameters(formats strfmt.Registry) er
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *CreateProjectAppCommand) validateProjectID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectId", "body", m.ProjectID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("projectId", "body", int64(*m.ProjectID), 0, true); err != nil {
+		return err
 	}
 
 	return nil

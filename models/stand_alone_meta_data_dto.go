@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // StandAloneMetaDataDto stand alone meta data dto
@@ -18,14 +20,67 @@ import (
 type StandAloneMetaDataDto struct {
 
 	// key
-	Key string `json:"key,omitempty"`
+	// Required: true
+	// Max Length: 63
+	// Min Length: 1
+	Key *string `json:"key"`
 
 	// value
-	Value string `json:"value,omitempty"`
+	// Required: true
+	// Max Length: 63
+	// Min Length: 1
+	Value *string `json:"value"`
 }
 
 // Validate validates this stand alone meta data dto
 func (m *StandAloneMetaDataDto) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateValue(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StandAloneMetaDataDto) validateKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("key", "body", m.Key); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("key", "body", *m.Key, 1); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("key", "body", *m.Key, 63); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *StandAloneMetaDataDto) validateValue(formats strfmt.Registry) error {
+
+	if err := validate.Required("value", "body", m.Value); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("value", "body", *m.Value, 1); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("value", "body", *m.Value, 63); err != nil {
+		return err
+	}
+
 	return nil
 }
 

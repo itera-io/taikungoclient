@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // FlavorsBindToProjectReader is a Reader for the FlavorsBindToProject structure.
@@ -75,7 +73,6 @@ FlavorsBindToProjectOK describes a response with status code 200, with default h
 Success
 */
 type FlavorsBindToProjectOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this flavors bind to project o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *FlavorsBindToProjectOK) Code() int {
 }
 
 func (o *FlavorsBindToProjectOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectOK ", 200)
 }
 
 func (o *FlavorsBindToProjectOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectOK  %+v", 200, o.Payload)
-}
-
-func (o *FlavorsBindToProjectOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectOK ", 200)
 }
 
 func (o *FlavorsBindToProjectOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

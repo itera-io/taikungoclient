@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CheckS3Command check s3 command
@@ -18,20 +20,101 @@ import (
 type CheckS3Command struct {
 
 	// s3 access key Id
-	S3AccessKeyID string `json:"s3AccessKeyId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	S3AccessKeyID *string `json:"s3AccessKeyId"`
 
 	// s3 endpoint
-	S3Endpoint string `json:"s3Endpoint,omitempty"`
+	// Required: true
+	// Min Length: 1
+	S3Endpoint *string `json:"s3Endpoint"`
 
 	// s3 region
-	S3Region string `json:"s3Region,omitempty"`
+	// Required: true
+	// Min Length: 1
+	S3Region *string `json:"s3Region"`
 
 	// s3 secret key
-	S3SecretKey string `json:"s3SecretKey,omitempty"`
+	// Required: true
+	// Min Length: 1
+	S3SecretKey *string `json:"s3SecretKey"`
 }
 
 // Validate validates this check s3 command
 func (m *CheckS3Command) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateS3AccessKeyID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateS3Endpoint(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateS3Region(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateS3SecretKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CheckS3Command) validateS3AccessKeyID(formats strfmt.Registry) error {
+
+	if err := validate.Required("s3AccessKeyId", "body", m.S3AccessKeyID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("s3AccessKeyId", "body", *m.S3AccessKeyID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CheckS3Command) validateS3Endpoint(formats strfmt.Registry) error {
+
+	if err := validate.Required("s3Endpoint", "body", m.S3Endpoint); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("s3Endpoint", "body", *m.S3Endpoint, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CheckS3Command) validateS3Region(formats strfmt.Registry) error {
+
+	if err := validate.Required("s3Region", "body", m.S3Region); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("s3Region", "body", *m.S3Region, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CheckS3Command) validateS3SecretKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("s3SecretKey", "body", m.S3SecretKey); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("s3SecretKey", "body", *m.S3SecretKey, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

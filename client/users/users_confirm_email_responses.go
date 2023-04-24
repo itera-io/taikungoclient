@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // UsersConfirmEmailReader is a Reader for the UsersConfirmEmail structure.
@@ -75,7 +73,6 @@ UsersConfirmEmailOK describes a response with status code 200, with default head
 Success
 */
 type UsersConfirmEmailOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this users confirm email o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *UsersConfirmEmailOK) Code() int {
 }
 
 func (o *UsersConfirmEmailOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailOK ", 200)
 }
 
 func (o *UsersConfirmEmailOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailOK  %+v", 200, o.Payload)
-}
-
-func (o *UsersConfirmEmailOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailOK ", 200)
 }
 
 func (o *UsersConfirmEmailOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // SSHUsersDeleteReader is a Reader for the SSHUsersDelete structure.
@@ -75,7 +73,6 @@ SSHUsersDeleteOK describes a response with status code 200, with default header 
 Success
 */
 type SSHUsersDeleteOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this ssh users delete o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *SSHUsersDeleteOK) Code() int {
 }
 
 func (o *SSHUsersDeleteOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteOK ", 200)
 }
 
 func (o *SSHUsersDeleteOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteOK  %+v", 200, o.Payload)
-}
-
-func (o *SSHUsersDeleteOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteOK ", 200)
 }
 
 func (o *SSHUsersDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

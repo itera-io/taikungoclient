@@ -11,6 +11,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ResetServerStatusCommand reset server status command
@@ -19,7 +20,9 @@ import (
 type ResetServerStatusCommand struct {
 
 	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ProjectID *int32 `json:"projectId"`
 
 	// server ids
 	ServerIds []int32 `json:"serverIds"`
@@ -32,6 +35,10 @@ type ResetServerStatusCommand struct {
 func (m *ResetServerStatusCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateProjectID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateStatus(formats); err != nil {
 		res = append(res, err)
 	}
@@ -39,6 +46,19 @@ func (m *ResetServerStatusCommand) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ResetServerStatusCommand) validateProjectID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectId", "body", m.ProjectID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("projectId", "body", int64(*m.ProjectID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 

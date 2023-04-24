@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // EditAutoscalingCommand edit autoscaling command
@@ -18,17 +20,85 @@ import (
 type EditAutoscalingCommand struct {
 
 	// max size
-	MaxSize int32 `json:"maxSize,omitempty"`
+	// Maximum: 100
+	// Minimum: 0
+	MaxSize *int32 `json:"maxSize,omitempty"`
 
 	// min size
-	MinSize int32 `json:"minSize,omitempty"`
+	// Maximum: 100
+	// Minimum: 0
+	MinSize *int32 `json:"minSize,omitempty"`
 
 	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ProjectID *int32 `json:"projectId"`
 }
 
 // Validate validates this edit autoscaling command
 func (m *EditAutoscalingCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateMaxSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMinSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProjectID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *EditAutoscalingCommand) validateMaxSize(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxSize) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("maxSize", "body", int64(*m.MaxSize), 0, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("maxSize", "body", int64(*m.MaxSize), 100, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *EditAutoscalingCommand) validateMinSize(formats strfmt.Registry) error {
+	if swag.IsZero(m.MinSize) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("minSize", "body", int64(*m.MinSize), 0, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("minSize", "body", int64(*m.MinSize), 100, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *EditAutoscalingCommand) validateProjectID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectId", "body", m.ProjectID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("projectId", "body", int64(*m.ProjectID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 

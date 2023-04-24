@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsLockManagerReader is a Reader for the ProjectsLockManager structure.
@@ -75,7 +73,6 @@ ProjectsLockManagerOK describes a response with status code 200, with default he
 Success
 */
 type ProjectsLockManagerOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects lock manager o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *ProjectsLockManagerOK) Code() int {
 }
 
 func (o *ProjectsLockManagerOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerOK ", 200)
 }
 
 func (o *ProjectsLockManagerOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerOK  %+v", 200, o.Payload)
-}
-
-func (o *ProjectsLockManagerOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerOK ", 200)
 }
 
 func (o *ProjectsLockManagerOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

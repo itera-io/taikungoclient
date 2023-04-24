@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // EditArticleCommand edit article command
@@ -18,14 +20,62 @@ import (
 type EditArticleCommand struct {
 
 	// body
-	Body string `json:"body,omitempty"`
+	// Required: true
+	// Max Length: 2000
+	// Min Length: 3
+	Body *string `json:"body"`
 
 	// message Id
-	MessageID string `json:"messageId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	MessageID *string `json:"messageId"`
 }
 
 // Validate validates this edit article command
 func (m *EditArticleCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateBody(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMessageID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *EditArticleCommand) validateBody(formats strfmt.Registry) error {
+
+	if err := validate.Required("body", "body", m.Body); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("body", "body", *m.Body, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("body", "body", *m.Body, 2000); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *EditArticleCommand) validateMessageID(formats strfmt.Registry) error {
+
+	if err := validate.Required("messageId", "body", m.MessageID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("messageId", "body", *m.MessageID, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

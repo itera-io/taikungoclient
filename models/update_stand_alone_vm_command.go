@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // UpdateStandAloneVMCommand update stand alone Vm command
@@ -26,7 +27,9 @@ type UpdateStandAloneVMCommand struct {
 	FlavorID string `json:"flavorId,omitempty"`
 
 	// id
-	ID int32 `json:"id,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ID *int32 `json:"id"`
 
 	// instance Id
 	InstanceID string `json:"instanceId,omitempty"`
@@ -46,6 +49,10 @@ func (m *UpdateStandAloneVMCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateDisks(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -76,6 +83,19 @@ func (m *UpdateStandAloneVMCommand) validateDisks(formats strfmt.Registry) error
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *UpdateStandAloneVMCommand) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("id", "body", int64(*m.ID), 0, true); err != nil {
+		return err
 	}
 
 	return nil

@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ArtifactURLCheckerCommand artifact Url checker command
@@ -18,7 +20,9 @@ import (
 type ArtifactURLCheckerCommand struct {
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Name *string `json:"name"`
 
 	// url
 	URL string `json:"url,omitempty"`
@@ -26,6 +30,28 @@ type ArtifactURLCheckerCommand struct {
 
 // Validate validates this artifact Url checker command
 func (m *ArtifactURLCheckerCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ArtifactURLCheckerCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

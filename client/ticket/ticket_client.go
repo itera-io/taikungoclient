@@ -48,6 +48,8 @@ type ClientService interface {
 
 	TicketReply(params *TicketReplyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketReplyOK, error)
 
+	TicketSetPriority(params *TicketSetPriorityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketSetPriorityOK, error)
+
 	TicketTicketList(params *TicketTicketListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketTicketListOK, error)
 
 	TicketTransfer(params *TicketTransferParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketTransferOK, error)
@@ -73,7 +75,7 @@ func (a *Client) TicketArchive(params *TicketArchiveParams, authInfo runtime.Cli
 		PathPattern:        "/api/v{v}/Ticket/archive",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TicketArchiveReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -112,7 +114,7 @@ func (a *Client) TicketArticleList(params *TicketArticleListParams, authInfo run
 		PathPattern:        "/api/v{v}/Ticket/{ticketId}/messages",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TicketArticleListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -151,7 +153,7 @@ func (a *Client) TicketClose(params *TicketCloseParams, authInfo runtime.ClientA
 		PathPattern:        "/api/v{v}/Ticket/close",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TicketCloseReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -190,7 +192,7 @@ func (a *Client) TicketCreate(params *TicketCreateParams, authInfo runtime.Clien
 		PathPattern:        "/api/v{v}/Ticket/create",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TicketCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -229,7 +231,7 @@ func (a *Client) TicketDelete(params *TicketDeleteParams, authInfo runtime.Clien
 		PathPattern:        "/api/v{v}/Ticket/delete/{ticketId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TicketDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -268,7 +270,7 @@ func (a *Client) TicketDeleteMessage(params *TicketDeleteMessageParams, authInfo
 		PathPattern:        "/api/v{v}/Ticket/delete/message/{messageId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TicketDeleteMessageReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -307,7 +309,7 @@ func (a *Client) TicketEdit(params *TicketEditParams, authInfo runtime.ClientAut
 		PathPattern:        "/api/v{v}/Ticket/edit",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TicketEditReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -346,7 +348,7 @@ func (a *Client) TicketOpen(params *TicketOpenParams, authInfo runtime.ClientAut
 		PathPattern:        "/api/v{v}/Ticket/open",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TicketOpenReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -385,7 +387,7 @@ func (a *Client) TicketReply(params *TicketReplyParams, authInfo runtime.ClientA
 		PathPattern:        "/api/v{v}/Ticket/reply",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TicketReplyReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -411,6 +413,45 @@ func (a *Client) TicketReply(params *TicketReplyParams, authInfo runtime.ClientA
 }
 
 /*
+TicketSetPriority sets priority
+*/
+func (a *Client) TicketSetPriority(params *TicketSetPriorityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketSetPriorityOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewTicketSetPriorityParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Ticket_SetPriority",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Ticket/set-priority",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &TicketSetPriorityReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*TicketSetPriorityOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Ticket_SetPriority: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 TicketTicketList retrieves a list of tickets
 */
 func (a *Client) TicketTicketList(params *TicketTicketListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketTicketListOK, error) {
@@ -424,7 +465,7 @@ func (a *Client) TicketTicketList(params *TicketTicketListParams, authInfo runti
 		PathPattern:        "/api/v{v}/Ticket/list",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TicketTicketListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -463,7 +504,7 @@ func (a *Client) TicketTransfer(params *TicketTransferParams, authInfo runtime.C
 		PathPattern:        "/api/v{v}/Ticket/transfer",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TicketTransferReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -502,7 +543,7 @@ func (a *Client) TicketTransferList(params *TicketTransferListParams, authInfo r
 		PathPattern:        "/api/v{v}/Ticket/transfer/list",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TicketTransferListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -541,7 +582,7 @@ func (a *Client) TicketUpdateMessage(params *TicketUpdateMessageParams, authInfo
 		PathPattern:        "/api/v{v}/Ticket/edit/message",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TicketUpdateMessageReader{formats: a.formats},
 		AuthInfo:           authInfo,

@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobDeleteExpiredRequestsReader is a Reader for the CronJobDeleteExpiredRequests structure.
@@ -75,7 +73,6 @@ CronJobDeleteExpiredRequestsOK describes a response with status code 200, with d
 Success
 */
 type CronJobDeleteExpiredRequestsOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job delete expired requests o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CronJobDeleteExpiredRequestsOK) Code() int {
 }
 
 func (o *CronJobDeleteExpiredRequestsOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsOK ", 200)
 }
 
 func (o *CronJobDeleteExpiredRequestsOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsOK  %+v", 200, o.Payload)
-}
-
-func (o *CronJobDeleteExpiredRequestsOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsOK ", 200)
 }
 
 func (o *CronJobDeleteExpiredRequestsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CheckAwsCommand check aws command
@@ -18,17 +20,79 @@ import (
 type CheckAwsCommand struct {
 
 	// aws access key Id
-	AwsAccessKeyID string `json:"awsAccessKeyId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AwsAccessKeyID *string `json:"awsAccessKeyId"`
 
 	// aws secret access key
-	AwsSecretAccessKey string `json:"awsSecretAccessKey,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AwsSecretAccessKey *string `json:"awsSecretAccessKey"`
 
 	// region
-	Region string `json:"region,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Region *string `json:"region"`
 }
 
 // Validate validates this check aws command
 func (m *CheckAwsCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAwsAccessKeyID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAwsSecretAccessKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRegion(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CheckAwsCommand) validateAwsAccessKeyID(formats strfmt.Registry) error {
+
+	if err := validate.Required("awsAccessKeyId", "body", m.AwsAccessKeyID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("awsAccessKeyId", "body", *m.AwsAccessKeyID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CheckAwsCommand) validateAwsSecretAccessKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("awsSecretAccessKey", "body", m.AwsSecretAccessKey); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("awsSecretAccessKey", "body", *m.AwsSecretAccessKey, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CheckAwsCommand) validateRegion(formats strfmt.Registry) error {
+
+	if err := validate.Required("region", "body", m.Region); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("region", "body", *m.Region, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

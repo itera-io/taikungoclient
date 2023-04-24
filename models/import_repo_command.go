@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ImportRepoCommand import repo command
@@ -18,10 +20,16 @@ import (
 type ImportRepoCommand struct {
 
 	// display name
-	DisplayName string `json:"displayName"`
+	// Required: true
+	// Max Length: 200
+	// Min Length: 3
+	DisplayName *string `json:"displayName"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 200
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// url
 	URL string `json:"url,omitempty"`
@@ -29,6 +37,53 @@ type ImportRepoCommand struct {
 
 // Validate validates this import repo command
 func (m *ImportRepoCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateDisplayName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ImportRepoCommand) validateDisplayName(formats strfmt.Registry) error {
+
+	if err := validate.Required("displayName", "body", m.DisplayName); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("displayName", "body", *m.DisplayName, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("displayName", "body", *m.DisplayName, 200); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ImportRepoCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 200); err != nil {
+		return err
+	}
+
 	return nil
 }
 

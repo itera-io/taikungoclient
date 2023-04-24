@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // OrganizationsAcceptOfferReader is a Reader for the OrganizationsAcceptOffer structure.
@@ -75,7 +73,6 @@ OrganizationsAcceptOfferOK describes a response with status code 200, with defau
 Success
 */
 type OrganizationsAcceptOfferOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this organizations accept offer o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *OrganizationsAcceptOfferOK) Code() int {
 }
 
 func (o *OrganizationsAcceptOfferOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferOK ", 200)
 }
 
 func (o *OrganizationsAcceptOfferOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferOK  %+v", 200, o.Payload)
-}
-
-func (o *OrganizationsAcceptOfferOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferOK ", 200)
 }
 
 func (o *OrganizationsAcceptOfferOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

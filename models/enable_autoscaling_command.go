@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // EnableAutoscalingCommand enable autoscaling command
@@ -18,22 +20,34 @@ import (
 type EnableAutoscalingCommand struct {
 
 	// autoscaling group name
-	AutoscalingGroupName string `json:"autoscalingGroupName,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AutoscalingGroupName *string `json:"autoscalingGroupName"`
 
 	// disk size
+	// Maximum: 8.796093022209e+12
+	// Minimum: 3.2212254719e+10
 	DiskSize float64 `json:"diskSize,omitempty"`
 
 	// flavor
-	Flavor string `json:"flavor,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Flavor *string `json:"flavor"`
 
 	// id
-	ID int32 `json:"id,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ID *int32 `json:"id"`
 
 	// max size
-	MaxSize int32 `json:"maxSize,omitempty"`
+	// Maximum: 100
+	// Minimum: 0
+	MaxSize *int32 `json:"maxSize,omitempty"`
 
 	// min size
-	MinSize int32 `json:"minSize,omitempty"`
+	// Maximum: 100
+	// Minimum: 0
+	MinSize *int32 `json:"minSize,omitempty"`
 
 	// spot enabled
 	SpotEnabled bool `json:"spotEnabled"`
@@ -41,6 +55,122 @@ type EnableAutoscalingCommand struct {
 
 // Validate validates this enable autoscaling command
 func (m *EnableAutoscalingCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAutoscalingGroupName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDiskSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFlavor(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMaxSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMinSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *EnableAutoscalingCommand) validateAutoscalingGroupName(formats strfmt.Registry) error {
+
+	if err := validate.Required("autoscalingGroupName", "body", m.AutoscalingGroupName); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("autoscalingGroupName", "body", *m.AutoscalingGroupName, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *EnableAutoscalingCommand) validateDiskSize(formats strfmt.Registry) error {
+	if swag.IsZero(m.DiskSize) { // not required
+		return nil
+	}
+
+	if err := validate.Minimum("diskSize", "body", m.DiskSize, 3.2212254719e+10, false); err != nil {
+		return err
+	}
+
+	if err := validate.Maximum("diskSize", "body", m.DiskSize, 8.796093022209e+12, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *EnableAutoscalingCommand) validateFlavor(formats strfmt.Registry) error {
+
+	if err := validate.Required("flavor", "body", m.Flavor); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("flavor", "body", *m.Flavor, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *EnableAutoscalingCommand) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("id", "body", int64(*m.ID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *EnableAutoscalingCommand) validateMaxSize(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaxSize) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("maxSize", "body", int64(*m.MaxSize), 0, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("maxSize", "body", int64(*m.MaxSize), 100, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *EnableAutoscalingCommand) validateMinSize(formats strfmt.Registry) error {
+	if swag.IsZero(m.MinSize) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("minSize", "body", int64(*m.MinSize), 0, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("minSize", "body", int64(*m.MinSize), 100, false); err != nil {
+		return err
+	}
+
 	return nil
 }
 

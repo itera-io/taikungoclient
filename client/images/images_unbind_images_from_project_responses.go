@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ImagesUnbindImagesFromProjectReader is a Reader for the ImagesUnbindImagesFromProject structure.
@@ -75,7 +73,6 @@ ImagesUnbindImagesFromProjectOK describes a response with status code 200, with 
 Success
 */
 type ImagesUnbindImagesFromProjectOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this images unbind images from project o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *ImagesUnbindImagesFromProjectOK) Code() int {
 }
 
 func (o *ImagesUnbindImagesFromProjectOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectOK ", 200)
 }
 
 func (o *ImagesUnbindImagesFromProjectOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectOK  %+v", 200, o.Payload)
-}
-
-func (o *ImagesUnbindImagesFromProjectOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectOK ", 200)
 }
 
 func (o *ImagesUnbindImagesFromProjectOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

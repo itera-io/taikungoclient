@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateSubscriptionCommand create subscription command
@@ -18,19 +20,28 @@ import (
 type CreateSubscriptionCommand struct {
 
 	// cloud credential limit
-	CloudCredentialLimit int32 `json:"cloudCredentialLimit,omitempty"`
+	// Maximum: 10000
+	// Minimum: -1
+	CloudCredentialLimit *int32 `json:"cloudCredentialLimit,omitempty"`
 
 	// monthly price
 	MonthlyPrice float64 `json:"monthlyPrice,omitempty"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// project limit
-	ProjectLimit int32 `json:"projectLimit,omitempty"`
+	// Maximum: 10000
+	// Minimum: -1
+	ProjectLimit *int32 `json:"projectLimit,omitempty"`
 
 	// server limit
-	ServerLimit int32 `json:"serverLimit,omitempty"`
+	// Maximum: 10000
+	// Minimum: -1
+	ServerLimit *int32 `json:"serverLimit,omitempty"`
 
 	// tcu price
 	TcuPrice float64 `json:"tcuPrice,omitempty"`
@@ -39,7 +50,9 @@ type CreateSubscriptionCommand struct {
 	TrialDays int32 `json:"trialDays,omitempty"`
 
 	// user limit
-	UserLimit int32 `json:"userLimit,omitempty"`
+	// Maximum: 10000
+	// Minimum: -1
+	UserLimit *int32 `json:"userLimit,omitempty"`
 
 	// yearly price
 	YearlyPrice float64 `json:"yearlyPrice,omitempty"`
@@ -47,6 +60,112 @@ type CreateSubscriptionCommand struct {
 
 // Validate validates this create subscription command
 func (m *CreateSubscriptionCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateCloudCredentialLimit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProjectLimit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateServerLimit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserLimit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateSubscriptionCommand) validateCloudCredentialLimit(formats strfmt.Registry) error {
+	if swag.IsZero(m.CloudCredentialLimit) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("cloudCredentialLimit", "body", int64(*m.CloudCredentialLimit), -1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("cloudCredentialLimit", "body", int64(*m.CloudCredentialLimit), 10000, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateSubscriptionCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateSubscriptionCommand) validateProjectLimit(formats strfmt.Registry) error {
+	if swag.IsZero(m.ProjectLimit) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("projectLimit", "body", int64(*m.ProjectLimit), -1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("projectLimit", "body", int64(*m.ProjectLimit), 10000, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateSubscriptionCommand) validateServerLimit(formats strfmt.Registry) error {
+	if swag.IsZero(m.ServerLimit) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("serverLimit", "body", int64(*m.ServerLimit), -1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("serverLimit", "body", int64(*m.ServerLimit), 10000, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateSubscriptionCommand) validateUserLimit(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserLimit) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("userLimit", "body", int64(*m.UserLimit), -1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("userLimit", "body", int64(*m.UserLimit), 10000, false); err != nil {
+		return err
+	}
+
 	return nil
 }
 

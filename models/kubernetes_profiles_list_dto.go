@@ -61,6 +61,9 @@ type KubernetesProfilesListDto struct {
 	// projects
 	Projects []*CommonDropdownDto `json:"projects"`
 
+	// proxmox storage
+	ProxmoxStorage string `json:"proxmoxStorage,omitempty"`
+
 	// taikun l b enabled
 	TaikunLBEnabled bool `json:"taikunLBEnabled"`
 

@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AzureUpdateReader is a Reader for the AzureUpdate structure.
@@ -75,7 +73,6 @@ AzureUpdateOK describes a response with status code 200, with default header val
 Success
 */
 type AzureUpdateOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this azure update o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *AzureUpdateOK) Code() int {
 }
 
 func (o *AzureUpdateOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateOK ", 200)
 }
 
 func (o *AzureUpdateOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateOK  %+v", 200, o.Payload)
-}
-
-func (o *AzureUpdateOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateOK ", 200)
 }
 
 func (o *AzureUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

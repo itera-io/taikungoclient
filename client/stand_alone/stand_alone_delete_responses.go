@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneDeleteReader is a Reader for the StandAloneDelete structure.
@@ -75,7 +73,6 @@ StandAloneDeleteOK describes a response with status code 200, with default heade
 Success
 */
 type StandAloneDeleteOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone delete o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *StandAloneDeleteOK) Code() int {
 }
 
 func (o *StandAloneDeleteOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAlone/delete][%d] standAloneDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/delete][%d] standAloneDeleteOK ", 200)
 }
 
 func (o *StandAloneDeleteOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAlone/delete][%d] standAloneDeleteOK  %+v", 200, o.Payload)
-}
-
-func (o *StandAloneDeleteOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/delete][%d] standAloneDeleteOK ", 200)
 }
 
 func (o *StandAloneDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // VerifyWebhookCommand verify webhook command
@@ -18,11 +20,35 @@ import (
 type VerifyWebhookCommand struct {
 
 	// url
-	URL string `json:"url,omitempty"`
+	// Required: true
+	// Min Length: 1
+	URL *string `json:"url"`
 }
 
 // Validate validates this verify webhook command
 func (m *VerifyWebhookCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateURL(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *VerifyWebhookCommand) validateURL(formats strfmt.Registry) error {
+
+	if err := validate.Required("url", "body", m.URL); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("url", "body", *m.URL, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobCreateKeyPoolReader is a Reader for the CronJobCreateKeyPool structure.
@@ -75,7 +73,6 @@ CronJobCreateKeyPoolOK describes a response with status code 200, with default h
 Success
 */
 type CronJobCreateKeyPoolOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job create key pool o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CronJobCreateKeyPoolOK) Code() int {
 }
 
 func (o *CronJobCreateKeyPoolOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolOK ", 200)
 }
 
 func (o *CronJobCreateKeyPoolOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolOK  %+v", 200, o.Payload)
-}
-
-func (o *CronJobCreateKeyPoolOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolOK ", 200)
 }
 
 func (o *CronJobCreateKeyPoolOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

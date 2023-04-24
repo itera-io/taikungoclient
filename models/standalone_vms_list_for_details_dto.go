@@ -19,6 +19,9 @@ import (
 // swagger:model StandaloneVmsListForDetailsDto
 type StandaloneVmsListForDetailsDto struct {
 
+	// action buttons
+	ActionButtons *StandaloneVisibilityDto `json:"actionButtons,omitempty"`
+
 	// cloud init
 	CloudInit string `json:"cloudInit,omitempty"`
 
@@ -96,6 +99,10 @@ type StandaloneVmsListForDetailsDto struct {
 func (m *StandaloneVmsListForDetailsDto) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateActionButtons(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDisks(formats); err != nil {
 		res = append(res, err)
 	}
@@ -111,6 +118,25 @@ func (m *StandaloneVmsListForDetailsDto) Validate(formats strfmt.Registry) error
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *StandaloneVmsListForDetailsDto) validateActionButtons(formats strfmt.Registry) error {
+	if swag.IsZero(m.ActionButtons) { // not required
+		return nil
+	}
+
+	if m.ActionButtons != nil {
+		if err := m.ActionButtons.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("actionButtons")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("actionButtons")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -189,6 +215,10 @@ func (m *StandaloneVmsListForDetailsDto) validateStandAloneMetaDatas(formats str
 func (m *StandaloneVmsListForDetailsDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateActionButtons(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateDisks(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -204,6 +234,22 @@ func (m *StandaloneVmsListForDetailsDto) ContextValidate(ctx context.Context, fo
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *StandaloneVmsListForDetailsDto) contextValidateActionButtons(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ActionButtons != nil {
+		if err := m.ActionButtons.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("actionButtons")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("actionButtons")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

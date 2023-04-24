@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // NtpCommand ntp command
@@ -18,11 +20,35 @@ import (
 type NtpCommand struct {
 
 	// address
-	Address string `json:"address,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Address *string `json:"address"`
 }
 
 // Validate validates this ntp command
 func (m *NtpCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAddress(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *NtpCommand) validateAddress(formats strfmt.Registry) error {
+
+	if err := validate.Required("address", "body", m.Address); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("address", "body", *m.Address, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

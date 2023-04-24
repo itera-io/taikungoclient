@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesCreateKubernetesEventReader is a Reader for the KubernetesCreateKubernetesEvent structure.
@@ -75,7 +73,6 @@ KubernetesCreateKubernetesEventOK describes a response with status code 200, wit
 Success
 */
 type KubernetesCreateKubernetesEventOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this kubernetes create kubernetes event o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *KubernetesCreateKubernetesEventOK) Code() int {
 }
 
 func (o *KubernetesCreateKubernetesEventOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/event/{projectId}][%d] kubernetesCreateKubernetesEventOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/event/{projectId}][%d] kubernetesCreateKubernetesEventOK ", 200)
 }
 
 func (o *KubernetesCreateKubernetesEventOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/event/{projectId}][%d] kubernetesCreateKubernetesEventOK  %+v", 200, o.Payload)
-}
-
-func (o *KubernetesCreateKubernetesEventOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/event/{projectId}][%d] kubernetesCreateKubernetesEventOK ", 200)
 }
 
 func (o *KubernetesCreateKubernetesEventOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

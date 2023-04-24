@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // SubscriptionCreateReader is a Reader for the SubscriptionCreate structure.
@@ -75,7 +73,6 @@ SubscriptionCreateOK describes a response with status code 200, with default hea
 Success
 */
 type SubscriptionCreateOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this subscription create o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *SubscriptionCreateOK) Code() int {
 }
 
 func (o *SubscriptionCreateOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateOK ", 200)
 }
 
 func (o *SubscriptionCreateOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateOK  %+v", 200, o.Payload)
-}
-
-func (o *SubscriptionCreateOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateOK ", 200)
 }
 
 func (o *SubscriptionCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

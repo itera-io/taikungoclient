@@ -75,7 +75,7 @@ SlackSlackConfigurationForOrganizationListOK describes a response with status co
 Success
 */
 type SlackSlackConfigurationForOrganizationListOK struct {
-	Payload []*models.SlackConfigurationEntity
+	Payload []*models.CommonDropdownDto
 }
 
 // IsSuccess returns true when this slack slack configuration for organization list o k response has a 2xx status code
@@ -116,7 +116,7 @@ func (o *SlackSlackConfigurationForOrganizationListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListOK  %+v", 200, o.Payload)
 }
 
-func (o *SlackSlackConfigurationForOrganizationListOK) GetPayload() []*models.SlackConfigurationEntity {
+func (o *SlackSlackConfigurationForOrganizationListOK) GetPayload() []*models.CommonDropdownDto {
 	return o.Payload
 }
 

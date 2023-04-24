@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AccessProfilesLockManagementCommand access profiles lock management command
@@ -18,14 +20,57 @@ import (
 type AccessProfilesLockManagementCommand struct {
 
 	// id
-	ID int32 `json:"id,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ID *int32 `json:"id"`
 
 	// mode
-	Mode string `json:"mode,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Mode *string `json:"mode"`
 }
 
 // Validate validates this access profiles lock management command
 func (m *AccessProfilesLockManagementCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMode(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AccessProfilesLockManagementCommand) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("id", "body", int64(*m.ID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *AccessProfilesLockManagementCommand) validateMode(formats strfmt.Registry) error {
+
+	if err := validate.Required("mode", "body", m.Mode); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("mode", "body", *m.Mode, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

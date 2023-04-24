@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // OperationCredentialsCreateCommand operation credentials create command
@@ -18,23 +20,109 @@ import (
 type OperationCredentialsCreateCommand struct {
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
 	// prometheus password
-	PrometheusPassword string `json:"prometheusPassword,omitempty"`
+	// Required: true
+	// Min Length: 1
+	PrometheusPassword *string `json:"prometheusPassword"`
 
 	// prometheus Url
-	PrometheusURL string `json:"prometheusUrl,omitempty"`
+	// Required: true
+	// Min Length: 1
+	PrometheusURL *string `json:"prometheusUrl"`
 
 	// prometheus username
-	PrometheusUsername string `json:"prometheusUsername,omitempty"`
+	// Required: true
+	// Min Length: 1
+	PrometheusUsername *string `json:"prometheusUsername"`
 }
 
 // Validate validates this operation credentials create command
 func (m *OperationCredentialsCreateCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePrometheusPassword(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePrometheusURL(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePrometheusUsername(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *OperationCredentialsCreateCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *OperationCredentialsCreateCommand) validatePrometheusPassword(formats strfmt.Registry) error {
+
+	if err := validate.Required("prometheusPassword", "body", m.PrometheusPassword); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("prometheusPassword", "body", *m.PrometheusPassword, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *OperationCredentialsCreateCommand) validatePrometheusURL(formats strfmt.Registry) error {
+
+	if err := validate.Required("prometheusUrl", "body", m.PrometheusURL); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("prometheusUrl", "body", *m.PrometheusURL, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *OperationCredentialsCreateCommand) validatePrometheusUsername(formats strfmt.Registry) error {
+
+	if err := validate.Required("prometheusUsername", "body", m.PrometheusUsername); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("prometheusUsername", "body", *m.PrometheusUsername, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

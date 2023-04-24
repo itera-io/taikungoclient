@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AllowedHostEditReader is a Reader for the AllowedHostEdit structure.
@@ -75,7 +73,6 @@ AllowedHostEditOK describes a response with status code 200, with default header
 Success
 */
 type AllowedHostEditOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this allowed host edit o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *AllowedHostEditOK) Code() int {
 }
 
 func (o *AllowedHostEditOK) Error() string {
-	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditOK ", 200)
 }
 
 func (o *AllowedHostEditOK) String() string {
-	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditOK  %+v", 200, o.Payload)
-}
-
-func (o *AllowedHostEditOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditOK ", 200)
 }
 
 func (o *AllowedHostEditOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

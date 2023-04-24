@@ -59,6 +59,9 @@ type ProjectForUpdateDto struct {
 
 	// status
 	Status ProjectStatus `json:"status,omitempty"`
+
+	// tanzu release current version
+	TanzuReleaseCurrentVersion string `json:"tanzuReleaseCurrentVersion,omitempty"`
 }
 
 // Validate validates this project for update dto

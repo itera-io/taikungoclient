@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NtpServersDeleteReader is a Reader for the NtpServersDelete structure.
@@ -81,7 +79,6 @@ NtpServersDeleteOK describes a response with status code 200, with default heade
 Success
 */
 type NtpServersDeleteOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this ntp servers delete o k response has a 2xx status code
@@ -115,23 +112,14 @@ func (o *NtpServersDeleteOK) Code() int {
 }
 
 func (o *NtpServersDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteOK ", 200)
 }
 
 func (o *NtpServersDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteOK  %+v", 200, o.Payload)
-}
-
-func (o *NtpServersDeleteOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteOK ", 200)
 }
 
 func (o *NtpServersDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }
@@ -144,7 +132,7 @@ func NewNtpServersDeleteNoContent() *NtpServersDeleteNoContent {
 /*
 NtpServersDeleteNoContent describes a response with status code 204, with default header values.
 
-Success
+No Content
 */
 type NtpServersDeleteNoContent struct {
 }

@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CronJobAutoUpgradeProjects(params *CronJobAutoUpgradeProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobAutoUpgradeProjectsOK, error)
 
+	CronJobBlockOrganization(params *CronJobBlockOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobBlockOrganizationOK, error)
+
 	CronJobCreateKeyPool(params *CronJobCreateKeyPoolParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobCreateKeyPoolOK, error)
 
 	CronJobDeleteAwsSpotInstances(params *CronJobDeleteAwsSpotInstancesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteAwsSpotInstancesOK, error)
@@ -107,7 +109,7 @@ func (a *Client) CronJobAutoUpgradeProjects(params *CronJobAutoUpgradeProjectsPa
 		PathPattern:        "/api/v{v}/CronJob/auto-upgrade-projects",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobAutoUpgradeProjectsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -133,6 +135,45 @@ func (a *Client) CronJobAutoUpgradeProjects(params *CronJobAutoUpgradeProjectsPa
 }
 
 /*
+CronJobBlockOrganization blocks organization
+*/
+func (a *Client) CronJobBlockOrganization(params *CronJobBlockOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobBlockOrganizationOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCronJobBlockOrganizationParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CronJob_BlockOrganization",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/CronJob/block-organization",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &CronJobBlockOrganizationReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CronJobBlockOrganizationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CronJob_BlockOrganization: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 CronJobCreateKeyPool creates key pool
 */
 func (a *Client) CronJobCreateKeyPool(params *CronJobCreateKeyPoolParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobCreateKeyPoolOK, error) {
@@ -146,7 +187,7 @@ func (a *Client) CronJobCreateKeyPool(params *CronJobCreateKeyPoolParams, authIn
 		PathPattern:        "/api/v{v}/CronJob/create-key-pool",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobCreateKeyPoolReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -185,7 +226,7 @@ func (a *Client) CronJobDeleteAwsSpotInstances(params *CronJobDeleteAwsSpotInsta
 		PathPattern:        "/api/v{v}/CronJob/delete-aws-spot-instances",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobDeleteAwsSpotInstancesReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -224,7 +265,7 @@ func (a *Client) CronJobDeleteExpiredAlerts(params *CronJobDeleteExpiredAlertsPa
 		PathPattern:        "/api/v{v}/CronJob/alerts",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobDeleteExpiredAlertsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -263,7 +304,7 @@ func (a *Client) CronJobDeleteExpiredEvents(params *CronJobDeleteExpiredEventsPa
 		PathPattern:        "/api/v{v}/CronJob/events",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobDeleteExpiredEventsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -302,7 +343,7 @@ func (a *Client) CronJobDeleteExpiredHistoryLogs(params *CronJobDeleteExpiredHis
 		PathPattern:        "/api/v{v}/CronJob/history-logs",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobDeleteExpiredHistoryLogsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -341,7 +382,7 @@ func (a *Client) CronJobDeleteExpiredRefreshTokens(params *CronJobDeleteExpiredR
 		PathPattern:        "/api/v{v}/CronJob/refresh-tokens",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobDeleteExpiredRefreshTokensReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -380,7 +421,7 @@ func (a *Client) CronJobDeleteExpiredRequests(params *CronJobDeleteExpiredReques
 		PathPattern:        "/api/v{v}/CronJob/taikun-requests",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobDeleteExpiredRequestsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -419,7 +460,7 @@ func (a *Client) CronJobDeleteExpiredServers(params *CronJobDeleteExpiredServers
 		PathPattern:        "/api/v{v}/CronJob/servers",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobDeleteExpiredServersReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -458,7 +499,7 @@ func (a *Client) CronJobDeleteKubeConfigs(params *CronJobDeleteKubeConfigsParams
 		PathPattern:        "/api/v{v}/CronJob/delete-kube-configs",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobDeleteKubeConfigsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -497,7 +538,7 @@ func (a *Client) CronJobDeletePendingOrganizations(params *CronJobDeletePendingO
 		PathPattern:        "/api/v{v}/CronJob/organizations",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobDeletePendingOrganizationsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -536,7 +577,7 @@ func (a *Client) CronJobDeleteRedundantProjectActions(params *CronJobDeleteRedun
 		PathPattern:        "/api/v{v}/CronJob/project-actions",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobDeleteRedundantProjectActionsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -575,7 +616,7 @@ func (a *Client) CronJobFetchArtifactHubOrganizations(params *CronJobFetchArtifa
 		PathPattern:        "/api/v{v}/CronJob/fetch-artifact-organizations",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobFetchArtifactHubOrganizationsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -614,7 +655,7 @@ func (a *Client) CronJobFetchAzureEuroPrices(params *CronJobFetchAzureEuroPrices
 		PathPattern:        "/api/v{v}/CronJob/fetch-azure-euro-prices",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobFetchAzureEuroPricesReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -653,7 +694,7 @@ func (a *Client) CronJobFetchAzurePrices(params *CronJobFetchAzurePricesParams, 
 		PathPattern:        "/api/v{v}/CronJob/fetch-azure-prices",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobFetchAzurePricesReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -692,7 +733,7 @@ func (a *Client) CronJobFetchKubernetesAlerts(params *CronJobFetchKubernetesAler
 		PathPattern:        "/api/v{v}/CronJob/fetch-kubernetes-alerts",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobFetchKubernetesAlertsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -731,7 +772,7 @@ func (a *Client) CronJobFetchKubernetesOverview(params *CronJobFetchKubernetesOv
 		PathPattern:        "/api/v{v}/CronJob/fetch-kubernetes-overview",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobFetchKubernetesOverviewReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -770,7 +811,7 @@ func (a *Client) CronJobFetchOrganizationDetails(params *CronJobFetchOrganizatio
 		PathPattern:        "/api/v{v}/CronJob/fetch-organization-details",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobFetchOrganizationDetailsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -809,7 +850,7 @@ func (a *Client) CronJobPurgeExpiredProjects(params *CronJobPurgeExpiredProjects
 		PathPattern:        "/api/v{v}/CronJob/projects",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobPurgeExpiredProjectsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -848,7 +889,7 @@ func (a *Client) CronJobRemindAlerts(params *CronJobRemindAlertsParams, authInfo
 		PathPattern:        "/api/v{v}/CronJob/remind-alerts",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobRemindAlertsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -887,7 +928,7 @@ func (a *Client) CronJobSendEmailAboutProjectExpiration(params *CronJobSendEmail
 		PathPattern:        "/api/v{v}/CronJob/project-expiration",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobSendEmailAboutProjectExpirationReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -926,7 +967,7 @@ func (a *Client) CronJobSyncAppProxy(params *CronJobSyncAppProxyParams, authInfo
 		PathPattern:        "/api/v{v}/CronJob/sync-app-proxy",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobSyncAppProxyReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -965,7 +1006,7 @@ func (a *Client) CronJobSyncBackupCredentials(params *CronJobSyncBackupCredentia
 		PathPattern:        "/api/v{v}/CronJob/sync-backup-credentials",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobSyncBackupCredentialsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1004,7 +1045,7 @@ func (a *Client) CronJobSyncOpaProfiles(params *CronJobSyncOpaProfilesParams, au
 		PathPattern:        "/api/v{v}/CronJob/sync-opa-profiles",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobSyncOpaProfilesReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1043,7 +1084,7 @@ func (a *Client) CronJobSyncOrganizations(params *CronJobSyncOrganizationsParams
 		PathPattern:        "/api/v{v}/CronJob/sync-organizations",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobSyncOrganizationsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1082,7 +1123,7 @@ func (a *Client) CronJobSyncProjectApps(params *CronJobSyncProjectAppsParams, au
 		PathPattern:        "/api/v{v}/CronJob/sync-project-apps",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobSyncProjectAppsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1121,7 +1162,7 @@ func (a *Client) CronJobSyncProjects(params *CronJobSyncProjectsParams, authInfo
 		PathPattern:        "/api/v{v}/CronJob/sync-projects",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobSyncProjectsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1160,7 +1201,7 @@ func (a *Client) CronJobTriggerTemplates(params *CronJobTriggerTemplatesParams, 
 		PathPattern:        "/api/v{v}/CronJob/trigger-templates",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobTriggerTemplatesReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1199,7 +1240,7 @@ func (a *Client) CronJobUpdateProjectAppStatus(params *CronJobUpdateProjectAppSt
 		PathPattern:        "/api/v{v}/CronJob/project-app-status",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobUpdateProjectAppStatusReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1238,7 +1279,7 @@ func (a *Client) CronJobUpdateProjectQuotaMessage(params *CronJobUpdateProjectQu
 		PathPattern:        "/api/v{v}/CronJob/project-quota-message",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &CronJobUpdateProjectQuotaMessageReader{formats: a.formats},
 		AuthInfo:           authInfo,

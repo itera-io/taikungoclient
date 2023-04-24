@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AdminProjectUpdateCommand admin project update command
@@ -18,17 +20,89 @@ import (
 type AdminProjectUpdateCommand struct {
 
 	// id
-	ID int32 `json:"id,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ID *int32 `json:"id"`
 
 	// kubernetes current version
-	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion,omitempty"`
+	// Required: true
+	// Max Length: 15
+	// Min Length: 3
+	KubernetesCurrentVersion *string `json:"kubernetesCurrentVersion"`
 
 	// kubespray current version
-	KubesprayCurrentVersion string `json:"kubesprayCurrentVersion,omitempty"`
+	// Required: true
+	// Max Length: 15
+	// Min Length: 3
+	KubesprayCurrentVersion *string `json:"kubesprayCurrentVersion"`
 }
 
 // Validate validates this admin project update command
 func (m *AdminProjectUpdateCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateKubernetesCurrentVersion(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateKubesprayCurrentVersion(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AdminProjectUpdateCommand) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("id", "body", int64(*m.ID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *AdminProjectUpdateCommand) validateKubernetesCurrentVersion(formats strfmt.Registry) error {
+
+	if err := validate.Required("kubernetesCurrentVersion", "body", m.KubernetesCurrentVersion); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("kubernetesCurrentVersion", "body", *m.KubernetesCurrentVersion, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("kubernetesCurrentVersion", "body", *m.KubernetesCurrentVersion, 15); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *AdminProjectUpdateCommand) validateKubesprayCurrentVersion(formats strfmt.Registry) error {
+
+	if err := validate.Required("kubesprayCurrentVersion", "body", m.KubesprayCurrentVersion); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("kubesprayCurrentVersion", "body", *m.KubesprayCurrentVersion, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("kubesprayCurrentVersion", "body", *m.KubesprayCurrentVersion, 15); err != nil {
+		return err
+	}
+
 	return nil
 }
 

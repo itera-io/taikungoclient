@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // PartnerBindOrganizationsReader is a Reader for the PartnerBindOrganizations structure.
@@ -75,7 +73,6 @@ PartnerBindOrganizationsOK describes a response with status code 200, with defau
 Success
 */
 type PartnerBindOrganizationsOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this partner bind organizations o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *PartnerBindOrganizationsOK) Code() int {
 }
 
 func (o *PartnerBindOrganizationsOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsOK ", 200)
 }
 
 func (o *PartnerBindOrganizationsOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsOK  %+v", 200, o.Payload)
-}
-
-func (o *PartnerBindOrganizationsOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsOK ", 200)
 }
 
 func (o *PartnerBindOrganizationsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

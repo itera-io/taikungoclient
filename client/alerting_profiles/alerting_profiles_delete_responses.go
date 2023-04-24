@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AlertingProfilesDeleteReader is a Reader for the AlertingProfilesDelete structure.
@@ -81,7 +79,6 @@ AlertingProfilesDeleteOK describes a response with status code 200, with default
 Success
 */
 type AlertingProfilesDeleteOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this alerting profiles delete o k response has a 2xx status code
@@ -115,23 +112,14 @@ func (o *AlertingProfilesDeleteOK) Code() int {
 }
 
 func (o *AlertingProfilesDeleteOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteOK ", 200)
 }
 
 func (o *AlertingProfilesDeleteOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteOK  %+v", 200, o.Payload)
-}
-
-func (o *AlertingProfilesDeleteOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteOK ", 200)
 }
 
 func (o *AlertingProfilesDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }
@@ -144,7 +132,7 @@ func NewAlertingProfilesDeleteNoContent() *AlertingProfilesDeleteNoContent {
 /*
 AlertingProfilesDeleteNoContent describes a response with status code 204, with default header values.
 
-Success
+No Content
 */
 type AlertingProfilesDeleteNoContent struct {
 }

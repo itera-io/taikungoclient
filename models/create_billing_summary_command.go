@@ -20,14 +20,20 @@ import (
 type CreateBillingSummaryCommand struct {
 
 	// begin apply
+	// Required: true
+	// Min Length: 1
 	// Format: date-time
-	BeginApply *strfmt.DateTime `json:"beginApply,omitempty"`
+	BeginApply *strfmt.DateTime `json:"beginApply"`
 
 	// icu
-	Icu int32 `json:"icu,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	Icu *int32 `json:"icu"`
 
 	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ProjectID *int32 `json:"projectId"`
 }
 
 // Validate validates this create billing summary command
@@ -38,6 +44,14 @@ func (m *CreateBillingSummaryCommand) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateIcu(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProjectID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -45,11 +59,42 @@ func (m *CreateBillingSummaryCommand) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CreateBillingSummaryCommand) validateBeginApply(formats strfmt.Registry) error {
-	if swag.IsZero(m.BeginApply) { // not required
-		return nil
+
+	if err := validate.Required("beginApply", "body", m.BeginApply); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("beginApply", "body", m.BeginApply.String(), 1); err != nil {
+		return err
 	}
 
 	if err := validate.FormatOf("beginApply", "body", "date-time", m.BeginApply.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateBillingSummaryCommand) validateIcu(formats strfmt.Registry) error {
+
+	if err := validate.Required("icu", "body", m.Icu); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("icu", "body", int64(*m.Icu), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateBillingSummaryCommand) validateProjectID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectId", "body", m.ProjectID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("projectId", "body", int64(*m.ProjectID), 0, true); err != nil {
 		return err
 	}
 

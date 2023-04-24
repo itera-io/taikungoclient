@@ -36,6 +36,10 @@ type ClientService interface {
 
 	TanzuList(params *TanzuListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TanzuListOK, error)
 
+	TanzuStorageList(params *TanzuStorageListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TanzuStorageListOK, error)
+
+	TanzuUpdate(params *TanzuUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TanzuUpdateOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -53,7 +57,7 @@ func (a *Client) TanzuCreate(params *TanzuCreateParams, authInfo runtime.ClientA
 		PathPattern:        "/api/v{v}/Tanzu/create",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TanzuCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -92,7 +96,7 @@ func (a *Client) TanzuKubernetesVersions(params *TanzuKubernetesVersionsParams, 
 		PathPattern:        "/api/v{v}/Tanzu/kubernetes-versions/{cloudId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TanzuKubernetesVersionsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -131,7 +135,7 @@ func (a *Client) TanzuList(params *TanzuListParams, authInfo runtime.ClientAuthI
 		PathPattern:        "/api/v{v}/Tanzu/list",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &TanzuListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -153,6 +157,84 @@ func (a *Client) TanzuList(params *TanzuListParams, authInfo runtime.ClientAuthI
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Tanzu_List: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+TanzuStorageList tanzus storage list
+*/
+func (a *Client) TanzuStorageList(params *TanzuStorageListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TanzuStorageListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewTanzuStorageListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Tanzu_StorageList",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Tanzu/storage-list",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &TanzuStorageListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*TanzuStorageListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Tanzu_StorageList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+TanzuUpdate updates tanzu credentials
+*/
+func (a *Client) TanzuUpdate(params *TanzuUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TanzuUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewTanzuUpdateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Tanzu_Update",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Tanzu/update",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &TanzuUpdateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*TanzuUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Tanzu_Update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

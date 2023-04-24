@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AdminUsersUpdatePasswordCommand admin users update password command
@@ -18,14 +20,65 @@ import (
 type AdminUsersUpdatePasswordCommand struct {
 
 	// id
-	ID string `json:"id,omitempty"`
+	// Required: true
+	// Min Length: 1
+	ID *string `json:"id"`
 
 	// password
-	Password string `json:"password,omitempty"`
+	// Required: true
+	// Min Length: 6
+	Password struct {
+		AdminUsersUpdatePasswordCommandPasswordAllOf0
+
+		AdminUsersUpdatePasswordCommandPasswordAllOf1
+
+		AdminUsersUpdatePasswordCommandPasswordAllOf2
+
+		AdminUsersUpdatePasswordCommandPasswordAllOf3
+	} `json:"password"`
 }
 
 // Validate validates this admin users update password command
 func (m *AdminUsersUpdatePasswordCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePassword(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AdminUsersUpdatePasswordCommand) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("id", "body", *m.ID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *AdminUsersUpdatePasswordCommand) validatePassword(formats strfmt.Registry) error {
+
+	if err := validate.Required("password", "body", m.Password); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("password", "body", *m.Password, 6); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -51,3 +104,23 @@ func (m *AdminUsersUpdatePasswordCommand) UnmarshalBinary(b []byte) error {
 	*m = res
 	return nil
 }
+
+// AdminUsersUpdatePasswordCommandPasswordAllOf0 admin users update password command password all of0
+//
+// swagger:model AdminUsersUpdatePasswordCommandPasswordAllOf0
+type AdminUsersUpdatePasswordCommandPasswordAllOf0 interface{}
+
+// AdminUsersUpdatePasswordCommandPasswordAllOf1 admin users update password command password all of1
+//
+// swagger:model AdminUsersUpdatePasswordCommandPasswordAllOf1
+type AdminUsersUpdatePasswordCommandPasswordAllOf1 interface{}
+
+// AdminUsersUpdatePasswordCommandPasswordAllOf2 admin users update password command password all of2
+//
+// swagger:model AdminUsersUpdatePasswordCommandPasswordAllOf2
+type AdminUsersUpdatePasswordCommandPasswordAllOf2 interface{}
+
+// AdminUsersUpdatePasswordCommandPasswordAllOf3 admin users update password command password all of3
+//
+// swagger:model AdminUsersUpdatePasswordCommandPasswordAllOf3
+type AdminUsersUpdatePasswordCommandPasswordAllOf3 interface{}

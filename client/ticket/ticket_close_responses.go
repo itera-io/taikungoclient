@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // TicketCloseReader is a Reader for the TicketClose structure.
@@ -75,7 +73,6 @@ TicketCloseOK describes a response with status code 200, with default header val
 Success
 */
 type TicketCloseOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this ticket close o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *TicketCloseOK) Code() int {
 }
 
 func (o *TicketCloseOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Ticket/close][%d] ticketCloseOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/close][%d] ticketCloseOK ", 200)
 }
 
 func (o *TicketCloseOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Ticket/close][%d] ticketCloseOK  %+v", 200, o.Payload)
-}
-
-func (o *TicketCloseOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/close][%d] ticketCloseOK ", 200)
 }
 
 func (o *TicketCloseOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

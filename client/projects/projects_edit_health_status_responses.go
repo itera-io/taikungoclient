@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsEditHealthStatusReader is a Reader for the ProjectsEditHealthStatus structure.
@@ -75,7 +73,6 @@ ProjectsEditHealthStatusOK describes a response with status code 200, with defau
 Success
 */
 type ProjectsEditHealthStatusOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects edit health status o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *ProjectsEditHealthStatusOK) Code() int {
 }
 
 func (o *ProjectsEditHealthStatusOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusOK ", 200)
 }
 
 func (o *ProjectsEditHealthStatusOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusOK  %+v", 200, o.Payload)
-}
-
-func (o *ProjectsEditHealthStatusOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusOK ", 200)
 }
 
 func (o *ProjectsEditHealthStatusOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

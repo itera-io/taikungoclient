@@ -34,6 +34,9 @@ type ProjectAppDetailsDto struct {
 	// catalog name
 	CatalogName string `json:"catalogName,omitempty"`
 
+	// has Json schema
+	HasJSONSchema bool `json:"hasJsonSchema"`
+
 	// helm result
 	HelmResult string `json:"helmResult,omitempty"`
 

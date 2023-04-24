@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CronJobCommand cron job command
@@ -18,11 +20,35 @@ import (
 type CronJobCommand struct {
 
 	// cron period
-	CronPeriod string `json:"cronPeriod,omitempty"`
+	// Required: true
+	// Min Length: 1
+	CronPeriod *string `json:"cronPeriod"`
 }
 
 // Validate validates this cron job command
 func (m *CronJobCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateCronPeriod(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CronJobCommand) validateCronPeriod(formats strfmt.Registry) error {
+
+	if err := validate.Required("cronPeriod", "body", m.CronPeriod); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("cronPeriod", "body", *m.CronPeriod, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

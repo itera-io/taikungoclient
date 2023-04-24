@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CatalogCreateCatalogAppReader is a Reader for the CatalogCreateCatalogApp structure.
@@ -75,7 +73,6 @@ CatalogCreateCatalogAppOK describes a response with status code 200, with defaul
 Success
 */
 type CatalogCreateCatalogAppOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this catalog create catalog app o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CatalogCreateCatalogAppOK) Code() int {
 }
 
 func (o *CatalogCreateCatalogAppOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-to-catalog][%d] catalogCreateCatalogAppOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-to-catalog][%d] catalogCreateCatalogAppOK ", 200)
 }
 
 func (o *CatalogCreateCatalogAppOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-to-catalog][%d] catalogCreateCatalogAppOK  %+v", 200, o.Payload)
-}
-
-func (o *CatalogCreateCatalogAppOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-to-catalog][%d] catalogCreateCatalogAppOK ", 200)
 }
 
 func (o *CatalogCreateCatalogAppOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

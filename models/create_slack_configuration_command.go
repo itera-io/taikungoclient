@@ -11,6 +11,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateSlackConfigurationCommand create slack configuration command
@@ -19,10 +20,16 @@ import (
 type CreateSlackConfigurationCommand struct {
 
 	// channel
-	Channel string `json:"channel,omitempty"`
+	// Required: true
+	// Max Length: 500
+	// Min Length: 3
+	Channel *string `json:"channel"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 40
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
@@ -31,20 +38,68 @@ type CreateSlackConfigurationCommand struct {
 	SlackType SlackType `json:"slackType,omitempty"`
 
 	// url
-	URL string `json:"url,omitempty"`
+	// Required: true
+	// Min Length: 1
+	URL *string `json:"url"`
 }
 
 // Validate validates this create slack configuration command
 func (m *CreateSlackConfigurationCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateChannel(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateSlackType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateURL(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CreateSlackConfigurationCommand) validateChannel(formats strfmt.Registry) error {
+
+	if err := validate.Required("channel", "body", m.Channel); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("channel", "body", *m.Channel, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("channel", "body", *m.Channel, 500); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateSlackConfigurationCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 40); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -59,6 +114,19 @@ func (m *CreateSlackConfigurationCommand) validateSlackType(formats strfmt.Regis
 		} else if ce, ok := err.(*errors.CompositeError); ok {
 			return ce.ValidateName("slackType")
 		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateSlackConfigurationCommand) validateURL(formats strfmt.Registry) error {
+
+	if err := validate.Required("url", "body", m.URL); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("url", "body", *m.URL, 1); err != nil {
 		return err
 	}
 

@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AlertingEmailDto alerting email dto
@@ -18,11 +20,40 @@ import (
 type AlertingEmailDto struct {
 
 	// email
-	Email string `json:"email,omitempty"`
+	// Required: true
+	// Min Length: 1
+	// Format: email
+	Email *strfmt.Email `json:"email"`
 }
 
 // Validate validates this alerting email dto
 func (m *AlertingEmailDto) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateEmail(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AlertingEmailDto) validateEmail(formats strfmt.Registry) error {
+
+	if err := validate.Required("email", "body", m.Email); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("email", "body", m.Email.String(), 1); err != nil {
+		return err
+	}
+
+	if err := validate.FormatOf("email", "body", "email", m.Email.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

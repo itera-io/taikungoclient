@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // BecomePartnerCommand become partner command
@@ -18,14 +20,67 @@ import (
 type BecomePartnerCommand struct {
 
 	// email
-	Email string `json:"email,omitempty"`
+	// Required: true
+	// Min Length: 1
+	// Format: email
+	Email *strfmt.Email `json:"email"`
 
 	// full name
-	FullName string `json:"fullName,omitempty"`
+	// Required: true
+	// Max Length: 100
+	// Min Length: 3
+	FullName *string `json:"fullName"`
 }
 
 // Validate validates this become partner command
 func (m *BecomePartnerCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateEmail(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFullName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *BecomePartnerCommand) validateEmail(formats strfmt.Registry) error {
+
+	if err := validate.Required("email", "body", m.Email); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("email", "body", m.Email.String(), 1); err != nil {
+		return err
+	}
+
+	if err := validate.FormatOf("email", "body", "email", m.Email.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BecomePartnerCommand) validateFullName(formats strfmt.Registry) error {
+
+	if err := validate.Required("fullName", "body", m.FullName); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("fullName", "body", *m.FullName, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("fullName", "body", *m.FullName, 100); err != nil {
+		return err
+	}
+
 	return nil
 }
 

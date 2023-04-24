@@ -75,7 +75,7 @@ TanzuCreateOK describes a response with status code 200, with default header val
 Success
 */
 type TanzuCreateOK struct {
-	Payload models.Unit
+	Payload *models.APIResponse
 }
 
 // IsSuccess returns true when this tanzu create o k response has a 2xx status code
@@ -116,14 +116,16 @@ func (o *TanzuCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Tanzu/create][%d] tanzuCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *TanzuCreateOK) GetPayload() models.Unit {
+func (o *TanzuCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *TanzuCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.APIResponse)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

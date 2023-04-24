@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // BackupDeleteScheduleReader is a Reader for the BackupDeleteSchedule structure.
@@ -75,7 +73,6 @@ BackupDeleteScheduleOK describes a response with status code 200, with default h
 Success
 */
 type BackupDeleteScheduleOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this backup delete schedule o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *BackupDeleteScheduleOK) Code() int {
 }
 
 func (o *BackupDeleteScheduleOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleOK ", 200)
 }
 
 func (o *BackupDeleteScheduleOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleOK  %+v", 200, o.Payload)
-}
-
-func (o *BackupDeleteScheduleOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleOK ", 200)
 }
 
 func (o *BackupDeleteScheduleOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

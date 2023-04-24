@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AdminUpdateUserKubeConfigReader is a Reader for the AdminUpdateUserKubeConfig structure.
@@ -75,7 +73,6 @@ AdminUpdateUserKubeConfigOK describes a response with status code 200, with defa
 Success
 */
 type AdminUpdateUserKubeConfigOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this admin update user kube config o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *AdminUpdateUserKubeConfigOK) Code() int {
 }
 
 func (o *AdminUpdateUserKubeConfigOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/userkube][%d] adminUpdateUserKubeConfigOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/userkube][%d] adminUpdateUserKubeConfigOK ", 200)
 }
 
 func (o *AdminUpdateUserKubeConfigOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/userkube][%d] adminUpdateUserKubeConfigOK  %+v", 200, o.Payload)
-}
-
-func (o *AdminUpdateUserKubeConfigOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/userkube][%d] adminUpdateUserKubeConfigOK ", 200)
 }
 
 func (o *AdminUpdateUserKubeConfigOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateTanzuCommand create tanzu command
@@ -18,16 +20,25 @@ import (
 type CreateTanzuCommand struct {
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// namespace
-	Namespace string `json:"namespace,omitempty"`
+	// Required: true
+	// Max Length: 63
+	// Min Length: 3
+	Namespace *string `json:"namespace"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
 	// password
-	Password string `json:"password,omitempty"`
+	// Required: true
+	// Max Length: 100
+	// Min Length: 3
+	Password *string `json:"password"`
 
 	// port
 	Port int32 `json:"port,omitempty"`
@@ -36,17 +47,157 @@ type CreateTanzuCommand struct {
 	TanzuContinent string `json:"tanzuContinent,omitempty"`
 
 	// url
-	URL string `json:"url,omitempty"`
+	// Required: true
+	// Max Length: 150
+	// Min Length: 3
+	URL *string `json:"url"`
 
 	// username
-	Username string `json:"username,omitempty"`
+	// Required: true
+	// Max Length: 100
+	// Min Length: 3
+	Username *string `json:"username"`
 
 	// volume type
-	VolumeType string `json:"volumeType,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	VolumeType *string `json:"volumeType"`
 }
 
 // Validate validates this create tanzu command
 func (m *CreateTanzuCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNamespace(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePassword(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateURL(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsername(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVolumeType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateTanzuCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateTanzuCommand) validateNamespace(formats strfmt.Registry) error {
+
+	if err := validate.Required("namespace", "body", m.Namespace); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("namespace", "body", *m.Namespace, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("namespace", "body", *m.Namespace, 63); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateTanzuCommand) validatePassword(formats strfmt.Registry) error {
+
+	if err := validate.Required("password", "body", m.Password); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("password", "body", *m.Password, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("password", "body", *m.Password, 100); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateTanzuCommand) validateURL(formats strfmt.Registry) error {
+
+	if err := validate.Required("url", "body", m.URL); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("url", "body", *m.URL, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("url", "body", *m.URL, 150); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateTanzuCommand) validateUsername(formats strfmt.Registry) error {
+
+	if err := validate.Required("username", "body", m.Username); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("username", "body", *m.Username, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("username", "body", *m.Username, 100); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateTanzuCommand) validateVolumeType(formats strfmt.Registry) error {
+
+	if err := validate.Required("volumeType", "body", m.VolumeType); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("volumeType", "body", *m.VolumeType, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("volumeType", "body", *m.VolumeType, 30); err != nil {
+		return err
+	}
+
 	return nil
 }
 

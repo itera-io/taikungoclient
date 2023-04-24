@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // PaymentWebhookReader is a Reader for the PaymentWebhook structure.
@@ -75,7 +73,6 @@ PaymentWebhookOK describes a response with status code 200, with default header 
 Success
 */
 type PaymentWebhookOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this payment webhook o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *PaymentWebhookOK) Code() int {
 }
 
 func (o *PaymentWebhookOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookOK ", 200)
 }
 
 func (o *PaymentWebhookOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookOK  %+v", 200, o.Payload)
-}
-
-func (o *PaymentWebhookOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookOK ", 200)
 }
 
 func (o *PaymentWebhookOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

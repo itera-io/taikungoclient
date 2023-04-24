@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateOpaProfileCommand create opa profile command
@@ -33,7 +35,10 @@ type CreateOpaProfileCommand struct {
 	IngressWhitelist []string `json:"ingressWhitelist"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 50
+	// Min Length: 2
+	Name *string `json:"name"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
@@ -50,6 +55,32 @@ type CreateOpaProfileCommand struct {
 
 // Validate validates this create opa profile command
 func (m *CreateOpaProfileCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateOpaProfileCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 2); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 50); err != nil {
+		return err
+	}
+
 	return nil
 }
 

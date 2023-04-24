@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // BindProjectsToCatalogCommand bind projects to catalog command
@@ -20,15 +21,23 @@ import (
 type BindProjectsToCatalogCommand struct {
 
 	// catalog Id
-	CatalogID int32 `json:"catalogId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	CatalogID *int32 `json:"catalogId"`
 
 	// projects
+	// Required: true
+	// Min Items: 1
 	Projects []*UpdateCatalogDto `json:"projects"`
 }
 
 // Validate validates this bind projects to catalog command
 func (m *BindProjectsToCatalogCommand) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateCatalogID(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateProjects(formats); err != nil {
 		res = append(res, err)
@@ -40,9 +49,29 @@ func (m *BindProjectsToCatalogCommand) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *BindProjectsToCatalogCommand) validateCatalogID(formats strfmt.Registry) error {
+
+	if err := validate.Required("catalogId", "body", m.CatalogID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("catalogId", "body", int64(*m.CatalogID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *BindProjectsToCatalogCommand) validateProjects(formats strfmt.Registry) error {
-	if swag.IsZero(m.Projects) { // not required
-		return nil
+
+	if err := validate.Required("projects", "body", m.Projects); err != nil {
+		return err
+	}
+
+	iProjectsSize := int64(len(m.Projects))
+
+	if err := validate.MinItems("projects", "body", iProjectsSize, 1); err != nil {
+		return err
 	}
 
 	for i := 0; i < len(m.Projects); i++ {

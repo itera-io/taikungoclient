@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // OpaProfilesDeleteReader is a Reader for the OpaProfilesDelete structure.
@@ -75,7 +73,6 @@ OpaProfilesDeleteOK describes a response with status code 200, with default head
 Success
 */
 type OpaProfilesDeleteOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this opa profiles delete o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *OpaProfilesDeleteOK) Code() int {
 }
 
 func (o *OpaProfilesDeleteOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteOK ", 200)
 }
 
 func (o *OpaProfilesDeleteOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteOK  %+v", 200, o.Payload)
-}
-
-func (o *OpaProfilesDeleteOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteOK ", 200)
 }
 
 func (o *OpaProfilesDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

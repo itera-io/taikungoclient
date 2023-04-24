@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // EditCatalogAppParamCommand edit catalog app param command
@@ -20,7 +21,9 @@ import (
 type EditCatalogAppParamCommand struct {
 
 	// catalog app Id
-	CatalogAppID int32 `json:"catalogAppId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	CatalogAppID *int32 `json:"catalogAppId"`
 
 	// parameters
 	Parameters []*CatalogAppParamsDto `json:"parameters"`
@@ -30,6 +33,10 @@ type EditCatalogAppParamCommand struct {
 func (m *EditCatalogAppParamCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCatalogAppID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateParameters(formats); err != nil {
 		res = append(res, err)
 	}
@@ -37,6 +44,19 @@ func (m *EditCatalogAppParamCommand) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *EditCatalogAppParamCommand) validateCatalogAppID(formats strfmt.Registry) error {
+
+	if err := validate.Required("catalogAppId", "body", m.CatalogAppID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("catalogAppId", "body", int64(*m.CatalogAppID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 

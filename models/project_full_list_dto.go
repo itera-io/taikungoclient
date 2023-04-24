@@ -107,6 +107,9 @@ type ProjectFullListDto struct {
 	// taikun public SSH key
 	TaikunPublicSSHKey string `json:"taikunPublicSSHKey,omitempty"`
 
+	// tanzu release version
+	TanzuReleaseVersion string `json:"tanzuReleaseVersion,omitempty"`
+
 	// token
 	Token string `json:"token,omitempty"`
 

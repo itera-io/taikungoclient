@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // OrganizationNameCheckerCommand organization name checker command
@@ -18,11 +20,35 @@ import (
 type OrganizationNameCheckerCommand struct {
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Name *string `json:"name"`
 }
 
 // Validate validates this organization name checker command
 func (m *OrganizationNameCheckerCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *OrganizationNameCheckerCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

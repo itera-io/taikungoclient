@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CheckerNodeReader is a Reader for the CheckerNode structure.
@@ -75,7 +73,6 @@ CheckerNodeOK describes a response with status code 200, with default header val
 Success
 */
 type CheckerNodeOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this checker node o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CheckerNodeOK) Code() int {
 }
 
 func (o *CheckerNodeOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Checker/node][%d] checkerNodeOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Checker/node][%d] checkerNodeOK ", 200)
 }
 
 func (o *CheckerNodeOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Checker/node][%d] checkerNodeOK  %+v", 200, o.Payload)
-}
-
-func (o *CheckerNodeOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Checker/node][%d] checkerNodeOK ", 200)
 }
 
 func (o *CheckerNodeOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

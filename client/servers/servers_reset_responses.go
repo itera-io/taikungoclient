@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ServersResetReader is a Reader for the ServersReset structure.
@@ -75,7 +73,6 @@ ServersResetOK describes a response with status code 200, with default header va
 Success
 */
 type ServersResetOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this servers reset o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *ServersResetOK) Code() int {
 }
 
 func (o *ServersResetOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetOK ", 200)
 }
 
 func (o *ServersResetOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetOK  %+v", 200, o.Payload)
-}
-
-func (o *ServersResetOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetOK ", 200)
 }
 
 func (o *ServersResetOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

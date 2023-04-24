@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // UpdateServerCommand update server command
@@ -21,13 +23,18 @@ type UpdateServerCommand struct {
 	AwsHostName string `json:"awsHostName,omitempty"`
 
 	// id
-	ID int32 `json:"id,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ID *int32 `json:"id"`
 
 	// instance Id
 	InstanceID string `json:"instanceId,omitempty"`
 
 	// ip
-	IP string `json:"ip,omitempty"`
+	// Required: true
+	// Max Length: 300
+	// Min Length: 3
+	IP *string `json:"ip"`
 
 	// provider ID
 	ProviderID string `json:"providerID,omitempty"`
@@ -35,6 +42,49 @@ type UpdateServerCommand struct {
 
 // Validate validates this update server command
 func (m *UpdateServerCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIP(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UpdateServerCommand) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("id", "body", int64(*m.ID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateServerCommand) validateIP(formats strfmt.Registry) error {
+
+	if err := validate.Required("ip", "body", m.IP); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("ip", "body", *m.IP, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("ip", "body", *m.IP, 300); err != nil {
+		return err
+	}
+
 	return nil
 }
 

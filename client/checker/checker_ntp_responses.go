@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CheckerNtpReader is a Reader for the CheckerNtp structure.
@@ -75,7 +73,6 @@ CheckerNtpOK describes a response with status code 200, with default header valu
 Success
 */
 type CheckerNtpOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this checker ntp o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CheckerNtpOK) Code() int {
 }
 
 func (o *CheckerNtpOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpOK ", 200)
 }
 
 func (o *CheckerNtpOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpOK  %+v", 200, o.Payload)
-}
-
-func (o *CheckerNtpOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpOK ", 200)
 }
 
 func (o *CheckerNtpOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

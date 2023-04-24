@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // UpdateQuotaCommand update quota command
@@ -18,29 +20,185 @@ import (
 type UpdateQuotaCommand struct {
 
 	// quota Id
-	QuotaID int32 `json:"quotaId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	QuotaID *int32 `json:"quotaId"`
 
 	// server Cpu
+	// Maximum: 1e+06
+	// Minimum: 2
 	ServerCPU int64 `json:"serverCpu,omitempty"`
 
 	// server disk size
+	// Maximum: 1.099511627776e+14
+	// Minimum: 3.221225472e+10
 	ServerDiskSize int64 `json:"serverDiskSize,omitempty"`
 
 	// server Ram
+	// Maximum: 1.099511627776e+14
+	// Minimum: 2.147483648e+09
 	ServerRAM int64 `json:"serverRam,omitempty"`
 
 	// vm Cpu
+	// Maximum: 1e+06
+	// Minimum: 1
 	VMCPU int64 `json:"vmCpu,omitempty"`
 
 	// vm Ram
+	// Maximum: 1.099511627776e+14
+	// Minimum: 1.073741824e+09
 	VMRAM int64 `json:"vmRam,omitempty"`
 
 	// vm volume size
+	// Maximum: 102400
+	// Minimum: 1
 	VMVolumeSize int64 `json:"vmVolumeSize,omitempty"`
 }
 
 // Validate validates this update quota command
 func (m *UpdateQuotaCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateQuotaID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateServerCPU(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateServerDiskSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateServerRAM(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMCPU(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMRAM(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVMVolumeSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UpdateQuotaCommand) validateQuotaID(formats strfmt.Registry) error {
+
+	if err := validate.Required("quotaId", "body", m.QuotaID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("quotaId", "body", int64(*m.QuotaID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateQuotaCommand) validateServerCPU(formats strfmt.Registry) error {
+	if swag.IsZero(m.ServerCPU) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("serverCpu", "body", m.ServerCPU, 2, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("serverCpu", "body", m.ServerCPU, 1e+06, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateQuotaCommand) validateServerDiskSize(formats strfmt.Registry) error {
+	if swag.IsZero(m.ServerDiskSize) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("serverDiskSize", "body", m.ServerDiskSize, 3.221225472e+10, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("serverDiskSize", "body", m.ServerDiskSize, 1.099511627776e+14, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateQuotaCommand) validateServerRAM(formats strfmt.Registry) error {
+	if swag.IsZero(m.ServerRAM) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("serverRam", "body", m.ServerRAM, 2.147483648e+09, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("serverRam", "body", m.ServerRAM, 1.099511627776e+14, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateQuotaCommand) validateVMCPU(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMCPU) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("vmCpu", "body", m.VMCPU, 1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("vmCpu", "body", m.VMCPU, 1e+06, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateQuotaCommand) validateVMRAM(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMRAM) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("vmRam", "body", m.VMRAM, 1.073741824e+09, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("vmRam", "body", m.VMRAM, 1.099511627776e+14, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateQuotaCommand) validateVMVolumeSize(formats strfmt.Registry) error {
+	if swag.IsZero(m.VMVolumeSize) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("vmVolumeSize", "body", m.VMVolumeSize, 1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("vmVolumeSize", "body", m.VMVolumeSize, 102400, false); err != nil {
+		return err
+	}
+
 	return nil
 }
 

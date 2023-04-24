@@ -66,6 +66,8 @@ type ClientService interface {
 
 	ProjectsMonitoringOperations(params *ProjectsMonitoringOperationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsMonitoringOperationsOK, error)
 
+	ProjectsProjectActionButtonVisibility(params *ProjectsProjectActionButtonVisibilityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsProjectActionButtonVisibilityOK, error)
+
 	ProjectsProjectMonitoringAlerts(params *ProjectsProjectMonitoringAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsProjectMonitoringAlertsOK, error)
 
 	ProjectsPrometheusMetrics(params *ProjectsPrometheusMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsPrometheusMetricsOK, error)
@@ -101,7 +103,7 @@ func (a *Client) ProjectsCommit(params *ProjectsCommitParams, authInfo runtime.C
 		PathPattern:        "/api/v{v}/Projects/commit/{projectId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsCommitReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -140,7 +142,7 @@ func (a *Client) ProjectsCreate(params *ProjectsCreateParams, authInfo runtime.C
 		PathPattern:        "/api/v{v}/Projects",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -179,7 +181,7 @@ func (a *Client) ProjectsDelete(params *ProjectsDeleteParams, authInfo runtime.C
 		PathPattern:        "/api/v{v}/Projects/delete",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -219,7 +221,7 @@ func (a *Client) ProjectsDeleteWholeProject(params *ProjectsDeleteWholeProjectPa
 		PathPattern:        "/api/v{v}/Projects/deletewholeproject",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsDeleteWholeProjectReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -259,7 +261,7 @@ func (a *Client) ProjectsDescribe(params *ProjectsDescribeParams, authInfo runti
 		PathPattern:        "/api/v{v}/Projects/describe/{projectId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsDescribeReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -298,7 +300,7 @@ func (a *Client) ProjectsDetails(params *ProjectsDetailsParams, authInfo runtime
 		PathPattern:        "/api/v{v}/Projects/{projectId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsDetailsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -337,7 +339,7 @@ func (a *Client) ProjectsEdit(params *ProjectsEditParams, authInfo runtime.Clien
 		PathPattern:        "/api/v{v}/Projects/update/{projectId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsEditReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -376,7 +378,7 @@ func (a *Client) ProjectsEditHealthStatus(params *ProjectsEditHealthStatusParams
 		PathPattern:        "/api/v{v}/Projects/updatehealth/{projectId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsEditHealthStatusReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -415,7 +417,7 @@ func (a *Client) ProjectsExtendLifeTime(params *ProjectsExtendLifeTimeParams, au
 		PathPattern:        "/api/v{v}/Projects/extend/lifetime",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsExtendLifeTimeReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -454,7 +456,7 @@ func (a *Client) ProjectsFullSpotWorkersOperations(params *ProjectsFullSpotWorke
 		PathPattern:        "/api/v{v}/Projects/toggle-full-spot",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsFullSpotWorkersOperationsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -493,7 +495,7 @@ func (a *Client) ProjectsList(params *ProjectsListParams, authInfo runtime.Clien
 		PathPattern:        "/api/v{v}/Projects",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -532,7 +534,7 @@ func (a *Client) ProjectsListForBilling(params *ProjectsListForBillingParams, au
 		PathPattern:        "/api/v{v}/Projects/forbilling",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsListForBillingReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -571,7 +573,7 @@ func (a *Client) ProjectsListForPoller(params *ProjectsListForPollerParams, auth
 		PathPattern:        "/api/v{v}/Projects/forpoller",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsListForPollerReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -597,7 +599,7 @@ func (a *Client) ProjectsListForPoller(params *ProjectsListForPollerParams, auth
 }
 
 /*
-ProjectsListSelector projects list selector API
+ProjectsListSelector lists of projects with dropdown
 */
 func (a *Client) ProjectsListSelector(params *ProjectsListSelectorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsListSelectorOK, error) {
 	// TODO: Validate the params before sending
@@ -610,7 +612,7 @@ func (a *Client) ProjectsListSelector(params *ProjectsListSelectorParams, authIn
 		PathPattern:        "/api/v{v}/Projects/list",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsListSelectorReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -649,7 +651,7 @@ func (a *Client) ProjectsListWithAlerts(params *ProjectsListWithAlertsParams, au
 		PathPattern:        "/api/v{v}/Projects/foralerting",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsListWithAlertsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -688,7 +690,7 @@ func (a *Client) ProjectsLockManager(params *ProjectsLockManagerParams, authInfo
 		PathPattern:        "/api/v{v}/Projects/lockmanager",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsLockManagerReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -727,7 +729,7 @@ func (a *Client) ProjectsLokiLogs(params *ProjectsLokiLogsParams, authInfo runti
 		PathPattern:        "/api/v{v}/Projects/lokilogs",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsLokiLogsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -766,7 +768,7 @@ func (a *Client) ProjectsMonitoringOperations(params *ProjectsMonitoringOperatio
 		PathPattern:        "/api/v{v}/Projects/monitoring",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsMonitoringOperationsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -792,6 +794,45 @@ func (a *Client) ProjectsMonitoringOperations(params *ProjectsMonitoringOperatio
 }
 
 /*
+ProjectsProjectActionButtonVisibility visibilities of project actions
+*/
+func (a *Client) ProjectsProjectActionButtonVisibility(params *ProjectsProjectActionButtonVisibilityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsProjectActionButtonVisibilityOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsProjectActionButtonVisibilityParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Projects_ProjectActionButtonVisibility",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Projects/visibility/{projectId}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsProjectActionButtonVisibilityReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ProjectsProjectActionButtonVisibilityOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Projects_ProjectActionButtonVisibility: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 ProjectsProjectMonitoringAlerts monitorings alerts for project
 */
 func (a *Client) ProjectsProjectMonitoringAlerts(params *ProjectsProjectMonitoringAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsProjectMonitoringAlertsOK, error) {
@@ -805,7 +846,7 @@ func (a *Client) ProjectsProjectMonitoringAlerts(params *ProjectsProjectMonitori
 		PathPattern:        "/api/v{v}/Projects/monitoringalerts",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsProjectMonitoringAlertsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -844,7 +885,7 @@ func (a *Client) ProjectsPrometheusMetrics(params *ProjectsPrometheusMetricsPara
 		PathPattern:        "/api/v{v}/Projects/prometheusmetrics",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsPrometheusMetricsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -883,7 +924,7 @@ func (a *Client) ProjectsPurge(params *ProjectsPurgeParams, authInfo runtime.Cli
 		PathPattern:        "/api/v{v}/Projects/purge",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsPurgeReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -922,7 +963,7 @@ func (a *Client) ProjectsPurgeWholeProject(params *ProjectsPurgeWholeProjectPara
 		PathPattern:        "/api/v{v}/Projects/purgewholeproject",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsPurgeWholeProjectReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -961,7 +1002,7 @@ func (a *Client) ProjectsRepair(params *ProjectsRepairParams, authInfo runtime.C
 		PathPattern:        "/api/v{v}/Projects/repair/{projectId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsRepairReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1000,7 +1041,7 @@ func (a *Client) ProjectsResetProjectStatus(params *ProjectsResetProjectStatusPa
 		PathPattern:        "/api/v{v}/Projects/reset",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsResetProjectStatusReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1039,7 +1080,7 @@ func (a *Client) ProjectsSpotVmsOperations(params *ProjectsSpotVmsOperationsPara
 		PathPattern:        "/api/v{v}/Projects/toggle-spot-vms",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsSpotVmsOperationsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1078,7 +1119,7 @@ func (a *Client) ProjectsSpotWorkersOperations(params *ProjectsSpotWorkersOperat
 		PathPattern:        "/api/v{v}/Projects/toggle-spot-workers",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsSpotWorkersOperationsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -1117,7 +1158,7 @@ func (a *Client) ProjectsUpgrade(params *ProjectsUpgradeParams, authInfo runtime
 		PathPattern:        "/api/v{v}/Projects/upgrade/{projectId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &ProjectsUpgradeReader{formats: a.formats},
 		AuthInfo:           authInfo,

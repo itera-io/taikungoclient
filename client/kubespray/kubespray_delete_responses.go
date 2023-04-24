@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubesprayDeleteReader is a Reader for the KubesprayDelete structure.
@@ -81,7 +79,6 @@ KubesprayDeleteOK describes a response with status code 200, with default header
 Success
 */
 type KubesprayDeleteOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this kubespray delete o k response has a 2xx status code
@@ -115,23 +112,14 @@ func (o *KubesprayDeleteOK) Code() int {
 }
 
 func (o *KubesprayDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteOK ", 200)
 }
 
 func (o *KubesprayDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteOK  %+v", 200, o.Payload)
-}
-
-func (o *KubesprayDeleteOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteOK ", 200)
 }
 
 func (o *KubesprayDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }
@@ -144,7 +132,7 @@ func NewKubesprayDeleteNoContent() *KubesprayDeleteNoContent {
 /*
 KubesprayDeleteNoContent describes a response with status code 204, with default header values.
 
-Success
+No Content
 */
 type KubesprayDeleteNoContent struct {
 }

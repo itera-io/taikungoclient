@@ -57,6 +57,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/project_template"
 	"github.com/itera-io/taikungoclient/client/projects"
 	"github.com/itera-io/taikungoclient/client/prometheus"
+	"github.com/itera-io/taikungoclient/client/proxmox"
 	"github.com/itera-io/taikungoclient/client/repository"
 	"github.com/itera-io/taikungoclient/client/s3_credentials"
 	"github.com/itera-io/taikungoclient/client/search"
@@ -83,14 +84,14 @@ var Default = NewHTTPClient(nil)
 const (
 	// DefaultHost is the default Host
 	// found in Meta (info) section of spec file
-	DefaultHost string = "api.taikun.dev"
+	DefaultHost string = "localhost"
 	// DefaultBasePath is the default BasePath
 	// found in Meta (info) section of spec file
 	DefaultBasePath string = "/"
 )
 
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
-var DefaultSchemes = []string{"https"}
+var DefaultSchemes = []string{"http"}
 
 // NewHTTPClient creates a new taikungoclient HTTP client.
 func NewHTTPClient(formats strfmt.Registry) *Taikungoclient {
@@ -183,6 +184,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.ProjectTemplate = project_template.New(transport, formats)
 	cli.Projects = projects.New(transport, formats)
 	cli.Prometheus = prometheus.New(transport, formats)
+	cli.Proxmox = proxmox.New(transport, formats)
 	cli.Repository = repository.New(transport, formats)
 	cli.S3Credentials = s3_credentials.New(transport, formats)
 	cli.Search = search.New(transport, formats)
@@ -339,6 +341,8 @@ type Taikungoclient struct {
 
 	Prometheus prometheus.ClientService
 
+	Proxmox proxmox.ClientService
+
 	Repository repository.ClientService
 
 	S3Credentials s3_credentials.ClientService
@@ -428,6 +432,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.ProjectTemplate.SetTransport(transport)
 	c.Projects.SetTransport(transport)
 	c.Prometheus.SetTransport(transport)
+	c.Proxmox.SetTransport(transport)
 	c.Repository.SetTransport(transport)
 	c.S3Credentials.SetTransport(transport)
 	c.Search.SetTransport(transport)

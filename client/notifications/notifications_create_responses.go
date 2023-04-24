@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NotificationsCreateReader is a Reader for the NotificationsCreate structure.
@@ -75,7 +73,6 @@ NotificationsCreateOK describes a response with status code 200, with default he
 Success
 */
 type NotificationsCreateOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this notifications create o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *NotificationsCreateOK) Code() int {
 }
 
 func (o *NotificationsCreateOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateOK ", 200)
 }
 
 func (o *NotificationsCreateOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateOK  %+v", 200, o.Payload)
-}
-
-func (o *NotificationsCreateOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateOK ", 200)
 }
 
 func (o *NotificationsCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

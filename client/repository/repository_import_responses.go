@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // RepositoryImportReader is a Reader for the RepositoryImport structure.
@@ -75,7 +73,6 @@ RepositoryImportOK describes a response with status code 200, with default heade
 Success
 */
 type RepositoryImportOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this repository import o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *RepositoryImportOK) Code() int {
 }
 
 func (o *RepositoryImportOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/import][%d] repositoryImportOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Repository/import][%d] repositoryImportOK ", 200)
 }
 
 func (o *RepositoryImportOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Repository/import][%d] repositoryImportOK  %+v", 200, o.Payload)
-}
-
-func (o *RepositoryImportOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Repository/import][%d] repositoryImportOK ", 200)
 }
 
 func (o *RepositoryImportOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

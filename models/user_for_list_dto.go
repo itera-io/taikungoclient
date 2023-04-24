@@ -25,9 +25,6 @@ type UserForListDto struct {
 	// created at
 	CreatedAt string `json:"createdAt,omitempty"`
 
-	// customer Id
-	CustomerID string `json:"customerId,omitempty"`
-
 	// demo mode enabled
 	DemoModeEnabled bool `json:"demoModeEnabled"`
 
@@ -36,6 +33,12 @@ type UserForListDto struct {
 
 	// email
 	Email string `json:"email,omitempty"`
+
+	// has customer Id
+	HasCustomerID bool `json:"hasCustomerId"`
+
+	// has payment method
+	HasPaymentMethod bool `json:"hasPaymentMethod"`
 
 	// has repo
 	HasRepo bool `json:"hasRepo"`

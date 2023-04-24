@@ -11,6 +11,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ResetStandAloneVMDiskStatusCommand reset stand alone Vm disk status command
@@ -22,7 +23,9 @@ type ResetStandAloneVMDiskStatusCommand struct {
 	DiskIds []int32 `json:"diskIds"`
 
 	// stand alone Vm Id
-	StandAloneVMID int32 `json:"standAloneVmId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	StandAloneVMID *int32 `json:"standAloneVmId"`
 
 	// status
 	Status StandAloneVMDiskStatus `json:"status,omitempty"`
@@ -32,6 +35,10 @@ type ResetStandAloneVMDiskStatusCommand struct {
 func (m *ResetStandAloneVMDiskStatusCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateStandAloneVMID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateStatus(formats); err != nil {
 		res = append(res, err)
 	}
@@ -39,6 +46,19 @@ func (m *ResetStandAloneVMDiskStatusCommand) Validate(formats strfmt.Registry) e
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ResetStandAloneVMDiskStatusCommand) validateStandAloneVMID(formats strfmt.Registry) error {
+
+	if err := validate.Required("standAloneVmId", "body", m.StandAloneVMID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("standAloneVmId", "body", int64(*m.StandAloneVMID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 

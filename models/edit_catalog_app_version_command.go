@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // EditCatalogAppVersionCommand edit catalog app version command
@@ -18,14 +20,57 @@ import (
 type EditCatalogAppVersionCommand struct {
 
 	// catalog app Id
-	CatalogAppID int32 `json:"catalogAppId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	CatalogAppID *int32 `json:"catalogAppId"`
 
 	// version
-	Version string `json:"version,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Version *string `json:"version"`
 }
 
 // Validate validates this edit catalog app version command
 func (m *EditCatalogAppVersionCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateCatalogAppID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVersion(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *EditCatalogAppVersionCommand) validateCatalogAppID(formats strfmt.Registry) error {
+
+	if err := validate.Required("catalogAppId", "body", m.CatalogAppID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("catalogAppId", "body", int64(*m.CatalogAppID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *EditCatalogAppVersionCommand) validateVersion(formats strfmt.Registry) error {
+
+	if err := validate.Required("version", "body", m.Version); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("version", "body", *m.Version, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // RuleCreateCommand rule create command
@@ -20,13 +21,21 @@ import (
 type RuleCreateCommand struct {
 
 	// labels
+	// Required: true
+	// Min Items: 1
 	Labels []*PrometheusLabelListDto `json:"labels"`
 
 	// metric name
-	MetricName string `json:"metricName,omitempty"`
+	// Required: true
+	// Max Length: 256
+	// Min Length: 3
+	MetricName *string `json:"metricName"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// operation credential Id
 	OperationCredentialID int32 `json:"operationCredentialId,omitempty"`
@@ -38,13 +47,16 @@ type RuleCreateCommand struct {
 	PartnerID int32 `json:"partnerId,omitempty"`
 
 	// price
+	// Maximum: 3e+08
+	// Minimum: 1e-12
 	Price float64 `json:"price,omitempty"`
 
 	// rule discount rate
 	RuleDiscountRate int32 `json:"ruleDiscountRate"`
 
 	// type
-	Type PrometheusType `json:"type,omitempty"`
+	// Required: true
+	Type *PrometheusType `json:"type"`
 }
 
 // Validate validates this rule create command
@@ -52,6 +64,18 @@ func (m *RuleCreateCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateLabels(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMetricName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePrice(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -66,8 +90,15 @@ func (m *RuleCreateCommand) Validate(formats strfmt.Registry) error {
 }
 
 func (m *RuleCreateCommand) validateLabels(formats strfmt.Registry) error {
-	if swag.IsZero(m.Labels) { // not required
-		return nil
+
+	if err := validate.Required("labels", "body", m.Labels); err != nil {
+		return err
+	}
+
+	iLabelsSize := int64(len(m.Labels))
+
+	if err := validate.MinItems("labels", "body", iLabelsSize, 1); err != nil {
+		return err
 	}
 
 	for i := 0; i < len(m.Labels); i++ {
@@ -91,18 +122,75 @@ func (m *RuleCreateCommand) validateLabels(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *RuleCreateCommand) validateType(formats strfmt.Registry) error {
-	if swag.IsZero(m.Type) { // not required
+func (m *RuleCreateCommand) validateMetricName(formats strfmt.Registry) error {
+
+	if err := validate.Required("metricName", "body", m.MetricName); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("metricName", "body", *m.MetricName, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("metricName", "body", *m.MetricName, 256); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *RuleCreateCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *RuleCreateCommand) validatePrice(formats strfmt.Registry) error {
+	if swag.IsZero(m.Price) { // not required
 		return nil
 	}
 
-	if err := m.Type.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("type")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("type")
-		}
+	if err := validate.Minimum("price", "body", m.Price, 1e-12, false); err != nil {
 		return err
+	}
+
+	if err := validate.Maximum("price", "body", m.Price, 3e+08, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *RuleCreateCommand) validateType(formats strfmt.Registry) error {
+
+	if err := validate.Required("type", "body", m.Type); err != nil {
+		return err
+	}
+
+	if err := validate.Required("type", "body", m.Type); err != nil {
+		return err
+	}
+
+	if m.Type != nil {
+		if err := m.Type.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -148,13 +236,15 @@ func (m *RuleCreateCommand) contextValidateLabels(ctx context.Context, formats s
 
 func (m *RuleCreateCommand) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.Type.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("type")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("type")
+	if m.Type != nil {
+		if err := m.Type.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

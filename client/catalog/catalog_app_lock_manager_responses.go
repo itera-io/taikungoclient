@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CatalogAppLockManagerReader is a Reader for the CatalogAppLockManager structure.
@@ -75,7 +73,6 @@ CatalogAppLockManagerOK describes a response with status code 200, with default 
 Success
 */
 type CatalogAppLockManagerOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this catalog app lock manager o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CatalogAppLockManagerOK) Code() int {
 }
 
 func (o *CatalogAppLockManagerOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerOK ", 200)
 }
 
 func (o *CatalogAppLockManagerOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerOK  %+v", 200, o.Payload)
-}
-
-func (o *CatalogAppLockManagerOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerOK ", 200)
 }
 
 func (o *CatalogAppLockManagerOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

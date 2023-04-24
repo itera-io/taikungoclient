@@ -30,6 +30,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	SubscriptionBind(params *SubscriptionBindParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionBindOK, error)
+
 	SubscriptionCreate(params *SubscriptionCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionCreateOK, error)
 
 	SubscriptionDelete(params *SubscriptionDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionDeleteOK, *SubscriptionDeleteNoContent, error)
@@ -46,6 +48,45 @@ type ClientService interface {
 }
 
 /*
+SubscriptionBind binds subscription
+*/
+func (a *Client) SubscriptionBind(params *SubscriptionBindParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionBindOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewSubscriptionBindParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Subscription_Bind",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Subscription/bind",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &SubscriptionBindReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*SubscriptionBindOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Subscription_Bind: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 SubscriptionCreate adds new subscription package
 */
 func (a *Client) SubscriptionCreate(params *SubscriptionCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionCreateOK, error) {
@@ -59,7 +100,7 @@ func (a *Client) SubscriptionCreate(params *SubscriptionCreateParams, authInfo r
 		PathPattern:        "/api/v{v}/Subscription/create",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &SubscriptionCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -98,7 +139,7 @@ func (a *Client) SubscriptionDelete(params *SubscriptionDeleteParams, authInfo r
 		PathPattern:        "/api/v{v}/Subscription/delete",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &SubscriptionDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -138,7 +179,7 @@ func (a *Client) SubscriptionList(params *SubscriptionListParams, authInfo runti
 		PathPattern:        "/api/v{v}/Subscription",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &SubscriptionListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -177,7 +218,7 @@ func (a *Client) SubscriptionSubscriptionForLandingPage(params *SubscriptionSubs
 		PathPattern:        "/api/v{v}/Subscription/public",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &SubscriptionSubscriptionForLandingPageReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -216,7 +257,7 @@ func (a *Client) SubscriptionSubscriptionForOrganizationList(params *Subscriptio
 		PathPattern:        "/api/v{v}/Subscription/boundlist",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &SubscriptionSubscriptionForOrganizationListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -255,7 +296,7 @@ func (a *Client) SubscriptionUpdate(params *SubscriptionUpdateParams, authInfo r
 		PathPattern:        "/api/v{v}/Subscription/update",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &SubscriptionUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,

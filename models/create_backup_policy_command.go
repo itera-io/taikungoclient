@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateBackupPolicyCommand create backup policy command
@@ -18,26 +20,109 @@ import (
 type CreateBackupPolicyCommand struct {
 
 	// cron period
-	CronPeriod string `json:"cronPeriod,omitempty"`
-
-	// exclude namespaces
-	ExcludeNamespaces []string `json:"excludeNamespaces"`
+	// Required: true
+	// Min Length: 1
+	CronPeriod *string `json:"cronPeriod"`
 
 	// include namespaces
 	IncludeNamespaces []string `json:"includeNamespaces"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ProjectID *int32 `json:"projectId"`
 
 	// retention period
-	RetentionPeriod string `json:"retentionPeriod,omitempty"`
+	// Required: true
+	// Min Length: 1
+	RetentionPeriod *string `json:"retentionPeriod"`
 }
 
 // Validate validates this create backup policy command
 func (m *CreateBackupPolicyCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateCronPeriod(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProjectID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRetentionPeriod(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateBackupPolicyCommand) validateCronPeriod(formats strfmt.Registry) error {
+
+	if err := validate.Required("cronPeriod", "body", m.CronPeriod); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("cronPeriod", "body", *m.CronPeriod, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateBackupPolicyCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateBackupPolicyCommand) validateProjectID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectId", "body", m.ProjectID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("projectId", "body", int64(*m.ProjectID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateBackupPolicyCommand) validateRetentionPeriod(formats strfmt.Registry) error {
+
+	if err := validate.Required("retentionPeriod", "body", m.RetentionPeriod); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("retentionPeriod", "body", *m.RetentionPeriod, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

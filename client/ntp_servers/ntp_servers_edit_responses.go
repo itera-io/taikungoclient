@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NtpServersEditReader is a Reader for the NtpServersEdit structure.
@@ -75,7 +73,6 @@ NtpServersEditOK describes a response with status code 200, with default header 
 Success
 */
 type NtpServersEditOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this ntp servers edit o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *NtpServersEditOK) Code() int {
 }
 
 func (o *NtpServersEditOK) Error() string {
-	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditOK ", 200)
 }
 
 func (o *NtpServersEditOK) String() string {
-	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditOK  %+v", 200, o.Payload)
-}
-
-func (o *NtpServersEditOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditOK ", 200)
 }
 
 func (o *NtpServersEditOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

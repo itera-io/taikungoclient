@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // SyncProjectAppCommand sync project app command
@@ -18,11 +20,35 @@ import (
 type SyncProjectAppCommand struct {
 
 	// project app Id
-	ProjectAppID int32 `json:"projectAppId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ProjectAppID *int32 `json:"projectAppId"`
 }
 
 // Validate validates this sync project app command
 func (m *SyncProjectAppCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateProjectAppID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *SyncProjectAppCommand) validateProjectAppID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectAppId", "body", m.ProjectAppID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("projectAppId", "body", int64(*m.ProjectAppID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 

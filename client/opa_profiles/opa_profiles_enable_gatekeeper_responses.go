@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // OpaProfilesEnableGatekeeperReader is a Reader for the OpaProfilesEnableGatekeeper structure.
@@ -75,7 +73,6 @@ OpaProfilesEnableGatekeeperOK describes a response with status code 200, with de
 Success
 */
 type OpaProfilesEnableGatekeeperOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this opa profiles enable gatekeeper o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *OpaProfilesEnableGatekeeperOK) Code() int {
 }
 
 func (o *OpaProfilesEnableGatekeeperOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/enablegatekeeper][%d] opaProfilesEnableGatekeeperOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/enablegatekeeper][%d] opaProfilesEnableGatekeeperOK ", 200)
 }
 
 func (o *OpaProfilesEnableGatekeeperOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/enablegatekeeper][%d] opaProfilesEnableGatekeeperOK  %+v", 200, o.Payload)
-}
-
-func (o *OpaProfilesEnableGatekeeperOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/enablegatekeeper][%d] opaProfilesEnableGatekeeperOK ", 200)
 }
 
 func (o *OpaProfilesEnableGatekeeperOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

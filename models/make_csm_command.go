@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // MakeCsmCommand make csm command
@@ -18,14 +20,57 @@ import (
 type MakeCsmCommand struct {
 
 	// mode
-	Mode string `json:"mode,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Mode *string `json:"mode"`
 
 	// user Id
-	UserID string `json:"userId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	UserID *string `json:"userId"`
 }
 
 // Validate validates this make csm command
 func (m *MakeCsmCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateMode(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *MakeCsmCommand) validateMode(formats strfmt.Registry) error {
+
+	if err := validate.Required("mode", "body", m.Mode); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("mode", "body", *m.Mode, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *MakeCsmCommand) validateUserID(formats strfmt.Registry) error {
+
+	if err := validate.Required("userId", "body", m.UserID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("userId", "body", *m.UserID, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

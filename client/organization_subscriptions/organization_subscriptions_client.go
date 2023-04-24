@@ -49,7 +49,7 @@ func (a *Client) OrganizationSubscriptionsList(params *OrganizationSubscriptions
 		PathPattern:        "/api/v{v}/OrganizationSubscriptions",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &OrganizationSubscriptionsListReader{formats: a.formats},
 		AuthInfo:           authInfo,

@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // PrometheusDashboardCreateCommand prometheus dashboard create command
@@ -18,20 +20,124 @@ import (
 type PrometheusDashboardCreateCommand struct {
 
 	// category name
-	CategoryName string `json:"categoryName,omitempty"`
+	// Required: true
+	// Max Length: 100
+	// Min Length: 3
+	CategoryName *string `json:"categoryName"`
 
 	// description
-	Description string `json:"description,omitempty"`
+	// Required: true
+	// Max Length: 100
+	// Min Length: 3
+	Description *string `json:"description"`
 
 	// expression
-	Expression string `json:"expression,omitempty"`
+	// Required: true
+	// Max Length: 200
+	// Min Length: 3
+	Expression *string `json:"expression"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 100
+	// Min Length: 3
+	Name *string `json:"name"`
+
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
 }
 
 // Validate validates this prometheus dashboard create command
 func (m *PrometheusDashboardCreateCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateCategoryName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDescription(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateExpression(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PrometheusDashboardCreateCommand) validateCategoryName(formats strfmt.Registry) error {
+
+	if err := validate.Required("categoryName", "body", m.CategoryName); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("categoryName", "body", *m.CategoryName, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("categoryName", "body", *m.CategoryName, 100); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PrometheusDashboardCreateCommand) validateDescription(formats strfmt.Registry) error {
+
+	if err := validate.Required("description", "body", m.Description); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("description", "body", *m.Description, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("description", "body", *m.Description, 100); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PrometheusDashboardCreateCommand) validateExpression(formats strfmt.Registry) error {
+
+	if err := validate.Required("expression", "body", m.Expression); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("expression", "body", *m.Expression, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("expression", "body", *m.Expression, 200); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PrometheusDashboardCreateCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 100); err != nil {
+		return err
+	}
+
 	return nil
 }
 

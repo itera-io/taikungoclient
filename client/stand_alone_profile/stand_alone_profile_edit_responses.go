@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneProfileEditReader is a Reader for the StandAloneProfileEdit structure.
@@ -75,7 +73,6 @@ StandAloneProfileEditOK describes a response with status code 200, with default 
 Success
 */
 type StandAloneProfileEditOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone profile edit o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *StandAloneProfileEditOK) Code() int {
 }
 
 func (o *StandAloneProfileEditOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditOK ", 200)
 }
 
 func (o *StandAloneProfileEditOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditOK  %+v", 200, o.Payload)
-}
-
-func (o *StandAloneProfileEditOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditOK ", 200)
 }
 
 func (o *StandAloneProfileEditOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

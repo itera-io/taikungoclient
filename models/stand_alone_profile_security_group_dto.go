@@ -11,6 +11,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // StandAloneProfileSecurityGroupDto stand alone profile security group dto
@@ -19,7 +20,10 @@ import (
 type StandAloneProfileSecurityGroupDto struct {
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// port max range
 	PortMaxRange int32 `json:"portMaxRange,omitempty"`
@@ -31,20 +35,47 @@ type StandAloneProfileSecurityGroupDto struct {
 	Protocol SecurityGroupProtocol `json:"protocol,omitempty"`
 
 	// remote Ip prefix
-	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
+	// Required: true
+	// Min Length: 1
+	RemoteIPPrefix *string `json:"remoteIpPrefix"`
 }
 
 // Validate validates this stand alone profile security group dto
 func (m *StandAloneProfileSecurityGroupDto) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateProtocol(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRemoteIPPrefix(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *StandAloneProfileSecurityGroupDto) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -59,6 +90,19 @@ func (m *StandAloneProfileSecurityGroupDto) validateProtocol(formats strfmt.Regi
 		} else if ce, ok := err.(*errors.CompositeError); ok {
 			return ce.ValidateName("protocol")
 		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *StandAloneProfileSecurityGroupDto) validateRemoteIPPrefix(formats strfmt.Registry) error {
+
+	if err := validate.Required("remoteIpPrefix", "body", m.RemoteIPPrefix); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("remoteIpPrefix", "body", *m.RemoteIPPrefix, 1); err != nil {
 		return err
 	}
 

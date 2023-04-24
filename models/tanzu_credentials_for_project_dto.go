@@ -17,23 +17,23 @@ import (
 // swagger:model TanzuCredentialsForProjectDto
 type TanzuCredentialsForProjectDto struct {
 
-	// tanzu namespace
-	TanzuNamespace string `json:"tanzuNamespace,omitempty"`
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
 
-	// tanzu password
-	TanzuPassword string `json:"tanzuPassword,omitempty"`
+	// password
+	Password string `json:"password,omitempty"`
 
-	// tanzu port
-	TanzuPort int32 `json:"tanzuPort,omitempty"`
+	// port
+	Port int32 `json:"port,omitempty"`
 
-	// tanzu Url
-	TanzuURL string `json:"tanzuUrl,omitempty"`
+	// url
+	URL string `json:"url,omitempty"`
 
-	// tanzu username
-	TanzuUsername string `json:"tanzuUsername,omitempty"`
+	// username
+	Username string `json:"username,omitempty"`
 
-	// tanzu volume type
-	TanzuVolumeType string `json:"tanzuVolumeType,omitempty"`
+	// volume type
+	VolumeType string `json:"volumeType,omitempty"`
 }
 
 // Validate validates this tanzu credentials for project dto

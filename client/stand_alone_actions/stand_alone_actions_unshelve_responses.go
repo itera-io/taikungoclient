@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneActionsUnshelveReader is a Reader for the StandAloneActionsUnshelve structure.
@@ -75,7 +73,6 @@ StandAloneActionsUnshelveOK describes a response with status code 200, with defa
 Success
 */
 type StandAloneActionsUnshelveOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone actions unshelve o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *StandAloneActionsUnshelveOK) Code() int {
 }
 
 func (o *StandAloneActionsUnshelveOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveOK ", 200)
 }
 
 func (o *StandAloneActionsUnshelveOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveOK  %+v", 200, o.Payload)
-}
-
-func (o *StandAloneActionsUnshelveOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveOK ", 200)
 }
 
 func (o *StandAloneActionsUnshelveOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

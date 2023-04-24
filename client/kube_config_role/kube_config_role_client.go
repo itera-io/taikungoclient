@@ -49,7 +49,7 @@ func (a *Client) KubeConfigRoleList(params *KubeConfigRoleListParams, authInfo r
 		PathPattern:        "/api/v{v}/KubeConfigRole",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &KubeConfigRoleListReader{formats: a.formats},
 		AuthInfo:           authInfo,

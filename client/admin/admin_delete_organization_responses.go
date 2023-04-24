@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AdminDeleteOrganizationReader is a Reader for the AdminDeleteOrganization structure.
@@ -75,7 +73,6 @@ AdminDeleteOrganizationOK describes a response with status code 200, with defaul
 Success
 */
 type AdminDeleteOrganizationOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this admin delete organization o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *AdminDeleteOrganizationOK) Code() int {
 }
 
 func (o *AdminDeleteOrganizationOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationOK ", 200)
 }
 
 func (o *AdminDeleteOrganizationOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationOK  %+v", 200, o.Payload)
-}
-
-func (o *AdminDeleteOrganizationOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationOK ", 200)
 }
 
 func (o *AdminDeleteOrganizationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

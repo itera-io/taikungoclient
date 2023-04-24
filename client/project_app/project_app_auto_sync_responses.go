@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectAppAutoSyncReader is a Reader for the ProjectAppAutoSync structure.
@@ -75,7 +73,6 @@ ProjectAppAutoSyncOK describes a response with status code 200, with default hea
 Success
 */
 type ProjectAppAutoSyncOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this project app auto sync o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *ProjectAppAutoSyncOK) Code() int {
 }
 
 func (o *ProjectAppAutoSyncOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncOK ", 200)
 }
 
 func (o *ProjectAppAutoSyncOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncOK  %+v", 200, o.Payload)
-}
-
-func (o *ProjectAppAutoSyncOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncOK ", 200)
 }
 
 func (o *ProjectAppAutoSyncOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

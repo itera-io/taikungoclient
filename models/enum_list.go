@@ -55,6 +55,9 @@ type EnumList struct {
 	// prometheus types
 	PrometheusTypes []*CommonDropdownDto `json:"prometheusTypes"`
 
+	// proxmox roles
+	ProxmoxRoles []*CommonDropdownDto `json:"proxmoxRoles"`
+
 	// reboot options
 	RebootOptions []*CommonDropdownDto `json:"rebootOptions"`
 
@@ -63,6 +66,9 @@ type EnumList struct {
 
 	// request logs
 	RequestLogs []*CommonDropdownDto `json:"requestLogs"`
+
+	// retention periods
+	RetentionPeriods []*CommonStringBasedDropdownDto `json:"retentionPeriods"`
 
 	// security group rules
 	SecurityGroupRules []*CommonDropdownDto `json:"securityGroupRules"`
@@ -81,6 +87,9 @@ type EnumList struct {
 
 	// standalone Vm statuses
 	StandaloneVMStatuses []*CommonDropdownDto `json:"standaloneVmStatuses"`
+
+	// ticket priorities
+	TicketPriorities []*CommonDropdownDto `json:"ticketPriorities"`
 
 	// user roles
 	UserRoles []*CommonDropdownDto `json:"userRoles"`
@@ -141,6 +150,10 @@ func (m *EnumList) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateProxmoxRoles(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateRebootOptions(formats); err != nil {
 		res = append(res, err)
 	}
@@ -150,6 +163,10 @@ func (m *EnumList) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateRequestLogs(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRetentionPeriods(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -174,6 +191,10 @@ func (m *EnumList) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateStandaloneVMStatuses(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTicketPriorities(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -503,6 +524,32 @@ func (m *EnumList) validatePrometheusTypes(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *EnumList) validateProxmoxRoles(formats strfmt.Registry) error {
+	if swag.IsZero(m.ProxmoxRoles) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ProxmoxRoles); i++ {
+		if swag.IsZero(m.ProxmoxRoles[i]) { // not required
+			continue
+		}
+
+		if m.ProxmoxRoles[i] != nil {
+			if err := m.ProxmoxRoles[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("proxmoxRoles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("proxmoxRoles" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *EnumList) validateRebootOptions(formats strfmt.Registry) error {
 	if swag.IsZero(m.RebootOptions) { // not required
 		return nil
@@ -571,6 +618,32 @@ func (m *EnumList) validateRequestLogs(formats strfmt.Registry) error {
 					return ve.ValidateName("requestLogs" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("requestLogs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *EnumList) validateRetentionPeriods(formats strfmt.Registry) error {
+	if swag.IsZero(m.RetentionPeriods) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.RetentionPeriods); i++ {
+		if swag.IsZero(m.RetentionPeriods[i]) { // not required
+			continue
+		}
+
+		if m.RetentionPeriods[i] != nil {
+			if err := m.RetentionPeriods[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("retentionPeriods" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("retentionPeriods" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -737,6 +810,32 @@ func (m *EnumList) validateStandaloneVMStatuses(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *EnumList) validateTicketPriorities(formats strfmt.Registry) error {
+	if swag.IsZero(m.TicketPriorities) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.TicketPriorities); i++ {
+		if swag.IsZero(m.TicketPriorities[i]) { // not required
+			continue
+		}
+
+		if m.TicketPriorities[i] != nil {
+			if err := m.TicketPriorities[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("ticketPriorities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("ticketPriorities" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *EnumList) validateUserRoles(formats strfmt.Registry) error {
 	if swag.IsZero(m.UserRoles) { // not required
 		return nil
@@ -841,6 +940,10 @@ func (m *EnumList) ContextValidate(ctx context.Context, formats strfmt.Registry)
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateProxmoxRoles(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateRebootOptions(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -850,6 +953,10 @@ func (m *EnumList) ContextValidate(ctx context.Context, formats strfmt.Registry)
 	}
 
 	if err := m.contextValidateRequestLogs(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRetentionPeriods(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -874,6 +981,10 @@ func (m *EnumList) ContextValidate(ctx context.Context, formats strfmt.Registry)
 	}
 
 	if err := m.contextValidateStandaloneVMStatuses(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTicketPriorities(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1131,6 +1242,26 @@ func (m *EnumList) contextValidatePrometheusTypes(ctx context.Context, formats s
 	return nil
 }
 
+func (m *EnumList) contextValidateProxmoxRoles(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ProxmoxRoles); i++ {
+
+		if m.ProxmoxRoles[i] != nil {
+			if err := m.ProxmoxRoles[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("proxmoxRoles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("proxmoxRoles" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *EnumList) contextValidateRebootOptions(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.RebootOptions); i++ {
@@ -1181,6 +1312,26 @@ func (m *EnumList) contextValidateRequestLogs(ctx context.Context, formats strfm
 					return ve.ValidateName("requestLogs" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("requestLogs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *EnumList) contextValidateRetentionPeriods(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.RetentionPeriods); i++ {
+
+		if m.RetentionPeriods[i] != nil {
+			if err := m.RetentionPeriods[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("retentionPeriods" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("retentionPeriods" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -1301,6 +1452,26 @@ func (m *EnumList) contextValidateStandaloneVMStatuses(ctx context.Context, form
 					return ve.ValidateName("standaloneVmStatuses" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("standaloneVmStatuses" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *EnumList) contextValidateTicketPriorities(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.TicketPriorities); i++ {
+
+		if m.TicketPriorities[i] != nil {
+			if err := m.TicketPriorities[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("ticketPriorities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("ticketPriorities" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

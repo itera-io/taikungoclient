@@ -11,6 +11,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ServerTemplateDto server template dto
@@ -22,6 +23,8 @@ type ServerTemplateDto struct {
 	Count int32 `json:"count,omitempty"`
 
 	// disk size
+	// Maximum: 8.796093022208e+12
+	// Minimum: 3.221225472e+10
 	DiskSize float64 `json:"diskSize,omitempty"`
 
 	// flavor
@@ -35,6 +38,10 @@ type ServerTemplateDto struct {
 func (m *ServerTemplateDto) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateDiskSize(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateRole(formats); err != nil {
 		res = append(res, err)
 	}
@@ -42,6 +49,22 @@ func (m *ServerTemplateDto) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ServerTemplateDto) validateDiskSize(formats strfmt.Registry) error {
+	if swag.IsZero(m.DiskSize) { // not required
+		return nil
+	}
+
+	if err := validate.Minimum("diskSize", "body", m.DiskSize, 3.221225472e+10, false); err != nil {
+		return err
+	}
+
+	if err := validate.Maximum("diskSize", "body", m.DiskSize, 8.796093022208e+12, false); err != nil {
+		return err
+	}
+
 	return nil
 }
 

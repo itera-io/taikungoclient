@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AdminUpdateUserPasswordReader is a Reader for the AdminUpdateUserPassword structure.
@@ -75,7 +73,6 @@ AdminUpdateUserPasswordOK describes a response with status code 200, with defaul
 Success
 */
 type AdminUpdateUserPasswordOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this admin update user password o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *AdminUpdateUserPasswordOK) Code() int {
 }
 
 func (o *AdminUpdateUserPasswordOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordOK ", 200)
 }
 
 func (o *AdminUpdateUserPasswordOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordOK  %+v", 200, o.Payload)
-}
-
-func (o *AdminUpdateUserPasswordOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordOK ", 200)
 }
 
 func (o *AdminUpdateUserPasswordOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

@@ -33,6 +33,9 @@ type AvailablePackagesDto struct {
 	// installed instance count
 	InstalledInstanceCount int32 `json:"installedInstanceCount,omitempty"`
 
+	// is locked
+	IsLocked bool `json:"isLocked"`
+
 	// logo image Id
 	LogoImageID string `json:"logoImageId,omitempty"`
 

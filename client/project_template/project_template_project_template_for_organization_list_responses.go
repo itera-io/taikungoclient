@@ -75,7 +75,7 @@ ProjectTemplateProjectTemplateForOrganizationListOK describes a response with st
 Success
 */
 type ProjectTemplateProjectTemplateForOrganizationListOK struct {
-	Payload []*models.CommonDropdownDto
+	Payload []*models.ProjectTemplateDropdownListDto
 }
 
 // IsSuccess returns true when this project template project template for organization list o k response has a 2xx status code
@@ -116,7 +116,7 @@ func (o *ProjectTemplateProjectTemplateForOrganizationListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectTemplate/list][%d] projectTemplateProjectTemplateForOrganizationListOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectTemplateProjectTemplateForOrganizationListOK) GetPayload() []*models.CommonDropdownDto {
+func (o *ProjectTemplateProjectTemplateForOrganizationListOK) GetPayload() []*models.ProjectTemplateDropdownListDto {
 	return o.Payload
 }
 

@@ -17,14 +17,14 @@ import (
 // swagger:model UpdateUserProjectDto
 type UpdateUserProjectDto struct {
 
+	// id
+	ID int32 `json:"id,omitempty"`
+
 	// is bound
 	IsBound bool `json:"isBound"`
 
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
+	// name
+	Name string `json:"name,omitempty"`
 }
 
 // Validate validates this update user project dto

@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateStandAloneVMCommand create stand alone Vm command
@@ -26,22 +27,36 @@ type CreateStandAloneVMCommand struct {
 	CloudInit string `json:"cloudInit,omitempty"`
 
 	// count
+	// Maximum: 50
+	// Minimum: 1
 	Count int32 `json:"count,omitempty"`
 
 	// flavor name
-	FlavorName string `json:"flavorName,omitempty"`
+	// Required: true
+	// Min Length: 1
+	FlavorName *string `json:"flavorName"`
+
+	// hypervisor
+	Hypervisor string `json:"hypervisor,omitempty"`
 
 	// image
-	Image string `json:"image,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Image *string `json:"image"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 52
+	// Min Length: 1
+	Name *string `json:"name"`
 
 	// password
 	Password string `json:"password,omitempty"`
 
 	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ProjectID *int32 `json:"projectId"`
 
 	// public Ip enabled
 	PublicIPEnabled bool `json:"publicIpEnabled"`
@@ -56,7 +71,9 @@ type CreateStandAloneVMCommand struct {
 	StandAloneMetaDatas []*StandAloneMetaDataDto `json:"standAloneMetaDatas"`
 
 	// stand alone profile Id
-	StandAloneProfileID int32 `json:"standAloneProfileId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	StandAloneProfileID *int32 `json:"standAloneProfileId"`
 
 	// stand alone Vm disks
 	StandAloneVMDisks []*StandAloneVMDiskDto `json:"standAloneVmDisks"`
@@ -65,6 +82,8 @@ type CreateStandAloneVMCommand struct {
 	Username string `json:"username,omitempty"`
 
 	// volume size
+	// Maximum: 8192
+	// Minimum: 1
 	VolumeSize int64 `json:"volumeSize,omitempty"`
 
 	// volume type
@@ -75,7 +94,31 @@ type CreateStandAloneVMCommand struct {
 func (m *CreateStandAloneVMCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCount(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFlavorName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateImage(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProjectID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateStandAloneMetaDatas(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStandAloneProfileID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -83,9 +126,85 @@ func (m *CreateStandAloneVMCommand) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateVolumeSize(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CreateStandAloneVMCommand) validateCount(formats strfmt.Registry) error {
+	if swag.IsZero(m.Count) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("count", "body", int64(m.Count), 1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("count", "body", int64(m.Count), 50, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateStandAloneVMCommand) validateFlavorName(formats strfmt.Registry) error {
+
+	if err := validate.Required("flavorName", "body", m.FlavorName); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("flavorName", "body", *m.FlavorName, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateStandAloneVMCommand) validateImage(formats strfmt.Registry) error {
+
+	if err := validate.Required("image", "body", m.Image); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("image", "body", *m.Image, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateStandAloneVMCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 1); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 52); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateStandAloneVMCommand) validateProjectID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectId", "body", m.ProjectID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("projectId", "body", int64(*m.ProjectID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -115,6 +234,19 @@ func (m *CreateStandAloneVMCommand) validateStandAloneMetaDatas(formats strfmt.R
 	return nil
 }
 
+func (m *CreateStandAloneVMCommand) validateStandAloneProfileID(formats strfmt.Registry) error {
+
+	if err := validate.Required("standAloneProfileId", "body", m.StandAloneProfileID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("standAloneProfileId", "body", int64(*m.StandAloneProfileID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *CreateStandAloneVMCommand) validateStandAloneVMDisks(formats strfmt.Registry) error {
 	if swag.IsZero(m.StandAloneVMDisks) { // not required
 		return nil
@@ -136,6 +268,22 @@ func (m *CreateStandAloneVMCommand) validateStandAloneVMDisks(formats strfmt.Reg
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *CreateStandAloneVMCommand) validateVolumeSize(formats strfmt.Registry) error {
+	if swag.IsZero(m.VolumeSize) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("volumeSize", "body", m.VolumeSize, 1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("volumeSize", "body", m.VolumeSize, 8192, false); err != nil {
+		return err
 	}
 
 	return nil

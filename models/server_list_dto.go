@@ -19,6 +19,9 @@ import (
 // swagger:model ServerListDto
 type ServerListDto struct {
 
+	// action buttons
+	ActionButtons *ServerActionButtonVisibilityDto `json:"actionButtons,omitempty"`
+
 	// autoscaling group
 	AutoscalingGroup string `json:"autoscalingGroup,omitempty"`
 
@@ -51,6 +54,9 @@ type ServerListDto struct {
 
 	// google machine type
 	GoogleMachineType string `json:"googleMachineType,omitempty"`
+
+	// hypervisor
+	Hypervisor string `json:"hypervisor,omitempty"`
 
 	// id
 	ID int32 `json:"id,omitempty"`
@@ -91,6 +97,15 @@ type ServerListDto struct {
 	// provider ID
 	ProviderID string `json:"providerID,omitempty"`
 
+	// proxmox flavor
+	ProxmoxFlavor string `json:"proxmoxFlavor,omitempty"`
+
+	// proxmox n f s disk size
+	ProxmoxNFSDiskSize int32 `json:"proxmoxNFSDiskSize,omitempty"`
+
+	// proxmox role
+	ProxmoxRole string `json:"proxmoxRole,omitempty"`
+
 	// ram
 	RAM int64 `json:"ram,omitempty"`
 
@@ -108,11 +123,18 @@ type ServerListDto struct {
 
 	// status
 	Status string `json:"status,omitempty"`
+
+	// tanzu flavor
+	TanzuFlavor string `json:"tanzuFlavor,omitempty"`
 }
 
 // Validate validates this server list dto
 func (m *ServerListDto) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateActionButtons(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateKubernetesNodeLabels(formats); err != nil {
 		res = append(res, err)
@@ -121,6 +143,25 @@ func (m *ServerListDto) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ServerListDto) validateActionButtons(formats strfmt.Registry) error {
+	if swag.IsZero(m.ActionButtons) { // not required
+		return nil
+	}
+
+	if m.ActionButtons != nil {
+		if err := m.ActionButtons.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("actionButtons")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("actionButtons")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -154,6 +195,10 @@ func (m *ServerListDto) validateKubernetesNodeLabels(formats strfmt.Registry) er
 func (m *ServerListDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateActionButtons(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateKubernetesNodeLabels(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -161,6 +206,22 @@ func (m *ServerListDto) ContextValidate(ctx context.Context, formats strfmt.Regi
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ServerListDto) contextValidateActionButtons(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ActionButtons != nil {
+		if err := m.ActionButtons.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("actionButtons")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("actionButtons")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

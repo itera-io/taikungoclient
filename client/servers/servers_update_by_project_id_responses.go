@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ServersUpdateByProjectIDReader is a Reader for the ServersUpdateByProjectID structure.
@@ -75,7 +73,6 @@ ServersUpdateByProjectIDOK describes a response with status code 200, with defau
 Success
 */
 type ServersUpdateByProjectIDOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this servers update by project Id o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *ServersUpdateByProjectIDOK) Code() int {
 }
 
 func (o *ServersUpdateByProjectIDOK) Error() string {
-	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdOK ", 200)
 }
 
 func (o *ServersUpdateByProjectIDOK) String() string {
-	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdOK  %+v", 200, o.Payload)
-}
-
-func (o *ServersUpdateByProjectIDOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdOK ", 200)
 }
 
 func (o *ServersUpdateByProjectIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

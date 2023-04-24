@@ -21,7 +21,7 @@ type PackageAutocompleteDto struct {
 	Key string `json:"key,omitempty"`
 
 	// value
-	Value interface{} `json:"value,omitempty"`
+	Value string `json:"value,omitempty"`
 }
 
 // Validate validates this package autocomplete dto

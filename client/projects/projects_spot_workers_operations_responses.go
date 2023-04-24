@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsSpotWorkersOperationsReader is a Reader for the ProjectsSpotWorkersOperations structure.
@@ -75,7 +73,6 @@ ProjectsSpotWorkersOperationsOK describes a response with status code 200, with 
 Success
 */
 type ProjectsSpotWorkersOperationsOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects spot workers operations o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *ProjectsSpotWorkersOperationsOK) Code() int {
 }
 
 func (o *ProjectsSpotWorkersOperationsOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsOK ", 200)
 }
 
 func (o *ProjectsSpotWorkersOperationsOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsOK  %+v", 200, o.Payload)
-}
-
-func (o *ProjectsSpotWorkersOperationsOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsOK ", 200)
 }
 
 func (o *ProjectsSpotWorkersOperationsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneResetReader is a Reader for the StandAloneReset structure.
@@ -75,7 +73,6 @@ StandAloneResetOK describes a response with status code 200, with default header
 Success
 */
 type StandAloneResetOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone reset o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *StandAloneResetOK) Code() int {
 }
 
 func (o *StandAloneResetOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetOK ", 200)
 }
 
 func (o *StandAloneResetOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetOK  %+v", 200, o.Payload)
-}
-
-func (o *StandAloneResetOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetOK ", 200)
 }
 
 func (o *StandAloneResetOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

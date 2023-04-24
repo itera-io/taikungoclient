@@ -31,12 +31,18 @@ type CreateInvoiceCommand struct {
 	IsPaid bool `json:"isPaid"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Name *string `json:"name"`
 
 	// organization subscription Id
-	OrganizationSubscriptionID int32 `json:"organizationSubscriptionId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	OrganizationSubscriptionID *int32 `json:"organizationSubscriptionId"`
 
 	// price
+	// Maximum: 3e+07
+	// Minimum: 1
 	Price float64 `json:"price,omitempty"`
 
 	// required payment action
@@ -59,6 +65,18 @@ func (m *CreateInvoiceCommand) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateEndDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOrganizationSubscriptionID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePrice(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -90,6 +108,48 @@ func (m *CreateInvoiceCommand) validateEndDate(formats strfmt.Registry) error {
 	}
 
 	if err := validate.FormatOf("endDate", "body", "date-time", m.EndDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateInvoiceCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateInvoiceCommand) validateOrganizationSubscriptionID(formats strfmt.Registry) error {
+
+	if err := validate.Required("organizationSubscriptionId", "body", m.OrganizationSubscriptionID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("organizationSubscriptionId", "body", int64(*m.OrganizationSubscriptionID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateInvoiceCommand) validatePrice(formats strfmt.Registry) error {
+	if swag.IsZero(m.Price) { // not required
+		return nil
+	}
+
+	if err := validate.Minimum("price", "body", m.Price, 1, false); err != nil {
+		return err
+	}
+
+	if err := validate.Maximum("price", "body", m.Price, 3e+07, false); err != nil {
 		return err
 	}
 

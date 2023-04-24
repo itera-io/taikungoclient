@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobFetchAzurePricesReader is a Reader for the CronJobFetchAzurePrices structure.
@@ -75,7 +73,6 @@ CronJobFetchAzurePricesOK describes a response with status code 200, with defaul
 Success
 */
 type CronJobFetchAzurePricesOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job fetch azure prices o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CronJobFetchAzurePricesOK) Code() int {
 }
 
 func (o *CronJobFetchAzurePricesOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesOK ", 200)
 }
 
 func (o *CronJobFetchAzurePricesOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesOK  %+v", 200, o.Payload)
-}
-
-func (o *CronJobFetchAzurePricesOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesOK ", 200)
 }
 
 func (o *CronJobFetchAzurePricesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

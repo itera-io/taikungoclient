@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // PreDefinedQueriesCreatePrometheusDashboardReader is a Reader for the PreDefinedQueriesCreatePrometheusDashboard structure.
@@ -75,7 +73,6 @@ PreDefinedQueriesCreatePrometheusDashboardOK describes a response with status co
 Success
 */
 type PreDefinedQueriesCreatePrometheusDashboardOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this pre defined queries create prometheus dashboard o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *PreDefinedQueriesCreatePrometheusDashboardOK) Code() int {
 }
 
 func (o *PreDefinedQueriesCreatePrometheusDashboardOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/create][%d] preDefinedQueriesCreatePrometheusDashboardOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/create][%d] preDefinedQueriesCreatePrometheusDashboardOK ", 200)
 }
 
 func (o *PreDefinedQueriesCreatePrometheusDashboardOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/create][%d] preDefinedQueriesCreatePrometheusDashboardOK  %+v", 200, o.Payload)
-}
-
-func (o *PreDefinedQueriesCreatePrometheusDashboardOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/create][%d] preDefinedQueriesCreatePrometheusDashboardOK ", 200)
 }
 
 func (o *PreDefinedQueriesCreatePrometheusDashboardOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

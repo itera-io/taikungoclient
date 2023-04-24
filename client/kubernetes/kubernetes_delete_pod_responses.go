@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesDeletePodReader is a Reader for the KubernetesDeletePod structure.
@@ -75,7 +73,6 @@ KubernetesDeletePodOK describes a response with status code 200, with default he
 Success
 */
 type KubernetesDeletePodOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this kubernetes delete pod o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *KubernetesDeletePodOK) Code() int {
 }
 
 func (o *KubernetesDeletePodOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodOK ", 200)
 }
 
 func (o *KubernetesDeletePodOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodOK  %+v", 200, o.Payload)
-}
-
-func (o *KubernetesDeletePodOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodOK ", 200)
 }
 
 func (o *KubernetesDeletePodOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

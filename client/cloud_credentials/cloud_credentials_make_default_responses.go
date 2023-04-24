@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CloudCredentialsMakeDefaultReader is a Reader for the CloudCredentialsMakeDefault structure.
@@ -75,7 +73,6 @@ CloudCredentialsMakeDefaultOK describes a response with status code 200, with de
 Success
 */
 type CloudCredentialsMakeDefaultOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this cloud credentials make default o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CloudCredentialsMakeDefaultOK) Code() int {
 }
 
 func (o *CloudCredentialsMakeDefaultOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultOK ", 200)
 }
 
 func (o *CloudCredentialsMakeDefaultOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultOK  %+v", 200, o.Payload)
-}
-
-func (o *CloudCredentialsMakeDefaultOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultOK ", 200)
 }
 
 func (o *CloudCredentialsMakeDefaultOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

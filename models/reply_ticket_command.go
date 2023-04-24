@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ReplyTicketCommand reply ticket command
@@ -18,14 +20,62 @@ import (
 type ReplyTicketCommand struct {
 
 	// body
-	Body string `json:"body,omitempty"`
+	// Required: true
+	// Max Length: 2000
+	// Min Length: 3
+	Body *string `json:"body"`
 
 	// ticket Id
-	TicketID string `json:"ticketId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	TicketID *string `json:"ticketId"`
 }
 
 // Validate validates this reply ticket command
 func (m *ReplyTicketCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateBody(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTicketID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ReplyTicketCommand) validateBody(formats strfmt.Registry) error {
+
+	if err := validate.Required("body", "body", m.Body); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("body", "body", *m.Body, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("body", "body", *m.Body, 2000); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ReplyTicketCommand) validateTicketID(formats strfmt.Registry) error {
+
+	if err := validate.Required("ticketId", "body", m.TicketID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("ticketId", "body", *m.TicketID, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

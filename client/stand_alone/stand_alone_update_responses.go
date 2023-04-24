@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneUpdateReader is a Reader for the StandAloneUpdate structure.
@@ -75,7 +73,6 @@ StandAloneUpdateOK describes a response with status code 200, with default heade
 Success
 */
 type StandAloneUpdateOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone update o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *StandAloneUpdateOK) Code() int {
 }
 
 func (o *StandAloneUpdateOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update][%d] standAloneUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update][%d] standAloneUpdateOK ", 200)
 }
 
 func (o *StandAloneUpdateOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update][%d] standAloneUpdateOK  %+v", 200, o.Payload)
-}
-
-func (o *StandAloneUpdateOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update][%d] standAloneUpdateOK ", 200)
 }
 
 func (o *StandAloneUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

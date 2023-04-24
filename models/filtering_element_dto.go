@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // FilteringElementDto filtering element dto
@@ -18,14 +20,57 @@ import (
 type FilteringElementDto struct {
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Name *string `json:"name"`
 
 	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
+	// Required: true
+	// Min Length: 1
+	OrganizationName *string `json:"organizationName"`
 }
 
 // Validate validates this filtering element dto
 func (m *FilteringElementDto) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOrganizationName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *FilteringElementDto) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *FilteringElementDto) validateOrganizationName(formats strfmt.Registry) error {
+
+	if err := validate.Required("organizationName", "body", m.OrganizationName); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("organizationName", "body", *m.OrganizationName, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

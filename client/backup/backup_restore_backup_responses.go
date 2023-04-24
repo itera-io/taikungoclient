@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // BackupRestoreBackupReader is a Reader for the BackupRestoreBackup structure.
@@ -75,7 +73,6 @@ BackupRestoreBackupOK describes a response with status code 200, with default he
 Success
 */
 type BackupRestoreBackupOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this backup restore backup o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *BackupRestoreBackupOK) Code() int {
 }
 
 func (o *BackupRestoreBackupOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Backup/restore][%d] backupRestoreBackupOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Backup/restore][%d] backupRestoreBackupOK ", 200)
 }
 
 func (o *BackupRestoreBackupOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Backup/restore][%d] backupRestoreBackupOK  %+v", 200, o.Payload)
-}
-
-func (o *BackupRestoreBackupOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Backup/restore][%d] backupRestoreBackupOK ", 200)
 }
 
 func (o *BackupRestoreBackupOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

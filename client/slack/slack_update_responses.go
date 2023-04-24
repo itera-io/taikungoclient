@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // SlackUpdateReader is a Reader for the SlackUpdate structure.
@@ -75,7 +73,6 @@ SlackUpdateOK describes a response with status code 200, with default header val
 Success
 */
 type SlackUpdateOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this slack update o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *SlackUpdateOK) Code() int {
 }
 
 func (o *SlackUpdateOK) Error() string {
-	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateOK ", 200)
 }
 
 func (o *SlackUpdateOK) String() string {
-	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateOK  %+v", 200, o.Payload)
-}
-
-func (o *SlackUpdateOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateOK ", 200)
 }
 
 func (o *SlackUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

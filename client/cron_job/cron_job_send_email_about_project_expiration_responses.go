@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobSendEmailAboutProjectExpirationReader is a Reader for the CronJobSendEmailAboutProjectExpiration structure.
@@ -75,7 +73,6 @@ CronJobSendEmailAboutProjectExpirationOK describes a response with status code 2
 Success
 */
 type CronJobSendEmailAboutProjectExpirationOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job send email about project expiration o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *CronJobSendEmailAboutProjectExpirationOK) Code() int {
 }
 
 func (o *CronJobSendEmailAboutProjectExpirationOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationOK ", 200)
 }
 
 func (o *CronJobSendEmailAboutProjectExpirationOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationOK  %+v", 200, o.Payload)
-}
-
-func (o *CronJobSendEmailAboutProjectExpirationOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationOK ", 200)
 }
 
 func (o *CronJobSendEmailAboutProjectExpirationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

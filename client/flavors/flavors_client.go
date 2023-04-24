@@ -44,6 +44,8 @@ type ClientService interface {
 
 	FlavorsOpenstackFlavors(params *FlavorsOpenstackFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsOpenstackFlavorsOK, error)
 
+	FlavorsPromoxFlavors(params *FlavorsPromoxFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsPromoxFlavorsOK, error)
+
 	FlavorsTanzuFlavors(params *FlavorsTanzuFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsTanzuFlavorsOK, error)
 
 	FlavorsUnbindFromProject(params *FlavorsUnbindFromProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsUnbindFromProjectOK, error)
@@ -65,7 +67,7 @@ func (a *Client) FlavorsAwsFlavors(params *FlavorsAwsFlavorsParams, authInfo run
 		PathPattern:        "/api/v{v}/Flavors/aws/{cloudId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &FlavorsAwsFlavorsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -104,7 +106,7 @@ func (a *Client) FlavorsAzureFlavors(params *FlavorsAzureFlavorsParams, authInfo
 		PathPattern:        "/api/v{v}/Flavors/azure/{cloudId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &FlavorsAzureFlavorsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -143,7 +145,7 @@ func (a *Client) FlavorsBindToProject(params *FlavorsBindToProjectParams, authIn
 		PathPattern:        "/api/v{v}/Flavors/bind",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &FlavorsBindToProjectReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -182,7 +184,7 @@ func (a *Client) FlavorsDropdownRecordDtos(params *FlavorsDropdownRecordDtosPara
 		PathPattern:        "/api/v{v}/Flavors/credentials/dropdown/list",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &FlavorsDropdownRecordDtosReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -221,7 +223,7 @@ func (a *Client) FlavorsGetSelectedFlavorsForProject(params *FlavorsGetSelectedF
 		PathPattern:        "/api/v{v}/Flavors/projects/list",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &FlavorsGetSelectedFlavorsForProjectReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -260,7 +262,7 @@ func (a *Client) FlavorsGoogleFlavors(params *FlavorsGoogleFlavorsParams, authIn
 		PathPattern:        "/api/v{v}/Flavors/google/{cloudId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &FlavorsGoogleFlavorsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -299,7 +301,7 @@ func (a *Client) FlavorsOpenstackFlavors(params *FlavorsOpenstackFlavorsParams, 
 		PathPattern:        "/api/v{v}/Flavors/openstack/{cloudId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &FlavorsOpenstackFlavorsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -325,6 +327,45 @@ func (a *Client) FlavorsOpenstackFlavors(params *FlavorsOpenstackFlavorsParams, 
 }
 
 /*
+FlavorsPromoxFlavors retrieves proxmox flavors
+*/
+func (a *Client) FlavorsPromoxFlavors(params *FlavorsPromoxFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsPromoxFlavorsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewFlavorsPromoxFlavorsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Flavors_PromoxFlavors",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Flavors/proxmox/{cloudId}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &FlavorsPromoxFlavorsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*FlavorsPromoxFlavorsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Flavors_PromoxFlavors: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 FlavorsTanzuFlavors retrieves tanzu flavors
 */
 func (a *Client) FlavorsTanzuFlavors(params *FlavorsTanzuFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsTanzuFlavorsOK, error) {
@@ -338,7 +379,7 @@ func (a *Client) FlavorsTanzuFlavors(params *FlavorsTanzuFlavorsParams, authInfo
 		PathPattern:        "/api/v{v}/Flavors/tanzu/{cloudId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &FlavorsTanzuFlavorsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -377,7 +418,7 @@ func (a *Client) FlavorsUnbindFromProject(params *FlavorsUnbindFromProjectParams
 		PathPattern:        "/api/v{v}/Flavors/unbind",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &FlavorsUnbindFromProjectReader{formats: a.formats},
 		AuthInfo:           authInfo,

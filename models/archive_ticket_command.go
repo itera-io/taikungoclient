@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ArchiveTicketCommand archive ticket command
@@ -18,11 +20,35 @@ import (
 type ArchiveTicketCommand struct {
 
 	// ticket Id
-	TicketID string `json:"ticketId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	TicketID *string `json:"ticketId"`
 }
 
 // Validate validates this archive ticket command
 func (m *ArchiveTicketCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateTicketID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ArchiveTicketCommand) validateTicketID(formats strfmt.Registry) error {
+
+	if err := validate.Required("ticketId", "body", m.TicketID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("ticketId", "body", *m.TicketID, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

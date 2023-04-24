@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AlertingProfilesVerifyWebhookReader is a Reader for the AlertingProfilesVerifyWebhook structure.
@@ -75,7 +73,6 @@ AlertingProfilesVerifyWebhookOK describes a response with status code 200, with 
 Success
 */
 type AlertingProfilesVerifyWebhookOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this alerting profiles verify webhook o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *AlertingProfilesVerifyWebhookOK) Code() int {
 }
 
 func (o *AlertingProfilesVerifyWebhookOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookOK ", 200)
 }
 
 func (o *AlertingProfilesVerifyWebhookOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookOK  %+v", 200, o.Payload)
-}
-
-func (o *AlertingProfilesVerifyWebhookOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookOK ", 200)
 }
 
 func (o *AlertingProfilesVerifyWebhookOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

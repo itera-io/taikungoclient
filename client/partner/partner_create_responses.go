@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // PartnerCreateReader is a Reader for the PartnerCreate structure.
@@ -75,7 +73,6 @@ PartnerCreateOK describes a response with status code 200, with default header v
 Success
 */
 type PartnerCreateOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this partner create o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *PartnerCreateOK) Code() int {
 }
 
 func (o *PartnerCreateOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateOK ", 200)
 }
 
 func (o *PartnerCreateOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateOK  %+v", 200, o.Payload)
-}
-
-func (o *PartnerCreateOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateOK ", 200)
 }
 
 func (o *PartnerCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

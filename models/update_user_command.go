@@ -11,6 +11,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // UpdateUserCommand update user command
@@ -25,13 +26,20 @@ type UpdateUserCommand struct {
 	DisplayName string `json:"displayName"`
 
 	// email
-	Email string `json:"email,omitempty"`
+	// Required: true
+	// Max Length: 200
+	// Min Length: 3
+	// Format: email
+	Email *strfmt.Email `json:"email"`
 
 	// force to reset password
 	ForceToResetPassword bool `json:"forceToResetPassword"`
 
 	// id
-	ID string `json:"id,omitempty"`
+	// Required: true
+	// Max Length: 200
+	// Min Length: 3
+	ID *string `json:"id"`
 
 	// is approved by partner
 	IsApprovedByPartner bool `json:"isApprovedByPartner"`
@@ -40,20 +48,73 @@ type UpdateUserCommand struct {
 	Role UserRole `json:"role,omitempty"`
 
 	// username
-	Username string `json:"username,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Username *string `json:"username"`
 }
 
 // Validate validates this update user command
 func (m *UpdateUserCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateEmail(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateRole(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsername(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *UpdateUserCommand) validateEmail(formats strfmt.Registry) error {
+
+	if err := validate.Required("email", "body", m.Email); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("email", "body", m.Email.String(), 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("email", "body", m.Email.String(), 200); err != nil {
+		return err
+	}
+
+	if err := validate.FormatOf("email", "body", "email", m.Email.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateUserCommand) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("id", "body", *m.ID, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("id", "body", *m.ID, 200); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -68,6 +129,23 @@ func (m *UpdateUserCommand) validateRole(formats strfmt.Registry) error {
 		} else if ce, ok := err.(*errors.CompositeError); ok {
 			return ce.ValidateName("role")
 		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateUserCommand) validateUsername(formats strfmt.Registry) error {
+
+	if err := validate.Required("username", "body", m.Username); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("username", "body", *m.Username, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("username", "body", *m.Username, 30); err != nil {
 		return err
 	}
 

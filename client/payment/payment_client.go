@@ -30,9 +30,11 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	PaymentClear(params *PaymentClearParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentClearOK, error)
+	PaymentClearPayment(params *PaymentClearPaymentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentClearPaymentOK, error)
 
 	PaymentCreateCustomer(params *PaymentCreateCustomerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentCreateCustomerOK, error)
+
+	PaymentGetBillingInfo(params *PaymentGetBillingInfoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentGetBillingInfoOK, error)
 
 	PaymentGetCardInfo(params *PaymentGetCardInfoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentGetCardInfoOK, error)
 
@@ -50,22 +52,22 @@ type ClientService interface {
 }
 
 /*
-PaymentClear clears stripe items
+PaymentClearPayment clears payment
 */
-func (a *Client) PaymentClear(params *PaymentClearParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentClearOK, error) {
+func (a *Client) PaymentClearPayment(params *PaymentClearPaymentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentClearPaymentOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPaymentClearParams()
+		params = NewPaymentClearPaymentParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "Payment_Clear",
+		ID:                 "Payment_ClearPayment",
 		Method:             "POST",
 		PathPattern:        "/api/v{v}/Payment/clear",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &PaymentClearReader{formats: a.formats},
+		Reader:             &PaymentClearPaymentReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -78,13 +80,13 @@ func (a *Client) PaymentClear(params *PaymentClearParams, authInfo runtime.Clien
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PaymentClearOK)
+	success, ok := result.(*PaymentClearPaymentOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Payment_Clear: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for Payment_ClearPayment: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -102,7 +104,7 @@ func (a *Client) PaymentCreateCustomer(params *PaymentCreateCustomerParams, auth
 		PathPattern:        "/api/v{v}/Payment/createcustomer",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PaymentCreateCustomerReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -128,6 +130,45 @@ func (a *Client) PaymentCreateCustomer(params *PaymentCreateCustomerParams, auth
 }
 
 /*
+PaymentGetBillingInfo gets billing info for organization
+*/
+func (a *Client) PaymentGetBillingInfo(params *PaymentGetBillingInfoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentGetBillingInfoOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPaymentGetBillingInfoParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Payment_GetBillingInfo",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Payment/billing-info",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PaymentGetBillingInfoReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PaymentGetBillingInfoOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Payment_GetBillingInfo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 PaymentGetCardInfo gets card information
 */
 func (a *Client) PaymentGetCardInfo(params *PaymentGetCardInfoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentGetCardInfoOK, error) {
@@ -141,7 +182,7 @@ func (a *Client) PaymentGetCardInfo(params *PaymentGetCardInfoParams, authInfo r
 		PathPattern:        "/api/v{v}/Payment/cardinfo",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PaymentGetCardInfoReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -180,7 +221,7 @@ func (a *Client) PaymentGetFinalPrice(params *PaymentGetFinalPriceParams, authIn
 		PathPattern:        "/api/v{v}/Payment/finalprice",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PaymentGetFinalPriceReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -219,7 +260,7 @@ func (a *Client) PaymentGetStripeInvoices(params *PaymentGetStripeInvoicesParams
 		PathPattern:        "/api/v{v}/Payment/stripeinvoices/{subscriptionId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PaymentGetStripeInvoicesReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -258,7 +299,7 @@ func (a *Client) PaymentPayInvoice(params *PaymentPayInvoiceParams, authInfo run
 		PathPattern:        "/api/v{v}/Payment/pay",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PaymentPayInvoiceReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -297,7 +338,7 @@ func (a *Client) PaymentUpdateCard(params *PaymentUpdateCardParams, authInfo run
 		PathPattern:        "/api/v{v}/Payment/updatecard",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PaymentUpdateCardReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -336,7 +377,7 @@ func (a *Client) PaymentWebhook(params *PaymentWebhookParams, authInfo runtime.C
 		PathPattern:        "/api/v{v}/Payment/webhook",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PaymentWebhookReader{formats: a.formats},
 		AuthInfo:           authInfo,

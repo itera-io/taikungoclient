@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AllowedHostCreateDto allowed host create dto
@@ -21,14 +23,60 @@ type AllowedHostCreateDto struct {
 	Description string `json:"description,omitempty"`
 
 	// ip address
-	IPAddress string `json:"ipAddress,omitempty"`
+	// Required: true
+	// Min Length: 1
+	IPAddress *string `json:"ipAddress"`
 
 	// mask bits
-	MaskBits int32 `json:"maskBits,omitempty"`
+	// Maximum: 32
+	// Minimum: 0
+	MaskBits *int32 `json:"maskBits,omitempty"`
 }
 
 // Validate validates this allowed host create dto
 func (m *AllowedHostCreateDto) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateIPAddress(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMaskBits(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AllowedHostCreateDto) validateIPAddress(formats strfmt.Registry) error {
+
+	if err := validate.Required("ipAddress", "body", m.IPAddress); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("ipAddress", "body", *m.IPAddress, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *AllowedHostCreateDto) validateMaskBits(formats strfmt.Registry) error {
+	if swag.IsZero(m.MaskBits) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("maskBits", "body", int64(*m.MaskBits), 0, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("maskBits", "body", int64(*m.MaskBits), 32, false); err != nil {
+		return err
+	}
+
 	return nil
 }
 

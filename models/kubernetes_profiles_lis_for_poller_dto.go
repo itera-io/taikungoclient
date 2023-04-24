@@ -44,6 +44,9 @@ type KubernetesProfilesLisForPollerDto struct {
 	// organization name
 	OrganizationName string `json:"organizationName,omitempty"`
 
+	// proxmox storage
+	ProxmoxStorage string `json:"proxmoxStorage,omitempty"`
+
 	// taikun l b enabled
 	TaikunLBEnabled bool `json:"taikunLBEnabled"`
 

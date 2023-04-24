@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // UsersForceToResetPasswordReader is a Reader for the UsersForceToResetPassword structure.
@@ -75,7 +73,6 @@ UsersForceToResetPasswordOK describes a response with status code 200, with defa
 Success
 */
 type UsersForceToResetPasswordOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this users force to reset password o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *UsersForceToResetPasswordOK) Code() int {
 }
 
 func (o *UsersForceToResetPasswordOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordOK ", 200)
 }
 
 func (o *UsersForceToResetPasswordOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordOK  %+v", 200, o.Payload)
-}
-
-func (o *UsersForceToResetPasswordOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordOK ", 200)
 }
 
 func (o *UsersForceToResetPasswordOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

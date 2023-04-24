@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateAlertingProfileCommand create alerting profile command
@@ -26,7 +27,10 @@ type CreateAlertingProfileCommand struct {
 	Emails []*AlertingEmailDto `json:"emails"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
@@ -50,6 +54,10 @@ func (m *CreateAlertingProfileCommand) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateEmails(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -114,6 +122,23 @@ func (m *CreateAlertingProfileCommand) validateEmails(formats strfmt.Registry) e
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *CreateAlertingProfileCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
 	}
 
 	return nil

@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsSpotVmsOperationsReader is a Reader for the ProjectsSpotVmsOperations structure.
@@ -75,7 +73,6 @@ ProjectsSpotVmsOperationsOK describes a response with status code 200, with defa
 Success
 */
 type ProjectsSpotVmsOperationsOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects spot vms operations o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *ProjectsSpotVmsOperationsOK) Code() int {
 }
 
 func (o *ProjectsSpotVmsOperationsOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsOK ", 200)
 }
 
 func (o *ProjectsSpotVmsOperationsOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsOK  %+v", 200, o.Payload)
-}
-
-func (o *ProjectsSpotVmsOperationsOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsOK ", 200)
 }
 
 func (o *ProjectsSpotVmsOperationsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

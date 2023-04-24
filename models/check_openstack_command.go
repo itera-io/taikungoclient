@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CheckOpenstackCommand check openstack command
@@ -21,20 +23,101 @@ type CheckOpenstackCommand struct {
 	IsAdmin bool `json:"isAdmin"`
 
 	// open stack domain
-	OpenStackDomain string `json:"openStackDomain,omitempty"`
+	// Required: true
+	// Min Length: 1
+	OpenStackDomain *string `json:"openStackDomain"`
 
 	// open stack password
-	OpenStackPassword string `json:"openStackPassword,omitempty"`
+	// Required: true
+	// Min Length: 1
+	OpenStackPassword *string `json:"openStackPassword"`
 
 	// open stack Url
-	OpenStackURL string `json:"openStackUrl,omitempty"`
+	// Required: true
+	// Min Length: 1
+	OpenStackURL *string `json:"openStackUrl"`
 
 	// open stack user
-	OpenStackUser string `json:"openStackUser,omitempty"`
+	// Required: true
+	// Min Length: 1
+	OpenStackUser *string `json:"openStackUser"`
 }
 
 // Validate validates this check openstack command
 func (m *CheckOpenstackCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateOpenStackDomain(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOpenStackPassword(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOpenStackURL(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOpenStackUser(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CheckOpenstackCommand) validateOpenStackDomain(formats strfmt.Registry) error {
+
+	if err := validate.Required("openStackDomain", "body", m.OpenStackDomain); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("openStackDomain", "body", *m.OpenStackDomain, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CheckOpenstackCommand) validateOpenStackPassword(formats strfmt.Registry) error {
+
+	if err := validate.Required("openStackPassword", "body", m.OpenStackPassword); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("openStackPassword", "body", *m.OpenStackPassword, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CheckOpenstackCommand) validateOpenStackURL(formats strfmt.Registry) error {
+
+	if err := validate.Required("openStackUrl", "body", m.OpenStackURL); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("openStackUrl", "body", *m.OpenStackURL, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CheckOpenstackCommand) validateOpenStackUser(formats strfmt.Registry) error {
+
+	if err := validate.Required("openStackUser", "body", m.OpenStackUser); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("openStackUser", "body", *m.OpenStackUser, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

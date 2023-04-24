@@ -19,11 +19,11 @@ import (
 // swagger:model TanzuFlavorList
 type TanzuFlavorList struct {
 
-	// count
-	Count int32 `json:"count,omitempty"`
-
 	// data
 	Data []*TanzuFlavorsListDto `json:"data"`
+
+	// total count
+	TotalCount int32 `json:"totalCount,omitempty"`
 }
 
 // Validate validates this tanzu flavor list

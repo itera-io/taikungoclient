@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // EditSSHUserCommand edit Ssh user command
@@ -18,20 +20,106 @@ import (
 type EditSSHUserCommand struct {
 
 	// access profile Id
-	AccessProfileID int32 `json:"accessProfileId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	AccessProfileID *int32 `json:"accessProfileId"`
 
 	// id
-	ID int32 `json:"id,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ID *int32 `json:"id"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// ssh public key
-	SSHPublicKey string `json:"sshPublicKey,omitempty"`
+	// Required: true
+	// Min Length: 1
+	SSHPublicKey *string `json:"sshPublicKey"`
 }
 
 // Validate validates this edit Ssh user command
 func (m *EditSSHUserCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAccessProfileID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSSHPublicKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *EditSSHUserCommand) validateAccessProfileID(formats strfmt.Registry) error {
+
+	if err := validate.Required("accessProfileId", "body", m.AccessProfileID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("accessProfileId", "body", int64(*m.AccessProfileID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *EditSSHUserCommand) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("id", "body", int64(*m.ID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *EditSSHUserCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *EditSSHUserCommand) validateSSHPublicKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("sshPublicKey", "body", m.SSHPublicKey); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("sshPublicKey", "body", *m.SSHPublicKey, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

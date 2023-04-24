@@ -34,8 +34,6 @@ type ClientService interface {
 
 	OrganizationsCreate(params *OrganizationsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsCreateOK, error)
 
-	OrganizationsCreateDefaultProfilers(params *OrganizationsCreateDefaultProfilersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsCreateDefaultProfilersOK, error)
-
 	OrganizationsDelete(params *OrganizationsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsDeleteOK, *OrganizationsDeleteNoContent, error)
 
 	OrganizationsDetails(params *OrganizationsDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsDetailsOK, error)
@@ -73,7 +71,7 @@ func (a *Client) OrganizationsAcceptOffer(params *OrganizationsAcceptOfferParams
 		PathPattern:        "/api/v{v}/Organizations/accept-offer",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &OrganizationsAcceptOfferReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -112,7 +110,7 @@ func (a *Client) OrganizationsCreate(params *OrganizationsCreateParams, authInfo
 		PathPattern:        "/api/v{v}/Organizations",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &OrganizationsCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -138,45 +136,6 @@ func (a *Client) OrganizationsCreate(params *OrganizationsCreateParams, authInfo
 }
 
 /*
-OrganizationsCreateDefaultProfilers creates default profilers by organization Uuid
-*/
-func (a *Client) OrganizationsCreateDefaultProfilers(params *OrganizationsCreateDefaultProfilersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsCreateDefaultProfilersOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewOrganizationsCreateDefaultProfilersParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Organizations_CreateDefaultProfilers",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/Organizations/createdefaultprofilers",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &OrganizationsCreateDefaultProfilersReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*OrganizationsCreateDefaultProfilersOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Organizations_CreateDefaultProfilers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
 OrganizationsDelete deletes the specified organization only available for admins
 */
 func (a *Client) OrganizationsDelete(params *OrganizationsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsDeleteOK, *OrganizationsDeleteNoContent, error) {
@@ -190,7 +149,7 @@ func (a *Client) OrganizationsDelete(params *OrganizationsDeleteParams, authInfo
 		PathPattern:        "/api/v{v}/Organizations/delete/{organizationId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &OrganizationsDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -230,7 +189,7 @@ func (a *Client) OrganizationsDetails(params *OrganizationsDetailsParams, authIn
 		PathPattern:        "/api/v{v}/Organizations/details",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &OrganizationsDetailsReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -269,7 +228,7 @@ func (a *Client) OrganizationsExportCsv(params *OrganizationsExportCsvParams, au
 		PathPattern:        "/api/v{v}/Organizations/export",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &OrganizationsExportCsvReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -308,7 +267,7 @@ func (a *Client) OrganizationsLeaveTaikun(params *OrganizationsLeaveTaikunParams
 		PathPattern:        "/api/v{v}/Organizations/leave",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &OrganizationsLeaveTaikunReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -347,7 +306,7 @@ func (a *Client) OrganizationsList(params *OrganizationsListParams, authInfo run
 		PathPattern:        "/api/v{v}/Organizations",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &OrganizationsListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -386,7 +345,7 @@ func (a *Client) OrganizationsOrganizationList(params *OrganizationsOrganization
 		PathPattern:        "/api/v{v}/Organizations/list",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &OrganizationsOrganizationListReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -425,7 +384,7 @@ func (a *Client) OrganizationsToggleKeycloak(params *OrganizationsToggleKeycloak
 		PathPattern:        "/api/v{v}/Organizations/toggle/keycloak",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &OrganizationsToggleKeycloakReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -464,7 +423,7 @@ func (a *Client) OrganizationsUpdate(params *OrganizationsUpdateParams, authInfo
 		PathPattern:        "/api/v{v}/Organizations/update",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &OrganizationsUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -503,7 +462,7 @@ func (a *Client) OrganizationsUpdatePaymentMethod(params *OrganizationsUpdatePay
 		PathPattern:        "/api/v{v}/Organizations/updatepaymentmethod",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &OrganizationsUpdatePaymentMethodReader{formats: a.formats},
 		AuthInfo:           authInfo,
@@ -542,7 +501,7 @@ func (a *Client) OrganizationsUpdateSubscription(params *OrganizationsUpdateSubs
 		PathPattern:        "/api/v{v}/Organizations/updatesubscription",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &OrganizationsUpdateSubscriptionReader{formats: a.formats},
 		AuthInfo:           authInfo,

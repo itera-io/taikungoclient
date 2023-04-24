@@ -11,6 +11,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateAlertingIntegrationCommand create alerting integration command
@@ -19,16 +20,21 @@ import (
 type CreateAlertingIntegrationCommand struct {
 
 	// alerting integration type
-	AlertingIntegrationType AlertingIntegrationType `json:"alertingIntegrationType,omitempty"`
+	// Required: true
+	AlertingIntegrationType *AlertingIntegrationType `json:"alertingIntegrationType"`
 
 	// alerting profile Id
-	AlertingProfileID int32 `json:"alertingProfileId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	AlertingProfileID *int32 `json:"alertingProfileId"`
 
 	// token
 	Token string `json:"token,omitempty"`
 
 	// url
-	URL string `json:"url,omitempty"`
+	// Required: true
+	// Min Length: 1
+	URL *string `json:"url"`
 }
 
 // Validate validates this create alerting integration command
@@ -39,6 +45,14 @@ func (m *CreateAlertingIntegrationCommand) Validate(formats strfmt.Registry) err
 		res = append(res, err)
 	}
 
+	if err := m.validateAlertingProfileID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateURL(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -46,16 +60,49 @@ func (m *CreateAlertingIntegrationCommand) Validate(formats strfmt.Registry) err
 }
 
 func (m *CreateAlertingIntegrationCommand) validateAlertingIntegrationType(formats strfmt.Registry) error {
-	if swag.IsZero(m.AlertingIntegrationType) { // not required
-		return nil
+
+	if err := validate.Required("alertingIntegrationType", "body", m.AlertingIntegrationType); err != nil {
+		return err
 	}
 
-	if err := m.AlertingIntegrationType.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("alertingIntegrationType")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("alertingIntegrationType")
+	if err := validate.Required("alertingIntegrationType", "body", m.AlertingIntegrationType); err != nil {
+		return err
+	}
+
+	if m.AlertingIntegrationType != nil {
+		if err := m.AlertingIntegrationType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("alertingIntegrationType")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("alertingIntegrationType")
+			}
+			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *CreateAlertingIntegrationCommand) validateAlertingProfileID(formats strfmt.Registry) error {
+
+	if err := validate.Required("alertingProfileId", "body", m.AlertingProfileID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("alertingProfileId", "body", int64(*m.AlertingProfileID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateAlertingIntegrationCommand) validateURL(formats strfmt.Registry) error {
+
+	if err := validate.Required("url", "body", m.URL); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("url", "body", *m.URL, 1); err != nil {
 		return err
 	}
 
@@ -78,13 +125,15 @@ func (m *CreateAlertingIntegrationCommand) ContextValidate(ctx context.Context, 
 
 func (m *CreateAlertingIntegrationCommand) contextValidateAlertingIntegrationType(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.AlertingIntegrationType.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("alertingIntegrationType")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("alertingIntegrationType")
+	if m.AlertingIntegrationType != nil {
+		if err := m.AlertingIntegrationType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("alertingIntegrationType")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("alertingIntegrationType")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

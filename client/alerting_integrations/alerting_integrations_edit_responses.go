@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AlertingIntegrationsEditReader is a Reader for the AlertingIntegrationsEdit structure.
@@ -75,7 +73,6 @@ AlertingIntegrationsEditOK describes a response with status code 200, with defau
 Success
 */
 type AlertingIntegrationsEditOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this alerting integrations edit o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *AlertingIntegrationsEditOK) Code() int {
 }
 
 func (o *AlertingIntegrationsEditOK) Error() string {
-	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditOK ", 200)
 }
 
 func (o *AlertingIntegrationsEditOK) String() string {
-	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditOK  %+v", 200, o.Payload)
-}
-
-func (o *AlertingIntegrationsEditOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditOK ", 200)
 }
 
 func (o *AlertingIntegrationsEditOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

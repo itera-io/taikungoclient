@@ -11,6 +11,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // UpdateAlertingProfileCommand update alerting profile command
@@ -19,7 +20,9 @@ import (
 type UpdateAlertingProfileCommand struct {
 
 	// id
-	ID int32 `json:"id,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ID *int32 `json:"id"`
 
 	// name
 	Name string `json:"name,omitempty"`
@@ -38,6 +41,10 @@ type UpdateAlertingProfileCommand struct {
 func (m *UpdateAlertingProfileCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateReminder(formats); err != nil {
 		res = append(res, err)
 	}
@@ -45,6 +52,19 @@ func (m *UpdateAlertingProfileCommand) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *UpdateAlertingProfileCommand) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("id", "body", int64(*m.ID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 

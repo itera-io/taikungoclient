@@ -132,7 +132,7 @@ func NewProjectActionsDeleteNoContent() *ProjectActionsDeleteNoContent {
 /*
 ProjectActionsDeleteNoContent describes a response with status code 204, with default header values.
 
-Success
+No Content
 */
 type ProjectActionsDeleteNoContent struct {
 }

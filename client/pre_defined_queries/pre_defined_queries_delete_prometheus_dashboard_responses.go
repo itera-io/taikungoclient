@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // PreDefinedQueriesDeletePrometheusDashboardReader is a Reader for the PreDefinedQueriesDeletePrometheusDashboard structure.
@@ -75,7 +73,6 @@ PreDefinedQueriesDeletePrometheusDashboardOK describes a response with status co
 Success
 */
 type PreDefinedQueriesDeletePrometheusDashboardOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this pre defined queries delete prometheus dashboard o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardOK) Code() int {
 }
 
 func (o *PreDefinedQueriesDeletePrometheusDashboardOK) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardOK ", 200)
 }
 
 func (o *PreDefinedQueriesDeletePrometheusDashboardOK) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardOK  %+v", 200, o.Payload)
-}
-
-func (o *PreDefinedQueriesDeletePrometheusDashboardOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardOK ", 200)
 }
 
 func (o *PreDefinedQueriesDeletePrometheusDashboardOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

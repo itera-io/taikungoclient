@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // OrganizationCreateCommand organization create command
@@ -39,13 +41,19 @@ type OrganizationCreateCommand struct {
 	Email string `json:"email,omitempty"`
 
 	// full name
-	FullName string `json:"fullName,omitempty"`
+	// Required: true
+	// Max Length: 200
+	// Min Length: 3
+	FullName *string `json:"fullName"`
 
 	// is eligible update subscription
 	IsEligibleUpdateSubscription bool `json:"isEligibleUpdateSubscription"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// phone
 	Phone string `json:"phone,omitempty"`
@@ -56,6 +64,53 @@ type OrganizationCreateCommand struct {
 
 // Validate validates this organization create command
 func (m *OrganizationCreateCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateFullName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *OrganizationCreateCommand) validateFullName(formats strfmt.Registry) error {
+
+	if err := validate.Required("fullName", "body", m.FullName); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("fullName", "body", *m.FullName, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("fullName", "body", *m.FullName, 200); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *OrganizationCreateCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
 	return nil
 }
 

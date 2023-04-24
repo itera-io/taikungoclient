@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateOpenstackCloudCommand create openstack cloud command
@@ -24,7 +26,10 @@ type CreateOpenstackCloudCommand struct {
 	IsAdmin bool `json:"isAdmin"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// open stack availability zone
 	OpenStackAvailabilityZone string `json:"openStackAvailabilityZone,omitempty"`
@@ -42,22 +47,32 @@ type CreateOpenstackCloudCommand struct {
 	OpenStackInternalSubnetID string `json:"openStackInternalSubnetId,omitempty"`
 
 	// open stack password
-	OpenStackPassword string `json:"openStackPassword,omitempty"`
+	// Required: true
+	// Min Length: 1
+	OpenStackPassword *string `json:"openStackPassword"`
 
 	// open stack project
 	OpenStackProject string `json:"openStackProject,omitempty"`
 
 	// open stack public network
-	OpenStackPublicNetwork string `json:"openStackPublicNetwork,omitempty"`
+	// Required: true
+	// Min Length: 1
+	OpenStackPublicNetwork *string `json:"openStackPublicNetwork"`
 
 	// open stack region
-	OpenStackRegion string `json:"openStackRegion,omitempty"`
+	// Required: true
+	// Min Length: 1
+	OpenStackRegion *string `json:"openStackRegion"`
 
 	// open stack Url
-	OpenStackURL string `json:"openStackUrl,omitempty"`
+	// Required: true
+	// Min Length: 1
+	OpenStackURL *string `json:"openStackUrl"`
 
 	// open stack user
-	OpenStackUser string `json:"openStackUser,omitempty"`
+	// Required: true
+	// Min Length: 1
+	OpenStackUser *string `json:"openStackUser"`
 
 	// open stack volume type
 	OpenStackVolumeType string `json:"openStackVolumeType,omitempty"`
@@ -68,6 +83,117 @@ type CreateOpenstackCloudCommand struct {
 
 // Validate validates this create openstack cloud command
 func (m *CreateOpenstackCloudCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOpenStackPassword(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOpenStackPublicNetwork(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOpenStackRegion(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOpenStackURL(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOpenStackUser(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateOpenstackCloudCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateOpenstackCloudCommand) validateOpenStackPassword(formats strfmt.Registry) error {
+
+	if err := validate.Required("openStackPassword", "body", m.OpenStackPassword); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("openStackPassword", "body", *m.OpenStackPassword, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateOpenstackCloudCommand) validateOpenStackPublicNetwork(formats strfmt.Registry) error {
+
+	if err := validate.Required("openStackPublicNetwork", "body", m.OpenStackPublicNetwork); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("openStackPublicNetwork", "body", *m.OpenStackPublicNetwork, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateOpenstackCloudCommand) validateOpenStackRegion(formats strfmt.Registry) error {
+
+	if err := validate.Required("openStackRegion", "body", m.OpenStackRegion); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("openStackRegion", "body", *m.OpenStackRegion, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateOpenstackCloudCommand) validateOpenStackURL(formats strfmt.Registry) error {
+
+	if err := validate.Required("openStackUrl", "body", m.OpenStackURL); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("openStackUrl", "body", *m.OpenStackURL, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateOpenstackCloudCommand) validateOpenStackUser(formats strfmt.Registry) error {
+
+	if err := validate.Required("openStackUser", "body", m.OpenStackUser); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("openStackUser", "body", *m.OpenStackUser, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

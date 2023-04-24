@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // TicketEditReader is a Reader for the TicketEdit structure.
@@ -75,7 +73,6 @@ TicketEditOK describes a response with status code 200, with default header valu
 Success
 */
 type TicketEditOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this ticket edit o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *TicketEditOK) Code() int {
 }
 
 func (o *TicketEditOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit][%d] ticketEditOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit][%d] ticketEditOK ", 200)
 }
 
 func (o *TicketEditOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit][%d] ticketEditOK  %+v", 200, o.Payload)
-}
-
-func (o *TicketEditOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit][%d] ticketEditOK ", 200)
 }
 
 func (o *TicketEditOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

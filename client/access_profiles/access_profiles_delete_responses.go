@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AccessProfilesDeleteReader is a Reader for the AccessProfilesDelete structure.
@@ -81,7 +79,6 @@ AccessProfilesDeleteOK describes a response with status code 200, with default h
 Success
 */
 type AccessProfilesDeleteOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this access profiles delete o k response has a 2xx status code
@@ -115,23 +112,14 @@ func (o *AccessProfilesDeleteOK) Code() int {
 }
 
 func (o *AccessProfilesDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteOK ", 200)
 }
 
 func (o *AccessProfilesDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteOK  %+v", 200, o.Payload)
-}
-
-func (o *AccessProfilesDeleteOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteOK ", 200)
 }
 
 func (o *AccessProfilesDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }
@@ -144,7 +132,7 @@ func NewAccessProfilesDeleteNoContent() *AccessProfilesDeleteNoContent {
 /*
 AccessProfilesDeleteNoContent describes a response with status code 204, with default header values.
 
-Success
+No Content
 */
 type AccessProfilesDeleteNoContent struct {
 }

@@ -20,14 +20,14 @@ type BindRulesToOrganizationDto struct {
 	// discount rate
 	DiscountRate float64 `json:"discountRate"`
 
+	// id
+	ID int32 `json:"id,omitempty"`
+
 	// is bound
 	IsBound bool `json:"isBound"`
 
-	// prometheus rule Id
-	PrometheusRuleID int32 `json:"prometheusRuleId,omitempty"`
-
-	// prometheus rule name
-	PrometheusRuleName string `json:"prometheusRuleName,omitempty"`
+	// name
+	Name string `json:"name,omitempty"`
 }
 
 // Validate validates this bind rules to organization dto

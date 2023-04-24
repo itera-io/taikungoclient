@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AdminBillingOperationCommand admin billing operation command
@@ -18,11 +20,35 @@ import (
 type AdminBillingOperationCommand struct {
 
 	// cloud credential Id
-	CloudCredentialID int32 `json:"cloudCredentialId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	CloudCredentialID *int32 `json:"cloudCredentialId"`
 }
 
 // Validate validates this admin billing operation command
 func (m *AdminBillingOperationCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateCloudCredentialID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AdminBillingOperationCommand) validateCloudCredentialID(formats strfmt.Registry) error {
+
+	if err := validate.Required("cloudCredentialId", "body", m.CloudCredentialID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("cloudCredentialId", "body", int64(*m.CloudCredentialID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 

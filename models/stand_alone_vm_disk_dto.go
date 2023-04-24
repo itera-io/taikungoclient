@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // StandAloneVMDiskDto stand alone Vm disk dto
@@ -24,9 +26,14 @@ type StandAloneVMDiskDto struct {
 	LunID int32 `json:"lunId,omitempty"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// size
+	// Maximum: 10000
+	// Minimum: 1
 	Size int64 `json:"size,omitempty"`
 
 	// volume type
@@ -35,6 +42,52 @@ type StandAloneVMDiskDto struct {
 
 // Validate validates this stand alone Vm disk dto
 func (m *StandAloneVMDiskDto) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StandAloneVMDiskDto) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *StandAloneVMDiskDto) validateSize(formats strfmt.Registry) error {
+	if swag.IsZero(m.Size) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("size", "body", m.Size, 1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("size", "body", m.Size, 10000, false); err != nil {
+		return err
+	}
+
 	return nil
 }
 

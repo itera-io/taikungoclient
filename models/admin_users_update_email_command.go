@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AdminUsersUpdateEmailCommand admin users update email command
@@ -18,14 +20,55 @@ import (
 type AdminUsersUpdateEmailCommand struct {
 
 	// email
-	Email string `json:"email,omitempty"`
+	// Format: email
+	Email strfmt.Email `json:"email,omitempty"`
 
 	// id
-	ID string `json:"id,omitempty"`
+	// Required: true
+	// Min Length: 1
+	ID *string `json:"id"`
 }
 
 // Validate validates this admin users update email command
 func (m *AdminUsersUpdateEmailCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateEmail(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AdminUsersUpdateEmailCommand) validateEmail(formats strfmt.Registry) error {
+	if swag.IsZero(m.Email) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("email", "body", "email", m.Email.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *AdminUsersUpdateEmailCommand) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("id", "body", *m.ID, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

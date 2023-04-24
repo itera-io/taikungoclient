@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // S3CredentialsUpdateReader is a Reader for the S3CredentialsUpdate structure.
@@ -75,7 +73,6 @@ S3CredentialsUpdateOK describes a response with status code 200, with default he
 Success
 */
 type S3CredentialsUpdateOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this s3 credentials update o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *S3CredentialsUpdateOK) Code() int {
 }
 
 func (o *S3CredentialsUpdateOK) Error() string {
-	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateOK ", 200)
 }
 
 func (o *S3CredentialsUpdateOK) String() string {
-	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateOK  %+v", 200, o.Payload)
-}
-
-func (o *S3CredentialsUpdateOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateOK ", 200)
 }
 
 func (o *S3CredentialsUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

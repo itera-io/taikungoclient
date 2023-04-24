@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // OpaProfilesLockManagerReader is a Reader for the OpaProfilesLockManager structure.
@@ -75,7 +73,6 @@ OpaProfilesLockManagerOK describes a response with status code 200, with default
 Success
 */
 type OpaProfilesLockManagerOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this opa profiles lock manager o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *OpaProfilesLockManagerOK) Code() int {
 }
 
 func (o *OpaProfilesLockManagerOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerOK ", 200)
 }
 
 func (o *OpaProfilesLockManagerOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerOK  %+v", 200, o.Payload)
-}
-
-func (o *OpaProfilesLockManagerOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerOK ", 200)
 }
 
 func (o *OpaProfilesLockManagerOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

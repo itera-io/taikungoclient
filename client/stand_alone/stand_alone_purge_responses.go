@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAlonePurgeReader is a Reader for the StandAlonePurge structure.
@@ -75,7 +73,6 @@ StandAlonePurgeOK describes a response with status code 200, with default header
 Success
 */
 type StandAlonePurgeOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone purge o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *StandAlonePurgeOK) Code() int {
 }
 
 func (o *StandAlonePurgeOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeOK ", 200)
 }
 
 func (o *StandAlonePurgeOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeOK  %+v", 200, o.Payload)
-}
-
-func (o *StandAlonePurgeOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeOK ", 200)
 }
 
 func (o *StandAlonePurgeOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

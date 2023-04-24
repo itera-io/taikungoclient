@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // BindUserGroupsToProjectGroupCommand bind user groups to project group command
@@ -20,7 +21,9 @@ import (
 type BindUserGroupsToProjectGroupCommand struct {
 
 	// project group Id
-	ProjectGroupID int32 `json:"projectGroupId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ProjectGroupID *int32 `json:"projectGroupId"`
 
 	// project group name
 	ProjectGroupName string `json:"projectGroupName,omitempty"`
@@ -33,6 +36,10 @@ type BindUserGroupsToProjectGroupCommand struct {
 func (m *BindUserGroupsToProjectGroupCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateProjectGroupID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateUserGroups(formats); err != nil {
 		res = append(res, err)
 	}
@@ -40,6 +47,19 @@ func (m *BindUserGroupsToProjectGroupCommand) Validate(formats strfmt.Registry) 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *BindUserGroupsToProjectGroupCommand) validateProjectGroupID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectGroupId", "body", m.ProjectGroupID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("projectGroupId", "body", int64(*m.ProjectGroupID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 

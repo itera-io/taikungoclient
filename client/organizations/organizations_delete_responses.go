@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // OrganizationsDeleteReader is a Reader for the OrganizationsDelete structure.
@@ -81,7 +79,6 @@ OrganizationsDeleteOK describes a response with status code 200, with default he
 Success
 */
 type OrganizationsDeleteOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this organizations delete o k response has a 2xx status code
@@ -115,23 +112,14 @@ func (o *OrganizationsDeleteOK) Code() int {
 }
 
 func (o *OrganizationsDeleteOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteOK ", 200)
 }
 
 func (o *OrganizationsDeleteOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteOK  %+v", 200, o.Payload)
-}
-
-func (o *OrganizationsDeleteOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteOK ", 200)
 }
 
 func (o *OrganizationsDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }
@@ -144,7 +132,7 @@ func NewOrganizationsDeleteNoContent() *OrganizationsDeleteNoContent {
 /*
 OrganizationsDeleteNoContent describes a response with status code 204, with default header values.
 
-Success
+No Content
 */
 type OrganizationsDeleteNoContent struct {
 }

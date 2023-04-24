@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AdminAddBalanceCommand admin add balance command
@@ -18,14 +20,60 @@ import (
 type AdminAddBalanceCommand struct {
 
 	// balance
+	// Maximum: 100000
+	// Minimum: 1
 	Balance int64 `json:"balance,omitempty"`
 
 	// customer Id
-	CustomerID string `json:"customerId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	CustomerID *string `json:"customerId"`
 }
 
 // Validate validates this admin add balance command
 func (m *AdminAddBalanceCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateBalance(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCustomerID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AdminAddBalanceCommand) validateBalance(formats strfmt.Registry) error {
+	if swag.IsZero(m.Balance) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("balance", "body", m.Balance, 1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("balance", "body", m.Balance, 100000, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *AdminAddBalanceCommand) validateCustomerID(formats strfmt.Registry) error {
+
+	if err := validate.Required("customerId", "body", m.CustomerID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("customerId", "body", *m.CustomerID, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AdminUpdateUserEmailReader is a Reader for the AdminUpdateUserEmail structure.
@@ -75,7 +73,6 @@ AdminUpdateUserEmailOK describes a response with status code 200, with default h
 Success
 */
 type AdminUpdateUserEmailOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this admin update user email o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *AdminUpdateUserEmailOK) Code() int {
 }
 
 func (o *AdminUpdateUserEmailOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailOK ", 200)
 }
 
 func (o *AdminUpdateUserEmailOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailOK  %+v", 200, o.Payload)
-}
-
-func (o *AdminUpdateUserEmailOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailOK ", 200)
 }
 
 func (o *AdminUpdateUserEmailOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

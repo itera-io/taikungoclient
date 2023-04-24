@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // KeycloakCreateCommand keycloak create command
@@ -18,23 +20,128 @@ import (
 type KeycloakCreateCommand struct {
 
 	// client Id
-	ClientID string `json:"clientId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	ClientID *string `json:"clientId"`
 
 	// client secret
-	ClientSecret string `json:"clientSecret,omitempty"`
+	// Required: true
+	// Min Length: 1
+	ClientSecret *string `json:"clientSecret"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// realms name
-	RealmsName string `json:"realmsName,omitempty"`
+	// Required: true
+	// Min Length: 1
+	RealmsName *string `json:"realmsName"`
 
 	// url
-	URL string `json:"url,omitempty"`
+	// Required: true
+	// Min Length: 1
+	URL *string `json:"url"`
 }
 
 // Validate validates this keycloak create command
 func (m *KeycloakCreateCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateClientID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateClientSecret(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRealmsName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateURL(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *KeycloakCreateCommand) validateClientID(formats strfmt.Registry) error {
+
+	if err := validate.Required("clientId", "body", m.ClientID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("clientId", "body", *m.ClientID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *KeycloakCreateCommand) validateClientSecret(formats strfmt.Registry) error {
+
+	if err := validate.Required("clientSecret", "body", m.ClientSecret); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("clientSecret", "body", *m.ClientSecret, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *KeycloakCreateCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *KeycloakCreateCommand) validateRealmsName(formats strfmt.Registry) error {
+
+	if err := validate.Required("realmsName", "body", m.RealmsName); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("realmsName", "body", *m.RealmsName, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *KeycloakCreateCommand) validateURL(formats strfmt.Registry) error {
+
+	if err := validate.Required("url", "body", m.URL); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("url", "body", *m.URL, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

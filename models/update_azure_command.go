@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // UpdateAzureCommand update azure command
@@ -18,20 +20,106 @@ import (
 type UpdateAzureCommand struct {
 
 	// azure client Id
-	AzureClientID string `json:"azureClientId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AzureClientID *string `json:"azureClientId"`
 
 	// azure client secret
-	AzureClientSecret string `json:"azureClientSecret,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AzureClientSecret *string `json:"azureClientSecret"`
 
 	// id
-	ID int32 `json:"id,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ID *int32 `json:"id"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 }
 
 // Validate validates this update azure command
 func (m *UpdateAzureCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAzureClientID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAzureClientSecret(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UpdateAzureCommand) validateAzureClientID(formats strfmt.Registry) error {
+
+	if err := validate.Required("azureClientId", "body", m.AzureClientID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("azureClientId", "body", *m.AzureClientID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateAzureCommand) validateAzureClientSecret(formats strfmt.Registry) error {
+
+	if err := validate.Required("azureClientSecret", "body", m.AzureClientSecret); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("azureClientSecret", "body", *m.AzureClientSecret, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateAzureCommand) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("id", "body", int64(*m.ID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateAzureCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
 	return nil
 }
 

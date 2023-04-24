@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // OpaProfileUpdateCommand opa profile update command
@@ -30,13 +32,18 @@ type OpaProfileUpdateCommand struct {
 	ForbidSpecificTags []string `json:"forbidSpecificTags"`
 
 	// id
-	ID int32 `json:"id,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ID *int32 `json:"id"`
 
 	// ingress whitelist
 	IngressWhitelist []string `json:"ingressWhitelist"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 50
+	// Min Length: 2
+	Name *string `json:"name"`
 
 	// require probe
 	RequireProbe bool `json:"requireProbe"`
@@ -50,6 +57,49 @@ type OpaProfileUpdateCommand struct {
 
 // Validate validates this opa profile update command
 func (m *OpaProfileUpdateCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *OpaProfileUpdateCommand) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("id", "body", int64(*m.ID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *OpaProfileUpdateCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 2); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 50); err != nil {
+		return err
+	}
+
 	return nil
 }
 

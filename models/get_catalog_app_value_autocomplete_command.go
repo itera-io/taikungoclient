@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // GetCatalogAppValueAutocompleteCommand get catalog app value autocomplete command
@@ -21,14 +23,57 @@ type GetCatalogAppValueAutocompleteCommand struct {
 	CatalogAppID int32 `json:"catalogAppId,omitempty"`
 
 	// package Id
-	PackageID string `json:"packageId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	PackageID *string `json:"packageId"`
 
 	// version
-	Version string `json:"version,omitempty"`
+	// Required: true
+	// Min Length: 1
+	Version *string `json:"version"`
 }
 
 // Validate validates this get catalog app value autocomplete command
 func (m *GetCatalogAppValueAutocompleteCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validatePackageID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVersion(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *GetCatalogAppValueAutocompleteCommand) validatePackageID(formats strfmt.Registry) error {
+
+	if err := validate.Required("packageId", "body", m.PackageID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("packageId", "body", *m.PackageID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *GetCatalogAppValueAutocompleteCommand) validateVersion(formats strfmt.Registry) error {
+
+	if err := validate.Required("version", "body", m.Version); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("version", "body", *m.Version, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

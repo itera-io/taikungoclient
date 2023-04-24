@@ -75,7 +75,7 @@ ProjectsListSelectorOK describes a response with status code 200, with default h
 Success
 */
 type ProjectsListSelectorOK struct {
-	Payload []*models.ProjectEntity
+	Payload []*models.CommonDropdownIsBoundDtoForProject
 }
 
 // IsSuccess returns true when this projects list selector o k response has a 2xx status code
@@ -116,7 +116,7 @@ func (o *ProjectsListSelectorOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/list][%d] projectsListSelectorOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsListSelectorOK) GetPayload() []*models.ProjectEntity {
+func (o *ProjectsListSelectorOK) GetPayload() []*models.CommonDropdownIsBoundDtoForProject {
 	return o.Payload
 }
 

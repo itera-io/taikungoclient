@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // S3CredentialsDeleteReader is a Reader for the S3CredentialsDelete structure.
@@ -81,7 +79,6 @@ S3CredentialsDeleteOK describes a response with status code 200, with default he
 Success
 */
 type S3CredentialsDeleteOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this s3 credentials delete o k response has a 2xx status code
@@ -115,23 +112,14 @@ func (o *S3CredentialsDeleteOK) Code() int {
 }
 
 func (o *S3CredentialsDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteOK ", 200)
 }
 
 func (o *S3CredentialsDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteOK  %+v", 200, o.Payload)
-}
-
-func (o *S3CredentialsDeleteOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteOK ", 200)
 }
 
 func (o *S3CredentialsDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }
@@ -144,7 +132,7 @@ func NewS3CredentialsDeleteNoContent() *S3CredentialsDeleteNoContent {
 /*
 S3CredentialsDeleteNoContent describes a response with status code 204, with default header values.
 
-Success
+No Content
 */
 type S3CredentialsDeleteNoContent struct {
 }

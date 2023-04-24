@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ChangeCardCommand change card command
@@ -18,11 +20,35 @@ import (
 type ChangeCardCommand struct {
 
 	// payment method Id
-	PaymentMethodID string `json:"paymentMethodId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	PaymentMethodID *string `json:"paymentMethodId"`
 }
 
 // Validate validates this change card command
 func (m *ChangeCardCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validatePaymentMethodID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ChangeCardCommand) validatePaymentMethodID(formats strfmt.Registry) error {
+
+	if err := validate.Required("paymentMethodId", "body", m.PaymentMethodID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("paymentMethodId", "body", *m.PaymentMethodID, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

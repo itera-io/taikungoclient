@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubeConfigDeleteByProjectIDReader is a Reader for the KubeConfigDeleteByProjectID structure.
@@ -75,7 +73,6 @@ KubeConfigDeleteByProjectIDOK describes a response with status code 200, with de
 Success
 */
 type KubeConfigDeleteByProjectIDOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this kube config delete by project Id o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *KubeConfigDeleteByProjectIDOK) Code() int {
 }
 
 func (o *KubeConfigDeleteByProjectIDOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdOK ", 200)
 }
 
 func (o *KubeConfigDeleteByProjectIDOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdOK  %+v", 200, o.Payload)
-}
-
-func (o *KubeConfigDeleteByProjectIDOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdOK ", 200)
 }
 
 func (o *KubeConfigDeleteByProjectIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

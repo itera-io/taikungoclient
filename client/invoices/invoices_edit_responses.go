@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // InvoicesEditReader is a Reader for the InvoicesEdit structure.
@@ -75,7 +73,6 @@ InvoicesEditOK describes a response with status code 200, with default header va
 Success
 */
 type InvoicesEditOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this invoices edit o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *InvoicesEditOK) Code() int {
 }
 
 func (o *InvoicesEditOK) Error() string {
-	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditOK ", 200)
 }
 
 func (o *InvoicesEditOK) String() string {
-	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditOK  %+v", 200, o.Payload)
-}
-
-func (o *InvoicesEditOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditOK ", 200)
 }
 
 func (o *InvoicesEditOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

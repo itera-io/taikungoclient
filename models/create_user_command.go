@@ -11,6 +11,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateUserCommand create user command
@@ -22,7 +23,11 @@ type CreateUserCommand struct {
 	DisplayName string `json:"displayName"`
 
 	// email
-	Email string `json:"email,omitempty"`
+	// Required: true
+	// Max Length: 200
+	// Min Length: 3
+	// Format: email
+	Email *strfmt.Email `json:"email"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
@@ -31,20 +36,52 @@ type CreateUserCommand struct {
 	Role UserRole `json:"role,omitempty"`
 
 	// username
-	Username string `json:"username,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Username *string `json:"username"`
 }
 
 // Validate validates this create user command
 func (m *CreateUserCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateEmail(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateRole(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsername(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CreateUserCommand) validateEmail(formats strfmt.Registry) error {
+
+	if err := validate.Required("email", "body", m.Email); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("email", "body", m.Email.String(), 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("email", "body", m.Email.String(), 200); err != nil {
+		return err
+	}
+
+	if err := validate.FormatOf("email", "body", "email", m.Email.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -59,6 +96,23 @@ func (m *CreateUserCommand) validateRole(formats strfmt.Registry) error {
 		} else if ce, ok := err.(*errors.CompositeError); ok {
 			return ce.ValidateName("role")
 		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateUserCommand) validateUsername(formats strfmt.Registry) error {
+
+	if err := validate.Required("username", "body", m.Username); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("username", "body", *m.Username, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("username", "body", *m.Username, 30); err != nil {
 		return err
 	}
 

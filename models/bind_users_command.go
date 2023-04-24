@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // BindUsersCommand bind users command
@@ -20,7 +21,8 @@ import (
 type BindUsersCommand struct {
 
 	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
+	// Required: true
+	ProjectID *int32 `json:"projectId"`
 
 	// users
 	Users []*UpdateProjectUserDto `json:"users"`
@@ -30,6 +32,10 @@ type BindUsersCommand struct {
 func (m *BindUsersCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateProjectID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateUsers(formats); err != nil {
 		res = append(res, err)
 	}
@@ -37,6 +43,15 @@ func (m *BindUsersCommand) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *BindUsersCommand) validateProjectID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectId", "body", m.ProjectID); err != nil {
+		return err
+	}
+
 	return nil
 }
 

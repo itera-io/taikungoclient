@@ -92,9 +92,7 @@ type AlertingProfilesListParams struct {
 	Search *string
 
 	// SearchID.
-	//
-	// Format: int32
-	SearchID *int32
+	SearchID *string
 
 	// SortBy.
 	SortBy *string
@@ -214,13 +212,13 @@ func (o *AlertingProfilesListParams) SetSearch(search *string) {
 }
 
 // WithSearchID adds the searchID to the alerting profiles list params
-func (o *AlertingProfilesListParams) WithSearchID(searchID *int32) *AlertingProfilesListParams {
+func (o *AlertingProfilesListParams) WithSearchID(searchID *string) *AlertingProfilesListParams {
 	o.SetSearchID(searchID)
 	return o
 }
 
 // SetSearchID adds the searchId to the alerting profiles list params
-func (o *AlertingProfilesListParams) SetSearchID(searchID *int32) {
+func (o *AlertingProfilesListParams) SetSearchID(searchID *string) {
 	o.SearchID = searchID
 }
 
@@ -353,12 +351,12 @@ func (o *AlertingProfilesListParams) WriteToRequest(r runtime.ClientRequest, reg
 	if o.SearchID != nil {
 
 		// query param searchId
-		var qrSearchID int32
+		var qrSearchID string
 
 		if o.SearchID != nil {
 			qrSearchID = *o.SearchID
 		}
-		qSearchID := swag.FormatInt32(qrSearchID)
+		qSearchID := qrSearchID
 		if qSearchID != "" {
 
 			if err := r.SetQueryParam("searchId", qSearchID); err != nil {

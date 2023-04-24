@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectQuotasEditReader is a Reader for the ProjectQuotasEdit structure.
@@ -75,7 +73,6 @@ ProjectQuotasEditOK describes a response with status code 200, with default head
 Success
 */
 type ProjectQuotasEditOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this project quotas edit o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *ProjectQuotasEditOK) Code() int {
 }
 
 func (o *ProjectQuotasEditOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditOK ", 200)
 }
 
 func (o *ProjectQuotasEditOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditOK  %+v", 200, o.Payload)
-}
-
-func (o *ProjectQuotasEditOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditOK ", 200)
 }
 
 func (o *ProjectQuotasEditOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

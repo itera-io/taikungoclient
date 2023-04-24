@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // SlackVerifySlackCredentialsReader is a Reader for the SlackVerifySlackCredentials structure.
@@ -75,7 +73,6 @@ SlackVerifySlackCredentialsOK describes a response with status code 200, with de
 Success
 */
 type SlackVerifySlackCredentialsOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this slack verify slack credentials o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *SlackVerifySlackCredentialsOK) Code() int {
 }
 
 func (o *SlackVerifySlackCredentialsOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsOK ", 200)
 }
 
 func (o *SlackVerifySlackCredentialsOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsOK  %+v", 200, o.Payload)
-}
-
-func (o *SlackVerifySlackCredentialsOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsOK ", 200)
 }
 
 func (o *SlackVerifySlackCredentialsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

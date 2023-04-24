@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // BackupCredentialsCreateCommand backup credentials create command
@@ -21,23 +23,109 @@ type BackupCredentialsCreateCommand struct {
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
 	// s3 access key Id
-	S3AccessKeyID string `json:"s3AccessKeyId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	S3AccessKeyID *string `json:"s3AccessKeyId"`
 
 	// s3 endpoint
-	S3Endpoint string `json:"s3Endpoint,omitempty"`
+	// Required: true
+	// Min Length: 1
+	S3Endpoint *string `json:"s3Endpoint"`
 
 	// s3 name
-	S3Name string `json:"s3Name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	S3Name *string `json:"s3Name"`
 
 	// s3 region
 	S3Region string `json:"s3Region,omitempty"`
 
 	// s3 secret key
-	S3SecretKey string `json:"s3SecretKey,omitempty"`
+	// Required: true
+	// Min Length: 1
+	S3SecretKey *string `json:"s3SecretKey"`
 }
 
 // Validate validates this backup credentials create command
 func (m *BackupCredentialsCreateCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateS3AccessKeyID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateS3Endpoint(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateS3Name(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateS3SecretKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *BackupCredentialsCreateCommand) validateS3AccessKeyID(formats strfmt.Registry) error {
+
+	if err := validate.Required("s3AccessKeyId", "body", m.S3AccessKeyID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("s3AccessKeyId", "body", *m.S3AccessKeyID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BackupCredentialsCreateCommand) validateS3Endpoint(formats strfmt.Registry) error {
+
+	if err := validate.Required("s3Endpoint", "body", m.S3Endpoint); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("s3Endpoint", "body", *m.S3Endpoint, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BackupCredentialsCreateCommand) validateS3Name(formats strfmt.Registry) error {
+
+	if err := validate.Required("s3Name", "body", m.S3Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("s3Name", "body", *m.S3Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("s3Name", "body", *m.S3Name, 30); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BackupCredentialsCreateCommand) validateS3SecretKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("s3SecretKey", "body", m.S3SecretKey); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("s3SecretKey", "body", *m.S3SecretKey, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

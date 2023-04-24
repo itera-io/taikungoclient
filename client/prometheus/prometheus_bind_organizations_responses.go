@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // PrometheusBindOrganizationsReader is a Reader for the PrometheusBindOrganizations structure.
@@ -75,7 +73,6 @@ PrometheusBindOrganizationsOK describes a response with status code 200, with de
 Success
 */
 type PrometheusBindOrganizationsOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this prometheus bind organizations o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *PrometheusBindOrganizationsOK) Code() int {
 }
 
 func (o *PrometheusBindOrganizationsOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsOK ", 200)
 }
 
 func (o *PrometheusBindOrganizationsOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsOK  %+v", 200, o.Payload)
-}
-
-func (o *PrometheusBindOrganizationsOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsOK ", 200)
 }
 
 func (o *PrometheusBindOrganizationsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

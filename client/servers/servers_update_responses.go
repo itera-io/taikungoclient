@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ServersUpdateReader is a Reader for the ServersUpdate structure.
@@ -75,7 +73,6 @@ ServersUpdateOK describes a response with status code 200, with default header v
 Success
 */
 type ServersUpdateOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this servers update o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *ServersUpdateOK) Code() int {
 }
 
 func (o *ServersUpdateOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateOK ", 200)
 }
 
 func (o *ServersUpdateOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateOK  %+v", 200, o.Payload)
-}
-
-func (o *ServersUpdateOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateOK ", 200)
 }
 
 func (o *ServersUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

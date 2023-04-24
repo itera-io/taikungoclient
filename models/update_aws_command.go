@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // UpdateAwsCommand update aws command
@@ -18,20 +20,106 @@ import (
 type UpdateAwsCommand struct {
 
 	// aws access key Id
-	AwsAccessKeyID string `json:"awsAccessKeyId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AwsAccessKeyID *string `json:"awsAccessKeyId"`
 
 	// aws secret access key
-	AwsSecretAccessKey string `json:"awsSecretAccessKey,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AwsSecretAccessKey *string `json:"awsSecretAccessKey"`
 
 	// id
-	ID int32 `json:"id,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ID *int32 `json:"id"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 }
 
 // Validate validates this update aws command
 func (m *UpdateAwsCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAwsAccessKeyID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAwsSecretAccessKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UpdateAwsCommand) validateAwsAccessKeyID(formats strfmt.Registry) error {
+
+	if err := validate.Required("awsAccessKeyId", "body", m.AwsAccessKeyID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("awsAccessKeyId", "body", *m.AwsAccessKeyID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateAwsCommand) validateAwsSecretAccessKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("awsSecretAccessKey", "body", m.AwsSecretAccessKey); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("awsSecretAccessKey", "body", *m.AwsSecretAccessKey, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateAwsCommand) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("id", "body", int64(*m.ID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateAwsCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
 	return nil
 }
 

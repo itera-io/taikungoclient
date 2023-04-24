@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateCatalogAppCommand create catalog app command
@@ -20,16 +21,22 @@ import (
 type CreateCatalogAppCommand struct {
 
 	// catalog Id
-	CatalogID int32 `json:"catalogId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	CatalogID *int32 `json:"catalogId"`
 
 	// package name
-	PackageName string `json:"packageName,omitempty"`
+	// Required: true
+	// Min Length: 1
+	PackageName *string `json:"packageName"`
 
 	// parameters
 	Parameters []*CatalogAppParamsDto `json:"parameters"`
 
 	// repo name
-	RepoName string `json:"repoName,omitempty"`
+	// Required: true
+	// Min Length: 1
+	RepoName *string `json:"repoName"`
 
 	// version
 	Version string `json:"version,omitempty"`
@@ -39,13 +46,51 @@ type CreateCatalogAppCommand struct {
 func (m *CreateCatalogAppCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCatalogID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePackageName(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateParameters(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRepoName(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CreateCatalogAppCommand) validateCatalogID(formats strfmt.Registry) error {
+
+	if err := validate.Required("catalogId", "body", m.CatalogID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("catalogId", "body", int64(*m.CatalogID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateCatalogAppCommand) validatePackageName(formats strfmt.Registry) error {
+
+	if err := validate.Required("packageName", "body", m.PackageName); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("packageName", "body", *m.PackageName, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -70,6 +115,19 @@ func (m *CreateCatalogAppCommand) validateParameters(formats strfmt.Registry) er
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *CreateCatalogAppCommand) validateRepoName(formats strfmt.Registry) error {
+
+	if err := validate.Required("repoName", "body", m.RepoName); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("repoName", "body", *m.RepoName, 1); err != nil {
+		return err
 	}
 
 	return nil

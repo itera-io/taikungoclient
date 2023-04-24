@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // MakeOwnerCommand make owner command
@@ -18,11 +20,35 @@ import (
 type MakeOwnerCommand struct {
 
 	// user Id
-	UserID string `json:"userId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	UserID *string `json:"userId"`
 }
 
 // Validate validates this make owner command
 func (m *MakeOwnerCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateUserID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *MakeOwnerCommand) validateUserID(formats strfmt.Registry) error {
+
+	if err := validate.Required("userId", "body", m.UserID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("userId", "body", *m.UserID, 1); err != nil {
+		return err
+	}
+
 	return nil
 }
 

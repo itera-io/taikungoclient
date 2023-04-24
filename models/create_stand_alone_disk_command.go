@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateStandAloneDiskCommand create stand alone disk command
@@ -24,13 +26,20 @@ type CreateStandAloneDiskCommand struct {
 	LunID int32 `json:"lunId,omitempty"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// size
+	// Maximum: 10000
+	// Minimum: 1
 	Size int64 `json:"size,omitempty"`
 
 	// standalone Vm Id
-	StandaloneVMID int32 `json:"standaloneVmId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	StandaloneVMID *int32 `json:"standaloneVmId"`
 
 	// volume type
 	VolumeType string `json:"volumeType,omitempty"`
@@ -38,6 +47,69 @@ type CreateStandAloneDiskCommand struct {
 
 // Validate validates this create stand alone disk command
 func (m *CreateStandAloneDiskCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSize(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStandaloneVMID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateStandAloneDiskCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateStandAloneDiskCommand) validateSize(formats strfmt.Registry) error {
+	if swag.IsZero(m.Size) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("size", "body", m.Size, 1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("size", "body", m.Size, 10000, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateStandAloneDiskCommand) validateStandaloneVMID(formats strfmt.Registry) error {
+
+	if err := validate.Required("standaloneVmId", "body", m.StandaloneVMID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("standaloneVmId", "body", int64(*m.StandaloneVMID), 0, true); err != nil {
+		return err
+	}
+
 	return nil
 }
 

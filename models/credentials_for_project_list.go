@@ -42,6 +42,9 @@ type CredentialsForProjectList struct {
 	// openstack
 	Openstack *OpenstackCredentialsForProjectDto `json:"openstack,omitempty"`
 
+	// proxmox
+	Proxmox *ProxmoxCredentialsForProjectDto `json:"proxmox,omitempty"`
+
 	// requires v p n
 	RequiresVPN bool `json:"requiresVPN"`
 
@@ -70,6 +73,10 @@ func (m *CredentialsForProjectList) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateOpenstack(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProxmox(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -176,6 +183,25 @@ func (m *CredentialsForProjectList) validateOpenstack(formats strfmt.Registry) e
 	return nil
 }
 
+func (m *CredentialsForProjectList) validateProxmox(formats strfmt.Registry) error {
+	if swag.IsZero(m.Proxmox) { // not required
+		return nil
+	}
+
+	if m.Proxmox != nil {
+		if err := m.Proxmox.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("proxmox")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("proxmox")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *CredentialsForProjectList) validateTanzu(formats strfmt.Registry) error {
 	if swag.IsZero(m.Tanzu) { // not required
 		return nil
@@ -216,6 +242,10 @@ func (m *CredentialsForProjectList) ContextValidate(ctx context.Context, formats
 	}
 
 	if err := m.contextValidateOpenstack(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProxmox(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -299,6 +329,22 @@ func (m *CredentialsForProjectList) contextValidateOpenstack(ctx context.Context
 				return ve.ValidateName("openstack")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("openstack")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CredentialsForProjectList) contextValidateProxmox(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Proxmox != nil {
+		if err := m.Proxmox.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("proxmox")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("proxmox")
 			}
 			return err
 		}

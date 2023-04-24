@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CreateAwsCloudCommand create aws cloud command
@@ -18,19 +20,28 @@ import (
 type CreateAwsCloudCommand struct {
 
 	// aws access key Id
-	AwsAccessKeyID string `json:"awsAccessKeyId,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AwsAccessKeyID *string `json:"awsAccessKeyId"`
 
 	// aws region
-	AwsRegion string `json:"awsRegion,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AwsRegion *string `json:"awsRegion"`
 
 	// aws secret access key
-	AwsSecretAccessKey string `json:"awsSecretAccessKey,omitempty"`
+	// Required: true
+	// Min Length: 1
+	AwsSecretAccessKey *string `json:"awsSecretAccessKey"`
 
 	// az count
 	AzCount int32 `json:"azCount,omitempty"`
 
 	// name
-	Name string `json:"name,omitempty"`
+	// Required: true
+	// Max Length: 30
+	// Min Length: 3
+	Name *string `json:"name"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
@@ -38,6 +49,83 @@ type CreateAwsCloudCommand struct {
 
 // Validate validates this create aws cloud command
 func (m *CreateAwsCloudCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAwsAccessKeyID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAwsRegion(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAwsSecretAccessKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateAwsCloudCommand) validateAwsAccessKeyID(formats strfmt.Registry) error {
+
+	if err := validate.Required("awsAccessKeyId", "body", m.AwsAccessKeyID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("awsAccessKeyId", "body", *m.AwsAccessKeyID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateAwsCloudCommand) validateAwsRegion(formats strfmt.Registry) error {
+
+	if err := validate.Required("awsRegion", "body", m.AwsRegion); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("awsRegion", "body", *m.AwsRegion, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateAwsCloudCommand) validateAwsSecretAccessKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("awsSecretAccessKey", "body", m.AwsSecretAccessKey); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("awsSecretAccessKey", "body", *m.AwsSecretAccessKey, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateAwsCloudCommand) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
+		return err
+	}
+
 	return nil
 }
 

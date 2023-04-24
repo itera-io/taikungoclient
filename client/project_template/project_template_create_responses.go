@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectTemplateCreateReader is a Reader for the ProjectTemplateCreate structure.
@@ -75,7 +73,6 @@ ProjectTemplateCreateOK describes a response with status code 200, with default 
 Success
 */
 type ProjectTemplateCreateOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this project template create o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *ProjectTemplateCreateOK) Code() int {
 }
 
 func (o *ProjectTemplateCreateOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/ProjectTemplate/create-project][%d] projectTemplateCreateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/ProjectTemplate/create-project][%d] projectTemplateCreateOK ", 200)
 }
 
 func (o *ProjectTemplateCreateOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/ProjectTemplate/create-project][%d] projectTemplateCreateOK  %+v", 200, o.Payload)
-}
-
-func (o *ProjectTemplateCreateOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/ProjectTemplate/create-project][%d] projectTemplateCreateOK ", 200)
 }
 
 func (o *ProjectTemplateCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NotificationsNotifyOwnerReader is a Reader for the NotificationsNotifyOwner structure.
@@ -75,7 +73,6 @@ NotificationsNotifyOwnerOK describes a response with status code 200, with defau
 Success
 */
 type NotificationsNotifyOwnerOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this notifications notify owner o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *NotificationsNotifyOwnerOK) Code() int {
 }
 
 func (o *NotificationsNotifyOwnerOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerOK ", 200)
 }
 
 func (o *NotificationsNotifyOwnerOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerOK  %+v", 200, o.Payload)
-}
-
-func (o *NotificationsNotifyOwnerOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerOK ", 200)
 }
 
 func (o *NotificationsNotifyOwnerOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

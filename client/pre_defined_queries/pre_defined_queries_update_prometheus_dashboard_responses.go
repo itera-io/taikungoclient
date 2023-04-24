@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // PreDefinedQueriesUpdatePrometheusDashboardReader is a Reader for the PreDefinedQueriesUpdatePrometheusDashboard structure.
@@ -75,7 +73,6 @@ PreDefinedQueriesUpdatePrometheusDashboardOK describes a response with status co
 Success
 */
 type PreDefinedQueriesUpdatePrometheusDashboardOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this pre defined queries update prometheus dashboard o k response has a 2xx status code
@@ -109,23 +106,14 @@ func (o *PreDefinedQueriesUpdatePrometheusDashboardOK) Code() int {
 }
 
 func (o *PreDefinedQueriesUpdatePrometheusDashboardOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/update][%d] preDefinedQueriesUpdatePrometheusDashboardOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/update][%d] preDefinedQueriesUpdatePrometheusDashboardOK ", 200)
 }
 
 func (o *PreDefinedQueriesUpdatePrometheusDashboardOK) String() string {
-	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/update][%d] preDefinedQueriesUpdatePrometheusDashboardOK  %+v", 200, o.Payload)
-}
-
-func (o *PreDefinedQueriesUpdatePrometheusDashboardOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/update][%d] preDefinedQueriesUpdatePrometheusDashboardOK ", 200)
 }
 
 func (o *PreDefinedQueriesUpdatePrometheusDashboardOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

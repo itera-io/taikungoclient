@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // EditProjectAppParamCommand edit project app param command
@@ -23,7 +24,9 @@ type EditProjectAppParamCommand struct {
 	Parameters []*EditProjectAppParamsDto `json:"parameters"`
 
 	// project app Id
-	ProjectAppID int32 `json:"projectAppId,omitempty"`
+	// Required: true
+	// Minimum: > 0
+	ProjectAppID *int32 `json:"projectAppId"`
 }
 
 // Validate validates this edit project app param command
@@ -31,6 +34,10 @@ func (m *EditProjectAppParamCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateParameters(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProjectAppID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -61,6 +68,19 @@ func (m *EditProjectAppParamCommand) validateParameters(formats strfmt.Registry)
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *EditProjectAppParamCommand) validateProjectAppID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectAppId", "body", m.ProjectAppID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("projectAppId", "body", int64(*m.ProjectAppID), 0, true); err != nil {
+		return err
 	}
 
 	return nil

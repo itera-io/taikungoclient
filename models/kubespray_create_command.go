@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // KubesprayCreateCommand kubespray create command
@@ -18,14 +20,67 @@ import (
 type KubesprayCreateCommand struct {
 
 	// kubernetes version
-	KubernetesVersion string `json:"kubernetesVersion,omitempty"`
+	// Required: true
+	// Max Length: 15
+	// Min Length: 3
+	KubernetesVersion *string `json:"kubernetesVersion"`
 
 	// version
-	Version string `json:"version,omitempty"`
+	// Required: true
+	// Max Length: 15
+	// Min Length: 3
+	Version *string `json:"version"`
 }
 
 // Validate validates this kubespray create command
 func (m *KubesprayCreateCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateKubernetesVersion(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVersion(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *KubesprayCreateCommand) validateKubernetesVersion(formats strfmt.Registry) error {
+
+	if err := validate.Required("kubernetesVersion", "body", m.KubernetesVersion); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("kubernetesVersion", "body", *m.KubernetesVersion, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("kubernetesVersion", "body", *m.KubernetesVersion, 15); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *KubesprayCreateCommand) validateVersion(formats strfmt.Registry) error {
+
+	if err := validate.Required("version", "body", m.Version); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("version", "body", *m.Version, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("version", "body", *m.Version, 15); err != nil {
+		return err
+	}
+
 	return nil
 }
 

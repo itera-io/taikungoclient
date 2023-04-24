@@ -109,11 +109,11 @@ func (o *PreDefinedQueriesGetPrometheusDashboardListOK) Code() int {
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListOK) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list/{projectId}][%d] preDefinedQueriesGetPrometheusDashboardListOK  %+v", 200, o.Payload)
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListOK) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list/{projectId}][%d] preDefinedQueriesGetPrometheusDashboardListOK  %+v", 200, o.Payload)
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListOK) GetPayload() []*models.PrometheusDashboardListDto {
@@ -175,11 +175,11 @@ func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequest) Code() int {
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequest) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list/{projectId}][%d] preDefinedQueriesGetPrometheusDashboardListBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequest) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list/{projectId}][%d] preDefinedQueriesGetPrometheusDashboardListBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequest) GetPayload() interface{} {
@@ -241,11 +241,11 @@ func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) Code() int {
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list/{projectId}][%d] preDefinedQueriesGetPrometheusDashboardListUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list/{projectId}][%d] preDefinedQueriesGetPrometheusDashboardListUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) GetPayload() interface{} {
@@ -307,11 +307,11 @@ func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) Code() int {
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list/{projectId}][%d] preDefinedQueriesGetPrometheusDashboardListForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list/{projectId}][%d] preDefinedQueriesGetPrometheusDashboardListForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) GetPayload() interface{} {
@@ -373,11 +373,11 @@ func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) Code() int {
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list/{projectId}][%d] preDefinedQueriesGetPrometheusDashboardListNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list/{projectId}][%d] preDefinedQueriesGetPrometheusDashboardListNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) GetPayload() interface{} {
@@ -438,11 +438,11 @@ func (o *PreDefinedQueriesGetPrometheusDashboardListInternalServerError) Code() 
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list/{projectId}][%d] preDefinedQueriesGetPrometheusDashboardListInternalServerError ", 500)
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListInternalServerError) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list/{projectId}][%d] preDefinedQueriesGetPrometheusDashboardListInternalServerError ", 500)
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

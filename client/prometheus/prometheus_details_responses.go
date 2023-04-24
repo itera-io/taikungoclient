@@ -75,7 +75,7 @@ PrometheusDetailsOK describes a response with status code 200, with default head
 Success
 */
 type PrometheusDetailsOK struct {
-	Payload []*models.SimplePrometheusEntity
+	Payload []*models.CommonDropdownIsBoundDto
 }
 
 // IsSuccess returns true when this prometheus details o k response has a 2xx status code
@@ -109,14 +109,14 @@ func (o *PrometheusDetailsOK) Code() int {
 }
 
 func (o *PrometheusDetailsOK) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details][%d] prometheusDetailsOK  %+v", 200, o.Payload)
 }
 
 func (o *PrometheusDetailsOK) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details][%d] prometheusDetailsOK  %+v", 200, o.Payload)
 }
 
-func (o *PrometheusDetailsOK) GetPayload() []*models.SimplePrometheusEntity {
+func (o *PrometheusDetailsOK) GetPayload() []*models.CommonDropdownIsBoundDto {
 	return o.Payload
 }
 
@@ -175,11 +175,11 @@ func (o *PrometheusDetailsBadRequest) Code() int {
 }
 
 func (o *PrometheusDetailsBadRequest) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details][%d] prometheusDetailsBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PrometheusDetailsBadRequest) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details][%d] prometheusDetailsBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PrometheusDetailsBadRequest) GetPayload() interface{} {
@@ -241,11 +241,11 @@ func (o *PrometheusDetailsUnauthorized) Code() int {
 }
 
 func (o *PrometheusDetailsUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details][%d] prometheusDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PrometheusDetailsUnauthorized) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details][%d] prometheusDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PrometheusDetailsUnauthorized) GetPayload() interface{} {
@@ -307,11 +307,11 @@ func (o *PrometheusDetailsForbidden) Code() int {
 }
 
 func (o *PrometheusDetailsForbidden) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details][%d] prometheusDetailsForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PrometheusDetailsForbidden) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details][%d] prometheusDetailsForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PrometheusDetailsForbidden) GetPayload() interface{} {
@@ -373,11 +373,11 @@ func (o *PrometheusDetailsNotFound) Code() int {
 }
 
 func (o *PrometheusDetailsNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details][%d] prometheusDetailsNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PrometheusDetailsNotFound) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details][%d] prometheusDetailsNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PrometheusDetailsNotFound) GetPayload() interface{} {
@@ -438,11 +438,11 @@ func (o *PrometheusDetailsInternalServerError) Code() int {
 }
 
 func (o *PrometheusDetailsInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details][%d] prometheusDetailsInternalServerError ", 500)
 }
 
 func (o *PrometheusDetailsInternalServerError) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details][%d] prometheusDetailsInternalServerError ", 500)
 }
 
 func (o *PrometheusDetailsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
