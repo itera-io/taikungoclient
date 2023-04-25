@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CheckerDuplicateReader is a Reader for the CheckerDuplicate structure.
@@ -141,7 +139,7 @@ CheckerDuplicateBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type CheckerDuplicateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker duplicate bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *CheckerDuplicateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/duplicate][%d] checkerDuplicateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerDuplicateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CheckerDuplicateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerDuplicateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ CheckerDuplicateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type CheckerDuplicateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker duplicate unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *CheckerDuplicateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/duplicate][%d] checkerDuplicateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerDuplicateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerDuplicateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerDuplicateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ CheckerDuplicateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type CheckerDuplicateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker duplicate forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *CheckerDuplicateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/duplicate][%d] checkerDuplicateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerDuplicateForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerDuplicateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerDuplicateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ CheckerDuplicateNotFound describes a response with status code 404, with default
 Not Found
 */
 type CheckerDuplicateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker duplicate not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *CheckerDuplicateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/duplicate][%d] checkerDuplicateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerDuplicateNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerDuplicateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerDuplicateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -141,7 +141,7 @@ KeycloakEditBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type KeycloakEditBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this keycloak edit bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *KeycloakEditBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KeycloakEditBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KeycloakEditBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KeycloakEditBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ KeycloakEditUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type KeycloakEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this keycloak edit unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *KeycloakEditUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KeycloakEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KeycloakEditUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KeycloakEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ KeycloakEditForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type KeycloakEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this keycloak edit forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *KeycloakEditForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KeycloakEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *KeycloakEditForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KeycloakEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ KeycloakEditNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type KeycloakEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this keycloak edit not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *KeycloakEditNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KeycloakEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *KeycloakEditNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KeycloakEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -143,7 +143,7 @@ TanzuListBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type TanzuListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this tanzu list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *TanzuListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Tanzu/list][%d] tanzuListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TanzuListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *TanzuListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TanzuListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ TanzuListUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type TanzuListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this tanzu list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *TanzuListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Tanzu/list][%d] tanzuListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TanzuListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *TanzuListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TanzuListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ TanzuListForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type TanzuListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this tanzu list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *TanzuListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Tanzu/list][%d] tanzuListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TanzuListForbidden) GetPayload() *models.ProblemDetails {
+func (o *TanzuListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TanzuListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ TanzuListNotFound describes a response with status code 404, with default header
 Not Found
 */
 type TanzuListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this tanzu list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *TanzuListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Tanzu/list][%d] tanzuListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TanzuListNotFound) GetPayload() *models.ProblemDetails {
+func (o *TanzuListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TanzuListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

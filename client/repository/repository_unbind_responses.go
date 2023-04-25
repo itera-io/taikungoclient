@@ -141,7 +141,7 @@ RepositoryUnbindBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type RepositoryUnbindBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository unbind bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *RepositoryUnbindBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryUnbindBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *RepositoryUnbindBadRequest) GetPayload() *models.ProblemDetails {
+func (o *RepositoryUnbindBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryUnbindBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ RepositoryUnbindUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type RepositoryUnbindUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository unbind unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *RepositoryUnbindUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryUnbindUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *RepositoryUnbindUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *RepositoryUnbindUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryUnbindUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ RepositoryUnbindForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type RepositoryUnbindForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository unbind forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *RepositoryUnbindForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryUnbindForbidden  %+v", 403, o.Payload)
 }
 
-func (o *RepositoryUnbindForbidden) GetPayload() *models.ProblemDetails {
+func (o *RepositoryUnbindForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryUnbindForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ RepositoryUnbindNotFound describes a response with status code 404, with default
 Not Found
 */
 type RepositoryUnbindNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository unbind not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *RepositoryUnbindNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryUnbindNotFound  %+v", 404, o.Payload)
 }
 
-func (o *RepositoryUnbindNotFound) GetPayload() *models.ProblemDetails {
+func (o *RepositoryUnbindNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryUnbindNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -141,7 +141,7 @@ KubernetesSilenceManagerBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type KubernetesSilenceManagerBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes silence manager bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *KubernetesSilenceManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesSilenceManagerBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesSilenceManagerBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesSilenceManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ KubernetesSilenceManagerUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type KubernetesSilenceManagerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes silence manager unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *KubernetesSilenceManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesSilenceManagerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesSilenceManagerUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesSilenceManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ KubernetesSilenceManagerForbidden describes a response with status code 403, wit
 Forbidden
 */
 type KubernetesSilenceManagerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes silence manager forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *KubernetesSilenceManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesSilenceManagerForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesSilenceManagerForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesSilenceManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ KubernetesSilenceManagerNotFound describes a response with status code 404, with
 Not Found
 */
 type KubernetesSilenceManagerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes silence manager not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *KubernetesSilenceManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesSilenceManagerNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesSilenceManagerNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesSilenceManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

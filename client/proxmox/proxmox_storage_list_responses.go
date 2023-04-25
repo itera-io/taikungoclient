@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProxmoxStorageListReader is a Reader for the ProxmoxStorageList structure.
@@ -141,7 +139,7 @@ ProxmoxStorageListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type ProxmoxStorageListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox storage list bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *ProxmoxStorageListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Proxmox/storage-list][%d] proxmoxStorageListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProxmoxStorageListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxStorageListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxStorageListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ ProxmoxStorageListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type ProxmoxStorageListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox storage list unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *ProxmoxStorageListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Proxmox/storage-list][%d] proxmoxStorageListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProxmoxStorageListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxStorageListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxStorageListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ ProxmoxStorageListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type ProxmoxStorageListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox storage list forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *ProxmoxStorageListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Proxmox/storage-list][%d] proxmoxStorageListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProxmoxStorageListForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxStorageListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxStorageListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ ProxmoxStorageListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type ProxmoxStorageListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox storage list not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *ProxmoxStorageListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Proxmox/storage-list][%d] proxmoxStorageListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProxmoxStorageListNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxStorageListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxStorageListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

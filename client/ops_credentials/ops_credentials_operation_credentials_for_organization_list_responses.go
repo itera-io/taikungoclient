@@ -141,7 +141,7 @@ OpsCredentialsOperationCredentialsForOrganizationListBadRequest describes a resp
 Bad Request
 */
 type OpsCredentialsOperationCredentialsForOrganizationListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) String
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpsCredentialsOperationCredentialsForOrganizationListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ OpsCredentialsOperationCredentialsForOrganizationListUnauthorized describes a re
 Unauthorized
 */
 type OpsCredentialsOperationCredentialsForOrganizationListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) Stri
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ OpsCredentialsOperationCredentialsForOrganizationListForbidden describes a respo
 Forbidden
 */
 type OpsCredentialsOperationCredentialsForOrganizationListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) String(
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ OpsCredentialsOperationCredentialsForOrganizationListNotFound describes a respon
 Not Found
 */
 type OpsCredentialsOperationCredentialsForOrganizationListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) String()
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

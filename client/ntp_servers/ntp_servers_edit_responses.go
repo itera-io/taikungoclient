@@ -141,7 +141,7 @@ NtpServersEditBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type NtpServersEditBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ntp servers edit bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *NtpServersEditBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NtpServersEditBadRequest) GetPayload() *models.ProblemDetails {
+func (o *NtpServersEditBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NtpServersEditBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ NtpServersEditUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type NtpServersEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ntp servers edit unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *NtpServersEditUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NtpServersEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *NtpServersEditUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NtpServersEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ NtpServersEditForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type NtpServersEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ntp servers edit forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *NtpServersEditForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NtpServersEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *NtpServersEditForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NtpServersEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ NtpServersEditNotFound describes a response with status code 404, with default h
 Not Found
 */
 type NtpServersEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ntp servers edit not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *NtpServersEditNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NtpServersEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *NtpServersEditNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NtpServersEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

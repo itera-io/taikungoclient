@@ -141,7 +141,7 @@ RepositoryDisableBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type RepositoryDisableBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository disable bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *RepositoryDisableBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/disable][%d] repositoryDisableBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *RepositoryDisableBadRequest) GetPayload() *models.ProblemDetails {
+func (o *RepositoryDisableBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryDisableBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ RepositoryDisableUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type RepositoryDisableUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository disable unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *RepositoryDisableUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/disable][%d] repositoryDisableUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *RepositoryDisableUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *RepositoryDisableUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryDisableUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ RepositoryDisableForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type RepositoryDisableForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository disable forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *RepositoryDisableForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/disable][%d] repositoryDisableForbidden  %+v", 403, o.Payload)
 }
 
-func (o *RepositoryDisableForbidden) GetPayload() *models.ProblemDetails {
+func (o *RepositoryDisableForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryDisableForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ RepositoryDisableNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type RepositoryDisableNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository disable not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *RepositoryDisableNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/disable][%d] repositoryDisableNotFound  %+v", 404, o.Payload)
 }
 
-func (o *RepositoryDisableNotFound) GetPayload() *models.ProblemDetails {
+func (o *RepositoryDisableNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryDisableNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

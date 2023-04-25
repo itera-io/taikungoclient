@@ -203,7 +203,7 @@ DNSServersDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type DNSServersDeleteBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers delete bad request response has a 2xx status code
@@ -244,16 +244,14 @@ func (o *DNSServersDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *DNSServersDeleteBadRequest) GetPayload() *models.ProblemDetails {
+func (o *DNSServersDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DNSServersDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -271,7 +269,7 @@ DNSServersDeleteUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type DNSServersDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers delete unauthorized response has a 2xx status code
@@ -312,16 +310,14 @@ func (o *DNSServersDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *DNSServersDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *DNSServersDeleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DNSServersDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -339,7 +335,7 @@ DNSServersDeleteForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type DNSServersDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers delete forbidden response has a 2xx status code
@@ -380,16 +376,14 @@ func (o *DNSServersDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *DNSServersDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *DNSServersDeleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DNSServersDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -407,7 +401,7 @@ DNSServersDeleteNotFound describes a response with status code 404, with default
 Not Found
 */
 type DNSServersDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers delete not found response has a 2xx status code
@@ -448,16 +442,14 @@ func (o *DNSServersDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/DnsServers/{id}][%d] dnsServersDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *DNSServersDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *DNSServersDeleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DNSServersDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

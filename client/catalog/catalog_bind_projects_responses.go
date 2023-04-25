@@ -141,7 +141,7 @@ CatalogBindProjectsBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type CatalogBindProjectsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog bind projects bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CatalogBindProjectsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogBindProjectsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CatalogBindProjectsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogBindProjectsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CatalogBindProjectsUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type CatalogBindProjectsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog bind projects unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CatalogBindProjectsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogBindProjectsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogBindProjectsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogBindProjectsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CatalogBindProjectsForbidden describes a response with status code 403, with def
 Forbidden
 */
 type CatalogBindProjectsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog bind projects forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CatalogBindProjectsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogBindProjectsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogBindProjectsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogBindProjectsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CatalogBindProjectsNotFound describes a response with status code 404, with defa
 Not Found
 */
 type CatalogBindProjectsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog bind projects not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CatalogBindProjectsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogBindProjectsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogBindProjectsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogBindProjectsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

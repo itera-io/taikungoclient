@@ -141,7 +141,7 @@ CheckerGoogleBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type CheckerGoogleBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker google bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CheckerGoogleBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerGoogleBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CheckerGoogleBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerGoogleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CheckerGoogleUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type CheckerGoogleUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker google unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CheckerGoogleUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerGoogleUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerGoogleUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerGoogleUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CheckerGoogleForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type CheckerGoogleForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker google forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CheckerGoogleForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerGoogleForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerGoogleForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerGoogleForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CheckerGoogleNotFound describes a response with status code 404, with default he
 Not Found
 */
 type CheckerGoogleNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker google not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CheckerGoogleNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerGoogleNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerGoogleNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerGoogleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

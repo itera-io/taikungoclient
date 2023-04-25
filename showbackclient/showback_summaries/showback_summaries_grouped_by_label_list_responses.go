@@ -211,7 +211,7 @@ ShowbackSummariesGroupedByLabelListUnauthorized describes a response with status
 Unauthorized
 */
 type ShowbackSummariesGroupedByLabelListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback summaries grouped by label list unauthorized response has a 2xx status code
@@ -252,16 +252,14 @@ func (o *ShowbackSummariesGroupedByLabelListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byLabel][%d] showbackSummariesGroupedByLabelListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByLabelListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesGroupedByLabelListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedByLabelListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +277,7 @@ ShowbackSummariesGroupedByLabelListForbidden describes a response with status co
 Forbidden
 */
 type ShowbackSummariesGroupedByLabelListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback summaries grouped by label list forbidden response has a 2xx status code
@@ -320,16 +318,14 @@ func (o *ShowbackSummariesGroupedByLabelListForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byLabel][%d] showbackSummariesGroupedByLabelListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByLabelListForbidden) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesGroupedByLabelListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedByLabelListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +343,7 @@ ShowbackSummariesGroupedByLabelListNotFound describes a response with status cod
 Not Found
 */
 type ShowbackSummariesGroupedByLabelListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback summaries grouped by label list not found response has a 2xx status code
@@ -388,16 +384,14 @@ func (o *ShowbackSummariesGroupedByLabelListNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byLabel][%d] showbackSummariesGroupedByLabelListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByLabelListNotFound) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesGroupedByLabelListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedByLabelListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -141,7 +141,7 @@ UserGroupsUserListByProjectGroupIDBadRequest describes a response with status co
 Bad Request
 */
 type UserGroupsUserListByProjectGroupIDBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups user list by project group Id bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *UserGroupsUserListByProjectGroupIDBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/{userGroupId}/users][%d] userGroupsUserListByProjectGroupIdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserGroupsUserListByProjectGroupIDBadRequest) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsUserListByProjectGroupIDBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsUserListByProjectGroupIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ UserGroupsUserListByProjectGroupIDUnauthorized describes a response with status 
 Unauthorized
 */
 type UserGroupsUserListByProjectGroupIDUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups user list by project group Id unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *UserGroupsUserListByProjectGroupIDUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/{userGroupId}/users][%d] userGroupsUserListByProjectGroupIdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserGroupsUserListByProjectGroupIDUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsUserListByProjectGroupIDUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsUserListByProjectGroupIDUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ UserGroupsUserListByProjectGroupIDForbidden describes a response with status cod
 Forbidden
 */
 type UserGroupsUserListByProjectGroupIDForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups user list by project group Id forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *UserGroupsUserListByProjectGroupIDForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/{userGroupId}/users][%d] userGroupsUserListByProjectGroupIdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserGroupsUserListByProjectGroupIDForbidden) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsUserListByProjectGroupIDForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsUserListByProjectGroupIDForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ UserGroupsUserListByProjectGroupIDNotFound describes a response with status code
 Not Found
 */
 type UserGroupsUserListByProjectGroupIDNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups user list by project group Id not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *UserGroupsUserListByProjectGroupIDNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/{userGroupId}/users][%d] userGroupsUserListByProjectGroupIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserGroupsUserListByProjectGroupIDNotFound) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsUserListByProjectGroupIDNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsUserListByProjectGroupIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

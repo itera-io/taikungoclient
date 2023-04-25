@@ -143,7 +143,7 @@ GoogleCloudCreateBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type GoogleCloudCreateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this google cloud create bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *GoogleCloudCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GoogleCloudCreateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *GoogleCloudCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ GoogleCloudCreateUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type GoogleCloudCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this google cloud create unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *GoogleCloudCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GoogleCloudCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *GoogleCloudCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ GoogleCloudCreateForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type GoogleCloudCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this google cloud create forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *GoogleCloudCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GoogleCloudCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *GoogleCloudCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ GoogleCloudCreateNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type GoogleCloudCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this google cloud create not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *GoogleCloudCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GoogleCloudCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *GoogleCloudCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

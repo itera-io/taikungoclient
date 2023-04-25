@@ -141,7 +141,7 @@ AwsUpdateBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AwsUpdateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws update bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *AwsUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsUpdateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AwsUpdateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ AwsUpdateUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type AwsUpdateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws update unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *AwsUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsUpdateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AwsUpdateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ AwsUpdateForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type AwsUpdateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws update forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *AwsUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsUpdateForbidden) GetPayload() *models.ProblemDetails {
+func (o *AwsUpdateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ AwsUpdateNotFound describes a response with status code 404, with default header
 Not Found
 */
 type AwsUpdateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws update not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *AwsUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsUpdateNotFound) GetPayload() *models.ProblemDetails {
+func (o *AwsUpdateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

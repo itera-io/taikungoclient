@@ -143,7 +143,7 @@ BackupListAllBackupsBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type BackupListAllBackupsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup list all backups bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *BackupListAllBackupsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/backups/{projectId}][%d] backupListAllBackupsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupListAllBackupsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllBackupsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupListAllBackupsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ BackupListAllBackupsUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type BackupListAllBackupsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup list all backups unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *BackupListAllBackupsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/backups/{projectId}][%d] backupListAllBackupsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupListAllBackupsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllBackupsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupListAllBackupsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ BackupListAllBackupsForbidden describes a response with status code 403, with de
 Forbidden
 */
 type BackupListAllBackupsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup list all backups forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *BackupListAllBackupsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/backups/{projectId}][%d] backupListAllBackupsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupListAllBackupsForbidden) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllBackupsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupListAllBackupsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ BackupListAllBackupsNotFound describes a response with status code 404, with def
 Not Found
 */
 type BackupListAllBackupsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup list all backups not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *BackupListAllBackupsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/backups/{projectId}][%d] backupListAllBackupsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupListAllBackupsNotFound) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllBackupsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupListAllBackupsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -143,7 +143,7 @@ CatalogCatalogAppDetailsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type CatalogCatalogAppDetailsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog catalog app details bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *CatalogCatalogAppDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app/{id}][%d] catalogCatalogAppDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogCatalogAppDetailsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppDetailsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppDetailsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ CatalogCatalogAppDetailsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type CatalogCatalogAppDetailsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog catalog app details unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *CatalogCatalogAppDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app/{id}][%d] catalogCatalogAppDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogCatalogAppDetailsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppDetailsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppDetailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ CatalogCatalogAppDetailsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type CatalogCatalogAppDetailsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog catalog app details forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *CatalogCatalogAppDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app/{id}][%d] catalogCatalogAppDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogCatalogAppDetailsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppDetailsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppDetailsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ CatalogCatalogAppDetailsNotFound describes a response with status code 404, with
 Not Found
 */
 type CatalogCatalogAppDetailsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog catalog app details not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *CatalogCatalogAppDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app/{id}][%d] catalogCatalogAppDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogCatalogAppDetailsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppDetailsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppDetailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

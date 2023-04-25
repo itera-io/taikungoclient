@@ -141,7 +141,7 @@ S3CredentialsMakeDefaultBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type S3CredentialsMakeDefaultBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this s3 credentials make default bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *S3CredentialsMakeDefaultBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsMakeDefaultBadRequest) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsMakeDefaultBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *S3CredentialsMakeDefaultBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ S3CredentialsMakeDefaultUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type S3CredentialsMakeDefaultUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this s3 credentials make default unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *S3CredentialsMakeDefaultUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *S3CredentialsMakeDefaultUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsMakeDefaultUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *S3CredentialsMakeDefaultUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ S3CredentialsMakeDefaultForbidden describes a response with status code 403, wit
 Forbidden
 */
 type S3CredentialsMakeDefaultForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this s3 credentials make default forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *S3CredentialsMakeDefaultForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultForbidden  %+v", 403, o.Payload)
 }
 
-func (o *S3CredentialsMakeDefaultForbidden) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsMakeDefaultForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *S3CredentialsMakeDefaultForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ S3CredentialsMakeDefaultNotFound describes a response with status code 404, with
 Not Found
 */
 type S3CredentialsMakeDefaultNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this s3 credentials make default not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *S3CredentialsMakeDefaultNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
 }
 
-func (o *S3CredentialsMakeDefaultNotFound) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsMakeDefaultNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *S3CredentialsMakeDefaultNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

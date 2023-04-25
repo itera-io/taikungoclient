@@ -143,7 +143,7 @@ UserTokenCreateBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type UserTokenCreateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token create bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *UserTokenCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserTokenCreateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *UserTokenCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserTokenCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ UserTokenCreateUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type UserTokenCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token create unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *UserTokenCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserTokenCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UserTokenCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserTokenCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ UserTokenCreateForbidden describes a response with status code 403, with default
 Forbidden
 */
 type UserTokenCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token create forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *UserTokenCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserTokenCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *UserTokenCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserTokenCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ UserTokenCreateNotFound describes a response with status code 404, with default 
 Not Found
 */
 type UserTokenCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token create not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *UserTokenCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserTokenCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *UserTokenCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserTokenCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

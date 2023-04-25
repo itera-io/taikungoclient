@@ -141,7 +141,7 @@ KubernetesRestartStsBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type KubernetesRestartStsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes restart sts bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *KubernetesRestartStsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/sts][%d] kubernetesRestartStsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesRestartStsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartStsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesRestartStsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ KubernetesRestartStsUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type KubernetesRestartStsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes restart sts unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *KubernetesRestartStsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/sts][%d] kubernetesRestartStsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesRestartStsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartStsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesRestartStsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ KubernetesRestartStsForbidden describes a response with status code 403, with de
 Forbidden
 */
 type KubernetesRestartStsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes restart sts forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *KubernetesRestartStsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/sts][%d] kubernetesRestartStsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesRestartStsForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartStsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesRestartStsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ KubernetesRestartStsNotFound describes a response with status code 404, with def
 Not Found
 */
 type KubernetesRestartStsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes restart sts not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *KubernetesRestartStsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/sts][%d] kubernetesRestartStsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesRestartStsNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartStsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesRestartStsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

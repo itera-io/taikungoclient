@@ -141,7 +141,7 @@ AccessProfilesUpdateBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type AccessProfilesUpdateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles update bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *AccessProfilesUpdateBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AccessProfilesUpdateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AccessProfilesUpdateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AccessProfilesUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ AccessProfilesUpdateUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type AccessProfilesUpdateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles update unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *AccessProfilesUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AccessProfilesUpdateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AccessProfilesUpdateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AccessProfilesUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ AccessProfilesUpdateForbidden describes a response with status code 403, with de
 Forbidden
 */
 type AccessProfilesUpdateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles update forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *AccessProfilesUpdateForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AccessProfilesUpdateForbidden) GetPayload() *models.ProblemDetails {
+func (o *AccessProfilesUpdateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AccessProfilesUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ AccessProfilesUpdateNotFound describes a response with status code 404, with def
 Not Found
 */
 type AccessProfilesUpdateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles update not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *AccessProfilesUpdateNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AccessProfilesUpdateNotFound) GetPayload() *models.ProblemDetails {
+func (o *AccessProfilesUpdateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AccessProfilesUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

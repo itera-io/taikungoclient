@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // TanzuKubernetesVersionsReader is a Reader for the TanzuKubernetesVersions structure.
@@ -141,7 +139,7 @@ TanzuKubernetesVersionsBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type TanzuKubernetesVersionsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this tanzu kubernetes versions bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *TanzuKubernetesVersionsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Tanzu/kubernetes-versions/{cloudId}][%d] tanzuKubernetesVersionsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TanzuKubernetesVersionsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *TanzuKubernetesVersionsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TanzuKubernetesVersionsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ TanzuKubernetesVersionsUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type TanzuKubernetesVersionsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this tanzu kubernetes versions unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *TanzuKubernetesVersionsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Tanzu/kubernetes-versions/{cloudId}][%d] tanzuKubernetesVersionsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TanzuKubernetesVersionsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *TanzuKubernetesVersionsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TanzuKubernetesVersionsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ TanzuKubernetesVersionsForbidden describes a response with status code 403, with
 Forbidden
 */
 type TanzuKubernetesVersionsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this tanzu kubernetes versions forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *TanzuKubernetesVersionsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Tanzu/kubernetes-versions/{cloudId}][%d] tanzuKubernetesVersionsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TanzuKubernetesVersionsForbidden) GetPayload() *models.ProblemDetails {
+func (o *TanzuKubernetesVersionsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TanzuKubernetesVersionsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ TanzuKubernetesVersionsNotFound describes a response with status code 404, with 
 Not Found
 */
 type TanzuKubernetesVersionsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this tanzu kubernetes versions not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *TanzuKubernetesVersionsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Tanzu/kubernetes-versions/{cloudId}][%d] tanzuKubernetesVersionsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TanzuKubernetesVersionsNotFound) GetPayload() *models.ProblemDetails {
+func (o *TanzuKubernetesVersionsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TanzuKubernetesVersionsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

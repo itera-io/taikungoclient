@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProxmoxVMTemplateListReader is a Reader for the ProxmoxVMTemplateList structure.
@@ -141,7 +139,7 @@ ProxmoxVMTemplateListBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type ProxmoxVMTemplateListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox Vm template list bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *ProxmoxVMTemplateListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Proxmox/vm-template-list][%d] proxmoxVmTemplateListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProxmoxVMTemplateListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxVMTemplateListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxVMTemplateListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ ProxmoxVMTemplateListUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type ProxmoxVMTemplateListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox Vm template list unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *ProxmoxVMTemplateListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Proxmox/vm-template-list][%d] proxmoxVmTemplateListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProxmoxVMTemplateListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxVMTemplateListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxVMTemplateListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ ProxmoxVMTemplateListForbidden describes a response with status code 403, with d
 Forbidden
 */
 type ProxmoxVMTemplateListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox Vm template list forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *ProxmoxVMTemplateListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Proxmox/vm-template-list][%d] proxmoxVmTemplateListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProxmoxVMTemplateListForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxVMTemplateListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxVMTemplateListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ ProxmoxVMTemplateListNotFound describes a response with status code 404, with de
 Not Found
 */
 type ProxmoxVMTemplateListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox Vm template list not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *ProxmoxVMTemplateListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Proxmox/vm-template-list][%d] proxmoxVmTemplateListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProxmoxVMTemplateListNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxVMTemplateListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxVMTemplateListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

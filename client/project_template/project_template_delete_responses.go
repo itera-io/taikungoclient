@@ -203,7 +203,7 @@ ProjectTemplateDeleteBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type ProjectTemplateDeleteBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template delete bad request response has a 2xx status code
@@ -244,16 +244,14 @@ func (o *ProjectTemplateDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectTemplate/{id}][%d] projectTemplateDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectTemplateDeleteBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateDeleteBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -271,7 +269,7 @@ ProjectTemplateDeleteUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type ProjectTemplateDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template delete unauthorized response has a 2xx status code
@@ -312,16 +310,14 @@ func (o *ProjectTemplateDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectTemplate/{id}][%d] projectTemplateDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectTemplateDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateDeleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -339,7 +335,7 @@ ProjectTemplateDeleteForbidden describes a response with status code 403, with d
 Forbidden
 */
 type ProjectTemplateDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template delete forbidden response has a 2xx status code
@@ -380,16 +376,14 @@ func (o *ProjectTemplateDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectTemplate/{id}][%d] projectTemplateDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectTemplateDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateDeleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -407,7 +401,7 @@ ProjectTemplateDeleteNotFound describes a response with status code 404, with de
 Not Found
 */
 type ProjectTemplateDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template delete not found response has a 2xx status code
@@ -448,16 +442,14 @@ func (o *ProjectTemplateDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectTemplate/{id}][%d] projectTemplateDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectTemplateDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateDeleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

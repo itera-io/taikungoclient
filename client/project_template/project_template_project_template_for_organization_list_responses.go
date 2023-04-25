@@ -141,7 +141,7 @@ ProjectTemplateProjectTemplateForOrganizationListBadRequest describes a response
 Bad Request
 */
 type ProjectTemplateProjectTemplateForOrganizationListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template project template for organization list bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *ProjectTemplateProjectTemplateForOrganizationListBadRequest) String() s
 	return fmt.Sprintf("[GET /api/v{v}/ProjectTemplate/list][%d] projectTemplateProjectTemplateForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectTemplateProjectTemplateForOrganizationListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateProjectTemplateForOrganizationListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateProjectTemplateForOrganizationListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ ProjectTemplateProjectTemplateForOrganizationListUnauthorized describes a respon
 Unauthorized
 */
 type ProjectTemplateProjectTemplateForOrganizationListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template project template for organization list unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *ProjectTemplateProjectTemplateForOrganizationListUnauthorized) String()
 	return fmt.Sprintf("[GET /api/v{v}/ProjectTemplate/list][%d] projectTemplateProjectTemplateForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectTemplateProjectTemplateForOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateProjectTemplateForOrganizationListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateProjectTemplateForOrganizationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ ProjectTemplateProjectTemplateForOrganizationListForbidden describes a response 
 Forbidden
 */
 type ProjectTemplateProjectTemplateForOrganizationListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template project template for organization list forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *ProjectTemplateProjectTemplateForOrganizationListForbidden) String() st
 	return fmt.Sprintf("[GET /api/v{v}/ProjectTemplate/list][%d] projectTemplateProjectTemplateForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectTemplateProjectTemplateForOrganizationListForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateProjectTemplateForOrganizationListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateProjectTemplateForOrganizationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ ProjectTemplateProjectTemplateForOrganizationListNotFound describes a response w
 Not Found
 */
 type ProjectTemplateProjectTemplateForOrganizationListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template project template for organization list not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *ProjectTemplateProjectTemplateForOrganizationListNotFound) String() str
 	return fmt.Sprintf("[GET /api/v{v}/ProjectTemplate/list][%d] projectTemplateProjectTemplateForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectTemplateProjectTemplateForOrganizationListNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateProjectTemplateForOrganizationListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateProjectTemplateForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

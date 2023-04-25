@@ -141,7 +141,7 @@ KeycloakCreateBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type KeycloakCreateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this keycloak create bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *KeycloakCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KeycloakCreateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KeycloakCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KeycloakCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ KeycloakCreateUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type KeycloakCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this keycloak create unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *KeycloakCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KeycloakCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KeycloakCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KeycloakCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ KeycloakCreateForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type KeycloakCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this keycloak create forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *KeycloakCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KeycloakCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *KeycloakCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KeycloakCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ KeycloakCreateNotFound describes a response with status code 404, with default h
 Not Found
 */
 type KeycloakCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this keycloak create not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *KeycloakCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KeycloakCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *KeycloakCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KeycloakCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

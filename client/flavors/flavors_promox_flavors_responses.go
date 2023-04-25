@@ -143,7 +143,7 @@ FlavorsPromoxFlavorsBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type FlavorsPromoxFlavorsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors promox flavors bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *FlavorsPromoxFlavorsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/proxmox/{cloudId}][%d] flavorsPromoxFlavorsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsPromoxFlavorsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *FlavorsPromoxFlavorsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsPromoxFlavorsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ FlavorsPromoxFlavorsUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type FlavorsPromoxFlavorsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors promox flavors unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *FlavorsPromoxFlavorsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/proxmox/{cloudId}][%d] flavorsPromoxFlavorsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsPromoxFlavorsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *FlavorsPromoxFlavorsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsPromoxFlavorsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ FlavorsPromoxFlavorsForbidden describes a response with status code 403, with de
 Forbidden
 */
 type FlavorsPromoxFlavorsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors promox flavors forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *FlavorsPromoxFlavorsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/proxmox/{cloudId}][%d] flavorsPromoxFlavorsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsPromoxFlavorsForbidden) GetPayload() *models.ProblemDetails {
+func (o *FlavorsPromoxFlavorsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsPromoxFlavorsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ FlavorsPromoxFlavorsNotFound describes a response with status code 404, with def
 Not Found
 */
 type FlavorsPromoxFlavorsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors promox flavors not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *FlavorsPromoxFlavorsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/proxmox/{cloudId}][%d] flavorsPromoxFlavorsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsPromoxFlavorsNotFound) GetPayload() *models.ProblemDetails {
+func (o *FlavorsPromoxFlavorsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsPromoxFlavorsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

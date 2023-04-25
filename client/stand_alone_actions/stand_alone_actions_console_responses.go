@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneActionsConsoleReader is a Reader for the StandAloneActionsConsole structure.
@@ -141,7 +139,7 @@ StandAloneActionsConsoleBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type StandAloneActionsConsoleBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions console bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *StandAloneActionsConsoleBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsConsoleBadRequest) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsConsoleBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsConsoleBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ StandAloneActionsConsoleUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type StandAloneActionsConsoleUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions console unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *StandAloneActionsConsoleUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsConsoleUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsConsoleUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsConsoleUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ StandAloneActionsConsoleForbidden describes a response with status code 403, wit
 Forbidden
 */
 type StandAloneActionsConsoleForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions console forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *StandAloneActionsConsoleForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsConsoleForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsConsoleForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsConsoleForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ StandAloneActionsConsoleNotFound describes a response with status code 404, with
 Not Found
 */
 type StandAloneActionsConsoleNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions console not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *StandAloneActionsConsoleNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsConsoleNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsConsoleNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsConsoleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

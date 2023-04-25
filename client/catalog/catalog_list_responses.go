@@ -143,7 +143,7 @@ CatalogListBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type CatalogListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *CatalogListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CatalogListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ CatalogListUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type CatalogListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *CatalogListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ CatalogListForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type CatalogListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *CatalogListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogListForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ CatalogListNotFound describes a response with status code 404, with default head
 Not Found
 */
 type CatalogListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *CatalogListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogListNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -143,7 +143,7 @@ SearchBillingCredentialsListBadRequest describes a response with status code 400
 Bad Request
 */
 type SearchBillingCredentialsListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search billing credentials list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *SearchBillingCredentialsListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchBillingCredentialsListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *SearchBillingCredentialsListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchBillingCredentialsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ SearchBillingCredentialsListUnauthorized describes a response with status code 4
 Unauthorized
 */
 type SearchBillingCredentialsListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search billing credentials list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *SearchBillingCredentialsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchBillingCredentialsListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchBillingCredentialsListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchBillingCredentialsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ SearchBillingCredentialsListForbidden describes a response with status code 403,
 Forbidden
 */
 type SearchBillingCredentialsListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search billing credentials list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *SearchBillingCredentialsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchBillingCredentialsListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchBillingCredentialsListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchBillingCredentialsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ SearchBillingCredentialsListNotFound describes a response with status code 404, 
 Not Found
 */
 type SearchBillingCredentialsListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search billing credentials list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *SearchBillingCredentialsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchBillingCredentialsListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchBillingCredentialsListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchBillingCredentialsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

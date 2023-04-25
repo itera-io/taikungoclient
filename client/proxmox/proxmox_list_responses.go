@@ -143,7 +143,7 @@ ProxmoxListBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type ProxmoxListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *ProxmoxListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Proxmox/list][%d] proxmoxListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProxmoxListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ ProxmoxListUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type ProxmoxListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *ProxmoxListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Proxmox/list][%d] proxmoxListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProxmoxListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ ProxmoxListForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type ProxmoxListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *ProxmoxListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Proxmox/list][%d] proxmoxListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProxmoxListForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ ProxmoxListNotFound describes a response with status code 404, with default head
 Not Found
 */
 type ProxmoxListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *ProxmoxListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Proxmox/list][%d] proxmoxListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProxmoxListNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

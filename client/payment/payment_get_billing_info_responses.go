@@ -143,7 +143,7 @@ PaymentGetBillingInfoBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type PaymentGetBillingInfoBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment get billing info bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *PaymentGetBillingInfoBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/billing-info][%d] paymentGetBillingInfoBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentGetBillingInfoBadRequest) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetBillingInfoBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentGetBillingInfoBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ PaymentGetBillingInfoUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type PaymentGetBillingInfoUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment get billing info unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *PaymentGetBillingInfoUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/billing-info][%d] paymentGetBillingInfoUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentGetBillingInfoUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetBillingInfoUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentGetBillingInfoUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ PaymentGetBillingInfoForbidden describes a response with status code 403, with d
 Forbidden
 */
 type PaymentGetBillingInfoForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment get billing info forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *PaymentGetBillingInfoForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/billing-info][%d] paymentGetBillingInfoForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentGetBillingInfoForbidden) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetBillingInfoForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentGetBillingInfoForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ PaymentGetBillingInfoNotFound describes a response with status code 404, with de
 Not Found
 */
 type PaymentGetBillingInfoNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment get billing info not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *PaymentGetBillingInfoNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/billing-info][%d] paymentGetBillingInfoNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentGetBillingInfoNotFound) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetBillingInfoNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentGetBillingInfoNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

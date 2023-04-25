@@ -143,7 +143,7 @@ CloudCredentialsDashboardListBadRequest describes a response with status code 40
 Bad Request
 */
 type CloudCredentialsDashboardListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials dashboard list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *CloudCredentialsDashboardListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsDashboardListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsDashboardListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDashboardListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ CloudCredentialsDashboardListUnauthorized describes a response with status code 
 Unauthorized
 */
 type CloudCredentialsDashboardListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials dashboard list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *CloudCredentialsDashboardListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsDashboardListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsDashboardListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDashboardListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ CloudCredentialsDashboardListForbidden describes a response with status code 403
 Forbidden
 */
 type CloudCredentialsDashboardListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials dashboard list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *CloudCredentialsDashboardListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsDashboardListForbidden) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsDashboardListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDashboardListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ CloudCredentialsDashboardListNotFound describes a response with status code 404,
 Not Found
 */
 type CloudCredentialsDashboardListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials dashboard list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *CloudCredentialsDashboardListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsDashboardListNotFound) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsDashboardListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsDashboardListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

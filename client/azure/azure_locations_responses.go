@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // AzureLocationsReader is a Reader for the AzureLocations structure.
@@ -141,7 +139,7 @@ AzureLocationsBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AzureLocationsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure locations bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *AzureLocationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureLocationsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AzureLocationsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureLocationsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ AzureLocationsUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type AzureLocationsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure locations unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *AzureLocationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureLocationsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AzureLocationsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureLocationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ AzureLocationsForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type AzureLocationsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure locations forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *AzureLocationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureLocationsForbidden) GetPayload() *models.ProblemDetails {
+func (o *AzureLocationsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureLocationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ AzureLocationsNotFound describes a response with status code 404, with default h
 Not Found
 */
 type AzureLocationsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure locations not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *AzureLocationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureLocationsNotFound) GetPayload() *models.ProblemDetails {
+func (o *AzureLocationsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureLocationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

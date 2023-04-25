@@ -143,7 +143,7 @@ ProjectQuotasListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type ProjectQuotasListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project quotas list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *ProjectQuotasListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectQuotasListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectQuotasListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectQuotasListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ ProjectQuotasListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type ProjectQuotasListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project quotas list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *ProjectQuotasListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectQuotasListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectQuotasListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectQuotasListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ ProjectQuotasListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type ProjectQuotasListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project quotas list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *ProjectQuotasListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectQuotasListForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectQuotasListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectQuotasListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ ProjectQuotasListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type ProjectQuotasListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project quotas list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *ProjectQuotasListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectQuotasListNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectQuotasListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectQuotasListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

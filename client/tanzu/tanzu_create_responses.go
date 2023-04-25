@@ -143,7 +143,7 @@ TanzuCreateBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type TanzuCreateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this tanzu create bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *TanzuCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Tanzu/create][%d] tanzuCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TanzuCreateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *TanzuCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TanzuCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ TanzuCreateUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type TanzuCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this tanzu create unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *TanzuCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Tanzu/create][%d] tanzuCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TanzuCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *TanzuCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TanzuCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ TanzuCreateForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type TanzuCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this tanzu create forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *TanzuCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Tanzu/create][%d] tanzuCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TanzuCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *TanzuCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TanzuCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ TanzuCreateNotFound describes a response with status code 404, with default head
 Not Found
 */
 type TanzuCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this tanzu create not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *TanzuCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Tanzu/create][%d] tanzuCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TanzuCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *TanzuCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TanzuCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

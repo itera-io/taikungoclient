@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // CatalogAvailableVersionsReader is a Reader for the CatalogAvailableVersions structure.
@@ -141,7 +139,7 @@ CatalogAvailableVersionsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type CatalogAvailableVersionsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog available versions bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *CatalogAvailableVersionsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogAvailableVersionsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CatalogAvailableVersionsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogAvailableVersionsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ CatalogAvailableVersionsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type CatalogAvailableVersionsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog available versions unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *CatalogAvailableVersionsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogAvailableVersionsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogAvailableVersionsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogAvailableVersionsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ CatalogAvailableVersionsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type CatalogAvailableVersionsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog available versions forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *CatalogAvailableVersionsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogAvailableVersionsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogAvailableVersionsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogAvailableVersionsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ CatalogAvailableVersionsNotFound describes a response with status code 404, with
 Not Found
 */
 type CatalogAvailableVersionsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog available versions not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *CatalogAvailableVersionsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogAvailableVersionsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogAvailableVersionsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogAvailableVersionsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

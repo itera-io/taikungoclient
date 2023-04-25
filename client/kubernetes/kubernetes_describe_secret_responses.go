@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesDescribeSecretReader is a Reader for the KubernetesDescribeSecret structure.
@@ -141,7 +139,7 @@ KubernetesDescribeSecretBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type KubernetesDescribeSecretBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe secret bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *KubernetesDescribeSecretBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/secret][%d] kubernetesDescribeSecretBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeSecretBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeSecretBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeSecretBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ KubernetesDescribeSecretUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type KubernetesDescribeSecretUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe secret unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *KubernetesDescribeSecretUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/secret][%d] kubernetesDescribeSecretUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeSecretUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeSecretUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeSecretUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ KubernetesDescribeSecretForbidden describes a response with status code 403, wit
 Forbidden
 */
 type KubernetesDescribeSecretForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe secret forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *KubernetesDescribeSecretForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/secret][%d] kubernetesDescribeSecretForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeSecretForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeSecretForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeSecretForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ KubernetesDescribeSecretNotFound describes a response with status code 404, with
 Not Found
 */
 type KubernetesDescribeSecretNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe secret not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *KubernetesDescribeSecretNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/secret][%d] kubernetesDescribeSecretNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeSecretNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeSecretNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeSecretNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

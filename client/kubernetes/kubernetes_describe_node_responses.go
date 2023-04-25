@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesDescribeNodeReader is a Reader for the KubernetesDescribeNode structure.
@@ -141,7 +139,7 @@ KubernetesDescribeNodeBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesDescribeNodeBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe node bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *KubernetesDescribeNodeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/node][%d] kubernetesDescribeNodeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeNodeBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeNodeBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeNodeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ KubernetesDescribeNodeUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesDescribeNodeUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe node unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *KubernetesDescribeNodeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/node][%d] kubernetesDescribeNodeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeNodeUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeNodeUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeNodeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ KubernetesDescribeNodeForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesDescribeNodeForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe node forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *KubernetesDescribeNodeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/node][%d] kubernetesDescribeNodeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeNodeForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeNodeForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeNodeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ KubernetesDescribeNodeNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesDescribeNodeNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe node not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *KubernetesDescribeNodeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/node][%d] kubernetesDescribeNodeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeNodeNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeNodeNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeNodeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

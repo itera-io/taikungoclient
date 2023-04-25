@@ -141,7 +141,7 @@ CheckerKeycloakBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type CheckerKeycloakBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker keycloak bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CheckerKeycloakBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/keycloak][%d] checkerKeycloakBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerKeycloakBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CheckerKeycloakBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerKeycloakBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CheckerKeycloakUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type CheckerKeycloakUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker keycloak unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CheckerKeycloakUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/keycloak][%d] checkerKeycloakUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerKeycloakUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerKeycloakUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerKeycloakUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CheckerKeycloakForbidden describes a response with status code 403, with default
 Forbidden
 */
 type CheckerKeycloakForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker keycloak forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CheckerKeycloakForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/keycloak][%d] checkerKeycloakForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerKeycloakForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerKeycloakForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerKeycloakForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CheckerKeycloakNotFound describes a response with status code 404, with default 
 Not Found
 */
 type CheckerKeycloakNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker keycloak not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CheckerKeycloakNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/keycloak][%d] checkerKeycloakNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerKeycloakNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerKeycloakNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerKeycloakNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

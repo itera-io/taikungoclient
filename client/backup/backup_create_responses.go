@@ -141,7 +141,7 @@ BackupCreateBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type BackupCreateBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup create bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *BackupCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupCreateBadRequest) GetPayload() *models.ProblemDetails {
+func (o *BackupCreateBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ BackupCreateUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type BackupCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup create unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *BackupCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BackupCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ BackupCreateForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type BackupCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup create forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *BackupCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *BackupCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ BackupCreateNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type BackupCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup create not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *BackupCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *BackupCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

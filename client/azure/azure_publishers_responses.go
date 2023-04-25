@@ -143,7 +143,7 @@ AzurePublishersBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type AzurePublishersBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure publishers bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *AzurePublishersBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzurePublishersBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AzurePublishersBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzurePublishersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ AzurePublishersUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type AzurePublishersUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure publishers unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *AzurePublishersUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzurePublishersUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AzurePublishersUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzurePublishersUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ AzurePublishersForbidden describes a response with status code 403, with default
 Forbidden
 */
 type AzurePublishersForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure publishers forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *AzurePublishersForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzurePublishersForbidden) GetPayload() *models.ProblemDetails {
+func (o *AzurePublishersForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzurePublishersForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ AzurePublishersNotFound describes a response with status code 404, with default 
 Not Found
 */
 type AzurePublishersNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure publishers not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *AzurePublishersNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzurePublishersNotFound) GetPayload() *models.ProblemDetails {
+func (o *AzurePublishersNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzurePublishersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

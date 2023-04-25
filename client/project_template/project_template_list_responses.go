@@ -143,7 +143,7 @@ ProjectTemplateListBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type ProjectTemplateListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *ProjectTemplateListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectTemplate][%d] projectTemplateListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectTemplateListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ ProjectTemplateListUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ProjectTemplateListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *ProjectTemplateListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectTemplate][%d] projectTemplateListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectTemplateListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ ProjectTemplateListForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ProjectTemplateListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *ProjectTemplateListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectTemplate][%d] projectTemplateListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectTemplateListForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ ProjectTemplateListNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ProjectTemplateListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project template list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *ProjectTemplateListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectTemplate][%d] projectTemplateListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectTemplateListNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectTemplateListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectTemplateListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

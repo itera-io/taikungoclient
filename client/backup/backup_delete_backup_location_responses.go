@@ -141,7 +141,7 @@ BackupDeleteBackupLocationBadRequest describes a response with status code 400, 
 Bad Request
 */
 type BackupDeleteBackupLocationBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup delete backup location bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *BackupDeleteBackupLocationBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupDeleteBackupLocationBadRequest) GetPayload() *models.ProblemDetails {
+func (o *BackupDeleteBackupLocationBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupDeleteBackupLocationBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ BackupDeleteBackupLocationUnauthorized describes a response with status code 401
 Unauthorized
 */
 type BackupDeleteBackupLocationUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup delete backup location unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *BackupDeleteBackupLocationUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupDeleteBackupLocationUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BackupDeleteBackupLocationUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupDeleteBackupLocationUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ BackupDeleteBackupLocationForbidden describes a response with status code 403, w
 Forbidden
 */
 type BackupDeleteBackupLocationForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup delete backup location forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *BackupDeleteBackupLocationForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupDeleteBackupLocationForbidden) GetPayload() *models.ProblemDetails {
+func (o *BackupDeleteBackupLocationForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupDeleteBackupLocationForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ BackupDeleteBackupLocationNotFound describes a response with status code 404, wi
 Not Found
 */
 type BackupDeleteBackupLocationNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup delete backup location not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *BackupDeleteBackupLocationNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupDeleteBackupLocationNotFound) GetPayload() *models.ProblemDetails {
+func (o *BackupDeleteBackupLocationNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupDeleteBackupLocationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

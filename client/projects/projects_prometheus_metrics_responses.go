@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsPrometheusMetricsReader is a Reader for the ProjectsPrometheusMetrics structure.
@@ -141,7 +139,7 @@ ProjectsPrometheusMetricsBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ProjectsPrometheusMetricsBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects prometheus metrics bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *ProjectsPrometheusMetricsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsPrometheusMetricsBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectsPrometheusMetricsBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsPrometheusMetricsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ ProjectsPrometheusMetricsUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ProjectsPrometheusMetricsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects prometheus metrics unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *ProjectsPrometheusMetricsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsPrometheusMetricsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsPrometheusMetricsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsPrometheusMetricsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ ProjectsPrometheusMetricsForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ProjectsPrometheusMetricsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects prometheus metrics forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *ProjectsPrometheusMetricsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsPrometheusMetricsForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsPrometheusMetricsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsPrometheusMetricsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ ProjectsPrometheusMetricsNotFound describes a response with status code 404, wit
 Not Found
 */
 type ProjectsPrometheusMetricsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects prometheus metrics not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *ProjectsPrometheusMetricsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsPrometheusMetricsNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsPrometheusMetricsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsPrometheusMetricsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

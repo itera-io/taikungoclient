@@ -141,7 +141,7 @@ KubernetesPatchNodeBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type KubernetesPatchNodeBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch node bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *KubernetesPatchNodeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchNodeBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchNodeBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesPatchNodeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ KubernetesPatchNodeUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type KubernetesPatchNodeUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch node unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *KubernetesPatchNodeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchNodeUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchNodeUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesPatchNodeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ KubernetesPatchNodeForbidden describes a response with status code 403, with def
 Forbidden
 */
 type KubernetesPatchNodeForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch node forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *KubernetesPatchNodeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchNodeForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchNodeForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesPatchNodeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ KubernetesPatchNodeNotFound describes a response with status code 404, with defa
 Not Found
 */
 type KubernetesPatchNodeNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch node not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *KubernetesPatchNodeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchNodeNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchNodeNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesPatchNodeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

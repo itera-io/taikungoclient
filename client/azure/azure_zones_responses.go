@@ -143,7 +143,7 @@ AzureZonesBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type AzureZonesBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure zones bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *AzureZonesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureZonesBadRequest) GetPayload() *models.ProblemDetails {
+func (o *AzureZonesBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureZonesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ AzureZonesUnauthorized describes a response with status code 401, with default h
 Unauthorized
 */
 type AzureZonesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure zones unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *AzureZonesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureZonesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AzureZonesUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureZonesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ AzureZonesForbidden describes a response with status code 403, with default head
 Forbidden
 */
 type AzureZonesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure zones forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *AzureZonesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureZonesForbidden) GetPayload() *models.ProblemDetails {
+func (o *AzureZonesForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureZonesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ AzureZonesNotFound describes a response with status code 404, with default heade
 Not Found
 */
 type AzureZonesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure zones not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *AzureZonesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureZonesNotFound) GetPayload() *models.ProblemDetails {
+func (o *AzureZonesNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureZonesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

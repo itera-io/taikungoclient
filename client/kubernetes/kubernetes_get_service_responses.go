@@ -143,7 +143,7 @@ KubernetesGetServiceBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type KubernetesGetServiceBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get service bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *KubernetesGetServiceBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetServiceBadRequest) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetServiceBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetServiceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ KubernetesGetServiceUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type KubernetesGetServiceUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get service unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *KubernetesGetServiceUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetServiceUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetServiceUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetServiceUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ KubernetesGetServiceForbidden describes a response with status code 403, with de
 Forbidden
 */
 type KubernetesGetServiceForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get service forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *KubernetesGetServiceForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetServiceForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetServiceForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetServiceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ KubernetesGetServiceNotFound describes a response with status code 404, with def
 Not Found
 */
 type KubernetesGetServiceNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get service not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *KubernetesGetServiceNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetServiceNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetServiceNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetServiceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

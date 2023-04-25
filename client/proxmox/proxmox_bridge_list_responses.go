@@ -11,8 +11,6 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProxmoxBridgeListReader is a Reader for the ProxmoxBridgeList structure.
@@ -141,7 +139,7 @@ ProxmoxBridgeListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type ProxmoxBridgeListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox bridge list bad request response has a 2xx status code
@@ -182,16 +180,14 @@ func (o *ProxmoxBridgeListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Proxmox/bridge-list][%d] proxmoxBridgeListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProxmoxBridgeListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxBridgeListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxBridgeListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +205,7 @@ ProxmoxBridgeListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type ProxmoxBridgeListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox bridge list unauthorized response has a 2xx status code
@@ -250,16 +246,14 @@ func (o *ProxmoxBridgeListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Proxmox/bridge-list][%d] proxmoxBridgeListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProxmoxBridgeListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxBridgeListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxBridgeListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +271,7 @@ ProxmoxBridgeListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type ProxmoxBridgeListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox bridge list forbidden response has a 2xx status code
@@ -318,16 +312,14 @@ func (o *ProxmoxBridgeListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Proxmox/bridge-list][%d] proxmoxBridgeListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProxmoxBridgeListForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxBridgeListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxBridgeListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +337,7 @@ ProxmoxBridgeListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type ProxmoxBridgeListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this proxmox bridge list not found response has a 2xx status code
@@ -386,16 +378,14 @@ func (o *ProxmoxBridgeListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Proxmox/bridge-list][%d] proxmoxBridgeListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProxmoxBridgeListNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProxmoxBridgeListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProxmoxBridgeListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

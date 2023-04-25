@@ -143,7 +143,7 @@ ProjectsListBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type ProjectsListBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects list bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *ProjectsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects][%d] projectsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsListBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ProjectsListBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ ProjectsListUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type ProjectsListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects list unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *ProjectsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects][%d] projectsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ ProjectsListForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type ProjectsListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects list forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *ProjectsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects][%d] projectsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsListForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ ProjectsListNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type ProjectsListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects list not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *ProjectsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects][%d] projectsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsListNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

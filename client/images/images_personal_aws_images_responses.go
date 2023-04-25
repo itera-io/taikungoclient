@@ -141,7 +141,7 @@ ImagesPersonalAwsImagesBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type ImagesPersonalAwsImagesBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images personal aws images bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *ImagesPersonalAwsImagesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesPersonalAwsImagesBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ImagesPersonalAwsImagesBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesPersonalAwsImagesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ ImagesPersonalAwsImagesUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type ImagesPersonalAwsImagesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images personal aws images unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *ImagesPersonalAwsImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesPersonalAwsImagesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ImagesPersonalAwsImagesUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesPersonalAwsImagesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ ImagesPersonalAwsImagesForbidden describes a response with status code 403, with
 Forbidden
 */
 type ImagesPersonalAwsImagesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images personal aws images forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *ImagesPersonalAwsImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesPersonalAwsImagesForbidden) GetPayload() *models.ProblemDetails {
+func (o *ImagesPersonalAwsImagesForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesPersonalAwsImagesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ ImagesPersonalAwsImagesNotFound describes a response with status code 404, with 
 Not Found
 */
 type ImagesPersonalAwsImagesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images personal aws images not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *ImagesPersonalAwsImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesPersonalAwsImagesNotFound) GetPayload() *models.ProblemDetails {
+func (o *ImagesPersonalAwsImagesNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesPersonalAwsImagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

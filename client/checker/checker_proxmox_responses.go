@@ -141,7 +141,7 @@ CheckerProxmoxBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type CheckerProxmoxBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker proxmox bad request response has a 2xx status code
@@ -182,16 +182,14 @@ func (o *CheckerProxmoxBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/proxmox][%d] checkerProxmoxBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerProxmoxBadRequest) GetPayload() *models.ProblemDetails {
+func (o *CheckerProxmoxBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerProxmoxBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -209,7 +207,7 @@ CheckerProxmoxUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type CheckerProxmoxUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker proxmox unauthorized response has a 2xx status code
@@ -250,16 +248,14 @@ func (o *CheckerProxmoxUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/proxmox][%d] checkerProxmoxUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerProxmoxUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerProxmoxUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerProxmoxUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -277,7 +273,7 @@ CheckerProxmoxForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type CheckerProxmoxForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker proxmox forbidden response has a 2xx status code
@@ -318,16 +314,14 @@ func (o *CheckerProxmoxForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/proxmox][%d] checkerProxmoxForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerProxmoxForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerProxmoxForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerProxmoxForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -345,7 +339,7 @@ CheckerProxmoxNotFound describes a response with status code 404, with default h
 Not Found
 */
 type CheckerProxmoxNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker proxmox not found response has a 2xx status code
@@ -386,16 +380,14 @@ func (o *CheckerProxmoxNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/proxmox][%d] checkerProxmoxNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerProxmoxNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerProxmoxNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerProxmoxNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

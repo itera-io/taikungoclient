@@ -143,7 +143,7 @@ ImagesOpenstackImagesBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type ImagesOpenstackImagesBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images openstack images bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *ImagesOpenstackImagesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesOpenstackImagesBadRequest) GetPayload() *models.ProblemDetails {
+func (o *ImagesOpenstackImagesBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesOpenstackImagesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ ImagesOpenstackImagesUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type ImagesOpenstackImagesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images openstack images unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *ImagesOpenstackImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesOpenstackImagesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ImagesOpenstackImagesUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesOpenstackImagesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ ImagesOpenstackImagesForbidden describes a response with status code 403, with d
 Forbidden
 */
 type ImagesOpenstackImagesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images openstack images forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *ImagesOpenstackImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesOpenstackImagesForbidden) GetPayload() *models.ProblemDetails {
+func (o *ImagesOpenstackImagesForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesOpenstackImagesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ ImagesOpenstackImagesNotFound describes a response with status code 404, with de
 Not Found
 */
 type ImagesOpenstackImagesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images openstack images not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *ImagesOpenstackImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesOpenstackImagesNotFound) GetPayload() *models.ProblemDetails {
+func (o *ImagesOpenstackImagesNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesOpenstackImagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

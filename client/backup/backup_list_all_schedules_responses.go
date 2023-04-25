@@ -143,7 +143,7 @@ BackupListAllSchedulesBadRequest describes a response with status code 400, with
 Bad Request
 */
 type BackupListAllSchedulesBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup list all schedules bad request response has a 2xx status code
@@ -184,16 +184,14 @@ func (o *BackupListAllSchedulesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedules/{projectId}][%d] backupListAllSchedulesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupListAllSchedulesBadRequest) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllSchedulesBadRequest) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupListAllSchedulesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -211,7 +209,7 @@ BackupListAllSchedulesUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type BackupListAllSchedulesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup list all schedules unauthorized response has a 2xx status code
@@ -252,16 +250,14 @@ func (o *BackupListAllSchedulesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedules/{projectId}][%d] backupListAllSchedulesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupListAllSchedulesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllSchedulesUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupListAllSchedulesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -279,7 +275,7 @@ BackupListAllSchedulesForbidden describes a response with status code 403, with 
 Forbidden
 */
 type BackupListAllSchedulesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup list all schedules forbidden response has a 2xx status code
@@ -320,16 +316,14 @@ func (o *BackupListAllSchedulesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedules/{projectId}][%d] backupListAllSchedulesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupListAllSchedulesForbidden) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllSchedulesForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupListAllSchedulesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -347,7 +341,7 @@ BackupListAllSchedulesNotFound describes a response with status code 404, with d
 Not Found
 */
 type BackupListAllSchedulesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup list all schedules not found response has a 2xx status code
@@ -388,16 +382,14 @@ func (o *BackupListAllSchedulesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedules/{projectId}][%d] backupListAllSchedulesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupListAllSchedulesNotFound) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllSchedulesNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupListAllSchedulesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

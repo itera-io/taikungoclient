@@ -271,7 +271,7 @@ ShowbackCredentialsDeleteUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ShowbackCredentialsDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback credentials delete unauthorized response has a 2xx status code
@@ -312,16 +312,14 @@ func (o *ShowbackCredentialsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackCredentialsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsDeleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -339,7 +337,7 @@ ShowbackCredentialsDeleteForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ShowbackCredentialsDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback credentials delete forbidden response has a 2xx status code
@@ -380,16 +378,14 @@ func (o *ShowbackCredentialsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackCredentialsDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsDeleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -407,7 +403,7 @@ ShowbackCredentialsDeleteNotFound describes a response with status code 404, wit
 Not Found
 */
 type ShowbackCredentialsDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback credentials delete not found response has a 2xx status code
@@ -448,16 +444,14 @@ func (o *ShowbackCredentialsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackCredentialsDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsDeleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
