@@ -73,7 +73,7 @@ KubernetesExecCliOK describes a response with status code 200, with default head
 Success
 */
 type KubernetesExecCliOK struct {
-	Payload interface{}
+	Payload string
 }
 
 // IsSuccess returns true when this kubernetes exec cli o k response has a 2xx status code
@@ -114,7 +114,7 @@ func (o *KubernetesExecCliOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesExecCliOK) GetPayload() interface{} {
+func (o *KubernetesExecCliOK) GetPayload() string {
 	return o.Payload
 }
 

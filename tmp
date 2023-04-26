@@ -5309,7 +5309,9 @@
           },
           "200": {
             "description": "Success",
-            "schema": {}
+            "schema": {
+              "type": "string"
+            }
           },
           "400": {
             "description": "Bad Request",
@@ -5379,7 +5381,9 @@
           },
           "200": {
             "description": "Success",
-            "schema": {}
+            "schema": {
+              "type": "string"
+            }
           },
           "400": {
             "description": "Bad Request",
@@ -5449,7 +5453,9 @@
           },
           "200": {
             "description": "Success",
-            "schema": {}
+            "schema": {
+              "type": "string"
+            }
           },
           "400": {
             "description": "Bad Request",
@@ -17567,7 +17573,9 @@
           },
           "200": {
             "description": "Success",
-            "schema": {}
+            "schema": {
+              "type": "string"
+            }
           },
           "400": {
             "description": "Bad Request",
@@ -51782,24 +51790,20 @@
       }
     },
     "HypervisorListCommand": {
-      "required": [
-        "password",
-        "url",
-        "username"
-      ],
       "type": "object",
       "properties": {
         "url": {
-          "minLength": 1,
           "type": "string"
         },
         "username": {
-          "minLength": 1,
           "type": "string"
         },
         "password": {
-          "minLength": 1,
           "type": "string"
+        },
+        "cloudId": {
+          "format": "int32",
+          "type": "integer"
         }
       }
     },
@@ -51919,6 +51923,9 @@
         "projectId": {
           "format": "int32",
           "type": "integer"
+        },
+        "token": {
+          "type": "string"
         }
       }
     },
@@ -52420,21 +52427,6 @@
         "projectId": {
           "format": "int32",
           "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "namespace": {
-          "type": "string"
-        },
-        "command": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "container": {
-          "type": "string"
         }
       }
     },

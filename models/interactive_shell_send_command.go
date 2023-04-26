@@ -19,6 +19,9 @@ type InteractiveShellSendCommand struct {
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
+
+	// token
+	Token string `json:"token,omitempty"`
 }
 
 // Validate validates this interactive shell send command

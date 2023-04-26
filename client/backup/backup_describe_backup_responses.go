@@ -73,7 +73,7 @@ BackupDescribeBackupOK describes a response with status code 200, with default h
 Success
 */
 type BackupDescribeBackupOK struct {
-	Payload interface{}
+	Payload string
 }
 
 // IsSuccess returns true when this backup describe backup o k response has a 2xx status code
@@ -114,7 +114,7 @@ func (o *BackupDescribeBackupOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupOK  %+v", 200, o.Payload)
 }
 
-func (o *BackupDescribeBackupOK) GetPayload() interface{} {
+func (o *BackupDescribeBackupOK) GetPayload() string {
 	return o.Payload
 }
 

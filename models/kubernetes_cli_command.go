@@ -17,18 +17,6 @@ import (
 // swagger:model KubernetesCliCommand
 type KubernetesCliCommand struct {
 
-	// command
-	Command []string `json:"command"`
-
-	// container
-	Container string `json:"container,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
 }
