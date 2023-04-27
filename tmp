@@ -5178,13 +5178,13 @@
         }
       }
     },
-    "/api/v{v}/Backup/schedule/{projectId}/{name}": {
+    "/api/v{v}/Backup/{projectId}/{name}": {
       "get": {
         "tags": [
           "Backup"
         ],
-        "summary": "Get schedule info by name",
-        "operationId": "Backup_ScheduleByName",
+        "summary": "Get backup info by name",
+        "operationId": "Backup_BackupByName",
         "produces": [
           "text/plain",
           "application/json",
@@ -5238,7 +5238,7 @@
           "200": {
             "description": "Success",
             "schema": {
-              "$ref": "#/definitions/ScheduleDto"
+              "$ref": "#/definitions/BackupDto"
             }
           },
           "400": {
@@ -9957,13 +9957,6 @@
             "name": "cloudId",
             "description": "",
             "required": true,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "in": "query",
-            "name": "organizationId",
-            "description": "",
             "type": "integer",
             "format": "int32"
           },
@@ -16837,7 +16830,80 @@
           },
           "200": {
             "description": "Success",
-            "schema": {}
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      }
+    },
+    "/api/v{v}/KubeConfig/interactive-shell": {
+      "post": {
+        "tags": [
+          "KubeConfig"
+        ],
+        "summary": "Interactive shell for user kube config",
+        "operationId": "KubeConfig_InteractiveShell",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "v",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/KubeConfigInteractiveShellCommand"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
           },
           "400": {
             "description": "Bad Request",
@@ -46431,6 +46497,23 @@
         }
       }
     },
+    "BackupDto": {
+      "type": "object",
+      "properties": {
+        "includedNamespace": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "excludedNamespace": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "BackupLockManagerCommand": {
       "type": "object",
       "properties": {
@@ -51918,13 +52001,20 @@
       }
     },
     "InteractiveShellSendCommand": {
+      "required": [
+        "projectId",
+        "token"
+      ],
       "type": "object",
       "properties": {
         "projectId": {
           "format": "int32",
+          "minimum": 0,
+          "exclusiveMinimum": true,
           "type": "integer"
         },
         "token": {
+          "minLength": 1,
           "type": "string"
         }
       }
@@ -52294,6 +52384,32 @@
         },
         "totalCount": {
           "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "KubeConfigInteractiveShellCommand": {
+      "required": [
+        "kubeConfigId",
+        "projectId",
+        "token"
+      ],
+      "type": "object",
+      "properties": {
+        "kubeConfigId": {
+          "format": "int32",
+          "minimum": 0,
+          "exclusiveMinimum": true,
+          "type": "integer"
+        },
+        "token": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "projectId": {
+          "format": "int32",
+          "minimum": 0,
+          "exclusiveMinimum": true,
           "type": "integer"
         }
       }
@@ -58276,23 +58392,6 @@
         "operationCredentialId": {
           "format": "int32",
           "type": "integer"
-        }
-      }
-    },
-    "ScheduleDto": {
-      "type": "object",
-      "properties": {
-        "includedNamespace": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "excludedNamespace": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         }
       }
     },

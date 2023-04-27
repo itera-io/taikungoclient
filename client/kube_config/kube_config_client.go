@@ -38,6 +38,8 @@ type ClientService interface {
 
 	KubeConfigDownload(params *KubeConfigDownloadParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigDownloadOK, error)
 
+	KubeConfigInteractiveShell(params *KubeConfigInteractiveShellParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigInteractiveShellOK, error)
+
 	KubeConfigList(params *KubeConfigListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigListOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -196,6 +198,45 @@ func (a *Client) KubeConfigDownload(params *KubeConfigDownloadParams, authInfo r
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for KubeConfig_Download: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+KubeConfigInteractiveShell interactives shell for user kube config
+*/
+func (a *Client) KubeConfigInteractiveShell(params *KubeConfigInteractiveShellParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigInteractiveShellOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubeConfigInteractiveShellParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "KubeConfig_InteractiveShell",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/KubeConfig/interactive-shell",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubeConfigInteractiveShellReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubeConfigInteractiveShellOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for KubeConfig_InteractiveShell: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

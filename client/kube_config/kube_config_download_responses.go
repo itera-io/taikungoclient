@@ -73,7 +73,7 @@ KubeConfigDownloadOK describes a response with status code 200, with default hea
 Success
 */
 type KubeConfigDownloadOK struct {
-	Payload interface{}
+	Payload string
 }
 
 // IsSuccess returns true when this kube config download o k response has a 2xx status code
@@ -114,7 +114,7 @@ func (o *KubeConfigDownloadOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadOK  %+v", 200, o.Payload)
 }
 
-func (o *KubeConfigDownloadOK) GetPayload() interface{} {
+func (o *KubeConfigDownloadOK) GetPayload() string {
 	return o.Payload
 }
 

@@ -93,11 +93,6 @@ type CloudCredentialsAllFlavorsParams struct {
 	*/
 	Offset *int32
 
-	// OrganizationID.
-	//
-	// Format: int32
-	OrganizationID *int32
-
 	// Search.
 	Search *string
 
@@ -226,17 +221,6 @@ func (o *CloudCredentialsAllFlavorsParams) WithOffset(offset *int32) *CloudCrede
 // SetOffset adds the offset to the cloud credentials all flavors params
 func (o *CloudCredentialsAllFlavorsParams) SetOffset(offset *int32) {
 	o.Offset = offset
-}
-
-// WithOrganizationID adds the organizationID to the cloud credentials all flavors params
-func (o *CloudCredentialsAllFlavorsParams) WithOrganizationID(organizationID *int32) *CloudCredentialsAllFlavorsParams {
-	o.SetOrganizationID(organizationID)
-	return o
-}
-
-// SetOrganizationID adds the organizationId to the cloud credentials all flavors params
-func (o *CloudCredentialsAllFlavorsParams) SetOrganizationID(organizationID *int32) {
-	o.OrganizationID = organizationID
 }
 
 // WithSearch adds the search to the cloud credentials all flavors params
@@ -381,23 +365,6 @@ func (o *CloudCredentialsAllFlavorsParams) WriteToRequest(r runtime.ClientReques
 		if qOffset != "" {
 
 			if err := r.SetQueryParam("offset", qOffset); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.OrganizationID != nil {
-
-		// query param organizationId
-		var qrOrganizationID int32
-
-		if o.OrganizationID != nil {
-			qrOrganizationID = *o.OrganizationID
-		}
-		qOrganizationID := swag.FormatInt32(qrOrganizationID)
-		if qOrganizationID != "" {
-
-			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
 				return err
 			}
 		}

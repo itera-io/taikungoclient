@@ -12,10 +12,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ScheduleDto schedule dto
+// BackupDto backup dto
 //
-// swagger:model ScheduleDto
-type ScheduleDto struct {
+// swagger:model BackupDto
+type BackupDto struct {
 
 	// excluded namespace
 	ExcludedNamespace []string `json:"excludedNamespace"`
@@ -24,18 +24,18 @@ type ScheduleDto struct {
 	IncludedNamespace []string `json:"includedNamespace"`
 }
 
-// Validate validates this schedule dto
-func (m *ScheduleDto) Validate(formats strfmt.Registry) error {
+// Validate validates this backup dto
+func (m *BackupDto) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this schedule dto based on context it is used
-func (m *ScheduleDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this backup dto based on context it is used
+func (m *BackupDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ScheduleDto) MarshalBinary() ([]byte, error) {
+func (m *BackupDto) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -43,8 +43,8 @@ func (m *ScheduleDto) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *ScheduleDto) UnmarshalBinary(b []byte) error {
-	var res ScheduleDto
+func (m *BackupDto) UnmarshalBinary(b []byte) error {
+	var res BackupDto
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

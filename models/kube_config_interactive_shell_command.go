@@ -14,10 +14,15 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// InteractiveShellSendCommand interactive shell send command
+// KubeConfigInteractiveShellCommand kube config interactive shell command
 //
-// swagger:model InteractiveShellSendCommand
-type InteractiveShellSendCommand struct {
+// swagger:model KubeConfigInteractiveShellCommand
+type KubeConfigInteractiveShellCommand struct {
+
+	// kube config Id
+	// Required: true
+	// Minimum: > 0
+	KubeConfigID *int32 `json:"kubeConfigId"`
 
 	// project Id
 	// Required: true
@@ -30,9 +35,13 @@ type InteractiveShellSendCommand struct {
 	Token *string `json:"token"`
 }
 
-// Validate validates this interactive shell send command
-func (m *InteractiveShellSendCommand) Validate(formats strfmt.Registry) error {
+// Validate validates this kube config interactive shell command
+func (m *KubeConfigInteractiveShellCommand) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateKubeConfigID(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateProjectID(formats); err != nil {
 		res = append(res, err)
@@ -48,7 +57,20 @@ func (m *InteractiveShellSendCommand) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *InteractiveShellSendCommand) validateProjectID(formats strfmt.Registry) error {
+func (m *KubeConfigInteractiveShellCommand) validateKubeConfigID(formats strfmt.Registry) error {
+
+	if err := validate.Required("kubeConfigId", "body", m.KubeConfigID); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("kubeConfigId", "body", int64(*m.KubeConfigID), 0, true); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *KubeConfigInteractiveShellCommand) validateProjectID(formats strfmt.Registry) error {
 
 	if err := validate.Required("projectId", "body", m.ProjectID); err != nil {
 		return err
@@ -61,7 +83,7 @@ func (m *InteractiveShellSendCommand) validateProjectID(formats strfmt.Registry)
 	return nil
 }
 
-func (m *InteractiveShellSendCommand) validateToken(formats strfmt.Registry) error {
+func (m *KubeConfigInteractiveShellCommand) validateToken(formats strfmt.Registry) error {
 
 	if err := validate.Required("token", "body", m.Token); err != nil {
 		return err
@@ -74,13 +96,13 @@ func (m *InteractiveShellSendCommand) validateToken(formats strfmt.Registry) err
 	return nil
 }
 
-// ContextValidate validates this interactive shell send command based on context it is used
-func (m *InteractiveShellSendCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this kube config interactive shell command based on context it is used
+func (m *KubeConfigInteractiveShellCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *InteractiveShellSendCommand) MarshalBinary() ([]byte, error) {
+func (m *KubeConfigInteractiveShellCommand) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -88,8 +110,8 @@ func (m *InteractiveShellSendCommand) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *InteractiveShellSendCommand) UnmarshalBinary(b []byte) error {
-	var res InteractiveShellSendCommand
+func (m *KubeConfigInteractiveShellCommand) UnmarshalBinary(b []byte) error {
+	var res KubeConfigInteractiveShellCommand
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

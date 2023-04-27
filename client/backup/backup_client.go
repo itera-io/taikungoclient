@@ -30,6 +30,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	BackupBackupByName(params *BackupBackupByNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupBackupByNameOK, error)
+
 	BackupClearProject(params *BackupClearProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupClearProjectOK, error)
 
 	BackupCreate(params *BackupCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupCreateOK, error)
@@ -66,9 +68,46 @@ type ClientService interface {
 
 	BackupRestoreBackup(params *BackupRestoreBackupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupRestoreBackupOK, error)
 
-	BackupScheduleByName(params *BackupScheduleByNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupScheduleByNameOK, error)
-
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+BackupBackupByName gets backup info by name
+*/
+func (a *Client) BackupBackupByName(params *BackupBackupByNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupBackupByNameOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewBackupBackupByNameParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Backup_BackupByName",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Backup/{projectId}/{name}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &BackupBackupByNameReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*BackupBackupByNameOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Backup_BackupByName: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -770,45 +809,6 @@ func (a *Client) BackupRestoreBackup(params *BackupRestoreBackupParams, authInfo
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Backup_RestoreBackup: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-BackupScheduleByName gets schedule info by name
-*/
-func (a *Client) BackupScheduleByName(params *BackupScheduleByNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupScheduleByNameOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBackupScheduleByNameParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Backup_ScheduleByName",
-		Method:             "GET",
-		PathPattern:        "/api/v{v}/Backup/schedule/{projectId}/{name}",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BackupScheduleByNameReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*BackupScheduleByNameOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Backup_ScheduleByName: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
