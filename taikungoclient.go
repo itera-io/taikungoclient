@@ -190,7 +190,7 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
 	}
 
 	if apiClient.hasTokenExpired() {
-		if err := apiClient.refresh(); err != nil {
+		if err := apiClient.Refresh(); err != nil {
 			return err
 		}
 	}
@@ -203,7 +203,7 @@ func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ st
 	return nil
 }
 
-func (apiClient *Client) refresh() error {
+func (apiClient *Client) Refresh() error {
 	refreshResult, err := apiClient.Client.Auth.AuthRefreshToken(
 		auth.NewAuthRefreshTokenParams().WithV(Version).WithBody(
 			&models.RefreshTokenCommand{
