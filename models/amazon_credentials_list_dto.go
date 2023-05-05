@@ -22,6 +22,9 @@ type AmazonCredentialsListDto struct {
 	// availability zones
 	AvailabilityZones []string `json:"availabilityZones"`
 
+	// availability zones count
+	AvailabilityZonesCount int32 `json:"availabilityZonesCount,omitempty"`
+
 	// continent name
 	ContinentName string `json:"continentName,omitempty"`
 

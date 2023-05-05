@@ -45533,6 +45533,10 @@
             "type": "string"
           }
         },
+        "availabilityZonesCount": {
+          "format": "int32",
+          "type": "integer"
+        },
         "projects": {
           "type": "array",
           "items": {
@@ -46236,6 +46240,10 @@
           "items": {
             "type": "string"
           }
+        },
+        "availabilityZonesCount": {
+          "format": "int32",
+          "type": "integer"
         },
         "projects": {
           "type": "array",
@@ -51843,6 +51851,10 @@
           "items": {
             "type": "string"
           }
+        },
+        "availabilityZonesCount": {
+          "format": "int32",
+          "type": "integer"
         },
         "region": {
           "type": "string"

@@ -19,6 +19,9 @@ import (
 // swagger:model GoogleCredentialsListDto
 type GoogleCredentialsListDto struct {
 
+	// availability zones count
+	AvailabilityZonesCount int32 `json:"availabilityZonesCount,omitempty"`
+
 	// billing account Id
 	BillingAccountID string `json:"billingAccountId,omitempty"`
 
