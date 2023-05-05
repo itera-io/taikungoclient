@@ -48,7 +48,7 @@ type RuleCreateCommand struct {
 
 	// price
 	// Maximum: 3e+08
-	// Minimum: 1e-12
+	// Minimum: > 0
 	Price float64 `json:"price,omitempty"`
 
 	// rule discount rate
@@ -161,7 +161,7 @@ func (m *RuleCreateCommand) validatePrice(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := validate.Minimum("price", "body", m.Price, 1e-12, false); err != nil {
+	if err := validate.Minimum("price", "body", m.Price, 0, true); err != nil {
 		return err
 	}
 

@@ -20,10 +20,8 @@ import (
 type CreateBillingSummaryCommand struct {
 
 	// begin apply
-	// Required: true
-	// Min Length: 1
 	// Format: date-time
-	BeginApply *strfmt.DateTime `json:"beginApply"`
+	BeginApply *strfmt.DateTime `json:"beginApply,omitempty"`
 
 	// icu
 	// Required: true
@@ -59,13 +57,8 @@ func (m *CreateBillingSummaryCommand) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CreateBillingSummaryCommand) validateBeginApply(formats strfmt.Registry) error {
-
-	if err := validate.Required("beginApply", "body", m.BeginApply); err != nil {
-		return err
-	}
-
-	if err := validate.MinLength("beginApply", "body", m.BeginApply.String(), 1); err != nil {
-		return err
+	if swag.IsZero(m.BeginApply) { // not required
+		return nil
 	}
 
 	if err := validate.FormatOf("beginApply", "body", "date-time", m.BeginApply.String(), formats); err != nil {

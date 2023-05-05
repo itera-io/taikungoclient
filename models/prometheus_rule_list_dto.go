@@ -23,7 +23,7 @@ type PrometheusRuleListDto struct {
 	BillingStartDate string `json:"billingStartDate,omitempty"`
 
 	// bound organizations
-	BoundOrganizations []*OrganizationForPrometheus `json:"boundOrganizations"`
+	BoundOrganizations []*PrometheusOrganizationDiscountDto `json:"boundOrganizations"`
 
 	// created at
 	CreatedAt string `json:"createdAt,omitempty"`
@@ -33,9 +33,6 @@ type PrometheusRuleListDto struct {
 
 	// id
 	ID int32 `json:"id,omitempty"`
-
-	// is all
-	IsAll bool `json:"isAll"`
 
 	// labels
 	Labels []*PrometheusLabelUpdateDto `json:"labels"`

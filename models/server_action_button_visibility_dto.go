@@ -17,6 +17,9 @@ import (
 // swagger:model ServerActionButtonVisibilityDto
 type ServerActionButtonVisibilityDto struct {
 
+	// console
+	Console bool `json:"console"`
+
 	// reboot
 	Reboot bool `json:"reboot"`
 

@@ -75,7 +75,6 @@ ShowbackRulesDeleteAllOK describes a response with status code 200, with default
 Success
 */
 type ShowbackRulesDeleteAllOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this showback rules delete all o k response has a 2xx status code
@@ -109,23 +108,14 @@ func (o *ShowbackRulesDeleteAllOK) Code() int {
 }
 
 func (o *ShowbackRulesDeleteAllOK) Error() string {
-	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllOK ", 200)
 }
 
 func (o *ShowbackRulesDeleteAllOK) String() string {
-	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllOK  %+v", 200, o.Payload)
-}
-
-func (o *ShowbackRulesDeleteAllOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllOK ", 200)
 }
 
 func (o *ShowbackRulesDeleteAllOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

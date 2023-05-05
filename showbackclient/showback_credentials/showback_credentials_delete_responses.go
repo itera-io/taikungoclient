@@ -81,7 +81,6 @@ ShowbackCredentialsDeleteOK describes a response with status code 200, with defa
 Success
 */
 type ShowbackCredentialsDeleteOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this showback credentials delete o k response has a 2xx status code
@@ -115,23 +114,14 @@ func (o *ShowbackCredentialsDeleteOK) Code() int {
 }
 
 func (o *ShowbackCredentialsDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteOK ", 200)
 }
 
 func (o *ShowbackCredentialsDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteOK  %+v", 200, o.Payload)
-}
-
-func (o *ShowbackCredentialsDeleteOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteOK ", 200)
 }
 
 func (o *ShowbackCredentialsDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

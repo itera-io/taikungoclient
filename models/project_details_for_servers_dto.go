@@ -50,6 +50,9 @@ type ProjectDetailsForServersDto struct {
 	// autoscaling group name
 	AutoscalingGroupName string `json:"autoscalingGroupName,omitempty"`
 
+	// availability zones
+	AvailabilityZones []string `json:"availabilityZones"`
+
 	// bastion
 	Bastion int32 `json:"bastion,omitempty"`
 

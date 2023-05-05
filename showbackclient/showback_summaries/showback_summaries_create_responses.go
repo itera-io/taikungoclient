@@ -75,7 +75,6 @@ ShowbackSummariesCreateOK describes a response with status code 200, with defaul
 Success
 */
 type ShowbackSummariesCreateOK struct {
-	Payload models.Unit
 }
 
 // IsSuccess returns true when this showback summaries create o k response has a 2xx status code
@@ -109,23 +108,14 @@ func (o *ShowbackSummariesCreateOK) Code() int {
 }
 
 func (o *ShowbackSummariesCreateOK) Error() string {
-	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateOK ", 200)
 }
 
 func (o *ShowbackSummariesCreateOK) String() string {
-	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateOK  %+v", 200, o.Payload)
-}
-
-func (o *ShowbackSummariesCreateOK) GetPayload() models.Unit {
-	return o.Payload
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateOK ", 200)
 }
 
 func (o *ShowbackSummariesCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

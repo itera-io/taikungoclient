@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // IngressSearchCommand ingress search command
@@ -24,11 +26,40 @@ type IngressSearchCommand struct {
 	Offset int32 `json:"offset,omitempty"`
 
 	// search term
-	SearchTerm string `json:"searchTerm,omitempty"`
+	// Required: true
+	// Max Length: 100
+	// Min Length: 3
+	SearchTerm *string `json:"searchTerm"`
 }
 
 // Validate validates this ingress search command
 func (m *IngressSearchCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateSearchTerm(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *IngressSearchCommand) validateSearchTerm(formats strfmt.Registry) error {
+
+	if err := validate.Required("searchTerm", "body", m.SearchTerm); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("searchTerm", "body", *m.SearchTerm, 3); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("searchTerm", "body", *m.SearchTerm, 100); err != nil {
+		return err
+	}
+
 	return nil
 }
 

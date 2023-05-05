@@ -17,6 +17,9 @@ import (
 // swagger:model OpenstackCredentialsForProjectDto
 type OpenstackCredentialsForProjectDto struct {
 
+	// application cred enabled
+	ApplicationCredEnabled bool `json:"applicationCredEnabled"`
+
 	// open stack availability zone
 	OpenStackAvailabilityZone string `json:"openStackAvailabilityZone,omitempty"`
 

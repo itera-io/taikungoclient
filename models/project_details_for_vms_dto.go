@@ -26,6 +26,9 @@ type ProjectDetailsForVmsDto struct {
 	// allow spot workers
 	AllowSpotWorkers bool `json:"allowSpotWorkers"`
 
+	// availability zones
+	AvailabilityZones []string `json:"availabilityZones"`
+
 	// cloud credential revision
 	CloudCredentialRevision int32 `json:"cloudCredentialRevision,omitempty"`
 

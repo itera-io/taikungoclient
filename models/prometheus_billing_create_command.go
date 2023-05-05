@@ -25,8 +25,8 @@ type PrometheusBillingCreateCommand struct {
 	OrganizationID *int32 `json:"organizationId"`
 
 	// price
-	// Maximum: 3e+09
-	// Minimum: 1e-12
+	// Maximum: 3e+08
+	// Minimum: > 0
 	Price float64 `json:"price,omitempty"`
 
 	// prometheus rule Id
@@ -83,11 +83,11 @@ func (m *PrometheusBillingCreateCommand) validatePrice(formats strfmt.Registry) 
 		return nil
 	}
 
-	if err := validate.Minimum("price", "body", m.Price, 1e-12, false); err != nil {
+	if err := validate.Minimum("price", "body", m.Price, 0, true); err != nil {
 		return err
 	}
 
-	if err := validate.Maximum("price", "body", m.Price, 3e+09, false); err != nil {
+	if err := validate.Maximum("price", "body", m.Price, 3e+08, false); err != nil {
 		return err
 	}
 

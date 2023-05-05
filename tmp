@@ -3923,6 +3923,74 @@
         }
       }
     },
+    "/api/v{v}/Aws/validate-owners": {
+      "post": {
+        "tags": [
+          "Aws"
+        ],
+        "summary": "Validate aws owner",
+        "operationId": "Aws_AwsValidateOwner",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "v",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AwsValidateOwnerCommand"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      }
+    },
     "/api/v{v}/Aws/owners": {
       "get": {
         "tags": [
@@ -10457,6 +10525,79 @@
             "name": "body",
             "schema": {
               "$ref": "#/definitions/IpAddressRangeListCommand"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      }
+    },
+    "/api/v{v}/Common/ip-usable-list": {
+      "post": {
+        "tags": [
+          "Common"
+        ],
+        "summary": "Retrieve ip address usable list",
+        "operationId": "Common_IpUsableList",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "v",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/IpListCommand"
             }
           }
         ],
@@ -44610,6 +44751,9 @@
       }
     },
     "AccessProfilesSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -44621,6 +44765,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -45983,6 +46129,21 @@
         }
       }
     },
+    "AwsValidateOwnerCommand": {
+      "type": "object",
+      "properties": {
+        "cloudId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "owners": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "AzResult": {
       "type": "object",
       "properties": {
@@ -46437,6 +46598,9 @@
       }
     },
     "BackupCredentialsSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -46448,6 +46612,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -46587,6 +46753,9 @@
       }
     },
     "BillingCredentialsSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -46598,6 +46767,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -47853,6 +48024,9 @@
       }
     },
     "CloudCredentialsSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -47864,6 +48038,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -48117,6 +48293,9 @@
       }
     },
     "ConfigMapSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -48128,6 +48307,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -48528,7 +48709,6 @@
     },
     "CreateBillingSummaryCommand": {
       "required": [
-        "beginApply",
         "icu",
         "projectId"
       ],
@@ -48542,7 +48722,6 @@
         },
         "beginApply": {
           "format": "date-time",
-          "minLength": 1,
           "type": "string"
         },
         "projectId": {
@@ -49840,6 +50019,9 @@
       }
     },
     "DaemonSetSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -49851,6 +50033,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -50209,6 +50393,9 @@
       }
     },
     "DeploymentSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -50220,6 +50407,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -51955,6 +52144,9 @@
       }
     },
     "IngressSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -51966,6 +52158,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -52154,6 +52348,20 @@
         },
         "gateway": {
           "type": "string"
+        }
+      }
+    },
+    "IpListCommand": {
+      "type": "object",
+      "properties": {
+        "ipAddress": {
+          "type": "string"
+        },
+        "netMask": {
+          "format": "int32",
+          "maximum": 28,
+          "minimum": 16,
+          "type": "integer"
         }
       }
     },
@@ -52830,6 +53038,9 @@
       }
     },
     "KubernetesProfilesSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -52841,6 +53052,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -53451,6 +53664,9 @@
       }
     },
     "NodesSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -53462,6 +53678,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -53984,6 +54202,9 @@
         },
         "openStackInternalSubnetId": {
           "type": "string"
+        },
+        "applicationCredEnabled": {
+          "type": "boolean"
         }
       }
     },
@@ -54584,26 +54805,6 @@
         }
       }
     },
-    "OrganizationForPrometheus": {
-      "type": "object",
-      "properties": {
-        "organizationId": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "organizationName": {
-          "type": "string"
-        },
-        "ruleDiscountRate": {
-          "format": "double",
-          "type": "number"
-        },
-        "globalDiscountRate": {
-          "format": "double",
-          "type": "number"
-        }
-      }
-    },
     "OrganizationNameCheckerCommand": {
       "required": [
         "name"
@@ -54617,6 +54818,9 @@
       }
     },
     "OrganizationSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -54628,6 +54832,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -54908,6 +55114,9 @@
       }
     },
     "PartnersSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -54919,6 +55128,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -55402,6 +55613,9 @@
       }
     },
     "PodsSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -55413,6 +55627,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -56103,6 +56319,12 @@
         },
         "hasExpirationWarning": {
           "type": "boolean"
+        },
+        "availabilityZones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -56169,6 +56391,12 @@
         "totalHourlyCost": {
           "format": "double",
           "type": "number"
+        },
+        "availabilityZones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -57165,6 +57393,9 @@
       }
     },
     "ProjectsSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -57176,6 +57407,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -57220,8 +57453,9 @@
         },
         "price": {
           "format": "double",
-          "maximum": 3000000000,
-          "minimum": 1e-12,
+          "maximum": 300000000,
+          "minimum": 0,
+          "exclusiveMinimum": true,
           "type": "number"
         }
       }
@@ -57478,6 +57712,22 @@
         }
       }
     },
+    "PrometheusOrganizationDiscountDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "discountRate": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
     "PrometheusRuleListDto": {
       "type": "object",
       "properties": {
@@ -57506,15 +57756,18 @@
             "$ref": "#/definitions/PrometheusLabelUpdateDto"
           }
         },
+        "boundOrganizations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PrometheusOrganizationDiscountDto"
+          }
+        },
         "type": {
           "type": "string"
         },
         "price": {
           "format": "double",
           "type": "number"
-        },
-        "isAll": {
-          "type": "boolean"
         },
         "billingStartDate": {
           "type": "string"
@@ -57524,12 +57777,6 @@
         },
         "partner": {
           "$ref": "#/definitions/PartnerDetailsDto"
-        },
-        "boundOrganizations": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/OrganizationForPrometheus"
-          }
         },
         "operationCredential": {
           "$ref": "#/definitions/OperationCredentialsForOrganizationEntity"
@@ -57561,6 +57808,9 @@
       }
     },
     "PrometheusRulesSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -57572,6 +57822,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -57899,6 +58151,9 @@
       }
     },
     "PvcSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -57910,6 +58165,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -58323,7 +58580,8 @@
         "price": {
           "format": "double",
           "maximum": 300000000,
-          "minimum": 1e-12,
+          "minimum": 0,
+          "exclusiveMinimum": true,
           "type": "number"
         },
         "partnerId": {
@@ -58410,6 +58668,9 @@
       }
     },
     "SecretSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -58421,6 +58682,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -58553,6 +58816,9 @@
           "type": "boolean"
         },
         "reboot": {
+          "type": "boolean"
+        },
+        "console": {
           "type": "boolean"
         }
       }
@@ -58934,6 +59200,9 @@
       }
     },
     "ServersSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -58945,6 +59214,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -59009,6 +59280,9 @@
       }
     },
     "ServiceSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -59020,6 +59294,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -59546,6 +59822,9 @@
       }
     },
     "StandAloneProfilesSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -59557,6 +59836,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -60281,6 +60562,9 @@
       }
     },
     "StsSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -60292,6 +60576,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }
@@ -61695,6 +61981,9 @@
       }
     },
     "UsersSearchCommand": {
+      "required": [
+        "searchTerm"
+      ],
       "type": "object",
       "properties": {
         "limit": {
@@ -61706,6 +61995,8 @@
           "type": "integer"
         },
         "searchTerm": {
+          "maxLength": 100,
+          "minLength": 3,
           "type": "string"
         }
       }

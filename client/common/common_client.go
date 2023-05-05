@@ -40,6 +40,8 @@ type ClientService interface {
 
 	CommonIPRangeList(params *CommonIPRangeListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommonIPRangeListOK, error)
 
+	CommonIPUsableList(params *CommonIPUsableListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommonIPUsableListOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -235,6 +237,45 @@ func (a *Client) CommonIPRangeList(params *CommonIPRangeListParams, authInfo run
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Common_IpRangeList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CommonIPUsableList retrieves ip address usable list
+*/
+func (a *Client) CommonIPUsableList(params *CommonIPUsableListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommonIPUsableListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCommonIPUsableListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Common_IpUsableList",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Common/ip-usable-list",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CommonIPUsableListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CommonIPUsableListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Common_IpUsableList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
