@@ -165,6 +165,7 @@ type jwtData struct {
 // expired. Only Client is authenticated since ShowbackClient uses Client as
 // its runtime.ClientAuthInfoWriter.
 func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ strfmt.Registry) error {
+	fmt.Println("Called")
 	if len(apiClient.token) == 0 {
 
 		var loginCommand models.LoginCommand
