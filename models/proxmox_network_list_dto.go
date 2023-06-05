@@ -17,8 +17,14 @@ import (
 // swagger:model ProxmoxNetworkListDto
 type ProxmoxNetworkListDto struct {
 
+	// begin allocation range
+	BeginAllocationRange string `json:"beginAllocationRange,omitempty"`
+
 	// bridge
 	Bridge string `json:"bridge,omitempty"`
+
+	// end allocation range
+	EndAllocationRange string `json:"endAllocationRange,omitempty"`
 
 	// gateway
 	Gateway string `json:"gateway,omitempty"`

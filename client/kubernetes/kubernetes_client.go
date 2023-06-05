@@ -30,6 +30,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	KubernetesClearCrds(params *KubernetesClearCrdsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesClearCrdsOK, error)
+
 	KubernetesCreateKubernetesAlert(params *KubernetesCreateKubernetesAlertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesCreateKubernetesAlertOK, error)
 
 	KubernetesCreateKubernetesEvent(params *KubernetesCreateKubernetesEventParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesCreateKubernetesEventOK, error)
@@ -110,6 +112,8 @@ type ClientService interface {
 
 	KubernetesGetPodLogsList(params *KubernetesGetPodLogsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetPodLogsListOK, error)
 
+	KubernetesGetQuota(params *KubernetesGetQuotaParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetQuotaOK, error)
+
 	KubernetesGetSecret(params *KubernetesGetSecretParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetSecretOK, error)
 
 	KubernetesGetService(params *KubernetesGetServiceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetServiceOK, error)
@@ -159,6 +163,45 @@ type ClientService interface {
 	KubernetesUpdateKubernetesAlert(params *KubernetesUpdateKubernetesAlertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesUpdateKubernetesAlertOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+KubernetesClearCrds removes crds
+*/
+func (a *Client) KubernetesClearCrds(params *KubernetesClearCrdsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesClearCrdsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesClearCrdsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_ClearCrds",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Kubernetes/remove-crds",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesClearCrdsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesClearCrdsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_ClearCrds: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1718,6 +1761,45 @@ func (a *Client) KubernetesGetPodLogsList(params *KubernetesGetPodLogsListParams
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetPodLogsList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+KubernetesGetQuota k8s quota usage
+*/
+func (a *Client) KubernetesGetQuota(params *KubernetesGetQuotaParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetQuotaOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesGetQuotaParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_GetQuota",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Kubernetes/quota/{projectId}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesGetQuotaReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesGetQuotaOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetQuota: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

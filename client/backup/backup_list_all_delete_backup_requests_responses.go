@@ -109,11 +109,11 @@ func (o *BackupListAllDeleteBackupRequestsOK) Code() int {
 }
 
 func (o *BackupListAllDeleteBackupRequestsOK) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Backup/delete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsOK  %+v", 200, o.Payload)
 }
 
 func (o *BackupListAllDeleteBackupRequestsOK) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Backup/delete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsOK  %+v", 200, o.Payload)
 }
 
 func (o *BackupListAllDeleteBackupRequestsOK) GetPayload() *models.ListAllDeleteBackupRequests {
@@ -177,11 +177,11 @@ func (o *BackupListAllDeleteBackupRequestsBadRequest) Code() int {
 }
 
 func (o *BackupListAllDeleteBackupRequestsBadRequest) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Backup/delete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *BackupListAllDeleteBackupRequestsBadRequest) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Backup/delete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *BackupListAllDeleteBackupRequestsBadRequest) GetPayload() interface{} {
@@ -243,11 +243,11 @@ func (o *BackupListAllDeleteBackupRequestsUnauthorized) Code() int {
 }
 
 func (o *BackupListAllDeleteBackupRequestsUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Backup/delete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *BackupListAllDeleteBackupRequestsUnauthorized) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Backup/delete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *BackupListAllDeleteBackupRequestsUnauthorized) GetPayload() interface{} {
@@ -309,11 +309,11 @@ func (o *BackupListAllDeleteBackupRequestsForbidden) Code() int {
 }
 
 func (o *BackupListAllDeleteBackupRequestsForbidden) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Backup/delete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsForbidden  %+v", 403, o.Payload)
 }
 
 func (o *BackupListAllDeleteBackupRequestsForbidden) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Backup/delete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsForbidden  %+v", 403, o.Payload)
 }
 
 func (o *BackupListAllDeleteBackupRequestsForbidden) GetPayload() interface{} {
@@ -375,11 +375,11 @@ func (o *BackupListAllDeleteBackupRequestsNotFound) Code() int {
 }
 
 func (o *BackupListAllDeleteBackupRequestsNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Backup/delete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsNotFound  %+v", 404, o.Payload)
 }
 
 func (o *BackupListAllDeleteBackupRequestsNotFound) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Backup/delete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsNotFound  %+v", 404, o.Payload)
 }
 
 func (o *BackupListAllDeleteBackupRequestsNotFound) GetPayload() interface{} {
@@ -440,11 +440,11 @@ func (o *BackupListAllDeleteBackupRequestsInternalServerError) Code() int {
 }
 
 func (o *BackupListAllDeleteBackupRequestsInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/Backup/delete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsInternalServerError ", 500)
 }
 
 func (o *BackupListAllDeleteBackupRequestsInternalServerError) String() string {
-	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/Backup/delete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsInternalServerError ", 500)
 }
 
 func (o *BackupListAllDeleteBackupRequestsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

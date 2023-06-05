@@ -44,6 +44,9 @@ type ProjectDetailsForVmsDto struct {
 	// has selected flavors
 	HasSelectedFlavors bool `json:"hasSelectedFlavors"`
 
+	// hypervisors
+	Hypervisors []string `json:"hypervisors"`
+
 	// is locked
 	IsLocked bool `json:"isLocked"`
 

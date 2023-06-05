@@ -34,11 +34,6 @@ type CreateProxmoxCommand struct {
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
-	// password
-	// Required: true
-	// Min Length: 1
-	Password *string `json:"password"`
-
 	// private network
 	PrivateNetwork *CreateProxmoxNetworkDto `json:"privateNetwork,omitempty"`
 
@@ -50,15 +45,20 @@ type CreateProxmoxCommand struct {
 	// Min Length: 1
 	Storage *string `json:"storage"`
 
+	// token Id
+	// Required: true
+	// Min Length: 1
+	TokenID *string `json:"tokenId"`
+
+	// token secret
+	// Required: true
+	// Min Length: 1
+	TokenSecret *string `json:"tokenSecret"`
+
 	// url
 	// Required: true
 	// Min Length: 1
 	URL *string `json:"url"`
-
-	// username
-	// Required: true
-	// Min Length: 1
-	Username *string `json:"username"`
 
 	// vm template name
 	// Required: true
@@ -74,10 +74,6 @@ func (m *CreateProxmoxCommand) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validatePassword(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validatePrivateNetwork(formats); err != nil {
 		res = append(res, err)
 	}
@@ -90,11 +86,15 @@ func (m *CreateProxmoxCommand) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateURL(formats); err != nil {
+	if err := m.validateTokenID(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateUsername(formats); err != nil {
+	if err := m.validateTokenSecret(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateURL(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -119,19 +119,6 @@ func (m *CreateProxmoxCommand) validateName(formats strfmt.Registry) error {
 	}
 
 	if err := validate.MaxLength("name", "body", *m.Name, 30); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *CreateProxmoxCommand) validatePassword(formats strfmt.Registry) error {
-
-	if err := validate.Required("password", "body", m.Password); err != nil {
-		return err
-	}
-
-	if err := validate.MinLength("password", "body", *m.Password, 1); err != nil {
 		return err
 	}
 
@@ -189,6 +176,32 @@ func (m *CreateProxmoxCommand) validateStorage(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *CreateProxmoxCommand) validateTokenID(formats strfmt.Registry) error {
+
+	if err := validate.Required("tokenId", "body", m.TokenID); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("tokenId", "body", *m.TokenID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CreateProxmoxCommand) validateTokenSecret(formats strfmt.Registry) error {
+
+	if err := validate.Required("tokenSecret", "body", m.TokenSecret); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("tokenSecret", "body", *m.TokenSecret, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *CreateProxmoxCommand) validateURL(formats strfmt.Registry) error {
 
 	if err := validate.Required("url", "body", m.URL); err != nil {
@@ -196,19 +209,6 @@ func (m *CreateProxmoxCommand) validateURL(formats strfmt.Registry) error {
 	}
 
 	if err := validate.MinLength("url", "body", *m.URL, 1); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *CreateProxmoxCommand) validateUsername(formats strfmt.Registry) error {
-
-	if err := validate.Required("username", "body", m.Username); err != nil {
-		return err
-	}
-
-	if err := validate.MinLength("username", "body", *m.Username, 1); err != nil {
 		return err
 	}
 

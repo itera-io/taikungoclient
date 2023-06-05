@@ -11,6 +11,8 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProxmoxHypervisorListReader is a Reader for the ProxmoxHypervisorList structure.
@@ -73,7 +75,7 @@ ProxmoxHypervisorListOK describes a response with status code 200, with default 
 Success
 */
 type ProxmoxHypervisorListOK struct {
-	Payload []string
+	Payload []*models.ProxmoxHypervisorDto
 }
 
 // IsSuccess returns true when this proxmox hypervisor list o k response has a 2xx status code
@@ -114,7 +116,7 @@ func (o *ProxmoxHypervisorListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Proxmox/hypervisor-list][%d] proxmoxHypervisorListOK  %+v", 200, o.Payload)
 }
 
-func (o *ProxmoxHypervisorListOK) GetPayload() []string {
+func (o *ProxmoxHypervisorListOK) GetPayload() []*models.ProxmoxHypervisorDto {
 	return o.Payload
 }
 

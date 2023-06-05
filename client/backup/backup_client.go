@@ -667,7 +667,7 @@ func (a *Client) BackupListAllDeleteBackupRequests(params *BackupListAllDeleteBa
 	op := &runtime.ClientOperation{
 		ID:                 "Backup_ListAllDeleteBackupRequests",
 		Method:             "GET",
-		PathPattern:        "/api/v{v}/Backup/delelete-requests/{projectId}",
+		PathPattern:        "/api/v{v}/Backup/delete-requests/{projectId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},

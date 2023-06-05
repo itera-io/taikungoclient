@@ -75,6 +75,9 @@ type ProjectsListSelectorParams struct {
 	// Format: int32
 	OrganizationID *int32
 
+	// Ready.
+	Ready *bool
+
 	// Search.
 	Search *string
 
@@ -170,6 +173,17 @@ func (o *ProjectsListSelectorParams) SetOrganizationID(organizationID *int32) {
 	o.OrganizationID = organizationID
 }
 
+// WithReady adds the ready to the projects list selector params
+func (o *ProjectsListSelectorParams) WithReady(ready *bool) *ProjectsListSelectorParams {
+	o.SetReady(ready)
+	return o
+}
+
+// SetReady adds the ready to the projects list selector params
+func (o *ProjectsListSelectorParams) SetReady(ready *bool) {
+	o.Ready = ready
+}
+
 // WithSearch adds the search to the projects list selector params
 func (o *ProjectsListSelectorParams) WithSearch(search *string) *ProjectsListSelectorParams {
 	o.SetSearch(search)
@@ -257,6 +271,23 @@ func (o *ProjectsListSelectorParams) WriteToRequest(r runtime.ClientRequest, reg
 		if qOrganizationID != "" {
 
 			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Ready != nil {
+
+		// query param ready
+		var qrReady bool
+
+		if o.Ready != nil {
+			qrReady = *o.Ready
+		}
+		qReady := swag.FormatBool(qrReady)
+		if qReady != "" {
+
+			if err := r.SetQueryParam("ready", qReady); err != nil {
 				return err
 			}
 		}

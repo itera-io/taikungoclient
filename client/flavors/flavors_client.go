@@ -44,7 +44,7 @@ type ClientService interface {
 
 	FlavorsOpenstackFlavors(params *FlavorsOpenstackFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsOpenstackFlavorsOK, error)
 
-	FlavorsPromoxFlavors(params *FlavorsPromoxFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsPromoxFlavorsOK, error)
+	FlavorsProxmoxFlavors(params *FlavorsProxmoxFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsProxmoxFlavorsOK, error)
 
 	FlavorsTanzuFlavors(params *FlavorsTanzuFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsTanzuFlavorsOK, error)
 
@@ -327,22 +327,22 @@ func (a *Client) FlavorsOpenstackFlavors(params *FlavorsOpenstackFlavorsParams, 
 }
 
 /*
-FlavorsPromoxFlavors retrieves proxmox flavors
+FlavorsProxmoxFlavors retrieves proxmox flavors
 */
-func (a *Client) FlavorsPromoxFlavors(params *FlavorsPromoxFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsPromoxFlavorsOK, error) {
+func (a *Client) FlavorsProxmoxFlavors(params *FlavorsProxmoxFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsProxmoxFlavorsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewFlavorsPromoxFlavorsParams()
+		params = NewFlavorsProxmoxFlavorsParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "Flavors_PromoxFlavors",
+		ID:                 "Flavors_ProxmoxFlavors",
 		Method:             "GET",
 		PathPattern:        "/api/v{v}/Flavors/proxmox/{cloudId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &FlavorsPromoxFlavorsReader{formats: a.formats},
+		Reader:             &FlavorsProxmoxFlavorsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -355,13 +355,13 @@ func (a *Client) FlavorsPromoxFlavors(params *FlavorsPromoxFlavorsParams, authIn
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*FlavorsPromoxFlavorsOK)
+	success, ok := result.(*FlavorsProxmoxFlavorsOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Flavors_PromoxFlavors: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for Flavors_ProxmoxFlavors: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

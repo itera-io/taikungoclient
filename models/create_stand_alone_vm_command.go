@@ -45,10 +45,8 @@ type CreateStandAloneVMCommand struct {
 	Image *string `json:"image"`
 
 	// name
-	// Required: true
-	// Max Length: 52
 	// Min Length: 1
-	Name *string `json:"name"`
+	Name string `json:"name,omitempty"`
 
 	// password
 	Password string `json:"password,omitempty"`
@@ -179,16 +177,11 @@ func (m *CreateStandAloneVMCommand) validateImage(formats strfmt.Registry) error
 }
 
 func (m *CreateStandAloneVMCommand) validateName(formats strfmt.Registry) error {
-
-	if err := validate.Required("name", "body", m.Name); err != nil {
-		return err
+	if swag.IsZero(m.Name) { // not required
+		return nil
 	}
 
-	if err := validate.MinLength("name", "body", *m.Name, 1); err != nil {
-		return err
-	}
-
-	if err := validate.MaxLength("name", "body", *m.Name, 52); err != nil {
+	if err := validate.MinLength("name", "body", m.Name, 1); err != nil {
 		return err
 	}
 

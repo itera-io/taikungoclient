@@ -24,20 +24,20 @@ type BridgeListCommand struct {
 	// Min Length: 1
 	Hypervisor *string `json:"hypervisor"`
 
-	// password
+	// token Id
 	// Required: true
 	// Min Length: 1
-	Password *string `json:"password"`
+	TokenID *string `json:"tokenId"`
+
+	// token secret
+	// Required: true
+	// Min Length: 1
+	TokenSecret *string `json:"tokenSecret"`
 
 	// url
 	// Required: true
 	// Min Length: 1
 	URL *string `json:"url"`
-
-	// username
-	// Required: true
-	// Min Length: 1
-	Username *string `json:"username"`
 }
 
 // Validate validates this bridge list command
@@ -48,15 +48,15 @@ func (m *BridgeListCommand) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validatePassword(formats); err != nil {
+	if err := m.validateTokenID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTokenSecret(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateURL(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateUsername(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -79,13 +79,26 @@ func (m *BridgeListCommand) validateHypervisor(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *BridgeListCommand) validatePassword(formats strfmt.Registry) error {
+func (m *BridgeListCommand) validateTokenID(formats strfmt.Registry) error {
 
-	if err := validate.Required("password", "body", m.Password); err != nil {
+	if err := validate.Required("tokenId", "body", m.TokenID); err != nil {
 		return err
 	}
 
-	if err := validate.MinLength("password", "body", *m.Password, 1); err != nil {
+	if err := validate.MinLength("tokenId", "body", *m.TokenID, 1); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BridgeListCommand) validateTokenSecret(formats strfmt.Registry) error {
+
+	if err := validate.Required("tokenSecret", "body", m.TokenSecret); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("tokenSecret", "body", *m.TokenSecret, 1); err != nil {
 		return err
 	}
 
@@ -99,19 +112,6 @@ func (m *BridgeListCommand) validateURL(formats strfmt.Registry) error {
 	}
 
 	if err := validate.MinLength("url", "body", *m.URL, 1); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *BridgeListCommand) validateUsername(formats strfmt.Registry) error {
-
-	if err := validate.Required("username", "body", m.Username); err != nil {
-		return err
-	}
-
-	if err := validate.MinLength("username", "body", *m.Username, 1); err != nil {
 		return err
 	}
 

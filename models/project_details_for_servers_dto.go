@@ -107,8 +107,14 @@ type ProjectDetailsForServersDto struct {
 	// has next version
 	HasNextVersion bool `json:"hasNextVersion"`
 
+	// has nfs server
+	HasNfsServer bool `json:"hasNfsServer"`
+
 	// has selected flavors
 	HasSelectedFlavors bool `json:"hasSelectedFlavors"`
+
+	// hypervisors
+	Hypervisors []string `json:"hypervisors"`
 
 	// is all failed upgrade
 	IsAllFailedUpgrade bool `json:"isAllFailedUpgrade"`

@@ -28,11 +28,14 @@ type ProxmoxCredentialsForProjectDto struct {
 	// storage
 	Storage string `json:"storage,omitempty"`
 
+	// token Id
+	TokenID string `json:"tokenId,omitempty"`
+
+	// token secret
+	TokenSecret string `json:"tokenSecret,omitempty"`
+
 	// url
 	URL string `json:"url,omitempty"`
-
-	// username
-	Username string `json:"username,omitempty"`
 
 	// vm template name
 	VMTemplateName string `json:"vmTemplateName,omitempty"`

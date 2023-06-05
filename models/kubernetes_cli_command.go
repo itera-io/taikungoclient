@@ -17,6 +17,9 @@ import (
 // swagger:model KubernetesCliCommand
 type KubernetesCliCommand struct {
 
+	// kube config Id
+	KubeConfigID int32 `json:"kubeConfigId,omitempty"`
+
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
 }

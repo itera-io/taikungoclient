@@ -8,10 +8,8 @@ package models
 import (
 	"context"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // VMTemplateListCommand Vm template list command
@@ -19,80 +17,21 @@ import (
 // swagger:model VmTemplateListCommand
 type VMTemplateListCommand struct {
 
-	// password
-	// Required: true
-	// Min Length: 1
-	Password *string `json:"password"`
+	// cloud Id
+	CloudID int32 `json:"cloudId,omitempty"`
+
+	// token Id
+	TokenID string `json:"tokenId,omitempty"`
+
+	// token secret
+	TokenSecret string `json:"tokenSecret,omitempty"`
 
 	// url
-	// Required: true
-	// Min Length: 1
-	URL *string `json:"url"`
-
-	// username
-	// Required: true
-	// Min Length: 1
-	Username *string `json:"username"`
+	URL string `json:"url,omitempty"`
 }
 
 // Validate validates this Vm template list command
 func (m *VMTemplateListCommand) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validatePassword(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateURL(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateUsername(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *VMTemplateListCommand) validatePassword(formats strfmt.Registry) error {
-
-	if err := validate.Required("password", "body", m.Password); err != nil {
-		return err
-	}
-
-	if err := validate.MinLength("password", "body", *m.Password, 1); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *VMTemplateListCommand) validateURL(formats strfmt.Registry) error {
-
-	if err := validate.Required("url", "body", m.URL); err != nil {
-		return err
-	}
-
-	if err := validate.MinLength("url", "body", *m.URL, 1); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *VMTemplateListCommand) validateUsername(formats strfmt.Registry) error {
-
-	if err := validate.Required("username", "body", m.Username); err != nil {
-		return err
-	}
-
-	if err := validate.MinLength("username", "body", *m.Username, 1); err != nil {
-		return err
-	}
-
 	return nil
 }
 

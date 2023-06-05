@@ -55,9 +55,6 @@ type ProxmoxListDto struct {
 	// organization name
 	OrganizationName string `json:"organizationName,omitempty"`
 
-	// password
-	Password string `json:"password,omitempty"`
-
 	// project count
 	ProjectCount int32 `json:"projectCount,omitempty"`
 
@@ -70,11 +67,11 @@ type ProxmoxListDto struct {
 	// storage
 	Storage string `json:"storage,omitempty"`
 
+	// token Id
+	TokenID string `json:"tokenId,omitempty"`
+
 	// url
 	URL string `json:"url,omitempty"`
-
-	// username
-	Username string `json:"username,omitempty"`
 
 	// vm template name
 	VMTemplateName string `json:"vmTemplateName,omitempty"`

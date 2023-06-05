@@ -20,14 +20,14 @@ type HypervisorListCommand struct {
 	// cloud Id
 	CloudID int32 `json:"cloudId,omitempty"`
 
-	// password
-	Password string `json:"password,omitempty"`
+	// token Id
+	TokenID string `json:"tokenId,omitempty"`
+
+	// token secret
+	TokenSecret string `json:"tokenSecret,omitempty"`
 
 	// url
 	URL string `json:"url,omitempty"`
-
-	// username
-	Username string `json:"username,omitempty"`
 }
 
 // Validate validates this hypervisor list command

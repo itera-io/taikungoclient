@@ -57,6 +57,9 @@ type ProjectForUpdateDto struct {
 	// kubespray current version
 	KubesprayCurrentVersion string `json:"kubesprayCurrentVersion,omitempty"`
 
+	// monitoring Ip
+	MonitoringIP string `json:"monitoringIp,omitempty"`
+
 	// status
 	Status ProjectStatus `json:"status,omitempty"`
 

@@ -40,6 +40,10 @@ type ClientService interface {
 
 	ProxmoxStorageList(params *ProxmoxStorageListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProxmoxStorageListOK, error)
 
+	ProxmoxUpdate(params *ProxmoxUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProxmoxUpdateOK, error)
+
+	ProxmoxUpdateHypervisors(params *ProxmoxUpdateHypervisorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProxmoxUpdateHypervisorsOK, error)
+
 	ProxmoxVMTemplateList(params *ProxmoxVMTemplateListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProxmoxVMTemplateListOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -241,7 +245,85 @@ func (a *Client) ProxmoxStorageList(params *ProxmoxStorageListParams, authInfo r
 }
 
 /*
-ProxmoxVMTemplateList fetches proxmox vm tempalte list
+ProxmoxUpdate updates proxmox credentials
+*/
+func (a *Client) ProxmoxUpdate(params *ProxmoxUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProxmoxUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProxmoxUpdateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Proxmox_Update",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Proxmox/update",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProxmoxUpdateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ProxmoxUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Proxmox_Update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ProxmoxUpdateHypervisors updates proxmox hypervisors
+*/
+func (a *Client) ProxmoxUpdateHypervisors(params *ProxmoxUpdateHypervisorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProxmoxUpdateHypervisorsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProxmoxUpdateHypervisorsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Proxmox_UpdateHypervisors",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Proxmox/update/hypervisors",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProxmoxUpdateHypervisorsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ProxmoxUpdateHypervisorsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Proxmox_UpdateHypervisors: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ProxmoxVMTemplateList fetches proxmox vm template list
 */
 func (a *Client) ProxmoxVMTemplateList(params *ProxmoxVMTemplateListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProxmoxVMTemplateListOK, error) {
 	// TODO: Validate the params before sending

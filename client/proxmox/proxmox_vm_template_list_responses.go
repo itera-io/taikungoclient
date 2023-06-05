@@ -11,6 +11,8 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProxmoxVMTemplateListReader is a Reader for the ProxmoxVMTemplateList structure.
@@ -73,7 +75,7 @@ ProxmoxVMTemplateListOK describes a response with status code 200, with default 
 Success
 */
 type ProxmoxVMTemplateListOK struct {
-	Payload []int64
+	Payload []*models.CommonDropdownDto
 }
 
 // IsSuccess returns true when this proxmox Vm template list o k response has a 2xx status code
@@ -114,7 +116,7 @@ func (o *ProxmoxVMTemplateListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Proxmox/vm-template-list][%d] proxmoxVmTemplateListOK  %+v", 200, o.Payload)
 }
 
-func (o *ProxmoxVMTemplateListOK) GetPayload() []int64 {
+func (o *ProxmoxVMTemplateListOK) GetPayload() []*models.CommonDropdownDto {
 	return o.Payload
 }
 

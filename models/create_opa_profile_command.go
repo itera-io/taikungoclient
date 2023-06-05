@@ -31,6 +31,9 @@ type CreateOpaProfileCommand struct {
 	// forbid specific tags
 	ForbidSpecificTags []string `json:"forbidSpecificTags"`
 
+	// force pod resource
+	ForcePodResource bool `json:"forcePodResource"`
+
 	// ingress whitelist
 	IngressWhitelist []string `json:"ingressWhitelist"`
 
