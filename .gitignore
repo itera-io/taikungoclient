@@ -1,1 +1,8 @@
+swagger-web.json
+swagger-showback.json
+.gitignore
 .idea
+*.jsom
+generateDev.sh
+client/docs/*
+showbackclient/docs/*
