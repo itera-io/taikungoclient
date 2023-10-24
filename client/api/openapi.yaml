@@ -9105,6 +9105,49 @@ paths:
       summary: Clean kube config
       tags:
       - Cron Job Service
+  /api/v1/cronjob/cancel-expired-subscriptions:
+    post:
+      operationId: cronjob-cancel-expired-subscriptions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelExpiredSubscriptionsCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Cancel expired subscriptions
+      tags:
+      - Cron Job Service
   /api/v1/cronjob/alerts:
     post:
       operationId: cronjob-delete-expired-alerts
@@ -12650,67 +12693,22 @@ paths:
       tags:
       - Infra billing summary
   /api/v1/infra-billing-summary/list:
-    get:
+    post:
       operationId: infra-billing-summary-list
-      parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: StartDate
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: EndDate
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InfraBillingListCommand'
+        required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InfraBillingInfo'
+                items:
+                  $ref: '#/components/schemas/InfraBillingSummaryDto'
+                type: array
           description: OK
         "400":
           content:
@@ -21034,13 +21032,20 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: IsInfra
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/CommonDropdownDto'
+                  $ref: '#/components/schemas/OrganizationDropdownDto'
                 type: array
           description: OK
         "400":
@@ -37509,6 +37514,7 @@ components:
           - name: name
             id: 0
           organizationName: organizationName
+          isInfra: true
           s3Region: s3Region
           lastModifiedBy: lastModifiedBy
           organizationId: 6
@@ -37527,6 +37533,7 @@ components:
           - name: name
             id: 0
           organizationName: organizationName
+          isInfra: true
           s3Region: s3Region
           lastModifiedBy: lastModifiedBy
           organizationId: 6
@@ -37584,6 +37591,7 @@ components:
       additionalProperties: false
       example:
         isDefault: true
+        isInfra: true
         name: name
         backupCredentialId: 0
       properties:
@@ -37595,6 +37603,8 @@ components:
           type: string
         isDefault:
           type: boolean
+        isInfra:
+          type: boolean
       type: object
     BackupCredentialsListDto:
       additionalProperties: false
@@ -37605,6 +37615,7 @@ components:
         - name: name
           id: 0
         organizationName: organizationName
+        isInfra: true
         s3Region: s3Region
         lastModifiedBy: lastModifiedBy
         organizationId: 6
@@ -37660,6 +37671,8 @@ components:
           nullable: true
           type: string
         isDefault:
+          type: boolean
+        isInfra:
           type: boolean
       type: object
     BackupCredentialsSearchCommand:
@@ -38706,6 +38719,9 @@ components:
           nullable: true
           type: array
       type: object
+    CancelExpiredSubscriptionsCommand:
+      additionalProperties: false
+      type: object
     CardInformationDto:
       additionalProperties: false
       example:
@@ -39270,11 +39286,7 @@ components:
       additionalProperties: false
       example:
         messages: ""
-        model: model
       properties:
-        model:
-          nullable: true
-          type: string
         messages:
           nullable: true
       type: object
@@ -42415,6 +42427,30 @@ components:
         standAloneVms:
           $ref: '#/components/schemas/ServerChartDto'
       type: object
+    DateFilter:
+      enum:
+      - Monthly
+      - ThreeMonthly
+      - SixMonthly
+      - Yearly
+      type: string
+    DateInterval:
+      additionalProperties: false
+      example:
+        price: 6.027456183070403
+        start: 2000-01-23T04:56:07.000+00:00
+        end: 2000-01-23T04:56:07.000+00:00
+      properties:
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+        price:
+          format: double
+          type: number
+      type: object
     DeleteAlertCommand:
       additionalProperties: false
       example:
@@ -44876,34 +44912,18 @@ components:
           nullable: true
           type: string
       type: object
-    InfraBillingInfo:
+    InfraBillingListCommand:
       additionalProperties: false
       example:
-        data:
-        - organizationId: 0
-          organizationName: organizationName
-          endDate: 2000-01-23T04:56:07.000+00:00
-          totalPrice: 6.027456183070403
-          startDate: 2000-01-23T04:56:07.000+00:00
-        - organizationId: 0
-          organizationName: organizationName
-          endDate: 2000-01-23T04:56:07.000+00:00
-          totalPrice: 6.027456183070403
-          startDate: 2000-01-23T04:56:07.000+00:00
-        totalPrice: 1.4658129805029452
-        totalCount: 5
+        organizationId: 0
+        filter: null
       properties:
-        data:
-          items:
-            $ref: '#/components/schemas/InfraBillingSummaryDto'
-          nullable: true
-          type: array
-        totalPrice:
-          format: double
-          type: number
-        totalCount:
+        organizationId:
           format: int32
+          nullable: true
           type: integer
+        filter:
+          $ref: '#/components/schemas/DateFilter'
       type: object
     InfraBillingSummariesCreateCommand:
       additionalProperties: false
@@ -44935,25 +44955,28 @@ components:
     InfraBillingSummaryDto:
       additionalProperties: false
       example:
-        organizationId: 0
-        organizationName: organizationName
-        endDate: 2000-01-23T04:56:07.000+00:00
-        totalPrice: 6.027456183070403
-        startDate: 2000-01-23T04:56:07.000+00:00
+        infraProductId: 0
+        intervals:
+        - price: 6.027456183070403
+          start: 2000-01-23T04:56:07.000+00:00
+          end: 2000-01-23T04:56:07.000+00:00
+        - price: 6.027456183070403
+          start: 2000-01-23T04:56:07.000+00:00
+          end: 2000-01-23T04:56:07.000+00:00
+        totalPrice: 1.4658129805029452
+        infraProductName: infraProductName
       properties:
-        organizationId:
+        infraProductId:
           format: int32
           type: integer
-        organizationName:
+        infraProductName:
           nullable: true
           type: string
-        startDate:
-          format: date-time
-          type: string
-        endDate:
-          format: date-time
+        intervals:
+          items:
+            $ref: '#/components/schemas/DateInterval'
           nullable: true
-          type: string
+          type: array
         totalPrice:
           format: double
           type: number
@@ -44965,6 +44988,7 @@ components:
         createdAt: 2000-01-23T04:56:07.000+00:00
         organizationName: organizationName
         subscriptionId: subscriptionId
+        yearly: true
         billingStartDate: 2000-01-23T04:56:07.000+00:00
       properties:
         organizationId:
@@ -44983,10 +45007,13 @@ components:
           format: date-time
           nullable: true
           type: string
+        yearly:
+          type: boolean
       type: object
     InfraProductDto:
       additionalProperties: false
       example:
+        yearlyPriceId: yearlyPriceId
         productId: productId
         price: 6.027456183070403
         name: name
@@ -45003,6 +45030,9 @@ components:
           format: double
           type: number
         priceId:
+          nullable: true
+          type: string
+        yearlyPriceId:
           nullable: true
           type: string
         productId:
@@ -46414,6 +46444,9 @@ components:
     ListAllBackupStorageLocations:
       additionalProperties: false
       example:
+        projects:
+        - 1
+        - 1
         data:
         - phase: phase
           createdAt: 2000-01-23T04:56:07.000+00:00
@@ -46441,6 +46474,12 @@ components:
         totalCount:
           format: int32
           type: integer
+        projects:
+          items:
+            format: int32
+            type: integer
+          nullable: true
+          type: array
       type: object
     ListAllBackups:
       additionalProperties: false
@@ -48193,6 +48232,7 @@ components:
           maxCountVolumeSize: 4
           countVolumeSize: 7
           maxTotalVolumeSize: 3
+        isInfra: true
         network:
           routerUsed: 6
           floatingIpLimit: 1
@@ -48215,6 +48255,8 @@ components:
           $ref: '#/components/schemas/OpenstackVolumeQuotaDto'
         network:
           $ref: '#/components/schemas/OpenstackNetworkDto'
+        isInfra:
+          type: boolean
       type: object
     OpenstackQuotasCommand:
       additionalProperties: false
@@ -48557,9 +48599,18 @@ components:
       example:
         country: country
         discountRate: 9.301444243932576
-        address: address
         projects: 1
         city: city
+        cloudCredentials: 5
+        isEligibleUpdateSubscription: true
+        createdAt: createdAt
+        isReadOnly: true
+        servers: 5
+        billingEmail: billingEmail
+        isLocked: true
+        id: 0
+        email: email
+        address: address
         partnerName: partnerName
         boundRules:
         - prometheusRuleName: prometheusRuleName
@@ -48568,27 +48619,19 @@ components:
         - prometheusRuleName: prometheusRuleName
           ruleDiscountRate: 2.027123023002322
           prometheusRuleId: 3
+        trialEnded: true
         fullName: fullName
-        cloudCredentials: 5
         isNew: true
-        isEligibleUpdateSubscription: true
         users: 6
-        createdAt: createdAt
-        isReadOnly: true
-        servers: 5
         partner:
           domain: domain
           name: name
           link: link
           logo: logo
           id: 7
-        billingEmail: billingEmail
         phone: phone
-        isLocked: true
         name: name
-        id: 0
         partnerId: 2
-        email: email
         vatNumber: vatNumber
       properties:
         id:
@@ -48629,6 +48672,8 @@ components:
           type: boolean
         isNew:
           type: boolean
+        trialEnded:
+          type: boolean
         users:
           format: int32
           type: integer
@@ -48661,6 +48706,22 @@ components:
             $ref: '#/components/schemas/PrometheusEntity'
           nullable: true
           type: array
+      type: object
+    OrganizationDropdownDto:
+      additionalProperties: false
+      example:
+        isInfra: true
+        name: name
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        isInfra:
+          type: boolean
       type: object
     OrganizationDto:
       additionalProperties: false
@@ -48818,9 +48879,18 @@ components:
         data:
         - country: country
           discountRate: 9.301444243932576
-          address: address
           projects: 1
           city: city
+          cloudCredentials: 5
+          isEligibleUpdateSubscription: true
+          createdAt: createdAt
+          isReadOnly: true
+          servers: 5
+          billingEmail: billingEmail
+          isLocked: true
+          id: 0
+          email: email
+          address: address
           partnerName: partnerName
           boundRules:
           - prometheusRuleName: prometheusRuleName
@@ -48829,33 +48899,34 @@ components:
           - prometheusRuleName: prometheusRuleName
             ruleDiscountRate: 2.027123023002322
             prometheusRuleId: 3
+          trialEnded: true
           fullName: fullName
-          cloudCredentials: 5
           isNew: true
-          isEligibleUpdateSubscription: true
           users: 6
-          createdAt: createdAt
-          isReadOnly: true
-          servers: 5
           partner:
             domain: domain
             name: name
             link: link
             logo: logo
             id: 7
-          billingEmail: billingEmail
           phone: phone
-          isLocked: true
           name: name
-          id: 0
           partnerId: 2
-          email: email
           vatNumber: vatNumber
         - country: country
           discountRate: 9.301444243932576
-          address: address
           projects: 1
           city: city
+          cloudCredentials: 5
+          isEligibleUpdateSubscription: true
+          createdAt: createdAt
+          isReadOnly: true
+          servers: 5
+          billingEmail: billingEmail
+          isLocked: true
+          id: 0
+          email: email
+          address: address
           partnerName: partnerName
           boundRules:
           - prometheusRuleName: prometheusRuleName
@@ -48864,27 +48935,19 @@ components:
           - prometheusRuleName: prometheusRuleName
             ruleDiscountRate: 2.027123023002322
             prometheusRuleId: 3
+          trialEnded: true
           fullName: fullName
-          cloudCredentials: 5
           isNew: true
-          isEligibleUpdateSubscription: true
           users: 6
-          createdAt: createdAt
-          isReadOnly: true
-          servers: 5
           partner:
             domain: domain
             name: name
             link: link
             logo: logo
             id: 7
-          billingEmail: billingEmail
           phone: phone
-          isLocked: true
           name: name
-          id: 0
           partnerId: 2
-          email: email
           vatNumber: vatNumber
         totalCount: 4
       properties:
@@ -55183,6 +55246,31 @@ components:
           format: int32
           type: integer
       type: object
+    ServerUpdateDto:
+      additionalProperties: false
+      example:
+        instanceId: instanceId
+        providerId: providerId
+        awsHostName: awsHostName
+        ip: ip
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        ip:
+          nullable: true
+          type: string
+        instanceId:
+          nullable: true
+          type: string
+        providerId:
+          nullable: true
+          type: string
+        awsHostName:
+          nullable: true
+          type: string
+      type: object
     ServersForBillingDto:
       additionalProperties: false
       example:
@@ -58527,27 +58615,23 @@ components:
     UpdateServerCommand:
       additionalProperties: false
       example:
-        instanceId: instanceId
-        providerID: providerID
-        awsHostName: awsHostName
-        ip: ip
-        id: 0
+        servers:
+        - instanceId: instanceId
+          providerId: providerId
+          awsHostName: awsHostName
+          ip: ip
+          id: 0
+        - instanceId: instanceId
+          providerId: providerId
+          awsHostName: awsHostName
+          ip: ip
+          id: 0
       properties:
-        id:
-          format: int32
-          type: integer
-        ip:
+        servers:
+          items:
+            $ref: '#/components/schemas/ServerUpdateDto'
           nullable: true
-          type: string
-        instanceId:
-          nullable: true
-          type: string
-        providerID:
-          nullable: true
-          type: string
-        awsHostName:
-          nullable: true
-          type: string
+          type: array
       type: object
     UpdateServerHealthDto:
       additionalProperties: false
@@ -58835,14 +58919,9 @@ components:
       example:
         trialDays: 5
         data:
-          owner: true
           role: null
-          organizationName: organizationName
-          hasRepo: true
           displayName: displayName
-          hasPaymentMethod: true
           hasCustomerId: true
-          isForcedToResetPassword: true
           boundProjects:
           - projectName: projectName
             projectId: 6
@@ -58853,6 +58932,15 @@ components:
           organizationId: 0
           createdAt: createdAt
           isReadOnly: true
+          isLocked: true
+          id: id
+          email: email
+          owner: true
+          organizationName: organizationName
+          hasRepo: true
+          hasPaymentMethod: true
+          isForcedToResetPassword: true
+          isNewOrganization: true
           lastLoginAt: lastLoginAt
           isApprovedByPartner: true
           partner:
@@ -58860,10 +58948,7 @@ components:
             link: link
             logo: logo
             id: 1
-          isLocked: true
           demoModeEnabled: true
-          id: id
-          email: email
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true
@@ -58912,14 +58997,9 @@ components:
     UserForListDto:
       additionalProperties: false
       example:
-        owner: true
         role: null
-        organizationName: organizationName
-        hasRepo: true
         displayName: displayName
-        hasPaymentMethod: true
         hasCustomerId: true
-        isForcedToResetPassword: true
         boundProjects:
         - projectName: projectName
           projectId: 6
@@ -58930,6 +59010,15 @@ components:
         organizationId: 0
         createdAt: createdAt
         isReadOnly: true
+        isLocked: true
+        id: id
+        email: email
+        owner: true
+        organizationName: organizationName
+        hasRepo: true
+        hasPaymentMethod: true
+        isForcedToResetPassword: true
+        isNewOrganization: true
         lastLoginAt: lastLoginAt
         isApprovedByPartner: true
         partner:
@@ -58937,10 +59026,7 @@ components:
           link: link
           logo: logo
           id: 1
-        isLocked: true
         demoModeEnabled: true
-        id: id
-        email: email
         isEmailNotificationEnabled: true
         username: username
         isEmailConfirmed: true
@@ -58993,6 +59079,8 @@ components:
         hasRepo:
           type: boolean
         demoModeEnabled:
+          type: boolean
+        isNewOrganization:
           type: boolean
         lastLoginAt:
           nullable: true
@@ -59257,14 +59345,9 @@ components:
       additionalProperties: false
       example:
         data:
-        - owner: true
-          role: null
-          organizationName: organizationName
-          hasRepo: true
+        - role: null
           displayName: displayName
-          hasPaymentMethod: true
           hasCustomerId: true
-          isForcedToResetPassword: true
           boundProjects:
           - projectName: projectName
             projectId: 6
@@ -59275,6 +59358,15 @@ components:
           organizationId: 0
           createdAt: createdAt
           isReadOnly: true
+          isLocked: true
+          id: id
+          email: email
+          owner: true
+          organizationName: organizationName
+          hasRepo: true
+          hasPaymentMethod: true
+          isForcedToResetPassword: true
+          isNewOrganization: true
           lastLoginAt: lastLoginAt
           isApprovedByPartner: true
           partner:
@@ -59282,21 +59374,13 @@ components:
             link: link
             logo: logo
             id: 1
-          isLocked: true
           demoModeEnabled: true
-          id: id
-          email: email
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true
-        - owner: true
-          role: null
-          organizationName: organizationName
-          hasRepo: true
+        - role: null
           displayName: displayName
-          hasPaymentMethod: true
           hasCustomerId: true
-          isForcedToResetPassword: true
           boundProjects:
           - projectName: projectName
             projectId: 6
@@ -59307,6 +59391,15 @@ components:
           organizationId: 0
           createdAt: createdAt
           isReadOnly: true
+          isLocked: true
+          id: id
+          email: email
+          owner: true
+          organizationName: organizationName
+          hasRepo: true
+          hasPaymentMethod: true
+          isForcedToResetPassword: true
+          isNewOrganization: true
           lastLoginAt: lastLoginAt
           isApprovedByPartner: true
           partner:
@@ -59314,10 +59407,7 @@ components:
             link: link
             logo: logo
             id: 1
-          isLocked: true
           demoModeEnabled: true
-          id: id
-          email: email
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true

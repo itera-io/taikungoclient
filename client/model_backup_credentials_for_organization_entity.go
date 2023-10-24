@@ -23,6 +23,7 @@ type BackupCredentialsForOrganizationEntity struct {
 	BackupCredentialId *int32         `json:"backupCredentialId,omitempty"`
 	Name               NullableString `json:"name,omitempty"`
 	IsDefault          *bool          `json:"isDefault,omitempty"`
+	IsInfra            *bool          `json:"isInfra,omitempty"`
 }
 
 // NewBackupCredentialsForOrganizationEntity instantiates a new BackupCredentialsForOrganizationEntity object
@@ -149,6 +150,38 @@ func (o *BackupCredentialsForOrganizationEntity) SetIsDefault(v bool) {
 	o.IsDefault = &v
 }
 
+// GetIsInfra returns the IsInfra field value if set, zero value otherwise.
+func (o *BackupCredentialsForOrganizationEntity) GetIsInfra() bool {
+	if o == nil || IsNil(o.IsInfra) {
+		var ret bool
+		return ret
+	}
+	return *o.IsInfra
+}
+
+// GetIsInfraOk returns a tuple with the IsInfra field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BackupCredentialsForOrganizationEntity) GetIsInfraOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsInfra) {
+		return nil, false
+	}
+	return o.IsInfra, true
+}
+
+// HasIsInfra returns a boolean if a field has been set.
+func (o *BackupCredentialsForOrganizationEntity) HasIsInfra() bool {
+	if o != nil && !IsNil(o.IsInfra) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsInfra gets a reference to the given bool and assigns it to the IsInfra field.
+func (o *BackupCredentialsForOrganizationEntity) SetIsInfra(v bool) {
+	o.IsInfra = &v
+}
+
 func (o BackupCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -167,6 +200,9 @@ func (o BackupCredentialsForOrganizationEntity) ToMap() (map[string]interface{},
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault
+	}
+	if !IsNil(o.IsInfra) {
+		toSerialize["isInfra"] = o.IsInfra
 	}
 	return toSerialize, nil
 }

@@ -34,6 +34,7 @@ type BackupCredentialsListDto struct {
 	LastModifiedBy   NullableString      `json:"lastModifiedBy,omitempty"`
 	CreatedAt        NullableString      `json:"createdAt,omitempty"`
 	IsDefault        *bool               `json:"isDefault,omitempty"`
+	IsInfra          *bool               `json:"isInfra,omitempty"`
 }
 
 // NewBackupCredentialsListDto instantiates a new BackupCredentialsListDto object
@@ -612,6 +613,38 @@ func (o *BackupCredentialsListDto) SetIsDefault(v bool) {
 	o.IsDefault = &v
 }
 
+// GetIsInfra returns the IsInfra field value if set, zero value otherwise.
+func (o *BackupCredentialsListDto) GetIsInfra() bool {
+	if o == nil || IsNil(o.IsInfra) {
+		var ret bool
+		return ret
+	}
+	return *o.IsInfra
+}
+
+// GetIsInfraOk returns a tuple with the IsInfra field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BackupCredentialsListDto) GetIsInfraOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsInfra) {
+		return nil, false
+	}
+	return o.IsInfra, true
+}
+
+// HasIsInfra returns a boolean if a field has been set.
+func (o *BackupCredentialsListDto) HasIsInfra() bool {
+	if o != nil && !IsNil(o.IsInfra) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsInfra gets a reference to the given bool and assigns it to the IsInfra field.
+func (o *BackupCredentialsListDto) SetIsInfra(v bool) {
+	o.IsInfra = &v
+}
+
 func (o BackupCredentialsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -663,6 +696,9 @@ func (o BackupCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault
+	}
+	if !IsNil(o.IsInfra) {
+		toSerialize["isInfra"] = o.IsInfra
 	}
 	return toSerialize, nil
 }

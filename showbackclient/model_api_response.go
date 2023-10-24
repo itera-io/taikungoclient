@@ -1,5 +1,5 @@
 /*
-Taikun - WebApi
+Taikun - Showback API
 
 This Api will be responsible for overall data distribution and authorization.
 

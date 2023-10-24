@@ -337,6 +337,8 @@ docs/DaemonSetSearchCommand.md
 docs/DaemonSetSearchList.md
 docs/DaemonSets.md
 docs/DashboardChart.md
+docs/DateFilter.md
+docs/DateInterval.md
 docs/DeleteAlertCommand.md
 docs/DeleteBackupCommand.md
 docs/DeleteBackupStorageLocationCommand.md
@@ -451,7 +453,7 @@ docs/ImagesAPI.md
 docs/ImportBackupStorageLocationCommand.md
 docs/ImportRepoCommand.md
 docs/InfraAPI.md
-docs/InfraBillingInfo.md
+docs/InfraBillingListCommand.md
 docs/InfraBillingSummariesCreateCommand.md
 docs/InfraBillingSummaryAPI.md
 docs/InfraBillingSummaryDto.md
@@ -590,6 +592,7 @@ docs/OperationCredentialsListDto.md
 docs/OperationCredentialsMakeDefaultCommand.md
 docs/OrganizationCreateCommand.md
 docs/OrganizationDetailsDto.md
+docs/OrganizationDropdownDto.md
 docs/OrganizationDto.md
 docs/OrganizationEntityForDashboard.md
 docs/OrganizationNameCheckerCommand.md
@@ -770,6 +773,7 @@ docs/ServerCommonRecordDto.md
 docs/ServerForCreateDto.md
 docs/ServerListDto.md
 docs/ServerTemplateDto.md
+docs/ServerUpdateDto.md
 docs/ServersAPI.md
 docs/ServersForBillingDto.md
 docs/ServersList.md
@@ -1177,6 +1181,8 @@ model_daemon_set_search_command.go
 model_daemon_set_search_list.go
 model_daemon_sets.go
 model_dashboard_chart.go
+model_date_filter.go
+model_date_interval.go
 model_delete_alert_command.go
 model_delete_backup_command.go
 model_delete_backup_storage_location_command.go
@@ -1286,7 +1292,7 @@ model_hypervisor_list_command.go
 model_image_by_id_command.go
 model_import_backup_storage_location_command.go
 model_import_repo_command.go
-model_infra_billing_info.go
+model_infra_billing_list_command.go
 model_infra_billing_summaries_create_command.go
 model_infra_billing_summary_dto.go
 model_infra_organizations_list_dto.go
@@ -1411,6 +1417,7 @@ model_operation_credentials_list_dto.go
 model_operation_credentials_make_default_command.go
 model_organization_create_command.go
 model_organization_details_dto.go
+model_organization_dropdown_dto.go
 model_organization_dto.go
 model_organization_entity_for_dashboard.go
 model_organization_name_checker_command.go
@@ -1569,6 +1576,7 @@ model_server_common_record_dto.go
 model_server_for_create_dto.go
 model_server_list_dto.go
 model_server_template_dto.go
+model_server_update_dto.go
 model_servers_for_billing_dto.go
 model_servers_list.go
 model_servers_list_for_details.go

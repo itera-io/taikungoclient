@@ -237,6 +237,7 @@ Class | Method | HTTP request | Description
 *CommonAPI* | [**CommonSortingElements**](docs/CommonAPI.md#commonsortingelements) | **Get** /api/v1/common/sorting-elements/{type} | 
 *CronJobServiceAPI* | [**CronjobAutoUpgradeProjects**](docs/CronJobServiceAPI.md#cronjobautoupgradeprojects) | **Post** /api/v1/cronjob/auto-upgrade-projects | Upgrade projects that auto-upgrade option enabled
 *CronJobServiceAPI* | [**CronjobBlockOrganization**](docs/CronJobServiceAPI.md#cronjobblockorganization) | **Post** /api/v1/cronjob/block-organization | Block organization
+*CronJobServiceAPI* | [**CronjobCancelExpiredSubscriptions**](docs/CronJobServiceAPI.md#cronjobcancelexpiredsubscriptions) | **Post** /api/v1/cronjob/cancel-expired-subscriptions | Cancel expired subscriptions
 *CronJobServiceAPI* | [**CronjobCreateKeyPool**](docs/CronJobServiceAPI.md#cronjobcreatekeypool) | **Post** /api/v1/cronjob/create-key-pool | Create key pool
 *CronJobServiceAPI* | [**CronjobDeleteExpiredAlerts**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredalerts) | **Post** /api/v1/cronjob/alerts | Delete expired alerts
 *CronJobServiceAPI* | [**CronjobDeleteExpiredEvents**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredevents) | **Post** /api/v1/cronjob/events | Delete expired events
@@ -308,7 +309,7 @@ Class | Method | HTTP request | Description
 *InfraAPI* | [**InfraOrganizationsList**](docs/InfraAPI.md#infraorganizationslist) | **Get** /api/v1/infra/organizations-list | Retrieve infra products list
 *InfraAPI* | [**InfraProductList**](docs/InfraAPI.md#infraproductlist) | **Get** /api/v1/infra/list | Retrieve infra products list
 *InfraBillingSummaryAPI* | [**InfraBillingSummaryCreate**](docs/InfraBillingSummaryAPI.md#infrabillingsummarycreate) | **Post** /api/v1/infra-billing-summary/create | Add infra billing summary
-*InfraBillingSummaryAPI* | [**InfraBillingSummaryList**](docs/InfraBillingSummaryAPI.md#infrabillingsummarylist) | **Get** /api/v1/infra-billing-summary/list | Retrieve infra billing info
+*InfraBillingSummaryAPI* | [**InfraBillingSummaryList**](docs/InfraBillingSummaryAPI.md#infrabillingsummarylist) | **Post** /api/v1/infra-billing-summary/list | Retrieve infra billing info
 *InvoicesAPI* | [**InvoicesCreate**](docs/InvoicesAPI.md#invoicescreate) | **Post** /api/v1/invoices/create | Create invoice
 *InvoicesAPI* | [**InvoicesDownload**](docs/InvoicesAPI.md#invoicesdownload) | **Post** /api/v1/invoices/download | Download invoice
 *InvoicesAPI* | [**InvoicesList**](docs/InvoicesAPI.md#invoiceslist) | **Get** /api/v1/invoices/list | Invoices list
@@ -946,6 +947,8 @@ Class | Method | HTTP request | Description
  - [DaemonSetSearchList](docs/DaemonSetSearchList.md)
  - [DaemonSets](docs/DaemonSets.md)
  - [DashboardChart](docs/DashboardChart.md)
+ - [DateFilter](docs/DateFilter.md)
+ - [DateInterval](docs/DateInterval.md)
  - [DeleteAlertCommand](docs/DeleteAlertCommand.md)
  - [DeleteBackupCommand](docs/DeleteBackupCommand.md)
  - [DeleteBackupStorageLocationCommand](docs/DeleteBackupStorageLocationCommand.md)
@@ -1055,7 +1058,7 @@ Class | Method | HTTP request | Description
  - [ImageByIdCommand](docs/ImageByIdCommand.md)
  - [ImportBackupStorageLocationCommand](docs/ImportBackupStorageLocationCommand.md)
  - [ImportRepoCommand](docs/ImportRepoCommand.md)
- - [InfraBillingInfo](docs/InfraBillingInfo.md)
+ - [InfraBillingListCommand](docs/InfraBillingListCommand.md)
  - [InfraBillingSummariesCreateCommand](docs/InfraBillingSummariesCreateCommand.md)
  - [InfraBillingSummaryDto](docs/InfraBillingSummaryDto.md)
  - [InfraOrganizationsListDto](docs/InfraOrganizationsListDto.md)
@@ -1180,6 +1183,7 @@ Class | Method | HTTP request | Description
  - [OperationCredentialsMakeDefaultCommand](docs/OperationCredentialsMakeDefaultCommand.md)
  - [OrganizationCreateCommand](docs/OrganizationCreateCommand.md)
  - [OrganizationDetailsDto](docs/OrganizationDetailsDto.md)
+ - [OrganizationDropdownDto](docs/OrganizationDropdownDto.md)
  - [OrganizationDto](docs/OrganizationDto.md)
  - [OrganizationEntityForDashboard](docs/OrganizationEntityForDashboard.md)
  - [OrganizationNameCheckerCommand](docs/OrganizationNameCheckerCommand.md)
@@ -1338,6 +1342,7 @@ Class | Method | HTTP request | Description
  - [ServerForCreateDto](docs/ServerForCreateDto.md)
  - [ServerListDto](docs/ServerListDto.md)
  - [ServerTemplateDto](docs/ServerTemplateDto.md)
+ - [ServerUpdateDto](docs/ServerUpdateDto.md)
  - [ServersForBillingDto](docs/ServersForBillingDto.md)
  - [ServersList](docs/ServersList.md)
  - [ServersListForDetails](docs/ServersListForDetails.md)

@@ -41,6 +41,7 @@ type UserForListDto struct {
 	IsReadOnly                   *bool                     `json:"isReadOnly,omitempty"`
 	HasRepo                      *bool                     `json:"hasRepo,omitempty"`
 	DemoModeEnabled              *bool                     `json:"demoModeEnabled,omitempty"`
+	IsNewOrganization            *bool                     `json:"isNewOrganization,omitempty"`
 	LastLoginAt                  NullableString            `json:"lastLoginAt,omitempty"`
 	BoundProjects                []ProjectDto              `json:"boundProjects,omitempty"`
 	Partner                      *PartnerDetailsForUserDto `json:"partner,omitempty"`
@@ -801,6 +802,38 @@ func (o *UserForListDto) SetDemoModeEnabled(v bool) {
 	o.DemoModeEnabled = &v
 }
 
+// GetIsNewOrganization returns the IsNewOrganization field value if set, zero value otherwise.
+func (o *UserForListDto) GetIsNewOrganization() bool {
+	if o == nil || IsNil(o.IsNewOrganization) {
+		var ret bool
+		return ret
+	}
+	return *o.IsNewOrganization
+}
+
+// GetIsNewOrganizationOk returns a tuple with the IsNewOrganization field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserForListDto) GetIsNewOrganizationOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsNewOrganization) {
+		return nil, false
+	}
+	return o.IsNewOrganization, true
+}
+
+// HasIsNewOrganization returns a boolean if a field has been set.
+func (o *UserForListDto) HasIsNewOrganization() bool {
+	if o != nil && !IsNil(o.IsNewOrganization) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsNewOrganization gets a reference to the given bool and assigns it to the IsNewOrganization field.
+func (o *UserForListDto) SetIsNewOrganization(v bool) {
+	o.IsNewOrganization = &v
+}
+
 // GetLastLoginAt returns the LastLoginAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserForListDto) GetLastLoginAt() string {
 	if o == nil || IsNil(o.LastLoginAt.Get()) {
@@ -981,6 +1014,9 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DemoModeEnabled) {
 		toSerialize["demoModeEnabled"] = o.DemoModeEnabled
+	}
+	if !IsNil(o.IsNewOrganization) {
+		toSerialize["isNewOrganization"] = o.IsNewOrganization
 	}
 	if o.LastLoginAt.IsSet() {
 		toSerialize["lastLoginAt"] = o.LastLoginAt.Get()

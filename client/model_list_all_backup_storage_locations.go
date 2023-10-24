@@ -22,6 +22,7 @@ var _ MappedNullable = &ListAllBackupStorageLocations{}
 type ListAllBackupStorageLocations struct {
 	Data       []BackupStorageLocationDto `json:"data,omitempty"`
 	TotalCount *int32                     `json:"totalCount,omitempty"`
+	Projects   []int32                    `json:"projects,omitempty"`
 }
 
 // NewListAllBackupStorageLocations instantiates a new ListAllBackupStorageLocations object
@@ -106,6 +107,39 @@ func (o *ListAllBackupStorageLocations) SetTotalCount(v int32) {
 	o.TotalCount = &v
 }
 
+// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ListAllBackupStorageLocations) GetProjects() []int32 {
+	if o == nil {
+		var ret []int32
+		return ret
+	}
+	return o.Projects
+}
+
+// GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ListAllBackupStorageLocations) GetProjectsOk() ([]int32, bool) {
+	if o == nil || IsNil(o.Projects) {
+		return nil, false
+	}
+	return o.Projects, true
+}
+
+// HasProjects returns a boolean if a field has been set.
+func (o *ListAllBackupStorageLocations) HasProjects() bool {
+	if o != nil && IsNil(o.Projects) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjects gets a reference to the given []int32 and assigns it to the Projects field.
+func (o *ListAllBackupStorageLocations) SetProjects(v []int32) {
+	o.Projects = v
+}
+
 func (o ListAllBackupStorageLocations) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -121,6 +155,9 @@ func (o ListAllBackupStorageLocations) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
+	}
+	if o.Projects != nil {
+		toSerialize["projects"] = o.Projects
 	}
 	return toSerialize, nil
 }

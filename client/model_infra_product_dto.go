@@ -20,11 +20,12 @@ var _ MappedNullable = &InfraProductDto{}
 
 // InfraProductDto struct for InfraProductDto
 type InfraProductDto struct {
-	Id        *int32         `json:"id,omitempty"`
-	Name      NullableString `json:"name,omitempty"`
-	Price     *float64       `json:"price,omitempty"`
-	PriceId   NullableString `json:"priceId,omitempty"`
-	ProductId NullableString `json:"productId,omitempty"`
+	Id            *int32         `json:"id,omitempty"`
+	Name          NullableString `json:"name,omitempty"`
+	Price         *float64       `json:"price,omitempty"`
+	PriceId       NullableString `json:"priceId,omitempty"`
+	YearlyPriceId NullableString `json:"yearlyPriceId,omitempty"`
+	ProductId     NullableString `json:"productId,omitempty"`
 }
 
 // NewInfraProductDto instantiates a new InfraProductDto object
@@ -194,6 +195,49 @@ func (o *InfraProductDto) UnsetPriceId() {
 	o.PriceId.Unset()
 }
 
+// GetYearlyPriceId returns the YearlyPriceId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InfraProductDto) GetYearlyPriceId() string {
+	if o == nil || IsNil(o.YearlyPriceId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.YearlyPriceId.Get()
+}
+
+// GetYearlyPriceIdOk returns a tuple with the YearlyPriceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InfraProductDto) GetYearlyPriceIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.YearlyPriceId.Get(), o.YearlyPriceId.IsSet()
+}
+
+// HasYearlyPriceId returns a boolean if a field has been set.
+func (o *InfraProductDto) HasYearlyPriceId() bool {
+	if o != nil && o.YearlyPriceId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetYearlyPriceId gets a reference to the given NullableString and assigns it to the YearlyPriceId field.
+func (o *InfraProductDto) SetYearlyPriceId(v string) {
+	o.YearlyPriceId.Set(&v)
+}
+
+// SetYearlyPriceIdNil sets the value for YearlyPriceId to be an explicit nil
+func (o *InfraProductDto) SetYearlyPriceIdNil() {
+	o.YearlyPriceId.Set(nil)
+}
+
+// UnsetYearlyPriceId ensures that no value is present for YearlyPriceId, not even an explicit nil
+func (o *InfraProductDto) UnsetYearlyPriceId() {
+	o.YearlyPriceId.Unset()
+}
+
 // GetProductId returns the ProductId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InfraProductDto) GetProductId() string {
 	if o == nil || IsNil(o.ProductId.Get()) {
@@ -258,6 +302,9 @@ func (o InfraProductDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.PriceId.IsSet() {
 		toSerialize["priceId"] = o.PriceId.Get()
+	}
+	if o.YearlyPriceId.IsSet() {
+		toSerialize["yearlyPriceId"] = o.YearlyPriceId.Get()
 	}
 	if o.ProductId.IsSet() {
 		toSerialize["productId"] = o.ProductId.Get()

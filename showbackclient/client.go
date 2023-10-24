@@ -1,5 +1,5 @@
 /*
-Taikun - WebApi
+Taikun - Showback API
 
 This Api will be responsible for overall data distribution and authorization.
 
@@ -41,7 +41,7 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the Taikun - WebApi API vv1
+// APIClient manages communication with the Taikun - Showback API API vv1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -49,157 +49,13 @@ type APIClient struct {
 
 	// API Services
 
-	AWSCloudCredentialAPI *AWSCloudCredentialAPIService
-
-	AccessProfilesAPI *AccessProfilesAPIService
-
-	AdminAPI *AdminAPIService
-
-	AiCredentialsAPI *AiCredentialsAPIService
-
-	AiManagementAPI *AiManagementAPIService
-
-	AlertingIntegrationsAPI *AlertingIntegrationsAPIService
-
-	AlertingProfilesAPI *AlertingProfilesAPIService
-
-	AllowedHostAPI *AllowedHostAPIService
-
-	AppRepositoriesAPI *AppRepositoriesAPIService
-
-	AuthManagementAPI *AuthManagementAPIService
-
-	AutoscalingAPI *AutoscalingAPIService
-
-	AzureCloudCredentialAPI *AzureCloudCredentialAPIService
-
-	BackupPolicyAPI *BackupPolicyAPIService
-
-	BillingAPI *BillingAPIService
-
-	CatalogAPI *CatalogAPIService
-
-	CatalogAppAPI *CatalogAppAPIService
-
-	CheckerAPI *CheckerAPIService
-
-	CloudCredentialAPI *CloudCredentialAPIService
-
-	CommonAPI *CommonAPIService
-
-	CronJobServiceAPI *CronJobServiceAPIService
-
-	DnsServersAPI *DnsServersAPIService
-
-	FlavorsAPI *FlavorsAPIService
-
-	GoogleAPI *GoogleAPIService
-
-	ImagesAPI *ImagesAPIService
-
-	InfraAPI *InfraAPIService
-
-	InfraBillingSummaryAPI *InfraBillingSummaryAPIService
-
-	InvoicesAPI *InvoicesAPIService
-
-	KeycloakAPI *KeycloakAPIService
-
-	KubeConfigAPI *KubeConfigAPIService
-
-	KubeConfigRoleAPI *KubeConfigRoleAPIService
-
-	KubernetesAPI *KubernetesAPIService
-
-	KubernetesProfilesAPI *KubernetesProfilesAPIService
-
-	KubesprayAPI *KubesprayAPIService
-
-	NotificationsAPI *NotificationsAPIService
-
-	NtpServersAPI *NtpServersAPIService
-
-	OpaProfilesAPI *OpaProfilesAPIService
-
-	OpenshiftAPI *OpenshiftAPIService
-
-	OpenstackCloudCredentialAPI *OpenstackCloudCredentialAPIService
-
-	OperationCredentialsAPI *OperationCredentialsAPIService
-
-	OrganizationSubscriptionsAPI *OrganizationSubscriptionsAPIService
-
-	OrganizationsAPI *OrganizationsAPIService
-
-	PackageAPI *PackageAPIService
-
-	PartnersAPI *PartnersAPIService
-
-	PaymentsAPI *PaymentsAPIService
-
-	PreDefinedQueriesAPI *PreDefinedQueriesAPIService
-
-	ProjectActionsAPI *ProjectActionsAPIService
-
-	ProjectAppParamsAPI *ProjectAppParamsAPIService
-
-	ProjectAppsAPI *ProjectAppsAPIService
-
-	ProjectGroupsAPI *ProjectGroupsAPIService
-
-	ProjectInfracostsAPI *ProjectInfracostsAPIService
-
-	ProjectQuotasAPI *ProjectQuotasAPIService
-
-	ProjectRevisionsAPI *ProjectRevisionsAPIService
-
-	ProjectTemplatesAPI *ProjectTemplatesAPIService
-
 	ProjectsAPI *ProjectsAPIService
 
-	PrometheusBillingsAPI *PrometheusBillingsAPIService
+	ShowbackCredentialsAPI *ShowbackCredentialsAPIService
 
-	PrometheusOrganizationsAPI *PrometheusOrganizationsAPIService
+	ShowbackRulesAPI *ShowbackRulesAPIService
 
-	PrometheusRulesAPI *PrometheusRulesAPIService
-
-	ProxmoxCloudCredentialAPI *ProxmoxCloudCredentialAPIService
-
-	S3CredentialsAPI *S3CredentialsAPIService
-
-	SearchAPI *SearchAPIService
-
-	SecurityGroupAPI *SecurityGroupAPIService
-
-	ServersAPI *ServersAPIService
-
-	SlackAPI *SlackAPIService
-
-	SshUsersAPI *SshUsersAPIService
-
-	StandaloneAPI *StandaloneAPIService
-
-	StandaloneActionsAPI *StandaloneActionsAPIService
-
-	StandaloneProfileAPI *StandaloneProfileAPIService
-
-	StandaloneVMDisksAPI *StandaloneVMDisksAPIService
-
-	StripeAPI *StripeAPIService
-
-	SubscriptionAPI *SubscriptionAPIService
-
-	TanzuAPI *TanzuAPIService
-
-	TicketAPI *TicketAPIService
-
-	UserGroupAPI *UserGroupAPIService
-
-	UserProjectsAPI *UserProjectsAPIService
-
-	UserTokenAPI *UserTokenAPIService
-
-	UsersAPI *UsersAPIService
+	ShowbackSummariesAPI *ShowbackSummariesAPIService
 }
 
 type service struct {
@@ -218,82 +74,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.AWSCloudCredentialAPI = (*AWSCloudCredentialAPIService)(&c.common)
-	c.AccessProfilesAPI = (*AccessProfilesAPIService)(&c.common)
-	c.AdminAPI = (*AdminAPIService)(&c.common)
-	c.AiCredentialsAPI = (*AiCredentialsAPIService)(&c.common)
-	c.AiManagementAPI = (*AiManagementAPIService)(&c.common)
-	c.AlertingIntegrationsAPI = (*AlertingIntegrationsAPIService)(&c.common)
-	c.AlertingProfilesAPI = (*AlertingProfilesAPIService)(&c.common)
-	c.AllowedHostAPI = (*AllowedHostAPIService)(&c.common)
-	c.AppRepositoriesAPI = (*AppRepositoriesAPIService)(&c.common)
-	c.AuthManagementAPI = (*AuthManagementAPIService)(&c.common)
-	c.AutoscalingAPI = (*AutoscalingAPIService)(&c.common)
-	c.AzureCloudCredentialAPI = (*AzureCloudCredentialAPIService)(&c.common)
-	c.BackupPolicyAPI = (*BackupPolicyAPIService)(&c.common)
-	c.BillingAPI = (*BillingAPIService)(&c.common)
-	c.CatalogAPI = (*CatalogAPIService)(&c.common)
-	c.CatalogAppAPI = (*CatalogAppAPIService)(&c.common)
-	c.CheckerAPI = (*CheckerAPIService)(&c.common)
-	c.CloudCredentialAPI = (*CloudCredentialAPIService)(&c.common)
-	c.CommonAPI = (*CommonAPIService)(&c.common)
-	c.CronJobServiceAPI = (*CronJobServiceAPIService)(&c.common)
-	c.DnsServersAPI = (*DnsServersAPIService)(&c.common)
-	c.FlavorsAPI = (*FlavorsAPIService)(&c.common)
-	c.GoogleAPI = (*GoogleAPIService)(&c.common)
-	c.ImagesAPI = (*ImagesAPIService)(&c.common)
-	c.InfraAPI = (*InfraAPIService)(&c.common)
-	c.InfraBillingSummaryAPI = (*InfraBillingSummaryAPIService)(&c.common)
-	c.InvoicesAPI = (*InvoicesAPIService)(&c.common)
-	c.KeycloakAPI = (*KeycloakAPIService)(&c.common)
-	c.KubeConfigAPI = (*KubeConfigAPIService)(&c.common)
-	c.KubeConfigRoleAPI = (*KubeConfigRoleAPIService)(&c.common)
-	c.KubernetesAPI = (*KubernetesAPIService)(&c.common)
-	c.KubernetesProfilesAPI = (*KubernetesProfilesAPIService)(&c.common)
-	c.KubesprayAPI = (*KubesprayAPIService)(&c.common)
-	c.NotificationsAPI = (*NotificationsAPIService)(&c.common)
-	c.NtpServersAPI = (*NtpServersAPIService)(&c.common)
-	c.OpaProfilesAPI = (*OpaProfilesAPIService)(&c.common)
-	c.OpenshiftAPI = (*OpenshiftAPIService)(&c.common)
-	c.OpenstackCloudCredentialAPI = (*OpenstackCloudCredentialAPIService)(&c.common)
-	c.OperationCredentialsAPI = (*OperationCredentialsAPIService)(&c.common)
-	c.OrganizationSubscriptionsAPI = (*OrganizationSubscriptionsAPIService)(&c.common)
-	c.OrganizationsAPI = (*OrganizationsAPIService)(&c.common)
-	c.PackageAPI = (*PackageAPIService)(&c.common)
-	c.PartnersAPI = (*PartnersAPIService)(&c.common)
-	c.PaymentsAPI = (*PaymentsAPIService)(&c.common)
-	c.PreDefinedQueriesAPI = (*PreDefinedQueriesAPIService)(&c.common)
-	c.ProjectActionsAPI = (*ProjectActionsAPIService)(&c.common)
-	c.ProjectAppParamsAPI = (*ProjectAppParamsAPIService)(&c.common)
-	c.ProjectAppsAPI = (*ProjectAppsAPIService)(&c.common)
-	c.ProjectGroupsAPI = (*ProjectGroupsAPIService)(&c.common)
-	c.ProjectInfracostsAPI = (*ProjectInfracostsAPIService)(&c.common)
-	c.ProjectQuotasAPI = (*ProjectQuotasAPIService)(&c.common)
-	c.ProjectRevisionsAPI = (*ProjectRevisionsAPIService)(&c.common)
-	c.ProjectTemplatesAPI = (*ProjectTemplatesAPIService)(&c.common)
 	c.ProjectsAPI = (*ProjectsAPIService)(&c.common)
-	c.PrometheusBillingsAPI = (*PrometheusBillingsAPIService)(&c.common)
-	c.PrometheusOrganizationsAPI = (*PrometheusOrganizationsAPIService)(&c.common)
-	c.PrometheusRulesAPI = (*PrometheusRulesAPIService)(&c.common)
-	c.ProxmoxCloudCredentialAPI = (*ProxmoxCloudCredentialAPIService)(&c.common)
-	c.S3CredentialsAPI = (*S3CredentialsAPIService)(&c.common)
-	c.SearchAPI = (*SearchAPIService)(&c.common)
-	c.SecurityGroupAPI = (*SecurityGroupAPIService)(&c.common)
-	c.ServersAPI = (*ServersAPIService)(&c.common)
-	c.SlackAPI = (*SlackAPIService)(&c.common)
-	c.SshUsersAPI = (*SshUsersAPIService)(&c.common)
-	c.StandaloneAPI = (*StandaloneAPIService)(&c.common)
-	c.StandaloneActionsAPI = (*StandaloneActionsAPIService)(&c.common)
-	c.StandaloneProfileAPI = (*StandaloneProfileAPIService)(&c.common)
-	c.StandaloneVMDisksAPI = (*StandaloneVMDisksAPIService)(&c.common)
-	c.StripeAPI = (*StripeAPIService)(&c.common)
-	c.SubscriptionAPI = (*SubscriptionAPIService)(&c.common)
-	c.TanzuAPI = (*TanzuAPIService)(&c.common)
-	c.TicketAPI = (*TicketAPIService)(&c.common)
-	c.UserGroupAPI = (*UserGroupAPIService)(&c.common)
-	c.UserProjectsAPI = (*UserProjectsAPIService)(&c.common)
-	c.UserTokenAPI = (*UserTokenAPIService)(&c.common)
-	c.UsersAPI = (*UsersAPIService)(&c.common)
+	c.ShowbackCredentialsAPI = (*ShowbackCredentialsAPIService)(&c.common)
+	c.ShowbackRulesAPI = (*ShowbackRulesAPIService)(&c.common)
+	c.ShowbackSummariesAPI = (*ShowbackSummariesAPIService)(&c.common)
 
 	return c
 }

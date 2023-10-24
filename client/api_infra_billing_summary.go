@@ -185,53 +185,17 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryCreateExecute(r ApiIn
 }
 
 type ApiInfraBillingSummaryListRequest struct {
-	ctx            context.Context
-	ApiService     *InfraBillingSummaryAPIService
-	limit          *int32
-	offset         *int32
-	sortBy         *string
-	sortDirection  *string
-	startDate      *string
-	endDate        *string
-	organizationId *int32
+	ctx                     context.Context
+	ApiService              *InfraBillingSummaryAPIService
+	infraBillingListCommand *InfraBillingListCommand
 }
 
-func (r ApiInfraBillingSummaryListRequest) Limit(limit int32) ApiInfraBillingSummaryListRequest {
-	r.limit = &limit
+func (r ApiInfraBillingSummaryListRequest) InfraBillingListCommand(infraBillingListCommand InfraBillingListCommand) ApiInfraBillingSummaryListRequest {
+	r.infraBillingListCommand = &infraBillingListCommand
 	return r
 }
 
-func (r ApiInfraBillingSummaryListRequest) Offset(offset int32) ApiInfraBillingSummaryListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiInfraBillingSummaryListRequest) SortBy(sortBy string) ApiInfraBillingSummaryListRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiInfraBillingSummaryListRequest) SortDirection(sortDirection string) ApiInfraBillingSummaryListRequest {
-	r.sortDirection = &sortDirection
-	return r
-}
-
-func (r ApiInfraBillingSummaryListRequest) StartDate(startDate string) ApiInfraBillingSummaryListRequest {
-	r.startDate = &startDate
-	return r
-}
-
-func (r ApiInfraBillingSummaryListRequest) EndDate(endDate string) ApiInfraBillingSummaryListRequest {
-	r.endDate = &endDate
-	return r
-}
-
-func (r ApiInfraBillingSummaryListRequest) OrganizationId(organizationId int32) ApiInfraBillingSummaryListRequest {
-	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiInfraBillingSummaryListRequest) Execute() (*InfraBillingInfo, *http.Response, error) {
+func (r ApiInfraBillingSummaryListRequest) Execute() ([]InfraBillingSummaryDto, *http.Response, error) {
 	return r.ApiService.InfraBillingSummaryListExecute(r)
 }
 
@@ -250,13 +214,13 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryList(ctx context.Cont
 
 // Execute executes the request
 //
-//	@return InfraBillingInfo
-func (a *InfraBillingSummaryAPIService) InfraBillingSummaryListExecute(r ApiInfraBillingSummaryListRequest) (*InfraBillingInfo, *http.Response, error) {
+//	@return []InfraBillingSummaryDto
+func (a *InfraBillingSummaryAPIService) InfraBillingSummaryListExecute(r ApiInfraBillingSummaryListRequest) ([]InfraBillingSummaryDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
+		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *InfraBillingInfo
+		localVarReturnValue []InfraBillingSummaryDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InfraBillingSummaryAPIService.InfraBillingSummaryList")
@@ -269,30 +233,12 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryListExecute(r ApiInfr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.infraBillingListCommand == nil {
+		return localVarReturnValue, nil, reportError("infraBillingListCommand is required and must be specified")
+	}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
-	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
-	}
-	if r.startDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartDate", r.startDate, "")
-	}
-	if r.endDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndDate", r.endDate, "")
-	}
-	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
-	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -308,6 +254,8 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryListExecute(r ApiInfr
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.infraBillingListCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

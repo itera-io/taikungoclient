@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // checks if the InfraBillingSummaryDto type satisfies the MappedNullable interface at compile time
@@ -21,10 +20,9 @@ var _ MappedNullable = &InfraBillingSummaryDto{}
 
 // InfraBillingSummaryDto struct for InfraBillingSummaryDto
 type InfraBillingSummaryDto struct {
-	OrganizationId   *int32         `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	StartDate        *time.Time     `json:"startDate,omitempty"`
-	EndDate          NullableTime   `json:"endDate,omitempty"`
+	InfraProductId   *int32         `json:"infraProductId,omitempty"`
+	InfraProductName NullableString `json:"infraProductName,omitempty"`
+	Intervals        []DateInterval `json:"intervals,omitempty"`
 	TotalPrice       *float64       `json:"totalPrice,omitempty"`
 }
 
@@ -45,154 +43,112 @@ func NewInfraBillingSummaryDtoWithDefaults() *InfraBillingSummaryDto {
 	return &this
 }
 
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
-func (o *InfraBillingSummaryDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId) {
+// GetInfraProductId returns the InfraProductId field value if set, zero value otherwise.
+func (o *InfraBillingSummaryDto) GetInfraProductId() int32 {
+	if o == nil || IsNil(o.InfraProductId) {
 		var ret int32
 		return ret
 	}
-	return *o.OrganizationId
+	return *o.InfraProductId
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// GetInfraProductIdOk returns a tuple with the InfraProductId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InfraBillingSummaryDto) GetOrganizationIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.OrganizationId) {
+func (o *InfraBillingSummaryDto) GetInfraProductIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.InfraProductId) {
 		return nil, false
 	}
-	return o.OrganizationId, true
+	return o.InfraProductId, true
 }
 
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *InfraBillingSummaryDto) HasOrganizationId() bool {
-	if o != nil && !IsNil(o.OrganizationId) {
+// HasInfraProductId returns a boolean if a field has been set.
+func (o *InfraBillingSummaryDto) HasInfraProductId() bool {
+	if o != nil && !IsNil(o.InfraProductId) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationId gets a reference to the given int32 and assigns it to the OrganizationId field.
-func (o *InfraBillingSummaryDto) SetOrganizationId(v int32) {
-	o.OrganizationId = &v
+// SetInfraProductId gets a reference to the given int32 and assigns it to the InfraProductId field.
+func (o *InfraBillingSummaryDto) SetInfraProductId(v int32) {
+	o.InfraProductId = &v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *InfraBillingSummaryDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+// GetInfraProductName returns the InfraProductName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InfraBillingSummaryDto) GetInfraProductName() string {
+	if o == nil || IsNil(o.InfraProductName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+	return *o.InfraProductName.Get()
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// GetInfraProductNameOk returns a tuple with the InfraProductName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InfraBillingSummaryDto) GetOrganizationNameOk() (*string, bool) {
+func (o *InfraBillingSummaryDto) GetInfraProductNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return o.InfraProductName.Get(), o.InfraProductName.IsSet()
 }
 
-// HasOrganizationName returns a boolean if a field has been set.
-func (o *InfraBillingSummaryDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
+// HasInfraProductName returns a boolean if a field has been set.
+func (o *InfraBillingSummaryDto) HasInfraProductName() bool {
+	if o != nil && o.InfraProductName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
-func (o *InfraBillingSummaryDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
+// SetInfraProductName gets a reference to the given NullableString and assigns it to the InfraProductName field.
+func (o *InfraBillingSummaryDto) SetInfraProductName(v string) {
+	o.InfraProductName.Set(&v)
 }
 
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *InfraBillingSummaryDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
+// SetInfraProductNameNil sets the value for InfraProductName to be an explicit nil
+func (o *InfraBillingSummaryDto) SetInfraProductNameNil() {
+	o.InfraProductName.Set(nil)
 }
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *InfraBillingSummaryDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
+// UnsetInfraProductName ensures that no value is present for InfraProductName, not even an explicit nil
+func (o *InfraBillingSummaryDto) UnsetInfraProductName() {
+	o.InfraProductName.Unset()
 }
 
-// GetStartDate returns the StartDate field value if set, zero value otherwise.
-func (o *InfraBillingSummaryDto) GetStartDate() time.Time {
-	if o == nil || IsNil(o.StartDate) {
-		var ret time.Time
+// GetIntervals returns the Intervals field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InfraBillingSummaryDto) GetIntervals() []DateInterval {
+	if o == nil {
+		var ret []DateInterval
 		return ret
 	}
-	return *o.StartDate
+	return o.Intervals
 }
 
-// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InfraBillingSummaryDto) GetStartDateOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.StartDate) {
-		return nil, false
-	}
-	return o.StartDate, true
-}
-
-// HasStartDate returns a boolean if a field has been set.
-func (o *InfraBillingSummaryDto) HasStartDate() bool {
-	if o != nil && !IsNil(o.StartDate) {
-		return true
-	}
-
-	return false
-}
-
-// SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
-func (o *InfraBillingSummaryDto) SetStartDate(v time.Time) {
-	o.StartDate = &v
-}
-
-// GetEndDate returns the EndDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *InfraBillingSummaryDto) GetEndDate() time.Time {
-	if o == nil || IsNil(o.EndDate.Get()) {
-		var ret time.Time
-		return ret
-	}
-	return *o.EndDate.Get()
-}
-
-// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
+// GetIntervalsOk returns a tuple with the Intervals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InfraBillingSummaryDto) GetEndDateOk() (*time.Time, bool) {
-	if o == nil {
+func (o *InfraBillingSummaryDto) GetIntervalsOk() ([]DateInterval, bool) {
+	if o == nil || IsNil(o.Intervals) {
 		return nil, false
 	}
-	return o.EndDate.Get(), o.EndDate.IsSet()
+	return o.Intervals, true
 }
 
-// HasEndDate returns a boolean if a field has been set.
-func (o *InfraBillingSummaryDto) HasEndDate() bool {
-	if o != nil && o.EndDate.IsSet() {
+// HasIntervals returns a boolean if a field has been set.
+func (o *InfraBillingSummaryDto) HasIntervals() bool {
+	if o != nil && IsNil(o.Intervals) {
 		return true
 	}
 
 	return false
 }
 
-// SetEndDate gets a reference to the given NullableTime and assigns it to the EndDate field.
-func (o *InfraBillingSummaryDto) SetEndDate(v time.Time) {
-	o.EndDate.Set(&v)
-}
-
-// SetEndDateNil sets the value for EndDate to be an explicit nil
-func (o *InfraBillingSummaryDto) SetEndDateNil() {
-	o.EndDate.Set(nil)
-}
-
-// UnsetEndDate ensures that no value is present for EndDate, not even an explicit nil
-func (o *InfraBillingSummaryDto) UnsetEndDate() {
-	o.EndDate.Unset()
+// SetIntervals gets a reference to the given []DateInterval and assigns it to the Intervals field.
+func (o *InfraBillingSummaryDto) SetIntervals(v []DateInterval) {
+	o.Intervals = v
 }
 
 // GetTotalPrice returns the TotalPrice field value if set, zero value otherwise.
@@ -237,17 +193,14 @@ func (o InfraBillingSummaryDto) MarshalJSON() ([]byte, error) {
 
 func (o InfraBillingSummaryDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.OrganizationId) {
-		toSerialize["organizationId"] = o.OrganizationId
+	if !IsNil(o.InfraProductId) {
+		toSerialize["infraProductId"] = o.InfraProductId
 	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
+	if o.InfraProductName.IsSet() {
+		toSerialize["infraProductName"] = o.InfraProductName.Get()
 	}
-	if !IsNil(o.StartDate) {
-		toSerialize["startDate"] = o.StartDate
-	}
-	if o.EndDate.IsSet() {
-		toSerialize["endDate"] = o.EndDate.Get()
+	if o.Intervals != nil {
+		toSerialize["intervals"] = o.Intervals
 	}
 	if !IsNil(o.TotalPrice) {
 		toSerialize["totalPrice"] = o.TotalPrice

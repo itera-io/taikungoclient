@@ -23,6 +23,7 @@ type OpenstackQuotaList struct {
 	Compute *OpenstackComputeQuotaDto `json:"compute,omitempty"`
 	Volume  *OpenstackVolumeQuotaDto  `json:"volume,omitempty"`
 	Network *OpenstackNetworkDto      `json:"network,omitempty"`
+	IsInfra *bool                     `json:"isInfra,omitempty"`
 }
 
 // NewOpenstackQuotaList instantiates a new OpenstackQuotaList object
@@ -138,6 +139,38 @@ func (o *OpenstackQuotaList) SetNetwork(v OpenstackNetworkDto) {
 	o.Network = &v
 }
 
+// GetIsInfra returns the IsInfra field value if set, zero value otherwise.
+func (o *OpenstackQuotaList) GetIsInfra() bool {
+	if o == nil || IsNil(o.IsInfra) {
+		var ret bool
+		return ret
+	}
+	return *o.IsInfra
+}
+
+// GetIsInfraOk returns a tuple with the IsInfra field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenstackQuotaList) GetIsInfraOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsInfra) {
+		return nil, false
+	}
+	return o.IsInfra, true
+}
+
+// HasIsInfra returns a boolean if a field has been set.
+func (o *OpenstackQuotaList) HasIsInfra() bool {
+	if o != nil && !IsNil(o.IsInfra) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsInfra gets a reference to the given bool and assigns it to the IsInfra field.
+func (o *OpenstackQuotaList) SetIsInfra(v bool) {
+	o.IsInfra = &v
+}
+
 func (o OpenstackQuotaList) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -156,6 +189,9 @@ func (o OpenstackQuotaList) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Network) {
 		toSerialize["network"] = o.Network
+	}
+	if !IsNil(o.IsInfra) {
+		toSerialize["isInfra"] = o.IsInfra
 	}
 	return toSerialize, nil
 }

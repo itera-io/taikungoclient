@@ -26,6 +26,7 @@ type InfraOrganizationsListDto struct {
 	CreatedAt        *time.Time     `json:"createdAt,omitempty"`
 	SubscriptionId   NullableString `json:"subscriptionId,omitempty"`
 	BillingStartDate NullableTime   `json:"billingStartDate,omitempty"`
+	Yearly           *bool          `json:"yearly,omitempty"`
 }
 
 // NewInfraOrganizationsListDto instantiates a new InfraOrganizationsListDto object
@@ -238,6 +239,38 @@ func (o *InfraOrganizationsListDto) UnsetBillingStartDate() {
 	o.BillingStartDate.Unset()
 }
 
+// GetYearly returns the Yearly field value if set, zero value otherwise.
+func (o *InfraOrganizationsListDto) GetYearly() bool {
+	if o == nil || IsNil(o.Yearly) {
+		var ret bool
+		return ret
+	}
+	return *o.Yearly
+}
+
+// GetYearlyOk returns a tuple with the Yearly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InfraOrganizationsListDto) GetYearlyOk() (*bool, bool) {
+	if o == nil || IsNil(o.Yearly) {
+		return nil, false
+	}
+	return o.Yearly, true
+}
+
+// HasYearly returns a boolean if a field has been set.
+func (o *InfraOrganizationsListDto) HasYearly() bool {
+	if o != nil && !IsNil(o.Yearly) {
+		return true
+	}
+
+	return false
+}
+
+// SetYearly gets a reference to the given bool and assigns it to the Yearly field.
+func (o *InfraOrganizationsListDto) SetYearly(v bool) {
+	o.Yearly = &v
+}
+
 func (o InfraOrganizationsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -262,6 +295,9 @@ func (o InfraOrganizationsListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.BillingStartDate.IsSet() {
 		toSerialize["billingStartDate"] = o.BillingStartDate.Get()
+	}
+	if !IsNil(o.Yearly) {
+		toSerialize["yearly"] = o.Yearly
 	}
 	return toSerialize, nil
 }

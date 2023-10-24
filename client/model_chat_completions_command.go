@@ -20,8 +20,7 @@ var _ MappedNullable = &ChatCompletionsCommand{}
 
 // ChatCompletionsCommand struct for ChatCompletionsCommand
 type ChatCompletionsCommand struct {
-	Model    NullableString `json:"model,omitempty"`
-	Messages interface{}    `json:"messages,omitempty"`
+	Messages interface{} `json:"messages,omitempty"`
 }
 
 // NewChatCompletionsCommand instantiates a new ChatCompletionsCommand object
@@ -39,49 +38,6 @@ func NewChatCompletionsCommand() *ChatCompletionsCommand {
 func NewChatCompletionsCommandWithDefaults() *ChatCompletionsCommand {
 	this := ChatCompletionsCommand{}
 	return &this
-}
-
-// GetModel returns the Model field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ChatCompletionsCommand) GetModel() string {
-	if o == nil || IsNil(o.Model.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Model.Get()
-}
-
-// GetModelOk returns a tuple with the Model field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ChatCompletionsCommand) GetModelOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Model.Get(), o.Model.IsSet()
-}
-
-// HasModel returns a boolean if a field has been set.
-func (o *ChatCompletionsCommand) HasModel() bool {
-	if o != nil && o.Model.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetModel gets a reference to the given NullableString and assigns it to the Model field.
-func (o *ChatCompletionsCommand) SetModel(v string) {
-	o.Model.Set(&v)
-}
-
-// SetModelNil sets the value for Model to be an explicit nil
-func (o *ChatCompletionsCommand) SetModelNil() {
-	o.Model.Set(nil)
-}
-
-// UnsetModel ensures that no value is present for Model, not even an explicit nil
-func (o *ChatCompletionsCommand) UnsetModel() {
-	o.Model.Unset()
 }
 
 // GetMessages returns the Messages field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -127,9 +83,6 @@ func (o ChatCompletionsCommand) MarshalJSON() ([]byte, error) {
 
 func (o ChatCompletionsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Model.IsSet() {
-		toSerialize["model"] = o.Model.Get()
-	}
 	if o.Messages != nil {
 		toSerialize["messages"] = o.Messages
 	}

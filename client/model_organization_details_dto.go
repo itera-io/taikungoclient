@@ -34,6 +34,7 @@ type OrganizationDetailsDto struct {
 	IsLocked                     *bool                              `json:"isLocked,omitempty"`
 	IsReadOnly                   *bool                              `json:"isReadOnly,omitempty"`
 	IsNew                        *bool                              `json:"isNew,omitempty"`
+	TrialEnded                   *bool                              `json:"trialEnded,omitempty"`
 	Users                        *int32                             `json:"users,omitempty"`
 	Projects                     *int32                             `json:"projects,omitempty"`
 	Servers                      *int32                             `json:"servers,omitempty"`
@@ -610,6 +611,38 @@ func (o *OrganizationDetailsDto) SetIsNew(v bool) {
 	o.IsNew = &v
 }
 
+// GetTrialEnded returns the TrialEnded field value if set, zero value otherwise.
+func (o *OrganizationDetailsDto) GetTrialEnded() bool {
+	if o == nil || IsNil(o.TrialEnded) {
+		var ret bool
+		return ret
+	}
+	return *o.TrialEnded
+}
+
+// GetTrialEndedOk returns a tuple with the TrialEnded field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationDetailsDto) GetTrialEndedOk() (*bool, bool) {
+	if o == nil || IsNil(o.TrialEnded) {
+		return nil, false
+	}
+	return o.TrialEnded, true
+}
+
+// HasTrialEnded returns a boolean if a field has been set.
+func (o *OrganizationDetailsDto) HasTrialEnded() bool {
+	if o != nil && !IsNil(o.TrialEnded) {
+		return true
+	}
+
+	return false
+}
+
+// SetTrialEnded gets a reference to the given bool and assigns it to the TrialEnded field.
+func (o *OrganizationDetailsDto) SetTrialEnded(v bool) {
+	o.TrialEnded = &v
+}
+
 // GetUsers returns the Users field value if set, zero value otherwise.
 func (o *OrganizationDetailsDto) GetUsers() int32 {
 	if o == nil || IsNil(o.Users) {
@@ -1015,6 +1048,9 @@ func (o OrganizationDetailsDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsNew) {
 		toSerialize["isNew"] = o.IsNew
+	}
+	if !IsNil(o.TrialEnded) {
+		toSerialize["trialEnded"] = o.TrialEnded
 	}
 	if !IsNil(o.Users) {
 		toSerialize["users"] = o.Users

@@ -1437,6 +1437,7 @@ type ApiOrganizationsOrganizationListRequest struct {
 	ApiService *OrganizationsAPIService
 	partnerId  *int32
 	search     *string
+	isInfra    *bool
 }
 
 func (r ApiOrganizationsOrganizationListRequest) PartnerId(partnerId int32) ApiOrganizationsOrganizationListRequest {
@@ -1449,7 +1450,12 @@ func (r ApiOrganizationsOrganizationListRequest) Search(search string) ApiOrgani
 	return r
 }
 
-func (r ApiOrganizationsOrganizationListRequest) Execute() ([]CommonDropdownDto, *http.Response, error) {
+func (r ApiOrganizationsOrganizationListRequest) IsInfra(isInfra bool) ApiOrganizationsOrganizationListRequest {
+	r.isInfra = &isInfra
+	return r
+}
+
+func (r ApiOrganizationsOrganizationListRequest) Execute() ([]OrganizationDropdownDto, *http.Response, error) {
 	return r.ApiService.OrganizationsOrganizationListExecute(r)
 }
 
@@ -1468,13 +1474,13 @@ func (a *OrganizationsAPIService) OrganizationsOrganizationList(ctx context.Cont
 
 // Execute executes the request
 //
-//	@return []CommonDropdownDto
-func (a *OrganizationsAPIService) OrganizationsOrganizationListExecute(r ApiOrganizationsOrganizationListRequest) ([]CommonDropdownDto, *http.Response, error) {
+//	@return []OrganizationDropdownDto
+func (a *OrganizationsAPIService) OrganizationsOrganizationListExecute(r ApiOrganizationsOrganizationListRequest) ([]OrganizationDropdownDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []CommonDropdownDto
+		localVarReturnValue []OrganizationDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.OrganizationsOrganizationList")
@@ -1493,6 +1499,9 @@ func (a *OrganizationsAPIService) OrganizationsOrganizationListExecute(r ApiOrga
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.isInfra != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsInfra", r.isInfra, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
