@@ -62,6 +62,11 @@ type Client struct {
 	authMode  string
 }
 
+// Getter for token (Used in CLI usertoken get-bearer)
+func (c *Client) GetToken() string {
+	return c.token
+}
+
 // Transport wrapper
 func (c *customTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	// This is not a /auth/login or /auth/refresh request

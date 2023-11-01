@@ -1,4 +1,6 @@
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/itera-io/taikungoclient/client v0.0.0-20231024102014-2547653104f9/go.mod h1:y72jyDVkN8g+03DMzRMR3P14QhQywPBJDJnWjX59iBs=
+github.com/itera-io/taikungoclient/showbackclient v0.0.0-20231024102014-2547653104f9/go.mod h1:TBYG3xPrBgX1GOxGSvWUfQIFQbOVsa3ikCv69kneyJM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/testify v1.8.3/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
