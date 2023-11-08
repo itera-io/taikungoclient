@@ -75,7 +75,7 @@ jobs:
           ghrepo=openapitools/openapi-generator
           artifactid=openapi-generator-cli
           ver=${OPENAPI_GENERATOR_VERSION:-$(latest.tag $ghrepo)}
-          jar=${artifactid}-${ver}.jar
+          jar=${artifactid}-${ver}.jar 
           wget -q "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/$ver/$jar" -O openapi-generator-cli.jar
 
       - name: Set up Java
