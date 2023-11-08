@@ -1,9 +1,6 @@
-.github/swagger-web.json
-.github/swagger-showback.json
 .gitignore
 .idea
 *.jsom
 .github/generateDev.sh
 client/docs/*
 showbackclient/docs/*
-.gitignore
