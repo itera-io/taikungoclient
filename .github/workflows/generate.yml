@@ -94,9 +94,9 @@ jobs:
         run: rm swagger-showback.json
         shell: bash
 
-      - name: Delete go-swagger
+      - name: Delete openapi-generator
         if: steps.check.outcome == 'success'
-        run: rm swagger
+        run: rm openapi-generator-cli.jar
         shell: bash
 
       - name: Commit
