@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_NotificationsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService NotificationsCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.NotificationsAPI.NotificationsCreate(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService NotificationsExportCsv", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.NotificationsAPI.NotificationsExportCsv(context.Background()).Execute()
 
@@ -47,7 +47,7 @@ func Test_taikuncore_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService NotificationsList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.NotificationsAPI.NotificationsList(context.Background()).Execute()
 
@@ -59,7 +59,7 @@ func Test_taikuncore_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService NotificationsNotifyOwner", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.NotificationsAPI.NotificationsNotifyOwner(context.Background()).Execute()
 
@@ -70,7 +70,7 @@ func Test_taikuncore_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService NotificationsOperationMessages", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.NotificationsAPI.NotificationsOperationMessages(context.Background()).Execute()
 

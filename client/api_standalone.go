@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // StandaloneAPIService StandaloneAPI service
 type StandaloneAPIService service
 
 type ApiStandaloneCommitRequest struct {
-	ctx                       context.Context
-	ApiService                *StandaloneAPIService
+	ctx context.Context
+	ApiService *StandaloneAPIService
 	commitStandAloneVmCommand *CommitStandAloneVmCommand
 }
 
@@ -41,22 +42,22 @@ func (r ApiStandaloneCommitRequest) Execute() (*http.Response, error) {
 /*
 StandaloneCommit Commit vm
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStandaloneCommitRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStandaloneCommitRequest
 */
 func (a *StandaloneAPIService) StandaloneCommit(ctx context.Context) ApiStandaloneCommitRequest {
 	return ApiStandaloneCommitRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *StandaloneAPIService) StandaloneCommitExecute(r ApiStandaloneCommitRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StandaloneAPIService.StandaloneCommit")
@@ -135,8 +136,8 @@ func (a *StandaloneAPIService) StandaloneCommitExecute(r ApiStandaloneCommitRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +147,8 @@ func (a *StandaloneAPIService) StandaloneCommitExecute(r ApiStandaloneCommitRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +158,8 @@ func (a *StandaloneAPIService) StandaloneCommitExecute(r ApiStandaloneCommitRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +169,8 @@ func (a *StandaloneAPIService) StandaloneCommitExecute(r ApiStandaloneCommitRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -179,8 +180,8 @@ func (a *StandaloneAPIService) StandaloneCommitExecute(r ApiStandaloneCommitRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -189,8 +190,8 @@ func (a *StandaloneAPIService) StandaloneCommitExecute(r ApiStandaloneCommitRequ
 }
 
 type ApiStandaloneCreateRequest struct {
-	ctx                       context.Context
-	ApiService                *StandaloneAPIService
+	ctx context.Context
+	ApiService *StandaloneAPIService
 	createStandAloneVmCommand *CreateStandAloneVmCommand
 }
 
@@ -206,25 +207,24 @@ func (r ApiStandaloneCreateRequest) Execute() (*ApiResponse, *http.Response, err
 /*
 StandaloneCreate Create a new vm in the given project.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStandaloneCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStandaloneCreateRequest
 */
 func (a *StandaloneAPIService) StandaloneCreate(ctx context.Context) ApiStandaloneCreateRequest {
 	return ApiStandaloneCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *StandaloneAPIService) StandaloneCreateExecute(r ApiStandaloneCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StandaloneAPIService.StandaloneCreate")
@@ -300,8 +300,8 @@ func (a *StandaloneAPIService) StandaloneCreateExecute(r ApiStandaloneCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -311,8 +311,8 @@ func (a *StandaloneAPIService) StandaloneCreateExecute(r ApiStandaloneCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -322,8 +322,8 @@ func (a *StandaloneAPIService) StandaloneCreateExecute(r ApiStandaloneCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -333,8 +333,8 @@ func (a *StandaloneAPIService) StandaloneCreateExecute(r ApiStandaloneCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -344,8 +344,8 @@ func (a *StandaloneAPIService) StandaloneCreateExecute(r ApiStandaloneCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -363,8 +363,8 @@ func (a *StandaloneAPIService) StandaloneCreateExecute(r ApiStandaloneCreateRequ
 }
 
 type ApiStandaloneDeleteRequest struct {
-	ctx                       context.Context
-	ApiService                *StandaloneAPIService
+	ctx context.Context
+	ApiService *StandaloneAPIService
 	deleteStandAloneVmCommand *DeleteStandAloneVmCommand
 }
 
@@ -380,22 +380,22 @@ func (r ApiStandaloneDeleteRequest) Execute() (*http.Response, error) {
 /*
 StandaloneDelete Delete vm
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStandaloneDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStandaloneDeleteRequest
 */
 func (a *StandaloneAPIService) StandaloneDelete(ctx context.Context) ApiStandaloneDeleteRequest {
 	return ApiStandaloneDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *StandaloneAPIService) StandaloneDeleteExecute(r ApiStandaloneDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StandaloneAPIService.StandaloneDelete")
@@ -471,8 +471,8 @@ func (a *StandaloneAPIService) StandaloneDeleteExecute(r ApiStandaloneDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -482,8 +482,8 @@ func (a *StandaloneAPIService) StandaloneDeleteExecute(r ApiStandaloneDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -493,8 +493,8 @@ func (a *StandaloneAPIService) StandaloneDeleteExecute(r ApiStandaloneDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -504,8 +504,8 @@ func (a *StandaloneAPIService) StandaloneDeleteExecute(r ApiStandaloneDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -515,8 +515,8 @@ func (a *StandaloneAPIService) StandaloneDeleteExecute(r ApiStandaloneDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -525,12 +525,12 @@ func (a *StandaloneAPIService) StandaloneDeleteExecute(r ApiStandaloneDeleteRequ
 }
 
 type ApiStandaloneDetailsRequest struct {
-	ctx           context.Context
-	ApiService    *StandaloneAPIService
-	projectId     int32
-	sortBy        *string
+	ctx context.Context
+	ApiService *StandaloneAPIService
+	projectId int32
+	sortBy *string
 	sortDirection *string
-	id            *int32
+	id *int32
 }
 
 func (r ApiStandaloneDetailsRequest) SortBy(sortBy string) ApiStandaloneDetailsRequest {
@@ -555,27 +555,26 @@ func (r ApiStandaloneDetailsRequest) Execute() (*StandAloneVmListForDetails, *ht
 /*
 StandaloneDetails Retrieve a list of standalone vm with detailed info
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiStandaloneDetailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiStandaloneDetailsRequest
 */
 func (a *StandaloneAPIService) StandaloneDetails(ctx context.Context, projectId int32) ApiStandaloneDetailsRequest {
 	return ApiStandaloneDetailsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return StandAloneVmListForDetails
+//  @return StandAloneVmListForDetails
 func (a *StandaloneAPIService) StandaloneDetailsExecute(r ApiStandaloneDetailsRequest) (*StandAloneVmListForDetails, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *StandAloneVmListForDetails
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *StandAloneVmListForDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StandaloneAPIService.StandaloneDetails")
@@ -659,8 +658,8 @@ func (a *StandaloneAPIService) StandaloneDetailsExecute(r ApiStandaloneDetailsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -670,8 +669,8 @@ func (a *StandaloneAPIService) StandaloneDetailsExecute(r ApiStandaloneDetailsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -681,8 +680,8 @@ func (a *StandaloneAPIService) StandaloneDetailsExecute(r ApiStandaloneDetailsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -692,8 +691,8 @@ func (a *StandaloneAPIService) StandaloneDetailsExecute(r ApiStandaloneDetailsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -703,8 +702,8 @@ func (a *StandaloneAPIService) StandaloneDetailsExecute(r ApiStandaloneDetailsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -722,11 +721,11 @@ func (a *StandaloneAPIService) StandaloneDetailsExecute(r ApiStandaloneDetailsRe
 }
 
 type ApiStandaloneForPollerRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *StandaloneAPIService
-	limit      *int32
-	offset     *int32
-	projectId  *int32
+	limit *int32
+	offset *int32
+	projectId *int32
 }
 
 func (r ApiStandaloneForPollerRequest) Limit(limit int32) ApiStandaloneForPollerRequest {
@@ -751,25 +750,24 @@ func (r ApiStandaloneForPollerRequest) Execute() (*StandaloneVmsListForPoller, *
 /*
 StandaloneForPoller List all StandaloneVms for poller
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStandaloneForPollerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStandaloneForPollerRequest
 */
 func (a *StandaloneAPIService) StandaloneForPoller(ctx context.Context) ApiStandaloneForPollerRequest {
 	return ApiStandaloneForPollerRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return StandaloneVmsListForPoller
+//  @return StandaloneVmsListForPoller
 func (a *StandaloneAPIService) StandaloneForPollerExecute(r ApiStandaloneForPollerRequest) (*StandaloneVmsListForPoller, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *StandaloneVmsListForPoller
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *StandaloneVmsListForPoller
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StandaloneAPIService.StandaloneForPoller")
@@ -852,8 +850,8 @@ func (a *StandaloneAPIService) StandaloneForPollerExecute(r ApiStandaloneForPoll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -863,8 +861,8 @@ func (a *StandaloneAPIService) StandaloneForPollerExecute(r ApiStandaloneForPoll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -874,8 +872,8 @@ func (a *StandaloneAPIService) StandaloneForPollerExecute(r ApiStandaloneForPoll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -885,8 +883,8 @@ func (a *StandaloneAPIService) StandaloneForPollerExecute(r ApiStandaloneForPoll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -896,8 +894,8 @@ func (a *StandaloneAPIService) StandaloneForPollerExecute(r ApiStandaloneForPoll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -915,8 +913,8 @@ func (a *StandaloneAPIService) StandaloneForPollerExecute(r ApiStandaloneForPoll
 }
 
 type ApiStandaloneIpManagementRequest struct {
-	ctx                             context.Context
-	ApiService                      *StandaloneAPIService
+	ctx context.Context
+	ApiService *StandaloneAPIService
 	standAloneVmIpManagementCommand *StandAloneVmIpManagementCommand
 }
 
@@ -932,22 +930,22 @@ func (r ApiStandaloneIpManagementRequest) Execute() (*http.Response, error) {
 /*
 StandaloneIpManagement Enable/Disable stand alone public ip
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStandaloneIpManagementRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStandaloneIpManagementRequest
 */
 func (a *StandaloneAPIService) StandaloneIpManagement(ctx context.Context) ApiStandaloneIpManagementRequest {
 	return ApiStandaloneIpManagementRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *StandaloneAPIService) StandaloneIpManagementExecute(r ApiStandaloneIpManagementRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StandaloneAPIService.StandaloneIpManagement")
@@ -1023,8 +1021,8 @@ func (a *StandaloneAPIService) StandaloneIpManagementExecute(r ApiStandaloneIpMa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1034,8 +1032,8 @@ func (a *StandaloneAPIService) StandaloneIpManagementExecute(r ApiStandaloneIpMa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1045,8 +1043,8 @@ func (a *StandaloneAPIService) StandaloneIpManagementExecute(r ApiStandaloneIpMa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1056,8 +1054,8 @@ func (a *StandaloneAPIService) StandaloneIpManagementExecute(r ApiStandaloneIpMa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1067,8 +1065,8 @@ func (a *StandaloneAPIService) StandaloneIpManagementExecute(r ApiStandaloneIpMa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1077,24 +1075,24 @@ func (a *StandaloneAPIService) StandaloneIpManagementExecute(r ApiStandaloneIpMa
 }
 
 type ApiStandaloneListRequest struct {
-	ctx             context.Context
-	ApiService      *StandaloneAPIService
-	limit           *int32
-	offset          *int32
-	projectId       *int32
-	sortBy          *string
-	sortDirection   *string
-	search          *string
-	startRam        *float64
-	endRam          *float64
+	ctx context.Context
+	ApiService *StandaloneAPIService
+	limit *int32
+	offset *int32
+	projectId *int32
+	sortBy *string
+	sortDirection *string
+	search *string
+	startRam *float64
+	endRam *float64
 	startVolumeSize *int64
-	endVolumeSize   *int64
-	startCpu        *int32
-	endCpu          *int32
-	organizationId  *int32
-	id              *int32
-	searchId        *string
-	filterBy        *string
+	endVolumeSize *int64
+	startCpu *int32
+	endCpu *int32
+	organizationId *int32
+	id *int32
+	searchId *string
+	filterBy *string
 }
 
 func (r ApiStandaloneListRequest) Limit(limit int32) ApiStandaloneListRequest {
@@ -1184,25 +1182,24 @@ func (r ApiStandaloneListRequest) Execute() (*StandaloneVmsList, *http.Response,
 /*
 StandaloneList Method for StandaloneList
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStandaloneListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStandaloneListRequest
 */
 func (a *StandaloneAPIService) StandaloneList(ctx context.Context) ApiStandaloneListRequest {
 	return ApiStandaloneListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return StandaloneVmsList
+//  @return StandaloneVmsList
 func (a *StandaloneAPIService) StandaloneListExecute(r ApiStandaloneListRequest) (*StandaloneVmsList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *StandaloneVmsList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *StandaloneVmsList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StandaloneAPIService.StandaloneList")
@@ -1324,8 +1321,8 @@ func (a *StandaloneAPIService) StandaloneListExecute(r ApiStandaloneListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1335,8 +1332,8 @@ func (a *StandaloneAPIService) StandaloneListExecute(r ApiStandaloneListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1346,8 +1343,8 @@ func (a *StandaloneAPIService) StandaloneListExecute(r ApiStandaloneListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1357,8 +1354,8 @@ func (a *StandaloneAPIService) StandaloneListExecute(r ApiStandaloneListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1368,8 +1365,8 @@ func (a *StandaloneAPIService) StandaloneListExecute(r ApiStandaloneListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1387,9 +1384,9 @@ func (a *StandaloneAPIService) StandaloneListExecute(r ApiStandaloneListRequest)
 }
 
 type ApiStandaloneProjectDetailsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *StandaloneAPIService
-	projectId  int32
+	projectId int32
 }
 
 func (r ApiStandaloneProjectDetailsRequest) Execute() (*ProjectFullListDto, *http.Response, error) {
@@ -1399,27 +1396,26 @@ func (r ApiStandaloneProjectDetailsRequest) Execute() (*ProjectFullListDto, *htt
 /*
 StandaloneProjectDetails Retrieve details of the project by Id
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiStandaloneProjectDetailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiStandaloneProjectDetailsRequest
 */
 func (a *StandaloneAPIService) StandaloneProjectDetails(ctx context.Context, projectId int32) ApiStandaloneProjectDetailsRequest {
 	return ApiStandaloneProjectDetailsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ProjectFullListDto
+//  @return ProjectFullListDto
 func (a *StandaloneAPIService) StandaloneProjectDetailsExecute(r ApiStandaloneProjectDetailsRequest) (*ProjectFullListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ProjectFullListDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ProjectFullListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StandaloneAPIService.StandaloneProjectDetails")
@@ -1494,8 +1490,8 @@ func (a *StandaloneAPIService) StandaloneProjectDetailsExecute(r ApiStandalonePr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1505,8 +1501,8 @@ func (a *StandaloneAPIService) StandaloneProjectDetailsExecute(r ApiStandalonePr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1516,8 +1512,8 @@ func (a *StandaloneAPIService) StandaloneProjectDetailsExecute(r ApiStandalonePr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1527,8 +1523,8 @@ func (a *StandaloneAPIService) StandaloneProjectDetailsExecute(r ApiStandalonePr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1538,8 +1534,8 @@ func (a *StandaloneAPIService) StandaloneProjectDetailsExecute(r ApiStandalonePr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1557,8 +1553,8 @@ func (a *StandaloneAPIService) StandaloneProjectDetailsExecute(r ApiStandalonePr
 }
 
 type ApiStandalonePurgeRequest struct {
-	ctx                    context.Context
-	ApiService             *StandaloneAPIService
+	ctx context.Context
+	ApiService *StandaloneAPIService
 	purgeStandAloneCommand *PurgeStandAloneCommand
 }
 
@@ -1574,22 +1570,22 @@ func (r ApiStandalonePurgeRequest) Execute() (*http.Response, error) {
 /*
 StandalonePurge Purge vm
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStandalonePurgeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStandalonePurgeRequest
 */
 func (a *StandaloneAPIService) StandalonePurge(ctx context.Context) ApiStandalonePurgeRequest {
 	return ApiStandalonePurgeRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *StandaloneAPIService) StandalonePurgeExecute(r ApiStandalonePurgeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StandaloneAPIService.StandalonePurge")
@@ -1665,8 +1661,8 @@ func (a *StandaloneAPIService) StandalonePurgeExecute(r ApiStandalonePurgeReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1676,8 +1672,8 @@ func (a *StandaloneAPIService) StandalonePurgeExecute(r ApiStandalonePurgeReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1687,8 +1683,8 @@ func (a *StandaloneAPIService) StandalonePurgeExecute(r ApiStandalonePurgeReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1698,8 +1694,8 @@ func (a *StandaloneAPIService) StandalonePurgeExecute(r ApiStandalonePurgeReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1709,8 +1705,8 @@ func (a *StandaloneAPIService) StandalonePurgeExecute(r ApiStandalonePurgeReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1719,8 +1715,8 @@ func (a *StandaloneAPIService) StandalonePurgeExecute(r ApiStandalonePurgeReques
 }
 
 type ApiStandaloneRepairRequest struct {
-	ctx                       context.Context
-	ApiService                *StandaloneAPIService
+	ctx context.Context
+	ApiService *StandaloneAPIService
 	repairStandAloneVmCommand *RepairStandAloneVmCommand
 }
 
@@ -1736,22 +1732,22 @@ func (r ApiStandaloneRepairRequest) Execute() (*http.Response, error) {
 /*
 StandaloneRepair Repair vm
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStandaloneRepairRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStandaloneRepairRequest
 */
 func (a *StandaloneAPIService) StandaloneRepair(ctx context.Context) ApiStandaloneRepairRequest {
 	return ApiStandaloneRepairRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *StandaloneAPIService) StandaloneRepairExecute(r ApiStandaloneRepairRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StandaloneAPIService.StandaloneRepair")
@@ -1827,8 +1823,8 @@ func (a *StandaloneAPIService) StandaloneRepairExecute(r ApiStandaloneRepairRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1838,8 +1834,8 @@ func (a *StandaloneAPIService) StandaloneRepairExecute(r ApiStandaloneRepairRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1849,8 +1845,8 @@ func (a *StandaloneAPIService) StandaloneRepairExecute(r ApiStandaloneRepairRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1860,8 +1856,8 @@ func (a *StandaloneAPIService) StandaloneRepairExecute(r ApiStandaloneRepairRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1871,8 +1867,8 @@ func (a *StandaloneAPIService) StandaloneRepairExecute(r ApiStandaloneRepairRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1881,8 +1877,8 @@ func (a *StandaloneAPIService) StandaloneRepairExecute(r ApiStandaloneRepairRequ
 }
 
 type ApiStandaloneResetRequest struct {
-	ctx                            context.Context
-	ApiService                     *StandaloneAPIService
+	ctx context.Context
+	ApiService *StandaloneAPIService
 	resetStandAloneVmStatusCommand *ResetStandAloneVmStatusCommand
 }
 
@@ -1898,22 +1894,22 @@ func (r ApiStandaloneResetRequest) Execute() (*http.Response, error) {
 /*
 StandaloneReset Reset vm status
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStandaloneResetRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStandaloneResetRequest
 */
 func (a *StandaloneAPIService) StandaloneReset(ctx context.Context) ApiStandaloneResetRequest {
 	return ApiStandaloneResetRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *StandaloneAPIService) StandaloneResetExecute(r ApiStandaloneResetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StandaloneAPIService.StandaloneReset")
@@ -1989,8 +1985,8 @@ func (a *StandaloneAPIService) StandaloneResetExecute(r ApiStandaloneResetReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2000,8 +1996,8 @@ func (a *StandaloneAPIService) StandaloneResetExecute(r ApiStandaloneResetReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2011,8 +2007,8 @@ func (a *StandaloneAPIService) StandaloneResetExecute(r ApiStandaloneResetReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2022,8 +2018,8 @@ func (a *StandaloneAPIService) StandaloneResetExecute(r ApiStandaloneResetReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2033,8 +2029,8 @@ func (a *StandaloneAPIService) StandaloneResetExecute(r ApiStandaloneResetReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2043,8 +2039,8 @@ func (a *StandaloneAPIService) StandaloneResetExecute(r ApiStandaloneResetReques
 }
 
 type ApiStandaloneUpdateRequest struct {
-	ctx                       context.Context
-	ApiService                *StandaloneAPIService
+	ctx context.Context
+	ApiService *StandaloneAPIService
 	updateStandAloneVmCommand *UpdateStandAloneVmCommand
 }
 
@@ -2060,22 +2056,22 @@ func (r ApiStandaloneUpdateRequest) Execute() (*http.Response, error) {
 /*
 StandaloneUpdate Update vm
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStandaloneUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStandaloneUpdateRequest
 */
 func (a *StandaloneAPIService) StandaloneUpdate(ctx context.Context) ApiStandaloneUpdateRequest {
 	return ApiStandaloneUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *StandaloneAPIService) StandaloneUpdateExecute(r ApiStandaloneUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StandaloneAPIService.StandaloneUpdate")
@@ -2151,8 +2147,8 @@ func (a *StandaloneAPIService) StandaloneUpdateExecute(r ApiStandaloneUpdateRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2162,8 +2158,8 @@ func (a *StandaloneAPIService) StandaloneUpdateExecute(r ApiStandaloneUpdateRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2173,8 +2169,8 @@ func (a *StandaloneAPIService) StandaloneUpdateExecute(r ApiStandaloneUpdateRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2184,8 +2180,8 @@ func (a *StandaloneAPIService) StandaloneUpdateExecute(r ApiStandaloneUpdateRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2195,8 +2191,8 @@ func (a *StandaloneAPIService) StandaloneUpdateExecute(r ApiStandaloneUpdateRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2205,8 +2201,8 @@ func (a *StandaloneAPIService) StandaloneUpdateExecute(r ApiStandaloneUpdateRequ
 }
 
 type ApiStandaloneUpdateFlavorRequest struct {
-	ctx                             context.Context
-	ApiService                      *StandaloneAPIService
+	ctx context.Context
+	ApiService *StandaloneAPIService
 	updateStandAloneVmFlavorCommand *UpdateStandAloneVmFlavorCommand
 }
 
@@ -2222,22 +2218,22 @@ func (r ApiStandaloneUpdateFlavorRequest) Execute() (*http.Response, error) {
 /*
 StandaloneUpdateFlavor Update standalone vm flavor
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStandaloneUpdateFlavorRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStandaloneUpdateFlavorRequest
 */
 func (a *StandaloneAPIService) StandaloneUpdateFlavor(ctx context.Context) ApiStandaloneUpdateFlavorRequest {
 	return ApiStandaloneUpdateFlavorRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *StandaloneAPIService) StandaloneUpdateFlavorExecute(r ApiStandaloneUpdateFlavorRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StandaloneAPIService.StandaloneUpdateFlavor")
@@ -2313,8 +2309,8 @@ func (a *StandaloneAPIService) StandaloneUpdateFlavorExecute(r ApiStandaloneUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2324,8 +2320,8 @@ func (a *StandaloneAPIService) StandaloneUpdateFlavorExecute(r ApiStandaloneUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2335,8 +2331,8 @@ func (a *StandaloneAPIService) StandaloneUpdateFlavorExecute(r ApiStandaloneUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2346,8 +2342,8 @@ func (a *StandaloneAPIService) StandaloneUpdateFlavorExecute(r ApiStandaloneUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2357,8 +2353,8 @@ func (a *StandaloneAPIService) StandaloneUpdateFlavorExecute(r ApiStandaloneUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

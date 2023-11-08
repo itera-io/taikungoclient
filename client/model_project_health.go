@@ -21,12 +21,12 @@ type ProjectHealth string
 
 // List of ProjectHealth
 const (
-	PROJECTHEALTH_NULL      ProjectHealth = "Null"
-	PROJECTHEALTH_HEALTHY   ProjectHealth = "Healthy"
-	PROJECTHEALTH_NONE      ProjectHealth = "None"
+	PROJECTHEALTH_NULL ProjectHealth = "Null"
+	PROJECTHEALTH_HEALTHY ProjectHealth = "Healthy"
+	PROJECTHEALTH_NONE ProjectHealth = "None"
 	PROJECTHEALTH_UNHEALTHY ProjectHealth = "Unhealthy"
-	PROJECTHEALTH_UNKNOWN   ProjectHealth = "Unknown"
-	PROJECTHEALTH_WARNING   ProjectHealth = "Warning"
+	PROJECTHEALTH_UNKNOWN ProjectHealth = "Unknown"
+	PROJECTHEALTH_WARNING ProjectHealth = "Warning"
 )
 
 // All allowed values of ProjectHealth enum
@@ -117,3 +117,4 @@ func (v *NullableProjectHealth) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

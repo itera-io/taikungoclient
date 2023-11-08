@@ -20,7 +20,7 @@ var _ MappedNullable = &PrometheusLabelUpdateDto{}
 
 // PrometheusLabelUpdateDto struct for PrometheusLabelUpdateDto
 type PrometheusLabelUpdateDto struct {
-	Id    *int32         `json:"id,omitempty"`
+	Id *int32 `json:"id,omitempty"`
 	Label NullableString `json:"label,omitempty"`
 	Value NullableString `json:"value,omitempty"`
 }
@@ -106,7 +106,6 @@ func (o *PrometheusLabelUpdateDto) HasLabel() bool {
 func (o *PrometheusLabelUpdateDto) SetLabel(v string) {
 	o.Label.Set(&v)
 }
-
 // SetLabelNil sets the value for Label to be an explicit nil
 func (o *PrometheusLabelUpdateDto) SetLabelNil() {
 	o.Label.Set(nil)
@@ -149,7 +148,6 @@ func (o *PrometheusLabelUpdateDto) HasValue() bool {
 func (o *PrometheusLabelUpdateDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
-
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *PrometheusLabelUpdateDto) SetValueNil() {
 	o.Value.Set(nil)
@@ -161,7 +159,7 @@ func (o *PrometheusLabelUpdateDto) UnsetValue() {
 }
 
 func (o PrometheusLabelUpdateDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,3 +215,5 @@ func (v *NullablePrometheusLabelUpdateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

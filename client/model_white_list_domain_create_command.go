@@ -21,7 +21,7 @@ var _ MappedNullable = &WhiteListDomainCreateCommand{}
 // WhiteListDomainCreateCommand struct for WhiteListDomainCreateCommand
 type WhiteListDomainCreateCommand struct {
 	WhiteListDomains []WhiteListDomainCreateDto `json:"whiteListDomains,omitempty"`
-	PartnerId        NullableInt32              `json:"partnerId,omitempty"`
+	PartnerId NullableInt32 `json:"partnerId,omitempty"`
 }
 
 // NewWhiteListDomainCreateCommand instantiates a new WhiteListDomainCreateCommand object
@@ -106,7 +106,6 @@ func (o *WhiteListDomainCreateCommand) HasPartnerId() bool {
 func (o *WhiteListDomainCreateCommand) SetPartnerId(v int32) {
 	o.PartnerId.Set(&v)
 }
-
 // SetPartnerIdNil sets the value for PartnerId to be an explicit nil
 func (o *WhiteListDomainCreateCommand) SetPartnerIdNil() {
 	o.PartnerId.Set(nil)
@@ -118,7 +117,7 @@ func (o *WhiteListDomainCreateCommand) UnsetPartnerId() {
 }
 
 func (o WhiteListDomainCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -171,3 +170,5 @@ func (v *NullableWhiteListDomainCreateCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

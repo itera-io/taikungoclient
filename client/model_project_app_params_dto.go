@@ -20,7 +20,7 @@ var _ MappedNullable = &ProjectAppParamsDto{}
 
 // ProjectAppParamsDto struct for ProjectAppParamsDto
 type ProjectAppParamsDto struct {
-	Key   NullableString `json:"key,omitempty"`
+	Key NullableString `json:"key,omitempty"`
 	Value NullableString `json:"value,omitempty"`
 }
 
@@ -73,7 +73,6 @@ func (o *ProjectAppParamsDto) HasKey() bool {
 func (o *ProjectAppParamsDto) SetKey(v string) {
 	o.Key.Set(&v)
 }
-
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *ProjectAppParamsDto) SetKeyNil() {
 	o.Key.Set(nil)
@@ -116,7 +115,6 @@ func (o *ProjectAppParamsDto) HasValue() bool {
 func (o *ProjectAppParamsDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
-
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *ProjectAppParamsDto) SetValueNil() {
 	o.Value.Set(nil)
@@ -128,7 +126,7 @@ func (o *ProjectAppParamsDto) UnsetValue() {
 }
 
 func (o ProjectAppParamsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableProjectAppParamsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,9 +20,9 @@ var _ MappedNullable = &GroupedBillingInfo{}
 
 // GroupedBillingInfo struct for GroupedBillingInfo
 type GroupedBillingInfo struct {
-	Data        []GroupedBillings `json:"data,omitempty"`
-	ProjectId   *int32            `json:"projectId,omitempty"`
-	ProjectName NullableString    `json:"projectName,omitempty"`
+	Data []GroupedBillings `json:"data,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
 }
 
 // NewGroupedBillingInfo instantiates a new GroupedBillingInfo object
@@ -139,7 +139,6 @@ func (o *GroupedBillingInfo) HasProjectName() bool {
 func (o *GroupedBillingInfo) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *GroupedBillingInfo) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -151,7 +150,7 @@ func (o *GroupedBillingInfo) UnsetProjectName() {
 }
 
 func (o GroupedBillingInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -207,3 +206,5 @@ func (v *NullableGroupedBillingInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

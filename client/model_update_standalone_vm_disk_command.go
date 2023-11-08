@@ -20,7 +20,7 @@ var _ MappedNullable = &UpdateStandaloneVmDiskCommand{}
 
 // UpdateStandaloneVmDiskCommand struct for UpdateStandaloneVmDiskCommand
 type UpdateStandaloneVmDiskCommand struct {
-	Id   *int32 `json:"id,omitempty"`
+	Id *int32 `json:"id,omitempty"`
 	Size *int64 `json:"size,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *UpdateStandaloneVmDiskCommand) SetSize(v int64) {
 }
 
 func (o UpdateStandaloneVmDiskCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableUpdateStandaloneVmDiskCommand) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

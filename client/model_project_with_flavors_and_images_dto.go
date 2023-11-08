@@ -20,12 +20,12 @@ var _ MappedNullable = &ProjectWithFlavorsAndImagesDto{}
 
 // ProjectWithFlavorsAndImagesDto struct for ProjectWithFlavorsAndImagesDto
 type ProjectWithFlavorsAndImagesDto struct {
-	Id         *int32         `json:"id,omitempty"`
-	Name       NullableString `json:"name,omitempty"`
-	Flavors    []string       `json:"flavors,omitempty"`
-	Images     []string       `json:"images,omitempty"`
-	ImageNames []string       `json:"imageNames,omitempty"`
-	IsReady    *bool          `json:"isReady,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Flavors []string `json:"flavors,omitempty"`
+	Images []string `json:"images,omitempty"`
+	ImageNames []string `json:"imageNames,omitempty"`
+	IsReady *bool `json:"isReady,omitempty"`
 }
 
 // NewProjectWithFlavorsAndImagesDto instantiates a new ProjectWithFlavorsAndImagesDto object
@@ -109,7 +109,6 @@ func (o *ProjectWithFlavorsAndImagesDto) HasName() bool {
 func (o *ProjectWithFlavorsAndImagesDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectWithFlavorsAndImagesDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -252,7 +251,7 @@ func (o *ProjectWithFlavorsAndImagesDto) SetIsReady(v bool) {
 }
 
 func (o ProjectWithFlavorsAndImagesDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -317,3 +316,5 @@ func (v *NullableProjectWithFlavorsAndImagesDto) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

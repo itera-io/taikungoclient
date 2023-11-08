@@ -17,17 +17,18 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"os"
 	"strings"
+	"os"
 )
+
 
 // GoogleAPIService GoogleAPI service
 type GoogleAPIService service
 
 type ApiGooglecloudBillingAccountListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *GoogleAPIService
-	config     *os.File
+	config *os.File
 }
 
 func (r ApiGooglecloudBillingAccountListRequest) Config(config *os.File) ApiGooglecloudBillingAccountListRequest {
@@ -42,25 +43,24 @@ func (r ApiGooglecloudBillingAccountListRequest) Execute() ([]CommonStringBasedD
 /*
 GooglecloudBillingAccountList Method for GooglecloudBillingAccountList
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGooglecloudBillingAccountListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGooglecloudBillingAccountListRequest
 */
 func (a *GoogleAPIService) GooglecloudBillingAccountList(ctx context.Context) ApiGooglecloudBillingAccountListRequest {
 	return ApiGooglecloudBillingAccountListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []CommonStringBasedDropdownDto
+//  @return []CommonStringBasedDropdownDto
 func (a *GoogleAPIService) GooglecloudBillingAccountListExecute(r ApiGooglecloudBillingAccountListRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []CommonStringBasedDropdownDto
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GoogleAPIService.GooglecloudBillingAccountList")
@@ -92,10 +92,11 @@ func (a *GoogleAPIService) GooglecloudBillingAccountListExecute(r ApiGooglecloud
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	var configLocalVarFormFileName string
-	var configLocalVarFileName string
-	var configLocalVarFileBytes []byte
+	var configLocalVarFileName     string
+	var configLocalVarFileBytes    []byte
 
 	configLocalVarFormFileName = "config"
+
 
 	configLocalVarFile := r.config
 
@@ -150,8 +151,8 @@ func (a *GoogleAPIService) GooglecloudBillingAccountListExecute(r ApiGooglecloud
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -161,8 +162,8 @@ func (a *GoogleAPIService) GooglecloudBillingAccountListExecute(r ApiGooglecloud
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -172,8 +173,8 @@ func (a *GoogleAPIService) GooglecloudBillingAccountListExecute(r ApiGooglecloud
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -183,8 +184,8 @@ func (a *GoogleAPIService) GooglecloudBillingAccountListExecute(r ApiGooglecloud
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -194,8 +195,8 @@ func (a *GoogleAPIService) GooglecloudBillingAccountListExecute(r ApiGooglecloud
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -213,16 +214,16 @@ func (a *GoogleAPIService) GooglecloudBillingAccountListExecute(r ApiGooglecloud
 }
 
 type ApiGooglecloudCreateRequest struct {
-	ctx              context.Context
-	ApiService       *GoogleAPIService
-	importProject    *bool
-	azCount          *int32
-	name             *string
-	folderId         *string
+	ctx context.Context
+	ApiService *GoogleAPIService
+	importProject *bool
+	azCount *int32
+	name *string
+	folderId *string
 	billingAccountId *string
-	region           *string
-	organizationId   *int32
-	config           *os.File
+	region *string
+	organizationId *int32
+	config *os.File
 }
 
 func (r ApiGooglecloudCreateRequest) ImportProject(importProject bool) ApiGooglecloudCreateRequest {
@@ -272,25 +273,24 @@ func (r ApiGooglecloudCreateRequest) Execute() (*ApiResponse, *http.Response, er
 /*
 GooglecloudCreate Method for GooglecloudCreate
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGooglecloudCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGooglecloudCreateRequest
 */
 func (a *GoogleAPIService) GooglecloudCreate(ctx context.Context) ApiGooglecloudCreateRequest {
 	return ApiGooglecloudCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *GoogleAPIService) GooglecloudCreateExecute(r ApiGooglecloudCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GoogleAPIService.GooglecloudCreate")
@@ -345,10 +345,11 @@ func (a *GoogleAPIService) GooglecloudCreateExecute(r ApiGooglecloudCreateReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	var configLocalVarFormFileName string
-	var configLocalVarFileName string
-	var configLocalVarFileBytes []byte
+	var configLocalVarFileName     string
+	var configLocalVarFileBytes    []byte
 
 	configLocalVarFormFileName = "config"
+
 
 	configLocalVarFile := r.config
 
@@ -403,8 +404,8 @@ func (a *GoogleAPIService) GooglecloudCreateExecute(r ApiGooglecloudCreateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -414,8 +415,8 @@ func (a *GoogleAPIService) GooglecloudCreateExecute(r ApiGooglecloudCreateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -425,8 +426,8 @@ func (a *GoogleAPIService) GooglecloudCreateExecute(r ApiGooglecloudCreateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -436,8 +437,8 @@ func (a *GoogleAPIService) GooglecloudCreateExecute(r ApiGooglecloudCreateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -447,8 +448,8 @@ func (a *GoogleAPIService) GooglecloudCreateExecute(r ApiGooglecloudCreateReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -466,16 +467,16 @@ func (a *GoogleAPIService) GooglecloudCreateExecute(r ApiGooglecloudCreateReques
 }
 
 type ApiGooglecloudListRequest struct {
-	ctx            context.Context
-	ApiService     *GoogleAPIService
-	limit          *int32
-	offset         *int32
+	ctx context.Context
+	ApiService *GoogleAPIService
+	limit *int32
+	offset *int32
 	organizationId *int32
-	sortBy         *string
-	sortDirection  *string
-	search         *string
-	searchId       *string
-	id             *int32
+	sortBy *string
+	sortDirection *string
+	search *string
+	searchId *string
+	id *int32
 }
 
 func (r ApiGooglecloudListRequest) Limit(limit int32) ApiGooglecloudListRequest {
@@ -525,25 +526,24 @@ func (r ApiGooglecloudListRequest) Execute() (*GoogleCredentialList, *http.Respo
 /*
 GooglecloudList Retrieve list of google cloud credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGooglecloudListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGooglecloudListRequest
 */
 func (a *GoogleAPIService) GooglecloudList(ctx context.Context) ApiGooglecloudListRequest {
 	return ApiGooglecloudListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GoogleCredentialList
+//  @return GoogleCredentialList
 func (a *GoogleAPIService) GooglecloudListExecute(r ApiGooglecloudListRequest) (*GoogleCredentialList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GoogleCredentialList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GoogleCredentialList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GoogleAPIService.GooglecloudList")
@@ -641,8 +641,8 @@ func (a *GoogleAPIService) GooglecloudListExecute(r ApiGooglecloudListRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -652,8 +652,8 @@ func (a *GoogleAPIService) GooglecloudListExecute(r ApiGooglecloudListRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -663,8 +663,8 @@ func (a *GoogleAPIService) GooglecloudListExecute(r ApiGooglecloudListRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -674,8 +674,8 @@ func (a *GoogleAPIService) GooglecloudListExecute(r ApiGooglecloudListRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -685,8 +685,8 @@ func (a *GoogleAPIService) GooglecloudListExecute(r ApiGooglecloudListRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -704,9 +704,9 @@ func (a *GoogleAPIService) GooglecloudListExecute(r ApiGooglecloudListRequest) (
 }
 
 type ApiGooglecloudRegionListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *GoogleAPIService
-	file       *os.File
+	file *os.File
 }
 
 func (r ApiGooglecloudRegionListRequest) File(file *os.File) ApiGooglecloudRegionListRequest {
@@ -721,25 +721,24 @@ func (r ApiGooglecloudRegionListRequest) Execute() ([]string, *http.Response, er
 /*
 GooglecloudRegionList Method for GooglecloudRegionList
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGooglecloudRegionListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGooglecloudRegionListRequest
 */
 func (a *GoogleAPIService) GooglecloudRegionList(ctx context.Context) ApiGooglecloudRegionListRequest {
 	return ApiGooglecloudRegionListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *GoogleAPIService) GooglecloudRegionListExecute(r ApiGooglecloudRegionListRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GoogleAPIService.GooglecloudRegionList")
@@ -771,10 +770,11 @@ func (a *GoogleAPIService) GooglecloudRegionListExecute(r ApiGooglecloudRegionLi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	var fileLocalVarFormFileName string
-	var fileLocalVarFileName string
-	var fileLocalVarFileBytes []byte
+	var fileLocalVarFileName     string
+	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
+
 
 	fileLocalVarFile := r.file
 
@@ -829,8 +829,8 @@ func (a *GoogleAPIService) GooglecloudRegionListExecute(r ApiGooglecloudRegionLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -840,8 +840,8 @@ func (a *GoogleAPIService) GooglecloudRegionListExecute(r ApiGooglecloudRegionLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -851,8 +851,8 @@ func (a *GoogleAPIService) GooglecloudRegionListExecute(r ApiGooglecloudRegionLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -862,8 +862,8 @@ func (a *GoogleAPIService) GooglecloudRegionListExecute(r ApiGooglecloudRegionLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -873,8 +873,8 @@ func (a *GoogleAPIService) GooglecloudRegionListExecute(r ApiGooglecloudRegionLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -892,11 +892,11 @@ func (a *GoogleAPIService) GooglecloudRegionListExecute(r ApiGooglecloudRegionLi
 }
 
 type ApiGooglecloudZoneListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *GoogleAPIService
-	region     string
-	cloudId    *int32
-	config     *os.File
+	region string
+	cloudId *int32
+	config *os.File
 }
 
 func (r ApiGooglecloudZoneListRequest) CloudId(cloudId int32) ApiGooglecloudZoneListRequest {
@@ -916,27 +916,26 @@ func (r ApiGooglecloudZoneListRequest) Execute() (*AzResult, *http.Response, err
 /*
 GooglecloudZoneList Method for GooglecloudZoneList
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param region
-	@return ApiGooglecloudZoneListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param region
+ @return ApiGooglecloudZoneListRequest
 */
 func (a *GoogleAPIService) GooglecloudZoneList(ctx context.Context, region string) ApiGooglecloudZoneListRequest {
 	return ApiGooglecloudZoneListRequest{
 		ApiService: a,
-		ctx:        ctx,
-		region:     region,
+		ctx: ctx,
+		region: region,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AzResult
+//  @return AzResult
 func (a *GoogleAPIService) GooglecloudZoneListExecute(r ApiGooglecloudZoneListRequest) (*AzResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AzResult
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AzResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GoogleAPIService.GooglecloudZoneList")
@@ -972,10 +971,11 @@ func (a *GoogleAPIService) GooglecloudZoneListExecute(r ApiGooglecloudZoneListRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	var configLocalVarFormFileName string
-	var configLocalVarFileName string
-	var configLocalVarFileBytes []byte
+	var configLocalVarFileName     string
+	var configLocalVarFileBytes    []byte
 
 	configLocalVarFormFileName = "config"
+
 
 	configLocalVarFile := r.config
 
@@ -1030,8 +1030,8 @@ func (a *GoogleAPIService) GooglecloudZoneListExecute(r ApiGooglecloudZoneListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1041,8 +1041,8 @@ func (a *GoogleAPIService) GooglecloudZoneListExecute(r ApiGooglecloudZoneListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1052,8 +1052,8 @@ func (a *GoogleAPIService) GooglecloudZoneListExecute(r ApiGooglecloudZoneListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1063,8 +1063,8 @@ func (a *GoogleAPIService) GooglecloudZoneListExecute(r ApiGooglecloudZoneListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1074,8 +1074,8 @@ func (a *GoogleAPIService) GooglecloudZoneListExecute(r ApiGooglecloudZoneListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

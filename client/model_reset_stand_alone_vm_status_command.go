@@ -20,9 +20,9 @@ var _ MappedNullable = &ResetStandAloneVmStatusCommand{}
 
 // ResetStandAloneVmStatusCommand struct for ResetStandAloneVmStatusCommand
 type ResetStandAloneVmStatusCommand struct {
-	ProjectId *int32              `json:"projectId,omitempty"`
-	VmIds     []int32             `json:"vmIds,omitempty"`
-	Status    *StandAloneVmStatus `json:"status,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	VmIds []int32 `json:"vmIds,omitempty"`
+	Status *StandAloneVmStatus `json:"status,omitempty"`
 }
 
 // NewResetStandAloneVmStatusCommand instantiates a new ResetStandAloneVmStatusCommand object
@@ -140,7 +140,7 @@ func (o *ResetStandAloneVmStatusCommand) SetStatus(v StandAloneVmStatus) {
 }
 
 func (o ResetStandAloneVmStatusCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -196,3 +196,5 @@ func (v *NullableResetStandAloneVmStatusCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,8 +20,8 @@ var _ MappedNullable = &SlackConfigurationList{}
 
 // SlackConfigurationList struct for SlackConfigurationList
 type SlackConfigurationList struct {
-	Data       []SlackConfigurationDto `json:"data,omitempty"`
-	TotalCount *int32                  `json:"totalCount,omitempty"`
+	Data []SlackConfigurationDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewSlackConfigurationList instantiates a new SlackConfigurationList object
@@ -107,7 +107,7 @@ func (o *SlackConfigurationList) SetTotalCount(v int32) {
 }
 
 func (o SlackConfigurationList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableSlackConfigurationList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

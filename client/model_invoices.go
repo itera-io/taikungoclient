@@ -20,8 +20,8 @@ var _ MappedNullable = &Invoices{}
 
 // Invoices struct for Invoices
 type Invoices struct {
-	Data       []InvoiceListDto `json:"data,omitempty"`
-	TotalCount *int32           `json:"totalCount,omitempty"`
+	Data []InvoiceListDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewInvoices instantiates a new Invoices object
@@ -107,7 +107,7 @@ func (o *Invoices) SetTotalCount(v int32) {
 }
 
 func (o Invoices) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableInvoices) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

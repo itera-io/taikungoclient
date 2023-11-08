@@ -20,18 +20,18 @@ var _ MappedNullable = &CredentialsForProjectList{}
 
 // CredentialsForProjectList struct for CredentialsForProjectList
 type CredentialsForProjectList struct {
-	CloudType               *CloudType                         `json:"cloudType,omitempty"`
-	CloudCredentialRevision *int32                             `json:"cloudCredentialRevision,omitempty"`
-	BillingEnabled          *bool                              `json:"billingEnabled,omitempty"`
-	ContinentName           NullableString                     `json:"continentName,omitempty"`
-	RequiresVPN             *bool                              `json:"requiresVPN,omitempty"`
-	Openstack               *OpenstackCredentialsForProjectDto `json:"openstack,omitempty"`
-	Azure                   *AzureCredentialsForProjectDto     `json:"azure,omitempty"`
-	Aws                     *AwsCredentialsForProjectDto       `json:"aws,omitempty"`
-	Google                  *GoogleCredentialForProjectDto     `json:"google,omitempty"`
-	Tanzu                   *TanzuCredentialsForProjectDto     `json:"tanzu,omitempty"`
-	Proxmox                 *ProxmoxCredentialsForProjectDto   `json:"proxmox,omitempty"`
-	Openshift               *OpenshiftCredentialForProjectDto  `json:"openshift,omitempty"`
+	CloudType *CloudType `json:"cloudType,omitempty"`
+	CloudCredentialRevision *int32 `json:"cloudCredentialRevision,omitempty"`
+	BillingEnabled *bool `json:"billingEnabled,omitempty"`
+	ContinentName NullableString `json:"continentName,omitempty"`
+	RequiresVPN *bool `json:"requiresVPN,omitempty"`
+	Openstack *OpenstackCredentialsForProjectDto `json:"openstack,omitempty"`
+	Azure *AzureCredentialsForProjectDto `json:"azure,omitempty"`
+	Aws *AwsCredentialsForProjectDto `json:"aws,omitempty"`
+	Google *GoogleCredentialForProjectDto `json:"google,omitempty"`
+	Tanzu *TanzuCredentialsForProjectDto `json:"tanzu,omitempty"`
+	Proxmox *ProxmoxCredentialsForProjectDto `json:"proxmox,omitempty"`
+	Openshift *OpenshiftCredentialForProjectDto `json:"openshift,omitempty"`
 }
 
 // NewCredentialsForProjectList instantiates a new CredentialsForProjectList object
@@ -179,7 +179,6 @@ func (o *CredentialsForProjectList) HasContinentName() bool {
 func (o *CredentialsForProjectList) SetContinentName(v string) {
 	o.ContinentName.Set(&v)
 }
-
 // SetContinentNameNil sets the value for ContinentName to be an explicit nil
 func (o *CredentialsForProjectList) SetContinentNameNil() {
 	o.ContinentName.Set(nil)
@@ -447,7 +446,7 @@ func (o *CredentialsForProjectList) SetOpenshift(v OpenshiftCredentialForProject
 }
 
 func (o CredentialsForProjectList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -530,3 +529,5 @@ func (v *NullableCredentialsForProjectList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

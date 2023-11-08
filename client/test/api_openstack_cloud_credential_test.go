@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_OpenstackCloudCredentialAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_OpenstackCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test OpenstackCloudCredentialAPIService OpenstackCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.OpenstackCloudCredentialAPI.OpenstackCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_OpenstackCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test OpenstackCloudCredentialAPIService OpenstackList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.OpenstackCloudCredentialAPI.OpenstackList(context.Background()).Execute()
 
@@ -48,7 +48,7 @@ func Test_taikuncore_OpenstackCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test OpenstackCloudCredentialAPIService OpenstackNetworks", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.OpenstackCloudCredentialAPI.OpenstackNetworks(context.Background()).Execute()
 
@@ -60,7 +60,7 @@ func Test_taikuncore_OpenstackCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test OpenstackCloudCredentialAPIService OpenstackProjects", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.OpenstackCloudCredentialAPI.OpenstackProjects(context.Background()).Execute()
 
@@ -72,7 +72,7 @@ func Test_taikuncore_OpenstackCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test OpenstackCloudCredentialAPIService OpenstackQuotas", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.OpenstackCloudCredentialAPI.OpenstackQuotas(context.Background()).Execute()
 
@@ -84,7 +84,7 @@ func Test_taikuncore_OpenstackCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test OpenstackCloudCredentialAPIService OpenstackRegionList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.OpenstackCloudCredentialAPI.OpenstackRegionList(context.Background()).Execute()
 
@@ -96,7 +96,7 @@ func Test_taikuncore_OpenstackCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test OpenstackCloudCredentialAPIService OpenstackSubnet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.OpenstackCloudCredentialAPI.OpenstackSubnet(context.Background()).Execute()
 
@@ -108,7 +108,7 @@ func Test_taikuncore_OpenstackCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test OpenstackCloudCredentialAPIService OpenstackUpdate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.OpenstackCloudCredentialAPI.OpenstackUpdate(context.Background()).Execute()
 
@@ -119,7 +119,7 @@ func Test_taikuncore_OpenstackCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test OpenstackCloudCredentialAPIService OpenstackVolumes", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.OpenstackCloudCredentialAPI.OpenstackVolumes(context.Background()).Execute()
 
@@ -131,7 +131,7 @@ func Test_taikuncore_OpenstackCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test OpenstackCloudCredentialAPIService OpenstackZones", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.OpenstackCloudCredentialAPI.OpenstackZones(context.Background()).Execute()
 

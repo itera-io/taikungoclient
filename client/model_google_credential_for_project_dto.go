@@ -20,11 +20,11 @@ var _ MappedNullable = &GoogleCredentialForProjectDto{}
 
 // GoogleCredentialForProjectDto struct for GoogleCredentialForProjectDto
 type GoogleCredentialForProjectDto struct {
-	Config           NullableString `json:"config,omitempty"`
-	FolderId         NullableString `json:"folderId,omitempty"`
+	Config NullableString `json:"config,omitempty"`
+	FolderId NullableString `json:"folderId,omitempty"`
 	BillingAccountId NullableString `json:"billingAccountId,omitempty"`
-	Zone             NullableString `json:"zone,omitempty"`
-	Region           NullableString `json:"region,omitempty"`
+	Zone NullableString `json:"zone,omitempty"`
+	Region NullableString `json:"region,omitempty"`
 }
 
 // NewGoogleCredentialForProjectDto instantiates a new GoogleCredentialForProjectDto object
@@ -76,7 +76,6 @@ func (o *GoogleCredentialForProjectDto) HasConfig() bool {
 func (o *GoogleCredentialForProjectDto) SetConfig(v string) {
 	o.Config.Set(&v)
 }
-
 // SetConfigNil sets the value for Config to be an explicit nil
 func (o *GoogleCredentialForProjectDto) SetConfigNil() {
 	o.Config.Set(nil)
@@ -119,7 +118,6 @@ func (o *GoogleCredentialForProjectDto) HasFolderId() bool {
 func (o *GoogleCredentialForProjectDto) SetFolderId(v string) {
 	o.FolderId.Set(&v)
 }
-
 // SetFolderIdNil sets the value for FolderId to be an explicit nil
 func (o *GoogleCredentialForProjectDto) SetFolderIdNil() {
 	o.FolderId.Set(nil)
@@ -162,7 +160,6 @@ func (o *GoogleCredentialForProjectDto) HasBillingAccountId() bool {
 func (o *GoogleCredentialForProjectDto) SetBillingAccountId(v string) {
 	o.BillingAccountId.Set(&v)
 }
-
 // SetBillingAccountIdNil sets the value for BillingAccountId to be an explicit nil
 func (o *GoogleCredentialForProjectDto) SetBillingAccountIdNil() {
 	o.BillingAccountId.Set(nil)
@@ -205,7 +202,6 @@ func (o *GoogleCredentialForProjectDto) HasZone() bool {
 func (o *GoogleCredentialForProjectDto) SetZone(v string) {
 	o.Zone.Set(&v)
 }
-
 // SetZoneNil sets the value for Zone to be an explicit nil
 func (o *GoogleCredentialForProjectDto) SetZoneNil() {
 	o.Zone.Set(nil)
@@ -248,7 +244,6 @@ func (o *GoogleCredentialForProjectDto) HasRegion() bool {
 func (o *GoogleCredentialForProjectDto) SetRegion(v string) {
 	o.Region.Set(&v)
 }
-
 // SetRegionNil sets the value for Region to be an explicit nil
 func (o *GoogleCredentialForProjectDto) SetRegionNil() {
 	o.Region.Set(nil)
@@ -260,7 +255,7 @@ func (o *GoogleCredentialForProjectDto) UnsetRegion() {
 }
 
 func (o GoogleCredentialForProjectDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -322,3 +317,5 @@ func (v *NullableGoogleCredentialForProjectDto) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

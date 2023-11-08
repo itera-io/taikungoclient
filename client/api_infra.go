@@ -19,12 +19,13 @@ import (
 	"net/url"
 )
 
+
 // InfraAPIService InfraAPI service
 type InfraAPIService service
 
 type ApiInfraCreateRequest struct {
-	ctx                       context.Context
-	ApiService                *InfraAPIService
+	ctx context.Context
+	ApiService *InfraAPIService
 	createInfraProductCommand *CreateInfraProductCommand
 }
 
@@ -40,22 +41,22 @@ func (r ApiInfraCreateRequest) Execute() (*http.Response, error) {
 /*
 InfraCreate Create infra product
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiInfraCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiInfraCreateRequest
 */
 func (a *InfraAPIService) InfraCreate(ctx context.Context) ApiInfraCreateRequest {
 	return ApiInfraCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *InfraAPIService) InfraCreateExecute(r ApiInfraCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InfraAPIService.InfraCreate")
@@ -134,8 +135,8 @@ func (a *InfraAPIService) InfraCreateExecute(r ApiInfraCreateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -145,8 +146,8 @@ func (a *InfraAPIService) InfraCreateExecute(r ApiInfraCreateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -156,8 +157,8 @@ func (a *InfraAPIService) InfraCreateExecute(r ApiInfraCreateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -167,8 +168,8 @@ func (a *InfraAPIService) InfraCreateExecute(r ApiInfraCreateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -178,8 +179,8 @@ func (a *InfraAPIService) InfraCreateExecute(r ApiInfraCreateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -188,8 +189,8 @@ func (a *InfraAPIService) InfraCreateExecute(r ApiInfraCreateRequest) (*http.Res
 }
 
 type ApiInfraDetailsRequest struct {
-	ctx            context.Context
-	ApiService     *InfraAPIService
+	ctx context.Context
+	ApiService *InfraAPIService
 	organizationId *int32
 }
 
@@ -205,25 +206,24 @@ func (r ApiInfraDetailsRequest) Execute() (*OpenstackQuotaList, *http.Response, 
 /*
 InfraDetails Retrieve infra details
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiInfraDetailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiInfraDetailsRequest
 */
 func (a *InfraAPIService) InfraDetails(ctx context.Context) ApiInfraDetailsRequest {
 	return ApiInfraDetailsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return OpenstackQuotaList
+//  @return OpenstackQuotaList
 func (a *InfraAPIService) InfraDetailsExecute(r ApiInfraDetailsRequest) (*OpenstackQuotaList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *OpenstackQuotaList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *OpenstackQuotaList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InfraAPIService.InfraDetails")
@@ -309,7 +309,7 @@ func (a *InfraAPIService) InfraDetailsExecute(r ApiInfraDetailsRequest) (*Openst
 }
 
 type ApiInfraOrganizationsListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *InfraAPIService
 }
 
@@ -320,25 +320,24 @@ func (r ApiInfraOrganizationsListRequest) Execute() ([]InfraOrganizationsListDto
 /*
 InfraOrganizationsList Retrieve infra products list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiInfraOrganizationsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiInfraOrganizationsListRequest
 */
 func (a *InfraAPIService) InfraOrganizationsList(ctx context.Context) ApiInfraOrganizationsListRequest {
 	return ApiInfraOrganizationsListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []InfraOrganizationsListDto
+//  @return []InfraOrganizationsListDto
 func (a *InfraAPIService) InfraOrganizationsListExecute(r ApiInfraOrganizationsListRequest) ([]InfraOrganizationsListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []InfraOrganizationsListDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []InfraOrganizationsListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InfraAPIService.InfraOrganizationsList")
@@ -421,7 +420,7 @@ func (a *InfraAPIService) InfraOrganizationsListExecute(r ApiInfraOrganizationsL
 }
 
 type ApiInfraProductListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *InfraAPIService
 }
 
@@ -432,25 +431,24 @@ func (r ApiInfraProductListRequest) Execute() ([]InfraProductDto, *http.Response
 /*
 InfraProductList Retrieve infra products list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiInfraProductListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiInfraProductListRequest
 */
 func (a *InfraAPIService) InfraProductList(ctx context.Context) ApiInfraProductListRequest {
 	return ApiInfraProductListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []InfraProductDto
+//  @return []InfraProductDto
 func (a *InfraAPIService) InfraProductListExecute(r ApiInfraProductListRequest) ([]InfraProductDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []InfraProductDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []InfraProductDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InfraAPIService.InfraProductList")

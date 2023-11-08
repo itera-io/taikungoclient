@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // UserGroupAPIService UserGroupAPI service
 type UserGroupAPIService service
 
 type ApiUsergroupsBindProjectsGroupRequest struct {
-	ctx                                 context.Context
-	ApiService                          *UserGroupAPIService
+	ctx context.Context
+	ApiService *UserGroupAPIService
 	bindProjectGroupsToUserGroupCommand *BindProjectGroupsToUserGroupCommand
 }
 
@@ -41,22 +42,22 @@ func (r ApiUsergroupsBindProjectsGroupRequest) Execute() (*http.Response, error)
 /*
 UsergroupsBindProjectsGroup Bind project groups
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUsergroupsBindProjectsGroupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUsergroupsBindProjectsGroupRequest
 */
 func (a *UserGroupAPIService) UsergroupsBindProjectsGroup(ctx context.Context) ApiUsergroupsBindProjectsGroupRequest {
 	return ApiUsergroupsBindProjectsGroupRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UserGroupAPIService) UsergroupsBindProjectsGroupExecute(r ApiUsergroupsBindProjectsGroupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserGroupAPIService.UsergroupsBindProjectsGroup")
@@ -132,8 +133,8 @@ func (a *UserGroupAPIService) UsergroupsBindProjectsGroupExecute(r ApiUsergroups
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -143,8 +144,8 @@ func (a *UserGroupAPIService) UsergroupsBindProjectsGroupExecute(r ApiUsergroups
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -154,8 +155,8 @@ func (a *UserGroupAPIService) UsergroupsBindProjectsGroupExecute(r ApiUsergroups
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -165,8 +166,8 @@ func (a *UserGroupAPIService) UsergroupsBindProjectsGroupExecute(r ApiUsergroups
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -176,8 +177,8 @@ func (a *UserGroupAPIService) UsergroupsBindProjectsGroupExecute(r ApiUsergroups
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -186,8 +187,8 @@ func (a *UserGroupAPIService) UsergroupsBindProjectsGroupExecute(r ApiUsergroups
 }
 
 type ApiUsergroupsCreateRequest struct {
-	ctx                    context.Context
-	ApiService             *UserGroupAPIService
+	ctx context.Context
+	ApiService *UserGroupAPIService
 	createUserGroupCommand *CreateUserGroupCommand
 }
 
@@ -203,25 +204,24 @@ func (r ApiUsergroupsCreateRequest) Execute() (*ApiResponse, *http.Response, err
 /*
 UsergroupsCreate Add user groups
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUsergroupsCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUsergroupsCreateRequest
 */
 func (a *UserGroupAPIService) UsergroupsCreate(ctx context.Context) ApiUsergroupsCreateRequest {
 	return ApiUsergroupsCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *UserGroupAPIService) UsergroupsCreateExecute(r ApiUsergroupsCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserGroupAPIService.UsergroupsCreate")
@@ -297,8 +297,8 @@ func (a *UserGroupAPIService) UsergroupsCreateExecute(r ApiUsergroupsCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -308,8 +308,8 @@ func (a *UserGroupAPIService) UsergroupsCreateExecute(r ApiUsergroupsCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -319,8 +319,8 @@ func (a *UserGroupAPIService) UsergroupsCreateExecute(r ApiUsergroupsCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -330,8 +330,8 @@ func (a *UserGroupAPIService) UsergroupsCreateExecute(r ApiUsergroupsCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -341,8 +341,8 @@ func (a *UserGroupAPIService) UsergroupsCreateExecute(r ApiUsergroupsCreateReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -360,8 +360,8 @@ func (a *UserGroupAPIService) UsergroupsCreateExecute(r ApiUsergroupsCreateReque
 }
 
 type ApiUsergroupsDeleteRequest struct {
-	ctx                    context.Context
-	ApiService             *UserGroupAPIService
+	ctx context.Context
+	ApiService *UserGroupAPIService
 	deleteUserGroupCommand *DeleteUserGroupCommand
 }
 
@@ -377,22 +377,22 @@ func (r ApiUsergroupsDeleteRequest) Execute() (*http.Response, error) {
 /*
 UsergroupsDelete Remove user group(s)
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUsergroupsDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUsergroupsDeleteRequest
 */
 func (a *UserGroupAPIService) UsergroupsDelete(ctx context.Context) ApiUsergroupsDeleteRequest {
 	return ApiUsergroupsDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UserGroupAPIService) UsergroupsDeleteExecute(r ApiUsergroupsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserGroupAPIService.UsergroupsDelete")
@@ -471,8 +471,8 @@ func (a *UserGroupAPIService) UsergroupsDeleteExecute(r ApiUsergroupsDeleteReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -482,8 +482,8 @@ func (a *UserGroupAPIService) UsergroupsDeleteExecute(r ApiUsergroupsDeleteReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -493,8 +493,8 @@ func (a *UserGroupAPIService) UsergroupsDeleteExecute(r ApiUsergroupsDeleteReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -504,8 +504,8 @@ func (a *UserGroupAPIService) UsergroupsDeleteExecute(r ApiUsergroupsDeleteReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -515,8 +515,8 @@ func (a *UserGroupAPIService) UsergroupsDeleteExecute(r ApiUsergroupsDeleteReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -525,16 +525,16 @@ func (a *UserGroupAPIService) UsergroupsDeleteExecute(r ApiUsergroupsDeleteReque
 }
 
 type ApiUsergroupsListRequest struct {
-	ctx            context.Context
-	ApiService     *UserGroupAPIService
-	limit          *int32
-	offset         *int32
+	ctx context.Context
+	ApiService *UserGroupAPIService
+	limit *int32
+	offset *int32
 	organizationId *int32
-	sortBy         *string
-	sortDirection  *string
-	search         *string
-	searchId       *string
-	id             *int32
+	sortBy *string
+	sortDirection *string
+	search *string
+	searchId *string
+	id *int32
 }
 
 func (r ApiUsergroupsListRequest) Limit(limit int32) ApiUsergroupsListRequest {
@@ -584,25 +584,24 @@ func (r ApiUsergroupsListRequest) Execute() (*UserGroupList, *http.Response, err
 /*
 UsergroupsList Retrieve list of user groups
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUsergroupsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUsergroupsListRequest
 */
 func (a *UserGroupAPIService) UsergroupsList(ctx context.Context) ApiUsergroupsListRequest {
 	return ApiUsergroupsListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UserGroupList
+//  @return UserGroupList
 func (a *UserGroupAPIService) UsergroupsListExecute(r ApiUsergroupsListRequest) (*UserGroupList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserGroupList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UserGroupList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserGroupAPIService.UsergroupsList")
@@ -700,8 +699,8 @@ func (a *UserGroupAPIService) UsergroupsListExecute(r ApiUsergroupsListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -711,8 +710,8 @@ func (a *UserGroupAPIService) UsergroupsListExecute(r ApiUsergroupsListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -722,8 +721,8 @@ func (a *UserGroupAPIService) UsergroupsListExecute(r ApiUsergroupsListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -733,8 +732,8 @@ func (a *UserGroupAPIService) UsergroupsListExecute(r ApiUsergroupsListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -744,8 +743,8 @@ func (a *UserGroupAPIService) UsergroupsListExecute(r ApiUsergroupsListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -763,8 +762,8 @@ func (a *UserGroupAPIService) UsergroupsListExecute(r ApiUsergroupsListRequest) 
 }
 
 type ApiUsergroupsListByProjectGroupIdRequest struct {
-	ctx            context.Context
-	ApiService     *UserGroupAPIService
+	ctx context.Context
+	ApiService *UserGroupAPIService
 	projectGroupId int32
 }
 
@@ -775,27 +774,26 @@ func (r ApiUsergroupsListByProjectGroupIdRequest) Execute() ([]CommonDropdownDto
 /*
 UsergroupsListByProjectGroupId Dropdown list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectGroupId
-	@return ApiUsergroupsListByProjectGroupIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectGroupId
+ @return ApiUsergroupsListByProjectGroupIdRequest
 */
 func (a *UserGroupAPIService) UsergroupsListByProjectGroupId(ctx context.Context, projectGroupId int32) ApiUsergroupsListByProjectGroupIdRequest {
 	return ApiUsergroupsListByProjectGroupIdRequest{
-		ApiService:     a,
-		ctx:            ctx,
+		ApiService: a,
+		ctx: ctx,
 		projectGroupId: projectGroupId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []CommonDropdownDto
+//  @return []CommonDropdownDto
 func (a *UserGroupAPIService) UsergroupsListByProjectGroupIdExecute(r ApiUsergroupsListByProjectGroupIdRequest) ([]CommonDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []CommonDropdownDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []CommonDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserGroupAPIService.UsergroupsListByProjectGroupId")
@@ -870,8 +868,8 @@ func (a *UserGroupAPIService) UsergroupsListByProjectGroupIdExecute(r ApiUsergro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -881,8 +879,8 @@ func (a *UserGroupAPIService) UsergroupsListByProjectGroupIdExecute(r ApiUsergro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -892,8 +890,8 @@ func (a *UserGroupAPIService) UsergroupsListByProjectGroupIdExecute(r ApiUsergro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -903,8 +901,8 @@ func (a *UserGroupAPIService) UsergroupsListByProjectGroupIdExecute(r ApiUsergro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -914,8 +912,8 @@ func (a *UserGroupAPIService) UsergroupsListByProjectGroupIdExecute(r ApiUsergro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -933,9 +931,9 @@ func (a *UserGroupAPIService) UsergroupsListByProjectGroupIdExecute(r ApiUsergro
 }
 
 type ApiUsergroupsUpdateRequest struct {
-	ctx                context.Context
-	ApiService         *UserGroupAPIService
-	userGroupId        int32
+	ctx context.Context
+	ApiService *UserGroupAPIService
+	userGroupId int32
 	updateUserGroupDto *UpdateUserGroupDto
 }
 
@@ -951,14 +949,14 @@ func (r ApiUsergroupsUpdateRequest) Execute() (*http.Response, error) {
 /*
 UsergroupsUpdate Update user groups
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param userGroupId
-	@return ApiUsergroupsUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGroupId
+ @return ApiUsergroupsUpdateRequest
 */
 func (a *UserGroupAPIService) UsergroupsUpdate(ctx context.Context, userGroupId int32) ApiUsergroupsUpdateRequest {
 	return ApiUsergroupsUpdateRequest{
-		ApiService:  a,
-		ctx:         ctx,
+		ApiService: a,
+		ctx: ctx,
 		userGroupId: userGroupId,
 	}
 }
@@ -966,9 +964,9 @@ func (a *UserGroupAPIService) UsergroupsUpdate(ctx context.Context, userGroupId 
 // Execute executes the request
 func (a *UserGroupAPIService) UsergroupsUpdateExecute(r ApiUsergroupsUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserGroupAPIService.UsergroupsUpdate")
@@ -1045,8 +1043,8 @@ func (a *UserGroupAPIService) UsergroupsUpdateExecute(r ApiUsergroupsUpdateReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1056,8 +1054,8 @@ func (a *UserGroupAPIService) UsergroupsUpdateExecute(r ApiUsergroupsUpdateReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1067,8 +1065,8 @@ func (a *UserGroupAPIService) UsergroupsUpdateExecute(r ApiUsergroupsUpdateReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1078,8 +1076,8 @@ func (a *UserGroupAPIService) UsergroupsUpdateExecute(r ApiUsergroupsUpdateReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1089,8 +1087,8 @@ func (a *UserGroupAPIService) UsergroupsUpdateExecute(r ApiUsergroupsUpdateReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1099,9 +1097,9 @@ func (a *UserGroupAPIService) UsergroupsUpdateExecute(r ApiUsergroupsUpdateReque
 }
 
 type ApiUsergroupsUserGroupUsersRequest struct {
-	ctx            context.Context
-	ApiService     *UserGroupAPIService
-	userGroupId    int32
+	ctx context.Context
+	ApiService *UserGroupAPIService
+	userGroupId int32
 	organizationId *int32
 }
 
@@ -1117,27 +1115,26 @@ func (r ApiUsergroupsUserGroupUsersRequest) Execute() ([]UserListForUserGroupDto
 /*
 UsergroupsUserGroupUsers Dropdown list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param userGroupId
-	@return ApiUsergroupsUserGroupUsersRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGroupId
+ @return ApiUsergroupsUserGroupUsersRequest
 */
 func (a *UserGroupAPIService) UsergroupsUserGroupUsers(ctx context.Context, userGroupId int32) ApiUsergroupsUserGroupUsersRequest {
 	return ApiUsergroupsUserGroupUsersRequest{
-		ApiService:  a,
-		ctx:         ctx,
+		ApiService: a,
+		ctx: ctx,
 		userGroupId: userGroupId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []UserListForUserGroupDto
+//  @return []UserListForUserGroupDto
 func (a *UserGroupAPIService) UsergroupsUserGroupUsersExecute(r ApiUsergroupsUserGroupUsersRequest) ([]UserListForUserGroupDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []UserListForUserGroupDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []UserListForUserGroupDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserGroupAPIService.UsergroupsUserGroupUsers")
@@ -1216,8 +1213,8 @@ func (a *UserGroupAPIService) UsergroupsUserGroupUsersExecute(r ApiUsergroupsUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1227,8 +1224,8 @@ func (a *UserGroupAPIService) UsergroupsUserGroupUsersExecute(r ApiUsergroupsUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1238,8 +1235,8 @@ func (a *UserGroupAPIService) UsergroupsUserGroupUsersExecute(r ApiUsergroupsUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1249,8 +1246,8 @@ func (a *UserGroupAPIService) UsergroupsUserGroupUsersExecute(r ApiUsergroupsUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1260,8 +1257,8 @@ func (a *UserGroupAPIService) UsergroupsUserGroupUsersExecute(r ApiUsergroupsUse
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

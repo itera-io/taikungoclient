@@ -21,10 +21,10 @@ type DateFilter string
 
 // List of DateFilter
 const (
-	DATEFILTER_MONTHLY       DateFilter = "Monthly"
+	DATEFILTER_MONTHLY DateFilter = "Monthly"
 	DATEFILTER_THREE_MONTHLY DateFilter = "ThreeMonthly"
-	DATEFILTER_SIX_MONTHLY   DateFilter = "SixMonthly"
-	DATEFILTER_YEARLY        DateFilter = "Yearly"
+	DATEFILTER_SIX_MONTHLY DateFilter = "SixMonthly"
+	DATEFILTER_YEARLY DateFilter = "Yearly"
 )
 
 // All allowed values of DateFilter enum
@@ -113,3 +113,4 @@ func (v *NullableDateFilter) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

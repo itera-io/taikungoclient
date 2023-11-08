@@ -21,7 +21,7 @@ var _ MappedNullable = &BindOrganizationsCommand{}
 // BindOrganizationsCommand struct for BindOrganizationsCommand
 type BindOrganizationsCommand struct {
 	Organizations []OrganizationDto `json:"organizations,omitempty"`
-	PartnerId     NullableInt32     `json:"partnerId,omitempty"`
+	PartnerId NullableInt32 `json:"partnerId,omitempty"`
 }
 
 // NewBindOrganizationsCommand instantiates a new BindOrganizationsCommand object
@@ -106,7 +106,6 @@ func (o *BindOrganizationsCommand) HasPartnerId() bool {
 func (o *BindOrganizationsCommand) SetPartnerId(v int32) {
 	o.PartnerId.Set(&v)
 }
-
 // SetPartnerIdNil sets the value for PartnerId to be an explicit nil
 func (o *BindOrganizationsCommand) SetPartnerIdNil() {
 	o.PartnerId.Set(nil)
@@ -118,7 +117,7 @@ func (o *BindOrganizationsCommand) UnsetPartnerId() {
 }
 
 func (o BindOrganizationsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -171,3 +170,5 @@ func (v *NullableBindOrganizationsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_KubeConfigAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_KubeConfigAPIService(t *testing.T) {
 
 	t.Run("Test KubeConfigAPIService KubeconfigCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubeConfigAPI.KubeconfigCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_KubeConfigAPIService(t *testing.T) {
 
 	t.Run("Test KubeConfigAPIService KubeconfigDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubeConfigAPI.KubeconfigDelete(context.Background()).Execute()
 
@@ -47,7 +47,7 @@ func Test_taikuncore_KubeConfigAPIService(t *testing.T) {
 
 	t.Run("Test KubeConfigAPIService KubeconfigDeleteByProjectId", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubeConfigAPI.KubeconfigDeleteByProjectId(context.Background()).Execute()
 
@@ -58,7 +58,7 @@ func Test_taikuncore_KubeConfigAPIService(t *testing.T) {
 
 	t.Run("Test KubeConfigAPIService KubeconfigDownload", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubeConfigAPI.KubeconfigDownload(context.Background()).Execute()
 
@@ -70,7 +70,7 @@ func Test_taikuncore_KubeConfigAPIService(t *testing.T) {
 
 	t.Run("Test KubeConfigAPIService KubeconfigExport", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubeConfigAPI.KubeconfigExport(context.Background()).Execute()
 
@@ -82,7 +82,7 @@ func Test_taikuncore_KubeConfigAPIService(t *testing.T) {
 
 	t.Run("Test KubeConfigAPIService KubeconfigInteractiveShell", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubeConfigAPI.KubeconfigInteractiveShell(context.Background()).Execute()
 
@@ -94,7 +94,7 @@ func Test_taikuncore_KubeConfigAPIService(t *testing.T) {
 
 	t.Run("Test KubeConfigAPIService KubeconfigList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubeConfigAPI.KubeconfigList(context.Background()).Execute()
 

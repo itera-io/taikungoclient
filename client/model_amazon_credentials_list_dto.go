@@ -20,22 +20,22 @@ var _ MappedNullable = &AmazonCredentialsListDto{}
 
 // AmazonCredentialsListDto struct for AmazonCredentialsListDto
 type AmazonCredentialsListDto struct {
-	Id                     *int32              `json:"id,omitempty"`
-	ProjectCount           *int32              `json:"projectCount,omitempty"`
-	IsLocked               *bool               `json:"isLocked,omitempty"`
-	Name                   NullableString      `json:"name,omitempty"`
-	Region                 NullableString      `json:"region,omitempty"`
-	AvailabilityZones      []string            `json:"availabilityZones,omitempty"`
-	AvailabilityZonesCount *int32              `json:"availabilityZonesCount,omitempty"`
-	Projects               []CommonDropdownDto `json:"projects,omitempty"`
-	CreatedBy              NullableString      `json:"createdBy,omitempty"`
-	LastModified           NullableString      `json:"lastModified,omitempty"`
-	LastModifiedBy         NullableString      `json:"lastModifiedBy,omitempty"`
-	IsDefault              *bool               `json:"isDefault,omitempty"`
-	OrganizationId         *int32              `json:"organizationId,omitempty"`
-	OrganizationName       NullableString      `json:"organizationName,omitempty"`
-	CreatedAt              NullableString      `json:"createdAt,omitempty"`
-	ContinentName          NullableString      `json:"continentName,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	ProjectCount *int32 `json:"projectCount,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Region NullableString `json:"region,omitempty"`
+	AvailabilityZones []string `json:"availabilityZones,omitempty"`
+	AvailabilityZonesCount *int32 `json:"availabilityZonesCount,omitempty"`
+	Projects []CommonDropdownDto `json:"projects,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	ContinentName NullableString `json:"continentName,omitempty"`
 }
 
 // NewAmazonCredentialsListDto instantiates a new AmazonCredentialsListDto object
@@ -183,7 +183,6 @@ func (o *AmazonCredentialsListDto) HasName() bool {
 func (o *AmazonCredentialsListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AmazonCredentialsListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -226,7 +225,6 @@ func (o *AmazonCredentialsListDto) HasRegion() bool {
 func (o *AmazonCredentialsListDto) SetRegion(v string) {
 	o.Region.Set(&v)
 }
-
 // SetRegionNil sets the value for Region to be an explicit nil
 func (o *AmazonCredentialsListDto) SetRegionNil() {
 	o.Region.Set(nil)
@@ -367,7 +365,6 @@ func (o *AmazonCredentialsListDto) HasCreatedBy() bool {
 func (o *AmazonCredentialsListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *AmazonCredentialsListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -410,7 +407,6 @@ func (o *AmazonCredentialsListDto) HasLastModified() bool {
 func (o *AmazonCredentialsListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *AmazonCredentialsListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -453,7 +449,6 @@ func (o *AmazonCredentialsListDto) HasLastModifiedBy() bool {
 func (o *AmazonCredentialsListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *AmazonCredentialsListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -560,7 +555,6 @@ func (o *AmazonCredentialsListDto) HasOrganizationName() bool {
 func (o *AmazonCredentialsListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *AmazonCredentialsListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -603,7 +597,6 @@ func (o *AmazonCredentialsListDto) HasCreatedAt() bool {
 func (o *AmazonCredentialsListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *AmazonCredentialsListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -646,7 +639,6 @@ func (o *AmazonCredentialsListDto) HasContinentName() bool {
 func (o *AmazonCredentialsListDto) SetContinentName(v string) {
 	o.ContinentName.Set(&v)
 }
-
 // SetContinentNameNil sets the value for ContinentName to be an explicit nil
 func (o *AmazonCredentialsListDto) SetContinentNameNil() {
 	o.ContinentName.Set(nil)
@@ -658,7 +650,7 @@ func (o *AmazonCredentialsListDto) UnsetContinentName() {
 }
 
 func (o AmazonCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -753,3 +745,5 @@ func (v *NullableAmazonCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

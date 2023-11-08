@@ -20,7 +20,7 @@ var _ MappedNullable = &AzureDashboardCommand{}
 
 // AzureDashboardCommand struct for AzureDashboardCommand
 type AzureDashboardCommand struct {
-	CloudId  *int32         `json:"cloudId,omitempty"`
+	CloudId *int32 `json:"cloudId,omitempty"`
 	FilterBy NullableString `json:"filterBy,omitempty"`
 }
 
@@ -105,7 +105,6 @@ func (o *AzureDashboardCommand) HasFilterBy() bool {
 func (o *AzureDashboardCommand) SetFilterBy(v string) {
 	o.FilterBy.Set(&v)
 }
-
 // SetFilterByNil sets the value for FilterBy to be an explicit nil
 func (o *AzureDashboardCommand) SetFilterByNil() {
 	o.FilterBy.Set(nil)
@@ -117,7 +116,7 @@ func (o *AzureDashboardCommand) UnsetFilterBy() {
 }
 
 func (o AzureDashboardCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableAzureDashboardCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

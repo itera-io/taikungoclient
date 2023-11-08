@@ -20,11 +20,11 @@ var _ MappedNullable = &CloudCredentialsResponseData{}
 
 // CloudCredentialsResponseData struct for CloudCredentialsResponseData
 type CloudCredentialsResponseData struct {
-	Id               *int32         `json:"id,omitempty"`
-	Name             NullableString `json:"name,omitempty"`
-	OrganizationId   NullableInt32  `json:"organizationId,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
-	CloudType        NullableString `json:"cloudType,omitempty"`
+	CloudType NullableString `json:"cloudType,omitempty"`
 }
 
 // NewCloudCredentialsResponseData instantiates a new CloudCredentialsResponseData object
@@ -108,7 +108,6 @@ func (o *CloudCredentialsResponseData) HasName() bool {
 func (o *CloudCredentialsResponseData) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CloudCredentialsResponseData) SetNameNil() {
 	o.Name.Set(nil)
@@ -151,7 +150,6 @@ func (o *CloudCredentialsResponseData) HasOrganizationId() bool {
 func (o *CloudCredentialsResponseData) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CloudCredentialsResponseData) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -194,7 +192,6 @@ func (o *CloudCredentialsResponseData) HasOrganizationName() bool {
 func (o *CloudCredentialsResponseData) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *CloudCredentialsResponseData) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -237,7 +234,6 @@ func (o *CloudCredentialsResponseData) HasCloudType() bool {
 func (o *CloudCredentialsResponseData) SetCloudType(v string) {
 	o.CloudType.Set(&v)
 }
-
 // SetCloudTypeNil sets the value for CloudType to be an explicit nil
 func (o *CloudCredentialsResponseData) SetCloudTypeNil() {
 	o.CloudType.Set(nil)
@@ -249,7 +245,7 @@ func (o *CloudCredentialsResponseData) UnsetCloudType() {
 }
 
 func (o CloudCredentialsResponseData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -311,3 +307,5 @@ func (v *NullableCloudCredentialsResponseData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

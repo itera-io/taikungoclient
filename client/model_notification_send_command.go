@@ -20,10 +20,10 @@ var _ MappedNullable = &NotificationSendCommand{}
 
 // NotificationSendCommand struct for NotificationSendCommand
 type NotificationSendCommand struct {
-	ProjectId    *int32        `json:"projectId,omitempty"`
-	ActionType   *ActionType   `json:"actionType,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	ActionType *ActionType `json:"actionType,omitempty"`
 	ActionStatus *ActionStatus `json:"actionStatus,omitempty"`
-	ProjectType  *ProjectType  `json:"projectType,omitempty"`
+	ProjectType *ProjectType `json:"projectType,omitempty"`
 }
 
 // NewNotificationSendCommand instantiates a new NotificationSendCommand object
@@ -172,7 +172,7 @@ func (o *NotificationSendCommand) SetProjectType(v ProjectType) {
 }
 
 func (o NotificationSendCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -231,3 +231,5 @@ func (v *NullableNotificationSendCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

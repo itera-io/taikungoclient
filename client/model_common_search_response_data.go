@@ -20,9 +20,9 @@ var _ MappedNullable = &CommonSearchResponseData{}
 
 // CommonSearchResponseData struct for CommonSearchResponseData
 type CommonSearchResponseData struct {
-	Id               *int32         `json:"id,omitempty"`
-	Name             NullableString `json:"name,omitempty"`
-	OrganizationId   NullableInt32  `json:"organizationId,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 }
 
@@ -107,7 +107,6 @@ func (o *CommonSearchResponseData) HasName() bool {
 func (o *CommonSearchResponseData) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CommonSearchResponseData) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,7 +149,6 @@ func (o *CommonSearchResponseData) HasOrganizationId() bool {
 func (o *CommonSearchResponseData) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CommonSearchResponseData) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -193,7 +191,6 @@ func (o *CommonSearchResponseData) HasOrganizationName() bool {
 func (o *CommonSearchResponseData) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *CommonSearchResponseData) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -205,7 +202,7 @@ func (o *CommonSearchResponseData) UnsetOrganizationName() {
 }
 
 func (o CommonSearchResponseData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,3 +261,5 @@ func (v *NullableCommonSearchResponseData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

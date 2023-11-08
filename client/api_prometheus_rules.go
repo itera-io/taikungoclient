@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // PrometheusRulesAPIService PrometheusRulesAPI service
 type PrometheusRulesAPIService service
 
 type ApiPrometheusrulesBindOrganizationsRequest struct {
-	ctx                                context.Context
-	ApiService                         *PrometheusRulesAPIService
+	ctx context.Context
+	ApiService *PrometheusRulesAPIService
 	bindPrometheusOrganizationsCommand *BindPrometheusOrganizationsCommand
 }
 
@@ -41,22 +42,22 @@ func (r ApiPrometheusrulesBindOrganizationsRequest) Execute() (*http.Response, e
 /*
 PrometheusrulesBindOrganizations Bind organizations to prometheus rule
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPrometheusrulesBindOrganizationsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPrometheusrulesBindOrganizationsRequest
 */
 func (a *PrometheusRulesAPIService) PrometheusrulesBindOrganizations(ctx context.Context) ApiPrometheusrulesBindOrganizationsRequest {
 	return ApiPrometheusrulesBindOrganizationsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *PrometheusRulesAPIService) PrometheusrulesBindOrganizationsExecute(r ApiPrometheusrulesBindOrganizationsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrometheusRulesAPIService.PrometheusrulesBindOrganizations")
@@ -132,8 +133,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesBindOrganizationsExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -143,8 +144,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesBindOrganizationsExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -154,8 +155,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesBindOrganizationsExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -165,8 +166,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesBindOrganizationsExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -176,8 +177,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesBindOrganizationsExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -186,8 +187,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesBindOrganizationsExecute(r Ap
 }
 
 type ApiPrometheusrulesCreateRequest struct {
-	ctx               context.Context
-	ApiService        *PrometheusRulesAPIService
+	ctx context.Context
+	ApiService *PrometheusRulesAPIService
 	ruleCreateCommand *RuleCreateCommand
 }
 
@@ -203,25 +204,24 @@ func (r ApiPrometheusrulesCreateRequest) Execute() (*ApiResponse, *http.Response
 /*
 PrometheusrulesCreate Add prometheus rule
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPrometheusrulesCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPrometheusrulesCreateRequest
 */
 func (a *PrometheusRulesAPIService) PrometheusrulesCreate(ctx context.Context) ApiPrometheusrulesCreateRequest {
 	return ApiPrometheusrulesCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *PrometheusRulesAPIService) PrometheusrulesCreateExecute(r ApiPrometheusrulesCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrometheusRulesAPIService.PrometheusrulesCreate")
@@ -297,8 +297,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesCreateExecute(r ApiPrometheus
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -308,8 +308,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesCreateExecute(r ApiPrometheus
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -319,8 +319,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesCreateExecute(r ApiPrometheus
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -330,8 +330,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesCreateExecute(r ApiPrometheus
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -341,8 +341,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesCreateExecute(r ApiPrometheus
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -360,9 +360,9 @@ func (a *PrometheusRulesAPIService) PrometheusrulesCreateExecute(r ApiPrometheus
 }
 
 type ApiPrometheusrulesDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *PrometheusRulesAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiPrometheusrulesDeleteRequest) Execute() (*http.Response, error) {
@@ -372,24 +372,24 @@ func (r ApiPrometheusrulesDeleteRequest) Execute() (*http.Response, error) {
 /*
 PrometheusrulesDelete Remove prometheus rule
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiPrometheusrulesDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPrometheusrulesDeleteRequest
 */
 func (a *PrometheusRulesAPIService) PrometheusrulesDelete(ctx context.Context, id int32) ApiPrometheusrulesDeleteRequest {
 	return ApiPrometheusrulesDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *PrometheusRulesAPIService) PrometheusrulesDeleteExecute(r ApiPrometheusrulesDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrometheusRulesAPIService.PrometheusrulesDelete")
@@ -464,8 +464,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesDeleteExecute(r ApiPrometheus
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -475,8 +475,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesDeleteExecute(r ApiPrometheus
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -486,8 +486,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesDeleteExecute(r ApiPrometheus
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -497,8 +497,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesDeleteExecute(r ApiPrometheus
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -508,8 +508,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesDeleteExecute(r ApiPrometheus
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -518,8 +518,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesDeleteExecute(r ApiPrometheus
 }
 
 type ApiPrometheusrulesDetailsRequest struct {
-	ctx            context.Context
-	ApiService     *PrometheusRulesAPIService
+	ctx context.Context
+	ApiService *PrometheusRulesAPIService
 	organizationId *int32
 }
 
@@ -535,25 +535,24 @@ func (r ApiPrometheusrulesDetailsRequest) Execute() ([]CommonDropdownIsBoundDto,
 /*
 PrometheusrulesDetails Retrieve all prometheus rules with detailed info
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPrometheusrulesDetailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPrometheusrulesDetailsRequest
 */
 func (a *PrometheusRulesAPIService) PrometheusrulesDetails(ctx context.Context) ApiPrometheusrulesDetailsRequest {
 	return ApiPrometheusrulesDetailsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []CommonDropdownIsBoundDto
+//  @return []CommonDropdownIsBoundDto
 func (a *PrometheusRulesAPIService) PrometheusrulesDetailsExecute(r ApiPrometheusrulesDetailsRequest) ([]CommonDropdownIsBoundDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []CommonDropdownIsBoundDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []CommonDropdownIsBoundDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrometheusRulesAPIService.PrometheusrulesDetails")
@@ -630,8 +629,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesDetailsExecute(r ApiPrometheu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -641,8 +640,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesDetailsExecute(r ApiPrometheu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -652,8 +651,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesDetailsExecute(r ApiPrometheu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -663,8 +662,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesDetailsExecute(r ApiPrometheu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -674,8 +673,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesDetailsExecute(r ApiPrometheu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -693,16 +692,16 @@ func (a *PrometheusRulesAPIService) PrometheusrulesDetailsExecute(r ApiPrometheu
 }
 
 type ApiPrometheusrulesListRequest struct {
-	ctx           context.Context
-	ApiService    *PrometheusRulesAPIService
-	limit         *int32
-	offset        *int32
-	partnerId     *int32
-	sortBy        *string
+	ctx context.Context
+	ApiService *PrometheusRulesAPIService
+	limit *int32
+	offset *int32
+	partnerId *int32
+	sortBy *string
 	sortDirection *string
-	search        *string
-	searchId      *string
-	id            *int32
+	search *string
+	searchId *string
+	id *int32
 }
 
 func (r ApiPrometheusrulesListRequest) Limit(limit int32) ApiPrometheusrulesListRequest {
@@ -752,25 +751,24 @@ func (r ApiPrometheusrulesListRequest) Execute() (*PrometheusRulesList, *http.Re
 /*
 PrometheusrulesList Retrieve a list of prometheus rules
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPrometheusrulesListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPrometheusrulesListRequest
 */
 func (a *PrometheusRulesAPIService) PrometheusrulesList(ctx context.Context) ApiPrometheusrulesListRequest {
 	return ApiPrometheusrulesListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return PrometheusRulesList
+//  @return PrometheusRulesList
 func (a *PrometheusRulesAPIService) PrometheusrulesListExecute(r ApiPrometheusrulesListRequest) (*PrometheusRulesList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PrometheusRulesList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PrometheusRulesList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrometheusRulesAPIService.PrometheusrulesList")
@@ -868,8 +866,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesListExecute(r ApiPrometheusru
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -879,8 +877,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesListExecute(r ApiPrometheusru
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -890,8 +888,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesListExecute(r ApiPrometheusru
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -901,8 +899,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesListExecute(r ApiPrometheusru
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -912,8 +910,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesListExecute(r ApiPrometheusru
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -931,9 +929,9 @@ func (a *PrometheusRulesAPIService) PrometheusrulesListExecute(r ApiPrometheusru
 }
 
 type ApiPrometheusrulesUpdateRequest struct {
-	ctx              context.Context
-	ApiService       *PrometheusRulesAPIService
-	id               int32
+	ctx context.Context
+	ApiService *PrometheusRulesAPIService
+	id int32
 	ruleForUpdateDto *RuleForUpdateDto
 }
 
@@ -949,24 +947,24 @@ func (r ApiPrometheusrulesUpdateRequest) Execute() (*http.Response, error) {
 /*
 PrometheusrulesUpdate Edit prometheus rule
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiPrometheusrulesUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPrometheusrulesUpdateRequest
 */
 func (a *PrometheusRulesAPIService) PrometheusrulesUpdate(ctx context.Context, id int32) ApiPrometheusrulesUpdateRequest {
 	return ApiPrometheusrulesUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *PrometheusRulesAPIService) PrometheusrulesUpdateExecute(r ApiPrometheusrulesUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrometheusRulesAPIService.PrometheusrulesUpdate")
@@ -1043,8 +1041,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesUpdateExecute(r ApiPrometheus
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1054,8 +1052,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesUpdateExecute(r ApiPrometheus
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1065,8 +1063,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesUpdateExecute(r ApiPrometheus
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1076,8 +1074,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesUpdateExecute(r ApiPrometheus
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1087,8 +1085,8 @@ func (a *PrometheusRulesAPIService) PrometheusrulesUpdateExecute(r ApiPrometheus
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

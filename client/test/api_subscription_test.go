@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_SubscriptionAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_SubscriptionAPIService(t *testing.T) {
 
 	t.Run("Test SubscriptionAPIService SubscriptionBind", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SubscriptionAPI.SubscriptionBind(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_SubscriptionAPIService(t *testing.T) {
 
 	t.Run("Test SubscriptionAPIService SubscriptionBoundList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SubscriptionAPI.SubscriptionBoundList(context.Background()).Execute()
 
@@ -48,7 +48,7 @@ func Test_taikuncore_SubscriptionAPIService(t *testing.T) {
 
 	t.Run("Test SubscriptionAPIService SubscriptionDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.SubscriptionAPI.SubscriptionDelete(context.Background()).Execute()
 
@@ -59,7 +59,7 @@ func Test_taikuncore_SubscriptionAPIService(t *testing.T) {
 
 	t.Run("Test SubscriptionAPIService SubscriptionList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SubscriptionAPI.SubscriptionList(context.Background()).Execute()
 
@@ -71,7 +71,7 @@ func Test_taikuncore_SubscriptionAPIService(t *testing.T) {
 
 	t.Run("Test SubscriptionAPIService SubscriptionPublic", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SubscriptionAPI.SubscriptionPublic(context.Background()).Execute()
 
@@ -83,7 +83,7 @@ func Test_taikuncore_SubscriptionAPIService(t *testing.T) {
 
 	t.Run("Test SubscriptionAPIService SubscriptionSubscription", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.SubscriptionAPI.SubscriptionSubscription(context.Background()).Execute()
 
@@ -94,7 +94,7 @@ func Test_taikuncore_SubscriptionAPIService(t *testing.T) {
 
 	t.Run("Test SubscriptionAPIService SubscriptionUpdate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.SubscriptionAPI.SubscriptionUpdate(context.Background()).Execute()
 

@@ -20,8 +20,8 @@ var _ MappedNullable = &BindProjectsToCatalogCommand{}
 
 // BindProjectsToCatalogCommand struct for BindProjectsToCatalogCommand
 type BindProjectsToCatalogCommand struct {
-	Projects  []UpdateCatalogDto `json:"projects,omitempty"`
-	CatalogId *int32             `json:"catalogId,omitempty"`
+	Projects []UpdateCatalogDto `json:"projects,omitempty"`
+	CatalogId *int32 `json:"catalogId,omitempty"`
 }
 
 // NewBindProjectsToCatalogCommand instantiates a new BindProjectsToCatalogCommand object
@@ -107,7 +107,7 @@ func (o *BindProjectsToCatalogCommand) SetCatalogId(v int32) {
 }
 
 func (o BindProjectsToCatalogCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableBindProjectsToCatalogCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,9 +20,9 @@ var _ MappedNullable = &BillingInfo{}
 
 // BillingInfo struct for BillingInfo
 type BillingInfo struct {
-	Data       []BillingSummaryDto `json:"data,omitempty"`
-	TotalTcu   *float64            `json:"totalTcu,omitempty"`
-	TotalCount *int32              `json:"totalCount,omitempty"`
+	Data []BillingSummaryDto `json:"data,omitempty"`
+	TotalTcu *float64 `json:"totalTcu,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewBillingInfo instantiates a new BillingInfo object
@@ -140,7 +140,7 @@ func (o *BillingInfo) SetTotalCount(v int32) {
 }
 
 func (o BillingInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -196,3 +196,5 @@ func (v *NullableBillingInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

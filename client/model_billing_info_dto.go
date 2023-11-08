@@ -20,12 +20,12 @@ var _ MappedNullable = &BillingInfoDto{}
 
 // BillingInfoDto struct for BillingInfoDto
 type BillingInfoDto struct {
-	Country      NullableString `json:"country,omitempty"`
-	VatNumber    NullableString `json:"vatNumber,omitempty"`
-	LegalName    NullableString `json:"legalName,omitempty"`
-	City         NullableString `json:"city,omitempty"`
+	Country NullableString `json:"country,omitempty"`
+	VatNumber NullableString `json:"vatNumber,omitempty"`
+	LegalName NullableString `json:"legalName,omitempty"`
+	City NullableString `json:"city,omitempty"`
 	BillingEmail NullableString `json:"billingEmail,omitempty"`
-	Address      NullableString `json:"address,omitempty"`
+	Address NullableString `json:"address,omitempty"`
 }
 
 // NewBillingInfoDto instantiates a new BillingInfoDto object
@@ -77,7 +77,6 @@ func (o *BillingInfoDto) HasCountry() bool {
 func (o *BillingInfoDto) SetCountry(v string) {
 	o.Country.Set(&v)
 }
-
 // SetCountryNil sets the value for Country to be an explicit nil
 func (o *BillingInfoDto) SetCountryNil() {
 	o.Country.Set(nil)
@@ -120,7 +119,6 @@ func (o *BillingInfoDto) HasVatNumber() bool {
 func (o *BillingInfoDto) SetVatNumber(v string) {
 	o.VatNumber.Set(&v)
 }
-
 // SetVatNumberNil sets the value for VatNumber to be an explicit nil
 func (o *BillingInfoDto) SetVatNumberNil() {
 	o.VatNumber.Set(nil)
@@ -163,7 +161,6 @@ func (o *BillingInfoDto) HasLegalName() bool {
 func (o *BillingInfoDto) SetLegalName(v string) {
 	o.LegalName.Set(&v)
 }
-
 // SetLegalNameNil sets the value for LegalName to be an explicit nil
 func (o *BillingInfoDto) SetLegalNameNil() {
 	o.LegalName.Set(nil)
@@ -206,7 +203,6 @@ func (o *BillingInfoDto) HasCity() bool {
 func (o *BillingInfoDto) SetCity(v string) {
 	o.City.Set(&v)
 }
-
 // SetCityNil sets the value for City to be an explicit nil
 func (o *BillingInfoDto) SetCityNil() {
 	o.City.Set(nil)
@@ -249,7 +245,6 @@ func (o *BillingInfoDto) HasBillingEmail() bool {
 func (o *BillingInfoDto) SetBillingEmail(v string) {
 	o.BillingEmail.Set(&v)
 }
-
 // SetBillingEmailNil sets the value for BillingEmail to be an explicit nil
 func (o *BillingInfoDto) SetBillingEmailNil() {
 	o.BillingEmail.Set(nil)
@@ -292,7 +287,6 @@ func (o *BillingInfoDto) HasAddress() bool {
 func (o *BillingInfoDto) SetAddress(v string) {
 	o.Address.Set(&v)
 }
-
 // SetAddressNil sets the value for Address to be an explicit nil
 func (o *BillingInfoDto) SetAddressNil() {
 	o.Address.Set(nil)
@@ -304,7 +298,7 @@ func (o *BillingInfoDto) UnsetAddress() {
 }
 
 func (o BillingInfoDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -369,3 +363,5 @@ func (v *NullableBillingInfoDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

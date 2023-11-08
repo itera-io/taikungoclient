@@ -21,8 +21,8 @@ type ProjectDetailsErrorType string
 
 // List of ProjectDetailsErrorType
 const (
-	PROJECTDETAILSERRORTYPE_DANGER  ProjectDetailsErrorType = "danger"
-	PROJECTDETAILSERRORTYPE_INFO    ProjectDetailsErrorType = "info"
+	PROJECTDETAILSERRORTYPE_DANGER ProjectDetailsErrorType = "danger"
+	PROJECTDETAILSERRORTYPE_INFO ProjectDetailsErrorType = "info"
 	PROJECTDETAILSERRORTYPE_WARNING ProjectDetailsErrorType = "warning"
 )
 
@@ -111,3 +111,4 @@ func (v *NullableProjectDetailsErrorType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

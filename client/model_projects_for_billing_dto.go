@@ -21,15 +21,15 @@ var _ MappedNullable = &ProjectsForBillingDto{}
 
 // ProjectsForBillingDto struct for ProjectsForBillingDto
 type ProjectsForBillingDto struct {
-	Id               *int32                       `json:"id,omitempty"`
-	Name             NullableString               `json:"name,omitempty"`
-	CreatedAt        NullableTime                 `json:"createdAt,omitempty"`
-	BillingStartDate NullableTime                 `json:"billingStartDate,omitempty"`
-	OrganizationName NullableString               `json:"organizationName,omitempty"`
-	Price            *float64                     `json:"price,omitempty"`
-	Servers          []ServersForBillingDto       `json:"servers,omitempty"`
-	StandaloneVms    []StandaloneVmsForBillingDto `json:"standaloneVms,omitempty"`
-	BillingEnabled   *bool                        `json:"billingEnabled,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	CreatedAt NullableTime `json:"createdAt,omitempty"`
+	BillingStartDate NullableTime `json:"billingStartDate,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	Price *float64 `json:"price,omitempty"`
+	Servers []ServersForBillingDto `json:"servers,omitempty"`
+	StandaloneVms []StandaloneVmsForBillingDto `json:"standaloneVms,omitempty"`
+	BillingEnabled *bool `json:"billingEnabled,omitempty"`
 }
 
 // NewProjectsForBillingDto instantiates a new ProjectsForBillingDto object
@@ -113,7 +113,6 @@ func (o *ProjectsForBillingDto) HasName() bool {
 func (o *ProjectsForBillingDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectsForBillingDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -156,7 +155,6 @@ func (o *ProjectsForBillingDto) HasCreatedAt() bool {
 func (o *ProjectsForBillingDto) SetCreatedAt(v time.Time) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *ProjectsForBillingDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -199,7 +197,6 @@ func (o *ProjectsForBillingDto) HasBillingStartDate() bool {
 func (o *ProjectsForBillingDto) SetBillingStartDate(v time.Time) {
 	o.BillingStartDate.Set(&v)
 }
-
 // SetBillingStartDateNil sets the value for BillingStartDate to be an explicit nil
 func (o *ProjectsForBillingDto) SetBillingStartDateNil() {
 	o.BillingStartDate.Set(nil)
@@ -242,7 +239,6 @@ func (o *ProjectsForBillingDto) HasOrganizationName() bool {
 func (o *ProjectsForBillingDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *ProjectsForBillingDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -384,7 +380,7 @@ func (o *ProjectsForBillingDto) SetBillingEnabled(v bool) {
 }
 
 func (o ProjectsForBillingDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -458,3 +454,5 @@ func (v *NullableProjectsForBillingDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

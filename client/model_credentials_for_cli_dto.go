@@ -20,12 +20,12 @@ var _ MappedNullable = &CredentialsForCliDto{}
 
 // CredentialsForCliDto struct for CredentialsForCliDto
 type CredentialsForCliDto struct {
-	Id                  *int32         `json:"id,omitempty"`
+	Id *int32 `json:"id,omitempty"`
 	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
-	CloudType           NullableString `json:"cloudType,omitempty"`
-	OrganizationId      *int32         `json:"organizationId,omitempty"`
-	OrganizationName    NullableString `json:"organizationName,omitempty"`
-	PartnerName         NullableString `json:"partnerName,omitempty"`
+	CloudType NullableString `json:"cloudType,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	PartnerName NullableString `json:"partnerName,omitempty"`
 }
 
 // NewCredentialsForCliDto instantiates a new CredentialsForCliDto object
@@ -109,7 +109,6 @@ func (o *CredentialsForCliDto) HasCloudCredentialName() bool {
 func (o *CredentialsForCliDto) SetCloudCredentialName(v string) {
 	o.CloudCredentialName.Set(&v)
 }
-
 // SetCloudCredentialNameNil sets the value for CloudCredentialName to be an explicit nil
 func (o *CredentialsForCliDto) SetCloudCredentialNameNil() {
 	o.CloudCredentialName.Set(nil)
@@ -152,7 +151,6 @@ func (o *CredentialsForCliDto) HasCloudType() bool {
 func (o *CredentialsForCliDto) SetCloudType(v string) {
 	o.CloudType.Set(&v)
 }
-
 // SetCloudTypeNil sets the value for CloudType to be an explicit nil
 func (o *CredentialsForCliDto) SetCloudTypeNil() {
 	o.CloudType.Set(nil)
@@ -227,7 +225,6 @@ func (o *CredentialsForCliDto) HasOrganizationName() bool {
 func (o *CredentialsForCliDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *CredentialsForCliDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -270,7 +267,6 @@ func (o *CredentialsForCliDto) HasPartnerName() bool {
 func (o *CredentialsForCliDto) SetPartnerName(v string) {
 	o.PartnerName.Set(&v)
 }
-
 // SetPartnerNameNil sets the value for PartnerName to be an explicit nil
 func (o *CredentialsForCliDto) SetPartnerNameNil() {
 	o.PartnerName.Set(nil)
@@ -282,7 +278,7 @@ func (o *CredentialsForCliDto) UnsetPartnerName() {
 }
 
 func (o CredentialsForCliDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -347,3 +343,5 @@ func (v *NullableCredentialsForCliDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

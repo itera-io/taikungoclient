@@ -20,13 +20,13 @@ var _ MappedNullable = &UpdateStandAloneVmCommand{}
 
 // UpdateStandAloneVmCommand struct for UpdateStandAloneVmCommand
 type UpdateStandAloneVmCommand struct {
-	Id         *int32                      `json:"id,omitempty"`
-	IpAddress  NullableString              `json:"ipAddress,omitempty"`
-	PublicIp   NullableString              `json:"publicIp,omitempty"`
-	InstanceId NullableString              `json:"instanceId,omitempty"`
-	FlavorId   NullableString              `json:"flavorId,omitempty"`
-	Revision   NullableInt32               `json:"revision,omitempty"`
-	Disks      []UpdateStandAloneVmDiskDto `json:"disks,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	IpAddress NullableString `json:"ipAddress,omitempty"`
+	PublicIp NullableString `json:"publicIp,omitempty"`
+	InstanceId NullableString `json:"instanceId,omitempty"`
+	FlavorId NullableString `json:"flavorId,omitempty"`
+	Revision NullableInt32 `json:"revision,omitempty"`
+	Disks []UpdateStandAloneVmDiskDto `json:"disks,omitempty"`
 }
 
 // NewUpdateStandAloneVmCommand instantiates a new UpdateStandAloneVmCommand object
@@ -110,7 +110,6 @@ func (o *UpdateStandAloneVmCommand) HasIpAddress() bool {
 func (o *UpdateStandAloneVmCommand) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
-
 // SetIpAddressNil sets the value for IpAddress to be an explicit nil
 func (o *UpdateStandAloneVmCommand) SetIpAddressNil() {
 	o.IpAddress.Set(nil)
@@ -153,7 +152,6 @@ func (o *UpdateStandAloneVmCommand) HasPublicIp() bool {
 func (o *UpdateStandAloneVmCommand) SetPublicIp(v string) {
 	o.PublicIp.Set(&v)
 }
-
 // SetPublicIpNil sets the value for PublicIp to be an explicit nil
 func (o *UpdateStandAloneVmCommand) SetPublicIpNil() {
 	o.PublicIp.Set(nil)
@@ -196,7 +194,6 @@ func (o *UpdateStandAloneVmCommand) HasInstanceId() bool {
 func (o *UpdateStandAloneVmCommand) SetInstanceId(v string) {
 	o.InstanceId.Set(&v)
 }
-
 // SetInstanceIdNil sets the value for InstanceId to be an explicit nil
 func (o *UpdateStandAloneVmCommand) SetInstanceIdNil() {
 	o.InstanceId.Set(nil)
@@ -239,7 +236,6 @@ func (o *UpdateStandAloneVmCommand) HasFlavorId() bool {
 func (o *UpdateStandAloneVmCommand) SetFlavorId(v string) {
 	o.FlavorId.Set(&v)
 }
-
 // SetFlavorIdNil sets the value for FlavorId to be an explicit nil
 func (o *UpdateStandAloneVmCommand) SetFlavorIdNil() {
 	o.FlavorId.Set(nil)
@@ -282,7 +278,6 @@ func (o *UpdateStandAloneVmCommand) HasRevision() bool {
 func (o *UpdateStandAloneVmCommand) SetRevision(v int32) {
 	o.Revision.Set(&v)
 }
-
 // SetRevisionNil sets the value for Revision to be an explicit nil
 func (o *UpdateStandAloneVmCommand) SetRevisionNil() {
 	o.Revision.Set(nil)
@@ -327,7 +322,7 @@ func (o *UpdateStandAloneVmCommand) SetDisks(v []UpdateStandAloneVmDiskDto) {
 }
 
 func (o UpdateStandAloneVmCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -395,3 +390,5 @@ func (v *NullableUpdateStandAloneVmCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,12 +20,12 @@ var _ MappedNullable = &CheckOpenstackCommand{}
 
 // CheckOpenstackCommand struct for CheckOpenstackCommand
 type CheckOpenstackCommand struct {
-	OpenStackUser          NullableString `json:"openStackUser,omitempty"`
-	OpenStackPassword      NullableString `json:"openStackPassword,omitempty"`
-	OpenStackUrl           NullableString `json:"openStackUrl,omitempty"`
-	OpenStackDomain        NullableString `json:"openStackDomain,omitempty"`
-	IsAdmin                *bool          `json:"isAdmin,omitempty"`
-	ApplicationCredEnabled NullableBool   `json:"applicationCredEnabled,omitempty"`
+	OpenStackUser NullableString `json:"openStackUser,omitempty"`
+	OpenStackPassword NullableString `json:"openStackPassword,omitempty"`
+	OpenStackUrl NullableString `json:"openStackUrl,omitempty"`
+	OpenStackDomain NullableString `json:"openStackDomain,omitempty"`
+	IsAdmin *bool `json:"isAdmin,omitempty"`
+	ApplicationCredEnabled NullableBool `json:"applicationCredEnabled,omitempty"`
 }
 
 // NewCheckOpenstackCommand instantiates a new CheckOpenstackCommand object
@@ -77,7 +77,6 @@ func (o *CheckOpenstackCommand) HasOpenStackUser() bool {
 func (o *CheckOpenstackCommand) SetOpenStackUser(v string) {
 	o.OpenStackUser.Set(&v)
 }
-
 // SetOpenStackUserNil sets the value for OpenStackUser to be an explicit nil
 func (o *CheckOpenstackCommand) SetOpenStackUserNil() {
 	o.OpenStackUser.Set(nil)
@@ -120,7 +119,6 @@ func (o *CheckOpenstackCommand) HasOpenStackPassword() bool {
 func (o *CheckOpenstackCommand) SetOpenStackPassword(v string) {
 	o.OpenStackPassword.Set(&v)
 }
-
 // SetOpenStackPasswordNil sets the value for OpenStackPassword to be an explicit nil
 func (o *CheckOpenstackCommand) SetOpenStackPasswordNil() {
 	o.OpenStackPassword.Set(nil)
@@ -163,7 +161,6 @@ func (o *CheckOpenstackCommand) HasOpenStackUrl() bool {
 func (o *CheckOpenstackCommand) SetOpenStackUrl(v string) {
 	o.OpenStackUrl.Set(&v)
 }
-
 // SetOpenStackUrlNil sets the value for OpenStackUrl to be an explicit nil
 func (o *CheckOpenstackCommand) SetOpenStackUrlNil() {
 	o.OpenStackUrl.Set(nil)
@@ -206,7 +203,6 @@ func (o *CheckOpenstackCommand) HasOpenStackDomain() bool {
 func (o *CheckOpenstackCommand) SetOpenStackDomain(v string) {
 	o.OpenStackDomain.Set(&v)
 }
-
 // SetOpenStackDomainNil sets the value for OpenStackDomain to be an explicit nil
 func (o *CheckOpenstackCommand) SetOpenStackDomainNil() {
 	o.OpenStackDomain.Set(nil)
@@ -281,7 +277,6 @@ func (o *CheckOpenstackCommand) HasApplicationCredEnabled() bool {
 func (o *CheckOpenstackCommand) SetApplicationCredEnabled(v bool) {
 	o.ApplicationCredEnabled.Set(&v)
 }
-
 // SetApplicationCredEnabledNil sets the value for ApplicationCredEnabled to be an explicit nil
 func (o *CheckOpenstackCommand) SetApplicationCredEnabledNil() {
 	o.ApplicationCredEnabled.Set(nil)
@@ -293,7 +288,7 @@ func (o *CheckOpenstackCommand) UnsetApplicationCredEnabled() {
 }
 
 func (o CheckOpenstackCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -358,3 +353,5 @@ func (v *NullableCheckOpenstackCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

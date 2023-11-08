@@ -20,17 +20,17 @@ var _ MappedNullable = &BoundImagesForProjectsListDto{}
 
 // BoundImagesForProjectsListDto struct for BoundImagesForProjectsListDto
 type BoundImagesForProjectsListDto struct {
-	Id          *int32          `json:"id,omitempty"`
-	Name        NullableString  `json:"name,omitempty"`
-	ProjectId   NullableInt32   `json:"projectId,omitempty"`
-	IsAzure     *bool           `json:"isAzure,omitempty"`
-	IsAws       *bool           `json:"isAws,omitempty"`
-	IsOpenstack *bool           `json:"isOpenstack,omitempty"`
-	ProjectName NullableString  `json:"projectName,omitempty"`
-	Size        NullableFloat64 `json:"size,omitempty"`
-	ImageId     NullableString  `json:"imageId,omitempty"`
-	CloudId     NullableInt32   `json:"cloudId,omitempty"`
-	IsWindows   *bool           `json:"isWindows,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ProjectId NullableInt32 `json:"projectId,omitempty"`
+	IsAzure *bool `json:"isAzure,omitempty"`
+	IsAws *bool `json:"isAws,omitempty"`
+	IsOpenstack *bool `json:"isOpenstack,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
+	Size NullableFloat64 `json:"size,omitempty"`
+	ImageId NullableString `json:"imageId,omitempty"`
+	CloudId NullableInt32 `json:"cloudId,omitempty"`
+	IsWindows *bool `json:"isWindows,omitempty"`
 }
 
 // NewBoundImagesForProjectsListDto instantiates a new BoundImagesForProjectsListDto object
@@ -114,7 +114,6 @@ func (o *BoundImagesForProjectsListDto) HasName() bool {
 func (o *BoundImagesForProjectsListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *BoundImagesForProjectsListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -157,7 +156,6 @@ func (o *BoundImagesForProjectsListDto) HasProjectId() bool {
 func (o *BoundImagesForProjectsListDto) SetProjectId(v int32) {
 	o.ProjectId.Set(&v)
 }
-
 // SetProjectIdNil sets the value for ProjectId to be an explicit nil
 func (o *BoundImagesForProjectsListDto) SetProjectIdNil() {
 	o.ProjectId.Set(nil)
@@ -296,7 +294,6 @@ func (o *BoundImagesForProjectsListDto) HasProjectName() bool {
 func (o *BoundImagesForProjectsListDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *BoundImagesForProjectsListDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -339,7 +336,6 @@ func (o *BoundImagesForProjectsListDto) HasSize() bool {
 func (o *BoundImagesForProjectsListDto) SetSize(v float64) {
 	o.Size.Set(&v)
 }
-
 // SetSizeNil sets the value for Size to be an explicit nil
 func (o *BoundImagesForProjectsListDto) SetSizeNil() {
 	o.Size.Set(nil)
@@ -382,7 +378,6 @@ func (o *BoundImagesForProjectsListDto) HasImageId() bool {
 func (o *BoundImagesForProjectsListDto) SetImageId(v string) {
 	o.ImageId.Set(&v)
 }
-
 // SetImageIdNil sets the value for ImageId to be an explicit nil
 func (o *BoundImagesForProjectsListDto) SetImageIdNil() {
 	o.ImageId.Set(nil)
@@ -425,7 +420,6 @@ func (o *BoundImagesForProjectsListDto) HasCloudId() bool {
 func (o *BoundImagesForProjectsListDto) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
 }
-
 // SetCloudIdNil sets the value for CloudId to be an explicit nil
 func (o *BoundImagesForProjectsListDto) SetCloudIdNil() {
 	o.CloudId.Set(nil)
@@ -469,7 +463,7 @@ func (o *BoundImagesForProjectsListDto) SetIsWindows(v bool) {
 }
 
 func (o BoundImagesForProjectsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -549,3 +543,5 @@ func (v *NullableBoundImagesForProjectsListDto) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

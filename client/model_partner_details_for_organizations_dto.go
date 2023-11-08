@@ -20,11 +20,11 @@ var _ MappedNullable = &PartnerDetailsForOrganizationsDto{}
 
 // PartnerDetailsForOrganizationsDto struct for PartnerDetailsForOrganizationsDto
 type PartnerDetailsForOrganizationsDto struct {
-	Id     *int32         `json:"id,omitempty"`
-	Name   NullableString `json:"name,omitempty"`
-	Link   NullableString `json:"link,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Link NullableString `json:"link,omitempty"`
 	Domain NullableString `json:"domain,omitempty"`
-	Logo   NullableString `json:"logo,omitempty"`
+	Logo NullableString `json:"logo,omitempty"`
 }
 
 // NewPartnerDetailsForOrganizationsDto instantiates a new PartnerDetailsForOrganizationsDto object
@@ -108,7 +108,6 @@ func (o *PartnerDetailsForOrganizationsDto) HasName() bool {
 func (o *PartnerDetailsForOrganizationsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PartnerDetailsForOrganizationsDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -151,7 +150,6 @@ func (o *PartnerDetailsForOrganizationsDto) HasLink() bool {
 func (o *PartnerDetailsForOrganizationsDto) SetLink(v string) {
 	o.Link.Set(&v)
 }
-
 // SetLinkNil sets the value for Link to be an explicit nil
 func (o *PartnerDetailsForOrganizationsDto) SetLinkNil() {
 	o.Link.Set(nil)
@@ -194,7 +192,6 @@ func (o *PartnerDetailsForOrganizationsDto) HasDomain() bool {
 func (o *PartnerDetailsForOrganizationsDto) SetDomain(v string) {
 	o.Domain.Set(&v)
 }
-
 // SetDomainNil sets the value for Domain to be an explicit nil
 func (o *PartnerDetailsForOrganizationsDto) SetDomainNil() {
 	o.Domain.Set(nil)
@@ -237,7 +234,6 @@ func (o *PartnerDetailsForOrganizationsDto) HasLogo() bool {
 func (o *PartnerDetailsForOrganizationsDto) SetLogo(v string) {
 	o.Logo.Set(&v)
 }
-
 // SetLogoNil sets the value for Logo to be an explicit nil
 func (o *PartnerDetailsForOrganizationsDto) SetLogoNil() {
 	o.Logo.Set(nil)
@@ -249,7 +245,7 @@ func (o *PartnerDetailsForOrganizationsDto) UnsetLogo() {
 }
 
 func (o PartnerDetailsForOrganizationsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -311,3 +307,5 @@ func (v *NullablePartnerDetailsForOrganizationsDto) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

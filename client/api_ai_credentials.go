@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // AiCredentialsAPIService AiCredentialsAPI service
 type AiCredentialsAPIService service
 
 type ApiAiCredentialCreateRequest struct {
-	ctx                       context.Context
-	ApiService                *AiCredentialsAPIService
+	ctx context.Context
+	ApiService *AiCredentialsAPIService
 	createAiCredentialCommand *CreateAiCredentialCommand
 }
 
@@ -41,25 +42,24 @@ func (r ApiAiCredentialCreateRequest) Execute() (*ApiResponse, *http.Response, e
 /*
 AiCredentialCreate Create ai credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAiCredentialCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAiCredentialCreateRequest
 */
 func (a *AiCredentialsAPIService) AiCredentialCreate(ctx context.Context) ApiAiCredentialCreateRequest {
 	return ApiAiCredentialCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *AiCredentialsAPIService) AiCredentialCreateExecute(r ApiAiCredentialCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AiCredentialsAPIService.AiCredentialCreate")
@@ -138,8 +138,8 @@ func (a *AiCredentialsAPIService) AiCredentialCreateExecute(r ApiAiCredentialCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -149,8 +149,8 @@ func (a *AiCredentialsAPIService) AiCredentialCreateExecute(r ApiAiCredentialCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -160,8 +160,8 @@ func (a *AiCredentialsAPIService) AiCredentialCreateExecute(r ApiAiCredentialCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -171,8 +171,8 @@ func (a *AiCredentialsAPIService) AiCredentialCreateExecute(r ApiAiCredentialCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -182,8 +182,8 @@ func (a *AiCredentialsAPIService) AiCredentialCreateExecute(r ApiAiCredentialCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -201,9 +201,9 @@ func (a *AiCredentialsAPIService) AiCredentialCreateExecute(r ApiAiCredentialCre
 }
 
 type ApiAiCredentialDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AiCredentialsAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiAiCredentialDeleteRequest) Execute() (*http.Response, error) {
@@ -213,24 +213,24 @@ func (r ApiAiCredentialDeleteRequest) Execute() (*http.Response, error) {
 /*
 AiCredentialDelete Remove ai credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiAiCredentialDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiAiCredentialDeleteRequest
 */
 func (a *AiCredentialsAPIService) AiCredentialDelete(ctx context.Context, id int32) ApiAiCredentialDeleteRequest {
 	return ApiAiCredentialDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *AiCredentialsAPIService) AiCredentialDeleteExecute(r ApiAiCredentialDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AiCredentialsAPIService.AiCredentialDelete")
@@ -305,8 +305,8 @@ func (a *AiCredentialsAPIService) AiCredentialDeleteExecute(r ApiAiCredentialDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -316,8 +316,8 @@ func (a *AiCredentialsAPIService) AiCredentialDeleteExecute(r ApiAiCredentialDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -327,8 +327,8 @@ func (a *AiCredentialsAPIService) AiCredentialDeleteExecute(r ApiAiCredentialDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -338,8 +338,8 @@ func (a *AiCredentialsAPIService) AiCredentialDeleteExecute(r ApiAiCredentialDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -349,8 +349,8 @@ func (a *AiCredentialsAPIService) AiCredentialDeleteExecute(r ApiAiCredentialDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -359,10 +359,10 @@ func (a *AiCredentialsAPIService) AiCredentialDeleteExecute(r ApiAiCredentialDel
 }
 
 type ApiAiCredentialDropdownRequest struct {
-	ctx            context.Context
-	ApiService     *AiCredentialsAPIService
+	ctx context.Context
+	ApiService *AiCredentialsAPIService
 	organizationId *int32
-	search         *string
+	search *string
 }
 
 func (r ApiAiCredentialDropdownRequest) OrganizationId(organizationId int32) ApiAiCredentialDropdownRequest {
@@ -382,25 +382,24 @@ func (r ApiAiCredentialDropdownRequest) Execute() ([]AiCredentialsForOrganizatio
 /*
 AiCredentialDropdown Retrieve all AI credentials for organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAiCredentialDropdownRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAiCredentialDropdownRequest
 */
 func (a *AiCredentialsAPIService) AiCredentialDropdown(ctx context.Context) ApiAiCredentialDropdownRequest {
 	return ApiAiCredentialDropdownRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []AiCredentialsForOrganizationEntity
+//  @return []AiCredentialsForOrganizationEntity
 func (a *AiCredentialsAPIService) AiCredentialDropdownExecute(r ApiAiCredentialDropdownRequest) ([]AiCredentialsForOrganizationEntity, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []AiCredentialsForOrganizationEntity
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []AiCredentialsForOrganizationEntity
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AiCredentialsAPIService.AiCredentialDropdown")
@@ -480,8 +479,8 @@ func (a *AiCredentialsAPIService) AiCredentialDropdownExecute(r ApiAiCredentialD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -491,8 +490,8 @@ func (a *AiCredentialsAPIService) AiCredentialDropdownExecute(r ApiAiCredentialD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -502,8 +501,8 @@ func (a *AiCredentialsAPIService) AiCredentialDropdownExecute(r ApiAiCredentialD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -513,8 +512,8 @@ func (a *AiCredentialsAPIService) AiCredentialDropdownExecute(r ApiAiCredentialD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -524,8 +523,8 @@ func (a *AiCredentialsAPIService) AiCredentialDropdownExecute(r ApiAiCredentialD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -543,16 +542,16 @@ func (a *AiCredentialsAPIService) AiCredentialDropdownExecute(r ApiAiCredentialD
 }
 
 type ApiAiCredentialListRequest struct {
-	ctx            context.Context
-	ApiService     *AiCredentialsAPIService
-	limit          *int32
-	offset         *int32
+	ctx context.Context
+	ApiService *AiCredentialsAPIService
+	limit *int32
+	offset *int32
 	organizationId *int32
-	search         *string
-	searchId       *string
-	id             *int32
-	sortBy         *string
-	sortDirection  *string
+	search *string
+	searchId *string
+	id *int32
+	sortBy *string
+	sortDirection *string
 }
 
 func (r ApiAiCredentialListRequest) Limit(limit int32) ApiAiCredentialListRequest {
@@ -602,25 +601,24 @@ func (r ApiAiCredentialListRequest) Execute() (*AiCredentials, *http.Response, e
 /*
 AiCredentialList Retrieve all AI credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAiCredentialListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAiCredentialListRequest
 */
 func (a *AiCredentialsAPIService) AiCredentialList(ctx context.Context) ApiAiCredentialListRequest {
 	return ApiAiCredentialListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AiCredentials
+//  @return AiCredentials
 func (a *AiCredentialsAPIService) AiCredentialListExecute(r ApiAiCredentialListRequest) (*AiCredentials, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AiCredentials
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AiCredentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AiCredentialsAPIService.AiCredentialList")
@@ -718,8 +716,8 @@ func (a *AiCredentialsAPIService) AiCredentialListExecute(r ApiAiCredentialListR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -729,8 +727,8 @@ func (a *AiCredentialsAPIService) AiCredentialListExecute(r ApiAiCredentialListR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -740,8 +738,8 @@ func (a *AiCredentialsAPIService) AiCredentialListExecute(r ApiAiCredentialListR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -751,8 +749,8 @@ func (a *AiCredentialsAPIService) AiCredentialListExecute(r ApiAiCredentialListR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -762,8 +760,8 @@ func (a *AiCredentialsAPIService) AiCredentialListExecute(r ApiAiCredentialListR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

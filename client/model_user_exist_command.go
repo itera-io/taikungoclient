@@ -20,7 +20,7 @@ var _ MappedNullable = &UserExistCommand{}
 
 // UserExistCommand struct for UserExistCommand
 type UserExistCommand struct {
-	Email    NullableString `json:"email,omitempty"`
+	Email NullableString `json:"email,omitempty"`
 	UserName NullableString `json:"userName,omitempty"`
 }
 
@@ -73,7 +73,6 @@ func (o *UserExistCommand) HasEmail() bool {
 func (o *UserExistCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *UserExistCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -116,7 +115,6 @@ func (o *UserExistCommand) HasUserName() bool {
 func (o *UserExistCommand) SetUserName(v string) {
 	o.UserName.Set(&v)
 }
-
 // SetUserNameNil sets the value for UserName to be an explicit nil
 func (o *UserExistCommand) SetUserNameNil() {
 	o.UserName.Set(nil)
@@ -128,7 +126,7 @@ func (o *UserExistCommand) UnsetUserName() {
 }
 
 func (o UserExistCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableUserExistCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_S3CredentialsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_S3CredentialsAPIService(t *testing.T) {
 
 	t.Run("Test S3CredentialsAPIService S3credentialsCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.S3CredentialsAPI.S3credentialsCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_S3CredentialsAPIService(t *testing.T) {
 
 	t.Run("Test S3CredentialsAPIService S3credentialsDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -49,7 +49,7 @@ func Test_taikuncore_S3CredentialsAPIService(t *testing.T) {
 
 	t.Run("Test S3CredentialsAPIService S3credentialsDropdown", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.S3CredentialsAPI.S3credentialsDropdown(context.Background()).Execute()
 
@@ -61,7 +61,7 @@ func Test_taikuncore_S3CredentialsAPIService(t *testing.T) {
 
 	t.Run("Test S3CredentialsAPIService S3credentialsList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.S3CredentialsAPI.S3credentialsList(context.Background()).Execute()
 
@@ -73,7 +73,7 @@ func Test_taikuncore_S3CredentialsAPIService(t *testing.T) {
 
 	t.Run("Test S3CredentialsAPIService S3credentialsLockManagement", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.S3CredentialsAPI.S3credentialsLockManagement(context.Background()).Execute()
 
@@ -84,7 +84,7 @@ func Test_taikuncore_S3CredentialsAPIService(t *testing.T) {
 
 	t.Run("Test S3CredentialsAPIService S3credentialsMakeDeafult", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.S3CredentialsAPI.S3credentialsMakeDeafult(context.Background()).Execute()
 
@@ -95,7 +95,7 @@ func Test_taikuncore_S3CredentialsAPIService(t *testing.T) {
 
 	t.Run("Test S3CredentialsAPIService S3credentialsUpdate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.S3CredentialsAPI.S3credentialsUpdate(context.Background()).Execute()
 

@@ -20,9 +20,9 @@ var _ MappedNullable = &AwsOwnerDetails{}
 
 // AwsOwnerDetails struct for AwsOwnerDetails
 type AwsOwnerDetails struct {
-	OwnerId   NullableString   `json:"ownerId,omitempty"`
-	OwnerName NullableString   `json:"ownerName,omitempty"`
-	Image     *AwsCommonImages `json:"image,omitempty"`
+	OwnerId NullableString `json:"ownerId,omitempty"`
+	OwnerName NullableString `json:"ownerName,omitempty"`
+	Image *AwsCommonImages `json:"image,omitempty"`
 }
 
 // NewAwsOwnerDetails instantiates a new AwsOwnerDetails object
@@ -74,7 +74,6 @@ func (o *AwsOwnerDetails) HasOwnerId() bool {
 func (o *AwsOwnerDetails) SetOwnerId(v string) {
 	o.OwnerId.Set(&v)
 }
-
 // SetOwnerIdNil sets the value for OwnerId to be an explicit nil
 func (o *AwsOwnerDetails) SetOwnerIdNil() {
 	o.OwnerId.Set(nil)
@@ -117,7 +116,6 @@ func (o *AwsOwnerDetails) HasOwnerName() bool {
 func (o *AwsOwnerDetails) SetOwnerName(v string) {
 	o.OwnerName.Set(&v)
 }
-
 // SetOwnerNameNil sets the value for OwnerName to be an explicit nil
 func (o *AwsOwnerDetails) SetOwnerNameNil() {
 	o.OwnerName.Set(nil)
@@ -161,7 +159,7 @@ func (o *AwsOwnerDetails) SetImage(v AwsCommonImages) {
 }
 
 func (o AwsOwnerDetails) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,3 +215,5 @@ func (v *NullableAwsOwnerDetails) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

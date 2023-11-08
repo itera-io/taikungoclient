@@ -20,7 +20,7 @@ var _ MappedNullable = &ChangePasswordCommand{}
 
 // ChangePasswordCommand struct for ChangePasswordCommand
 type ChangePasswordCommand struct {
-	Password    NullableString `json:"password,omitempty"`
+	Password NullableString `json:"password,omitempty"`
 	NewPassword NullableString `json:"newPassword,omitempty"`
 }
 
@@ -73,7 +73,6 @@ func (o *ChangePasswordCommand) HasPassword() bool {
 func (o *ChangePasswordCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *ChangePasswordCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -116,7 +115,6 @@ func (o *ChangePasswordCommand) HasNewPassword() bool {
 func (o *ChangePasswordCommand) SetNewPassword(v string) {
 	o.NewPassword.Set(&v)
 }
-
 // SetNewPasswordNil sets the value for NewPassword to be an explicit nil
 func (o *ChangePasswordCommand) SetNewPasswordNil() {
 	o.NewPassword.Set(nil)
@@ -128,7 +126,7 @@ func (o *ChangePasswordCommand) UnsetNewPassword() {
 }
 
 func (o ChangePasswordCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableChangePasswordCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

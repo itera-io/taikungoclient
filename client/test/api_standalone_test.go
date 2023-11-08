@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_StandaloneAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneAPIService StandaloneCommit", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.StandaloneAPI.StandaloneCommit(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneAPIService StandaloneCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.StandaloneAPI.StandaloneCreate(context.Background()).Execute()
 
@@ -47,7 +47,7 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneAPIService StandaloneDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.StandaloneAPI.StandaloneDelete(context.Background()).Execute()
 
@@ -58,7 +58,7 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneAPIService StandaloneDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -72,7 +72,7 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneAPIService StandaloneForPoller", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.StandaloneAPI.StandaloneForPoller(context.Background()).Execute()
 
@@ -84,7 +84,7 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneAPIService StandaloneIpManagement", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.StandaloneAPI.StandaloneIpManagement(context.Background()).Execute()
 
@@ -95,7 +95,7 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneAPIService StandaloneList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.StandaloneAPI.StandaloneList(context.Background()).Execute()
 
@@ -107,7 +107,7 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneAPIService StandaloneProjectDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -121,7 +121,7 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneAPIService StandalonePurge", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.StandaloneAPI.StandalonePurge(context.Background()).Execute()
 
@@ -132,7 +132,7 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneAPIService StandaloneRepair", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.StandaloneAPI.StandaloneRepair(context.Background()).Execute()
 
@@ -143,7 +143,7 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneAPIService StandaloneReset", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.StandaloneAPI.StandaloneReset(context.Background()).Execute()
 
@@ -154,7 +154,7 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneAPIService StandaloneUpdate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.StandaloneAPI.StandaloneUpdate(context.Background()).Execute()
 
@@ -165,7 +165,7 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneAPIService StandaloneUpdateFlavor", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.StandaloneAPI.StandaloneUpdateFlavor(context.Background()).Execute()
 

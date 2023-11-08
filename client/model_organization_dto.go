@@ -21,7 +21,7 @@ var _ MappedNullable = &OrganizationDto{}
 // OrganizationDto struct for OrganizationDto
 type OrganizationDto struct {
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	IsBound        *bool  `json:"isBound,omitempty"`
+	IsBound *bool `json:"isBound,omitempty"`
 }
 
 // NewOrganizationDto instantiates a new OrganizationDto object
@@ -106,7 +106,7 @@ func (o *OrganizationDto) SetIsBound(v bool) {
 }
 
 func (o OrganizationDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableOrganizationDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

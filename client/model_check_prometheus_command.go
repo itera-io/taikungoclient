@@ -22,7 +22,7 @@ var _ MappedNullable = &CheckPrometheusCommand{}
 type CheckPrometheusCommand struct {
 	Password NullableString `json:"password,omitempty"`
 	UserName NullableString `json:"userName,omitempty"`
-	Url      NullableString `json:"url,omitempty"`
+	Url NullableString `json:"url,omitempty"`
 }
 
 // NewCheckPrometheusCommand instantiates a new CheckPrometheusCommand object
@@ -74,7 +74,6 @@ func (o *CheckPrometheusCommand) HasPassword() bool {
 func (o *CheckPrometheusCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *CheckPrometheusCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -117,7 +116,6 @@ func (o *CheckPrometheusCommand) HasUserName() bool {
 func (o *CheckPrometheusCommand) SetUserName(v string) {
 	o.UserName.Set(&v)
 }
-
 // SetUserNameNil sets the value for UserName to be an explicit nil
 func (o *CheckPrometheusCommand) SetUserNameNil() {
 	o.UserName.Set(nil)
@@ -160,7 +158,6 @@ func (o *CheckPrometheusCommand) HasUrl() bool {
 func (o *CheckPrometheusCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *CheckPrometheusCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -172,7 +169,7 @@ func (o *CheckPrometheusCommand) UnsetUrl() {
 }
 
 func (o CheckPrometheusCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableCheckPrometheusCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

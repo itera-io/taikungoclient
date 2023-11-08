@@ -20,7 +20,7 @@ var _ MappedNullable = &PartnerEntity{}
 
 // PartnerEntity struct for PartnerEntity
 type PartnerEntity struct {
-	PartnerId   *int32         `json:"partnerId,omitempty"`
+	PartnerId *int32 `json:"partnerId,omitempty"`
 	PartnerName NullableString `json:"partnerName,omitempty"`
 }
 
@@ -105,7 +105,6 @@ func (o *PartnerEntity) HasPartnerName() bool {
 func (o *PartnerEntity) SetPartnerName(v string) {
 	o.PartnerName.Set(&v)
 }
-
 // SetPartnerNameNil sets the value for PartnerName to be an explicit nil
 func (o *PartnerEntity) SetPartnerNameNil() {
 	o.PartnerName.Set(nil)
@@ -117,7 +116,7 @@ func (o *PartnerEntity) UnsetPartnerName() {
 }
 
 func (o PartnerEntity) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullablePartnerEntity) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

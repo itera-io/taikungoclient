@@ -20,9 +20,9 @@ var _ MappedNullable = &GetCatalogAppValueAutocompleteCommand{}
 
 // GetCatalogAppValueAutocompleteCommand struct for GetCatalogAppValueAutocompleteCommand
 type GetCatalogAppValueAutocompleteCommand struct {
-	PackageId    NullableString `json:"packageId,omitempty"`
-	Version      NullableString `json:"version,omitempty"`
-	CatalogAppId NullableInt32  `json:"catalogAppId,omitempty"`
+	PackageId NullableString `json:"packageId,omitempty"`
+	Version NullableString `json:"version,omitempty"`
+	CatalogAppId NullableInt32 `json:"catalogAppId,omitempty"`
 }
 
 // NewGetCatalogAppValueAutocompleteCommand instantiates a new GetCatalogAppValueAutocompleteCommand object
@@ -74,7 +74,6 @@ func (o *GetCatalogAppValueAutocompleteCommand) HasPackageId() bool {
 func (o *GetCatalogAppValueAutocompleteCommand) SetPackageId(v string) {
 	o.PackageId.Set(&v)
 }
-
 // SetPackageIdNil sets the value for PackageId to be an explicit nil
 func (o *GetCatalogAppValueAutocompleteCommand) SetPackageIdNil() {
 	o.PackageId.Set(nil)
@@ -117,7 +116,6 @@ func (o *GetCatalogAppValueAutocompleteCommand) HasVersion() bool {
 func (o *GetCatalogAppValueAutocompleteCommand) SetVersion(v string) {
 	o.Version.Set(&v)
 }
-
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *GetCatalogAppValueAutocompleteCommand) SetVersionNil() {
 	o.Version.Set(nil)
@@ -160,7 +158,6 @@ func (o *GetCatalogAppValueAutocompleteCommand) HasCatalogAppId() bool {
 func (o *GetCatalogAppValueAutocompleteCommand) SetCatalogAppId(v int32) {
 	o.CatalogAppId.Set(&v)
 }
-
 // SetCatalogAppIdNil sets the value for CatalogAppId to be an explicit nil
 func (o *GetCatalogAppValueAutocompleteCommand) SetCatalogAppIdNil() {
 	o.CatalogAppId.Set(nil)
@@ -172,7 +169,7 @@ func (o *GetCatalogAppValueAutocompleteCommand) UnsetCatalogAppId() {
 }
 
 func (o GetCatalogAppValueAutocompleteCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableGetCatalogAppValueAutocompleteCommand) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

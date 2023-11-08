@@ -20,9 +20,9 @@ var _ MappedNullable = &StandAloneProfileForDetailsDto{}
 
 // StandAloneProfileForDetailsDto struct for StandAloneProfileForDetailsDto
 type StandAloneProfileForDetailsDto struct {
-	Id             *int32                                        `json:"id,omitempty"`
-	Name           NullableString                                `json:"name,omitempty"`
-	PublicKey      NullableString                                `json:"publicKey,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	PublicKey NullableString `json:"publicKey,omitempty"`
 	SecurityGroups []StandAloneProfileSecurityGroupForDetailsDto `json:"securityGroups,omitempty"`
 }
 
@@ -107,7 +107,6 @@ func (o *StandAloneProfileForDetailsDto) HasName() bool {
 func (o *StandAloneProfileForDetailsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StandAloneProfileForDetailsDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,7 +149,6 @@ func (o *StandAloneProfileForDetailsDto) HasPublicKey() bool {
 func (o *StandAloneProfileForDetailsDto) SetPublicKey(v string) {
 	o.PublicKey.Set(&v)
 }
-
 // SetPublicKeyNil sets the value for PublicKey to be an explicit nil
 func (o *StandAloneProfileForDetailsDto) SetPublicKeyNil() {
 	o.PublicKey.Set(nil)
@@ -195,7 +193,7 @@ func (o *StandAloneProfileForDetailsDto) SetSecurityGroups(v []StandAloneProfile
 }
 
 func (o StandAloneProfileForDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -254,3 +252,5 @@ func (v *NullableStandAloneProfileForDetailsDto) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

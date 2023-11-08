@@ -20,7 +20,7 @@ var _ MappedNullable = &ProjectButtonStatusDto{}
 
 // ProjectButtonStatusDto struct for ProjectButtonStatusDto
 type ProjectButtonStatusDto struct {
-	Enable  *bool    `json:"enable,omitempty"`
+	Enable *bool `json:"enable,omitempty"`
 	Reasons []string `json:"reasons,omitempty"`
 }
 
@@ -107,7 +107,7 @@ func (o *ProjectButtonStatusDto) SetReasons(v []string) {
 }
 
 func (o ProjectButtonStatusDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableProjectButtonStatusDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

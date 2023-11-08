@@ -20,19 +20,19 @@ var _ MappedNullable = &KubernetesProfilesLisForPollerDto{}
 
 // KubernetesProfilesLisForPollerDto struct for KubernetesProfilesLisForPollerDto
 type KubernetesProfilesLisForPollerDto struct {
-	Id                       *int32         `json:"id,omitempty"`
-	Name                     NullableString `json:"name,omitempty"`
-	OrganizationId           NullableInt32  `json:"organizationId,omitempty"`
-	OrganizationName         NullableString `json:"organizationName,omitempty"`
-	Cni                      NullableString `json:"cni,omitempty"`
-	OctaviaEnabled           *bool          `json:"octaviaEnabled,omitempty"`
-	ExposeNodePortOnBastion  *bool          `json:"exposeNodePortOnBastion,omitempty"`
-	IsLocked                 *bool          `json:"isLocked,omitempty"`
-	TaikunLBEnabled          *bool          `json:"taikunLBEnabled,omitempty"`
-	AllowSchedulingOnMaster  *bool          `json:"allowSchedulingOnMaster,omitempty"`
-	UniqueClusterName        *bool          `json:"uniqueClusterName,omitempty"`
-	ProxmoxStorage           NullableString `json:"proxmoxStorage,omitempty"`
-	NvidiaGpuOperatorEnabled *bool          `json:"nvidiaGpuOperatorEnabled,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	Cni NullableString `json:"cni,omitempty"`
+	OctaviaEnabled *bool `json:"octaviaEnabled,omitempty"`
+	ExposeNodePortOnBastion *bool `json:"exposeNodePortOnBastion,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	TaikunLBEnabled *bool `json:"taikunLBEnabled,omitempty"`
+	AllowSchedulingOnMaster *bool `json:"allowSchedulingOnMaster,omitempty"`
+	UniqueClusterName *bool `json:"uniqueClusterName,omitempty"`
+	ProxmoxStorage NullableString `json:"proxmoxStorage,omitempty"`
+	NvidiaGpuOperatorEnabled *bool `json:"nvidiaGpuOperatorEnabled,omitempty"`
 }
 
 // NewKubernetesProfilesLisForPollerDto instantiates a new KubernetesProfilesLisForPollerDto object
@@ -116,7 +116,6 @@ func (o *KubernetesProfilesLisForPollerDto) HasName() bool {
 func (o *KubernetesProfilesLisForPollerDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *KubernetesProfilesLisForPollerDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -159,7 +158,6 @@ func (o *KubernetesProfilesLisForPollerDto) HasOrganizationId() bool {
 func (o *KubernetesProfilesLisForPollerDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *KubernetesProfilesLisForPollerDto) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -202,7 +200,6 @@ func (o *KubernetesProfilesLisForPollerDto) HasOrganizationName() bool {
 func (o *KubernetesProfilesLisForPollerDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *KubernetesProfilesLisForPollerDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -245,7 +242,6 @@ func (o *KubernetesProfilesLisForPollerDto) HasCni() bool {
 func (o *KubernetesProfilesLisForPollerDto) SetCni(v string) {
 	o.Cni.Set(&v)
 }
-
 // SetCniNil sets the value for Cni to be an explicit nil
 func (o *KubernetesProfilesLisForPollerDto) SetCniNil() {
 	o.Cni.Set(nil)
@@ -480,7 +476,6 @@ func (o *KubernetesProfilesLisForPollerDto) HasProxmoxStorage() bool {
 func (o *KubernetesProfilesLisForPollerDto) SetProxmoxStorage(v string) {
 	o.ProxmoxStorage.Set(&v)
 }
-
 // SetProxmoxStorageNil sets the value for ProxmoxStorage to be an explicit nil
 func (o *KubernetesProfilesLisForPollerDto) SetProxmoxStorageNil() {
 	o.ProxmoxStorage.Set(nil)
@@ -524,7 +519,7 @@ func (o *KubernetesProfilesLisForPollerDto) SetNvidiaGpuOperatorEnabled(v bool) 
 }
 
 func (o KubernetesProfilesLisForPollerDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -610,3 +605,5 @@ func (v *NullableKubernetesProfilesLisForPollerDto) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -21,14 +21,14 @@ var _ MappedNullable = &BackupStorageLocationDto{}
 
 // BackupStorageLocationDto struct for BackupStorageLocationDto
 type BackupStorageLocationDto struct {
-	MetadataName       NullableString `json:"metadataName,omitempty"`
-	Provider           NullableString `json:"provider,omitempty"`
-	Namespace          NullableString `json:"namespace,omitempty"`
-	LastValidated      NullableTime   `json:"lastValidated,omitempty"`
-	CreatedAt          NullableTime   `json:"createdAt,omitempty"`
-	AccessMode         NullableString `json:"accessMode,omitempty"`
-	Phase              NullableString `json:"phase,omitempty"`
-	BackupCredentialId NullableInt32  `json:"backupCredentialId,omitempty"`
+	MetadataName NullableString `json:"metadataName,omitempty"`
+	Provider NullableString `json:"provider,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	LastValidated NullableTime `json:"lastValidated,omitempty"`
+	CreatedAt NullableTime `json:"createdAt,omitempty"`
+	AccessMode NullableString `json:"accessMode,omitempty"`
+	Phase NullableString `json:"phase,omitempty"`
+	BackupCredentialId NullableInt32 `json:"backupCredentialId,omitempty"`
 }
 
 // NewBackupStorageLocationDto instantiates a new BackupStorageLocationDto object
@@ -80,7 +80,6 @@ func (o *BackupStorageLocationDto) HasMetadataName() bool {
 func (o *BackupStorageLocationDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *BackupStorageLocationDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -123,7 +122,6 @@ func (o *BackupStorageLocationDto) HasProvider() bool {
 func (o *BackupStorageLocationDto) SetProvider(v string) {
 	o.Provider.Set(&v)
 }
-
 // SetProviderNil sets the value for Provider to be an explicit nil
 func (o *BackupStorageLocationDto) SetProviderNil() {
 	o.Provider.Set(nil)
@@ -166,7 +164,6 @@ func (o *BackupStorageLocationDto) HasNamespace() bool {
 func (o *BackupStorageLocationDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *BackupStorageLocationDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -209,7 +206,6 @@ func (o *BackupStorageLocationDto) HasLastValidated() bool {
 func (o *BackupStorageLocationDto) SetLastValidated(v time.Time) {
 	o.LastValidated.Set(&v)
 }
-
 // SetLastValidatedNil sets the value for LastValidated to be an explicit nil
 func (o *BackupStorageLocationDto) SetLastValidatedNil() {
 	o.LastValidated.Set(nil)
@@ -252,7 +248,6 @@ func (o *BackupStorageLocationDto) HasCreatedAt() bool {
 func (o *BackupStorageLocationDto) SetCreatedAt(v time.Time) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *BackupStorageLocationDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -295,7 +290,6 @@ func (o *BackupStorageLocationDto) HasAccessMode() bool {
 func (o *BackupStorageLocationDto) SetAccessMode(v string) {
 	o.AccessMode.Set(&v)
 }
-
 // SetAccessModeNil sets the value for AccessMode to be an explicit nil
 func (o *BackupStorageLocationDto) SetAccessModeNil() {
 	o.AccessMode.Set(nil)
@@ -338,7 +332,6 @@ func (o *BackupStorageLocationDto) HasPhase() bool {
 func (o *BackupStorageLocationDto) SetPhase(v string) {
 	o.Phase.Set(&v)
 }
-
 // SetPhaseNil sets the value for Phase to be an explicit nil
 func (o *BackupStorageLocationDto) SetPhaseNil() {
 	o.Phase.Set(nil)
@@ -381,7 +374,6 @@ func (o *BackupStorageLocationDto) HasBackupCredentialId() bool {
 func (o *BackupStorageLocationDto) SetBackupCredentialId(v int32) {
 	o.BackupCredentialId.Set(&v)
 }
-
 // SetBackupCredentialIdNil sets the value for BackupCredentialId to be an explicit nil
 func (o *BackupStorageLocationDto) SetBackupCredentialIdNil() {
 	o.BackupCredentialId.Set(nil)
@@ -393,7 +385,7 @@ func (o *BackupStorageLocationDto) UnsetBackupCredentialId() {
 }
 
 func (o BackupStorageLocationDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -464,3 +456,5 @@ func (v *NullableBackupStorageLocationDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

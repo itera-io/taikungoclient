@@ -20,13 +20,13 @@ var _ MappedNullable = &CostComponent{}
 
 // CostComponent struct for CostComponent
 type CostComponent struct {
-	Name            NullableString `json:"name,omitempty"`
-	Unit            NullableString `json:"unit,omitempty"`
-	HourlyQuantity  NullableString `json:"hourlyQuantity,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Unit NullableString `json:"unit,omitempty"`
+	HourlyQuantity NullableString `json:"hourlyQuantity,omitempty"`
 	MonthlyQuantity NullableString `json:"monthlyQuantity,omitempty"`
-	Price           NullableString `json:"price,omitempty"`
-	HourlyCost      NullableString `json:"hourlyCost,omitempty"`
-	MonthlyCost     NullableString `json:"monthlyCost,omitempty"`
+	Price NullableString `json:"price,omitempty"`
+	HourlyCost NullableString `json:"hourlyCost,omitempty"`
+	MonthlyCost NullableString `json:"monthlyCost,omitempty"`
 }
 
 // NewCostComponent instantiates a new CostComponent object
@@ -78,7 +78,6 @@ func (o *CostComponent) HasName() bool {
 func (o *CostComponent) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CostComponent) SetNameNil() {
 	o.Name.Set(nil)
@@ -121,7 +120,6 @@ func (o *CostComponent) HasUnit() bool {
 func (o *CostComponent) SetUnit(v string) {
 	o.Unit.Set(&v)
 }
-
 // SetUnitNil sets the value for Unit to be an explicit nil
 func (o *CostComponent) SetUnitNil() {
 	o.Unit.Set(nil)
@@ -164,7 +162,6 @@ func (o *CostComponent) HasHourlyQuantity() bool {
 func (o *CostComponent) SetHourlyQuantity(v string) {
 	o.HourlyQuantity.Set(&v)
 }
-
 // SetHourlyQuantityNil sets the value for HourlyQuantity to be an explicit nil
 func (o *CostComponent) SetHourlyQuantityNil() {
 	o.HourlyQuantity.Set(nil)
@@ -207,7 +204,6 @@ func (o *CostComponent) HasMonthlyQuantity() bool {
 func (o *CostComponent) SetMonthlyQuantity(v string) {
 	o.MonthlyQuantity.Set(&v)
 }
-
 // SetMonthlyQuantityNil sets the value for MonthlyQuantity to be an explicit nil
 func (o *CostComponent) SetMonthlyQuantityNil() {
 	o.MonthlyQuantity.Set(nil)
@@ -250,7 +246,6 @@ func (o *CostComponent) HasPrice() bool {
 func (o *CostComponent) SetPrice(v string) {
 	o.Price.Set(&v)
 }
-
 // SetPriceNil sets the value for Price to be an explicit nil
 func (o *CostComponent) SetPriceNil() {
 	o.Price.Set(nil)
@@ -293,7 +288,6 @@ func (o *CostComponent) HasHourlyCost() bool {
 func (o *CostComponent) SetHourlyCost(v string) {
 	o.HourlyCost.Set(&v)
 }
-
 // SetHourlyCostNil sets the value for HourlyCost to be an explicit nil
 func (o *CostComponent) SetHourlyCostNil() {
 	o.HourlyCost.Set(nil)
@@ -336,7 +330,6 @@ func (o *CostComponent) HasMonthlyCost() bool {
 func (o *CostComponent) SetMonthlyCost(v string) {
 	o.MonthlyCost.Set(&v)
 }
-
 // SetMonthlyCostNil sets the value for MonthlyCost to be an explicit nil
 func (o *CostComponent) SetMonthlyCostNil() {
 	o.MonthlyCost.Set(nil)
@@ -348,7 +341,7 @@ func (o *CostComponent) UnsetMonthlyCost() {
 }
 
 func (o CostComponent) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -416,3 +409,5 @@ func (v *NullableCostComponent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

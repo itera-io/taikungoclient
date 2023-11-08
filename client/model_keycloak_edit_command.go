@@ -20,11 +20,11 @@ var _ MappedNullable = &KeycloakEditCommand{}
 
 // KeycloakEditCommand struct for KeycloakEditCommand
 type KeycloakEditCommand struct {
-	Id           *int32         `json:"id,omitempty"`
-	Name         NullableString `json:"name,omitempty"`
-	Url          NullableString `json:"url,omitempty"`
-	RealmsName   NullableString `json:"realmsName,omitempty"`
-	ClientId     NullableString `json:"clientId,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	RealmsName NullableString `json:"realmsName,omitempty"`
+	ClientId NullableString `json:"clientId,omitempty"`
 	ClientSecret NullableString `json:"clientSecret,omitempty"`
 }
 
@@ -109,7 +109,6 @@ func (o *KeycloakEditCommand) HasName() bool {
 func (o *KeycloakEditCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *KeycloakEditCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -152,7 +151,6 @@ func (o *KeycloakEditCommand) HasUrl() bool {
 func (o *KeycloakEditCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *KeycloakEditCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -195,7 +193,6 @@ func (o *KeycloakEditCommand) HasRealmsName() bool {
 func (o *KeycloakEditCommand) SetRealmsName(v string) {
 	o.RealmsName.Set(&v)
 }
-
 // SetRealmsNameNil sets the value for RealmsName to be an explicit nil
 func (o *KeycloakEditCommand) SetRealmsNameNil() {
 	o.RealmsName.Set(nil)
@@ -238,7 +235,6 @@ func (o *KeycloakEditCommand) HasClientId() bool {
 func (o *KeycloakEditCommand) SetClientId(v string) {
 	o.ClientId.Set(&v)
 }
-
 // SetClientIdNil sets the value for ClientId to be an explicit nil
 func (o *KeycloakEditCommand) SetClientIdNil() {
 	o.ClientId.Set(nil)
@@ -281,7 +277,6 @@ func (o *KeycloakEditCommand) HasClientSecret() bool {
 func (o *KeycloakEditCommand) SetClientSecret(v string) {
 	o.ClientSecret.Set(&v)
 }
-
 // SetClientSecretNil sets the value for ClientSecret to be an explicit nil
 func (o *KeycloakEditCommand) SetClientSecretNil() {
 	o.ClientSecret.Set(nil)
@@ -293,7 +288,7 @@ func (o *KeycloakEditCommand) UnsetClientSecret() {
 }
 
 func (o KeycloakEditCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -358,3 +353,5 @@ func (v *NullableKeycloakEditCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

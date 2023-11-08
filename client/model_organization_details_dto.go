@@ -20,31 +20,31 @@ var _ MappedNullable = &OrganizationDetailsDto{}
 
 // OrganizationDetailsDto struct for OrganizationDetailsDto
 type OrganizationDetailsDto struct {
-	Id                           *int32                             `json:"id,omitempty"`
-	Name                         NullableString                     `json:"name,omitempty"`
-	FullName                     NullableString                     `json:"fullName,omitempty"`
-	Email                        NullableString                     `json:"email,omitempty"`
-	BillingEmail                 NullableString                     `json:"billingEmail,omitempty"`
-	Phone                        NullableString                     `json:"phone,omitempty"`
-	Country                      NullableString                     `json:"country,omitempty"`
-	City                         NullableString                     `json:"city,omitempty"`
-	VatNumber                    NullableString                     `json:"vatNumber,omitempty"`
-	Address                      NullableString                     `json:"address,omitempty"`
-	IsEligibleUpdateSubscription *bool                              `json:"isEligibleUpdateSubscription,omitempty"`
-	IsLocked                     *bool                              `json:"isLocked,omitempty"`
-	IsReadOnly                   *bool                              `json:"isReadOnly,omitempty"`
-	IsNew                        *bool                              `json:"isNew,omitempty"`
-	TrialEnded                   *bool                              `json:"trialEnded,omitempty"`
-	Users                        *int32                             `json:"users,omitempty"`
-	Projects                     *int32                             `json:"projects,omitempty"`
-	Servers                      *int32                             `json:"servers,omitempty"`
-	CloudCredentials             *int32                             `json:"cloudCredentials,omitempty"`
-	CreatedAt                    NullableString                     `json:"createdAt,omitempty"`
-	PartnerId                    NullableInt32                      `json:"partnerId,omitempty"`
-	PartnerName                  NullableString                     `json:"partnerName,omitempty"`
-	Partner                      *PartnerDetailsForOrganizationsDto `json:"partner,omitempty"`
-	DiscountRate                 *float64                           `json:"discountRate,omitempty"`
-	BoundRules                   []PrometheusEntity                 `json:"boundRules,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	FullName NullableString `json:"fullName,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	BillingEmail NullableString `json:"billingEmail,omitempty"`
+	Phone NullableString `json:"phone,omitempty"`
+	Country NullableString `json:"country,omitempty"`
+	City NullableString `json:"city,omitempty"`
+	VatNumber NullableString `json:"vatNumber,omitempty"`
+	Address NullableString `json:"address,omitempty"`
+	IsEligibleUpdateSubscription *bool `json:"isEligibleUpdateSubscription,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	IsReadOnly *bool `json:"isReadOnly,omitempty"`
+	IsNew *bool `json:"isNew,omitempty"`
+	TrialEnded *bool `json:"trialEnded,omitempty"`
+	Users *int32 `json:"users,omitempty"`
+	Projects *int32 `json:"projects,omitempty"`
+	Servers *int32 `json:"servers,omitempty"`
+	CloudCredentials *int32 `json:"cloudCredentials,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	PartnerId NullableInt32 `json:"partnerId,omitempty"`
+	PartnerName NullableString `json:"partnerName,omitempty"`
+	Partner *PartnerDetailsForOrganizationsDto `json:"partner,omitempty"`
+	DiscountRate *float64 `json:"discountRate,omitempty"`
+	BoundRules []PrometheusEntity `json:"boundRules,omitempty"`
 }
 
 // NewOrganizationDetailsDto instantiates a new OrganizationDetailsDto object
@@ -128,7 +128,6 @@ func (o *OrganizationDetailsDto) HasName() bool {
 func (o *OrganizationDetailsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OrganizationDetailsDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -171,7 +170,6 @@ func (o *OrganizationDetailsDto) HasFullName() bool {
 func (o *OrganizationDetailsDto) SetFullName(v string) {
 	o.FullName.Set(&v)
 }
-
 // SetFullNameNil sets the value for FullName to be an explicit nil
 func (o *OrganizationDetailsDto) SetFullNameNil() {
 	o.FullName.Set(nil)
@@ -214,7 +212,6 @@ func (o *OrganizationDetailsDto) HasEmail() bool {
 func (o *OrganizationDetailsDto) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *OrganizationDetailsDto) SetEmailNil() {
 	o.Email.Set(nil)
@@ -257,7 +254,6 @@ func (o *OrganizationDetailsDto) HasBillingEmail() bool {
 func (o *OrganizationDetailsDto) SetBillingEmail(v string) {
 	o.BillingEmail.Set(&v)
 }
-
 // SetBillingEmailNil sets the value for BillingEmail to be an explicit nil
 func (o *OrganizationDetailsDto) SetBillingEmailNil() {
 	o.BillingEmail.Set(nil)
@@ -300,7 +296,6 @@ func (o *OrganizationDetailsDto) HasPhone() bool {
 func (o *OrganizationDetailsDto) SetPhone(v string) {
 	o.Phone.Set(&v)
 }
-
 // SetPhoneNil sets the value for Phone to be an explicit nil
 func (o *OrganizationDetailsDto) SetPhoneNil() {
 	o.Phone.Set(nil)
@@ -343,7 +338,6 @@ func (o *OrganizationDetailsDto) HasCountry() bool {
 func (o *OrganizationDetailsDto) SetCountry(v string) {
 	o.Country.Set(&v)
 }
-
 // SetCountryNil sets the value for Country to be an explicit nil
 func (o *OrganizationDetailsDto) SetCountryNil() {
 	o.Country.Set(nil)
@@ -386,7 +380,6 @@ func (o *OrganizationDetailsDto) HasCity() bool {
 func (o *OrganizationDetailsDto) SetCity(v string) {
 	o.City.Set(&v)
 }
-
 // SetCityNil sets the value for City to be an explicit nil
 func (o *OrganizationDetailsDto) SetCityNil() {
 	o.City.Set(nil)
@@ -429,7 +422,6 @@ func (o *OrganizationDetailsDto) HasVatNumber() bool {
 func (o *OrganizationDetailsDto) SetVatNumber(v string) {
 	o.VatNumber.Set(&v)
 }
-
 // SetVatNumberNil sets the value for VatNumber to be an explicit nil
 func (o *OrganizationDetailsDto) SetVatNumberNil() {
 	o.VatNumber.Set(nil)
@@ -472,7 +464,6 @@ func (o *OrganizationDetailsDto) HasAddress() bool {
 func (o *OrganizationDetailsDto) SetAddress(v string) {
 	o.Address.Set(&v)
 }
-
 // SetAddressNil sets the value for Address to be an explicit nil
 func (o *OrganizationDetailsDto) SetAddressNil() {
 	o.Address.Set(nil)
@@ -803,7 +794,6 @@ func (o *OrganizationDetailsDto) HasCreatedAt() bool {
 func (o *OrganizationDetailsDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *OrganizationDetailsDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -846,7 +836,6 @@ func (o *OrganizationDetailsDto) HasPartnerId() bool {
 func (o *OrganizationDetailsDto) SetPartnerId(v int32) {
 	o.PartnerId.Set(&v)
 }
-
 // SetPartnerIdNil sets the value for PartnerId to be an explicit nil
 func (o *OrganizationDetailsDto) SetPartnerIdNil() {
 	o.PartnerId.Set(nil)
@@ -889,7 +878,6 @@ func (o *OrganizationDetailsDto) HasPartnerName() bool {
 func (o *OrganizationDetailsDto) SetPartnerName(v string) {
 	o.PartnerName.Set(&v)
 }
-
 // SetPartnerNameNil sets the value for PartnerName to be an explicit nil
 func (o *OrganizationDetailsDto) SetPartnerNameNil() {
 	o.PartnerName.Set(nil)
@@ -998,7 +986,7 @@ func (o *OrganizationDetailsDto) SetBoundRules(v []PrometheusEntity) {
 }
 
 func (o OrganizationDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1120,3 +1108,5 @@ func (v *NullableOrganizationDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

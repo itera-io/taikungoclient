@@ -20,8 +20,8 @@ var _ MappedNullable = &ConfigMapSearchList{}
 
 // ConfigMapSearchList struct for ConfigMapSearchList
 type ConfigMapSearchList struct {
-	Data       []CommonSearchKubernetesResponseData `json:"data,omitempty"`
-	TotalCount *int32                               `json:"totalCount,omitempty"`
+	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewConfigMapSearchList instantiates a new ConfigMapSearchList object
@@ -107,7 +107,7 @@ func (o *ConfigMapSearchList) SetTotalCount(v int32) {
 }
 
 func (o ConfigMapSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableConfigMapSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

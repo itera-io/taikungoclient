@@ -20,12 +20,12 @@ var _ MappedNullable = &CreateAwsCloudCommand{}
 
 // CreateAwsCloudCommand struct for CreateAwsCloudCommand
 type CreateAwsCloudCommand struct {
-	Name               NullableString `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
-	AwsAccessKeyId     NullableString `json:"awsAccessKeyId,omitempty"`
-	AzCount            *int32         `json:"azCount,omitempty"`
-	AwsRegion          NullableString `json:"awsRegion,omitempty"`
-	OrganizationId     NullableInt32  `json:"organizationId,omitempty"`
+	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
+	AzCount *int32 `json:"azCount,omitempty"`
+	AwsRegion NullableString `json:"awsRegion,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
 
 // NewCreateAwsCloudCommand instantiates a new CreateAwsCloudCommand object
@@ -77,7 +77,6 @@ func (o *CreateAwsCloudCommand) HasName() bool {
 func (o *CreateAwsCloudCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateAwsCloudCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -120,7 +119,6 @@ func (o *CreateAwsCloudCommand) HasAwsSecretAccessKey() bool {
 func (o *CreateAwsCloudCommand) SetAwsSecretAccessKey(v string) {
 	o.AwsSecretAccessKey.Set(&v)
 }
-
 // SetAwsSecretAccessKeyNil sets the value for AwsSecretAccessKey to be an explicit nil
 func (o *CreateAwsCloudCommand) SetAwsSecretAccessKeyNil() {
 	o.AwsSecretAccessKey.Set(nil)
@@ -163,7 +161,6 @@ func (o *CreateAwsCloudCommand) HasAwsAccessKeyId() bool {
 func (o *CreateAwsCloudCommand) SetAwsAccessKeyId(v string) {
 	o.AwsAccessKeyId.Set(&v)
 }
-
 // SetAwsAccessKeyIdNil sets the value for AwsAccessKeyId to be an explicit nil
 func (o *CreateAwsCloudCommand) SetAwsAccessKeyIdNil() {
 	o.AwsAccessKeyId.Set(nil)
@@ -238,7 +235,6 @@ func (o *CreateAwsCloudCommand) HasAwsRegion() bool {
 func (o *CreateAwsCloudCommand) SetAwsRegion(v string) {
 	o.AwsRegion.Set(&v)
 }
-
 // SetAwsRegionNil sets the value for AwsRegion to be an explicit nil
 func (o *CreateAwsCloudCommand) SetAwsRegionNil() {
 	o.AwsRegion.Set(nil)
@@ -281,7 +277,6 @@ func (o *CreateAwsCloudCommand) HasOrganizationId() bool {
 func (o *CreateAwsCloudCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateAwsCloudCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -293,7 +288,7 @@ func (o *CreateAwsCloudCommand) UnsetOrganizationId() {
 }
 
 func (o CreateAwsCloudCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -358,3 +353,5 @@ func (v *NullableCreateAwsCloudCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

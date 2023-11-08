@@ -20,8 +20,8 @@ var _ MappedNullable = &UpdateTanzuCommand{}
 
 // UpdateTanzuCommand struct for UpdateTanzuCommand
 type UpdateTanzuCommand struct {
-	Id       *int32         `json:"id,omitempty"`
-	Name     NullableString `json:"name,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	Password NullableString `json:"password,omitempty"`
 }
 
@@ -106,7 +106,6 @@ func (o *UpdateTanzuCommand) HasName() bool {
 func (o *UpdateTanzuCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateTanzuCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -149,7 +148,6 @@ func (o *UpdateTanzuCommand) HasPassword() bool {
 func (o *UpdateTanzuCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *UpdateTanzuCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -161,7 +159,7 @@ func (o *UpdateTanzuCommand) UnsetPassword() {
 }
 
 func (o UpdateTanzuCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,3 +215,5 @@ func (v *NullableUpdateTanzuCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

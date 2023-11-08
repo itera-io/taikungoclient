@@ -21,11 +21,11 @@ var _ MappedNullable = &CreateShowbackSummaryCommand{}
 
 // CreateShowbackSummaryCommand struct for CreateShowbackSummaryCommand
 type CreateShowbackSummaryCommand struct {
-	BeginApply     *time.Time     `json:"beginApply,omitempty"`
-	Price          *float64       `json:"price,omitempty"`
-	ShowbackRuleId *int32         `json:"showbackRuleId,omitempty"`
-	ProjectId      NullableInt32  `json:"projectId,omitempty"`
-	ByLabelValue   NullableString `json:"byLabelValue,omitempty"`
+	BeginApply *time.Time `json:"beginApply,omitempty"`
+	Price *float64 `json:"price,omitempty"`
+	ShowbackRuleId *int32 `json:"showbackRuleId,omitempty"`
+	ProjectId NullableInt32 `json:"projectId,omitempty"`
+	ByLabelValue NullableString `json:"byLabelValue,omitempty"`
 }
 
 // NewCreateShowbackSummaryCommand instantiates a new CreateShowbackSummaryCommand object
@@ -173,7 +173,6 @@ func (o *CreateShowbackSummaryCommand) HasProjectId() bool {
 func (o *CreateShowbackSummaryCommand) SetProjectId(v int32) {
 	o.ProjectId.Set(&v)
 }
-
 // SetProjectIdNil sets the value for ProjectId to be an explicit nil
 func (o *CreateShowbackSummaryCommand) SetProjectIdNil() {
 	o.ProjectId.Set(nil)
@@ -216,7 +215,6 @@ func (o *CreateShowbackSummaryCommand) HasByLabelValue() bool {
 func (o *CreateShowbackSummaryCommand) SetByLabelValue(v string) {
 	o.ByLabelValue.Set(&v)
 }
-
 // SetByLabelValueNil sets the value for ByLabelValue to be an explicit nil
 func (o *CreateShowbackSummaryCommand) SetByLabelValueNil() {
 	o.ByLabelValue.Set(nil)
@@ -228,7 +226,7 @@ func (o *CreateShowbackSummaryCommand) UnsetByLabelValue() {
 }
 
 func (o CreateShowbackSummaryCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -290,3 +288,5 @@ func (v *NullableCreateShowbackSummaryCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

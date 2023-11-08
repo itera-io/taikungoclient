@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // ProjectAppsAPIService ProjectAppsAPI service
 type ProjectAppsAPIService service
 
 type ApiProjectappAutosyncRequest struct {
-	ctx                       context.Context
-	ApiService                *ProjectAppsAPIService
+	ctx context.Context
+	ApiService *ProjectAppsAPIService
 	autoSyncManagementCommand *AutoSyncManagementCommand
 }
 
@@ -41,22 +42,22 @@ func (r ApiProjectappAutosyncRequest) Execute() (*http.Response, error) {
 /*
 ProjectappAutosync AutoSync management
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProjectappAutosyncRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProjectappAutosyncRequest
 */
 func (a *ProjectAppsAPIService) ProjectappAutosync(ctx context.Context) ApiProjectappAutosyncRequest {
 	return ApiProjectappAutosyncRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectAppsAPIService) ProjectappAutosyncExecute(r ApiProjectappAutosyncRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAppsAPIService.ProjectappAutosync")
@@ -135,8 +136,8 @@ func (a *ProjectAppsAPIService) ProjectappAutosyncExecute(r ApiProjectappAutosyn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +147,8 @@ func (a *ProjectAppsAPIService) ProjectappAutosyncExecute(r ApiProjectappAutosyn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +158,8 @@ func (a *ProjectAppsAPIService) ProjectappAutosyncExecute(r ApiProjectappAutosyn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +169,8 @@ func (a *ProjectAppsAPIService) ProjectappAutosyncExecute(r ApiProjectappAutosyn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -179,8 +180,8 @@ func (a *ProjectAppsAPIService) ProjectappAutosyncExecute(r ApiProjectappAutosyn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -189,8 +190,8 @@ func (a *ProjectAppsAPIService) ProjectappAutosyncExecute(r ApiProjectappAutosyn
 }
 
 type ApiProjectappDeleteRequest struct {
-	ctx          context.Context
-	ApiService   *ProjectAppsAPIService
+	ctx context.Context
+	ApiService *ProjectAppsAPIService
 	projectAppId int32
 }
 
@@ -201,14 +202,14 @@ func (r ApiProjectappDeleteRequest) Execute() (*http.Response, error) {
 /*
 ProjectappDelete Uninstall application
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectAppId
-	@return ApiProjectappDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectAppId
+ @return ApiProjectappDeleteRequest
 */
 func (a *ProjectAppsAPIService) ProjectappDelete(ctx context.Context, projectAppId int32) ApiProjectappDeleteRequest {
 	return ApiProjectappDeleteRequest{
-		ApiService:   a,
-		ctx:          ctx,
+		ApiService: a,
+		ctx: ctx,
 		projectAppId: projectAppId,
 	}
 }
@@ -216,9 +217,9 @@ func (a *ProjectAppsAPIService) ProjectappDelete(ctx context.Context, projectApp
 // Execute executes the request
 func (a *ProjectAppsAPIService) ProjectappDeleteExecute(r ApiProjectappDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAppsAPIService.ProjectappDelete")
@@ -293,8 +294,8 @@ func (a *ProjectAppsAPIService) ProjectappDeleteExecute(r ApiProjectappDeleteReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -304,8 +305,8 @@ func (a *ProjectAppsAPIService) ProjectappDeleteExecute(r ApiProjectappDeleteReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -315,8 +316,8 @@ func (a *ProjectAppsAPIService) ProjectappDeleteExecute(r ApiProjectappDeleteReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -326,8 +327,8 @@ func (a *ProjectAppsAPIService) ProjectappDeleteExecute(r ApiProjectappDeleteReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -337,8 +338,8 @@ func (a *ProjectAppsAPIService) ProjectappDeleteExecute(r ApiProjectappDeleteReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -347,9 +348,9 @@ func (a *ProjectAppsAPIService) ProjectappDeleteExecute(r ApiProjectappDeleteReq
 }
 
 type ApiProjectappDetailsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAppsAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiProjectappDetailsRequest) Execute() (*ProjectAppDetailsDto, *http.Response, error) {
@@ -359,27 +360,26 @@ func (r ApiProjectappDetailsRequest) Execute() (*ProjectAppDetailsDto, *http.Res
 /*
 ProjectappDetails Retrieve project app's details
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiProjectappDetailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiProjectappDetailsRequest
 */
 func (a *ProjectAppsAPIService) ProjectappDetails(ctx context.Context, id int32) ApiProjectappDetailsRequest {
 	return ApiProjectappDetailsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ProjectAppDetailsDto
+//  @return ProjectAppDetailsDto
 func (a *ProjectAppsAPIService) ProjectappDetailsExecute(r ApiProjectappDetailsRequest) (*ProjectAppDetailsDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ProjectAppDetailsDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ProjectAppDetailsDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAppsAPIService.ProjectappDetails")
@@ -454,8 +454,8 @@ func (a *ProjectAppsAPIService) ProjectappDetailsExecute(r ApiProjectappDetailsR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -465,8 +465,8 @@ func (a *ProjectAppsAPIService) ProjectappDetailsExecute(r ApiProjectappDetailsR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -476,8 +476,8 @@ func (a *ProjectAppsAPIService) ProjectappDetailsExecute(r ApiProjectappDetailsR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -487,8 +487,8 @@ func (a *ProjectAppsAPIService) ProjectappDetailsExecute(r ApiProjectappDetailsR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -498,8 +498,8 @@ func (a *ProjectAppsAPIService) ProjectappDetailsExecute(r ApiProjectappDetailsR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -517,8 +517,8 @@ func (a *ProjectAppsAPIService) ProjectappDetailsExecute(r ApiProjectappDetailsR
 }
 
 type ApiProjectappInstallRequest struct {
-	ctx                     context.Context
-	ApiService              *ProjectAppsAPIService
+	ctx context.Context
+	ApiService *ProjectAppsAPIService
 	createProjectAppCommand *CreateProjectAppCommand
 }
 
@@ -534,25 +534,24 @@ func (r ApiProjectappInstallRequest) Execute() (*ApiResponse, *http.Response, er
 /*
 ProjectappInstall Install an application
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProjectappInstallRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProjectappInstallRequest
 */
 func (a *ProjectAppsAPIService) ProjectappInstall(ctx context.Context) ApiProjectappInstallRequest {
 	return ApiProjectappInstallRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *ProjectAppsAPIService) ProjectappInstallExecute(r ApiProjectappInstallRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAppsAPIService.ProjectappInstall")
@@ -628,8 +627,8 @@ func (a *ProjectAppsAPIService) ProjectappInstallExecute(r ApiProjectappInstallR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -639,8 +638,8 @@ func (a *ProjectAppsAPIService) ProjectappInstallExecute(r ApiProjectappInstallR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -650,8 +649,8 @@ func (a *ProjectAppsAPIService) ProjectappInstallExecute(r ApiProjectappInstallR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -661,8 +660,8 @@ func (a *ProjectAppsAPIService) ProjectappInstallExecute(r ApiProjectappInstallR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -672,8 +671,8 @@ func (a *ProjectAppsAPIService) ProjectappInstallExecute(r ApiProjectappInstallR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -691,14 +690,14 @@ func (a *ProjectAppsAPIService) ProjectappInstallExecute(r ApiProjectappInstallR
 }
 
 type ApiProjectappListRequest struct {
-	ctx           context.Context
-	ApiService    *ProjectAppsAPIService
-	offset        *int32
-	limit         *int32
-	sortBy        *string
+	ctx context.Context
+	ApiService *ProjectAppsAPIService
+	offset *int32
+	limit *int32
+	sortBy *string
 	sortDirection *string
-	search        *string
-	id            *int32
+	search *string
+	id *int32
 }
 
 func (r ApiProjectappListRequest) Offset(offset int32) ApiProjectappListRequest {
@@ -738,25 +737,24 @@ func (r ApiProjectappListRequest) Execute() (*ProjectAppList, *http.Response, er
 /*
 ProjectappList Retrieve all project apps according to current organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProjectappListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProjectappListRequest
 */
 func (a *ProjectAppsAPIService) ProjectappList(ctx context.Context) ApiProjectappListRequest {
 	return ApiProjectappListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ProjectAppList
+//  @return ProjectAppList
 func (a *ProjectAppsAPIService) ProjectappListExecute(r ApiProjectappListRequest) (*ProjectAppList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ProjectAppList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ProjectAppList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAppsAPIService.ProjectappList")
@@ -848,8 +846,8 @@ func (a *ProjectAppsAPIService) ProjectappListExecute(r ApiProjectappListRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -859,8 +857,8 @@ func (a *ProjectAppsAPIService) ProjectappListExecute(r ApiProjectappListRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -870,8 +868,8 @@ func (a *ProjectAppsAPIService) ProjectappListExecute(r ApiProjectappListRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -881,8 +879,8 @@ func (a *ProjectAppsAPIService) ProjectappListExecute(r ApiProjectappListRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -892,8 +890,8 @@ func (a *ProjectAppsAPIService) ProjectappListExecute(r ApiProjectappListRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -911,8 +909,8 @@ func (a *ProjectAppsAPIService) ProjectappListExecute(r ApiProjectappListRequest
 }
 
 type ApiProjectappLockManagerRequest struct {
-	ctx                   context.Context
-	ApiService            *ProjectAppsAPIService
+	ctx context.Context
+	ApiService *ProjectAppsAPIService
 	lockProjectAppCommand *LockProjectAppCommand
 }
 
@@ -928,22 +926,22 @@ func (r ApiProjectappLockManagerRequest) Execute() (*http.Response, error) {
 /*
 ProjectappLockManager Lock/Unlock project app
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProjectappLockManagerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProjectappLockManagerRequest
 */
 func (a *ProjectAppsAPIService) ProjectappLockManager(ctx context.Context) ApiProjectappLockManagerRequest {
 	return ApiProjectappLockManagerRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectAppsAPIService) ProjectappLockManagerExecute(r ApiProjectappLockManagerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAppsAPIService.ProjectappLockManager")
@@ -1022,8 +1020,8 @@ func (a *ProjectAppsAPIService) ProjectappLockManagerExecute(r ApiProjectappLock
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1033,8 +1031,8 @@ func (a *ProjectAppsAPIService) ProjectappLockManagerExecute(r ApiProjectappLock
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1044,8 +1042,8 @@ func (a *ProjectAppsAPIService) ProjectappLockManagerExecute(r ApiProjectappLock
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1055,8 +1053,8 @@ func (a *ProjectAppsAPIService) ProjectappLockManagerExecute(r ApiProjectappLock
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1066,8 +1064,8 @@ func (a *ProjectAppsAPIService) ProjectappLockManagerExecute(r ApiProjectappLock
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1076,8 +1074,8 @@ func (a *ProjectAppsAPIService) ProjectappLockManagerExecute(r ApiProjectappLock
 }
 
 type ApiProjectappSyncRequest struct {
-	ctx                   context.Context
-	ApiService            *ProjectAppsAPIService
+	ctx context.Context
+	ApiService *ProjectAppsAPIService
 	syncProjectAppCommand *SyncProjectAppCommand
 }
 
@@ -1093,22 +1091,22 @@ func (r ApiProjectappSyncRequest) Execute() (*http.Response, error) {
 /*
 ProjectappSync Sync an application
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProjectappSyncRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProjectappSyncRequest
 */
 func (a *ProjectAppsAPIService) ProjectappSync(ctx context.Context) ApiProjectappSyncRequest {
 	return ApiProjectappSyncRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectAppsAPIService) ProjectappSyncExecute(r ApiProjectappSyncRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAppsAPIService.ProjectappSync")
@@ -1187,8 +1185,8 @@ func (a *ProjectAppsAPIService) ProjectappSyncExecute(r ApiProjectappSyncRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1198,8 +1196,8 @@ func (a *ProjectAppsAPIService) ProjectappSyncExecute(r ApiProjectappSyncRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1209,8 +1207,8 @@ func (a *ProjectAppsAPIService) ProjectappSyncExecute(r ApiProjectappSyncRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1220,8 +1218,8 @@ func (a *ProjectAppsAPIService) ProjectappSyncExecute(r ApiProjectappSyncRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1231,8 +1229,8 @@ func (a *ProjectAppsAPIService) ProjectappSyncExecute(r ApiProjectappSyncRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

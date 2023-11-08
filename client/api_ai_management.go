@@ -19,12 +19,13 @@ import (
 	"net/url"
 )
 
+
 // AiManagementAPIService AiManagementAPI service
 type AiManagementAPIService service
 
 type ApiAiManagementDisableRequest struct {
-	ctx              context.Context
-	ApiService       *AiManagementAPIService
+	ctx context.Context
+	ApiService *AiManagementAPIService
 	disableAiCommand *DisableAiCommand
 }
 
@@ -40,22 +41,22 @@ func (r ApiAiManagementDisableRequest) Execute() (*http.Response, error) {
 /*
 AiManagementDisable Disable ai
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAiManagementDisableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAiManagementDisableRequest
 */
 func (a *AiManagementAPIService) AiManagementDisable(ctx context.Context) ApiAiManagementDisableRequest {
 	return ApiAiManagementDisableRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AiManagementAPIService) AiManagementDisableExecute(r ApiAiManagementDisableRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AiManagementAPIService.AiManagementDisable")
@@ -134,8 +135,8 @@ func (a *AiManagementAPIService) AiManagementDisableExecute(r ApiAiManagementDis
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -145,8 +146,8 @@ func (a *AiManagementAPIService) AiManagementDisableExecute(r ApiAiManagementDis
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -156,8 +157,8 @@ func (a *AiManagementAPIService) AiManagementDisableExecute(r ApiAiManagementDis
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -167,8 +168,8 @@ func (a *AiManagementAPIService) AiManagementDisableExecute(r ApiAiManagementDis
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -178,8 +179,8 @@ func (a *AiManagementAPIService) AiManagementDisableExecute(r ApiAiManagementDis
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -188,8 +189,8 @@ func (a *AiManagementAPIService) AiManagementDisableExecute(r ApiAiManagementDis
 }
 
 type ApiAiManagementEnableRequest struct {
-	ctx             context.Context
-	ApiService      *AiManagementAPIService
+	ctx context.Context
+	ApiService *AiManagementAPIService
 	enableAiCommand *EnableAiCommand
 }
 
@@ -205,22 +206,22 @@ func (r ApiAiManagementEnableRequest) Execute() (*http.Response, error) {
 /*
 AiManagementEnable Enable ai
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAiManagementEnableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAiManagementEnableRequest
 */
 func (a *AiManagementAPIService) AiManagementEnable(ctx context.Context) ApiAiManagementEnableRequest {
 	return ApiAiManagementEnableRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AiManagementAPIService) AiManagementEnableExecute(r ApiAiManagementEnableRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AiManagementAPIService.AiManagementEnable")
@@ -299,8 +300,8 @@ func (a *AiManagementAPIService) AiManagementEnableExecute(r ApiAiManagementEnab
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -310,8 +311,8 @@ func (a *AiManagementAPIService) AiManagementEnableExecute(r ApiAiManagementEnab
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -321,8 +322,8 @@ func (a *AiManagementAPIService) AiManagementEnableExecute(r ApiAiManagementEnab
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -332,8 +333,8 @@ func (a *AiManagementAPIService) AiManagementEnableExecute(r ApiAiManagementEnab
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -343,8 +344,8 @@ func (a *AiManagementAPIService) AiManagementEnableExecute(r ApiAiManagementEnab
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

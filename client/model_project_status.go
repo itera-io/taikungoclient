@@ -21,29 +21,29 @@ type ProjectStatus string
 
 // List of ProjectStatus
 const (
-	PROJECTSTATUS_NULL                       ProjectStatus = "Null"
-	PROJECTSTATUS_DELETING                   ProjectStatus = "Deleting"
-	PROJECTSTATUS_DISABLE_AI                 ProjectStatus = "DisableAi"
-	PROJECTSTATUS_DISABLE_GATEKEEPER         ProjectStatus = "DisableGatekeeper"
-	PROJECTSTATUS_DELETING_BACKUP_POLICIES   ProjectStatus = "DeletingBackupPolicies"
-	PROJECTSTATUS_DISABLE_BACKUP             ProjectStatus = "DisableBackup"
-	PROJECTSTATUS_DISABLE_MONITORING         ProjectStatus = "DisableMonitoring"
-	PROJECTSTATUS_ENABLE_BACKUP              ProjectStatus = "EnableBackup"
-	PROJECTSTATUS_ENABLE_MONITORING          ProjectStatus = "EnableMonitoring"
-	PROJECTSTATUS_ENABLE_AI                  ProjectStatus = "EnableAi"
-	PROJECTSTATUS_ENABLE_GATEKEEPER          ProjectStatus = "EnableGatekeeper"
-	PROJECTSTATUS_FAILURE                    ProjectStatus = "Failure"
-	PROJECTSTATUS_FAILED_UPGRADE             ProjectStatus = "FailedUpgrade"
-	PROJECTSTATUS_PENDING                    ProjectStatus = "Pending"
-	PROJECTSTATUS_PENDING_DELETE             ProjectStatus = "PendingDelete"
-	PROJECTSTATUS_PENDING_PURGE              ProjectStatus = "PendingPurge"
+	PROJECTSTATUS_NULL ProjectStatus = "Null"
+	PROJECTSTATUS_DELETING ProjectStatus = "Deleting"
+	PROJECTSTATUS_DISABLE_AI ProjectStatus = "DisableAi"
+	PROJECTSTATUS_DISABLE_GATEKEEPER ProjectStatus = "DisableGatekeeper"
+	PROJECTSTATUS_DELETING_BACKUP_POLICIES ProjectStatus = "DeletingBackupPolicies"
+	PROJECTSTATUS_DISABLE_BACKUP ProjectStatus = "DisableBackup"
+	PROJECTSTATUS_DISABLE_MONITORING ProjectStatus = "DisableMonitoring"
+	PROJECTSTATUS_ENABLE_BACKUP ProjectStatus = "EnableBackup"
+	PROJECTSTATUS_ENABLE_MONITORING ProjectStatus = "EnableMonitoring"
+	PROJECTSTATUS_ENABLE_AI ProjectStatus = "EnableAi"
+	PROJECTSTATUS_ENABLE_GATEKEEPER ProjectStatus = "EnableGatekeeper"
+	PROJECTSTATUS_FAILURE ProjectStatus = "Failure"
+	PROJECTSTATUS_FAILED_UPGRADE ProjectStatus = "FailedUpgrade"
+	PROJECTSTATUS_PENDING ProjectStatus = "Pending"
+	PROJECTSTATUS_PENDING_DELETE ProjectStatus = "PendingDelete"
+	PROJECTSTATUS_PENDING_PURGE ProjectStatus = "PendingPurge"
 	PROJECTSTATUS_PENDING_UPDATE_CREDENTIALS ProjectStatus = "PendingUpdateCredentials"
-	PROJECTSTATUS_PENDING_UPGRADE            ProjectStatus = "PendingUpgrade"
-	PROJECTSTATUS_PURGING                    ProjectStatus = "Purging"
-	PROJECTSTATUS_READY                      ProjectStatus = "Ready"
-	PROJECTSTATUS_UPDATING                   ProjectStatus = "Updating"
-	PROJECTSTATUS_UPGRADING                  ProjectStatus = "Upgrading"
-	PROJECTSTATUS_UPDATING_CREDENTIALS       ProjectStatus = "UpdatingCredentials"
+	PROJECTSTATUS_PENDING_UPGRADE ProjectStatus = "PendingUpgrade"
+	PROJECTSTATUS_PURGING ProjectStatus = "Purging"
+	PROJECTSTATUS_READY ProjectStatus = "Ready"
+	PROJECTSTATUS_UPDATING ProjectStatus = "Updating"
+	PROJECTSTATUS_UPGRADING ProjectStatus = "Upgrading"
+	PROJECTSTATUS_UPDATING_CREDENTIALS ProjectStatus = "UpdatingCredentials"
 )
 
 // All allowed values of ProjectStatus enum
@@ -151,3 +151,4 @@ func (v *NullableProjectStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

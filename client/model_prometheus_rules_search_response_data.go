@@ -20,9 +20,9 @@ var _ MappedNullable = &PrometheusRulesSearchResponseData{}
 
 // PrometheusRulesSearchResponseData struct for PrometheusRulesSearchResponseData
 type PrometheusRulesSearchResponseData struct {
-	Id      *int32         `json:"id,omitempty"`
-	Name    NullableString `json:"name,omitempty"`
-	Partner *int32         `json:"partner,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Partner *int32 `json:"partner,omitempty"`
 }
 
 // NewPrometheusRulesSearchResponseData instantiates a new PrometheusRulesSearchResponseData object
@@ -106,7 +106,6 @@ func (o *PrometheusRulesSearchResponseData) HasName() bool {
 func (o *PrometheusRulesSearchResponseData) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PrometheusRulesSearchResponseData) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,7 +149,7 @@ func (o *PrometheusRulesSearchResponseData) SetPartner(v int32) {
 }
 
 func (o PrometheusRulesSearchResponseData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -206,3 +205,5 @@ func (v *NullablePrometheusRulesSearchResponseData) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

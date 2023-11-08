@@ -20,11 +20,11 @@ var _ MappedNullable = &CreateUserCommand{}
 
 // CreateUserCommand struct for CreateUserCommand
 type CreateUserCommand struct {
-	Username       NullableString `json:"username,omitempty"`
-	DisplayName    NullableString `json:"displayName,omitempty"`
-	Email          NullableString `json:"email,omitempty"`
-	OrganizationId NullableInt32  `json:"organizationId,omitempty"`
-	Role           *UserRole      `json:"role,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	DisplayName NullableString `json:"displayName,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	Role *UserRole `json:"role,omitempty"`
 }
 
 // NewCreateUserCommand instantiates a new CreateUserCommand object
@@ -76,7 +76,6 @@ func (o *CreateUserCommand) HasUsername() bool {
 func (o *CreateUserCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *CreateUserCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -119,7 +118,6 @@ func (o *CreateUserCommand) HasDisplayName() bool {
 func (o *CreateUserCommand) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
-
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *CreateUserCommand) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -162,7 +160,6 @@ func (o *CreateUserCommand) HasEmail() bool {
 func (o *CreateUserCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *CreateUserCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -205,7 +202,6 @@ func (o *CreateUserCommand) HasOrganizationId() bool {
 func (o *CreateUserCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateUserCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -249,7 +245,7 @@ func (o *CreateUserCommand) SetRole(v UserRole) {
 }
 
 func (o CreateUserCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -311,3 +307,5 @@ func (v *NullableCreateUserCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

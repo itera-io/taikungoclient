@@ -20,7 +20,7 @@ var _ MappedNullable = &SetTicketPriorityCommand{}
 
 // SetTicketPriorityCommand struct for SetTicketPriorityCommand
 type SetTicketPriorityCommand struct {
-	Id       NullableString  `json:"id,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 	Priority *TicketPriority `json:"priority,omitempty"`
 }
 
@@ -73,7 +73,6 @@ func (o *SetTicketPriorityCommand) HasId() bool {
 func (o *SetTicketPriorityCommand) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *SetTicketPriorityCommand) SetIdNil() {
 	o.Id.Set(nil)
@@ -117,7 +116,7 @@ func (o *SetTicketPriorityCommand) SetPriority(v TicketPriority) {
 }
 
 func (o SetTicketPriorityCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableSetTicketPriorityCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

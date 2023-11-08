@@ -20,21 +20,21 @@ var _ MappedNullable = &BackupCredentialsListDto{}
 
 // BackupCredentialsListDto struct for BackupCredentialsListDto
 type BackupCredentialsListDto struct {
-	Id               *int32              `json:"id,omitempty"`
-	S3Name           NullableString      `json:"s3Name,omitempty"`
-	S3AccessKeyId    NullableString      `json:"s3AccessKeyId,omitempty"`
-	S3Endpoint       NullableString      `json:"s3Endpoint,omitempty"`
-	S3Region         NullableString      `json:"s3Region,omitempty"`
-	OrganizationId   NullableInt32       `json:"organizationId,omitempty"`
-	OrganizationName NullableString      `json:"organizationName,omitempty"`
-	Projects         []CommonDropdownDto `json:"projects,omitempty"`
-	IsLocked         *bool               `json:"isLocked,omitempty"`
-	CreatedBy        NullableString      `json:"createdBy,omitempty"`
-	LastModified     NullableString      `json:"lastModified,omitempty"`
-	LastModifiedBy   NullableString      `json:"lastModifiedBy,omitempty"`
-	CreatedAt        NullableString      `json:"createdAt,omitempty"`
-	IsDefault        *bool               `json:"isDefault,omitempty"`
-	IsInfra          *bool               `json:"isInfra,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	S3Name NullableString `json:"s3Name,omitempty"`
+	S3AccessKeyId NullableString `json:"s3AccessKeyId,omitempty"`
+	S3Endpoint NullableString `json:"s3Endpoint,omitempty"`
+	S3Region NullableString `json:"s3Region,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	Projects []CommonDropdownDto `json:"projects,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
+	IsInfra *bool `json:"isInfra,omitempty"`
 }
 
 // NewBackupCredentialsListDto instantiates a new BackupCredentialsListDto object
@@ -118,7 +118,6 @@ func (o *BackupCredentialsListDto) HasS3Name() bool {
 func (o *BackupCredentialsListDto) SetS3Name(v string) {
 	o.S3Name.Set(&v)
 }
-
 // SetS3NameNil sets the value for S3Name to be an explicit nil
 func (o *BackupCredentialsListDto) SetS3NameNil() {
 	o.S3Name.Set(nil)
@@ -161,7 +160,6 @@ func (o *BackupCredentialsListDto) HasS3AccessKeyId() bool {
 func (o *BackupCredentialsListDto) SetS3AccessKeyId(v string) {
 	o.S3AccessKeyId.Set(&v)
 }
-
 // SetS3AccessKeyIdNil sets the value for S3AccessKeyId to be an explicit nil
 func (o *BackupCredentialsListDto) SetS3AccessKeyIdNil() {
 	o.S3AccessKeyId.Set(nil)
@@ -204,7 +202,6 @@ func (o *BackupCredentialsListDto) HasS3Endpoint() bool {
 func (o *BackupCredentialsListDto) SetS3Endpoint(v string) {
 	o.S3Endpoint.Set(&v)
 }
-
 // SetS3EndpointNil sets the value for S3Endpoint to be an explicit nil
 func (o *BackupCredentialsListDto) SetS3EndpointNil() {
 	o.S3Endpoint.Set(nil)
@@ -247,7 +244,6 @@ func (o *BackupCredentialsListDto) HasS3Region() bool {
 func (o *BackupCredentialsListDto) SetS3Region(v string) {
 	o.S3Region.Set(&v)
 }
-
 // SetS3RegionNil sets the value for S3Region to be an explicit nil
 func (o *BackupCredentialsListDto) SetS3RegionNil() {
 	o.S3Region.Set(nil)
@@ -290,7 +286,6 @@ func (o *BackupCredentialsListDto) HasOrganizationId() bool {
 func (o *BackupCredentialsListDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *BackupCredentialsListDto) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -333,7 +328,6 @@ func (o *BackupCredentialsListDto) HasOrganizationName() bool {
 func (o *BackupCredentialsListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *BackupCredentialsListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -441,7 +435,6 @@ func (o *BackupCredentialsListDto) HasCreatedBy() bool {
 func (o *BackupCredentialsListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *BackupCredentialsListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -484,7 +477,6 @@ func (o *BackupCredentialsListDto) HasLastModified() bool {
 func (o *BackupCredentialsListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *BackupCredentialsListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -527,7 +519,6 @@ func (o *BackupCredentialsListDto) HasLastModifiedBy() bool {
 func (o *BackupCredentialsListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *BackupCredentialsListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -570,7 +561,6 @@ func (o *BackupCredentialsListDto) HasCreatedAt() bool {
 func (o *BackupCredentialsListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *BackupCredentialsListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -646,7 +636,7 @@ func (o *BackupCredentialsListDto) SetIsInfra(v bool) {
 }
 
 func (o BackupCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -738,3 +728,5 @@ func (v *NullableBackupCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

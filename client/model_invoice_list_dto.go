@@ -20,20 +20,20 @@ var _ MappedNullable = &InvoiceListDto{}
 
 // InvoiceListDto struct for InvoiceListDto
 type InvoiceListDto struct {
-	Id                         *int32         `json:"id,omitempty"`
-	Name                       NullableString `json:"name,omitempty"`
-	StartDate                  NullableString `json:"startDate,omitempty"`
-	EndDate                    NullableString `json:"endDate,omitempty"`
-	RequiredPaymentAction      *bool          `json:"requiredPaymentAction,omitempty"`
-	IsPaid                     *bool          `json:"isPaid,omitempty"`
-	InvoiceId                  NullableString `json:"invoiceId,omitempty"`
-	SubscriptionType           NullableString `json:"subscriptionType,omitempty"`
-	SubscriptionName           NullableString `json:"subscriptionName,omitempty"`
-	Price                      *float64       `json:"price,omitempty"`
-	OrganizationId             *int32         `json:"organizationId,omitempty"`
-	OrganizationName           NullableString `json:"organizationName,omitempty"`
-	InvoiceNumber              NullableString `json:"invoiceNumber,omitempty"`
-	OrganizationSubscriptionId *int32         `json:"organizationSubscriptionId,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	StartDate NullableString `json:"startDate,omitempty"`
+	EndDate NullableString `json:"endDate,omitempty"`
+	RequiredPaymentAction *bool `json:"requiredPaymentAction,omitempty"`
+	IsPaid *bool `json:"isPaid,omitempty"`
+	InvoiceId NullableString `json:"invoiceId,omitempty"`
+	SubscriptionType NullableString `json:"subscriptionType,omitempty"`
+	SubscriptionName NullableString `json:"subscriptionName,omitempty"`
+	Price *float64 `json:"price,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	InvoiceNumber NullableString `json:"invoiceNumber,omitempty"`
+	OrganizationSubscriptionId *int32 `json:"organizationSubscriptionId,omitempty"`
 }
 
 // NewInvoiceListDto instantiates a new InvoiceListDto object
@@ -117,7 +117,6 @@ func (o *InvoiceListDto) HasName() bool {
 func (o *InvoiceListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *InvoiceListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -160,7 +159,6 @@ func (o *InvoiceListDto) HasStartDate() bool {
 func (o *InvoiceListDto) SetStartDate(v string) {
 	o.StartDate.Set(&v)
 }
-
 // SetStartDateNil sets the value for StartDate to be an explicit nil
 func (o *InvoiceListDto) SetStartDateNil() {
 	o.StartDate.Set(nil)
@@ -203,7 +201,6 @@ func (o *InvoiceListDto) HasEndDate() bool {
 func (o *InvoiceListDto) SetEndDate(v string) {
 	o.EndDate.Set(&v)
 }
-
 // SetEndDateNil sets the value for EndDate to be an explicit nil
 func (o *InvoiceListDto) SetEndDateNil() {
 	o.EndDate.Set(nil)
@@ -310,7 +307,6 @@ func (o *InvoiceListDto) HasInvoiceId() bool {
 func (o *InvoiceListDto) SetInvoiceId(v string) {
 	o.InvoiceId.Set(&v)
 }
-
 // SetInvoiceIdNil sets the value for InvoiceId to be an explicit nil
 func (o *InvoiceListDto) SetInvoiceIdNil() {
 	o.InvoiceId.Set(nil)
@@ -353,7 +349,6 @@ func (o *InvoiceListDto) HasSubscriptionType() bool {
 func (o *InvoiceListDto) SetSubscriptionType(v string) {
 	o.SubscriptionType.Set(&v)
 }
-
 // SetSubscriptionTypeNil sets the value for SubscriptionType to be an explicit nil
 func (o *InvoiceListDto) SetSubscriptionTypeNil() {
 	o.SubscriptionType.Set(nil)
@@ -396,7 +391,6 @@ func (o *InvoiceListDto) HasSubscriptionName() bool {
 func (o *InvoiceListDto) SetSubscriptionName(v string) {
 	o.SubscriptionName.Set(&v)
 }
-
 // SetSubscriptionNameNil sets the value for SubscriptionName to be an explicit nil
 func (o *InvoiceListDto) SetSubscriptionNameNil() {
 	o.SubscriptionName.Set(nil)
@@ -503,7 +497,6 @@ func (o *InvoiceListDto) HasOrganizationName() bool {
 func (o *InvoiceListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *InvoiceListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -546,7 +539,6 @@ func (o *InvoiceListDto) HasInvoiceNumber() bool {
 func (o *InvoiceListDto) SetInvoiceNumber(v string) {
 	o.InvoiceNumber.Set(&v)
 }
-
 // SetInvoiceNumberNil sets the value for InvoiceNumber to be an explicit nil
 func (o *InvoiceListDto) SetInvoiceNumberNil() {
 	o.InvoiceNumber.Set(nil)
@@ -590,7 +582,7 @@ func (o *InvoiceListDto) SetOrganizationSubscriptionId(v int32) {
 }
 
 func (o InvoiceListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -679,3 +671,5 @@ func (v *NullableInvoiceListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

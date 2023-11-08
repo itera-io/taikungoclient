@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_SlackAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_SlackAPIService(t *testing.T) {
 
 	t.Run("Test SlackAPIService SlackCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SlackAPI.SlackCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_SlackAPIService(t *testing.T) {
 
 	t.Run("Test SlackAPIService SlackDeleteMultiple", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.SlackAPI.SlackDeleteMultiple(context.Background()).Execute()
 
@@ -47,7 +47,7 @@ func Test_taikuncore_SlackAPIService(t *testing.T) {
 
 	t.Run("Test SlackAPIService SlackDropdown", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SlackAPI.SlackDropdown(context.Background()).Execute()
 
@@ -59,7 +59,7 @@ func Test_taikuncore_SlackAPIService(t *testing.T) {
 
 	t.Run("Test SlackAPIService SlackList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SlackAPI.SlackList(context.Background()).Execute()
 
@@ -71,7 +71,7 @@ func Test_taikuncore_SlackAPIService(t *testing.T) {
 
 	t.Run("Test SlackAPIService SlackUpdate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -84,7 +84,7 @@ func Test_taikuncore_SlackAPIService(t *testing.T) {
 
 	t.Run("Test SlackAPIService SlackVerify", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.SlackAPI.SlackVerify(context.Background()).Execute()
 

@@ -21,12 +21,12 @@ var _ MappedNullable = &BillingSummaryDto{}
 
 // BillingSummaryDto struct for BillingSummaryDto
 type BillingSummaryDto struct {
-	ProjectId   *int32         `json:"projectId,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
 	ProjectName NullableString `json:"projectName,omitempty"`
-	StartDate   *time.Time     `json:"startDate,omitempty"`
-	EndDate     NullableTime   `json:"endDate,omitempty"`
-	Tcu         *float64       `json:"tcu,omitempty"`
-	IsDeleted   *bool          `json:"isDeleted,omitempty"`
+	StartDate *time.Time `json:"startDate,omitempty"`
+	EndDate NullableTime `json:"endDate,omitempty"`
+	Tcu *float64 `json:"tcu,omitempty"`
+	IsDeleted *bool `json:"isDeleted,omitempty"`
 }
 
 // NewBillingSummaryDto instantiates a new BillingSummaryDto object
@@ -110,7 +110,6 @@ func (o *BillingSummaryDto) HasProjectName() bool {
 func (o *BillingSummaryDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *BillingSummaryDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -185,7 +184,6 @@ func (o *BillingSummaryDto) HasEndDate() bool {
 func (o *BillingSummaryDto) SetEndDate(v time.Time) {
 	o.EndDate.Set(&v)
 }
-
 // SetEndDateNil sets the value for EndDate to be an explicit nil
 func (o *BillingSummaryDto) SetEndDateNil() {
 	o.EndDate.Set(nil)
@@ -261,7 +259,7 @@ func (o *BillingSummaryDto) SetIsDeleted(v bool) {
 }
 
 func (o BillingSummaryDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -326,3 +324,5 @@ func (v *NullableBillingSummaryDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

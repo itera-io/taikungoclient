@@ -20,23 +20,23 @@ var _ MappedNullable = &AzureCredentialsListDto{}
 
 // AzureCredentialsListDto struct for AzureCredentialsListDto
 type AzureCredentialsListDto struct {
-	Id                     *int32              `json:"id,omitempty"`
-	ProjectCount           *int32              `json:"projectCount,omitempty"`
-	IsLocked               *bool               `json:"isLocked,omitempty"`
-	Name                   NullableString      `json:"name,omitempty"`
-	TenantId               NullableString      `json:"tenantId,omitempty"`
-	Location               NullableString      `json:"location,omitempty"`
-	AvailabilityZones      []string            `json:"availabilityZones,omitempty"`
-	AvailabilityZonesCount *int32              `json:"availabilityZonesCount,omitempty"`
-	Projects               []CommonDropdownDto `json:"projects,omitempty"`
-	CreatedBy              NullableString      `json:"createdBy,omitempty"`
-	CreatedAt              NullableString      `json:"createdAt,omitempty"`
-	LastModified           NullableString      `json:"lastModified,omitempty"`
-	LastModifiedBy         NullableString      `json:"lastModifiedBy,omitempty"`
-	IsDefault              *bool               `json:"isDefault,omitempty"`
-	OrganizationId         *int32              `json:"organizationId,omitempty"`
-	OrganizationName       NullableString      `json:"organizationName,omitempty"`
-	ContinentName          NullableString      `json:"continentName,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	ProjectCount *int32 `json:"projectCount,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	TenantId NullableString `json:"tenantId,omitempty"`
+	Location NullableString `json:"location,omitempty"`
+	AvailabilityZones []string `json:"availabilityZones,omitempty"`
+	AvailabilityZonesCount *int32 `json:"availabilityZonesCount,omitempty"`
+	Projects []CommonDropdownDto `json:"projects,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	ContinentName NullableString `json:"continentName,omitempty"`
 }
 
 // NewAzureCredentialsListDto instantiates a new AzureCredentialsListDto object
@@ -184,7 +184,6 @@ func (o *AzureCredentialsListDto) HasName() bool {
 func (o *AzureCredentialsListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AzureCredentialsListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -227,7 +226,6 @@ func (o *AzureCredentialsListDto) HasTenantId() bool {
 func (o *AzureCredentialsListDto) SetTenantId(v string) {
 	o.TenantId.Set(&v)
 }
-
 // SetTenantIdNil sets the value for TenantId to be an explicit nil
 func (o *AzureCredentialsListDto) SetTenantIdNil() {
 	o.TenantId.Set(nil)
@@ -270,7 +268,6 @@ func (o *AzureCredentialsListDto) HasLocation() bool {
 func (o *AzureCredentialsListDto) SetLocation(v string) {
 	o.Location.Set(&v)
 }
-
 // SetLocationNil sets the value for Location to be an explicit nil
 func (o *AzureCredentialsListDto) SetLocationNil() {
 	o.Location.Set(nil)
@@ -411,7 +408,6 @@ func (o *AzureCredentialsListDto) HasCreatedBy() bool {
 func (o *AzureCredentialsListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *AzureCredentialsListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -454,7 +450,6 @@ func (o *AzureCredentialsListDto) HasCreatedAt() bool {
 func (o *AzureCredentialsListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *AzureCredentialsListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -497,7 +492,6 @@ func (o *AzureCredentialsListDto) HasLastModified() bool {
 func (o *AzureCredentialsListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *AzureCredentialsListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -540,7 +534,6 @@ func (o *AzureCredentialsListDto) HasLastModifiedBy() bool {
 func (o *AzureCredentialsListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *AzureCredentialsListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -647,7 +640,6 @@ func (o *AzureCredentialsListDto) HasOrganizationName() bool {
 func (o *AzureCredentialsListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *AzureCredentialsListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -690,7 +682,6 @@ func (o *AzureCredentialsListDto) HasContinentName() bool {
 func (o *AzureCredentialsListDto) SetContinentName(v string) {
 	o.ContinentName.Set(&v)
 }
-
 // SetContinentNameNil sets the value for ContinentName to be an explicit nil
 func (o *AzureCredentialsListDto) SetContinentNameNil() {
 	o.ContinentName.Set(nil)
@@ -702,7 +693,7 @@ func (o *AzureCredentialsListDto) UnsetContinentName() {
 }
 
 func (o AzureCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -800,3 +791,5 @@ func (v *NullableAzureCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

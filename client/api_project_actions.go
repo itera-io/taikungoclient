@@ -20,13 +20,14 @@ import (
 	"strings"
 )
 
+
 // ProjectActionsAPIService ProjectActionsAPI service
 type ProjectActionsAPIService service
 
 type ApiProjectactionsDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectActionsAPIService
-	projectId  int32
+	projectId int32
 }
 
 func (r ApiProjectactionsDeleteRequest) Execute() (*http.Response, error) {
@@ -36,24 +37,24 @@ func (r ApiProjectactionsDeleteRequest) Execute() (*http.Response, error) {
 /*
 ProjectactionsDelete Delete the project action
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiProjectactionsDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiProjectactionsDeleteRequest
 */
 func (a *ProjectActionsAPIService) ProjectactionsDelete(ctx context.Context, projectId int32) ApiProjectactionsDeleteRequest {
 	return ApiProjectactionsDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectActionsAPIService) ProjectactionsDeleteExecute(r ApiProjectactionsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectActionsAPIService.ProjectactionsDelete")
@@ -128,8 +129,8 @@ func (a *ProjectActionsAPIService) ProjectactionsDeleteExecute(r ApiProjectactio
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -139,8 +140,8 @@ func (a *ProjectActionsAPIService) ProjectactionsDeleteExecute(r ApiProjectactio
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -150,8 +151,8 @@ func (a *ProjectActionsAPIService) ProjectactionsDeleteExecute(r ApiProjectactio
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -161,8 +162,8 @@ func (a *ProjectActionsAPIService) ProjectactionsDeleteExecute(r ApiProjectactio
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -172,8 +173,8 @@ func (a *ProjectActionsAPIService) ProjectactionsDeleteExecute(r ApiProjectactio
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -182,9 +183,9 @@ func (a *ProjectActionsAPIService) ProjectactionsDeleteExecute(r ApiProjectactio
 }
 
 type ApiProjectactionsEditRequest struct {
-	ctx                    context.Context
-	ApiService             *ProjectActionsAPIService
-	projectId              int32
+	ctx context.Context
+	ApiService *ProjectActionsAPIService
+	projectId int32
 	projectActionUpdateDto *ProjectActionUpdateDto
 }
 
@@ -200,24 +201,24 @@ func (r ApiProjectactionsEditRequest) Execute() (*http.Response, error) {
 /*
 ProjectactionsEdit Update project action by projectId
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiProjectactionsEditRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiProjectactionsEditRequest
 */
 func (a *ProjectActionsAPIService) ProjectactionsEdit(ctx context.Context, projectId int32) ApiProjectactionsEditRequest {
 	return ApiProjectactionsEditRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectActionsAPIService) ProjectactionsEditExecute(r ApiProjectactionsEditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectActionsAPIService.ProjectactionsEdit")
@@ -294,8 +295,8 @@ func (a *ProjectActionsAPIService) ProjectactionsEditExecute(r ApiProjectactions
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -305,8 +306,8 @@ func (a *ProjectActionsAPIService) ProjectactionsEditExecute(r ApiProjectactions
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -316,8 +317,8 @@ func (a *ProjectActionsAPIService) ProjectactionsEditExecute(r ApiProjectactions
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -327,8 +328,8 @@ func (a *ProjectActionsAPIService) ProjectactionsEditExecute(r ApiProjectactions
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -338,8 +339,8 @@ func (a *ProjectActionsAPIService) ProjectactionsEditExecute(r ApiProjectactions
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

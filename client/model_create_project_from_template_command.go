@@ -20,9 +20,9 @@ var _ MappedNullable = &CreateProjectFromTemplateCommand{}
 
 // CreateProjectFromTemplateCommand struct for CreateProjectFromTemplateCommand
 type CreateProjectFromTemplateCommand struct {
-	Id          *int32         `json:"id,omitempty"`
+	Id *int32 `json:"id,omitempty"`
 	ProjectName NullableString `json:"projectName,omitempty"`
-	CanCommit   *bool          `json:"canCommit,omitempty"`
+	CanCommit *bool `json:"canCommit,omitempty"`
 }
 
 // NewCreateProjectFromTemplateCommand instantiates a new CreateProjectFromTemplateCommand object
@@ -106,7 +106,6 @@ func (o *CreateProjectFromTemplateCommand) HasProjectName() bool {
 func (o *CreateProjectFromTemplateCommand) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *CreateProjectFromTemplateCommand) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -150,7 +149,7 @@ func (o *CreateProjectFromTemplateCommand) SetCanCommit(v bool) {
 }
 
 func (o CreateProjectFromTemplateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -206,3 +205,5 @@ func (v *NullableCreateProjectFromTemplateCommand) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

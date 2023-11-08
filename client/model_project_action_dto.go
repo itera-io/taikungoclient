@@ -20,9 +20,9 @@ var _ MappedNullable = &ProjectActionDto{}
 
 // ProjectActionDto struct for ProjectActionDto
 type ProjectActionDto struct {
-	Operation     NullableString `json:"operation,omitempty"`
-	JobUrl        NullableString `json:"jobUrl,omitempty"`
-	TopicName     NullableString `json:"topicName,omitempty"`
+	Operation NullableString `json:"operation,omitempty"`
+	JobUrl NullableString `json:"jobUrl,omitempty"`
+	TopicName NullableString `json:"topicName,omitempty"`
 	EstimatedTime NullableString `json:"estimatedTime,omitempty"`
 }
 
@@ -75,7 +75,6 @@ func (o *ProjectActionDto) HasOperation() bool {
 func (o *ProjectActionDto) SetOperation(v string) {
 	o.Operation.Set(&v)
 }
-
 // SetOperationNil sets the value for Operation to be an explicit nil
 func (o *ProjectActionDto) SetOperationNil() {
 	o.Operation.Set(nil)
@@ -118,7 +117,6 @@ func (o *ProjectActionDto) HasJobUrl() bool {
 func (o *ProjectActionDto) SetJobUrl(v string) {
 	o.JobUrl.Set(&v)
 }
-
 // SetJobUrlNil sets the value for JobUrl to be an explicit nil
 func (o *ProjectActionDto) SetJobUrlNil() {
 	o.JobUrl.Set(nil)
@@ -161,7 +159,6 @@ func (o *ProjectActionDto) HasTopicName() bool {
 func (o *ProjectActionDto) SetTopicName(v string) {
 	o.TopicName.Set(&v)
 }
-
 // SetTopicNameNil sets the value for TopicName to be an explicit nil
 func (o *ProjectActionDto) SetTopicNameNil() {
 	o.TopicName.Set(nil)
@@ -204,7 +201,6 @@ func (o *ProjectActionDto) HasEstimatedTime() bool {
 func (o *ProjectActionDto) SetEstimatedTime(v string) {
 	o.EstimatedTime.Set(&v)
 }
-
 // SetEstimatedTimeNil sets the value for EstimatedTime to be an explicit nil
 func (o *ProjectActionDto) SetEstimatedTimeNil() {
 	o.EstimatedTime.Set(nil)
@@ -216,7 +212,7 @@ func (o *ProjectActionDto) UnsetEstimatedTime() {
 }
 
 func (o ProjectActionDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -275,3 +271,5 @@ func (v *NullableProjectActionDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

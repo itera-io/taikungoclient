@@ -20,7 +20,7 @@ var _ MappedNullable = &DnsServerListDto{}
 
 // DnsServerListDto struct for DnsServerListDto
 type DnsServerListDto struct {
-	Id      *int32         `json:"id,omitempty"`
+	Id *int32 `json:"id,omitempty"`
 	Address NullableString `json:"address,omitempty"`
 }
 
@@ -105,7 +105,6 @@ func (o *DnsServerListDto) HasAddress() bool {
 func (o *DnsServerListDto) SetAddress(v string) {
 	o.Address.Set(&v)
 }
-
 // SetAddressNil sets the value for Address to be an explicit nil
 func (o *DnsServerListDto) SetAddressNil() {
 	o.Address.Set(nil)
@@ -117,7 +116,7 @@ func (o *DnsServerListDto) UnsetAddress() {
 }
 
 func (o DnsServerListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableDnsServerListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

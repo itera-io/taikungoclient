@@ -20,8 +20,8 @@ var _ MappedNullable = &StandaloneVmsListForPoller{}
 
 // StandaloneVmsListForPoller struct for StandaloneVmsListForPoller
 type StandaloneVmsListForPoller struct {
-	Data       []StandAloneVmFullDto `json:"data,omitempty"`
-	TotalCount *int32                `json:"totalCount,omitempty"`
+	Data []StandAloneVmFullDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewStandaloneVmsListForPoller instantiates a new StandaloneVmsListForPoller object
@@ -107,7 +107,7 @@ func (o *StandaloneVmsListForPoller) SetTotalCount(v int32) {
 }
 
 func (o StandaloneVmsListForPoller) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableStandaloneVmsListForPoller) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

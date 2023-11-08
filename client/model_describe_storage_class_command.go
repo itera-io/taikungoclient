@@ -20,8 +20,8 @@ var _ MappedNullable = &DescribeStorageClassCommand{}
 
 // DescribeStorageClassCommand struct for DescribeStorageClassCommand
 type DescribeStorageClassCommand struct {
-	ProjectId *int32         `json:"projectId,omitempty"`
-	Name      NullableString `json:"name,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 }
 
 // NewDescribeStorageClassCommand instantiates a new DescribeStorageClassCommand object
@@ -105,7 +105,6 @@ func (o *DescribeStorageClassCommand) HasName() bool {
 func (o *DescribeStorageClassCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *DescribeStorageClassCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -117,7 +116,7 @@ func (o *DescribeStorageClassCommand) UnsetName() {
 }
 
 func (o DescribeStorageClassCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableDescribeStorageClassCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

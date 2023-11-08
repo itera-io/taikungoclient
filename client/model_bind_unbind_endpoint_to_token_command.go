@@ -20,9 +20,9 @@ var _ MappedNullable = &BindUnbindEndpointToTokenCommand{}
 
 // BindUnbindEndpointToTokenCommand struct for BindUnbindEndpointToTokenCommand
 type BindUnbindEndpointToTokenCommand struct {
-	TokenId   NullableString          `json:"tokenId,omitempty"`
+	TokenId NullableString `json:"tokenId,omitempty"`
 	Endpoints []AvailableEndpointData `json:"endpoints,omitempty"`
-	BindAll   *bool                   `json:"bindAll,omitempty"`
+	BindAll *bool `json:"bindAll,omitempty"`
 }
 
 // NewBindUnbindEndpointToTokenCommand instantiates a new BindUnbindEndpointToTokenCommand object
@@ -74,7 +74,6 @@ func (o *BindUnbindEndpointToTokenCommand) HasTokenId() bool {
 func (o *BindUnbindEndpointToTokenCommand) SetTokenId(v string) {
 	o.TokenId.Set(&v)
 }
-
 // SetTokenIdNil sets the value for TokenId to be an explicit nil
 func (o *BindUnbindEndpointToTokenCommand) SetTokenIdNil() {
 	o.TokenId.Set(nil)
@@ -151,7 +150,7 @@ func (o *BindUnbindEndpointToTokenCommand) SetBindAll(v bool) {
 }
 
 func (o BindUnbindEndpointToTokenCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -207,3 +206,5 @@ func (v *NullableBindUnbindEndpointToTokenCommand) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

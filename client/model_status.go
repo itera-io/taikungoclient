@@ -21,8 +21,8 @@ var _ MappedNullable = &Status{}
 
 // Status struct for Status
 type Status struct {
-	LastBackup *time.Time     `json:"lastBackup,omitempty"`
-	Phase      NullableString `json:"phase,omitempty"`
+	LastBackup *time.Time `json:"lastBackup,omitempty"`
+	Phase NullableString `json:"phase,omitempty"`
 }
 
 // NewStatus instantiates a new Status object
@@ -106,7 +106,6 @@ func (o *Status) HasPhase() bool {
 func (o *Status) SetPhase(v string) {
 	o.Phase.Set(&v)
 }
-
 // SetPhaseNil sets the value for Phase to be an explicit nil
 func (o *Status) SetPhaseNil() {
 	o.Phase.Set(nil)
@@ -118,7 +117,7 @@ func (o *Status) UnsetPhase() {
 }
 
 func (o Status) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -171,3 +170,5 @@ func (v *NullableStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

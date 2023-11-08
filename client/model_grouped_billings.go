@@ -21,7 +21,7 @@ var _ MappedNullable = &GroupedBillings{}
 // GroupedBillings struct for GroupedBillings
 type GroupedBillings struct {
 	StartDate NullableString `json:"startDate,omitempty"`
-	Tcu       *int64         `json:"tcu,omitempty"`
+	Tcu *int64 `json:"tcu,omitempty"`
 }
 
 // NewGroupedBillings instantiates a new GroupedBillings object
@@ -73,7 +73,6 @@ func (o *GroupedBillings) HasStartDate() bool {
 func (o *GroupedBillings) SetStartDate(v string) {
 	o.StartDate.Set(&v)
 }
-
 // SetStartDateNil sets the value for StartDate to be an explicit nil
 func (o *GroupedBillings) SetStartDateNil() {
 	o.StartDate.Set(nil)
@@ -117,7 +116,7 @@ func (o *GroupedBillings) SetTcu(v int64) {
 }
 
 func (o GroupedBillings) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableGroupedBillings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

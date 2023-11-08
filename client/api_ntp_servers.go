@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // NtpServersAPIService NtpServersAPI service
 type NtpServersAPIService service
 
 type ApiNtpserversCreateRequest struct {
-	ctx                    context.Context
-	ApiService             *NtpServersAPIService
+	ctx context.Context
+	ApiService *NtpServersAPIService
 	createNtpServerCommand *CreateNtpServerCommand
 }
 
@@ -41,25 +42,24 @@ func (r ApiNtpserversCreateRequest) Execute() (*ApiResponse, *http.Response, err
 /*
 NtpserversCreate Create access profile ntp server
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiNtpserversCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiNtpserversCreateRequest
 */
 func (a *NtpServersAPIService) NtpserversCreate(ctx context.Context) ApiNtpserversCreateRequest {
 	return ApiNtpserversCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *NtpServersAPIService) NtpserversCreateExecute(r ApiNtpserversCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NtpServersAPIService.NtpserversCreate")
@@ -138,8 +138,8 @@ func (a *NtpServersAPIService) NtpserversCreateExecute(r ApiNtpserversCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -149,8 +149,8 @@ func (a *NtpServersAPIService) NtpserversCreateExecute(r ApiNtpserversCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -160,8 +160,8 @@ func (a *NtpServersAPIService) NtpserversCreateExecute(r ApiNtpserversCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -171,8 +171,8 @@ func (a *NtpServersAPIService) NtpserversCreateExecute(r ApiNtpserversCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -182,8 +182,8 @@ func (a *NtpServersAPIService) NtpserversCreateExecute(r ApiNtpserversCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -201,9 +201,9 @@ func (a *NtpServersAPIService) NtpserversCreateExecute(r ApiNtpserversCreateRequ
 }
 
 type ApiNtpserversDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *NtpServersAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiNtpserversDeleteRequest) Execute() (*http.Response, error) {
@@ -213,24 +213,24 @@ func (r ApiNtpserversDeleteRequest) Execute() (*http.Response, error) {
 /*
 NtpserversDelete Delete access profile ntp server
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiNtpserversDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiNtpserversDeleteRequest
 */
 func (a *NtpServersAPIService) NtpserversDelete(ctx context.Context, id int32) ApiNtpserversDeleteRequest {
 	return ApiNtpserversDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *NtpServersAPIService) NtpserversDeleteExecute(r ApiNtpserversDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NtpServersAPIService.NtpserversDelete")
@@ -305,8 +305,8 @@ func (a *NtpServersAPIService) NtpserversDeleteExecute(r ApiNtpserversDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -316,8 +316,8 @@ func (a *NtpServersAPIService) NtpserversDeleteExecute(r ApiNtpserversDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -327,8 +327,8 @@ func (a *NtpServersAPIService) NtpserversDeleteExecute(r ApiNtpserversDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -338,8 +338,8 @@ func (a *NtpServersAPIService) NtpserversDeleteExecute(r ApiNtpserversDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -349,8 +349,8 @@ func (a *NtpServersAPIService) NtpserversDeleteExecute(r ApiNtpserversDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -359,9 +359,9 @@ func (a *NtpServersAPIService) NtpserversDeleteExecute(r ApiNtpserversDeleteRequ
 }
 
 type ApiNtpserversEditRequest struct {
-	ctx                  context.Context
-	ApiService           *NtpServersAPIService
-	id                   int32
+	ctx context.Context
+	ApiService *NtpServersAPIService
+	id int32
 	dnsNtpAddressEditDto *DnsNtpAddressEditDto
 }
 
@@ -377,24 +377,24 @@ func (r ApiNtpserversEditRequest) Execute() (*http.Response, error) {
 /*
 NtpserversEdit Edit access profile ntp server
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiNtpserversEditRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiNtpserversEditRequest
 */
 func (a *NtpServersAPIService) NtpserversEdit(ctx context.Context, id int32) ApiNtpserversEditRequest {
 	return ApiNtpserversEditRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *NtpServersAPIService) NtpserversEditExecute(r ApiNtpserversEditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NtpServersAPIService.NtpserversEdit")
@@ -474,8 +474,8 @@ func (a *NtpServersAPIService) NtpserversEditExecute(r ApiNtpserversEditRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -485,8 +485,8 @@ func (a *NtpServersAPIService) NtpserversEditExecute(r ApiNtpserversEditRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -496,8 +496,8 @@ func (a *NtpServersAPIService) NtpserversEditExecute(r ApiNtpserversEditRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -507,8 +507,8 @@ func (a *NtpServersAPIService) NtpserversEditExecute(r ApiNtpserversEditRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -518,8 +518,8 @@ func (a *NtpServersAPIService) NtpserversEditExecute(r ApiNtpserversEditRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -528,10 +528,10 @@ func (a *NtpServersAPIService) NtpserversEditExecute(r ApiNtpserversEditRequest)
 }
 
 type ApiNtpserversListRequest struct {
-	ctx             context.Context
-	ApiService      *NtpServersAPIService
+	ctx context.Context
+	ApiService *NtpServersAPIService
 	accessProfileId int32
-	search          *string
+	search *string
 }
 
 func (r ApiNtpserversListRequest) Search(search string) ApiNtpserversListRequest {
@@ -546,27 +546,26 @@ func (r ApiNtpserversListRequest) Execute() ([]NtpServersListDto, *http.Response
 /*
 NtpserversList List ntp server by access profile id
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accessProfileId
-	@return ApiNtpserversListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accessProfileId
+ @return ApiNtpserversListRequest
 */
 func (a *NtpServersAPIService) NtpserversList(ctx context.Context, accessProfileId int32) ApiNtpserversListRequest {
 	return ApiNtpserversListRequest{
-		ApiService:      a,
-		ctx:             ctx,
+		ApiService: a,
+		ctx: ctx,
 		accessProfileId: accessProfileId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []NtpServersListDto
+//  @return []NtpServersListDto
 func (a *NtpServersAPIService) NtpserversListExecute(r ApiNtpserversListRequest) ([]NtpServersListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []NtpServersListDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []NtpServersListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NtpServersAPIService.NtpserversList")
@@ -644,8 +643,8 @@ func (a *NtpServersAPIService) NtpserversListExecute(r ApiNtpserversListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -655,8 +654,8 @@ func (a *NtpServersAPIService) NtpserversListExecute(r ApiNtpserversListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -666,8 +665,8 @@ func (a *NtpServersAPIService) NtpserversListExecute(r ApiNtpserversListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -677,8 +676,8 @@ func (a *NtpServersAPIService) NtpserversListExecute(r ApiNtpserversListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -688,8 +687,8 @@ func (a *NtpServersAPIService) NtpserversListExecute(r ApiNtpserversListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

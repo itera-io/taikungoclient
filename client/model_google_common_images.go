@@ -20,7 +20,7 @@ var _ MappedNullable = &GoogleCommonImages{}
 
 // GoogleCommonImages struct for GoogleCommonImages
 type GoogleCommonImages struct {
-	Name        NullableString `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	DisplayName NullableString `json:"displayName,omitempty"`
 }
 
@@ -73,7 +73,6 @@ func (o *GoogleCommonImages) HasName() bool {
 func (o *GoogleCommonImages) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GoogleCommonImages) SetNameNil() {
 	o.Name.Set(nil)
@@ -116,7 +115,6 @@ func (o *GoogleCommonImages) HasDisplayName() bool {
 func (o *GoogleCommonImages) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
-
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *GoogleCommonImages) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -128,7 +126,7 @@ func (o *GoogleCommonImages) UnsetDisplayName() {
 }
 
 func (o GoogleCommonImages) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableGoogleCommonImages) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

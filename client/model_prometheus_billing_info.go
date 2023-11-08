@@ -20,9 +20,9 @@ var _ MappedNullable = &PrometheusBillingInfo{}
 
 // PrometheusBillingInfo struct for PrometheusBillingInfo
 type PrometheusBillingInfo struct {
-	Data       []PrometheusBillingSummaryDto `json:"data,omitempty"`
-	TotalPrice *float64                      `json:"totalPrice,omitempty"`
-	TotalCount *int32                        `json:"totalCount,omitempty"`
+	Data []PrometheusBillingSummaryDto `json:"data,omitempty"`
+	TotalPrice *float64 `json:"totalPrice,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewPrometheusBillingInfo instantiates a new PrometheusBillingInfo object
@@ -140,7 +140,7 @@ func (o *PrometheusBillingInfo) SetTotalCount(v int32) {
 }
 
 func (o PrometheusBillingInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -196,3 +196,5 @@ func (v *NullablePrometheusBillingInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,8 +20,8 @@ var _ MappedNullable = &PrometheusRulesList{}
 
 // PrometheusRulesList struct for PrometheusRulesList
 type PrometheusRulesList struct {
-	Data       []PrometheusRuleListDto `json:"data,omitempty"`
-	TotalCount *int32                  `json:"totalCount,omitempty"`
+	Data []PrometheusRuleListDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewPrometheusRulesList instantiates a new PrometheusRulesList object
@@ -107,7 +107,7 @@ func (o *PrometheusRulesList) SetTotalCount(v int32) {
 }
 
 func (o PrometheusRulesList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullablePrometheusRulesList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

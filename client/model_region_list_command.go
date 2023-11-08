@@ -20,7 +20,7 @@ var _ MappedNullable = &RegionListCommand{}
 
 // RegionListCommand struct for RegionListCommand
 type RegionListCommand struct {
-	AwsAccessKeyId     NullableString `json:"awsAccessKeyId,omitempty"`
+	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
 	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
 }
 
@@ -73,7 +73,6 @@ func (o *RegionListCommand) HasAwsAccessKeyId() bool {
 func (o *RegionListCommand) SetAwsAccessKeyId(v string) {
 	o.AwsAccessKeyId.Set(&v)
 }
-
 // SetAwsAccessKeyIdNil sets the value for AwsAccessKeyId to be an explicit nil
 func (o *RegionListCommand) SetAwsAccessKeyIdNil() {
 	o.AwsAccessKeyId.Set(nil)
@@ -116,7 +115,6 @@ func (o *RegionListCommand) HasAwsSecretAccessKey() bool {
 func (o *RegionListCommand) SetAwsSecretAccessKey(v string) {
 	o.AwsSecretAccessKey.Set(&v)
 }
-
 // SetAwsSecretAccessKeyNil sets the value for AwsSecretAccessKey to be an explicit nil
 func (o *RegionListCommand) SetAwsSecretAccessKeyNil() {
 	o.AwsSecretAccessKey.Set(nil)
@@ -128,7 +126,7 @@ func (o *RegionListCommand) UnsetAwsSecretAccessKey() {
 }
 
 func (o RegionListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableRegionListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

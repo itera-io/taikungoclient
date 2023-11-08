@@ -21,7 +21,7 @@ var _ MappedNullable = &ConfirmEmailCommand{}
 // ConfirmEmailCommand struct for ConfirmEmailCommand
 type ConfirmEmailCommand struct {
 	NewEmail NullableString `json:"newEmail,omitempty"`
-	Mode     *EmailMode     `json:"mode,omitempty"`
+	Mode *EmailMode `json:"mode,omitempty"`
 }
 
 // NewConfirmEmailCommand instantiates a new ConfirmEmailCommand object
@@ -73,7 +73,6 @@ func (o *ConfirmEmailCommand) HasNewEmail() bool {
 func (o *ConfirmEmailCommand) SetNewEmail(v string) {
 	o.NewEmail.Set(&v)
 }
-
 // SetNewEmailNil sets the value for NewEmail to be an explicit nil
 func (o *ConfirmEmailCommand) SetNewEmailNil() {
 	o.NewEmail.Set(nil)
@@ -117,7 +116,7 @@ func (o *ConfirmEmailCommand) SetMode(v EmailMode) {
 }
 
 func (o ConfirmEmailCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableConfirmEmailCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

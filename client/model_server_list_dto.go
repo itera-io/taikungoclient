@@ -20,44 +20,44 @@ var _ MappedNullable = &ServerListDto{}
 
 // ServerListDto struct for ServerListDto
 type ServerListDto struct {
-	Id                   *int32                           `json:"id,omitempty"`
-	Name                 NullableString                   `json:"name,omitempty"`
-	ProjectName          NullableString                   `json:"projectName,omitempty"`
-	OrganizationName     NullableString                   `json:"organizationName,omitempty"`
-	OrganizationId       *int32                           `json:"organizationId,omitempty"`
-	ProjectId            *int32                           `json:"projectId,omitempty"`
-	IpAddress            NullableString                   `json:"ipAddress,omitempty"`
-	DiskSize             *int64                           `json:"diskSize,omitempty"`
-	KubernetesHealth     NullableString                   `json:"kubernetesHealth,omitempty"`
-	GoogleMachineType    NullableString                   `json:"googleMachineType,omitempty"`
-	TanzuFlavor          NullableString                   `json:"tanzuFlavor,omitempty"`
-	ProxmoxFlavor        NullableString                   `json:"proxmoxFlavor,omitempty"`
-	Cpu                  *int32                           `json:"cpu,omitempty"`
-	Ram                  *int64                           `json:"ram,omitempty"`
-	Role                 *CloudRole                       `json:"role,omitempty"`
-	Status               NullableString                   `json:"status,omitempty"`
-	CreatedAt            NullableString                   `json:"createdAt,omitempty"`
-	OpenstackFlavor      NullableString                   `json:"openstackFlavor,omitempty"`
-	AwsInstanceType      NullableString                   `json:"awsInstanceType,omitempty"`
-	AzureVmSize          NullableString                   `json:"azureVmSize,omitempty"`
-	CloudType            *CloudType                       `json:"cloudType,omitempty"`
-	CreatedBy            NullableString                   `json:"createdBy,omitempty"`
-	LastModified         NullableString                   `json:"lastModified,omitempty"`
-	LastModifiedBy       NullableString                   `json:"lastModifiedBy,omitempty"`
-	SpotPrice            NullableString                   `json:"spotPrice,omitempty"`
-	SpotInstance         *bool                            `json:"spotInstance,omitempty"`
-	ShutOff              *bool                            `json:"shutOff,omitempty"`
-	AutoscalingGroup     NullableString                   `json:"autoscalingGroup,omitempty"`
-	ProviderID           NullableString                   `json:"providerID,omitempty"`
-	AwsHostName          NullableString                   `json:"awsHostName,omitempty"`
-	OpenshiftFlavor      NullableString                   `json:"openshiftFlavor,omitempty"`
-	AvailabilityZone     NullableString                   `json:"availabilityZone,omitempty"`
-	Hypervisor           NullableString                   `json:"hypervisor,omitempty"`
-	ProxmoxRole          *ProxmoxRole                     `json:"proxmoxRole,omitempty"`
-	ProxmoxExtraDiskSize *int32                           `json:"proxmoxExtraDiskSize,omitempty"`
-	ActionButtons        *ServerActionButtonVisibilityDto `json:"actionButtons,omitempty"`
-	KubernetesNodeLabels []KubernetesNodeLabelsDto        `json:"kubernetesNodeLabels,omitempty"`
-	ReplicaCount         NullableInt32                    `json:"replicaCount,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	IpAddress NullableString `json:"ipAddress,omitempty"`
+	DiskSize *int64 `json:"diskSize,omitempty"`
+	KubernetesHealth NullableString `json:"kubernetesHealth,omitempty"`
+	GoogleMachineType NullableString `json:"googleMachineType,omitempty"`
+	TanzuFlavor NullableString `json:"tanzuFlavor,omitempty"`
+	ProxmoxFlavor NullableString `json:"proxmoxFlavor,omitempty"`
+	Cpu *int32 `json:"cpu,omitempty"`
+	Ram *int64 `json:"ram,omitempty"`
+	Role *CloudRole `json:"role,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	OpenstackFlavor NullableString `json:"openstackFlavor,omitempty"`
+	AwsInstanceType NullableString `json:"awsInstanceType,omitempty"`
+	AzureVmSize NullableString `json:"azureVmSize,omitempty"`
+	CloudType *CloudType `json:"cloudType,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	SpotPrice NullableString `json:"spotPrice,omitempty"`
+	SpotInstance *bool `json:"spotInstance,omitempty"`
+	ShutOff *bool `json:"shutOff,omitempty"`
+	AutoscalingGroup NullableString `json:"autoscalingGroup,omitempty"`
+	ProviderID NullableString `json:"providerID,omitempty"`
+	AwsHostName NullableString `json:"awsHostName,omitempty"`
+	OpenshiftFlavor NullableString `json:"openshiftFlavor,omitempty"`
+	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
+	Hypervisor NullableString `json:"hypervisor,omitempty"`
+	ProxmoxRole *ProxmoxRole `json:"proxmoxRole,omitempty"`
+	ProxmoxExtraDiskSize *int32 `json:"proxmoxExtraDiskSize,omitempty"`
+	ActionButtons *ServerActionButtonVisibilityDto `json:"actionButtons,omitempty"`
+	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels,omitempty"`
+	ReplicaCount NullableInt32 `json:"replicaCount,omitempty"`
 }
 
 // NewServerListDto instantiates a new ServerListDto object
@@ -141,7 +141,6 @@ func (o *ServerListDto) HasName() bool {
 func (o *ServerListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ServerListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -184,7 +183,6 @@ func (o *ServerListDto) HasProjectName() bool {
 func (o *ServerListDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *ServerListDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -227,7 +225,6 @@ func (o *ServerListDto) HasOrganizationName() bool {
 func (o *ServerListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *ServerListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -334,7 +331,6 @@ func (o *ServerListDto) HasIpAddress() bool {
 func (o *ServerListDto) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
-
 // SetIpAddressNil sets the value for IpAddress to be an explicit nil
 func (o *ServerListDto) SetIpAddressNil() {
 	o.IpAddress.Set(nil)
@@ -409,7 +405,6 @@ func (o *ServerListDto) HasKubernetesHealth() bool {
 func (o *ServerListDto) SetKubernetesHealth(v string) {
 	o.KubernetesHealth.Set(&v)
 }
-
 // SetKubernetesHealthNil sets the value for KubernetesHealth to be an explicit nil
 func (o *ServerListDto) SetKubernetesHealthNil() {
 	o.KubernetesHealth.Set(nil)
@@ -452,7 +447,6 @@ func (o *ServerListDto) HasGoogleMachineType() bool {
 func (o *ServerListDto) SetGoogleMachineType(v string) {
 	o.GoogleMachineType.Set(&v)
 }
-
 // SetGoogleMachineTypeNil sets the value for GoogleMachineType to be an explicit nil
 func (o *ServerListDto) SetGoogleMachineTypeNil() {
 	o.GoogleMachineType.Set(nil)
@@ -495,7 +489,6 @@ func (o *ServerListDto) HasTanzuFlavor() bool {
 func (o *ServerListDto) SetTanzuFlavor(v string) {
 	o.TanzuFlavor.Set(&v)
 }
-
 // SetTanzuFlavorNil sets the value for TanzuFlavor to be an explicit nil
 func (o *ServerListDto) SetTanzuFlavorNil() {
 	o.TanzuFlavor.Set(nil)
@@ -538,7 +531,6 @@ func (o *ServerListDto) HasProxmoxFlavor() bool {
 func (o *ServerListDto) SetProxmoxFlavor(v string) {
 	o.ProxmoxFlavor.Set(&v)
 }
-
 // SetProxmoxFlavorNil sets the value for ProxmoxFlavor to be an explicit nil
 func (o *ServerListDto) SetProxmoxFlavorNil() {
 	o.ProxmoxFlavor.Set(nil)
@@ -677,7 +669,6 @@ func (o *ServerListDto) HasStatus() bool {
 func (o *ServerListDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *ServerListDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -720,7 +711,6 @@ func (o *ServerListDto) HasCreatedAt() bool {
 func (o *ServerListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *ServerListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -763,7 +753,6 @@ func (o *ServerListDto) HasOpenstackFlavor() bool {
 func (o *ServerListDto) SetOpenstackFlavor(v string) {
 	o.OpenstackFlavor.Set(&v)
 }
-
 // SetOpenstackFlavorNil sets the value for OpenstackFlavor to be an explicit nil
 func (o *ServerListDto) SetOpenstackFlavorNil() {
 	o.OpenstackFlavor.Set(nil)
@@ -806,7 +795,6 @@ func (o *ServerListDto) HasAwsInstanceType() bool {
 func (o *ServerListDto) SetAwsInstanceType(v string) {
 	o.AwsInstanceType.Set(&v)
 }
-
 // SetAwsInstanceTypeNil sets the value for AwsInstanceType to be an explicit nil
 func (o *ServerListDto) SetAwsInstanceTypeNil() {
 	o.AwsInstanceType.Set(nil)
@@ -849,7 +837,6 @@ func (o *ServerListDto) HasAzureVmSize() bool {
 func (o *ServerListDto) SetAzureVmSize(v string) {
 	o.AzureVmSize.Set(&v)
 }
-
 // SetAzureVmSizeNil sets the value for AzureVmSize to be an explicit nil
 func (o *ServerListDto) SetAzureVmSizeNil() {
 	o.AzureVmSize.Set(nil)
@@ -924,7 +911,6 @@ func (o *ServerListDto) HasCreatedBy() bool {
 func (o *ServerListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *ServerListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -967,7 +953,6 @@ func (o *ServerListDto) HasLastModified() bool {
 func (o *ServerListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *ServerListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -1010,7 +995,6 @@ func (o *ServerListDto) HasLastModifiedBy() bool {
 func (o *ServerListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *ServerListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -1053,7 +1037,6 @@ func (o *ServerListDto) HasSpotPrice() bool {
 func (o *ServerListDto) SetSpotPrice(v string) {
 	o.SpotPrice.Set(&v)
 }
-
 // SetSpotPriceNil sets the value for SpotPrice to be an explicit nil
 func (o *ServerListDto) SetSpotPriceNil() {
 	o.SpotPrice.Set(nil)
@@ -1160,7 +1143,6 @@ func (o *ServerListDto) HasAutoscalingGroup() bool {
 func (o *ServerListDto) SetAutoscalingGroup(v string) {
 	o.AutoscalingGroup.Set(&v)
 }
-
 // SetAutoscalingGroupNil sets the value for AutoscalingGroup to be an explicit nil
 func (o *ServerListDto) SetAutoscalingGroupNil() {
 	o.AutoscalingGroup.Set(nil)
@@ -1203,7 +1185,6 @@ func (o *ServerListDto) HasProviderID() bool {
 func (o *ServerListDto) SetProviderID(v string) {
 	o.ProviderID.Set(&v)
 }
-
 // SetProviderIDNil sets the value for ProviderID to be an explicit nil
 func (o *ServerListDto) SetProviderIDNil() {
 	o.ProviderID.Set(nil)
@@ -1246,7 +1227,6 @@ func (o *ServerListDto) HasAwsHostName() bool {
 func (o *ServerListDto) SetAwsHostName(v string) {
 	o.AwsHostName.Set(&v)
 }
-
 // SetAwsHostNameNil sets the value for AwsHostName to be an explicit nil
 func (o *ServerListDto) SetAwsHostNameNil() {
 	o.AwsHostName.Set(nil)
@@ -1289,7 +1269,6 @@ func (o *ServerListDto) HasOpenshiftFlavor() bool {
 func (o *ServerListDto) SetOpenshiftFlavor(v string) {
 	o.OpenshiftFlavor.Set(&v)
 }
-
 // SetOpenshiftFlavorNil sets the value for OpenshiftFlavor to be an explicit nil
 func (o *ServerListDto) SetOpenshiftFlavorNil() {
 	o.OpenshiftFlavor.Set(nil)
@@ -1332,7 +1311,6 @@ func (o *ServerListDto) HasAvailabilityZone() bool {
 func (o *ServerListDto) SetAvailabilityZone(v string) {
 	o.AvailabilityZone.Set(&v)
 }
-
 // SetAvailabilityZoneNil sets the value for AvailabilityZone to be an explicit nil
 func (o *ServerListDto) SetAvailabilityZoneNil() {
 	o.AvailabilityZone.Set(nil)
@@ -1375,7 +1353,6 @@ func (o *ServerListDto) HasHypervisor() bool {
 func (o *ServerListDto) SetHypervisor(v string) {
 	o.Hypervisor.Set(&v)
 }
-
 // SetHypervisorNil sets the value for Hypervisor to be an explicit nil
 func (o *ServerListDto) SetHypervisorNil() {
 	o.Hypervisor.Set(nil)
@@ -1547,7 +1524,6 @@ func (o *ServerListDto) HasReplicaCount() bool {
 func (o *ServerListDto) SetReplicaCount(v int32) {
 	o.ReplicaCount.Set(&v)
 }
-
 // SetReplicaCountNil sets the value for ReplicaCount to be an explicit nil
 func (o *ServerListDto) SetReplicaCountNil() {
 	o.ReplicaCount.Set(nil)
@@ -1559,7 +1535,7 @@ func (o *ServerListDto) UnsetReplicaCount() {
 }
 
 func (o ServerListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1720,3 +1696,5 @@ func (v *NullableServerListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

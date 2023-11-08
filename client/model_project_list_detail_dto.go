@@ -20,42 +20,42 @@ var _ MappedNullable = &ProjectListDetailDto{}
 
 // ProjectListDetailDto struct for ProjectListDetailDto
 type ProjectListDetailDto struct {
-	Id                       *int32          `json:"id,omitempty"`
-	Name                     NullableString  `json:"name,omitempty"`
-	IsKubernetes             *bool           `json:"isKubernetes,omitempty"`
-	IsLocked                 *bool           `json:"isLocked,omitempty"`
-	HasKubeConfigFile        *bool           `json:"hasKubeConfigFile,omitempty"`
-	CloudCredentialName      NullableString  `json:"cloudCredentialName,omitempty"`
-	OrganizationName         NullableString  `json:"organizationName,omitempty"`
-	OrganizationId           *int32          `json:"organizationId,omitempty"`
-	Status                   NullableString  `json:"status,omitempty"`
-	Health                   NullableString  `json:"health,omitempty"`
-	CloudType                NullableString  `json:"cloudType,omitempty"`
-	KubesprayCurrentVersion  NullableString  `json:"kubesprayCurrentVersion,omitempty"`
-	KubesprayTargetVersion   NullableString  `json:"kubesprayTargetVersion,omitempty"`
-	KubernetesCurrentVersion NullableString  `json:"kubernetesCurrentVersion,omitempty"`
-	KubernetesTargetVersion  NullableString  `json:"kubernetesTargetVersion,omitempty"`
-	CreatedAt                NullableString  `json:"createdAt,omitempty"`
-	AlertsCount              *int32          `json:"alertsCount,omitempty"`
-	TotalServersCount        *int32          `json:"totalServersCount,omitempty"`
-	TotalStandaloneVmsCount  *int32          `json:"totalStandaloneVmsCount,omitempty"`
-	BoundUsers               []UserDto       `json:"boundUsers,omitempty"`
-	CreatedBy                NullableString  `json:"createdBy,omitempty"`
-	LastModified             NullableString  `json:"lastModified,omitempty"`
-	ExpiredAt                NullableString  `json:"expiredAt,omitempty"`
-	DeleteOnExpiration       *bool           `json:"deleteOnExpiration,omitempty"`
-	CertificateExpiredAt     NullableString  `json:"certificateExpiredAt,omitempty"`
-	LastModifiedBy           NullableString  `json:"lastModifiedBy,omitempty"`
-	QuotaId                  *int32          `json:"quotaId,omitempty"`
-	AllowFullSpotKubernetes  *bool           `json:"allowFullSpotKubernetes,omitempty"`
-	AllowSpotWorkers         *bool           `json:"allowSpotWorkers,omitempty"`
-	AllowSpotVMs             *bool           `json:"allowSpotVMs,omitempty"`
-	MaxSpotPrice             NullableFloat64 `json:"maxSpotPrice,omitempty"`
-	ProjectAction            *bool           `json:"projectAction,omitempty"`
-	HasExpirationWarning     *bool           `json:"hasExpirationWarning,omitempty"`
-	TotalHourlyCost          *float64        `json:"totalHourlyCost,omitempty"`
-	IsAutoscalingEnabled     *bool           `json:"isAutoscalingEnabled,omitempty"`
-	AiEnabled                *bool           `json:"aiEnabled,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	IsKubernetes *bool `json:"isKubernetes,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	HasKubeConfigFile *bool `json:"hasKubeConfigFile,omitempty"`
+	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	Health NullableString `json:"health,omitempty"`
+	CloudType NullableString `json:"cloudType,omitempty"`
+	KubesprayCurrentVersion NullableString `json:"kubesprayCurrentVersion,omitempty"`
+	KubesprayTargetVersion NullableString `json:"kubesprayTargetVersion,omitempty"`
+	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion,omitempty"`
+	KubernetesTargetVersion NullableString `json:"kubernetesTargetVersion,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	AlertsCount *int32 `json:"alertsCount,omitempty"`
+	TotalServersCount *int32 `json:"totalServersCount,omitempty"`
+	TotalStandaloneVmsCount *int32 `json:"totalStandaloneVmsCount,omitempty"`
+	BoundUsers []UserDto `json:"boundUsers,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	ExpiredAt NullableString `json:"expiredAt,omitempty"`
+	DeleteOnExpiration *bool `json:"deleteOnExpiration,omitempty"`
+	CertificateExpiredAt NullableString `json:"certificateExpiredAt,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	QuotaId *int32 `json:"quotaId,omitempty"`
+	AllowFullSpotKubernetes *bool `json:"allowFullSpotKubernetes,omitempty"`
+	AllowSpotWorkers *bool `json:"allowSpotWorkers,omitempty"`
+	AllowSpotVMs *bool `json:"allowSpotVMs,omitempty"`
+	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice,omitempty"`
+	ProjectAction *bool `json:"projectAction,omitempty"`
+	HasExpirationWarning *bool `json:"hasExpirationWarning,omitempty"`
+	TotalHourlyCost *float64 `json:"totalHourlyCost,omitempty"`
+	IsAutoscalingEnabled *bool `json:"isAutoscalingEnabled,omitempty"`
+	AiEnabled *bool `json:"aiEnabled,omitempty"`
 }
 
 // NewProjectListDetailDto instantiates a new ProjectListDetailDto object
@@ -139,7 +139,6 @@ func (o *ProjectListDetailDto) HasName() bool {
 func (o *ProjectListDetailDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectListDetailDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -278,7 +277,6 @@ func (o *ProjectListDetailDto) HasCloudCredentialName() bool {
 func (o *ProjectListDetailDto) SetCloudCredentialName(v string) {
 	o.CloudCredentialName.Set(&v)
 }
-
 // SetCloudCredentialNameNil sets the value for CloudCredentialName to be an explicit nil
 func (o *ProjectListDetailDto) SetCloudCredentialNameNil() {
 	o.CloudCredentialName.Set(nil)
@@ -321,7 +319,6 @@ func (o *ProjectListDetailDto) HasOrganizationName() bool {
 func (o *ProjectListDetailDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *ProjectListDetailDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -396,7 +393,6 @@ func (o *ProjectListDetailDto) HasStatus() bool {
 func (o *ProjectListDetailDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *ProjectListDetailDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -439,7 +435,6 @@ func (o *ProjectListDetailDto) HasHealth() bool {
 func (o *ProjectListDetailDto) SetHealth(v string) {
 	o.Health.Set(&v)
 }
-
 // SetHealthNil sets the value for Health to be an explicit nil
 func (o *ProjectListDetailDto) SetHealthNil() {
 	o.Health.Set(nil)
@@ -482,7 +477,6 @@ func (o *ProjectListDetailDto) HasCloudType() bool {
 func (o *ProjectListDetailDto) SetCloudType(v string) {
 	o.CloudType.Set(&v)
 }
-
 // SetCloudTypeNil sets the value for CloudType to be an explicit nil
 func (o *ProjectListDetailDto) SetCloudTypeNil() {
 	o.CloudType.Set(nil)
@@ -525,7 +519,6 @@ func (o *ProjectListDetailDto) HasKubesprayCurrentVersion() bool {
 func (o *ProjectListDetailDto) SetKubesprayCurrentVersion(v string) {
 	o.KubesprayCurrentVersion.Set(&v)
 }
-
 // SetKubesprayCurrentVersionNil sets the value for KubesprayCurrentVersion to be an explicit nil
 func (o *ProjectListDetailDto) SetKubesprayCurrentVersionNil() {
 	o.KubesprayCurrentVersion.Set(nil)
@@ -568,7 +561,6 @@ func (o *ProjectListDetailDto) HasKubesprayTargetVersion() bool {
 func (o *ProjectListDetailDto) SetKubesprayTargetVersion(v string) {
 	o.KubesprayTargetVersion.Set(&v)
 }
-
 // SetKubesprayTargetVersionNil sets the value for KubesprayTargetVersion to be an explicit nil
 func (o *ProjectListDetailDto) SetKubesprayTargetVersionNil() {
 	o.KubesprayTargetVersion.Set(nil)
@@ -611,7 +603,6 @@ func (o *ProjectListDetailDto) HasKubernetesCurrentVersion() bool {
 func (o *ProjectListDetailDto) SetKubernetesCurrentVersion(v string) {
 	o.KubernetesCurrentVersion.Set(&v)
 }
-
 // SetKubernetesCurrentVersionNil sets the value for KubernetesCurrentVersion to be an explicit nil
 func (o *ProjectListDetailDto) SetKubernetesCurrentVersionNil() {
 	o.KubernetesCurrentVersion.Set(nil)
@@ -654,7 +645,6 @@ func (o *ProjectListDetailDto) HasKubernetesTargetVersion() bool {
 func (o *ProjectListDetailDto) SetKubernetesTargetVersion(v string) {
 	o.KubernetesTargetVersion.Set(&v)
 }
-
 // SetKubernetesTargetVersionNil sets the value for KubernetesTargetVersion to be an explicit nil
 func (o *ProjectListDetailDto) SetKubernetesTargetVersionNil() {
 	o.KubernetesTargetVersion.Set(nil)
@@ -697,7 +687,6 @@ func (o *ProjectListDetailDto) HasCreatedAt() bool {
 func (o *ProjectListDetailDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *ProjectListDetailDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -869,7 +858,6 @@ func (o *ProjectListDetailDto) HasCreatedBy() bool {
 func (o *ProjectListDetailDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *ProjectListDetailDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -912,7 +900,6 @@ func (o *ProjectListDetailDto) HasLastModified() bool {
 func (o *ProjectListDetailDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *ProjectListDetailDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -955,7 +942,6 @@ func (o *ProjectListDetailDto) HasExpiredAt() bool {
 func (o *ProjectListDetailDto) SetExpiredAt(v string) {
 	o.ExpiredAt.Set(&v)
 }
-
 // SetExpiredAtNil sets the value for ExpiredAt to be an explicit nil
 func (o *ProjectListDetailDto) SetExpiredAtNil() {
 	o.ExpiredAt.Set(nil)
@@ -1030,7 +1016,6 @@ func (o *ProjectListDetailDto) HasCertificateExpiredAt() bool {
 func (o *ProjectListDetailDto) SetCertificateExpiredAt(v string) {
 	o.CertificateExpiredAt.Set(&v)
 }
-
 // SetCertificateExpiredAtNil sets the value for CertificateExpiredAt to be an explicit nil
 func (o *ProjectListDetailDto) SetCertificateExpiredAtNil() {
 	o.CertificateExpiredAt.Set(nil)
@@ -1073,7 +1058,6 @@ func (o *ProjectListDetailDto) HasLastModifiedBy() bool {
 func (o *ProjectListDetailDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *ProjectListDetailDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -1244,7 +1228,6 @@ func (o *ProjectListDetailDto) HasMaxSpotPrice() bool {
 func (o *ProjectListDetailDto) SetMaxSpotPrice(v float64) {
 	o.MaxSpotPrice.Set(&v)
 }
-
 // SetMaxSpotPriceNil sets the value for MaxSpotPrice to be an explicit nil
 func (o *ProjectListDetailDto) SetMaxSpotPriceNil() {
 	o.MaxSpotPrice.Set(nil)
@@ -1416,7 +1399,7 @@ func (o *ProjectListDetailDto) SetAiEnabled(v bool) {
 }
 
 func (o ProjectListDetailDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1571,3 +1554,5 @@ func (v *NullableProjectListDetailDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -72,7 +72,6 @@ func (o *VerifyWebhookCommand) HasUrl() bool {
 func (o *VerifyWebhookCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *VerifyWebhookCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -84,7 +83,7 @@ func (o *VerifyWebhookCommand) UnsetUrl() {
 }
 
 func (o VerifyWebhookCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -134,3 +133,5 @@ func (v *NullableVerifyWebhookCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

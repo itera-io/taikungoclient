@@ -20,23 +20,23 @@ var _ MappedNullable = &PrometheusRuleListDto{}
 
 // PrometheusRuleListDto struct for PrometheusRuleListDto
 type PrometheusRuleListDto struct {
-	Id                  *int32                                     `json:"id,omitempty"`
-	Name                NullableString                             `json:"name,omitempty"`
-	Password            NullableString                             `json:"password,omitempty"`
-	UserName            NullableString                             `json:"userName,omitempty"`
-	Url                 NullableString                             `json:"url,omitempty"`
-	MetricName          NullableString                             `json:"metricName,omitempty"`
-	Labels              []PrometheusLabelUpdateDto                 `json:"labels,omitempty"`
-	BoundOrganizations  []PrometheusOrganizationDiscountDto        `json:"boundOrganizations,omitempty"`
-	Type                NullableString                             `json:"type,omitempty"`
-	Price               *float64                                   `json:"price,omitempty"`
-	BillingStartDate    NullableString                             `json:"billingStartDate,omitempty"`
-	CreatedAt           NullableString                             `json:"createdAt,omitempty"`
-	Partner             *PartnerDetailsDto                         `json:"partner,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Password NullableString `json:"password,omitempty"`
+	UserName NullableString `json:"userName,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	MetricName NullableString `json:"metricName,omitempty"`
+	Labels []PrometheusLabelUpdateDto `json:"labels,omitempty"`
+	BoundOrganizations []PrometheusOrganizationDiscountDto `json:"boundOrganizations,omitempty"`
+	Type NullableString `json:"type,omitempty"`
+	Price *float64 `json:"price,omitempty"`
+	BillingStartDate NullableString `json:"billingStartDate,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	Partner *PartnerDetailsDto `json:"partner,omitempty"`
 	OperationCredential *OperationCredentialsForOrganizationEntity `json:"operationCredential,omitempty"`
-	CreatedBy           NullableString                             `json:"createdBy,omitempty"`
-	LastModified        NullableString                             `json:"lastModified,omitempty"`
-	LastModifiedBy      NullableString                             `json:"lastModifiedBy,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
 }
 
 // NewPrometheusRuleListDto instantiates a new PrometheusRuleListDto object
@@ -120,7 +120,6 @@ func (o *PrometheusRuleListDto) HasName() bool {
 func (o *PrometheusRuleListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PrometheusRuleListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -163,7 +162,6 @@ func (o *PrometheusRuleListDto) HasPassword() bool {
 func (o *PrometheusRuleListDto) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *PrometheusRuleListDto) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -206,7 +204,6 @@ func (o *PrometheusRuleListDto) HasUserName() bool {
 func (o *PrometheusRuleListDto) SetUserName(v string) {
 	o.UserName.Set(&v)
 }
-
 // SetUserNameNil sets the value for UserName to be an explicit nil
 func (o *PrometheusRuleListDto) SetUserNameNil() {
 	o.UserName.Set(nil)
@@ -249,7 +246,6 @@ func (o *PrometheusRuleListDto) HasUrl() bool {
 func (o *PrometheusRuleListDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *PrometheusRuleListDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -292,7 +288,6 @@ func (o *PrometheusRuleListDto) HasMetricName() bool {
 func (o *PrometheusRuleListDto) SetMetricName(v string) {
 	o.MetricName.Set(&v)
 }
-
 // SetMetricNameNil sets the value for MetricName to be an explicit nil
 func (o *PrometheusRuleListDto) SetMetricNameNil() {
 	o.MetricName.Set(nil)
@@ -401,7 +396,6 @@ func (o *PrometheusRuleListDto) HasType() bool {
 func (o *PrometheusRuleListDto) SetType(v string) {
 	o.Type.Set(&v)
 }
-
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *PrometheusRuleListDto) SetTypeNil() {
 	o.Type.Set(nil)
@@ -476,7 +470,6 @@ func (o *PrometheusRuleListDto) HasBillingStartDate() bool {
 func (o *PrometheusRuleListDto) SetBillingStartDate(v string) {
 	o.BillingStartDate.Set(&v)
 }
-
 // SetBillingStartDateNil sets the value for BillingStartDate to be an explicit nil
 func (o *PrometheusRuleListDto) SetBillingStartDateNil() {
 	o.BillingStartDate.Set(nil)
@@ -519,7 +512,6 @@ func (o *PrometheusRuleListDto) HasCreatedAt() bool {
 func (o *PrometheusRuleListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *PrometheusRuleListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -626,7 +618,6 @@ func (o *PrometheusRuleListDto) HasCreatedBy() bool {
 func (o *PrometheusRuleListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *PrometheusRuleListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -669,7 +660,6 @@ func (o *PrometheusRuleListDto) HasLastModified() bool {
 func (o *PrometheusRuleListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *PrometheusRuleListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -712,7 +702,6 @@ func (o *PrometheusRuleListDto) HasLastModifiedBy() bool {
 func (o *PrometheusRuleListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *PrometheusRuleListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -724,7 +713,7 @@ func (o *PrometheusRuleListDto) UnsetLastModifiedBy() {
 }
 
 func (o PrometheusRuleListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -822,3 +811,5 @@ func (v *NullablePrometheusRuleListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

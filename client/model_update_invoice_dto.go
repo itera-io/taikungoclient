@@ -21,15 +21,15 @@ var _ MappedNullable = &UpdateInvoiceDto{}
 
 // UpdateInvoiceDto struct for UpdateInvoiceDto
 type UpdateInvoiceDto struct {
-	Name                       NullableString  `json:"name,omitempty"`
-	OrganizationSubscriptionId NullableInt32   `json:"organizationSubscriptionId,omitempty"`
-	StartDate                  NullableTime    `json:"startDate,omitempty"`
-	EndDate                    NullableTime    `json:"endDate,omitempty"`
-	DueDate                    NullableTime    `json:"dueDate,omitempty"`
-	IsPaid                     NullableBool    `json:"isPaid,omitempty"`
-	RequiredPaymentAction      NullableBool    `json:"requiredPaymentAction,omitempty"`
-	StripeInvoiceId            NullableString  `json:"stripeInvoiceId,omitempty"`
-	Price                      NullableFloat64 `json:"price,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	OrganizationSubscriptionId NullableInt32 `json:"organizationSubscriptionId,omitempty"`
+	StartDate NullableTime `json:"startDate,omitempty"`
+	EndDate NullableTime `json:"endDate,omitempty"`
+	DueDate NullableTime `json:"dueDate,omitempty"`
+	IsPaid NullableBool `json:"isPaid,omitempty"`
+	RequiredPaymentAction NullableBool `json:"requiredPaymentAction,omitempty"`
+	StripeInvoiceId NullableString `json:"stripeInvoiceId,omitempty"`
+	Price NullableFloat64 `json:"price,omitempty"`
 }
 
 // NewUpdateInvoiceDto instantiates a new UpdateInvoiceDto object
@@ -81,7 +81,6 @@ func (o *UpdateInvoiceDto) HasName() bool {
 func (o *UpdateInvoiceDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateInvoiceDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -124,7 +123,6 @@ func (o *UpdateInvoiceDto) HasOrganizationSubscriptionId() bool {
 func (o *UpdateInvoiceDto) SetOrganizationSubscriptionId(v int32) {
 	o.OrganizationSubscriptionId.Set(&v)
 }
-
 // SetOrganizationSubscriptionIdNil sets the value for OrganizationSubscriptionId to be an explicit nil
 func (o *UpdateInvoiceDto) SetOrganizationSubscriptionIdNil() {
 	o.OrganizationSubscriptionId.Set(nil)
@@ -167,7 +165,6 @@ func (o *UpdateInvoiceDto) HasStartDate() bool {
 func (o *UpdateInvoiceDto) SetStartDate(v time.Time) {
 	o.StartDate.Set(&v)
 }
-
 // SetStartDateNil sets the value for StartDate to be an explicit nil
 func (o *UpdateInvoiceDto) SetStartDateNil() {
 	o.StartDate.Set(nil)
@@ -210,7 +207,6 @@ func (o *UpdateInvoiceDto) HasEndDate() bool {
 func (o *UpdateInvoiceDto) SetEndDate(v time.Time) {
 	o.EndDate.Set(&v)
 }
-
 // SetEndDateNil sets the value for EndDate to be an explicit nil
 func (o *UpdateInvoiceDto) SetEndDateNil() {
 	o.EndDate.Set(nil)
@@ -253,7 +249,6 @@ func (o *UpdateInvoiceDto) HasDueDate() bool {
 func (o *UpdateInvoiceDto) SetDueDate(v time.Time) {
 	o.DueDate.Set(&v)
 }
-
 // SetDueDateNil sets the value for DueDate to be an explicit nil
 func (o *UpdateInvoiceDto) SetDueDateNil() {
 	o.DueDate.Set(nil)
@@ -296,7 +291,6 @@ func (o *UpdateInvoiceDto) HasIsPaid() bool {
 func (o *UpdateInvoiceDto) SetIsPaid(v bool) {
 	o.IsPaid.Set(&v)
 }
-
 // SetIsPaidNil sets the value for IsPaid to be an explicit nil
 func (o *UpdateInvoiceDto) SetIsPaidNil() {
 	o.IsPaid.Set(nil)
@@ -339,7 +333,6 @@ func (o *UpdateInvoiceDto) HasRequiredPaymentAction() bool {
 func (o *UpdateInvoiceDto) SetRequiredPaymentAction(v bool) {
 	o.RequiredPaymentAction.Set(&v)
 }
-
 // SetRequiredPaymentActionNil sets the value for RequiredPaymentAction to be an explicit nil
 func (o *UpdateInvoiceDto) SetRequiredPaymentActionNil() {
 	o.RequiredPaymentAction.Set(nil)
@@ -382,7 +375,6 @@ func (o *UpdateInvoiceDto) HasStripeInvoiceId() bool {
 func (o *UpdateInvoiceDto) SetStripeInvoiceId(v string) {
 	o.StripeInvoiceId.Set(&v)
 }
-
 // SetStripeInvoiceIdNil sets the value for StripeInvoiceId to be an explicit nil
 func (o *UpdateInvoiceDto) SetStripeInvoiceIdNil() {
 	o.StripeInvoiceId.Set(nil)
@@ -425,7 +417,6 @@ func (o *UpdateInvoiceDto) HasPrice() bool {
 func (o *UpdateInvoiceDto) SetPrice(v float64) {
 	o.Price.Set(&v)
 }
-
 // SetPriceNil sets the value for Price to be an explicit nil
 func (o *UpdateInvoiceDto) SetPriceNil() {
 	o.Price.Set(nil)
@@ -437,7 +428,7 @@ func (o *UpdateInvoiceDto) UnsetPrice() {
 }
 
 func (o UpdateInvoiceDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -511,3 +502,5 @@ func (v *NullableUpdateInvoiceDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

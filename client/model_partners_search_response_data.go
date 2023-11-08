@@ -20,7 +20,7 @@ var _ MappedNullable = &PartnersSearchResponseData{}
 
 // PartnersSearchResponseData struct for PartnersSearchResponseData
 type PartnersSearchResponseData struct {
-	Id   *int32         `json:"id,omitempty"`
+	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Logo NullableString `json:"logo,omitempty"`
 }
@@ -106,7 +106,6 @@ func (o *PartnersSearchResponseData) HasName() bool {
 func (o *PartnersSearchResponseData) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PartnersSearchResponseData) SetNameNil() {
 	o.Name.Set(nil)
@@ -149,7 +148,6 @@ func (o *PartnersSearchResponseData) HasLogo() bool {
 func (o *PartnersSearchResponseData) SetLogo(v string) {
 	o.Logo.Set(&v)
 }
-
 // SetLogoNil sets the value for Logo to be an explicit nil
 func (o *PartnersSearchResponseData) SetLogoNil() {
 	o.Logo.Set(nil)
@@ -161,7 +159,7 @@ func (o *PartnersSearchResponseData) UnsetLogo() {
 }
 
 func (o PartnersSearchResponseData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,3 +215,5 @@ func (v *NullablePartnersSearchResponseData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

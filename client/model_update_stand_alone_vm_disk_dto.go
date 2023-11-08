@@ -20,9 +20,9 @@ var _ MappedNullable = &UpdateStandAloneVmDiskDto{}
 
 // UpdateStandAloneVmDiskDto struct for UpdateStandAloneVmDiskDto
 type UpdateStandAloneVmDiskDto struct {
-	Name       NullableString `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	DeviceName NullableString `json:"deviceName,omitempty"`
-	Id         NullableString `json:"id,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 }
 
 // NewUpdateStandAloneVmDiskDto instantiates a new UpdateStandAloneVmDiskDto object
@@ -74,7 +74,6 @@ func (o *UpdateStandAloneVmDiskDto) HasName() bool {
 func (o *UpdateStandAloneVmDiskDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateStandAloneVmDiskDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -117,7 +116,6 @@ func (o *UpdateStandAloneVmDiskDto) HasDeviceName() bool {
 func (o *UpdateStandAloneVmDiskDto) SetDeviceName(v string) {
 	o.DeviceName.Set(&v)
 }
-
 // SetDeviceNameNil sets the value for DeviceName to be an explicit nil
 func (o *UpdateStandAloneVmDiskDto) SetDeviceNameNil() {
 	o.DeviceName.Set(nil)
@@ -160,7 +158,6 @@ func (o *UpdateStandAloneVmDiskDto) HasId() bool {
 func (o *UpdateStandAloneVmDiskDto) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *UpdateStandAloneVmDiskDto) SetIdNil() {
 	o.Id.Set(nil)
@@ -172,7 +169,7 @@ func (o *UpdateStandAloneVmDiskDto) UnsetId() {
 }
 
 func (o UpdateStandAloneVmDiskDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableUpdateStandAloneVmDiskDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,13 +19,14 @@ import (
 	"net/url"
 )
 
+
 // CronJobServiceAPIService CronJobServiceAPI service
 type CronJobServiceAPIService service
 
 type ApiCronjobAutoUpgradeProjectsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobAutoUpgradeProjectsRequest) Body(body map[string]interface{}) ApiCronjobAutoUpgradeProjectsRequest {
@@ -40,22 +41,22 @@ func (r ApiCronjobAutoUpgradeProjectsRequest) Execute() (*http.Response, error) 
 /*
 CronjobAutoUpgradeProjects Upgrade projects that auto-upgrade option enabled
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobAutoUpgradeProjectsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobAutoUpgradeProjectsRequest
 */
 func (a *CronJobServiceAPIService) CronjobAutoUpgradeProjects(ctx context.Context) ApiCronjobAutoUpgradeProjectsRequest {
 	return ApiCronjobAutoUpgradeProjectsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobAutoUpgradeProjectsExecute(r ApiCronjobAutoUpgradeProjectsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobAutoUpgradeProjects")
@@ -134,8 +135,8 @@ func (a *CronJobServiceAPIService) CronjobAutoUpgradeProjectsExecute(r ApiCronjo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -145,8 +146,8 @@ func (a *CronJobServiceAPIService) CronjobAutoUpgradeProjectsExecute(r ApiCronjo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -156,8 +157,8 @@ func (a *CronJobServiceAPIService) CronjobAutoUpgradeProjectsExecute(r ApiCronjo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -167,8 +168,8 @@ func (a *CronJobServiceAPIService) CronjobAutoUpgradeProjectsExecute(r ApiCronjo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -178,8 +179,8 @@ func (a *CronJobServiceAPIService) CronjobAutoUpgradeProjectsExecute(r ApiCronjo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -188,9 +189,9 @@ func (a *CronJobServiceAPIService) CronjobAutoUpgradeProjectsExecute(r ApiCronjo
 }
 
 type ApiCronjobBlockOrganizationRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobBlockOrganizationRequest) Body(body map[string]interface{}) ApiCronjobBlockOrganizationRequest {
@@ -205,22 +206,22 @@ func (r ApiCronjobBlockOrganizationRequest) Execute() (*http.Response, error) {
 /*
 CronjobBlockOrganization Block organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobBlockOrganizationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobBlockOrganizationRequest
 */
 func (a *CronJobServiceAPIService) CronjobBlockOrganization(ctx context.Context) ApiCronjobBlockOrganizationRequest {
 	return ApiCronjobBlockOrganizationRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobBlockOrganizationExecute(r ApiCronjobBlockOrganizationRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobBlockOrganization")
@@ -299,8 +300,8 @@ func (a *CronJobServiceAPIService) CronjobBlockOrganizationExecute(r ApiCronjobB
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -310,8 +311,8 @@ func (a *CronJobServiceAPIService) CronjobBlockOrganizationExecute(r ApiCronjobB
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -321,8 +322,8 @@ func (a *CronJobServiceAPIService) CronjobBlockOrganizationExecute(r ApiCronjobB
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -332,8 +333,8 @@ func (a *CronJobServiceAPIService) CronjobBlockOrganizationExecute(r ApiCronjobB
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -343,8 +344,8 @@ func (a *CronJobServiceAPIService) CronjobBlockOrganizationExecute(r ApiCronjobB
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -353,9 +354,9 @@ func (a *CronJobServiceAPIService) CronjobBlockOrganizationExecute(r ApiCronjobB
 }
 
 type ApiCronjobCancelExpiredSubscriptionsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobCancelExpiredSubscriptionsRequest) Body(body map[string]interface{}) ApiCronjobCancelExpiredSubscriptionsRequest {
@@ -370,22 +371,22 @@ func (r ApiCronjobCancelExpiredSubscriptionsRequest) Execute() (*http.Response, 
 /*
 CronjobCancelExpiredSubscriptions Cancel expired subscriptions
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobCancelExpiredSubscriptionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobCancelExpiredSubscriptionsRequest
 */
 func (a *CronJobServiceAPIService) CronjobCancelExpiredSubscriptions(ctx context.Context) ApiCronjobCancelExpiredSubscriptionsRequest {
 	return ApiCronjobCancelExpiredSubscriptionsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobCancelExpiredSubscriptionsExecute(r ApiCronjobCancelExpiredSubscriptionsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobCancelExpiredSubscriptions")
@@ -464,8 +465,8 @@ func (a *CronJobServiceAPIService) CronjobCancelExpiredSubscriptionsExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -475,8 +476,8 @@ func (a *CronJobServiceAPIService) CronjobCancelExpiredSubscriptionsExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -486,8 +487,8 @@ func (a *CronJobServiceAPIService) CronjobCancelExpiredSubscriptionsExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -497,8 +498,8 @@ func (a *CronJobServiceAPIService) CronjobCancelExpiredSubscriptionsExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -508,8 +509,8 @@ func (a *CronJobServiceAPIService) CronjobCancelExpiredSubscriptionsExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -518,9 +519,9 @@ func (a *CronJobServiceAPIService) CronjobCancelExpiredSubscriptionsExecute(r Ap
 }
 
 type ApiCronjobCreateKeyPoolRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobCreateKeyPoolRequest) Body(body map[string]interface{}) ApiCronjobCreateKeyPoolRequest {
@@ -535,22 +536,22 @@ func (r ApiCronjobCreateKeyPoolRequest) Execute() (*http.Response, error) {
 /*
 CronjobCreateKeyPool Create key pool
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobCreateKeyPoolRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobCreateKeyPoolRequest
 */
 func (a *CronJobServiceAPIService) CronjobCreateKeyPool(ctx context.Context) ApiCronjobCreateKeyPoolRequest {
 	return ApiCronjobCreateKeyPoolRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobCreateKeyPoolExecute(r ApiCronjobCreateKeyPoolRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobCreateKeyPool")
@@ -629,8 +630,8 @@ func (a *CronJobServiceAPIService) CronjobCreateKeyPoolExecute(r ApiCronjobCreat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -640,8 +641,8 @@ func (a *CronJobServiceAPIService) CronjobCreateKeyPoolExecute(r ApiCronjobCreat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -651,8 +652,8 @@ func (a *CronJobServiceAPIService) CronjobCreateKeyPoolExecute(r ApiCronjobCreat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -662,8 +663,8 @@ func (a *CronJobServiceAPIService) CronjobCreateKeyPoolExecute(r ApiCronjobCreat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -673,8 +674,8 @@ func (a *CronJobServiceAPIService) CronjobCreateKeyPoolExecute(r ApiCronjobCreat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -683,9 +684,9 @@ func (a *CronJobServiceAPIService) CronjobCreateKeyPoolExecute(r ApiCronjobCreat
 }
 
 type ApiCronjobDeleteExpiredAlertsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobDeleteExpiredAlertsRequest) Body(body map[string]interface{}) ApiCronjobDeleteExpiredAlertsRequest {
@@ -700,22 +701,22 @@ func (r ApiCronjobDeleteExpiredAlertsRequest) Execute() (*http.Response, error) 
 /*
 CronjobDeleteExpiredAlerts Delete expired alerts
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobDeleteExpiredAlertsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobDeleteExpiredAlertsRequest
 */
 func (a *CronJobServiceAPIService) CronjobDeleteExpiredAlerts(ctx context.Context) ApiCronjobDeleteExpiredAlertsRequest {
 	return ApiCronjobDeleteExpiredAlertsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobDeleteExpiredAlertsExecute(r ApiCronjobDeleteExpiredAlertsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobDeleteExpiredAlerts")
@@ -794,8 +795,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredAlertsExecute(r ApiCronjo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -805,8 +806,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredAlertsExecute(r ApiCronjo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -816,8 +817,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredAlertsExecute(r ApiCronjo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -827,8 +828,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredAlertsExecute(r ApiCronjo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -838,8 +839,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredAlertsExecute(r ApiCronjo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -848,9 +849,9 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredAlertsExecute(r ApiCronjo
 }
 
 type ApiCronjobDeleteExpiredEventsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobDeleteExpiredEventsRequest) Body(body map[string]interface{}) ApiCronjobDeleteExpiredEventsRequest {
@@ -865,22 +866,22 @@ func (r ApiCronjobDeleteExpiredEventsRequest) Execute() (*http.Response, error) 
 /*
 CronjobDeleteExpiredEvents Delete expired events
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobDeleteExpiredEventsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobDeleteExpiredEventsRequest
 */
 func (a *CronJobServiceAPIService) CronjobDeleteExpiredEvents(ctx context.Context) ApiCronjobDeleteExpiredEventsRequest {
 	return ApiCronjobDeleteExpiredEventsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobDeleteExpiredEventsExecute(r ApiCronjobDeleteExpiredEventsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobDeleteExpiredEvents")
@@ -959,8 +960,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredEventsExecute(r ApiCronjo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -970,8 +971,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredEventsExecute(r ApiCronjo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -981,8 +982,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredEventsExecute(r ApiCronjo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -992,8 +993,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredEventsExecute(r ApiCronjo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1003,8 +1004,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredEventsExecute(r ApiCronjo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1013,9 +1014,9 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredEventsExecute(r ApiCronjo
 }
 
 type ApiCronjobDeleteExpiredHistoryLogsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobDeleteExpiredHistoryLogsRequest) Body(body map[string]interface{}) ApiCronjobDeleteExpiredHistoryLogsRequest {
@@ -1030,22 +1031,22 @@ func (r ApiCronjobDeleteExpiredHistoryLogsRequest) Execute() (*http.Response, er
 /*
 CronjobDeleteExpiredHistoryLogs Delete expired history logs
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobDeleteExpiredHistoryLogsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobDeleteExpiredHistoryLogsRequest
 */
 func (a *CronJobServiceAPIService) CronjobDeleteExpiredHistoryLogs(ctx context.Context) ApiCronjobDeleteExpiredHistoryLogsRequest {
 	return ApiCronjobDeleteExpiredHistoryLogsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobDeleteExpiredHistoryLogsExecute(r ApiCronjobDeleteExpiredHistoryLogsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobDeleteExpiredHistoryLogs")
@@ -1124,8 +1125,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredHistoryLogsExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1135,8 +1136,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredHistoryLogsExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1146,8 +1147,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredHistoryLogsExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1157,8 +1158,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredHistoryLogsExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1168,8 +1169,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredHistoryLogsExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1178,9 +1179,9 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredHistoryLogsExecute(r ApiC
 }
 
 type ApiCronjobDeleteExpiredOrgsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobDeleteExpiredOrgsRequest) Body(body map[string]interface{}) ApiCronjobDeleteExpiredOrgsRequest {
@@ -1195,22 +1196,22 @@ func (r ApiCronjobDeleteExpiredOrgsRequest) Execute() (*http.Response, error) {
 /*
 CronjobDeleteExpiredOrgs Delete registration expired organizations
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobDeleteExpiredOrgsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobDeleteExpiredOrgsRequest
 */
 func (a *CronJobServiceAPIService) CronjobDeleteExpiredOrgs(ctx context.Context) ApiCronjobDeleteExpiredOrgsRequest {
 	return ApiCronjobDeleteExpiredOrgsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobDeleteExpiredOrgsExecute(r ApiCronjobDeleteExpiredOrgsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobDeleteExpiredOrgs")
@@ -1289,8 +1290,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredOrgsExecute(r ApiCronjobD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1300,8 +1301,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredOrgsExecute(r ApiCronjobD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1311,8 +1312,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredOrgsExecute(r ApiCronjobD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1322,8 +1323,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredOrgsExecute(r ApiCronjobD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1333,8 +1334,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredOrgsExecute(r ApiCronjobD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1343,9 +1344,9 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredOrgsExecute(r ApiCronjobD
 }
 
 type ApiCronjobDeleteExpiredRefreshTokensRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobDeleteExpiredRefreshTokensRequest) Body(body map[string]interface{}) ApiCronjobDeleteExpiredRefreshTokensRequest {
@@ -1360,22 +1361,22 @@ func (r ApiCronjobDeleteExpiredRefreshTokensRequest) Execute() (*http.Response, 
 /*
 CronjobDeleteExpiredRefreshTokens Delete expired refresh tokens
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobDeleteExpiredRefreshTokensRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobDeleteExpiredRefreshTokensRequest
 */
 func (a *CronJobServiceAPIService) CronjobDeleteExpiredRefreshTokens(ctx context.Context) ApiCronjobDeleteExpiredRefreshTokensRequest {
 	return ApiCronjobDeleteExpiredRefreshTokensRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobDeleteExpiredRefreshTokensExecute(r ApiCronjobDeleteExpiredRefreshTokensRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobDeleteExpiredRefreshTokens")
@@ -1454,8 +1455,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredRefreshTokensExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1465,8 +1466,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredRefreshTokensExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1476,8 +1477,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredRefreshTokensExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1487,8 +1488,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredRefreshTokensExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1498,8 +1499,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredRefreshTokensExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1508,9 +1509,9 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredRefreshTokensExecute(r Ap
 }
 
 type ApiCronjobDeleteExpiredRequestsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobDeleteExpiredRequestsRequest) Body(body map[string]interface{}) ApiCronjobDeleteExpiredRequestsRequest {
@@ -1525,22 +1526,22 @@ func (r ApiCronjobDeleteExpiredRequestsRequest) Execute() (*http.Response, error
 /*
 CronjobDeleteExpiredRequests Delete expired requests
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobDeleteExpiredRequestsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobDeleteExpiredRequestsRequest
 */
 func (a *CronJobServiceAPIService) CronjobDeleteExpiredRequests(ctx context.Context) ApiCronjobDeleteExpiredRequestsRequest {
 	return ApiCronjobDeleteExpiredRequestsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobDeleteExpiredRequestsExecute(r ApiCronjobDeleteExpiredRequestsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobDeleteExpiredRequests")
@@ -1619,8 +1620,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredRequestsExecute(r ApiCron
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1630,8 +1631,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredRequestsExecute(r ApiCron
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1641,8 +1642,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredRequestsExecute(r ApiCron
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1652,8 +1653,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredRequestsExecute(r ApiCron
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1663,8 +1664,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredRequestsExecute(r ApiCron
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1673,9 +1674,9 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredRequestsExecute(r ApiCron
 }
 
 type ApiCronjobDeleteExpiredServersRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobDeleteExpiredServersRequest) Body(body map[string]interface{}) ApiCronjobDeleteExpiredServersRequest {
@@ -1690,22 +1691,22 @@ func (r ApiCronjobDeleteExpiredServersRequest) Execute() (*http.Response, error)
 /*
 CronjobDeleteExpiredServers Delete expired servers
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobDeleteExpiredServersRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobDeleteExpiredServersRequest
 */
 func (a *CronJobServiceAPIService) CronjobDeleteExpiredServers(ctx context.Context) ApiCronjobDeleteExpiredServersRequest {
 	return ApiCronjobDeleteExpiredServersRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobDeleteExpiredServersExecute(r ApiCronjobDeleteExpiredServersRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobDeleteExpiredServers")
@@ -1784,8 +1785,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredServersExecute(r ApiCronj
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1795,8 +1796,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredServersExecute(r ApiCronj
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1806,8 +1807,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredServersExecute(r ApiCronj
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1817,8 +1818,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredServersExecute(r ApiCronj
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1828,8 +1829,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredServersExecute(r ApiCronj
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1838,9 +1839,9 @@ func (a *CronJobServiceAPIService) CronjobDeleteExpiredServersExecute(r ApiCronj
 }
 
 type ApiCronjobDeleteImportedBackupLocationRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobDeleteImportedBackupLocationRequest) Body(body map[string]interface{}) ApiCronjobDeleteImportedBackupLocationRequest {
@@ -1855,22 +1856,22 @@ func (r ApiCronjobDeleteImportedBackupLocationRequest) Execute() (*http.Response
 /*
 CronjobDeleteImportedBackupLocation Delete imported backup locations
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobDeleteImportedBackupLocationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobDeleteImportedBackupLocationRequest
 */
 func (a *CronJobServiceAPIService) CronjobDeleteImportedBackupLocation(ctx context.Context) ApiCronjobDeleteImportedBackupLocationRequest {
 	return ApiCronjobDeleteImportedBackupLocationRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobDeleteImportedBackupLocationExecute(r ApiCronjobDeleteImportedBackupLocationRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobDeleteImportedBackupLocation")
@@ -1949,8 +1950,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteImportedBackupLocationExecute(r 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1960,8 +1961,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteImportedBackupLocationExecute(r 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1971,8 +1972,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteImportedBackupLocationExecute(r 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1982,8 +1983,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteImportedBackupLocationExecute(r 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1993,8 +1994,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteImportedBackupLocationExecute(r 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2003,9 +2004,9 @@ func (a *CronJobServiceAPIService) CronjobDeleteImportedBackupLocationExecute(r 
 }
 
 type ApiCronjobDeleteKubeConfigsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobDeleteKubeConfigsRequest) Body(body map[string]interface{}) ApiCronjobDeleteKubeConfigsRequest {
@@ -2020,22 +2021,22 @@ func (r ApiCronjobDeleteKubeConfigsRequest) Execute() (*http.Response, error) {
 /*
 CronjobDeleteKubeConfigs Remove deleted user's kube config
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobDeleteKubeConfigsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobDeleteKubeConfigsRequest
 */
 func (a *CronJobServiceAPIService) CronjobDeleteKubeConfigs(ctx context.Context) ApiCronjobDeleteKubeConfigsRequest {
 	return ApiCronjobDeleteKubeConfigsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobDeleteKubeConfigsExecute(r ApiCronjobDeleteKubeConfigsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobDeleteKubeConfigs")
@@ -2114,8 +2115,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteKubeConfigsExecute(r ApiCronjobD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2125,8 +2126,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteKubeConfigsExecute(r ApiCronjobD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2136,8 +2137,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteKubeConfigsExecute(r ApiCronjobD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2147,8 +2148,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteKubeConfigsExecute(r ApiCronjobD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2158,8 +2159,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteKubeConfigsExecute(r ApiCronjobD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2168,9 +2169,9 @@ func (a *CronJobServiceAPIService) CronjobDeleteKubeConfigsExecute(r ApiCronjobD
 }
 
 type ApiCronjobDeleteRemovedSpotInstancesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobDeleteRemovedSpotInstancesRequest) Body(body map[string]interface{}) ApiCronjobDeleteRemovedSpotInstancesRequest {
@@ -2185,22 +2186,22 @@ func (r ApiCronjobDeleteRemovedSpotInstancesRequest) Execute() (*http.Response, 
 /*
 CronjobDeleteRemovedSpotInstances Delete removed spot instances
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobDeleteRemovedSpotInstancesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobDeleteRemovedSpotInstancesRequest
 */
 func (a *CronJobServiceAPIService) CronjobDeleteRemovedSpotInstances(ctx context.Context) ApiCronjobDeleteRemovedSpotInstancesRequest {
 	return ApiCronjobDeleteRemovedSpotInstancesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobDeleteRemovedSpotInstancesExecute(r ApiCronjobDeleteRemovedSpotInstancesRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobDeleteRemovedSpotInstances")
@@ -2279,8 +2280,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteRemovedSpotInstancesExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2290,8 +2291,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteRemovedSpotInstancesExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2301,8 +2302,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteRemovedSpotInstancesExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2312,8 +2313,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteRemovedSpotInstancesExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2323,8 +2324,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteRemovedSpotInstancesExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2333,9 +2334,9 @@ func (a *CronJobServiceAPIService) CronjobDeleteRemovedSpotInstancesExecute(r Ap
 }
 
 type ApiCronjobDeleteUselessProjectActionsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobDeleteUselessProjectActionsRequest) Body(body map[string]interface{}) ApiCronjobDeleteUselessProjectActionsRequest {
@@ -2350,22 +2351,22 @@ func (r ApiCronjobDeleteUselessProjectActionsRequest) Execute() (*http.Response,
 /*
 CronjobDeleteUselessProjectActions Delete useless project actions
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobDeleteUselessProjectActionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobDeleteUselessProjectActionsRequest
 */
 func (a *CronJobServiceAPIService) CronjobDeleteUselessProjectActions(ctx context.Context) ApiCronjobDeleteUselessProjectActionsRequest {
 	return ApiCronjobDeleteUselessProjectActionsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobDeleteUselessProjectActionsExecute(r ApiCronjobDeleteUselessProjectActionsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobDeleteUselessProjectActions")
@@ -2444,8 +2445,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteUselessProjectActionsExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2455,8 +2456,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteUselessProjectActionsExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2466,8 +2467,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteUselessProjectActionsExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2477,8 +2478,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteUselessProjectActionsExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2488,8 +2489,8 @@ func (a *CronJobServiceAPIService) CronjobDeleteUselessProjectActionsExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2498,9 +2499,9 @@ func (a *CronJobServiceAPIService) CronjobDeleteUselessProjectActionsExecute(r A
 }
 
 type ApiCronjobEmailForProjectExpirationRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobEmailForProjectExpirationRequest) Body(body map[string]interface{}) ApiCronjobEmailForProjectExpirationRequest {
@@ -2515,22 +2516,22 @@ func (r ApiCronjobEmailForProjectExpirationRequest) Execute() (*http.Response, e
 /*
 CronjobEmailForProjectExpiration Send email to the users about project expiration
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobEmailForProjectExpirationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobEmailForProjectExpirationRequest
 */
 func (a *CronJobServiceAPIService) CronjobEmailForProjectExpiration(ctx context.Context) ApiCronjobEmailForProjectExpirationRequest {
 	return ApiCronjobEmailForProjectExpirationRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobEmailForProjectExpirationExecute(r ApiCronjobEmailForProjectExpirationRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobEmailForProjectExpiration")
@@ -2609,8 +2610,8 @@ func (a *CronJobServiceAPIService) CronjobEmailForProjectExpirationExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2620,8 +2621,8 @@ func (a *CronJobServiceAPIService) CronjobEmailForProjectExpirationExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2631,8 +2632,8 @@ func (a *CronJobServiceAPIService) CronjobEmailForProjectExpirationExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2642,8 +2643,8 @@ func (a *CronJobServiceAPIService) CronjobEmailForProjectExpirationExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2653,8 +2654,8 @@ func (a *CronJobServiceAPIService) CronjobEmailForProjectExpirationExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2663,9 +2664,9 @@ func (a *CronJobServiceAPIService) CronjobEmailForProjectExpirationExecute(r Api
 }
 
 type ApiCronjobFetchArtifactOrganizationsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobFetchArtifactOrganizationsRequest) Body(body map[string]interface{}) ApiCronjobFetchArtifactOrganizationsRequest {
@@ -2680,22 +2681,22 @@ func (r ApiCronjobFetchArtifactOrganizationsRequest) Execute() (*http.Response, 
 /*
 CronjobFetchArtifactOrganizations Fetch artifact hub organizations
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobFetchArtifactOrganizationsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobFetchArtifactOrganizationsRequest
 */
 func (a *CronJobServiceAPIService) CronjobFetchArtifactOrganizations(ctx context.Context) ApiCronjobFetchArtifactOrganizationsRequest {
 	return ApiCronjobFetchArtifactOrganizationsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobFetchArtifactOrganizationsExecute(r ApiCronjobFetchArtifactOrganizationsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobFetchArtifactOrganizations")
@@ -2771,8 +2772,8 @@ func (a *CronJobServiceAPIService) CronjobFetchArtifactOrganizationsExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2782,8 +2783,8 @@ func (a *CronJobServiceAPIService) CronjobFetchArtifactOrganizationsExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2793,8 +2794,8 @@ func (a *CronJobServiceAPIService) CronjobFetchArtifactOrganizationsExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2804,8 +2805,8 @@ func (a *CronJobServiceAPIService) CronjobFetchArtifactOrganizationsExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2815,8 +2816,8 @@ func (a *CronJobServiceAPIService) CronjobFetchArtifactOrganizationsExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2825,9 +2826,9 @@ func (a *CronJobServiceAPIService) CronjobFetchArtifactOrganizationsExecute(r Ap
 }
 
 type ApiCronjobFetchAzureFlavorPricesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobFetchAzureFlavorPricesRequest) Body(body map[string]interface{}) ApiCronjobFetchAzureFlavorPricesRequest {
@@ -2842,22 +2843,22 @@ func (r ApiCronjobFetchAzureFlavorPricesRequest) Execute() (*http.Response, erro
 /*
 CronjobFetchAzureFlavorPrices Fetch azure flavor prices
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobFetchAzureFlavorPricesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobFetchAzureFlavorPricesRequest
 */
 func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPrices(ctx context.Context) ApiCronjobFetchAzureFlavorPricesRequest {
 	return ApiCronjobFetchAzureFlavorPricesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPricesExecute(r ApiCronjobFetchAzureFlavorPricesRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobFetchAzureFlavorPrices")
@@ -2936,8 +2937,8 @@ func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPricesExecute(r ApiCro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2947,8 +2948,8 @@ func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPricesExecute(r ApiCro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2958,8 +2959,8 @@ func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPricesExecute(r ApiCro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2969,8 +2970,8 @@ func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPricesExecute(r ApiCro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2980,8 +2981,8 @@ func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPricesExecute(r ApiCro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2990,9 +2991,9 @@ func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPricesExecute(r ApiCro
 }
 
 type ApiCronjobFetchAzureFlavorPricesWithEuroRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobFetchAzureFlavorPricesWithEuroRequest) Body(body map[string]interface{}) ApiCronjobFetchAzureFlavorPricesWithEuroRequest {
@@ -3007,22 +3008,22 @@ func (r ApiCronjobFetchAzureFlavorPricesWithEuroRequest) Execute() (*http.Respon
 /*
 CronjobFetchAzureFlavorPricesWithEuro Fetch azure flavor prices with euro
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobFetchAzureFlavorPricesWithEuroRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobFetchAzureFlavorPricesWithEuroRequest
 */
 func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPricesWithEuro(ctx context.Context) ApiCronjobFetchAzureFlavorPricesWithEuroRequest {
 	return ApiCronjobFetchAzureFlavorPricesWithEuroRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPricesWithEuroExecute(r ApiCronjobFetchAzureFlavorPricesWithEuroRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobFetchAzureFlavorPricesWithEuro")
@@ -3101,8 +3102,8 @@ func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPricesWithEuroExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3112,8 +3113,8 @@ func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPricesWithEuroExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3123,8 +3124,8 @@ func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPricesWithEuroExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3134,8 +3135,8 @@ func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPricesWithEuroExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3145,8 +3146,8 @@ func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPricesWithEuroExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3155,9 +3156,9 @@ func (a *CronJobServiceAPIService) CronjobFetchAzureFlavorPricesWithEuroExecute(
 }
 
 type ApiCronjobFetchK8sAlertDataRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobFetchK8sAlertDataRequest) Body(body map[string]interface{}) ApiCronjobFetchK8sAlertDataRequest {
@@ -3172,22 +3173,22 @@ func (r ApiCronjobFetchK8sAlertDataRequest) Execute() (*http.Response, error) {
 /*
 CronjobFetchK8sAlertData Fetch k8s alert data
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobFetchK8sAlertDataRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobFetchK8sAlertDataRequest
 */
 func (a *CronJobServiceAPIService) CronjobFetchK8sAlertData(ctx context.Context) ApiCronjobFetchK8sAlertDataRequest {
 	return ApiCronjobFetchK8sAlertDataRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobFetchK8sAlertDataExecute(r ApiCronjobFetchK8sAlertDataRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobFetchK8sAlertData")
@@ -3266,8 +3267,8 @@ func (a *CronJobServiceAPIService) CronjobFetchK8sAlertDataExecute(r ApiCronjobF
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3277,8 +3278,8 @@ func (a *CronJobServiceAPIService) CronjobFetchK8sAlertDataExecute(r ApiCronjobF
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3288,8 +3289,8 @@ func (a *CronJobServiceAPIService) CronjobFetchK8sAlertDataExecute(r ApiCronjobF
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3299,8 +3300,8 @@ func (a *CronJobServiceAPIService) CronjobFetchK8sAlertDataExecute(r ApiCronjobF
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3310,8 +3311,8 @@ func (a *CronJobServiceAPIService) CronjobFetchK8sAlertDataExecute(r ApiCronjobF
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3320,9 +3321,9 @@ func (a *CronJobServiceAPIService) CronjobFetchK8sAlertDataExecute(r ApiCronjobF
 }
 
 type ApiCronjobFetchK8sOverviewDataRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobFetchK8sOverviewDataRequest) Body(body map[string]interface{}) ApiCronjobFetchK8sOverviewDataRequest {
@@ -3337,22 +3338,22 @@ func (r ApiCronjobFetchK8sOverviewDataRequest) Execute() (*http.Response, error)
 /*
 CronjobFetchK8sOverviewData Fetch k8s overview data
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobFetchK8sOverviewDataRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobFetchK8sOverviewDataRequest
 */
 func (a *CronJobServiceAPIService) CronjobFetchK8sOverviewData(ctx context.Context) ApiCronjobFetchK8sOverviewDataRequest {
 	return ApiCronjobFetchK8sOverviewDataRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobFetchK8sOverviewDataExecute(r ApiCronjobFetchK8sOverviewDataRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobFetchK8sOverviewData")
@@ -3431,8 +3432,8 @@ func (a *CronJobServiceAPIService) CronjobFetchK8sOverviewDataExecute(r ApiCronj
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3442,8 +3443,8 @@ func (a *CronJobServiceAPIService) CronjobFetchK8sOverviewDataExecute(r ApiCronj
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3453,8 +3454,8 @@ func (a *CronJobServiceAPIService) CronjobFetchK8sOverviewDataExecute(r ApiCronj
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3464,8 +3465,8 @@ func (a *CronJobServiceAPIService) CronjobFetchK8sOverviewDataExecute(r ApiCronj
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3475,8 +3476,8 @@ func (a *CronJobServiceAPIService) CronjobFetchK8sOverviewDataExecute(r ApiCronj
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3485,9 +3486,9 @@ func (a *CronJobServiceAPIService) CronjobFetchK8sOverviewDataExecute(r ApiCronj
 }
 
 type ApiCronjobFetchOrganizationDetailsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobFetchOrganizationDetailsRequest) Body(body map[string]interface{}) ApiCronjobFetchOrganizationDetailsRequest {
@@ -3502,22 +3503,22 @@ func (r ApiCronjobFetchOrganizationDetailsRequest) Execute() (*http.Response, er
 /*
 CronjobFetchOrganizationDetails Fetch organization details
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobFetchOrganizationDetailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobFetchOrganizationDetailsRequest
 */
 func (a *CronJobServiceAPIService) CronjobFetchOrganizationDetails(ctx context.Context) ApiCronjobFetchOrganizationDetailsRequest {
 	return ApiCronjobFetchOrganizationDetailsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobFetchOrganizationDetailsExecute(r ApiCronjobFetchOrganizationDetailsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobFetchOrganizationDetails")
@@ -3596,8 +3597,8 @@ func (a *CronJobServiceAPIService) CronjobFetchOrganizationDetailsExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3607,8 +3608,8 @@ func (a *CronJobServiceAPIService) CronjobFetchOrganizationDetailsExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3618,8 +3619,8 @@ func (a *CronJobServiceAPIService) CronjobFetchOrganizationDetailsExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3629,8 +3630,8 @@ func (a *CronJobServiceAPIService) CronjobFetchOrganizationDetailsExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3640,8 +3641,8 @@ func (a *CronJobServiceAPIService) CronjobFetchOrganizationDetailsExecute(r ApiC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3650,9 +3651,9 @@ func (a *CronJobServiceAPIService) CronjobFetchOrganizationDetailsExecute(r ApiC
 }
 
 type ApiCronjobKubeConfigCleanerRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobKubeConfigCleanerRequest) Body(body map[string]interface{}) ApiCronjobKubeConfigCleanerRequest {
@@ -3667,22 +3668,22 @@ func (r ApiCronjobKubeConfigCleanerRequest) Execute() (*http.Response, error) {
 /*
 CronjobKubeConfigCleaner Clean kube config
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobKubeConfigCleanerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobKubeConfigCleanerRequest
 */
 func (a *CronJobServiceAPIService) CronjobKubeConfigCleaner(ctx context.Context) ApiCronjobKubeConfigCleanerRequest {
 	return ApiCronjobKubeConfigCleanerRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobKubeConfigCleanerExecute(r ApiCronjobKubeConfigCleanerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobKubeConfigCleaner")
@@ -3761,8 +3762,8 @@ func (a *CronJobServiceAPIService) CronjobKubeConfigCleanerExecute(r ApiCronjobK
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3772,8 +3773,8 @@ func (a *CronJobServiceAPIService) CronjobKubeConfigCleanerExecute(r ApiCronjobK
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3783,8 +3784,8 @@ func (a *CronJobServiceAPIService) CronjobKubeConfigCleanerExecute(r ApiCronjobK
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3794,8 +3795,8 @@ func (a *CronJobServiceAPIService) CronjobKubeConfigCleanerExecute(r ApiCronjobK
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3805,8 +3806,8 @@ func (a *CronJobServiceAPIService) CronjobKubeConfigCleanerExecute(r ApiCronjobK
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3815,9 +3816,9 @@ func (a *CronJobServiceAPIService) CronjobKubeConfigCleanerExecute(r ApiCronjobK
 }
 
 type ApiCronjobPurgeExpiredProjectsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobPurgeExpiredProjectsRequest) Body(body map[string]interface{}) ApiCronjobPurgeExpiredProjectsRequest {
@@ -3832,22 +3833,22 @@ func (r ApiCronjobPurgeExpiredProjectsRequest) Execute() (*http.Response, error)
 /*
 CronjobPurgeExpiredProjects Purge expired projects
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobPurgeExpiredProjectsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobPurgeExpiredProjectsRequest
 */
 func (a *CronJobServiceAPIService) CronjobPurgeExpiredProjects(ctx context.Context) ApiCronjobPurgeExpiredProjectsRequest {
 	return ApiCronjobPurgeExpiredProjectsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobPurgeExpiredProjectsExecute(r ApiCronjobPurgeExpiredProjectsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobPurgeExpiredProjects")
@@ -3926,8 +3927,8 @@ func (a *CronJobServiceAPIService) CronjobPurgeExpiredProjectsExecute(r ApiCronj
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3937,8 +3938,8 @@ func (a *CronJobServiceAPIService) CronjobPurgeExpiredProjectsExecute(r ApiCronj
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3948,8 +3949,8 @@ func (a *CronJobServiceAPIService) CronjobPurgeExpiredProjectsExecute(r ApiCronj
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3959,8 +3960,8 @@ func (a *CronJobServiceAPIService) CronjobPurgeExpiredProjectsExecute(r ApiCronj
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3970,8 +3971,8 @@ func (a *CronJobServiceAPIService) CronjobPurgeExpiredProjectsExecute(r ApiCronj
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3980,8 +3981,8 @@ func (a *CronJobServiceAPIService) CronjobPurgeExpiredProjectsExecute(r ApiCronj
 }
 
 type ApiCronjobRemindUsersByAlertingProfileRequest struct {
-	ctx                                 context.Context
-	ApiService                          *CronJobServiceAPIService
+	ctx context.Context
+	ApiService *CronJobServiceAPIService
 	remindUsersByAlertingProfileCommand *RemindUsersByAlertingProfileCommand
 }
 
@@ -3997,22 +3998,22 @@ func (r ApiCronjobRemindUsersByAlertingProfileRequest) Execute() (*http.Response
 /*
 CronjobRemindUsersByAlertingProfile Remind users by alerting profile
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobRemindUsersByAlertingProfileRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobRemindUsersByAlertingProfileRequest
 */
 func (a *CronJobServiceAPIService) CronjobRemindUsersByAlertingProfile(ctx context.Context) ApiCronjobRemindUsersByAlertingProfileRequest {
 	return ApiCronjobRemindUsersByAlertingProfileRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobRemindUsersByAlertingProfileExecute(r ApiCronjobRemindUsersByAlertingProfileRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobRemindUsersByAlertingProfile")
@@ -4091,8 +4092,8 @@ func (a *CronJobServiceAPIService) CronjobRemindUsersByAlertingProfileExecute(r 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4102,8 +4103,8 @@ func (a *CronJobServiceAPIService) CronjobRemindUsersByAlertingProfileExecute(r 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4113,8 +4114,8 @@ func (a *CronJobServiceAPIService) CronjobRemindUsersByAlertingProfileExecute(r 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4124,8 +4125,8 @@ func (a *CronJobServiceAPIService) CronjobRemindUsersByAlertingProfileExecute(r 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4135,8 +4136,8 @@ func (a *CronJobServiceAPIService) CronjobRemindUsersByAlertingProfileExecute(r 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4145,9 +4146,9 @@ func (a *CronJobServiceAPIService) CronjobRemindUsersByAlertingProfileExecute(r 
 }
 
 type ApiCronjobSyncAppProxyRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobSyncAppProxyRequest) Body(body map[string]interface{}) ApiCronjobSyncAppProxyRequest {
@@ -4160,24 +4161,24 @@ func (r ApiCronjobSyncAppProxyRequest) Execute() (*http.Response, error) {
 }
 
 /*
-CronjobSyncAppProxy Sync app proxy command
+CronjobSyncAppProxy Sync app proxy command 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobSyncAppProxyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobSyncAppProxyRequest
 */
 func (a *CronJobServiceAPIService) CronjobSyncAppProxy(ctx context.Context) ApiCronjobSyncAppProxyRequest {
 	return ApiCronjobSyncAppProxyRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobSyncAppProxyExecute(r ApiCronjobSyncAppProxyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobSyncAppProxy")
@@ -4256,8 +4257,8 @@ func (a *CronJobServiceAPIService) CronjobSyncAppProxyExecute(r ApiCronjobSyncAp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4267,8 +4268,8 @@ func (a *CronJobServiceAPIService) CronjobSyncAppProxyExecute(r ApiCronjobSyncAp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4278,8 +4279,8 @@ func (a *CronJobServiceAPIService) CronjobSyncAppProxyExecute(r ApiCronjobSyncAp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4289,8 +4290,8 @@ func (a *CronJobServiceAPIService) CronjobSyncAppProxyExecute(r ApiCronjobSyncAp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4300,8 +4301,8 @@ func (a *CronJobServiceAPIService) CronjobSyncAppProxyExecute(r ApiCronjobSyncAp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4310,9 +4311,9 @@ func (a *CronJobServiceAPIService) CronjobSyncAppProxyExecute(r ApiCronjobSyncAp
 }
 
 type ApiCronjobSyncBackupCredentialsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobSyncBackupCredentialsRequest) Body(body map[string]interface{}) ApiCronjobSyncBackupCredentialsRequest {
@@ -4327,22 +4328,22 @@ func (r ApiCronjobSyncBackupCredentialsRequest) Execute() (*http.Response, error
 /*
 CronjobSyncBackupCredentials Sync backup credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobSyncBackupCredentialsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobSyncBackupCredentialsRequest
 */
 func (a *CronJobServiceAPIService) CronjobSyncBackupCredentials(ctx context.Context) ApiCronjobSyncBackupCredentialsRequest {
 	return ApiCronjobSyncBackupCredentialsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobSyncBackupCredentialsExecute(r ApiCronjobSyncBackupCredentialsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobSyncBackupCredentials")
@@ -4421,8 +4422,8 @@ func (a *CronJobServiceAPIService) CronjobSyncBackupCredentialsExecute(r ApiCron
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4432,8 +4433,8 @@ func (a *CronJobServiceAPIService) CronjobSyncBackupCredentialsExecute(r ApiCron
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4443,8 +4444,8 @@ func (a *CronJobServiceAPIService) CronjobSyncBackupCredentialsExecute(r ApiCron
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4454,8 +4455,8 @@ func (a *CronJobServiceAPIService) CronjobSyncBackupCredentialsExecute(r ApiCron
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4465,8 +4466,8 @@ func (a *CronJobServiceAPIService) CronjobSyncBackupCredentialsExecute(r ApiCron
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4475,9 +4476,9 @@ func (a *CronJobServiceAPIService) CronjobSyncBackupCredentialsExecute(r ApiCron
 }
 
 type ApiCronjobSyncOpaProfilesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobSyncOpaProfilesRequest) Body(body map[string]interface{}) ApiCronjobSyncOpaProfilesRequest {
@@ -4492,22 +4493,22 @@ func (r ApiCronjobSyncOpaProfilesRequest) Execute() (*http.Response, error) {
 /*
 CronjobSyncOpaProfiles Sync opa profiles
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobSyncOpaProfilesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobSyncOpaProfilesRequest
 */
 func (a *CronJobServiceAPIService) CronjobSyncOpaProfiles(ctx context.Context) ApiCronjobSyncOpaProfilesRequest {
 	return ApiCronjobSyncOpaProfilesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobSyncOpaProfilesExecute(r ApiCronjobSyncOpaProfilesRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobSyncOpaProfiles")
@@ -4586,8 +4587,8 @@ func (a *CronJobServiceAPIService) CronjobSyncOpaProfilesExecute(r ApiCronjobSyn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4597,8 +4598,8 @@ func (a *CronJobServiceAPIService) CronjobSyncOpaProfilesExecute(r ApiCronjobSyn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4608,8 +4609,8 @@ func (a *CronJobServiceAPIService) CronjobSyncOpaProfilesExecute(r ApiCronjobSyn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4619,8 +4620,8 @@ func (a *CronJobServiceAPIService) CronjobSyncOpaProfilesExecute(r ApiCronjobSyn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4630,8 +4631,8 @@ func (a *CronJobServiceAPIService) CronjobSyncOpaProfilesExecute(r ApiCronjobSyn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4640,9 +4641,9 @@ func (a *CronJobServiceAPIService) CronjobSyncOpaProfilesExecute(r ApiCronjobSyn
 }
 
 type ApiCronjobSyncOrganizationsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobSyncOrganizationsRequest) Body(body map[string]interface{}) ApiCronjobSyncOrganizationsRequest {
@@ -4657,22 +4658,22 @@ func (r ApiCronjobSyncOrganizationsRequest) Execute() (*http.Response, error) {
 /*
 CronjobSyncOrganizations Sync organizations
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobSyncOrganizationsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobSyncOrganizationsRequest
 */
 func (a *CronJobServiceAPIService) CronjobSyncOrganizations(ctx context.Context) ApiCronjobSyncOrganizationsRequest {
 	return ApiCronjobSyncOrganizationsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobSyncOrganizationsExecute(r ApiCronjobSyncOrganizationsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobSyncOrganizations")
@@ -4751,8 +4752,8 @@ func (a *CronJobServiceAPIService) CronjobSyncOrganizationsExecute(r ApiCronjobS
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4762,8 +4763,8 @@ func (a *CronJobServiceAPIService) CronjobSyncOrganizationsExecute(r ApiCronjobS
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4773,8 +4774,8 @@ func (a *CronJobServiceAPIService) CronjobSyncOrganizationsExecute(r ApiCronjobS
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4784,8 +4785,8 @@ func (a *CronJobServiceAPIService) CronjobSyncOrganizationsExecute(r ApiCronjobS
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4795,8 +4796,8 @@ func (a *CronJobServiceAPIService) CronjobSyncOrganizationsExecute(r ApiCronjobS
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4805,9 +4806,9 @@ func (a *CronJobServiceAPIService) CronjobSyncOrganizationsExecute(r ApiCronjobS
 }
 
 type ApiCronjobSyncProjectAppsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobSyncProjectAppsRequest) Body(body map[string]interface{}) ApiCronjobSyncProjectAppsRequest {
@@ -4822,22 +4823,22 @@ func (r ApiCronjobSyncProjectAppsRequest) Execute() (*http.Response, error) {
 /*
 CronjobSyncProjectApps Sync project apps
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobSyncProjectAppsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobSyncProjectAppsRequest
 */
 func (a *CronJobServiceAPIService) CronjobSyncProjectApps(ctx context.Context) ApiCronjobSyncProjectAppsRequest {
 	return ApiCronjobSyncProjectAppsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobSyncProjectAppsExecute(r ApiCronjobSyncProjectAppsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobSyncProjectApps")
@@ -4916,8 +4917,8 @@ func (a *CronJobServiceAPIService) CronjobSyncProjectAppsExecute(r ApiCronjobSyn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4927,8 +4928,8 @@ func (a *CronJobServiceAPIService) CronjobSyncProjectAppsExecute(r ApiCronjobSyn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4938,8 +4939,8 @@ func (a *CronJobServiceAPIService) CronjobSyncProjectAppsExecute(r ApiCronjobSyn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4949,8 +4950,8 @@ func (a *CronJobServiceAPIService) CronjobSyncProjectAppsExecute(r ApiCronjobSyn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4960,8 +4961,8 @@ func (a *CronJobServiceAPIService) CronjobSyncProjectAppsExecute(r ApiCronjobSyn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4970,9 +4971,9 @@ func (a *CronJobServiceAPIService) CronjobSyncProjectAppsExecute(r ApiCronjobSyn
 }
 
 type ApiCronjobSyncProjectsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobSyncProjectsRequest) Body(body map[string]interface{}) ApiCronjobSyncProjectsRequest {
@@ -4987,22 +4988,22 @@ func (r ApiCronjobSyncProjectsRequest) Execute() (*http.Response, error) {
 /*
 CronjobSyncProjects Sync projects
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobSyncProjectsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobSyncProjectsRequest
 */
 func (a *CronJobServiceAPIService) CronjobSyncProjects(ctx context.Context) ApiCronjobSyncProjectsRequest {
 	return ApiCronjobSyncProjectsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobSyncProjectsExecute(r ApiCronjobSyncProjectsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobSyncProjects")
@@ -5081,8 +5082,8 @@ func (a *CronJobServiceAPIService) CronjobSyncProjectsExecute(r ApiCronjobSyncPr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -5092,8 +5093,8 @@ func (a *CronJobServiceAPIService) CronjobSyncProjectsExecute(r ApiCronjobSyncPr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5103,8 +5104,8 @@ func (a *CronJobServiceAPIService) CronjobSyncProjectsExecute(r ApiCronjobSyncPr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5114,8 +5115,8 @@ func (a *CronJobServiceAPIService) CronjobSyncProjectsExecute(r ApiCronjobSyncPr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5125,8 +5126,8 @@ func (a *CronJobServiceAPIService) CronjobSyncProjectsExecute(r ApiCronjobSyncPr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -5135,9 +5136,9 @@ func (a *CronJobServiceAPIService) CronjobSyncProjectsExecute(r ApiCronjobSyncPr
 }
 
 type ApiCronjobTriggerTemplatesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobTriggerTemplatesRequest) Body(body map[string]interface{}) ApiCronjobTriggerTemplatesRequest {
@@ -5152,22 +5153,22 @@ func (r ApiCronjobTriggerTemplatesRequest) Execute() (*http.Response, error) {
 /*
 CronjobTriggerTemplates Trigger scheduled templates
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobTriggerTemplatesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobTriggerTemplatesRequest
 */
 func (a *CronJobServiceAPIService) CronjobTriggerTemplates(ctx context.Context) ApiCronjobTriggerTemplatesRequest {
 	return ApiCronjobTriggerTemplatesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobTriggerTemplatesExecute(r ApiCronjobTriggerTemplatesRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobTriggerTemplates")
@@ -5246,8 +5247,8 @@ func (a *CronJobServiceAPIService) CronjobTriggerTemplatesExecute(r ApiCronjobTr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -5257,8 +5258,8 @@ func (a *CronJobServiceAPIService) CronjobTriggerTemplatesExecute(r ApiCronjobTr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5268,8 +5269,8 @@ func (a *CronJobServiceAPIService) CronjobTriggerTemplatesExecute(r ApiCronjobTr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5279,8 +5280,8 @@ func (a *CronJobServiceAPIService) CronjobTriggerTemplatesExecute(r ApiCronjobTr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5290,8 +5291,8 @@ func (a *CronJobServiceAPIService) CronjobTriggerTemplatesExecute(r ApiCronjobTr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -5300,9 +5301,9 @@ func (a *CronJobServiceAPIService) CronjobTriggerTemplatesExecute(r ApiCronjobTr
 }
 
 type ApiCronjobUpdateProjectAppStatusRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobUpdateProjectAppStatusRequest) Body(body map[string]interface{}) ApiCronjobUpdateProjectAppStatusRequest {
@@ -5317,22 +5318,22 @@ func (r ApiCronjobUpdateProjectAppStatusRequest) Execute() (*http.Response, erro
 /*
 CronjobUpdateProjectAppStatus Update project app status
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobUpdateProjectAppStatusRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobUpdateProjectAppStatusRequest
 */
 func (a *CronJobServiceAPIService) CronjobUpdateProjectAppStatus(ctx context.Context) ApiCronjobUpdateProjectAppStatusRequest {
 	return ApiCronjobUpdateProjectAppStatusRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobUpdateProjectAppStatusExecute(r ApiCronjobUpdateProjectAppStatusRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobUpdateProjectAppStatus")
@@ -5411,8 +5412,8 @@ func (a *CronJobServiceAPIService) CronjobUpdateProjectAppStatusExecute(r ApiCro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -5422,8 +5423,8 @@ func (a *CronJobServiceAPIService) CronjobUpdateProjectAppStatusExecute(r ApiCro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5433,8 +5434,8 @@ func (a *CronJobServiceAPIService) CronjobUpdateProjectAppStatusExecute(r ApiCro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5444,8 +5445,8 @@ func (a *CronJobServiceAPIService) CronjobUpdateProjectAppStatusExecute(r ApiCro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5455,8 +5456,8 @@ func (a *CronJobServiceAPIService) CronjobUpdateProjectAppStatusExecute(r ApiCro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -5465,9 +5466,9 @@ func (a *CronJobServiceAPIService) CronjobUpdateProjectAppStatusExecute(r ApiCro
 }
 
 type ApiCronjobUpdateProjectQuotaMessageRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiCronjobUpdateProjectQuotaMessageRequest) Body(body map[string]interface{}) ApiCronjobUpdateProjectQuotaMessageRequest {
@@ -5482,22 +5483,22 @@ func (r ApiCronjobUpdateProjectQuotaMessageRequest) Execute() (*http.Response, e
 /*
 CronjobUpdateProjectQuotaMessage Update project quota message
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCronjobUpdateProjectQuotaMessageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCronjobUpdateProjectQuotaMessageRequest
 */
 func (a *CronJobServiceAPIService) CronjobUpdateProjectQuotaMessage(ctx context.Context) ApiCronjobUpdateProjectQuotaMessageRequest {
 	return ApiCronjobUpdateProjectQuotaMessageRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CronJobServiceAPIService) CronjobUpdateProjectQuotaMessageExecute(r ApiCronjobUpdateProjectQuotaMessageRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobUpdateProjectQuotaMessage")
@@ -5576,8 +5577,8 @@ func (a *CronJobServiceAPIService) CronjobUpdateProjectQuotaMessageExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -5587,8 +5588,8 @@ func (a *CronJobServiceAPIService) CronjobUpdateProjectQuotaMessageExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5598,8 +5599,8 @@ func (a *CronJobServiceAPIService) CronjobUpdateProjectQuotaMessageExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5609,8 +5610,8 @@ func (a *CronJobServiceAPIService) CronjobUpdateProjectQuotaMessageExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5620,8 +5621,8 @@ func (a *CronJobServiceAPIService) CronjobUpdateProjectQuotaMessageExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

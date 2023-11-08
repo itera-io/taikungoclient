@@ -20,8 +20,8 @@ var _ MappedNullable = &ResetProjectStatusCommand{}
 
 // ResetProjectStatusCommand struct for ResetProjectStatusCommand
 type ResetProjectStatusCommand struct {
-	ProjectId *int32         `json:"projectId,omitempty"`
-	Status    *ProjectStatus `json:"status,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Status *ProjectStatus `json:"status,omitempty"`
 }
 
 // NewResetProjectStatusCommand instantiates a new ResetProjectStatusCommand object
@@ -106,7 +106,7 @@ func (o *ResetProjectStatusCommand) SetStatus(v ProjectStatus) {
 }
 
 func (o ResetProjectStatusCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableResetProjectStatusCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

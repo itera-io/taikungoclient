@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_OpenshiftAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_OpenshiftAPIService(t *testing.T) {
 
 	t.Run("Test OpenshiftAPIService OpenshiftCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.OpenshiftAPI.OpenshiftCreate(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_OpenshiftAPIService(t *testing.T) {
 
 	t.Run("Test OpenshiftAPIService OpenshiftList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.OpenshiftAPI.OpenshiftList(context.Background()).Execute()
 
@@ -47,7 +47,7 @@ func Test_taikuncore_OpenshiftAPIService(t *testing.T) {
 
 	t.Run("Test OpenshiftAPIService OpenshiftPullSecret", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.OpenshiftAPI.OpenshiftPullSecret(context.Background()).Execute()
 
@@ -58,7 +58,7 @@ func Test_taikuncore_OpenshiftAPIService(t *testing.T) {
 
 	t.Run("Test OpenshiftAPIService OpenshiftStorageClass", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.OpenshiftAPI.OpenshiftStorageClass(context.Background()).Execute()
 
@@ -70,7 +70,7 @@ func Test_taikuncore_OpenshiftAPIService(t *testing.T) {
 
 	t.Run("Test OpenshiftAPIService OpenshiftValidate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.OpenshiftAPI.OpenshiftValidate(context.Background()).Execute()
 

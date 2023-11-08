@@ -20,7 +20,7 @@ var _ MappedNullable = &LeaveTaikunCommand{}
 
 // LeaveTaikunCommand struct for LeaveTaikunCommand
 type LeaveTaikunCommand struct {
-	Reason  NullableString `json:"reason,omitempty"`
+	Reason NullableString `json:"reason,omitempty"`
 	Message NullableString `json:"message,omitempty"`
 }
 
@@ -73,7 +73,6 @@ func (o *LeaveTaikunCommand) HasReason() bool {
 func (o *LeaveTaikunCommand) SetReason(v string) {
 	o.Reason.Set(&v)
 }
-
 // SetReasonNil sets the value for Reason to be an explicit nil
 func (o *LeaveTaikunCommand) SetReasonNil() {
 	o.Reason.Set(nil)
@@ -116,7 +115,6 @@ func (o *LeaveTaikunCommand) HasMessage() bool {
 func (o *LeaveTaikunCommand) SetMessage(v string) {
 	o.Message.Set(&v)
 }
-
 // SetMessageNil sets the value for Message to be an explicit nil
 func (o *LeaveTaikunCommand) SetMessageNil() {
 	o.Message.Set(nil)
@@ -128,7 +126,7 @@ func (o *LeaveTaikunCommand) UnsetMessage() {
 }
 
 func (o LeaveTaikunCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableLeaveTaikunCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

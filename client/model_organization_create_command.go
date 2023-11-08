@@ -20,18 +20,18 @@ var _ MappedNullable = &OrganizationCreateCommand{}
 
 // OrganizationCreateCommand struct for OrganizationCreateCommand
 type OrganizationCreateCommand struct {
-	Name                         NullableString  `json:"name,omitempty"`
-	FullName                     NullableString  `json:"fullName,omitempty"`
-	Phone                        NullableString  `json:"phone,omitempty"`
-	Email                        NullableString  `json:"email,omitempty"`
-	BillingEmail                 NullableString  `json:"billingEmail,omitempty"`
-	Address                      NullableString  `json:"address,omitempty"`
-	Country                      NullableString  `json:"country,omitempty"`
-	City                         NullableString  `json:"city,omitempty"`
-	VatNumber                    NullableString  `json:"vatNumber,omitempty"`
-	DiscountRate                 NullableFloat64 `json:"discountRate,omitempty"`
-	IsEligibleUpdateSubscription *bool           `json:"isEligibleUpdateSubscription,omitempty"`
-	AdminCloudCredentialId       NullableInt32   `json:"adminCloudCredentialId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	FullName NullableString `json:"fullName,omitempty"`
+	Phone NullableString `json:"phone,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	BillingEmail NullableString `json:"billingEmail,omitempty"`
+	Address NullableString `json:"address,omitempty"`
+	Country NullableString `json:"country,omitempty"`
+	City NullableString `json:"city,omitempty"`
+	VatNumber NullableString `json:"vatNumber,omitempty"`
+	DiscountRate NullableFloat64 `json:"discountRate,omitempty"`
+	IsEligibleUpdateSubscription *bool `json:"isEligibleUpdateSubscription,omitempty"`
+	AdminCloudCredentialId NullableInt32 `json:"adminCloudCredentialId,omitempty"`
 }
 
 // NewOrganizationCreateCommand instantiates a new OrganizationCreateCommand object
@@ -83,7 +83,6 @@ func (o *OrganizationCreateCommand) HasName() bool {
 func (o *OrganizationCreateCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OrganizationCreateCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -126,7 +125,6 @@ func (o *OrganizationCreateCommand) HasFullName() bool {
 func (o *OrganizationCreateCommand) SetFullName(v string) {
 	o.FullName.Set(&v)
 }
-
 // SetFullNameNil sets the value for FullName to be an explicit nil
 func (o *OrganizationCreateCommand) SetFullNameNil() {
 	o.FullName.Set(nil)
@@ -169,7 +167,6 @@ func (o *OrganizationCreateCommand) HasPhone() bool {
 func (o *OrganizationCreateCommand) SetPhone(v string) {
 	o.Phone.Set(&v)
 }
-
 // SetPhoneNil sets the value for Phone to be an explicit nil
 func (o *OrganizationCreateCommand) SetPhoneNil() {
 	o.Phone.Set(nil)
@@ -212,7 +209,6 @@ func (o *OrganizationCreateCommand) HasEmail() bool {
 func (o *OrganizationCreateCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *OrganizationCreateCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -255,7 +251,6 @@ func (o *OrganizationCreateCommand) HasBillingEmail() bool {
 func (o *OrganizationCreateCommand) SetBillingEmail(v string) {
 	o.BillingEmail.Set(&v)
 }
-
 // SetBillingEmailNil sets the value for BillingEmail to be an explicit nil
 func (o *OrganizationCreateCommand) SetBillingEmailNil() {
 	o.BillingEmail.Set(nil)
@@ -298,7 +293,6 @@ func (o *OrganizationCreateCommand) HasAddress() bool {
 func (o *OrganizationCreateCommand) SetAddress(v string) {
 	o.Address.Set(&v)
 }
-
 // SetAddressNil sets the value for Address to be an explicit nil
 func (o *OrganizationCreateCommand) SetAddressNil() {
 	o.Address.Set(nil)
@@ -341,7 +335,6 @@ func (o *OrganizationCreateCommand) HasCountry() bool {
 func (o *OrganizationCreateCommand) SetCountry(v string) {
 	o.Country.Set(&v)
 }
-
 // SetCountryNil sets the value for Country to be an explicit nil
 func (o *OrganizationCreateCommand) SetCountryNil() {
 	o.Country.Set(nil)
@@ -384,7 +377,6 @@ func (o *OrganizationCreateCommand) HasCity() bool {
 func (o *OrganizationCreateCommand) SetCity(v string) {
 	o.City.Set(&v)
 }
-
 // SetCityNil sets the value for City to be an explicit nil
 func (o *OrganizationCreateCommand) SetCityNil() {
 	o.City.Set(nil)
@@ -427,7 +419,6 @@ func (o *OrganizationCreateCommand) HasVatNumber() bool {
 func (o *OrganizationCreateCommand) SetVatNumber(v string) {
 	o.VatNumber.Set(&v)
 }
-
 // SetVatNumberNil sets the value for VatNumber to be an explicit nil
 func (o *OrganizationCreateCommand) SetVatNumberNil() {
 	o.VatNumber.Set(nil)
@@ -470,7 +461,6 @@ func (o *OrganizationCreateCommand) HasDiscountRate() bool {
 func (o *OrganizationCreateCommand) SetDiscountRate(v float64) {
 	o.DiscountRate.Set(&v)
 }
-
 // SetDiscountRateNil sets the value for DiscountRate to be an explicit nil
 func (o *OrganizationCreateCommand) SetDiscountRateNil() {
 	o.DiscountRate.Set(nil)
@@ -545,7 +535,6 @@ func (o *OrganizationCreateCommand) HasAdminCloudCredentialId() bool {
 func (o *OrganizationCreateCommand) SetAdminCloudCredentialId(v int32) {
 	o.AdminCloudCredentialId.Set(&v)
 }
-
 // SetAdminCloudCredentialIdNil sets the value for AdminCloudCredentialId to be an explicit nil
 func (o *OrganizationCreateCommand) SetAdminCloudCredentialIdNil() {
 	o.AdminCloudCredentialId.Set(nil)
@@ -557,7 +546,7 @@ func (o *OrganizationCreateCommand) UnsetAdminCloudCredentialId() {
 }
 
 func (o OrganizationCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -640,3 +629,5 @@ func (v *NullableOrganizationCreateCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,22 +20,22 @@ var _ MappedNullable = &PartnerDetailsDto{}
 
 // PartnerDetailsDto struct for PartnerDetailsDto
 type PartnerDetailsDto struct {
-	Id                   *int32               `json:"id,omitempty"`
-	Name                 NullableString       `json:"name,omitempty"`
-	Link                 NullableString       `json:"link,omitempty"`
-	Domain               NullableString       `json:"domain,omitempty"`
-	Country              NullableString       `json:"country,omitempty"`
-	City                 NullableString       `json:"city,omitempty"`
-	VatNumber            NullableString       `json:"vatNumber,omitempty"`
-	Address              NullableString       `json:"address,omitempty"`
-	Logo                 NullableString       `json:"logo,omitempty"`
-	Phone                NullableString       `json:"phone,omitempty"`
-	Email                NullableString       `json:"email,omitempty"`
-	PaymentEnabled       *bool                `json:"paymentEnabled,omitempty"`
-	AllowRegistration    *bool                `json:"allowRegistration,omitempty"`
-	RequiredUserApproval *bool                `json:"requiredUserApproval,omitempty"`
-	Organizations        []CommonDropdownDto  `json:"organizations,omitempty"`
-	WhiteListDomains     []WhiteListDomainDto `json:"whiteListDomains,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Link NullableString `json:"link,omitempty"`
+	Domain NullableString `json:"domain,omitempty"`
+	Country NullableString `json:"country,omitempty"`
+	City NullableString `json:"city,omitempty"`
+	VatNumber NullableString `json:"vatNumber,omitempty"`
+	Address NullableString `json:"address,omitempty"`
+	Logo NullableString `json:"logo,omitempty"`
+	Phone NullableString `json:"phone,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	PaymentEnabled *bool `json:"paymentEnabled,omitempty"`
+	AllowRegistration *bool `json:"allowRegistration,omitempty"`
+	RequiredUserApproval *bool `json:"requiredUserApproval,omitempty"`
+	Organizations []CommonDropdownDto `json:"organizations,omitempty"`
+	WhiteListDomains []WhiteListDomainDto `json:"whiteListDomains,omitempty"`
 }
 
 // NewPartnerDetailsDto instantiates a new PartnerDetailsDto object
@@ -119,7 +119,6 @@ func (o *PartnerDetailsDto) HasName() bool {
 func (o *PartnerDetailsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PartnerDetailsDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -162,7 +161,6 @@ func (o *PartnerDetailsDto) HasLink() bool {
 func (o *PartnerDetailsDto) SetLink(v string) {
 	o.Link.Set(&v)
 }
-
 // SetLinkNil sets the value for Link to be an explicit nil
 func (o *PartnerDetailsDto) SetLinkNil() {
 	o.Link.Set(nil)
@@ -205,7 +203,6 @@ func (o *PartnerDetailsDto) HasDomain() bool {
 func (o *PartnerDetailsDto) SetDomain(v string) {
 	o.Domain.Set(&v)
 }
-
 // SetDomainNil sets the value for Domain to be an explicit nil
 func (o *PartnerDetailsDto) SetDomainNil() {
 	o.Domain.Set(nil)
@@ -248,7 +245,6 @@ func (o *PartnerDetailsDto) HasCountry() bool {
 func (o *PartnerDetailsDto) SetCountry(v string) {
 	o.Country.Set(&v)
 }
-
 // SetCountryNil sets the value for Country to be an explicit nil
 func (o *PartnerDetailsDto) SetCountryNil() {
 	o.Country.Set(nil)
@@ -291,7 +287,6 @@ func (o *PartnerDetailsDto) HasCity() bool {
 func (o *PartnerDetailsDto) SetCity(v string) {
 	o.City.Set(&v)
 }
-
 // SetCityNil sets the value for City to be an explicit nil
 func (o *PartnerDetailsDto) SetCityNil() {
 	o.City.Set(nil)
@@ -334,7 +329,6 @@ func (o *PartnerDetailsDto) HasVatNumber() bool {
 func (o *PartnerDetailsDto) SetVatNumber(v string) {
 	o.VatNumber.Set(&v)
 }
-
 // SetVatNumberNil sets the value for VatNumber to be an explicit nil
 func (o *PartnerDetailsDto) SetVatNumberNil() {
 	o.VatNumber.Set(nil)
@@ -377,7 +371,6 @@ func (o *PartnerDetailsDto) HasAddress() bool {
 func (o *PartnerDetailsDto) SetAddress(v string) {
 	o.Address.Set(&v)
 }
-
 // SetAddressNil sets the value for Address to be an explicit nil
 func (o *PartnerDetailsDto) SetAddressNil() {
 	o.Address.Set(nil)
@@ -420,7 +413,6 @@ func (o *PartnerDetailsDto) HasLogo() bool {
 func (o *PartnerDetailsDto) SetLogo(v string) {
 	o.Logo.Set(&v)
 }
-
 // SetLogoNil sets the value for Logo to be an explicit nil
 func (o *PartnerDetailsDto) SetLogoNil() {
 	o.Logo.Set(nil)
@@ -463,7 +455,6 @@ func (o *PartnerDetailsDto) HasPhone() bool {
 func (o *PartnerDetailsDto) SetPhone(v string) {
 	o.Phone.Set(&v)
 }
-
 // SetPhoneNil sets the value for Phone to be an explicit nil
 func (o *PartnerDetailsDto) SetPhoneNil() {
 	o.Phone.Set(nil)
@@ -506,7 +497,6 @@ func (o *PartnerDetailsDto) HasEmail() bool {
 func (o *PartnerDetailsDto) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *PartnerDetailsDto) SetEmailNil() {
 	o.Email.Set(nil)
@@ -680,7 +670,7 @@ func (o *PartnerDetailsDto) SetWhiteListDomains(v []WhiteListDomainDto) {
 }
 
 func (o PartnerDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -775,3 +765,5 @@ func (v *NullablePartnerDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,12 +20,12 @@ var _ MappedNullable = &PodDisruptionDto{}
 
 // PodDisruptionDto struct for PodDisruptionDto
 type PodDisruptionDto struct {
-	Name               NullableString `json:"name,omitempty"`
-	Namespace          NullableString `json:"namespace,omitempty"`
-	MinAvailable       interface{}    `json:"minAvailable,omitempty"`
-	MaxAvailable       interface{}    `json:"maxAvailable,omitempty"`
-	AllowedDisruptions interface{}    `json:"allowedDisruptions,omitempty"`
-	CreatedAt          NullableString `json:"createdAt,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	MinAvailable interface{} `json:"minAvailable,omitempty"`
+	MaxAvailable interface{} `json:"maxAvailable,omitempty"`
+	AllowedDisruptions interface{} `json:"allowedDisruptions,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
 }
 
 // NewPodDisruptionDto instantiates a new PodDisruptionDto object
@@ -77,7 +77,6 @@ func (o *PodDisruptionDto) HasName() bool {
 func (o *PodDisruptionDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PodDisruptionDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -120,7 +119,6 @@ func (o *PodDisruptionDto) HasNamespace() bool {
 func (o *PodDisruptionDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *PodDisruptionDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -262,7 +260,6 @@ func (o *PodDisruptionDto) HasCreatedAt() bool {
 func (o *PodDisruptionDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *PodDisruptionDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -274,7 +271,7 @@ func (o *PodDisruptionDto) UnsetCreatedAt() {
 }
 
 func (o PodDisruptionDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -339,3 +336,5 @@ func (v *NullablePodDisruptionDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

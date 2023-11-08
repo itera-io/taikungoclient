@@ -20,8 +20,8 @@ var _ MappedNullable = &DnsServersListDto{}
 
 // DnsServersListDto struct for DnsServersListDto
 type DnsServersListDto struct {
-	Id                *int32         `json:"id,omitempty"`
-	Address           NullableString `json:"address,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Address NullableString `json:"address,omitempty"`
 	AccessProfileName NullableString `json:"accessProfileName,omitempty"`
 }
 
@@ -106,7 +106,6 @@ func (o *DnsServersListDto) HasAddress() bool {
 func (o *DnsServersListDto) SetAddress(v string) {
 	o.Address.Set(&v)
 }
-
 // SetAddressNil sets the value for Address to be an explicit nil
 func (o *DnsServersListDto) SetAddressNil() {
 	o.Address.Set(nil)
@@ -149,7 +148,6 @@ func (o *DnsServersListDto) HasAccessProfileName() bool {
 func (o *DnsServersListDto) SetAccessProfileName(v string) {
 	o.AccessProfileName.Set(&v)
 }
-
 // SetAccessProfileNameNil sets the value for AccessProfileName to be an explicit nil
 func (o *DnsServersListDto) SetAccessProfileNameNil() {
 	o.AccessProfileName.Set(nil)
@@ -161,7 +159,7 @@ func (o *DnsServersListDto) UnsetAccessProfileName() {
 }
 
 func (o DnsServersListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,3 +215,5 @@ func (v *NullableDnsServersListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

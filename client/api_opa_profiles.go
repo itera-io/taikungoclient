@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // OpaProfilesAPIService OpaProfilesAPI service
 type OpaProfilesAPIService service
 
 type ApiOpaprofilesCreateRequest struct {
-	ctx                     context.Context
-	ApiService              *OpaProfilesAPIService
+	ctx context.Context
+	ApiService *OpaProfilesAPIService
 	createOpaProfileCommand *CreateOpaProfileCommand
 }
 
@@ -41,25 +42,24 @@ func (r ApiOpaprofilesCreateRequest) Execute() (*ApiResponse, *http.Response, er
 /*
 OpaprofilesCreate Add policy profile
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpaprofilesCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpaprofilesCreateRequest
 */
 func (a *OpaProfilesAPIService) OpaprofilesCreate(ctx context.Context) ApiOpaprofilesCreateRequest {
 	return ApiOpaprofilesCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *OpaProfilesAPIService) OpaprofilesCreateExecute(r ApiOpaprofilesCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpaProfilesAPIService.OpaprofilesCreate")
@@ -138,8 +138,8 @@ func (a *OpaProfilesAPIService) OpaprofilesCreateExecute(r ApiOpaprofilesCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -149,8 +149,8 @@ func (a *OpaProfilesAPIService) OpaprofilesCreateExecute(r ApiOpaprofilesCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -160,8 +160,8 @@ func (a *OpaProfilesAPIService) OpaprofilesCreateExecute(r ApiOpaprofilesCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -171,8 +171,8 @@ func (a *OpaProfilesAPIService) OpaprofilesCreateExecute(r ApiOpaprofilesCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -182,8 +182,8 @@ func (a *OpaProfilesAPIService) OpaprofilesCreateExecute(r ApiOpaprofilesCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -201,9 +201,9 @@ func (a *OpaProfilesAPIService) OpaprofilesCreateExecute(r ApiOpaprofilesCreateR
 }
 
 type ApiOpaprofilesDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OpaProfilesAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiOpaprofilesDeleteRequest) Execute() (*http.Response, error) {
@@ -213,24 +213,24 @@ func (r ApiOpaprofilesDeleteRequest) Execute() (*http.Response, error) {
 /*
 OpaprofilesDelete Remove Opa profile by Id
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiOpaprofilesDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiOpaprofilesDeleteRequest
 */
 func (a *OpaProfilesAPIService) OpaprofilesDelete(ctx context.Context, id int32) ApiOpaprofilesDeleteRequest {
 	return ApiOpaprofilesDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *OpaProfilesAPIService) OpaprofilesDeleteExecute(r ApiOpaprofilesDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpaProfilesAPIService.OpaprofilesDelete")
@@ -305,8 +305,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDeleteExecute(r ApiOpaprofilesDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -316,8 +316,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDeleteExecute(r ApiOpaprofilesDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -327,8 +327,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDeleteExecute(r ApiOpaprofilesDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -338,8 +338,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDeleteExecute(r ApiOpaprofilesDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -349,8 +349,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDeleteExecute(r ApiOpaprofilesDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -359,8 +359,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDeleteExecute(r ApiOpaprofilesDeleteR
 }
 
 type ApiOpaprofilesDisableGatekeeperRequest struct {
-	ctx                      context.Context
-	ApiService               *OpaProfilesAPIService
+	ctx context.Context
+	ApiService *OpaProfilesAPIService
 	disableGatekeeperCommand *DisableGatekeeperCommand
 }
 
@@ -376,22 +376,22 @@ func (r ApiOpaprofilesDisableGatekeeperRequest) Execute() (*http.Response, error
 /*
 OpaprofilesDisableGatekeeper Disable Gatekeeper by the projectId
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpaprofilesDisableGatekeeperRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpaprofilesDisableGatekeeperRequest
 */
 func (a *OpaProfilesAPIService) OpaprofilesDisableGatekeeper(ctx context.Context) ApiOpaprofilesDisableGatekeeperRequest {
 	return ApiOpaprofilesDisableGatekeeperRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *OpaProfilesAPIService) OpaprofilesDisableGatekeeperExecute(r ApiOpaprofilesDisableGatekeeperRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpaProfilesAPIService.OpaprofilesDisableGatekeeper")
@@ -470,8 +470,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDisableGatekeeperExecute(r ApiOpaprof
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -481,8 +481,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDisableGatekeeperExecute(r ApiOpaprof
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -492,8 +492,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDisableGatekeeperExecute(r ApiOpaprof
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -503,8 +503,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDisableGatekeeperExecute(r ApiOpaprof
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -514,8 +514,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDisableGatekeeperExecute(r ApiOpaprof
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -524,10 +524,10 @@ func (a *OpaProfilesAPIService) OpaprofilesDisableGatekeeperExecute(r ApiOpaprof
 }
 
 type ApiOpaprofilesDropdownRequest struct {
-	ctx            context.Context
-	ApiService     *OpaProfilesAPIService
+	ctx context.Context
+	ApiService *OpaProfilesAPIService
 	organizationId *int32
-	search         *string
+	search *string
 }
 
 func (r ApiOpaprofilesDropdownRequest) OrganizationId(organizationId int32) ApiOpaprofilesDropdownRequest {
@@ -547,25 +547,24 @@ func (r ApiOpaprofilesDropdownRequest) Execute() ([]CommonExtendedDropdownDto, *
 /*
 OpaprofilesDropdown Retrieve policy profiles for organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpaprofilesDropdownRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpaprofilesDropdownRequest
 */
 func (a *OpaProfilesAPIService) OpaprofilesDropdown(ctx context.Context) ApiOpaprofilesDropdownRequest {
 	return ApiOpaprofilesDropdownRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []CommonExtendedDropdownDto
+//  @return []CommonExtendedDropdownDto
 func (a *OpaProfilesAPIService) OpaprofilesDropdownExecute(r ApiOpaprofilesDropdownRequest) ([]CommonExtendedDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []CommonExtendedDropdownDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []CommonExtendedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpaProfilesAPIService.OpaprofilesDropdown")
@@ -645,8 +644,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDropdownExecute(r ApiOpaprofilesDropd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -656,8 +655,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDropdownExecute(r ApiOpaprofilesDropd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -667,8 +666,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDropdownExecute(r ApiOpaprofilesDropd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -678,8 +677,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDropdownExecute(r ApiOpaprofilesDropd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -689,8 +688,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDropdownExecute(r ApiOpaprofilesDropd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -708,8 +707,8 @@ func (a *OpaProfilesAPIService) OpaprofilesDropdownExecute(r ApiOpaprofilesDropd
 }
 
 type ApiOpaprofilesEnableGatekeeperRequest struct {
-	ctx                     context.Context
-	ApiService              *OpaProfilesAPIService
+	ctx context.Context
+	ApiService *OpaProfilesAPIService
 	enableGatekeeperCommand *EnableGatekeeperCommand
 }
 
@@ -725,22 +724,22 @@ func (r ApiOpaprofilesEnableGatekeeperRequest) Execute() (*http.Response, error)
 /*
 OpaprofilesEnableGatekeeper Enable Gatekeeper by the projectId
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpaprofilesEnableGatekeeperRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpaprofilesEnableGatekeeperRequest
 */
 func (a *OpaProfilesAPIService) OpaprofilesEnableGatekeeper(ctx context.Context) ApiOpaprofilesEnableGatekeeperRequest {
 	return ApiOpaprofilesEnableGatekeeperRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *OpaProfilesAPIService) OpaprofilesEnableGatekeeperExecute(r ApiOpaprofilesEnableGatekeeperRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpaProfilesAPIService.OpaprofilesEnableGatekeeper")
@@ -819,8 +818,8 @@ func (a *OpaProfilesAPIService) OpaprofilesEnableGatekeeperExecute(r ApiOpaprofi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -830,8 +829,8 @@ func (a *OpaProfilesAPIService) OpaprofilesEnableGatekeeperExecute(r ApiOpaprofi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -841,8 +840,8 @@ func (a *OpaProfilesAPIService) OpaprofilesEnableGatekeeperExecute(r ApiOpaprofi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -852,8 +851,8 @@ func (a *OpaProfilesAPIService) OpaprofilesEnableGatekeeperExecute(r ApiOpaprofi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -863,8 +862,8 @@ func (a *OpaProfilesAPIService) OpaprofilesEnableGatekeeperExecute(r ApiOpaprofi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -873,16 +872,16 @@ func (a *OpaProfilesAPIService) OpaprofilesEnableGatekeeperExecute(r ApiOpaprofi
 }
 
 type ApiOpaprofilesListRequest struct {
-	ctx            context.Context
-	ApiService     *OpaProfilesAPIService
+	ctx context.Context
+	ApiService *OpaProfilesAPIService
 	organizationId *int32
-	limit          *int32
-	offset         *int32
-	sortBy         *string
-	sortDirection  *string
-	search         *string
-	id             *int32
-	searchId       *string
+	limit *int32
+	offset *int32
+	sortBy *string
+	sortDirection *string
+	search *string
+	id *int32
+	searchId *string
 }
 
 func (r ApiOpaprofilesListRequest) OrganizationId(organizationId int32) ApiOpaprofilesListRequest {
@@ -932,25 +931,24 @@ func (r ApiOpaprofilesListRequest) Execute() (*OpaProfileList, *http.Response, e
 /*
 OpaprofilesList Retrieve all policy profiles
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpaprofilesListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpaprofilesListRequest
 */
 func (a *OpaProfilesAPIService) OpaprofilesList(ctx context.Context) ApiOpaprofilesListRequest {
 	return ApiOpaprofilesListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return OpaProfileList
+//  @return OpaProfileList
 func (a *OpaProfilesAPIService) OpaprofilesListExecute(r ApiOpaprofilesListRequest) (*OpaProfileList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *OpaProfileList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *OpaProfileList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpaProfilesAPIService.OpaprofilesList")
@@ -1048,8 +1046,8 @@ func (a *OpaProfilesAPIService) OpaprofilesListExecute(r ApiOpaprofilesListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1059,8 +1057,8 @@ func (a *OpaProfilesAPIService) OpaprofilesListExecute(r ApiOpaprofilesListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1070,8 +1068,8 @@ func (a *OpaProfilesAPIService) OpaprofilesListExecute(r ApiOpaprofilesListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1081,8 +1079,8 @@ func (a *OpaProfilesAPIService) OpaprofilesListExecute(r ApiOpaprofilesListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1092,8 +1090,8 @@ func (a *OpaProfilesAPIService) OpaprofilesListExecute(r ApiOpaprofilesListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1111,8 +1109,8 @@ func (a *OpaProfilesAPIService) OpaprofilesListExecute(r ApiOpaprofilesListReque
 }
 
 type ApiOpaprofilesLockManagerRequest struct {
-	ctx                          context.Context
-	ApiService                   *OpaProfilesAPIService
+	ctx context.Context
+	ApiService *OpaProfilesAPIService
 	opaProfileLockManagerCommand *OpaProfileLockManagerCommand
 }
 
@@ -1128,22 +1126,22 @@ func (r ApiOpaprofilesLockManagerRequest) Execute() (*http.Response, error) {
 /*
 OpaprofilesLockManager Lock/Unlock policy profile
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpaprofilesLockManagerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpaprofilesLockManagerRequest
 */
 func (a *OpaProfilesAPIService) OpaprofilesLockManager(ctx context.Context) ApiOpaprofilesLockManagerRequest {
 	return ApiOpaprofilesLockManagerRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *OpaProfilesAPIService) OpaprofilesLockManagerExecute(r ApiOpaprofilesLockManagerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpaProfilesAPIService.OpaprofilesLockManager")
@@ -1222,8 +1220,8 @@ func (a *OpaProfilesAPIService) OpaprofilesLockManagerExecute(r ApiOpaprofilesLo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1233,8 +1231,8 @@ func (a *OpaProfilesAPIService) OpaprofilesLockManagerExecute(r ApiOpaprofilesLo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1244,8 +1242,8 @@ func (a *OpaProfilesAPIService) OpaprofilesLockManagerExecute(r ApiOpaprofilesLo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1255,8 +1253,8 @@ func (a *OpaProfilesAPIService) OpaprofilesLockManagerExecute(r ApiOpaprofilesLo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1266,8 +1264,8 @@ func (a *OpaProfilesAPIService) OpaprofilesLockManagerExecute(r ApiOpaprofilesLo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1276,8 +1274,8 @@ func (a *OpaProfilesAPIService) OpaprofilesLockManagerExecute(r ApiOpaprofilesLo
 }
 
 type ApiOpaprofilesMakeDefaultRequest struct {
-	ctx                   context.Context
-	ApiService            *OpaProfilesAPIService
+	ctx context.Context
+	ApiService *OpaProfilesAPIService
 	opaMakeDefaultCommand *OpaMakeDefaultCommand
 }
 
@@ -1293,22 +1291,22 @@ func (r ApiOpaprofilesMakeDefaultRequest) Execute() (*http.Response, error) {
 /*
 OpaprofilesMakeDefault Choose default policy profile
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpaprofilesMakeDefaultRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpaprofilesMakeDefaultRequest
 */
 func (a *OpaProfilesAPIService) OpaprofilesMakeDefault(ctx context.Context) ApiOpaprofilesMakeDefaultRequest {
 	return ApiOpaprofilesMakeDefaultRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *OpaProfilesAPIService) OpaprofilesMakeDefaultExecute(r ApiOpaprofilesMakeDefaultRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpaProfilesAPIService.OpaprofilesMakeDefault")
@@ -1387,8 +1385,8 @@ func (a *OpaProfilesAPIService) OpaprofilesMakeDefaultExecute(r ApiOpaprofilesMa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1398,8 +1396,8 @@ func (a *OpaProfilesAPIService) OpaprofilesMakeDefaultExecute(r ApiOpaprofilesMa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1409,8 +1407,8 @@ func (a *OpaProfilesAPIService) OpaprofilesMakeDefaultExecute(r ApiOpaprofilesMa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1420,8 +1418,8 @@ func (a *OpaProfilesAPIService) OpaprofilesMakeDefaultExecute(r ApiOpaprofilesMa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1431,8 +1429,8 @@ func (a *OpaProfilesAPIService) OpaprofilesMakeDefaultExecute(r ApiOpaprofilesMa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1441,8 +1439,8 @@ func (a *OpaProfilesAPIService) OpaprofilesMakeDefaultExecute(r ApiOpaprofilesMa
 }
 
 type ApiOpaprofilesSyncRequest struct {
-	ctx                   context.Context
-	ApiService            *OpaProfilesAPIService
+	ctx context.Context
+	ApiService *OpaProfilesAPIService
 	opaProfileSyncCommand *OpaProfileSyncCommand
 }
 
@@ -1458,22 +1456,22 @@ func (r ApiOpaprofilesSyncRequest) Execute() (*http.Response, error) {
 /*
 OpaprofilesSync Sync policy profile
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpaprofilesSyncRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpaprofilesSyncRequest
 */
 func (a *OpaProfilesAPIService) OpaprofilesSync(ctx context.Context) ApiOpaprofilesSyncRequest {
 	return ApiOpaprofilesSyncRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *OpaProfilesAPIService) OpaprofilesSyncExecute(r ApiOpaprofilesSyncRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpaProfilesAPIService.OpaprofilesSync")
@@ -1552,8 +1550,8 @@ func (a *OpaProfilesAPIService) OpaprofilesSyncExecute(r ApiOpaprofilesSyncReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1563,8 +1561,8 @@ func (a *OpaProfilesAPIService) OpaprofilesSyncExecute(r ApiOpaprofilesSyncReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1574,8 +1572,8 @@ func (a *OpaProfilesAPIService) OpaprofilesSyncExecute(r ApiOpaprofilesSyncReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1585,8 +1583,8 @@ func (a *OpaProfilesAPIService) OpaprofilesSyncExecute(r ApiOpaprofilesSyncReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1596,8 +1594,8 @@ func (a *OpaProfilesAPIService) OpaprofilesSyncExecute(r ApiOpaprofilesSyncReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1606,8 +1604,8 @@ func (a *OpaProfilesAPIService) OpaprofilesSyncExecute(r ApiOpaprofilesSyncReque
 }
 
 type ApiOpaprofilesUpdateRequest struct {
-	ctx                     context.Context
-	ApiService              *OpaProfilesAPIService
+	ctx context.Context
+	ApiService *OpaProfilesAPIService
 	opaProfileUpdateCommand *OpaProfileUpdateCommand
 }
 
@@ -1623,22 +1621,22 @@ func (r ApiOpaprofilesUpdateRequest) Execute() (*http.Response, error) {
 /*
 OpaprofilesUpdate Update policy profile
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpaprofilesUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpaprofilesUpdateRequest
 */
 func (a *OpaProfilesAPIService) OpaprofilesUpdate(ctx context.Context) ApiOpaprofilesUpdateRequest {
 	return ApiOpaprofilesUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *OpaProfilesAPIService) OpaprofilesUpdateExecute(r ApiOpaprofilesUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpaProfilesAPIService.OpaprofilesUpdate")
@@ -1714,8 +1712,8 @@ func (a *OpaProfilesAPIService) OpaprofilesUpdateExecute(r ApiOpaprofilesUpdateR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1725,8 +1723,8 @@ func (a *OpaProfilesAPIService) OpaprofilesUpdateExecute(r ApiOpaprofilesUpdateR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1736,8 +1734,8 @@ func (a *OpaProfilesAPIService) OpaprofilesUpdateExecute(r ApiOpaprofilesUpdateR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1747,8 +1745,8 @@ func (a *OpaProfilesAPIService) OpaprofilesUpdateExecute(r ApiOpaprofilesUpdateR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1758,8 +1756,8 @@ func (a *OpaProfilesAPIService) OpaprofilesUpdateExecute(r ApiOpaprofilesUpdateR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

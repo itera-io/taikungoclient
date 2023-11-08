@@ -20,19 +20,19 @@ var _ MappedNullable = &UpdateOrganizationCommand{}
 
 // UpdateOrganizationCommand struct for UpdateOrganizationCommand
 type UpdateOrganizationCommand struct {
-	Id                           *int32          `json:"id,omitempty"`
-	Name                         NullableString  `json:"name,omitempty"`
-	FullName                     NullableString  `json:"fullName,omitempty"`
-	Phone                        NullableString  `json:"phone,omitempty"`
-	Email                        NullableString  `json:"email,omitempty"`
-	Address                      NullableString  `json:"address,omitempty"`
-	Country                      NullableString  `json:"country,omitempty"`
-	City                         NullableString  `json:"city,omitempty"`
-	VatNumber                    NullableString  `json:"vatNumber,omitempty"`
-	IsLocked                     *bool           `json:"isLocked,omitempty"`
-	BillingEmail                 NullableString  `json:"billingEmail,omitempty"`
-	DiscountRate                 NullableFloat64 `json:"discountRate,omitempty"`
-	IsEligibleUpdateSubscription *bool           `json:"isEligibleUpdateSubscription,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	FullName NullableString `json:"fullName,omitempty"`
+	Phone NullableString `json:"phone,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	Address NullableString `json:"address,omitempty"`
+	Country NullableString `json:"country,omitempty"`
+	City NullableString `json:"city,omitempty"`
+	VatNumber NullableString `json:"vatNumber,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	BillingEmail NullableString `json:"billingEmail,omitempty"`
+	DiscountRate NullableFloat64 `json:"discountRate,omitempty"`
+	IsEligibleUpdateSubscription *bool `json:"isEligibleUpdateSubscription,omitempty"`
 }
 
 // NewUpdateOrganizationCommand instantiates a new UpdateOrganizationCommand object
@@ -116,7 +116,6 @@ func (o *UpdateOrganizationCommand) HasName() bool {
 func (o *UpdateOrganizationCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateOrganizationCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -159,7 +158,6 @@ func (o *UpdateOrganizationCommand) HasFullName() bool {
 func (o *UpdateOrganizationCommand) SetFullName(v string) {
 	o.FullName.Set(&v)
 }
-
 // SetFullNameNil sets the value for FullName to be an explicit nil
 func (o *UpdateOrganizationCommand) SetFullNameNil() {
 	o.FullName.Set(nil)
@@ -202,7 +200,6 @@ func (o *UpdateOrganizationCommand) HasPhone() bool {
 func (o *UpdateOrganizationCommand) SetPhone(v string) {
 	o.Phone.Set(&v)
 }
-
 // SetPhoneNil sets the value for Phone to be an explicit nil
 func (o *UpdateOrganizationCommand) SetPhoneNil() {
 	o.Phone.Set(nil)
@@ -245,7 +242,6 @@ func (o *UpdateOrganizationCommand) HasEmail() bool {
 func (o *UpdateOrganizationCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *UpdateOrganizationCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -288,7 +284,6 @@ func (o *UpdateOrganizationCommand) HasAddress() bool {
 func (o *UpdateOrganizationCommand) SetAddress(v string) {
 	o.Address.Set(&v)
 }
-
 // SetAddressNil sets the value for Address to be an explicit nil
 func (o *UpdateOrganizationCommand) SetAddressNil() {
 	o.Address.Set(nil)
@@ -331,7 +326,6 @@ func (o *UpdateOrganizationCommand) HasCountry() bool {
 func (o *UpdateOrganizationCommand) SetCountry(v string) {
 	o.Country.Set(&v)
 }
-
 // SetCountryNil sets the value for Country to be an explicit nil
 func (o *UpdateOrganizationCommand) SetCountryNil() {
 	o.Country.Set(nil)
@@ -374,7 +368,6 @@ func (o *UpdateOrganizationCommand) HasCity() bool {
 func (o *UpdateOrganizationCommand) SetCity(v string) {
 	o.City.Set(&v)
 }
-
 // SetCityNil sets the value for City to be an explicit nil
 func (o *UpdateOrganizationCommand) SetCityNil() {
 	o.City.Set(nil)
@@ -417,7 +410,6 @@ func (o *UpdateOrganizationCommand) HasVatNumber() bool {
 func (o *UpdateOrganizationCommand) SetVatNumber(v string) {
 	o.VatNumber.Set(&v)
 }
-
 // SetVatNumberNil sets the value for VatNumber to be an explicit nil
 func (o *UpdateOrganizationCommand) SetVatNumberNil() {
 	o.VatNumber.Set(nil)
@@ -492,7 +484,6 @@ func (o *UpdateOrganizationCommand) HasBillingEmail() bool {
 func (o *UpdateOrganizationCommand) SetBillingEmail(v string) {
 	o.BillingEmail.Set(&v)
 }
-
 // SetBillingEmailNil sets the value for BillingEmail to be an explicit nil
 func (o *UpdateOrganizationCommand) SetBillingEmailNil() {
 	o.BillingEmail.Set(nil)
@@ -535,7 +526,6 @@ func (o *UpdateOrganizationCommand) HasDiscountRate() bool {
 func (o *UpdateOrganizationCommand) SetDiscountRate(v float64) {
 	o.DiscountRate.Set(&v)
 }
-
 // SetDiscountRateNil sets the value for DiscountRate to be an explicit nil
 func (o *UpdateOrganizationCommand) SetDiscountRateNil() {
 	o.DiscountRate.Set(nil)
@@ -579,7 +569,7 @@ func (o *UpdateOrganizationCommand) SetIsEligibleUpdateSubscription(v bool) {
 }
 
 func (o UpdateOrganizationCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -665,3 +655,5 @@ func (v *NullableUpdateOrganizationCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

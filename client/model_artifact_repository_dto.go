@@ -20,17 +20,17 @@ var _ MappedNullable = &ArtifactRepositoryDto{}
 
 // ArtifactRepositoryDto struct for ArtifactRepositoryDto
 type ArtifactRepositoryDto struct {
-	RepositoryId      NullableString `json:"repositoryId,omitempty"`
-	Name              NullableString `json:"name,omitempty"`
-	DisplayName       NullableString `json:"displayName,omitempty"`
-	Url               NullableString `json:"url,omitempty"`
-	OrganizationName  NullableString `json:"organizationName,omitempty"`
-	Disabled          *bool          `json:"disabled,omitempty"`
-	VerifiedPublisher *bool          `json:"verifiedPublisher,omitempty"`
-	Official          *bool          `json:"official,omitempty"`
-	IsBound           *bool          `json:"isBound,omitempty"`
-	HasCatalogApp     *bool          `json:"hasCatalogApp,omitempty"`
-	TrueUrl           NullableString `json:"trueUrl,omitempty"`
+	RepositoryId NullableString `json:"repositoryId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	DisplayName NullableString `json:"displayName,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	Disabled *bool `json:"disabled,omitempty"`
+	VerifiedPublisher *bool `json:"verifiedPublisher,omitempty"`
+	Official *bool `json:"official,omitempty"`
+	IsBound *bool `json:"isBound,omitempty"`
+	HasCatalogApp *bool `json:"hasCatalogApp,omitempty"`
+	TrueUrl NullableString `json:"trueUrl,omitempty"`
 }
 
 // NewArtifactRepositoryDto instantiates a new ArtifactRepositoryDto object
@@ -82,7 +82,6 @@ func (o *ArtifactRepositoryDto) HasRepositoryId() bool {
 func (o *ArtifactRepositoryDto) SetRepositoryId(v string) {
 	o.RepositoryId.Set(&v)
 }
-
 // SetRepositoryIdNil sets the value for RepositoryId to be an explicit nil
 func (o *ArtifactRepositoryDto) SetRepositoryIdNil() {
 	o.RepositoryId.Set(nil)
@@ -125,7 +124,6 @@ func (o *ArtifactRepositoryDto) HasName() bool {
 func (o *ArtifactRepositoryDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ArtifactRepositoryDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -168,7 +166,6 @@ func (o *ArtifactRepositoryDto) HasDisplayName() bool {
 func (o *ArtifactRepositoryDto) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
-
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *ArtifactRepositoryDto) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -211,7 +208,6 @@ func (o *ArtifactRepositoryDto) HasUrl() bool {
 func (o *ArtifactRepositoryDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *ArtifactRepositoryDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -254,7 +250,6 @@ func (o *ArtifactRepositoryDto) HasOrganizationName() bool {
 func (o *ArtifactRepositoryDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *ArtifactRepositoryDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -457,7 +452,6 @@ func (o *ArtifactRepositoryDto) HasTrueUrl() bool {
 func (o *ArtifactRepositoryDto) SetTrueUrl(v string) {
 	o.TrueUrl.Set(&v)
 }
-
 // SetTrueUrlNil sets the value for TrueUrl to be an explicit nil
 func (o *ArtifactRepositoryDto) SetTrueUrlNil() {
 	o.TrueUrl.Set(nil)
@@ -469,7 +463,7 @@ func (o *ArtifactRepositoryDto) UnsetTrueUrl() {
 }
 
 func (o ArtifactRepositoryDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -549,3 +543,5 @@ func (v *NullableArtifactRepositoryDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

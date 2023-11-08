@@ -21,38 +21,38 @@ var _ MappedNullable = &ProjectFullListDto{}
 
 // ProjectFullListDto struct for ProjectFullListDto
 type ProjectFullListDto struct {
-	Id                    *int32                           `json:"id,omitempty"`
-	Name                  NullableString                   `json:"name,omitempty"`
-	Operation             NullableString                   `json:"operation,omitempty"`
-	JobUrl                NullableString                   `json:"jobUrl,omitempty"`
-	ImageName             NullableString                   `json:"imageName,omitempty"`
-	Token                 NullableString                   `json:"token,omitempty"`
-	IsKubernetes          *bool                            `json:"isKubernetes,omitempty"`
-	IsLocked              *bool                            `json:"isLocked,omitempty"`
-	IsBackupEnabled       *bool                            `json:"isBackupEnabled,omitempty"`
-	IsMonitoringEnabled   *bool                            `json:"isMonitoringEnabled,omitempty"`
-	IsAutoUpgrade         *bool                            `json:"isAutoUpgrade,omitempty"`
-	AccessProfileRevision *int32                           `json:"accessProfileRevision,omitempty"`
-	CloudCredentialName   NullableString                   `json:"cloudCredentialName,omitempty"`
-	OrganizationName      NullableString                   `json:"organizationName,omitempty"`
-	OrganizationId        *int32                           `json:"organizationId,omitempty"`
-	Status                NullableString                   `json:"status,omitempty"`
-	Health                NullableString                   `json:"health,omitempty"`
-	AccessIp              NullableString                   `json:"accessIp,omitempty"`
-	CloudType             NullableString                   `json:"cloudType,omitempty"`
-	CreatedAt             NullableString                   `json:"createdAt,omitempty"`
-	UpdatedAt             NullableTime                     `json:"updatedAt,omitempty"`
-	AccessProfiles        *AccessProfilesForProjectListDto `json:"accessProfiles,omitempty"`
-	IsDeleteCluster       *bool                            `json:"isDeleteCluster,omitempty"`
-	TaikunPrivateSSHKey   NullableString                   `json:"taikunPrivateSSHKey,omitempty"`
-	TaikunPublicSSHKey    NullableString                   `json:"taikunPublicSSHKey,omitempty"`
-	StandaloneVms         []StandAloneVmFullDto            `json:"standaloneVms,omitempty"`
-	Cidr                  NullableString                   `json:"cidr,omitempty"`
-	NetMask               NullableInt32                    `json:"netMask,omitempty"`
-	PrivateIp             NullableString                   `json:"privateIp,omitempty"`
-	PublicIp              NullableString                   `json:"publicIp,omitempty"`
-	IsKubevapEnabled      *bool                            `json:"isKubevapEnabled,omitempty"`
-	TanzuReleaseVersion   NullableString                   `json:"tanzuReleaseVersion,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Operation NullableString `json:"operation,omitempty"`
+	JobUrl NullableString `json:"jobUrl,omitempty"`
+	ImageName NullableString `json:"imageName,omitempty"`
+	Token NullableString `json:"token,omitempty"`
+	IsKubernetes *bool `json:"isKubernetes,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	IsBackupEnabled *bool `json:"isBackupEnabled,omitempty"`
+	IsMonitoringEnabled *bool `json:"isMonitoringEnabled,omitempty"`
+	IsAutoUpgrade *bool `json:"isAutoUpgrade,omitempty"`
+	AccessProfileRevision *int32 `json:"accessProfileRevision,omitempty"`
+	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	Health NullableString `json:"health,omitempty"`
+	AccessIp NullableString `json:"accessIp,omitempty"`
+	CloudType NullableString `json:"cloudType,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	UpdatedAt NullableTime `json:"updatedAt,omitempty"`
+	AccessProfiles *AccessProfilesForProjectListDto `json:"accessProfiles,omitempty"`
+	IsDeleteCluster *bool `json:"isDeleteCluster,omitempty"`
+	TaikunPrivateSSHKey NullableString `json:"taikunPrivateSSHKey,omitempty"`
+	TaikunPublicSSHKey NullableString `json:"taikunPublicSSHKey,omitempty"`
+	StandaloneVms []StandAloneVmFullDto `json:"standaloneVms,omitempty"`
+	Cidr NullableString `json:"cidr,omitempty"`
+	NetMask NullableInt32 `json:"netMask,omitempty"`
+	PrivateIp NullableString `json:"privateIp,omitempty"`
+	PublicIp NullableString `json:"publicIp,omitempty"`
+	IsKubevapEnabled *bool `json:"isKubevapEnabled,omitempty"`
+	TanzuReleaseVersion NullableString `json:"tanzuReleaseVersion,omitempty"`
 }
 
 // NewProjectFullListDto instantiates a new ProjectFullListDto object
@@ -136,7 +136,6 @@ func (o *ProjectFullListDto) HasName() bool {
 func (o *ProjectFullListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectFullListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -179,7 +178,6 @@ func (o *ProjectFullListDto) HasOperation() bool {
 func (o *ProjectFullListDto) SetOperation(v string) {
 	o.Operation.Set(&v)
 }
-
 // SetOperationNil sets the value for Operation to be an explicit nil
 func (o *ProjectFullListDto) SetOperationNil() {
 	o.Operation.Set(nil)
@@ -222,7 +220,6 @@ func (o *ProjectFullListDto) HasJobUrl() bool {
 func (o *ProjectFullListDto) SetJobUrl(v string) {
 	o.JobUrl.Set(&v)
 }
-
 // SetJobUrlNil sets the value for JobUrl to be an explicit nil
 func (o *ProjectFullListDto) SetJobUrlNil() {
 	o.JobUrl.Set(nil)
@@ -265,7 +262,6 @@ func (o *ProjectFullListDto) HasImageName() bool {
 func (o *ProjectFullListDto) SetImageName(v string) {
 	o.ImageName.Set(&v)
 }
-
 // SetImageNameNil sets the value for ImageName to be an explicit nil
 func (o *ProjectFullListDto) SetImageNameNil() {
 	o.ImageName.Set(nil)
@@ -308,7 +304,6 @@ func (o *ProjectFullListDto) HasToken() bool {
 func (o *ProjectFullListDto) SetToken(v string) {
 	o.Token.Set(&v)
 }
-
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *ProjectFullListDto) SetTokenNil() {
 	o.Token.Set(nil)
@@ -543,7 +538,6 @@ func (o *ProjectFullListDto) HasCloudCredentialName() bool {
 func (o *ProjectFullListDto) SetCloudCredentialName(v string) {
 	o.CloudCredentialName.Set(&v)
 }
-
 // SetCloudCredentialNameNil sets the value for CloudCredentialName to be an explicit nil
 func (o *ProjectFullListDto) SetCloudCredentialNameNil() {
 	o.CloudCredentialName.Set(nil)
@@ -586,7 +580,6 @@ func (o *ProjectFullListDto) HasOrganizationName() bool {
 func (o *ProjectFullListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *ProjectFullListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -661,7 +654,6 @@ func (o *ProjectFullListDto) HasStatus() bool {
 func (o *ProjectFullListDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *ProjectFullListDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -704,7 +696,6 @@ func (o *ProjectFullListDto) HasHealth() bool {
 func (o *ProjectFullListDto) SetHealth(v string) {
 	o.Health.Set(&v)
 }
-
 // SetHealthNil sets the value for Health to be an explicit nil
 func (o *ProjectFullListDto) SetHealthNil() {
 	o.Health.Set(nil)
@@ -747,7 +738,6 @@ func (o *ProjectFullListDto) HasAccessIp() bool {
 func (o *ProjectFullListDto) SetAccessIp(v string) {
 	o.AccessIp.Set(&v)
 }
-
 // SetAccessIpNil sets the value for AccessIp to be an explicit nil
 func (o *ProjectFullListDto) SetAccessIpNil() {
 	o.AccessIp.Set(nil)
@@ -790,7 +780,6 @@ func (o *ProjectFullListDto) HasCloudType() bool {
 func (o *ProjectFullListDto) SetCloudType(v string) {
 	o.CloudType.Set(&v)
 }
-
 // SetCloudTypeNil sets the value for CloudType to be an explicit nil
 func (o *ProjectFullListDto) SetCloudTypeNil() {
 	o.CloudType.Set(nil)
@@ -833,7 +822,6 @@ func (o *ProjectFullListDto) HasCreatedAt() bool {
 func (o *ProjectFullListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *ProjectFullListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -876,7 +864,6 @@ func (o *ProjectFullListDto) HasUpdatedAt() bool {
 func (o *ProjectFullListDto) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt.Set(&v)
 }
-
 // SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
 func (o *ProjectFullListDto) SetUpdatedAtNil() {
 	o.UpdatedAt.Set(nil)
@@ -983,7 +970,6 @@ func (o *ProjectFullListDto) HasTaikunPrivateSSHKey() bool {
 func (o *ProjectFullListDto) SetTaikunPrivateSSHKey(v string) {
 	o.TaikunPrivateSSHKey.Set(&v)
 }
-
 // SetTaikunPrivateSSHKeyNil sets the value for TaikunPrivateSSHKey to be an explicit nil
 func (o *ProjectFullListDto) SetTaikunPrivateSSHKeyNil() {
 	o.TaikunPrivateSSHKey.Set(nil)
@@ -1026,7 +1012,6 @@ func (o *ProjectFullListDto) HasTaikunPublicSSHKey() bool {
 func (o *ProjectFullListDto) SetTaikunPublicSSHKey(v string) {
 	o.TaikunPublicSSHKey.Set(&v)
 }
-
 // SetTaikunPublicSSHKeyNil sets the value for TaikunPublicSSHKey to be an explicit nil
 func (o *ProjectFullListDto) SetTaikunPublicSSHKeyNil() {
 	o.TaikunPublicSSHKey.Set(nil)
@@ -1102,7 +1087,6 @@ func (o *ProjectFullListDto) HasCidr() bool {
 func (o *ProjectFullListDto) SetCidr(v string) {
 	o.Cidr.Set(&v)
 }
-
 // SetCidrNil sets the value for Cidr to be an explicit nil
 func (o *ProjectFullListDto) SetCidrNil() {
 	o.Cidr.Set(nil)
@@ -1145,7 +1129,6 @@ func (o *ProjectFullListDto) HasNetMask() bool {
 func (o *ProjectFullListDto) SetNetMask(v int32) {
 	o.NetMask.Set(&v)
 }
-
 // SetNetMaskNil sets the value for NetMask to be an explicit nil
 func (o *ProjectFullListDto) SetNetMaskNil() {
 	o.NetMask.Set(nil)
@@ -1188,7 +1171,6 @@ func (o *ProjectFullListDto) HasPrivateIp() bool {
 func (o *ProjectFullListDto) SetPrivateIp(v string) {
 	o.PrivateIp.Set(&v)
 }
-
 // SetPrivateIpNil sets the value for PrivateIp to be an explicit nil
 func (o *ProjectFullListDto) SetPrivateIpNil() {
 	o.PrivateIp.Set(nil)
@@ -1231,7 +1213,6 @@ func (o *ProjectFullListDto) HasPublicIp() bool {
 func (o *ProjectFullListDto) SetPublicIp(v string) {
 	o.PublicIp.Set(&v)
 }
-
 // SetPublicIpNil sets the value for PublicIp to be an explicit nil
 func (o *ProjectFullListDto) SetPublicIpNil() {
 	o.PublicIp.Set(nil)
@@ -1306,7 +1287,6 @@ func (o *ProjectFullListDto) HasTanzuReleaseVersion() bool {
 func (o *ProjectFullListDto) SetTanzuReleaseVersion(v string) {
 	o.TanzuReleaseVersion.Set(&v)
 }
-
 // SetTanzuReleaseVersionNil sets the value for TanzuReleaseVersion to be an explicit nil
 func (o *ProjectFullListDto) SetTanzuReleaseVersionNil() {
 	o.TanzuReleaseVersion.Set(nil)
@@ -1318,7 +1298,7 @@ func (o *ProjectFullListDto) UnsetTanzuReleaseVersion() {
 }
 
 func (o ProjectFullListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1461,3 +1441,5 @@ func (v *NullableProjectFullListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

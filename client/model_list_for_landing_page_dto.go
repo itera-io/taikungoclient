@@ -20,22 +20,22 @@ var _ MappedNullable = &ListForLandingPageDto{}
 
 // ListForLandingPageDto struct for ListForLandingPageDto
 type ListForLandingPageDto struct {
-	Id                   *int32         `json:"id,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	ProjectLimit         *int32         `json:"projectLimit,omitempty"`
-	ServerLimit          *int32         `json:"serverLimit,omitempty"`
-	UserLimit            *int32         `json:"userLimit,omitempty"`
-	CloudCredentialLimit *int32         `json:"cloudCredentialLimit,omitempty"`
-	MonthlyPrice         *float64       `json:"monthlyPrice,omitempty"`
-	YearlyPrice          *float64       `json:"yearlyPrice,omitempty"`
-	TcuPrice             *float64       `json:"tcuPrice,omitempty"`
-	IsDeprecated         *bool          `json:"isDeprecated,omitempty"`
-	Currency             NullableString `json:"currency,omitempty"`
-	PartnerId            NullableInt32  `json:"partnerId,omitempty"`
-	TrialDays            *int32         `json:"trialDays,omitempty"`
-	Description          NullableString `json:"description,omitempty"`
-	IsFree               *bool          `json:"isFree,omitempty"`
-	IsEnterprise         *bool          `json:"isEnterprise,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ProjectLimit *int32 `json:"projectLimit,omitempty"`
+	ServerLimit *int32 `json:"serverLimit,omitempty"`
+	UserLimit *int32 `json:"userLimit,omitempty"`
+	CloudCredentialLimit *int32 `json:"cloudCredentialLimit,omitempty"`
+	MonthlyPrice *float64 `json:"monthlyPrice,omitempty"`
+	YearlyPrice *float64 `json:"yearlyPrice,omitempty"`
+	TcuPrice *float64 `json:"tcuPrice,omitempty"`
+	IsDeprecated *bool `json:"isDeprecated,omitempty"`
+	Currency NullableString `json:"currency,omitempty"`
+	PartnerId NullableInt32 `json:"partnerId,omitempty"`
+	TrialDays *int32 `json:"trialDays,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	IsFree *bool `json:"isFree,omitempty"`
+	IsEnterprise *bool `json:"isEnterprise,omitempty"`
 }
 
 // NewListForLandingPageDto instantiates a new ListForLandingPageDto object
@@ -119,7 +119,6 @@ func (o *ListForLandingPageDto) HasName() bool {
 func (o *ListForLandingPageDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ListForLandingPageDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -418,7 +417,6 @@ func (o *ListForLandingPageDto) HasCurrency() bool {
 func (o *ListForLandingPageDto) SetCurrency(v string) {
 	o.Currency.Set(&v)
 }
-
 // SetCurrencyNil sets the value for Currency to be an explicit nil
 func (o *ListForLandingPageDto) SetCurrencyNil() {
 	o.Currency.Set(nil)
@@ -461,7 +459,6 @@ func (o *ListForLandingPageDto) HasPartnerId() bool {
 func (o *ListForLandingPageDto) SetPartnerId(v int32) {
 	o.PartnerId.Set(&v)
 }
-
 // SetPartnerIdNil sets the value for PartnerId to be an explicit nil
 func (o *ListForLandingPageDto) SetPartnerIdNil() {
 	o.PartnerId.Set(nil)
@@ -536,7 +533,6 @@ func (o *ListForLandingPageDto) HasDescription() bool {
 func (o *ListForLandingPageDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *ListForLandingPageDto) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -612,7 +608,7 @@ func (o *ListForLandingPageDto) SetIsEnterprise(v bool) {
 }
 
 func (o ListForLandingPageDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -707,3 +703,5 @@ func (v *NullableListForLandingPageDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

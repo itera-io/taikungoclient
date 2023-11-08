@@ -20,11 +20,11 @@ var _ MappedNullable = &StandaloneProfileSecurityGroupListDto{}
 
 // StandaloneProfileSecurityGroupListDto struct for StandaloneProfileSecurityGroupListDto
 type StandaloneProfileSecurityGroupListDto struct {
-	Id             *int32         `json:"id,omitempty"`
-	Name           NullableString `json:"name,omitempty"`
-	Protocol       NullableString `json:"protocol,omitempty"`
-	PortMinRange   *int32         `json:"portMinRange,omitempty"`
-	PortMaxRange   *int32         `json:"portMaxRange,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Protocol NullableString `json:"protocol,omitempty"`
+	PortMinRange *int32 `json:"portMinRange,omitempty"`
+	PortMaxRange *int32 `json:"portMaxRange,omitempty"`
 	RemoteIpPrefix NullableString `json:"remoteIpPrefix,omitempty"`
 }
 
@@ -109,7 +109,6 @@ func (o *StandaloneProfileSecurityGroupListDto) HasName() bool {
 func (o *StandaloneProfileSecurityGroupListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StandaloneProfileSecurityGroupListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -152,7 +151,6 @@ func (o *StandaloneProfileSecurityGroupListDto) HasProtocol() bool {
 func (o *StandaloneProfileSecurityGroupListDto) SetProtocol(v string) {
 	o.Protocol.Set(&v)
 }
-
 // SetProtocolNil sets the value for Protocol to be an explicit nil
 func (o *StandaloneProfileSecurityGroupListDto) SetProtocolNil() {
 	o.Protocol.Set(nil)
@@ -259,7 +257,6 @@ func (o *StandaloneProfileSecurityGroupListDto) HasRemoteIpPrefix() bool {
 func (o *StandaloneProfileSecurityGroupListDto) SetRemoteIpPrefix(v string) {
 	o.RemoteIpPrefix.Set(&v)
 }
-
 // SetRemoteIpPrefixNil sets the value for RemoteIpPrefix to be an explicit nil
 func (o *StandaloneProfileSecurityGroupListDto) SetRemoteIpPrefixNil() {
 	o.RemoteIpPrefix.Set(nil)
@@ -271,7 +268,7 @@ func (o *StandaloneProfileSecurityGroupListDto) UnsetRemoteIpPrefix() {
 }
 
 func (o StandaloneProfileSecurityGroupListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -336,3 +333,5 @@ func (v *NullableStandaloneProfileSecurityGroupListDto) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

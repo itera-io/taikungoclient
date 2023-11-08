@@ -20,10 +20,10 @@ var _ MappedNullable = &ChartSpec{}
 
 // ChartSpec struct for ChartSpec
 type ChartSpec struct {
-	Chart     NullableString `json:"chart,omitempty"`
-	Version   NullableString `json:"version,omitempty"`
-	SourceRef *SourceRef     `json:"sourceRef,omitempty"`
-	Interval  NullableString `json:"interval,omitempty"`
+	Chart NullableString `json:"chart,omitempty"`
+	Version NullableString `json:"version,omitempty"`
+	SourceRef *SourceRef `json:"sourceRef,omitempty"`
+	Interval NullableString `json:"interval,omitempty"`
 }
 
 // NewChartSpec instantiates a new ChartSpec object
@@ -75,7 +75,6 @@ func (o *ChartSpec) HasChart() bool {
 func (o *ChartSpec) SetChart(v string) {
 	o.Chart.Set(&v)
 }
-
 // SetChartNil sets the value for Chart to be an explicit nil
 func (o *ChartSpec) SetChartNil() {
 	o.Chart.Set(nil)
@@ -118,7 +117,6 @@ func (o *ChartSpec) HasVersion() bool {
 func (o *ChartSpec) SetVersion(v string) {
 	o.Version.Set(&v)
 }
-
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *ChartSpec) SetVersionNil() {
 	o.Version.Set(nil)
@@ -193,7 +191,6 @@ func (o *ChartSpec) HasInterval() bool {
 func (o *ChartSpec) SetInterval(v string) {
 	o.Interval.Set(&v)
 }
-
 // SetIntervalNil sets the value for Interval to be an explicit nil
 func (o *ChartSpec) SetIntervalNil() {
 	o.Interval.Set(nil)
@@ -205,7 +202,7 @@ func (o *ChartSpec) UnsetInterval() {
 }
 
 func (o ChartSpec) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,3 +261,5 @@ func (v *NullableChartSpec) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,9 +20,9 @@ var _ MappedNullable = &CreateUserGroupCommand{}
 
 // CreateUserGroupCommand struct for CreateUserGroupCommand
 type CreateUserGroupCommand struct {
-	Name           NullableString `json:"name,omitempty"`
-	OrganizationId NullableInt32  `json:"organizationId,omitempty"`
-	UserIds        []string       `json:"userIds,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	UserIds []string `json:"userIds,omitempty"`
 }
 
 // NewCreateUserGroupCommand instantiates a new CreateUserGroupCommand object
@@ -74,7 +74,6 @@ func (o *CreateUserGroupCommand) HasName() bool {
 func (o *CreateUserGroupCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateUserGroupCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -117,7 +116,6 @@ func (o *CreateUserGroupCommand) HasOrganizationId() bool {
 func (o *CreateUserGroupCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateUserGroupCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -162,7 +160,7 @@ func (o *CreateUserGroupCommand) SetUserIds(v []string) {
 }
 
 func (o CreateUserGroupCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -218,3 +216,5 @@ func (v *NullableCreateUserGroupCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -21,11 +21,11 @@ var _ MappedNullable = &CardInformationDto{}
 // CardInformationDto struct for CardInformationDto
 type CardInformationDto struct {
 	ExpirationMonth NullableString `json:"expirationMonth,omitempty"`
-	ExpirationYear  NullableString `json:"expirationYear,omitempty"`
-	Last4           NullableString `json:"last4,omitempty"`
-	Brand           NullableString `json:"brand,omitempty"`
-	HolderName      NullableString `json:"holderName,omitempty"`
-	Balance         *int64         `json:"balance,omitempty"`
+	ExpirationYear NullableString `json:"expirationYear,omitempty"`
+	Last4 NullableString `json:"last4,omitempty"`
+	Brand NullableString `json:"brand,omitempty"`
+	HolderName NullableString `json:"holderName,omitempty"`
+	Balance *int64 `json:"balance,omitempty"`
 }
 
 // NewCardInformationDto instantiates a new CardInformationDto object
@@ -77,7 +77,6 @@ func (o *CardInformationDto) HasExpirationMonth() bool {
 func (o *CardInformationDto) SetExpirationMonth(v string) {
 	o.ExpirationMonth.Set(&v)
 }
-
 // SetExpirationMonthNil sets the value for ExpirationMonth to be an explicit nil
 func (o *CardInformationDto) SetExpirationMonthNil() {
 	o.ExpirationMonth.Set(nil)
@@ -120,7 +119,6 @@ func (o *CardInformationDto) HasExpirationYear() bool {
 func (o *CardInformationDto) SetExpirationYear(v string) {
 	o.ExpirationYear.Set(&v)
 }
-
 // SetExpirationYearNil sets the value for ExpirationYear to be an explicit nil
 func (o *CardInformationDto) SetExpirationYearNil() {
 	o.ExpirationYear.Set(nil)
@@ -163,7 +161,6 @@ func (o *CardInformationDto) HasLast4() bool {
 func (o *CardInformationDto) SetLast4(v string) {
 	o.Last4.Set(&v)
 }
-
 // SetLast4Nil sets the value for Last4 to be an explicit nil
 func (o *CardInformationDto) SetLast4Nil() {
 	o.Last4.Set(nil)
@@ -206,7 +203,6 @@ func (o *CardInformationDto) HasBrand() bool {
 func (o *CardInformationDto) SetBrand(v string) {
 	o.Brand.Set(&v)
 }
-
 // SetBrandNil sets the value for Brand to be an explicit nil
 func (o *CardInformationDto) SetBrandNil() {
 	o.Brand.Set(nil)
@@ -249,7 +245,6 @@ func (o *CardInformationDto) HasHolderName() bool {
 func (o *CardInformationDto) SetHolderName(v string) {
 	o.HolderName.Set(&v)
 }
-
 // SetHolderNameNil sets the value for HolderName to be an explicit nil
 func (o *CardInformationDto) SetHolderNameNil() {
 	o.HolderName.Set(nil)
@@ -293,7 +288,7 @@ func (o *CardInformationDto) SetBalance(v int64) {
 }
 
 func (o CardInformationDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -358,3 +353,5 @@ func (v *NullableCardInformationDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

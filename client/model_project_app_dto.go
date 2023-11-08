@@ -20,14 +20,14 @@ var _ MappedNullable = &ProjectAppDto{}
 
 // ProjectAppDto struct for ProjectAppDto
 type ProjectAppDto struct {
-	Id          *int32         `json:"id,omitempty"`
-	Name        NullableString `json:"name,omitempty"`
-	Namespace   NullableString `json:"namespace,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
 	ProjectName NullableString `json:"projectName,omitempty"`
-	ProjectId   *int32         `json:"projectId,omitempty"`
-	Version     NullableString `json:"version,omitempty"`
-	IsLocked    *bool          `json:"isLocked,omitempty"`
-	Status      NullableString `json:"status,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Version NullableString `json:"version,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	Status NullableString `json:"status,omitempty"`
 }
 
 // NewProjectAppDto instantiates a new ProjectAppDto object
@@ -111,7 +111,6 @@ func (o *ProjectAppDto) HasName() bool {
 func (o *ProjectAppDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectAppDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -154,7 +153,6 @@ func (o *ProjectAppDto) HasNamespace() bool {
 func (o *ProjectAppDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *ProjectAppDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -197,7 +195,6 @@ func (o *ProjectAppDto) HasProjectName() bool {
 func (o *ProjectAppDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *ProjectAppDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -272,7 +269,6 @@ func (o *ProjectAppDto) HasVersion() bool {
 func (o *ProjectAppDto) SetVersion(v string) {
 	o.Version.Set(&v)
 }
-
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *ProjectAppDto) SetVersionNil() {
 	o.Version.Set(nil)
@@ -347,7 +343,6 @@ func (o *ProjectAppDto) HasStatus() bool {
 func (o *ProjectAppDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *ProjectAppDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -359,7 +354,7 @@ func (o *ProjectAppDto) UnsetStatus() {
 }
 
 func (o ProjectAppDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -430,3 +425,5 @@ func (v *NullableProjectAppDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

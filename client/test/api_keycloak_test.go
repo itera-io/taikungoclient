@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_KeycloakAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_KeycloakAPIService(t *testing.T) {
 
 	t.Run("Test KeycloakAPIService KeycloakCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KeycloakAPI.KeycloakCreate(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_KeycloakAPIService(t *testing.T) {
 
 	t.Run("Test KeycloakAPIService KeycloakDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KeycloakAPI.KeycloakDelete(context.Background()).Execute()
 
@@ -46,7 +46,7 @@ func Test_taikuncore_KeycloakAPIService(t *testing.T) {
 
 	t.Run("Test KeycloakAPIService KeycloakEdit", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KeycloakAPI.KeycloakEdit(context.Background()).Execute()
 
@@ -57,7 +57,7 @@ func Test_taikuncore_KeycloakAPIService(t *testing.T) {
 
 	t.Run("Test KeycloakAPIService KeycloakList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KeycloakAPI.KeycloakList(context.Background()).Execute()
 

@@ -21,9 +21,9 @@ var _ MappedNullable = &DaemonSetDto{}
 // DaemonSetDto struct for DaemonSetDto
 type DaemonSetDto struct {
 	MetadataName NullableString `json:"metadataName,omitempty"`
-	Status       NullableString `json:"status,omitempty"`
-	Namespace    NullableString `json:"namespace,omitempty"`
-	Age          NullableString `json:"age,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Age NullableString `json:"age,omitempty"`
 }
 
 // NewDaemonSetDto instantiates a new DaemonSetDto object
@@ -75,7 +75,6 @@ func (o *DaemonSetDto) HasMetadataName() bool {
 func (o *DaemonSetDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *DaemonSetDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -118,7 +117,6 @@ func (o *DaemonSetDto) HasStatus() bool {
 func (o *DaemonSetDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *DaemonSetDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -161,7 +159,6 @@ func (o *DaemonSetDto) HasNamespace() bool {
 func (o *DaemonSetDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *DaemonSetDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -204,7 +201,6 @@ func (o *DaemonSetDto) HasAge() bool {
 func (o *DaemonSetDto) SetAge(v string) {
 	o.Age.Set(&v)
 }
-
 // SetAgeNil sets the value for Age to be an explicit nil
 func (o *DaemonSetDto) SetAgeNil() {
 	o.Age.Set(nil)
@@ -216,7 +212,7 @@ func (o *DaemonSetDto) UnsetAge() {
 }
 
 func (o DaemonSetDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -275,3 +271,5 @@ func (v *NullableDaemonSetDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

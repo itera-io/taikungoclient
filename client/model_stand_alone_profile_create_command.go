@@ -20,10 +20,10 @@ var _ MappedNullable = &StandAloneProfileCreateCommand{}
 
 // StandAloneProfileCreateCommand struct for StandAloneProfileCreateCommand
 type StandAloneProfileCreateCommand struct {
-	Name           NullableString                      `json:"name,omitempty"`
-	PublicKey      NullableString                      `json:"publicKey,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	PublicKey NullableString `json:"publicKey,omitempty"`
 	SecurityGroups []StandAloneProfileSecurityGroupDto `json:"securityGroups,omitempty"`
-	OrganizationId NullableInt32                       `json:"organizationId,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
 
 // NewStandAloneProfileCreateCommand instantiates a new StandAloneProfileCreateCommand object
@@ -75,7 +75,6 @@ func (o *StandAloneProfileCreateCommand) HasName() bool {
 func (o *StandAloneProfileCreateCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StandAloneProfileCreateCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -118,7 +117,6 @@ func (o *StandAloneProfileCreateCommand) HasPublicKey() bool {
 func (o *StandAloneProfileCreateCommand) SetPublicKey(v string) {
 	o.PublicKey.Set(&v)
 }
-
 // SetPublicKeyNil sets the value for PublicKey to be an explicit nil
 func (o *StandAloneProfileCreateCommand) SetPublicKeyNil() {
 	o.PublicKey.Set(nil)
@@ -194,7 +192,6 @@ func (o *StandAloneProfileCreateCommand) HasOrganizationId() bool {
 func (o *StandAloneProfileCreateCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *StandAloneProfileCreateCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -206,7 +203,7 @@ func (o *StandAloneProfileCreateCommand) UnsetOrganizationId() {
 }
 
 func (o StandAloneProfileCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -265,3 +262,5 @@ func (v *NullableStandAloneProfileCreateCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,10 +20,10 @@ var _ MappedNullable = &GroupedShowbackSummaryByLabelInfo{}
 
 // GroupedShowbackSummaryByLabelInfo struct for GroupedShowbackSummaryByLabelInfo
 type GroupedShowbackSummaryByLabelInfo struct {
-	RuleName       NullableString                       `json:"ruleName,omitempty"`
-	CredentialName NullableString                       `json:"credentialName,omitempty"`
-	TotalPrice     NullableFloat64                      `json:"totalPrice,omitempty"`
-	Data           []GroupedShowbackSummariesByLabelDto `json:"data,omitempty"`
+	RuleName NullableString `json:"ruleName,omitempty"`
+	CredentialName NullableString `json:"credentialName,omitempty"`
+	TotalPrice NullableFloat64 `json:"totalPrice,omitempty"`
+	Data []GroupedShowbackSummariesByLabelDto `json:"data,omitempty"`
 }
 
 // NewGroupedShowbackSummaryByLabelInfo instantiates a new GroupedShowbackSummaryByLabelInfo object
@@ -75,7 +75,6 @@ func (o *GroupedShowbackSummaryByLabelInfo) HasRuleName() bool {
 func (o *GroupedShowbackSummaryByLabelInfo) SetRuleName(v string) {
 	o.RuleName.Set(&v)
 }
-
 // SetRuleNameNil sets the value for RuleName to be an explicit nil
 func (o *GroupedShowbackSummaryByLabelInfo) SetRuleNameNil() {
 	o.RuleName.Set(nil)
@@ -118,7 +117,6 @@ func (o *GroupedShowbackSummaryByLabelInfo) HasCredentialName() bool {
 func (o *GroupedShowbackSummaryByLabelInfo) SetCredentialName(v string) {
 	o.CredentialName.Set(&v)
 }
-
 // SetCredentialNameNil sets the value for CredentialName to be an explicit nil
 func (o *GroupedShowbackSummaryByLabelInfo) SetCredentialNameNil() {
 	o.CredentialName.Set(nil)
@@ -161,7 +159,6 @@ func (o *GroupedShowbackSummaryByLabelInfo) HasTotalPrice() bool {
 func (o *GroupedShowbackSummaryByLabelInfo) SetTotalPrice(v float64) {
 	o.TotalPrice.Set(&v)
 }
-
 // SetTotalPriceNil sets the value for TotalPrice to be an explicit nil
 func (o *GroupedShowbackSummaryByLabelInfo) SetTotalPriceNil() {
 	o.TotalPrice.Set(nil)
@@ -206,7 +203,7 @@ func (o *GroupedShowbackSummaryByLabelInfo) SetData(v []GroupedShowbackSummaries
 }
 
 func (o GroupedShowbackSummaryByLabelInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -265,3 +262,5 @@ func (v *NullableGroupedShowbackSummaryByLabelInfo) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,7 +20,7 @@ var _ MappedNullable = &EditProjectAppParamsDto{}
 
 // EditProjectAppParamsDto struct for EditProjectAppParamsDto
 type EditProjectAppParamsDto struct {
-	Key   NullableString `json:"key,omitempty"`
+	Key NullableString `json:"key,omitempty"`
 	Value NullableString `json:"value,omitempty"`
 }
 
@@ -73,7 +73,6 @@ func (o *EditProjectAppParamsDto) HasKey() bool {
 func (o *EditProjectAppParamsDto) SetKey(v string) {
 	o.Key.Set(&v)
 }
-
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *EditProjectAppParamsDto) SetKeyNil() {
 	o.Key.Set(nil)
@@ -116,7 +115,6 @@ func (o *EditProjectAppParamsDto) HasValue() bool {
 func (o *EditProjectAppParamsDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
-
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *EditProjectAppParamsDto) SetValueNil() {
 	o.Value.Set(nil)
@@ -128,7 +126,7 @@ func (o *EditProjectAppParamsDto) UnsetValue() {
 }
 
 func (o EditProjectAppParamsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableEditProjectAppParamsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

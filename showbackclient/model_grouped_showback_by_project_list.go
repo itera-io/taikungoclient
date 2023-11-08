@@ -74,7 +74,7 @@ func (o *GroupedShowbackByProjectList) SetByProjects(v []GroupedShowbackSummaryB
 }
 
 func (o GroupedShowbackByProjectList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -124,3 +124,5 @@ func (v *NullableGroupedShowbackByProjectList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

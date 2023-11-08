@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // PreDefinedQueriesAPIService PreDefinedQueriesAPI service
 type PreDefinedQueriesAPIService service
 
 type ApiPredefinedqueriesCreateRequest struct {
-	ctx                              context.Context
-	ApiService                       *PreDefinedQueriesAPIService
+	ctx context.Context
+	ApiService *PreDefinedQueriesAPIService
 	prometheusDashboardCreateCommand *PrometheusDashboardCreateCommand
 }
 
@@ -41,22 +42,22 @@ func (r ApiPredefinedqueriesCreateRequest) Execute() (*http.Response, error) {
 /*
 PredefinedqueriesCreate Create prometheus dashboard pre defined query
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPredefinedqueriesCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPredefinedqueriesCreateRequest
 */
 func (a *PreDefinedQueriesAPIService) PredefinedqueriesCreate(ctx context.Context) ApiPredefinedqueriesCreateRequest {
 	return ApiPredefinedqueriesCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *PreDefinedQueriesAPIService) PredefinedqueriesCreateExecute(r ApiPredefinedqueriesCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PreDefinedQueriesAPIService.PredefinedqueriesCreate")
@@ -135,8 +136,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesCreateExecute(r ApiPredef
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +147,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesCreateExecute(r ApiPredef
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +158,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesCreateExecute(r ApiPredef
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +169,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesCreateExecute(r ApiPredef
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -179,8 +180,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesCreateExecute(r ApiPredef
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -189,9 +190,9 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesCreateExecute(r ApiPredef
 }
 
 type ApiPredefinedqueriesDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *PreDefinedQueriesAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiPredefinedqueriesDeleteRequest) Execute() (*http.Response, error) {
@@ -201,24 +202,24 @@ func (r ApiPredefinedqueriesDeleteRequest) Execute() (*http.Response, error) {
 /*
 PredefinedqueriesDelete Delete prometheus dashboard pre defined query
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiPredefinedqueriesDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPredefinedqueriesDeleteRequest
 */
 func (a *PreDefinedQueriesAPIService) PredefinedqueriesDelete(ctx context.Context, id int32) ApiPredefinedqueriesDeleteRequest {
 	return ApiPredefinedqueriesDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *PreDefinedQueriesAPIService) PredefinedqueriesDeleteExecute(r ApiPredefinedqueriesDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PreDefinedQueriesAPIService.PredefinedqueriesDelete")
@@ -293,8 +294,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesDeleteExecute(r ApiPredef
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -304,8 +305,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesDeleteExecute(r ApiPredef
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -315,8 +316,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesDeleteExecute(r ApiPredef
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -326,8 +327,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesDeleteExecute(r ApiPredef
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -337,8 +338,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesDeleteExecute(r ApiPredef
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -347,9 +348,9 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesDeleteExecute(r ApiPredef
 }
 
 type ApiPredefinedqueriesListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *PreDefinedQueriesAPIService
-	projectId  int32
+	projectId int32
 }
 
 func (r ApiPredefinedqueriesListRequest) Execute() ([]PrometheusDashboardListDto, *http.Response, error) {
@@ -359,27 +360,26 @@ func (r ApiPredefinedqueriesListRequest) Execute() ([]PrometheusDashboardListDto
 /*
 PredefinedqueriesList Get list of pre defined organization prometheus dashboard elements
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiPredefinedqueriesListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiPredefinedqueriesListRequest
 */
 func (a *PreDefinedQueriesAPIService) PredefinedqueriesList(ctx context.Context, projectId int32) ApiPredefinedqueriesListRequest {
 	return ApiPredefinedqueriesListRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []PrometheusDashboardListDto
+//  @return []PrometheusDashboardListDto
 func (a *PreDefinedQueriesAPIService) PredefinedqueriesListExecute(r ApiPredefinedqueriesListRequest) ([]PrometheusDashboardListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []PrometheusDashboardListDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []PrometheusDashboardListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PreDefinedQueriesAPIService.PredefinedqueriesList")
@@ -454,8 +454,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesListExecute(r ApiPredefin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -465,8 +465,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesListExecute(r ApiPredefin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -476,8 +476,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesListExecute(r ApiPredefin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -487,8 +487,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesListExecute(r ApiPredefin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -498,8 +498,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesListExecute(r ApiPredefin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -517,9 +517,9 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesListExecute(r ApiPredefin
 }
 
 type ApiPredefinedqueriesPrometheusDashboardCommonRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *PreDefinedQueriesAPIService
-	projectId  int32
+	projectId int32
 }
 
 func (r ApiPredefinedqueriesPrometheusDashboardCommonRequest) Execute() ([]PrometheusDashboardListDto, *http.Response, error) {
@@ -529,27 +529,26 @@ func (r ApiPredefinedqueriesPrometheusDashboardCommonRequest) Execute() ([]Prome
 /*
 PredefinedqueriesPrometheusDashboardCommon et list of pre defined common prometheus dashboard elements
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiPredefinedqueriesPrometheusDashboardCommonRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiPredefinedqueriesPrometheusDashboardCommonRequest
 */
 func (a *PreDefinedQueriesAPIService) PredefinedqueriesPrometheusDashboardCommon(ctx context.Context, projectId int32) ApiPredefinedqueriesPrometheusDashboardCommonRequest {
 	return ApiPredefinedqueriesPrometheusDashboardCommonRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []PrometheusDashboardListDto
+//  @return []PrometheusDashboardListDto
 func (a *PreDefinedQueriesAPIService) PredefinedqueriesPrometheusDashboardCommonExecute(r ApiPredefinedqueriesPrometheusDashboardCommonRequest) ([]PrometheusDashboardListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []PrometheusDashboardListDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []PrometheusDashboardListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PreDefinedQueriesAPIService.PredefinedqueriesPrometheusDashboardCommon")
@@ -624,8 +623,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesPrometheusDashboardCommon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -635,8 +634,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesPrometheusDashboardCommon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -646,8 +645,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesPrometheusDashboardCommon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -657,8 +656,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesPrometheusDashboardCommon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -668,8 +667,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesPrometheusDashboardCommon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -687,8 +686,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesPrometheusDashboardCommon
 }
 
 type ApiPredefinedqueriesUpdateRequest struct {
-	ctx                              context.Context
-	ApiService                       *PreDefinedQueriesAPIService
+	ctx context.Context
+	ApiService *PreDefinedQueriesAPIService
 	prometheusDashboardUpdateCommand *PrometheusDashboardUpdateCommand
 }
 
@@ -704,22 +703,22 @@ func (r ApiPredefinedqueriesUpdateRequest) Execute() (*http.Response, error) {
 /*
 PredefinedqueriesUpdate Update prometheus dashboard pre defined query
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPredefinedqueriesUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPredefinedqueriesUpdateRequest
 */
 func (a *PreDefinedQueriesAPIService) PredefinedqueriesUpdate(ctx context.Context) ApiPredefinedqueriesUpdateRequest {
 	return ApiPredefinedqueriesUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *PreDefinedQueriesAPIService) PredefinedqueriesUpdateExecute(r ApiPredefinedqueriesUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PreDefinedQueriesAPIService.PredefinedqueriesUpdate")
@@ -798,8 +797,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesUpdateExecute(r ApiPredef
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -809,8 +808,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesUpdateExecute(r ApiPredef
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -820,8 +819,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesUpdateExecute(r ApiPredef
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -831,8 +830,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesUpdateExecute(r ApiPredef
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -842,8 +841,8 @@ func (a *PreDefinedQueriesAPIService) PredefinedqueriesUpdateExecute(r ApiPredef
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

@@ -20,11 +20,11 @@ var _ MappedNullable = &TaikunLbDto{}
 
 // TaikunLbDto struct for TaikunLbDto
 type TaikunLbDto struct {
-	Flavor             NullableString `json:"flavor,omitempty"`
-	PrivateKey         NullableString `json:"privateKey,omitempty"`
-	PublicKey          NullableString `json:"publicKey,omitempty"`
-	RouterIdStartRange NullableInt32  `json:"routerIdStartRange,omitempty"`
-	RouterIdEndRange   NullableInt32  `json:"routerIdEndRange,omitempty"`
+	Flavor NullableString `json:"flavor,omitempty"`
+	PrivateKey NullableString `json:"privateKey,omitempty"`
+	PublicKey NullableString `json:"publicKey,omitempty"`
+	RouterIdStartRange NullableInt32 `json:"routerIdStartRange,omitempty"`
+	RouterIdEndRange NullableInt32 `json:"routerIdEndRange,omitempty"`
 }
 
 // NewTaikunLbDto instantiates a new TaikunLbDto object
@@ -76,7 +76,6 @@ func (o *TaikunLbDto) HasFlavor() bool {
 func (o *TaikunLbDto) SetFlavor(v string) {
 	o.Flavor.Set(&v)
 }
-
 // SetFlavorNil sets the value for Flavor to be an explicit nil
 func (o *TaikunLbDto) SetFlavorNil() {
 	o.Flavor.Set(nil)
@@ -119,7 +118,6 @@ func (o *TaikunLbDto) HasPrivateKey() bool {
 func (o *TaikunLbDto) SetPrivateKey(v string) {
 	o.PrivateKey.Set(&v)
 }
-
 // SetPrivateKeyNil sets the value for PrivateKey to be an explicit nil
 func (o *TaikunLbDto) SetPrivateKeyNil() {
 	o.PrivateKey.Set(nil)
@@ -162,7 +160,6 @@ func (o *TaikunLbDto) HasPublicKey() bool {
 func (o *TaikunLbDto) SetPublicKey(v string) {
 	o.PublicKey.Set(&v)
 }
-
 // SetPublicKeyNil sets the value for PublicKey to be an explicit nil
 func (o *TaikunLbDto) SetPublicKeyNil() {
 	o.PublicKey.Set(nil)
@@ -205,7 +202,6 @@ func (o *TaikunLbDto) HasRouterIdStartRange() bool {
 func (o *TaikunLbDto) SetRouterIdStartRange(v int32) {
 	o.RouterIdStartRange.Set(&v)
 }
-
 // SetRouterIdStartRangeNil sets the value for RouterIdStartRange to be an explicit nil
 func (o *TaikunLbDto) SetRouterIdStartRangeNil() {
 	o.RouterIdStartRange.Set(nil)
@@ -248,7 +244,6 @@ func (o *TaikunLbDto) HasRouterIdEndRange() bool {
 func (o *TaikunLbDto) SetRouterIdEndRange(v int32) {
 	o.RouterIdEndRange.Set(&v)
 }
-
 // SetRouterIdEndRangeNil sets the value for RouterIdEndRange to be an explicit nil
 func (o *TaikunLbDto) SetRouterIdEndRangeNil() {
 	o.RouterIdEndRange.Set(nil)
@@ -260,7 +255,7 @@ func (o *TaikunLbDto) UnsetRouterIdEndRange() {
 }
 
 func (o TaikunLbDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -322,3 +317,5 @@ func (v *NullableTaikunLbDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

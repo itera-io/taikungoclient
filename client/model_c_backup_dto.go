@@ -22,12 +22,12 @@ var _ MappedNullable = &CBackupDto{}
 // CBackupDto struct for CBackupDto
 type CBackupDto struct {
 	MetadataName NullableString `json:"metadataName,omitempty"`
-	CreatedAt    NullableTime   `json:"createdAt,omitempty"`
-	Expiration   NullableTime   `json:"expiration,omitempty"`
+	CreatedAt NullableTime `json:"createdAt,omitempty"`
+	Expiration NullableTime `json:"expiration,omitempty"`
 	ScheduleName NullableString `json:"scheduleName,omitempty"`
-	Namespace    NullableString `json:"namespace,omitempty"`
-	Location     NullableString `json:"location,omitempty"`
-	Phase        NullableString `json:"phase,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Location NullableString `json:"location,omitempty"`
+	Phase NullableString `json:"phase,omitempty"`
 }
 
 // NewCBackupDto instantiates a new CBackupDto object
@@ -79,7 +79,6 @@ func (o *CBackupDto) HasMetadataName() bool {
 func (o *CBackupDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *CBackupDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -122,7 +121,6 @@ func (o *CBackupDto) HasCreatedAt() bool {
 func (o *CBackupDto) SetCreatedAt(v time.Time) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *CBackupDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -165,7 +163,6 @@ func (o *CBackupDto) HasExpiration() bool {
 func (o *CBackupDto) SetExpiration(v time.Time) {
 	o.Expiration.Set(&v)
 }
-
 // SetExpirationNil sets the value for Expiration to be an explicit nil
 func (o *CBackupDto) SetExpirationNil() {
 	o.Expiration.Set(nil)
@@ -208,7 +205,6 @@ func (o *CBackupDto) HasScheduleName() bool {
 func (o *CBackupDto) SetScheduleName(v string) {
 	o.ScheduleName.Set(&v)
 }
-
 // SetScheduleNameNil sets the value for ScheduleName to be an explicit nil
 func (o *CBackupDto) SetScheduleNameNil() {
 	o.ScheduleName.Set(nil)
@@ -251,7 +247,6 @@ func (o *CBackupDto) HasNamespace() bool {
 func (o *CBackupDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *CBackupDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -294,7 +289,6 @@ func (o *CBackupDto) HasLocation() bool {
 func (o *CBackupDto) SetLocation(v string) {
 	o.Location.Set(&v)
 }
-
 // SetLocationNil sets the value for Location to be an explicit nil
 func (o *CBackupDto) SetLocationNil() {
 	o.Location.Set(nil)
@@ -337,7 +331,6 @@ func (o *CBackupDto) HasPhase() bool {
 func (o *CBackupDto) SetPhase(v string) {
 	o.Phase.Set(&v)
 }
-
 // SetPhaseNil sets the value for Phase to be an explicit nil
 func (o *CBackupDto) SetPhaseNil() {
 	o.Phase.Set(nil)
@@ -349,7 +342,7 @@ func (o *CBackupDto) UnsetPhase() {
 }
 
 func (o CBackupDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -417,3 +410,5 @@ func (v *NullableCBackupDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

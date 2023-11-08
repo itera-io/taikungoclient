@@ -20,71 +20,71 @@ var _ MappedNullable = &ProjectDetailsForServersDto{}
 
 // ProjectDetailsForServersDto struct for ProjectDetailsForServersDto
 type ProjectDetailsForServersDto struct {
-	AlertsTotalCount         *int32          `json:"alertsTotalCount,omitempty"`
-	Worker                   *int32          `json:"worker,omitempty"`
-	Bastion                  *int32          `json:"bastion,omitempty"`
-	ProjectStatus            *ProjectStatus  `json:"projectStatus,omitempty"`
-	ProjectName              NullableString  `json:"projectName,omitempty"`
-	AccessIp                 NullableString  `json:"accessIp,omitempty"`
-	ProjectId                *int32          `json:"projectId,omitempty"`
-	MasterReady              *int32          `json:"masterReady,omitempty"`
-	CloudType                *CloudType      `json:"cloudType,omitempty"`
-	CloudName                NullableString  `json:"cloudName,omitempty"`
-	CloudId                  *int32          `json:"cloudId,omitempty"`
-	QuotaId                  *int32          `json:"quotaId,omitempty"`
-	OrganizationName         NullableString  `json:"organizationName,omitempty"`
-	OrganizationId           *int32          `json:"organizationId,omitempty"`
-	KubernetesCurrentVersion NullableString  `json:"kubernetesCurrentVersion,omitempty"`
-	IsBackupEnabled          *bool           `json:"isBackupEnabled,omitempty"`
-	AiEnabled                *bool           `json:"aiEnabled,omitempty"`
-	IsLocked                 *bool           `json:"isLocked,omitempty"`
-	IsAutoUpgrade            *bool           `json:"isAutoUpgrade,omitempty"`
-	IsMonitoringEnabled      *bool           `json:"isMonitoringEnabled,omitempty"`
-	IsOpaEnabled             *bool           `json:"isOpaEnabled,omitempty"`
-	HasKubeConfigFile        *bool           `json:"hasKubeConfigFile,omitempty"`
-	HasSelectedFlavors       *bool           `json:"hasSelectedFlavors,omitempty"`
-	IsMaintenanceModeEnabled *bool           `json:"isMaintenanceModeEnabled,omitempty"`
-	IsDeprecated             *bool           `json:"isDeprecated,omitempty"`
-	CpuLimit                 *int64          `json:"cpuLimit,omitempty"`
-	RamLimit                 *int64          `json:"ramLimit,omitempty"`
-	DiskSizeLimit            *int64          `json:"diskSizeLimit,omitempty"`
-	UsedCpu                  *int64          `json:"usedCpu,omitempty"`
-	UsedRam                  *int64          `json:"usedRam,omitempty"`
-	UsedDiskSize             *int64          `json:"usedDiskSize,omitempty"`
-	VmCpuLimit               *int64          `json:"vmCpuLimit,omitempty"`
-	VmRamLimit               *int64          `json:"vmRamLimit,omitempty"`
-	VmVolumeSizeLimit        *int64          `json:"vmVolumeSizeLimit,omitempty"`
-	VmUsedCpu                *int64          `json:"vmUsedCpu,omitempty"`
-	VmUsedRam                *int64          `json:"vmUsedRam,omitempty"`
-	VmUsedVolumeSize         *int64          `json:"vmUsedVolumeSize,omitempty"`
-	AccessProfileName        NullableString  `json:"accessProfileName,omitempty"`
-	AccessProfileId          NullableInt32   `json:"accessProfileId,omitempty"`
-	KubernetesProfileName    NullableString  `json:"kubernetesProfileName,omitempty"`
-	KubernetesProfileId      NullableInt32   `json:"kubernetesProfileId,omitempty"`
-	AlertingProfileName      NullableString  `json:"alertingProfileName,omitempty"`
-	ProjectHealth            *ProjectHealth  `json:"projectHealth,omitempty"`
-	AlertingProfileId        NullableInt32   `json:"alertingProfileId,omitempty"`
-	S3CredentialId           NullableInt32   `json:"s3CredentialId,omitempty"`
-	AiCredentialId           NullableInt32   `json:"aiCredentialId,omitempty"`
-	ExpiredAt                NullableString  `json:"expiredAt,omitempty"`
-	CertificationExpiredAt   NullableString  `json:"certificationExpiredAt,omitempty"`
-	OpaProfileId             NullableInt32   `json:"opaProfileId,omitempty"`
-	OpaProfileName           NullableString  `json:"opaProfileName,omitempty"`
-	AllowFullSpotKubernetes  *bool           `json:"allowFullSpotKubernetes,omitempty"`
-	AllowSpotWorkers         *bool           `json:"allowSpotWorkers,omitempty"`
-	AllowSpotVMs             *bool           `json:"allowSpotVMs,omitempty"`
-	TotalHourlyCost          *float64        `json:"totalHourlyCost,omitempty"`
-	AutoscalingGroupName     NullableString  `json:"autoscalingGroupName,omitempty"`
-	MinSize                  NullableInt32   `json:"minSize,omitempty"`
-	MaxSize                  NullableInt32   `json:"maxSize,omitempty"`
-	DiskSize                 NullableFloat64 `json:"diskSize,omitempty"`
-	Flavor                   NullableString  `json:"flavor,omitempty"`
-	SpotEnabled              NullableBool    `json:"spotEnabled,omitempty"`
-	IsAutoscalingEnabled     *bool           `json:"isAutoscalingEnabled,omitempty"`
-	HasNfsServer             *bool           `json:"hasNfsServer,omitempty"`
-	AvailabilityZones        []string        `json:"availabilityZones,omitempty"`
-	Hypervisors              []string        `json:"hypervisors,omitempty"`
-	ProxmoxStorage           *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
+	AlertsTotalCount *int32 `json:"alertsTotalCount,omitempty"`
+	Worker *int32 `json:"worker,omitempty"`
+	Bastion *int32 `json:"bastion,omitempty"`
+	ProjectStatus *ProjectStatus `json:"projectStatus,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
+	AccessIp NullableString `json:"accessIp,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	MasterReady *int32 `json:"masterReady,omitempty"`
+	CloudType *CloudType `json:"cloudType,omitempty"`
+	CloudName NullableString `json:"cloudName,omitempty"`
+	CloudId *int32 `json:"cloudId,omitempty"`
+	QuotaId *int32 `json:"quotaId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion,omitempty"`
+	IsBackupEnabled *bool `json:"isBackupEnabled,omitempty"`
+	AiEnabled *bool `json:"aiEnabled,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	IsAutoUpgrade *bool `json:"isAutoUpgrade,omitempty"`
+	IsMonitoringEnabled *bool `json:"isMonitoringEnabled,omitempty"`
+	IsOpaEnabled *bool `json:"isOpaEnabled,omitempty"`
+	HasKubeConfigFile *bool `json:"hasKubeConfigFile,omitempty"`
+	HasSelectedFlavors *bool `json:"hasSelectedFlavors,omitempty"`
+	IsMaintenanceModeEnabled *bool `json:"isMaintenanceModeEnabled,omitempty"`
+	IsDeprecated *bool `json:"isDeprecated,omitempty"`
+	CpuLimit *int64 `json:"cpuLimit,omitempty"`
+	RamLimit *int64 `json:"ramLimit,omitempty"`
+	DiskSizeLimit *int64 `json:"diskSizeLimit,omitempty"`
+	UsedCpu *int64 `json:"usedCpu,omitempty"`
+	UsedRam *int64 `json:"usedRam,omitempty"`
+	UsedDiskSize *int64 `json:"usedDiskSize,omitempty"`
+	VmCpuLimit *int64 `json:"vmCpuLimit,omitempty"`
+	VmRamLimit *int64 `json:"vmRamLimit,omitempty"`
+	VmVolumeSizeLimit *int64 `json:"vmVolumeSizeLimit,omitempty"`
+	VmUsedCpu *int64 `json:"vmUsedCpu,omitempty"`
+	VmUsedRam *int64 `json:"vmUsedRam,omitempty"`
+	VmUsedVolumeSize *int64 `json:"vmUsedVolumeSize,omitempty"`
+	AccessProfileName NullableString `json:"accessProfileName,omitempty"`
+	AccessProfileId NullableInt32 `json:"accessProfileId,omitempty"`
+	KubernetesProfileName NullableString `json:"kubernetesProfileName,omitempty"`
+	KubernetesProfileId NullableInt32 `json:"kubernetesProfileId,omitempty"`
+	AlertingProfileName NullableString `json:"alertingProfileName,omitempty"`
+	ProjectHealth *ProjectHealth `json:"projectHealth,omitempty"`
+	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
+	S3CredentialId NullableInt32 `json:"s3CredentialId,omitempty"`
+	AiCredentialId NullableInt32 `json:"aiCredentialId,omitempty"`
+	ExpiredAt NullableString `json:"expiredAt,omitempty"`
+	CertificationExpiredAt NullableString `json:"certificationExpiredAt,omitempty"`
+	OpaProfileId NullableInt32 `json:"opaProfileId,omitempty"`
+	OpaProfileName NullableString `json:"opaProfileName,omitempty"`
+	AllowFullSpotKubernetes *bool `json:"allowFullSpotKubernetes,omitempty"`
+	AllowSpotWorkers *bool `json:"allowSpotWorkers,omitempty"`
+	AllowSpotVMs *bool `json:"allowSpotVMs,omitempty"`
+	TotalHourlyCost *float64 `json:"totalHourlyCost,omitempty"`
+	AutoscalingGroupName NullableString `json:"autoscalingGroupName,omitempty"`
+	MinSize NullableInt32 `json:"minSize,omitempty"`
+	MaxSize NullableInt32 `json:"maxSize,omitempty"`
+	DiskSize NullableFloat64 `json:"diskSize,omitempty"`
+	Flavor NullableString `json:"flavor,omitempty"`
+	SpotEnabled NullableBool `json:"spotEnabled,omitempty"`
+	IsAutoscalingEnabled *bool `json:"isAutoscalingEnabled,omitempty"`
+	HasNfsServer *bool `json:"hasNfsServer,omitempty"`
+	AvailabilityZones []string `json:"availabilityZones,omitempty"`
+	Hypervisors []string `json:"hypervisors,omitempty"`
+	ProxmoxStorage *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
 }
 
 // NewProjectDetailsForServersDto instantiates a new ProjectDetailsForServersDto object
@@ -264,7 +264,6 @@ func (o *ProjectDetailsForServersDto) HasProjectName() bool {
 func (o *ProjectDetailsForServersDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -307,7 +306,6 @@ func (o *ProjectDetailsForServersDto) HasAccessIp() bool {
 func (o *ProjectDetailsForServersDto) SetAccessIp(v string) {
 	o.AccessIp.Set(&v)
 }
-
 // SetAccessIpNil sets the value for AccessIp to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetAccessIpNil() {
 	o.AccessIp.Set(nil)
@@ -446,7 +444,6 @@ func (o *ProjectDetailsForServersDto) HasCloudName() bool {
 func (o *ProjectDetailsForServersDto) SetCloudName(v string) {
 	o.CloudName.Set(&v)
 }
-
 // SetCloudNameNil sets the value for CloudName to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetCloudNameNil() {
 	o.CloudName.Set(nil)
@@ -553,7 +550,6 @@ func (o *ProjectDetailsForServersDto) HasOrganizationName() bool {
 func (o *ProjectDetailsForServersDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -628,7 +624,6 @@ func (o *ProjectDetailsForServersDto) HasKubernetesCurrentVersion() bool {
 func (o *ProjectDetailsForServersDto) SetKubernetesCurrentVersion(v string) {
 	o.KubernetesCurrentVersion.Set(&v)
 }
-
 // SetKubernetesCurrentVersionNil sets the value for KubernetesCurrentVersion to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetKubernetesCurrentVersionNil() {
 	o.KubernetesCurrentVersion.Set(nil)
@@ -1375,7 +1370,6 @@ func (o *ProjectDetailsForServersDto) HasAccessProfileName() bool {
 func (o *ProjectDetailsForServersDto) SetAccessProfileName(v string) {
 	o.AccessProfileName.Set(&v)
 }
-
 // SetAccessProfileNameNil sets the value for AccessProfileName to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetAccessProfileNameNil() {
 	o.AccessProfileName.Set(nil)
@@ -1418,7 +1412,6 @@ func (o *ProjectDetailsForServersDto) HasAccessProfileId() bool {
 func (o *ProjectDetailsForServersDto) SetAccessProfileId(v int32) {
 	o.AccessProfileId.Set(&v)
 }
-
 // SetAccessProfileIdNil sets the value for AccessProfileId to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetAccessProfileIdNil() {
 	o.AccessProfileId.Set(nil)
@@ -1461,7 +1454,6 @@ func (o *ProjectDetailsForServersDto) HasKubernetesProfileName() bool {
 func (o *ProjectDetailsForServersDto) SetKubernetesProfileName(v string) {
 	o.KubernetesProfileName.Set(&v)
 }
-
 // SetKubernetesProfileNameNil sets the value for KubernetesProfileName to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetKubernetesProfileNameNil() {
 	o.KubernetesProfileName.Set(nil)
@@ -1504,7 +1496,6 @@ func (o *ProjectDetailsForServersDto) HasKubernetesProfileId() bool {
 func (o *ProjectDetailsForServersDto) SetKubernetesProfileId(v int32) {
 	o.KubernetesProfileId.Set(&v)
 }
-
 // SetKubernetesProfileIdNil sets the value for KubernetesProfileId to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetKubernetesProfileIdNil() {
 	o.KubernetesProfileId.Set(nil)
@@ -1547,7 +1538,6 @@ func (o *ProjectDetailsForServersDto) HasAlertingProfileName() bool {
 func (o *ProjectDetailsForServersDto) SetAlertingProfileName(v string) {
 	o.AlertingProfileName.Set(&v)
 }
-
 // SetAlertingProfileNameNil sets the value for AlertingProfileName to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetAlertingProfileNameNil() {
 	o.AlertingProfileName.Set(nil)
@@ -1622,7 +1612,6 @@ func (o *ProjectDetailsForServersDto) HasAlertingProfileId() bool {
 func (o *ProjectDetailsForServersDto) SetAlertingProfileId(v int32) {
 	o.AlertingProfileId.Set(&v)
 }
-
 // SetAlertingProfileIdNil sets the value for AlertingProfileId to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetAlertingProfileIdNil() {
 	o.AlertingProfileId.Set(nil)
@@ -1665,7 +1654,6 @@ func (o *ProjectDetailsForServersDto) HasS3CredentialId() bool {
 func (o *ProjectDetailsForServersDto) SetS3CredentialId(v int32) {
 	o.S3CredentialId.Set(&v)
 }
-
 // SetS3CredentialIdNil sets the value for S3CredentialId to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetS3CredentialIdNil() {
 	o.S3CredentialId.Set(nil)
@@ -1708,7 +1696,6 @@ func (o *ProjectDetailsForServersDto) HasAiCredentialId() bool {
 func (o *ProjectDetailsForServersDto) SetAiCredentialId(v int32) {
 	o.AiCredentialId.Set(&v)
 }
-
 // SetAiCredentialIdNil sets the value for AiCredentialId to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetAiCredentialIdNil() {
 	o.AiCredentialId.Set(nil)
@@ -1751,7 +1738,6 @@ func (o *ProjectDetailsForServersDto) HasExpiredAt() bool {
 func (o *ProjectDetailsForServersDto) SetExpiredAt(v string) {
 	o.ExpiredAt.Set(&v)
 }
-
 // SetExpiredAtNil sets the value for ExpiredAt to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetExpiredAtNil() {
 	o.ExpiredAt.Set(nil)
@@ -1794,7 +1780,6 @@ func (o *ProjectDetailsForServersDto) HasCertificationExpiredAt() bool {
 func (o *ProjectDetailsForServersDto) SetCertificationExpiredAt(v string) {
 	o.CertificationExpiredAt.Set(&v)
 }
-
 // SetCertificationExpiredAtNil sets the value for CertificationExpiredAt to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetCertificationExpiredAtNil() {
 	o.CertificationExpiredAt.Set(nil)
@@ -1837,7 +1822,6 @@ func (o *ProjectDetailsForServersDto) HasOpaProfileId() bool {
 func (o *ProjectDetailsForServersDto) SetOpaProfileId(v int32) {
 	o.OpaProfileId.Set(&v)
 }
-
 // SetOpaProfileIdNil sets the value for OpaProfileId to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetOpaProfileIdNil() {
 	o.OpaProfileId.Set(nil)
@@ -1880,7 +1864,6 @@ func (o *ProjectDetailsForServersDto) HasOpaProfileName() bool {
 func (o *ProjectDetailsForServersDto) SetOpaProfileName(v string) {
 	o.OpaProfileName.Set(&v)
 }
-
 // SetOpaProfileNameNil sets the value for OpaProfileName to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetOpaProfileNameNil() {
 	o.OpaProfileName.Set(nil)
@@ -2051,7 +2034,6 @@ func (o *ProjectDetailsForServersDto) HasAutoscalingGroupName() bool {
 func (o *ProjectDetailsForServersDto) SetAutoscalingGroupName(v string) {
 	o.AutoscalingGroupName.Set(&v)
 }
-
 // SetAutoscalingGroupNameNil sets the value for AutoscalingGroupName to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetAutoscalingGroupNameNil() {
 	o.AutoscalingGroupName.Set(nil)
@@ -2094,7 +2076,6 @@ func (o *ProjectDetailsForServersDto) HasMinSize() bool {
 func (o *ProjectDetailsForServersDto) SetMinSize(v int32) {
 	o.MinSize.Set(&v)
 }
-
 // SetMinSizeNil sets the value for MinSize to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetMinSizeNil() {
 	o.MinSize.Set(nil)
@@ -2137,7 +2118,6 @@ func (o *ProjectDetailsForServersDto) HasMaxSize() bool {
 func (o *ProjectDetailsForServersDto) SetMaxSize(v int32) {
 	o.MaxSize.Set(&v)
 }
-
 // SetMaxSizeNil sets the value for MaxSize to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetMaxSizeNil() {
 	o.MaxSize.Set(nil)
@@ -2180,7 +2160,6 @@ func (o *ProjectDetailsForServersDto) HasDiskSize() bool {
 func (o *ProjectDetailsForServersDto) SetDiskSize(v float64) {
 	o.DiskSize.Set(&v)
 }
-
 // SetDiskSizeNil sets the value for DiskSize to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetDiskSizeNil() {
 	o.DiskSize.Set(nil)
@@ -2223,7 +2202,6 @@ func (o *ProjectDetailsForServersDto) HasFlavor() bool {
 func (o *ProjectDetailsForServersDto) SetFlavor(v string) {
 	o.Flavor.Set(&v)
 }
-
 // SetFlavorNil sets the value for Flavor to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetFlavorNil() {
 	o.Flavor.Set(nil)
@@ -2266,7 +2244,6 @@ func (o *ProjectDetailsForServersDto) HasSpotEnabled() bool {
 func (o *ProjectDetailsForServersDto) SetSpotEnabled(v bool) {
 	o.SpotEnabled.Set(&v)
 }
-
 // SetSpotEnabledNil sets the value for SpotEnabled to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetSpotEnabledNil() {
 	o.SpotEnabled.Set(nil)
@@ -2440,7 +2417,7 @@ func (o *ProjectDetailsForServersDto) SetProxmoxStorage(v ProxmoxStorage) {
 }
 
 func (o ProjectDetailsForServersDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -2682,3 +2659,5 @@ func (v *NullableProjectDetailsForServersDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

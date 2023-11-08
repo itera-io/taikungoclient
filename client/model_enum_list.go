@@ -20,32 +20,32 @@ var _ MappedNullable = &EnumList{}
 
 // EnumList struct for EnumList
 type EnumList struct {
-	CloudTypes               []CommonDropdownDto            `json:"cloudTypes,omitempty"`
-	ProjectStatuses          []CommonDropdownDto            `json:"projectStatuses,omitempty"`
-	ServerRoles              []CommonDropdownDto            `json:"serverRoles,omitempty"`
-	ServerStatuses           []CommonDropdownDto            `json:"serverStatuses,omitempty"`
-	UserRoles                []CommonDropdownDto            `json:"userRoles,omitempty"`
-	SecurityGroupRules       []CommonDropdownDto            `json:"securityGroupRules,omitempty"`
-	PrometheusTypes          []CommonDropdownDto            `json:"prometheusTypes,omitempty"`
-	AuditLogs                []CommonDropdownDto            `json:"auditLogs,omitempty"`
-	RebootOptions            []CommonDropdownDto            `json:"rebootOptions,omitempty"`
-	Availability             []CommonAvailabilityDto        `json:"availability,omitempty"`
-	SlackTypes               []CommonDropdownDto            `json:"slackTypes,omitempty"`
-	RequestLogs              []CommonDropdownDto            `json:"requestLogs,omitempty"`
-	AzureQuotas              []CommonDropdownDto            `json:"azureQuotas,omitempty"`
-	ShowbackKinds            []CommonDropdownDto            `json:"showbackKinds,omitempty"`
-	AlertTypes               []CommonDropdownDto            `json:"alertTypes,omitempty"`
-	ReminderTypes            []CommonDropdownDto            `json:"reminderTypes,omitempty"`
-	AwsPlatforms             []CommonStringBasedDropdownDto `json:"awsPlatforms,omitempty"`
-	CronPeriods              []CommonStringBasedDropdownDto `json:"cronPeriods,omitempty"`
-	ValidityPeriods          []CommonDropdownDto            `json:"validityPeriods,omitempty"`
-	AlertingIntegrationTypes []CommonDropdownDto            `json:"alertingIntegrationTypes,omitempty"`
-	GoogleImageTypes         []CommonDropdownDto            `json:"googleImageTypes,omitempty"`
-	StandaloneVmStatuses     []CommonDropdownDto            `json:"standaloneVmStatuses,omitempty"`
-	OpenstackContinents      []CommonStringBasedDropdownDto `json:"openstackContinents,omitempty"`
-	RetentionPeriods         []CommonStringBasedDropdownDto `json:"retentionPeriods,omitempty"`
-	TicketPriorities         []CommonDropdownDto            `json:"ticketPriorities,omitempty"`
-	ProxmoxRoles             []CommonDropdownDto            `json:"proxmoxRoles,omitempty"`
+	CloudTypes []CommonDropdownDto `json:"cloudTypes,omitempty"`
+	ProjectStatuses []CommonDropdownDto `json:"projectStatuses,omitempty"`
+	ServerRoles []CommonDropdownDto `json:"serverRoles,omitempty"`
+	ServerStatuses []CommonDropdownDto `json:"serverStatuses,omitempty"`
+	UserRoles []CommonDropdownDto `json:"userRoles,omitempty"`
+	SecurityGroupRules []CommonDropdownDto `json:"securityGroupRules,omitempty"`
+	PrometheusTypes []CommonDropdownDto `json:"prometheusTypes,omitempty"`
+	AuditLogs []CommonDropdownDto `json:"auditLogs,omitempty"`
+	RebootOptions []CommonDropdownDto `json:"rebootOptions,omitempty"`
+	Availability []CommonAvailabilityDto `json:"availability,omitempty"`
+	SlackTypes []CommonDropdownDto `json:"slackTypes,omitempty"`
+	RequestLogs []CommonDropdownDto `json:"requestLogs,omitempty"`
+	AzureQuotas []CommonDropdownDto `json:"azureQuotas,omitempty"`
+	ShowbackKinds []CommonDropdownDto `json:"showbackKinds,omitempty"`
+	AlertTypes []CommonDropdownDto `json:"alertTypes,omitempty"`
+	ReminderTypes []CommonDropdownDto `json:"reminderTypes,omitempty"`
+	AwsPlatforms []CommonStringBasedDropdownDto `json:"awsPlatforms,omitempty"`
+	CronPeriods []CommonStringBasedDropdownDto `json:"cronPeriods,omitempty"`
+	ValidityPeriods []CommonDropdownDto `json:"validityPeriods,omitempty"`
+	AlertingIntegrationTypes []CommonDropdownDto `json:"alertingIntegrationTypes,omitempty"`
+	GoogleImageTypes []CommonDropdownDto `json:"googleImageTypes,omitempty"`
+	StandaloneVmStatuses []CommonDropdownDto `json:"standaloneVmStatuses,omitempty"`
+	OpenstackContinents []CommonStringBasedDropdownDto `json:"openstackContinents,omitempty"`
+	RetentionPeriods []CommonStringBasedDropdownDto `json:"retentionPeriods,omitempty"`
+	TicketPriorities []CommonDropdownDto `json:"ticketPriorities,omitempty"`
+	ProxmoxRoles []CommonDropdownDto `json:"proxmoxRoles,omitempty"`
 }
 
 // NewEnumList instantiates a new EnumList object
@@ -924,7 +924,7 @@ func (o *EnumList) SetProxmoxRoles(v []CommonDropdownDto) {
 }
 
 func (o EnumList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1049,3 +1049,5 @@ func (v *NullableEnumList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

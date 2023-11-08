@@ -20,7 +20,7 @@ var _ MappedNullable = &UserListDto{}
 
 // UserListDto struct for UserListDto
 type UserListDto struct {
-	Id   NullableString `json:"id,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 }
 
@@ -73,7 +73,6 @@ func (o *UserListDto) HasId() bool {
 func (o *UserListDto) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *UserListDto) SetIdNil() {
 	o.Id.Set(nil)
@@ -116,7 +115,6 @@ func (o *UserListDto) HasName() bool {
 func (o *UserListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UserListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -128,7 +126,7 @@ func (o *UserListDto) UnsetName() {
 }
 
 func (o UserListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableUserListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

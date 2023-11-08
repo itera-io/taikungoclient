@@ -21,10 +21,10 @@ var _ MappedNullable = &HelmReleaseDto{}
 // HelmReleaseDto struct for HelmReleaseDto
 type HelmReleaseDto struct {
 	ApiVersion NullableString `json:"apiVersion,omitempty"`
-	Kind       NullableString `json:"kind,omitempty"`
-	Metadata   *HelmMetadata  `json:"metadata,omitempty"`
-	Spec       *HelmSpec      `json:"spec,omitempty"`
-	Status     *HelmStatus    `json:"status,omitempty"`
+	Kind NullableString `json:"kind,omitempty"`
+	Metadata *HelmMetadata `json:"metadata,omitempty"`
+	Spec *HelmSpec `json:"spec,omitempty"`
+	Status *HelmStatus `json:"status,omitempty"`
 }
 
 // NewHelmReleaseDto instantiates a new HelmReleaseDto object
@@ -76,7 +76,6 @@ func (o *HelmReleaseDto) HasApiVersion() bool {
 func (o *HelmReleaseDto) SetApiVersion(v string) {
 	o.ApiVersion.Set(&v)
 }
-
 // SetApiVersionNil sets the value for ApiVersion to be an explicit nil
 func (o *HelmReleaseDto) SetApiVersionNil() {
 	o.ApiVersion.Set(nil)
@@ -119,7 +118,6 @@ func (o *HelmReleaseDto) HasKind() bool {
 func (o *HelmReleaseDto) SetKind(v string) {
 	o.Kind.Set(&v)
 }
-
 // SetKindNil sets the value for Kind to be an explicit nil
 func (o *HelmReleaseDto) SetKindNil() {
 	o.Kind.Set(nil)
@@ -227,7 +225,7 @@ func (o *HelmReleaseDto) SetStatus(v HelmStatus) {
 }
 
 func (o HelmReleaseDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -289,3 +287,5 @@ func (v *NullableHelmReleaseDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

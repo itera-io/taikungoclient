@@ -20,9 +20,9 @@ var _ MappedNullable = &PatchNodeLabelsDto{}
 
 // PatchNodeLabelsDto struct for PatchNodeLabelsDto
 type PatchNodeLabelsDto struct {
-	Key   NullableString `json:"key,omitempty"`
+	Key NullableString `json:"key,omitempty"`
 	Value NullableString `json:"value,omitempty"`
-	Mode  NullableString `json:"mode,omitempty"`
+	Mode NullableString `json:"mode,omitempty"`
 }
 
 // NewPatchNodeLabelsDto instantiates a new PatchNodeLabelsDto object
@@ -74,7 +74,6 @@ func (o *PatchNodeLabelsDto) HasKey() bool {
 func (o *PatchNodeLabelsDto) SetKey(v string) {
 	o.Key.Set(&v)
 }
-
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *PatchNodeLabelsDto) SetKeyNil() {
 	o.Key.Set(nil)
@@ -117,7 +116,6 @@ func (o *PatchNodeLabelsDto) HasValue() bool {
 func (o *PatchNodeLabelsDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
-
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *PatchNodeLabelsDto) SetValueNil() {
 	o.Value.Set(nil)
@@ -160,7 +158,6 @@ func (o *PatchNodeLabelsDto) HasMode() bool {
 func (o *PatchNodeLabelsDto) SetMode(v string) {
 	o.Mode.Set(&v)
 }
-
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *PatchNodeLabelsDto) SetModeNil() {
 	o.Mode.Set(nil)
@@ -172,7 +169,7 @@ func (o *PatchNodeLabelsDto) UnsetMode() {
 }
 
 func (o PatchNodeLabelsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullablePatchNodeLabelsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

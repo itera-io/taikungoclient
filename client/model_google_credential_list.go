@@ -20,8 +20,8 @@ var _ MappedNullable = &GoogleCredentialList{}
 
 // GoogleCredentialList struct for GoogleCredentialList
 type GoogleCredentialList struct {
-	Data       []GoogleCredentialsListDto `json:"data,omitempty"`
-	TotalCount *int32                     `json:"totalCount,omitempty"`
+	Data []GoogleCredentialsListDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewGoogleCredentialList instantiates a new GoogleCredentialList object
@@ -107,7 +107,7 @@ func (o *GoogleCredentialList) SetTotalCount(v int32) {
 }
 
 func (o GoogleCredentialList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableGoogleCredentialList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

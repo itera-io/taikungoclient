@@ -20,12 +20,13 @@ import (
 	"os"
 )
 
+
 // OpenshiftAPIService OpenshiftAPI service
 type OpenshiftAPIService service
 
 type ApiOpenshiftCreateRequest struct {
-	ctx                    context.Context
-	ApiService             *OpenshiftAPIService
+	ctx context.Context
+	ApiService *OpenshiftAPIService
 	openshiftCreateCommand *OpenshiftCreateCommand
 }
 
@@ -41,22 +42,22 @@ func (r ApiOpenshiftCreateRequest) Execute() (*http.Response, error) {
 /*
 OpenshiftCreate Add Openshift cloud credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpenshiftCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpenshiftCreateRequest
 */
 func (a *OpenshiftAPIService) OpenshiftCreate(ctx context.Context) ApiOpenshiftCreateRequest {
 	return ApiOpenshiftCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *OpenshiftAPIService) OpenshiftCreateExecute(r ApiOpenshiftCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenshiftAPIService.OpenshiftCreate")
@@ -135,8 +136,8 @@ func (a *OpenshiftAPIService) OpenshiftCreateExecute(r ApiOpenshiftCreateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +147,8 @@ func (a *OpenshiftAPIService) OpenshiftCreateExecute(r ApiOpenshiftCreateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +158,8 @@ func (a *OpenshiftAPIService) OpenshiftCreateExecute(r ApiOpenshiftCreateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +169,8 @@ func (a *OpenshiftAPIService) OpenshiftCreateExecute(r ApiOpenshiftCreateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -179,8 +180,8 @@ func (a *OpenshiftAPIService) OpenshiftCreateExecute(r ApiOpenshiftCreateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -189,16 +190,16 @@ func (a *OpenshiftAPIService) OpenshiftCreateExecute(r ApiOpenshiftCreateRequest
 }
 
 type ApiOpenshiftListRequest struct {
-	ctx            context.Context
-	ApiService     *OpenshiftAPIService
-	limit          *int32
-	offset         *int32
+	ctx context.Context
+	ApiService *OpenshiftAPIService
+	limit *int32
+	offset *int32
 	organizationId *int32
-	sortBy         *string
-	sortDirection  *string
-	search         *string
-	searchId       *string
-	id             *int32
+	sortBy *string
+	sortDirection *string
+	search *string
+	searchId *string
+	id *int32
 }
 
 func (r ApiOpenshiftListRequest) Limit(limit int32) ApiOpenshiftListRequest {
@@ -248,25 +249,24 @@ func (r ApiOpenshiftListRequest) Execute() (*OpenshiftList, *http.Response, erro
 /*
 OpenshiftList Retrieve all operation credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpenshiftListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpenshiftListRequest
 */
 func (a *OpenshiftAPIService) OpenshiftList(ctx context.Context) ApiOpenshiftListRequest {
 	return ApiOpenshiftListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return OpenshiftList
+//  @return OpenshiftList
 func (a *OpenshiftAPIService) OpenshiftListExecute(r ApiOpenshiftListRequest) (*OpenshiftList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *OpenshiftList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *OpenshiftList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenshiftAPIService.OpenshiftList")
@@ -364,8 +364,8 @@ func (a *OpenshiftAPIService) OpenshiftListExecute(r ApiOpenshiftListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -375,8 +375,8 @@ func (a *OpenshiftAPIService) OpenshiftListExecute(r ApiOpenshiftListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -386,8 +386,8 @@ func (a *OpenshiftAPIService) OpenshiftListExecute(r ApiOpenshiftListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -397,8 +397,8 @@ func (a *OpenshiftAPIService) OpenshiftListExecute(r ApiOpenshiftListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -408,8 +408,8 @@ func (a *OpenshiftAPIService) OpenshiftListExecute(r ApiOpenshiftListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -427,9 +427,9 @@ func (a *OpenshiftAPIService) OpenshiftListExecute(r ApiOpenshiftListRequest) (*
 }
 
 type ApiOpenshiftPullSecretRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OpenshiftAPIService
-	config     *os.File
+	config *os.File
 }
 
 func (r ApiOpenshiftPullSecretRequest) Config(config *os.File) ApiOpenshiftPullSecretRequest {
@@ -444,22 +444,22 @@ func (r ApiOpenshiftPullSecretRequest) Execute() (*http.Response, error) {
 /*
 OpenshiftPullSecret Method for OpenshiftPullSecret
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpenshiftPullSecretRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpenshiftPullSecretRequest
 */
 func (a *OpenshiftAPIService) OpenshiftPullSecret(ctx context.Context) ApiOpenshiftPullSecretRequest {
 	return ApiOpenshiftPullSecretRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *OpenshiftAPIService) OpenshiftPullSecretExecute(r ApiOpenshiftPullSecretRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenshiftAPIService.OpenshiftPullSecret")
@@ -491,10 +491,11 @@ func (a *OpenshiftAPIService) OpenshiftPullSecretExecute(r ApiOpenshiftPullSecre
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	var configLocalVarFormFileName string
-	var configLocalVarFileName string
-	var configLocalVarFileBytes []byte
+	var configLocalVarFileName     string
+	var configLocalVarFileBytes    []byte
 
 	configLocalVarFormFileName = "config"
+
 
 	configLocalVarFile := r.config
 
@@ -549,8 +550,8 @@ func (a *OpenshiftAPIService) OpenshiftPullSecretExecute(r ApiOpenshiftPullSecre
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -560,8 +561,8 @@ func (a *OpenshiftAPIService) OpenshiftPullSecretExecute(r ApiOpenshiftPullSecre
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -571,8 +572,8 @@ func (a *OpenshiftAPIService) OpenshiftPullSecretExecute(r ApiOpenshiftPullSecre
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -582,8 +583,8 @@ func (a *OpenshiftAPIService) OpenshiftPullSecretExecute(r ApiOpenshiftPullSecre
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -593,8 +594,8 @@ func (a *OpenshiftAPIService) OpenshiftPullSecretExecute(r ApiOpenshiftPullSecre
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -603,9 +604,9 @@ func (a *OpenshiftAPIService) OpenshiftPullSecretExecute(r ApiOpenshiftPullSecre
 }
 
 type ApiOpenshiftStorageClassRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OpenshiftAPIService
-	config     *os.File
+	config *os.File
 }
 
 func (r ApiOpenshiftStorageClassRequest) Config(config *os.File) ApiOpenshiftStorageClassRequest {
@@ -620,25 +621,24 @@ func (r ApiOpenshiftStorageClassRequest) Execute() ([]string, *http.Response, er
 /*
 OpenshiftStorageClass Method for OpenshiftStorageClass
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpenshiftStorageClassRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpenshiftStorageClassRequest
 */
 func (a *OpenshiftAPIService) OpenshiftStorageClass(ctx context.Context) ApiOpenshiftStorageClassRequest {
 	return ApiOpenshiftStorageClassRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *OpenshiftAPIService) OpenshiftStorageClassExecute(r ApiOpenshiftStorageClassRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenshiftAPIService.OpenshiftStorageClass")
@@ -670,10 +670,11 @@ func (a *OpenshiftAPIService) OpenshiftStorageClassExecute(r ApiOpenshiftStorage
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	var configLocalVarFormFileName string
-	var configLocalVarFileName string
-	var configLocalVarFileBytes []byte
+	var configLocalVarFileName     string
+	var configLocalVarFileBytes    []byte
 
 	configLocalVarFormFileName = "config"
+
 
 	configLocalVarFile := r.config
 
@@ -728,8 +729,8 @@ func (a *OpenshiftAPIService) OpenshiftStorageClassExecute(r ApiOpenshiftStorage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -739,8 +740,8 @@ func (a *OpenshiftAPIService) OpenshiftStorageClassExecute(r ApiOpenshiftStorage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -750,8 +751,8 @@ func (a *OpenshiftAPIService) OpenshiftStorageClassExecute(r ApiOpenshiftStorage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -761,8 +762,8 @@ func (a *OpenshiftAPIService) OpenshiftStorageClassExecute(r ApiOpenshiftStorage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -772,8 +773,8 @@ func (a *OpenshiftAPIService) OpenshiftStorageClassExecute(r ApiOpenshiftStorage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -791,9 +792,9 @@ func (a *OpenshiftAPIService) OpenshiftStorageClassExecute(r ApiOpenshiftStorage
 }
 
 type ApiOpenshiftValidateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OpenshiftAPIService
-	config     *os.File
+	config *os.File
 }
 
 func (r ApiOpenshiftValidateRequest) Config(config *os.File) ApiOpenshiftValidateRequest {
@@ -808,22 +809,22 @@ func (r ApiOpenshiftValidateRequest) Execute() (*http.Response, error) {
 /*
 OpenshiftValidate Method for OpenshiftValidate
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpenshiftValidateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpenshiftValidateRequest
 */
 func (a *OpenshiftAPIService) OpenshiftValidate(ctx context.Context) ApiOpenshiftValidateRequest {
 	return ApiOpenshiftValidateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *OpenshiftAPIService) OpenshiftValidateExecute(r ApiOpenshiftValidateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenshiftAPIService.OpenshiftValidate")
@@ -855,10 +856,11 @@ func (a *OpenshiftAPIService) OpenshiftValidateExecute(r ApiOpenshiftValidateReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	var configLocalVarFormFileName string
-	var configLocalVarFileName string
-	var configLocalVarFileBytes []byte
+	var configLocalVarFileName     string
+	var configLocalVarFileBytes    []byte
 
 	configLocalVarFormFileName = "config"
+
 
 	configLocalVarFile := r.config
 
@@ -913,8 +915,8 @@ func (a *OpenshiftAPIService) OpenshiftValidateExecute(r ApiOpenshiftValidateReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -924,8 +926,8 @@ func (a *OpenshiftAPIService) OpenshiftValidateExecute(r ApiOpenshiftValidateReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -935,8 +937,8 @@ func (a *OpenshiftAPIService) OpenshiftValidateExecute(r ApiOpenshiftValidateReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -946,8 +948,8 @@ func (a *OpenshiftAPIService) OpenshiftValidateExecute(r ApiOpenshiftValidateReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -957,8 +959,8 @@ func (a *OpenshiftAPIService) OpenshiftValidateExecute(r ApiOpenshiftValidateReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

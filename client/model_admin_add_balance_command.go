@@ -21,7 +21,7 @@ var _ MappedNullable = &AdminAddBalanceCommand{}
 // AdminAddBalanceCommand struct for AdminAddBalanceCommand
 type AdminAddBalanceCommand struct {
 	CustomerId NullableString `json:"customerId,omitempty"`
-	Balance    *int64         `json:"balance,omitempty"`
+	Balance *int64 `json:"balance,omitempty"`
 }
 
 // NewAdminAddBalanceCommand instantiates a new AdminAddBalanceCommand object
@@ -73,7 +73,6 @@ func (o *AdminAddBalanceCommand) HasCustomerId() bool {
 func (o *AdminAddBalanceCommand) SetCustomerId(v string) {
 	o.CustomerId.Set(&v)
 }
-
 // SetCustomerIdNil sets the value for CustomerId to be an explicit nil
 func (o *AdminAddBalanceCommand) SetCustomerIdNil() {
 	o.CustomerId.Set(nil)
@@ -117,7 +116,7 @@ func (o *AdminAddBalanceCommand) SetBalance(v int64) {
 }
 
 func (o AdminAddBalanceCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableAdminAddBalanceCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

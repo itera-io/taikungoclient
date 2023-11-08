@@ -21,11 +21,11 @@ var _ MappedNullable = &TanzuImagesListDto{}
 
 // TanzuImagesListDto struct for TanzuImagesListDto
 type TanzuImagesListDto struct {
-	ImageId   NullableString `json:"imageId,omitempty"`
-	Name      NullableString `json:"name,omitempty"`
-	CreatedAt *time.Time     `json:"createdAt,omitempty"`
-	Type      NullableString `json:"type,omitempty"`
-	Details   interface{}    `json:"details,omitempty"`
+	ImageId NullableString `json:"imageId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	Type NullableString `json:"type,omitempty"`
+	Details interface{} `json:"details,omitempty"`
 }
 
 // NewTanzuImagesListDto instantiates a new TanzuImagesListDto object
@@ -77,7 +77,6 @@ func (o *TanzuImagesListDto) HasImageId() bool {
 func (o *TanzuImagesListDto) SetImageId(v string) {
 	o.ImageId.Set(&v)
 }
-
 // SetImageIdNil sets the value for ImageId to be an explicit nil
 func (o *TanzuImagesListDto) SetImageIdNil() {
 	o.ImageId.Set(nil)
@@ -120,7 +119,6 @@ func (o *TanzuImagesListDto) HasName() bool {
 func (o *TanzuImagesListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *TanzuImagesListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -195,7 +193,6 @@ func (o *TanzuImagesListDto) HasType() bool {
 func (o *TanzuImagesListDto) SetType(v string) {
 	o.Type.Set(&v)
 }
-
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *TanzuImagesListDto) SetTypeNil() {
 	o.Type.Set(nil)
@@ -240,7 +237,7 @@ func (o *TanzuImagesListDto) SetDetails(v interface{}) {
 }
 
 func (o TanzuImagesListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -302,3 +299,5 @@ func (v *NullableTanzuImagesListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

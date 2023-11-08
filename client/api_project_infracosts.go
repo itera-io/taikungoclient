@@ -20,13 +20,14 @@ import (
 	"strings"
 )
 
+
 // ProjectInfracostsAPIService ProjectInfracostsAPI service
 type ProjectInfracostsAPIService service
 
 type ApiProjectinfracostsDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectInfracostsAPIService
-	projectId  int32
+	projectId int32
 }
 
 func (r ApiProjectinfracostsDeleteRequest) Execute() (*http.Response, error) {
@@ -36,24 +37,24 @@ func (r ApiProjectinfracostsDeleteRequest) Execute() (*http.Response, error) {
 /*
 ProjectinfracostsDelete Delete the project infracost
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiProjectinfracostsDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiProjectinfracostsDeleteRequest
 */
 func (a *ProjectInfracostsAPIService) ProjectinfracostsDelete(ctx context.Context, projectId int32) ApiProjectinfracostsDeleteRequest {
 	return ApiProjectinfracostsDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectInfracostsAPIService) ProjectinfracostsDeleteExecute(r ApiProjectinfracostsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectInfracostsAPIService.ProjectinfracostsDelete")
@@ -128,8 +129,8 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsDeleteExecute(r ApiProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -139,8 +140,8 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsDeleteExecute(r ApiProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -150,8 +151,8 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsDeleteExecute(r ApiProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -161,8 +162,8 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsDeleteExecute(r ApiProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -172,8 +173,8 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsDeleteExecute(r ApiProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -182,9 +183,9 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsDeleteExecute(r ApiProjec
 }
 
 type ApiProjectinfracostsDetailsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectInfracostsAPIService
-	projectId  int32
+	projectId int32
 }
 
 func (r ApiProjectinfracostsDetailsRequest) Execute() (*EstimatedInfracost, *http.Response, error) {
@@ -194,27 +195,26 @@ func (r ApiProjectinfracostsDetailsRequest) Execute() (*EstimatedInfracost, *htt
 /*
 ProjectinfracostsDetails Project Infracost details
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiProjectinfracostsDetailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiProjectinfracostsDetailsRequest
 */
 func (a *ProjectInfracostsAPIService) ProjectinfracostsDetails(ctx context.Context, projectId int32) ApiProjectinfracostsDetailsRequest {
 	return ApiProjectinfracostsDetailsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return EstimatedInfracost
+//  @return EstimatedInfracost
 func (a *ProjectInfracostsAPIService) ProjectinfracostsDetailsExecute(r ApiProjectinfracostsDetailsRequest) (*EstimatedInfracost, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EstimatedInfracost
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EstimatedInfracost
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectInfracostsAPIService.ProjectinfracostsDetails")
@@ -289,8 +289,8 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsDetailsExecute(r ApiProje
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -300,8 +300,8 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsDetailsExecute(r ApiProje
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -311,8 +311,8 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsDetailsExecute(r ApiProje
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -322,8 +322,8 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsDetailsExecute(r ApiProje
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -333,8 +333,8 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsDetailsExecute(r ApiProje
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -352,9 +352,9 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsDetailsExecute(r ApiProje
 }
 
 type ApiProjectinfracostsUpsertRequest struct {
-	ctx                       context.Context
-	ApiService                *ProjectInfracostsAPIService
-	projectId                 int32
+	ctx context.Context
+	ApiService *ProjectInfracostsAPIService
+	projectId int32
 	projectInfracostUpsertDto *ProjectInfracostUpsertDto
 }
 
@@ -370,24 +370,24 @@ func (r ApiProjectinfracostsUpsertRequest) Execute() (*http.Response, error) {
 /*
 ProjectinfracostsUpsert Upsert project infracost by ProjectId
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiProjectinfracostsUpsertRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiProjectinfracostsUpsertRequest
 */
 func (a *ProjectInfracostsAPIService) ProjectinfracostsUpsert(ctx context.Context, projectId int32) ApiProjectinfracostsUpsertRequest {
 	return ApiProjectinfracostsUpsertRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectInfracostsAPIService) ProjectinfracostsUpsertExecute(r ApiProjectinfracostsUpsertRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectInfracostsAPIService.ProjectinfracostsUpsert")
@@ -464,8 +464,8 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsUpsertExecute(r ApiProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -475,8 +475,8 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsUpsertExecute(r ApiProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -486,8 +486,8 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsUpsertExecute(r ApiProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -497,8 +497,8 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsUpsertExecute(r ApiProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -508,8 +508,8 @@ func (a *ProjectInfracostsAPIService) ProjectinfracostsUpsertExecute(r ApiProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

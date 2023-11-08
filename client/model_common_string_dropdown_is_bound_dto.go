@@ -20,9 +20,9 @@ var _ MappedNullable = &CommonStringDropdownIsBoundDto{}
 
 // CommonStringDropdownIsBoundDto struct for CommonStringDropdownIsBoundDto
 type CommonStringDropdownIsBoundDto struct {
-	Id      NullableString `json:"id,omitempty"`
-	Name    NullableString `json:"name,omitempty"`
-	IsBound *bool          `json:"isBound,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	IsBound *bool `json:"isBound,omitempty"`
 }
 
 // NewCommonStringDropdownIsBoundDto instantiates a new CommonStringDropdownIsBoundDto object
@@ -74,7 +74,6 @@ func (o *CommonStringDropdownIsBoundDto) HasId() bool {
 func (o *CommonStringDropdownIsBoundDto) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *CommonStringDropdownIsBoundDto) SetIdNil() {
 	o.Id.Set(nil)
@@ -117,7 +116,6 @@ func (o *CommonStringDropdownIsBoundDto) HasName() bool {
 func (o *CommonStringDropdownIsBoundDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CommonStringDropdownIsBoundDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -161,7 +159,7 @@ func (o *CommonStringDropdownIsBoundDto) SetIsBound(v bool) {
 }
 
 func (o CommonStringDropdownIsBoundDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,3 +215,5 @@ func (v *NullableCommonStringDropdownIsBoundDto) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,16 +20,16 @@ var _ MappedNullable = &ProjectTemplateListDto{}
 
 // ProjectTemplateListDto struct for ProjectTemplateListDto
 type ProjectTemplateListDto struct {
-	Id                      *int32         `json:"id,omitempty"`
-	Name                    NullableString `json:"name,omitempty"`
-	MonitoringEnabled       *bool          `json:"monitoringEnabled,omitempty"`
-	BackupEnabled           *bool          `json:"backupEnabled,omitempty"`
-	AllowFullSpotKubernetes *bool          `json:"allowFullSpotKubernetes,omitempty"`
-	AllowSpotVms            *bool          `json:"allowSpotVms,omitempty"`
-	AllowSpotWorkers        *bool          `json:"allowSpotWorkers,omitempty"`
-	KubernetesVersion       NullableString `json:"kubernetesVersion,omitempty"`
-	OrganizationName        NullableString `json:"organizationName,omitempty"`
-	OrganizationId          NullableInt32  `json:"organizationId,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	MonitoringEnabled *bool `json:"monitoringEnabled,omitempty"`
+	BackupEnabled *bool `json:"backupEnabled,omitempty"`
+	AllowFullSpotKubernetes *bool `json:"allowFullSpotKubernetes,omitempty"`
+	AllowSpotVms *bool `json:"allowSpotVms,omitempty"`
+	AllowSpotWorkers *bool `json:"allowSpotWorkers,omitempty"`
+	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
 
 // NewProjectTemplateListDto instantiates a new ProjectTemplateListDto object
@@ -113,7 +113,6 @@ func (o *ProjectTemplateListDto) HasName() bool {
 func (o *ProjectTemplateListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectTemplateListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -316,7 +315,6 @@ func (o *ProjectTemplateListDto) HasKubernetesVersion() bool {
 func (o *ProjectTemplateListDto) SetKubernetesVersion(v string) {
 	o.KubernetesVersion.Set(&v)
 }
-
 // SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
 func (o *ProjectTemplateListDto) SetKubernetesVersionNil() {
 	o.KubernetesVersion.Set(nil)
@@ -359,7 +357,6 @@ func (o *ProjectTemplateListDto) HasOrganizationName() bool {
 func (o *ProjectTemplateListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *ProjectTemplateListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -402,7 +399,6 @@ func (o *ProjectTemplateListDto) HasOrganizationId() bool {
 func (o *ProjectTemplateListDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *ProjectTemplateListDto) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -414,7 +410,7 @@ func (o *ProjectTemplateListDto) UnsetOrganizationId() {
 }
 
 func (o ProjectTemplateListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -491,3 +487,5 @@ func (v *NullableProjectTemplateListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

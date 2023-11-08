@@ -20,11 +20,11 @@ var _ MappedNullable = &ProjectAppParamDto{}
 
 // ProjectAppParamDto struct for ProjectAppParamDto
 type ProjectAppParamDto struct {
-	Key                         NullableString `json:"key,omitempty"`
-	Value                       NullableString `json:"value,omitempty"`
-	IsEditableWhenInstalling    *bool          `json:"isEditableWhenInstalling,omitempty"`
-	IsEditableAfterInstallation *bool          `json:"isEditableAfterInstallation,omitempty"`
-	IsMandatory                 *bool          `json:"isMandatory,omitempty"`
+	Key NullableString `json:"key,omitempty"`
+	Value NullableString `json:"value,omitempty"`
+	IsEditableWhenInstalling *bool `json:"isEditableWhenInstalling,omitempty"`
+	IsEditableAfterInstallation *bool `json:"isEditableAfterInstallation,omitempty"`
+	IsMandatory *bool `json:"isMandatory,omitempty"`
 }
 
 // NewProjectAppParamDto instantiates a new ProjectAppParamDto object
@@ -76,7 +76,6 @@ func (o *ProjectAppParamDto) HasKey() bool {
 func (o *ProjectAppParamDto) SetKey(v string) {
 	o.Key.Set(&v)
 }
-
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *ProjectAppParamDto) SetKeyNil() {
 	o.Key.Set(nil)
@@ -119,7 +118,6 @@ func (o *ProjectAppParamDto) HasValue() bool {
 func (o *ProjectAppParamDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
-
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *ProjectAppParamDto) SetValueNil() {
 	o.Value.Set(nil)
@@ -227,7 +225,7 @@ func (o *ProjectAppParamDto) SetIsMandatory(v bool) {
 }
 
 func (o ProjectAppParamDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -289,3 +287,5 @@ func (v *NullableProjectAppParamDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

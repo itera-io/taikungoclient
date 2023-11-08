@@ -20,17 +20,17 @@ var _ MappedNullable = &AdminProjectsResponseData{}
 
 // AdminProjectsResponseData struct for AdminProjectsResponseData
 type AdminProjectsResponseData struct {
-	Id                       *int32         `json:"id,omitempty"`
-	Name                     NullableString `json:"name,omitempty"`
-	OrganizationName         NullableString `json:"organizationName,omitempty"`
-	IsLocked                 *bool          `json:"isLocked,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
 	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion,omitempty"`
-	KubesprayCurrentVersion  NullableString `json:"kubesprayCurrentVersion,omitempty"`
-	Status                   NullableString `json:"status,omitempty"`
-	ServersCount             *int32         `json:"serversCount,omitempty"`
-	Tcu                      *int32         `json:"tcu,omitempty"`
-	CreatedAt                NullableString `json:"createdAt,omitempty"`
-	CloudType                *CloudType     `json:"cloudType,omitempty"`
+	KubesprayCurrentVersion NullableString `json:"kubesprayCurrentVersion,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	ServersCount *int32 `json:"serversCount,omitempty"`
+	Tcu *int32 `json:"tcu,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	CloudType *CloudType `json:"cloudType,omitempty"`
 }
 
 // NewAdminProjectsResponseData instantiates a new AdminProjectsResponseData object
@@ -114,7 +114,6 @@ func (o *AdminProjectsResponseData) HasName() bool {
 func (o *AdminProjectsResponseData) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AdminProjectsResponseData) SetNameNil() {
 	o.Name.Set(nil)
@@ -157,7 +156,6 @@ func (o *AdminProjectsResponseData) HasOrganizationName() bool {
 func (o *AdminProjectsResponseData) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *AdminProjectsResponseData) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -232,7 +230,6 @@ func (o *AdminProjectsResponseData) HasKubernetesCurrentVersion() bool {
 func (o *AdminProjectsResponseData) SetKubernetesCurrentVersion(v string) {
 	o.KubernetesCurrentVersion.Set(&v)
 }
-
 // SetKubernetesCurrentVersionNil sets the value for KubernetesCurrentVersion to be an explicit nil
 func (o *AdminProjectsResponseData) SetKubernetesCurrentVersionNil() {
 	o.KubernetesCurrentVersion.Set(nil)
@@ -275,7 +272,6 @@ func (o *AdminProjectsResponseData) HasKubesprayCurrentVersion() bool {
 func (o *AdminProjectsResponseData) SetKubesprayCurrentVersion(v string) {
 	o.KubesprayCurrentVersion.Set(&v)
 }
-
 // SetKubesprayCurrentVersionNil sets the value for KubesprayCurrentVersion to be an explicit nil
 func (o *AdminProjectsResponseData) SetKubesprayCurrentVersionNil() {
 	o.KubesprayCurrentVersion.Set(nil)
@@ -318,7 +314,6 @@ func (o *AdminProjectsResponseData) HasStatus() bool {
 func (o *AdminProjectsResponseData) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *AdminProjectsResponseData) SetStatusNil() {
 	o.Status.Set(nil)
@@ -425,7 +420,6 @@ func (o *AdminProjectsResponseData) HasCreatedAt() bool {
 func (o *AdminProjectsResponseData) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *AdminProjectsResponseData) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -469,7 +463,7 @@ func (o *AdminProjectsResponseData) SetCloudType(v CloudType) {
 }
 
 func (o AdminProjectsResponseData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -549,3 +543,5 @@ func (v *NullableAdminProjectsResponseData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

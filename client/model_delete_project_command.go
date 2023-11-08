@@ -20,8 +20,8 @@ var _ MappedNullable = &DeleteProjectCommand{}
 
 // DeleteProjectCommand struct for DeleteProjectCommand
 type DeleteProjectCommand struct {
-	ProjectId     *int32 `json:"projectId,omitempty"`
-	IsForceDelete *bool  `json:"isForceDelete,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	IsForceDelete *bool `json:"isForceDelete,omitempty"`
 }
 
 // NewDeleteProjectCommand instantiates a new DeleteProjectCommand object
@@ -106,7 +106,7 @@ func (o *DeleteProjectCommand) SetIsForceDelete(v bool) {
 }
 
 func (o DeleteProjectCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableDeleteProjectCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

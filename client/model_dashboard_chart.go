@@ -20,11 +20,11 @@ var _ MappedNullable = &DashboardChart{}
 
 // DashboardChart struct for DashboardChart
 type DashboardChart struct {
-	Organization     *OrganizationEntityForDashboard `json:"organization,omitempty"`
-	Projects         *ProjectChartDto                `json:"projects,omitempty"`
-	CloudCredentials *CredentialChartDto             `json:"cloudCredentials,omitempty"`
-	Servers          *ServerChartDto                 `json:"servers,omitempty"`
-	StandAloneVms    *ServerChartDto                 `json:"standAloneVms,omitempty"`
+	Organization *OrganizationEntityForDashboard `json:"organization,omitempty"`
+	Projects *ProjectChartDto `json:"projects,omitempty"`
+	CloudCredentials *CredentialChartDto `json:"cloudCredentials,omitempty"`
+	Servers *ServerChartDto `json:"servers,omitempty"`
+	StandAloneVms *ServerChartDto `json:"standAloneVms,omitempty"`
 }
 
 // NewDashboardChart instantiates a new DashboardChart object
@@ -205,7 +205,7 @@ func (o *DashboardChart) SetStandAloneVms(v ServerChartDto) {
 }
 
 func (o DashboardChart) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -267,3 +267,5 @@ func (v *NullableDashboardChart) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

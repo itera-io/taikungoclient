@@ -21,9 +21,9 @@ var _ MappedNullable = &S3CredentialForProjectDto{}
 // S3CredentialForProjectDto struct for S3CredentialForProjectDto
 type S3CredentialForProjectDto struct {
 	S3AccessKeyId NullableString `json:"s3AccessKeyId,omitempty"`
-	S3SecretKey   NullableString `json:"s3SecretKey,omitempty"`
-	S3Endpoint    NullableString `json:"s3Endpoint,omitempty"`
-	S3Region      NullableString `json:"s3Region,omitempty"`
+	S3SecretKey NullableString `json:"s3SecretKey,omitempty"`
+	S3Endpoint NullableString `json:"s3Endpoint,omitempty"`
+	S3Region NullableString `json:"s3Region,omitempty"`
 }
 
 // NewS3CredentialForProjectDto instantiates a new S3CredentialForProjectDto object
@@ -75,7 +75,6 @@ func (o *S3CredentialForProjectDto) HasS3AccessKeyId() bool {
 func (o *S3CredentialForProjectDto) SetS3AccessKeyId(v string) {
 	o.S3AccessKeyId.Set(&v)
 }
-
 // SetS3AccessKeyIdNil sets the value for S3AccessKeyId to be an explicit nil
 func (o *S3CredentialForProjectDto) SetS3AccessKeyIdNil() {
 	o.S3AccessKeyId.Set(nil)
@@ -118,7 +117,6 @@ func (o *S3CredentialForProjectDto) HasS3SecretKey() bool {
 func (o *S3CredentialForProjectDto) SetS3SecretKey(v string) {
 	o.S3SecretKey.Set(&v)
 }
-
 // SetS3SecretKeyNil sets the value for S3SecretKey to be an explicit nil
 func (o *S3CredentialForProjectDto) SetS3SecretKeyNil() {
 	o.S3SecretKey.Set(nil)
@@ -161,7 +159,6 @@ func (o *S3CredentialForProjectDto) HasS3Endpoint() bool {
 func (o *S3CredentialForProjectDto) SetS3Endpoint(v string) {
 	o.S3Endpoint.Set(&v)
 }
-
 // SetS3EndpointNil sets the value for S3Endpoint to be an explicit nil
 func (o *S3CredentialForProjectDto) SetS3EndpointNil() {
 	o.S3Endpoint.Set(nil)
@@ -204,7 +201,6 @@ func (o *S3CredentialForProjectDto) HasS3Region() bool {
 func (o *S3CredentialForProjectDto) SetS3Region(v string) {
 	o.S3Region.Set(&v)
 }
-
 // SetS3RegionNil sets the value for S3Region to be an explicit nil
 func (o *S3CredentialForProjectDto) SetS3RegionNil() {
 	o.S3Region.Set(nil)
@@ -216,7 +212,7 @@ func (o *S3CredentialForProjectDto) UnsetS3Region() {
 }
 
 func (o S3CredentialForProjectDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -275,3 +271,5 @@ func (v *NullableS3CredentialForProjectDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

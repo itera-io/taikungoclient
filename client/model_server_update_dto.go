@@ -20,10 +20,10 @@ var _ MappedNullable = &ServerUpdateDto{}
 
 // ServerUpdateDto struct for ServerUpdateDto
 type ServerUpdateDto struct {
-	Id          *int32         `json:"id,omitempty"`
-	Ip          NullableString `json:"ip,omitempty"`
-	InstanceId  NullableString `json:"instanceId,omitempty"`
-	ProviderId  NullableString `json:"providerId,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Ip NullableString `json:"ip,omitempty"`
+	InstanceId NullableString `json:"instanceId,omitempty"`
+	ProviderId NullableString `json:"providerId,omitempty"`
 	AwsHostName NullableString `json:"awsHostName,omitempty"`
 }
 
@@ -108,7 +108,6 @@ func (o *ServerUpdateDto) HasIp() bool {
 func (o *ServerUpdateDto) SetIp(v string) {
 	o.Ip.Set(&v)
 }
-
 // SetIpNil sets the value for Ip to be an explicit nil
 func (o *ServerUpdateDto) SetIpNil() {
 	o.Ip.Set(nil)
@@ -151,7 +150,6 @@ func (o *ServerUpdateDto) HasInstanceId() bool {
 func (o *ServerUpdateDto) SetInstanceId(v string) {
 	o.InstanceId.Set(&v)
 }
-
 // SetInstanceIdNil sets the value for InstanceId to be an explicit nil
 func (o *ServerUpdateDto) SetInstanceIdNil() {
 	o.InstanceId.Set(nil)
@@ -194,7 +192,6 @@ func (o *ServerUpdateDto) HasProviderId() bool {
 func (o *ServerUpdateDto) SetProviderId(v string) {
 	o.ProviderId.Set(&v)
 }
-
 // SetProviderIdNil sets the value for ProviderId to be an explicit nil
 func (o *ServerUpdateDto) SetProviderIdNil() {
 	o.ProviderId.Set(nil)
@@ -237,7 +234,6 @@ func (o *ServerUpdateDto) HasAwsHostName() bool {
 func (o *ServerUpdateDto) SetAwsHostName(v string) {
 	o.AwsHostName.Set(&v)
 }
-
 // SetAwsHostNameNil sets the value for AwsHostName to be an explicit nil
 func (o *ServerUpdateDto) SetAwsHostNameNil() {
 	o.AwsHostName.Set(nil)
@@ -249,7 +245,7 @@ func (o *ServerUpdateDto) UnsetAwsHostName() {
 }
 
 func (o ServerUpdateDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -311,3 +307,5 @@ func (v *NullableServerUpdateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

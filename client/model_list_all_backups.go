@@ -20,8 +20,8 @@ var _ MappedNullable = &ListAllBackups{}
 
 // ListAllBackups struct for ListAllBackups
 type ListAllBackups struct {
-	Data       []CBackupDto `json:"data,omitempty"`
-	TotalCount *int32       `json:"totalCount,omitempty"`
+	Data []CBackupDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewListAllBackups instantiates a new ListAllBackups object
@@ -107,7 +107,7 @@ func (o *ListAllBackups) SetTotalCount(v int32) {
 }
 
 func (o ListAllBackups) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableListAllBackups) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

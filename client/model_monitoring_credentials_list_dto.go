@@ -20,11 +20,11 @@ var _ MappedNullable = &MonitoringCredentialsListDto{}
 
 // MonitoringCredentialsListDto struct for MonitoringCredentialsListDto
 type MonitoringCredentialsListDto struct {
-	Id              *int32         `json:"id,omitempty"`
-	Username        NullableString `json:"username,omitempty"`
-	Password        NullableString `json:"password,omitempty"`
-	PrometheusUrl   NullableString `json:"prometheusUrl,omitempty"`
-	LokiUrl         NullableString `json:"lokiUrl,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	Password NullableString `json:"password,omitempty"`
+	PrometheusUrl NullableString `json:"prometheusUrl,omitempty"`
+	LokiUrl NullableString `json:"lokiUrl,omitempty"`
 	AlertManagerUrl NullableString `json:"alertManagerUrl,omitempty"`
 }
 
@@ -109,7 +109,6 @@ func (o *MonitoringCredentialsListDto) HasUsername() bool {
 func (o *MonitoringCredentialsListDto) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *MonitoringCredentialsListDto) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -152,7 +151,6 @@ func (o *MonitoringCredentialsListDto) HasPassword() bool {
 func (o *MonitoringCredentialsListDto) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *MonitoringCredentialsListDto) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -195,7 +193,6 @@ func (o *MonitoringCredentialsListDto) HasPrometheusUrl() bool {
 func (o *MonitoringCredentialsListDto) SetPrometheusUrl(v string) {
 	o.PrometheusUrl.Set(&v)
 }
-
 // SetPrometheusUrlNil sets the value for PrometheusUrl to be an explicit nil
 func (o *MonitoringCredentialsListDto) SetPrometheusUrlNil() {
 	o.PrometheusUrl.Set(nil)
@@ -238,7 +235,6 @@ func (o *MonitoringCredentialsListDto) HasLokiUrl() bool {
 func (o *MonitoringCredentialsListDto) SetLokiUrl(v string) {
 	o.LokiUrl.Set(&v)
 }
-
 // SetLokiUrlNil sets the value for LokiUrl to be an explicit nil
 func (o *MonitoringCredentialsListDto) SetLokiUrlNil() {
 	o.LokiUrl.Set(nil)
@@ -281,7 +277,6 @@ func (o *MonitoringCredentialsListDto) HasAlertManagerUrl() bool {
 func (o *MonitoringCredentialsListDto) SetAlertManagerUrl(v string) {
 	o.AlertManagerUrl.Set(&v)
 }
-
 // SetAlertManagerUrlNil sets the value for AlertManagerUrl to be an explicit nil
 func (o *MonitoringCredentialsListDto) SetAlertManagerUrlNil() {
 	o.AlertManagerUrl.Set(nil)
@@ -293,7 +288,7 @@ func (o *MonitoringCredentialsListDto) UnsetAlertManagerUrl() {
 }
 
 func (o MonitoringCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -358,3 +353,5 @@ func (v *NullableMonitoringCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -73,7 +73,6 @@ func (o *UpdatePaymentIdCommand) HasPaymentMethodId() bool {
 func (o *UpdatePaymentIdCommand) SetPaymentMethodId(v string) {
 	o.PaymentMethodId.Set(&v)
 }
-
 // SetPaymentMethodIdNil sets the value for PaymentMethodId to be an explicit nil
 func (o *UpdatePaymentIdCommand) SetPaymentMethodIdNil() {
 	o.PaymentMethodId.Set(nil)
@@ -116,7 +115,6 @@ func (o *UpdatePaymentIdCommand) HasPaymentIntentId() bool {
 func (o *UpdatePaymentIdCommand) SetPaymentIntentId(v string) {
 	o.PaymentIntentId.Set(&v)
 }
-
 // SetPaymentIntentIdNil sets the value for PaymentIntentId to be an explicit nil
 func (o *UpdatePaymentIdCommand) SetPaymentIntentIdNil() {
 	o.PaymentIntentId.Set(nil)
@@ -128,7 +126,7 @@ func (o *UpdatePaymentIdCommand) UnsetPaymentIntentId() {
 }
 
 func (o UpdatePaymentIdCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableUpdatePaymentIdCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

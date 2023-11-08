@@ -20,8 +20,8 @@ var _ MappedNullable = &CredentialsForCli{}
 
 // CredentialsForCli struct for CredentialsForCli
 type CredentialsForCli struct {
-	Data       []CredentialsForCliDto `json:"data,omitempty"`
-	TotalCount *int32                 `json:"totalCount,omitempty"`
+	Data []CredentialsForCliDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewCredentialsForCli instantiates a new CredentialsForCli object
@@ -107,7 +107,7 @@ func (o *CredentialsForCli) SetTotalCount(v int32) {
 }
 
 func (o CredentialsForCli) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableCredentialsForCli) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

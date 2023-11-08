@@ -20,7 +20,7 @@ var _ MappedNullable = &AdminUsersUpdatePasswordCommand{}
 
 // AdminUsersUpdatePasswordCommand struct for AdminUsersUpdatePasswordCommand
 type AdminUsersUpdatePasswordCommand struct {
-	Id       NullableString `json:"id,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 	Password NullableString `json:"password,omitempty"`
 }
 
@@ -73,7 +73,6 @@ func (o *AdminUsersUpdatePasswordCommand) HasId() bool {
 func (o *AdminUsersUpdatePasswordCommand) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *AdminUsersUpdatePasswordCommand) SetIdNil() {
 	o.Id.Set(nil)
@@ -116,7 +115,6 @@ func (o *AdminUsersUpdatePasswordCommand) HasPassword() bool {
 func (o *AdminUsersUpdatePasswordCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *AdminUsersUpdatePasswordCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -128,7 +126,7 @@ func (o *AdminUsersUpdatePasswordCommand) UnsetPassword() {
 }
 
 func (o AdminUsersUpdatePasswordCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableAdminUsersUpdatePasswordCommand) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

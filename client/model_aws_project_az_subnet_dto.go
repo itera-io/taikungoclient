@@ -20,8 +20,8 @@ var _ MappedNullable = &AwsProjectAZSubnetDto{}
 
 // AwsProjectAZSubnetDto struct for AwsProjectAZSubnetDto
 type AwsProjectAZSubnetDto struct {
-	Zone      NullableString `json:"zone,omitempty"`
-	PublicIp  NullableString `json:"publicIp,omitempty"`
+	Zone NullableString `json:"zone,omitempty"`
+	PublicIp NullableString `json:"publicIp,omitempty"`
 	PrivateIp NullableString `json:"privateIp,omitempty"`
 }
 
@@ -74,7 +74,6 @@ func (o *AwsProjectAZSubnetDto) HasZone() bool {
 func (o *AwsProjectAZSubnetDto) SetZone(v string) {
 	o.Zone.Set(&v)
 }
-
 // SetZoneNil sets the value for Zone to be an explicit nil
 func (o *AwsProjectAZSubnetDto) SetZoneNil() {
 	o.Zone.Set(nil)
@@ -117,7 +116,6 @@ func (o *AwsProjectAZSubnetDto) HasPublicIp() bool {
 func (o *AwsProjectAZSubnetDto) SetPublicIp(v string) {
 	o.PublicIp.Set(&v)
 }
-
 // SetPublicIpNil sets the value for PublicIp to be an explicit nil
 func (o *AwsProjectAZSubnetDto) SetPublicIpNil() {
 	o.PublicIp.Set(nil)
@@ -160,7 +158,6 @@ func (o *AwsProjectAZSubnetDto) HasPrivateIp() bool {
 func (o *AwsProjectAZSubnetDto) SetPrivateIp(v string) {
 	o.PrivateIp.Set(&v)
 }
-
 // SetPrivateIpNil sets the value for PrivateIp to be an explicit nil
 func (o *AwsProjectAZSubnetDto) SetPrivateIpNil() {
 	o.PrivateIp.Set(nil)
@@ -172,7 +169,7 @@ func (o *AwsProjectAZSubnetDto) UnsetPrivateIp() {
 }
 
 func (o AwsProjectAZSubnetDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableAwsProjectAZSubnetDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,8 +20,8 @@ var _ MappedNullable = &UserGroupList{}
 
 // UserGroupList struct for UserGroupList
 type UserGroupList struct {
-	Data       []UserGroupDetailsListDto `json:"data,omitempty"`
-	TotalCount *int32                    `json:"totalCount,omitempty"`
+	Data []UserGroupDetailsListDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewUserGroupList instantiates a new UserGroupList object
@@ -107,7 +107,7 @@ func (o *UserGroupList) SetTotalCount(v int32) {
 }
 
 func (o UserGroupList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableUserGroupList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

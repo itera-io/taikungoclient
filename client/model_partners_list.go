@@ -20,8 +20,8 @@ var _ MappedNullable = &PartnersList{}
 
 // PartnersList struct for PartnersList
 type PartnersList struct {
-	Data       []PartnerDetailsDto `json:"data,omitempty"`
-	TotalCount *int32              `json:"totalCount,omitempty"`
+	Data []PartnerDetailsDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewPartnersList instantiates a new PartnersList object
@@ -107,7 +107,7 @@ func (o *PartnersList) SetTotalCount(v int32) {
 }
 
 func (o PartnersList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullablePartnersList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

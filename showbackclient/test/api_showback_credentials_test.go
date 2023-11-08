@@ -11,10 +11,10 @@ package taikunshowback
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/showbackclient"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/showbackclient"
 )
 
 func Test_taikunshowback_ShowbackCredentialsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikunshowback_ShowbackCredentialsAPIService(t *testing.T) {
 
 	t.Run("Test ShowbackCredentialsAPIService ShowbackcredentialsCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ShowbackCredentialsAPI.ShowbackcredentialsCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikunshowback_ShowbackCredentialsAPIService(t *testing.T) {
 
 	t.Run("Test ShowbackCredentialsAPIService ShowbackcredentialsDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -49,7 +49,7 @@ func Test_taikunshowback_ShowbackCredentialsAPIService(t *testing.T) {
 
 	t.Run("Test ShowbackCredentialsAPIService ShowbackcredentialsDropdown", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ShowbackCredentialsAPI.ShowbackcredentialsDropdown(context.Background()).Execute()
 
@@ -61,7 +61,7 @@ func Test_taikunshowback_ShowbackCredentialsAPIService(t *testing.T) {
 
 	t.Run("Test ShowbackCredentialsAPIService ShowbackcredentialsList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ShowbackCredentialsAPI.ShowbackcredentialsList(context.Background()).Execute()
 
@@ -73,7 +73,7 @@ func Test_taikunshowback_ShowbackCredentialsAPIService(t *testing.T) {
 
 	t.Run("Test ShowbackCredentialsAPIService ShowbackcredentialsLockManagement", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ShowbackCredentialsAPI.ShowbackcredentialsLockManagement(context.Background()).Execute()
 

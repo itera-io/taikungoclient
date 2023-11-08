@@ -20,9 +20,9 @@ var _ MappedNullable = &StandAloneVmSmallDetailDto{}
 
 // StandAloneVmSmallDetailDto struct for StandAloneVmSmallDetailDto
 type StandAloneVmSmallDetailDto struct {
-	Id        *int32         `json:"id,omitempty"`
-	Name      NullableString `json:"name,omitempty"`
-	ProjectId *int32         `json:"projectId,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
 }
 
 // NewStandAloneVmSmallDetailDto instantiates a new StandAloneVmSmallDetailDto object
@@ -106,7 +106,6 @@ func (o *StandAloneVmSmallDetailDto) HasName() bool {
 func (o *StandAloneVmSmallDetailDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StandAloneVmSmallDetailDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,7 +149,7 @@ func (o *StandAloneVmSmallDetailDto) SetProjectId(v int32) {
 }
 
 func (o StandAloneVmSmallDetailDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -206,3 +205,5 @@ func (v *NullableStandAloneVmSmallDetailDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,10 +20,10 @@ var _ MappedNullable = &PartnerRecordDto{}
 
 // PartnerRecordDto struct for PartnerRecordDto
 type PartnerRecordDto struct {
-	ImageUrl          NullableString `json:"imageUrl,omitempty"`
-	Id                *int32         `json:"id,omitempty"`
-	PaymentEnabled    *bool          `json:"paymentEnabled,omitempty"`
-	AllowRegistration *bool          `json:"allowRegistration,omitempty"`
+	ImageUrl NullableString `json:"imageUrl,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	PaymentEnabled *bool `json:"paymentEnabled,omitempty"`
+	AllowRegistration *bool `json:"allowRegistration,omitempty"`
 }
 
 // NewPartnerRecordDto instantiates a new PartnerRecordDto object
@@ -75,7 +75,6 @@ func (o *PartnerRecordDto) HasImageUrl() bool {
 func (o *PartnerRecordDto) SetImageUrl(v string) {
 	o.ImageUrl.Set(&v)
 }
-
 // SetImageUrlNil sets the value for ImageUrl to be an explicit nil
 func (o *PartnerRecordDto) SetImageUrlNil() {
 	o.ImageUrl.Set(nil)
@@ -183,7 +182,7 @@ func (o *PartnerRecordDto) SetAllowRegistration(v bool) {
 }
 
 func (o PartnerRecordDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -242,3 +241,5 @@ func (v *NullablePartnerRecordDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

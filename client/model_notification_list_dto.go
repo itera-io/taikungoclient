@@ -20,14 +20,14 @@ var _ MappedNullable = &NotificationListDto{}
 
 // NotificationListDto struct for NotificationListDto
 type NotificationListDto struct {
-	CreatedAt     NullableString `json:"createdAt,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
 	ActionMessage NullableString `json:"actionMessage,omitempty"`
-	ActionStatus  *ActionStatus  `json:"actionStatus,omitempty"`
-	Username      NullableString `json:"username,omitempty"`
-	Category      *ActionType    `json:"category,omitempty"`
-	ProjectName   NullableString `json:"projectName,omitempty"`
-	ProjectId     *int32         `json:"projectId,omitempty"`
-	IsDeleted     *bool          `json:"isDeleted,omitempty"`
+	ActionStatus *ActionStatus `json:"actionStatus,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	Category *ActionType `json:"category,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	IsDeleted *bool `json:"isDeleted,omitempty"`
 }
 
 // NewNotificationListDto instantiates a new NotificationListDto object
@@ -79,7 +79,6 @@ func (o *NotificationListDto) HasCreatedAt() bool {
 func (o *NotificationListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *NotificationListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -122,7 +121,6 @@ func (o *NotificationListDto) HasActionMessage() bool {
 func (o *NotificationListDto) SetActionMessage(v string) {
 	o.ActionMessage.Set(&v)
 }
-
 // SetActionMessageNil sets the value for ActionMessage to be an explicit nil
 func (o *NotificationListDto) SetActionMessageNil() {
 	o.ActionMessage.Set(nil)
@@ -197,7 +195,6 @@ func (o *NotificationListDto) HasUsername() bool {
 func (o *NotificationListDto) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *NotificationListDto) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -272,7 +269,6 @@ func (o *NotificationListDto) HasProjectName() bool {
 func (o *NotificationListDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *NotificationListDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -348,7 +344,7 @@ func (o *NotificationListDto) SetIsDeleted(v bool) {
 }
 
 func (o NotificationListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -419,3 +415,5 @@ func (v *NullableNotificationListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

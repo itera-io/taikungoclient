@@ -20,14 +20,14 @@ var _ MappedNullable = &StandAloneVmDiskForDetailsDto{}
 
 // StandAloneVmDiskForDetailsDto struct for StandAloneVmDiskForDetailsDto
 type StandAloneVmDiskForDetailsDto struct {
-	Id          *int32         `json:"id,omitempty"`
-	Name        NullableString `json:"name,omitempty"`
-	CurrentSize *int64         `json:"currentSize,omitempty"`
-	TargetSize  *int64         `json:"targetSize,omitempty"`
-	VolumeType  NullableString `json:"volumeType,omitempty"`
-	DeviceName  NullableString `json:"deviceName,omitempty"`
-	LunId       NullableString `json:"lunId,omitempty"`
-	Status      NullableString `json:"status,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	CurrentSize *int64 `json:"currentSize,omitempty"`
+	TargetSize *int64 `json:"targetSize,omitempty"`
+	VolumeType NullableString `json:"volumeType,omitempty"`
+	DeviceName NullableString `json:"deviceName,omitempty"`
+	LunId NullableString `json:"lunId,omitempty"`
+	Status NullableString `json:"status,omitempty"`
 }
 
 // NewStandAloneVmDiskForDetailsDto instantiates a new StandAloneVmDiskForDetailsDto object
@@ -111,7 +111,6 @@ func (o *StandAloneVmDiskForDetailsDto) HasName() bool {
 func (o *StandAloneVmDiskForDetailsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StandAloneVmDiskForDetailsDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -218,7 +217,6 @@ func (o *StandAloneVmDiskForDetailsDto) HasVolumeType() bool {
 func (o *StandAloneVmDiskForDetailsDto) SetVolumeType(v string) {
 	o.VolumeType.Set(&v)
 }
-
 // SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
 func (o *StandAloneVmDiskForDetailsDto) SetVolumeTypeNil() {
 	o.VolumeType.Set(nil)
@@ -261,7 +259,6 @@ func (o *StandAloneVmDiskForDetailsDto) HasDeviceName() bool {
 func (o *StandAloneVmDiskForDetailsDto) SetDeviceName(v string) {
 	o.DeviceName.Set(&v)
 }
-
 // SetDeviceNameNil sets the value for DeviceName to be an explicit nil
 func (o *StandAloneVmDiskForDetailsDto) SetDeviceNameNil() {
 	o.DeviceName.Set(nil)
@@ -304,7 +301,6 @@ func (o *StandAloneVmDiskForDetailsDto) HasLunId() bool {
 func (o *StandAloneVmDiskForDetailsDto) SetLunId(v string) {
 	o.LunId.Set(&v)
 }
-
 // SetLunIdNil sets the value for LunId to be an explicit nil
 func (o *StandAloneVmDiskForDetailsDto) SetLunIdNil() {
 	o.LunId.Set(nil)
@@ -347,7 +343,6 @@ func (o *StandAloneVmDiskForDetailsDto) HasStatus() bool {
 func (o *StandAloneVmDiskForDetailsDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *StandAloneVmDiskForDetailsDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -359,7 +354,7 @@ func (o *StandAloneVmDiskForDetailsDto) UnsetStatus() {
 }
 
 func (o StandAloneVmDiskForDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -430,3 +425,5 @@ func (v *NullableStandAloneVmDiskForDetailsDto) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

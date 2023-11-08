@@ -21,14 +21,14 @@ var _ MappedNullable = &PrometheusBillingSummaryDto{}
 
 // PrometheusBillingSummaryDto struct for PrometheusBillingSummaryDto
 type PrometheusBillingSummaryDto struct {
-	Price            *float64       `json:"price,omitempty"`
-	StartDate        *time.Time     `json:"startDate,omitempty"`
-	EndDate          NullableTime   `json:"endDate,omitempty"`
-	PrometheusRuleId *int32         `json:"prometheusRuleId,omitempty"`
-	RuleName         NullableString `json:"ruleName,omitempty"`
-	CreatedBy        NullableString `json:"createdBy,omitempty"`
-	LastModified     NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy   NullableString `json:"lastModifiedBy,omitempty"`
+	Price *float64 `json:"price,omitempty"`
+	StartDate *time.Time `json:"startDate,omitempty"`
+	EndDate NullableTime `json:"endDate,omitempty"`
+	PrometheusRuleId *int32 `json:"prometheusRuleId,omitempty"`
+	RuleName NullableString `json:"ruleName,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
 }
 
 // NewPrometheusBillingSummaryDto instantiates a new PrometheusBillingSummaryDto object
@@ -144,7 +144,6 @@ func (o *PrometheusBillingSummaryDto) HasEndDate() bool {
 func (o *PrometheusBillingSummaryDto) SetEndDate(v time.Time) {
 	o.EndDate.Set(&v)
 }
-
 // SetEndDateNil sets the value for EndDate to be an explicit nil
 func (o *PrometheusBillingSummaryDto) SetEndDateNil() {
 	o.EndDate.Set(nil)
@@ -219,7 +218,6 @@ func (o *PrometheusBillingSummaryDto) HasRuleName() bool {
 func (o *PrometheusBillingSummaryDto) SetRuleName(v string) {
 	o.RuleName.Set(&v)
 }
-
 // SetRuleNameNil sets the value for RuleName to be an explicit nil
 func (o *PrometheusBillingSummaryDto) SetRuleNameNil() {
 	o.RuleName.Set(nil)
@@ -262,7 +260,6 @@ func (o *PrometheusBillingSummaryDto) HasCreatedBy() bool {
 func (o *PrometheusBillingSummaryDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *PrometheusBillingSummaryDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -305,7 +302,6 @@ func (o *PrometheusBillingSummaryDto) HasLastModified() bool {
 func (o *PrometheusBillingSummaryDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *PrometheusBillingSummaryDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -348,7 +344,6 @@ func (o *PrometheusBillingSummaryDto) HasLastModifiedBy() bool {
 func (o *PrometheusBillingSummaryDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *PrometheusBillingSummaryDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -360,7 +355,7 @@ func (o *PrometheusBillingSummaryDto) UnsetLastModifiedBy() {
 }
 
 func (o PrometheusBillingSummaryDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -431,3 +426,5 @@ func (v *NullablePrometheusBillingSummaryDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

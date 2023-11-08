@@ -21,14 +21,14 @@ var _ MappedNullable = &PrometheusMetricsCommand{}
 
 // PrometheusMetricsCommand struct for PrometheusMetricsCommand
 type PrometheusMetricsCommand struct {
-	ProjectId      *int32         `json:"projectId,omitempty"`
-	Parameters     NullableString `json:"parameters,omitempty"`
-	Time           NullableTime   `json:"time,omitempty"`
-	Start          NullableTime   `json:"start,omitempty"`
-	End            NullableTime   `json:"end,omitempty"`
-	IsGraphEnabled *bool          `json:"isGraphEnabled,omitempty"`
-	IsAutoComplete *bool          `json:"isAutoComplete,omitempty"`
-	Step           NullableString `json:"step,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Parameters NullableString `json:"parameters,omitempty"`
+	Time NullableTime `json:"time,omitempty"`
+	Start NullableTime `json:"start,omitempty"`
+	End NullableTime `json:"end,omitempty"`
+	IsGraphEnabled *bool `json:"isGraphEnabled,omitempty"`
+	IsAutoComplete *bool `json:"isAutoComplete,omitempty"`
+	Step NullableString `json:"step,omitempty"`
 }
 
 // NewPrometheusMetricsCommand instantiates a new PrometheusMetricsCommand object
@@ -112,7 +112,6 @@ func (o *PrometheusMetricsCommand) HasParameters() bool {
 func (o *PrometheusMetricsCommand) SetParameters(v string) {
 	o.Parameters.Set(&v)
 }
-
 // SetParametersNil sets the value for Parameters to be an explicit nil
 func (o *PrometheusMetricsCommand) SetParametersNil() {
 	o.Parameters.Set(nil)
@@ -155,7 +154,6 @@ func (o *PrometheusMetricsCommand) HasTime() bool {
 func (o *PrometheusMetricsCommand) SetTime(v time.Time) {
 	o.Time.Set(&v)
 }
-
 // SetTimeNil sets the value for Time to be an explicit nil
 func (o *PrometheusMetricsCommand) SetTimeNil() {
 	o.Time.Set(nil)
@@ -198,7 +196,6 @@ func (o *PrometheusMetricsCommand) HasStart() bool {
 func (o *PrometheusMetricsCommand) SetStart(v time.Time) {
 	o.Start.Set(&v)
 }
-
 // SetStartNil sets the value for Start to be an explicit nil
 func (o *PrometheusMetricsCommand) SetStartNil() {
 	o.Start.Set(nil)
@@ -241,7 +238,6 @@ func (o *PrometheusMetricsCommand) HasEnd() bool {
 func (o *PrometheusMetricsCommand) SetEnd(v time.Time) {
 	o.End.Set(&v)
 }
-
 // SetEndNil sets the value for End to be an explicit nil
 func (o *PrometheusMetricsCommand) SetEndNil() {
 	o.End.Set(nil)
@@ -348,7 +344,6 @@ func (o *PrometheusMetricsCommand) HasStep() bool {
 func (o *PrometheusMetricsCommand) SetStep(v string) {
 	o.Step.Set(&v)
 }
-
 // SetStepNil sets the value for Step to be an explicit nil
 func (o *PrometheusMetricsCommand) SetStepNil() {
 	o.Step.Set(nil)
@@ -360,7 +355,7 @@ func (o *PrometheusMetricsCommand) UnsetStep() {
 }
 
 func (o PrometheusMetricsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -431,3 +426,5 @@ func (v *NullablePrometheusMetricsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

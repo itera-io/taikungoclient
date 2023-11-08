@@ -20,8 +20,8 @@ var _ MappedNullable = &KubernetesProfilesSearchList{}
 
 // KubernetesProfilesSearchList struct for KubernetesProfilesSearchList
 type KubernetesProfilesSearchList struct {
-	Data       []CommonSearchResponseData `json:"data,omitempty"`
-	TotalCount *int32                     `json:"totalCount,omitempty"`
+	Data []CommonSearchResponseData `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewKubernetesProfilesSearchList instantiates a new KubernetesProfilesSearchList object
@@ -107,7 +107,7 @@ func (o *KubernetesProfilesSearchList) SetTotalCount(v int32) {
 }
 
 func (o KubernetesProfilesSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableKubernetesProfilesSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

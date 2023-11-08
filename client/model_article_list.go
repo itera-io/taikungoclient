@@ -20,8 +20,8 @@ var _ MappedNullable = &ArticleList{}
 
 // ArticleList struct for ArticleList
 type ArticleList struct {
-	Data       []ArticlesListDto `json:"data,omitempty"`
-	TotalCount *int32            `json:"totalCount,omitempty"`
+	Data []ArticlesListDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewArticleList instantiates a new ArticleList object
@@ -107,7 +107,7 @@ func (o *ArticleList) SetTotalCount(v int32) {
 }
 
 func (o ArticleList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableArticleList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

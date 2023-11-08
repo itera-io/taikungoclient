@@ -20,11 +20,11 @@ var _ MappedNullable = &TanzuStorageListCommand{}
 
 // TanzuStorageListCommand struct for TanzuStorageListCommand
 type TanzuStorageListCommand struct {
-	Username  NullableString `json:"username,omitempty"`
-	Url       NullableString `json:"url,omitempty"`
-	Password  NullableString `json:"password,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Password NullableString `json:"password,omitempty"`
 	Namespace NullableString `json:"namespace,omitempty"`
-	Port      NullableInt32  `json:"port,omitempty"`
+	Port NullableInt32 `json:"port,omitempty"`
 }
 
 // NewTanzuStorageListCommand instantiates a new TanzuStorageListCommand object
@@ -76,7 +76,6 @@ func (o *TanzuStorageListCommand) HasUsername() bool {
 func (o *TanzuStorageListCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *TanzuStorageListCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -119,7 +118,6 @@ func (o *TanzuStorageListCommand) HasUrl() bool {
 func (o *TanzuStorageListCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *TanzuStorageListCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -162,7 +160,6 @@ func (o *TanzuStorageListCommand) HasPassword() bool {
 func (o *TanzuStorageListCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *TanzuStorageListCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -205,7 +202,6 @@ func (o *TanzuStorageListCommand) HasNamespace() bool {
 func (o *TanzuStorageListCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *TanzuStorageListCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -248,7 +244,6 @@ func (o *TanzuStorageListCommand) HasPort() bool {
 func (o *TanzuStorageListCommand) SetPort(v int32) {
 	o.Port.Set(&v)
 }
-
 // SetPortNil sets the value for Port to be an explicit nil
 func (o *TanzuStorageListCommand) SetPortNil() {
 	o.Port.Set(nil)
@@ -260,7 +255,7 @@ func (o *TanzuStorageListCommand) UnsetPort() {
 }
 
 func (o TanzuStorageListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -322,3 +317,5 @@ func (v *NullableTanzuStorageListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,20 +20,20 @@ var _ MappedNullable = &AccessProfilesListDto{}
 
 // AccessProfilesListDto struct for AccessProfilesListDto
 type AccessProfilesListDto struct {
-	Id               *int32               `json:"id,omitempty"`
-	Name             NullableString       `json:"name,omitempty"`
-	HttpProxy        NullableString       `json:"httpProxy,omitempty"`
-	OrganizationId   NullableInt32        `json:"organizationId,omitempty"`
-	OrganizationName NullableString       `json:"organizationName,omitempty"`
-	IsLocked         *bool                `json:"isLocked,omitempty"`
-	DnsServers       []DnsServerListDto   `json:"dnsServers,omitempty"`
-	NtpServers       []NtpServerListDto   `json:"ntpServers,omitempty"`
-	AllowedHosts     []AllowedHostListDto `json:"allowedHosts,omitempty"`
-	Projects         []CommonDropdownDto  `json:"projects,omitempty"`
-	CreatedBy        NullableString       `json:"createdBy,omitempty"`
-	LastModified     NullableString       `json:"lastModified,omitempty"`
-	LastModifiedBy   NullableString       `json:"lastModifiedBy,omitempty"`
-	CreatedAt        NullableString       `json:"createdAt,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	HttpProxy NullableString `json:"httpProxy,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	DnsServers []DnsServerListDto `json:"dnsServers,omitempty"`
+	NtpServers []NtpServerListDto `json:"ntpServers,omitempty"`
+	AllowedHosts []AllowedHostListDto `json:"allowedHosts,omitempty"`
+	Projects []CommonDropdownDto `json:"projects,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
 }
 
 // NewAccessProfilesListDto instantiates a new AccessProfilesListDto object
@@ -117,7 +117,6 @@ func (o *AccessProfilesListDto) HasName() bool {
 func (o *AccessProfilesListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AccessProfilesListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -160,7 +159,6 @@ func (o *AccessProfilesListDto) HasHttpProxy() bool {
 func (o *AccessProfilesListDto) SetHttpProxy(v string) {
 	o.HttpProxy.Set(&v)
 }
-
 // SetHttpProxyNil sets the value for HttpProxy to be an explicit nil
 func (o *AccessProfilesListDto) SetHttpProxyNil() {
 	o.HttpProxy.Set(nil)
@@ -203,7 +201,6 @@ func (o *AccessProfilesListDto) HasOrganizationId() bool {
 func (o *AccessProfilesListDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *AccessProfilesListDto) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -246,7 +243,6 @@ func (o *AccessProfilesListDto) HasOrganizationName() bool {
 func (o *AccessProfilesListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *AccessProfilesListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -453,7 +449,6 @@ func (o *AccessProfilesListDto) HasCreatedBy() bool {
 func (o *AccessProfilesListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *AccessProfilesListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -496,7 +491,6 @@ func (o *AccessProfilesListDto) HasLastModified() bool {
 func (o *AccessProfilesListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *AccessProfilesListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -539,7 +533,6 @@ func (o *AccessProfilesListDto) HasLastModifiedBy() bool {
 func (o *AccessProfilesListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *AccessProfilesListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -582,7 +575,6 @@ func (o *AccessProfilesListDto) HasCreatedAt() bool {
 func (o *AccessProfilesListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *AccessProfilesListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -594,7 +586,7 @@ func (o *AccessProfilesListDto) UnsetCreatedAt() {
 }
 
 func (o AccessProfilesListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -683,3 +675,5 @@ func (v *NullableAccessProfilesListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

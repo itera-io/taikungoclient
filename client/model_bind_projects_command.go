@@ -21,8 +21,8 @@ var _ MappedNullable = &BindProjectsCommand{}
 // BindProjectsCommand struct for BindProjectsCommand
 type BindProjectsCommand struct {
 	Projects []UpdateUserProjectDto `json:"projects,omitempty"`
-	UserId   NullableString         `json:"userId,omitempty"`
-	UserName NullableString         `json:"userName,omitempty"`
+	UserId NullableString `json:"userId,omitempty"`
+	UserName NullableString `json:"userName,omitempty"`
 }
 
 // NewBindProjectsCommand instantiates a new BindProjectsCommand object
@@ -107,7 +107,6 @@ func (o *BindProjectsCommand) HasUserId() bool {
 func (o *BindProjectsCommand) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
-
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *BindProjectsCommand) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -150,7 +149,6 @@ func (o *BindProjectsCommand) HasUserName() bool {
 func (o *BindProjectsCommand) SetUserName(v string) {
 	o.UserName.Set(&v)
 }
-
 // SetUserNameNil sets the value for UserName to be an explicit nil
 func (o *BindProjectsCommand) SetUserNameNil() {
 	o.UserName.Set(nil)
@@ -162,7 +160,7 @@ func (o *BindProjectsCommand) UnsetUserName() {
 }
 
 func (o BindProjectsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -218,3 +216,5 @@ func (v *NullableBindProjectsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

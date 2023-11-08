@@ -20,7 +20,7 @@ var _ MappedNullable = &EnableAiCommand{}
 
 // EnableAiCommand struct for EnableAiCommand
 type EnableAiCommand struct {
-	ProjectId      *int32 `json:"projectId,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
 	AiCredentialId *int32 `json:"aiCredentialId,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *EnableAiCommand) SetAiCredentialId(v int32) {
 }
 
 func (o EnableAiCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableEnableAiCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

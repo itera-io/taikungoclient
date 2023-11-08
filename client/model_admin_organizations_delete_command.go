@@ -73,7 +73,7 @@ func (o *AdminOrganizationsDeleteCommand) SetId(v int32) {
 }
 
 func (o AdminOrganizationsDeleteCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,3 +123,5 @@ func (v *NullableAdminOrganizationsDeleteCommand) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

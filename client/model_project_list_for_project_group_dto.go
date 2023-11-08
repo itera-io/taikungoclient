@@ -20,9 +20,9 @@ var _ MappedNullable = &ProjectListForProjectGroupDto{}
 
 // ProjectListForProjectGroupDto struct for ProjectListForProjectGroupDto
 type ProjectListForProjectGroupDto struct {
-	ProjectId   *int32         `json:"projectId,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
 	ProjectName NullableString `json:"projectName,omitempty"`
-	IsSelected  *bool          `json:"isSelected,omitempty"`
+	IsSelected *bool `json:"isSelected,omitempty"`
 }
 
 // NewProjectListForProjectGroupDto instantiates a new ProjectListForProjectGroupDto object
@@ -106,7 +106,6 @@ func (o *ProjectListForProjectGroupDto) HasProjectName() bool {
 func (o *ProjectListForProjectGroupDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *ProjectListForProjectGroupDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -150,7 +149,7 @@ func (o *ProjectListForProjectGroupDto) SetIsSelected(v bool) {
 }
 
 func (o ProjectListForProjectGroupDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -206,3 +205,5 @@ func (v *NullableProjectListForProjectGroupDto) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

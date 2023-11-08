@@ -19,12 +19,13 @@ import (
 	"net/url"
 )
 
+
 // ProxmoxCloudCredentialAPIService ProxmoxCloudCredentialAPI service
 type ProxmoxCloudCredentialAPIService service
 
 type ApiProxmoxBridgeListRequest struct {
-	ctx               context.Context
-	ApiService        *ProxmoxCloudCredentialAPIService
+	ctx context.Context
+	ApiService *ProxmoxCloudCredentialAPIService
 	bridgeListCommand *BridgeListCommand
 }
 
@@ -40,25 +41,24 @@ func (r ApiProxmoxBridgeListRequest) Execute() ([]string, *http.Response, error)
 /*
 ProxmoxBridgeList Fetch proxmox bridge list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProxmoxBridgeListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProxmoxBridgeListRequest
 */
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxBridgeList(ctx context.Context) ApiProxmoxBridgeListRequest {
 	return ApiProxmoxBridgeListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxBridgeListExecute(r ApiProxmoxBridgeListRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProxmoxCloudCredentialAPIService.ProxmoxBridgeList")
@@ -137,8 +137,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxBridgeListExecute(r ApiProxmox
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -148,8 +148,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxBridgeListExecute(r ApiProxmox
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -159,8 +159,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxBridgeListExecute(r ApiProxmox
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -170,8 +170,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxBridgeListExecute(r ApiProxmox
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -181,8 +181,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxBridgeListExecute(r ApiProxmox
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -200,8 +200,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxBridgeListExecute(r ApiProxmox
 }
 
 type ApiProxmoxCreateRequest struct {
-	ctx                  context.Context
-	ApiService           *ProxmoxCloudCredentialAPIService
+	ctx context.Context
+	ApiService *ProxmoxCloudCredentialAPIService
 	createProxmoxCommand *CreateProxmoxCommand
 }
 
@@ -217,25 +217,24 @@ func (r ApiProxmoxCreateRequest) Execute() (*ApiResponse, *http.Response, error)
 /*
 ProxmoxCreate Add Proxmox credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProxmoxCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProxmoxCreateRequest
 */
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxCreate(ctx context.Context) ApiProxmoxCreateRequest {
 	return ApiProxmoxCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxCreateExecute(r ApiProxmoxCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProxmoxCloudCredentialAPIService.ProxmoxCreate")
@@ -311,8 +310,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxCreateExecute(r ApiProxmoxCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -322,8 +321,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxCreateExecute(r ApiProxmoxCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -333,8 +332,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxCreateExecute(r ApiProxmoxCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -344,8 +343,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxCreateExecute(r ApiProxmoxCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -355,8 +354,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxCreateExecute(r ApiProxmoxCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -374,8 +373,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxCreateExecute(r ApiProxmoxCrea
 }
 
 type ApiProxmoxHypervisorListRequest struct {
-	ctx                   context.Context
-	ApiService            *ProxmoxCloudCredentialAPIService
+	ctx context.Context
+	ApiService *ProxmoxCloudCredentialAPIService
 	hypervisorListCommand *HypervisorListCommand
 }
 
@@ -391,25 +390,24 @@ func (r ApiProxmoxHypervisorListRequest) Execute() ([]ProxmoxHypervisorDto, *htt
 /*
 ProxmoxHypervisorList Fetch proxmox hypervisor list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProxmoxHypervisorListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProxmoxHypervisorListRequest
 */
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxHypervisorList(ctx context.Context) ApiProxmoxHypervisorListRequest {
 	return ApiProxmoxHypervisorListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []ProxmoxHypervisorDto
+//  @return []ProxmoxHypervisorDto
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxHypervisorListExecute(r ApiProxmoxHypervisorListRequest) ([]ProxmoxHypervisorDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []ProxmoxHypervisorDto
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ProxmoxHypervisorDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProxmoxCloudCredentialAPIService.ProxmoxHypervisorList")
@@ -488,8 +486,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxHypervisorListExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -499,8 +497,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxHypervisorListExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -510,8 +508,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxHypervisorListExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -521,8 +519,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxHypervisorListExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -532,8 +530,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxHypervisorListExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -551,16 +549,16 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxHypervisorListExecute(r ApiPro
 }
 
 type ApiProxmoxListRequest struct {
-	ctx            context.Context
-	ApiService     *ProxmoxCloudCredentialAPIService
-	limit          *int32
-	offset         *int32
+	ctx context.Context
+	ApiService *ProxmoxCloudCredentialAPIService
+	limit *int32
+	offset *int32
 	organizationId *int32
-	sortBy         *string
-	sortDirection  *string
-	search         *string
-	searchId       *string
-	id             *int32
+	sortBy *string
+	sortDirection *string
+	search *string
+	searchId *string
+	id *int32
 }
 
 func (r ApiProxmoxListRequest) Limit(limit int32) ApiProxmoxListRequest {
@@ -610,25 +608,24 @@ func (r ApiProxmoxListRequest) Execute() (*ProxmoxList, *http.Response, error) {
 /*
 ProxmoxList Retrieve list of proxmox cloud credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProxmoxListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProxmoxListRequest
 */
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxList(ctx context.Context) ApiProxmoxListRequest {
 	return ApiProxmoxListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ProxmoxList
+//  @return ProxmoxList
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxListExecute(r ApiProxmoxListRequest) (*ProxmoxList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ProxmoxList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ProxmoxList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProxmoxCloudCredentialAPIService.ProxmoxList")
@@ -726,8 +723,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxListExecute(r ApiProxmoxListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -737,8 +734,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxListExecute(r ApiProxmoxListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -748,8 +745,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxListExecute(r ApiProxmoxListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -759,8 +756,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxListExecute(r ApiProxmoxListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -770,8 +767,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxListExecute(r ApiProxmoxListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -789,8 +786,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxListExecute(r ApiProxmoxListRe
 }
 
 type ApiProxmoxStorageListRequest struct {
-	ctx                context.Context
-	ApiService         *ProxmoxCloudCredentialAPIService
+	ctx context.Context
+	ApiService *ProxmoxCloudCredentialAPIService
 	storageListCommand *StorageListCommand
 }
 
@@ -806,25 +803,24 @@ func (r ApiProxmoxStorageListRequest) Execute() ([]string, *http.Response, error
 /*
 ProxmoxStorageList Fetch proxmox storage list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProxmoxStorageListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProxmoxStorageListRequest
 */
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxStorageList(ctx context.Context) ApiProxmoxStorageListRequest {
 	return ApiProxmoxStorageListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxStorageListExecute(r ApiProxmoxStorageListRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProxmoxCloudCredentialAPIService.ProxmoxStorageList")
@@ -903,8 +899,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxStorageListExecute(r ApiProxmo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -914,8 +910,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxStorageListExecute(r ApiProxmo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -925,8 +921,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxStorageListExecute(r ApiProxmo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -936,8 +932,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxStorageListExecute(r ApiProxmo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -947,8 +943,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxStorageListExecute(r ApiProxmo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -966,8 +962,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxStorageListExecute(r ApiProxmo
 }
 
 type ApiProxmoxUpdateRequest struct {
-	ctx                  context.Context
-	ApiService           *ProxmoxCloudCredentialAPIService
+	ctx context.Context
+	ApiService *ProxmoxCloudCredentialAPIService
 	updateProxmoxCommand *UpdateProxmoxCommand
 }
 
@@ -983,22 +979,22 @@ func (r ApiProxmoxUpdateRequest) Execute() (*http.Response, error) {
 /*
 ProxmoxUpdate Update proxmox credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProxmoxUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProxmoxUpdateRequest
 */
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdate(ctx context.Context) ApiProxmoxUpdateRequest {
 	return ApiProxmoxUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateExecute(r ApiProxmoxUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProxmoxCloudCredentialAPIService.ProxmoxUpdate")
@@ -1074,8 +1070,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateExecute(r ApiProxmoxUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1085,8 +1081,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateExecute(r ApiProxmoxUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1096,8 +1092,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateExecute(r ApiProxmoxUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1107,8 +1103,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateExecute(r ApiProxmoxUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1118,8 +1114,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateExecute(r ApiProxmoxUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1128,8 +1124,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateExecute(r ApiProxmoxUpda
 }
 
 type ApiProxmoxUpdateHypervisorsRequest struct {
-	ctx                      context.Context
-	ApiService               *ProxmoxCloudCredentialAPIService
+	ctx context.Context
+	ApiService *ProxmoxCloudCredentialAPIService
 	updateHypervisorsCommand *UpdateHypervisorsCommand
 }
 
@@ -1145,22 +1141,22 @@ func (r ApiProxmoxUpdateHypervisorsRequest) Execute() (*http.Response, error) {
 /*
 ProxmoxUpdateHypervisors Update proxmox credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProxmoxUpdateHypervisorsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProxmoxUpdateHypervisorsRequest
 */
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateHypervisors(ctx context.Context) ApiProxmoxUpdateHypervisorsRequest {
 	return ApiProxmoxUpdateHypervisorsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateHypervisorsExecute(r ApiProxmoxUpdateHypervisorsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProxmoxCloudCredentialAPIService.ProxmoxUpdateHypervisors")
@@ -1236,8 +1232,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateHypervisorsExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1247,8 +1243,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateHypervisorsExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1258,8 +1254,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateHypervisorsExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1269,8 +1265,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateHypervisorsExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1280,8 +1276,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateHypervisorsExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1290,8 +1286,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateHypervisorsExecute(r Api
 }
 
 type ApiProxmoxUpdateIpAddressesRequest struct {
-	ctx                          context.Context
-	ApiService                   *ProxmoxCloudCredentialAPIService
+	ctx context.Context
+	ApiService *ProxmoxCloudCredentialAPIService
 	updateUsedIpAddressesCommand *UpdateUsedIpAddressesCommand
 }
 
@@ -1307,22 +1303,22 @@ func (r ApiProxmoxUpdateIpAddressesRequest) Execute() (*http.Response, error) {
 /*
 ProxmoxUpdateIpAddresses Update proxmox network used ip addresses
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProxmoxUpdateIpAddressesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProxmoxUpdateIpAddressesRequest
 */
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateIpAddresses(ctx context.Context) ApiProxmoxUpdateIpAddressesRequest {
 	return ApiProxmoxUpdateIpAddressesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateIpAddressesExecute(r ApiProxmoxUpdateIpAddressesRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProxmoxCloudCredentialAPIService.ProxmoxUpdateIpAddresses")
@@ -1401,8 +1397,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateIpAddressesExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1412,8 +1408,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateIpAddressesExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1423,8 +1419,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateIpAddressesExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1434,8 +1430,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateIpAddressesExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1445,8 +1441,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateIpAddressesExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1455,8 +1451,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateIpAddressesExecute(r Api
 }
 
 type ApiProxmoxVmTemplateListRequest struct {
-	ctx                   context.Context
-	ApiService            *ProxmoxCloudCredentialAPIService
+	ctx context.Context
+	ApiService *ProxmoxCloudCredentialAPIService
 	vmTemplateListCommand *VmTemplateListCommand
 }
 
@@ -1472,25 +1468,24 @@ func (r ApiProxmoxVmTemplateListRequest) Execute() ([]CommonDropdownDto, *http.R
 /*
 ProxmoxVmTemplateList Fetch proxmox vm template list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProxmoxVmTemplateListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProxmoxVmTemplateListRequest
 */
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxVmTemplateList(ctx context.Context) ApiProxmoxVmTemplateListRequest {
 	return ApiProxmoxVmTemplateListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []CommonDropdownDto
+//  @return []CommonDropdownDto
 func (a *ProxmoxCloudCredentialAPIService) ProxmoxVmTemplateListExecute(r ApiProxmoxVmTemplateListRequest) ([]CommonDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []CommonDropdownDto
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []CommonDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProxmoxCloudCredentialAPIService.ProxmoxVmTemplateList")
@@ -1569,8 +1564,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxVmTemplateListExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1580,8 +1575,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxVmTemplateListExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1591,8 +1586,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxVmTemplateListExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1602,8 +1597,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxVmTemplateListExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1613,8 +1608,8 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxVmTemplateListExecute(r ApiPro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
