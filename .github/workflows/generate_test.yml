@@ -1,5 +1,8 @@
 name: Generate Test Client
 on:
+  push:
+    branches:
+      - "test"
   workflow_dispatch:
     inputs:
       force:
@@ -14,7 +17,7 @@ jobs:
   generate-client:
     uses: itera-io/taikungoclient/.github/workflows/generate.yml@test
     with:
-      branch: dev
+      branch: test
       force: ${{ inputs.force == 'true' }}
     secrets:
       url: ${{ secrets.SWAGGER_DEV_URL }}
