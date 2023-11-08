@@ -62,6 +62,7 @@ jobs:
           go-version: '1.17'
 
       - name: Download newest OpenAPI generator
+        if: steps.check.outcome == 'success'
         # Adapted form bash launcher script at https://openapi-generator.tech/docs/installation
         run: |
           function latest.tag {
@@ -79,6 +80,7 @@ jobs:
           wget -q "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/$ver/$jar" -O openapi-generator-cli.jar
 
       - name: Set up Java
+        if: steps.check.outcome == 'success'
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin' # See 'Supported distributions' for available options

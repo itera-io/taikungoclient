@@ -22,10 +22,10 @@ fi
 # If sha1sums differ, return true and save new sha1sum, otherwise return false
 if diff "${new_sha1sum_path}" "${old_sha1sum_path}" &>/dev/null; then
   rm -f "${new_sha1sum_path}"
-  echo "swagger.json hasn't changed, exiting with code 1"
+  echo "combined-swagger.json checksum hasn't changed, exiting with code 1"
   exit 1
 else
   mv "${new_sha1sum_path}" "${old_sha1sum_path}"
-  echo "swagger.json updated, saved ${old_sha1sum_path} and exiting with code 0"
+  echo "combined-swagger.json checksum changed, saved ${old_sha1sum_path} and exiting with code 0"
   exit 0
 fi
