@@ -28,15 +28,15 @@ jobs:
           ref: ${{ inputs.branch }}
 
       - name: Download swagger-web.json
-#        run: wget -q "$SWAGGER_URL" -O swagger-web.json
-        run: wget -q https://raw.githubusercontent.com/itera-io/taikungoclient/12ef2364b7cffbfdb82602bae8141df257cdeac4/mock-api/swagger-web.json -O swagger-web.json
+        run: wget -q "$SWAGGER_URL" -O swagger-web.json
+#        run: wget -q https://raw.githubusercontent.com/itera-io/taikungoclient/12ef2364b7cffbfdb82602bae8141df257cdeac4/mock-api/swagger-web.json -O swagger-web.json
         shell: bash
         env:
           SWAGGER_URL: ${{ secrets.url }}
 
       - name: Download swagger-showback.json
-#        run: wget -q "$SHOWBACK_SWAGGER_URL" -O swagger-showback.json
-        run: wget -q https://raw.githubusercontent.com/itera-io/taikungoclient/12ef2364b7cffbfdb82602bae8141df257cdeac4/mock-api/swagger-showback.json -O swagger-showback.json
+        run: wget -q "$SHOWBACK_SWAGGER_URL" -O swagger-showback.json
+#        run: wget -q https://raw.githubusercontent.com/itera-io/taikungoclient/12ef2364b7cffbfdb82602bae8141df257cdeac4/mock-api/swagger-showback.json -O swagger-showback.json
         shell: bash
         env:
           SHOWBACK_SWAGGER_URL: ${{ secrets.showback_url }}
@@ -61,17 +61,22 @@ jobs:
         with:
           go-version: '1.17'
 
-#      - name: Install Go-Swagger
-#        if: steps.check.outcome == 'success'
-#        shell: bash
-#        run: |
-#          download_url=$(curl -s https://api.github.com/repos/go-swagger/go-swagger/releases/latest | jq -r '.assets[] | select(.name | contains("'"$(uname | tr '[:upper:]' '[:lower:]')"'_amd64")) | .browser_download_url')
-#          curl -o swagger -L'#' "$download_url"
-#          chmod +x swagger
-
-      - name: Download OpenAPI generator
-        run: | 
-          wget -q https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.0.1/openapi-generator-cli-7.0.1.jar -O openapi-generator-cli.jar
+      - name: Download newest OpenAPI generator
+        # Adapted form bash launcher script at https://openapi-generator.tech/docs/installation
+        run: |
+          function latest.tag {
+            local uri="https://api.github.com/repos/${1}/releases"
+            local ver=$(curl -s ${uri} | jq -r 'first(.[]|select(.prerelease==false)).tag_name')
+            if [[ $ver == v* ]]; then
+            ver=${ver:1}
+            fi
+            echo $ver
+          }
+          ghrepo=openapitools/openapi-generator
+          artifactid=openapi-generator-cli
+          ver=${OPENAPI_GENERATOR_VERSION:-$(latest.tag $ghrepo)}
+          jar=${artifactid}-${ver}.jar
+          wget -q "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/$ver/$jar" -O openapi-generator-cli.jar
 
       - name: Set up Java
         uses: actions/setup-java@v3
