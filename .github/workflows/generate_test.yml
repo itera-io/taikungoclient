@@ -1,4 +1,4 @@
-name: Generate Dev Client
+name: Generate Test Client
 on:
   workflow_dispatch:
     inputs:
