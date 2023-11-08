@@ -15,9 +15,13 @@ FILE_SHOWBACK="swagger-showback.json"
 #wget "$SHOWBACK_API_URL" -O "./$FILE_SHOWBACK"
 
 rm -rf ./client         # Generator refuses to rewrite some files
-rm -rf ./showbackclient # Generator refuses to rewrite some files
+#rm -rf ./showbackclient # Generator refuses to rewrite some files
 
 # Generate client
+java -jar openapi-generator-cli.jar --version
+java -jar openapi-generator-cli.jar
+java --version
+ls -la
 java -jar openapi-generator-cli.jar generate -i ./"$FILE_WEB" \
 -g go \
 --additional-properties=packageName=taikuncore \
@@ -26,11 +30,11 @@ java -jar openapi-generator-cli.jar generate -i ./"$FILE_WEB" \
 --git-repo-id="$GITHUB_REPO/client" \
 -o ./client
 
-openapi-generator-cli generate -i ./"$FILE_SHOWBACK" \
--g go \
---additional-properties=packageName=taikunshowback  \
---additional-properties=enumClassPrefix=true \
---git-user-id="$GITHUB_USERNAME" \
---git-repo-id="$GITHUB_REPO/showbackclient" \
--o ./showbackclient
+#openapi-generator-cli generate -i ./"$FILE_SHOWBACK" \
+#-g go \
+#--additional-properties=packageName=taikunshowback  \
+#--additional-properties=enumClassPrefix=true \
+#--git-user-id="$GITHUB_USERNAME" \
+#--git-repo-id="$GITHUB_REPO/showbackclient" \
+#-o ./showbackclient
 
