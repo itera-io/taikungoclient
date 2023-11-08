@@ -29,14 +29,14 @@ jobs:
 
       - name: Download swagger-web.json
 #        run: wget -q "$SWAGGER_URL" -O swagger-web.json
-        run: wget -q https://github.com/itera-io/taikungoclient/blob/12ef2364b7cffbfdb82602bae8141df257cdeac4/mock-api/swagger-web.json -O swagger-web.json
+        run: wget -q https://raw.githubusercontent.com/itera-io/taikungoclient/12ef2364b7cffbfdb82602bae8141df257cdeac4/mock-api/swagger-web.json -O swagger-web.json
         shell: bash
         env:
           SWAGGER_URL: ${{ secrets.url }}
 
       - name: Download swagger-showback.json
 #        run: wget -q "$SHOWBACK_SWAGGER_URL" -O swagger-showback.json
-        run: wget -q https://github.com/itera-io/taikungoclient/blob/12ef2364b7cffbfdb82602bae8141df257cdeac4/mock-api/swagger-showback.json -O swagger-showback.json
+        run: wget -q https://raw.githubusercontent.com/itera-io/taikungoclient/12ef2364b7cffbfdb82602bae8141df257cdeac4/mock-api/swagger-showback.json -O swagger-showback.json
         shell: bash
         env:
           SHOWBACK_SWAGGER_URL: ${{ secrets.showback_url }}
@@ -76,7 +76,7 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
-          distribution: 'zulu' # See 'Supported distributions' for available options
+          distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '17'
 
       - name: Generate Client
