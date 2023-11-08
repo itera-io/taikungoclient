@@ -26,7 +26,7 @@ java -jar openapi-generator-cli.jar generate -i ./"$FILE_WEB" \
 --git-repo-id="$GITHUB_REPO/client" \
 -o ./client
 
-java -jar openapi-generator-cli generate -i ./"$FILE_SHOWBACK" \
+java -jar openapi-generator-cli.jar generate -i ./"$FILE_SHOWBACK" \
 -g go \
 --additional-properties=packageName=taikunshowback  \
 --additional-properties=enumClassPrefix=true \
