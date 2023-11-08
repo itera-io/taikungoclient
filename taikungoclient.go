@@ -1,155 +1,28 @@
 package taikungoclient
 
 import (
+	"crypto/tls"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"io"
+	"net/http"
 	"os"
 	"strings"
+	"sync"
 	"time"
 
-	"github.com/go-openapi/runtime"
-	"github.com/go-openapi/strfmt"
-	"github.com/itera-io/taikungoclient/client"
-	"github.com/itera-io/taikungoclient/client/auth"
-	"github.com/itera-io/taikungoclient/models"
-	"github.com/itera-io/taikungoclient/showbackclient"
+	taikuncore "github.com/itera-io/taikungoclient/client"             // Main Taikun Web API
+	taikunshowback "github.com/itera-io/taikungoclient/showbackclient" // API for Taikun showback service
 )
 
-// API version
-const Version = "1"
-
-// Help message displayed when user is not authenticated
-var helpMessage = fmt.Errorf(
-	`Authentication mode must be one of taikun, keycloak, autoscaling or token.
-Set your authentication with the following environment variable:
-%s (default value is taikun if not defined)
-
-For normal mode, please set your Taikun credentials with the variables:
-%s
-%s
-
-To authenticate with Keycloak, set the following variables:
-%s
-%s
-
-To authenticate in autoscaling or token mode, set the access and secret keys with the following variables:
-%s
-%s
-
-To override the default API host, set the following environment variable:
-%s (default value is: %s)`,
-	TaikunAuthModeEnvVar,
-	TaikunEmailEnvVar,
-	TaikunPasswordEnvVar,
-	TaikunKeycloakEmailEnvVar,
-	TaikunKeycloakPasswordEnvVar,
-	TaikunAccessKeyEnvVar,
-	TaikunSecretKeyEnvVar,
-	TaikunApiHostEnvVar,
-	client.DefaultHost,
-)
-
-// Credential environment variables
+// Enviroment variables which can be read from the command line evn.
 const TaikunEmailEnvVar = "TAIKUN_EMAIL"
 const TaikunPasswordEnvVar = "TAIKUN_PASSWORD"
-const TaikunKeycloakEmailEnvVar = "TAIKUN_KEYCLOAK_EMAIL"
-const TaikunKeycloakPasswordEnvVar = "TAIKUN_KEYCLOAK_PASSWORD"
+const TaikunAuthMode = "TAIKUN_AUTH_MODE"
+const TaikunAccessKey = "TAIKUN_ACCESS_KEY"
+const TaikunSecretKey = "TAIKUN_SECRET_KEY"
 const TaikunApiHostEnvVar = "TAIKUN_API_HOST"
-const TaikunAuthModeEnvVar = "TAIKUN_AUTH_MODE"
-const TaikunAccessKeyEnvVar = "TAIKUN_ACCESS_KEY"
-const TaikunSecretKeyEnvVar = "TAIKUN_SECRET_KEY"
-
-// Wrapper around the generated Taikungoclient to include authentication
-type Client struct {
-	// Client structures
-	Client         *client.Taikungoclient
-	ShowbackClient *showbackclient.Showbackgoclient
-
-	// Authentication mode, one of : taikun, keycloak, autoscaling, token
-	authMode string
-
-	// Taikun or Keycloak credentials
-	email    string
-	password string
-
-	// Access and secret keys for autoscaling or token authentication mode
-	accessKey string
-	secretKey string
-
-	// Taikun JWT tokens
-	token        string
-	refreshToken string
-}
-
-// Create a new authenticated Taikungoclient from environment variables.
-// Taikun or Keycloak credentials environment variables must be set
-func NewClient() (*Client, error) {
-	apiClient := Client{
-		authMode: strings.ToLower(os.Getenv(TaikunAuthModeEnvVar)),
-	}
-
-	// Set default auth mode to taikun
-	if apiClient.authMode == "" {
-		apiClient.authMode = "taikun"
-	}
-
-	switch apiClient.authMode {
-	case "taikun":
-		apiClient.email = os.Getenv(TaikunEmailEnvVar)
-		apiClient.password = os.Getenv(TaikunPasswordEnvVar)
-		if apiClient.email == "" || apiClient.password == "" {
-			return nil, helpMessage
-		}
-	case "keycloak":
-		apiClient.email = os.Getenv(TaikunKeycloakEmailEnvVar)
-		apiClient.password = os.Getenv(TaikunKeycloakPasswordEnvVar)
-		if apiClient.email == "" || apiClient.password == "" {
-			return nil, helpMessage
-		}
-	case "autoscaling", "token":
-		apiClient.accessKey = os.Getenv(TaikunAccessKeyEnvVar)
-		apiClient.secretKey = os.Getenv(TaikunSecretKeyEnvVar)
-		if apiClient.accessKey == "" || apiClient.secretKey == "" {
-			return nil, helpMessage
-		}
-	default:
-		return nil, helpMessage
-	}
-
-	apiHost := os.Getenv(TaikunApiHostEnvVar)
-
-	return InitializeClient(&apiClient, apiHost), nil
-}
-
-func NewClientFromCredentials(email string, password string, keycloakEnabled bool, apiHost string) (*Client, error) {
-	apiClient := Client{
-		email:    email,
-		password: password,
-	}
-
-	if keycloakEnabled {
-		apiClient.authMode = "keycloak"
-	} else {
-		apiClient.authMode = "taikun"
-	}
-
-	return InitializeClient(&apiClient, apiHost), nil
-}
-
-func InitializeClient(apiClient *Client, apiHost string) *Client {
-	transportConfig := client.DefaultTransportConfig()
-	showbackTransportConfig := showbackclient.DefaultTransportConfig()
-	if apiHost != "" {
-		transportConfig = transportConfig.WithHost(apiHost)
-		showbackTransportConfig = showbackTransportConfig.WithHost(apiHost)
-	}
-
-	apiClient.Client = client.NewHTTPClientWithConfig(nil, transportConfig)
-	apiClient.ShowbackClient = showbackclient.NewHTTPClientWithConfig(nil, showbackTransportConfig)
-
-	return apiClient
-}
 
 type jwtData struct {
 	Nameid     string `json:"nameid"`
@@ -161,68 +34,94 @@ type jwtData struct {
 	Iat        int    `json:"iat"`
 }
 
-// Authenticate a ClientRequest, obtain a new token if the current one is
-// expired. Only Client is authenticated since ShowbackClient uses Client as
-// its runtime.ClientAuthInfoWriter.
-func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ strfmt.Registry) error {
-	if len(apiClient.token) == 0 {
-
-		var loginCommand models.LoginCommand
-
-		switch apiClient.authMode {
-		case "taikun":
-			// Mode is null when authenticating with Taikun credentials
-			loginCommand = models.LoginCommand{Email: apiClient.email, Password: apiClient.password}
-		case "keycloak":
-			loginCommand = models.LoginCommand{Email: apiClient.email, Password: apiClient.password, Mode: apiClient.authMode}
-		default: // autoscaling or token
-			loginCommand = models.LoginCommand{AccessKey: apiClient.accessKey, SecretKey: apiClient.secretKey, Mode: apiClient.authMode}
-		}
-
-		loginParams := auth.NewAuthLoginParams().WithV(Version).WithBody(&loginCommand)
-		loginResult, err := apiClient.Client.Auth.AuthLogin(loginParams, nil)
-		if err != nil {
-			return err
-		}
-
-		apiClient.token = loginResult.Payload.Token
-		apiClient.refreshToken = loginResult.Payload.RefreshToken
-	}
-
-	if apiClient.hasTokenExpired() {
-		if err := apiClient.Refresh(); err != nil {
-			return err
-		}
-	}
-
-	err := request.SetHeaderParam("Authorization", fmt.Sprintf("Bearer %s", apiClient.token))
-	if err != nil {
-		return err
-	}
-
-	return nil
+type taikunError struct {
+	HTTPStatusCode int
+	Message        string
 }
 
-func (apiClient *Client) Refresh() error {
-	refreshResult, err := apiClient.Client.Auth.AuthRefreshToken(
-		auth.NewAuthRefreshTokenParams().WithV(Version).WithBody(
-			&models.RefreshTokenCommand{
-				RefreshToken: apiClient.refreshToken,
-				Token:        apiClient.token,
-			}), nil,
-	)
-	if err != nil {
-		return err
-	}
-
-	apiClient.token = refreshResult.Payload.Token
-	apiClient.refreshToken = refreshResult.Payload.RefreshToken
-
-	return nil
+type customTransport struct {
+	Transport http.RoundTripper
+	Client    *Client
+	mu        sync.Mutex
 }
 
-func (apiClient *Client) hasTokenExpired() bool {
-	jwtSplit := strings.Split(apiClient.token, ".")
+// Client is a struct representing an authenticated connection to simultaneously both Taikun Web API and Showback client
+type Client struct {
+	// Set by the program
+	Client          *taikuncore.APIClient
+	ShowbackClient  *taikunshowback.APIClient
+	CustomTransport *customTransport
+	token           string
+	refreshToken    string
+
+	// Set by user
+	email     string
+	password  string
+	accessKey string
+	secretKey string
+	authMode  string
+}
+
+// Getter for token (Used in CLI usertoken get-bearer)
+func (c *Client) GetToken() string {
+	return c.token
+}
+
+// Transport wrapper
+func (c *customTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+	// This is not a /auth/login or /auth/refresh request
+	if req.URL.Path != "/api/v1/auth/login" && req.URL.Path != "/api/v1/auth/refresh" {
+		if c.Client.token == "" { // We do not have a token, get a lock
+			c.mu.Lock()
+			defer c.mu.Unlock()
+			if c.Client.token == "" {
+
+				var loginCmd *taikuncore.LoginCommand
+				if c.Client.authMode != "" {
+					// I have an authMode specified (eg. "default" or "keycloak")
+					// Use for modes: keycloak, default, token, autoscaling
+					loginCmd = &taikuncore.LoginCommand{
+						SecretKey: *taikuncore.NewNullableString(&c.Client.secretKey),
+						AccessKey: *taikuncore.NewNullableString(&c.Client.accessKey),
+						Mode:      *taikuncore.NewNullableString(&c.Client.authMode),
+					}
+				} else {
+					// I do not have and authMode specified
+					// Use authentication with email + password
+					loginCmd = &taikuncore.LoginCommand{
+						Email:    *taikuncore.NewNullableString(&c.Client.email),
+						Password: *taikuncore.NewNullableString(&c.Client.password),
+					}
+				}
+				result, body, err := c.Client.Client.AuthManagementAPI.AuthLogin(req.Context()).LoginCommand(*loginCmd).Execute()
+				if err != nil {
+					return nil, CreateError(body, err)
+				}
+				c.Client.token = *result.Token.Get()
+				c.Client.refreshToken = *result.RefreshToken.Get()
+
+			}
+		} else { // We do have a token
+			if c.Client.token != "" && c.hasTokenExpired() {
+				result, body, err := c.Client.Client.AuthManagementAPI.AuthRefresh(req.Context()).RefreshTokenCommand(taikuncore.RefreshTokenCommand{
+					RefreshToken: *taikuncore.NewNullableString(&c.Client.refreshToken),
+					Token:        *taikuncore.NewNullableString(&c.Client.token),
+				}).Execute()
+				if err != nil {
+					return nil, CreateError(body, err)
+				}
+				c.Client.token = *result.Token.Get()
+				c.Client.refreshToken = *result.RefreshToken.Get()
+			}
+		}
+		req.Header.Set("Authorization", "Bearer "+c.Client.token)
+	}
+
+	return c.Transport.RoundTrip(req)
+}
+
+func (transport *customTransport) hasTokenExpired() bool {
+	jwtSplit := strings.Split(transport.Client.token, ".")
 	if len(jwtSplit) != 3 {
 		return true
 	}
@@ -242,4 +141,105 @@ func (apiClient *Client) hasTokenExpired() bool {
 	tm := time.Unix(int64(jwtData.Exp), 0)
 
 	return tm.Before(time.Now())
+}
+
+// Error is a method of struct taikunError used to pretty print the recieved HTTP error.
+func (e *taikunError) Error() string {
+	return fmt.Sprintf("Taikun Error: %s (HTTP %d)", e.Message, e.HTTPStatusCode)
+}
+
+// CreateError is a helper function to convert an unsuccessful HTTP response to a taikunError struct.
+// Function is exported because it is used by the Terraform taikun provider and Taikun CLI to show errors.
+func CreateError(resp *http.Response, err error) error {
+	if err == nil || resp == nil {
+		return err
+	}
+
+	// Decode into map for simple pretty printing (readMap["detail"]) - disabled because of background compatibility
+	//var readMap map[string]interface{}
+	//err2 := json.NewDecoder(resp.Body).Decode(&readMap)
+	// Read into byte array
+	body, err2 := io.ReadAll(resp.Body)
+	if err2 != nil {
+		// Reading/decoding failed. Give the user at least the deformed response.
+		return fmt.Errorf("Reply in unexpected format. Pasting the raw error: %v %v", resp.Body, err2)
+	}
+	return &taikunError{
+		HTTPStatusCode: resp.StatusCode,
+		Message:        fmt.Sprintf("%s", string(body)),
+	}
+}
+
+// NewClientFromCredentials is a helper function not intended to be used by the user.
+// It returns a client based on the authMode and provided credentials
+func NewClientFromCredentials(email string, password string, accessKey string, secretKey string, authMode string, apiHost string) *Client {
+
+	// Create a configuration object for the Taikun Web API
+	cfg := taikuncore.NewConfiguration()
+	cfg.Host = apiHost
+	cfg.Scheme = "https"
+
+	// Create a configuration object for the Taikun Showback service
+	cfg2 := taikunshowback.NewConfiguration()
+	cfg2.Host = apiHost
+	cfg2.Scheme = "https"
+
+	// Actually create the new client
+	client := &Client{
+		email:     email,
+		password:  password,
+		accessKey: accessKey,
+		secretKey: secretKey,
+		authMode:  authMode,
+	}
+
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
+	clientTransport := &customTransport{
+		Transport: tr,
+		Client:    client,
+	}
+	cfg.HTTPClient = &http.Client{Transport: clientTransport}
+	cfg2.HTTPClient = &http.Client{Transport: clientTransport}
+	client.Client = taikuncore.NewAPIClient(cfg)
+	client.ShowbackClient = taikunshowback.NewAPIClient(cfg2)
+
+	return client
+}
+
+// NewClient returns a client authenticated based on your environment variables defined above.
+// It is intended to be called by other modules or packages.
+func NewClient() *Client {
+
+	// What endpoint are we connecting to?
+	// If not defined, default is production - api.taikun.cloud
+	apiHost := os.Getenv(TaikunApiHostEnvVar)
+	if apiHost == "" {
+		apiHost = "api.taikun.cloud"
+	}
+
+	// What Authorization mode was chosen?
+	// Default, empty or not set = Try to use Username and Password
+	taikunAuthMode, customMode := os.LookupEnv(TaikunAuthMode)
+	if !customMode || taikunAuthMode == "" || taikunAuthMode == "default" {
+		email := os.Getenv(TaikunEmailEnvVar)
+		password := os.Getenv(TaikunPasswordEnvVar)
+		if email == "" || password == "" {
+			fmt.Println("Please set your Taikun credentials. Password or Email was empty.")
+			os.Exit(1)
+			//panic(fmt.Errorf("Please set your Taikun credentials. Password or Email was empty."))
+		}
+		return NewClientFromCredentials(email, password, "", "", "", apiHost) // Create and return the client
+	}
+
+	// Any other mode was chosen. Try to use AccessKey + Secret key.
+	accessKey := os.Getenv(TaikunAccessKey)
+	secretKey := os.Getenv(TaikunSecretKey)
+	if accessKey == "" || secretKey == "" {
+		// panic(fmt.Errorf("Please set your Taikun credentials. AccessKey or SecretKey was empty."))
+		fmt.Println("Please set your Taikun credentials. AccessKey or SecretKey was empty.")
+		os.Exit(1)
+	}
+	return NewClientFromCredentials("", "", accessKey, secretKey, taikunAuthMode, apiHost) // Create and return the client
 }
