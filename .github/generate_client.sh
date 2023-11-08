@@ -4,18 +4,13 @@
 GITHUB_USERNAME="itera-io"
 GITHUB_REPO="taikungoclient"
 
+# File names
 FILE_WEB="swagger-web.json"
 FILE_SHOWBACK="swagger-showback.json"
 
-#MAIN_API_URL="https://api.taikun.dev/swagger/v1/swagger.json"
-#SHOWBACK_API_URL="https://api.taikun.dev/showback/swagger/v1/swagger.json"
-#rm "$FILE_WEB" "$FILE_SHOWBACK"
-#
-#wget "$MAIN_API_URL" -O "./$FILE_WEB"
-#wget "$SHOWBACK_API_URL" -O "./$FILE_SHOWBACK"
-
-rm -rf ./client         # Generator refuses to rewrite some files
-rm -rf ./showbackclient # Generator refuses to rewrite some files
+# Generator refuses to rewrite some files
+rm -rf ./client
+rm -rf ./showbackclient
 
 # Generate client
 java -jar openapi-generator-cli.jar generate -i ./"$FILE_WEB" \
@@ -33,4 +28,3 @@ java -jar openapi-generator-cli.jar generate -i ./"$FILE_SHOWBACK" \
 --git-user-id="$GITHUB_USERNAME" \
 --git-repo-id="$GITHUB_REPO/showbackclient" \
 -o ./showbackclient
-

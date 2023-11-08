@@ -1,6 +1,5 @@
 .gitignore
 .idea
 *.jsom
-.github/generateDev.sh
 client/docs/*
 showbackclient/docs/*
