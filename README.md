@@ -3,6 +3,7 @@ This repository contains a testing version of the Taikun Go client -
 a generated Go library that is used to connect to the Taikun APIs by:
 - [Taikun Terraform provider](https://github.com/itera-io/terraform-provider-taikun)
 - [Taikun CLI](https://github.com/itera-io/taikun-cli)
+- Taikun sweeper
 
 ### Generated client
 An opensource tool called [openapi-generator](https://openapi-generator.tech/) takes a JSON API specification as input
@@ -30,7 +31,8 @@ openapi-generator-cli generate -i ./swagger-showback.json \
 ```
 
 ### Workflow
-The repository will be configured to do the generation automatically with GitHub Actions.
+The repository is configured to do the generation automatically with GitHub Actions.
+Every midnight, the branches dev, staging and main get regenerated to correspond with the latest API.
 
 ### Enviroment variables
 The recognised environment variables are:
