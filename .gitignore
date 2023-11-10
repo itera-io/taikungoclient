@@ -1,2 +1,5 @@
+.gitignore
 .idea
-/*.json
+*.jsom
+client/docs/*
+showbackclient/docs/*

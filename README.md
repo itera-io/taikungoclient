@@ -1,73 +1,107 @@
-# taikungoclient
+# Taikun Go Client
+This repository contains a testing version of the Taikun Go client - 
+a generated Go library that is used to connect to the Taikun APIs by:
+- [Taikun Terraform provider](https://github.com/itera-io/terraform-provider-taikun)
+- [Taikun CLI](https://github.com/itera-io/taikun-cli)
+- Taikun sweeper
 
-Go client library for the [Taikun API](https://api.taikun.cloud/) generated
-using [go-swagger](https://goswagger.io/).
+### Generated client
+An opensource tool called [openapi-generator](https://openapi-generator.tech/) takes a JSON API specification as input
+and produces a library that helps to use that API inside a programming language.
+This process is done twice (for the Taikun WebAPI and Taikun Showback API).
 
-This package is used by the
-[taikun-cli](https://github.com/itera-io/taikun-cli) and
-[terraform-provider-taikun](https://github.com/itera-io/terraform-provider-taikun)
-projects.
+Manually it would be done like this:
+```bash
+# Generate client
+openapi-generator-cli generate -i ./swagger-taikun.json \
+-g go \
+--additional-properties=packageName=taikuncore \
+--additional-properties=enumClassPrefix=true \
+--git-user-id=Smidra \
+--git-repo-id=taikungoclient/client \
+-o ./client
 
-## API
-The `taikungoclient` package provides the following constants, structs and
-functions.
-
-- `Version`: The API version, must be passed as an argument to client calls
-    using `.WithV()` (see below for an example).
-- `Client`: Wrapper struct around the generated Taikungoclient to include
-    authentication.
-- `NewClient()`: Create a new authenticated Taikungoclient. Taikun or Keycloak
-    credentials environment variables must be set.
-- `Client.AuthenticateRequest(request, ...)`: Authenticate a ClientRequest,
-    obtain a new token if the current one is expired. You probably won't need
-    to use this one as it is called by the client structs located in
-    [./client](./client).
-
-## Example use
-The following snippet is from the
-[Taikun CLI](https://github.com/itera-io/taikun-cli). It implements the
-`taikun whoami` command which prints the name of the CLI's authenticated user.
-
-```go
-package whoami
-
-import (
-	"github.com/itera-io/taikun-cli/utils/out"
-	"github.com/itera-io/taikungoclient"
-	"github.com/itera-io/taikungoclient/client/users"
-	"github.com/spf13/cobra"
-)
-
-func NewCmdWhoAmI() *cobra.Command {
-	cmd := cobra.Command{
-		Use:   "whoami",
-		Short: "Print username",
-		Args:  cobra.NoArgs,
-		RunE: func(cmd *cobra.Command, args []string) error {
-			return whoAmIRun()
-		},
-	}
-
-	return &cmd
-}
-
-func whoAmIRun() (err error) {
-	apiClient, err := taikungoclient.NewClient()
-	if err != nil {
-		return
-	}
-
-	params := users.NewUsersDetailsParams().WithV(taikungoclient.Version)
-
-	response, err := apiClient.Client.Users.UsersDetails(params, apiClient)
-	if err == nil {
-		out.Println(response.Payload.Data.Username)
-	}
-
-	return
-}
+openapi-generator-cli generate -i ./swagger-showback.json \
+-g go \
+--additional-properties=packageName=taikunshowback  \
+--additional-properties=enumClassPrefix=true \
+--git-user-id=Smidra \
+--git-repo-id=taikungoclient/showbackclient \
+-o ./showbackclient
 ```
 
-## Contributing
-Please check out the [contributing page](.github/CONTRIBUTING.md) for instructions on how
-to contribute to this project.
+### Workflow
+The repository is configured to do the generation automatically with GitHub Actions.
+Every midnight, the branches dev, staging and main get regenerated to correspond with the latest API.
+
+### Enviroment variables
+The recognised environment variables are:
+- TAIKUN_API_HOST
+  - Chosen endpoint of Taikun API
+- TAIKUN_AUTH_MODE 
+  - Define the authentication mode you wish to use
+    - **default** (same as empty, use email+pass)
+    - **token** (using user tokens generated from Taikun)
+    - **keycloak**
+    - **autoscaler**
+- TAIKUN_EMAIL
+  - Used only in **default** authmode
+- TAIKUN_PASSWORD
+  - Used only in **default** authmode
+- TAIKUN_ACCESS_KEY
+  - Used in all other authmodes
+- TAIKUN_SECRET_KEY
+  - Used in all other authmodes
+
+### Usage
+Import this repository as a go module inside your go project. Use the exported function **NewClient()**
+to create an authenticated client to both client and showback client APIs.
+Use the exported function **CreateError()** to manage error messages in the API responses.  
+```go
+import (
+	tk "github.com/itera-io/taikungoclient"
+)
+
+// Create and authenticated client to the Taikun API
+myApiClient := tk.NewClient()
+
+// Execute a query into the API + graceful exit
+data, response, err := myApiClient.Client.UsersAPI.UsersUserInfo(context.TODO()).Execute()
+if err != nil {
+	return tk.CreateError(response, err)
+}
+
+// Manipulate the gathered data
+username := data.Data.GetUsername()
+fmt.Printf("%s\n", username)
+```
+
+Import client packages to structure your queries.
+```go
+import (
+	taikuncore "github.com/itera-io/taikungoclient/client"
+	taikunshowback "github.com/itera-io/taikungoclient/showbackclient"
+)
+```
+
+### API endpoints
+The Taikun API is open for everyone to inspect. The API is a valid OpenAPI 3 specification.
+You can download the specification as **swagger.json** in the documentation.
+The documentation is available at [api.taikun.cloud](api.taikun.cloud) for the production API documentation
+
+Taikun exposes 3 different APIs.
+You can look at them in the exposed swagger UI.
+Swagger APIs in Taikun are the ones most up to date.
+
+- Taikun WebAPI
+    - https://api.taikun.cloud/swagger/
+    - Main API for Taikun.
+
+- Taikun Showback API
+    - https://api.taikun.cloud/showback/swagger/
+    - A separate service from Taikun. Concerning visibility of billing.
+
+### Older versions
+An older version of this library was generated by a different tool - [go-swagger](https://github.com/go-swagger/go-swagger).
+Since Taikun API is at OpenAPI version 3 it no longer meets our needs because it only supports v2.
+At one point Taikun Terraform provider was made to use a [temporary repository](https://github.com/chnyda/taikungoclient/tree/master).
