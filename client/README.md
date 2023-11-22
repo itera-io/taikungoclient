@@ -253,7 +253,6 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobEmailForProjectExpiration**](docs/CronJobServiceAPI.md#cronjobemailforprojectexpiration) | **Post** /api/v1/cronjob/project-expiration | Send email to the users about project expiration
 *CronJobServiceAPI* | [**CronjobFetchArtifactOrganizations**](docs/CronJobServiceAPI.md#cronjobfetchartifactorganizations) | **Post** /api/v1/cronjob/fetch-artifact-organizations | Fetch artifact hub organizations
 *CronJobServiceAPI* | [**CronjobFetchAzureFlavorPrices**](docs/CronJobServiceAPI.md#cronjobfetchazureflavorprices) | **Post** /api/v1/cronjob/fetch-azure-flavor-prices | Fetch azure flavor prices
-*CronJobServiceAPI* | [**CronjobFetchAzureFlavorPricesWithEuro**](docs/CronJobServiceAPI.md#cronjobfetchazureflavorpriceswitheuro) | **Post** /api/v1/cronjob/fetch-azure-flavor-prices-with-euro | Fetch azure flavor prices with euro
 *CronJobServiceAPI* | [**CronjobFetchK8sAlertData**](docs/CronJobServiceAPI.md#cronjobfetchk8salertdata) | **Post** /api/v1/cronjob/fetch-k8s-alert-data | Fetch k8s alert data
 *CronJobServiceAPI* | [**CronjobFetchK8sOverviewData**](docs/CronJobServiceAPI.md#cronjobfetchk8soverviewdata) | **Post** /api/v1/cronjob/fetch-k8s-overview-data | Fetch k8s overview data
 *CronJobServiceAPI* | [**CronjobFetchOrganizationDetails**](docs/CronJobServiceAPI.md#cronjobfetchorganizationdetails) | **Post** /api/v1/cronjob/fetch-organization-details | Fetch organization details
@@ -1088,6 +1087,7 @@ Class | Method | HTTP request | Description
  - [KubeConfigRoleResponse](docs/KubeConfigRoleResponse.md)
  - [KubernetesAlertCreateDto](docs/KubernetesAlertCreateDto.md)
  - [KubernetesAlertDto](docs/KubernetesAlertDto.md)
+ - [KubernetesAlertDtoForPoller](docs/KubernetesAlertDtoForPoller.md)
  - [KubernetesAlertList](docs/KubernetesAlertList.md)
  - [KubernetesCliCommand](docs/KubernetesCliCommand.md)
  - [KubernetesCronJobDto](docs/KubernetesCronJobDto.md)
@@ -1121,6 +1121,7 @@ Class | Method | HTTP request | Description
  - [ListCatalogAppAvailableVersionsCommand](docs/ListCatalogAppAvailableVersionsCommand.md)
  - [ListForLandingPageDto](docs/ListForLandingPageDto.md)
  - [ListForOrganizationEditDto](docs/ListForOrganizationEditDto.md)
+ - [ListForPartnersDto](docs/ListForPartnersDto.md)
  - [LockProjectAppCommand](docs/LockProjectAppCommand.md)
  - [LoginCommand](docs/LoginCommand.md)
  - [LokiResponseDto](docs/LokiResponseDto.md)
@@ -1195,6 +1196,7 @@ Class | Method | HTTP request | Description
  - [Parameter](docs/Parameter.md)
  - [PartnerDetailsDto](docs/PartnerDetailsDto.md)
  - [PartnerDetailsForOrganizationsDto](docs/PartnerDetailsForOrganizationsDto.md)
+ - [PartnerDetailsForSubscription](docs/PartnerDetailsForSubscription.md)
  - [PartnerDetailsForUserDto](docs/PartnerDetailsForUserDto.md)
  - [PartnerEntity](docs/PartnerEntity.md)
  - [PartnerRecordDto](docs/PartnerRecordDto.md)
@@ -1221,6 +1223,7 @@ Class | Method | HTTP request | Description
  - [Pods](docs/Pods.md)
  - [PodsSearchCommand](docs/PodsSearchCommand.md)
  - [PodsSearchList](docs/PodsSearchList.md)
+ - [PrivateSubscriptionList](docs/PrivateSubscriptionList.md)
  - [ProblemDetails](docs/ProblemDetails.md)
  - [ProjectActionDto](docs/ProjectActionDto.md)
  - [ProjectActionUpdateDto](docs/ProjectActionUpdateDto.md)

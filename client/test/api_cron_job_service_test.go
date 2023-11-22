@@ -220,17 +220,6 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CronJobServiceAPIService CronjobFetchAzureFlavorPricesWithEuro", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		httpRes, err := apiClient.CronJobServiceAPI.CronjobFetchAzureFlavorPricesWithEuro(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test CronJobServiceAPIService CronjobFetchK8sAlertData", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

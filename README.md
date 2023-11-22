@@ -3,6 +3,7 @@ This repository contains a testing version of the Taikun Go client -
 a generated Go library that is used to connect to the Taikun APIs by:
 - [Taikun Terraform provider](https://github.com/itera-io/terraform-provider-taikun)
 - [Taikun CLI](https://github.com/itera-io/taikun-cli)
+- Taikun sweeper
 
 ### Generated client
 An opensource tool called [openapi-generator](https://openapi-generator.tech/) takes a JSON API specification as input
@@ -30,7 +31,8 @@ openapi-generator-cli generate -i ./swagger-showback.json \
 ```
 
 ### Workflow
-The repository will be configured to do the generation automatically with GitHub Actions.
+The repository is configured to do the generation automatically with GitHub Actions.
+Every midnight, the branches dev, staging and main get regenerated to correspond with the latest API.
 
 ### Enviroment variables
 The recognised environment variables are:
@@ -52,7 +54,35 @@ The recognised environment variables are:
   - Used in all other authmodes
 
 ### Usage
-#TBA
+Import this repository as a go module inside your go project. Use the exported function **NewClient()**
+to create an authenticated client to both client and showback client APIs.
+Use the exported function **CreateError()** to manage error messages in the API responses.  
+```go
+import (
+	tk "github.com/itera-io/taikungoclient"
+)
+
+// Create and authenticated client to the Taikun API
+myApiClient := tk.NewClient()
+
+// Execute a query into the API + graceful exit
+data, response, err := myApiClient.Client.UsersAPI.UsersUserInfo(context.TODO()).Execute()
+if err != nil {
+	return tk.CreateError(response, err)
+}
+
+// Manipulate the gathered data
+username := data.Data.GetUsername()
+fmt.Printf("%s\n", username)
+```
+
+Import client packages to structure your queries.
+```go
+import (
+	taikuncore "github.com/itera-io/taikungoclient/client"
+	taikunshowback "github.com/itera-io/taikungoclient/showbackclient"
+)
+```
 
 ### API endpoints
 The Taikun API is open for everyone to inspect. The API is a valid OpenAPI 3 specification.

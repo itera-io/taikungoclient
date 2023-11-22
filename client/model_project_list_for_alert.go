@@ -31,7 +31,7 @@ type ProjectListForAlert struct {
 	IsMonitoringEnabled  *bool                         `json:"isMonitoringEnabled,omitempty"`
 	HasKubeConfigFile    *bool                         `json:"hasKubeConfigFile,omitempty"`
 	MonitoringCredential *MonitoringCredentialsListDto `json:"monitoringCredential,omitempty"`
-	KubernetesAlerts     []KubernetesAlertDto          `json:"kubernetesAlerts,omitempty"`
+	KubernetesAlerts     []KubernetesAlertDtoForPoller `json:"kubernetesAlerts,omitempty"`
 }
 
 // NewProjectListForAlert instantiates a new ProjectListForAlert object
@@ -448,9 +448,9 @@ func (o *ProjectListForAlert) SetMonitoringCredential(v MonitoringCredentialsLis
 }
 
 // GetKubernetesAlerts returns the KubernetesAlerts field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectListForAlert) GetKubernetesAlerts() []KubernetesAlertDto {
+func (o *ProjectListForAlert) GetKubernetesAlerts() []KubernetesAlertDtoForPoller {
 	if o == nil {
-		var ret []KubernetesAlertDto
+		var ret []KubernetesAlertDtoForPoller
 		return ret
 	}
 	return o.KubernetesAlerts
@@ -459,7 +459,7 @@ func (o *ProjectListForAlert) GetKubernetesAlerts() []KubernetesAlertDto {
 // GetKubernetesAlertsOk returns a tuple with the KubernetesAlerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectListForAlert) GetKubernetesAlertsOk() ([]KubernetesAlertDto, bool) {
+func (o *ProjectListForAlert) GetKubernetesAlertsOk() ([]KubernetesAlertDtoForPoller, bool) {
 	if o == nil || IsNil(o.KubernetesAlerts) {
 		return nil, false
 	}
@@ -475,8 +475,8 @@ func (o *ProjectListForAlert) HasKubernetesAlerts() bool {
 	return false
 }
 
-// SetKubernetesAlerts gets a reference to the given []KubernetesAlertDto and assigns it to the KubernetesAlerts field.
-func (o *ProjectListForAlert) SetKubernetesAlerts(v []KubernetesAlertDto) {
+// SetKubernetesAlerts gets a reference to the given []KubernetesAlertDtoForPoller and assigns it to the KubernetesAlerts field.
+func (o *ProjectListForAlert) SetKubernetesAlerts(v []KubernetesAlertDtoForPoller) {
 	o.KubernetesAlerts = v
 }
 

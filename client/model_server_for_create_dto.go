@@ -28,6 +28,7 @@ type ServerForCreateDto struct {
 	Count                *int32                    `json:"count,omitempty"`
 	SpotPrice            NullableFloat64           `json:"spotPrice,omitempty"`
 	SpotInstance         *bool                     `json:"spotInstance,omitempty"`
+	WasmEnabled          *bool                     `json:"wasmEnabled,omitempty"`
 	AutoscalingGroup     NullableString            `json:"autoscalingGroup,omitempty"`
 	AvailabilityZone     NullableString            `json:"availabilityZone,omitempty"`
 	ProxmoxExtraDiskSize *int32                    `json:"proxmoxExtraDiskSize,omitempty"`
@@ -343,6 +344,38 @@ func (o *ServerForCreateDto) SetSpotInstance(v bool) {
 	o.SpotInstance = &v
 }
 
+// GetWasmEnabled returns the WasmEnabled field value if set, zero value otherwise.
+func (o *ServerForCreateDto) GetWasmEnabled() bool {
+	if o == nil || IsNil(o.WasmEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.WasmEnabled
+}
+
+// GetWasmEnabledOk returns a tuple with the WasmEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerForCreateDto) GetWasmEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.WasmEnabled) {
+		return nil, false
+	}
+	return o.WasmEnabled, true
+}
+
+// HasWasmEnabled returns a boolean if a field has been set.
+func (o *ServerForCreateDto) HasWasmEnabled() bool {
+	if o != nil && !IsNil(o.WasmEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetWasmEnabled gets a reference to the given bool and assigns it to the WasmEnabled field.
+func (o *ServerForCreateDto) SetWasmEnabled(v bool) {
+	o.WasmEnabled = &v
+}
+
 // GetAutoscalingGroup returns the AutoscalingGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServerForCreateDto) GetAutoscalingGroup() string {
 	if o == nil || IsNil(o.AutoscalingGroup.Get()) {
@@ -645,6 +678,9 @@ func (o ServerForCreateDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SpotInstance) {
 		toSerialize["spotInstance"] = o.SpotInstance
+	}
+	if !IsNil(o.WasmEnabled) {
+		toSerialize["wasmEnabled"] = o.WasmEnabled
 	}
 	if o.AutoscalingGroup.IsSet() {
 		toSerialize["autoscalingGroup"] = o.AutoscalingGroup.Get()

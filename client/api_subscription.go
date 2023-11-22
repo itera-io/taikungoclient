@@ -574,7 +574,7 @@ func (r ApiSubscriptionListRequest) Search(search string) ApiSubscriptionListReq
 	return r
 }
 
-func (r ApiSubscriptionListRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiSubscriptionListRequest) Execute() (*PrivateSubscriptionList, *http.Response, error) {
 	return r.ApiService.SubscriptionListExecute(r)
 }
 
@@ -593,13 +593,13 @@ func (a *SubscriptionAPIService) SubscriptionList(ctx context.Context) ApiSubscr
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *SubscriptionAPIService) SubscriptionListExecute(r ApiSubscriptionListRequest) (map[string]interface{}, *http.Response, error) {
+//	@return PrivateSubscriptionList
+func (a *SubscriptionAPIService) SubscriptionListExecute(r ApiSubscriptionListRequest) (*PrivateSubscriptionList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue *PrivateSubscriptionList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionAPIService.SubscriptionList")

@@ -489,6 +489,7 @@ docs/KubeConfigRoleResponse.md
 docs/KubernetesAPI.md
 docs/KubernetesAlertCreateDto.md
 docs/KubernetesAlertDto.md
+docs/KubernetesAlertDtoForPoller.md
 docs/KubernetesAlertList.md
 docs/KubernetesCliCommand.md
 docs/KubernetesCronJobDto.md
@@ -524,6 +525,7 @@ docs/ListAllSchedules.md
 docs/ListCatalogAppAvailableVersionsCommand.md
 docs/ListForLandingPageDto.md
 docs/ListForOrganizationEditDto.md
+docs/ListForPartnersDto.md
 docs/LockProjectAppCommand.md
 docs/LoginCommand.md
 docs/LokiResponseDto.md
@@ -607,6 +609,7 @@ docs/PackageAutocompleteDto.md
 docs/Parameter.md
 docs/PartnerDetailsDto.md
 docs/PartnerDetailsForOrganizationsDto.md
+docs/PartnerDetailsForSubscription.md
 docs/PartnerDetailsForUserDto.md
 docs/PartnerEntity.md
 docs/PartnerRecordDto.md
@@ -636,6 +639,7 @@ docs/Pods.md
 docs/PodsSearchCommand.md
 docs/PodsSearchList.md
 docs/PreDefinedQueriesAPI.md
+docs/PrivateSubscriptionList.md
 docs/ProblemDetails.md
 docs/ProjectActionDto.md
 docs/ProjectActionUpdateDto.md
@@ -1322,6 +1326,7 @@ model_kube_config_role_dto.go
 model_kube_config_role_response.go
 model_kubernetes_alert_create_dto.go
 model_kubernetes_alert_dto.go
+model_kubernetes_alert_dto_for_poller.go
 model_kubernetes_alert_list.go
 model_kubernetes_cli_command.go
 model_kubernetes_cron_job_dto.go
@@ -1355,6 +1360,7 @@ model_list_all_schedules.go
 model_list_catalog_app_available_versions_command.go
 model_list_for_landing_page_dto.go
 model_list_for_organization_edit_dto.go
+model_list_for_partners_dto.go
 model_lock_project_app_command.go
 model_login_command.go
 model_loki_response_dto.go
@@ -1429,6 +1435,7 @@ model_package_autocomplete_dto.go
 model_parameter.go
 model_partner_details_dto.go
 model_partner_details_for_organizations_dto.go
+model_partner_details_for_subscription.go
 model_partner_details_for_user_dto.go
 model_partner_entity.go
 model_partner_record_dto.go
@@ -1455,6 +1462,7 @@ model_pod_list_dto.go
 model_pods.go
 model_pods_search_command.go
 model_pods_search_list.go
+model_private_subscription_list.go
 model_problem_details.go
 model_project_action_dto.go
 model_project_action_update_dto.go
