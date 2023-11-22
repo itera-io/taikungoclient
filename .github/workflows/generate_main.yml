@@ -1,0 +1,21 @@
+name: Generate Main Client
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        required: false
+        type: boolean
+        description: 'Force client generation'
+        default: false
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  generate-client:
+    uses: itera-io/taikungoclient/.github/workflows/generate.yml@main
+    with:
+      branch: main
+      force: ${{ inputs.force == 'true' }}
+    secrets:
+      url: ${{ secrets.SWAGGER_URL }}
+      showback_url: ${{ secrets.SHOWBACK_SWAGGER_URL }}
