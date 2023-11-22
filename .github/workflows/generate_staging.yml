@@ -1,4 +1,4 @@
-name: Generate Staging Client
+name: Generate Dev Client
 on:
   workflow_dispatch:
     inputs:
@@ -12,12 +12,10 @@ on:
 
 jobs:
   generate-client:
-    uses: itera-io/taikungoclient/.github/workflows/generate.yml@main
+    uses: itera-io/taikungoclient/.github/workflows/generate.yml@staging
     with:
       branch: staging
       force: ${{ inputs.force == 'true' }}
     secrets:
-      username: ${{ secrets.SWAGGER_USERNAME }}
-      password: ${{ secrets.SWAGGER_PASSWORD }}
       url: ${{ secrets.SWAGGER_STAGING_URL }}
       showback_url: ${{ secrets.SHOWBACK_SWAGGER_STAGING_URL }}

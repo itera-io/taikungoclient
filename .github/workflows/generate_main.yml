@@ -17,7 +17,5 @@ jobs:
       branch: main
       force: ${{ inputs.force == 'true' }}
     secrets:
-      username: ${{ secrets.SWAGGER_USERNAME }}
-      password: ${{ secrets.SWAGGER_PASSWORD }}
       url: ${{ secrets.SWAGGER_URL }}
       showback_url: ${{ secrets.SHOWBACK_SWAGGER_URL }}
