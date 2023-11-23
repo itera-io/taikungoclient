@@ -12122,6 +12122,95 @@ paths:
           description: Server Error
       tags:
       - Images
+  /api/v1/images/openshift/{cloudId}:
+    get:
+      operationId: images-openshift-images
+      parameters:
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenshiftImageList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve openshift images
+      tags:
+      - Images
   /api/v1/images/openstack/{cloudId}:
     get:
       operationId: images-openstack-images
@@ -17607,6 +17696,14 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: CloudId
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -24981,6 +25078,49 @@ paths:
       summary: Retrieve loki logs
       tags:
       - Projects
+  /api/v1/projects/maintenance-manager:
+    post:
+      operationId: projects-maintenance-manager
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectMaintenanceModeCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable/disable project's maintenance mode
+      tags:
+      - Projects
   /api/v1/projects/monitoringalerts:
     post:
       operationId: projects-monitoring-alerts
@@ -25400,7 +25540,8 @@ paths:
         "200":
           content:
             application/json:
-              schema: {}
+              schema:
+                $ref: '#/components/schemas/AiListDto'
           description: OK
         "400":
           content:
@@ -35101,6 +35242,7 @@ components:
       - StartedEnableAi
       - DisabledAi
       - StartedDisableAi
+      - EnableDisableMaintenanceMode
       type: string
     AdminAddBalanceCommand:
       additionalProperties: false
@@ -35546,6 +35688,18 @@ components:
           type: array
         isDefault:
           type: boolean
+      type: object
+    AiListDto:
+      additionalProperties: false
+      example:
+        data: ""
+        totalCount: 0
+      properties:
+        data:
+          nullable: true
+        totalCount:
+          format: int32
+          type: integer
       type: object
     AiType:
       enum:
@@ -38272,10 +38426,12 @@ components:
           isTanzu: true
           windowsPrice: windowsPrice
           isAws: true
+          isVsphere: true
           isOpenshift: true
           maxDataDiskCount: 5
           windowsSpotPrice: windowsSpotPrice
           isOpenstack: true
+          cloudType: null
           existsLinuxSpotPrice: true
           name: name
           id: 0
@@ -38292,10 +38448,12 @@ components:
           isTanzu: true
           windowsPrice: windowsPrice
           isAws: true
+          isVsphere: true
           isOpenshift: true
           maxDataDiskCount: 5
           windowsSpotPrice: windowsSpotPrice
           isOpenstack: true
+          cloudType: null
           existsLinuxSpotPrice: true
           name: name
           id: 0
@@ -38326,10 +38484,12 @@ components:
         isTanzu: true
         windowsPrice: windowsPrice
         isAws: true
+        isVsphere: true
         isOpenshift: true
         maxDataDiskCount: 5
         windowsSpotPrice: windowsSpotPrice
         isOpenstack: true
+        cloudType: null
         existsLinuxSpotPrice: true
         name: name
         id: 0
@@ -38371,6 +38531,8 @@ components:
           type: boolean
         isOpenshift:
           type: boolean
+        isVsphere:
+          type: boolean
         projectName:
           nullable: true
           type: string
@@ -38394,6 +38556,8 @@ components:
         windowsPrice:
           nullable: true
           type: string
+        cloudType:
+          $ref: '#/components/schemas/CloudType'
       type: object
     BoundImagesForProjectsList:
       additionalProperties: false
@@ -38402,6 +38566,7 @@ components:
         - imageId: imageId
           size: 1.4658129805029452
           isOpenstack: true
+          cloudType: null
           cloudId: 5
           name: name
           isWindows: true
@@ -38413,6 +38578,7 @@ components:
         - imageId: imageId
           size: 1.4658129805029452
           isOpenstack: true
+          cloudType: null
           cloudId: 5
           name: name
           isWindows: true
@@ -38438,6 +38604,7 @@ components:
         imageId: imageId
         size: 1.4658129805029452
         isOpenstack: true
+        cloudType: null
         cloudId: 5
         name: name
         isWindows: true
@@ -38479,6 +38646,8 @@ components:
           type: integer
         isWindows:
           type: boolean
+        cloudType:
+          $ref: '#/components/schemas/CloudType'
       type: object
     BridgeListCommand:
       additionalProperties: false
@@ -39596,6 +39765,7 @@ components:
       type: string
     CloudType:
       enum:
+      - NONE
       - AWS
       - AZURE
       - GOOGLE
@@ -39603,6 +39773,7 @@ components:
       - PROXMOX
       - TANZU
       - OPENSHIFT
+      - VSPHERE
       type: string
     CommitStandAloneVmCommand:
       additionalProperties: false
@@ -45451,6 +45622,7 @@ components:
         canDownload: true
         canDelete: true
         id: 0
+        partnerId: 5
         projectName: projectName
         projectId: 6
         kubeConfigRoleName: kubeConfigRoleName
@@ -45469,6 +45641,9 @@ components:
           format: int32
           type: integer
         organizationId:
+          format: int32
+          type: integer
+        partnerId:
           format: int32
           type: integer
         projectName:
@@ -45516,6 +45691,7 @@ components:
           canDownload: true
           canDelete: true
           id: 0
+          partnerId: 5
           projectName: projectName
           projectId: 6
           kubeConfigRoleName: kubeConfigRoleName
@@ -45532,6 +45708,7 @@ components:
           canDownload: true
           canDelete: true
           id: 0
+          partnerId: 5
           projectName: projectName
           projectId: 6
           kubeConfigRoleName: kubeConfigRoleName
@@ -47794,6 +47971,62 @@ components:
           format: int32
           type: integer
       type: object
+    OpenshiftImageList:
+      additionalProperties: false
+      example:
+        data:
+        - pvcName: pvcName
+          name: name
+          creationTimestamp: 2000-01-23T04:56:07.000+00:00
+          pvcCapacity: pvcCapacity
+          type: type
+          status: status
+        - pvcName: pvcName
+          name: name
+          creationTimestamp: 2000-01-23T04:56:07.000+00:00
+          pvcCapacity: pvcCapacity
+          type: type
+          status: status
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/OpenshiftImagesData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
+    OpenshiftImagesData:
+      additionalProperties: false
+      example:
+        pvcName: pvcName
+        name: name
+        creationTimestamp: 2000-01-23T04:56:07.000+00:00
+        pvcCapacity: pvcCapacity
+        type: type
+        status: status
+      properties:
+        name:
+          nullable: true
+          type: string
+        pvcName:
+          nullable: true
+          type: string
+        pvcCapacity:
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+        status:
+          nullable: true
+          type: string
+        creationTimestamp:
+          format: date-time
+          type: string
+      type: object
     OpenshiftList:
       additionalProperties: false
       example:
@@ -49997,6 +50230,11 @@ components:
           - reasons
           - reasons
           enable: true
+        disableMaintenanceMode:
+          reasons:
+          - reasons
+          - reasons
+          enable: true
         commit:
           reasons:
           - reasons
@@ -50013,6 +50251,11 @@ components:
           - reasons
           enable: true
         disableAi:
+          reasons:
+          - reasons
+          - reasons
+          enable: true
+        enableMaintenanceMode:
           reasons:
           - reasons
           - reasons
@@ -50152,6 +50395,10 @@ components:
         disableAi:
           $ref: '#/components/schemas/ProjectButtonStatusDto'
         aiAssistant:
+          $ref: '#/components/schemas/ProjectButtonStatusDto'
+        enableMaintenanceMode:
+          $ref: '#/components/schemas/ProjectButtonStatusDto'
+        disableMaintenanceMode:
           $ref: '#/components/schemas/ProjectButtonStatusDto'
       type: object
     ProjectAppDetailsDto:
@@ -50629,6 +50876,7 @@ components:
         ramLimit: 1
         opaProfileName: opaProfileName
         s3CredentialId: 6
+        isProjectMaintenanceModeEnabled: true
         isDeprecated: true
         allowSpotVMs: true
         vmCpuLimit: 6
@@ -50640,6 +50888,7 @@ components:
         hasKubeConfigFile: true
         projectStatus: null
         alertingProfileId: 6
+        wasmEnabled: true
         cloudName: cloudName
         isBackupEnabled: true
         hypervisors:
@@ -50708,6 +50957,8 @@ components:
         hasSelectedFlavors:
           type: boolean
         isMaintenanceModeEnabled:
+          type: boolean
+        isProjectMaintenanceModeEnabled:
           type: boolean
         isDeprecated:
           type: boolean
@@ -50824,6 +51075,8 @@ components:
         isAutoscalingEnabled:
           type: boolean
         hasNfsServer:
+          type: boolean
+        wasmEnabled:
           type: boolean
         availabilityZones:
           items:
@@ -51839,6 +52092,7 @@ components:
         kubernetesCurrentVersion: kubernetesCurrentVersion
         allowFullSpotKubernetes: true
         lastModified: lastModified
+        isMaintenanceModeEnabled: true
         status: status
       properties:
         id:
@@ -51852,6 +52106,8 @@ components:
         isLocked:
           type: boolean
         hasKubeConfigFile:
+          type: boolean
+        isMaintenanceModeEnabled:
           type: boolean
         cloudCredentialName:
           nullable: true
@@ -52488,6 +52744,19 @@ components:
           nullable: true
           type: string
       type: object
+    ProjectMaintenanceModeCommand:
+      additionalProperties: false
+      example:
+        mode: mode
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        mode:
+          nullable: true
+          type: string
+      type: object
     ProjectQuotaList:
       additionalProperties: false
       example:
@@ -52853,6 +53122,7 @@ components:
           kubernetesCurrentVersion: kubernetesCurrentVersion
           allowFullSpotKubernetes: true
           lastModified: lastModified
+          isMaintenanceModeEnabled: true
           status: status
         - boundUsers:
           - userName: userName
@@ -52893,6 +53163,7 @@ components:
           kubernetesCurrentVersion: kubernetesCurrentVersion
           allowFullSpotKubernetes: true
           lastModified: lastModified
+          isMaintenanceModeEnabled: true
           status: status
         totalCount: 3
       properties:
@@ -55308,6 +55579,7 @@ components:
         lastModifiedBy: lastModifiedBy
         ipAddress: ipAddress
         cpu: 5
+        wasmEnabled: true
         createdBy: createdBy
         azureVmSize: azureVmSize
         providerID: providerID
@@ -55429,6 +55701,8 @@ components:
           format: int32
           nullable: true
           type: integer
+        wasmEnabled:
+          type: boolean
       type: object
     ServerTemplateDto:
       additionalProperties: false
@@ -55528,6 +55802,7 @@ components:
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
+          wasmEnabled: true
           createdBy: createdBy
           azureVmSize: azureVmSize
           providerID: providerID
@@ -55573,6 +55848,7 @@ components:
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
+          wasmEnabled: true
           createdBy: createdBy
           azureVmSize: azureVmSize
           providerID: providerID
@@ -55633,6 +55909,7 @@ components:
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
+          wasmEnabled: true
           createdBy: createdBy
           azureVmSize: azureVmSize
           providerID: providerID
@@ -55678,6 +55955,7 @@ components:
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
+          wasmEnabled: true
           createdBy: createdBy
           azureVmSize: azureVmSize
           providerID: providerID
@@ -55739,6 +56017,7 @@ components:
           ramLimit: 1
           opaProfileName: opaProfileName
           s3CredentialId: 6
+          isProjectMaintenanceModeEnabled: true
           isDeprecated: true
           allowSpotVMs: true
           vmCpuLimit: 6
@@ -55750,6 +56029,7 @@ components:
           hasKubeConfigFile: true
           projectStatus: null
           alertingProfileId: 6
+          wasmEnabled: true
           cloudName: cloudName
           isBackupEnabled: true
           hypervisors:

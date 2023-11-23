@@ -32,6 +32,7 @@ type BoundFlavorsForProjectsListDto struct {
 	IsProxmox *bool `json:"isProxmox,omitempty"`
 	IsTanzu *bool `json:"isTanzu,omitempty"`
 	IsOpenshift *bool `json:"isOpenshift,omitempty"`
+	IsVsphere *bool `json:"isVsphere,omitempty"`
 	ProjectName NullableString `json:"projectName,omitempty"`
 	MaxDataDiskCount NullableInt32 `json:"maxDataDiskCount,omitempty"`
 	ExistsLinuxSpotPrice *bool `json:"existsLinuxSpotPrice,omitempty"`
@@ -40,6 +41,7 @@ type BoundFlavorsForProjectsListDto struct {
 	LinuxPrice NullableString `json:"linuxPrice,omitempty"`
 	WindowsSpotPrice NullableString `json:"windowsSpotPrice,omitempty"`
 	WindowsPrice NullableString `json:"windowsPrice,omitempty"`
+	CloudType *CloudType `json:"cloudType,omitempty"`
 }
 
 // NewBoundFlavorsForProjectsListDto instantiates a new BoundFlavorsForProjectsListDto object
@@ -463,6 +465,38 @@ func (o *BoundFlavorsForProjectsListDto) SetIsOpenshift(v bool) {
 	o.IsOpenshift = &v
 }
 
+// GetIsVsphere returns the IsVsphere field value if set, zero value otherwise.
+func (o *BoundFlavorsForProjectsListDto) GetIsVsphere() bool {
+	if o == nil || IsNil(o.IsVsphere) {
+		var ret bool
+		return ret
+	}
+	return *o.IsVsphere
+}
+
+// GetIsVsphereOk returns a tuple with the IsVsphere field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BoundFlavorsForProjectsListDto) GetIsVsphereOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsVsphere) {
+		return nil, false
+	}
+	return o.IsVsphere, true
+}
+
+// HasIsVsphere returns a boolean if a field has been set.
+func (o *BoundFlavorsForProjectsListDto) HasIsVsphere() bool {
+	if o != nil && !IsNil(o.IsVsphere) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsVsphere gets a reference to the given bool and assigns it to the IsVsphere field.
+func (o *BoundFlavorsForProjectsListDto) SetIsVsphere(v bool) {
+	o.IsVsphere = &v
+}
+
 // GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BoundFlavorsForProjectsListDto) GetProjectName() string {
 	if o == nil || IsNil(o.ProjectName.Get()) {
@@ -779,6 +813,38 @@ func (o *BoundFlavorsForProjectsListDto) UnsetWindowsPrice() {
 	o.WindowsPrice.Unset()
 }
 
+// GetCloudType returns the CloudType field value if set, zero value otherwise.
+func (o *BoundFlavorsForProjectsListDto) GetCloudType() CloudType {
+	if o == nil || IsNil(o.CloudType) {
+		var ret CloudType
+		return ret
+	}
+	return *o.CloudType
+}
+
+// GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BoundFlavorsForProjectsListDto) GetCloudTypeOk() (*CloudType, bool) {
+	if o == nil || IsNil(o.CloudType) {
+		return nil, false
+	}
+	return o.CloudType, true
+}
+
+// HasCloudType returns a boolean if a field has been set.
+func (o *BoundFlavorsForProjectsListDto) HasCloudType() bool {
+	if o != nil && !IsNil(o.CloudType) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudType gets a reference to the given CloudType and assigns it to the CloudType field.
+func (o *BoundFlavorsForProjectsListDto) SetCloudType(v CloudType) {
+	o.CloudType = &v
+}
+
 func (o BoundFlavorsForProjectsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -825,6 +891,9 @@ func (o BoundFlavorsForProjectsListDto) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.IsOpenshift) {
 		toSerialize["isOpenshift"] = o.IsOpenshift
 	}
+	if !IsNil(o.IsVsphere) {
+		toSerialize["isVsphere"] = o.IsVsphere
+	}
 	if o.ProjectName.IsSet() {
 		toSerialize["projectName"] = o.ProjectName.Get()
 	}
@@ -848,6 +917,9 @@ func (o BoundFlavorsForProjectsListDto) ToMap() (map[string]interface{}, error) 
 	}
 	if o.WindowsPrice.IsSet() {
 		toSerialize["windowsPrice"] = o.WindowsPrice.Get()
+	}
+	if !IsNil(o.CloudType) {
+		toSerialize["cloudType"] = o.CloudType
 	}
 	return toSerialize, nil
 }

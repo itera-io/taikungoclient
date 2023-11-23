@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_ProjectTemplatesAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_ProjectTemplatesAPIService(t *testing.T) {
 
 	t.Run("Test ProjectTemplatesAPIService ProjecttemplateCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ProjectTemplatesAPI.ProjecttemplateCreate(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_ProjectTemplatesAPIService(t *testing.T) {
 
 	t.Run("Test ProjectTemplatesAPIService ProjecttemplateDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -48,7 +48,7 @@ func Test_taikuncore_ProjectTemplatesAPIService(t *testing.T) {
 
 	t.Run("Test ProjectTemplatesAPIService ProjecttemplateDropdown", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ProjectTemplatesAPI.ProjecttemplateDropdown(context.Background()).Execute()
 
@@ -60,7 +60,7 @@ func Test_taikuncore_ProjectTemplatesAPIService(t *testing.T) {
 
 	t.Run("Test ProjectTemplatesAPIService ProjecttemplateList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ProjectTemplatesAPI.ProjecttemplateList(context.Background()).Execute()
 

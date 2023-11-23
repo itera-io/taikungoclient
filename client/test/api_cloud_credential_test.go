@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_CloudCredentialAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_CloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test CloudCredentialAPIService CloudcredentialsAllFlavors", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -38,7 +38,7 @@ func Test_taikuncore_CloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test CloudCredentialAPIService CloudcredentialsDashboardList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.CloudCredentialAPI.CloudcredentialsDashboardList(context.Background()).Execute()
 
@@ -50,7 +50,7 @@ func Test_taikuncore_CloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test CloudCredentialAPIService CloudcredentialsDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -63,7 +63,7 @@ func Test_taikuncore_CloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test CloudCredentialAPIService CloudcredentialsExceeded", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.CloudCredentialAPI.CloudcredentialsExceeded(context.Background()).Execute()
 
@@ -75,7 +75,7 @@ func Test_taikuncore_CloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test CloudCredentialAPIService CloudcredentialsForCli", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.CloudCredentialAPI.CloudcredentialsForCli(context.Background()).Execute()
 
@@ -87,7 +87,7 @@ func Test_taikuncore_CloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test CloudCredentialAPIService CloudcredentialsForProject", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.CloudCredentialAPI.CloudcredentialsForProject(context.Background()).Execute()
 
@@ -99,7 +99,7 @@ func Test_taikuncore_CloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test CloudCredentialAPIService CloudcredentialsLockManager", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.CloudCredentialAPI.CloudcredentialsLockManager(context.Background()).Execute()
 
@@ -110,7 +110,7 @@ func Test_taikuncore_CloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test CloudCredentialAPIService CloudcredentialsMakeDefault", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.CloudCredentialAPI.CloudcredentialsMakeDefault(context.Background()).Execute()
 
@@ -121,7 +121,7 @@ func Test_taikuncore_CloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test CloudCredentialAPIService CloudcredentialsOrgList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.CloudCredentialAPI.CloudcredentialsOrgList(context.Background()).Execute()
 

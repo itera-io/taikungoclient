@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_SecurityGroupAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_SecurityGroupAPIService(t *testing.T) {
 
 	t.Run("Test SecurityGroupAPIService SecuritygroupCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SecurityGroupAPI.SecuritygroupCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_SecurityGroupAPIService(t *testing.T) {
 
 	t.Run("Test SecurityGroupAPIService SecuritygroupDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -49,7 +49,7 @@ func Test_taikuncore_SecurityGroupAPIService(t *testing.T) {
 
 	t.Run("Test SecurityGroupAPIService SecuritygroupEdit", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.SecurityGroupAPI.SecuritygroupEdit(context.Background()).Execute()
 
@@ -60,7 +60,7 @@ func Test_taikuncore_SecurityGroupAPIService(t *testing.T) {
 
 	t.Run("Test SecurityGroupAPIService SecuritygroupList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var standAloneProfileId int32
 

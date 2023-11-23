@@ -495,8 +495,6 @@ func (a *OpenshiftAPIService) OpenshiftPullSecretExecute(r ApiOpenshiftPullSecre
 	var configLocalVarFileBytes    []byte
 
 	configLocalVarFormFileName = "config"
-
-
 	configLocalVarFile := r.config
 
 	if configLocalVarFile != nil {
@@ -674,8 +672,6 @@ func (a *OpenshiftAPIService) OpenshiftStorageClassExecute(r ApiOpenshiftStorage
 	var configLocalVarFileBytes    []byte
 
 	configLocalVarFormFileName = "config"
-
-
 	configLocalVarFile := r.config
 
 	if configLocalVarFile != nil {
@@ -860,8 +856,6 @@ func (a *OpenshiftAPIService) OpenshiftValidateExecute(r ApiOpenshiftValidateReq
 	var configLocalVarFileBytes    []byte
 
 	configLocalVarFormFileName = "config"
-
-
 	configLocalVarFile := r.config
 
 	if configLocalVarFile != nil {

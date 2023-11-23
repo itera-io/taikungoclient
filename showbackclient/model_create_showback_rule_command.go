@@ -20,17 +20,17 @@ var _ MappedNullable = &CreateShowbackRuleCommand{}
 
 // CreateShowbackRuleCommand struct for CreateShowbackRuleCommand
 type CreateShowbackRuleCommand struct {
-	Name                 NullableString           `json:"name,omitempty"`
-	MetricName           NullableString           `json:"metricName,omitempty"`
-	ByLabel              NullableString           `json:"byLabel,omitempty"`
-	Kind                 *EShowbackType           `json:"kind,omitempty"`
-	Type                 *EPrometheusType         `json:"type,omitempty"`
-	Price                NullableFloat64          `json:"price,omitempty"`
-	ProjectAlertLimit    NullableInt32            `json:"projectAlertLimit,omitempty"`
-	GlobalAlertLimit     NullableInt32            `json:"globalAlertLimit,omitempty"`
-	OrganizationId       NullableInt32            `json:"organizationId,omitempty"`
-	Labels               []ShowbackLabelCreateDto `json:"labels,omitempty"`
-	ShowbackCredentialId NullableInt32            `json:"showbackCredentialId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	MetricName NullableString `json:"metricName,omitempty"`
+	ByLabel NullableString `json:"byLabel,omitempty"`
+	Kind *EShowbackType `json:"kind,omitempty"`
+	Type *EPrometheusType `json:"type,omitempty"`
+	Price NullableFloat64 `json:"price,omitempty"`
+	ProjectAlertLimit NullableInt32 `json:"projectAlertLimit,omitempty"`
+	GlobalAlertLimit NullableInt32 `json:"globalAlertLimit,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	Labels []ShowbackLabelCreateDto `json:"labels,omitempty"`
+	ShowbackCredentialId NullableInt32 `json:"showbackCredentialId,omitempty"`
 }
 
 // NewCreateShowbackRuleCommand instantiates a new CreateShowbackRuleCommand object
@@ -82,7 +82,6 @@ func (o *CreateShowbackRuleCommand) HasName() bool {
 func (o *CreateShowbackRuleCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateShowbackRuleCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -125,7 +124,6 @@ func (o *CreateShowbackRuleCommand) HasMetricName() bool {
 func (o *CreateShowbackRuleCommand) SetMetricName(v string) {
 	o.MetricName.Set(&v)
 }
-
 // SetMetricNameNil sets the value for MetricName to be an explicit nil
 func (o *CreateShowbackRuleCommand) SetMetricNameNil() {
 	o.MetricName.Set(nil)
@@ -168,7 +166,6 @@ func (o *CreateShowbackRuleCommand) HasByLabel() bool {
 func (o *CreateShowbackRuleCommand) SetByLabel(v string) {
 	o.ByLabel.Set(&v)
 }
-
 // SetByLabelNil sets the value for ByLabel to be an explicit nil
 func (o *CreateShowbackRuleCommand) SetByLabelNil() {
 	o.ByLabel.Set(nil)
@@ -275,7 +272,6 @@ func (o *CreateShowbackRuleCommand) HasPrice() bool {
 func (o *CreateShowbackRuleCommand) SetPrice(v float64) {
 	o.Price.Set(&v)
 }
-
 // SetPriceNil sets the value for Price to be an explicit nil
 func (o *CreateShowbackRuleCommand) SetPriceNil() {
 	o.Price.Set(nil)
@@ -318,7 +314,6 @@ func (o *CreateShowbackRuleCommand) HasProjectAlertLimit() bool {
 func (o *CreateShowbackRuleCommand) SetProjectAlertLimit(v int32) {
 	o.ProjectAlertLimit.Set(&v)
 }
-
 // SetProjectAlertLimitNil sets the value for ProjectAlertLimit to be an explicit nil
 func (o *CreateShowbackRuleCommand) SetProjectAlertLimitNil() {
 	o.ProjectAlertLimit.Set(nil)
@@ -361,7 +356,6 @@ func (o *CreateShowbackRuleCommand) HasGlobalAlertLimit() bool {
 func (o *CreateShowbackRuleCommand) SetGlobalAlertLimit(v int32) {
 	o.GlobalAlertLimit.Set(&v)
 }
-
 // SetGlobalAlertLimitNil sets the value for GlobalAlertLimit to be an explicit nil
 func (o *CreateShowbackRuleCommand) SetGlobalAlertLimitNil() {
 	o.GlobalAlertLimit.Set(nil)
@@ -404,7 +398,6 @@ func (o *CreateShowbackRuleCommand) HasOrganizationId() bool {
 func (o *CreateShowbackRuleCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateShowbackRuleCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -480,7 +473,6 @@ func (o *CreateShowbackRuleCommand) HasShowbackCredentialId() bool {
 func (o *CreateShowbackRuleCommand) SetShowbackCredentialId(v int32) {
 	o.ShowbackCredentialId.Set(&v)
 }
-
 // SetShowbackCredentialIdNil sets the value for ShowbackCredentialId to be an explicit nil
 func (o *CreateShowbackRuleCommand) SetShowbackCredentialIdNil() {
 	o.ShowbackCredentialId.Set(nil)
@@ -492,7 +484,7 @@ func (o *CreateShowbackRuleCommand) UnsetShowbackCredentialId() {
 }
 
 func (o CreateShowbackRuleCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -572,3 +564,5 @@ func (v *NullableCreateShowbackRuleCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

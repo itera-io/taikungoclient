@@ -44,6 +44,7 @@ type ProjectDetailsForServersDto struct {
 	HasKubeConfigFile *bool `json:"hasKubeConfigFile,omitempty"`
 	HasSelectedFlavors *bool `json:"hasSelectedFlavors,omitempty"`
 	IsMaintenanceModeEnabled *bool `json:"isMaintenanceModeEnabled,omitempty"`
+	IsProjectMaintenanceModeEnabled *bool `json:"isProjectMaintenanceModeEnabled,omitempty"`
 	IsDeprecated *bool `json:"isDeprecated,omitempty"`
 	CpuLimit *int64 `json:"cpuLimit,omitempty"`
 	RamLimit *int64 `json:"ramLimit,omitempty"`
@@ -82,6 +83,7 @@ type ProjectDetailsForServersDto struct {
 	SpotEnabled NullableBool `json:"spotEnabled,omitempty"`
 	IsAutoscalingEnabled *bool `json:"isAutoscalingEnabled,omitempty"`
 	HasNfsServer *bool `json:"hasNfsServer,omitempty"`
+	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
 	AvailabilityZones []string `json:"availabilityZones,omitempty"`
 	Hypervisors []string `json:"hypervisors,omitempty"`
 	ProxmoxStorage *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
@@ -920,6 +922,38 @@ func (o *ProjectDetailsForServersDto) HasIsMaintenanceModeEnabled() bool {
 // SetIsMaintenanceModeEnabled gets a reference to the given bool and assigns it to the IsMaintenanceModeEnabled field.
 func (o *ProjectDetailsForServersDto) SetIsMaintenanceModeEnabled(v bool) {
 	o.IsMaintenanceModeEnabled = &v
+}
+
+// GetIsProjectMaintenanceModeEnabled returns the IsProjectMaintenanceModeEnabled field value if set, zero value otherwise.
+func (o *ProjectDetailsForServersDto) GetIsProjectMaintenanceModeEnabled() bool {
+	if o == nil || IsNil(o.IsProjectMaintenanceModeEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsProjectMaintenanceModeEnabled
+}
+
+// GetIsProjectMaintenanceModeEnabledOk returns a tuple with the IsProjectMaintenanceModeEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectDetailsForServersDto) GetIsProjectMaintenanceModeEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsProjectMaintenanceModeEnabled) {
+		return nil, false
+	}
+	return o.IsProjectMaintenanceModeEnabled, true
+}
+
+// HasIsProjectMaintenanceModeEnabled returns a boolean if a field has been set.
+func (o *ProjectDetailsForServersDto) HasIsProjectMaintenanceModeEnabled() bool {
+	if o != nil && !IsNil(o.IsProjectMaintenanceModeEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsProjectMaintenanceModeEnabled gets a reference to the given bool and assigns it to the IsProjectMaintenanceModeEnabled field.
+func (o *ProjectDetailsForServersDto) SetIsProjectMaintenanceModeEnabled(v bool) {
+	o.IsProjectMaintenanceModeEnabled = &v
 }
 
 // GetIsDeprecated returns the IsDeprecated field value if set, zero value otherwise.
@@ -2318,6 +2352,38 @@ func (o *ProjectDetailsForServersDto) SetHasNfsServer(v bool) {
 	o.HasNfsServer = &v
 }
 
+// GetWasmEnabled returns the WasmEnabled field value if set, zero value otherwise.
+func (o *ProjectDetailsForServersDto) GetWasmEnabled() bool {
+	if o == nil || IsNil(o.WasmEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.WasmEnabled
+}
+
+// GetWasmEnabledOk returns a tuple with the WasmEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectDetailsForServersDto) GetWasmEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.WasmEnabled) {
+		return nil, false
+	}
+	return o.WasmEnabled, true
+}
+
+// HasWasmEnabled returns a boolean if a field has been set.
+func (o *ProjectDetailsForServersDto) HasWasmEnabled() bool {
+	if o != nil && !IsNil(o.WasmEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetWasmEnabled gets a reference to the given bool and assigns it to the WasmEnabled field.
+func (o *ProjectDetailsForServersDto) SetWasmEnabled(v bool) {
+	o.WasmEnabled = &v
+}
+
 // GetAvailabilityZones returns the AvailabilityZones field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectDetailsForServersDto) GetAvailabilityZones() []string {
 	if o == nil {
@@ -2498,6 +2564,9 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsMaintenanceModeEnabled) {
 		toSerialize["isMaintenanceModeEnabled"] = o.IsMaintenanceModeEnabled
 	}
+	if !IsNil(o.IsProjectMaintenanceModeEnabled) {
+		toSerialize["isProjectMaintenanceModeEnabled"] = o.IsProjectMaintenanceModeEnabled
+	}
 	if !IsNil(o.IsDeprecated) {
 		toSerialize["isDeprecated"] = o.IsDeprecated
 	}
@@ -2611,6 +2680,9 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.HasNfsServer) {
 		toSerialize["hasNfsServer"] = o.HasNfsServer
+	}
+	if !IsNil(o.WasmEnabled) {
+		toSerialize["wasmEnabled"] = o.WasmEnabled
 	}
 	if o.AvailabilityZones != nil {
 		toSerialize["availabilityZones"] = o.AvailabilityZones

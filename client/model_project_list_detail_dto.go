@@ -25,6 +25,7 @@ type ProjectListDetailDto struct {
 	IsKubernetes *bool `json:"isKubernetes,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
 	HasKubeConfigFile *bool `json:"hasKubeConfigFile,omitempty"`
+	IsMaintenanceModeEnabled *bool `json:"isMaintenanceModeEnabled,omitempty"`
 	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
@@ -243,6 +244,38 @@ func (o *ProjectListDetailDto) HasHasKubeConfigFile() bool {
 // SetHasKubeConfigFile gets a reference to the given bool and assigns it to the HasKubeConfigFile field.
 func (o *ProjectListDetailDto) SetHasKubeConfigFile(v bool) {
 	o.HasKubeConfigFile = &v
+}
+
+// GetIsMaintenanceModeEnabled returns the IsMaintenanceModeEnabled field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetIsMaintenanceModeEnabled() bool {
+	if o == nil || IsNil(o.IsMaintenanceModeEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsMaintenanceModeEnabled
+}
+
+// GetIsMaintenanceModeEnabledOk returns a tuple with the IsMaintenanceModeEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetIsMaintenanceModeEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsMaintenanceModeEnabled) {
+		return nil, false
+	}
+	return o.IsMaintenanceModeEnabled, true
+}
+
+// HasIsMaintenanceModeEnabled returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasIsMaintenanceModeEnabled() bool {
+	if o != nil && !IsNil(o.IsMaintenanceModeEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsMaintenanceModeEnabled gets a reference to the given bool and assigns it to the IsMaintenanceModeEnabled field.
+func (o *ProjectListDetailDto) SetIsMaintenanceModeEnabled(v bool) {
+	o.IsMaintenanceModeEnabled = &v
 }
 
 // GetCloudCredentialName returns the CloudCredentialName field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1422,6 +1455,9 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.HasKubeConfigFile) {
 		toSerialize["hasKubeConfigFile"] = o.HasKubeConfigFile
+	}
+	if !IsNil(o.IsMaintenanceModeEnabled) {
+		toSerialize["isMaintenanceModeEnabled"] = o.IsMaintenanceModeEnabled
 	}
 	if o.CloudCredentialName.IsSet() {
 		toSerialize["cloudCredentialName"] = o.CloudCredentialName.Get()

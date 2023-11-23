@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_StandaloneVMDisksAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_StandaloneVMDisksAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneVMDisksAPIService StandalonevmdisksCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.StandaloneVMDisksAPI.StandalonevmdisksCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_StandaloneVMDisksAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneVMDisksAPIService StandalonevmdisksDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.StandaloneVMDisksAPI.StandalonevmdisksDelete(context.Background()).Execute()
 
@@ -47,7 +47,7 @@ func Test_taikuncore_StandaloneVMDisksAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneVMDisksAPIService StandalonevmdisksPurge", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.StandaloneVMDisksAPI.StandalonevmdisksPurge(context.Background()).Execute()
 
@@ -58,7 +58,7 @@ func Test_taikuncore_StandaloneVMDisksAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneVMDisksAPIService StandalonevmdisksReset", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.StandaloneVMDisksAPI.StandalonevmdisksReset(context.Background()).Execute()
 
@@ -69,7 +69,7 @@ func Test_taikuncore_StandaloneVMDisksAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneVMDisksAPIService StandalonevmdisksUpdate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.StandaloneVMDisksAPI.StandalonevmdisksUpdate(context.Background()).Execute()
 
@@ -80,7 +80,7 @@ func Test_taikuncore_StandaloneVMDisksAPIService(t *testing.T) {
 
 	t.Run("Test StandaloneVMDisksAPIService StandalonevmdisksUpdateSize", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.StandaloneVMDisksAPI.StandalonevmdisksUpdateSize(context.Background()).Execute()
 

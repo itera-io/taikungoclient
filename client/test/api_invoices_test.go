@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_InvoicesAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_InvoicesAPIService(t *testing.T) {
 
 	t.Run("Test InvoicesAPIService InvoicesCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.InvoicesAPI.InvoicesCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_InvoicesAPIService(t *testing.T) {
 
 	t.Run("Test InvoicesAPIService InvoicesDownload", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.InvoicesAPI.InvoicesDownload(context.Background()).Execute()
 
@@ -48,7 +48,7 @@ func Test_taikuncore_InvoicesAPIService(t *testing.T) {
 
 	t.Run("Test InvoicesAPIService InvoicesList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.InvoicesAPI.InvoicesList(context.Background()).Execute()
 
@@ -60,7 +60,7 @@ func Test_taikuncore_InvoicesAPIService(t *testing.T) {
 
 	t.Run("Test InvoicesAPIService InvoicesUpdate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var invoiceId int32
 

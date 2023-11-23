@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_PreDefinedQueriesAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_PreDefinedQueriesAPIService(t *testing.T) {
 
 	t.Run("Test PreDefinedQueriesAPIService PredefinedqueriesCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.PreDefinedQueriesAPI.PredefinedqueriesCreate(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_PreDefinedQueriesAPIService(t *testing.T) {
 
 	t.Run("Test PreDefinedQueriesAPIService PredefinedqueriesDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -48,7 +48,7 @@ func Test_taikuncore_PreDefinedQueriesAPIService(t *testing.T) {
 
 	t.Run("Test PreDefinedQueriesAPIService PredefinedqueriesList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -62,7 +62,7 @@ func Test_taikuncore_PreDefinedQueriesAPIService(t *testing.T) {
 
 	t.Run("Test PreDefinedQueriesAPIService PredefinedqueriesPrometheusDashboardCommon", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -76,7 +76,7 @@ func Test_taikuncore_PreDefinedQueriesAPIService(t *testing.T) {
 
 	t.Run("Test PreDefinedQueriesAPIService PredefinedqueriesUpdate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.PreDefinedQueriesAPI.PredefinedqueriesUpdate(context.Background()).Execute()
 

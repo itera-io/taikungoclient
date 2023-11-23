@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // AllowedHostAPIService AllowedHostAPI service
 type AllowedHostAPIService service
 
 type ApiAllowedhostCreateRequest struct {
-	ctx                      context.Context
-	ApiService               *AllowedHostAPIService
+	ctx context.Context
+	ApiService *AllowedHostAPIService
 	createAllowedHostCommand *CreateAllowedHostCommand
 }
 
@@ -41,25 +42,24 @@ func (r ApiAllowedhostCreateRequest) Execute() (*ApiResponse, *http.Response, er
 /*
 AllowedhostCreate Create access profile allowed host
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAllowedhostCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAllowedhostCreateRequest
 */
 func (a *AllowedHostAPIService) AllowedhostCreate(ctx context.Context) ApiAllowedhostCreateRequest {
 	return ApiAllowedhostCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *AllowedHostAPIService) AllowedhostCreateExecute(r ApiAllowedhostCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AllowedHostAPIService.AllowedhostCreate")
@@ -135,8 +135,8 @@ func (a *AllowedHostAPIService) AllowedhostCreateExecute(r ApiAllowedhostCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +146,8 @@ func (a *AllowedHostAPIService) AllowedhostCreateExecute(r ApiAllowedhostCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +157,8 @@ func (a *AllowedHostAPIService) AllowedhostCreateExecute(r ApiAllowedhostCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +168,8 @@ func (a *AllowedHostAPIService) AllowedhostCreateExecute(r ApiAllowedhostCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -179,8 +179,8 @@ func (a *AllowedHostAPIService) AllowedhostCreateExecute(r ApiAllowedhostCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -198,9 +198,9 @@ func (a *AllowedHostAPIService) AllowedhostCreateExecute(r ApiAllowedhostCreateR
 }
 
 type ApiAllowedhostDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AllowedHostAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiAllowedhostDeleteRequest) Execute() (*http.Response, error) {
@@ -210,24 +210,24 @@ func (r ApiAllowedhostDeleteRequest) Execute() (*http.Response, error) {
 /*
 AllowedhostDelete Delete access profile allowed host
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiAllowedhostDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiAllowedhostDeleteRequest
 */
 func (a *AllowedHostAPIService) AllowedhostDelete(ctx context.Context, id int32) ApiAllowedhostDeleteRequest {
 	return ApiAllowedhostDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *AllowedHostAPIService) AllowedhostDeleteExecute(r ApiAllowedhostDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AllowedHostAPIService.AllowedhostDelete")
@@ -302,8 +302,8 @@ func (a *AllowedHostAPIService) AllowedhostDeleteExecute(r ApiAllowedhostDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -313,8 +313,8 @@ func (a *AllowedHostAPIService) AllowedhostDeleteExecute(r ApiAllowedhostDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -324,8 +324,8 @@ func (a *AllowedHostAPIService) AllowedhostDeleteExecute(r ApiAllowedhostDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -335,8 +335,8 @@ func (a *AllowedHostAPIService) AllowedhostDeleteExecute(r ApiAllowedhostDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -346,8 +346,8 @@ func (a *AllowedHostAPIService) AllowedhostDeleteExecute(r ApiAllowedhostDeleteR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -356,9 +356,9 @@ func (a *AllowedHostAPIService) AllowedhostDeleteExecute(r ApiAllowedhostDeleteR
 }
 
 type ApiAllowedhostEditRequest struct {
-	ctx                context.Context
-	ApiService         *AllowedHostAPIService
-	id                 int32
+	ctx context.Context
+	ApiService *AllowedHostAPIService
+	id int32
 	editAllowedHostDto *EditAllowedHostDto
 }
 
@@ -374,24 +374,24 @@ func (r ApiAllowedhostEditRequest) Execute() (*http.Response, error) {
 /*
 AllowedhostEdit Edit access profile allowed host
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiAllowedhostEditRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiAllowedhostEditRequest
 */
 func (a *AllowedHostAPIService) AllowedhostEdit(ctx context.Context, id int32) ApiAllowedhostEditRequest {
 	return ApiAllowedhostEditRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *AllowedHostAPIService) AllowedhostEditExecute(r ApiAllowedhostEditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AllowedHostAPIService.AllowedhostEdit")
@@ -471,8 +471,8 @@ func (a *AllowedHostAPIService) AllowedhostEditExecute(r ApiAllowedhostEditReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -482,8 +482,8 @@ func (a *AllowedHostAPIService) AllowedhostEditExecute(r ApiAllowedhostEditReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -493,8 +493,8 @@ func (a *AllowedHostAPIService) AllowedhostEditExecute(r ApiAllowedhostEditReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -504,8 +504,8 @@ func (a *AllowedHostAPIService) AllowedhostEditExecute(r ApiAllowedhostEditReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -515,8 +515,8 @@ func (a *AllowedHostAPIService) AllowedhostEditExecute(r ApiAllowedhostEditReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -525,14 +525,14 @@ func (a *AllowedHostAPIService) AllowedhostEditExecute(r ApiAllowedhostEditReque
 }
 
 type ApiAllowedhostListRequest struct {
-	ctx             context.Context
-	ApiService      *AllowedHostAPIService
+	ctx context.Context
+	ApiService *AllowedHostAPIService
 	accessProfileId int32
-	offset          *int32
-	limit           *int32
-	search          *string
-	sortBy          *string
-	sortDirection   *string
+	offset *int32
+	limit *int32
+	search *string
+	sortBy *string
+	sortDirection *string
 }
 
 func (r ApiAllowedhostListRequest) Offset(offset int32) ApiAllowedhostListRequest {
@@ -567,27 +567,26 @@ func (r ApiAllowedhostListRequest) Execute() (*AllowedHostList, *http.Response, 
 /*
 AllowedhostList List allowed hosts by access profile id
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accessProfileId
-	@return ApiAllowedhostListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accessProfileId
+ @return ApiAllowedhostListRequest
 */
 func (a *AllowedHostAPIService) AllowedhostList(ctx context.Context, accessProfileId int32) ApiAllowedhostListRequest {
 	return ApiAllowedhostListRequest{
-		ApiService:      a,
-		ctx:             ctx,
+		ApiService: a,
+		ctx: ctx,
 		accessProfileId: accessProfileId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AllowedHostList
+//  @return AllowedHostList
 func (a *AllowedHostAPIService) AllowedhostListExecute(r ApiAllowedhostListRequest) (*AllowedHostList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AllowedHostList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AllowedHostList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AllowedHostAPIService.AllowedhostList")
@@ -677,8 +676,8 @@ func (a *AllowedHostAPIService) AllowedhostListExecute(r ApiAllowedhostListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -688,8 +687,8 @@ func (a *AllowedHostAPIService) AllowedhostListExecute(r ApiAllowedhostListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -699,8 +698,8 @@ func (a *AllowedHostAPIService) AllowedhostListExecute(r ApiAllowedhostListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -710,8 +709,8 @@ func (a *AllowedHostAPIService) AllowedhostListExecute(r ApiAllowedhostListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -721,8 +720,8 @@ func (a *AllowedHostAPIService) AllowedhostListExecute(r ApiAllowedhostListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

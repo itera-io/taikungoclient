@@ -19,12 +19,13 @@ import (
 	"net/url"
 )
 
+
 // KeycloakAPIService KeycloakAPI service
 type KeycloakAPIService service
 
 type ApiKeycloakCreateRequest struct {
-	ctx                   context.Context
-	ApiService            *KeycloakAPIService
+	ctx context.Context
+	ApiService *KeycloakAPIService
 	keycloakCreateCommand *KeycloakCreateCommand
 }
 
@@ -40,22 +41,22 @@ func (r ApiKeycloakCreateRequest) Execute() (*http.Response, error) {
 /*
 KeycloakCreate Create keycloak configuration for organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiKeycloakCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiKeycloakCreateRequest
 */
 func (a *KeycloakAPIService) KeycloakCreate(ctx context.Context) ApiKeycloakCreateRequest {
 	return ApiKeycloakCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *KeycloakAPIService) KeycloakCreateExecute(r ApiKeycloakCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KeycloakAPIService.KeycloakCreate")
@@ -134,8 +135,8 @@ func (a *KeycloakAPIService) KeycloakCreateExecute(r ApiKeycloakCreateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -145,8 +146,8 @@ func (a *KeycloakAPIService) KeycloakCreateExecute(r ApiKeycloakCreateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -156,8 +157,8 @@ func (a *KeycloakAPIService) KeycloakCreateExecute(r ApiKeycloakCreateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -167,8 +168,8 @@ func (a *KeycloakAPIService) KeycloakCreateExecute(r ApiKeycloakCreateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -178,8 +179,8 @@ func (a *KeycloakAPIService) KeycloakCreateExecute(r ApiKeycloakCreateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -188,8 +189,8 @@ func (a *KeycloakAPIService) KeycloakCreateExecute(r ApiKeycloakCreateRequest) (
 }
 
 type ApiKeycloakDeleteRequest struct {
-	ctx                   context.Context
-	ApiService            *KeycloakAPIService
+	ctx context.Context
+	ApiService *KeycloakAPIService
 	keycloakDeleteCommand *KeycloakDeleteCommand
 }
 
@@ -205,22 +206,22 @@ func (r ApiKeycloakDeleteRequest) Execute() (*http.Response, error) {
 /*
 KeycloakDelete Delete keycloak configuration
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiKeycloakDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiKeycloakDeleteRequest
 */
 func (a *KeycloakAPIService) KeycloakDelete(ctx context.Context) ApiKeycloakDeleteRequest {
 	return ApiKeycloakDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *KeycloakAPIService) KeycloakDeleteExecute(r ApiKeycloakDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KeycloakAPIService.KeycloakDelete")
@@ -299,8 +300,8 @@ func (a *KeycloakAPIService) KeycloakDeleteExecute(r ApiKeycloakDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -310,8 +311,8 @@ func (a *KeycloakAPIService) KeycloakDeleteExecute(r ApiKeycloakDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -321,8 +322,8 @@ func (a *KeycloakAPIService) KeycloakDeleteExecute(r ApiKeycloakDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -332,8 +333,8 @@ func (a *KeycloakAPIService) KeycloakDeleteExecute(r ApiKeycloakDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -343,8 +344,8 @@ func (a *KeycloakAPIService) KeycloakDeleteExecute(r ApiKeycloakDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -353,8 +354,8 @@ func (a *KeycloakAPIService) KeycloakDeleteExecute(r ApiKeycloakDeleteRequest) (
 }
 
 type ApiKeycloakEditRequest struct {
-	ctx                 context.Context
-	ApiService          *KeycloakAPIService
+	ctx context.Context
+	ApiService *KeycloakAPIService
 	keycloakEditCommand *KeycloakEditCommand
 }
 
@@ -370,22 +371,22 @@ func (r ApiKeycloakEditRequest) Execute() (*http.Response, error) {
 /*
 KeycloakEdit Edit keycloak configuration for organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiKeycloakEditRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiKeycloakEditRequest
 */
 func (a *KeycloakAPIService) KeycloakEdit(ctx context.Context) ApiKeycloakEditRequest {
 	return ApiKeycloakEditRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *KeycloakAPIService) KeycloakEditExecute(r ApiKeycloakEditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KeycloakAPIService.KeycloakEdit")
@@ -464,8 +465,8 @@ func (a *KeycloakAPIService) KeycloakEditExecute(r ApiKeycloakEditRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -475,8 +476,8 @@ func (a *KeycloakAPIService) KeycloakEditExecute(r ApiKeycloakEditRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -486,8 +487,8 @@ func (a *KeycloakAPIService) KeycloakEditExecute(r ApiKeycloakEditRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -497,8 +498,8 @@ func (a *KeycloakAPIService) KeycloakEditExecute(r ApiKeycloakEditRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -508,8 +509,8 @@ func (a *KeycloakAPIService) KeycloakEditExecute(r ApiKeycloakEditRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -518,7 +519,7 @@ func (a *KeycloakAPIService) KeycloakEditExecute(r ApiKeycloakEditRequest) (*htt
 }
 
 type ApiKeycloakListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *KeycloakAPIService
 }
 
@@ -529,25 +530,24 @@ func (r ApiKeycloakListRequest) Execute() (*KeycloakListDto, *http.Response, err
 /*
 KeycloakList Get keycloak configuration
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiKeycloakListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiKeycloakListRequest
 */
 func (a *KeycloakAPIService) KeycloakList(ctx context.Context) ApiKeycloakListRequest {
 	return ApiKeycloakListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return KeycloakListDto
+//  @return KeycloakListDto
 func (a *KeycloakAPIService) KeycloakListExecute(r ApiKeycloakListRequest) (*KeycloakListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *KeycloakListDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *KeycloakListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KeycloakAPIService.KeycloakList")
@@ -621,8 +621,8 @@ func (a *KeycloakAPIService) KeycloakListExecute(r ApiKeycloakListRequest) (*Key
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -632,8 +632,8 @@ func (a *KeycloakAPIService) KeycloakListExecute(r ApiKeycloakListRequest) (*Key
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -643,8 +643,8 @@ func (a *KeycloakAPIService) KeycloakListExecute(r ApiKeycloakListRequest) (*Key
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -654,8 +654,8 @@ func (a *KeycloakAPIService) KeycloakListExecute(r ApiKeycloakListRequest) (*Key
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -665,8 +665,8 @@ func (a *KeycloakAPIService) KeycloakListExecute(r ApiKeycloakListRequest) (*Key
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

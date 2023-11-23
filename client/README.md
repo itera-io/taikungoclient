@@ -37,7 +37,7 @@ Default configuration comes with `Servers` field that contains server objects as
 
 ### Select Server Configuration
 
-For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
+For using other server than the one defined on index 0 set context value `taikuncore.ContextServerIndex` of type `int`.
 
 ```golang
 ctx := context.WithValue(context.Background(), taikuncore.ContextServerIndex, 1)
@@ -45,7 +45,7 @@ ctx := context.WithValue(context.Background(), taikuncore.ContextServerIndex, 1)
 
 ### Templated Server URL
 
-Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
+Templated server URL is formatted using default variables from configuration or from context value `taikuncore.ContextServerVariables` of type `map[string]string`.
 
 ```golang
 ctx := context.WithValue(context.Background(), taikuncore.ContextServerVariables, map[string]string{
@@ -59,7 +59,7 @@ Note, enum values are always validated and all unused variables are silently ign
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
-Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
+Similar rules for overriding default operation server index and variables applies by using `taikuncore.ContextOperationServerIndices` and `taikuncore.ContextOperationServerVariables` context maps.
 
 ```golang
 ctx := context.WithValue(context.Background(), taikuncore.ContextOperationServerIndices, map[string]int{
@@ -298,6 +298,7 @@ Class | Method | HTTP request | Description
 *ImagesAPI* | [**ImagesCommonGoogleImages**](docs/ImagesAPI.md#imagescommongoogleimages) | **Get** /api/v1/images/google/common/{cloudId} | Commonly used google images
 *ImagesAPI* | [**ImagesGoogleImages**](docs/ImagesAPI.md#imagesgoogleimages) | **Get** /api/v1/images/google/{cloudId}/{type} | 
 *ImagesAPI* | [**ImagesImageDetails**](docs/ImagesAPI.md#imagesimagedetails) | **Post** /api/v1/images/details | Get image details
+*ImagesAPI* | [**ImagesOpenshiftImages**](docs/ImagesAPI.md#imagesopenshiftimages) | **Get** /api/v1/images/openshift/{cloudId} | Retrieve openshift images
 *ImagesAPI* | [**ImagesOpenstackImages**](docs/ImagesAPI.md#imagesopenstackimages) | **Get** /api/v1/images/openstack/{cloudId} | Retrieve openstack images
 *ImagesAPI* | [**ImagesProxmoxImages**](docs/ImagesAPI.md#imagesproxmoximages) | **Get** /api/v1/images/proxmox/{cloudId} | Retrieve proxmox images
 *ImagesAPI* | [**ImagesSelectedImagesForProject**](docs/ImagesAPI.md#imagesselectedimagesforproject) | **Get** /api/v1/images/projects/list | Retrieve selected images for projects
@@ -529,6 +530,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsList**](docs/ProjectsAPI.md#projectslist) | **Get** /api/v1/projects | Retrieve all projects
 *ProjectsAPI* | [**ProjectsLockManager**](docs/ProjectsAPI.md#projectslockmanager) | **Post** /api/v1/projects/lockmanager | Lock/Unlock project
 *ProjectsAPI* | [**ProjectsLokiLogs**](docs/ProjectsAPI.md#projectslokilogs) | **Post** /api/v1/projects/lokilogs | Retrieve loki logs
+*ProjectsAPI* | [**ProjectsMaintenanceManager**](docs/ProjectsAPI.md#projectsmaintenancemanager) | **Post** /api/v1/projects/maintenance-manager | Enable/disable project&#39;s maintenance mode
 *ProjectsAPI* | [**ProjectsMonitoring**](docs/ProjectsAPI.md#projectsmonitoring) | **Post** /api/v1/projects/monitoring | Monitoring operations enable/disable
 *ProjectsAPI* | [**ProjectsMonitoringAlerts**](docs/ProjectsAPI.md#projectsmonitoringalerts) | **Post** /api/v1/projects/monitoringalerts | Monitoring alerts for project
 *ProjectsAPI* | [**ProjectsPrometheusMetrics**](docs/ProjectsAPI.md#projectsprometheusmetrics) | **Post** /api/v1/projects/prometheusmetrics | Prometheus metrics data project
@@ -737,6 +739,7 @@ Class | Method | HTTP request | Description
  - [AiCredentials](docs/AiCredentials.md)
  - [AiCredentialsForOrganizationEntity](docs/AiCredentialsForOrganizationEntity.md)
  - [AiCredentialsListDto](docs/AiCredentialsListDto.md)
+ - [AiListDto](docs/AiListDto.md)
  - [AiType](docs/AiType.md)
  - [AlertingEmailDto](docs/AlertingEmailDto.md)
  - [AlertingIntegrationDto](docs/AlertingIntegrationDto.md)
@@ -1161,6 +1164,8 @@ Class | Method | HTTP request | Description
  - [OpenshiftCredentialForProjectDto](docs/OpenshiftCredentialForProjectDto.md)
  - [OpenshiftFlavorData](docs/OpenshiftFlavorData.md)
  - [OpenshiftFlavorList](docs/OpenshiftFlavorList.md)
+ - [OpenshiftImageList](docs/OpenshiftImageList.md)
+ - [OpenshiftImagesData](docs/OpenshiftImagesData.md)
  - [OpenshiftList](docs/OpenshiftList.md)
  - [OpenshiftListDto](docs/OpenshiftListDto.md)
  - [OpenstackComputeQuotaDto](docs/OpenstackComputeQuotaDto.md)
@@ -1257,6 +1262,7 @@ Class | Method | HTTP request | Description
  - [ProjectListForPoller](docs/ProjectListForPoller.md)
  - [ProjectListForProjectGroupDto](docs/ProjectListForProjectGroupDto.md)
  - [ProjectLockManagerCommand](docs/ProjectLockManagerCommand.md)
+ - [ProjectMaintenanceModeCommand](docs/ProjectMaintenanceModeCommand.md)
  - [ProjectQuotaList](docs/ProjectQuotaList.md)
  - [ProjectQuotaListDto](docs/ProjectQuotaListDto.md)
  - [ProjectRevisionDto](docs/ProjectRevisionDto.md)
@@ -1518,8 +1524,8 @@ Example
 ```golang
 auth := context.WithValue(
 		context.Background(),
-		sw.ContextAPIKeys,
-		map[string]sw.APIKey{
+		taikuncore.ContextAPIKeys,
+		map[string]taikuncore.APIKey{
 			"Authorization": {Key: "API_KEY_STRING"},
 		},
 	)

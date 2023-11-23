@@ -112,6 +112,7 @@ docs/AiCredentials.md
 docs/AiCredentialsAPI.md
 docs/AiCredentialsForOrganizationEntity.md
 docs/AiCredentialsListDto.md
+docs/AiListDto.md
 docs/AiManagementAPI.md
 docs/AiType.md
 docs/AlertingEmailDto.md
@@ -569,6 +570,8 @@ docs/OpenshiftCreateCommand.md
 docs/OpenshiftCredentialForProjectDto.md
 docs/OpenshiftFlavorData.md
 docs/OpenshiftFlavorList.md
+docs/OpenshiftImageList.md
+docs/OpenshiftImagesData.md
 docs/OpenshiftList.md
 docs/OpenshiftListDto.md
 docs/OpenstackCloudCredentialAPI.md
@@ -678,6 +681,7 @@ docs/ProjectListForAlert.md
 docs/ProjectListForPoller.md
 docs/ProjectListForProjectGroupDto.md
 docs/ProjectLockManagerCommand.md
+docs/ProjectMaintenanceModeCommand.md
 docs/ProjectQuotaList.md
 docs/ProjectQuotaListDto.md
 docs/ProjectQuotasAPI.md
@@ -976,6 +980,7 @@ model_ai_credential_dto.go
 model_ai_credentials.go
 model_ai_credentials_for_organization_entity.go
 model_ai_credentials_list_dto.go
+model_ai_list_dto.go
 model_ai_type.go
 model_alerting_email_dto.go
 model_alerting_integration_dto.go
@@ -1400,6 +1405,8 @@ model_openshift_create_command.go
 model_openshift_credential_for_project_dto.go
 model_openshift_flavor_data.go
 model_openshift_flavor_list.go
+model_openshift_image_list.go
+model_openshift_images_data.go
 model_openshift_list.go
 model_openshift_list_dto.go
 model_openstack_compute_quota_dto.go
@@ -1496,6 +1503,7 @@ model_project_list_for_alert.go
 model_project_list_for_poller.go
 model_project_list_for_project_group_dto.go
 model_project_lock_manager_command.go
+model_project_maintenance_mode_command.go
 model_project_quota_list.go
 model_project_quota_list_dto.go
 model_project_revision_dto.go

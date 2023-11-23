@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // ShowbackCredentialsAPIService ShowbackCredentialsAPI service
 type ShowbackCredentialsAPIService service
 
 type ApiShowbackcredentialsCreateRequest struct {
-	ctx                             context.Context
-	ApiService                      *ShowbackCredentialsAPIService
+	ctx context.Context
+	ApiService *ShowbackCredentialsAPIService
 	createShowbackCredentialCommand *CreateShowbackCredentialCommand
 }
 
@@ -41,25 +42,24 @@ func (r ApiShowbackcredentialsCreateRequest) Execute() (*ApiResponse, *http.Resp
 /*
 ShowbackcredentialsCreate Create showback credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiShowbackcredentialsCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiShowbackcredentialsCreateRequest
 */
 func (a *ShowbackCredentialsAPIService) ShowbackcredentialsCreate(ctx context.Context) ApiShowbackcredentialsCreateRequest {
 	return ApiShowbackcredentialsCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *ShowbackCredentialsAPIService) ShowbackcredentialsCreateExecute(r ApiShowbackcredentialsCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackCredentialsAPIService.ShowbackcredentialsCreate")
@@ -135,8 +135,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsCreateExecute(r ApiSh
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +146,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsCreateExecute(r ApiSh
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +157,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsCreateExecute(r ApiSh
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +168,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsCreateExecute(r ApiSh
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -179,8 +179,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsCreateExecute(r ApiSh
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -198,9 +198,9 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsCreateExecute(r ApiSh
 }
 
 type ApiShowbackcredentialsDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ShowbackCredentialsAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiShowbackcredentialsDeleteRequest) Execute() (*http.Response, error) {
@@ -210,24 +210,24 @@ func (r ApiShowbackcredentialsDeleteRequest) Execute() (*http.Response, error) {
 /*
 ShowbackcredentialsDelete Delete showback credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiShowbackcredentialsDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiShowbackcredentialsDeleteRequest
 */
 func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDelete(ctx context.Context, id int32) ApiShowbackcredentialsDeleteRequest {
 	return ApiShowbackcredentialsDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDeleteExecute(r ApiShowbackcredentialsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackCredentialsAPIService.ShowbackcredentialsDelete")
@@ -302,8 +302,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDeleteExecute(r ApiSh
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -313,8 +313,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDeleteExecute(r ApiSh
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -324,8 +324,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDeleteExecute(r ApiSh
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -335,8 +335,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDeleteExecute(r ApiSh
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -346,8 +346,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDeleteExecute(r ApiSh
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -356,8 +356,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDeleteExecute(r ApiSh
 }
 
 type ApiShowbackcredentialsDropdownRequest struct {
-	ctx            context.Context
-	ApiService     *ShowbackCredentialsAPIService
+	ctx context.Context
+	ApiService *ShowbackCredentialsAPIService
 	organizationId *int32
 }
 
@@ -373,25 +373,24 @@ func (r ApiShowbackcredentialsDropdownRequest) Execute() ([]ShowbackCredentialsD
 /*
 ShowbackcredentialsDropdown Retrieve showback credentials by organization id
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiShowbackcredentialsDropdownRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiShowbackcredentialsDropdownRequest
 */
 func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDropdown(ctx context.Context) ApiShowbackcredentialsDropdownRequest {
 	return ApiShowbackcredentialsDropdownRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []ShowbackCredentialsDetailsDto
+//  @return []ShowbackCredentialsDetailsDto
 func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDropdownExecute(r ApiShowbackcredentialsDropdownRequest) ([]ShowbackCredentialsDetailsDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []ShowbackCredentialsDetailsDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ShowbackCredentialsDetailsDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackCredentialsAPIService.ShowbackcredentialsDropdown")
@@ -468,8 +467,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDropdownExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -479,8 +478,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDropdownExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -490,8 +489,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDropdownExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -501,8 +500,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDropdownExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -512,8 +511,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDropdownExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -531,15 +530,15 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsDropdownExecute(r Api
 }
 
 type ApiShowbackcredentialsListRequest struct {
-	ctx            context.Context
-	ApiService     *ShowbackCredentialsAPIService
-	limit          *int32
-	offset         *int32
+	ctx context.Context
+	ApiService *ShowbackCredentialsAPIService
+	limit *int32
+	offset *int32
 	organizationId *int32
-	sortBy         *string
-	sortDirection  *string
-	search         *string
-	id             *int32
+	sortBy *string
+	sortDirection *string
+	search *string
+	id *int32
 }
 
 func (r ApiShowbackcredentialsListRequest) Limit(limit int32) ApiShowbackcredentialsListRequest {
@@ -584,25 +583,24 @@ func (r ApiShowbackcredentialsListRequest) Execute() (*ShowbackCredentialsList, 
 /*
 ShowbackcredentialsList Retrieve all showback credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiShowbackcredentialsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiShowbackcredentialsListRequest
 */
 func (a *ShowbackCredentialsAPIService) ShowbackcredentialsList(ctx context.Context) ApiShowbackcredentialsListRequest {
 	return ApiShowbackcredentialsListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ShowbackCredentialsList
+//  @return ShowbackCredentialsList
 func (a *ShowbackCredentialsAPIService) ShowbackcredentialsListExecute(r ApiShowbackcredentialsListRequest) (*ShowbackCredentialsList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ShowbackCredentialsList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ShowbackCredentialsList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackCredentialsAPIService.ShowbackcredentialsList")
@@ -697,8 +695,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsListExecute(r ApiShow
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -708,8 +706,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsListExecute(r ApiShow
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -719,8 +717,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsListExecute(r ApiShow
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -730,8 +728,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsListExecute(r ApiShow
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -741,8 +739,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsListExecute(r ApiShow
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -760,8 +758,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsListExecute(r ApiShow
 }
 
 type ApiShowbackcredentialsLockManagementRequest struct {
-	ctx                           context.Context
-	ApiService                    *ShowbackCredentialsAPIService
+	ctx context.Context
+	ApiService *ShowbackCredentialsAPIService
 	showbackCredentialLockCommand *ShowbackCredentialLockCommand
 }
 
@@ -777,22 +775,22 @@ func (r ApiShowbackcredentialsLockManagementRequest) Execute() (*http.Response, 
 /*
 ShowbackcredentialsLockManagement Lock management for showback credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiShowbackcredentialsLockManagementRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiShowbackcredentialsLockManagementRequest
 */
 func (a *ShowbackCredentialsAPIService) ShowbackcredentialsLockManagement(ctx context.Context) ApiShowbackcredentialsLockManagementRequest {
 	return ApiShowbackcredentialsLockManagementRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ShowbackCredentialsAPIService) ShowbackcredentialsLockManagementExecute(r ApiShowbackcredentialsLockManagementRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackCredentialsAPIService.ShowbackcredentialsLockManagement")
@@ -871,8 +869,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsLockManagementExecute
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -882,8 +880,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsLockManagementExecute
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -893,8 +891,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsLockManagementExecute
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -904,8 +902,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsLockManagementExecute
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -915,8 +913,8 @@ func (a *ShowbackCredentialsAPIService) ShowbackcredentialsLockManagementExecute
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

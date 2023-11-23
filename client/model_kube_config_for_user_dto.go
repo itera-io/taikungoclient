@@ -25,6 +25,7 @@ type KubeConfigForUserDto struct {
 	DisplayName NullableString `json:"displayName,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
+	PartnerId *int32 `json:"partnerId,omitempty"`
 	ProjectName NullableString `json:"projectName,omitempty"`
 	IsAccessibleForAll *bool `json:"isAccessibleForAll,omitempty"`
 	IsAccessibleForManager *bool `json:"isAccessibleForManager,omitempty"`
@@ -233,6 +234,38 @@ func (o *KubeConfigForUserDto) HasOrganizationId() bool {
 // SetOrganizationId gets a reference to the given int32 and assigns it to the OrganizationId field.
 func (o *KubeConfigForUserDto) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
+}
+
+// GetPartnerId returns the PartnerId field value if set, zero value otherwise.
+func (o *KubeConfigForUserDto) GetPartnerId() int32 {
+	if o == nil || IsNil(o.PartnerId) {
+		var ret int32
+		return ret
+	}
+	return *o.PartnerId
+}
+
+// GetPartnerIdOk returns a tuple with the PartnerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KubeConfigForUserDto) GetPartnerIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.PartnerId) {
+		return nil, false
+	}
+	return o.PartnerId, true
+}
+
+// HasPartnerId returns a boolean if a field has been set.
+func (o *KubeConfigForUserDto) HasPartnerId() bool {
+	if o != nil && !IsNil(o.PartnerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerId gets a reference to the given int32 and assigns it to the PartnerId field.
+func (o *KubeConfigForUserDto) SetPartnerId(v int32) {
+	o.PartnerId = &v
 }
 
 // GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -671,6 +704,9 @@ func (o KubeConfigForUserDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
+	}
+	if !IsNil(o.PartnerId) {
+		toSerialize["partnerId"] = o.PartnerId
 	}
 	if o.ProjectName.IsSet() {
 		toSerialize["projectName"] = o.ProjectName.Get()

@@ -20,13 +20,14 @@ import (
 	"strings"
 )
 
+
 // CommonAPIService CommonAPI service
 type CommonAPIService service
 
 type ApiCommonCountriesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CommonAPIService
-	search     *string
+	search *string
 }
 
 func (r ApiCommonCountriesRequest) Search(search string) ApiCommonCountriesRequest {
@@ -41,25 +42,24 @@ func (r ApiCommonCountriesRequest) Execute() ([]CountryListDto, *http.Response, 
 /*
 CommonCountries Retrieve country list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCommonCountriesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCommonCountriesRequest
 */
 func (a *CommonAPIService) CommonCountries(ctx context.Context) ApiCommonCountriesRequest {
 	return ApiCommonCountriesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []CountryListDto
+//  @return []CountryListDto
 func (a *CommonAPIService) CommonCountriesExecute(r ApiCommonCountriesRequest) ([]CountryListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []CountryListDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []CountryListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CommonAPIService.CommonCountries")
@@ -145,7 +145,7 @@ func (a *CommonAPIService) CommonCountriesExecute(r ApiCommonCountriesRequest) (
 }
 
 type ApiCommonEnumValuesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CommonAPIService
 }
 
@@ -156,25 +156,24 @@ func (r ApiCommonEnumValuesRequest) Execute() (*EnumList, *http.Response, error)
 /*
 CommonEnumValues Retrieve enum values
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCommonEnumValuesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCommonEnumValuesRequest
 */
 func (a *CommonAPIService) CommonEnumValues(ctx context.Context) ApiCommonEnumValuesRequest {
 	return ApiCommonEnumValuesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return EnumList
+//  @return EnumList
 func (a *CommonAPIService) CommonEnumValuesExecute(r ApiCommonEnumValuesRequest) (*EnumList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnumList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EnumList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CommonAPIService.CommonEnumValues")
@@ -257,8 +256,8 @@ func (a *CommonAPIService) CommonEnumValuesExecute(r ApiCommonEnumValuesRequest)
 }
 
 type ApiCommonIpRangeCountRequest struct {
-	ctx                        context.Context
-	ApiService                 *CommonAPIService
+	ctx context.Context
+	ApiService *CommonAPIService
 	ipAddressRangeCountCommand *IpAddressRangeCountCommand
 }
 
@@ -274,25 +273,24 @@ func (r ApiCommonIpRangeCountRequest) Execute() (int32, *http.Response, error) {
 /*
 CommonIpRangeCount Retrieve ip address range count
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCommonIpRangeCountRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCommonIpRangeCountRequest
 */
 func (a *CommonAPIService) CommonIpRangeCount(ctx context.Context) ApiCommonIpRangeCountRequest {
 	return ApiCommonIpRangeCountRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return int32
+//  @return int32
 func (a *CommonAPIService) CommonIpRangeCountExecute(r ApiCommonIpRangeCountRequest) (int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue int32
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CommonAPIService.CommonIpRangeCount")
@@ -371,8 +369,8 @@ func (a *CommonAPIService) CommonIpRangeCountExecute(r ApiCommonIpRangeCountRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -382,8 +380,8 @@ func (a *CommonAPIService) CommonIpRangeCountExecute(r ApiCommonIpRangeCountRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -393,8 +391,8 @@ func (a *CommonAPIService) CommonIpRangeCountExecute(r ApiCommonIpRangeCountRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -404,8 +402,8 @@ func (a *CommonAPIService) CommonIpRangeCountExecute(r ApiCommonIpRangeCountRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -415,8 +413,8 @@ func (a *CommonAPIService) CommonIpRangeCountExecute(r ApiCommonIpRangeCountRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -434,8 +432,8 @@ func (a *CommonAPIService) CommonIpRangeCountExecute(r ApiCommonIpRangeCountRequ
 }
 
 type ApiCommonIpRangeListRequest struct {
-	ctx                       context.Context
-	ApiService                *CommonAPIService
+	ctx context.Context
+	ApiService *CommonAPIService
 	ipAddressRangeListCommand *IpAddressRangeListCommand
 }
 
@@ -451,25 +449,24 @@ func (r ApiCommonIpRangeListRequest) Execute() ([]string, *http.Response, error)
 /*
 CommonIpRangeList Retrieve ip address range list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCommonIpRangeListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCommonIpRangeListRequest
 */
 func (a *CommonAPIService) CommonIpRangeList(ctx context.Context) ApiCommonIpRangeListRequest {
 	return ApiCommonIpRangeListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *CommonAPIService) CommonIpRangeListExecute(r ApiCommonIpRangeListRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CommonAPIService.CommonIpRangeList")
@@ -548,8 +545,8 @@ func (a *CommonAPIService) CommonIpRangeListExecute(r ApiCommonIpRangeListReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -559,8 +556,8 @@ func (a *CommonAPIService) CommonIpRangeListExecute(r ApiCommonIpRangeListReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -570,8 +567,8 @@ func (a *CommonAPIService) CommonIpRangeListExecute(r ApiCommonIpRangeListReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -581,8 +578,8 @@ func (a *CommonAPIService) CommonIpRangeListExecute(r ApiCommonIpRangeListReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -592,8 +589,8 @@ func (a *CommonAPIService) CommonIpRangeListExecute(r ApiCommonIpRangeListReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -611,9 +608,9 @@ func (a *CommonAPIService) CommonIpRangeListExecute(r ApiCommonIpRangeListReques
 }
 
 type ApiCommonSortingElementsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CommonAPIService
-	type_      string
+	type_ string
 }
 
 func (r ApiCommonSortingElementsRequest) Execute() ([]string, *http.Response, error) {
@@ -623,27 +620,26 @@ func (r ApiCommonSortingElementsRequest) Execute() ([]string, *http.Response, er
 /*
 CommonSortingElements Method for CommonSortingElements
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param type_
-	@return ApiCommonSortingElementsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param type_
+ @return ApiCommonSortingElementsRequest
 */
 func (a *CommonAPIService) CommonSortingElements(ctx context.Context, type_ string) ApiCommonSortingElementsRequest {
 	return ApiCommonSortingElementsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		type_:      type_,
+		ctx: ctx,
+		type_: type_,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *CommonAPIService) CommonSortingElementsExecute(r ApiCommonSortingElementsRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CommonAPIService.CommonSortingElements")

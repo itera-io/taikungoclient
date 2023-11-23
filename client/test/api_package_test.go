@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_PackageAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_PackageAPIService(t *testing.T) {
 
 	t.Run("Test PackageAPIService PackageDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var repoName string
 		var packageName string
@@ -39,7 +39,7 @@ func Test_taikuncore_PackageAPIService(t *testing.T) {
 
 	t.Run("Test PackageAPIService PackageList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.PackageAPI.PackageList(context.Background()).Execute()
 
@@ -51,7 +51,7 @@ func Test_taikuncore_PackageAPIService(t *testing.T) {
 
 	t.Run("Test PackageAPIService PackageValue", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.PackageAPI.PackageValue(context.Background()).Execute()
 
@@ -63,7 +63,7 @@ func Test_taikuncore_PackageAPIService(t *testing.T) {
 
 	t.Run("Test PackageAPIService PackageValueAutocomplete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.PackageAPI.PackageValueAutocomplete(context.Background()).Execute()
 
@@ -75,7 +75,7 @@ func Test_taikuncore_PackageAPIService(t *testing.T) {
 
 	t.Run("Test PackageAPIService PackageVersions", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.PackageAPI.PackageVersions(context.Background()).Execute()
 

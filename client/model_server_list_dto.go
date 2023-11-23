@@ -58,6 +58,7 @@ type ServerListDto struct {
 	ActionButtons *ServerActionButtonVisibilityDto `json:"actionButtons,omitempty"`
 	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels,omitempty"`
 	ReplicaCount NullableInt32 `json:"replicaCount,omitempty"`
+	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
 }
 
 // NewServerListDto instantiates a new ServerListDto object
@@ -1534,6 +1535,38 @@ func (o *ServerListDto) UnsetReplicaCount() {
 	o.ReplicaCount.Unset()
 }
 
+// GetWasmEnabled returns the WasmEnabled field value if set, zero value otherwise.
+func (o *ServerListDto) GetWasmEnabled() bool {
+	if o == nil || IsNil(o.WasmEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.WasmEnabled
+}
+
+// GetWasmEnabledOk returns a tuple with the WasmEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerListDto) GetWasmEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.WasmEnabled) {
+		return nil, false
+	}
+	return o.WasmEnabled, true
+}
+
+// HasWasmEnabled returns a boolean if a field has been set.
+func (o *ServerListDto) HasWasmEnabled() bool {
+	if o != nil && !IsNil(o.WasmEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetWasmEnabled gets a reference to the given bool and assigns it to the WasmEnabled field.
+func (o *ServerListDto) SetWasmEnabled(v bool) {
+	o.WasmEnabled = &v
+}
+
 func (o ServerListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1657,6 +1690,9 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ReplicaCount.IsSet() {
 		toSerialize["replicaCount"] = o.ReplicaCount.Get()
+	}
+	if !IsNil(o.WasmEnabled) {
+		toSerialize["wasmEnabled"] = o.WasmEnabled
 	}
 	return toSerialize, nil
 }

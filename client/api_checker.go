@@ -17,16 +17,17 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"os"
 	"strings"
+	"os"
 )
+
 
 // CheckerAPIService CheckerAPI service
 type CheckerAPIService service
 
 type ApiCheckerArtifactRequest struct {
-	ctx                       context.Context
-	ApiService                *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	artifactUrlCheckerCommand *ArtifactUrlCheckerCommand
 }
 
@@ -42,22 +43,22 @@ func (r ApiCheckerArtifactRequest) Execute() (*http.Response, error) {
 /*
 CheckerArtifact Check artifact url
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerArtifactRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerArtifactRequest
 */
 func (a *CheckerAPIService) CheckerArtifact(ctx context.Context) ApiCheckerArtifactRequest {
 	return ApiCheckerArtifactRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerArtifactExecute(r ApiCheckerArtifactRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerArtifact")
@@ -136,8 +137,8 @@ func (a *CheckerAPIService) CheckerArtifactExecute(r ApiCheckerArtifactRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -147,8 +148,8 @@ func (a *CheckerAPIService) CheckerArtifactExecute(r ApiCheckerArtifactRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -158,8 +159,8 @@ func (a *CheckerAPIService) CheckerArtifactExecute(r ApiCheckerArtifactRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -169,8 +170,8 @@ func (a *CheckerAPIService) CheckerArtifactExecute(r ApiCheckerArtifactRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -180,8 +181,8 @@ func (a *CheckerAPIService) CheckerArtifactExecute(r ApiCheckerArtifactRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -190,8 +191,8 @@ func (a *CheckerAPIService) CheckerArtifactExecute(r ApiCheckerArtifactRequest) 
 }
 
 type ApiCheckerAwsRequest struct {
-	ctx             context.Context
-	ApiService      *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	checkAwsCommand *CheckAwsCommand
 }
 
@@ -207,22 +208,22 @@ func (r ApiCheckerAwsRequest) Execute() (*http.Response, error) {
 /*
 CheckerAws Check aws credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerAwsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerAwsRequest
 */
 func (a *CheckerAPIService) CheckerAws(ctx context.Context) ApiCheckerAwsRequest {
 	return ApiCheckerAwsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerAwsExecute(r ApiCheckerAwsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerAws")
@@ -301,8 +302,8 @@ func (a *CheckerAPIService) CheckerAwsExecute(r ApiCheckerAwsRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -312,8 +313,8 @@ func (a *CheckerAPIService) CheckerAwsExecute(r ApiCheckerAwsRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -323,8 +324,8 @@ func (a *CheckerAPIService) CheckerAwsExecute(r ApiCheckerAwsRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -334,8 +335,8 @@ func (a *CheckerAPIService) CheckerAwsExecute(r ApiCheckerAwsRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -345,8 +346,8 @@ func (a *CheckerAPIService) CheckerAwsExecute(r ApiCheckerAwsRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -355,8 +356,8 @@ func (a *CheckerAPIService) CheckerAwsExecute(r ApiCheckerAwsRequest) (*http.Res
 }
 
 type ApiCheckerAzureRequest struct {
-	ctx               context.Context
-	ApiService        *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	checkAzureCommand *CheckAzureCommand
 }
 
@@ -372,22 +373,22 @@ func (r ApiCheckerAzureRequest) Execute() (*http.Response, error) {
 /*
 CheckerAzure Check azure credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerAzureRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerAzureRequest
 */
 func (a *CheckerAPIService) CheckerAzure(ctx context.Context) ApiCheckerAzureRequest {
 	return ApiCheckerAzureRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerAzureExecute(r ApiCheckerAzureRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerAzure")
@@ -466,8 +467,8 @@ func (a *CheckerAPIService) CheckerAzureExecute(r ApiCheckerAzureRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -477,8 +478,8 @@ func (a *CheckerAPIService) CheckerAzureExecute(r ApiCheckerAzureRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -488,8 +489,8 @@ func (a *CheckerAPIService) CheckerAzureExecute(r ApiCheckerAzureRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -499,8 +500,8 @@ func (a *CheckerAPIService) CheckerAzureExecute(r ApiCheckerAzureRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -510,8 +511,8 @@ func (a *CheckerAPIService) CheckerAzureExecute(r ApiCheckerAzureRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -520,8 +521,8 @@ func (a *CheckerAPIService) CheckerAzureExecute(r ApiCheckerAzureRequest) (*http
 }
 
 type ApiCheckerAzureQuotaRequest struct {
-	ctx                       context.Context
-	ApiService                *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	checkAzureCpuQuotaCommand *CheckAzureCpuQuotaCommand
 }
 
@@ -537,22 +538,22 @@ func (r ApiCheckerAzureQuotaRequest) Execute() (*http.Response, error) {
 /*
 CheckerAzureQuota Check azure cpu quota
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerAzureQuotaRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerAzureQuotaRequest
 */
 func (a *CheckerAPIService) CheckerAzureQuota(ctx context.Context) ApiCheckerAzureQuotaRequest {
 	return ApiCheckerAzureQuotaRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerAzureQuotaExecute(r ApiCheckerAzureQuotaRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerAzureQuota")
@@ -631,8 +632,8 @@ func (a *CheckerAPIService) CheckerAzureQuotaExecute(r ApiCheckerAzureQuotaReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -642,8 +643,8 @@ func (a *CheckerAPIService) CheckerAzureQuotaExecute(r ApiCheckerAzureQuotaReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -653,8 +654,8 @@ func (a *CheckerAPIService) CheckerAzureQuotaExecute(r ApiCheckerAzureQuotaReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -664,8 +665,8 @@ func (a *CheckerAPIService) CheckerAzureQuotaExecute(r ApiCheckerAzureQuotaReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -675,8 +676,8 @@ func (a *CheckerAPIService) CheckerAzureQuotaExecute(r ApiCheckerAzureQuotaReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -685,8 +686,8 @@ func (a *CheckerAPIService) CheckerAzureQuotaExecute(r ApiCheckerAzureQuotaReque
 }
 
 type ApiCheckerCidrRequest struct {
-	ctx         context.Context
-	ApiService  *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	cidrCommand *CidrCommand
 }
 
@@ -702,22 +703,22 @@ func (r ApiCheckerCidrRequest) Execute() (*http.Response, error) {
 /*
 CheckerCidr Check valid cidr format
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerCidrRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerCidrRequest
 */
 func (a *CheckerAPIService) CheckerCidr(ctx context.Context) ApiCheckerCidrRequest {
 	return ApiCheckerCidrRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerCidrExecute(r ApiCheckerCidrRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerCidr")
@@ -796,8 +797,8 @@ func (a *CheckerAPIService) CheckerCidrExecute(r ApiCheckerCidrRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -807,8 +808,8 @@ func (a *CheckerAPIService) CheckerCidrExecute(r ApiCheckerCidrRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -818,8 +819,8 @@ func (a *CheckerAPIService) CheckerCidrExecute(r ApiCheckerCidrRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -829,8 +830,8 @@ func (a *CheckerAPIService) CheckerCidrExecute(r ApiCheckerCidrRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -840,8 +841,8 @@ func (a *CheckerAPIService) CheckerCidrExecute(r ApiCheckerCidrRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -850,8 +851,8 @@ func (a *CheckerAPIService) CheckerCidrExecute(r ApiCheckerCidrRequest) (*http.R
 }
 
 type ApiCheckerCronRequest struct {
-	ctx            context.Context
-	ApiService     *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	cronJobCommand *CronJobCommand
 }
 
@@ -867,22 +868,22 @@ func (r ApiCheckerCronRequest) Execute() (*http.Response, error) {
 /*
 CheckerCron Check valid cron job format
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerCronRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerCronRequest
 */
 func (a *CheckerAPIService) CheckerCron(ctx context.Context) ApiCheckerCronRequest {
 	return ApiCheckerCronRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerCronExecute(r ApiCheckerCronRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerCron")
@@ -961,8 +962,8 @@ func (a *CheckerAPIService) CheckerCronExecute(r ApiCheckerCronRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -972,8 +973,8 @@ func (a *CheckerAPIService) CheckerCronExecute(r ApiCheckerCronRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -983,8 +984,8 @@ func (a *CheckerAPIService) CheckerCronExecute(r ApiCheckerCronRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -994,8 +995,8 @@ func (a *CheckerAPIService) CheckerCronExecute(r ApiCheckerCronRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1005,8 +1006,8 @@ func (a *CheckerAPIService) CheckerCronExecute(r ApiCheckerCronRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1015,7 +1016,7 @@ func (a *CheckerAPIService) CheckerCronExecute(r ApiCheckerCronRequest) (*http.R
 }
 
 type ApiCheckerDnsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CheckerAPIService
 	dnsCommand *DnsCommand
 }
@@ -1032,22 +1033,22 @@ func (r ApiCheckerDnsRequest) Execute() (*http.Response, error) {
 /*
 CheckerDns Check valid dns format
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerDnsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerDnsRequest
 */
 func (a *CheckerAPIService) CheckerDns(ctx context.Context) ApiCheckerDnsRequest {
 	return ApiCheckerDnsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerDnsExecute(r ApiCheckerDnsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerDns")
@@ -1126,8 +1127,8 @@ func (a *CheckerAPIService) CheckerDnsExecute(r ApiCheckerDnsRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1137,8 +1138,8 @@ func (a *CheckerAPIService) CheckerDnsExecute(r ApiCheckerDnsRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1148,8 +1149,8 @@ func (a *CheckerAPIService) CheckerDnsExecute(r ApiCheckerDnsRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1159,8 +1160,8 @@ func (a *CheckerAPIService) CheckerDnsExecute(r ApiCheckerDnsRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1170,8 +1171,8 @@ func (a *CheckerAPIService) CheckerDnsExecute(r ApiCheckerDnsRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1180,8 +1181,8 @@ func (a *CheckerAPIService) CheckerDnsExecute(r ApiCheckerDnsRequest) (*http.Res
 }
 
 type ApiCheckerDuplicateNameRequest struct {
-	ctx                         context.Context
-	ApiService                  *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	duplicateNameCheckerCommand *DuplicateNameCheckerCommand
 }
 
@@ -1197,25 +1198,24 @@ func (r ApiCheckerDuplicateNameRequest) Execute() (bool, *http.Response, error) 
 /*
 CheckerDuplicateName Duplicate name
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerDuplicateNameRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerDuplicateNameRequest
 */
 func (a *CheckerAPIService) CheckerDuplicateName(ctx context.Context) ApiCheckerDuplicateNameRequest {
 	return ApiCheckerDuplicateNameRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return bool
+//  @return bool
 func (a *CheckerAPIService) CheckerDuplicateNameExecute(r ApiCheckerDuplicateNameRequest) (bool, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue bool
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  bool
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerDuplicateName")
@@ -1294,8 +1294,8 @@ func (a *CheckerAPIService) CheckerDuplicateNameExecute(r ApiCheckerDuplicateNam
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1305,8 +1305,8 @@ func (a *CheckerAPIService) CheckerDuplicateNameExecute(r ApiCheckerDuplicateNam
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1316,8 +1316,8 @@ func (a *CheckerAPIService) CheckerDuplicateNameExecute(r ApiCheckerDuplicateNam
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1327,8 +1327,8 @@ func (a *CheckerAPIService) CheckerDuplicateNameExecute(r ApiCheckerDuplicateNam
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1338,8 +1338,8 @@ func (a *CheckerAPIService) CheckerDuplicateNameExecute(r ApiCheckerDuplicateNam
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1357,9 +1357,9 @@ func (a *CheckerAPIService) CheckerDuplicateNameExecute(r ApiCheckerDuplicateNam
 }
 
 type ApiCheckerGoogleRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CheckerAPIService
-	config     *os.File
+	config *os.File
 }
 
 func (r ApiCheckerGoogleRequest) Config(config *os.File) ApiCheckerGoogleRequest {
@@ -1374,25 +1374,24 @@ func (r ApiCheckerGoogleRequest) Execute() (bool, *http.Response, error) {
 /*
 CheckerGoogle Method for CheckerGoogle
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerGoogleRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerGoogleRequest
 */
 func (a *CheckerAPIService) CheckerGoogle(ctx context.Context) ApiCheckerGoogleRequest {
 	return ApiCheckerGoogleRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return bool
+//  @return bool
 func (a *CheckerAPIService) CheckerGoogleExecute(r ApiCheckerGoogleRequest) (bool, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue bool
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  bool
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerGoogle")
@@ -1424,11 +1423,10 @@ func (a *CheckerAPIService) CheckerGoogleExecute(r ApiCheckerGoogleRequest) (boo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	var configLocalVarFormFileName string
-	var configLocalVarFileName string
-	var configLocalVarFileBytes []byte
+	var configLocalVarFileName     string
+	var configLocalVarFileBytes    []byte
 
 	configLocalVarFormFileName = "config"
-
 	configLocalVarFile := r.config
 
 	if configLocalVarFile != nil {
@@ -1482,8 +1480,8 @@ func (a *CheckerAPIService) CheckerGoogleExecute(r ApiCheckerGoogleRequest) (boo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1493,8 +1491,8 @@ func (a *CheckerAPIService) CheckerGoogleExecute(r ApiCheckerGoogleRequest) (boo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1504,8 +1502,8 @@ func (a *CheckerAPIService) CheckerGoogleExecute(r ApiCheckerGoogleRequest) (boo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1515,8 +1513,8 @@ func (a *CheckerAPIService) CheckerGoogleExecute(r ApiCheckerGoogleRequest) (boo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1526,8 +1524,8 @@ func (a *CheckerAPIService) CheckerGoogleExecute(r ApiCheckerGoogleRequest) (boo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1545,8 +1543,8 @@ func (a *CheckerAPIService) CheckerGoogleExecute(r ApiCheckerGoogleRequest) (boo
 }
 
 type ApiCheckerKeycloakRequest struct {
-	ctx                    context.Context
-	ApiService             *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	keycloakCheckerCommand *KeycloakCheckerCommand
 }
 
@@ -1562,22 +1560,22 @@ func (r ApiCheckerKeycloakRequest) Execute() (*http.Response, error) {
 /*
 CheckerKeycloak Check keycloak credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerKeycloakRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerKeycloakRequest
 */
 func (a *CheckerAPIService) CheckerKeycloak(ctx context.Context) ApiCheckerKeycloakRequest {
 	return ApiCheckerKeycloakRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerKeycloakExecute(r ApiCheckerKeycloakRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerKeycloak")
@@ -1656,8 +1654,8 @@ func (a *CheckerAPIService) CheckerKeycloakExecute(r ApiCheckerKeycloakRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1667,8 +1665,8 @@ func (a *CheckerAPIService) CheckerKeycloakExecute(r ApiCheckerKeycloakRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1678,8 +1676,8 @@ func (a *CheckerAPIService) CheckerKeycloakExecute(r ApiCheckerKeycloakRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1689,8 +1687,8 @@ func (a *CheckerAPIService) CheckerKeycloakExecute(r ApiCheckerKeycloakRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1700,8 +1698,8 @@ func (a *CheckerAPIService) CheckerKeycloakExecute(r ApiCheckerKeycloakRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1710,9 +1708,9 @@ func (a *CheckerAPIService) CheckerKeycloakExecute(r ApiCheckerKeycloakRequest) 
 }
 
 type ApiCheckerKubeConfigRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CheckerAPIService
-	config     *os.File
+	config *os.File
 }
 
 func (r ApiCheckerKubeConfigRequest) Config(config *os.File) ApiCheckerKubeConfigRequest {
@@ -1727,25 +1725,24 @@ func (r ApiCheckerKubeConfigRequest) Execute() (bool, *http.Response, error) {
 /*
 CheckerKubeConfig Method for CheckerKubeConfig
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerKubeConfigRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerKubeConfigRequest
 */
 func (a *CheckerAPIService) CheckerKubeConfig(ctx context.Context) ApiCheckerKubeConfigRequest {
 	return ApiCheckerKubeConfigRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return bool
+//  @return bool
 func (a *CheckerAPIService) CheckerKubeConfigExecute(r ApiCheckerKubeConfigRequest) (bool, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue bool
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  bool
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerKubeConfig")
@@ -1777,11 +1774,10 @@ func (a *CheckerAPIService) CheckerKubeConfigExecute(r ApiCheckerKubeConfigReque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	var configLocalVarFormFileName string
-	var configLocalVarFileName string
-	var configLocalVarFileBytes []byte
+	var configLocalVarFileName     string
+	var configLocalVarFileBytes    []byte
 
 	configLocalVarFormFileName = "config"
-
 	configLocalVarFile := r.config
 
 	if configLocalVarFile != nil {
@@ -1835,8 +1831,8 @@ func (a *CheckerAPIService) CheckerKubeConfigExecute(r ApiCheckerKubeConfigReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1846,8 +1842,8 @@ func (a *CheckerAPIService) CheckerKubeConfigExecute(r ApiCheckerKubeConfigReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1857,8 +1853,8 @@ func (a *CheckerAPIService) CheckerKubeConfigExecute(r ApiCheckerKubeConfigReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1868,8 +1864,8 @@ func (a *CheckerAPIService) CheckerKubeConfigExecute(r ApiCheckerKubeConfigReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1879,8 +1875,8 @@ func (a *CheckerAPIService) CheckerKubeConfigExecute(r ApiCheckerKubeConfigReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1898,8 +1894,8 @@ func (a *CheckerAPIService) CheckerKubeConfigExecute(r ApiCheckerKubeConfigReque
 }
 
 type ApiCheckerNodeRequest struct {
-	ctx         context.Context
-	ApiService  *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	nodeCommand *NodeCommand
 }
 
@@ -1915,22 +1911,22 @@ func (r ApiCheckerNodeRequest) Execute() (*http.Response, error) {
 /*
 CheckerNode Duplicate server name checker
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerNodeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerNodeRequest
 */
 func (a *CheckerAPIService) CheckerNode(ctx context.Context) ApiCheckerNodeRequest {
 	return ApiCheckerNodeRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerNodeExecute(r ApiCheckerNodeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerNode")
@@ -2009,8 +2005,8 @@ func (a *CheckerAPIService) CheckerNodeExecute(r ApiCheckerNodeRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2020,8 +2016,8 @@ func (a *CheckerAPIService) CheckerNodeExecute(r ApiCheckerNodeRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2031,8 +2027,8 @@ func (a *CheckerAPIService) CheckerNodeExecute(r ApiCheckerNodeRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2042,8 +2038,8 @@ func (a *CheckerAPIService) CheckerNodeExecute(r ApiCheckerNodeRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2053,8 +2049,8 @@ func (a *CheckerAPIService) CheckerNodeExecute(r ApiCheckerNodeRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2063,7 +2059,7 @@ func (a *CheckerAPIService) CheckerNodeExecute(r ApiCheckerNodeRequest) (*http.R
 }
 
 type ApiCheckerNtpRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CheckerAPIService
 	ntpCommand *NtpCommand
 }
@@ -2080,22 +2076,22 @@ func (r ApiCheckerNtpRequest) Execute() (*http.Response, error) {
 /*
 CheckerNtp Check valid ntp format
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerNtpRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerNtpRequest
 */
 func (a *CheckerAPIService) CheckerNtp(ctx context.Context) ApiCheckerNtpRequest {
 	return ApiCheckerNtpRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerNtpExecute(r ApiCheckerNtpRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerNtp")
@@ -2174,8 +2170,8 @@ func (a *CheckerAPIService) CheckerNtpExecute(r ApiCheckerNtpRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2185,8 +2181,8 @@ func (a *CheckerAPIService) CheckerNtpExecute(r ApiCheckerNtpRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2196,8 +2192,8 @@ func (a *CheckerAPIService) CheckerNtpExecute(r ApiCheckerNtpRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2207,8 +2203,8 @@ func (a *CheckerAPIService) CheckerNtpExecute(r ApiCheckerNtpRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2218,8 +2214,8 @@ func (a *CheckerAPIService) CheckerNtpExecute(r ApiCheckerNtpRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2228,8 +2224,8 @@ func (a *CheckerAPIService) CheckerNtpExecute(r ApiCheckerNtpRequest) (*http.Res
 }
 
 type ApiCheckerOpenAiRequest struct {
-	ctx                  context.Context
-	ApiService           *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	openAiCheckerCommand *OpenAiCheckerCommand
 }
 
@@ -2245,22 +2241,22 @@ func (r ApiCheckerOpenAiRequest) Execute() (*http.Response, error) {
 /*
 CheckerOpenAi Check open-ai token
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerOpenAiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerOpenAiRequest
 */
 func (a *CheckerAPIService) CheckerOpenAi(ctx context.Context) ApiCheckerOpenAiRequest {
 	return ApiCheckerOpenAiRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerOpenAiExecute(r ApiCheckerOpenAiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerOpenAi")
@@ -2339,8 +2335,8 @@ func (a *CheckerAPIService) CheckerOpenAiExecute(r ApiCheckerOpenAiRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2350,8 +2346,8 @@ func (a *CheckerAPIService) CheckerOpenAiExecute(r ApiCheckerOpenAiRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2361,8 +2357,8 @@ func (a *CheckerAPIService) CheckerOpenAiExecute(r ApiCheckerOpenAiRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2372,8 +2368,8 @@ func (a *CheckerAPIService) CheckerOpenAiExecute(r ApiCheckerOpenAiRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2383,8 +2379,8 @@ func (a *CheckerAPIService) CheckerOpenAiExecute(r ApiCheckerOpenAiRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2393,8 +2389,8 @@ func (a *CheckerAPIService) CheckerOpenAiExecute(r ApiCheckerOpenAiRequest) (*ht
 }
 
 type ApiCheckerOpenstackRequest struct {
-	ctx                   context.Context
-	ApiService            *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	checkOpenstackCommand *CheckOpenstackCommand
 }
 
@@ -2410,22 +2406,22 @@ func (r ApiCheckerOpenstackRequest) Execute() (*http.Response, error) {
 /*
 CheckerOpenstack Check openstack credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerOpenstackRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerOpenstackRequest
 */
 func (a *CheckerAPIService) CheckerOpenstack(ctx context.Context) ApiCheckerOpenstackRequest {
 	return ApiCheckerOpenstackRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerOpenstackExecute(r ApiCheckerOpenstackRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerOpenstack")
@@ -2501,8 +2497,8 @@ func (a *CheckerAPIService) CheckerOpenstackExecute(r ApiCheckerOpenstackRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2512,8 +2508,8 @@ func (a *CheckerAPIService) CheckerOpenstackExecute(r ApiCheckerOpenstackRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2523,8 +2519,8 @@ func (a *CheckerAPIService) CheckerOpenstackExecute(r ApiCheckerOpenstackRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2534,8 +2530,8 @@ func (a *CheckerAPIService) CheckerOpenstackExecute(r ApiCheckerOpenstackRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2545,8 +2541,8 @@ func (a *CheckerAPIService) CheckerOpenstackExecute(r ApiCheckerOpenstackRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2555,9 +2551,9 @@ func (a *CheckerAPIService) CheckerOpenstackExecute(r ApiCheckerOpenstackRequest
 }
 
 type ApiCheckerOpenstackTaikunImageRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CheckerAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiCheckerOpenstackTaikunImageRequest) Execute() (*http.Response, error) {
@@ -2567,24 +2563,24 @@ func (r ApiCheckerOpenstackTaikunImageRequest) Execute() (*http.Response, error)
 /*
 CheckerOpenstackTaikunImage Check openstack taikun image
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiCheckerOpenstackTaikunImageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiCheckerOpenstackTaikunImageRequest
 */
 func (a *CheckerAPIService) CheckerOpenstackTaikunImage(ctx context.Context, id int32) ApiCheckerOpenstackTaikunImageRequest {
 	return ApiCheckerOpenstackTaikunImageRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerOpenstackTaikunImageExecute(r ApiCheckerOpenstackTaikunImageRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerOpenstackTaikunImage")
@@ -2659,8 +2655,8 @@ func (a *CheckerAPIService) CheckerOpenstackTaikunImageExecute(r ApiCheckerOpens
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2670,8 +2666,8 @@ func (a *CheckerAPIService) CheckerOpenstackTaikunImageExecute(r ApiCheckerOpens
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2681,8 +2677,8 @@ func (a *CheckerAPIService) CheckerOpenstackTaikunImageExecute(r ApiCheckerOpens
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2692,8 +2688,8 @@ func (a *CheckerAPIService) CheckerOpenstackTaikunImageExecute(r ApiCheckerOpens
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2703,8 +2699,8 @@ func (a *CheckerAPIService) CheckerOpenstackTaikunImageExecute(r ApiCheckerOpens
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2713,9 +2709,9 @@ func (a *CheckerAPIService) CheckerOpenstackTaikunImageExecute(r ApiCheckerOpens
 }
 
 type ApiCheckerOpenstackTaikunLbImageRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CheckerAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiCheckerOpenstackTaikunLbImageRequest) Execute() (*http.Response, error) {
@@ -2725,24 +2721,24 @@ func (r ApiCheckerOpenstackTaikunLbImageRequest) Execute() (*http.Response, erro
 /*
 CheckerOpenstackTaikunLbImage Check openstack taikun lb image
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiCheckerOpenstackTaikunLbImageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiCheckerOpenstackTaikunLbImageRequest
 */
 func (a *CheckerAPIService) CheckerOpenstackTaikunLbImage(ctx context.Context, id int32) ApiCheckerOpenstackTaikunLbImageRequest {
 	return ApiCheckerOpenstackTaikunLbImageRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerOpenstackTaikunLbImageExecute(r ApiCheckerOpenstackTaikunLbImageRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerOpenstackTaikunLbImage")
@@ -2817,8 +2813,8 @@ func (a *CheckerAPIService) CheckerOpenstackTaikunLbImageExecute(r ApiCheckerOpe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2828,8 +2824,8 @@ func (a *CheckerAPIService) CheckerOpenstackTaikunLbImageExecute(r ApiCheckerOpe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2839,8 +2835,8 @@ func (a *CheckerAPIService) CheckerOpenstackTaikunLbImageExecute(r ApiCheckerOpe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2850,8 +2846,8 @@ func (a *CheckerAPIService) CheckerOpenstackTaikunLbImageExecute(r ApiCheckerOpe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2861,8 +2857,8 @@ func (a *CheckerAPIService) CheckerOpenstackTaikunLbImageExecute(r ApiCheckerOpe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2871,8 +2867,8 @@ func (a *CheckerAPIService) CheckerOpenstackTaikunLbImageExecute(r ApiCheckerOpe
 }
 
 type ApiCheckerOrganizationRequest struct {
-	ctx                            context.Context
-	ApiService                     *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	organizationNameCheckerCommand *OrganizationNameCheckerCommand
 }
 
@@ -2888,22 +2884,22 @@ func (r ApiCheckerOrganizationRequest) Execute() (*http.Response, error) {
 /*
 CheckerOrganization Check duplicate org name
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerOrganizationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerOrganizationRequest
 */
 func (a *CheckerAPIService) CheckerOrganization(ctx context.Context) ApiCheckerOrganizationRequest {
 	return ApiCheckerOrganizationRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerOrganizationExecute(r ApiCheckerOrganizationRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerOrganization")
@@ -2982,8 +2978,8 @@ func (a *CheckerAPIService) CheckerOrganizationExecute(r ApiCheckerOrganizationR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2993,8 +2989,8 @@ func (a *CheckerAPIService) CheckerOrganizationExecute(r ApiCheckerOrganizationR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3004,8 +3000,8 @@ func (a *CheckerAPIService) CheckerOrganizationExecute(r ApiCheckerOrganizationR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3015,8 +3011,8 @@ func (a *CheckerAPIService) CheckerOrganizationExecute(r ApiCheckerOrganizationR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3026,8 +3022,8 @@ func (a *CheckerAPIService) CheckerOrganizationExecute(r ApiCheckerOrganizationR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3036,8 +3032,8 @@ func (a *CheckerAPIService) CheckerOrganizationExecute(r ApiCheckerOrganizationR
 }
 
 type ApiCheckerPrometheusRequest struct {
-	ctx                    context.Context
-	ApiService             *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	checkPrometheusCommand *CheckPrometheusCommand
 }
 
@@ -3053,22 +3049,22 @@ func (r ApiCheckerPrometheusRequest) Execute() (*http.Response, error) {
 /*
 CheckerPrometheus Check prometheus credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerPrometheusRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerPrometheusRequest
 */
 func (a *CheckerAPIService) CheckerPrometheus(ctx context.Context) ApiCheckerPrometheusRequest {
 	return ApiCheckerPrometheusRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerPrometheusExecute(r ApiCheckerPrometheusRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerPrometheus")
@@ -3147,8 +3143,8 @@ func (a *CheckerAPIService) CheckerPrometheusExecute(r ApiCheckerPrometheusReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3158,8 +3154,8 @@ func (a *CheckerAPIService) CheckerPrometheusExecute(r ApiCheckerPrometheusReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3169,8 +3165,8 @@ func (a *CheckerAPIService) CheckerPrometheusExecute(r ApiCheckerPrometheusReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3180,8 +3176,8 @@ func (a *CheckerAPIService) CheckerPrometheusExecute(r ApiCheckerPrometheusReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3191,8 +3187,8 @@ func (a *CheckerAPIService) CheckerPrometheusExecute(r ApiCheckerPrometheusReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3201,8 +3197,8 @@ func (a *CheckerAPIService) CheckerPrometheusExecute(r ApiCheckerPrometheusReque
 }
 
 type ApiCheckerProxmoxRequest struct {
-	ctx                   context.Context
-	ApiService            *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	proxmoxCheckerCommand *ProxmoxCheckerCommand
 }
 
@@ -3218,22 +3214,22 @@ func (r ApiCheckerProxmoxRequest) Execute() (*http.Response, error) {
 /*
 CheckerProxmox Check proxmox credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerProxmoxRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerProxmoxRequest
 */
 func (a *CheckerAPIService) CheckerProxmox(ctx context.Context) ApiCheckerProxmoxRequest {
 	return ApiCheckerProxmoxRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerProxmoxExecute(r ApiCheckerProxmoxRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerProxmox")
@@ -3312,8 +3308,8 @@ func (a *CheckerAPIService) CheckerProxmoxExecute(r ApiCheckerProxmoxRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3323,8 +3319,8 @@ func (a *CheckerAPIService) CheckerProxmoxExecute(r ApiCheckerProxmoxRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3334,8 +3330,8 @@ func (a *CheckerAPIService) CheckerProxmoxExecute(r ApiCheckerProxmoxRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3345,8 +3341,8 @@ func (a *CheckerAPIService) CheckerProxmoxExecute(r ApiCheckerProxmoxRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3356,8 +3352,8 @@ func (a *CheckerAPIService) CheckerProxmoxExecute(r ApiCheckerProxmoxRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3366,8 +3362,8 @@ func (a *CheckerAPIService) CheckerProxmoxExecute(r ApiCheckerProxmoxRequest) (*
 }
 
 type ApiCheckerS3Request struct {
-	ctx            context.Context
-	ApiService     *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	checkS3Command *CheckS3Command
 }
 
@@ -3383,22 +3379,22 @@ func (r ApiCheckerS3Request) Execute() (*http.Response, error) {
 /*
 CheckerS3 Check s3 credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerS3Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerS3Request
 */
 func (a *CheckerAPIService) CheckerS3(ctx context.Context) ApiCheckerS3Request {
 	return ApiCheckerS3Request{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerS3Execute(r ApiCheckerS3Request) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerS3")
@@ -3477,8 +3473,8 @@ func (a *CheckerAPIService) CheckerS3Execute(r ApiCheckerS3Request) (*http.Respo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3488,8 +3484,8 @@ func (a *CheckerAPIService) CheckerS3Execute(r ApiCheckerS3Request) (*http.Respo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3499,8 +3495,8 @@ func (a *CheckerAPIService) CheckerS3Execute(r ApiCheckerS3Request) (*http.Respo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3510,8 +3506,8 @@ func (a *CheckerAPIService) CheckerS3Execute(r ApiCheckerS3Request) (*http.Respo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3521,8 +3517,8 @@ func (a *CheckerAPIService) CheckerS3Execute(r ApiCheckerS3Request) (*http.Respo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3531,8 +3527,8 @@ func (a *CheckerAPIService) CheckerS3Execute(r ApiCheckerS3Request) (*http.Respo
 }
 
 type ApiCheckerSshRequest struct {
-	ctx           context.Context
-	ApiService    *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	sshKeyCommand *SshKeyCommand
 }
 
@@ -3548,22 +3544,22 @@ func (r ApiCheckerSshRequest) Execute() (*http.Response, error) {
 /*
 CheckerSsh Check valid ssh key format
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerSshRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerSshRequest
 */
 func (a *CheckerAPIService) CheckerSsh(ctx context.Context) ApiCheckerSshRequest {
 	return ApiCheckerSshRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerSshExecute(r ApiCheckerSshRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerSsh")
@@ -3642,8 +3638,8 @@ func (a *CheckerAPIService) CheckerSshExecute(r ApiCheckerSshRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3653,8 +3649,8 @@ func (a *CheckerAPIService) CheckerSshExecute(r ApiCheckerSshRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3664,8 +3660,8 @@ func (a *CheckerAPIService) CheckerSshExecute(r ApiCheckerSshRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3675,8 +3671,8 @@ func (a *CheckerAPIService) CheckerSshExecute(r ApiCheckerSshRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3686,8 +3682,8 @@ func (a *CheckerAPIService) CheckerSshExecute(r ApiCheckerSshRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3696,8 +3692,8 @@ func (a *CheckerAPIService) CheckerSshExecute(r ApiCheckerSshRequest) (*http.Res
 }
 
 type ApiCheckerTanzuRequest struct {
-	ctx               context.Context
-	ApiService        *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	checkTanzuCommand *CheckTanzuCommand
 }
 
@@ -3713,22 +3709,22 @@ func (r ApiCheckerTanzuRequest) Execute() (*http.Response, error) {
 /*
 CheckerTanzu Check tanzu credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerTanzuRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerTanzuRequest
 */
 func (a *CheckerAPIService) CheckerTanzu(ctx context.Context) ApiCheckerTanzuRequest {
 	return ApiCheckerTanzuRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerTanzuExecute(r ApiCheckerTanzuRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerTanzu")
@@ -3807,8 +3803,8 @@ func (a *CheckerAPIService) CheckerTanzuExecute(r ApiCheckerTanzuRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3818,8 +3814,8 @@ func (a *CheckerAPIService) CheckerTanzuExecute(r ApiCheckerTanzuRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3829,8 +3825,8 @@ func (a *CheckerAPIService) CheckerTanzuExecute(r ApiCheckerTanzuRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3840,8 +3836,8 @@ func (a *CheckerAPIService) CheckerTanzuExecute(r ApiCheckerTanzuRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3851,8 +3847,8 @@ func (a *CheckerAPIService) CheckerTanzuExecute(r ApiCheckerTanzuRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3861,8 +3857,8 @@ func (a *CheckerAPIService) CheckerTanzuExecute(r ApiCheckerTanzuRequest) (*http
 }
 
 type ApiCheckerUserRequest struct {
-	ctx              context.Context
-	ApiService       *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	userExistCommand *UserExistCommand
 }
 
@@ -3878,22 +3874,22 @@ func (r ApiCheckerUserRequest) Execute() (*http.Response, error) {
 /*
 CheckerUser Check duplicate username
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerUserRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerUserRequest
 */
 func (a *CheckerAPIService) CheckerUser(ctx context.Context) ApiCheckerUserRequest {
 	return ApiCheckerUserRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerUserExecute(r ApiCheckerUserRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerUser")
@@ -3972,8 +3968,8 @@ func (a *CheckerAPIService) CheckerUserExecute(r ApiCheckerUserRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3983,8 +3979,8 @@ func (a *CheckerAPIService) CheckerUserExecute(r ApiCheckerUserRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3994,8 +3990,8 @@ func (a *CheckerAPIService) CheckerUserExecute(r ApiCheckerUserRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4005,8 +4001,8 @@ func (a *CheckerAPIService) CheckerUserExecute(r ApiCheckerUserRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4016,8 +4012,8 @@ func (a *CheckerAPIService) CheckerUserExecute(r ApiCheckerUserRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4026,8 +4022,8 @@ func (a *CheckerAPIService) CheckerUserExecute(r ApiCheckerUserRequest) (*http.R
 }
 
 type ApiCheckerYamlRequest struct {
-	ctx                  context.Context
-	ApiService           *CheckerAPIService
+	ctx context.Context
+	ApiService *CheckerAPIService
 	yamlValidatorCommand *YamlValidatorCommand
 }
 
@@ -4043,22 +4039,22 @@ func (r ApiCheckerYamlRequest) Execute() (*http.Response, error) {
 /*
 CheckerYaml Check yaml file
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCheckerYamlRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCheckerYamlRequest
 */
 func (a *CheckerAPIService) CheckerYaml(ctx context.Context) ApiCheckerYamlRequest {
 	return ApiCheckerYamlRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CheckerAPIService) CheckerYamlExecute(r ApiCheckerYamlRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerYaml")
@@ -4137,8 +4133,8 @@ func (a *CheckerAPIService) CheckerYamlExecute(r ApiCheckerYamlRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4148,8 +4144,8 @@ func (a *CheckerAPIService) CheckerYamlExecute(r ApiCheckerYamlRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4159,8 +4155,8 @@ func (a *CheckerAPIService) CheckerYamlExecute(r ApiCheckerYamlRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4170,8 +4166,8 @@ func (a *CheckerAPIService) CheckerYamlExecute(r ApiCheckerYamlRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4181,8 +4177,8 @@ func (a *CheckerAPIService) CheckerYamlExecute(r ApiCheckerYamlRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

@@ -862,8 +862,6 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (*h
 	var logoLocalVarFileBytes    []byte
 
 	logoLocalVarFormFileName = "logo"
-
-
 	logoLocalVarFile := r.logo
 
 	if logoLocalVarFile != nil {
@@ -879,8 +877,6 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (*h
 	var backgroundImageLocalVarFileBytes    []byte
 
 	backgroundImageLocalVarFormFileName = "backgroundImage"
-
-
 	backgroundImageLocalVarFile := r.backgroundImage
 
 	if backgroundImageLocalVarFile != nil {
@@ -2077,8 +2073,6 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 	var logoLocalVarFileBytes    []byte
 
 	logoLocalVarFormFileName = "logo"
-
-
 	logoLocalVarFile := r.logo
 
 	if logoLocalVarFile != nil {
@@ -2094,8 +2088,6 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 	var backgroundImageLocalVarFileBytes    []byte
 
 	backgroundImageLocalVarFormFileName = "backgroundImage"
-
-
 	backgroundImageLocalVarFile := r.backgroundImage
 
 	if backgroundImageLocalVarFile != nil {
